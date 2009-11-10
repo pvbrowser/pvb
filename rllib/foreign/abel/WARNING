@@ -1,0 +1,27 @@
+Hi folks!
+
+Since yoe are even contemplating using this program, certain things about
+you and your operation are assumed at this point:
+
+You are intimately familiar with the liability you are taking on your own
+accord.  Industrial machinery and other equipment that can be controlled by
+an Allen Bradley PLC can be extremely dangerous.  It is not uncommon for
+this machinery to be capable of severely injuring OR KILLING people.  Yes,
+that is right, KILLING! 
+
+If you were not already aware of this, please follow these instructions
+immediately...
+Delete This Program at once.
+Stop whatever you were doing (or planning to do)
+Change your career immediately before you kill someone.
+
+However, because there are still some idiots in this world who remain
+clueless, I must state the following:
+
+THIS PROGRAM IS CAPABLE OF MODIFYING THE INTERNAL CONTENTS OF THE DATA TABLE
+OF A PLC.  THAT CAN CAUSE YOUR MACHINERY TO ACTIVATE OR OTHERWISE OPERATE IN
+AN UNPREDICTABLE AND/OR DANGEROUS MANNER.  IT IS ENTIRELY YOUR
+RESPONSIBILITY TO BE CERTAIN THAT THIS PROGRAM DOES NOT CAUSE YOUR MACHINERY
+TO OPERATE IN AN UNSAFE MANNER.  I CAN NOT BE HELD RESPONSIBLE FOR ANY HARM
+AND/OR DAMAGE THAT YOUR USE OF THIS PROGRAM CREATES.
+

@@ -1,0 +1,113 @@
+- Company:  Hilscher GmbH 
+- Author:   David Tsaava
+- Contact:  DTsaava@Hilscher.com
+- Release:  1.001
+- Date:     January 2005
+
+
+TCP-IP server for the Linux CIF Device Driver
+
+TABLE OF CONTENTS
+
+1. Introduction
+2. requirements
+3. Getting started with tcp-ip server
+4. The Communication Process
+   4.1 Communication details
+   4.2 ODM Message Definition
+5. Changes
+6. Outlook
+
+1. Introduction
+
+It can be used to access online our CIF Device Driver under Linux.
+All the Online Functions of SyCon, which is available only for Windows
+at moment, can be performed by this means over tcp/ip connection to 
+your Linux machine.
+Among  other things you can perform Firmware and Configuration
+download, send diagnose messages to the remote CIF boards etc.
+
+For the purpose of debugging, you can set DEBUG to 'y' in
+the makefile and recompile your server.
+
+
+2. requirements
+
+In order to be able to communicate with CIF Device Driver over tcp-ip 
+connection you need SyCon V2.600 or higher and tcp-ip client running
+on your SyCon machine. 
+CIF Device Driver for Linux V1.003 and V2.000 were tested with this server.
+Please consult the driver manual for its description.
+ 
+
+3. Getting started with tcp-ip server
+
+First you must load CIF Device Driver. After that srvTCPIP can be started 
+in background: with './srvTCPIP &' command.
+
+
+4. The Communication Process
+
+   Messages sent from SyCon over tcp-ip connection are transferred transparent 
+   to the CIF Board. In order to initiate communication between SyCon and remote
+   CIF Device Driver, there are some predefined messages.
+   The tcp-ip Server on your Linux machine is working with connection oriented 
+   sockets and listens on Port 1099.
+   You can establish only one direct tcp-ip connection to one CIF board at 
+   the same time.
+   
+
+   4.1 Communication details
+       
+       SyCon side                           tcp-ip srv (Linux) side
+       1. BOARD_SELECT_COMMAND              1. BOARD_SELECT_COMMAND
+          request: ask for                     call driver function
+          available boards' Info               GetBoardInfoEx() and send 
+                                               the info structure to SyCon
+       2. BOARD_SELECT_ANSWER               2. SyCon doesn't expect answer
+          select one available                 Initialize board selected by
+          board and send request               SyCon: call DevInitBoard(N).
+          to the server: board N               
+          selected
+       3,4,...                              3,4,...
+          pure user data / RCS message         pure user data / RCS message
+          send RCS messages to                 Pass messages transparent to
+          tcp-ip server                        actual CIF board, send reply 
+                                               messages transparent to SyCon
+       Each time SyCon selects another board, BOARD_SELECT_ANSWER request is sent.
+
+
+   4.2 ODM Message Definition
+
+       ODM stands for Online Data Manager.For the first 2 steps described
+       in chapter 4.1 there are special messages defined.
+       A) request message: -O-D-M-0- (4 Bytes)
+                           O, D, M are ASCII characters, 0 is 0x00 hex
+	  :: BOARD_SELECT_COMMAND
+       B) expected response message from tcp-ip server on remote Linux machine:
+                           -O-D-M-1-GENERAL_BOARD_INFO-
+                           where GENERAL-BOARD_INFO is a structure defined in 
+                           "cifuser.h".
+	  :: BOARD_SELECT_COMMAND
+       C) request message: -O-D-M-1-Nr-
+                           Nr is number of selected board (0x00..0x03 hex)      
+          :: BOARD_SELECT_ANSWER
+
+5. Changes
+
+  version name   date     file              description
+                 
+  V1.001	 01/05    sourcesink.c      RCS messages are sent now to the client
+		                            considering the real data length in it
+                                            i.e. client gets message header lenght + 
+                                                             data.len
+                                            usBoard is now defined extern
+                          main.c            usBoard global definition added
+
+
+6. Outlook
+
+In the next release it will be implemented as daemon process.
+
+Please let us know about any errors you find, as well as your 
+suggestions for future releases.

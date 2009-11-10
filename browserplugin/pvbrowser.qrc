@@ -1,0 +1,22 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/option.png</file>
+    <file>images/window.png</file>
+    <file>images/reconnect.png</file>
+    <file>images/storebmp.png</file>
+    <file>images/logbmp.png</file>
+    <file>images/logpvm.png</file>
+    <file>images/print.png</file>
+    <file>images/copy.png</file>
+    <file>images/fullscreen.png</file>
+    <file>images/exit.png</file>
+    <file>images/app.png</file>
+    <file>images/back.png</file>
+    <file>images/gohome.png</file>
+    <file>images/whatsthis.png</file>
+    <file>images/newtab.png</file>
+    <file>images/deletetab.png</file>
+    <file>images/reload.png</file>
+</qresource>
+</RCC>
+

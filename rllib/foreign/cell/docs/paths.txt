@@ -1,0 +1,38 @@
+About the path data...
+
+The main thing to remember about paths is that EVERYTHING on
+a ControlLogix is a ControlNet Network - including the
+backplane.  All communications cards are bridge devices with
+multiple internal ports.
+
+For example, a ControlNet card (1756-CNB) has 3 interal ports,
+#1 is the backplane, #2 is channel A and #3 is channel B.  The
+Ethernet card is simular (bridges from the ethernet port to
+the backplane) - port #1 is the backplane and port #2 is the
+ethernet channel.
+
+On the backplane, the slot number is the controlnet device ID.
+Slot 0 is device #0, slot 5 is device #5, and so on.
+
+Creating the path data is the simple aggregation of this data
+in a sequential form.  You follow the signal path physically, 
+using that data to enumerate the path data.
+
+For example, assume you have 2 racks - rack number 1 has a CNB in 
+slot 0, a CPU in slot 1, and an ENET in slot 3.  Rack #2 has a CNB
+in slot 0 and slot 1 has the CPU.  The two racks are connected by 
+ControlNet.  Rack 1 is address 8 and rack 2 is address 9 on the 
+ControlNet network.  Your path data to talk to rack 2 through 
+rack 1 via ethernet would look like this:
+01, 00, 02, 08, 01, 01
+
+The first 01 crosses the ethernet->controlnet bridge.  The
+following 00 addresses the card in slot 0 in the first rack.  The
+02 addresses the second channel in that card (channel A on the
+CNB card).  The 08 talks to device 08 on the ControlNet 
+network.  The second 01 crosses the ControlNet bridge into the
+backplane and the final 01 talks to the card (CPU) in slot 1.
+
+Clear as mud?  :)
+
+Ron Gage

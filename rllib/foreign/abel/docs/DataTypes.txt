@@ -1,0 +1,34 @@
+The following data types are readable for a PLC-5.
+
+Type	Meaning
+O	Output table
+I	Input Table
+S	System Status
+B	Binary
+T	Timer
+C	Counter
+R	Control
+N	Integer
+F	Float
+A	ASCII
+BT	Block Transfer Control
+D	BCD
+L	Long Integer
+MG	Message Control
+PD	PID Control
+SC	??
+ST	String
+
+
+I have also added a few more to deal with non-data table stuff:
+PN 8	Program Name -  will return the PLC name - always 8 bytes.
+RGx:y	Rung Data - x = file number, y = element (not rung) number.  Will
+	return 1 element at a time unless more requested.
+FO:x	Force Output Table - word x
+FI:x	Force Input Table - word x
+XAx:y	Section 3 data, subsection x, element y.
+XBx:y	Section 4 data, subsection x, element y.
+XCx:y	Section 5 data, subsection x, element y.
+XDx:y	Section 6 data, subsection x, element y.
+
+

@@ -1,0 +1,109 @@
+**************************************************************************
+                     CIF Device Driver V2.100
+**************************************************************************
+
+Developed and tested with Kernel 2.4.0, 2.4.2
+
+1. CIF Device Driver, Release V2.100
+   1.1 ISA boards
+   1.2 PCI Interrupts
+2. Driver Setup and Test Program
+3. Console Demo
+4. Changes
+5. Notes
+6. Copyright
+--------------------------------------------------------------------------
+
+         1. CIF Device Driver, Release V2.100
+Our CIF Device Driver in actual release V2.100 supports CIF-50 PCI, CIF-80
+Compact-PCI and CIF-30/CIF-104 ISA cards. 
+Actual developments are always to find on our Home Page www.Hilscher.com.
+
+To load and unload a driver - cif.o (located in 'drv/' subdirectory of 
+the installation directory) please use 'cif_load' and 'cif_unload' scripts. 
+PCI cards are autodetected by driver. If you use ISA cards, you have to 
+pass load parameters to the driver. 
+
+         1.1 ISA boards
+These parameters are: DPM-address, DPM-size and IRQ-number. you can have 
+plugged up to four Hilscher communication Boards at a time, so you can 
+pass up to four DPM-addresses, DPM-sizes and IRQ-numbers. The best way to 
+describe this is by showing a few samples of the command line.
+
+./cif_load dpm_add=0xCA000 dpm_len=0x2 irq=11 
+  if there is only one ISA board plugged with appropriate jumper settings.
+If you want the board to operate in polling mode simply pass IRQ-number 0:
+./cif_load dpm_add=0xCA000 dpm_len=0x2 irq=0
+
+./cif_load dpm_add=0xCA000,0xCB000,0xCC000,0xCD000 dpm_len=0x2,0x8,0x6,0x8 irq=11,9,12,14
+    if there are four ISA boards plugged with appropriate jumper settings
+
+Note: On Intel platforms, DPM-addresses for ISA boards are in range 
+      640KB-1MB (0xA0000 to 0xFFFFF).
+      Do not forget to tag IRQ-number, You are going to use for ISA card, 
+      in BIOS as an ISA IRQ.
+
+         1.2 PCI Interrupts
+The driver is disabling interrups on PCI boards by default. If you like to
+run them in interrupt mode, you have to activate pci interrupts during
+driver load as follows:
+./cif_load pci_irq=y
+
+--------------------------------------------------------------------------
+
+         2. Driver Setup and Test Program
+The Driver test program was developed with GTK+ version 1.2.8. 
+For GNU Library General Public License agreement and library itself refer 
+to the www.gtk.org
+
+CIF Driver Setup and Test Program can help You to understand how to call 
+Driver Functions. API for Driver itself is linked to the application as 
+an object file (cif_api.o), see Makefile in 'test/' subdirectory of 
+intstallation directory.
+ 
+You can modify CIF Driver Setup and Test Program for your own needs.
+--------------------------------------------------------------------------
+
+                      3. Console Demo
+If you want to test our Driver not in X-Windows Environment, there is a
+simple console demo program incuded in package.
+--------------------------------------------------------------------------
+
+                      4. Changes
+
+This version of the driver is based on V2.000, support for Copmact-PCI was
+added.
+--------------------------------------------------------------------------
+
+                      5. Notes
+
+a) The driver version 1.003 works under Kernel 2.2.10, 2.2.14, 2.2.16
+   Anyway, by any problems contact us via email. For the Address see below.
+b) If you'd like to load and unload cif driver automatically at system
+   start and shut down, there are two possibilities:
+   -1- (the convenient way) you add the scripts 'cif_load' and 'cif_unload'
+       to the scripts for system control - see 'AUTO/' subdirectory;
+   -2- (time-consuming)  you integrate the driver in your actual Kernel
+       static or as a module.
+--------------------------------------------------------------------------
+
+                      6. Copyright
+==========================================================================
+Complete package is copyrighted by Hilscher GmbH and is licensed through
+the GNU General Public License.
+You should have received a copy of the GNU Library General Public
+License along with this package; if not, please refer to www.gnu.org
+==========================================================================
+
+We have tested and verified all the functions to the best of our ability,
+but You may miss some features in Driver or in Test Program or even find
+errors we have possibly made while coding. Please let us know about any
+errors you find, as well as your suggestions for future releases.
+
+You can send us an email to:
+
+DTsaava@Hilscher.com
+
+
+Hattersheim,
+	 November 2002.

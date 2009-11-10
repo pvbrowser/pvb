@@ -1,0 +1,56 @@
+When you look at the binary name encoding data for the PLC-5, you see the
+following defination (paraphrased)
+
+mask, level1, level2, level3, level4
+
+mask is a simple bitwise mask that indicates which of the following levels
+of data are present.  If the data is not present, then a default value
+(usually 0) is assumed for that level.
+
+For the following discussion, use the following as an example:
+		Wx:yyy.zz
+
+Level 1 indicates the area of the system you wish to read.  For the data
+table, this is 0.  This byte must always be encoded.
+
+Level 2 indicates the file number of the address.  This is the 'x' of the
+example.  Note that the 'W' indicator is not dealt with at all.
+
+Level 3 indicates the element number.  This is the 'yyy' section of the
+example.
+
+Level 4 indicates the subelement number.  This is strictly for such things
+as seperating out the accumulator from the preset of a single timer.  As
+near as I can tell, it does not work for reading an individual bit from the
+PLC.  In other words, T4:0.acc is encodable, but N7:0/1 is not.
+
+This is all well and good.  It allows us to read all of the data table of
+the PLC without too much trouble.  Unfortunately, this addressing scheme is
+also used for reading "system" areas of memory.  Things like the PLC2
+compatibility file (does anyone still use this?), the ladder/files, etc. 
+Within these other areas, they can all be addressed just like above, but the
+meanings of the different levels are obviously different.  For example, I
+have seen level 1's value go as high as 6.  
+
+The bad part about all of this is that it is all undocumented, at least to
+the commom person like me.
+
+As I discover useful things about these other "sections" of memory, they
+will be documented here.
+
+------------------------------------------------------------------------------
+
+Well, I have made quite a few little discoveries about the system levels...
+
+The following annotation refers strictly to the SoftLogix 5 product as that
+is all I have to test with.  As I discover things about the rest of the PLC5
+line, as well as the Pyramid and the SLC5/05, they will also be documented
+here.
+
+The entire ladder program (including all files) is stored in System Area 1. 
+The Input and Output Force Table is stored in System Area 2.
+Area's 3,4,5 & 6 store such things as communications channel configs,
+sidecar arrangements/data, and what not.  I have no idea currently as to
+what is stored where.  The discovery of these things is currently not a high
+priority.
+

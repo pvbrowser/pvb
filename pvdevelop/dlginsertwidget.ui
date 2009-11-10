@@ -1,0 +1,931 @@
+<ui version="4.0" >
+ <class>DialogInsertWidget</class>
+ <widget class="QDialog" name="DialogInsertWidget" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>678</width>
+    <height>649</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>pvdevelop: InsertWidget</string>
+  </property>
+  <widget class="QLabel" name="label" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>610</y>
+     <width>421</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>You can insert the selected Widget again by: CTRL-MouseClick</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="cancelButton" >
+   <property name="geometry" >
+    <rect>
+     <x>480</x>
+     <y>600</y>
+     <width>91</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Cancel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="okButton" >
+   <property name="geometry" >
+    <rect>
+     <x>574</x>
+     <y>600</y>
+     <width>91</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>OK</string>
+   </property>
+   <property name="default" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>661</width>
+     <height>581</height>
+    </rect>
+   </property>
+   <property name="title" >
+    <string>Insert a Widget</string>
+   </property>
+   <widget class="QRadioButton" name="wTabWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>30</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>TabWidget</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wRadioButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>RadioButton</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wCheckBox" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>110</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>CheckBox</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wLineEdit" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>190</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>LineEdit</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wLabel" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>150</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Label</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wPushButton" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>PushButton</string>
+    </property>
+    <property name="checked" >
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wGroupBox" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>70</y>
+      <width>121</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>GroupBox: Title</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wFrame" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>110</y>
+      <width>231</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Frame: Shape/Shadow/lineWidth</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxTabWidget" >
+    <property name="geometry" >
+     <rect>
+      <x>230</x>
+      <y>30</y>
+      <width>76</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxFrameShape" >
+    <property name="geometry" >
+     <rect>
+      <x>360</x>
+      <y>110</y>
+      <width>76</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxFrameShadow" >
+    <property name="geometry" >
+     <rect>
+      <x>440</x>
+      <y>110</y>
+      <width>76</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxFrameLineWidth" >
+    <property name="geometry" >
+     <rect>
+      <x>520</x>
+      <y>110</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wComboxBox" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>230</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>ComboBox</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wTable" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>270</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Table</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wMultiLineEdit" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>150</y>
+      <width>221</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>MultiLineEdit: editable/maxLines</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxMultiLineEditable" >
+    <property name="geometry" >
+     <rect>
+      <x>360</x>
+      <y>150</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>1</number>
+    </property>
+    <property name="minimum" >
+     <number>0</number>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxMultiLineMaxLines" >
+    <property name="geometry" >
+     <rect>
+      <x>420</x>
+      <y>150</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-1</number>
+    </property>
+    <property name="value" >
+     <number>-1</number>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wSpinBox" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>190</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>SpinBox: Min/Max/Step</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxMin" >
+    <property name="geometry" >
+     <rect>
+      <x>300</x>
+      <y>190</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxMax" >
+    <property name="geometry" >
+     <rect>
+      <x>360</x>
+      <y>190</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+    <property name="value" >
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxStep" >
+    <property name="geometry" >
+     <rect>
+      <x>420</x>
+      <y>190</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wSlider" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>230</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Slider: Min/Max/Step/Val</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxSliderMin" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>230</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxSliderMax" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>230</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+    <property name="value" >
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxSliderStep" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>230</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxSliderVal" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>230</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxSliderOrientation" >
+    <property name="geometry" >
+     <rect>
+      <x>550</x>
+      <y>230</y>
+      <width>76</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wLCDNumber" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>270</y>
+      <width>301</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>LCDNumber: numDigits/Mode/SegmentStyle</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxNumDigits" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>270</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxMode" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>270</y>
+      <width>76</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="comboBoxSegmentStyle" >
+    <property name="geometry" >
+     <rect>
+      <x>570</x>
+      <y>270</y>
+      <width>76</width>
+      <height>25</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wDateEdit" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>310</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>DateEdit</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wTimeEdit" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>350</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>TimeEdit</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wDial" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>310</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Dial: Min/Max/Step/Value</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxDialMin" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>310</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+    <property name="value" >
+     <number>0</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxDialMax" >
+    <property name="geometry" >
+     <rect>
+      <x>370</x>
+      <y>310</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+    <property name="value" >
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxDialStep" >
+    <property name="geometry" >
+     <rect>
+      <x>430</x>
+      <y>310</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>100</number>
+    </property>
+    <property name="minimum" >
+     <number>1</number>
+    </property>
+    <property name="value" >
+     <number>1</number>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxDialValue" >
+    <property name="geometry" >
+     <rect>
+      <x>490</x>
+      <y>310</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>-99999</number>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wProgressBar" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>350</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>ProgressBar: totalSteps</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBoxProgressBarTotalSteps" >
+    <property name="geometry" >
+     <rect>
+      <x>300</x>
+      <y>350</y>
+      <width>54</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="maximum" >
+     <number>99999</number>
+    </property>
+    <property name="minimum" >
+     <number>10</number>
+    </property>
+    <property name="value" >
+     <number>100</number>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wDateTimeEdit" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>390</y>
+      <width>111</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>DateTimeEdit</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wTextBrowser" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>430</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>TextBrowser</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wIconView" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>510</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>IconView</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditGroupBoxTitle" >
+    <property name="geometry" >
+     <rect>
+      <x>250</x>
+      <y>70</y>
+      <width>81</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wImage" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>390</y>
+      <width>171</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Image: imageFileName</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditImageFileName" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>390</y>
+      <width>331</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wDraw" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>430</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>Draw/SVG: svgFileName</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="lineEditDrawFileName" >
+    <property name="geometry" >
+     <rect>
+      <x>310</x>
+      <y>430</y>
+      <width>331</width>
+      <height>26</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtSlider" >
+    <property name="geometry" >
+     <rect>
+      <x>540</x>
+      <y>470</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtSlider</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtWheel" >
+    <property name="geometry" >
+     <rect>
+      <x>540</x>
+      <y>500</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtWheel</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtCompass" >
+    <property name="geometry" >
+     <rect>
+      <x>540</x>
+      <y>530</y>
+      <width>111</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtCompass</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtKnob" >
+    <property name="geometry" >
+     <rect>
+      <x>420</x>
+      <y>470</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtKnob</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtCounter" >
+    <property name="geometry" >
+     <rect>
+      <x>420</x>
+      <y>500</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtCounter</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtThermo" >
+    <property name="geometry" >
+     <rect>
+      <x>420</x>
+      <y>530</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtThermo</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wListView" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>470</y>
+      <width>99</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>ListView</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wOpenGL" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>470</y>
+      <width>99</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>OpenGL</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wVTK" >
+    <property name="geometry" >
+     <rect>
+      <x>130</x>
+      <y>510</y>
+      <width>81</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>VTK</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wQwtPlot" >
+    <property name="geometry" >
+     <rect>
+      <x>240</x>
+      <y>470</y>
+      <width>81</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>QwtPlot</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wToolBox" >
+    <property name="geometry" >
+     <rect>
+      <x>240</x>
+      <y>510</y>
+      <width>81</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>ToolBox</string>
+    </property>
+   </widget>
+   <widget class="QRadioButton" name="wListBox" >
+    <property name="geometry" >
+     <rect>
+      <x>10</x>
+      <y>540</y>
+      <width>99</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text" >
+     <string>ListBox</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>okButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogInsertWidget</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>351</x>
+     <y>38</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>233</x>
+     <y>29</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogInsertWidget</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>330</x>
+     <y>66</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>197</x>
+     <y>125</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

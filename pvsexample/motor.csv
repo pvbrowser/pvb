@@ -1,0 +1,76 @@
+A	B	C	D	E	F	G	H	I	J	K	L	M	N	O	P	Q	R	S	T	U	V	W	X	Y	Z	AA	AB
+Antriebsdaten																											
+																											
+																											
+	MuK						Motordaten										Profibus					Getriebe	Trägheitsmoment				
+No	Plant	Place	Device	Connector			P_n	U_n	I_n	Trq_n	Freq_n	Turn_n	MotEffic	MotInertia	IGtrMot	PolePair	PbTrq100%	PbSpd100%	MotTrq100%	MotTurn100%	PbIntfSelect	IGearBoxExt	Const	LoadMin	LoadMax		
+[-]	[-]	[-]	[-]	[-]			[kW]	[V]	[A]	[Nm]	[Hz]	[1/min]	[%]	[kgm2]	[kgm2]		[-]	[-]	[Nm]	[U/min]	[-]	[-]	[kgm2]	[kgm2]	[kgm2]		
+																											
+1	Entry	Coil Prep	BH01	MKL/G/Y	Siemens	2KG1191-0VS21-4AB9-Z A23+B02+C01+G21+H57+R1R	15	400	30	2826	50	1460	90	0,05	28,8	2	16384	16384	100	1500		1	10			JINAN_CPL__00015_0kW__01460U_min__0028_80IGTR	
+2	Entry	Pay Off Reel	CD01	MKL/T	Siemens	1PQ8317-6PB80-Z A23+H73	250	400	430	2410	50	989	95,9	7,3	1	3	16384	16384	2400	1000		13,44	25			JINAN_CPL__00250_0kW__00989U_min__0001_00IGTR	 o. Coil / 580 m. Coil vorläufig
+3	Processor	Pinch Roll	CF05	MKL/T	Siemens	1LG4223-8AB60-Z A23+H61+K09	22	400	45	288	50	730	89,7	0,55	1	4	16384	16384	250	750		16	38			JINAN_CPL__00022_0kW__00730U_min__0028_80IGTR	
+4	Leveller	Leveller	CF06	MKL/T	Siemens	1LG4310-8AB60-Z A23+H61+K10+L27	55	400	106	710	50	740	93	2,1	1	4	16384	16384	700	750		7	2			JINAN_CPL__00055_0kW__00740U_min__0028_80IGTR	
+5	Steering Roll no 1	snubber roll drive	FD02	MKL/T	Siemens	1LG4206-6AA60-Z A23+H61+K09	18,5	400	36,5	181	50	975	89,8	0,24	1	3	16384	16384	180	1000		10	7			JINAN_CPL__00018_5kW__00975U_min__0028_80IGTR	
+6	Bridle 1	Roll No 1	FE01	MKL/T	Siemens	1LG4316-6AA60-Z A23+H61+K09+L27	110	400	196	1063	50	988	94,3	3,2	1	3	16384	16384	1100	1000		16	620			JINAN_CPL__00110_0kW__00988U_min__0028_80IGTR	
+7	Entry	Snubber Roll no 1	FE02	MKL/T	Siemens	1LA6166-6AA60-Z A23+H61+K09	11	400	24,5	109	50	960	87,5	0,06	1	3	16384	16384	110	1000		8	7			JINAN_CPL__00011_0kW__00960U_min__0028_80IGTR	
+8	Bridle 1	Roll No 2	FE04	MKL/T	Siemens	1LG4316-6AA60-Z A23+H61+K09+L27	110	400	196	1063	50	988	94,3	3,2	1	3	16384	16384	1100	1000		16	620			JINAN_CPL__00110_0kW__00988U_min__0028_80IGTR	
+9	Entry	Entry Accumulator	FG01	MKL/T	Siemens	1PQ8317-8PB80-Z A23+H73	200	400	370	2580	50	739	95,2	7,3	1	4	16384	16384	2600	750		90	800			JINAN_CPL__00200_0kW__00739U_min__0028_80IGTR	vorläufig
+10	Stretch Bending	BRU 3 roll no 1	GB01	MKL/T	Siemens	1PQ8355-4PB80-Z A23+H73+K10	400	400	690	2570	50	1488	96,3	6,8	1	2	16384	16384	2600	1500		41,8	680			JINAN_CPL__00400_0kW__01488U_min__0028_80IGTR	
+11	Stretch Bending	BRU 2 roll no 2	GB02	MKL/T	Siemens	1LG4280-4AA60-Z A23+H61+K09+L27	75	400	136	482	50	1485	94,2	1,2	1	2	16384	16384	480	1500		35,8	680			JINAN_CPL__00075_0kW__01485U_min__0028_80IGTR	201,5 e 35,8
+12	Stretch Bending	BRU 3 roll no 2	GB03	MKL/T	Siemens	1LG4317-4AA60-Z A23+H61+K09+L27	200	400	340	1285	50	1486	95,9	3,5	1	2	16384	16384	1300	1500		35,8	680			JINAN_CPL__00200_0kW__01486U_min__0028_80IGTR	201,1 e 35,8
+13	Stretch Bending	BRU 2 roll no 1	GB04	MKL/T	Siemens	1LG4220-4AA60-Z A23+H61+K09	37	400	68	240	50	1475	92,2	0,37	1	2	16384	16384	240	1500		41,8	680			JINAN_CPL__00037_0kW__01475U_min__0028_80IGTR	
+14	Steering Roll no 4	snubber roll drive	KB02	MKL/G/Y	Siemens	2KG1171-0VN21-6AB9-Z A23+B02+C01+G21+H57+R1R	4	400	9,89	1194	50	950	80,5	0,02	29,7	3	16384	16384	40	1000		1	7			JINAN_CPL__00004_0kW__00950U_min__0028_80IGTR	
+15	Exit	Exit Accumulator	KD01	MKL/T	Siemens	1PQ8405-8PM80-Z A23+H73	375	690	410	4820	50	743	96,1	24	1	4	16384	16384	4600	750		45	800			JINAN_CPL__00375_0kW__00743U_min__0028_80IGTR	vorläufig
+16	Exit	Scrap Chopper OS head 1	KK01	MKL/T	Siemens	1LG6253-4PM80-Z A23+H61+L27	55	690	56	354	50	1485	94,8	0,86	1	2	16384	16384	360	1500		6,7	0,67			JINAN_CPL__00055_0kW__01485U_min__0028_80IGTR	
+17	Exit	Scrap Chopper OS head 2	KK03	MKL/T	Siemens	1LG6253-4PM80-Z A23+H61+L27	55	690	56	354	50	1485	94,8	0,86	1	2	16384	16384	360	1500		6,7	0,67			JINAN_CPL__00055_0kW__01485U_min__0028_80IGTR	
+18	Exit	Scrap Chopper DS head 1	KK05	MKL/T	Siemens	1LG6253-4PM80-Z A23+H61+L27	55	690	56	354	50	1485	94,8	0,86	1	2	16384	16384	360	1500		6,7	0,67			JINAN_CPL__00055_0kW__01485U_min__0028_80IGTR	
+19	Exit	Scrap Chopper DS head 2	KK07	MKL/T	Siemens	1LG6253-4PM80-Z A23+H61+L27	55	690	56	354	50	1485	94,8	0,86	1	2	16384	16384	360	1500		6,7	0,67			JINAN_CPL__00055_0kW__01485U_min__0028_80IGTR	
+20	Bridle 4	Roll no 1	KL01	MKL/T	Siemens	1LG6318-8PM80-Z A23+G17+H73+K09+L27	132	690	140	1704	50	740	94,4	5,3	1	4	16384	16384	1700	1500		22,4	550			JINAN_CPL__00132_0kW__00740U_min__0028_80IGTR	
+21	Bridle 4	Roll no 2	KL03	MKL/T	Siemens	1LG6318-8PM80-Z A23+G17+H73+K09+L27	132	690	140	1704	50	740	94,4	5,3	1	4	16384	16384	1700	1500		22,4	550			JINAN_CPL__00132_0kW__00740U_min__0028_80IGTR	
+22	Exit 	Snubber Roll no 2	KL04	MKL/T	Siemens	1LG4186-6AA60-Z A23+H61+K09	15	400	29,5	148	50	965	88,9	0,18	1	3	16384	16384	150	1000		16	7			JINAN_CPL__00015_0kW__00965U_min__0028_80IGTR	
+23	Exit	Snubber Roll	KR01	MKL/T	Siemens	1LG4186+4AA60-Z A23+H57+K09	22	400	29,5	148	50	965	88,9	0,12	1	2	16384	16384	140	1500		22,4	7			JINAN_CPL__00022_0kW__00965U_min__0028_80IGTR	
+24	Exit	Tension Reel	KT01	MKL/T	Siemens	1PQ4454-6AM00-Z A23+A23+H73	870	690	870	8367	50	993	97,3	53,5	1	3	16384	16384	8400	1800		15,7	22 o. Coil / 570 m. Coil	vorläufig		JINAN_CPL__00870_0kW__00993U_min__0028_80IGTR	Coil / 570 m. Coil
+25	Exit	Coil Car	KV01	MKL/G/Y	Dematic Cranes	ADK80TD ZBA 100  AL4 B020	2,2	400	5	14,8	50	1415	90	0,1	122	2	16384	16384	12	1500		1				JINAN_CPL__00002_2kW__01415U_min__0028_80IGTR	
+																											
+																											
+	Wechselrichter und Umrichtertypen		Siemens Masterdrives Vector Control Kompakt- und Einbaugeräte																								
+																											
+																											
+1	Entry	Coil Prep	BH01	GFS	Siemens	6SE7023-4TC61-Z G91																					
+2	Entry	Pay Off Reel	CD01	GFS	Siemens	6SE7036-0TJ60-Z G91+K80																					
+3	Processor	Pinch Roll	CF05	GFS	Siemens	6SE7024-7TD61-Z G91																					
+4	Leveller	Leveller	CF06	GFS	Siemens	6SE7031-2TF60-Z G91+K80																					
+5	Steering Roll no 1	snubber roll drive	FD02	GFS	Siemens	6SE7026-0TD61-Z G91																					
+6	Bridle 1	Roll No 1	FE01	GFS	Siemens	6SE7033-2TG60-Z G91+K80																					
+7	Entry	Snubber Roll no 1	FE02	GFS	Siemens	6SE7022-6TC61-Z G91																					
+8	Bridle 1	Roll No 2	FE04	GFS	Siemens	6SE7033-2TG60-Z G91+K80																					
+9	Entry	Entry Accumulator	FG01	GFS	Siemens	6SE7033-7TG60-Z G91+K80																					
+10	Stretch Bending	BRU 3 roll no 1	GB01	GFS	Siemens	6SE7037-0TJ60-Z G91+K80																					
+11	Stretch Bending	BRU 2 roll no 2	GB02	GFS	Siemens	6SE7031-5TF60-Z G91+K80																					
+12	Stretch Bending	BRU 3 roll no 2	GB03	GFS	Siemens	6SE7035-1TJ60-Z G91+K80																					
+13	Stretch Bending	BRU 2 roll no 1	GB04	GF 	Siemens	6SE7027-2TD61-Z G91																					
+14	Pickling Section	Heating Circuit 1B01	HE01	GF	Siemens	6SE7027-2ED61-Z G91																					
+15	Pickling Section	Heating Circuit 1B01	HE02	GF	Siemens	6SE7027-2ED61-Z G91																					
+16	Pickling Section	Heating Circuit 2B01	HH01	GF 	Siemens	6SE7027-2ED61-Z G91																					
+17	Pickling Section	Heating Circuit 2B01	HH02	GF 	Siemens	6SE7027-2ED61-Z G91																					
+18	Pickling Section	Heating Circuit 3B01	HK01	GF 	Siemens	6SE7027-2ED61-Z G91																					
+19	Pickling Section	Heating Circuit 3B01	HK02	GF 	Siemens	6SE7027-2ED61-Z G91																					
+20	Steering Roll no 4	snubber roll drive	KB02	GFS	Siemens	6SE7021-0EA61-Z G91																					
+21	Exit	Exit Accumulator	KD01	GFS	Siemens	6SE7034-5WJ60-Z G91+K80																					
+22	Side Trimmer	Width Adj.	KJ01	GF	Siemens	6SE7016-1EA61-Z G91																					
+23	Side Trimmer	Knife Pair 1 adj. OS	KJ05	GF	Siemens	6SE7016-1EA61-Z G91																					
+24	Side Trimmer	Knife Pair 2 adj. OS	KJ07	GF	Siemens	6SE7016-1EA61-Z G91																					
+25	Side Trimmer	Turning Table OS	KJ08	GF	Siemens	6SE7016-1EA61-Z G91																					
+26	Side Trimmer	Knife Pair 1 adj. DS	KJ11	GF	Siemens	6SE7016-1EA61-Z G91																					
+27	Side Trimmer	Knife Pair 2 adj. DS	KJ13	GF	Siemens	6SE7016-1EA61-Z G91																					
+28	Side Trimmer	Turning Table DS	KJ14	GF	Siemens	6SE7016-1EA61-Z G91																					
+29	Exit	Scrap Chopper OS head 1	KK01	GFS	Siemens	6SE7028-2WF60-Z G91+K80																					
+30	Exit	Scrap Chopper OS head 2	KK03	GFS	Siemens																						
+31	Exit	Scrap Chopper DS head 1	KK05	GFS	Siemens	6SE7028-2WF60-Z G91+K80																					
+32	Exit	Scrap Chopper DS head 2	KK07	GFS	Siemens																						
+33	Bridle 4	Roll no 1	KL01	GFS	Siemens	6SE7031-7WG60-Z G91+K80																					
+34	Bridle 4	Roll no 2	KL03	GFS	Siemens	6SE7031-7WG60-Z G91+K80																					
+35	Exit 	Snubber Roll no 2	KL04	GF	Siemens	6SE7023-4EC61-Z G91																					
+36	Exit	Snubber Roll	KR01	GF	Siemens	6SE7024-7ED61-Z G91																					
+37	Exit	Tension Reel	KT01	GFS	Siemens	6SE7041-1WL60-Z G91+K80																					
+38	Exit	Coil Car	KV01	GF	Siemens	6SE7018-0EA61-Z G91																					

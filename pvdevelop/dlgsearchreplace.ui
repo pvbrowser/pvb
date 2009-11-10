@@ -1,0 +1,129 @@
+<ui version="4.0" >
+ <class>DialogSearchReplace</class>
+ <widget class="QDialog" name="DialogSearchReplace" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>491</width>
+    <height>141</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>pvdevelop</string>
+  </property>
+  <widget class="QLabel" name="labelFind" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>20</y>
+     <width>41</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Find:</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelReplace" >
+   <property name="geometry" >
+    <rect>
+     <x>10</x>
+     <y>60</y>
+     <width>61</width>
+     <height>18</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>Replace:</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditFind" >
+   <property name="geometry" >
+    <rect>
+     <x>80</x>
+     <y>20</y>
+     <width>291</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEditReplace" >
+   <property name="geometry" >
+    <rect>
+     <x>80</x>
+     <y>60</y>
+     <width>291</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="findNextButton" >
+   <property name="geometry" >
+    <rect>
+     <x>400</x>
+     <y>20</y>
+     <width>87</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>&amp;Find Next</string>
+   </property>
+   <property name="default" >
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="replaceButton" >
+   <property name="geometry" >
+    <rect>
+     <x>400</x>
+     <y>60</y>
+     <width>87</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>&amp;Replace</string>
+   </property>
+   <property name="autoDefault" >
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="closeButton" >
+   <property name="geometry" >
+    <rect>
+     <x>400</x>
+     <y>100</y>
+     <width>87</width>
+     <height>30</height>
+    </rect>
+   </property>
+   <property name="text" >
+    <string>&amp;Close</string>
+   </property>
+   <property name="autoDefault" >
+    <bool>false</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>closeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>DialogSearchReplace</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>278</x>
+     <y>253</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>96</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

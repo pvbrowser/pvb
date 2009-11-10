@@ -1,0 +1,65 @@
+/*! \page qtbrowserplugin-example-scripting.html
+
+  \title Scripting Example
+
+  This example demonstrates the combination of Javascript and a
+  pvbrowser plugin, and the use of a plugin in combination with a form.
+
+  If the browser supports scripting plugins, and everything is set up
+  correctly, the plugin below should react to mouse clicks and drags
+  by changing its text. The \c About... button should pop up an
+  \c{About Qt} dialog. The second plugin instance, below the
+  horizontal line, should display the word \c QtBrowserPlugin, and
+  pressing the \c Go! button should navigate the browser to a search
+  for this word at trolltech.com.
+
+  \raw HTML 
+  <object id="ScriptableObject" TYPE=pvbrowser/pv WIDTH=640 HEIGHT=480 text="Very Scriptable!"> </object>
+
+  <script language=JavaScript>
+  var ScriptableObject = document.getElementById('ScriptableObject');
+  ScriptableObject.text = 'This is some text'
+
+  var oldText
+  ScriptableObject.mouseDown = function()
+  {
+    oldText = ScriptableObject.text
+    ScriptableObject.text = 'Mouse Down'
+  }
+
+  ScriptableObject.mouseMove = function(x, y)
+  {
+    ScriptableObject.text = 'Mouse at ' + x + ',' + y
+  }
+
+  ScriptableObject.mouseUp = function()
+  {
+    ScriptableObject.text = oldText
+  }
+  </script>
+
+  <!-- Special hookup code required for Internet Explorer -->
+  <!--[if IE]>
+  <script language=JScript>
+  function ScriptableObject::mouseDown() { ScriptableObject.mouseDown() }
+  function ScriptableObject::mouseMove(x, y) { ScriptableObject.mouseMove(x, y) }
+  function ScriptableObject::mouseUp() { ScriptableObject.mouseUp() }
+  </script>
+  <![endif]-->
+
+  <form>
+  <input type="button" value="About..." OnClick="ScriptableObject.about();"/>
+  </form>
+
+  <hr>
+  <form method="GET" action="http://www.trolltech.com/search">
+  Search at Trolltech:
+  <object id="SearchableText" name="SearchableText" type=pvbrowser/pv width=640 height=480 text="QtBrowserPlugin"></object>
+  <input type="submit" value="Go!">
+  </form>
+  \endraw
+
+  Implementation:
+
+  \quotefile pvbrowser/pvpluginmain.cpp
+*/

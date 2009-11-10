@@ -1,0 +1,18 @@
+/*! \page qtbrowserplugin-example-pvbrowser.html
+
+  \title pvbrowser
+
+  This is pvbrowser.
+  you might have installing plugins. If everything works correctly,
+  the \c pvbrowser plugin should appear below as a rectangular field
+  below with some text in it:
+
+  \raw HTML
+  <object id="pvbrowserObject" TYPE=pvbrowser/pv WIDTH=640 HEIGHT=480 text="pvbrowser plugin!">
+  </object>
+  \endraw
+
+  Implementation:
+
+  \quotefile pvbrowser/pvpluginmain.cpp
+*/

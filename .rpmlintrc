@@ -1,0 +1,14 @@
+from Config import *
+# see: http://www.filewatcher.com/p/rpmlint-0.61-0.fr.noarch.rpm.129936/usr/share/doc/rpmlint-0.61/README.html
+#      http://en.opensuse.org/Packaging/RpmLint
+#      http://lists.opensuse.org/opensuse-packaging/2007-07/msg00000.html  
+# resetChecks()
+# addFilter("library-without-ldconfig-postin .*/opt/pvb/pvserver/libpvsid.so.1.0.0")
+# addFilter("library-without-ldconfig-postin .*/opt/pvb/pvserver/libpvsmt.so.1.0.0")
+# addFilter("library-without-ldconfig-postin .*/opt/pvb/rllib/lib/librllib.so.1.0.0")
+# our libraries are stored below /opt/pvb and are symbolically linked to /usr/lib
+# thus we can suppress the following check in order not to get "Badness" errors
+addFilter("library-without-ldconfig-postin /opt/pvb/pvserver/libpvsid.so.1.0.0")
+addFilter("library-without-ldconfig-postin /opt/pvb/pvserver/libpvsmt.so.1.0.0")
+addFilter("library-without-ldconfig-postin /opt/pvb/rllib/lib/librllib.so.1.0.0")
+

@@ -1,0 +1,29 @@
+<H1>PDU (protocol data unit)</H1>
+This is the central part of packets exchanged in S7-Communication. A PDU cosists of:
+<li>A 10 or 12 byte header</li>
+<li>A parameter area</li>
+<li>A data area</li>
+Header:
+<table>
+<tr><th>Position</th><th>meaning</th><th>possible values</th></tr>
+<tr><td>0</td><td>allways 0x32</td></tr>
+<tr><td>1</td><td>type</td><td>1,2,3 or 7</td></tr>
+<tr><td>2,3</td><td>unknown</td><td>0</td></tr>
+<tr><td>4,5</td><td>sequence number</td><td></td></tr>
+<tr><td>6,7</td><td>length of parameters</td><td></td></tr>
+<tr><td>8,9</td><td>length of data</td><td></td></tr>
+<tr><td>10,11</td><td>error code</td><td></td></tr>
+</table>
+Parameters:
+<table>
+<tr><th>Position</th><th>meaning</th><th>possible values</th></tr>
+<tr><td>0</td><td>a function number</td></tr>
+<tr><td>rest</td><td>depends on function number</td><td>0,2,3 or 7</td></tr>
+</table>
+Data:
+<table>
+<tr><th>Position</th><th>meaning</th><th>possible values</th></tr>
+<tr><td>0</td><td>a function number</td></tr>
+<tr><td>rest</td><td>depends on function number</td><td>0,2,3 or 7</td></tr>
+</table>
+

@@ -1,0 +1,37 @@
+1 TYPELIB "pvpluginmain.rc"
+
+1 VERSIONINFO
+ FILEVERSION 1,0,0,1
+ PRODUCTVERSION 1,0,0,1
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904e4"
+        BEGIN
+            VALUE "CompanyName", "Trolltech\0"
+            VALUE "FileDescription", "pvbrowser\0"
+	    VALUE "FileExtents", "pvb\0"
+	    VALUE "FileOpenName", "Nothing (*.pvb)\0"
+            VALUE "FileVersion", "1, 0, 0, 1\0"
+            VALUE "InternalName", "pvbrowser\0"
+            VALUE "LegalCopyright", "Copyright © 1997 Trolltech AS\0"
+	    VALUE "MIMEType", "pvbrowser/pv\0"
+            VALUE "OriginalFilename", "pvpluginmain.dll\0"
+            VALUE "ProductName", "pvbrowser\0"
+            VALUE "ProductVersion", "1, 0, 0, 1\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1252
+    END
+END

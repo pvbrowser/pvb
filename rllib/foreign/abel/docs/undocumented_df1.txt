@@ -1,0 +1,236 @@
+So far, these commands have been discovered in the data stream between
+RSLogix 5 and a PLC 5/Softlogix 5.  If you can help to define what these
+commands so, please let me know.
+
+-------------------------------------------------------------------------------------
+CMD 0x0f   Function 0x77 - Cancel Access Word 
+Command Parameters -Flag - 1 byte
+Possible Responses -STS = 00H Success with - virtual (current) privilege class number, 
+				default (port) privilege class number
+				Other error indications are according to Appendix C.
+
+Operation 
+
+A virtual privilege channel to a PLC-5/250 created by sending Issue Access Word 
+command will remain intact until either the Cancel Access Word command is received 
+by the processoror a virtual channel timeout occurs. The flag associated with this
+command indicates whether to cancel the virtual privilege channel (bit 1 of flag
+byte = 1) or just return the virtual (current) privilege class number and the 
+default (port) privilege class number (bit 0 of flag byte = 1).  If default privilege 
+class = current then the privilege class numbers returned will be the same.  If the 
+virtual privilege class is canceled then all future access to PLC-5/250 by the
+canceling station will be governed by the privilege class assigned to the port.
+
+
+--------------------------------------------------------------------------------------
+CMD 0x0f  Function 0xf2 - unknown
+Command Parameters - ??? - 2 bytes (1 word)
+Possible Responses - 1 byte - ???
+
+Operation
+
+This command is specific to the SoftLogix PLC product.  It only appears to
+occur during program uploads.  It is quite possibly a command to establish
+upload authority in the SoftLogix.  The SoftLogix product does not
+"corectly" respond to the "upload request" command - it does not return an
+error, but it also does not return any information.  RSLogix5, on seeing
+this "no response" situation, sends this command.  This is followed by the
+"proper" read-section-size stuff and what not.  I am not sure how relevent
+this is as I have not experimented much with this - yet.
+
+
+---------------------------------------------------------------------------------------
+CMD 0x0f  Function 0x62 - Get Read Privilege
+Command Parameters - none
+Possible Responses - STS = 00H Success
+			Other error indications are according to Appendix C.
+
+Operation
+
+This command is used by the programming device to get the privilege to monitor 
+the data of the user's program. It is always granted when it is requested. The
+read privilege is lost whenever one terminal is monitoring a file which another
+terminal is editing or when an editing session on a file has been completed. 
+If the privilege is lost the terminal will have to rebuild its image of the file 
+that it is monitoring.  This privilege is needed for the following commands:
+
+
+---------------------------------------------------------------------------------------
+CMD 0x0f  Function 0x76 - Issue Access Word
+Command Parameters - byte classnum; byte password[8];
+Possible Responses - STS = 00H Success 
+			Other error indications are according to Appendix C.
+
+Operation
+
+Compare received access word to the access word stored on the processor
+for the received class. If match, a virtual privilege channel is created
+between thestation issuing the access word and that PLC-5/250 port.  Any
+future PLC-5/250 access requested by that station and that station only
+is governed by the class associated with the issued access word.  If no
+match, privilege violation status is returned. ("Blank filled" is defined
+to mean "bytes unused by the actual password shall contain ASCII spaces,
+020H".)
+
+---------------------------------------------------------------------------------------
+CMD 0x0f  Function 0x27 - Create Data Table Memory
+Command Parameters - 	{System address (from nameconv5), Data Type (byte),
+			0x00 (byte)}
+Possible Responses - STS = 00H Success 
+			Other error indications are according to Appendix C.
+
+Operation
+
+Used to create data table memory locations.  In order to use this command,
+one must successfully acquire the edit resource, then issue this command,
+then release the edit resource when finished.  Parameters are the system
+address of the last address you wish to create (e.g. N17:200), the type data
+for the file (same format as typedread with no length encoding) (e.g. 0x40 =
+integer), and a single pad byte of 0x00.  Note that the pad byte may be a
+remnant of the type encoding routines and may possible not be needed.
+
+---------------------------------------------------------------------------------------
+CMD 0x0f  Function 0xa1 - Protected Typed Logical Read w/2 address fields
+Command Parameters - 	Size (byte), System address (File Number, Type, and
+			Element as returned from nameconv5 using SLC encodings)
+
+Operation
+
+This command is used to read data from a logical address in a Data Sidewalk 
+module. The file Number and element Number fields are normally one byte. 
+For each of these address fields, if the value is > 00FEH, then a three byte 
+field is used, with an 0FFH in the first byte of the field and the actual 
+value in the next two bytes (low byte first). If an odd number of bytes is 
+specified, then the high byte of the last word will not be present in the packet.
+
+---------------------------------------------------------------------------------------
+CMD 0x0f  Function 0xab - Protected Typed Logical Write w/4 address fields
+Command Parameters - 	Size (byte), System address (File Number, Type, and
+			Element as returned by nameconv5 using SLC encodings)
+			Bitmask (word), data (word)
+
+Operation
+
+This command is used to write data to a logical address in a Data Sidewalk 
+module.  The file Number, element Number, sub-element fields are normally 
+one byte. For each of these address fields, if the value is > 00FEH, then a
+three byte field is used, with an 0FFH in the first byte of the field and 
+the actual value in the next two bytes (low byte first).
+
+The "bit mask" has a "1" for each bit that can be modified by this command, 
+and a "0" for each bit that is to remain uneffected by this command. There 
+is exactly one 16-bit "bit mask"; it is used repeatedly if the data is longer
+than two bytes. If the "size" is odd, then the first of the two bytes of the 
+"bit mask" will be used for the odd byte.
+
+--------------------------------------------------------------------------------------
+CMD 0x0f  Function 0xa9 - Protected Typed Logical Write w/2 address fields 
+Command Parameters - 	Size (byte), System address (File Number, Type and
+			Element as returned by nameconv5 using SLC encodings)
+			Data (word)
+
+Operation
+
+This command is used to write data to a logical address in a Data
+Sidewalk module. The file Number and element Number fields are normally
+one byte. For each of these address fields, if the value is > 00FEH, then 
+a three byte field is used, with an 0FFH in the first byte of the field 
+and the actual value in the next two bytes (low byte first).  If an odd 
+number of bytes is specified, then the high byte of the last word will not 
+be present in the packet.
+
+---------------------------------------------------------------------------------------
+CMD 0x0f  Function 0x83 - Element Stream Read
+Command Parameters - 	System Address - (File number, Type, Element as
+			returned by nameconv5 with SLC encodings.
+Possible Responses - 	STS = 00H (Success),
+			System Address - Specified to the element level, this
+				defines the address of the data which follows. 
+				Empty files are skipped.
+			Number of Elements - Specifies the number of elements in
+				the packet prior to the next Data Load Header. 
+				This may be zero in some cases.
+			Data - A variable amount of data.
+			Data Load Header - This appears in the packet whenever a
+				file boundary is crossed during the read and 
+				there is room for at least one element to be
+				returned with the header.  It is a fixed length 
+				record, as follows.
+
+                          Format of Data Load Headers
+
+                  +-----------------------------------------+
+                  |               File Number          (lb) |
+                  +-----------------------------------------+
+                  |               File Number          (hb) |
+                  +-----------------------------------------+
+                  |               File Length          (lb) |
+                  +-----------------------------------------+
+                  |               File Length          (hb) |
+                  +-----------------------------------------+
+                  |             File Protection        (lb) |
+                  +-----------------------------------------+
+                  |             File Protection        (hb) |
+                  +-----------------------------------------+
+
+			File Number - Specifies the file number of the data
+				following the header. A file number of FFFFh 
+				will be present when an empty section or the 
+				end of a section has been reached. Empty files 
+				are skipped.
+			File Length - Total number of data elements present in
+				the new file.
+			File Protection - This is the protection word associated
+				with the new file.
+
+			Other error indications are according to Appendix C.
+
+Operation
+
+This command will read data blocks as specified by the Data Load Header
+in the Command Block. The host will read data beginning at the supplied
+address and continue until the packet is full. The command is valid for 
+system data table, program support, and block transfer data sections. If 
+a file is empty or contains a program stored as rungs, then the file will 
+be skipped. The packet is considered full when the addition of another 
+element would cause the packet size to be exceeded. If the end of file is 
+reached, the host will continue reading data table data from the next file. 
+Whenever a file boundary is crossed, a new Data Load Header is inserted 
+into the packet prior to the new data. This command is only valid for Data 
+table, Program Support, and Block Transfer data sections.  The steps 
+required to generate a response for "Element Stream Read" are outlined below:
+
+1. Form a new system address, skipping any empty files, or program files with 
+rung data and copy this into the response block.  
+
+2. If the element number specified in the address is not zero (not at beginning 
+of a file) then go to Step 2, otherwise go to Step 7.  If the element specified 
+in the system address is zero go to Step 3. 
+
+3. Calculate the number of elements remaining in the file using the
+system address as the starting point. Go to Step 4.
+
+4. Set "number of elements" to zero. This indicates that a Data Load Header 
+immediately follows. Go to Step 9.
+
+5. Set "number of elements" to remaining elements. Go to Step 5.  Load the 
+packet with data from the file. If the end of packet is reached prior to 
+reaching the end of the file then go to Step 6, otherwise if end of file 
+was reached first go to Step 9.
+
+6. The response is now complete and the packet may now be sent.  End.
+
+7. Set "number of elements" to zero. Go to Step 8.
+
+8. Get section size of the current file. If the section size is zero go to 
+Step 9, otherwise go to Step 10.
+          
+9. Add one to the current file number. If the file exists go to Step 8, 
+otherwise go to Step 6.
+
+10. If there is no room in the packet for a Data Load Header then go to Step 
+6, otherwise go to Step 11.
+
+11. Generate a Data Load Header specifying the new file. Go to Step 5.
+
+---------------------------------------------------------------------------------------

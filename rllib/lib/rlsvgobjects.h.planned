@@ -1,0 +1,59 @@
+/***************************************************************************
+                        rlsvgobjects.h  -  description
+                             -------------------
+    begin                : Tue Jan 02 2001 ???
+    copyright            : (C) 2008 by Martin Bangiev
+    email                : research@bangieff.net
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as        *
+ *   published by the Free Software Foundation                             *
+ *                                                                         *
+ ***************************************************************************/
+#ifndef _RL_SVG_OBJECTS_H_
+#define _RL_SVG_OBJECTS_H_
+
+#include "rldefine.h"
+#include "rlsvganimator.h"
+
+/*! <pre>
+This class handles a needle for "SvgTachos".
+For example you can draw the needle of your tacho with inkscape.
+With setValue(); you will be able to set the needle to the actual value.
+</pre> */
+class rlSvgNeedle
+{
+public:
+  rlSvgNeedle();
+  virtual ~rlSvgNeedle();
+  /*! <pre>
+  animator          := rlSvgAnimator
+  idNeedle          := id of your needle within the svg graphic
+  radius            := radius of the (invisible) circle around the needle. Needle is centered at x=radius y=radius
+  minAngle/maxAngle := min/max Angle that corresponds with minValue/maxValue
+  minValue/maxValue := min/max Value that the needle is showing
+  </pre> */
+  int setup(rlSvgAnimator *animator, const char *idNeedle, float radius, float minAngle, float maxAngle, float minValue, float maxValue);
+
+  /*! <pre>
+  set needle angle to corresponding value
+  </pre> */
+  int setValue(float value);
+
+private:
+  rlSvgAnimator *animator;
+  char *idNeedle;
+  float radius, minAngle, maxAngle, minValue, maxValue;
+};
+
+/*
+
+we could think about more objects like rlAnalogClock ...
+
+*/
+
+#endif
+

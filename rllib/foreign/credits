@@ -1,0 +1,25 @@
+###############################################################################
+We use some foreign libraries which are very usefull.
+These libraries are compatible to Linux/Unix/Windows.
+We do this for convenience of the users of rllib.
+These libraries are included in rllib as they are.
+The users do not have to think about them.
+The generators for the daemon processes will generate the appropriate calls.
+###############################################################################
+
+The libraries are:
+
+Ron Gage:
+CELL - CIP/Ethernet Library for Linux
+ABEL - Allen Bradley Ethernet Library for Linux
+http://rongage.org
+
+Thomas Hergenhahn:
+LIBNODAVE -- Exchange data with Siemens PLCs
+using MPI,PPI adapters or Ethernet with CPx43
+http://libnodave.sourceforge.net/index.php
+
+Hilscher:
+Hilscher provides CIF cards for various interfaces.
+They include a Linux driver for these cards.
+http://www.hilscher.com

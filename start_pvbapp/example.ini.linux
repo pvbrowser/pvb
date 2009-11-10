@@ -1,0 +1,19 @@
+# ini file for start_pvbapp example
+# port for pvserver and pvbrowser must be equal
+
+# example: you may start a data acquisition first
+[prepare]
+start=0
+command=/opt/pvb/start_pvbapp/start_if_not_already_running.sh kwrite &
+
+[pvserver]
+path=/opt/pvb/pvsexample
+executable=pvsexample
+parameters=-port=5050 -exit_on_bind_error -exit_after_last_client_terminates > /dev/null &
+
+[pvbrowser]
+start=1
+path=/opt/pvb/pvbrowser
+executable=pvbrowser
+parameters=pv://localhost:5050 -delay=100 &
+

@@ -1,0 +1,51 @@
+########################################################
+# Porting pvserver Qt3 Version to pvserver Qt4 Version #
+########################################################
+
+pvbrowser Qt4 no longer uses Qt Designer.
+Instead pvdevelop with it's integrated Designer is used.
+
+Your old pvserver should also be running with pvbrowser Qt4.
+But if you want to continue developing your existing pvserver
+you have todo something.
+
+In order to port an existing pvserver to the Qt4 version,
+do the following:
+
+  # backup your existing pvserver
+  cd oldpvserver
+  pvdevelop -action=writeInitialProject oldpvserver
+  # this will create an initial pvserver named oldpvserver
+  rm -f *.ui
+  mv oldmask1.cpp mask1.cpp
+  mv oldmask1_slots.h mask1_slots.h
+  mv oldmask2.cpp mask2.cpp
+  mv oldmask2_slots.h mask2_slots.h
+  mv oldmask3.cpp mask3.cpp
+  mv oldmask3_slots.h mask3_slots.h  
+  ...
+  mv oldmask<N>.cpp mask<N>.cpp
+  mv oldmask<N>_slots.h mask<N>_slots.h
+
+  # if you have used rllib you have todo the following
+  pvdevelop -action=uncommentRLLIB oldpvserver
+
+  # if you have used modbus you have todo the following
+  pvdevelop -action=uncommentModbus oldpvserver
+
+  # if you have used SiemensTCP you have todo the following
+  pvdevelop -action=uncommentSiemensTCP oldpvserver
+
+  # if you have used PPI you have todo the following
+  pvdevelop -action=uncommentPPI oldpvserver
+
+  # now you may use pvdevelop
+  pvdevelop
+  # In the project file you have to add your masks within SOURCES and HEADERS
+  # within pvdevelop use Action->StartServer
+  # use the integrated Designer within pvdevelop
+  # ui files are no longer needed
+
+We hope this is easy enough.
+
+Yours pvbrowser community

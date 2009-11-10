@@ -1,0 +1,8 @@
+<H1>Reading SZL listst</H1>
+The CPUs of the 300 and 400 family provide lists of there internal states an properties. German Siemens terminology calls them SZL (<b>S</b>ystem-<b>Z</b>ustands<b>l</b>isten). These lists are what your programming Software reads when showing the diagnostic buffer, the state of run/stop, the amount of memory and much more. LIBNODAVE provides the function
+<pre>
+daveReadSZL(daveConnection * dc, int ID, int index, void * buf);
+</pre>
+to read these lists.<br>
+ID 0, index 0 retrieves a list of available SZL-IDs on your PLC. I don't know how to find out the available or meaningful indices. In most cases, index 0 is the whole list, while other indices retrieve part s of it.<br>
+Use testMPI -z for some examples and testMPI -a for the complete contents of your PLCs SZL-lists.

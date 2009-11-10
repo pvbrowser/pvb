@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Primer</title>
+  <link rel="stylesheet" type="text/css" href="format.css">
+  <meta name="GENERATOR" content="generator by Rainer Lehrig">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+pvbrowser primer
+<hr>
+<a href="en_p1.html">Back</a>
+<a href="en_index.html">Content</a>
+<a href="en_p3.html">Forward</a>
+<hr>
+<!-- begin content -->
+<h1>Introduction</h1>
+<p>
+The “ideal” process visualization would run in a standard web browser. In this case nothing had to be installed on the client computers, because web browsers are standard. Unfortunately web browsers have not been invented with process visualization in mind. In principle a web browser reads a HTML file from the webserver and displays it's content. Each time a HTML file is read the network connection is opened and closed. Dynamic changes in the content are difficult and inefficient.
+</p>
+<p>
+A Java Applet might be a solution. Unfortunately complex Java Applets need a long time to load. Furthermore Java Applets are not famous for being fast.
+We have build a new browser in C++, which is optimized for process visualization. Instead of HTML it dynamically handles Qt Widgets.
+</p>
+<p>
+Because pvbrowser is a browser it can display any visualization. There is no need to update client computers running pvbrowser, when you change your visualization. This is in contrast to many process visualization systems which use the “fat client” model. Furthermore pvbrowser supports many platforms at the same time.
+</p>
+<p>
+When you choose the URL of your pvserver from within pvbrowser a TCP network connection is opened. The network connection will stay open until you terminate the session with your pvserver. After opening the network connection pvserver will start sending commands to pvbrowser. Each command is a line of text which is terminated by a newline. pvbrowser will interpret the text and call the according functions from the Qt widget library. Thus pvserver handles the whole widget tree within the main window of pvbrowser. When the user triggers an event (e.g. hit a button), a line of text will be send from pvbrowser to pvserver. In pvserver there is an event loop, in which these events can be handled.
+</p>
+<p>
+For programming pvserver we provide a library that encapsulates the lines of text send to pvbrowser. The reference for this library can be found under “pvslib” in the manual, which is also available from the online help of pdevelop.
+</p>
+<p>
+A substantial part of pvserver is not written manually. Instead pdevelop will gently generate the code for you. The functions provided by the library can be inserted by choosing from a menu in pvdevelop.
+</p>
+<p>
+The whole layout and design of the masks you are using in your visualization is made graphically using the integrated designer from pvdevelop. 
+When you have further questions after reading this primer feel free to contact us at mailto:lehrig@t-online.de?subject=pvserver further questions .
+</p>
+<p>
+Have fun using pvbrowser.
+</p>
+<!-- end content -->
+<hr style='clear:left;'>
+<a href="en_p1.html">Back</a>
+<a href="en_index.html">Content</a>
+<a href="en_p3.html">Forward</a>
+</body>
+</html>

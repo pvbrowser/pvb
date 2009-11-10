@@ -1,0 +1,53 @@
+/***************************************************************************
+                          rlcommandlineswitches.cpp  -  description
+                             -------------------
+    begin                : Tue Jan 02 2001
+    copyright            : (C) 2001 by Rainer Lehrig
+    email                : lehrig@t-online.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This program is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU General Public License as published by  *
+ *   the Free Software Foundation; either version 2 of the License, or     *
+ *   (at your option) any later version.                                   *
+ *                                                                         *
+ *   I make one exception to the above statement:                          *
+ *   You can use this software for commercial purposes                     *
+ *   if you purchase a license                                             *
+ *   You will not be allowed to make changes to the software               *
+ *                                                                         *
+ ***************************************************************************/
+
+#include "rlcommandlineswitches.h"
+#include "rlinterpreter.h"
+#include <stdio.h>
+#include <string.h>
+
+// You may define this structure as extern in other modules
+rlCommandlineSwitches switches;
+
+void rlGetCommandlineSwitches(int ac, char **av)
+{
+  rlInterpreter interpreter;
+
+  // These are the default values
+  strcpy(switches.host,"localhost");
+  switches.port = 5000;
+
+  // Read values from commandline
+  for(int i=0; i<ac; i++)
+  {
+    strcpy(interpreter.line,av[i]);
+    if      (interpreter.isCommand("-host="))
+    {
+      sscanf(interpreter.line,"-host=%s",switches.host);
+    }
+    else  if(interpreter.isCommand("-port="))
+    {
+      sscanf(interpreter.line,"-port=%d",&switches.port);
+    }
+  }
+}
+

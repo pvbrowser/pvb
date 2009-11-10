@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=ProcessViewDevelop
+Encoding=UTF-8
+Exec=pvdevelop
+GenericName=pvdevelop
+Icon=/opt/pvb/logo1.xpm
+MimeType=
+Name=pvdevelop
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application

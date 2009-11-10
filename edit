@@ -1,0 +1,10 @@
+#!/bin/bash
+echo '###############################################'
+echo '# pvbrowser uses kate to edit the subprojects #'
+echo '#  cd <subproject>                            #'
+echo '#  ../edit                                    #'
+echo '# in order to start kate                      #'
+echo '#                                             #'
+echo '# from the commandline use "make" to build it #'
+echo '###############################################'
+kate *.h *.cpp *.qrc *.pro &

@@ -1,0 +1,18 @@
+# ini file for start_pvbapp example
+# port for pvserver and pvbrowser must be equal
+
+[prepare]
+start=0
+command=start_if_not_already_running.bat notepad
+
+[pvserver]
+path=z:\cc\priv\cvs\pvb\pvsexample
+executable=pvsexample.exe
+parameters=-port=5050 -exit_on_bind_error -exit_after_last_client_terminates
+
+[pvbrowser]
+start=1
+path=z:\cc\priv\cvs\pvb\win\bin
+executable=pvbrowser.exe
+parameters=pv://localhost:5050
+

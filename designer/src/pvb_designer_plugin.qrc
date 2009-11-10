@@ -1,0 +1,9 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource>
+        <file>pixmaps/pvbdraw.png</file>
+        <file>pixmaps/pvbimage.png</file>
+        <file>pixmaps/pvbopengl.png</file>
+        <file>pixmaps/pvbvtk.png</file>
+        <file>pixmaps/pvbiconview.png</file>
+    </qresource>
+</RCC>

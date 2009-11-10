@@ -1,0 +1,52 @@
+How the data for Counters and Timers is arranged
+(c) Copyright - 2001 and beyond - Ron Gage, Saginaw Michigan
+
+
+In the ControlLogix PLC, counters and timers are special case structures in
+that they are predefined within the ControlLogix and they are fixed in
+defination.
+
+Timers:
+
+Byte heartbeat[3]
+Byte status
+long preset
+long accumulator
+
+Heartbeat appears to tie the timer to the system millisecond clock.  When
+the timer is enabled, these three bytes will increment at a very fast rate. 
+Writing data into these registers *may* cause a brief amount of timing
+slipage.  It is unknown if writing zero's (or any other values) to these bytes
+will cause any problems.  If this is a concern, then you should write your
+data into a holding register in the ControlLogix and have the ControlLogix
+move the data from that holding register to the timer register you are
+concerned with.
+
+Status encompasses the individual control bits of the timer:
+ER - 0x02
+OV - 0x04
+LS - 0x08
+FS - 0x10
+DN - 0x20
+TT - 0x40
+EN - 0x80
+
+By doing a logical "and" operation between the given values above and the
+status value, you can determine if that particular bit is on or off.
+
+Counters:
+
+Byte junk[3]
+Byte status
+long preset
+long accumulator
+
+The first three bytes of the counter data appear to be benign - unlike with
+the timer data.  The status bit is simular to the timer's status byte:
+
+UN - 0x08
+OV - 0x10
+DN - 0x20
+CD - 0x40
+CU - 0x80
+

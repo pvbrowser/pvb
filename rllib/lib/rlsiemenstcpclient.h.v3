@@ -1,0 +1,55 @@
+/***************************************************************************
+                    rlsiemenstcpclient.h  -  description
+                             -------------------
+    begin                : Mon Mar 08 2004
+    copyright            : (C) 2004 by Rainer Lehrig
+    email                : lehrig@t-online.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as        *
+ *   published by the Free Software Foundation                             *
+ *                                                                         *
+ ***************************************************************************/
+#ifndef _RL_SIEMENS_TCP_CLIENT_H_
+#define _RL_SIEMENS_TCP_CLIENT_H_
+
+#include "rldefine.h"
+#include "rlmailbox.h"
+#include "rlsharedmemory.h"
+
+class rlSiemensTCPClient : public rlMailbox, rlSharedMemory
+{
+  public:
+    enum ORG
+    {
+      ORG_DB   = 1,
+      ORG_M    = 2,
+      ORG_E    = 3,
+      ORG_A    = 4,
+      ORG_PEPA = 5,
+      ORG_Z    = 6,
+      ORG_T    = 7
+    };
+    rlSiemensTCPClient(const char *mbxname, const char *shmname, int shmsize, int have_to_swap=1);
+    ~rlSiemensTCPClient();
+    int write(int slave, int org, int dbnum, int start, int len, const unsigned char *buf);
+    int writeFloat(int slave, int org, int dbnum, int start, int len, const float *val);
+    int writeDword(int slave, int org, int dbnum, int start, int len, const int *val);
+    int writeShort(int slave, int org, int dbnum, int start, int len, const short *val);
+    int writeUDword(int slave, int org, int dbnum, int start, int len, const unsigned int *val);
+    int writeUShort(int slave, int org, int dbnum, int start, int len, const unsigned short *val);
+    int read(int offset, int len);
+    float        Float(int index);
+    int          Dword(int index);
+    int          Short(int index);
+    unsigned int UDword(int index);
+    unsigned int UShort(int index);
+    unsigned char buf[2048]; // after calling read, the data is here
+  private:
+    int have_to_swap;
+};
+
+#endif

@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Primer</title>
+  <link rel="stylesheet" type="text/css" href="format.css">
+  <meta name="GENERATOR" content="generator by Rainer Lehrig">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+pvbrowser primer
+<hr>
+<a href="de_p1.html">Zur&uuml;ck</a>
+<a href="de_index.html">Inhalt</a>
+<a href="de_p3.html">Vor</a>
+<hr>
+<!-- begin content -->
+<h1>Einleitung</h1>
+<p>
+Die „optimale“ Prozessvisualisierung würde in einem Standard Webbrowser laufen.
+In diesem Falle, müsste keine Zusatzsoftware auf den Client Computern der Benutzer installiert werden, weil Webbrowser heute Standard sind. Unglücklicherweise sind Webbrowser nicht für Prozessvisualisierungen erstellt worden. Im Prinzip liest ein Webbrowser HTML Dateien vom Server und stellt deren Inhalt dar. Jedes mal, wenn auf eine Webseite zugegriffen wird, öffnet der Browser eine Netzwerkverbindung und schließt sie wieder. Dynamische Änderungen des Inhaltes sind daher schwierig und ineffizient.  
+</p>
+<p>
+Java Applets könnten eine Lösung sein. Leider benötigen komplexe Java Applets aber lange, um zu laden.
+Außerdem sind Java Applets auch nicht dafür bekannt, schnell zu sein.
+Wir haben daher einen neuartigen Browser in C++ erstellt, der für Prozessvisualisierungen optimiert ist. Anstatt HTML Dateien darzustellen, werden Qt Widgets dynamisch dargestellt.
+</p>
+<p>
+Da pvbrowser ein Browser ist, kann er beliebige Visualisierungen darstellen.
+Die Client Computer brauchen nicht angepasst werden, wenn Sie Ihre Visualisierung modifizieren. Dies steht im Gegensatz zu dem „fat Client“ Modell, das von
+konventionellen Visualisierungssystemen benutzt wird. Darüber hinaus unterstützt pvbrowser mehrere Plattformen simultan.   
+</p>
+<p>
+Wenn Sie die URL eines pvserver aus pvbrowser heraus auswählen, wird eine TCP Netzwerkverbindung geöffnet. Die Verbindung bleibt bestehen, bis Sie die Sitzung beenden. Nachdem Sie die Verbindung geöffnet haben, beginnt pvserver damit, Kommandos zum pvbrowser zu senden. Jedes Kommando besteht aus einem Text, der mit einem Zeilenvorschub abgeschlossen ist. pvbrowser interpretiert den Text
+und ruft die entsprechenden Funktionen der Qt Widget Bibliothek auf. Damit handhabt pvserver den gesamten Widget Baum im Fenster von pvbrowser. Wenn der 
+Benutzer ein Ereignis auslöst (z.B. Drücken eines Schalters), wird eine Zeile Text von pvbrowser an pvserver geschickt. In pvserver ist eine Ereignisschleife enthalten, worin diese Ereignisse behandelt werden.  
+</p>
+<p>
+Zur Programmierung innerhalb von pvserver steht eine Bibliothek zur Verfügung,
+die die Texte, die zu pvbrowser geschickt werden kapselt. Die Referenz dieser Bibliothek ist unter „pvslib“ in dieser Hilfe zu finden. 
+</p>
+<p>
+Ein wesentlicher Teil eines pvserver wird nicht manuell geschrieben, sondern wird von pvdevelop generiert und verwaltet. Die von der Bibliothek angebotenen Funktionen können aus einem Menu in pvdevelop eingefügt werden. 
+</p>
+<p>
+Das gesamte Layout der Bildschirmmasken, die in Ihrer Visualisierung verwendet werden, kann mit dem integrierten Designer erstellt werden.
+</p>
+<p>
+Falls Sie weitergehende Fragen haben, nachdem Sie diese Hilfe gelesen haben,
+scheuen Sie sich nicht unter
+mailto:lehrig@t-online.de?subject=pvserver further questions .
+mit uns Kontakt aufzunehmen.
+</p>
+<p>
+Wir wünschen Ihnen viel Spaß bei der Verwendung von pvbrowser.  
+</p>
+<!-- end content -->
+<hr style='clear:left;'>
+<a href="de_p1.html">Zur&uuml;ck</a>
+<a href="de_index.html">Inhalt</a>
+<a href="de_p3.html">Vor</a>
+</body>
+</html>

@@ -1,0 +1,8 @@
+In this file, I am listing all the individuals and companies that have
+helped this project along in one form or another.
+
+Joel Cumberland - Peerless Microsystems, Inc.
+Rick Samuels - Assembly Technology & Test Systems, Inc.
+anonymous - Robust DataComm Pte Ltd (of Singapore)
+Stan Brown - Westvaco, Inc.
+

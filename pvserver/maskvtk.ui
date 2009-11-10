@@ -1,0 +1,225 @@
+<!DOCTYPE UI><UI version="3.0" stdsetdef="1">
+<class>Form1</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>Form1</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>973</width>
+            <height>782</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButtonBack</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>720</y>
+                <width>70</width>
+                <height>30</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>Back</string>
+        </property>
+    </widget>
+    <widget class="QTabWidget">
+        <property name="name">
+            <cstring>TabWidget2</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>10</x>
+                <y>10</y>
+                <width>911</width>
+                <height>700</height>
+            </rect>
+        </property>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab1</cstring>
+            </property>
+            <attribute name="title">
+                <string>Tab 1</string>
+            </attribute>
+            <widget class="QVtkTclWidget">
+                <property name="name">
+                    <cstring>VtkTclWidget1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>8</x>
+                        <y>4</y>
+                        <width>740</width>
+                        <height>660</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>Slider2</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>798</x>
+                        <y>4</y>
+                        <width>31</width>
+                        <height>230</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>50</number>
+                </property>
+                <property name="orientation">
+                    <enum>Vertical</enum>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>Slider3</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>838</x>
+                        <y>4</y>
+                        <width>31</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <property name="orientation">
+                    <enum>Vertical</enum>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>Slider1</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>758</x>
+                        <y>4</y>
+                        <width>31</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>50</number>
+                </property>
+                <property name="orientation">
+                    <enum>Vertical</enum>
+                </property>
+            </widget>
+        </widget>
+        <widget class="QWidget">
+            <property name="name">
+                <cstring>tab2</cstring>
+            </property>
+            <attribute name="title">
+                <string>Tab 2</string>
+            </attribute>
+            <widget class="QVtkTclWidget">
+                <property name="name">
+                    <cstring>VtkTclWidgetXY</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>9</x>
+                        <y>9</y>
+                        <width>770</width>
+                        <height>651</height>
+                    </rect>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>Slider4</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>790</x>
+                        <y>10</y>
+                        <width>31</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>50</number>
+                </property>
+                <property name="orientation">
+                    <enum>Vertical</enum>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>Slider5</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>830</x>
+                        <y>10</y>
+                        <width>31</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>50</number>
+                </property>
+                <property name="orientation">
+                    <enum>Vertical</enum>
+                </property>
+            </widget>
+            <widget class="QSlider">
+                <property name="name">
+                    <cstring>Slider6</cstring>
+                </property>
+                <property name="geometry">
+                    <rect>
+                        <x>869</x>
+                        <y>9</y>
+                        <width>31</width>
+                        <height>231</height>
+                    </rect>
+                </property>
+                <property name="value">
+                    <number>50</number>
+                </property>
+                <property name="orientation">
+                    <enum>Vertical</enum>
+                </property>
+            </widget>
+        </widget>
+    </widget>
+</widget>
+<customwidgets>
+    <customwidget>
+        <class>QVtkTclWidget</class>
+        <header location="global">pvVtkTclWidget.h</header>
+        <sizehint>
+            <width>-1</width>
+            <height>-1</height>
+        </sizehint>
+        <container>1</container>
+        <sizepolicy>
+            <hordata>5</hordata>
+            <verdata>5</verdata>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+        </sizepolicy>
+        <pixmap>image0</pixmap>
+    </customwidget>
+</customwidgets>
+<images>
+    <image name="image0">
+        <data format="XPM.GZ" length="1467">789c7594418f9b301085eff91528738b2a7659829455d59fd0aac74a550f1ec760278051bb3d5455ff7be78d71923ae988831f7cbc79e081a75df5e5f3c76af7b4f9f166de82adac37dfabddf1e734fdfafaedc3efcdb67da9e4680e55b37db7d9d695ad3ec5d9614db2a6672d489fe5a1850c59f63de492e4a149704cb2ef93ec21dba67d6eb5cb04b96fb2b383ec4cf7da19c801f2d0e6ab26cbd497933c34499e21cdde34660f7982b45df79aee3d26695f6c0769219129659e93cc99c7248d4931eadba2faae4a86cc05622a18224ee7adc5a5239354c9b85eb023196b0702e0832f1947cc4e2e590bc8872048c9303966868db5860409742a99b37462561b18c1662c999a3cad3652d28cc67b86bda7d5069020f7cc598c2e889d94e1d2871e165f19210672e4a5e0009309e10760ca80900cac5062e66b38d291a61865e938c629a61a63f47a165ba38c1585171d23adcc29c61095a1350f2045d04d4cc693b2884499a9e594538695990926f2aa27b993f27309a4083b4934ca56c086747f98569f0bc3b2c296a2d702c4ad3eb42c08404e1a3a6912f04c3823b7e43cb25a96b8387db3a90902c6d817ef19b3e7757030495aeb94ddec57484533ad88a3f2bbd0010d3a37946df821a333e11344832b18472b324baef4d4b6c8a38148379c1224b350323509322383a496cf357f8eff326e5c5302928973e5b36343f200e3c7c0d79fc30dc3f57feaeedff288f9f37ef31729f766cf</data>
+    </image>
+</images>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -1,0 +1,82 @@
+<H1>Getting started</H1>
+<H4>Preparations</H4>
+The main purpose of this library is to read and write data from and to Siemens PLCs.
+To do so, you will have to do some preparations to establish a connection to the PLC.
+
+First, you need to configure a serial port of your computer or establish a TCP connection.
+This connection is represented by the type _daveOSserialType, which contains file descriptors
+in cas of Unix-like systems, handles in case of windows and what other systems supported in 
+the future might use for this purpose.
+
+use setport to initialize the members of a <a href=daveOSserialType.html>_daveOSserialType</a> to something representing
+a configured serial connection:
+<pre>
+    fds.rfd=<a href=setport.html>setPort</a>(argv[adrPos],"38400",'O');
+</pre>
+for serial connections or:    
+<pre>
+    fds.rfd=<a href=openSocket.html>openSocket</a>(102, IPaddress_of_CP);
+</pre>
+for TCP connections.    
+<pre>
+    fds.wfd=fds.rfd;
+</pre>
+With the initialized _daveOSserialType, you will initialize a structure of type 
+<a href=daveInterface.html>daveInterface</a>, 
+representing the physical connection to a PLC or a network of PLCs (e.g. like MPI).
+<pre>
+    di =<a href=daveInterface.html>daveNewInterface</a>(fds, "IF1", localMPI, daveProtoXXX, daveSpeedYYY);
+</pre>
+With the resulting daveInterface structure, you need to initialize an adapter, if one is used:
+<pre>    
+    res =daveInitAdapter(di);
+</pre>    
+While currently only MPI-adapters really need this initialization procedure, it is save to use
+daveInitAdapter() with any protocol type. If it has no meaning for the protocol used, it is
+mapped to a dummy procedure that returns allways success.
+
+After successfully initializing your adapter, you can retrieve a list of reachable partners
+on an MPI network. The function takes the daveInterface structure and a pointer to a buffer
+of sufficient length as arguments. It returns the real length of the list. If the partners cannot
+be listed with the protocol used, it just returns a length of 0.
+<pre>    
+    listLength = daveListReachablePartners(di,buf1);
+</pre>
+After successfully initializing your adapter, you can establish a connection to certain PLC
+on the network. To do so, you will first initialize a structure of 
+type <a href=daveConnection.html>daveConnection</a>, 
+representing the physical connection to a single PLC.
+<pre>
+    dc =daveNewConnection(di, MPI_address, Rack, Slot);
+</pre>
+With the resulting daveConnection structure, you need to really connect the PLC:
+<pre>    
+    res =daveConnectPLC(dc);
+</pre>    
+<H4>Exchanging values:</H4>
+Once you have established a connection to your PLC, you can read and write values:
+<pre>
+    res=<a href=daveReadBytes.html>daveReadBytes</a>(dc, <a href=area.html>AREA</a>, area_Number, start_address, length, buffer);
+</pre>
+<pre>
+    res=<a href=daveWriteBytes.html>daveWriteBytes</a>(dc, <a href=area.html>AREA</a>, area_Number, start_address, length, buffer);
+</pre>
+Usually, you will have to <a href=conversions.html>convert</a> byte sequences from and to the buffer
+to use the data in your application.<br>
+After you are done with your data exchanges, call:
+<pre>
+	daveDisconnectPLC(dc);
+</pre>
+To disconnect from the PLC and
+<pre>
+	daveDisconnectAdapter(di);
+</pre>	
+to disconnect from the Adapter.
+Now close the serial or TCP/IP connection using the appropriate system calls for your OS.
+<H1>Advanced data exchange</H1>
+<a href=readmultiple.html>Read multiple items with a single transaction.</a><br>
+<a href=bitfunctions.html>Read and set single bits.</a><br>
+<H1>Other features</H1>
+<a href=SZL.html>Read diagnostic info (300 and 400 only).</a><br>
+<a href=upload.html>Load program code from PLC.</a><br>
+<a href=upload.html>Load program code into PLC.</a><br>

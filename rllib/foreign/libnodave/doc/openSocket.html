@@ -1,0 +1,11 @@
+<H1>openSocket</H1>
+An OS specific routine to establish a TCP/IP connection to a partner.
+There are different implementations for LINUX and WIN32.
+While the OS specific implementation of openSocket() is part of LIBNODAVE dynamic library,
+you could use your own routine and copy the resulting file descriptor/handle to the
+members of your <a href=daveOSserialType.html>_daveOSserialType</a> structure.
+<pre>
+    int openSocket(const int port, const char * peer);
+</pre>
+<li>port is the port number for the TCP/IP protocol, usually 102.</li>
+<li>peer is the IP address of the PLC/CP as a string, e.g. 192.168.0.3 .</li>

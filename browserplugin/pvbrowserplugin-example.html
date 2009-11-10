@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Scripting pvbrowser</title>
+  <link href="classic.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<p>This example demonstrates the combination of Javascript and a pvbrowser plugin.</p>
+  <object id="pvbrowserObject" TYPE=pvbrowser/pv WIDTH=640 HEIGHT=480 url="pv://pvbrowser.org"> 
+    <p>
+      You do not have the pvbrowser plugin loaded. 
+      Please 
+      <a href="http://pvbrowser.de/pvbrowser/index.php?menu=6&topic=6">download the plugin</a> 
+      and copy it to the browser plugin directory
+    </p>
+  </object>
+
+  <script language=JavaScript>
+  var pvbrowserObject = document.getElementById('pvbrowserObject');
+  <!-- pvbrowserObject.slotUrl('pv://localhost'); -->
+  </script>
+
+  <!-- Special hookup code required for Internet Explorer -->
+  <!--[if IE]>
+  <script language=JScript>
+  function pvbrowserObject::slotUrl(url) { pvbrowserObject.slotUrl(url) }
+  </script>
+  <![endif]-->
+
+</body>
+</html>

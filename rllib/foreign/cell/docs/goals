@@ -1,0 +1,13 @@
+CELL (CIP/Ethernet Library for Linux) is intended for people who wish to
+access the data within a ControlLogix PLC (from Allen Bradley).  As such,
+the main goals of this project are as follows:
+
+o Able to fully browse the backplane and all modules in a ControlLogix PLC
+o Able to fully retrieve globally scoped tags from a PLC
+o Able to fully retrieve all program names within the PLC
+o Able to fully retrieve all program scoped tags from a PLC
+o Able to fully read and write to all tags in a PLC
+o Able to read all status registers of all modules in a PLC
+
+
+Beyond this, this project has some (lofty) dreams as well...

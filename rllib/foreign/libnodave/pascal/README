@@ -1,0 +1,7 @@
+To build the test programs with freepascal under LINUX, run the script linux.build.
+To build the test programs with freepascal under Windows, adjust the path to your compiler in
+the batch file buildwin.bat, then run it.
+The functionlity of the test programs here in the Pascal section is NOT the same as of the
+programs in the C-section bearing the same names. This is because I do my testing in C and
+only ported the most basic stuff to Pascal.
+unit tests contains some subroutines used by all tests.

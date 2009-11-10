@@ -1,0 +1,288 @@
+v0.0.1 - initial release
+	Contained abread and clread.
+--------------------------------------------------------------------
+v0.0.2 - 11-18-99
+	Removed ControlLogix support due to AB's using a vastly
+	different protocol for Ethernet communications on the
+	ControlLogix PLC called CIP.  This support is expected to
+	be added in at a later date (as soon as I get documentation
+	of the CIP protocol as AB uses it and a ControlLogix PLC
+	to test out my code on).
+
+	Fixed connection number to use 3 bytes instead of 1.
+
+	Added abstat program
+
+	Added abwrite program
+
+	Changed addressing method to use AB's binary addressing model.
+	This allows us to access the .acc and .pre words of timers
+	and counters.  However, using this addressing model breaks
+	Pyramid support (for now).
+---------------------------------------------------------------------
+v0.0.9 - 12-21-99
+	Major rework of entire project.  Converted all relevent
+	code into a library.  Rewrote the abread and abwrite utilities
+	to use this new library.
+
+	Made several changes to the structures used for communications.
+	These changes rely on a #PRAGMA pack 1 working in your
+	environment.  If you are running Linux, you shouldn't have
+	any problems.  I don't know about any other environment - yet.
+	For those that don't know, #PRAGMA pack 1 basically removes
+	any byte padding between elements of a structure.
+
+	This code is the first time I have released untested code. 
+	For an explaination, please refer to the HELPME.PLEASE file.
+---------------------------------------------------------------------
+v0.1.0 - 12-23-99
+	Fixed byte order of Connection ID used in the library routines.
+
+	Fixed some packet lengths (sending too much data).
+
+	Got abstat.c converted to use the library.
+---------------------------------------------------------------------
+v0.1.1 - 1-13-00 
+	Added UploadReq - prepares PLC for uploading (sending) the
+	program.  Returns the memory segments that are uploadable.
+
+	Added UploadDone - exits Upload mode on the PLC.
+
+	Added SetPLCMode - Allows switching PLC between Remote Program,
+	Remote Test, and Remote Run modes.
+
+	Bugfix: getstatus.c was not reporting PLC Revision level correctly.
+
+	Implemented changes to Makefile to allow compilation on HP/UX v10.2
+		Thanks to Stan Brown (stanb@awod.com) for the fix.
+
+	Bugfix: nameconv5.c was not handling addresses larger than 255
+		correctly.  Thanks to Stan Brown (stanb@awod.com) for
+		finding this one.
+
+	Added ReadBytesPhysical - reads raw memory locations from the PLC
+		used for Uploading the program from the PLC
+
+	Make Install has been removed until the project is finished -
+		especially since it was never made to work correctly 
+		in the first place.
+
+	Bugfix: nameconv5.c was not encoding Input and Output addresses
+		correctly.
+----------------------------------------------------------------------
+v0.1.2 - 1-19-00
+	Fixed compiler warnings in abupload.c
+
+	Finished implementation of plcsetmode.  Includes sample program
+		absetmode to allow remote changing of plc run mode.
+
+		*IMPORTANT* before changing PLC modes on a live machine,
+		MAKE ABSOLUTELY CERTAIN that it is safe to do so.  Changing
+		run modes on a machine can be extremely dangerous,
+		especially if the machine has people in or near it. 	
+
+	Added stress, program to constantly read data from a PLC.  Used to
+		show the robustness of the code (and for limitation testing
+		of the PLC regarding constant data polling).  This program
+		uses the same syntax as abread.  Use <ctrl><c> to stop it.
+
+	Bugfix: Thanks to Mike Ayers and Joe Dial of Siemens Automotive
+		(mike.ayers@at.siemens.com) and Stan Brown (stanb@awon.com),
+		I was able to isolate and fix the bug that would prevent 
+		connections after lots of connects and disconnects.  It
+		would also prevent you from connecting more than one
+		instance.  This is not a guarenteed fix as there is still
+		a possible byte alignment problem.  Please test/beat up on
+		this as much as you can.  If it breaks for you still, then 
+		please try swapping 'conn' and 'b2' in the Ethernet_Header
+		structure in the libabplc5.h file.  In other words
+		(existing)
+		...
+		byte b2;
+		unsigned long conn;
+		...
+
+		(change to if needed)
+		unsigned long conn;
+		byte b2;
+		...
+		If you need help with this, e-mail me and let me know.
+
+--------------------------------------------------------------------------
+v0.1.3 - 1-22-00
+
+	Bugfix: Thanks to a friend in a convenient place (who wishes to remain
+		anonymous), I have finally fixed the ethernet header
+		problems.  This fix IS authoratative.
+	
+	Fixed all the library functions to use the new header layout.
+
+	Added floating point support.  Changed abread and abwrite to support
+		writing to the floating point register(s).  Refer to either
+		of these programs for examples on how to code floating point
+		support into your programs.
+
+	Added experimental support for Pyramid Integrator addressing.
+		I have no access to a PI so I have no idea if
+		this works or not.
+
+	Changed format of the _data struct to accomidate getting floating
+		point data work accurately.  There were rounding problems
+		that showed up due to the struct defining data as signed.
+		This means that any program that uses wordblockread should
+		now make sure to cast the data member back to (short) to
+		restore the sign.
+
+---------------------------------------------------------------------------
+v0.1.4 - 2-6-00
+
+	Added SLC and Pyramid support to getstatus.c and abstat.  
+
+	Added SLC addressing support to nameconv5.c.  This is to 
+		accomidate the addition of the 3-address read/write
+		functions that are SLC specific.
+
+	Added Porting document to show what environments my code works on.
+
+	Added docs subdirectory where all documentation will go.
+
+	Moved all relevent docs into new docs subdirectory.
+
+	Added versioning to the archive file name.  Also added AWK
+		scripts to assist in keeping version numbers
+		straight.
+
+	Removed make target 'dist' and replaced with targets "beta",
+		"release", and "major".  This is to facilitate keeping
+		the releases straight.
+
+	Fixed bugs in nameconv5.c relating to PI addressing.
+
+	Added Undocumented_df1 text file to describe what I am finding
+		that Allen Bradley was kind enough to not publish.
+
+------------------------------------------------------------------------------
+v0.1.5 - 02/13/00
+
+	More bug fixes in nameconv5.c
+
+	Typed Read now works.  Note that the way this command works is
+		completely different than what is documented in the
+		DF1 spec book.
+
+	Switched abread.c to use the typed read.  This gives us SLC
+		support for reading the data table.
+
+	Added more entries and some data into the undocumented_df1 file
+
+	Added an undoc_file_struct document that relates to how the
+		memory areas are set up on the PLC5.
+
+	Cleaned up the docs directory.
+
+	Added getedit routine - gets edit resource.
+
+	Added dropedit routine - releases edit resource.
+
+	Added resetmemory routine - clears ALL memory in PLC.
+
+	Added creatememory routine - used to create an address in the data
+		table.
+
+	Added readsectionsize routine - reports back how many "elements"
+		each area of memory use.
+
+	Restructured nameconv5.c to allow (many) more data typed to be
+		encoded.  This includes being able to encode for reading/
+		writing rung data, force table data, and so on.  Read the
+		Readme file for more information.
+
+	Added a program called section that will report the size of each
+		section of memory.  This is useful eventually for a PLC
+		upload routine that works!  It also can indicate the size
+		of the current PLC program (look at Section 1's numbers).
+
+-------------------------------------------------------------------------------------
+v0.1.6 - 02/20/00
+
+	Added protected_read/write_3 commands (for the SLC)
+
+	Added protected_read/write_2 commands (for the SLC)
+
+	Added protected_write_4 command (for the SLC)
+
+	Added SLC specific read/write example programs.
+
+	Changed abread and abwrite to abtypedread and abtypedwrite.
+
+	Added abwordread and abwordwrite example programs.
+
+	Rewrote Floating Point stuff to make it much more resiliant.
+
+	Rewrote the Makefile in ./src to make addition/deletion of example
+		programs much easier to deal with.
+
+	Added more "undocumented" commands to the list in ./docs
+
+	Fixed several segfault errors caused by copying too much data.
+
+	Renamed all text files in the ./docs directory to the extension .txt	
+	This should make this directory much more "friendly" towards our
+	Win32 based friends - Hi Lynn!
+---------------------------------------------------------------------------------------
+v0.1.7 - 3/12/00
+
+	Added shared lib creation.  
+
+	Added installing the library to /usr/local/lib during make.
+
+	Added the following routines:
+		senddf1, downloaddone, downloadreq, enableforces,
+		disableforces, closefile, echo, fileread, filewrite,
+		and openfile.
+
+
+---------------------------------------------------------------------------------
+v0.1.8 - 10/7/00
+
+	Fixed a couple of silly bitwise bugs in getstatus.c  Mostly in the
+	pyramid section but at least one was in the SLC section.  Sorry about 
+	that!
+
+	Fixed several bugs in abwordread and abtypedread that prevented 
+	pyramid data from being displayed correctly.
+
+	Found a bug in nameconv5.c that would assume I/O data (I:xxx and
+	O:xxx) was in decimal instead of the more conventional octal.
+
+	Changed name encoding for the Pyramid - apparently if you send
+	over too much (irrelevent) data in the name data, a data write
+	will mysteriously fail.  This change makes nameconv work more
+	"correctly" so it's probably not a bad thing.
+
+	Byte Order!!!!! - Any non-byte data field for the pyramid (e.g.
+	TNS, Count, etc...) is big endian, the PLC5 and SLC are little
+	endian.  Sheeze - No wonder data writing to the Pyramid didn't
+	work too well, we were telling the PI that we were sending over
+	256 words when we were only sending one.  ARGGGGGG!
+
+------------------------------------------------------------------------
+v0.1.9 - 12/28/00
+
+	Added in initial support for reading/writing individual bits.
+	This is primarily for use with the PLC5's but will eventually
+	also work with the SLC's and the PI's.
+
+	Updated the name.x structure to accomidate storing the bit data.
+
+	Completed conversion of the Makefiles.  Now, to build the package,
+	you will need to do a "make" then a "make install".  If you wish to
+	uninstall the package, then "make uninstall" will do the job.
+	(Now, to get "configure" type autoconfig stuff working...)
+
+	BUG FIX: protected_read_[2,3,4].c would not read float values
+	correctly (would skip every other variable).  Changed array index
+	method to use an independant index variable - Thanks to Michael
+	Castle of Avtron Manufacturing for noticing and providing the fix.
+	
+

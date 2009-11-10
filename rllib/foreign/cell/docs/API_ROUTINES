@@ -1,0 +1,199 @@
+CIP/Ethernet Library for Linux (CELL)
+ROUTINES API document
+Copyright 2001 and beyond, Ron Gage - Saginaw, MI
+
+This is a draft document that attempts to teach about the different routines
+available in the CELL library.  It is probably not complete and could very 
+well be full of errors.
+
+extern void ioi ( _data_buffer *buff, _ioi_data *ioi1, _ioi_data *ioi2, 
+		int debug);
+Ioi takes the data from the ioi1 and ioi2 structures and puts that data
+(with a length count in words) into the data_buffer *buff.  Any element of
+the ioi structure that is set to a value of -1 is not coded into the buffer
+(and not counted).  In the case of the tagname element of the ioi structure,
+it should be set to NULL if not needed.  
+
+
+extern void list_interfaces (_comm_header *comm, int debug);
+List_interfaces is a routine that identifies the interfaces available on
+the ControlLogix PLC.  It is included with the library for a matter of
+completeness and is not actually used for anything.  List_interfaces is part
+of the initial communications with the PLC and it is not known if it can be
+omitted.
+
+
+extern void list_services (_comm_header *comm, _services *services, 
+		int debug);
+List_services identifies the services available on the PLC.  Only one
+service, communications, is currently expected to be seen.  This routine
+will populate the services structure.
+
+
+extern void readdata (_data_buffer *buff, _comm_header *comm, int debug);
+Readdata will read the response data from the ControlLogix and put that data
+into the provided data_buffer.  The command uses a standard read(x) command
+and therefore will block until data is received.  There is no attempt to
+validate the data as received.  Data_Buffer->overall_len is set to the total
+length of the data received.  Data_Buffer is zero'ed out before the data is
+received.
+
+
+extern void senddata (_data_buffer *buff, _comm_header *comm, int debug);
+Senddata will send out the data in the data_buffer to the ControlLogix.  It
+uses a standard write(x) command and will send out data_buffer->overall_len
+bytes of data.  There is no attempt to validate the data being sent.
+
+
+extern void nop (_comm_header *comm, int debug);
+NOP sends out a No-Operation command to the ControlLogix.  This command is
+intended to be sent if there are long lapses in otherwise normal data
+exchance sequences - kinda like a keep-alive command.
+
+
+extern void register_session (_comm_header *comm, int debug);
+Register_session is the command to obtain a session_ID from the ControlLogix
+PLC.  This session_ID is used to uniquely identify the communications
+session.
+
+
+extern void unregister_session (_comm_header *comm, int debug);
+Unregister_session is how you "correctly" close off communications with the
+ControlLogix.  It is not required as the ControlLogix will also recognize
+the closing of the listening socket on it's own.
+
+
+extern void fill_header (_comm_header *comm, _encaps_header *head, int debug);
+Fill_header is used to populate the session_id and context fields of the
+encaps_header.  
+
+
+extern void establish_connection (_comm_header *comm, _services *services, 
+		int debug);
+Establish_connection will connect you to the ControlLogix that you identify
+in comm_header->hostname.  This identity can either be a domain name or an
+ip address.  Establish_connection will open the file descriptor, set up the
+socket for talking with the ControlLogix, send out the initial
+communications commands (list_interfaces, register_session, etc...), and set
+up all the requisite structures.
+
+
+extern void attach (_comm_header *comm1, int debug);
+Attach is the actual routine used by establish_connection to create and open
+the communications socket to the ControlLogix.
+
+
+extern void list_targets (_comm_header *comm, int debug);
+List_targets is another housekeeping command sent out when communications is
+established.  CELL does nothing with the data received back from this
+command.  It is not known if this command can be omitted.
+
+
+extern void sendRRdata ( unsigned short timeout, _comm_header *comm, 
+		_encaps_header *head, _data_buffer *buff, int debug);
+SendRRdata will establish the beginning of the data buffer for a command. 
+In doing so, it does the following:  zero out encaps_header, zero out
+data_buffer, put sendRRdata command in encaps_header->command, put required
+0x00000000 at beginning of data_buffer, put required command timeout in
+data_buffer and then return.
+
+
+extern void cpf_data (short datatype, _data_buffer *cpf_data, 
+		_data_buffer *buff, int debug);
+Cpf_data will fill in the Common Packet Header data.  First, it encodes the
+datatype of the CPH, then it encodes the length of the CPH data, then it
+encodes the CPH data itself (if it is non-null).  CPF stands for Common
+Packet Format, another name for CPH.
+
+
+extern void cpf (short addrtype, _data_buffer *addrbuff, short datatype, 
+		_data_buffer *databuff, _data_buffer *buff, int debug);
+Cpf calls cpf_data twice, once with addrtype and addrbuff, and the second
+time with datatype and databuff.
+
+
+extern void get_backplane_data (_comm_header *comm, 
+		_backplane_data *backplane, _rack *rack, int debug);
+Get_backplane_data will query the backplane object on the ControlLogix rack 
+and fill the backplane structure accordingly.
+
+
+extern void unconnected_send (_data_buffer *buff, int debug);
+Unconnected_send places the PDU_unconnected_send command (0x52) into the
+data buffer.
+
+
+extern void makepath (_path *path, _data_buffer *buff, int debug);
+Makepath generates ControlLogix path data into the data_buffer.  The
+required path length (in words) is also generated.
+
+
+extern void settimeout (byte priority, byte timeout, _data_buffer *buff, 
+		int debug);
+Settimeout encodes the priority and timeout bytes into the unconnected
+message.  Known working values for these are: priority = 0x06, timeout =
+0x9a.
+
+
+extern void get_device_data (_comm_header *comm, _path *path, 
+		_identity *identity, int debug);
+Get_device_data retrieves the details about a card in a particular slot in
+the ControlLogix Chassis.  Path is used to establish which slot to query. 
+Note that you can not query the communications card you are talking through
+by using a slot number.  In this case, you do not set a path to get the card
+details.  In older ControlLogix systems, you could specify the path for the
+communications module and still get the data.
+
+extern void get_port_data (_comm_header *comm, _path *path, _port *port, 
+		int debug);
+Get_port_data is another one of those commands that are used during the
+establishing of communications.  In spite of the port structure being passed
+to the routine, CELL does nothing with this data.  It is not known if this
+routine can be omitted.
+
+
+extern void who (_comm_header *comm, _rack *rack, int debug);
+Who is a convenient routine that will query all cards in the ControlLogix
+chassis and fill in the rack structure appropriately.
+
+
+extern void get_object_list (_comm_header *comm, _path *path, 
+		unsigned long base, _tag_data *tags, int debug);
+Get_object_list will retrieve the list of object identifiers from the
+ControlLogix PLC.  This list of objects is then populated into the tag_data
+structure.  
+
+When an object list is retrieved (and base == 0), the list will contain the
+identifiers for programs and tags.  When an object list is retrieved (and
+base != 0), then base is assumed to be the object ID for a particular
+program and the returned list will be the object ID's for the tags for that
+program.
+
+
+extern void get_object_details (_comm_header *comm, _path *path, 
+		_tag_detail *tag, int debug);
+Get_object_details will retrieve the data type for the object in question
+(pointed to by tag_detail), and will also return the tag name.  In the case
+of tags, this routine will also get the size of the array (which will be 0
+if no array is defined).
+
+
+extern unsigned short getsize (_tag_detail *tag);
+Getsize will return the data size of a tag in bytes.  Array sizes are
+utilized in this calculation.
+
+
+extern void read_object_value (_comm_header *comm, _path *path, 
+		_tag_detail *tag, int debug);
+Read_object_value will populate the data portion of the tag_detail.  It
+populates all elements of an array if the element is an array.  This routine
+can issue several actual read commands to the ControlLogix if need be -
+reads are limited to 256 bytes per read.
+
+
+extern void write_object_value (_comm_header *comm, _path *path, 
+		_tag_detail *tag, int debug);
+Write_object_value will send the values of the data portion of tag_detail
+into the ControlLogix, overwriting those values within the ControlLogix. 
+All elements of an array will be sent, even those you do not wish to change
+so make sure the data is up to date before sending.

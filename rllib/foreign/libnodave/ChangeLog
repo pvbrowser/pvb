@@ -1,0 +1,51 @@
+08/26/2003	partly unified versions for MPI adapter and IBH NetLink. Common stuff went into
+		nodaveCommon.c.
+		It should now work with S7-400 PLCs without a patch, but I've not tested this.
+09/19/2003	Found remedy to prevent hangups in nodaveIBH.c
+10/04/2003  	Added the stuff for S7-200 over PPI cable.
+10/05/2003  	Wrote a test program for S7-200 over PPI cable.
+
+03/13/2004  	New functions to load a program block from the CPU.
+03/14/2004  	New area type system data (SD), daveArea_SD
+
+03/26/2004  	Retry PPI send, when response times out.
+
+05/20/2004  	Working ISO/TCP transport with CPs x43
+06/14/2004	Fixed a bug regarding initialization of MPI/TS adapter
+
+09/09/2004	Applied patch for variable Profibus speed from Andrew Rostovtsew. 
+		The Profibus speed is a new parameter to daveNewInterface,
+		so you will need to change existing programs :-(
+		The parameter is only meaningful for the MPI protocol. It is meaningful for but 
+		not yet supported by nodaveIBH. For all other protocols, any integer will do.
+		
+09/09/2004	Partly applied patch for compilation under Windows using Cygwin. Non-inline
+		data conversion functions replace the inlined ones and the byteswap.h from Linux.
+		
+09/12/2004	Implemented the read from multiple addresses.
+	  
+10/10/2004	Made a unified version for all protocols (not yet IBH)
+		Added targets: make install, make dynamic to Makefile
+12/01/2004	Fixed a bug in nodave.c that made compilers complain.
+12/08/2004	Make read of analog inputs and outputs of 2xx work.
+
+12/09/2004	Rmoved some debug printf()s.
+12/09/2004 	Found and fixed a bug in daveFreeResults(): The result set is provided by the 
+	        application and not necessarily dynamic. So we shall not free() it.
+12/19/2004 	First version for WIN32 and C
+01/11/2005 	Some code cleanup. Can now load program blocks into CPU 315. Win32 version
+		COM port settings fixed.
+01/16/2005 	Fixed reception of SZL-lists and block lists that don't fir into a single PDU.
+01/26/2005 	Multiple write implemented.
+01/31/2005 	Fixed isotest4.c, which could not be compiled with most C-compilers but mine,
+		however.
+02/06/2005 	Added workarounds to run on ARM processors.
+02/12/2005 	Integrated code for IBH NetLink.
+02/13/2005 	Put benchmarks into a separate file.
+02/21/2005 	Put program download and RUN/STOP functions into main test programs.
+03/03/2005 	Added fix from Axel Kinting that speeds up connections via IBH-NetLink.
+03/03/2005 	Added an option to set slot number in testISO_TCP.
+03/03/2005 	Changed dword to longword in pascal/nodave.pas for Delphi compatibility.
+
+
+

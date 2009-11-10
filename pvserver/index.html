@@ -1,0 +1,199 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0//EN">
+<html>
+<head>
+  <title>pvbrowser</title>
+</head>
+<body>
+  <table cellspacing=0>
+  <tr bgcolor="darkGreen">
+    <td border=0>.</td>
+    <td width=90% border=0></td>
+    <td border=0></td>
+  </tr>
+  <tr>
+    <td bgcolor="darkGreen"></td>
+    <td>
+      <table>
+      <tr>
+        <td width=90%>
+          <h1>Process View Browser 0.6</h1>
+        </td>
+      </tr>
+      </table>
+      <a href="index.html" name="Home">Home</a>
+      <a href="screenshots.html" name="Screenshots">Screenshots</a>
+      <a href="doc.html" name="Documentation">Documentation</a>
+      <a href="download.html" name="Download">Download</a>
+      <a href="license.html" name="License">License</a>
+    </td>
+    <td bgcolor="darkGreen"></td>
+  </tr>
+  <tr bgcolor="darkGreen">
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td bgcolor="darkGreen">.</td>
+    <td>
+        <h2>Process View Browser</h2>
+        <p>... from concept is similar to an internet browser. But it is intendet
+        for the use in industrial process visualisation. It is based on Qt <a href="http://www.trolltech.com/">http://www.trolltech.com</a>
+        which is a platform independent GUI toolkit. Due to this and the fact,
+        that only posix calls are used, ProcessView Browser runs on Linux/Unix,
+        and Windows. The browser can display several standard Qt widgets
+        (labels, buttons, editfields, comboboxes, widgets ...) and some more (widgets
+        for bmp images, diagram widgets for displaying curves). The widgets can
+        be arranged on your masks. You can specify the position and size of the
+        widgets and you can place one widget on top of another widget. I have
+        seen many process visualisation systems, which define their masks in the
+        clients (I think this is not the right way to go). Instead of this the
+        masks in Process View Browser are defined in the appropriate process computer
+        itself. The user can jump from one one process computer to the other and
+        see all masks. When masks are updated nothing has to be done in the clients.
+        </p>
+        <h2>Process View Server</h2>
+        <p>The Process View Server is implemented in ANSI C (whereas
+        the browser is written in C++). You can easily modify this server to implement
+        your masks. You are free to read the data you want to display from shared
+        memory, database systems or get it via IPC mechanisms. The server also
+        runs on Linux/Unix, OpenVMS and Windows. Most of the servercode can be generated
+        automatically. You design your masks with Qt Designer. Qt Designer saves the dialog
+        in an xml-file. With the command "ui2pvc your_mask.ui your_mask.c" you generate the servercode.
+        </p>
+        <P ALIGN=LEFT>Features:</P>
+        <table width="91%" border="0" cellspacing="5" cellpadding="5">
+          <tr>
+            <td valign="top" width="32%">
+              <ul>
+                <li>QWidget </li>
+                <li>QLabel</li>
+                <li>QPushButton</li>
+                <li>QLineEdit</li>
+                <li>QComboBox</li>
+                <li>QLCDNumber</li>
+                <li>QSlider</li>
+                <li>QButtonGroup</li>
+                <li>QRadioButton</li>
+                <li>QCheckBox</li>
+                <li>QFrame</li>
+                <li>QDraw (my own widget for drawing diagrams)</li>
+                <li>QImage (my own widget for displaying grafik-files)</li>
+                <li>QGLWidget (for OpenGL)</li>
+                <li>QTabWidget</li>
+                <li>QGroupBox</li>
+                <li>QListBox</li>
+                <li>QTable</li>
+                <li>QSpinBox</li>
+                <li>QDial</li>
+                <li>QLine</li>
+                <li>QProgressBar</li>
+                <li>QMultiLineEdit</li>
+                <li>QTextBrowser</li>
+                <li>QFileDialog</li>
+                <li>QMessageBox</li>
+                <li>QInputDialog</li>
+                <li>Webcam</li>
+              </ul>
+            </td>
+            <td valign="top" width="68%">
+              <p>You can arrange these widgets on your masks. One widget can be the parent
+                of another widget. Thus it is possible to arrange your widgets hierarchically.
+                When you have a QGLWidget you can also use the OpenGL functions to display
+                3D grafik. Additionally there is the possibilty to import nearly any 3D
+                scene from any program into the browser. For this I use:</p>
+              <p><a href="http://www.xdsoft.com/explorer/">&quot;3D Exploration&quot;</a> a 3D file converter that runs on windows </p>
+            </td>
+          </tr>
+        </table>
+        <h2>ui2pvc</h2>
+        Since Version 0.4 you can use Qt designer to generate your servercode. <br>
+        Start designer and choose a new Dialog.     <br>
+        Within designer you are only allowed to use the following widgets: <br>
+                   <br>
+        <li>QPushButton      </li>
+        <li>QWidget          </li>
+        <li>QLabel           </li>
+        <li>QLineEdit        </li>
+        <li>QComboBox        </li>
+        <li>QLCDNumber       </li>
+        <li>QSlider          </li>
+        <li>QButtonGroup     </li>
+        <li>QRadioButton     </li>
+        <li>QCheckBox        </li>
+        <li>QFrame           </li>
+        <li>QTabWidget</li>
+        <li>QGroupBox</li>
+        <li>QListBox</li>
+        <li>QTable</li>
+        <li>QSpinBox</li>
+        <li>QDial</li>
+        <li>QLine</li>
+        <li>QMultiLineEdit</li>
+        <li>QTextBrowser</li>
+        <li>QProgressBar</li>
+                   <br>
+        Additionally these custom widgets can be used:<br>
+                                              <br>
+        <li>QDraw                                       </li>
+        <li>QImage      // you have to define the property "text" for this widget (text=filename.bmp) </li>
+        <li>QGLWidget                                   </li>
+                                              <br>
+        In order to define this custom widgets, choose tools->custom->edit custom widgets->Load Descriptions ...<br>
+        Choose ./ui2pvc/ui2pvc/designer.cw               <br>
+                                                 <br>
+        Designer stores it's data in an xml-file file.ui <br>
+        Then you can generate sourcecode with:           <br>
+                                                 <br>
+        usage: ui2pvc file.ui file.c                     <br>
+        </p>
+        <h2>New Features in ProcessViewBrowser and ProcessViewServer</h2>
+        <h3>version 0.5</h3>
+        <ul>
+          support for all image formats that are supported by Qt<br>
+          Images with transparent background<br>
+          Webcam<br>
+          QTabWidget, QGroupBox, QListBox, QTable, QSpinBox, QDial, QLine, QProgressBar, QFileDialog,
+          QMessageBox, QInputDialog<br>
+        </ul>
+        <h3>version 0.4</h3>
+        <ul>
+          graphical design of masks using Qt Designer (ui2pvc) <br>
+          QToolTip available <br>
+          Draw filled Rectangles in QDrawWidget
+        </ul>
+        <h3>version 0.3</h3>
+        <ul>
+          some bug fixes and support for a server under OpenVMS. <br>
+          The server software is now completely independant of Qt.
+        </ul>
+        <h3>version 0.2</h3>
+        <ul>
+          some additional Qt widgets and OpenGL. (Currently
+          all gl-output functions are implemented but not all gl-input functions)
+        </ul>
+        <h3>version 0.1</h3>
+        <ul>
+          First version of ProcessViewBrowser+Server
+        </ul>
+    </td>
+    <td bgcolor="darkGreen"></td>
+  </tr>
+  <tr bgcolor="darkGreen">
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td bgcolor="darkGreen"></td>
+    <td>&copy 2000-2002 Dr. Rainer Lehrig <a href="mailto:lehrig@t-online.de">lehrig@t-online.de</a> </td>
+    <td bgcolor="darkGreen"></td>
+  </tr>
+  <tr bgcolor="darkGreen">
+    <td>.</td>
+    <td></td>
+    <td></td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Primer</title>
+  <link rel="stylesheet" type="text/css" href="format.css">
+  <meta name="GENERATOR" content="generator by Rainer Lehrig">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+pvbrowser primer
+<hr>
+<a href="en_p9.html">Back</a>
+<a href="en_index.html">Content</a>
+<a href="en_p11.html">Forward</a>
+<hr>
+<!-- begin content -->
+<h3>Output to widgets</h3>
+<p>
+The reference for programming can be found at “Help-&#062;Manual-&#062;pvslib” within pvdevelop. All these functions have a “PARAM *p” as first parameter. In this structure pvserver holds some important information. The most important is p-&#062;s, which is the socket pvserver uses for communication with the client. Most of the provided functions will simply send a line of text terminated by newline to pvbrowser. pvbrowser will interpret this text and call the according Qt method.
+</p>
+<p>
+Example:
+</p>
+<div style='clear:left; background:#DEDEDE;'><pre>
+pvPrintf(p, label1, ”Hello world. This is call number %d”, call_number++);
+</pre></div>
+
+<p>
+All widgets that you input in the designer are listed in the enum in your generated mask. Assume you have input a text label “label1”. Then you can print text to it as shown above. Most functions described in the reference manual work that way.
+</p>
+<p>
+The most frequently used output functions can be inserted by selecting the “Widget Name” toolbox in pvdevelop and clicking on the according widget name id.
+</p>
+<!-- end content -->
+<hr style='clear:left;'>
+<a href="en_p9.html">Back</a>
+<a href="en_index.html">Content</a>
+<a href="en_p11.html">Forward</a>
+</body>
+</html>

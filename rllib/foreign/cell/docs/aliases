@@ -1,0 +1,70 @@
+Aliases are now supported on CELL on an experimental basis.
+
+The key function in the library that handles aliases is called 
+"aliascheck".  The full function defination is:
+
+extern void aliascheck (_tag_detail *tag, _tag_data *proglist, \
+	_tag_data *mainlist, int debug);
+
+
+Background on aliases:
+
+Aliases within the ControlLogix are a method to have two discreet tag names
+point to the exact same data.  They are useful for things like logic
+simulators - using aliases, you can simulate I/O back to a world writable
+tag that can be easily controlled by an external source.  Aliases exist
+within the CL as a seperate entity with links back to the source object.
+
+How I am handling aliases:
+
+Since an alias is essentially another name for the same data, I take the tag
+structure for the alias and re-write the object pointers to point back to
+the base object.  Since an alias can only reference tags within it's own
+program or controller scoped tags, this is fairly trivial to implement. 
+Therefore, the aliased tag remains within the structure list, but when data
+is pulled from it via read_object_data.c, it reads from the actual base
+object within the CL.
+
+Why not deal with it during the read:
+
+In simple words - efficiency.  By changing the object id's of the alias, you
+only need to deal with it once - after the structure lists are read in. 
+This is considerably more efficient than dealing with it during the read
+cycle which would have to reprocess the data over and over and over, once
+per read.  Plus, this avoids having to pass the two extra structure lists to
+the read_object_data.c routine.
+
+OK - Show me how to do this:
+
+Something like this - your mileage may vary...
+
+get_object_config_list (comm, path, 0, configtags, debug);
+get_object_details_list (comm, path, 0, detailtags, debug);
+get_program_list (comm, path, progs, debug);
+y = detailtags->count;
+if (configtags->count > y)
+	y = configtags->count);
+for (x=0;x<y;x++)
+	{
+	if (x < configtags->count)
+		get_config_details (comm, path, configtags->tag[x], debug);
+	if (x < detailtags->count)
+		get_object_details (comm, path, detailtags->tag[x], debug);
+	}
+for (x=0; x<detailtags->count; x++)
+	aliascheck (detailtags->tag[x], NULL, detailtags, debug);
+
+
+This takes care of alias checking on the controller scoped tags.  You
+basically repeat the same idea against each of the program scoped tag lists,
+but you use the following line:
+
+aliascheck (proglist->prog[x]->tag[y], proglist->prog[x], detailtags, debug);
+
+This tells the alias check routine that you are checking a program scoped tag
+instead of a controller scoped tag.
+
+As usual, if you have any questions about how to implement this, or of you
+find any bugs, please use the CELL mailing list - cell@rongage.org - Thanks!
+
+Ron

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+"http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created with Inkscape (http://www.inkscape.org/) --><svg height="128.00000pt" id="svg840" inkscape:version="0.39" sodipodi:docbase="/home/matteo/Desktop/Media/disegni" sodipodi:docname="crt_monitor.svg" sodipodi:version="0.32" width="128.00000pt" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xml="http://www.w3.org/XML/1998/namespace">
+  <metadata>
+    <rdf:RDF xmlns:cc="http://web.resource.org/cc/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <cc:Work rdf:about="">
+        <dc:title>CRT Monitor</dc:title>
+        <dc:description>An old, non-flat CRT monitor.</dc:description>
+        <dc:subject>
+          <rdf:Bag>
+            <rdf:li>computer</rdf:li>
+          </rdf:Bag>
+        </dc:subject>
+        <dc:publisher>
+          <cc:Agent rdf:about="http://www.openclipart.org">
+            <dc:title>Matteo Ianeselli &lt;m.ianeselli@flashnet.it></dc:title>
+          </cc:Agent>
+        </dc:publisher>
+        <dc:creator>
+          <cc:Agent>
+            <dc:title>Matteo Ianeselli &lt;m.ianeselli@flashnet.it></dc:title>
+          </cc:Agent>
+        </dc:creator>
+        <dc:rights>
+          <cc:Agent>
+            <dc:title>Matteo Ianeselli &lt;m.ianeselli@flashnet.it></dc:title>
+          </cc:Agent>
+        </dc:rights>
+        <dc:date></dc:date>
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+        <cc:license rdf:resource="http://web.resource.org/cc/PublicDomain"/>
+        <dc:language>en</dc:language>
+      </cc:Work>
+      <cc:License rdf:about="http://web.resource.org/cc/PublicDomain">
+        <cc:permits rdf:resource="http://web.resource.org/cc/Reproduction"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/Distribution"/>
+        <cc:permits rdf:resource="http://web.resource.org/cc/DerivativeWorks"/>
+      </cc:License>
+    </rdf:RDF>
+  </metadata>
+  <defs id="defs842"/>
+  <sodipodi:namedview bordercolor="#666666" borderopacity="1.0" id="base" inkscape:cx="46.524858" inkscape:cy="14.083791" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:window-height="1249" inkscape:window-width="1258" inkscape:window-x="1" inkscape:window-y="50" inkscape:zoom="2.8548227" pagecolor="#ffffff"/><text id="text1232" style="fill:black;fill-opacity:1;stroke:none;font-family:helvetica;font-style:normal;font-weight:normal;font-size:12px;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;" transform="translate(61.14971,37.66174)" x="-62.105361" xml:space="preserve" y="-46.515049"><tspan id="tspan1233">CRT Monitor</tspan></text><text id="text1235" style="fill:black;fill-opacity:1;stroke:none;font-family:helvetica;font-style:normal;font-weight:normal;font-size:12px;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;" transform="matrix(0.246729,0.000000,0.000000,0.246729,61.14971,37.66174)" x="-192.06456" xml:space="preserve" y="-164.05721"><tspan id="tspan1236">Created by Matteo Ianeselli</tspan></text>
+  <g id="g572" transform="matrix(0.362874,0.000000,0.000000,0.362874,-22.51866,-88.44711)">
+    <path d="M 339.797 253.868 C 337.069 253.323 439.063 250.595 439.608 250.595 C 440.154 250.595 488.151 263.14 488.151 263.14 C 488.151 263.14 490.878 510.215 491.423 510.215 C 491.968 510.215 471.243 528.214 471.243 528.214 C 471.243 528.214 473.424 550.031 472.879 550.031 C 472.333 550.031 429.841 591.421 382.885 618.754 C 308.612 662.077 262.708 673.215 256.382 675.512 C 250.343 677.107 243.118 680.303 237.987 674.353 C 231.39 666.703 230.541 664.023 227.44 664.023 C 222.611 665.33 217.782 666.398 212.953 667.705 C 206.566 669.987 188.966 650.32 177.807 639.48 C 177.807 639.48 138.537 578.938 139.082 578.938 C 139.627 578.938 124.356 534.214 124.356 534.214 C 124.356 534.214 99.2663 507.488 99.2663 503.67 C 97.0846 503.67 73.6037 347.883 73.6037 347.883 L 339.797 253.868 z " id="path561" sodipodi:nodetypes="ccccccscscccccccc" style="fill:#9d9d9d;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-width:3.5;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;stroke-dasharray:none;"/>
+    <path d="M 454.88 306.774 C 459.604 303.4 469.218 372.354 469.606 410.403 C 470.689 449.147 468.617 495.073 465.243 494.398 C 469.967 494.398 440.336 520.987 379.067 558.757 C 354.621 573.558 236.167 617.663 236.167 617.663 L 192.533 409.858 L 454.88 306.774 z " id="path560" sodipodi:nodetypes="cscsccc" style="fill:#e4fff7;fill-rule:evenodd;stroke:black;stroke-opacity:1;stroke-width:1pt;stroke-linejoin:miter;stroke-linecap:butt;fill-opacity:1;"/>
+    <path d="M 199.624 417.494 C 201.26 417.494 368.704 356.952 370.34 356.952 C 371.976 356.952 474.515 307.865 474.515 307.865 C 474.515 307.865 482.151 391.859 482.696 410.949 C 483.242 430.038 481.06 496.58 481.06 497.67 C 481.06 498.761 409.065 554.394 380.157 568.03 C 351.25 581.665 250.348 623.662 250.348 623.662 C 250.348 623.662 241.075 629.117 237.803 608.936 C 234.53 588.756 225.258 528.214 221.986 514.033 C 218.713 499.852 198.533 417.494 199.624 417.494 z M 144.536 391.859 L 488.696 264.231 L 491.423 510.761 C 491.423 510.761 415.064 574.029 376.339 593.119 C 337.615 612.209 223.077 661.296 223.077 661.296 C 223.077 661.296 212.714 667.296 210.532 658.569 C 208.35 649.843 144.536 391.859 144.536 391.859 z " id="path564" style="font-size:12;fill:#b9b9b9;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;fill-opacity:1;"/>
+    <path d="M 439.063 250.05 L 121.073 362.693 L 160.99 389.29 " id="path565" sodipodi:nodetypes="ccc" style="font-size:12;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;" transform="translate(-16.70029,2.147110)"/>
+    <path d="M 120.706 362.2 C 120.706 362.746 184.838 621.995 184.838 621.995 " id="path566" sodipodi:nodetypes="cc" style="font-size:12;fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;" transform="translate(-16.70029,2.147110)"/>
+  </g>
+</svg>
+

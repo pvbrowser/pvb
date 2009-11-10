@@ -1,0 +1,51 @@
+//Unhandled:   WT_DWF_Header
+//Unhandled:   WT_Author
+//Unhandled:   WT_Creator
+//Unhandled:   WT_Creation_Time
+//Unhandled:   WT_Modification_Time
+//Unhandled:   WT_Source_Filename
+//Unhandled:   WT_Source_Creation_Time
+//Unhandled:   WT_Source_Modification_Time
+//Unhandled:   WT_Units
+//Unhandled:   WT_Title
+//Unhandled:   WT_Embed
+//Named_View_name=(null)
+//min=182 0
+//max=3305 1300
+//Unhandled:   WT_Named_View
+//View_name=(null)
+//min=182 0
+//max=3305 1300
+//Unhandled:   WT_View
+//Unhandled:   WT_Plot_Info
+//visible=-1
+//Unhandled:   WT_Visibility
+//Unhandled:   WT_Optimized_For_Plot
+glColor4i(0,0,0,255);
+//Line_Weight=4
+//Unhandled:   WT_Line_Weight
+//pattern_scale=0.000000
+//fields_defined=138
+//Unhandled:   WT_Line_Style
+//Viewport_name=(null)
+listarray[0] = glGenLists(0);
+glNewList(listarray[0],4864);  // GL_COMPILE
+glBegin(1); // GL_LINES
+glVertex3f(-0.0690,-0.3030,0.0000);
+glVertex3f(-0.0690,0.1010,0.0000);
+glVertex3f(-0.0690,0.1010,0.0000);
+glVertex3f(0.2840,0.4030,0.0000);
+glVertex3f(0.2840,0.4030,0.0000);
+glVertex3f(0.5870,0.1010,0.0000);
+glVertex3f(0.5870,0.1010,0.0000);
+glVertex3f(0.5870,-0.3030,0.0000);
+glVertex3f(0.5870,-0.3030,0.0000);
+glVertex3f(-0.0690,-0.3030,0.0000);
+glVertex3f(-0.0690,-0.3030,0.0000);
+glVertex3f(0.5870,0.1010,0.0000);
+glVertex3f(0.5870,0.1010,0.0000);
+glVertex3f(-0.0690,0.1010,0.0000);
+glVertex3f(-0.0690,0.1010,0.0000);
+glVertex3f(0.5870,-0.3030,0.0000);
+glEnd();
+glEndList();

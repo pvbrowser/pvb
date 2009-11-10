@@ -1,0 +1,17 @@
+Hi folks:
+
+To my knowledge, this code base has been known to work/compile on the
+following operating systems:
+
+Slackware Linux v7.0
+Windows NT4
+SCO Unix
+HP/UX 10.2 - HP-PARisc Architecture
+Lynx
+
+
+
+
+If you can contribute any entries to this list, please let me know!
+
+Ron Gage

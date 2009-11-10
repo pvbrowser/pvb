@@ -1,0 +1,3 @@
+#!/bin/bash
+qmake libsql.pro -o libsql.mak
+qmake lib.pro -o Makefile

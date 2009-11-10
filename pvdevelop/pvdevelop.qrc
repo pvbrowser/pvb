@@ -1,0 +1,20 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>images/app.png</file>
+    <file>images/option.png</file>
+    <file>images/copy.png</file>
+    <file>images/cut.png</file>
+    <file>images/new.png</file>
+    <file>images/open.png</file>
+    <file>images/paste.png</file>
+    <file>images/save.png</file>
+    <file>images/editor.png</file>
+    <file>images/designer.png</file>
+    <file>images/importui.png</file>
+    <file>images/insertmask.png</file>
+    <file>images/make.png</file>
+    <file>images/startserver.png</file>
+    <file>images/back.png</file>
+    <file>images/gohome.png</file>
+</qresource>
+</RCC>

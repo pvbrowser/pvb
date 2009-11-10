@@ -1,0 +1,158 @@
+/****************************************************************************
+**
+** Copyright (C) 2000-2006 Lehrig Software Engineering.
+**
+** This file is part of the pvbrowser project.
+**
+** This file may be used under the terms of the GNU General Public
+** License version 2.0 as published by the Free Software Foundation
+** and appearing in the file LICENSE.GPL included in the packaging of
+** this file.
+**
+** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+**
+****************************************************************************/
+#ifndef INTERPRETER_H
+#define INTERPRETER_H
+
+#include "opt.h"
+#include <QtGui>
+
+// application specific includes
+#include "MyWidgets.h"
+#include "qdrawwidget.h"
+#include "qimagewidget.h"
+#include "pvglwidget.h"
+#ifndef NO_QWT
+#include "qwtplotwidget.h"
+#endif
+#ifdef USE_VTK
+#include "pvVtkTclWidget.h"
+#endif
+
+enum
+{
+TQWidget = 0,
+TQPushButton,
+TQLabel,
+TQLineEdit,
+TQComboBox,
+TQLCDNumber,
+TQButtonGroup,
+TQRadio,
+TQCheck,
+TQSlider,
+TQFrame,
+TQImage,
+TQDraw,
+TQGl,
+TQTabWidget,
+TQGroupBox,
+TQListBox,
+TQTable,
+TQSpinBox,
+TQDial,
+TQProgressBar,
+TQMultiLineEdit,
+TQTextBrowser,
+TQListView,
+TQIconView,
+TQVtk,
+TQwtPlotWidget,
+TQwtScale,
+TQwtThermo,
+TQwtKnob,
+TQwtCounter,
+TQwtWheel,
+TQwtSlider,
+TQwtCompass,
+TQDateEdit,
+TQTimeEdit,
+TQDateTimeEdit,
+TQToolBox,
+TQVbox,
+TQHbox,
+TQGrid,
+TQDock_Widget
+};
+
+typedef struct
+{
+  QWidget *w;
+  int     type;
+}ALL;
+
+class MainWindow;
+
+/**
+  * This Class is the interpreter.
+  */
+class Interpreter
+{
+  public:
+    Interpreter();
+    ~Interpreter();
+    void showMyBrowser(const char *url);
+    void registerMainWindow(MainWindow *mainWindow, int *sock);
+    void interpret(const char *command);
+    void setPath(const char *p);
+    void metaFileLog();
+    void metaFileBmp();
+    void slotModalTerminate();
+    int  width();
+    int  height();
+    QString temp;
+    int  hasLayout;
+
+//protected:
+//    bool eventFilter( QObject *o, QEvent *e );
+
+  private:
+    void interpreta(const char *command);
+    void interpretb(const char *command);
+    void interpretc(const char *command);
+    void interpretd(const char *command);
+    void interprete(const char *command);
+    void interpretf(const char *command);
+    void interpretg(const char *command);
+    void interpreth(const char *command);
+    void interpreti(const char *command);
+    void interpretm(const char *command);
+    void interpretp(const char *command);
+    void interpretr(const char *command);
+    void interprets(const char *command);
+    void interprett(const char *command);
+    void interpretv(const char *command);
+    void interpretq(const char *command);
+    void interpretQ(const char *command);
+    int  get_text(const char *c, QString &t);
+    void popupMenu(int id_return, const char *menu);
+    QImage *readBmpFromSocket(int w, int h, char **d);
+    void downloadFile(const char *file);
+    void myCreateHeuristicMask(QPixmap &pm, QImage *temp);
+    void mySetAlphaBuffer(QImage *temp);
+
+    int *s; // the socket
+    ALL **all;
+    ALL **allBase;
+    ALL **allModal;
+    MainWindow *mainWindow;
+    MyDialog *modalDialog;
+    QWidget *mainLayout;
+    int      mainLayoutType;
+
+    MyQWidget *v;
+    int  nmax;
+    int  nmaxBase;
+    int  nmaxModal;
+
+    char path[1024];
+    // variables for interpretx
+    int  i,p,n,x,y,w,h,r,g,b,zoom,zoom_original;
+    QString text;
+    time_t timet; // remote file time for caching
+};
+
+#endif
+

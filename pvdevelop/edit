@@ -1,0 +1,10 @@
+#!/bin/bash
+echo '###############################################'
+echo '# pvbrowser uses kate to edit the subprojects #'
+echo '#  edit designer sourcecode                   #'
+echo '#  ./edit                                     #'
+echo '# in order to start kate                      #'
+echo '#                                             #'
+echo '# from the commandline use "make" to build it #'
+echo '###############################################'
+kate mainwindow.h mainwindow.cpp designer.h designer.cpp widgetgenerator.h widgetgenerator.cpp dlgproperty.h dlgproperty.cpp ui_dlgproperty.h dlginsertwidget.h dlginsertwidget.cpp ui_dlginsertwidget.h dlgeditlayout.h dlgeditlayout.cpp ui_dlgeditlayout.h *.qrc *.pro &

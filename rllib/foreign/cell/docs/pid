@@ -1,0 +1,60 @@
+The structure for PID data is as follows:
+
+long CTL
+float SP
+float KP
+float KI
+float KD
+float BIAS
+float MAXS
+float MINS
+float DB
+float SO
+float MAX0
+float MIN0
+float UPD
+float PV
+float ERR
+float OUT
+float PVH
+float PVL
+float DVP
+float DVN
+float PVDB
+float DVDB
+float MAX1
+float MIN1
+float TIE
+float MAXCV
+float MINCV
+float MINTIE
+float MAXTIE
+float DATA[17]
+
+
+
+The CTL data is a hex representation of the individual control bits for the
+PID.  By doing a logical AND between the value of CTL and the value given
+below, you can determine the state of the listed control bit(s).
+
+EN	- 0x80000000
+CT	- 0x40000000
+CL	- 0x20000000
+PVT	- 0x10000000
+DOE	- 0x08000000
+SWM	- 0x04000000
+CA	- 0x02000000
+MO	- 0x01000000
+PE	- 0x00800000
+NDF	- 0x00400000
+NOBC	- 0x00200000
+NOZC	- 0x00100000
+INI	- 0x00008000
+SPOR	- 0x00004000
+OLL	- 0x00002000
+OLH	- 0x00001000
+EWD	- 0x00000800
+DVNA	- 0x00000400
+DVPA	- 0x00000200
+PVLA	- 0x00000100
+PVHA	- 0x00000080

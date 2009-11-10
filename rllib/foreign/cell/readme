@@ -1,0 +1,35 @@
+CIP/Ethernet Library for Linux (CELL)
+Copyright (c) 2001 and beyond, Ron Gage - Saginaw, MI
+
+
+CELL is a communications library that facilitates communications to an Allen
+Bradley ControlLogix PLC.  With CELL, a programmer can write programs to do
+the following:
+
+Read/write controller scoped tag data in the ControlLogix PLC
+Read/write program scoped tag data in the ControlLogix PLC
+Retrieve a complete listing of all controller scoped tags
+Retrieve a complete listing of all program scoped tags
+Retrieve a complete listing of all program names
+Browse the ControlLogix Backplane
+Get individual module status (basic support at this time).
+
+
+CELL is distributed as an open-source, commercial software product.  CELL
+may be purchased directly from the author for $99.00 USD.  Distribution is
+via FTP.  The author accepts Money Orders, Checks and Credit Cards.  
+Invoices can be mailed out if needed.  Purchase orders must include 
+payment in full.
+
+To purchase a license to use CELL, send your payment to:
+
+Linux Network Services
+527 Ruby Street
+Saginaw, Michigan  48602
+
+To order with a credit card (Visa, MasterCard, Discover Card), please fax
+your card information, along with a purchase order to me at 
+(989) 792-4645.  This fax number is active from 7:00a to 4:30p weekdays.
+
+Custom programming services (PLC and PC) are available.  For more information,
+send an e-mail to ron@rongage.org, detailing what you are looking for.

@@ -1,0 +1,9 @@
+To build with windows:
+1.  Get and install the free commandline tools from borland (www.borland.com).
+2.  The Makefile is for LINUX. For Windows, you need the file MAKEFILE.MAK.
+    Either remove the file Makefile or call make with -fMAKEFILE.MAK.
+3.  Running make with no target will build statically used versions of the test 
+    programs and libnodave.dll
+4.  Running make with target "dynamic" builds dynamically linked versions of the test 
+    programs and libnodave.dll.
+    

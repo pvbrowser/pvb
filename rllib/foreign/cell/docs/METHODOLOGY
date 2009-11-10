@@ -1,0 +1,26 @@
+The CELL library make extensive use of what is called "unconnected
+messages".  An unconnected message is any message that does not rely on an
+established data path into the PLC.  Unconnected messages are used mostly
+for simplicity sake as there are some items within the connected message
+structures that are not clearly defined, making that route more
+"experimental".
+
+There are certain tradeoff's to using unconnected messages.  First of all,
+every message must contain the complete path to the object you are trying to
+send the message to.  In most cases, this is simply ethernet -> backplane
+-> cpu_slot (as is 95% of the cases where CELL will be used), but can be as
+complex as ethernet -> backplane -> slot with controlnet card -> node 31 on 
+controlnet -> backplane -> cpu_slot.  
+
+Second, a PLC can only handle a small number of unconnected sessions -
+something like 4-5 sessions.  An unconnected session is typically reserved
+for such things as network browsing (doing a "who" inside RSLinx) and so
+forth.
+
+Lastly, an unconnected session receives a lower priority from the PLC than a
+connected session.  This, in theory, results in slower answers to your
+inquiries from the PLC.  In practice, it is highly doubtful that most people
+will notice the speed difference.
+
+On the plus side, it appears that there is no limitation to the types of
+messages that can be dealt with while using unconnected messages.

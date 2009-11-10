@@ -1,0 +1,13 @@
+[Desktop Entry]
+Comment=ProcessViewBrowser HMI/SCADA
+Encoding=UTF-8
+Exec=pvbrowser
+GenericName=pvbrowser
+Icon=/opt/pvb/logo1.xpm
+MimeType=
+Name=pvbrowser
+Path=
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Application;SCADA;

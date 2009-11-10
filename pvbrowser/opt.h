@@ -1,0 +1,83 @@
+/****************************************************************************
+**
+** Copyright (C) 2000-2006 Lehrig Software Engineering.
+**
+** This file is part of the pvbrowser project.
+**
+** This file may be used under the terms of the GNU General Public
+** License version 2.0 as published by the Free Software Foundation
+** and appearing in the file LICENSE.GPL included in the packaging of
+** this file.
+**
+** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+**
+****************************************************************************/
+#ifndef OPT_H
+#define OPT_H
+
+#define MAX_PRINTF_LENGTH 1024+16 // must be bigger than or equal to MAX_PRINTF_LENGTH of ProcessViewServer
+#define MAXOPT 1024
+
+enum
+{
+  pvbUTF8 = 0,
+  pvbNone
+};
+
+typedef struct
+{
+  // inifile args
+  char manual[MAXOPT];      // index.html
+  int port;                 //=5050   # default port
+  int sshport;              //=50500  # local port for ssh connections
+  int zoom;                 //=100    # zoom factor in %
+  int fontzoom;             //=100    # zoom factor for fonts in %
+  int autoreconnect;        //=0      # 0|1
+  int exitpassword;         //=0      # 0|1
+  int menubar;              //=1      # 0|1
+  int toolbar;              //=1      # 0|1
+  int statusbar;            //=1      # 0|1
+  int scrollbars;           //=1      # 0|1
+  int fullscreen;           //=0      # 0|1
+  int maximized;            //=0      # 0|1
+  int echo_table_updates;   //=0      # 0|1
+  char temp[MAXOPT];        //=/tmp
+  char customlogo[MAXOPT];  //=/home/lehrig/cc/joschi/custom.bmp
+  char newwindow[MAXOPT];   //=pvbrowser
+  char ssh[MAXOPT];         //=ssh
+  char initialhost[MAXOPT]; //=pv://localhost
+  char language[MAXOPT];    // = german
+  char language_section[MAXOPT];
+  int  codec;               // strongly advised to use pvbUTF8
+  int  closed;
+  int  cookies;             // 0=NO 1=YES 2=ASK
+  char view_pdf[MAXOPT];    // okular
+  char view_img[MAXOPT];    // gimp
+  char view_svg[MAXOPT];    // inkscape
+  char view_txt[MAXOPT];    // kwrite
+  char view_csv[MAXOPT];    // ooffice
+  char view_html[MAXOPT];   // firefox
+
+  // command line args
+  int  arg_debug;
+  int  arg_localini;
+  char arg_ini[MAXOPT];
+  char arg_font[MAXOPT];
+  char arg_host[MAXOPT];
+  int  arg_disable;
+  int  arg_x;
+  int  arg_y;
+  int  arg_w;
+  int  arg_h;
+  int  arg_log;
+}OPT;
+
+int wsa();
+const char *inifile();
+const char *passfile();
+const char *pvpass(const char *p);
+const char *readIniFile();
+int mysystem(const char *command);
+
+#endif

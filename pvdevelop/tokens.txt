@@ -1,0 +1,10 @@
+font:
+image=
+align:
+background:
+foreground:
+check:
+echomode:
+multiselect:
+style:
+maxlines=

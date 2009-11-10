@@ -1,0 +1,121 @@
+Bug 459071 Submitted
+Bug 459071 has been added to the database
+Email sent to:
+adrian@novell.com, opensuse-bugs@opensuse.org, bugbot@landfill.bugzilla.org, bnc-team-screening@forge.provo.novell.com 
+Excluding:
+lehrig@t-online.de 
+
+ 
+Bug #459071 Overview
+Opened: 2008-12-15 05:10:01 MST  Last modified: 2008-12-15 05:10:01 MST
+  Classification
+Product
+Component
+Found in Version
+openSUSE  openSUSE.org  BuildService  unspecified
+  Severity
+Priority
+Status
+Target Milestone for Fix
+Blocker   P5 - None   NEW   ---
+  Hardware
+OS
+Resolution
+Keywords
+Other  Other
+  Related People  Group Visibility  Security
+  Assignee:   E-mail List <bnc-team-screening@forge.provo.novell.com> Globally Accessible   
+  Reporter:   Rainer Lehrig <lehrig@t-online.de> 
+  QA Contact:   Adrian Schroeter <adrian@novell.com> 
+
+   
+Copy to New 
+
+ 
+Edit Bug Attributes...  View Bug Activity  Format For Printing  XML  Votes: 0 Vote for this bug
+2008-12-15 05:10:011459071
+   
+Description
+Summary: ... checking filelist pvbrowser-devel: "/opt/pvb/LICENSE.GPL" is not allowed anymore in FHS 2.2. 
+  
+Description:   [reply] 
+Our RPM is build correctly.
+But on openSUSE 11.1 (not on other distries)
+there is a "... checking filelist" which fails.
+
+We want to install to /opt/pvb
+where "pvb" is the provider NOT the package and is allowed up to FHS
+
+http://www.pathname.com/fhs/pub/fhs-2.3.html#OPTADDONAPPLICATIONSOFTWAREPACKAGES
+##############################################
+/opt : Add-on application software packages
+Purpose
+/opt is reserved for the installation of add-on application software packages.
+A package to be installed in /opt must locate its static files in a separate
+/opt/<package> or /opt/<provider> directory tree, where <package> is a name
+that describes the software package and <provider> is the provider's LANANA
+registered name.
+##############################################
+
+I complained to "darix" on the opensuse-buildservice IRC
+about 3 months ago.
+He saild, that this issue could not be solved quickly because of heavy
+workload.
+
+But now it is getting urgent !!! because openSUSE 11.1 is out
+
+Please simply remove the "... checking filelist" if you can't solve the problem
+otherwise.
+
+######################################################
+Bug 459337 Submitted
+Bug 459337 has been added to the database
+Email sent to:
+adrian@novell.com, opensuse-bugs@opensuse.org, bugbot@landfill.bugzilla.org, bnc-team-screening@forge.provo.novell.com 
+Excluding:
+lehrig@t-online.de 
+
+ 
+ Bug #459337 Overview
+ Opened: 2008-12-16 02:35:29 MST  Last modified: 2008-12-16 02:35:29 MST
+   Classification
+   Product
+   Component
+   Found in Version
+   openSUSE  openSUSE.org  BuildService  unspecified
+     Severity
+     Priority
+     Status
+     Target Milestone for Fix
+     Normal   P5 - None   NEW   ---
+       Hardware
+       OS
+       Resolution
+       Keywords
+       Other  Mandrake 9.0
+         Related People  Group Visibility  Security
+           Assignee:   E-mail List <bnc-team-screening@forge.provo.novell.com> Globally Accessible   
+             Reporter:   Rainer Lehrig <lehrig@t-online.de> 
+               QA Contact:   Adrian Schroeter <adrian@novell.com> 
+
+                  
+                  Copy to New 
+
+                   
+                   Edit Bug Attributes...  View Bug Activity  Format For Printing  XML  Votes: 0 Vote for this bug
+                   2008-12-16 02:35:291459337
+                      
+                      Description
+                      Summary: "%if 0%{?mandriva_version}" seems not to be set on Mandriva_2009 
+                        
+                        Description:   [reply] 
+                        I tested with the following within the spec file:
+
+                        %if 0%{?mandriva_version}
+                        echo "mandriva_version"
+                        %endif
+
+
+                        On Mandriva_2008 i get the echo
+                        but not on Mandriva_2009
+

@@ -1,0 +1,58 @@
+<!DOCTYPE UI><UI version="3.2" stdsetdef="1">
+<class>Form1</class>
+<widget class="QDialog">
+    <property name="name">
+        <cstring>Form1</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>600</width>
+            <height>482</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <widget class="QPushButton">
+        <property name="name">
+            <cstring>PushButton1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>90</x>
+                <y>120</y>
+                <width>141</width>
+                <height>71</height>
+            </rect>
+        </property>
+        <property name="text">
+            <string>PushButton1</string>
+        </property>
+    </widget>
+    <widget class="QLabel">
+        <property name="name">
+            <cstring>TextLabel1</cstring>
+        </property>
+        <property name="geometry">
+            <rect>
+                <x>50</x>
+                <y>20</y>
+                <width>240</width>
+                <height>93</height>
+            </rect>
+        </property>
+        <property name="font">
+            <font>
+                <family>Times New Roman</family>
+                <pointsize>24</pointsize>
+            </font>
+        </property>
+        <property name="text">
+            <string>This is a modal&lt;br&gt;Dialog Box</string>
+        </property>
+    </widget>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

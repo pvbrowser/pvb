@@ -1,0 +1,401 @@
+CIP/Ethernet Library for Linux (CELL)
+DATA structure API document
+Copyright 2001 and beyond, Ron Gage - Saginaw, MI
+
+This is a draft document that attempts to teach about the different data
+structures used and utilized by the CELL library.  It is probably not
+complete and could very well be full of errors.
+
+* * DEBUG * *
+
+The integer called 'debug' is used throughout the various routines of CELL. 
+Valid values are 0-4.  Increasing the value of debug results in printing
+more information about the program flow and/or data manipulation within
+CELL.  
+
+Debug information is printed to console via a standard printf function. 
+Should you require debug messages routed to a different point (STDERR - for
+example), then you will need to redefine the 'dprint' macro, located at the
+beginning of lib/libcell.h
+
+The various debug levels are as follows:
+0 - NIL   	Print no debug info (default level)
+1 - VALUES	Print values as they are discovered
+2 - TRACE	Print entry and exit from various routines
+3 - DATA	Print data as it is sent and received from the CL
+4 - BUILD	Basically print everything, including the building of 
+		Data packet information.
+		
+* * DEFINED DATA * *
+
+The following are command destinations.  A destination is where you are
+sending a message to within the device.  A device can have several
+destinations, each of which does it's own thing.  Several of these
+destinations are undocumented - as in not a part of the CIP spec.  The
+undocumented destinations are AB specific.		
+
+#define IDENTITY 0x01
+#define ROUTER 0x02
+#define CONNECTION 0x05
+#define CONNECTION_MANAGER 0x06
+#define REGISTER 0x07
+#define BACKPLANE_DATA 0x66
+#define OBJECT_DETAILS 0x68
+#define OBJECT_PROP 0x6a
+#define OBJECT_LIST 0x6b
+#define STRUCT_LIST 0x6c
+#define PORT_OBJECT 0xf4
+
+These are the actual commands to be sent to the destinations mentioned
+above.  How each command works (or what it does) is variable, based on what
+'object' you are sending the command to.  Again, several of these are
+undocumented, AB specific extensions to the CIP spec.
+
+#define GET_ATTRIBUTE_ALL 0x01
+#define SET_ATTRIBUTE_ALL 0x02
+#define GET_ATTRIBUTE_LIST 0x03
+#define SET_ATTRIBUTE_LIST 0x04
+#define RESET 0x05
+#define START 0x06
+#define STOP 0x07
+#define CREATE 0x08
+#define DELETE 0x09
+#define APPLY_ATTRIBUTES 0x0d
+#define GET_ATTRIBUTE_SINGLE 0x0e
+#define SET_ATTRIBUTE_SINGLE 0x10
+#define FIND_NEXT_OBJECT 0x11
+#define RESTORE 0x15
+#define SAVE 0x16
+#define NOP 0x17
+#define GET_MEMBER 0x18
+#define SET_MEMBER 0x19
+#define INSERT_MEMBER 0x1a
+#define REMOVE_MEMBER 0x1b
+#define CONN_KICK_TIMER 0x4b
+#define CONN_OPEN 0x4c
+#define CONN_CLOSE 0x4d
+#define CONN_STOP 0x4e
+#define CONN_CHANGE_START 0x4f
+#define CONN_GET_STATUS 0x50
+#define CONN_CHANGE_COMPLETE 0x51
+#define CONN_AUDIT_CHANGE 0x52
+#define GET_ALL_INSTANCES 0x4b
+#define GET_SINGLE_PROP 0x4f
+#define PUT_SINGLE_PROP 0x50
+
+CPH stands for Common Packet Header.  The CPH is the beginning of the data
+portion of the ethernet packet, usually following immediately after the
+ethernet encapsulation header.  The CPH is used with the Send_RR_Data
+command (0x6f) and the Send_Unit_Data command (0x70).
+
+#define CPH_Null 0x00
+#define CPH_Connection_based 0xa1
+#define CPH_Sequenced_address 0x8002
+#define CPH_Transport_PDU 0xb1
+#define CPH_Unconnected_message 0xb2
+#define CPH_Sockinfo_ot 0x8000
+#define CPH_Sockinfo_to 0x8001
+
+PDU stands for ...  These are the commands used to send unconnected
+messages. 
+
+
+#define PDU_Forward_Close 0x4e
+#define PDU_Unconnected_Send 0x52
+#define PDU_Forward_Open 0x54
+#define PDU_GetConnectionData 0x56
+#define PDU_SearchConnectionData 0x57
+#define PDU_ExForwardOpen 0x59
+#define PDU_GetConnectionOwner 0x5a
+
+These are the actual Encapsulation commands.  These are ethernet specific. 
+This is the first byte of data actually sent from the PC to the PLC.
+
+#define ENCAPS_NOP 0x00
+#define ENCAPS_List_Targets 0x01
+#define ENCAPS_List_Services 0x04
+#define ENCAPS_ListIdentity 0x63
+#define ENCAPS_List_Interfaces 0x64
+#define ENCAPS_Register_Session 0x65
+#define ENCAPS_UnRegister_Session 0x66
+#define ENCAPS_SendRRData 0x6f
+#define ENCAPS_SendUnitData 0x70
+#define ENCAPS_Header_Length 24
+
+
+* * STRUCTURES * *
+
+typedef struct {
+unsigned short type;
+unsigned short length;
+unsigned short version;
+unsigned short flags;
+byte name[16];
+} _services;
+
+Services is the list of features that the device you are talking to
+contains.  In normal everyday use, the services will contain one item, type
+0x100, name "Communications".  If the device you are talking to does not
+support "Communications", then you can not communicate with it - a catch-22.
+
+
+typedef struct {
+unsigned long topbase;
+unsigned long base;
+unsigned long id;
+unsigned short type;
+unsigned long arraysize1;
+unsigned long arraysize2;
+unsigned long arraysize3;
+unsigned short datalen;
+byte *data;	
+byte name[32];
+} _tag_detail;
+
+Tag_Detail gives you information about a particular tag.  Topbase, base, and
+id are all used to identify the individual object within the PLC, type is
+the data type (can either be the CIP standard type, or there are AB specific
+extensions that do show up).  The arraysize values tell you how many
+elements in each array segment exist.  Datalen tells you how much data is
+available for this tag (length is in bytes).  The pointer to data is the
+actual tag data (values).  Name is the human readable tag name.
+
+
+typedef struct {
+_tag_detail *tag[2048];
+int count;
+int reference;
+} _tag_data;
+
+Tag_Data is a holding container for all the tags for a particular element
+(a program is an element, for this purpose).  Basically, an array of
+pointers (tag[x]) to the actual tag data, and a count of how many actual tags
+are in the container.  Reference is used to tell you the object ID that
+these tags belong to.
+
+
+typedef struct {
+long class;
+long instance;
+long member;
+long point;
+long attribute;
+byte *tagname;
+} _ioi_data;
+
+IOI_Data is the routing instrument in CIP.  IOI stands for Internal Object
+Identifier.  The IOI is clearly defined in the CIP spec.  One thing that is
+NOT clearly defined is that a single command can have several IOI segments
+and that the segments can repeat.
+
+
+typedef struct {
+byte rx_bad_m;
+byte err_threshold;
+byte rx_bad_crc;
+byte rx_bus_timeout;
+byte tx_bad_crc;
+byte tx_bus_timeout;
+byte tx_retry;
+byte status;
+unsigned short address;
+byte rev_major;
+byte rev_minor;
+unsigned long serial_number;
+unsigned short rack_size;
+} _backplane_data;
+
+This is the structure of data available for the ControlLogix backplane. 
+This structure is not documented.
+
+
+typedef struct {
+short number1;
+byte number2;
+byte slot;
+short number3;
+short number4;
+} _port;
+
+typedef struct {
+short family;
+unsigned short port;
+unsigned long address;
+byte zero[8];
+} _sock;
+
+Port and Sock are CIP defined structures.  CELL does not utilize them but
+defines them for possible future use.
+
+
+typedef struct {
+unsigned short ID;
+unsigned short type;
+unsigned short product_code;
+byte rev_lo;
+byte rev_hi;
+short status;
+unsigned long serial;
+byte namelen;
+char name[32];
+} _identity;
+
+Identity is used to define the basics about a card within the ControlLogix
+chassis.  ID indicates the manufacturer of the device, type gives a generic
+indication of what the card does (i.e., generic input/output,
+communications adaptor, processor, etc...), and product_code is a
+manufacturer specific identifier for the device.  Serial is a device serial
+number.  Name is the ascii representation of the card's name.
+
+
+
+typedef struct {
+int size;
+int slot;
+int cpulocation;
+_identity *identity[32];
+} _rack;
+
+Rack is a container for the entire ControlLogix chassis.  Size is the size
+of the chassis, slot is the slot number of the Communications card,
+cpulocation is the slot number for the first found CPU in the rack, and the
+array of identity structs gives you more specific data about each card in
+the chassis.
+
+
+typedef struct {
+short number1;
+short number2;
+short len;
+short number3;
+short number4;
+short number5;
+unsigned short port;
+unsigned long ip_addr;
+short number6;
+short number7;
+short number8;
+short number9;
+char address[16];
+} _interfaces;
+
+Interfaces is an undocumented structure in the ControlLogix.  It identifies
+the interface you are talking to the PLC on.  The fields beginning with
+"number" are not known and appear to not be relevent.
+
+
+typedef struct {
+byte data[DATA_Buffer_Length];
+unsigned short len;
+unsigned short overall_len; 
+} _data_buffer;
+
+Data_Buffer is a container for all data that is transmitted and received
+from CELL.  Of note here is the two length coding fields - len and
+overall_len.  Len is the length of just the data portion of the packet (does
+not include the Encapsulation header or the path), whereas overall_len is
+the total length of everything.
+
+
+
+typedef struct {
+int device1;
+int device2;
+int device3;
+int device4;
+} _path;
+
+Path is used to identify the route to take to get the the CPU you wish to
+talk to.
+
+
+typedef struct {
+unsigned short command;
+unsigned short len;
+unsigned long handle;
+unsigned long status;
+byte context[8];
+unsigned long options;
+} _encaps_header;
+
+Encaps_header is the Ethernet specific packet encapsulation header.  Command
+is the ENCAPS_[command] as listed above.  Len is the length of the data
+portion of the command.  Handle is the session ID as generated and reported
+by the PLC you are talking to.  Status is the set to '0' for commands and
+should be '0' on replies.  Context is an 8 byte field that is copied from
+the command header to the reply header - it has no meaning in the
+ControlLogix PLC.  Options are set to '0' for Ethernet communications.
+
+
+typedef struct {
+unsigned long session_id;
+int file_handle;
+byte *hostname;
+byte context[8];
+byte error;
+} _comm_header;
+
+Comm_Header is used to identify all relevent data used for communicating
+with the ControlLogix.  Session_id is the session handle used in the
+Encaps_header.  File_handle is the file handle returned by the OS for
+reading/writing to the ethernet socket.  Hostname is the domain name (or IP
+address) for the ControlLogix you are communicating with.  Context is the
+context from the Encaps_header.  Error will be '0' unless an OS level error
+occured during communications.
+
+
+
+typedef struct {
+unsigned long ctl;
+float sp;
+float kp;
+float ki;
+float kd;
+float bias;
+float maxs;
+float mins;
+float db;
+float so;
+float max0;
+float min0;
+float upd;
+float pv;
+float err;
+float out;
+float pvh;
+float pvl;
+float dvp;
+float dvn;
+float pvdb;
+float dvdb;
+float max1;
+float min1;
+float tie;
+float maxcv;
+float mincv;
+float mintie;
+float maxtie;
+float data[17];
+} _PID ;
+
+PID is the structure of data as returned from the ControlLogix for PID type
+tags.
+
+
+typedef struct {
+byte heartbeat[3];
+byte ctl;
+long preset;
+long accumulator;
+} _timer;
+
+typedef struct {
+byte junk[3];
+byte ctl;
+long preset;
+long accumulator;
+} _counter;
+
+Timer and Counter are the structures of data as returned from the
+ControlLogix for these types of tags.
+

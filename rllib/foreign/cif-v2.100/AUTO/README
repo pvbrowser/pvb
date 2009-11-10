@@ -1,0 +1,33 @@
+You'd like the scripts 'cif_load' and 'cif_unload' to be
+executed automatically at system start and shut down?
+
+-------------- Strategy for SuSe Distribution --------------
+CIFdrv is an example script for automatic load and unload of
+CIF device driver. It was created from /etc/init.d/skeleton
+(SuSe package). For details see 'man 7 init.d'.
+
+After you placed this script in /etc/init.d directory, you
+must create a link to it in /sbin; with 'insserv' add it
+to 'rcx.d'; add a line 'START_CIFDRV="yes" to /etc/rc.config.
+
+Lines 34, 35 in the script file CIFdrv specify where
+'cif_load' and 'cif_unload' are located.
+	CIFDRV_LOAD=/usr/sbin/CIFDRV_LOAD	
+	CIFDRV_UNLOAD=/usr/sbin/CIFDRV_UNLOAD
+
+In this case /usr/sbin/CIFDRV_LOAD and .../CIFDRV_UNLOAD are 
+links to /home/cif/cif-V2.000/src/cif_load and .../cif_unload 
+on my computer. This can be changed if you like. 
+In 'cif_load' I decided to give module file name (cif.o) for
+'insmod' command with full path. If you don't like it, please 
+see insmod manual on how to use MODPATH environment variable 
+or the module configuration file /etc/modules.conf.
+
+It seems to be very complicated, but isn't!
+
+
+
+DTsaava@Hilscher.com
+
+
+Hattersheim, March 2001.

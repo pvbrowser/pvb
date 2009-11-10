@@ -1,0 +1,186 @@
+# Microsoft Developer Studio Generated Dependency File, included by Cell.mak
+
+.\lib\aliascheck.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\attach.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\cpf.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\cpf_data.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\defs.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\establish_connection.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\fill_header.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_backplane_data.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_device_data.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_object_config.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_object_config_list.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_object_details.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_object_details_list.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_port_data.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_program_details.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_program_list.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_struct_config.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_struct_details.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\get_struct_list.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\getsize.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\ioi.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\list_interfaces.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\list_ports.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\list_services.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\makepath.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\nop.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\read_multi_object_value.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\read_object_value.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\readdata.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\register_session.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\senddata.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\sendRRdata.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\settimeout.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\unconnected_send.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\unregister_session.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\who.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	
+
+.\lib\write_object_value.c : \
+	"..\..\program files\microsoft visual studio\vc98\include\basetsd.h"\
+	".\lib\libcell.h"\
+	

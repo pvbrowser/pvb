@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title>Primer</title>
+  <link rel="stylesheet" type="text/css" href="format.css">
+  <meta name="GENERATOR" content="generator by Rainer Lehrig">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+pvbrowser primer
+<hr>
+<a href="de_p9.html">Zur&uuml;ck</a>
+<a href="de_index.html">Inhalt</a>
+<a href="de_p11.html">Vor</a>
+<hr>
+<!-- begin content -->
+<h3>Ausgabe auf Widgets</h3>
+<p>
+Die Referenz zur Programmierung kann unter “Help-&#062;Manual-&#062;pvslib” innerhalb von pvdevelop gefunden werden. Alle Funktionen haben einen „PARAM *p“ als ersten Parameter.
+In dieser Struktur hält pvserver einige wichtige Informationen.
+Die wichtigste Information ist p-&#062;s, was den Socket angibt, der zur Kommunikation mit dem Klienten verwendet wird. Die meisten der angebotenen Funktionen, werden einfach einen mit Zeilenvorschub abgeschlossenen Text an pvbrowser senden. pvbrowser interpretiert den Text und ruft die entsprechenden Methoden aus der Qt Bibliothek auf. 
+</p>
+<p>
+Beispiel:
+</p>
+<div style='clear:left; background:#DEDEDE;'><pre>
+pvPrintf(p, label1, ”Hello world. This is call number %d”, call_number++);
+</pre></div>
+
+<p>
+Alle Widgets, die Sie in dem Designer eingeben, werden in dem enum in der generierten Maske aufgeführt. Angenommen Sie haben ein Label „label1“ eingegeben. Dann können Sie auf dem Label einen Text mit der oben aufgeführten Funktion ausgeben. Die meisten in der Referenz angegebenen Funktionen arbeiten nach diesem Prinzip.
+</p>
+<p>
+Die am meisten verwendeten Ausgabe Funktionen können aus pvdevelop eingefügt werden, indem Sie aus der „Widget Name“ ToolBox auf einen Namen klicken.
+</p>
+<!-- end content -->
+<hr style='clear:left;'>
+<a href="de_p9.html">Zur&uuml;ck</a>
+<a href="de_index.html">Inhalt</a>
+<a href="de_p11.html">Vor</a>
+</body>
+</html>
