@@ -88,27 +88,29 @@
 <a name="l00069"></a>00069     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a02da348cb1bef2021a253189f55aeb11">data2int</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *data);
 <a name="l00070"></a>00070     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a3d80c0194c6836bc9419395da0daabdc">int2data</a>(<span class="keywordtype">int</span> val, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *data);
 <a name="l00071"></a>00071     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a6251a9bdb6cf258219bd324c7c8e0bb5">intsize</a>();
-<a name="l00072"></a>00072   <span class="keyword">private</span>:
-<a name="l00073"></a>00073     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a4ce50e07415541dc3ce44ef6d5eb20fc">buf2int_rtu</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
-<a name="l00074"></a>00074     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#ab8548df29f72a5400bfca2a2576e171e">int2buf_rtu</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
-<a name="l00075"></a>00075     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a7f0fa2807658c4fd4b7fe0a582f8c386">buf2int_ascii</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
-<a name="l00076"></a>00076     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#ac8a9fb10a9d7940eea47945a62929af6">int2buf_ascii</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
-<a name="l00077"></a>00077     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#a7fcc08ea7c9efff7529d5e9ceb5722b2">insertLRC</a>(<span class="keywordtype">int</span> len);
-<a name="l00078"></a>00078     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#af22f8da932f8c51dc584596f2e7e4d47">insertCRC</a>(<span class="keywordtype">int</span> len);
-<a name="l00079"></a>00079     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#ad9c8ac435545e9f724bd905c1db49f28">LRCerror</a>(<span class="keywordtype">int</span> len);
-<a name="l00080"></a>00080     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#af960ac56c12c00e7dd2ce0a3c3fbfb1e">CRCerror</a>(<span class="keywordtype">int</span> len);
-<a name="l00081"></a><a class="code" href="classrlModbus.html#add9b1e7cbb325c771bdfe1ebf780d3b5">00081</a>     <a class="code" href="classrlSocket.html">rlSocket</a> *<a class="code" href="classrlModbus.html#add9b1e7cbb325c771bdfe1ebf780d3b5">s</a>;
-<a name="l00082"></a><a class="code" href="classrlModbus.html#ada836e7daccef09a72c3bf782451e160">00082</a>     <a class="code" href="classrlSerial.html">rlSerial</a> *<a class="code" href="classrlModbus.html#ada836e7daccef09a72c3bf782451e160">tty</a>;
-<a name="l00083"></a><a class="code" href="classrlModbus.html#a8b8d2c8ccd15c70b3313b914b9252c09">00083</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="classrlModbus.html#a8b8d2c8ccd15c70b3313b914b9252c09">tel</a>;
-<a name="l00084"></a><a class="code" href="classrlModbus.html#a0404de78dcd9182a39be0f7ffe23b19c">00084</a>     <span class="keywordtype">long</span>     <a class="code" href="classrlModbus.html#a0404de78dcd9182a39be0f7ffe23b19c">maxtel</a>;
-<a name="l00085"></a><a class="code" href="classrlModbus.html#aa6a054b45000251c837abd658ef03339">00085</a>     <span class="keywordtype">int</span>      <a class="code" href="classrlModbus.html#aa6a054b45000251c837abd658ef03339">mode</a>;
-<a name="l00086"></a><a class="code" href="classrlModbus.html#a9777d76fbc901e32d03bbc86ca557842">00086</a>     <span class="keywordtype">char</span>     <a class="code" href="classrlModbus.html#a9777d76fbc901e32d03bbc86ca557842">delimitor</a>;
-<a name="l00087"></a>00087 };
-<a name="l00088"></a>00088 
-<a name="l00089"></a>00089 <span class="preprocessor">#endif</span>
-<a name="l00090"></a>00090 <span class="preprocessor"></span>
+<a name="l00072"></a><a class="code" href="classrlModbus.html#a5d323c81b0dac5fd991fd28e9fb3ac80">00072</a>     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a5d323c81b0dac5fd991fd28e9fb3ac80">autoreconnectSocket</a>;
+<a name="l00073"></a>00073 
+<a name="l00074"></a>00074   <span class="keyword">private</span>:
+<a name="l00075"></a>00075     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a4ce50e07415541dc3ce44ef6d5eb20fc">buf2int_rtu</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
+<a name="l00076"></a>00076     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#ab8548df29f72a5400bfca2a2576e171e">int2buf_rtu</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
+<a name="l00077"></a>00077     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#a7f0fa2807658c4fd4b7fe0a582f8c386">buf2int_ascii</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
+<a name="l00078"></a>00078     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#ac8a9fb10a9d7940eea47945a62929af6">int2buf_ascii</a>(<span class="keywordtype">int</span> i, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf);
+<a name="l00079"></a>00079     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#a7fcc08ea7c9efff7529d5e9ceb5722b2">insertLRC</a>(<span class="keywordtype">int</span> len);
+<a name="l00080"></a>00080     <span class="keywordtype">void</span> <a class="code" href="classrlModbus.html#af22f8da932f8c51dc584596f2e7e4d47">insertCRC</a>(<span class="keywordtype">int</span> len);
+<a name="l00081"></a>00081     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#ad9c8ac435545e9f724bd905c1db49f28">LRCerror</a>(<span class="keywordtype">int</span> len);
+<a name="l00082"></a>00082     <span class="keywordtype">int</span>  <a class="code" href="classrlModbus.html#af960ac56c12c00e7dd2ce0a3c3fbfb1e">CRCerror</a>(<span class="keywordtype">int</span> len);
+<a name="l00083"></a><a class="code" href="classrlModbus.html#add9b1e7cbb325c771bdfe1ebf780d3b5">00083</a>     <a class="code" href="classrlSocket.html">rlSocket</a> *<a class="code" href="classrlModbus.html#add9b1e7cbb325c771bdfe1ebf780d3b5">s</a>;
+<a name="l00084"></a><a class="code" href="classrlModbus.html#ada836e7daccef09a72c3bf782451e160">00084</a>     <a class="code" href="classrlSerial.html">rlSerial</a> *<a class="code" href="classrlModbus.html#ada836e7daccef09a72c3bf782451e160">tty</a>;
+<a name="l00085"></a><a class="code" href="classrlModbus.html#a8b8d2c8ccd15c70b3313b914b9252c09">00085</a>     <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *<a class="code" href="classrlModbus.html#a8b8d2c8ccd15c70b3313b914b9252c09">tel</a>;
+<a name="l00086"></a><a class="code" href="classrlModbus.html#a0404de78dcd9182a39be0f7ffe23b19c">00086</a>     <span class="keywordtype">long</span>     <a class="code" href="classrlModbus.html#a0404de78dcd9182a39be0f7ffe23b19c">maxtel</a>;
+<a name="l00087"></a><a class="code" href="classrlModbus.html#aa6a054b45000251c837abd658ef03339">00087</a>     <span class="keywordtype">int</span>      <a class="code" href="classrlModbus.html#aa6a054b45000251c837abd658ef03339">mode</a>;
+<a name="l00088"></a><a class="code" href="classrlModbus.html#a9777d76fbc901e32d03bbc86ca557842">00088</a>     <span class="keywordtype">char</span>     <a class="code" href="classrlModbus.html#a9777d76fbc901e32d03bbc86ca557842">delimitor</a>;
+<a name="l00089"></a>00089 };
+<a name="l00090"></a>00090 
+<a name="l00091"></a>00091 <span class="preprocessor">#endif</span>
+<a name="l00092"></a>00092 <span class="preprocessor"></span>
 </pre></div></div>
-<hr size="1"/><address style="text-align: right;"><small>Generated on Wed Oct 28 16:54:30 2009 for rllib by&nbsp;
+<hr size="1"/><address style="text-align: right;"><small>Generated on Wed Nov 11 07:27:29 2009 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.1 </small></address>
 </body>

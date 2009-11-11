@@ -1528,6 +1528,7 @@
       <keyword name="data2int" id="rlModbus::data2int" ref="classrlModbus.html#a02da348cb1bef2021a253189f55aeb11" />
       <keyword name="int2data" id="rlModbus::int2data" ref="classrlModbus.html#a3d80c0194c6836bc9419395da0daabdc" />
       <keyword name="intsize" id="rlModbus::intsize" ref="classrlModbus.html#a6251a9bdb6cf258219bd324c7c8e0bb5" />
+      <keyword name="autoreconnectSocket" id="rlModbus::autoreconnectSocket" ref="classrlModbus.html#a5d323c81b0dac5fd991fd28e9fb3ac80" />
       <keyword name="buf2int_rtu" id="rlModbus::buf2int_rtu" ref="classrlModbus.html#a4ce50e07415541dc3ce44ef6d5eb20fc" />
       <keyword name="int2buf_rtu" id="rlModbus::int2buf_rtu" ref="classrlModbus.html#ab8548df29f72a5400bfca2a2576e171e" />
       <keyword name="buf2int_ascii" id="rlModbus::buf2int_ascii" ref="classrlModbus.html#a7f0fa2807658c4fd4b7fe0a582f8c386" />

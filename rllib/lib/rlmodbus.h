@@ -69,6 +69,8 @@ class rlModbus
     int  data2int(const unsigned char *data);
     int  int2data(int val, unsigned char *data);
     int  intsize();
+    int  autoreconnectSocket;
+
   private:
     int  buf2int_rtu(unsigned char *buf);
     void int2buf_rtu(int i, unsigned char *buf);

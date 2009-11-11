@@ -26,6 +26,7 @@ rlModbus::rlModbus(long max_telegram_length, int _mode, char end_delimitor)
   delimitor = end_delimitor;
   s = NULL;
   tty = NULL;
+  autoreconnectSocket = 1;
 }
 
 rlModbus::~rlModbus()
@@ -104,7 +105,7 @@ int rlModbus::write(int slave, int function, const unsigned char *data, int data
   {
     if(s->isConnected() == 0)
     {
-      s->connect();
+      if(autoreconnectSocket) s->connect();
       if(s->isConnected() == 0) return MODBUS_ERROR;
     }
     if(s->write(tel,len-2) < 0) return MODBUS_ERROR; // don't send LRC or CRC
