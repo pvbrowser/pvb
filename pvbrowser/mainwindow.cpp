@@ -1246,10 +1246,6 @@ char buf[MAX_PRINTF_LENGTH] = "";
     if(pvbtab[ind].view != NULL) pvbtab[ind].view->setDisabled(1); // crash when pvservers are forced to abort -> test if own|qt|os problem
     if(opt.arg_debug) printf("view->setDisabled4 end\n");
     qApp->beep();
-#ifdef PVWIN32
-    isReconnect = 1;
-    slotReconnect();
-#endif        
   }
   else
   {
