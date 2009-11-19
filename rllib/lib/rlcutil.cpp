@@ -98,26 +98,25 @@ int rlexec(const char *command)
   buf = new char [strlen(command)+1];
   strcpy(buf,command);
   iarg = 0;
-  for(i=0; buf[i] != '\0'; i++)
+  i = 0;
+  while(buf[i] != '\0')
   {
     if(buf[i] == '\"')
     {
       i++;
       arg[iarg++] = &buf[i];
       while(buf[i] != '\"' && buf[i] != '\0') i++;
-      if(buf[i] == '\"') buf[i++] = '\0';
+      if(buf[i] == '\0') break;
+      buf[i] = '\0';
     }
-    else
+    else if(buf[i] != ' ' || i == 0)
     {
-      if(buf[i] != ' ' && (i==0 || buf[i-1] == '\0'))
-      {
-        arg[iarg++] = &buf[i];
-      }
-      if(buf[i] == ' ')
-      {
-        buf[i] = '\0';
-      }
+      arg[iarg++] = &buf[i];
+      while(buf[i] != ' ' && buf[i] != '\0') i++;
+      if(buf[i] == '\0') break;
+      buf[i] = '\0';
     }
+    i++;
   }
   arg[iarg] = NULL;
 
