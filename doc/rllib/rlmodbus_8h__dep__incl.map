@@ -1,7 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="9,155,60,181"/>
-<area shape="rect" href="$rlmodbus_8cpp.html" title="rlmodbus.cpp" alt="" coords="21,80,120,107"/>
-<area shape="rect" href="$rlmodbusclient_8h.html" title="rlmodbusclient.h" alt="" coords="144,80,259,107"/>
-<area shape="rect" href="$rlmodbusclient_8cpp.html" title="rlmodbusclient.cpp" alt="" coords="109,155,240,181"/>
-<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="264,155,341,181"/>
-</map>
+<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="5,155,56,181">
+<area shape="rect" href="$rlmodbusclient_8h.html" title="rlmodbusclient.h" alt="" coords="83,80,197,107">
+<area shape="rect" href="$rlmodbus_8cpp.html" title="rlmodbus.cpp" alt="" coords="221,80,320,107">
+<area shape="rect" href="$rlmodbusclient_8cpp.html" title="rlmodbusclient.cpp" alt="" coords="80,155,211,181">
+<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="235,155,312,181">

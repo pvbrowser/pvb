@@ -2593,6 +2593,11 @@ You can control the size of the area occupied for the dock area by specifying th
 min/man size property of the root_id widget.
 </pre> */
 int pvAddDockWidget(PARAM *p,const char *title, int dock_id, int root_id, int allow_close=0, int floating=1, int allow_left=1, int allow_right=0, int allow_top=0, int allow_bottom=0);
+/*! <pre>
+This function will delete the DockWidget.
+You may reuse the widgets within the DockWidget for other purposes.
+</pre> */
+int pvDeleteDockWidget(PARAM *p, int dock_id);
 /** @} */ // end of group
 
 /** @defgroup QwtPlotWidget QwtPlotWidget

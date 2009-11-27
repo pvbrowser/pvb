@@ -802,7 +802,30 @@ void Interpreter::interpretc(const char *command)
 
 void Interpreter::interpretd(const char *command)
 {
-  if(strncmp(command,"displayNum(",11) == 0)
+  if(strncmp(command,"deleteDockWidget(",17) == 0)
+  {
+    int dock_id;
+    sscanf(command,"deleteDockWidget(%d",&dock_id);
+    int id_dock = dock_id - DOCK_WIDGETS_BASE;
+    if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
+    {
+      MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock];
+      if(dock != NULL)
+      {
+        delete dock;
+        dock = NULL;
+      }
+      else
+      {
+        printf("deleteDockWidget dock_id=%d already NULL\n", dock_id);
+      }
+    }
+    else
+    {
+      printf("deleteDockWidget dock_id=%d out of range\n", dock_id);
+    }
+  }
+  else if(strncmp(command,"displayNum(",11) == 0)
   {
     sscanf(command,"displayNum(%d,%d)",&i,&n);
     if(i < 0) return;
@@ -939,7 +962,7 @@ void Interpreter::interpretf(const char *command)
     int ret;
     char buf[80];
 
-    memset(&remote,sizeof(remote),0);
+    memset(&remote,0,sizeof(remote));
     sscanf(command,"fileCache(%d,%d,%d,%d,%d,%d,%d,%d,%d"
       ,&remote.tm_sec
       ,&remote.tm_min

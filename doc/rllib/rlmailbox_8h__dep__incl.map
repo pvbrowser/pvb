@@ -1,15 +1,13 @@
-<map id="G" name="G">
-<area shape="rect" href="$rldataacquisition_8h.html" title="rldataacquisition.h" alt="" coords="116,80,241,107"/>
-<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="665,155,716,181"/>
-<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="388,155,465,181"/>
-<area shape="rect" href="$rlmailbox_8cpp.html" title="rlmailbox.cpp" alt="" coords="404,80,503,107"/>
-<area shape="rect" href="$rlmodbusclient_8h.html" title="rlmodbusclient.h" alt="" coords="265,80,380,107"/>
-<area shape="rect" href="$rlopcxmlda_8h.html" title="rlopcxmlda.h" alt="" coords="849,80,945,107"/>
-<area shape="rect" href="$rlppiclient_8h.html" title="rlppiclient.h" alt="" coords="737,80,825,107"/>
-<area shape="rect" href="$rlsiemenstcpclient_8h.html" title="rlsiemenstcpclient.h" alt="" coords="527,80,663,107"/>
-<area shape="rect" href="$rldataacquisition_8cpp.html" title="rldataacquisition.cpp" alt="" coords="71,155,209,181"/>
-<area shape="rect" href="$rlmodbusclient_8cpp.html" title="rlmodbusclient.cpp" alt="" coords="233,155,364,181"/>
-<area shape="rect" href="$rlopcxmlda_8cpp.html" title="rlopcxmlda.cpp" alt="" coords="865,155,975,181"/>
-<area shape="rect" href="$rlppiclient_8cpp.html" title="rlppiclient.cpp" alt="" coords="740,155,841,181"/>
-<area shape="rect" href="$rlsiemenstcpclient_8cpp.html" title="rlsiemenstcpclient.cpp" alt="" coords="489,155,641,181"/>
-</map>
+<area shape="rect" href="$rldataacquisition_8h.html" title="rldataacquisition.h" alt="" coords="299,80,424,107">
+<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="549,155,600,181">
+<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="323,155,400,181">
+<area shape="rect" href="$rlmodbusclient_8h.html" title="rlmodbusclient.h" alt="" coords="109,80,224,107">
+<area shape="rect" href="$rlsiemenstcpclient_8h.html" title="rlsiemenstcpclient.h" alt="" coords="611,80,747,107">
+<area shape="rect" href="$rlppiclient_8h.html" title="rlppiclient.h" alt="" coords="448,80,536,107">
+<area shape="rect" href="$rlopcxmlda_8h.html" title="rlopcxmlda.h" alt="" coords="771,80,867,107">
+<area shape="rect" href="$rlmailbox_8cpp.html" title="rlmailbox.cpp" alt="" coords="891,80,989,107">
+<area shape="rect" href="$rldataacquisition_8cpp.html" title="rldataacquisition.cpp" alt="" coords="160,155,299,181">
+<area shape="rect" href="$rlmodbusclient_8cpp.html" title="rlmodbusclient.cpp" alt="" coords="5,155,136,181">
+<area shape="rect" href="$rlsiemenstcpclient_8cpp.html" title="rlsiemenstcpclient.cpp" alt="" coords="624,155,776,181">
+<area shape="rect" href="$rlppiclient_8cpp.html" title="rlppiclient.cpp" alt="" coords="424,155,525,181">
+<area shape="rect" href="$rlopcxmlda_8cpp.html" title="rlopcxmlda.cpp" alt="" coords="800,155,909,181">

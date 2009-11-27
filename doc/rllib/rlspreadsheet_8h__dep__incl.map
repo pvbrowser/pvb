@@ -1,7 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="9,155,60,181"/>
-<area shape="rect" href="$rlspreadsheet_8cpp.html" title="rlspreadsheet.cpp" alt="" coords="24,80,147,107"/>
-<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="279,155,356,181"/>
-<area shape="rect" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="171,80,280,107"/>
-<area shape="rect" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="132,155,255,181"/>
-</map>
+<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="5,155,56,181">
+<area shape="rect" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="87,80,196,107">
+<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="227,155,304,181">
+<area shape="rect" href="$rlspreadsheet_8cpp.html" title="rlspreadsheet.cpp" alt="" coords="271,80,393,107">
+<area shape="rect" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="80,155,203,181">

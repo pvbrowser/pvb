@@ -4157,6 +4157,17 @@ int pvAddDockWidget(PARAM *p,const char *title, int dock_id, int root_id, int al
   return 0;
 }
 
+int pvDeleteDockWidget(PARAM *p, int dock_id)
+{
+  char buf[80];
+  if(dock_id <  ID_DOCK_WIDGETS )                   return -1;
+  if(dock_id >= ID_DOCK_WIDGETS + MAX_DOCK_WIDGETS) return -1;
+
+  sprintf(buf,"deleteDockWidget(%d)\n", dock_id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 //-------------------------------------------------------
 // QwtPlotWidget
 //-------------------------------------------------------
