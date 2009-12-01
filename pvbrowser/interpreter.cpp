@@ -610,6 +610,8 @@ void Interpreter::interpreta(const char *command)
             w->setParent(dock);
             dock->setWidget(w);
 
+            dock->w = width;
+            dock->h = height;
             dock->setGeometry(x,y,width,height);
           }
         }
@@ -1839,7 +1841,12 @@ void Interpreter::interpretr(const char *command)
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {
         MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock]; 
-        if(dock != NULL) dock->resize(w,h);
+        if(dock != NULL) 
+        {
+          dock->w = w;
+          dock->h = h;
+          dock->resize(w,h);
+        }  
       }
       return;
     }  
@@ -2302,7 +2309,12 @@ void Interpreter::interprets(const char *command)
                 x += cw->x();
                 y += cw->y();
               }
-              if(dock != NULL) dock->setGeometry(x,y,w,h);
+              if(dock != NULL)
+              {
+                dock->w = w;
+                dock->h = h;
+                dock->setGeometry(x,y,w,h);
+              }  
             }
             return;
           }  

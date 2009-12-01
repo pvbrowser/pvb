@@ -2964,11 +2964,21 @@ MyQDockWidget::MyQDockWidget(QString &title, int *sock, int ident, int dockID, Q
   s = sock;
   id = ident;
   dock_id = dockID;
+  w = h = 400;
+  connect(this, SIGNAL(topLevelChanged(bool)), SLOT(slotTopLevelChanged(bool)));
   if(name != NULL) setObjectName(name);
 }
 
 MyQDockWidget::~MyQDockWidget()
 {
+}
+
+void MyQDockWidget::slotTopLevelChanged(bool toplevel)
+{
+  if(toplevel)
+  {
+    resize(w,h);
+  }
 }
 
 void mySetForegroundColor(QWidget *w, int type, int r, int g, int b)

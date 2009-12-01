@@ -579,6 +579,10 @@ class MyQDockWidget : public QDockWidget
 public:
     MyQDockWidget(QString &title, int *sock, int ident, int dock_id, QWidget *parent=0, const char *name=0);
     ~MyQDockWidget();
+    int w, h;
+
+public slots:
+   void slotTopLevelChanged(bool toplevel);
 
 private:
     int *s,id,dock_id;
