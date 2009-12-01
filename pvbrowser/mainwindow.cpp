@@ -409,6 +409,10 @@ void MainWindow::createActions()
   storebmpAct->setStatusTip(l_status_save_as_bmp);
   connect(storebmpAct, SIGNAL(triggered()), this, SLOT(slotStorebmp()));
 
+  gohomeAct = new QAction(QIcon(":/images/gohome.png"), opt.initialhost, this);
+  gohomeAct->setStatusTip(opt.initialhost);
+  connect(gohomeAct, SIGNAL(triggered()), this, SLOT(slotGohome()));
+
   logbmpAct = new QAction(QIcon(":/images/logbmp.png"), l_log_as_bmp, this);
   logbmpAct->setStatusTip(l_status_log_as_bmp);
   connect(logbmpAct, SIGNAL(triggered()), this, SLOT(slotLogbmp()));
@@ -564,6 +568,7 @@ void MainWindow::createToolBars()
   tabToolBar->hide();
   // end tabbed version
 
+  fileToolBar->addAction(gohomeAct);
   fileToolBar->addAction(storebmpAct);
   fileToolBar->addAction(logbmpAct);
   fileToolBar->addAction(logpvmAct);
@@ -1260,6 +1265,12 @@ char buf[MAX_PRINTF_LENGTH] = "";
 #endif
   semaphore.release();
   if(opt.arg_debug > 1) printf("rec2\n");
+}
+
+void MainWindow::slotGohome()
+{
+  if(opt.arg_debug) printf("slotGohome\n");
+  slotUrl(QString(opt.initialhost));
 }
 
 void MainWindow::slotLogbmp()

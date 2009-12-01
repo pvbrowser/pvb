@@ -109,6 +109,7 @@ private slots:
   void slotFileOpt();
   void slotWindow();
   void slotStorebmp();
+  void slotGohome();
   void slotLogbmp();
   void slotLogpvm();
   void slotPrint();
@@ -147,6 +148,7 @@ private:
   QAction *windowAct;
   QAction *reconnectAct;
   QAction *storebmpAct;
+  QAction *gohomeAct;
   QAction *logbmpAct;
   QAction *logpvmAct;
   QAction *printAct;

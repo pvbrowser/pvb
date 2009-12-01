@@ -17,6 +17,7 @@
     <file>images/newtab.png</file>
     <file>images/deletetab.png</file>
     <file>images/reload.png</file>
+    <file>images/gohome.png</file>
 </qresource>
 </RCC>
 
