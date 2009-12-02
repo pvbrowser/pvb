@@ -109,6 +109,13 @@ Call system(command)
 int rlsystem(const char *command);
 
 /** <pre>
+Submit a pvserver
+Example:
+rlSubmitPvserver("HOME","/temp/murx","pvs","-exit_on_bind_error -exit_after_last_client_terminates");
+</pre> */
+int rlSubmitPvserver(const char *env, const char *path, const char *pvs, const char *options=NULL);
+
+/** <pre>
 Get option from string
 return = 0 # not found
 return = 1 # found

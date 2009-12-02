@@ -82,23 +82,25 @@
 <a name="l00105"></a>00105 
 <a name="l00109"></a>00109 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#9aed04e3f5dd52694cbb4c93b7d5392f">rlsystem</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *command);
 <a name="l00110"></a>00110 
-<a name="l00116"></a>00116 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#48bd70443ce35554459d9e289046546c">rlOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option);
+<a name="l00116"></a>00116 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#74829fd3ab7103ab01e918259a2f1184">rlSubmitPvserver</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *path, <span class="keyword">const</span> <span class="keywordtype">char</span> *pvs, <span class="keyword">const</span> <span class="keywordtype">char</span> *options=NULL);
 <a name="l00117"></a>00117 
-<a name="l00121"></a>00121 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#e8d60299ab4fa917eaa9c2d8ccdae51c">rlIntOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option, <span class="keywordtype">int</span> _default);
-<a name="l00122"></a>00122 
-<a name="l00126"></a>00126 <span class="keywordtype">float</span> <a class="code" href="rlcutil_8cpp.html#7f6b7043d4da7b255137a9b7fa5a9e3d">rlFloatOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option, <span class="keywordtype">float</span> _default);
-<a name="l00127"></a>00127 
-<a name="l00131"></a>00131 <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="rlcutil_8cpp.html#05c0ea238f98852df60cf56018734f9e">rlTextOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option, <span class="keyword">const</span> <span class="keywordtype">char</span> *_default);
-<a name="l00132"></a>00132 
-<a name="l00136"></a>00136 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#213e6bb2a7d5db344d51c3a380109059">rlCopyTextfile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *source, <span class="keyword">const</span> <span class="keywordtype">char</span> *destination);
-<a name="l00137"></a>00137 
-<a name="l00141"></a>00141 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#9022208debc1e487f2d2ed7cb9fd21fd">rlupper</a>(<span class="keywordtype">char</span> *str);
-<a name="l00142"></a>00142 
-<a name="l00146"></a>00146 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#3147ee004857d9f8934271ca491fd169">rllower</a>(<span class="keywordtype">char</span> *str);
-<a name="l00147"></a>00147 
-<a name="l00151"></a>00151 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#176ada621127ae48c966556c474f20a4">rlStartsWith</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *startstr);
-<a name="l00152"></a>00152 
-<a name="l00153"></a>00153 <span class="preprocessor">#endif</span>
+<a name="l00123"></a>00123 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#48bd70443ce35554459d9e289046546c">rlOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option);
+<a name="l00124"></a>00124 
+<a name="l00128"></a>00128 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#e8d60299ab4fa917eaa9c2d8ccdae51c">rlIntOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option, <span class="keywordtype">int</span> _default);
+<a name="l00129"></a>00129 
+<a name="l00133"></a>00133 <span class="keywordtype">float</span> <a class="code" href="rlcutil_8cpp.html#7f6b7043d4da7b255137a9b7fa5a9e3d">rlFloatOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option, <span class="keywordtype">float</span> _default);
+<a name="l00134"></a>00134 
+<a name="l00138"></a>00138 <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="rlcutil_8cpp.html#05c0ea238f98852df60cf56018734f9e">rlTextOption</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keywordtype">string</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *option, <span class="keyword">const</span> <span class="keywordtype">char</span> *_default);
+<a name="l00139"></a>00139 
+<a name="l00143"></a>00143 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#213e6bb2a7d5db344d51c3a380109059">rlCopyTextfile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *source, <span class="keyword">const</span> <span class="keywordtype">char</span> *destination);
+<a name="l00144"></a>00144 
+<a name="l00148"></a>00148 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#9022208debc1e487f2d2ed7cb9fd21fd">rlupper</a>(<span class="keywordtype">char</span> *str);
+<a name="l00149"></a>00149 
+<a name="l00153"></a>00153 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#3147ee004857d9f8934271ca491fd169">rllower</a>(<span class="keywordtype">char</span> *str);
+<a name="l00154"></a>00154 
+<a name="l00158"></a>00158 <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#176ada621127ae48c966556c474f20a4">rlStartsWith</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keyword">const</span> <span class="keywordtype">char</span> *startstr);
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160 <span class="preprocessor">#endif</span>
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

@@ -14,6 +14,7 @@
  *                                                                         *
  ***************************************************************************/
 #include "rlcutil.h"
+#include "rlstring.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -519,6 +520,52 @@ int rlsystem(const char *command)
 #else
   return system(command);
 #endif
+}
+
+int rlSubmitPvserver(const char *env, const char *path, const char *pvs, const char *options)
+{
+  if(env == NULL || path == NULL || pvs == NULL) return -1;
+  rlString command,cd;
+  const char *cptr;
+
+#ifdef __VMS
+  cptr     = env;
+  cd       = cptr;
+  cd      += path;
+  command  = "spawn/nowait ";
+  command += cd;
+  command += pvs;
+  command += " ";
+  if(options != NULL) command += options;
+  command += " -cd=";
+  command += cd;
+#else
+  cptr = getenv(env);
+  if(cptr == NULL) { printf("rlSubmitPvserver:ERROR env=%s is not set\n", env); return -2; }
+  cd      += cptr;
+  cd      += path;
+  command  = "\"";
+  command += cd;
+#ifdef RLWIN32  
+  command += "\\";
+#else
+  command += "/";
+#endif
+  command += pvs;
+  command += "\" ";
+  if(options != NULL) command += options;
+  command += " \"-cd=";
+  command += cd;
+  command += "\"";
+#endif
+
+#ifdef RLUNIX
+  command += " &";
+#endif
+
+  //printf("command=%s\n", command.text());
+  return rlsystem(command.text());
+  //example: rlSubmitPvserver("HOME","/temp/murx","pvs","-exit_on_bind_error -exit_after_last_client_terminates");
 }
 
 int rlBrowser(const char *htmlfile)
