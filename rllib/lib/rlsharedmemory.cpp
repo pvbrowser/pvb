@@ -57,7 +57,7 @@ static void myinit(pthread_mutex_t *mutex)
 
 static void mylock(pthread_mutex_t *mutex, int increment)
 {
-  int *cnt = (int *) mutex;
+  volatile int *cnt = (int *) mutex;
   while(1)
   {
 retry:

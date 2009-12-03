@@ -120,7 +120,7 @@ Include dependency graph for rlsharedmemory.cpp:</div>
 
 <p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00058">58</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><pre class="fragment"><a name="l00059"></a>00059 {
-<a name="l00060"></a>00060   <span class="keywordtype">int</span> *cnt = (<span class="keywordtype">int</span> *) mutex;
+<a name="l00060"></a>00060   <span class="keyword">volatile</span> <span class="keywordtype">int</span> *cnt = (<span class="keywordtype">int</span> *) mutex;
 <a name="l00061"></a>00061   <span class="keywordflow">while</span>(1)
 <a name="l00062"></a>00062   {
 <a name="l00063"></a>00063 retry:
