@@ -1334,7 +1334,8 @@ void MainWindow::snapshot(QPixmap &pm)
   if(w != NULL)
   {
     w->raise();
-    pm = QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height());
+    //pm = QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height());
+    pm = QPixmap::grabWidget(w,0,0,w->width(),w->height());
   }  
   if(opt.arg_debug) printf("snapshot done\n");
 }
