@@ -1173,6 +1173,7 @@ int pvCreateThread(PARAM *p, int s)
   if(ptr == NULL) pvMainFatal(p,"out of memory");
   memcpy(ptr,p,sizeof(PARAM));
   ptr->s = s;
+  ptr->mytext = new char[2];
 #ifndef USE_INETD
   printf("pvCreateThread s=%d\n",ptr->s);
   pvthread_create(&tid, NULL, send_thread, (void *) ptr);
