@@ -487,6 +487,7 @@ typedef struct _PARAM_
   int   num_additional_widgets;          /* additional widgets after           */
                                          /* ID_END_OF_WIDGETS                  */
   int   mouse_x,  mouse_y;               /* last mouse pos when pressed        */
+  char  *mytext;                         /* buffer for internal use only       */
 }PARAM;
 
 #define DEFAULT_LANGUAGE 0

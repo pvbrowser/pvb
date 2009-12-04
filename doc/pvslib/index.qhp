@@ -1245,6 +1245,7 @@
       <keyword name="num_additional_widgets" id="_PARAM_::num_additional_widgets" ref="struct__PARAM__.html#c2126f2538436f1ea19914ef28bdae26" />
       <keyword name="mouse_x" id="_PARAM_::mouse_x" ref="struct__PARAM__.html#8f93fb42caf43af768e600c6ec4bbd37" />
       <keyword name="mouse_y" id="_PARAM_::mouse_y" ref="struct__PARAM__.html#37b52b494242bd9e67dddbc672e104ea" />
+      <keyword name="mytext" id="_PARAM_::mytext" ref="struct__PARAM__.html#254d4d062e9ae86938cfb09543379256" />
       <keyword name="glFont" id="glFont::glFont" ref="classglFont.html#9f149d1494f4c73d654cf545f8c0c2b0" />
       <keyword name="~glFont" id="glFont::~glFont" ref="classglFont.html#e9a59a6111b3873e2bf83d36d902df86" />
       <keyword name="read" id="glFont::read" ref="classglFont.html#8acb0b5dda88cd844b736a37d084aed5" />
