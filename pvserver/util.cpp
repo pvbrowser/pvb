@@ -859,6 +859,7 @@ int i;
   p->num_additional_widgets = 0;
   p->mouse_x  = p->mouse_y = -1;
   p->mytext = new char[2];
+  p->mytext[0] = '\0';
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
   pvthread_mutex_init(&param_mutex, NULL);
@@ -1174,6 +1175,7 @@ int pvCreateThread(PARAM *p, int s)
   memcpy(ptr,p,sizeof(PARAM));
   ptr->s = s;
   ptr->mytext = new char[2];
+  ptr->mytext[0] = '\0';
 #ifndef USE_INETD
   printf("pvCreateThread s=%d\n",ptr->s);
   pvthread_create(&tid, NULL, send_thread, (void *) ptr);
