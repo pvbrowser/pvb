@@ -363,7 +363,7 @@ void MainWindow::about()
  QMessageBox::about(this, tr("About pvbrowser"),
             tr(
                "pvbrowser (R) \nVersion " VERSION
-               "\n(C) 2000-2009 Lehrig Software Engineering"
+               "\n(C) 2000-2010 Lehrig Software Engineering"
                "\nlehrig@t-online.de"
                "\nhttp://pvbrowser.org"
                "\nhttp://www.lehrig.de"
@@ -1311,6 +1311,8 @@ void MainWindow::slotPrint()
       QString date_time;
       date_time  = l_print_header;
       date_time += QDateTime::currentDateTime().toString(Qt::TextDate);
+      date_time += " ";
+      date_time += pvbtab[currentTab].url;
       painter.drawText(LEFT_PRINT_MARGIN,UPPER_PRINT_MARGIN-30,1280,100,Qt::TextExpandTabs, date_time);
     }
     QPixmap pmprint = pm.scaledToWidth(painter.viewport().width()-LEFT_PRINT_MARGIN*2);

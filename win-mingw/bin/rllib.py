@@ -723,6 +723,7 @@ class rlEventLogServer(_object):
     def putEvent(*args): return _rllib.rlEventLogServer_putEvent(*args)
 rlEventLogServer_swigregister = _rllib.rlEventLogServer_swigregister
 rlEventLogServer_swigregister(rlEventLogServer)
+rlSubmitPvserver = _rllib.rlSubmitPvserver
 cvar = _rllib.cvar
 rlevent_name = cvar.rlevent_name
 
@@ -930,6 +931,9 @@ class rlModbus(_object):
     def data2int(*args): return _rllib.rlModbus_data2int(*args)
     def int2data(*args): return _rllib.rlModbus_int2data(*args)
     def intsize(*args): return _rllib.rlModbus_intsize(*args)
+    __swig_setmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_set
+    __swig_getmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_get
+    if _newclass:autoreconnectSocket = _swig_property(_rllib.rlModbus_autoreconnectSocket_get, _rllib.rlModbus_autoreconnectSocket_set)
 rlModbus_swigregister = _rllib.rlModbus_swigregister
 rlModbus_swigregister(rlModbus)
 
