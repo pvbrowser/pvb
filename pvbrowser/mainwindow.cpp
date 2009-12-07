@@ -1315,7 +1315,7 @@ void MainWindow::slotPrint()
       date_time += pvbtab[currentTab].url;
       painter.drawText(LEFT_PRINT_MARGIN,UPPER_PRINT_MARGIN-30,1280,100,Qt::TextExpandTabs, date_time);
     }
-    QPixmap pmprint = pm.scaledToWidth(painter.viewport().width()-LEFT_PRINT_MARGIN*2);
+    QPixmap pmprint = pm.scaledToWidth(painter.viewport().width()-LEFT_PRINT_MARGIN*2, Qt::SmoothTransformation);
     painter.drawPixmap(LEFT_PRINT_MARGIN,UPPER_PRINT_MARGIN,pmprint);
     painter.end();
   }
