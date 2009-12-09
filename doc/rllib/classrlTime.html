@@ -40,11 +40,11 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#e872be25da7eaca0e34c9a24a8f91ed9">getFileModificationTime</a> (const char *filename)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#e670be42e72a2304171eaae8276615d9">secondsSinceEpoche</a> ()</td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#c79ee8d2f02f56c03642c8a96348e18e">setTimeFromString</a> (const char *<a class="el" href="classrlTime.html#8bf45af6290380cca3a194e1df1c5871">time_string</a>)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#50d2f30371950e953b996399cc4e0a67">setLocalTime</a> ()</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#e670be42e72a2304171eaae8276615d9">secondsSinceEpoche</a> ()</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classrlTime.html">rlTime</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#97dc9f5e8ae26bf3fd8c8d6a7924321f">operator+=</a> (<a class="el" href="classrlTime.html">rlTime</a> &amp;<a class="el" href="rlevent_8cpp.html#cf6c371f558a71d8a8bbc899e4429e0c">time</a>)</td></tr>
 
@@ -802,7 +802,7 @@ class for handling time.
 <a name="l00492"></a>00492   begin.tm_min  = 0;
 <a name="l00493"></a>00493   begin.tm_sec  = 0;
 <a name="l00494"></a>00494 
-<a name="l00495"></a>00495   test.tm_year = <a class="code" href="classrlTime.html#33a2e594a5e60e9f571fed9de79a447f">year</a> - 1970;
+<a name="l00495"></a>00495   test.tm_year = <a class="code" href="classrlTime.html#33a2e594a5e60e9f571fed9de79a447f">year</a> - 1900;
 <a name="l00496"></a>00496   test.tm_mon  = <a class="code" href="classrlTime.html#2ac38a99d462b5e01ec9fbb9339163d6">month</a> - 1;
 <a name="l00497"></a>00497   test.tm_mday = <a class="code" href="classrlTime.html#ded2beb30be33157cbcc9a6d59858f08">day</a>;
 <a name="l00498"></a>00498   test.tm_hour = <a class="code" href="classrlTime.html#de67c1945c3b3afdf8d7991ab9a4801b">hour</a>;

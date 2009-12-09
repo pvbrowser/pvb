@@ -27,15 +27,15 @@ public:
   rlTime(int Year=0, int Month=0, int Day=0, int Hour=0, int Minute=0, int Second=0, int Millisecond=0);
   virtual ~rlTime();
   const char *getTimeString();
-  void   getLocalTime();
-  int    getFileModificationTime(const char *filename);
-  double secondsSinceEpoche();
+  void    getLocalTime();
+  int     getFileModificationTime(const char *filename);
 
   /*! <pre>
   format: sscanf(time_string,"%d-%d-%d %d:%d:%d %d",&year,&month,&day, &hour,&minute,&second, &millisecond);
   </pre> */
   void    setTimeFromString(const char *time_string);
   void    setLocalTime();
+  double  secondsSinceEpoche();
   rlTime& operator+=  (rlTime &time);
   rlTime& operator-=  (rlTime &time);
   rlTime  operator+   (rlTime &time);

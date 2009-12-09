@@ -492,7 +492,7 @@ double rlTime::secondsSinceEpoche()
   begin.tm_min  = 0;
   begin.tm_sec  = 0;
 
-  test.tm_year = year - 1970;
+  test.tm_year = year - 1900;
   test.tm_mon  = month - 1;
   test.tm_mday = day;
   test.tm_hour = hour;
