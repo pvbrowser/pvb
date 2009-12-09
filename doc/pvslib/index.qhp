@@ -230,6 +230,7 @@
       <keyword name="pvResize" id="processviewserver.h::pvResize" ref="processviewserver_8h.html#g5987ac476d6a99a5a0a92a986ead7dc1" />
       <keyword name="pvHide" id="processviewserver.h::pvHide" ref="processviewserver_8h.html#g930612bf6b683ce50222746f4ef76be6" />
       <keyword name="pvShow" id="processviewserver.h::pvShow" ref="processviewserver_8h.html#gcfd5107035ddf45efd456b435f6b850a" />
+      <keyword name="pvSetParent" id="processviewserver.h::pvSetParent" ref="processviewserver_8h.html#g2df4afc7afc5634f1a4cc917f6a12eb1" />
       <keyword name="pvSetMultiSelection" id="processviewserver.h::pvSetMultiSelection" ref="processviewserver_8h.html#gb53c68d73cf69b7e476504c9222b039b" />
       <keyword name="pvSetEchoMode" id="processviewserver.h::pvSetEchoMode" ref="processviewserver_8h.html#g1787c858081ced4f1694eb967aefb75b" />
       <keyword name="pvSetEditable" id="processviewserver.h::pvSetEditable" ref="processviewserver_8h.html#g5d8d92745b72ea32a39262d7b081a8b1" />
@@ -1000,6 +1001,7 @@
       <keyword name="pvResize" id="State::pvResize" ref="group__State.html#g5987ac476d6a99a5a0a92a986ead7dc1" />
       <keyword name="pvHide" id="State::pvHide" ref="group__State.html#g930612bf6b683ce50222746f4ef76be6" />
       <keyword name="pvShow" id="State::pvShow" ref="group__State.html#gcfd5107035ddf45efd456b435f6b850a" />
+      <keyword name="pvSetParent" id="State::pvSetParent" ref="group__State.html#g2df4afc7afc5634f1a4cc917f6a12eb1" />
       <keyword name="pvSetMultiSelection" id="State::pvSetMultiSelection" ref="group__State.html#gb53c68d73cf69b7e476504c9222b039b" />
       <keyword name="pvSetEchoMode" id="State::pvSetEchoMode" ref="group__State.html#g1787c858081ced4f1694eb967aefb75b" />
       <keyword name="pvSetEditable" id="State::pvSetEditable" ref="group__State.html#g5d8d92745b72ea32a39262d7b081a8b1" />
