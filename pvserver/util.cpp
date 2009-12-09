@@ -2822,6 +2822,15 @@ char buf[80];
   return 0;
 }
 
+int pvSetParent(PARAM *p, int id, int id_parent)
+{
+char buf[80];
+
+  sprintf(buf,"setParent(%d,%d)\n",id, id_parent);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvPrint(PARAM *p, int id)
 {
 char buf[80];

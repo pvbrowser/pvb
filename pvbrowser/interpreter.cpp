@@ -2693,7 +2693,20 @@ void Interpreter::interprets(const char *command)
         }
         break;
       case 'P':
-        if(strncmp(command,"setPixmap(",10) == 0) // set pixmap
+        if(strncmp(command,"setParent(",10) == 0)
+        {
+          int iparent = 0;
+          sscanf(command,"setParent(%d,%d)",&i,&iparent);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(iparent < 0) return;
+          if(iparent >= nmax) return;
+          if(all[i]->w != NULL && all[iparent]->w != NULL) 
+          {
+            all[i]->w->setParent(all[iparent]->w);
+          }  
+        }
+        else if(strncmp(command,"setPixmap(",10) == 0) // set pixmap
         {
           //QPixmap pm;
           char *data;

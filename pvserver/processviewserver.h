@@ -2169,6 +2169,11 @@ See also #MainWindowIds.
 </pre> */
 int pvShow(PARAM *p, int id);
 /*! <pre>
+Reparent a widget
+All widgets allowed
+</pre> */
+int pvSetParent(PARAM *p, int id, int id_parent);
+/*! <pre>
 Set multi selection of QListBox, QListView.
 mode = 0=SingleSelection|1=MultiSelection|2=NoSelection
 </pre> */

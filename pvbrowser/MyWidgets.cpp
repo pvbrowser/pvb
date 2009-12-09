@@ -2979,6 +2979,11 @@ void MyQDockWidget::slotTopLevelChanged(bool toplevel)
   {
     resize(w,h);
   }
+
+  if (!isFloating() && allowedAreas() == Qt::NoDockWidgetArea)
+  {
+    setFloating(true);
+  }
 }
 
 void mySetForegroundColor(QWidget *w, int type, int r, int g, int b)
