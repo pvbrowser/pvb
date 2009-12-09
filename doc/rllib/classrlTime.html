@@ -40,6 +40,8 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#e872be25da7eaca0e34c9a24a8f91ed9">getFileModificationTime</a> (const char *filename)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#e670be42e72a2304171eaae8276615d9">secondsSinceEpoche</a> ()</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#c79ee8d2f02f56c03642c8a96348e18e">setTimeFromString</a> (const char *<a class="el" href="classrlTime.html#8bf45af6290380cca3a194e1df1c5871">time_string</a>)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlTime.html#50d2f30371950e953b996399cc4e0a67">setLocalTime</a> ()</td></tr>
@@ -768,6 +770,55 @@ class for handling time.
 
 </div>
 </div><p>
+<a class="anchor" name="e670be42e72a2304171eaae8276615d9"></a><!-- doxytag: member="rlTime::secondsSinceEpoche" ref="e670be42e72a2304171eaae8276615d9" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double rlTime::secondsSinceEpoche           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00480">480</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00481"></a>00481 {
+<a name="l00482"></a>00482   <span class="keyword">struct </span>tm begin;
+<a name="l00483"></a>00483   <span class="keyword">struct </span>tm test;
+<a name="l00484"></a>00484 
+<a name="l00485"></a>00485   memset(&amp;begin,0,<span class="keyword">sizeof</span>(tm));
+<a name="l00486"></a>00486   memset(&amp;test,0,<span class="keyword">sizeof</span>(tm));
+<a name="l00487"></a>00487 
+<a name="l00488"></a>00488   begin.tm_year = 70;
+<a name="l00489"></a>00489   begin.tm_mon  = 0;
+<a name="l00490"></a>00490   begin.tm_mday = 1;
+<a name="l00491"></a>00491   begin.tm_hour = 0;
+<a name="l00492"></a>00492   begin.tm_min  = 0;
+<a name="l00493"></a>00493   begin.tm_sec  = 0;
+<a name="l00494"></a>00494 
+<a name="l00495"></a>00495   test.tm_year = <a class="code" href="classrlTime.html#33a2e594a5e60e9f571fed9de79a447f">year</a> - 1970;
+<a name="l00496"></a>00496   test.tm_mon  = <a class="code" href="classrlTime.html#2ac38a99d462b5e01ec9fbb9339163d6">month</a> - 1;
+<a name="l00497"></a>00497   test.tm_mday = <a class="code" href="classrlTime.html#ded2beb30be33157cbcc9a6d59858f08">day</a>;
+<a name="l00498"></a>00498   test.tm_hour = <a class="code" href="classrlTime.html#de67c1945c3b3afdf8d7991ab9a4801b">hour</a>;
+<a name="l00499"></a>00499   test.tm_min  = <a class="code" href="classrlTime.html#e583de83501e3480cfd4fed1c92c33f1">minute</a>;
+<a name="l00500"></a>00500   test.tm_sec  = <a class="code" href="classrlTime.html#c1eaa68b719eff17648d5f291b3433de">second</a>;
+<a name="l00501"></a>00501 
+<a name="l00502"></a>00502   time_t t0 = mktime(&amp;begin);
+<a name="l00503"></a>00503   time_t t1 = mktime(&amp;test);
+<a name="l00504"></a>00504 
+<a name="l00505"></a>00505   <span class="keywordflow">return</span> difftime(t1,t0);
+<a name="l00506"></a>00506 }
+</pre></div>
+<p>
+
+</div>
+</div><p>
 <a class="anchor" name="50d2f30371950e953b996399cc4e0a67"></a><!-- doxytag: member="rlTime::setLocalTime" ref="50d2f30371950e953b996399cc4e0a67" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -909,7 +960,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00049">49</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00050">50</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -926,7 +977,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00050">50</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00051">51</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -943,7 +994,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00053">53</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00054">54</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -960,7 +1011,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00051">51</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00052">52</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -977,7 +1028,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00048">48</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00049">49</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -994,7 +1045,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00052">52</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00053">53</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -1011,7 +1062,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00055">55</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00056">56</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>
@@ -1028,7 +1079,7 @@ class for handling time.
 
 <p>
 
-<p>Definition at line <a class="el" href="rltime_8h_source.html#l00047">47</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8h_source.html#l00048">48</a> of file <a class="el" href="rltime_8h_source.html">rltime.h</a>.</p>
 
 </div>
 </div><p>

@@ -497,6 +497,35 @@
 <a name="l00476"></a>00476   <span class="keywordflow">if</span>((*<span class="keyword">this</span>) &gt;  time) <span class="keywordflow">return</span> 1;
 <a name="l00477"></a>00477   <span class="keywordflow">return</span> 0;
 <a name="l00478"></a>00478 }
+<a name="l00479"></a>00479 
+<a name="l00480"></a><a class="code" href="classrlTime.html#e670be42e72a2304171eaae8276615d9">00480</a> <span class="keywordtype">double</span> <a class="code" href="classrlTime.html#e670be42e72a2304171eaae8276615d9">rlTime::secondsSinceEpoche</a>()
+<a name="l00481"></a>00481 {
+<a name="l00482"></a>00482   <span class="keyword">struct </span>tm begin;
+<a name="l00483"></a>00483   <span class="keyword">struct </span>tm test;
+<a name="l00484"></a>00484 
+<a name="l00485"></a>00485   memset(&amp;begin,0,<span class="keyword">sizeof</span>(tm));
+<a name="l00486"></a>00486   memset(&amp;test,0,<span class="keyword">sizeof</span>(tm));
+<a name="l00487"></a>00487 
+<a name="l00488"></a>00488   begin.tm_year = 70;
+<a name="l00489"></a>00489   begin.tm_mon  = 0;
+<a name="l00490"></a>00490   begin.tm_mday = 1;
+<a name="l00491"></a>00491   begin.tm_hour = 0;
+<a name="l00492"></a>00492   begin.tm_min  = 0;
+<a name="l00493"></a>00493   begin.tm_sec  = 0;
+<a name="l00494"></a>00494 
+<a name="l00495"></a>00495   test.tm_year = <a class="code" href="classrlTime.html#33a2e594a5e60e9f571fed9de79a447f">year</a> - 1970;
+<a name="l00496"></a>00496   test.tm_mon  = <a class="code" href="classrlTime.html#2ac38a99d462b5e01ec9fbb9339163d6">month</a> - 1;
+<a name="l00497"></a>00497   test.tm_mday = <a class="code" href="classrlTime.html#ded2beb30be33157cbcc9a6d59858f08">day</a>;
+<a name="l00498"></a>00498   test.tm_hour = <a class="code" href="classrlTime.html#de67c1945c3b3afdf8d7991ab9a4801b">hour</a>;
+<a name="l00499"></a>00499   test.tm_min  = <a class="code" href="classrlTime.html#e583de83501e3480cfd4fed1c92c33f1">minute</a>;
+<a name="l00500"></a>00500   test.tm_sec  = <a class="code" href="classrlTime.html#c1eaa68b719eff17648d5f291b3433de">second</a>;
+<a name="l00501"></a>00501 
+<a name="l00502"></a>00502   time_t t0 = mktime(&amp;begin);
+<a name="l00503"></a>00503   time_t t1 = mktime(&amp;test);
+<a name="l00504"></a>00504 
+<a name="l00505"></a>00505   <span class="keywordflow">return</span> difftime(t1,t0);
+<a name="l00506"></a>00506 }
+<a name="l00507"></a>00507 
 </pre></div></div>
 <hr size="1"><address style="text-align: right;"><small><a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> </small></address>

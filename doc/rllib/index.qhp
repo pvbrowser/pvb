@@ -2037,6 +2037,7 @@
       <keyword name="getTimeString" id="rlTime::getTimeString" ref="classrlTime.html#8496f80861d25f8206461c9b0afe81e3" />
       <keyword name="getLocalTime" id="rlTime::getLocalTime" ref="classrlTime.html#58e753a2b74eea66ef8df028f266f7e2" />
       <keyword name="getFileModificationTime" id="rlTime::getFileModificationTime" ref="classrlTime.html#e872be25da7eaca0e34c9a24a8f91ed9" />
+      <keyword name="secondsSinceEpoche" id="rlTime::secondsSinceEpoche" ref="classrlTime.html#e670be42e72a2304171eaae8276615d9" />
       <keyword name="setTimeFromString" id="rlTime::setTimeFromString" ref="classrlTime.html#c79ee8d2f02f56c03642c8a96348e18e" />
       <keyword name="setLocalTime" id="rlTime::setLocalTime" ref="classrlTime.html#50d2f30371950e953b996399cc4e0a67" />
       <keyword name="operator+=" id="rlTime::operator+=" ref="classrlTime.html#97dc9f5e8ae26bf3fd8c8d6a7924321f" />

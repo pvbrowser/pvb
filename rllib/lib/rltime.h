@@ -29,7 +29,8 @@ public:
   const char *getTimeString();
   void   getLocalTime();
   int    getFileModificationTime(const char *filename);
-  
+  double secondsSinceEpoche();
+
   /*! <pre>
   format: sscanf(time_string,"%d-%d-%d %d:%d:%d %d",&year,&month,&day, &hour,&minute,&second, &millisecond);
   </pre> */

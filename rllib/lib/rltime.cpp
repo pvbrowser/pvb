@@ -476,3 +476,32 @@ int rlTime::operator>=(rlTime &time)
   if((*this) >  time) return 1;
   return 0;
 }
+
+double rlTime::secondsSinceEpoche()
+{
+  struct tm begin;
+  struct tm test;
+
+  memset(&begin,0,sizeof(tm));
+  memset(&test,0,sizeof(tm));
+
+  begin.tm_year = 70;
+  begin.tm_mon  = 0;
+  begin.tm_mday = 1;
+  begin.tm_hour = 0;
+  begin.tm_min  = 0;
+  begin.tm_sec  = 0;
+
+  test.tm_year = year - 1970;
+  test.tm_mon  = month - 1;
+  test.tm_mday = day;
+  test.tm_hour = hour;
+  test.tm_min  = minute;
+  test.tm_sec  = second;
+
+  time_t t0 = mktime(&begin);
+  time_t t1 = mktime(&test);
+
+  return difftime(t1,t0);
+}
+
