@@ -237,7 +237,7 @@ int rlSocket::connect()
 {
   int option;
   int ret;
-  socklen_t socklen;
+  socklen_t socklen = sizeof(struct sockaddr);
   struct sockaddr_in     localAddr;
   struct sockaddr_in     remoteAddr;
   struct hostent        *host;

@@ -590,6 +590,7 @@ bind:
       signal(SIGTERM,sighandler);
       printf("Info: going to accept on port %d\n",p->port);
     }
+    pvSocklen = sizeof(struct sockaddr);
     p->s = accept(p->os, &pvSockaddr, &pvSocklen);
   }
 #ifdef AF_INET6_IS_AVAILABLE
@@ -663,6 +664,7 @@ bindv6:
       signal(SIGTERM,sighandler);
       printf("Info: going to accept on port %d\n",p->port);
     }
+    pvSocklen = sizeof(struct sockaddr);
     p->s = accept(p->os, &pvSockaddr, &pvSocklen);
   }
 #endif

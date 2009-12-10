@@ -317,7 +317,7 @@ class for encapsulating TCP/IP socket calls
 <div class="fragment"><pre class="fragment"><a name="l00237"></a>00237 {
 <a name="l00238"></a>00238   <span class="keywordtype">int</span> option;
 <a name="l00239"></a>00239   <span class="keywordtype">int</span> ret;
-<a name="l00240"></a>00240   socklen_t socklen;
+<a name="l00240"></a>00240   socklen_t socklen = <span class="keyword">sizeof</span>(<span class="keyword">struct </span><a class="code" href="classrlSocket.html#882f357e0d34547baeacf1b173c75855">sockaddr</a>);
 <a name="l00241"></a>00241   <span class="keyword">struct </span>sockaddr_in     localAddr;
 <a name="l00242"></a>00242   <span class="keyword">struct </span>sockaddr_in     remoteAddr;
 <a name="l00243"></a>00243   <span class="keyword">struct </span>hostent        *host;
