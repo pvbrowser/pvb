@@ -1819,6 +1819,7 @@
       <keyword name="getIPVersion" id="rlSocket::getIPVersion" ref="classrlSocket.html#ac40e84e8616e2ab74302f1979eaafd0" />
       <keyword name="sendProcessViewBrowserButtonEvent" id="rlSocket::sendProcessViewBrowserButtonEvent" ref="classrlSocket.html#b9444f22e76c22ab46df0a278aeb1e82" />
       <keyword name="s" id="rlSocket::s" ref="classrlSocket.html#3f70186af86837a39592e4bf18076d24" />
+      <keyword name="sockaddr" id="rlSocket::sockaddr" ref="classrlSocket.html#882f357e0d34547baeacf1b173c75855" />
       <keyword name="adr" id="rlSocket::adr" ref="classrlSocket.html#83a9454e33ee402d925d19a9c87eda82" />
       <keyword name="port" id="rlSocket::port" ref="classrlSocket.html#905a1a72c76c79122f1a0b6f752905c8" />
       <keyword name="active" id="rlSocket::active" ref="classrlSocket.html#3196d25600c773781b50e9045f500f52" />

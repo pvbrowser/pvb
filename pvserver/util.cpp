@@ -102,6 +102,12 @@ TDS;
 #define MSG_NOSIGNAL 0
 #endif
 
+struct sockaddr pvSockaddr; // sockaddr of last client. can be used for authorization.
+#ifdef PVUNIX
+socklen_t       pvSocklen;  // socklen  of last client. can be used for authorization.
+#else
+int             pvSocklen;  // socklen  of last client. can be used for authorization.
+#endif
 int num_threads = 0;
 int exit_after_last_client_terminates = 0; // can be set from command line
 int pv_cache = 0;                          // can be set from command line
@@ -584,7 +590,7 @@ bind:
       signal(SIGTERM,sighandler);
       printf("Info: going to accept on port %d\n",p->port);
     }
-    p->s = accept(p->os, NULL, NULL);
+    p->s = accept(p->os, &pvSockaddr, &pvSocklen);
   }
 #ifdef AF_INET6_IS_AVAILABLE
   else if(rl_ipversion == 6)
@@ -657,7 +663,7 @@ bindv6:
       signal(SIGTERM,sighandler);
       printf("Info: going to accept on port %d\n",p->port);
     }
-    p->s = accept(p->os, NULL, NULL);
+    p->s = accept(p->os, &pvSockaddr, &pvSocklen);
   }
 #endif
   else

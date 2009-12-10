@@ -92,6 +92,7 @@ rlSocket::rlSocket(const char *a, int p, int act)
   os = -1;
   first = 1;
   rl_ipversion = 4;
+  memset(sockaddr,0,sizeof(sockaddr));
 }
 
 rlSocket::rlSocket(int socket)
@@ -103,6 +104,7 @@ rlSocket::rlSocket(int socket)
   os     = -1;
   first  = 0;
   rl_ipversion = 4;
+  memset(sockaddr,0,sizeof(sockaddr));
 }
 
 rlSocket::~rlSocket()
@@ -235,6 +237,7 @@ int rlSocket::connect()
 {
   int option;
   int ret;
+  socklen_t socklen;
   struct sockaddr_in     localAddr;
   struct sockaddr_in     remoteAddr;
   struct hostent        *host;
@@ -291,7 +294,7 @@ bind:
       first = 0;
 
       // accept connections
-      s = accept(os, NULL, NULL);
+      s = accept(os, (struct sockaddr *) &sockaddr[0], &socklen);
       if(s == -1) return ACCEPT_ERR;
     }
     else if(rl_ipversion == 6)
@@ -353,7 +356,7 @@ bindv6:
       }
       first = 0;
       // accept connections
-      s = accept(os, NULL, NULL);
+      s = accept(os, (struct sockaddr *) &sockaddr[0], &socklen);
       if(s == -1) return ACCEPT_ERR;
 #else
       ::printf("rlSocket:ERROR IPV6 not available on this platform\n");
