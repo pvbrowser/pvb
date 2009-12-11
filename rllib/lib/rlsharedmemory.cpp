@@ -242,7 +242,6 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   ret = sys$close(&fab);
   // rlwthread_mutex_init(mutex,NULL);
   if(file_existed == 0) myinit(mutex);
-  return;
 #endif
 
 #ifdef RLWIN32

@@ -592,7 +592,6 @@
       <keyword name="ISO_PORT" id="rlsiemenstcp.cpp::ISO_PORT" ref="rlsiemenstcp_8cpp.html#e225137011f41c60873bb13862741f6b" />
       <keyword name="rlDebugPrintfState" id="rlsiemenstcp.cpp::rlDebugPrintfState" ref="rlsiemenstcp_8cpp.html#73703e6f6e03079d517b69762d7424da" />
       <keyword name="BUFSIZE" id="rlsiemenstcpclient.cpp::BUFSIZE" ref="rlsiemenstcpclient_8cpp.html#eca034f67218340ecb2261a22c2f3dcd" />
-      <keyword name="AF_INET6_IS_AVAILABLE" id="rlsocket.cpp::AF_INET6_IS_AVAILABLE" ref="rlsocket_8cpp.html#2057e0c187c7b08b7ef20bdb304e4b87" />
       <keyword name="MSG_NOSIGNAL" id="rlsocket.cpp::MSG_NOSIGNAL" ref="rlsocket_8cpp.html#9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MSG_NOSIGNAL" id="rlsocket.cpp::MSG_NOSIGNAL" ref="rlsocket_8cpp.html#9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="rlwsa" id="rlsocket.cpp::rlwsa" ref="rlsocket_8cpp.html#0a9b8ddbe56e24b68eacf127767f3024" />

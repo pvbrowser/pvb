@@ -16,7 +16,9 @@
 #include "rldefine.h"
 
 #ifndef IS_OLD_MSVCPP
+#ifndef __VMS
 #define AF_INET6_IS_AVAILABLE
+#endif
 #endif
 
 #ifdef RLWIN32
@@ -237,7 +239,11 @@ int rlSocket::connect()
 {
   int option;
   int ret;
+#ifdef __VMS
+  size_t    socklen = sizeof(struct sockaddr);
+#else
   socklen_t socklen = sizeof(struct sockaddr);
+#endif
   struct sockaddr_in     localAddr;
   struct sockaddr_in     remoteAddr;
   struct hostent        *host;

@@ -47,8 +47,6 @@ Include dependency graph for rlsocket.cpp:</div>
 <a href="rlsocket_8cpp_source.html">Go to the source code of this file.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Defines</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#2057e0c187c7b08b7ef20bdb304e4b87">AF_INET6_IS_AVAILABLE</a></td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#9f55d0e90dc8cc6b2287312435cdde48">MSG_NOSIGNAL</a>&nbsp;&nbsp;&nbsp;0</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">#define&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#9f55d0e90dc8cc6b2287312435cdde48">MSG_NOSIGNAL</a>&nbsp;&nbsp;&nbsp;0</td></tr>
@@ -58,12 +56,12 @@ Include dependency graph for rlsocket.cpp:</div>
 
 </table>
 <hr><h2>Define Documentation</h2>
-<a class="anchor" name="2057e0c187c7b08b7ef20bdb304e4b87"></a><!-- doxytag: member="rlsocket.cpp::AF_INET6_IS_AVAILABLE" ref="2057e0c187c7b08b7ef20bdb304e4b87" args="" -->
+<a class="anchor" name="9f55d0e90dc8cc6b2287312435cdde48"></a><!-- doxytag: member="rlsocket.cpp::MSG_NOSIGNAL" ref="9f55d0e90dc8cc6b2287312435cdde48" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define AF_INET6_IS_AVAILABLE          </td>
+          <td class="memname">#define MSG_NOSIGNAL&nbsp;&nbsp;&nbsp;0          </td>
         </tr>
       </table>
 </div>
@@ -71,7 +69,7 @@ Include dependency graph for rlsocket.cpp:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00019">19</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00045">45</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 
 </div>
 </div><p>
@@ -88,24 +86,7 @@ Include dependency graph for rlsocket.cpp:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00043">43</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
-
-</div>
-</div><p>
-<a class="anchor" name="9f55d0e90dc8cc6b2287312435cdde48"></a><!-- doxytag: member="rlsocket.cpp::MSG_NOSIGNAL" ref="9f55d0e90dc8cc6b2287312435cdde48" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MSG_NOSIGNAL&nbsp;&nbsp;&nbsp;0          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00043">43</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00045">45</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 
 </div>
 </div><p>
@@ -127,32 +108,32 @@ Include dependency graph for rlsocket.cpp:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00058">58</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00059"></a>00059 {
-<a name="l00060"></a>00060 <span class="preprocessor">#ifdef RLWIN32</span>
-<a name="l00061"></a>00061 <span class="preprocessor"></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> first = 1;
-<a name="l00062"></a>00062   WORD    wVersionRequested;
-<a name="l00063"></a>00063   WSADATA wsadata;
-<a name="l00064"></a>00064   <span class="keywordtype">int</span>     err;
-<a name="l00065"></a>00065 
-<a name="l00066"></a>00066   <span class="keywordflow">if</span>(first == 1)
-<a name="l00067"></a>00067   {
-<a name="l00068"></a>00068 <span class="preprocessor">#ifdef IS_OLD_MSVCPP</span>
-<a name="l00069"></a>00069 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(1,1);
-<a name="l00070"></a>00070 <span class="preprocessor">#else</span>
-<a name="l00071"></a>00071 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(2,0);
-<a name="l00072"></a>00072 <span class="preprocessor">#endif</span>
-<a name="l00073"></a>00073 <span class="preprocessor"></span>    err = WSAStartup(wVersionRequested, &amp;wsadata);
-<a name="l00074"></a>00074     <span class="keywordflow">if</span>(err != 0)
-<a name="l00075"></a>00075     {
-<a name="l00076"></a>00076       ::printf(<span class="stringliteral">"Startup error=%d on windows\n"</span>,err);
-<a name="l00077"></a>00077       exit(0);
-<a name="l00078"></a>00078     }
-<a name="l00079"></a>00079     first = 0;
-<a name="l00080"></a>00080   }
-<a name="l00081"></a>00081 <span class="preprocessor">#endif</span>
-<a name="l00082"></a>00082 <span class="preprocessor"></span>  <span class="keywordflow">return</span> 0;
-<a name="l00083"></a>00083 }
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00060">60</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00061"></a>00061 {
+<a name="l00062"></a>00062 <span class="preprocessor">#ifdef RLWIN32</span>
+<a name="l00063"></a>00063 <span class="preprocessor"></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> first = 1;
+<a name="l00064"></a>00064   WORD    wVersionRequested;
+<a name="l00065"></a>00065   WSADATA wsadata;
+<a name="l00066"></a>00066   <span class="keywordtype">int</span>     err;
+<a name="l00067"></a>00067 
+<a name="l00068"></a>00068   <span class="keywordflow">if</span>(first == 1)
+<a name="l00069"></a>00069   {
+<a name="l00070"></a>00070 <span class="preprocessor">#ifdef IS_OLD_MSVCPP</span>
+<a name="l00071"></a>00071 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(1,1);
+<a name="l00072"></a>00072 <span class="preprocessor">#else</span>
+<a name="l00073"></a>00073 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(2,0);
+<a name="l00074"></a>00074 <span class="preprocessor">#endif</span>
+<a name="l00075"></a>00075 <span class="preprocessor"></span>    err = WSAStartup(wVersionRequested, &amp;wsadata);
+<a name="l00076"></a>00076     <span class="keywordflow">if</span>(err != 0)
+<a name="l00077"></a>00077     {
+<a name="l00078"></a>00078       ::printf(<span class="stringliteral">"Startup error=%d on windows\n"</span>,err);
+<a name="l00079"></a>00079       exit(0);
+<a name="l00080"></a>00080     }
+<a name="l00081"></a>00081     first = 0;
+<a name="l00082"></a>00082   }
+<a name="l00083"></a>00083 <span class="preprocessor">#endif</span>
+<a name="l00084"></a>00084 <span class="preprocessor"></span>  <span class="keywordflow">return</span> 0;
+<a name="l00085"></a>00085 }
 </pre></div>
 <p>
 

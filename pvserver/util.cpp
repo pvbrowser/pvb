@@ -24,7 +24,9 @@
 #include <sys/stat.h>
 
 #ifndef IS_OLD_MSVCPP
+#ifndef __VMS
 #define AF_INET6_IS_AVAILABLE
+#endif
 #endif
 
 #include <stdlib.h>
@@ -103,9 +105,13 @@ TDS;
 #endif
 
 struct sockaddr pvSockaddr; // sockaddr of last client. can be used for authorization.
+#ifdef __VMS
+size_t          pvSocklen;  // socklen  of last client. can be used for authorization.
+#endif
 #ifdef PVUNIX
 socklen_t       pvSocklen;  // socklen  of last client. can be used for authorization.
-#else
+#endif
+#ifdef PVWIN32
 int             pvSocklen;  // socklen  of last client. can be used for authorization.
 #endif
 int num_threads = 0;

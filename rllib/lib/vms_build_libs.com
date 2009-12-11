@@ -42,6 +42,7 @@ $ 'compiler' rlthread.cpp
 $ 'compiler' rltime.cpp
 $ 'compiler' rludpsocket.cpp
 $ 'compiler' rlwthread.cpp
+$ 'compiler' rlstring.cpp
 $
 $ lib/create  [-.obj]rllib.olb
 $ lib/replace [-.obj]rllib.olb rl3964r.obj
@@ -81,6 +82,7 @@ $ lib/replace [-.obj]rllib.olb rlthread.obj
 $ lib/replace [-.obj]rllib.olb rltime.obj
 $ lib/replace [-.obj]rllib.olb rludpsocket.obj
 $ lib/replace [-.obj]rllib.olb rlwthread.obj
+$ lib/replace [-.obj]rllib.olb rlstring.obj
 $ delete *.obj;*
 $
 $ set noveri

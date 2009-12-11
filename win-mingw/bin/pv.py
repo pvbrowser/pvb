@@ -712,6 +712,7 @@ pvMove = _pv.pvMove
 pvResize = _pv.pvResize
 pvHide = _pv.pvHide
 pvShow = _pv.pvShow
+pvSetParent = _pv.pvSetParent
 pvSetMultiSelection = _pv.pvSetMultiSelection
 pvSetEchoMode = _pv.pvSetEchoMode
 pvSetEditable = _pv.pvSetEditable

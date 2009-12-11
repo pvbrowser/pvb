@@ -311,6 +311,9 @@ class rlSocket(_object):
     __swig_setmethods__["s"] = _rllib.rlSocket_s_set
     __swig_getmethods__["s"] = _rllib.rlSocket_s_get
     if _newclass:s = _swig_property(_rllib.rlSocket_s_get, _rllib.rlSocket_s_set)
+    __swig_setmethods__["sockaddr"] = _rllib.rlSocket_sockaddr_set
+    __swig_getmethods__["sockaddr"] = _rllib.rlSocket_sockaddr_get
+    if _newclass:sockaddr = _swig_property(_rllib.rlSocket_sockaddr_get, _rllib.rlSocket_sockaddr_set)
 rlSocket_swigregister = _rllib.rlSocket_swigregister
 rlSocket_swigregister(rlSocket)
 
@@ -331,6 +334,7 @@ class rlTime(_object):
     def getFileModificationTime(*args): return _rllib.rlTime_getFileModificationTime(*args)
     def setTimeFromString(*args): return _rllib.rlTime_setTimeFromString(*args)
     def setLocalTime(*args): return _rllib.rlTime_setLocalTime(*args)
+    def secondsSinceEpoche(*args): return _rllib.rlTime_secondsSinceEpoche(*args)
     def __iadd__(*args): return _rllib.rlTime___iadd__(*args)
     def __isub__(*args): return _rllib.rlTime___isub__(*args)
     def __add__(*args): return _rllib.rlTime___add__(*args)
