@@ -814,10 +814,11 @@ void Interpreter::interpretd(const char *command)
       MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock];
       if(dock != NULL)
       {
-        if(all[i]->w != NULL) // never delete the contents. instead reparent it to main widget
+        QWidget *w = dock->widget();
+        if(w != NULL) // never delete the contents. instead reparent it to main widget
         {
-          all[i]->w->setParent(all[0]->w);
-          all[i]->w->hide();
+          w->setParent(all[0]->w);
+          w->hide();
         }  
         delete dock;
         mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock] = NULL;
@@ -2702,13 +2703,19 @@ void Interpreter::interprets(const char *command)
         {
           int iparent = 0;
           sscanf(command,"setParent(%d,%d)",&i,&iparent);
-          if(i <= 0) return;
+          if(i < 0) return;
           if(i >= nmax) return;
           if(iparent < 0) return;
           if(iparent >= nmax) return;
+          if(all[i] == NULL || all[iparent] == NULL) return;
           if(all[i]->w != NULL && all[iparent]->w != NULL) 
           {
-            all[i]->w->setParent(all[iparent]->w);
+            QWidget *oldparent = all[i]->w->parentWidget();
+            QWidget *newparent = all[iparent]->w;
+            if(oldparent != newparent) // if not already parent
+            {
+              all[i]->w->setParent(newparent);
+            }  
           }  
         }
         else if(strncmp(command,"setPixmap(",10) == 0) // set pixmap
