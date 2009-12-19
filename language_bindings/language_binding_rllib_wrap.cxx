@@ -2957,6 +2957,9 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 }
 
 
+  #define SWIG_From_double   PyFloat_FromDouble 
+
+
 SWIGINTERN int
 SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val) 
 {
@@ -2999,9 +3002,6 @@ SWIG_AsVal_unsigned_SS_long (PyObject *obj, unsigned long *val)
 #endif
   return SWIG_TypeError;
 }
-
-
-  #define SWIG_From_double   PyFloat_FromDouble 
 
 
 SWIGINTERNINLINE PyObject *
@@ -6456,6 +6456,65 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSocket_sockaddr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  unsigned char *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSocket_sockaddr_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSocket, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSocket_sockaddr_set" "', argument " "1"" of type '" "rlSocket *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSocket * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSocket_sockaddr_set" "', argument " "2"" of type '" "unsigned char [16+48]""'"); 
+  } 
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  {
+    if (arg2) {
+      size_t ii = 0;
+      for (; ii < (size_t)16+48; ++ii) arg1->sockaddr[ii] = arg2[ii];
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""sockaddr""' of type '""unsigned char [16+48]""'");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSocket_sockaddr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  unsigned char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlSocket_sockaddr_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSocket, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSocket_sockaddr_get" "', argument " "1"" of type '" "rlSocket *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSocket * >(argp1);
+  result = (unsigned char *)(unsigned char *) ((arg1)->sockaddr);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *rlSocket_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -7190,6 +7249,28 @@ SWIGINTERN PyObject *_wrap_rlTime_setLocalTime(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< rlTime * >(argp1);
   (arg1)->setLocalTime();
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlTime_secondsSinceEpoche(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlTime_secondsSinceEpoche",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlTime_secondsSinceEpoche" "', argument " "1"" of type '" "rlTime *""'"); 
+  }
+  arg1 = reinterpret_cast< rlTime * >(argp1);
+  result = (double)(arg1)->secondsSinceEpoche();
+  resultobj = SWIG_From_double(static_cast< double >(result));
   return resultobj;
 fail:
   return NULL;
@@ -12906,6 +12987,172 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSubmitPvserver__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:rlSubmitPvserver",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSubmitPvserver" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSubmitPvserver" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSubmitPvserver" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "rlSubmitPvserver" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)rlSubmitPvserver((char const *)arg1,(char const *)arg2,(char const *)arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSubmitPvserver__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSubmitPvserver",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSubmitPvserver" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSubmitPvserver" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSubmitPvserver" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)rlSubmitPvserver((char const *)arg1,(char const *)arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSubmitPvserver(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 4); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 3) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          return _wrap_rlSubmitPvserver__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      int res = SWIG_AsCharPtrAndSize(argv[1], 0, NULL, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        int res = SWIG_AsCharPtrAndSize(argv[2], 0, NULL, 0);
+        _v = SWIG_CheckState(res);
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_rlSubmitPvserver__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'rlSubmitPvserver'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlSubmitPvserver(char const *,char const *,char const *,char const *)\n"
+    "    rlSubmitPvserver(char const *,char const *,char const *)\n");
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -17767,6 +18014,58 @@ SWIGINTERN PyObject *_wrap_rlModbus_intsize(PyObject *SWIGUNUSEDPARM(self), PyOb
   }
   arg1 = reinterpret_cast< rlModbus * >(argp1);
   result = (int)(arg1)->intsize();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlModbus_autoreconnectSocket_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlModbus_autoreconnectSocket_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlModbus, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlModbus_autoreconnectSocket_set" "', argument " "1"" of type '" "rlModbus *""'"); 
+  }
+  arg1 = reinterpret_cast< rlModbus * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlModbus_autoreconnectSocket_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->autoreconnectSocket = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlModbus_autoreconnectSocket_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlModbus_autoreconnectSocket_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlModbus, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlModbus_autoreconnectSocket_get" "', argument " "1"" of type '" "rlModbus *""'"); 
+  }
+  arg1 = reinterpret_cast< rlModbus * >(argp1);
+  result = (int) ((arg1)->autoreconnectSocket);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -34550,6 +34849,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSocket_sendProcessViewBrowserButtonEvent", _wrap_rlSocket_sendProcessViewBrowserButtonEvent, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_s_set", _wrap_rlSocket_s_set, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_s_get", _wrap_rlSocket_s_get, METH_VARARGS, NULL},
+	 { (char *)"rlSocket_sockaddr_set", _wrap_rlSocket_sockaddr_set, METH_VARARGS, NULL},
+	 { (char *)"rlSocket_sockaddr_get", _wrap_rlSocket_sockaddr_get, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_swigregister", rlSocket_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlTime", _wrap_new_rlTime, METH_VARARGS, NULL},
 	 { (char *)"delete_rlTime", _wrap_delete_rlTime, METH_VARARGS, NULL},
@@ -34558,6 +34859,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlTime_getFileModificationTime", _wrap_rlTime_getFileModificationTime, METH_VARARGS, NULL},
 	 { (char *)"rlTime_setTimeFromString", _wrap_rlTime_setTimeFromString, METH_VARARGS, NULL},
 	 { (char *)"rlTime_setLocalTime", _wrap_rlTime_setLocalTime, METH_VARARGS, NULL},
+	 { (char *)"rlTime_secondsSinceEpoche", _wrap_rlTime_secondsSinceEpoche, METH_VARARGS, NULL},
 	 { (char *)"rlTime___iadd__", _wrap_rlTime___iadd__, METH_VARARGS, NULL},
 	 { (char *)"rlTime___isub__", _wrap_rlTime___isub__, METH_VARARGS, NULL},
 	 { (char *)"rlTime___add__", _wrap_rlTime___add__, METH_VARARGS, NULL},
@@ -34728,6 +35030,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlCan2", _wrap_rlCan2, METH_VARARGS, NULL},
 	 { (char *)"rlBrowser", _wrap_rlBrowser, METH_VARARGS, NULL},
 	 { (char *)"rlsystem", _wrap_rlsystem, METH_VARARGS, NULL},
+	 { (char *)"rlSubmitPvserver", _wrap_rlSubmitPvserver, METH_VARARGS, NULL},
 	 { (char *)"rlOption", _wrap_rlOption, METH_VARARGS, NULL},
 	 { (char *)"rlIntOption", _wrap_rlIntOption, METH_VARARGS, NULL},
 	 { (char *)"rlFloatOption", _wrap_rlFloatOption, METH_VARARGS, NULL},
@@ -34818,6 +35121,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlModbus_data2int", _wrap_rlModbus_data2int, METH_VARARGS, NULL},
 	 { (char *)"rlModbus_int2data", _wrap_rlModbus_int2data, METH_VARARGS, NULL},
 	 { (char *)"rlModbus_intsize", _wrap_rlModbus_intsize, METH_VARARGS, NULL},
+	 { (char *)"rlModbus_autoreconnectSocket_set", _wrap_rlModbus_autoreconnectSocket_set, METH_VARARGS, NULL},
+	 { (char *)"rlModbus_autoreconnectSocket_get", _wrap_rlModbus_autoreconnectSocket_get, METH_VARARGS, NULL},
 	 { (char *)"rlModbus_swigregister", rlModbus_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlModbusClient", _wrap_new_rlModbusClient, METH_VARARGS, NULL},
 	 { (char *)"delete_rlModbusClient", _wrap_delete_rlModbusClient, METH_VARARGS, NULL},

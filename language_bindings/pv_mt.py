@@ -517,6 +517,9 @@ class PARAM(_object):
     __swig_setmethods__["mouse_y"] = _pv.PARAM_mouse_y_set
     __swig_getmethods__["mouse_y"] = _pv.PARAM_mouse_y_get
     if _newclass:mouse_y = _swig_property(_pv.PARAM_mouse_y_get, _pv.PARAM_mouse_y_set)
+    __swig_setmethods__["mytext"] = _pv.PARAM_mytext_set
+    __swig_getmethods__["mytext"] = _pv.PARAM_mytext_get
+    if _newclass:mytext = _swig_property(_pv.PARAM_mytext_get, _pv.PARAM_mytext_set)
     def __init__(self, *args): 
         this = _pv.new_PARAM(*args)
         try: self.this.append(this)
@@ -709,6 +712,7 @@ pvMove = _pv.pvMove
 pvResize = _pv.pvResize
 pvHide = _pv.pvHide
 pvShow = _pv.pvShow
+pvSetParent = _pv.pvSetParent
 pvSetMultiSelection = _pv.pvSetMultiSelection
 pvSetEchoMode = _pv.pvSetEchoMode
 pvSetEditable = _pv.pvSetEditable
@@ -801,6 +805,7 @@ pvRunModalDialogScript = _pv.pvRunModalDialogScript
 pvTerminateModalDialog = _pv.pvTerminateModalDialog
 pvUpdateBaseWindow = _pv.pvUpdateBaseWindow
 pvUpdateBaseWindowOnOff = _pv.pvUpdateBaseWindowOnOff
+pvDeleteDockWidget = _pv.pvDeleteDockWidget
 qpwSetCurveData = _pv.qpwSetCurveData
 qpwSetBufferedCurveData = _pv.qpwSetBufferedCurveData
 qpwReplot = _pv.qpwReplot

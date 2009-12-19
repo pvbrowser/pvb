@@ -2714,7 +2714,14 @@ void Interpreter::interprets(const char *command)
             QWidget *newparent = all[iparent]->w;
             if(oldparent != newparent) // if not already parent
             {
+              int x = all[iparent]->w->x();
+              int y = all[iparent]->w->y();
+              int width = all[iparent]->w->width();
+              int height = all[iparent]->w->height();
+
               all[i]->w->setParent(newparent);
+
+              all[i]->w->setGeometry(x,y,width,height);
             }  
           }  
         }

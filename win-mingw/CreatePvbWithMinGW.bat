@@ -305,7 +305,7 @@ ECHO copy rlhistory\release\rlhistory.exe                             bin\rlhist
 ECHO copy ..\start_pvbapp\start_pvbapp.exe                            bin\start_pvbapp.exe                            >> %BUILD_BAT%
 ECHO copy fake_qmake\fake_qmake.exe                                   bin\fake_qmake.exe                              >> %BUILD_BAT%
 ECHO copy setupregistry\SetupRegistry.exe                             bin\SetupRegistry.exe                           >> %BUILD_BAT%
-ECHO xcopy /e /y "%QTDIR%\plugins\imageformats"                       bin\plugins\imageformats                        >> %BUILD_BAT%
+ECHO xcopy /e /y "%QTDIR%\plugins\imageformats"                       bin\imageformats                        >> %BUILD_BAT%
 ECHO copy ..\qwt\designer\plugins\designer\qwt_designer_plugin5.dll   bin\plugins\designer\qwt_designer_plugin5.dll   >> %BUILD_BAT%
 ECHO copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\designer\libqwt_designer_plugin5.a  >> %BUILD_BAT%
 ECHO copy ..\designer\plugins\pvb_designer_plugin.dll                 bin\plugins\designer\pvb_designer_plugin.dll    >> %BUILD_BAT%

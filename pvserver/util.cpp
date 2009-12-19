@@ -4553,7 +4553,6 @@ int qpwSetMarkerLabel(PARAM *p, int id, int pos, const char * text)
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf, "setMarkerLabel(%d,\"%s\")\n", pos, p->mytext );
   pvtcpsend(p, buf, strlen(buf));
-  printf(buf );
   return 0;
 }
 

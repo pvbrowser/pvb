@@ -153,9 +153,9 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/lib
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlsvg
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhistory
-%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
-%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
-%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
+#%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
+#%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
+#%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
 %__mkdir_p  %{buildroot}/opt/pvb/browserplugin
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
@@ -185,24 +185,24 @@ cp    rllib/lib/librllib.so.1.0.0                         %{buildroot}/opt/pvb/r
 cp    rllib/lib/*.h                                       %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/nodave.o                                  %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/setport.o                                 %{buildroot}/opt/pvb/rllib/lib/
-cp    language_bindings/python/id/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/_rllib.so               %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/README_PYTHON.txt                 %{buildroot}/opt/pvb/language_bindings/
-cp    language_bindings/python/mt/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/_rllib.so               %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/template/main.cpp          %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/Makefile          %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/mask1.cpp         %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/mask1.py          %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/mask1_slots.h     %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvapp.h           %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvs_init.py       %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvs.pro           %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvs.pvproject     %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/id/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/id/
+#cp    language_bindings/python/id/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/id/
+#cp    language_bindings/python/id/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/id/
+#cp    language_bindings/python/id/_rllib.so               %{buildroot}/opt/pvb/language_bindings/python/id/
+#cp    language_bindings/README_PYTHON.txt                 %{buildroot}/opt/pvb/language_bindings/
+#cp    language_bindings/python/mt/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/mt/
+#cp    language_bindings/python/mt/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/mt/
+#cp    language_bindings/python/mt/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/mt/
+#cp    language_bindings/python/mt/_rllib.so               %{buildroot}/opt/pvb/language_bindings/python/mt/
+#cp    language_bindings/python/template/main.cpp          %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/Makefile          %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/mask1.cpp         %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/mask1.py          %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/mask1_slots.h     %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/pvapp.h           %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/pvs_init.py       %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/pvs.pro           %{buildroot}/opt/pvb/language_bindings/python/template/
+#cp    language_bindings/python/template/pvs.pvproject     %{buildroot}/opt/pvb/language_bindings/python/template/
 cp    designer/plugins/libpvb_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/README.txt                                 %{buildroot}/opt/pvb/designer/
@@ -388,24 +388,24 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/rllib/lib/rldataacquisition.h
 /opt/pvb/rllib/lib/rldataacquisitionprovider.h
 /opt/pvb/rllib/lib/rlwebcam.h
-/opt/pvb/language_bindings/python/id/pv.py
-/opt/pvb/language_bindings/python/id/_pv.so
-/opt/pvb/language_bindings/python/id/rllib.py
-/opt/pvb/language_bindings/python/id/_rllib.so
-/opt/pvb/language_bindings/README_PYTHON.txt
-/opt/pvb/language_bindings/python/mt/pv.py
-/opt/pvb/language_bindings/python/mt/_pv.so
-/opt/pvb/language_bindings/python/mt/rllib.py
-/opt/pvb/language_bindings/python/mt/_rllib.so
-/opt/pvb/language_bindings/python/template/main.cpp
-/opt/pvb/language_bindings/python/template/Makefile  
-/opt/pvb/language_bindings/python/template/mask1.cpp  
-/opt/pvb/language_bindings/python/template/mask1.py  
-/opt/pvb/language_bindings/python/template/mask1_slots.h  
-/opt/pvb/language_bindings/python/template/pvapp.h  
-/opt/pvb/language_bindings/python/template/pvs_init.py  
-/opt/pvb/language_bindings/python/template/pvs.pro  
-/opt/pvb/language_bindings/python/template/pvs.pvproject
+#/opt/pvb/language_bindings/python/id/pv.py
+#/opt/pvb/language_bindings/python/id/_pv.so
+#/opt/pvb/language_bindings/python/id/rllib.py
+#/opt/pvb/language_bindings/python/id/_rllib.so
+#/opt/pvb/language_bindings/README_PYTHON.txt
+#/opt/pvb/language_bindings/python/mt/pv.py
+#/opt/pvb/language_bindings/python/mt/_pv.so
+#/opt/pvb/language_bindings/python/mt/rllib.py
+#/opt/pvb/language_bindings/python/mt/_rllib.so
+#/opt/pvb/language_bindings/python/template/main.cpp
+#/opt/pvb/language_bindings/python/template/Makefile  
+#/opt/pvb/language_bindings/python/template/mask1.cpp  
+#/opt/pvb/language_bindings/python/template/mask1.py  
+#/opt/pvb/language_bindings/python/template/mask1_slots.h  
+#/opt/pvb/language_bindings/python/template/pvapp.h  
+#/opt/pvb/language_bindings/python/template/pvs_init.py  
+#/opt/pvb/language_bindings/python/template/pvs.pro  
+#/opt/pvb/language_bindings/python/template/pvs.pvproject
 /opt/pvb/designer/plugins/libpvb_designer_plugin.so
 /opt/pvb/designer/plugins/libqwt_designer_plugin.so
 /opt/pvb/designer/README.txt
