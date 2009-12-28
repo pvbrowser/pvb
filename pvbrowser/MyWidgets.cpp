@@ -1318,16 +1318,16 @@ void MyTable::saveTextfile(const char *filename)
   for(y=-1; y<rowCount(); y++)
   {
     if(y == -1)                              cell = "";
-    else if(horizontalHeaderItem(y) == NULL) cell = "";
-    else                                     cell = horizontalHeaderItem(y)->text();
+    else if(verticalHeaderItem(y) == NULL)   cell = "";
+    else                                     cell = verticalHeaderItem(y)->text();
     if(cell.isEmpty())                       cell = "";
     else                                     fprintf(fp,"%s",(const char *) cell.toUtf8());
     for(x=0; x<columnCount(); x++)
     {
       if(y == -1)
       {
-        if(verticalHeaderItem(x) == NULL) cell = "";
-        else                              cell = verticalHeaderItem(x)->text();
+        if(horizontalHeaderItem(x) == NULL) cell = "";
+        else                                cell = horizontalHeaderItem(x)->text();
       }
       else if(item(y,x) == NULL) cell = "";
       else                       cell = item(y,x)->text();
