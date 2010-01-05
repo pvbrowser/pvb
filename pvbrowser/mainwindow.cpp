@@ -79,6 +79,7 @@ void MyThread::run()
   int    ret,maxfd,i,s,num_tabs,emit_count;
 
   if(pv == NULL) exit();
+  setlocale(LC_NUMERIC,"C");
   emit_count = 1; // constructor of pv has called semaphore.release() already
   connect(this, SIGNAL(dataReady(int)), pv, SLOT(dataReceived(int)));
   while(opt.closed == 0)

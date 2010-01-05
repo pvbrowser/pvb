@@ -2924,10 +2924,20 @@ int gComment(PARAM *p, const char *comment);
 Play SVG file
 You have to download the file first using:
 int pvDownloadFile(PARAM *p, const char *filename);
+
+Attention:
+This is a deprecated function.
+It only works with the Qt3 version of pvbrowser client.
+Now use rlSvgAnumator from rllib.
 </pre> */
 int gPlaySVG(PARAM *p, const char *filename);
 /*! <pre>
 Play SVG string over the socket
+
+Attention:
+This is a deprecated function.
+It only works with the Qt3 version of pvbrowser client.
+Now use rlSvgAnumator from rllib.
 </pre> */
 int gSocketPlaySVG(PARAM *p, const char *svgstring);
 /*! <pre>
