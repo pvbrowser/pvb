@@ -44,7 +44,7 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Dialogs.html#g28c70e2ec326179b5b5c5afb79113b76">pvAddDockWidget</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *title, int dock_id, int root_id, int allow_close=0, int floating=1, int allow_left=1, int allow_right=0, int allow_top=0, int allow_bottom=0)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Dialogs.html#gc9c03f652f8804a549ff386f7b10cbda">pvDeleteDockWidget</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int dock_id)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Dialogs.html#g84779ceded4b782a2f24ba374e27bbf8">pvDeleteDockWidget</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int dock_id, int delete_widget=0)</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -176,7 +176,7 @@ min/man size property of the root_id widget.
 </pre> 
 </div>
 </div><p>
-<a class="anchor" name="gc9c03f652f8804a549ff386f7b10cbda"></a><!-- doxytag: member="processviewserver.h::pvDeleteDockWidget" ref="gc9c03f652f8804a549ff386f7b10cbda" args="(PARAM *p, int dock_id)" -->
+<a class="anchor" name="g84779ceded4b782a2f24ba374e27bbf8"></a><!-- doxytag: member="processviewserver.h::pvDeleteDockWidget" ref="g84779ceded4b782a2f24ba374e27bbf8" args="(PARAM *p, int dock_id, int delete_widget=0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -190,7 +190,13 @@ min/man size property of the root_id widget.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>dock_id</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>dock_id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>delete_widget</em> = <code>0</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -205,6 +211,8 @@ min/man size property of the root_id widget.
 <pre>
 This function will delete the DockWidget.
 You may reuse the widgets within the DockWidget for other purposes.
+If delete_widgets == 1 the widgets within the dock will be deleted.
+If delete_widgets == 0 the widgets within the dock will be reparent to the main widget of the mask.
 </pre> 
 </div>
 </div><p>

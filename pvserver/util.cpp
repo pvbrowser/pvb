@@ -813,7 +813,7 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 
 static int show_usage()
 {
-  printf("pvserver 4.4.8 (C) by Lehrig Software Engineering 2000-2009       lehrig@t-online.de\n\n");
+  printf("pvserver 4.4.9 (C) by Lehrig Software Engineering 2000-2010       lehrig@t-online.de\n\n");
   printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6\n");
   printf("default:\n");
   printf("-port=5050\n");
@@ -4169,13 +4169,13 @@ int pvAddDockWidget(PARAM *p,const char *title, int dock_id, int root_id, int al
   return 0;
 }
 
-int pvDeleteDockWidget(PARAM *p, int dock_id)
+int pvDeleteDockWidget(PARAM *p, int dock_id, int delete_widget)
 {
   char buf[80];
   if(dock_id <  ID_DOCK_WIDGETS )                   return -1;
   if(dock_id >= ID_DOCK_WIDGETS + MAX_DOCK_WIDGETS) return -1;
 
-  sprintf(buf,"deleteDockWidget(%d)\n", dock_id);
+  sprintf(buf,"deleteDockWidget(%d,%d)\n", dock_id, delete_widget);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }

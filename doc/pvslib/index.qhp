@@ -289,7 +289,7 @@
       <keyword name="pvUpdateBaseWindow" id="processviewserver.h::pvUpdateBaseWindow" ref="processviewserver_8h.html#gbea173c00f2db518b9df04d3320aa917" />
       <keyword name="pvUpdateBaseWindowOnOff" id="processviewserver.h::pvUpdateBaseWindowOnOff" ref="processviewserver_8h.html#g08f1cfb018fce0bb4f0733f8d9612e2d" />
       <keyword name="pvAddDockWidget" id="processviewserver.h::pvAddDockWidget" ref="processviewserver_8h.html#g28c70e2ec326179b5b5c5afb79113b76" />
-      <keyword name="pvDeleteDockWidget" id="processviewserver.h::pvDeleteDockWidget" ref="processviewserver_8h.html#gc9c03f652f8804a549ff386f7b10cbda" />
+      <keyword name="pvDeleteDockWidget" id="processviewserver.h::pvDeleteDockWidget" ref="processviewserver_8h.html#g84779ceded4b782a2f24ba374e27bbf8" />
       <keyword name="qpwSetCurveData" id="processviewserver.h::qpwSetCurveData" ref="processviewserver_8h.html#g5529201ebefc486ac58acaede130d6dc" />
       <keyword name="qpwSetBufferedCurveData" id="processviewserver.h::qpwSetBufferedCurveData" ref="processviewserver_8h.html#gc103a3eddd76f5118e47048e22b20e55" />
       <keyword name="qpwReplot" id="processviewserver.h::qpwReplot" ref="processviewserver_8h.html#gdb84067143d23577a48a5e1e2e8770ee" />
@@ -1062,7 +1062,7 @@
       <keyword name="pvUpdateBaseWindow" id="Dialogs::pvUpdateBaseWindow" ref="group__Dialogs.html#gbea173c00f2db518b9df04d3320aa917" />
       <keyword name="pvUpdateBaseWindowOnOff" id="Dialogs::pvUpdateBaseWindowOnOff" ref="group__Dialogs.html#g08f1cfb018fce0bb4f0733f8d9612e2d" />
       <keyword name="pvAddDockWidget" id="Dialogs::pvAddDockWidget" ref="group__Dialogs.html#g28c70e2ec326179b5b5c5afb79113b76" />
-      <keyword name="pvDeleteDockWidget" id="Dialogs::pvDeleteDockWidget" ref="group__Dialogs.html#gc9c03f652f8804a549ff386f7b10cbda" />
+      <keyword name="pvDeleteDockWidget" id="Dialogs::pvDeleteDockWidget" ref="group__Dialogs.html#g84779ceded4b782a2f24ba374e27bbf8" />
       <keyword name="qpwSetCurveData" id="QwtPlotWidget::qpwSetCurveData" ref="group__QwtPlotWidget.html#g5529201ebefc486ac58acaede130d6dc" />
       <keyword name="qpwSetBufferedCurveData" id="QwtPlotWidget::qpwSetBufferedCurveData" ref="group__QwtPlotWidget.html#gc103a3eddd76f5118e47048e22b20e55" />
       <keyword name="qpwReplot" id="QwtPlotWidget::qpwReplot" ref="group__QwtPlotWidget.html#gdb84067143d23577a48a5e1e2e8770ee" />

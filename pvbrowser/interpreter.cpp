@@ -806,8 +806,8 @@ void Interpreter::interpretd(const char *command)
 {
   if(strncmp(command,"deleteDockWidget(",17) == 0)
   {
-    int dock_id;
-    sscanf(command,"deleteDockWidget(%d",&dock_id);
+    int dock_id = 0, delete_widgets = 0;
+    sscanf(command,"deleteDockWidget(%d,%d", &dock_id, &delete_widgets);
     int id_dock = dock_id - DOCK_WIDGETS_BASE;
     if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
     {
@@ -817,8 +817,15 @@ void Interpreter::interpretd(const char *command)
         QWidget *w = dock->widget();
         if(w != NULL) // never delete the contents. instead reparent it to main widget
         {
-          w->setParent(all[0]->w);
-          w->hide();
+          if(delete_widgets == 1)
+          {
+            delete w;
+          }
+          else
+          {
+            w->setParent(all[0]->w);
+            w->hide();
+          }
         }  
         delete dock;
         mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock] = NULL;

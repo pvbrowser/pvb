@@ -2602,8 +2602,10 @@ int pvAddDockWidget(PARAM *p,const char *title, int dock_id, int root_id, int al
 /*! <pre>
 This function will delete the DockWidget.
 You may reuse the widgets within the DockWidget for other purposes.
+If delete_widgets == 1 the widgets within the dock will be deleted.
+If delete_widgets == 0 the widgets within the dock will be reparent to the main widget of the mask.
 </pre> */
-int pvDeleteDockWidget(PARAM *p, int dock_id);
+int pvDeleteDockWidget(PARAM *p, int dock_id, int delete_widget=0);
 /** @} */ // end of group
 
 /** @defgroup QwtPlotWidget QwtPlotWidget
