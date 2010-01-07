@@ -132,6 +132,7 @@ class Interpreter
     void downloadFile(const char *file);
     void myCreateHeuristicMask(QPixmap &pm, QImage *temp);
     void mySetAlphaBuffer(QImage *temp);
+    void deleteWidget(QWidget *w);
 
     int *s; // the socket
     ALL **all;

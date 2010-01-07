@@ -1628,6 +1628,15 @@ char buf[80];
   return 0;
 }
 
+int pvDeleteWidget(PARAM *p, int id)
+{
+char buf[80];
+
+  sprintf(buf,"deleteWidget(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvToolTip(PARAM *p, int id, const char *text)
 {
   char buf[1024],*cptr;

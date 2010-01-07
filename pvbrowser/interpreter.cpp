@@ -100,6 +100,44 @@ Interpreter::~Interpreter()
   all = NULL;
 }
 
+void Interpreter::deleteWidget(QWidget *w)
+{
+  int i,j;
+  QWidget *child;
+  if(w == NULL) return;
+  if(w == all[0]->w) return; // never delete root widget
+
+  // reset all[] array
+  QList<QWidget *> widgets = w->findChildren<QWidget *>();
+  for(i=1; i<nmax; i++)
+  {
+    if(all[i]->w == w)
+    {
+      if(opt.arg_debug) printf("delete_widget %d\n", i);
+      all[i]->w = NULL;
+      all[i]->type = -1;
+      break;
+    }
+  }
+  for(j=0; j < widgets.size(); j++) 
+  {
+    child = widgets.at(j);
+    for(i=1; i<nmax; i++)
+    {
+      if(all[i]->w == child)
+      {
+        if(opt.arg_debug) printf("delete_child %d\n", i);
+        all[i]->w = NULL;
+        all[i]->type = -1;
+        break;
+      }
+    }
+  }
+
+  // delete the widget(s)
+  delete w;
+}
+
 int Interpreter::width()
 {
   if(v == NULL) return 1280;
@@ -819,7 +857,7 @@ void Interpreter::interpretd(const char *command)
         {
           if(delete_widgets == 1)
           {
-            delete w;
+            deleteWidget(w);
           }
           else
           {
@@ -839,6 +877,15 @@ void Interpreter::interpretd(const char *command)
     {
       printf("deleteDockWidget dock_id=%d out of range\n", dock_id);
     }
+  }
+  else if(strncmp(command,"deleteWidget(",13) == 0)
+  {
+    int id;
+    sscanf(command,"deleteWidget(%d", &id);
+    if(id > 0 && id < nmax)
+    {
+      deleteWidget(all[id]->w);
+    }  
   }
   else if(strncmp(command,"displayNum(",11) == 0)
   {

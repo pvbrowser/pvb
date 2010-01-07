@@ -1731,6 +1731,10 @@ int pvAddStretch(PARAM *p, int id, int param);
 set TAB order.
 </pre> */
 int pvTabOrder(PARAM *p, int id1, int id2);
+/*! <pre>
+delete widget and it's children.
+</pre> */
+int pvDeleteWidget(PARAM *p, int id);
 /** @} */ // end of group
 
 

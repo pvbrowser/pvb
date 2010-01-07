@@ -160,6 +160,7 @@
       <keyword name="pvAddWidgetOrLayout" id="processviewserver.h::pvAddWidgetOrLayout" ref="processviewserver_8h.html#gae68956a66407b1224fcbf30aacd823c" />
       <keyword name="pvAddStretch" id="processviewserver.h::pvAddStretch" ref="processviewserver_8h.html#gcc51ebf27bb0813be09eab20abec0111" />
       <keyword name="pvTabOrder" id="processviewserver.h::pvTabOrder" ref="processviewserver_8h.html#g8e5a74d4ee0886ec06ac28839a89c3c9" />
+      <keyword name="pvDeleteWidget" id="processviewserver.h::pvDeleteWidget" ref="processviewserver_8h.html#g1acff5e6d2a4a943f23d33484394301f" />
       <keyword name="pvSetCaption" id="processviewserver.h::pvSetCaption" ref="processviewserver_8h.html#g8363a3af3ad2b200162f66b5520b320e" />
       <keyword name="pvPlaySound" id="processviewserver.h::pvPlaySound" ref="processviewserver_8h.html#gacefaa886a9e672b46515c0b15e09eb5" />
       <keyword name="pvBeep" id="processviewserver.h::pvBeep" ref="processviewserver_8h.html#ge9871e1f521772c3b7cad143bf9a09d7" />
@@ -930,6 +931,7 @@
       <keyword name="pvAddWidgetOrLayout" id="Contruction::pvAddWidgetOrLayout" ref="group__Contruction.html#gae68956a66407b1224fcbf30aacd823c" />
       <keyword name="pvAddStretch" id="Contruction::pvAddStretch" ref="group__Contruction.html#gcc51ebf27bb0813be09eab20abec0111" />
       <keyword name="pvTabOrder" id="Contruction::pvTabOrder" ref="group__Contruction.html#g8e5a74d4ee0886ec06ac28839a89c3c9" />
+      <keyword name="pvDeleteWidget" id="Contruction::pvDeleteWidget" ref="group__Contruction.html#g1acff5e6d2a4a943f23d33484394301f" />
       <keyword name="pvSetColumnWith" id="Output::pvSetColumnWith" ref="group__Output.html#g9a084051fbd4c8a1fd6de79ad5aa6fa8" />
       <keyword name="pvSetCaption" id="Output::pvSetCaption" ref="group__Output.html#g8363a3af3ad2b200162f66b5520b320e" />
       <keyword name="pvPlaySound" id="Output::pvPlaySound" ref="group__Output.html#gacefaa886a9e672b46515c0b15e09eb5" />
