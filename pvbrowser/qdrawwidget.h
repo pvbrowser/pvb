@@ -50,6 +50,7 @@ class pvSvgAnimator
     int testoutput();
   private:
     int closefile();
+    void perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line);
     SVG_LINE *first;
     char *comment;
     int *s;

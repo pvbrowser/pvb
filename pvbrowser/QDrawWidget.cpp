@@ -1172,6 +1172,61 @@ int pvSvgAnimator::closefile()
   return 0;
 }
 
+void pvSvgAnimator::perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line)
+{
+  QString str;
+  int i = 0;
+  str.append(line[i++]); // d
+  str.append(line[i++]); // =
+  str.append(line[i++]); // "
+
+  char found = '\0';
+  while(line[i] != '\0')
+  {
+    if     (line[i] == 'm')   found = 'm';
+    else if(line[i] == 'M')   found = 'M';
+    else if(isalpha(line[i])) found = '\0';
+
+    if(found != '\0')
+    { 
+      // copy first coordinate pair
+      while(line[i] != ',' && line[i] != '\0') str.append(line[i++]);
+      while(line[i] != ' ' && line[i] != '\0') str.append(line[i++]);
+      // perhaps insert lineto
+      while(line[i] != '\0')
+      {
+        if(isalpha(line[i])) break;
+        if(line[i] == '-' || line[i] == '+' || isdigit(line[i]))
+        {
+          // we found the next coordinate pair
+          if(found == 'm')
+          {
+            str.append('l'); str.append(' ');
+          }
+          else if(found == 'M')
+          {
+            str.append('L'); str.append(' ');
+          }
+          // copy this coordinate pair
+          while(line[i] != ',' && line[i] != '\0') str.append(line[i++]);
+          while(line[i] != ' ' && line[i] != '\0') str.append(line[i++]);
+        }
+        else
+        {
+          str.append(line[i++]);
+        }
+      }
+    }
+    else
+    {
+      str.append(line[i++]);
+    }    
+  }
+
+  next_line->line = new char[str.length()+1];
+  strcpy(next_line->line, str.toAscii());
+}
+
 int pvSvgAnimator::read()
 {
   SVG_LINE *current_line, *next_line;
@@ -1196,8 +1251,15 @@ int pvSvgAnimator::read()
       if(cptr != NULL) *cptr = '\0';
       current_line->next = new SVG_LINE;
       next_line = current_line->next;
-      next_line->line = new char[strlen(line)+1];
-      strcpy(next_line->line,line);
+      if(line[0] == 'd' && line[1] == '=')
+      {
+        perhapsFixQtBugOnPath(next_line, line);
+      }
+      else
+      {
+        next_line->line = new char[strlen(line)+1];
+        strcpy(next_line->line,line);
+      }  
       next_line->next = NULL;
       current_line = next_line;
       num_lines++;
