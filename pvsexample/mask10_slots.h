@@ -200,7 +200,7 @@ static int slotInit(PARAM *p, DATA *d)
   pvSetImage(p,btPopup,"popup.png");
 
   //d->svgAnimator.setMatrix(const char *object, float sx, float alpha, float x0, float y0, float cx, float cy)
-  //d->svgAnimator.setMatrix("@lifter", 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
+  //d->svgAnimator.setMatrix("pv.lifter", 0.1f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
 
   // draw svg
   drawSVG1(p,svgMain,d);
@@ -349,8 +349,8 @@ static int slotButtonEvent(PARAM *p, int id, DATA *d)
     for(int i=0; i<100; i++)
     {
       // setMatrix(const char *object, float sx, float alpha, float x0, float y0, float cx, float cy)
-      d->svgAnimator.setMatrix("@roll1", 1.0, (i+1)*(8*PI/100), 0.0, 0.0, cx, cy);
-      d->svgAnimator.setMatrix("@lifter", 1.0, 0.0, 0.0, scale*i, 0.0, 0.0);
+      d->svgAnimator.setMatrix("pv.roll1", 1.0, (i+1)*(8*PI/100), 0.0, 0.0, cx, cy);
+      d->svgAnimator.setMatrix("pv.lifter", 1.0, 0.0, 0.0, scale*i, 0.0, 0.0);
       drawSVG1(p,svgMain,d);
     }
   }
@@ -499,7 +499,7 @@ static int slotSliderEvent(PARAM *p, int id, DATA *d, int val)
 
     // setMatrix(DATA *d, const char *object, float sx, float alpha, float x0, float y0, float cx, float cy)
     scale = -162.0f/100.0f; 
-    d->svgAnimator.setMatrix("@lifter", 1.0, 0.0, 0.0, scale*val, 0.0, 0.0);
+    d->svgAnimator.setMatrix("pv.lifter", 1.0, 0.0, 0.0, scale*val, 0.0, 0.0);
     drawSVG1(p,svgMain,d);
   }
 

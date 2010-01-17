@@ -135,7 +135,7 @@
     <path
        sodipodi:type="arc"
        style="fill:#33ff33;fill-opacity:0.62695929;stroke:#000000;stroke-width:6;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       id="@@circle1"
+       id="PV.circle1"
        sodipodi:cx="139"
        sodipodi:cy="349.36218"
        sodipodi:rx="77"
@@ -144,7 +144,7 @@
        inkscape:label="#path3134"
        transform="matrix(1,0,0,1.093333,0,-25.60714)" />
     <g
-       id="@monitor1"
+       id="pv.monitor1"
        transform="translate(300.5974,286.613)"
        inkscape:label="#g3231" >
       <text

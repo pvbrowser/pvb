@@ -1845,7 +1845,8 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx,
   svgline = first;
   while(svgline != NULL)
   {
-    if(strncmp(svgline->line,"id=\"@@",6) == 0 && comment[iline] == ' ') // test if it's an id starting with @@
+    if((strncmp(svgline->line,"id=\"PV.",7) == 0 || 
+        strncmp(svgline->line,"id=\"@@",6)  == 0 ) && comment[iline] == ' ') // visual feedback ?
     {
       name = &svgline->line[4];
       name.remove('\"');
@@ -1885,7 +1886,9 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
   svgline = first;
   while(svgline != NULL)
   {
-    if(strncmp(svgline->line,"id=\"@",5) == 0 && comment[iline] == ' ') // test if it's an id starting with @
+    if((strncmp(svgline->line,"id=\"pv.",7) == 0 || 
+        strncmp(svgline->line,"id=\"PV.",7) == 0 || 
+        strncmp(svgline->line,"id=\"@",5)   == 0 ) && comment[iline] == ' ') // send click event ?
     {
       name = &svgline->line[4];
       name.remove('\"');

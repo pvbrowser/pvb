@@ -55,7 +55,7 @@ static int slotButtonEvent(PARAM *p, int id, DATA *d)
   //rlSetDebugPrintf(1);
   if     (id == buttonShowCircle)
   {
-    d->svgAnimator.show("@@circle1", 1);
+    d->svgAnimator.show("PV.circle1", 1);
     //testing client commands
     //pvClientCommand(p,"pdf","test.pdf");
     //pvClientCommand(p,"html","index.html");
@@ -64,12 +64,12 @@ static int slotButtonEvent(PARAM *p, int id, DATA *d)
   }
   else if(id == buttonHideCircle)
   {
-    d->svgAnimator.show("@@circle1", 0);
+    d->svgAnimator.show("PV.circle1", 0);
   }
   else if(id == buttonHello)
   {
     d->svgAnimator.svgTextPrintf("text1", "Hello");
-    pvRequestSvgBoundsOnElement(p,svg1, "@@circle1");
+    pvRequestSvgBoundsOnElement(p,svg1, "PV.circle1");
   }
   else if(id == buttonWorld)
   {
@@ -77,31 +77,31 @@ static int slotButtonEvent(PARAM *p, int id, DATA *d)
   }
   else if(id == buttonShowMonitor)
   {
-    d->svgAnimator.show("@monitor1", 1);
+    d->svgAnimator.show("pv.monitor1", 1);
   }
   else if(id == buttonHideMonitor)
   {
-    d->svgAnimator.show("@monitor1", 0);
+    d->svgAnimator.show("pv.monitor1", 0);
   }
   else if(id == buttonMonitorPos1)
   {
-    //d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(300.5974,286.613)");
-    d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(100.0,0.0)");
+    //d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(300.5974,286.613)");
+    d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(100.0,0.0)");
   }
   else if(id == buttonMonitorPos2)
   {
-    //d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(200.5974,286.613)");
-    d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(0.0,0.0)");
+    //d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(200.5974,286.613)");
+    d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(0.0,0.0)");
   }
   else if(id == buttonAnimate)
   {
     for(int i=0; i<100; i++)
     {
-      //d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(300.5974,286.613)");
-      d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(100.0,0.0)");
+      //d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(300.5974,286.613)");
+      d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(100.0,0.0)");
       drawSVG1(p,svg1,d);
-      //d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(200.5974,286.613)");
-      d->svgAnimator.svgPrintf("@monitor1", "transform=","translate(0.0,0.0)");
+      //d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(200.5974,286.613)");
+      d->svgAnimator.svgPrintf("pv.monitor1", "transform=","translate(0.0,0.0)");
       drawSVG1(p,svg1,d);
     }
   }  

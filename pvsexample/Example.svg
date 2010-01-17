@@ -422,7 +422,7 @@
            transform="matrix(-0.3474065,2.4871158e-2,2.3789824e-2,0.3631973,406.15163,183.57385)" />
       </g>
       <g
-         id="@roll1"
+         id="pv.roll1"
 	 inkscape:label="#g2265"
 	 transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)">
         <path
@@ -477,7 +477,7 @@
            transform="matrix(-0.6714371,4.8068818e-2,4.597891e-2,0.7019563,669.84178,412.61007)" />
       </g>
       <g
-	 id="@lifter"
+	 id="pv.lifter"
 	 inkscape:label="#g23081"
 	 transform="matrix(1.0,0.0,0.0,1.0,0.0,0.0)">
         <path
