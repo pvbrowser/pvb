@@ -117,6 +117,7 @@ rlSvgAnimator::rlSvgAnimator()
   id = 0;
   comment = NULL;
   num_lines = 0;
+  isModified = 1;
 
   // zoomer follows
   svgX0 = svgY0 = 0.0f;
@@ -198,6 +199,7 @@ int rlSvgAnimator::read(const char *infile)
 {
   if(id != 0 && s != NULL && infile != NULL)
   {
+    isModified = 1;
     // tell client about svg file
     rlSvgCat *svgCat = new rlSvgCat;
     char command[MAXLINE];
@@ -226,6 +228,7 @@ int rlSvgAnimator::read(const char *infile)
 #ifndef USE_INTERNAL 
 int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
 {
+  isModified = 1;
 #ifdef RLUNIX
   rlSpawn rlsvg;
   SVG_LINE *current_line, *next_line;
@@ -402,12 +405,14 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
 
 int rlSvgAnimator::setSocket(int *socket)
 {
+  isModified = 1;
   s = socket;
   return 0;
 }
 
 int rlSvgAnimator::setId(int _id)
 {
+  isModified = 1;
   id = _id;
   return 0;
 }
@@ -416,6 +421,9 @@ int rlSvgAnimator::writeSocket(int *socket)
 {
   char buf[80];
   SVG_LINE *current_line = first;
+  
+  //if(isModified == 0) return 0;
+  isModified = 0;
 
   if(socket != 0)
   {
@@ -474,6 +482,7 @@ int rlSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char
   int i,ilast;
   int len = strlen(objectname);
 
+  isModified = 1;
   if(id != 0)
   {
     sprintf(buf,"gsvgPrintf(%d)\n",id);
@@ -579,6 +588,7 @@ int rlSvgAnimator::svgRecursivePrintf(const char *objectname, const char *tag, c
   char text[MAXBUF];
   int  len;
 
+  isModified = 1;
   sprintf(buf,"gsvgRecursivePrintf(%d)\n",id);
   tcpsend(buf, strlen(buf));
   sprintf(buf,"%s\n",objectname);
@@ -607,6 +617,7 @@ int rlSvgAnimator::svgSearchAndReplace(const char *objectname, const char *tag, 
 {
   char buf[MAXBUF+40];
 
+  isModified = 1;
   sprintf(buf,"gsvgSearchAndReplace(%d)\n",id);
   tcpsend(buf, strlen(buf));
   sprintf(buf,"%s\n",objectname);
@@ -624,6 +635,7 @@ int rlSvgAnimator::svgRecursiveSearchAndReplace(const char *objectname, const ch
 {
   char buf[MAXBUF+40];
 
+  isModified = 1;
   sprintf(buf,"gsvgRecursiveSearchAndReplace(%d)\n",id);
   tcpsend(buf, strlen(buf));
   sprintf(buf,"%s\n",objectname);
@@ -649,6 +661,7 @@ int rlSvgAnimator::svgTextPrintf(const char *objectname, const char *format, ...
   int len = strlen(objectname);
   ilast = 0;
 
+  isModified = 1;
   if(id != 0)
   {
     sprintf(buf,"gsvgTextPrintf(%d)\n",id);
@@ -780,6 +793,7 @@ int rlSvgAnimator::show(const char *objectname, int state)
   len = strlen(objectname);
   rlDebugPrintf("rlSvgAnimator.show state=%d objectname=%s\n",state,objectname);
 
+  isModified = 1;
   if(id != 0)
   {
     char buf[MAXLINE];
@@ -866,6 +880,7 @@ int rlSvgAnimator::testoutput()
 
 int rlSvgAnimator::setMatrix(const char *objectname, rlSvgPosition &pos)
 {
+  isModified = 1;
   return setMatrix(objectname, pos.sx, pos.alpha, pos.x0, pos.y0, pos.cx, pos.cy);
 }
 
@@ -883,6 +898,7 @@ int rlSvgAnimator::setMatrix(const char *objectname, float sx, float alpha, floa
 
   float a11, a12, a13, a21, a22, a23, a31, a32, a33, cx, cy;
 
+  isModified = 1;
   cx = cx_in + x0;
   cy = cy_in + y0;
 
@@ -1020,6 +1036,7 @@ int rlSvgAnimator::fileFillIniFile(const char *infile, rlIniFile *inifile)
 
 int rlSvgAnimator::setMainObject(const char *main_object)
 {
+  isModified = 1;
   if(main_object == NULL) return -1; 
   main_object_name.setText(main_object);
   return 0;
@@ -1032,6 +1049,7 @@ const char *rlSvgAnimator::mainObject()
 
 int rlSvgAnimator::setXY0(float x0, float y0)
 {
+  isModified = 1;
   svgX0 = x0;
   svgY0 = y0;
   return 0;
@@ -1049,6 +1067,7 @@ float rlSvgAnimator::y0()
 
 int rlSvgAnimator::setMouseXY0(float x0, float y0)
 {
+  isModified = 1;
   svgMouseX0 = x0;
   svgMouseY0 = y0;
   return 0;
@@ -1066,6 +1085,7 @@ float rlSvgAnimator::mouseY0()
 
 int rlSvgAnimator::setMouseXY1(float x1, float y1)
 {
+  isModified = 1;
   svgMouseX1 = x1;
   svgMouseY1 = y1;
   return 0;
@@ -1083,6 +1103,7 @@ float rlSvgAnimator::mouseY1()
 
 int rlSvgAnimator::setScale(float scale)
 {
+  isModified = 1;
   svgScale = scale;
   return 0;
 }
@@ -1096,6 +1117,7 @@ int rlSvgAnimator::zoomCenter(float newScale)
 {
   float oldX0, oldY0;
 
+  isModified = 1;
   if (newScale > 1000) newScale = 1000.0f;
 
   oldX0 = (svgX0 - ((svgWindowWidth) * (1.0f - svgScale)) / 2.0f) / svgScale;
@@ -1113,6 +1135,7 @@ int rlSvgAnimator::zoomRect()
 {
   float newScale, scale1, scale2, rectWidth, rectHeight;
 
+  isModified = 1;
   rectWidth  = svgMouseX1-svgMouseX0;
   rectHeight = svgMouseY1-svgMouseY0;
   svgX0 = svgX0 + svgWindowWidth/2  - (svgMouseX0 + rectWidth/2);
@@ -1131,12 +1154,14 @@ int rlSvgAnimator::zoomRect()
 
 int rlSvgAnimator::setMainObjectMatrix()
 {
+  isModified = 1;
   setMatrix(main_object_name.text(), svgScale, 0.0f, svgX0, svgY0, 0.0f, 0.0f);
   return 0;
 }
 
 int rlSvgAnimator::setWindowSize(int width, int height)
 {
+  isModified = 1;
   svgWindowWidth  = (float) width;
   svgWindowHeight = (float) height;
   return 0;
@@ -1154,6 +1179,7 @@ float rlSvgAnimator::windowHeight()
 
 int rlSvgAnimator::moveMainObject(float x, float y)
 {
+  isModified = 1;
   float xx0 = x0() + (x - mouseX0());
   float yy0 = y0() + (y - mouseY0());
   setXY0(xx0,yy0);

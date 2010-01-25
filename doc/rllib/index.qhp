@@ -1957,6 +1957,7 @@
       <keyword name="windowWidth" id="rlSvgAnimator::windowWidth" ref="classrlSvgAnimator.html#59c8596fc562f0f945c2ee797f7bc504" />
       <keyword name="windowHeight" id="rlSvgAnimator::windowHeight" ref="classrlSvgAnimator.html#fc37083269304ba7f99aea0b17a0150e" />
       <keyword name="moveMainObject" id="rlSvgAnimator::moveMainObject" ref="classrlSvgAnimator.html#f6c86a9453f738a71dab04bb91ae496f" />
+      <keyword name="isModified" id="rlSvgAnimator::isModified" ref="classrlSvgAnimator.html#e83dee7cdaa8446be7a5fde7d8c8b288" />
       <keyword name="closefile" id="rlSvgAnimator::closefile" ref="classrlSvgAnimator.html#e60002fac9804e737ae0b136d8257c5c" />
       <keyword name="tcpsend" id="rlSvgAnimator::tcpsend" ref="classrlSvgAnimator.html#8ee5e96362139b7858aae2716cb8cf6c" />
       <keyword name="fillIniFile" id="rlSvgAnimator::fillIniFile" ref="classrlSvgAnimator.html#b86458036f92667471e903326382c61a" />

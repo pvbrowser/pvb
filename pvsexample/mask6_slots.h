@@ -22,6 +22,7 @@ DATA;
 static int drawSVG1(PARAM *p, int id, DATA *d)
 {
   if(d == NULL) return -1;
+  if(d->svgAnimator.isModified == 0) return 0;
   gBeginDraw(p,id);
   d->svgAnimator.writeSocket();
   gEndDraw(p);

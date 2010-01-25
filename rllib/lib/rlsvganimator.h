@@ -120,6 +120,8 @@ class rlSvgAnimator
     /*! move MainObject to position */
     int moveMainObject(float x, float y);
 
+    int isModified;
+
   private:
     int closefile();
     int tcpsend(const char *buf, int len);
