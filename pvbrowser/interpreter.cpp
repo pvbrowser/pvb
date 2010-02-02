@@ -2008,6 +2008,25 @@ void Interpreter::interpretr(const char *command)
       }
     }
   }
+  else if(strncmp(command,"requestSvgMatrixForElement(",27) == 0)
+  {
+    sscanf(command,"requestSvgMatrixForElement(%d",&i);
+    get_text(command,text);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      char buf[MAX_PRINTF_LENGTH];
+      QDrawWidget *ptr = (QDrawWidget *) all[i]->w;
+      if(ptr != NULL)
+      {
+        QMatrix m = ptr->renderer.matrixForElement(text);
+        sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", i, 
+        m.m11(), m.m12(), m.m21(), m.m22(), m.det(), m.dx(), m.dy(), (const char *) text.toAscii());
+        tcp_send(s,buf,strlen(buf));
+      }
+    }
+  }
 }
 
 void Interpreter::interprets(const char *command)

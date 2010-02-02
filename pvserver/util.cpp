@@ -1680,6 +1680,16 @@ char buf[MAX_PRINTF_LENGTH+80];
   return 0;
 }
 
+int pvRequestSvgMatrixForElement(PARAM *p, int id, const char *objectname)
+{
+char buf[MAX_PRINTF_LENGTH+80];
+
+  pv_length_check(p,objectname);
+  sprintf(buf,"requestSvgMatrixForElement(%d,\"%s\")\n",id,objectname);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvBeep(PARAM *p)
 {
 char buf[80];
@@ -2661,8 +2671,9 @@ char buf[80];
 
 int pvListViewEnsureVisible(PARAM *p, int id, const char *path)
 {
-char buf[80];
+char buf[MAX_PRINTF_LENGTH];
 
+  pv_length_check(p,path);
   sprintf(buf,"ensureListVisible(%d,\"%s\")\n",id,path);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -2781,7 +2792,7 @@ PVB_IMAGE *image;
 
 int pvSetSource(PARAM *p, int id, const char *html_file)
 {
-char buf[80];
+char buf[MAX_PRINTF_LENGTH];
 
   sprintf(buf,"setSource(%d,\"%s\")\n",id,html_file);
   pvtcpsend(p, buf, strlen(buf));
@@ -3310,7 +3321,8 @@ char buf[80];
 
 int pvAddTab(PARAM *p, int id, int id_child, const char *str)
 {
-char buf[80];
+  char buf[MAX_PRINTF_LENGTH+40];
+  pv_length_check(p,str);
 
   sprintf(buf,"addTab(%d,%d,\"%s\")\n",id,id_child,str);
   pvtcpsend(p, buf, strlen(buf));
@@ -3652,7 +3664,7 @@ int  i;
 
 int gSetFont(PARAM *p, const char *family, int size, int weight, int italic)
 {
-char buf[80];
+  char buf[MAX_PRINTF_LENGTH];
 
   sprintf(buf,"gsetFont(\"%s\",%d,%d,%d)\n",family,size,weight,italic);
   if(gfp == NULL) pvtcpsend(p, buf, strlen(buf));
@@ -5670,6 +5682,7 @@ int textEventType(const char *text)
   else if(strncmp(text,"svgReleasedMidButton="  ,21) == 0) return SVG_MIDDLE_BUTTON_RELEASED;
   else if(strncmp(text,"svgReleasedRightButton=",23) == 0) return SVG_RIGHT_BUTTON_RELEASED;
   else if(strncmp(text,"svgBoundsOnElement:"    ,19) == 0) return SVG_BOUNDS_ON_ELEMENT;
+  else if(strncmp(text,"svgMatrixForElement:"   ,20) == 0) return SVG_MATRIX_FOR_ELEMENT;
   return PLAIN_TEXT_EVENT;
 }
 
@@ -5702,6 +5715,24 @@ int getSvgBoundsOnElement(const char *text, float *x, float *y, float *width, fl
     }
   }
   *x = *y = *width = *height = -1.0f;
+  return -1;
+}
+
+int getSvgMatrixForElement(const char *text, float *m11, float *m12, float *m21, float *m22,
+                                             float *det, float *dx,  float *dy)
+{
+  const char *cptr;
+  if(strncmp(text,"svgMatrixForElement:",20) == 0)
+  {
+    cptr = strchr(text,':');
+    if(cptr != NULL)
+    {
+      cptr++;
+      sscanf(cptr,"%f,%f,%f,%f,%f,%f,%f",m11,m12,m21,m22,det,dx,dy);
+      return 0;
+    }
+  }
+  *m11 = *m12 = *m21 = *m22 = *det = *dx = *dy = 0.0f;
   return -1;
 }
 

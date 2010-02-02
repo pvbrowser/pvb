@@ -549,7 +549,8 @@ enum TextEvents
   SVG_LEFT_BUTTON_RELEASED,
   SVG_MIDDLE_BUTTON_RELEASED,
   SVG_RIGHT_BUTTON_RELEASED,
-  SVG_BOUNDS_ON_ELEMENT
+  SVG_BOUNDS_ON_ELEMENT,
+  SVG_MATRIX_FOR_ELEMENT
 };
 
 /* this is for convenience when you want to write files */
@@ -2120,6 +2121,13 @@ Response: name=x,y,width,height
 Allowed widgets: QDrawWidget
 </pre> */
 int pvRequestSvgBoundsOnElement(PARAM *p, int id, const char *objectname);
+/*! <pre>
+Request the matrix for an object within a SVG graphic.
+The response will arrive in a TEXT_EVENT
+Response: name=m11, m12, m21, m22, det, dx, dy
+Allowed widgets: QDrawWidget
+</pre> */
+int pvRequestSvgMatrixForElement(PARAM *p, int id, const char *objectname);
 /** @} */ // end of group
 
 /** @defgroup State State
@@ -3268,6 +3276,12 @@ Returns the bounds on object within a SVG graphic from a TEXT_EVENT
 Allowed widgets: QDrawWidget
 </pre> */
 int getSvgBoundsOnElement(const char *text, float *x, float *y, float *width, float *height);
+/*! <pre>
+Returns the matrix for object within a SVG graphic from a TEXT_EVENT
+Allowed widgets: QDrawWidget
+</pre> */
+int getSvgMatrixForElement(const char *text, float *m11, float *m12, float *m21, float *m22,
+                                             float *det, float *dx,  float *dy);
 /** @} */ // end of group
 
 #endif

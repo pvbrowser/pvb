@@ -71,6 +71,7 @@ static int slotButtonEvent(PARAM *p, int id, DATA *d)
   {
     d->svgAnimator.svgTextPrintf("text1", "Hello");
     pvRequestSvgBoundsOnElement(p,svg1, "PV.circle1");
+    pvRequestSvgMatrixForElement(p,svg1, "PV.circle1");
   }
   else if(id == buttonWorld)
   {
@@ -126,6 +127,7 @@ static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
 {
   if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;
   float x,y,w,h;
+  float m11,m12,m21,m22,det,dx,dy;
   printf("objectname=%s\n",svgObjectName(text));
   switch(textEventType(text))
   {
@@ -153,6 +155,11 @@ static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
     case SVG_BOUNDS_ON_ELEMENT:
       getSvgBoundsOnElement(text, &x, &y, &w, &h);
       printf("bounds object=%s xywh=%f,%f,%f,%f\n",svgObjectName(text),x,y,w,h);
+      break;
+    case SVG_MATRIX_FOR_ELEMENT:
+      getSvgMatrixForElement(text, &m11, &m12, &m21, &m22, &det, &dx, &dy);
+      printf("matrix object=%s m=%f,%f,%f,%f det=%f dx=%f dy=%f\n",svgObjectName(text),
+                               m11,m12,m21,m22,det,dx,dy);
       break;
     default:
       printf("default\n");
