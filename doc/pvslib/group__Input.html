@@ -25,6 +25,8 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gf613d4358f7df90307e537dfdbc7c76e">pvRequestSvgBoundsOnElement</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *objectname)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#g16f54f9891c976df51e5895febf63682">pvRequestSvgMatrixForElement</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *objectname)</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 These are the input routines <hr><h2>Function Documentation</h2>
@@ -64,6 +66,46 @@ These are the input routines <hr><h2>Function Documentation</h2>
 Request the bounds of an object within a SVG graphic.
 The response will arrive in a TEXT_EVENT
 Response: name=x,y,width,height
+Allowed widgets: QDrawWidget
+</pre> 
+</div>
+</div><p>
+<a class="anchor" name="g16f54f9891c976df51e5895febf63682"></a><!-- doxytag: member="processviewserver.h::pvRequestSvgMatrixForElement" ref="g16f54f9891c976df51e5895febf63682" args="(PARAM *p, int id, const char *objectname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvRequestSvgMatrixForElement           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>objectname</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<pre>
+Request the matrix for an object within a SVG graphic.
+The response will arrive in a TEXT_EVENT
+Response: name=m11, m12, m21, m22, det, dx, dy
 Allowed widgets: QDrawWidget
 </pre> 
 </div>

@@ -221,6 +221,7 @@
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gc9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvSelection" id="processviewserver.h::pvSelection" ref="processviewserver_8h.html#ga9daf67935f26a7b4b076d1cfff5f4a0" />
       <keyword name="pvRequestSvgBoundsOnElement" id="processviewserver.h::pvRequestSvgBoundsOnElement" ref="processviewserver_8h.html#gf613d4358f7df90307e537dfdbc7c76e" />
+      <keyword name="pvRequestSvgMatrixForElement" id="processviewserver.h::pvRequestSvgMatrixForElement" ref="processviewserver_8h.html#g16f54f9891c976df51e5895febf63682" />
       <keyword name="pvMoveContent" id="processviewserver.h::pvMoveContent" ref="processviewserver_8h.html#gb66a0c4279e40b3bef3168143d77b756" />
       <keyword name="pvSetGeometry" id="processviewserver.h::pvSetGeometry" ref="processviewserver_8h.html#gf4b2950e75c28de7614fe0539655fcef" />
       <keyword name="pvSetMinSize" id="processviewserver.h::pvSetMinSize" ref="processviewserver_8h.html#ga85df66b6dc6c82d9978240ee49e527d" />
@@ -439,6 +440,7 @@
       <keyword name="textEventType" id="processviewserver.h::textEventType" ref="processviewserver_8h.html#g9346a8e63b25bccf56f9fabf5447e867" />
       <keyword name="svgObjectName" id="processviewserver.h::svgObjectName" ref="processviewserver_8h.html#g0a673c7bb5f11962061d59542ea793da" />
       <keyword name="getSvgBoundsOnElement" id="processviewserver.h::getSvgBoundsOnElement" ref="processviewserver_8h.html#ga3e7bc6849494b3a51e6a44776db3de6" />
+      <keyword name="getSvgMatrixForElement" id="processviewserver.h::getSvgMatrixForElement" ref="processviewserver_8h.html#gcca451d6eb51024d4e18da3f9b68beaf" />
       <keyword name="null_string" id="processviewserver.h::null_string" ref="processviewserver_8h.html#gc11bf696f7287842ed6c53430fb6e884" />
       <keyword name="pvthread_attr_init" id="wthread.h::pvthread_attr_init" ref="wthread_8h.html#0fb00b56e20413f914fd37bdc0c3c979" />
       <keyword name="pvthread_create" id="wthread.h::pvthread_create" ref="wthread_8h.html#0ccbd7bcfb0accad9d5d3682d1e17248" />
@@ -795,6 +797,7 @@
       <keyword name="SVG_MIDDLE_BUTTON_RELEASED" id="Defines and Enums::SVG_MIDDLE_BUTTON_RELEASED" ref="group__DefinesAndEnums.html#gg1d1fdb8ef10a7eb89196d12253e68dd0fb9f7d70b0dcfee0d170e14b38ba4060" />
       <keyword name="SVG_RIGHT_BUTTON_RELEASED" id="Defines and Enums::SVG_RIGHT_BUTTON_RELEASED" ref="group__DefinesAndEnums.html#gg1d1fdb8ef10a7eb89196d12253e68dd0f7df34710b873e503b324899e5623869" />
       <keyword name="SVG_BOUNDS_ON_ELEMENT" id="Defines and Enums::SVG_BOUNDS_ON_ELEMENT" ref="group__DefinesAndEnums.html#gg1d1fdb8ef10a7eb89196d12253e68dd08f9eefa8c1d0fc46150deed4115b629c" />
+      <keyword name="SVG_MATRIX_FOR_ELEMENT" id="Defines and Enums::SVG_MATRIX_FOR_ELEMENT" ref="group__DefinesAndEnums.html#gg1d1fdb8ef10a7eb89196d12253e68dd0481ff051d16ad2d74d16661c91392714" />
       <keyword name="SingleLine" id="Defines and Enums::SingleLine" ref="group__DefinesAndEnums.html#ggfc241523540d1926a9c6fe8662484a85e06262eb6a677c13f0467372a72e7900" />
       <keyword name="DontClip" id="Defines and Enums::DontClip" ref="group__DefinesAndEnums.html#ggfc241523540d1926a9c6fe8662484a85b0054a8dced00913856833e0484f962a" />
       <keyword name="ExpandTabs" id="Defines and Enums::ExpandTabs" ref="group__DefinesAndEnums.html#ggfc241523540d1926a9c6fe8662484a85444b31beb650599aa784259ee3e9695f" />
@@ -993,6 +996,7 @@
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gc9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvSelection" id="Input::pvSelection" ref="group__Input.html#ga9daf67935f26a7b4b076d1cfff5f4a0" />
       <keyword name="pvRequestSvgBoundsOnElement" id="Input::pvRequestSvgBoundsOnElement" ref="group__Input.html#gf613d4358f7df90307e537dfdbc7c76e" />
+      <keyword name="pvRequestSvgMatrixForElement" id="Input::pvRequestSvgMatrixForElement" ref="group__Input.html#g16f54f9891c976df51e5895febf63682" />
       <keyword name="pvMoveContent" id="State::pvMoveContent" ref="group__State.html#gb66a0c4279e40b3bef3168143d77b756" />
       <keyword name="pvSetGeometry" id="State::pvSetGeometry" ref="group__State.html#gf4b2950e75c28de7614fe0539655fcef" />
       <keyword name="pvSetMinSize" id="State::pvSetMinSize" ref="group__State.html#ga85df66b6dc6c82d9978240ee49e527d" />
@@ -1213,6 +1217,7 @@
       <keyword name="textEventType" id="TextEvents::textEventType" ref="group__TextEvents.html#g9346a8e63b25bccf56f9fabf5447e867" />
       <keyword name="svgObjectName" id="TextEvents::svgObjectName" ref="group__TextEvents.html#g0a673c7bb5f11962061d59542ea793da" />
       <keyword name="getSvgBoundsOnElement" id="TextEvents::getSvgBoundsOnElement" ref="group__TextEvents.html#ga3e7bc6849494b3a51e6a44776db3de6" />
+      <keyword name="getSvgMatrixForElement" id="TextEvents::getSvgMatrixForElement" ref="group__TextEvents.html#gcca451d6eb51024d4e18da3f9b68beaf" />
       <keyword name="s" id="_PARAM_::s" ref="struct__PARAM__.html#aa64c17cc3a7ef93e129a6cc6550f51a" />
       <keyword name="os" id="_PARAM_::os" ref="struct__PARAM__.html#12bbd1248abd7c9ba67c82f1e6496e94" />
       <keyword name="port" id="_PARAM_::port" ref="struct__PARAM__.html#d08bf4fb8d58ebe87a83eec55e010fee" />

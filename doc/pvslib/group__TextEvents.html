@@ -25,6 +25,8 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga3e7bc6849494b3a51e6a44776db3de6">getSvgBoundsOnElement</a> (const char *text, float *x, float *y, float *width, float *height)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gcca451d6eb51024d4e18da3f9b68beaf">getSvgMatrixForElement</a> (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)</td></tr>
+
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 These are parsing functions for TEXT_EVENT <hr><h2>Function Documentation</h2>
@@ -74,6 +76,74 @@ These are parsing functions for TEXT_EVENT <hr><h2>Function Documentation</h2>
 <p>
 <pre>
 Returns the bounds on object within a SVG graphic from a TEXT_EVENT
+Allowed widgets: QDrawWidget
+</pre> 
+</div>
+</div><p>
+<a class="anchor" name="gcca451d6eb51024d4e18da3f9b68beaf"></a><!-- doxytag: member="processviewserver.h::getSvgMatrixForElement" ref="gcca451d6eb51024d4e18da3f9b68beaf" args="(const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getSvgMatrixForElement           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>m11</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>m12</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>m21</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>m22</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>det</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>dx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&nbsp;</td>
+          <td class="paramname"> <em>dy</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<pre>
+Returns the matrix for object within a SVG graphic from a TEXT_EVENT
 Allowed widgets: QDrawWidget
 </pre> 
 </div>
