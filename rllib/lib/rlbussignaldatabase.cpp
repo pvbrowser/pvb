@@ -17,6 +17,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdarg.h>
+#ifdef RLWIN32
+#include <winsock2.h>
+#endif
 #include <mysql.h>
 #include "rlbussignaldatabase.h"
 #include "rlcutil.h"
