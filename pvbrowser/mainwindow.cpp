@@ -370,7 +370,7 @@ void MainWindow::about()
                "\nhttp://www.lehrig.de"
                "\n"
                "\ndeveloped under Linux for:"
-               "\nLinux/Unix/Windows/OS-X"
+               "\nLinux/Unix/Windows/OS-X/Maemo"
                "\n+pvserver under OpenVMS"
              ));
 }
@@ -382,7 +382,9 @@ void MainWindow::createActions()
   if(opt.arg_disable == 0)
   {
     optionAct = new QAction(QIcon(":/images/option.png"), l_options, this);
+#ifndef USE_MAEMO
     optionAct->setShortcut(tr("Ctrl+O"));
+#endif
     optionAct->setStatusTip(l_status_options);
     connect(optionAct, SIGNAL(triggered()), this, SLOT(slotFileOpt()));
   }
@@ -497,6 +499,7 @@ void MainWindow::createMenus()
   if(opt.arg_debug) printf("createMenus\n");
 
   fileMenu = menuBar()->addMenu(l_file);
+#ifndef USE_MAEMO
   if(opt.arg_disable == 0)
   {
     fileMenu->addAction(optionAct);
@@ -504,11 +507,14 @@ void MainWindow::createMenus()
     fileMenu->addAction(windowAct);
     fileMenu->addAction(newtabAct);
   }
+#endif
   fileMenu->addAction(reconnectAct);
   fileMenu->addSeparator();
+#ifndef USE_MAEMO
   fileMenu->addAction(storebmpAct);
   fileMenu->addAction(logbmpAct);
   fileMenu->addAction(logpvmAct);
+#endif
   fileMenu->addAction(printAct);
   fileMenu->addSeparator();
   fileMenu->addAction(exitAct);
@@ -529,7 +535,11 @@ void MainWindow::createMenus()
   menuBar()->addSeparator();
 
   helpMenu = menuBar()->addMenu(l_help);
+#ifdef USE_MAEMO
+  helpMenu->addAction(optionAct);
+#else  
   helpMenu->addAction(manualAct);
+#endif
   helpMenu->addAction(aboutAct);
   helpMenu->addAction(aboutQtAct);
 }
@@ -570,14 +580,18 @@ void MainWindow::createToolBars()
   // end tabbed version
 
   fileToolBar->addAction(gohomeAct);
+#ifndef USE_MAEMO
   fileToolBar->addAction(storebmpAct);
   fileToolBar->addAction(logbmpAct);
   fileToolBar->addAction(logpvmAct);
+#endif
   fileToolBar->addAction(printAct);
+#ifndef USE_MAEMO
   fileToolBar->addAction(newtabActToolBar);
   fileToolBar->addSeparator();
 
   fileToolBar->addAction(copyAct);
+#endif
   fileToolBar->addSeparator();
 
   urlComboBox = new QComboBox(NULL);
@@ -596,6 +610,7 @@ void MainWindow::createToolBars()
                              ));
   fileToolBar->addWidget(urlComboBox);
   connect(urlComboBox, SIGNAL(activated(const QString &)), this, SLOT(slotUrl(const QString &)));
+#ifndef USE_MAEMO
   fileToolBar->addSeparator();
 
   whatsthisAct = new QAction(QIcon(":/images/whatsthis.png"), "whatsThis", this);
@@ -613,6 +628,7 @@ void MainWindow::createToolBars()
   logoLabel->setPixmap(pm);
   fileToolBar->addAction(logoAct);
   fileToolBar->insertWidget(logoAct,logoLabel);
+#endif
 }
 
 void MainWindow::slotTabChanged(int index)

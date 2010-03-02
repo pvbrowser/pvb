@@ -145,6 +145,9 @@ void QImageWidget::setGeometry(int nx, int ny, int nw, int nh)
 void QImageWidget::setImage(const char *filename)
 {
   image.load(filename);
+//#ifdef USE_MAEMO 
+//  unlink(filename);
+//#endif  
   clearMask();
   if(w > 0 && h > 0 && ( w < image.width() || h < image.height() ) )
   {

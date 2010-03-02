@@ -2,8 +2,11 @@
 # project file for pvbrowser          #
 # you can uncomment CONFIG += USE_VTK #
 #######################################
-#CONFIG       += USE_VTK
+#CONFIG      += USE_VTK
 #DEFINES     += NO_QWT
+linux-g++-gles2 {
+  DEFINES    += USE_MAEMO
+}  
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
 QT           += opengl svg webkit network

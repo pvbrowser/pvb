@@ -467,8 +467,11 @@ int i;
         fprintf(fp,"# windows users may put their putty.exe here\n");
         fprintf(fp,"ssh=ssh\n");
         fprintf(fp,"# we will automatically connect to this node\n");
+#ifdef USE_MAEMO
+        fprintf(fp,"initialhost=pv://pvbrowser.org\n");
+#else
         fprintf(fp,"initialhost=pv://localhost\n");
-
+#endif
         fprintf(fp,"# define the programs that handle the following file formats\n");
 #ifdef  PVWIN32
         fprintf(fp,"view.pdf=\"c:\\path\\to\\acroread\"\n");

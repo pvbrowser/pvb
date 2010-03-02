@@ -1047,6 +1047,14 @@ MyTable::MyTable(int *sock, int ident, int numRows, int numColumns, QWidget *par
 #endif
   button = read_only = updates = 0;
   if(name != NULL) setObjectName(name);
+#ifdef USE_MAEMO  
+  QPalette palette;
+  QColor   color(128,128,128);
+  palette.setColor(QPalette::Text, color);
+  //palette.setColor(QPalette::WindowText, color);
+  //palette.setColor(QPalette::ButtonText, color);
+  setPalette(palette);
+#endif
   connect(horizontalHeader(), SIGNAL(sectionClicked(int)), SLOT(slotColClicked(int)));
   connect(verticalHeader()  , SIGNAL(sectionClicked(int)), SLOT(slotRowClicked(int)));
   connect(this, SIGNAL(cellClicked(int,int)), SLOT(slotClicked(int,int)));

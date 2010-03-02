@@ -234,6 +234,9 @@ QImage *Interpreter::readBmpFromSocket(int w, int h, char **d)
     if(opt.arg_debug) printf("readBmpFromSocket: %s\n",cptr);
     temp = new QImage();
     temp->load(cptr);
+#ifdef USE_MAEMO
+    unlink(text);
+#endif    
     if(opt.arg_debug) printf("readBmpFromSocket: %s return\n",cptr);
     *d = data;
     return temp;
