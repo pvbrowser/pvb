@@ -93,7 +93,7 @@ public:
 
 private:
   void *toChild,*fromChild;
-  char line[1024]; // adjust this if the buffer is not big enough
+  char line[4096]; // adjust this if the buffer is not big enough
 };
 
 #endif

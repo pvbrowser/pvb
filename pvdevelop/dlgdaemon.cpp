@@ -192,7 +192,7 @@ void dlgDaemon::load(QString name)
         form->textEdit->append("parity=0 # 0=NONE 1=ODD 2=EVEN");
         form->textEdit->append("communication=socket");
         form->textEdit->append("tcpadr=lehrig2");
-        form->textEdit->append("tcpport=5050");
+        form->textEdit->append("tcpport=502");
         form->textEdit->append("#eventlog host=localhost port=6000");
         form->textEdit->append("# function := 1=ReadCoilStatus | 2=ReadInputStatus | 3=ReadHoldingRegisters | 4=ReadInputRegisters");
         form->textEdit->append("#             1 coil per bit   | 1 input per bit   | 2 byte per register    | 2byte per register");

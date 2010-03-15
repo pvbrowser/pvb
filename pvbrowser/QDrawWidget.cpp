@@ -21,6 +21,23 @@
 
 extern OPT opt;
 
+static int mystrlen(const char *name)
+{
+  if(name == NULL) return 0;
+  const char *cptr = strchr(name,'\"');
+  if(cptr == NULL) return strlen(name);
+  else return cptr - name;
+}
+
+static int mystrncmp(const char *name1, const char *name2)
+{
+  if(name1 == NULL || name2 == NULL) return 1;
+  int len1 = mystrlen(name1);
+  int len2 = mystrlen(name2);
+  if(len1 != len2) return 1;
+  else return strncmp(name1,name2,len1);
+}
+
 QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *sock, int ident)
             : QWidget( parent)
 {
@@ -1461,7 +1478,7 @@ int pvSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char
     }
     if(strncmp(current_line->line,"id=",3) == 0)
     {
-      if     (strncmp(&current_line->line[4],objectname,strlen(objectname)) == 0) 
+      if     (mystrncmp(&current_line->line[4],objectname) == 0) 
       { // this is a normal object
         if(strcmp(tag,"transform=") == 0) // we may have to wrap the transformation matrix to a superobject
         {
@@ -1491,7 +1508,7 @@ for(int itest=0; ; itest++)
         break; // now we have found the object -> continue
       }
       else if(strncmp(&current_line->line[4],"pvb:",4) == 0 && 
-              strncmp(&current_line->line[8],objectname,strlen(objectname)) == 0) 
+              mystrncmp(&current_line->line[8],objectname) == 0) 
       { // this is a wrapped object with a transformation matrix
         break; // now we have found the object -> continue
       }
@@ -1571,7 +1588,7 @@ int pvSvgAnimator::svgRecursivePrintf(const char *objectname, const char *tag, c
     }
     if(strncmp(current_line->line,"id=",3) == 0)
     {
-      if     (strncmp(&current_line->line[4],objectname,strlen(objectname)) == 0) 
+      if     (mystrncmp(&current_line->line[4],objectname) == 0) 
       { // this is a normal object
         if(strcmp(tag,"transform=") == 0) // we may have to wrap the transformation matrix to a superobject
         {
@@ -1601,7 +1618,7 @@ for(int itest=0; ; itest++)
         break; // now we have found the object -> continue
       }
       else if(strncmp(&current_line->line[4],"pvb:",4) == 0 && 
-              strncmp(&current_line->line[8],objectname,strlen(objectname)) == 0) 
+              mystrncmp(&current_line->line[8],objectname) == 0) 
       { // this is a wrapped object with a transformation matrix
         break; // now we have found the object -> continue
       }
@@ -1689,7 +1706,7 @@ int pvSvgAnimator::svgTextPrintf(const char *objectname, const char *text)
     if(strncmp(current_line->line,"id=",3) == 0)
     {
       //fix if(strstr(current_line->line,objectname) != NULL)
-      if(strncmp(&current_line->line[4],objectname,strlen(objectname)) == 0)
+      if(mystrncmp(&current_line->line[4],objectname) == 0)
       {
         break;
       }
@@ -1766,12 +1783,12 @@ int pvSvgAnimator::show(const char *objectname, int state)
     if(strncmp(current_line->line,"id=",3) == 0)
     {
       //fix if(strstr(current_line->line,objectname) != NULL)
-      if(strncmp(&current_line->line[4],objectname,strlen(objectname)) == 0)
+      if(mystrncmp(&current_line->line[4],objectname) == 0)
       {
         break;
       }
       else if(strncmp(&current_line->line[4],"pvb:",4) == 0 && 
-              strncmp(&current_line->line[8],objectname,strlen(objectname)) == 0)
+              mystrncmp(&current_line->line[8],objectname) == 0)
       {
         break;
       }

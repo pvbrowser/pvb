@@ -58,7 +58,7 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a> [1024]</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a> [4096]</td></tr>
 
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
@@ -255,7 +255,7 @@ Attention: This class is only available on unix like systems.
 <p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00093">93</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><pre class="fragment"><a name="l00094"></a>00094 {
 <a name="l00095"></a>00095   <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a> == NULL) <span class="keywordflow">return</span> NULL;
-<a name="l00096"></a>00096   <span class="keywordflow">if</span>(::fgets(<a class="code" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a>)-1,(FILE*) <a class="code" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a>) == NULL)
+<a name="l00096"></a>00096   <span class="keywordflow">if</span>(::fgets(<a class="code" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a>)-1,(FILE*) <a class="code" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a>) == NULL)
 <a name="l00097"></a>00097   {
 <a name="l00098"></a>00098 <span class="preprocessor">#ifdef RLUNIX</span>
 <a name="l00099"></a>00099 <span class="preprocessor"></span>    <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#e8fad062ebe5687115162704046bb516">pid</a> != 0)
@@ -267,7 +267,7 @@ Attention: This class is only available on unix like systems.
 <a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
 <a name="l00106"></a>00106 <span class="preprocessor"></span>    <span class="keywordflow">return</span> NULL;
 <a name="l00107"></a>00107   }
-<a name="l00108"></a>00108   <span class="keywordflow">return</span> <a class="code" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a>;
+<a name="l00108"></a>00108   <span class="keywordflow">return</span> <a class="code" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a>;
 <a name="l00109"></a>00109 }
 </pre></div>
 <p>
@@ -497,12 +497,12 @@ Attention: This class is only available on unix like systems.
 
 </div>
 </div><p>
-<a class="anchor" name="eb7aff43a86e5634e48dda543a0307fe"></a><!-- doxytag: member="rlSpawn::line" ref="eb7aff43a86e5634e48dda543a0307fe" args="[1024]" -->
+<a class="anchor" name="11292b55d7c26e3e1894fd9574d49db4"></a><!-- doxytag: member="rlSpawn::line" ref="11292b55d7c26e3e1894fd9574d49db4" args="[4096]" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char <a class="el" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">rlSpawn::line</a>[1024]<code> [private]</code>          </td>
+          <td class="memname">char <a class="el" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">rlSpawn::line</a>[4096]<code> [private]</code>          </td>
         </tr>
       </table>
 </div>

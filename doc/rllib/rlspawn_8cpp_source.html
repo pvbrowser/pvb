@@ -114,7 +114,7 @@
 <a name="l00093"></a><a class="code" href="classrlSpawn.html#f7ae73acac4185d73d7dd8379dede7d4">00093</a> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSpawn.html#f7ae73acac4185d73d7dd8379dede7d4">rlSpawn::readLine</a>()
 <a name="l00094"></a>00094 {
 <a name="l00095"></a>00095   <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a> == NULL) <span class="keywordflow">return</span> NULL;
-<a name="l00096"></a>00096   <span class="keywordflow">if</span>(::fgets(<a class="code" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a>)-1,(FILE*) <a class="code" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a>) == NULL)
+<a name="l00096"></a>00096   <span class="keywordflow">if</span>(::fgets(<a class="code" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a>)-1,(FILE*) <a class="code" href="classrlSpawn.html#858ec1f770c526dd11327d786c89152f">fromChild</a>) == NULL)
 <a name="l00097"></a>00097   {
 <a name="l00098"></a>00098 <span class="preprocessor">#ifdef RLUNIX</span>
 <a name="l00099"></a>00099 <span class="preprocessor"></span>    <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#e8fad062ebe5687115162704046bb516">pid</a> != 0)
@@ -126,7 +126,7 @@
 <a name="l00105"></a>00105 <span class="preprocessor">#endif</span>
 <a name="l00106"></a>00106 <span class="preprocessor"></span>    <span class="keywordflow">return</span> NULL;
 <a name="l00107"></a>00107   }
-<a name="l00108"></a>00108   <span class="keywordflow">return</span> <a class="code" href="classrlSpawn.html#eb7aff43a86e5634e48dda543a0307fe">line</a>;
+<a name="l00108"></a>00108   <span class="keywordflow">return</span> <a class="code" href="classrlSpawn.html#11292b55d7c26e3e1894fd9574d49db4">line</a>;
 <a name="l00109"></a>00109 }
 <a name="l00110"></a>00110 
 <a name="l00111"></a><a class="code" href="classrlSpawn.html#c8878a74a22b2b7d3abfdb50090a8db4">00111</a> <span class="keywordtype">int</span> <a class="code" href="classrlSpawn.html#c8878a74a22b2b7d3abfdb50090a8db4">rlSpawn::getchar</a>()
