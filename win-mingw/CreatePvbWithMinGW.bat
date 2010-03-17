@@ -246,10 +246,10 @@ ECHO %MINGWMAKE%                                                                
 ECHO cd ..                                                                      >> %BUILD_BAT%
 ECHO rem pause                                                                  >> %BUILD_BAT%
 ECHO.                                                                           >> %BUILD_BAT%
-ECHO cd browserplugin                                                           >> %BUILD_BAT%
-ECHO %%QTDIR%%\bin\qmake pvpluginmain.pro -o Makefile                           >> %BUILD_BAT%
-ECHO %MINGWMAKE%                                                                >> %BUILD_BAT%
-ECHO cd ..                                                                      >> %BUILD_BAT%
+ECHO rem cd browserplugin                                                       >> %BUILD_BAT%
+ECHO rem %%QTDIR%%\bin\qmake pvpluginmain.pro -o Makefile                       >> %BUILD_BAT%
+ECHO rem %MINGWMAKE%                                                            >> %BUILD_BAT%
+ECHO rem cd ..                                                                  >> %BUILD_BAT%
 ECHO rem pause                                                                  >> %BUILD_BAT%
 ECHO.                                                                           >> %BUILD_BAT%
 ECHO cd pvdevelop                                                               >> %BUILD_BAT%

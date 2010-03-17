@@ -1263,6 +1263,9 @@ class rlSvgAnimator(_object):
     def windowWidth(*args): return _rllib.rlSvgAnimator_windowWidth(*args)
     def windowHeight(*args): return _rllib.rlSvgAnimator_windowHeight(*args)
     def moveMainObject(*args): return _rllib.rlSvgAnimator_moveMainObject(*args)
+    __swig_setmethods__["isModified"] = _rllib.rlSvgAnimator_isModified_set
+    __swig_getmethods__["isModified"] = _rllib.rlSvgAnimator_isModified_get
+    if _newclass:isModified = _swig_property(_rllib.rlSvgAnimator_isModified_get, _rllib.rlSvgAnimator_isModified_set)
 rlSvgAnimator_swigregister = _rllib.rlSvgAnimator_swigregister
 rlSvgAnimator_swigregister(rlSvgAnimator)
 
