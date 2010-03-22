@@ -33,21 +33,9 @@ if [ "$HOME" != "/home/lehrig" ]; then
   echo "Or leave it as it is, when your distribution has Qt4 preinstalled           "
   echo "############################################################################"
   #
-  # these exports we have used under linux with Qt-4.2.1
-  # export QTDIR=/usr/local/Trolltech/Qt-4.2.1
-  # export QMAKESPEC=/usr/local/Trolltech/Qt-4.2.1/mkspecs/linux-g++
-  # export PATH=/usr/local/Trolltech/Qt-4.2.1/bin:$PATH
-  # export TCLLIBPATH=/home/lehrig/temp/VTK5/VTK/Wrapping/Tcl # only needed if you want VTK
-  #
-  # these exports we have used under OS-X with xcode_2.4.1_8m1910_6936315.dmg and Qt-4.2.3
-  # (old version on mac)
-  # export QTDIR=/usr/local/Trolltech/Qt-4.2.3
-  # export QMAKESPEC=/usr/local/Trolltech/Qt-4.2.3/mkspecs/macx-g++
-  # export PATH=/usr/local/Trolltech/Qt-4.2.3/bin:$PATH
-  #
-  # these exports we have used under OS-X with xcode_2.4.1_8m1910_6936315.dmg and Qt-4.4.x
-  # (new version on mac, QTDIR and PATH are no longer necessary)
-  # export QMAKESPEC=/usr/local/Qt4.5/mkspecs/macx-g++
+  # OS-X
+  # this export we use under OS-X with xcode_2.4.1_8m1910_6936315.dmg and Qt
+  # export QMAKESPEC=/usr/local/Qt4.6/mkspecs/macx-g++
   #
   echo "######################################"
   echo "# then remove the exit command below #"
@@ -88,10 +76,10 @@ cd pvbrowser
 ../qmake.sh pvbrowser.pro
 make $1
 cd ..
-cd browserplugin
-../qmake.sh pvpluginmain.pro
-make $1
-cd ..
+# cd browserplugin
+# ../qmake.sh pvpluginmain.pro
+# make $1
+# cd ..
 cd pvdevelop
 ../qmake.sh pvdevelop.pro
 make $1
