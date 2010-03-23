@@ -732,7 +732,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(mass     != "") fout << "  qwtKnobSetMass(p," << id << "," << mass << ");" << ENDL;
     if(orientation != "") fout << "  qwtKnobSetOrientation(p," << id << "," << orientation << ");" << ENDL;
 */
-    fprintf(fout,"  qwtKnobSetBorderWidth(p,%s,%d);\n",itemname,obj->knobWidth());
+    fprintf(fout,"  qwtKnobSetKnobWidth(p,%s,%d);\n",itemname,obj->knobWidth());
     fprintf(fout,"  qwtKnobSetBorderWidth(p,%s,%d);\n",itemname,obj->borderWidth());
     fprintf(fout,"  qwtKnobSetTotalAngle(p,%s,%f);\n",itemname,obj->totalAngle());
     if(obj->symbol() == QwtKnob::Line)

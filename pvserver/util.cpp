@@ -4989,7 +4989,7 @@ int qwtKnobSetKnobWidth(PARAM *p, int id, int width)
 
   sprintf(buf,"qwt(%d)\n",id);
   pvtcpsend(p, buf, strlen(buf));
-  sprintf(buf,"setValue(%d)\n",width);
+  sprintf(buf,"setKnobWidth(%d)\n",width);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }

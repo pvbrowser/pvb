@@ -326,8 +326,10 @@ void QwtKnob::rangeChange()
 /*!
   Qt Resize Event
 */
-void QwtKnob::resizeEvent(QResizeEvent *)
-{
+void QwtKnob::resizeEvent(QResizeEvent *event)
+{                                                               // lehrig R Kardell begin
+    d_data->knobWidth = qwtMax(event->size().width() -50 , 5 ); // make room for knob inside box
+                                                                // lehrig R Kardell end
     layoutKnob( false );
 }
 
