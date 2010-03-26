@@ -69,7 +69,7 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#g7e0631ba2a1910b76a757b3ab782ca99">pvQDial</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent, int min, int max, int page_step, int value)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#g08495fbc4c3da36b497e22df75f089e3">pvQProgressBar</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent, int total_steps)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#g8cfc79ce0b6f71daefaaba1a07a28433">pvQProgressBar</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent, int total_steps, int orientation=Horizontal)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gf58a3aca4c0b95dff407fb729250a6c9">pvQMultiLineEdit</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent, int editable, int max_lines)</td></tr>
 
@@ -95,7 +95,11 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gcee21f061e41ea277d8594462dc01380">pvQwtSlider</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent)</td></tr>
 
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#g698ee2f27db1887da0cceb2deab09ef0">pvQwtDial</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent)</td></tr>
+
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#g2bb516f61a5bf8da693b59cd59f53000">pvQwtCompass</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent)</td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gfe4500efa2ef069095807023335ac4a7">pvQwtAnalogClock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#ga6974e380667ffbb04d0a00712e9bc93">pvQDateEdit</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int parent)</td></tr>
 
@@ -1633,7 +1637,7 @@ Please use <a class="el" href="group__Output.html#g3df593a9ca887b1a32fa45a007a77
 </pre> 
 </div>
 </div><p>
-<a class="anchor" name="g08495fbc4c3da36b497e22df75f089e3"></a><!-- doxytag: member="processviewserver.h::pvQProgressBar" ref="g08495fbc4c3da36b497e22df75f089e3" args="(PARAM *p, int id, int parent, int total_steps)" -->
+<a class="anchor" name="g8cfc79ce0b6f71daefaaba1a07a28433"></a><!-- doxytag: member="processviewserver.h::pvQProgressBar" ref="g8cfc79ce0b6f71daefaaba1a07a28433" args="(PARAM *p, int id, int parent, int total_steps, int orientation=Horizontal)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -1659,7 +1663,13 @@ Please use <a class="el" href="group__Output.html#g3df593a9ca887b1a32fa45a007a77
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&nbsp;</td>
-          <td class="paramname"> <em>total_steps</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>total_steps</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>orientation</em> = <code>Horizontal</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -2392,6 +2402,44 @@ vtkCommand DeleteAllObjects
 
 </div>
 </div><p>
+<a class="anchor" name="gfe4500efa2ef069095807023335ac4a7"></a><!-- doxytag: member="processviewserver.h::pvQwtAnalogClock" ref="gfe4500efa2ef069095807023335ac4a7" args="(PARAM *p, int id, int parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvQwtAnalogClock           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>parent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<pre>
+Call this function to create a QwtAnalogClock.</pre><p>
+<pre>See Module: QwtAnalog Clock 
+</pre> 
+</div>
+</div><p>
 <a class="anchor" name="g2bb516f61a5bf8da693b59cd59f53000"></a><!-- doxytag: member="processviewserver.h::pvQwtCompass" ref="g2bb516f61a5bf8da693b59cd59f53000" args="(PARAM *p, int id, int parent)" -->
 <div class="memitem">
 <div class="memproto">
@@ -2465,6 +2513,44 @@ Call this function to create a QwtCompass.</pre><p>
 <pre>
 Call this function to create a QwtCounter.</pre><p>
 <pre>See Module: QwtCounter 
+</pre> 
+</div>
+</div><p>
+<a class="anchor" name="g698ee2f27db1887da0cceb2deab09ef0"></a><!-- doxytag: member="processviewserver.h::pvQwtDial" ref="g698ee2f27db1887da0cceb2deab09ef0" args="(PARAM *p, int id, int parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvQwtDial           </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>parent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+<pre>
+Call this function to create a QwtDial.</pre><p>
+<pre>See Module: QwtDial 
 </pre> 
 </div>
 </div><p>

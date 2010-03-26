@@ -27,6 +27,8 @@
 #include "qwt_counter.h"
 #include "qwt_wheel.h"
 #include "qwt_slider.h"
+#include "qwt_dial.h"
+#include "qwt_analog_clock.h"
 #include "qwt_compass.h"
 #include "qwt_compass_rose.h"
 #include "qwt_dial_needle.h"
@@ -122,6 +124,42 @@ class MyQwtSlider : public QwtSlider
 public:
     MyQwtSlider(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtSlider();
+
+public slots:
+    void slotValueChanged(double value);
+
+private:
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
+    virtual void enterEvent(QEvent *event);
+    virtual void leaveEvent(QEvent *event);
+    int *s,id;
+};
+
+class MyQwtDial : public QwtDial
+{
+    Q_OBJECT
+public:
+    MyQwtDial(int *sock, int ident, QWidget *parent=0, const char *name=0);
+    ~MyQwtDial();
+
+public slots:
+    void slotValueChanged(double value);
+
+private:
+    virtual void mousePressEvent(QMouseEvent *event);
+    virtual void mouseReleaseEvent(QMouseEvent *event);
+    virtual void enterEvent(QEvent *event);
+    virtual void leaveEvent(QEvent *event);
+    int *s,id;
+};
+
+class MyQwtAnalogClock : public QwtAnalogClock
+{
+    Q_OBJECT
+public:
+    MyQwtAnalogClock(int *sock, int ident, QWidget *parent=0, const char *name=0);
+    ~MyQwtAnalogClock();
 
 public slots:
     void slotValueChanged(double value);

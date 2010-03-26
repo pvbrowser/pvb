@@ -735,6 +735,36 @@ dlgInsertFunction::dlgInsertFunction()
   subsubitem = sub(subitem,"qwtCompassSetNeedle(p,id,which,r1,g1,b1,r2,g2,b2,r3,g3,b3);");
   subsubitem = sub(subitem,"qwtCompassSetValue(p,id,value);");
 
+  subitem = sub(item,"pvQwtDial(...);");
+  subsubitem = sub(subitem,"qwtDialSetRange(p,id,vmin,vmax,step);");
+  subsubitem = sub(subitem,"qwtDialSetMass(p,id,mass);");
+  subsubitem = sub(subitem,"qwtDialSetReadOnly(p,id,rdonly);");
+  subsubitem = sub(subitem,"qwtDialSetFrameShadow(p,id,shadow);");
+  subsubitem = sub(subitem,"qwtDialShowBackground(p,id,show);");
+  subsubitem = sub(subitem,"qwtDialSetLineWidth(p,id,width);");
+  subsubitem = sub(subitem,"qwtDialSetMode(p,id,mode);");
+  subsubitem = sub(subitem,"qwtDialSetWrapping(p,id,wrap);");
+  subsubitem = sub(subitem,"qwtDialSetScale(p,id,maxMajIntv,maxMinIntv,step);");
+  subsubitem = sub(subitem,"qwtDialSetScaleArc(p,id,min,max);");
+  subsubitem = sub(subitem,"qwtDialSetOrigin(p,id,orig);");
+  subsubitem = sub(subitem,"qwtDialSetNeedle(p,id,which,r1,g1,b1,r2,g2,b2,r3,g3,b3);");
+  subsubitem = sub(subitem,"qwtDialSetValue(p,id,value);");
+
+  subitem = sub(item,"pvQwtAnalogClock(...);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetTime(p,id,hour,minute,second);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetMass(p,id,mass);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetReadOnly(p,id,rdonly);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetFrameShadow(p,id,shadow);");
+  subsubitem = sub(subitem,"qwtAnalogClockShowBackground(p,id,show);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetLineWidth(p,id,width);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetMode(p,id,mode);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetWrapping(p,id,wrap);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetScale(p,id,maxMajIntv,maxMinIntv,step);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetScaleArc(p,id,min,max);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetOrigin(p,id,orig);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetNeedle(p,id,which,r1,g1,b1,r2,g2,b2,r3,g3,b3);");
+  subsubitem = sub(subitem,"qwtAnalogClockSetValue(p,id,value);");
+
   subitem = sub(item,"pvQDateEdit(...);");
   subsubitem = sub(subitem,"pvToolTip(p,id,\"text\");");
   subsubitem = sub(subitem,"pvSetGeometry(p,id,x,y,w,h);");

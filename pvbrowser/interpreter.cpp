@@ -2473,9 +2473,19 @@ void Interpreter::interprets(const char *command)
             QwtSlider *iw = (QwtSlider *) all[i]->w;
             if(iw != NULL) iw->setGeometry(x,y,w,h);
           }
+          else if(all[i]->type == TQwtDial)
+          {
+            QwtDial *iw = (QwtDial *) all[i]->w;
+            if(iw != NULL) iw->setGeometry(x,y,w,h);
+          }
           else if(all[i]->type == TQwtCompass)
           {
             QwtCompass *iw = (QwtCompass *) all[i]->w;
+            if(iw != NULL) iw->setGeometry(x,y,w,h);
+          }
+          else if(all[i]->type == TQwtAnalogClock)
+          {
+            QwtAnalogClock *iw = (QwtAnalogClock *) all[i]->w;
             if(iw != NULL) iw->setGeometry(x,y,w,h);
           }
 #endif
@@ -3538,6 +3548,11 @@ void Interpreter::interprets(const char *command)
             QDateTimeEdit *e = (QDateTimeEdit *) all[i]->w;
             if(e != NULL) e->setTime(QTime(hour,minute,second,msec));
           }
+          else if(all[i]->type == TQwtAnalogClock)
+          {
+            MyQwtAnalogClock *e = (MyQwtAnalogClock *) all[i]->w;
+            if(e != NULL) e->setTime(QTime(hour,minute,second));
+          }
         }
         else if(strncmp(command,"setTimeEditDisplay(",19) == 0) // set time edit display
         {
@@ -4251,8 +4266,9 @@ void Interpreter::interpretq(const char *command)
       else if(strncmp(qwtcommand,"setRange(",9) == 0)
       {
         double vmin,vmax;
-        sscanf(qwtcommand,"setRange(%lf,%lf",&vmin,&vmax);
-        if(wi != NULL) wi->setRange(vmin,vmax);
+        float step = 0.0;
+        sscanf(qwtcommand,"setRange(%lf,%lf,%f",&vmin,&vmax,&step);
+        if(wi != NULL) wi->setRange(vmin,vmax,step);
       }
       else if(strncmp(qwtcommand,"setMargin(",10) == 0)
       {
@@ -4571,11 +4587,21 @@ void Interpreter::interpretq(const char *command)
         if(wi != NULL) wi->setValue(val);
       }
     }
-    else if(all[i]->type == TQwtCompass)
+    else if(all[i]->type == TQwtDial        || 
+            all[i]->type == TQwtCompass     || 
+            all[i]->type == TQwtAnalogClock )
     {
       // QwtCompass
-      QwtCompass *wi = (QwtCompass *) all[i]->w;
-      if(strncmp(qwtcommand,"setMass(",8) == 0)
+      // QwtCompass *wi = (QwtCompass *) all[i]->w;
+      QwtDial *wi = (QwtDial *) all[i]->w;
+      if(strncmp(qwtcommand,"setRange(",9) == 0)
+      {
+        double vmin,vmax;
+        float step = 0.0;
+        sscanf(qwtcommand,"setRange(%lf,%lf,%f",&vmin,&vmax,&step);
+        if(wi != NULL) wi->setRange(vmin,vmax,step);
+      }
+      else if(strncmp(qwtcommand,"setMass(",8) == 0)
       {
         float mass;
         sscanf(qwtcommand,"setMass(%f",&mass);
@@ -4595,14 +4621,15 @@ void Interpreter::interpretq(const char *command)
         sscanf(qwtcommand,"setReadOnly(%d",&w);
         if(wi != NULL) wi->setReadOnly(w);
       }
-      else if(strncmp(qwtcommand,"setSimpleCompassRose(",21) == 0)
+      else if(strncmp(qwtcommand,"setSimpleCompassRose(",21) == 0 &&
+              all[i]->type == TQwtCompass                         )
       {
         int numThorns,numThornLevels;
         double width;
         sscanf(qwtcommand,"setSimpleCompassRose(%d,%d,%lf",&numThorns,&numThornLevels,&width);
         QwtSimpleCompassRose *rose = new QwtSimpleCompassRose(numThorns, numThornLevels);
         rose->setWidth(width);
-        if(wi != NULL) wi->setRose(rose);
+        if(wi != NULL) ((QwtCompass *) wi)->setRose(rose);
       }
       else if(strncmp(qwtcommand,"setLabelMap(",12) == 0)
       {
@@ -4922,6 +4949,15 @@ void Interpreter::interpretQ(const char *command)
     all[i]->w = (QWidget *) new MyQwtSlider(s,i,all[p]->w);
     all[i]->type = TQwtSlider;
   }
+  else if(strncmp(command,"QwtDial(",8) == 0) // create a new QwtDial
+  {
+    sscanf(command,"QwtDial(%d,%d",&i,&p);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(p >= nmax) return;
+    all[i]->w = (QWidget *) new MyQwtDial(s,i,all[p]->w);
+    all[i]->type = TQwtDial;
+  }
   else if(strncmp(command,"QwtCompass(",11) == 0) // create a new QwtCompass
   {
     sscanf(command,"QwtCompass(%d,%d",&i,&p);
@@ -4930,6 +4966,15 @@ void Interpreter::interpretQ(const char *command)
     if(p >= nmax) return;
     all[i]->w = (QWidget *) new MyQwtCompass(s,i,all[p]->w);
     all[i]->type = TQwtCompass;
+  }
+  else if(strncmp(command,"QwtAnalogClock(",15) == 0) // create a new QwtAnalogClock
+  {
+    sscanf(command,"QwtAnalogClock(%d,%d",&i,&p);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(p >= nmax) return;
+    all[i]->w = (QWidget *) new MyQwtAnalogClock(s,i,all[p]->w);
+    all[i]->type = TQwtAnalogClock;
   }
 #endif //#ifndef NO_QWT
   else if(strncmp(command,"QSlider(",8) == 0) // create a new Slider
@@ -5066,11 +5111,15 @@ void Interpreter::interpretQ(const char *command)
   else if(strncmp(command,"QProgressBar(",13) == 0) // create a new QProgressBar
   {
     int totalSteps;
-    sscanf(command,"QProgressBar(%d,%d,%d",&i,&p,&totalSteps);
+    int orientation = (int) PV::Horizontal;
+    Qt::Orientation qtori;
+    sscanf(command,"QProgressBar(%d,%d,%d,%d",&i,&p,&totalSteps,&orientation);
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    all[i]->w = (QWidget *) new MyProgressBar(s,i,totalSteps,all[p]->w);
+    if(orientation == PV::Vertical) qtori = Qt::Vertical;
+    else                            qtori = Qt::Horizontal;
+    all[i]->w = (QWidget *) new MyProgressBar(s,i,totalSteps,qtori,all[p]->w);
     all[i]->type = TQProgressBar;
   }
   else if(strncmp(command,"QMultiLineEdit(",15) == 0) // create a new QMultiLineEdit

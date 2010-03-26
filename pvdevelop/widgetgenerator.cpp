@@ -559,7 +559,9 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   else if(type == "TQProgressBar")
   {
     MyProgressBar *obj = (MyProgressBar *) widget;
-    fprintf(fout,"  pvQProgressBar(p,%s,%s,%d);\n",itemname,parentname,obj->maximum());
+    QString orientation = "Horizontal";
+    if(obj->orientation() == Qt::Vertical ) orientation = "Vertical";
+    fprintf(fout,"  pvQProgressBar(p,%s,%s,%d,%s);\n",itemname,parentname,obj->maximum(),(const char *) orientation.toAscii());
     fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
     iitem++;
   }
@@ -823,24 +825,20 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   }
   else if(type == "TQwtCompass")
   {
-    //MyQwtCompass *obj = (MyQwtCompass *) widget;
     fprintf(fout,"  pvQwtCompass(p,%s,%s);\n",itemname,parentname);
     fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-/*
-    if(readOnly == "true" ) fout << "  qwtCompassSetReadOnly(p," << id << ",1);" << ENDL;
-    if(readOnly == "false") fout << "  qwtCompassSetReadOnly(p," << id << ",0);" << ENDL;
-    if(mass     != "") fout << "  qwtCompassSetMass(p," << id << "," << mass << ");" << ENDL;
-    if(orientation != "") fout << "  qwtCompassSetOrientation(p," << id << "," << orientation << ");" << ENDL;
-    if(visibleBackground == "false") fout << "  qwtCompassShowBackground(p," << id << ",0);" << ENDL;
-    if(visibleBackground == "true" ) fout << "  qwtCompassShowBackground(p," << id << ",1);" << ENDL;
-    if(linewidth         != "") fout << "  qwtCompassSetLineWidth(p," << id << "," << linewidth << ");" << ENDL;
-    if(frameShadow == "Plain")  fout << "  qwtCompassSetFrameShadow(p," << id << ",DialPlain);" << ENDL;
-    if(frameShadow == "Raised") fout << "  qwtCompassSetFrameShadow(p," << id << ",DialRaised);" << ENDL;
-    if(frameShadow == "Sunken") fout << "  qwtCompassSetFrameShadow(p," << id << ",DialSunken);" << ENDL;
-    if(origin != "") fout << "  qwtCompassSetOrigin(p," << id << "," << origin << ");" << ENDL;
-    if(wrapping == "false") fout << "  qwtCompassSetWrapping(p," << id << ",0);" << ENDL;
-    if(wrapping == "true" ) fout << "  qwtCompassSetWrapping(p," << id << ",1);" << ENDL;
-*/
+    iitem++;
+  }
+  else if(type == "TQwtAnalogClock")
+  {
+    fprintf(fout,"  pvQwtAnalogClock(p,%s,%s);\n",itemname,parentname);
+    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    iitem++;
+  }
+  else if(type == "TQwtDial")
+  {
+    fprintf(fout,"  pvQwtDial(p,%s,%s);\n",itemname,parentname);
+    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
     iitem++;
   }
   else if(type == "TQDateEdit")
@@ -1238,7 +1236,13 @@ static int generateWidgetType(FILE *fout, QWidget *root)
   else if(type == "TQwtSlider")
   {
   }
+  else if(type == "TQwtDial")
+  {
+  }
   else if(type == "TQwtCompass")
+  {
+  }
+  else if(type == "TQwtAnalogClock")
   {
   }
   else if(type == "TQDateEdit")
@@ -1548,7 +1552,9 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
   int   pvQwtCounter (PARAM *p, int id, int parent)
   int   pvQwtWheel (PARAM *p, int id, int parent)
   int   pvQwtSlider (PARAM *p, int id, int parent)
+  int   pvQwtDial (PARAM *p, int id, int parent)
   int   pvQwtCompass (PARAM *p, int id, int parent)
+  int   pvQwtAnalogClock (PARAM *p, int id, int parent)
   int   pvQDateEdit (PARAM *p, int id, int parent)
   int   pvQTimeEdit (PARAM *p, int id, int parent)
   int   pvQDateTimeEdit (PARAM *p, int id, int parent)
@@ -1905,7 +1911,13 @@ static int getWidget(FILE *fin, QWidget *root)
     }
     else if(isCommand("pvQProgressBar(") == 1)
     {
-      item = (QWidget *) new MyProgressBar(&s, 0, ival[0], pw);
+      int ori = ival[1];
+      if(ori == -1)
+      {
+        if(cval[0] == 'v' || cval[0] == 'V') ori = Qt::Vertical;
+        else                                 ori = Qt::Horizontal;
+      }
+      item = (QWidget *) new MyProgressBar(&s, 0, ival[0], (Qt::Orientation) ori, pw);
       item->setObjectName(id);
       itemtype = TQProgressBar;
       item->setStatusTip("TQProgressBar:");
@@ -2018,12 +2030,28 @@ static int getWidget(FILE *fin, QWidget *root)
       item->setStatusTip("TQwtSlider:");
       iitem++;
     }
+    else if(isCommand("pvQwtDial(") == 1)
+    {
+      item = (QWidget *) new MyQwtDial(&s, 0, pw);
+      item->setObjectName(id);
+      itemtype = TQwtDial;
+      item->setStatusTip("TQwtDial:");
+      iitem++;
+    }
     else if(isCommand("pvQwtCompass(") == 1)
     {
       item = (QWidget *) new MyQwtCompass(&s, 0, pw);
       item->setObjectName(id);
       itemtype = TQwtCompass;
       item->setStatusTip("TQwtCompass:");
+      iitem++;
+    }
+    else if(isCommand("pvQwtAnalogClock(") == 1)
+    {
+      item = (QWidget *) new MyQwtAnalogClock(&s, 0, pw);
+      item->setObjectName(id);
+      itemtype = TQwtAnalogClock;
+      item->setStatusTip("TQwtAnalogClock:");
       iitem++;
     }
     else if(isCommand("pvQDateEdit(") == 1)
@@ -2801,6 +2829,14 @@ static int setWidgetTree(QWidget *root, const char *uifile)
       else if(widget->inherits("QwtCompass"))
       {
         widget->setStatusTip("TQwtCompass:");
+      }
+      else if(widget->inherits("QwtAnalogClock"))
+      {
+        widget->setStatusTip("TQwtAnalogClock:");
+      }
+      else if(widget->inherits("QwtDial"))
+      {
+        widget->setStatusTip("TQwtDial:");
       }
       else if(widget->inherits("QDateEdit"))
       {

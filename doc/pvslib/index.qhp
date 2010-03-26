@@ -26,6 +26,8 @@
           <section title="QwtWheel" ref="group__QwtWheel.html" />
           <section title="QwtSlider" ref="group__QwtSlider.html" />
           <section title="QwtCompass" ref="group__QwtCompass.html" />
+          <section title="QwtDial" ref="group__QwtDial.html" />
+          <section title="QwtAnalogClock" ref="group__QwtAnalogClock.html" />
           <section title="UnitConversion" ref="group__UnitConversion.html" />
           <section title="TextEvents" ref="group__TextEvents.html" />
         </section>
@@ -139,7 +141,7 @@
       <keyword name="pvQTable" id="processviewserver.h::pvQTable" ref="processviewserver_8h.html#g78d910b829f141215367298cb3e647f8" />
       <keyword name="pvQSpinBox" id="processviewserver.h::pvQSpinBox" ref="processviewserver_8h.html#g6ab53bad78742e1e5a881ee9dd40dd8f" />
       <keyword name="pvQDial" id="processviewserver.h::pvQDial" ref="processviewserver_8h.html#g7e0631ba2a1910b76a757b3ab782ca99" />
-      <keyword name="pvQProgressBar" id="processviewserver.h::pvQProgressBar" ref="processviewserver_8h.html#g08495fbc4c3da36b497e22df75f089e3" />
+      <keyword name="pvQProgressBar" id="processviewserver.h::pvQProgressBar" ref="processviewserver_8h.html#g8cfc79ce0b6f71daefaaba1a07a28433" />
       <keyword name="pvQMultiLineEdit" id="processviewserver.h::pvQMultiLineEdit" ref="processviewserver_8h.html#gf58a3aca4c0b95dff407fb729250a6c9" />
       <keyword name="pvQTextBrowser" id="processviewserver.h::pvQTextBrowser" ref="processviewserver_8h.html#g35eac7161aa844c29e470950f525d365" />
       <keyword name="pvQListView" id="processviewserver.h::pvQListView" ref="processviewserver_8h.html#g349725ed1822735046ea6c292f0c572f" />
@@ -152,7 +154,9 @@
       <keyword name="pvQwtCounter" id="processviewserver.h::pvQwtCounter" ref="processviewserver_8h.html#gd6bfc3a0f3853901fb54e2d97aa2a827" />
       <keyword name="pvQwtWheel" id="processviewserver.h::pvQwtWheel" ref="processviewserver_8h.html#g06e383902f9cfdb90d11d1cdd12e8292" />
       <keyword name="pvQwtSlider" id="processviewserver.h::pvQwtSlider" ref="processviewserver_8h.html#gcee21f061e41ea277d8594462dc01380" />
+      <keyword name="pvQwtDial" id="processviewserver.h::pvQwtDial" ref="processviewserver_8h.html#g698ee2f27db1887da0cceb2deab09ef0" />
       <keyword name="pvQwtCompass" id="processviewserver.h::pvQwtCompass" ref="processviewserver_8h.html#g2bb516f61a5bf8da693b59cd59f53000" />
+      <keyword name="pvQwtAnalogClock" id="processviewserver.h::pvQwtAnalogClock" ref="processviewserver_8h.html#gfe4500efa2ef069095807023335ac4a7" />
       <keyword name="pvQDateEdit" id="processviewserver.h::pvQDateEdit" ref="processviewserver_8h.html#ga6974e380667ffbb04d0a00712e9bc93" />
       <keyword name="pvQTimeEdit" id="processviewserver.h::pvQTimeEdit" ref="processviewserver_8h.html#g5072eaa9d7753e2d49dfd6a124bcbfbb" />
       <keyword name="pvQDateTimeEdit" id="processviewserver.h::pvQDateTimeEdit" ref="processviewserver_8h.html#g92ea45f2f6a9ff88665c9182a5b1f3a6" />
@@ -382,7 +386,7 @@
       <keyword name="qwtThermoSetAlarmLevel" id="processviewserver.h::qwtThermoSetAlarmLevel" ref="processviewserver_8h.html#g350847617fa448f39c3f9220f88bab43" />
       <keyword name="qwtThermoSetAlarmEnabled" id="processviewserver.h::qwtThermoSetAlarmEnabled" ref="processviewserver_8h.html#ge2d5bf6424ed95f05744514619f6d7a5" />
       <keyword name="qwtThermoSetPipeWidth" id="processviewserver.h::qwtThermoSetPipeWidth" ref="processviewserver_8h.html#g9b3bba75a98e3f1a65ff7b7a9b29b88c" />
-      <keyword name="qwtThermoSetRange" id="processviewserver.h::qwtThermoSetRange" ref="processviewserver_8h.html#g9a38242c0371d73d70396db64517c21c" />
+      <keyword name="qwtThermoSetRange" id="processviewserver.h::qwtThermoSetRange" ref="processviewserver_8h.html#g8ed96c6b9f76976ce4aadd1c0f96ac42" />
       <keyword name="qwtThermoSetMargin" id="processviewserver.h::qwtThermoSetMargin" ref="processviewserver_8h.html#g6202435bf2c8cdd818257e6d4ac3d69c" />
       <keyword name="qwtThermoSetValue" id="processviewserver.h::qwtThermoSetValue" ref="processviewserver_8h.html#g29eb4b808e6dffa2ce1e205fc582b852" />
       <keyword name="qwtKnobSetScale" id="processviewserver.h::qwtKnobSetScale" ref="processviewserver_8h.html#gb7f54bafbfa75ebb41ac2620cb6dbdff" />
@@ -424,6 +428,7 @@
       <keyword name="qwtSliderSetMargins" id="processviewserver.h::qwtSliderSetMargins" ref="processviewserver_8h.html#g2d0f15d15f451c13ecc5db83c6ebed52" />
       <keyword name="qwtSliderSetValue" id="processviewserver.h::qwtSliderSetValue" ref="processviewserver_8h.html#gee7248f04aa01e08024f075207b91e18" />
       <keyword name="qwtCompassSetSimpleCompassRose" id="processviewserver.h::qwtCompassSetSimpleCompassRose" ref="processviewserver_8h.html#g947510da753749d8565e272766810671" />
+      <keyword name="qwtCompassSetRange" id="processviewserver.h::qwtCompassSetRange" ref="processviewserver_8h.html#g4889dec7435211bfee96a166870ed480" />
       <keyword name="qwtCompassSetMass" id="processviewserver.h::qwtCompassSetMass" ref="processviewserver_8h.html#g184d68f60481887df39f669848cd6967" />
       <keyword name="qwtCompassSetReadOnly" id="processviewserver.h::qwtCompassSetReadOnly" ref="processviewserver_8h.html#g943204243a02586ce53743b54f12bbf5" />
       <keyword name="qwtCompassSetFrameShadow" id="processviewserver.h::qwtCompassSetFrameShadow" ref="processviewserver_8h.html#g41e3e7de188683554d3a53ba43701d23" />
@@ -436,6 +441,32 @@
       <keyword name="qwtCompassSetOrigin" id="processviewserver.h::qwtCompassSetOrigin" ref="processviewserver_8h.html#g0ffe80513cca601cdc69d7a3471d56b2" />
       <keyword name="qwtCompassSetNeedle" id="processviewserver.h::qwtCompassSetNeedle" ref="processviewserver_8h.html#g481e59381168cd19468c2c17f7cc964b" />
       <keyword name="qwtCompassSetValue" id="processviewserver.h::qwtCompassSetValue" ref="processviewserver_8h.html#g6babc6e3a31500933fbd3cbb00d11108" />
+      <keyword name="qwtDialSetRange" id="processviewserver.h::qwtDialSetRange" ref="processviewserver_8h.html#g2944929de4a3235b9212ac0a33b4e7f1" />
+      <keyword name="qwtDialSetMass" id="processviewserver.h::qwtDialSetMass" ref="processviewserver_8h.html#g63e2679cef5c070a61da7140d3491f4c" />
+      <keyword name="qwtDialSetReadOnly" id="processviewserver.h::qwtDialSetReadOnly" ref="processviewserver_8h.html#g0e6dbd67576a89477ca27bcabc7c9c5b" />
+      <keyword name="qwtDialSetFrameShadow" id="processviewserver.h::qwtDialSetFrameShadow" ref="processviewserver_8h.html#g50836c904bbf1f92e056564319346b96" />
+      <keyword name="qwtDialShowBackground" id="processviewserver.h::qwtDialShowBackground" ref="processviewserver_8h.html#g94e6be8971929378561f8ef8562b31e4" />
+      <keyword name="qwtDialSetLineWidth" id="processviewserver.h::qwtDialSetLineWidth" ref="processviewserver_8h.html#g744cc81142977043ec3f12279d3b900f" />
+      <keyword name="qwtDialSetMode" id="processviewserver.h::qwtDialSetMode" ref="processviewserver_8h.html#g443bcfedaf58bf2f198b378f62221bfc" />
+      <keyword name="qwtDialSetWrapping" id="processviewserver.h::qwtDialSetWrapping" ref="processviewserver_8h.html#gda814a18b567964b2ff7eb350c8a6eaa" />
+      <keyword name="qwtDialSetScale" id="processviewserver.h::qwtDialSetScale" ref="processviewserver_8h.html#g6474e9f133e356d7a89429d90bf09440" />
+      <keyword name="qwtDialSetScaleArc" id="processviewserver.h::qwtDialSetScaleArc" ref="processviewserver_8h.html#g2677895c7aad58600354145e889f1801" />
+      <keyword name="qwtDialSetOrigin" id="processviewserver.h::qwtDialSetOrigin" ref="processviewserver_8h.html#g3246eb56a215607be071eef11a581603" />
+      <keyword name="qwtDialSetNeedle" id="processviewserver.h::qwtDialSetNeedle" ref="processviewserver_8h.html#gaa3104011b48d65619311564e84af644" />
+      <keyword name="qwtDialSetValue" id="processviewserver.h::qwtDialSetValue" ref="processviewserver_8h.html#g24f1a6479b34fa8c147078336b87c590" />
+      <keyword name="qwtAnalogClockSetTime" id="processviewserver.h::qwtAnalogClockSetTime" ref="processviewserver_8h.html#g01111a9b462a9ccb3605cc2b8c8aad38" />
+      <keyword name="qwtAnalogClockSetMass" id="processviewserver.h::qwtAnalogClockSetMass" ref="processviewserver_8h.html#gc4b584c4e940b215e3d09fa4707ab029" />
+      <keyword name="qwtAnalogClockSetReadOnly" id="processviewserver.h::qwtAnalogClockSetReadOnly" ref="processviewserver_8h.html#g02428b203c83638b79ed4321dcdfd9df" />
+      <keyword name="qwtAnalogClockSetFrameShadow" id="processviewserver.h::qwtAnalogClockSetFrameShadow" ref="processviewserver_8h.html#g5aa785c12fee8548bc48d58f69d3a45c" />
+      <keyword name="qwtAnalogClockShowBackground" id="processviewserver.h::qwtAnalogClockShowBackground" ref="processviewserver_8h.html#gb5f75e766728cc5a9d48652d09e44388" />
+      <keyword name="qwtAnalogClockSetLineWidth" id="processviewserver.h::qwtAnalogClockSetLineWidth" ref="processviewserver_8h.html#gefb2a95fe2e2f4a6e0a24354f916df56" />
+      <keyword name="qwtAnalogClockSetMode" id="processviewserver.h::qwtAnalogClockSetMode" ref="processviewserver_8h.html#ge4b21ed57f1ab0c25453f3f2f603b7c1" />
+      <keyword name="qwtAnalogClockSetWrapping" id="processviewserver.h::qwtAnalogClockSetWrapping" ref="processviewserver_8h.html#g085208f7bdca44c35d67c2b1fedd92f9" />
+      <keyword name="qwtAnalogClockSetScale" id="processviewserver.h::qwtAnalogClockSetScale" ref="processviewserver_8h.html#gc736b381b4ae4f50c4ff45222f05247b" />
+      <keyword name="qwtAnalogClockSetScaleArc" id="processviewserver.h::qwtAnalogClockSetScaleArc" ref="processviewserver_8h.html#gdaa56e4f58e9de37975d44f25b2851ed" />
+      <keyword name="qwtAnalogClockSetOrigin" id="processviewserver.h::qwtAnalogClockSetOrigin" ref="processviewserver_8h.html#ge52b34bb8074d20b64d574f7964ce2e6" />
+      <keyword name="qwtAnalogClockSetNeedle" id="processviewserver.h::qwtAnalogClockSetNeedle" ref="processviewserver_8h.html#g1bbfc1f3b363ac1aae97d8e46b706be2" />
+      <keyword name="qwtAnalogClockSetValue" id="processviewserver.h::qwtAnalogClockSetValue" ref="processviewserver_8h.html#gdf6fbd3a6b7f7336b8b41f0f2d035692" />
       <keyword name="unit" id="processviewserver.h::unit" ref="processviewserver_8h.html#gf75ff5f00e1c8928751ef064d0ebef99" />
       <keyword name="textEventType" id="processviewserver.h::textEventType" ref="processviewserver_8h.html#g9346a8e63b25bccf56f9fabf5447e867" />
       <keyword name="svgObjectName" id="processviewserver.h::svgObjectName" ref="processviewserver_8h.html#g0a673c7bb5f11962061d59542ea793da" />
@@ -531,7 +562,9 @@
       <keyword name="TQwtCounter" id="Defines and Enums::TQwtCounter" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55b215203e8e356773292f92574fad7a60b" />
       <keyword name="TQwtWheel" id="Defines and Enums::TQwtWheel" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55b0dc6e26a9c4304c47029b3f75aabb51d" />
       <keyword name="TQwtSlider" id="Defines and Enums::TQwtSlider" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55be60708d018575f7622033833122f3f5c" />
+      <keyword name="TQwtDial" id="Defines and Enums::TQwtDial" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55b695e14cb12265688a045b074ddd5cba9" />
       <keyword name="TQwtCompass" id="Defines and Enums::TQwtCompass" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55bd8cf67bd76e457a354e675ae89a3e718" />
+      <keyword name="TQwtAnalogClock" id="Defines and Enums::TQwtAnalogClock" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55bc5231f0a5095358bbd96fe885899eed3" />
       <keyword name="TQDateEdit" id="Defines and Enums::TQDateEdit" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55bdcbe931d9ae4e3fd3d58b9598d834d68" />
       <keyword name="TQTimeEdit" id="Defines and Enums::TQTimeEdit" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55b5126e1aae7a1029dcf8d477760ce77a0" />
       <keyword name="TQDateTimeEdit" id="Defines and Enums::TQDateTimeEdit" ref="group__DefinesAndEnums.html#gg06fc87d81c62e9abb8790b6e5713c55b8e8064f148c7dae46530b72c7df0368d" />
@@ -565,6 +598,11 @@
       <keyword name="CounterButtonCnt" id="Defines and Enums::CounterButtonCnt" ref="group__DefinesAndEnums.html#gg69d62ed0dc8f47b76662c8601e918565aef582169d8afd276462a1fe01d9b846" />
       <keyword name="RotateNeedle" id="Defines and Enums::RotateNeedle" ref="group__DefinesAndEnums.html#gg83400f3ac84ef3db48330f4cedeecb7ae7df485bc620cc0495910947fc0abc4f" />
       <keyword name="RotateScale" id="Defines and Enums::RotateScale" ref="group__DefinesAndEnums.html#gg83400f3ac84ef3db48330f4cedeecb7a16f3613953dc14a1a2aa7d89b784e297" />
+      <keyword name="QwtDialNeedle1" id="Defines and Enums::QwtDialNeedle1" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ff85b7e508e23269eded2e8076cae2c15a" />
+      <keyword name="QwtDialNeedle2" id="Defines and Enums::QwtDialNeedle2" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ffbc731b580bfa52f78ea0ac33801892df" />
+      <keyword name="QwtDialNeedle3" id="Defines and Enums::QwtDialNeedle3" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ff07b808e65111c966c7770ece5f82edd7" />
+      <keyword name="QwtDialNeedle4" id="Defines and Enums::QwtDialNeedle4" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ffc4d91754599fd74f85cda5ce49852f03" />
+      <keyword name="QwtDialLineNeedle" id="Defines and Enums::QwtDialLineNeedle" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ffbb18ffa68dfa5ab9f6c698b8ee18c410" />
       <keyword name="DialPlain" id="Defines and Enums::DialPlain" ref="group__DefinesAndEnums.html#ggf31c9033ceddee69ad7bea3067b40276256034d7038b4ab9b3ea639352024e8c" />
       <keyword name="DialRaised" id="Defines and Enums::DialRaised" ref="group__DefinesAndEnums.html#ggf31c9033ceddee69ad7bea3067b40276a1934a5e26ce1b993f3b8254906201f2" />
       <keyword name="DialSunken" id="Defines and Enums::DialSunken" ref="group__DefinesAndEnums.html#ggf31c9033ceddee69ad7bea3067b40276beba353d839ac38a00c8db57c12c9790" />
@@ -913,7 +951,7 @@
       <keyword name="pvQTable" id="Contruction::pvQTable" ref="group__Contruction.html#g78d910b829f141215367298cb3e647f8" />
       <keyword name="pvQSpinBox" id="Contruction::pvQSpinBox" ref="group__Contruction.html#g6ab53bad78742e1e5a881ee9dd40dd8f" />
       <keyword name="pvQDial" id="Contruction::pvQDial" ref="group__Contruction.html#g7e0631ba2a1910b76a757b3ab782ca99" />
-      <keyword name="pvQProgressBar" id="Contruction::pvQProgressBar" ref="group__Contruction.html#g08495fbc4c3da36b497e22df75f089e3" />
+      <keyword name="pvQProgressBar" id="Contruction::pvQProgressBar" ref="group__Contruction.html#g8cfc79ce0b6f71daefaaba1a07a28433" />
       <keyword name="pvQMultiLineEdit" id="Contruction::pvQMultiLineEdit" ref="group__Contruction.html#gf58a3aca4c0b95dff407fb729250a6c9" />
       <keyword name="pvQTextBrowser" id="Contruction::pvQTextBrowser" ref="group__Contruction.html#g35eac7161aa844c29e470950f525d365" />
       <keyword name="pvQListView" id="Contruction::pvQListView" ref="group__Contruction.html#g349725ed1822735046ea6c292f0c572f" />
@@ -926,7 +964,9 @@
       <keyword name="pvQwtCounter" id="Contruction::pvQwtCounter" ref="group__Contruction.html#gd6bfc3a0f3853901fb54e2d97aa2a827" />
       <keyword name="pvQwtWheel" id="Contruction::pvQwtWheel" ref="group__Contruction.html#g06e383902f9cfdb90d11d1cdd12e8292" />
       <keyword name="pvQwtSlider" id="Contruction::pvQwtSlider" ref="group__Contruction.html#gcee21f061e41ea277d8594462dc01380" />
+      <keyword name="pvQwtDial" id="Contruction::pvQwtDial" ref="group__Contruction.html#g698ee2f27db1887da0cceb2deab09ef0" />
       <keyword name="pvQwtCompass" id="Contruction::pvQwtCompass" ref="group__Contruction.html#g2bb516f61a5bf8da693b59cd59f53000" />
+      <keyword name="pvQwtAnalogClock" id="Contruction::pvQwtAnalogClock" ref="group__Contruction.html#gfe4500efa2ef069095807023335ac4a7" />
       <keyword name="pvQDateEdit" id="Contruction::pvQDateEdit" ref="group__Contruction.html#ga6974e380667ffbb04d0a00712e9bc93" />
       <keyword name="pvQTimeEdit" id="Contruction::pvQTimeEdit" ref="group__Contruction.html#g5072eaa9d7753e2d49dfd6a124bcbfbb" />
       <keyword name="pvQDateTimeEdit" id="Contruction::pvQDateTimeEdit" ref="group__Contruction.html#g92ea45f2f6a9ff88665c9182a5b1f3a6" />
@@ -1159,7 +1199,7 @@
       <keyword name="qwtThermoSetAlarmLevel" id="QwtThermo::qwtThermoSetAlarmLevel" ref="group__QwtThermo.html#g350847617fa448f39c3f9220f88bab43" />
       <keyword name="qwtThermoSetAlarmEnabled" id="QwtThermo::qwtThermoSetAlarmEnabled" ref="group__QwtThermo.html#ge2d5bf6424ed95f05744514619f6d7a5" />
       <keyword name="qwtThermoSetPipeWidth" id="QwtThermo::qwtThermoSetPipeWidth" ref="group__QwtThermo.html#g9b3bba75a98e3f1a65ff7b7a9b29b88c" />
-      <keyword name="qwtThermoSetRange" id="QwtThermo::qwtThermoSetRange" ref="group__QwtThermo.html#g9a38242c0371d73d70396db64517c21c" />
+      <keyword name="qwtThermoSetRange" id="QwtThermo::qwtThermoSetRange" ref="group__QwtThermo.html#g8ed96c6b9f76976ce4aadd1c0f96ac42" />
       <keyword name="qwtThermoSetMargin" id="QwtThermo::qwtThermoSetMargin" ref="group__QwtThermo.html#g6202435bf2c8cdd818257e6d4ac3d69c" />
       <keyword name="qwtThermoSetValue" id="QwtThermo::qwtThermoSetValue" ref="group__QwtThermo.html#g29eb4b808e6dffa2ce1e205fc582b852" />
       <keyword name="qwtKnobSetScale" id="QwtKnob::qwtKnobSetScale" ref="group__QwtKnob.html#gb7f54bafbfa75ebb41ac2620cb6dbdff" />
@@ -1201,6 +1241,7 @@
       <keyword name="qwtSliderSetMargins" id="QwtSlider::qwtSliderSetMargins" ref="group__QwtSlider.html#g2d0f15d15f451c13ecc5db83c6ebed52" />
       <keyword name="qwtSliderSetValue" id="QwtSlider::qwtSliderSetValue" ref="group__QwtSlider.html#gee7248f04aa01e08024f075207b91e18" />
       <keyword name="qwtCompassSetSimpleCompassRose" id="QwtCompass::qwtCompassSetSimpleCompassRose" ref="group__QwtCompass.html#g947510da753749d8565e272766810671" />
+      <keyword name="qwtCompassSetRange" id="QwtCompass::qwtCompassSetRange" ref="group__QwtCompass.html#g4889dec7435211bfee96a166870ed480" />
       <keyword name="qwtCompassSetMass" id="QwtCompass::qwtCompassSetMass" ref="group__QwtCompass.html#g184d68f60481887df39f669848cd6967" />
       <keyword name="qwtCompassSetReadOnly" id="QwtCompass::qwtCompassSetReadOnly" ref="group__QwtCompass.html#g943204243a02586ce53743b54f12bbf5" />
       <keyword name="qwtCompassSetFrameShadow" id="QwtCompass::qwtCompassSetFrameShadow" ref="group__QwtCompass.html#g41e3e7de188683554d3a53ba43701d23" />
@@ -1213,6 +1254,32 @@
       <keyword name="qwtCompassSetOrigin" id="QwtCompass::qwtCompassSetOrigin" ref="group__QwtCompass.html#g0ffe80513cca601cdc69d7a3471d56b2" />
       <keyword name="qwtCompassSetNeedle" id="QwtCompass::qwtCompassSetNeedle" ref="group__QwtCompass.html#g481e59381168cd19468c2c17f7cc964b" />
       <keyword name="qwtCompassSetValue" id="QwtCompass::qwtCompassSetValue" ref="group__QwtCompass.html#g6babc6e3a31500933fbd3cbb00d11108" />
+      <keyword name="qwtDialSetRange" id="QwtDial::qwtDialSetRange" ref="group__QwtDial.html#g2944929de4a3235b9212ac0a33b4e7f1" />
+      <keyword name="qwtDialSetMass" id="QwtDial::qwtDialSetMass" ref="group__QwtDial.html#g63e2679cef5c070a61da7140d3491f4c" />
+      <keyword name="qwtDialSetReadOnly" id="QwtDial::qwtDialSetReadOnly" ref="group__QwtDial.html#g0e6dbd67576a89477ca27bcabc7c9c5b" />
+      <keyword name="qwtDialSetFrameShadow" id="QwtDial::qwtDialSetFrameShadow" ref="group__QwtDial.html#g50836c904bbf1f92e056564319346b96" />
+      <keyword name="qwtDialShowBackground" id="QwtDial::qwtDialShowBackground" ref="group__QwtDial.html#g94e6be8971929378561f8ef8562b31e4" />
+      <keyword name="qwtDialSetLineWidth" id="QwtDial::qwtDialSetLineWidth" ref="group__QwtDial.html#g744cc81142977043ec3f12279d3b900f" />
+      <keyword name="qwtDialSetMode" id="QwtDial::qwtDialSetMode" ref="group__QwtDial.html#g443bcfedaf58bf2f198b378f62221bfc" />
+      <keyword name="qwtDialSetWrapping" id="QwtDial::qwtDialSetWrapping" ref="group__QwtDial.html#gda814a18b567964b2ff7eb350c8a6eaa" />
+      <keyword name="qwtDialSetScale" id="QwtDial::qwtDialSetScale" ref="group__QwtDial.html#g6474e9f133e356d7a89429d90bf09440" />
+      <keyword name="qwtDialSetScaleArc" id="QwtDial::qwtDialSetScaleArc" ref="group__QwtDial.html#g2677895c7aad58600354145e889f1801" />
+      <keyword name="qwtDialSetOrigin" id="QwtDial::qwtDialSetOrigin" ref="group__QwtDial.html#g3246eb56a215607be071eef11a581603" />
+      <keyword name="qwtDialSetNeedle" id="QwtDial::qwtDialSetNeedle" ref="group__QwtDial.html#gaa3104011b48d65619311564e84af644" />
+      <keyword name="qwtDialSetValue" id="QwtDial::qwtDialSetValue" ref="group__QwtDial.html#g24f1a6479b34fa8c147078336b87c590" />
+      <keyword name="qwtAnalogClockSetTime" id="QwtAnalogClock::qwtAnalogClockSetTime" ref="group__QwtAnalogClock.html#g01111a9b462a9ccb3605cc2b8c8aad38" />
+      <keyword name="qwtAnalogClockSetMass" id="QwtAnalogClock::qwtAnalogClockSetMass" ref="group__QwtAnalogClock.html#gc4b584c4e940b215e3d09fa4707ab029" />
+      <keyword name="qwtAnalogClockSetReadOnly" id="QwtAnalogClock::qwtAnalogClockSetReadOnly" ref="group__QwtAnalogClock.html#g02428b203c83638b79ed4321dcdfd9df" />
+      <keyword name="qwtAnalogClockSetFrameShadow" id="QwtAnalogClock::qwtAnalogClockSetFrameShadow" ref="group__QwtAnalogClock.html#g5aa785c12fee8548bc48d58f69d3a45c" />
+      <keyword name="qwtAnalogClockShowBackground" id="QwtAnalogClock::qwtAnalogClockShowBackground" ref="group__QwtAnalogClock.html#gb5f75e766728cc5a9d48652d09e44388" />
+      <keyword name="qwtAnalogClockSetLineWidth" id="QwtAnalogClock::qwtAnalogClockSetLineWidth" ref="group__QwtAnalogClock.html#gefb2a95fe2e2f4a6e0a24354f916df56" />
+      <keyword name="qwtAnalogClockSetMode" id="QwtAnalogClock::qwtAnalogClockSetMode" ref="group__QwtAnalogClock.html#ge4b21ed57f1ab0c25453f3f2f603b7c1" />
+      <keyword name="qwtAnalogClockSetWrapping" id="QwtAnalogClock::qwtAnalogClockSetWrapping" ref="group__QwtAnalogClock.html#g085208f7bdca44c35d67c2b1fedd92f9" />
+      <keyword name="qwtAnalogClockSetScale" id="QwtAnalogClock::qwtAnalogClockSetScale" ref="group__QwtAnalogClock.html#gc736b381b4ae4f50c4ff45222f05247b" />
+      <keyword name="qwtAnalogClockSetScaleArc" id="QwtAnalogClock::qwtAnalogClockSetScaleArc" ref="group__QwtAnalogClock.html#gdaa56e4f58e9de37975d44f25b2851ed" />
+      <keyword name="qwtAnalogClockSetOrigin" id="QwtAnalogClock::qwtAnalogClockSetOrigin" ref="group__QwtAnalogClock.html#ge52b34bb8074d20b64d574f7964ce2e6" />
+      <keyword name="qwtAnalogClockSetNeedle" id="QwtAnalogClock::qwtAnalogClockSetNeedle" ref="group__QwtAnalogClock.html#g1bbfc1f3b363ac1aae97d8e46b706be2" />
+      <keyword name="qwtAnalogClockSetValue" id="QwtAnalogClock::qwtAnalogClockSetValue" ref="group__QwtAnalogClock.html#gdf6fbd3a6b7f7336b8b41f0f2d035692" />
       <keyword name="unit" id="UnitConversion::unit" ref="group__UnitConversion.html#gf75ff5f00e1c8928751ef064d0ebef99" />
       <keyword name="textEventType" id="TextEvents::textEventType" ref="group__TextEvents.html#g9346a8e63b25bccf56f9fabf5447e867" />
       <keyword name="svgObjectName" id="TextEvents::svgObjectName" ref="group__TextEvents.html#g0a673c7bb5f11962061d59542ea793da" />
@@ -1317,6 +1384,8 @@
       <file>group__QwtWheel.html</file>
       <file>group__QwtSlider.html</file>
       <file>group__QwtCompass.html</file>
+      <file>group__QwtDial.html</file>
+      <file>group__QwtAnalogClock.html</file>
       <file>group__UnitConversion.html</file>
       <file>group__TextEvents.html</file>
       <file>modules.html</file>

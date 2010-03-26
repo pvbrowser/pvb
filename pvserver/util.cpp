@@ -1439,11 +1439,11 @@ char buf[80];
   return 0;
 }
 
-int pvQProgressBar(PARAM *p, int id, int parent, int total_steps)
+int pvQProgressBar(PARAM *p, int id, int parent, int total_steps, int orientation)
 {
 char buf[80];
 
-  sprintf(buf,"QProgressBar(%d,%d,%d)\n",id,parent,total_steps);
+  sprintf(buf,"QProgressBar(%d,%d,%d,%d)\n",id,parent,total_steps,orientation);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }
@@ -1556,11 +1556,29 @@ char buf[80];
   return 0;
 }
 
+int pvQwtDial(PARAM *p, int id, int parent)
+{
+char buf[80];
+
+  sprintf(buf,"QwtDial(%d,%d)\n",id,parent);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvQwtCompass(PARAM *p, int id, int parent)
 {
 char buf[80];
 
   sprintf(buf,"QwtCompass(%d,%d)\n",id,parent);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvQwtAnalogClock(PARAM *p, int id, int parent)
+{
+char buf[80];
+
+  sprintf(buf,"QwtAnalogClock(%d,%d)\n",id,parent);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }
@@ -4905,13 +4923,13 @@ int qwtThermoSetPipeWidth(PARAM *p, int id, int width)
   return 0;
 }
 
-int qwtThermoSetRange(PARAM *p, int id, float vmin, float vmax)
+int qwtThermoSetRange(PARAM *p, int id, float vmin, float vmax, float step)
 {
   char buf[80];
 
   sprintf(buf,"qwt(%d)\n",id);
   pvtcpsend(p, buf, strlen(buf));
-  sprintf(buf,"setRange(%f,%f)\n",vmin,vmax);
+  sprintf(buf,"setRange(%f,%f,%f)\n",vmin,vmax,step);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }
@@ -5372,12 +5390,16 @@ int qwtCompassSetSimpleCompassRose(PARAM *p, int id, int numThorns, int numThorn
   return 0;
 }
 
-/*
-      else if(strncmp(qwtcommand,"setLabelMap(",12) == 0)
-      {
-        //setLabelMap(const QMap<double, QString> &map);
-      }
-*/
+int qwtCompassSetRange(PARAM *p, int id, float vmin, float vmax, float step)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setRange(%f,%f,%f)\n",vmin,vmax,step);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
 
 int qwtCompassSetMass(PARAM *p, int id, float mass)
 {
@@ -5512,14 +5534,317 @@ int qwtCompassSetNeedle(PARAM *p, int id, int which, int r1, int g1, int b1, int
   return 0;
 }
 
-/*
-      else if(strncmp(qwtcommand,"setNeedle(",10) == 0)
-      {
-        //wi->setNeedle(QwtDialNeedle *needle);
-      }
-*/
-
 int qwtCompassSetValue(PARAM *p, int id, float value)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setValue(%f)\n",value);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+// --- QwtDial ----------------------------------------------------------------
+int qwtDialSetRange(PARAM *p, int id, float vmin, float vmax, float step)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setRange(%f,%f,%f)\n",vmin,vmax,step);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetMass(PARAM *p, int id, float mass)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setMass(%f)\n",mass);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetOrientation(PARAM *p, int id, int o)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setOrientation(%o)\n",o);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetReadOnly(PARAM *p, int id, int rdonly)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setReadOnly(%o)\n",rdonly);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetFrameShadow(PARAM *p, int id, int shadow)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setFrameShadow(%d)\n",shadow);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialShowBackground(PARAM *p, int id, int show)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"showBackground(%d)\n",show);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetLineWidth(PARAM *p, int id, int width)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setLineWidth(%d)\n",width);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetMode(PARAM *p, int id, int mode)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setMode(%d)\n",mode);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetWrapping(PARAM *p, int id, int wrap)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setWrapping(%d)\n",wrap);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetScale(PARAM *p, int id, int maxMajIntv, int maxMinIntv, float step)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setScale(%d,%d,%f)\n",maxMajIntv,maxMinIntv,step);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetScaleArc(PARAM *p, int id, float min, float max)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setScaleArc(%f,%f)\n",min,max);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetOrigin(PARAM *p, int id, float o)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setOrigin(%f)\n",o);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetNeedle(PARAM *p, int id, int which, int r1, int g1, int b1, int r2, int g2, int b2, int r3, int g3, int b3)
+{
+  char buf[200];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setNeedle(%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)\n",which,
+                            r1,g1,b1,r2,g2,b2,r3,g3,b3);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtDialSetValue(PARAM *p, int id, float value)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setValue(%f)\n",value);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+// --- QwtAnalogClock ----------------------------------------------------------------
+int qwtAnalogClockSetTime(PARAM *p, int id, int hour, int minute, int second)
+{
+char buf[80];
+
+  sprintf(buf,"setTime(%d,%d,%d,%d,0)\n",id,hour,minute,second);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetMass(PARAM *p, int id, float mass)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setMass(%f)\n",mass);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetOrientation(PARAM *p, int id, int o)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setOrientation(%o)\n",o);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetReadOnly(PARAM *p, int id, int rdonly)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setReadOnly(%o)\n",rdonly);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetFrameShadow(PARAM *p, int id, int shadow)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setFrameShadow(%d)\n",shadow);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockShowBackground(PARAM *p, int id, int show)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"showBackground(%d)\n",show);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetLineWidth(PARAM *p, int id, int width)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setLineWidth(%d)\n",width);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetMode(PARAM *p, int id, int mode)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setMode(%d)\n",mode);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetWrapping(PARAM *p, int id, int wrap)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setWrapping(%d)\n",wrap);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetScale(PARAM *p, int id, int maxMajIntv, int maxMinIntv, float step)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setScale(%d,%d,%f)\n",maxMajIntv,maxMinIntv,step);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetScaleArc(PARAM *p, int id, float min, float max)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setScaleArc(%f,%f)\n",min,max);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetOrigin(PARAM *p, int id, float o)
+{
+  char buf[80];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setOrigin(%f)\n",o);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetNeedle(PARAM *p, int id, int which, int r1, int g1, int b1, int r2, int g2, int b2, int r3, int g3, int b3)
+{
+  char buf[200];
+
+  sprintf(buf,"qwt(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  sprintf(buf,"setNeedle(%d,%d,%d,%d,%d,%d,%d,%d,%d,%d)\n",which,
+                            r1,g1,b1,r2,g2,b2,r3,g3,b3);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int qwtAnalogClockSetValue(PARAM *p, int id, float value)
 {
   char buf[80];
 

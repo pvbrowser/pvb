@@ -1756,8 +1756,8 @@ get_args:
         fprintf(fout,"%s  <number>%s</number>\n", space, p[5]);
         fprintf(fout,"%s </property>\n", space);
         fprintf(fout,"%s <property name=\"orientation\" >\n",       space); // orientation
-        if(strncmp("H" ,p[6], 1) == 0) fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
-        else                           fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        if(strncmp("v" ,p[6], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        else                           fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
         fprintf(fout,"%s </property>\n",                            space);
       }
       else if(strstr(line,"pvQTable(") != NULL)
@@ -1834,6 +1834,10 @@ get_args:
         fprintf(fout,"%s <property name=\"maximum\" >\n", space);           // maximum, total_steps
         fprintf(fout,"%s  <number>%s</number>\n", space, p[2]);
         fprintf(fout,"%s </property>\n", space);
+        fprintf(fout,"%s <property name=\"orientation\" >\n",       space); // orientation
+        if(strncmp("V" ,p[3], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        else                           fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
+        fprintf(fout,"%s </property>\n",                            space);
       }
       else if(strstr(line,"pvQTextBrowser(") != NULL)
       {
@@ -1949,6 +1953,14 @@ get_args:
       else if(strstr(line,"pvQwtCompass(") != NULL)
       {
         fprintf(fout,"%s<widget class=\"QwtCompass\" name=\"%s\" >\n", space, p[0]);
+      }
+      else if(strstr(line,"pvQwtDial(") != NULL)
+      {
+        fprintf(fout,"%s<widget class=\"QwtDial\" name=\"%s\" >\n", space, p[0]);
+      }
+      else if(strstr(line,"pvQwtAnalogClock(") != NULL)
+      {
+        fprintf(fout,"%s<widget class=\"QwtAnalogClock\" name=\"%s\" >\n", space, p[0]);
       }
       else
       {

@@ -151,7 +151,9 @@ TQwtKnob,
 TQwtCounter,
 TQwtWheel,
 TQwtSlider,
+TQwtDial,
 TQwtCompass,
+TQwtAnalogClock,
 TQDateEdit,
 TQTimeEdit,
 TQDateTimeEdit,
@@ -425,6 +427,7 @@ enum SliderScalePos { SliderNone, SliderLeft, SliderRight, SliderTop, SliderBott
 enum SliderBGSTYLE  { SliderBgTrough = 0x1, SliderBgSlot = 0x2, SliderBgBoth = SliderBgTrough | SliderBgSlot};
 enum DialShadow     { DialPlain = Plain, DialRaised = Raised, DialSunken = Sunken };
 enum DialMode       { RotateNeedle, RotateScale };
+enum DialNeedle  { QwtDialNeedle1 = 1, QwtDialNeedle2, QwtDialNeedle3, QwtDialNeedle4, QwtDialLineNeedle };
 enum CompassNeedle  { QwtCompassNeedle1 = 1, QwtCompassNeedle2, QwtCompassNeedle3, QwtCompassNeedle4, QwtCompassLineNeedle };
 enum PenStyle       { NoPen, SolidLine, DashLine, DotLine, DashDotLine, DashDotDotLine, MPenStyle = 0x0f };
 enum MarkerSymbol   { MarkerNone, MarkerEllipse, MarkerRect, MarkerDiamond, MarkerTriangle, MarkerDTriangle, MarkerUTriangle, MarkerLTriangle, MarkerRTriangle, MarkerCross, MarkerXCross, MarkerStyleCnt };
@@ -1432,7 +1435,7 @@ pvSaveAsBmp()
 pvSetValue()
 pvSetStyle()
 </pre> */
-int pvQProgressBar(PARAM *p, int id, int parent, int total_steps);
+int pvQProgressBar(PARAM *p, int id, int parent, int total_steps, int orientation = Horizontal);
 /*! <pre>
 Creates a new QMultiLineEdit . See also pvQWidget().
 editable = 0|1
@@ -1627,11 +1630,23 @@ See Module: QwtSlider
 </pre> */
 int pvQwtSlider(PARAM *p, int id, int parent);
 /*! <pre>
+Call this function to create a QwtDial.
+
+See Module: QwtDial 
+</pre> */
+int pvQwtDial(PARAM *p, int id, int parent);
+/*! <pre>
 Call this function to create a QwtCompass.
 
 See Module: QwtCompass 
 </pre> */
 int pvQwtCompass(PARAM *p, int id, int parent);
+/*! <pre>
+Call this function to create a QwtAnalogClock.
+
+See Module: QwtAnalog Clock 
+</pre> */
+int pvQwtAnalogClock(PARAM *p, int id, int parent);
 /*! <pre>
 create a QDateEdit widget.
 
@@ -3046,7 +3061,7 @@ int qwtThermoSetAlarmEnabled(PARAM *p, int id, int tf);
 int qwtThermoSetPipeWidth(PARAM *p, int id, int width);
 /*! <pre>
 </pre> */
-int qwtThermoSetRange(PARAM *p, int id, float vmin, float vmax);
+int qwtThermoSetRange(PARAM *p, int id, float vmin, float vmax, float step=0.0f);
 /*! <pre>
 </pre> */
 int qwtThermoSetMargin(PARAM *p, int id, int margin);
@@ -3203,6 +3218,9 @@ int qwtSliderSetValue(PARAM *p, int id, float value);
 int qwtCompassSetSimpleCompassRose(PARAM *p, int id, int numThorns, int numThornLevels, float width=0.2f);
 /*! <pre>
 </pre> */
+int qwtCompassSetRange(PARAM *p, int id, float vmin, float vmax, float step=0.0f);
+/*! <pre>
+</pre> */
 int qwtCompassSetMass(PARAM *p, int id, float mass);
 /*! <pre>
 rdonly = 0 | 1
@@ -3246,6 +3264,110 @@ int qwtCompassSetNeedle(PARAM *p, int id, int which, int r1=0, int g1=0, int b1=
 /*! <pre>
 </pre> */
 int qwtCompassSetValue(PARAM *p, int id, float value);
+/** @} */ // end of group
+/** @defgroup QwtDial QwtDial
+ *  QwtDial Widget
+ *  @{ */
+/*! <pre>
+</pre> */
+int qwtDialSetRange(PARAM *p, int id, float vmin, float vmax, float step=0.0f);
+/*! <pre>
+</pre> */
+int qwtDialSetMass(PARAM *p, int id, float mass);
+/*! <pre>
+rdonly = 0 | 1
+</pre> */
+int qwtDialSetReadOnly(PARAM *p, int id, int rdonly);
+/*! <pre>
+#DialShadow.
+</pre> */
+int qwtDialSetFrameShadow(PARAM *p, int id, int shadow);
+/*! <pre>
+</pre> */
+int qwtDialShowBackground(PARAM *p, int id, int show);
+/*! <pre>
+</pre> */
+int qwtDialSetLineWidth(PARAM *p, int id, int width);
+/*! <pre>
+#DialMode.
+</pre> */
+int qwtDialSetMode(PARAM *p, int id, int mode);
+/*! <pre>
+</pre> */
+int qwtDialSetWrapping(PARAM *p, int id, int wrap);
+/*! <pre>
+</pre> */
+int qwtDialSetScale(PARAM *p, int id, int maxMajIntv, int maxMinIntv, float step);
+/*! <pre>
+</pre> */
+int qwtDialSetScaleArc(PARAM *p, int id, float min, float max);
+/*! <pre>
+</pre> */
+int qwtDialSetOrigin(PARAM *p, int id, float o);
+/*! <pre>
+which = #CompassNeedle.
+if(which==QwtCompassNeedle1)    QwtCompassNeedle1(r1,g1,b1);
+if(which==QwtCompassNeedle2)    QwtCompassNeedle2(r1,g1,b1, r2,g2,b2);
+if(which==QwtCompassNeedle3)    QwtCompassNeedle3(r1,g1,b1, r2,g2,b2);
+if(which==QwtCompassNeedle4)    QwtCompassNeedle4(r1,g1,b1, r2,g2,b2, r3,g3,b3);
+if(which==QwtCompassLineNeedle) QwtCompassLineNeedle(r1,g1,b1);
+</pre> */
+int qwtDialSetNeedle(PARAM *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128);
+/*! <pre>
+</pre> */
+int qwtDialSetValue(PARAM *p, int id, float value);
+/** @} */ // end of group
+/** @defgroup QwtAnalogClock QwtAnalogClock
+ *  QwtAnalogClock Widget
+ *  @{ */
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetTime(PARAM *p, int id, int hour, int minute, int second);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetMass(PARAM *p, int id, float mass);
+/*! <pre>
+rdonly = 0 | 1
+</pre> */
+int qwtAnalogClockSetReadOnly(PARAM *p, int id, int rdonly);
+/*! <pre>
+#DialShadow.
+</pre> */
+int qwtAnalogClockSetFrameShadow(PARAM *p, int id, int shadow);
+/*! <pre>
+</pre> */
+int qwtAnalogClockShowBackground(PARAM *p, int id, int show);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetLineWidth(PARAM *p, int id, int width);
+/*! <pre>
+#DialMode.
+</pre> */
+int qwtAnalogClockSetMode(PARAM *p, int id, int mode);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetWrapping(PARAM *p, int id, int wrap);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetScale(PARAM *p, int id, int maxMajIntv, int maxMinIntv, float step);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetScaleArc(PARAM *p, int id, float min, float max);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetOrigin(PARAM *p, int id, float o);
+/*! <pre>
+which = #CompassNeedle.
+if(which==QwtCompassNeedle1)    QwtCompassNeedle1(r1,g1,b1);
+if(which==QwtCompassNeedle2)    QwtCompassNeedle2(r1,g1,b1, r2,g2,b2);
+if(which==QwtCompassNeedle3)    QwtCompassNeedle3(r1,g1,b1, r2,g2,b2);
+if(which==QwtCompassNeedle4)    QwtCompassNeedle4(r1,g1,b1, r2,g2,b2, r3,g3,b3);
+if(which==QwtCompassLineNeedle) QwtCompassLineNeedle(r1,g1,b1);
+</pre> */
+int qwtAnalogClockSetNeedle(PARAM *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128);
+/*! <pre>
+</pre> */
+int qwtAnalogClockSetValue(PARAM *p, int id, float value);
 /** @} */ // end of group
 
 /** @defgroup UnitConversion UnitConversion

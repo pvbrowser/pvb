@@ -392,7 +392,7 @@ class MyProgressBar : public QProgressBar
 {
     Q_OBJECT
 public:
-    MyProgressBar(int *sock, int ident, int totalSteps, QWidget *parent=0, const char *name=0);
+    MyProgressBar(int *sock, int ident, int totalSteps, Qt::Orientation, QWidget *parent=0, const char *name=0);
     ~MyProgressBar();
 
 private:

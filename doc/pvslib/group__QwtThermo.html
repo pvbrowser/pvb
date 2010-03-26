@@ -35,7 +35,7 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__QwtThermo.html#g9b3bba75a98e3f1a65ff7b7a9b29b88c">qwtThermoSetPipeWidth</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int width)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__QwtThermo.html#g9a38242c0371d73d70396db64517c21c">qwtThermoSetRange</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, float vmin, float vmax)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__QwtThermo.html#g8ed96c6b9f76976ce4aadd1c0f96ac42">qwtThermoSetRange</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, float vmin, float vmax, float step=0.0f)</td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__QwtThermo.html#g6202435bf2c8cdd818257e6d4ac3d69c">qwtThermoSetMargin</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int margin)</td></tr>
 
@@ -364,7 +364,7 @@ orientation = HORIZONTAL|VERTICAL
 </pre> 
 </div>
 </div><p>
-<a class="anchor" name="g9a38242c0371d73d70396db64517c21c"></a><!-- doxytag: member="processviewserver.h::qwtThermoSetRange" ref="g9a38242c0371d73d70396db64517c21c" args="(PARAM *p, int id, float vmin, float vmax)" -->
+<a class="anchor" name="g8ed96c6b9f76976ce4aadd1c0f96ac42"></a><!-- doxytag: member="processviewserver.h::qwtThermoSetRange" ref="g8ed96c6b9f76976ce4aadd1c0f96ac42" args="(PARAM *p, int id, float vmin, float vmax, float step=0.0f)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -390,7 +390,13 @@ orientation = HORIZONTAL|VERTICAL
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">float&nbsp;</td>
-          <td class="paramname"> <em>vmax</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>vmax</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&nbsp;</td>
+          <td class="paramname"> <em>step</em> = <code>0.0f</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>

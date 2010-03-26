@@ -1492,11 +1492,12 @@ void MyDial::leaveEvent(QEvent *event)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-MyProgressBar::MyProgressBar(int *sock, int ident, int totalSteps, QWidget *parent, const char *name)
+MyProgressBar::MyProgressBar(int *sock, int ident, int totalSteps, Qt::Orientation ori, QWidget *parent, const char *name)
               :QProgressBar(parent)
 {
   s = sock;
   id = ident;
+  setOrientation(ori);
   setMaximum(totalSteps);
   setObjectName(name);
 }
@@ -2730,6 +2731,65 @@ void MyQwtSlider::leaveEvent(QEvent *event)
   QwtSlider::leaveEvent(event);
 }
 
+MyQwtDial::MyQwtDial(int *sock, int ident, QWidget *parent, const char *name)
+          :QwtDial(parent)
+{
+  s = sock;
+  id = ident;
+  
+  setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Ray,true));
+  connect(this, SIGNAL(valueChanged(double)), SLOT(slotValueChanged(double)));
+  if(name != NULL) setObjectName(name);
+}
+
+MyQwtDial::~MyQwtDial()
+{
+}
+
+void MyQwtDial::slotValueChanged(double value)
+{
+  char buf[80];
+
+  sprintf(buf,"slider(%d,%lf)\n",id,value);
+  tcp_send(s,buf,strlen(buf));
+}
+
+void MyQwtDial::mousePressEvent(QMouseEvent *event)
+{
+  char buf[80];
+
+  if(event == NULL) return;
+  sprintf(buf,"QPushButtonPressed(%d) -xy=%d,%d\n",id, event->x(), event->y());
+  tcp_send(s,buf,strlen(buf));
+  QwtDial::mousePressEvent(event);
+}
+
+void MyQwtDial::mouseReleaseEvent(QMouseEvent *event)
+{
+  char buf[80];
+
+  if(event == NULL) return;
+  sprintf(buf,"QPushButtonReleased(%d) -xy=%d,%d\n",id, event->x(), event->y());
+  if(underMouse()) tcp_send(s,buf,strlen(buf));
+  QwtDial::mouseReleaseEvent(event);
+}
+
+void MyQwtDial::enterEvent(QEvent *event)
+{
+  char buf[100];
+  sprintf(buf, "mouseEnterLeave(%d,1)\n",id);
+  tcp_send(s,buf,strlen(buf));
+  QwtDial::enterEvent(event);
+}
+
+void MyQwtDial::leaveEvent(QEvent *event)
+{
+  char buf[100];
+  sprintf(buf, "mouseEnterLeave(%d,0)\n",id);
+  tcp_send(s,buf,strlen(buf));
+  QwtDial::leaveEvent(event);
+}
+
 MyQwtCompass::MyQwtCompass(int *sock, int ident, QWidget *parent, const char *name)
              :QwtCompass(parent)
 {
@@ -2737,6 +2797,10 @@ MyQwtCompass::MyQwtCompass(int *sock, int ident, QWidget *parent, const char *na
   id = ident;
   connect(this, SIGNAL(valueChanged(double)), SLOT(slotValueChanged(double)));
   if(name != NULL) setObjectName(name);
+  //setScaleTicks(1,10,20);
+  //setScaleArc(-120.0,120.0);
+  //setRange(-20.0,20.0);
+  //setScaleOptions(7);
 }
 
 MyQwtCompass::~MyQwtCompass()
@@ -2785,6 +2849,63 @@ void MyQwtCompass::leaveEvent(QEvent *event)
   sprintf(buf, "mouseEnterLeave(%d,0)\n",id);
   tcp_send(s,buf,strlen(buf));
   QwtCompass::leaveEvent(event);
+}
+
+MyQwtAnalogClock::MyQwtAnalogClock(int *sock, int ident, QWidget *parent, const char *name)
+                :QwtAnalogClock(parent)
+{
+  s = sock;
+  id = ident;
+  connect(this, SIGNAL(valueChanged(double)), SLOT(slotValueChanged(double)));
+  if(name != NULL) setObjectName(name);
+}
+
+MyQwtAnalogClock::~MyQwtAnalogClock()
+{
+}
+
+void MyQwtAnalogClock::slotValueChanged(double value)
+{
+  char buf[80];
+
+  sprintf(buf,"slider(%d,%lf)\n",id,value);
+  tcp_send(s,buf,strlen(buf));
+}
+
+void MyQwtAnalogClock::mousePressEvent(QMouseEvent *event)
+{
+  char buf[80];
+
+  if(event == NULL) return;
+  sprintf(buf,"QPushButtonPressed(%d) -xy=%d,%d\n",id, event->x(), event->y());
+  tcp_send(s,buf,strlen(buf));
+  QwtAnalogClock::mousePressEvent(event);
+}
+
+void MyQwtAnalogClock::mouseReleaseEvent(QMouseEvent *event)
+{
+  char buf[80];
+
+  if(event == NULL) return;
+  sprintf(buf,"QPushButtonReleased(%d) -xy=%d,%d\n",id, event->x(), event->y());
+  if(underMouse()) tcp_send(s,buf,strlen(buf));
+  QwtAnalogClock::mouseReleaseEvent(event);
+}
+
+void MyQwtAnalogClock::enterEvent(QEvent *event)
+{
+  char buf[100];
+  sprintf(buf, "mouseEnterLeave(%d,1)\n",id);
+  tcp_send(s,buf,strlen(buf));
+  QwtAnalogClock::enterEvent(event);
+}
+
+void MyQwtAnalogClock::leaveEvent(QEvent *event)
+{
+  char buf[100];
+  sprintf(buf, "mouseEnterLeave(%d,0)\n",id);
+  tcp_send(s,buf,strlen(buf));
+  QwtAnalogClock::leaveEvent(event);
 }
 
 #endif // #ifndef NO_QWT

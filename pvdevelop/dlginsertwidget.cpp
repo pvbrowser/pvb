@@ -59,6 +59,9 @@ dlgInsertWidget::dlgInsertWidget()
   form->comboBoxFrameShadow->addItem("Raised");
   form->comboBoxFrameShadow->addItem("Sunken");
 
+  form->comboBoxProgressBarOrientation->addItem("Horizontal");
+  form->comboBoxProgressBarOrientation->addItem("Vertical");
+
   ret = 1;
 
   QObject::connect(form->okButton,     SIGNAL(clicked()),SLOT(slotOk()));
@@ -190,7 +193,9 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
   else if(form->wProgressBar->isChecked())
   {
     int totalSteps = form->spinBoxProgressBarTotalSteps->value();
-    w = new MyProgressBar(&nullSocket,0,totalSteps,parent);
+    Qt::Orientation ori  = Qt::Horizontal;
+    if(form->comboBoxProgressBarOrientation->currentText() == "Vertical") ori = Qt::Vertical;
+    w = new MyProgressBar(&nullSocket,0,totalSteps,ori,parent);
     w->setStatusTip("TQProgressBar:");
   }
   else if(form->wDateEdit->isChecked())
@@ -376,6 +381,16 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
   {
     w = new MyQwtCompass(&nullSocket,0,parent);
     w->setStatusTip("TQwtCompass:");
+  }
+  else if(form->wQwtDial->isChecked())
+  {
+    w = new MyQwtDial(&nullSocket,0,parent);
+    w->setStatusTip("TQwtDial:");
+  }
+  else if(form->wQwtAnalogClock->isChecked())
+  {
+    w = new MyQwtAnalogClock(&nullSocket,0,parent);
+    w->setStatusTip("TQwtAnalogClock:");
   }
   else
   {
