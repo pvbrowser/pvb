@@ -1,6 +1,6 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   4.5.0
+Version:   4.5.1
 Release:   0
 Group:     Applications/Browser
 #Copyright: GPL with the possibility of commercial use
@@ -388,6 +388,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/rllib/lib/rldataacquisition.h
 /opt/pvb/rllib/lib/rldataacquisitionprovider.h
 /opt/pvb/rllib/lib/rlwebcam.h
+/opt/pvb/rllib/lib/rlcommandlineinterface.h
 #/opt/pvb/language_bindings/python/id/pv.py
 #/opt/pvb/language_bindings/python/id/_pv.so
 #/opt/pvb/language_bindings/python/id/rllib.py

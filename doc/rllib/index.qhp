@@ -33,6 +33,7 @@
           <section title="rlCanOpenDaemon" ref="classrlCanOpenDaemon.html" />
           <section title="rlCanOpenTypes" ref="classrlCanOpenTypes.html" />
           <section title="rlCanPDO" ref="structrlCanPDO.html" />
+          <section title="rlCommandlineInterface" ref="classrlCommandlineInterface.html" />
           <section title="rlController" ref="classrlController.html" />
           <section title="rlCorbaClient&lt; T, Tvar &gt;" ref="classrlCorbaClient.html" />
           <section title="rlCorbaServer&lt; Timpl, Tvar &gt;" ref="classrlCorbaServer.html" />
@@ -81,9 +82,9 @@
           <section title="rlTime" ref="classrlTime.html" />
           <section title="rlUdpSocket" ref="classrlUdpSocket.html" />
           <section title="rlWebcam" ref="classrlWebcam.html" />
+          <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
-          <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -123,6 +124,7 @@
           <section title="rlCanOpenDaemon" ref="classrlCanOpenDaemon.html" />
           <section title="rlCanOpenTypes" ref="classrlCanOpenTypes.html" />
           <section title="rlCanPDO" ref="structrlCanPDO.html" />
+          <section title="rlCommandlineInterface" ref="classrlCommandlineInterface.html" />
           <section title="rlCorbaClient&lt; T, Tvar &gt;" ref="classrlCorbaClient.html" />
           <section title="rlCorbaServer&lt; Timpl, Tvar &gt;" ref="classrlCorbaServer.html" />
           <section title="rlDataAcquisition" ref="classrlDataAcquisition.html" />
@@ -179,9 +181,9 @@
             <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
           </section>
           <section title="rlWebcam" ref="classrlWebcam.html" />
+          <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
-          <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -210,6 +212,8 @@
           <section title="rlcanopenstructs.h" ref="rlcanopenstructs_8h.html" />
           <section title="rlcanopentypes.cpp" ref="rlcanopentypes_8cpp.html" />
           <section title="rlcanopentypes.h" ref="rlcanopentypes_8h.html" />
+          <section title="rlcommandlineinterface.cpp" ref="rlcommandlineinterface_8cpp.html" />
+          <section title="rlcommandlineinterface.h" ref="rlcommandlineinterface_8h.html" />
           <section title="rlcontroller.cpp" ref="rlcontroller_8cpp.html" />
           <section title="rlcontroller.h" ref="rlcontroller_8h.html" />
           <section title="rlcorba.cpp" ref="rlcorba_8cpp.html" />
@@ -1008,6 +1012,18 @@
       <keyword name="usPDOAddress" id="rlCanPDO::usPDOAddress" ref="structrlCanPDO.html#fb52afcad5084c26383850c03be31bb7" />
       <keyword name="mappingList" id="rlCanPDO::mappingList" ref="structrlCanPDO.html#c5f38427c1e1a9ebcc8f233b745b7bc3" />
       <keyword name="mappingOvAdress" id="rlCanPDO::mappingOvAdress" ref="structrlCanPDO.html#2686961ebe0f3d81f75f7eba691747c7" />
+      <keyword name="rlCommandlineInterface" id="rlCommandlineInterface::rlCommandlineInterface" ref="classrlCommandlineInterface.html#88fa470413e3297610e2a7325ca56ebe" />
+      <keyword name="~rlCommandlineInterface" id="rlCommandlineInterface::~rlCommandlineInterface" ref="classrlCommandlineInterface.html#0b5b99731082eded91cd0790a56fb3fb" />
+      <keyword name="start" id="rlCommandlineInterface::start" ref="classrlCommandlineInterface.html#1001d8cf5ba47a565c62bc8e105f4432" />
+      <keyword name="start" id="rlCommandlineInterface::start" ref="classrlCommandlineInterface.html#311cd6502a0f94ed3ef246caaa5b0fd6" />
+      <keyword name="readLine" id="rlCommandlineInterface::readLine" ref="classrlCommandlineInterface.html#1eab66abaf5aa4d0761b81fd4b6c3620" />
+      <keyword name="readBlock" id="rlCommandlineInterface::readBlock" ref="classrlCommandlineInterface.html#f96f2100d77dc2ff05d08dedcc5e4351" />
+      <keyword name="printf" id="rlCommandlineInterface::printf" ref="classrlCommandlineInterface.html#2079fbd9b7c9b72e8979b5dc7f7d576a" />
+      <keyword name="writeBlock" id="rlCommandlineInterface::writeBlock" ref="classrlCommandlineInterface.html#bcb86746fa3171cf38fd515573a22374" />
+      <keyword name="line" id="rlCommandlineInterface::line" ref="classrlCommandlineInterface.html#f950aa2005786b52a287493119dc577a" />
+      <keyword name="sock" id="rlCommandlineInterface::sock" ref="classrlCommandlineInterface.html#89b18bcb108a7b1727600974d9b1bbe4" />
+      <keyword name="spawn" id="rlCommandlineInterface::spawn" ref="classrlCommandlineInterface.html#c257842ea637f5d2973626c8349a200e" />
+      <keyword name="tty" id="rlCommandlineInterface::tty" ref="classrlCommandlineInterface.html#c5ba847c240ee7caac2048d4e580bd32" />
       <keyword name="rlController" id="rlController::rlController" ref="classrlController.html#1237a85b5dad99b3165c152ce5142022" />
       <keyword name="~rlController" id="rlController::~rlController" ref="classrlController.html#d0634c56387fc1f3c336cffd2a9712c3" />
       <keyword name="start" id="rlController::start" ref="classrlController.html#39a2e22ea6227168ff90411c4630a04a" />
@@ -2137,6 +2153,8 @@
       <file>rlcanopenstructs_8h_source.html</file>
       <file>rlcanopentypes_8cpp_source.html</file>
       <file>rlcanopentypes_8h_source.html</file>
+      <file>rlcommandlineinterface_8cpp_source.html</file>
+      <file>rlcommandlineinterface_8h_source.html</file>
       <file>rlcontroller_8cpp_source.html</file>
       <file>rlcontroller_8h_source.html</file>
       <file>rlcorba_8cpp_source.html</file>
@@ -2278,6 +2296,14 @@
       <file>rlcanopentypes_8h__incl.png</file>
       <file>rlcanopentypes_8h__dep__incl.png</file>
       <file>rlcanopentypes_8h__dep__incl.png</file>
+      <file>rlcommandlineinterface_8cpp.html</file>
+      <file>rlcommandlineinterface_8cpp__incl.png</file>
+      <file>rlcommandlineinterface_8cpp__incl.png</file>
+      <file>rlcommandlineinterface_8h.html</file>
+      <file>rlcommandlineinterface_8h__incl.png</file>
+      <file>rlcommandlineinterface_8h__incl.png</file>
+      <file>rlcommandlineinterface_8h__dep__incl.png</file>
+      <file>rlcommandlineinterface_8h__dep__incl.png</file>
       <file>rlcontroller_8cpp.html</file>
       <file>rlcontroller_8cpp__incl.png</file>
       <file>rlcontroller_8cpp__incl.png</file>
@@ -2740,6 +2766,10 @@
       <file>classrlCanOpenTypes-members.html</file>
       <file>structrlCanPDO.html</file>
       <file>structrlCanPDO-members.html</file>
+      <file>classrlCommandlineInterface.html</file>
+      <file>classrlCommandlineInterface__coll__graph.png</file>
+      <file>classrlCommandlineInterface__coll__graph.png</file>
+      <file>classrlCommandlineInterface-members.html</file>
       <file>classrlController.html</file>
       <file>classrlController__inherit__graph.png</file>
       <file>classrlController__inherit__graph.png</file>
@@ -3052,6 +3082,7 @@
       <file>inherit__graph__76.png</file>
       <file>inherit__graph__77.png</file>
       <file>inherit__graph__78.png</file>
+      <file>inherit__graph__79.png</file>
       <file>graph_legend.png</file>
       <file>graph_legend.html</file>
       <file>files.html</file>
