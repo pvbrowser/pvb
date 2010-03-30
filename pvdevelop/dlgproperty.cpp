@@ -151,10 +151,11 @@ dlgProperty::dlgProperty(QWidget *_widget)
   {
     form->comboBoxShape->insertItem(0,"NoFrame");
     form->comboBoxShape->insertItem(1,"Box");
-    form->comboBoxShape->insertItem(2,"WinPanel");
-    form->comboBoxShape->insertItem(3,"HLine");
-    form->comboBoxShape->insertItem(4,"VLine");
-    form->comboBoxShape->insertItem(5,"StyledPanel");
+    form->comboBoxShape->insertItem(2,"Panel");
+    form->comboBoxShape->insertItem(3,"WinPanel");
+    form->comboBoxShape->insertItem(5,"HLine");
+    form->comboBoxShape->insertItem(5,"VLine");
+    form->comboBoxShape->insertItem(6,"StyledPanel");
     form->comboBoxShadow->insertItem(0,"Plain");
     form->comboBoxShadow->insertItem(1,"Raised");
     form->comboBoxShadow->insertItem(2,"Sunken");
@@ -164,10 +165,11 @@ dlgProperty::dlgProperty(QWidget *_widget)
       MyLabel *label = (MyLabel *) widget;
       int index = 0;
       if     (label->frameShape() == QFrame::Box)         index = 1;
-      else if(label->frameShape() == QFrame::WinPanel)    index = 2;
-      else if(label->frameShape() == QFrame::HLine)       index = 3;
-      else if(label->frameShape() == QFrame::VLine)       index = 4;
-      else if(label->frameShape() == QFrame::StyledPanel) index = 5;
+      else if(label->frameShape() == QFrame::Panel)       index = 2;
+      else if(label->frameShape() == QFrame::WinPanel)    index = 3;
+      else if(label->frameShape() == QFrame::HLine)       index = 4;
+      else if(label->frameShape() == QFrame::VLine)       index = 5;
+      else if(label->frameShape() == QFrame::StyledPanel) index = 6;
       form->comboBoxShape->setCurrentIndex(index);
 
       index = 0;
@@ -184,10 +186,11 @@ dlgProperty::dlgProperty(QWidget *_widget)
 
       int index = 0;
       if     (frame->frameShape() == QFrame::Box)         index = 1;
-      else if(frame->frameShape() == QFrame::WinPanel)    index = 2;
-      else if(frame->frameShape() == QFrame::HLine)       index = 3;
-      else if(frame->frameShape() == QFrame::VLine)       index = 4;
-      else if(frame->frameShape() == QFrame::StyledPanel) index = 5;
+      else if(frame->frameShape() == QFrame::Panel)       index = 2;
+      else if(frame->frameShape() == QFrame::WinPanel)    index = 3;
+      else if(frame->frameShape() == QFrame::HLine)       index = 4;
+      else if(frame->frameShape() == QFrame::VLine)       index = 5;
+      else if(frame->frameShape() == QFrame::StyledPanel) index = 6;
       form->comboBoxShape->setCurrentIndex(index);
 
       index = 0;
@@ -461,6 +464,7 @@ void dlgProperty::slotUpdate()
     int shadow = QFrame::Plain;
     txt = form->comboBoxShape->currentText();
     if(txt == "Box")         shape = QFrame::Box;
+    if(txt == "Panel")       shape = QFrame::Panel;
     if(txt == "WinPanel")    shape = QFrame::WinPanel;
     if(txt == "HLine")       shape = QFrame::HLine;
     if(txt == "VLine")       shape = QFrame::VLine;
@@ -481,6 +485,7 @@ void dlgProperty::slotUpdate()
     int shadow = QFrame::Plain;
     txt = form->comboBoxShape->currentText();
     if(txt == "Box")         shape = QFrame::Box;
+    if(txt == "Panel")       shape = QFrame::Panel;
     if(txt == "WinPanel")    shape = QFrame::WinPanel;
     if(txt == "HLine")       shape = QFrame::HLine;
     if(txt == "VLine")       shape = QFrame::VLine;
