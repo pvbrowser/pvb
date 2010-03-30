@@ -427,7 +427,7 @@ enum SliderScalePos { SliderNone, SliderLeft, SliderRight, SliderTop, SliderBott
 enum SliderBGSTYLE  { SliderBgTrough = 0x1, SliderBgSlot = 0x2, SliderBgBoth = SliderBgTrough | SliderBgSlot};
 enum DialShadow     { DialPlain = Plain, DialRaised = Raised, DialSunken = Sunken };
 enum DialMode       { RotateNeedle, RotateScale };
-enum DialNeedle  { QwtDialNeedle1 = 1, QwtDialNeedle2, QwtDialNeedle3, QwtDialNeedle4, QwtDialLineNeedle };
+enum DialNeedle     { QwtDialNeedle1 = 1, QwtDialNeedle2, QwtDialNeedle3, QwtDialNeedle4, QwtDialLineNeedle, QwtDialArrowNeedle};
 enum CompassNeedle  { QwtCompassNeedle1 = 1, QwtCompassNeedle2, QwtCompassNeedle3, QwtCompassNeedle4, QwtCompassLineNeedle };
 enum PenStyle       { NoPen, SolidLine, DashLine, DotLine, DashDotLine, DashDotDotLine, MPenStyle = 0x0f };
 enum MarkerSymbol   { MarkerNone, MarkerEllipse, MarkerRect, MarkerDiamond, MarkerTriangle, MarkerDTriangle, MarkerUTriangle, MarkerLTriangle, MarkerRTriangle, MarkerCross, MarkerXCross, MarkerStyleCnt };

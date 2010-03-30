@@ -4700,6 +4700,7 @@ void Interpreter::interpretq(const char *command)
           //murx if(which==5) wi->setNeedle(new QwtCompassLineNeedle(QColor(r1,g1,b1)));
           if(which==1) wi->setNeedle(new QwtCompassWindArrow(QwtCompassWindArrow::Style2, QColor(r1,g1,b1), QColor(r2,g2,b2)));
           else if(which==2) wi->setNeedle(new QwtCompassMagnetNeedle(QwtCompassMagnetNeedle::ThinStyle, QColor(r1,g1,b1), QColor(r2,g2,b2)));
+	  else if(which==6) wi->setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow,true, QColor(r1,g1,b1), QColor(r2,g2,b2)));
           else wi->setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Ray,true, QColor(r1,g1,b1), QColor(r2,g2,b2)));
         }
       }

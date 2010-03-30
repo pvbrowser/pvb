@@ -603,6 +603,7 @@
       <keyword name="QwtDialNeedle3" id="Defines and Enums::QwtDialNeedle3" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ff07b808e65111c966c7770ece5f82edd7" />
       <keyword name="QwtDialNeedle4" id="Defines and Enums::QwtDialNeedle4" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ffc4d91754599fd74f85cda5ce49852f03" />
       <keyword name="QwtDialLineNeedle" id="Defines and Enums::QwtDialLineNeedle" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ffbb18ffa68dfa5ab9f6c698b8ee18c410" />
+      <keyword name="QwtDialArrowNeedle" id="Defines and Enums::QwtDialArrowNeedle" ref="group__DefinesAndEnums.html#gg8f1e77411e0a73bee5db2be804ce48ff9bf16571da6a68e598d818c16c73660f" />
       <keyword name="DialPlain" id="Defines and Enums::DialPlain" ref="group__DefinesAndEnums.html#ggf31c9033ceddee69ad7bea3067b40276256034d7038b4ab9b3ea639352024e8c" />
       <keyword name="DialRaised" id="Defines and Enums::DialRaised" ref="group__DefinesAndEnums.html#ggf31c9033ceddee69ad7bea3067b40276a1934a5e26ce1b993f3b8254906201f2" />
       <keyword name="DialSunken" id="Defines and Enums::DialSunken" ref="group__DefinesAndEnums.html#ggf31c9033ceddee69ad7bea3067b40276beba353d839ac38a00c8db57c12c9790" />

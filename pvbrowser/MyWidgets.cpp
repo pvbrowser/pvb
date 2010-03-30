@@ -2736,9 +2736,15 @@ MyQwtDial::MyQwtDial(int *sock, int ident, QWidget *parent, const char *name)
 {
   s = sock;
   id = ident;
-  
-  setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Ray,true));
   connect(this, SIGNAL(valueChanged(double)), SLOT(slotValueChanged(double)));
+  // Set default properties and create needle
+  setScaleArc(30,330);
+  setScale(10,2,0);
+  setRange(0,10);
+  setFrameShadow(Sunken);
+  setLineWidth(5);  //for frame shadow
+  setReadOnly(true);
+  setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow,true, QColor(0,0,0), QColor(0,0,0)));  // color: needle, center
   if(name != NULL) setObjectName(name);
 }
 
