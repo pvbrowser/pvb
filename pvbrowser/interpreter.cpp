@@ -4693,15 +4693,10 @@ void Interpreter::interpretq(const char *command)
                                        &r3,&g3,&b3);
         if(wi != NULL)
         {
-          //murx if(which==1) wi->setNeedle(new QwtCompassNeedle1(QColor(r1,g1,b1)));
-          //murx if(which==2) wi->setNeedle(new QwtCompassNeedle2(QColor(r1,g1,b1),QColor(r2,g2,b2)));
-          //murx if(which==3) wi->setNeedle(new QwtCompassNeedle3(QColor(r1,g1,b1),QColor(r2,g2,b2)));
-          //murx if(which==4) wi->setNeedle(new QwtCompassNeedle4(QColor(r1,g1,b1),QColor(r2,g2,b2),QColor(r3,g3,b3)));
-          //murx if(which==5) wi->setNeedle(new QwtCompassLineNeedle(QColor(r1,g1,b1)));
-          if(which==1) wi->setNeedle(new QwtCompassWindArrow(QwtCompassWindArrow::Style2, QColor(r1,g1,b1), QColor(r2,g2,b2)));
+          if     (which==1) wi->setNeedle(new QwtCompassWindArrow(QwtCompassWindArrow::Style2, QColor(r1,g1,b1), QColor(r2,g2,b2)));
           else if(which==2) wi->setNeedle(new QwtCompassMagnetNeedle(QwtCompassMagnetNeedle::ThinStyle, QColor(r1,g1,b1), QColor(r2,g2,b2)));
-	  else if(which==6) wi->setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow,true, QColor(r1,g1,b1), QColor(r2,g2,b2)));
-          else wi->setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Ray,true, QColor(r1,g1,b1), QColor(r2,g2,b2)));
+	        else if(which==6) wi->setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Arrow,true, QColor(r1,g1,b1), QColor(r2,g2,b2)));
+          else              wi->setNeedle(new QwtDialSimpleNeedle(QwtDialSimpleNeedle::Ray,true, QColor(r1,g1,b1), QColor(r2,g2,b2)));
         }
       }
       else if(strncmp(qwtcommand,"setValue(",9) == 0)

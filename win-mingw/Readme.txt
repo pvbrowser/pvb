@@ -19,7 +19,7 @@ For pvdevelop you need to install the following additional software.
 - Python (if you want to use it)
 
 Qt can be installed from
-http://trolltech.com/downloads/opensource
+http://qt.nokia.com/downloads
 During the installation of Qt you will be asked,
 if you want to install MinGW also.
 

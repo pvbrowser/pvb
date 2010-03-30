@@ -3254,11 +3254,6 @@ int qwtCompassSetScaleArc(PARAM *p, int id, float min, float max);
 int qwtCompassSetOrigin(PARAM *p, int id, float o);
 /*! <pre>
 which = #CompassNeedle.
-if(which==QwtCompassNeedle1)    QwtCompassNeedle1(r1,g1,b1);
-if(which==QwtCompassNeedle2)    QwtCompassNeedle2(r1,g1,b1, r2,g2,b2);
-if(which==QwtCompassNeedle3)    QwtCompassNeedle3(r1,g1,b1, r2,g2,b2);
-if(which==QwtCompassNeedle4)    QwtCompassNeedle4(r1,g1,b1, r2,g2,b2, r3,g3,b3);
-if(which==QwtCompassLineNeedle) QwtCompassLineNeedle(r1,g1,b1);
 </pre> */
 int qwtCompassSetNeedle(PARAM *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128);
 /*! <pre>
@@ -3305,12 +3300,7 @@ int qwtDialSetScaleArc(PARAM *p, int id, float min, float max);
 </pre> */
 int qwtDialSetOrigin(PARAM *p, int id, float o);
 /*! <pre>
-which = #CompassNeedle.
-if(which==QwtCompassNeedle1)    QwtCompassNeedle1(r1,g1,b1);
-if(which==QwtCompassNeedle2)    QwtCompassNeedle2(r1,g1,b1, r2,g2,b2);
-if(which==QwtCompassNeedle3)    QwtCompassNeedle3(r1,g1,b1, r2,g2,b2);
-if(which==QwtCompassNeedle4)    QwtCompassNeedle4(r1,g1,b1, r2,g2,b2, r3,g3,b3);
-if(which==QwtCompassLineNeedle) QwtCompassLineNeedle(r1,g1,b1);
+which = #DialNeedle.
 </pre> */
 int qwtDialSetNeedle(PARAM *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128);
 /*! <pre>

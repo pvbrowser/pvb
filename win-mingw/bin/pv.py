@@ -354,6 +354,7 @@ QwtDialNeedle2 = _pv.QwtDialNeedle2
 QwtDialNeedle3 = _pv.QwtDialNeedle3
 QwtDialNeedle4 = _pv.QwtDialNeedle4
 QwtDialLineNeedle = _pv.QwtDialLineNeedle
+QwtDialArrowNeedle = _pv.QwtDialArrowNeedle
 QwtCompassNeedle1 = _pv.QwtCompassNeedle1
 QwtCompassNeedle2 = _pv.QwtCompassNeedle2
 QwtCompassNeedle3 = _pv.QwtCompassNeedle3
