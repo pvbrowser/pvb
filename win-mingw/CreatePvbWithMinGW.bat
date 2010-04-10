@@ -75,15 +75,18 @@ rem  6.) Clean bin directory.
 DEL /S /Q %PVBMINGWDIR%\%PVBINDIRNAME%
 
 rem  7.) Copy all dlls to the new bin directory.
-COPY %QTDIR%\bin\QtCore4.dll     %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtGui4.dll      %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtOpenGL4.dll   %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtSql4.dll      %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtSvg4.dll      %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtXml4.dll      %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtWebKit4.dll   %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %QTDIR%\bin\QtNetwork4.dll  %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %MINGWDIR%\bin\mingwm10.dll %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtCore4.dll            %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtGui4.dll             %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtOpenGL4.dll          %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtSql4.dll             %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtSvg4.dll             %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtXml4.dll             %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtXmlPatterns4.dll     %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtWebKit4.dll          %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\QtNetwork4.dll         %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %QTDIR%\bin\phonon4.dll            %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %MINGWDIR%\bin\mingwm10.dll        %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %MINGWDIR%\bin\libgcc_s_dw2-1.dll  %PVBMINGWDIR%\%PVBINDIRNAME%
 
 rem  7.a) Copy some bat files to the new bin directory.
 COPY %PVBDIR%\win\bin\pvb_copy_python_template.bat %PVBDIR%\win-mingw\bin\

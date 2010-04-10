@@ -52,6 +52,7 @@ macx:INCLUDEPATH  += /opt/pvb/rllib/lib
 # You will have to adjust existing project files
 #
 win32-g++ {
+QMAKE_LFLAGS      += -static-libgcc
 win32:LIBS        += $(PVBDIR)/win-mingw/bin/librllib.a
 #win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
 win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a

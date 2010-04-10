@@ -1224,7 +1224,7 @@ void MyTable::mousePressEvent(QMouseEvent *event)
       }  
       else
       {
-        char buf[1024];
+        char buf[MAX_PRINTF_LENGTH];
         saveTextfile("table.csv");
         if(strlen(opt.view_csv) < 900)
         {
@@ -1807,7 +1807,7 @@ static int starts_with(const char *path1, const char *path2)
 
 const char *root_path(const char *path, int num_slash)
 {
-  static char buf[1024];
+  static char buf[MAX_PRINTF_LENGTH];
   int i,cnt;
 
   i   = 0;
@@ -2276,7 +2276,7 @@ int column;
 
 void MyListView::slotRightButtonPressed(QTreeWidgetItem *item, int column)
 {
-  char buf[80];
+  char buf[MAX_PRINTF_LENGTH];
 
   MyListViewItem *myitem = (MyListViewItem *) item;
   if(item == NULL)

@@ -276,6 +276,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"#macx:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
   fprintf(fout,"\n");
   fprintf(fout,"win32-g++ {\n");
+  fprintf(fout,"QMAKE_LFLAGS       += -static-libgcc\n");
   fprintf(fout,"#win32:LIBS        += $(PVBDIR)/win-mingw/bin/librllib.a\n");
   fprintf(fout,"win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a\n");
   fprintf(fout,"win32:INCLUDEPATH  += $(PVBDIR)/pvserver\n");

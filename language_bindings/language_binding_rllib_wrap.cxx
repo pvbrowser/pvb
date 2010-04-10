@@ -24652,6 +24652,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_isModified_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSvgAnimator_isModified_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_isModified_set" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlSvgAnimator_isModified_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->isModified = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_isModified_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlSvgAnimator_isModified_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_isModified_get" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  result = (int) ((arg1)->isModified);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *rlSvgAnimator_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -35276,6 +35328,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSvgAnimator_windowWidth", _wrap_rlSvgAnimator_windowWidth, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_windowHeight", _wrap_rlSvgAnimator_windowHeight, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_moveMainObject", _wrap_rlSvgAnimator_moveMainObject, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_isModified_set", _wrap_rlSvgAnimator_isModified_set, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_isModified_get", _wrap_rlSvgAnimator_isModified_get, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_swigregister", rlSvgAnimator_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlSvgCat", _wrap_new_rlSvgCat, METH_VARARGS, NULL},
 	 { (char *)"delete_rlSvgCat", _wrap_delete_rlSvgCat, METH_VARARGS, NULL},
