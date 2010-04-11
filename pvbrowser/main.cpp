@@ -159,6 +159,7 @@ int main(int argc, char *argv[])
   app.processEvents();
   mainWin.slotReconnect();
   mainWin.slotTimeOut();
+  mainWin.mythread.start();
   return app.exec();
 }
 #endif

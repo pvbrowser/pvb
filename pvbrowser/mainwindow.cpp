@@ -195,7 +195,7 @@ MainWindow::MainWindow()
 
   semaphore.release();
   mythread.pv = this;
-  mythread.start();
+  // slow_start_on_windows mythread.start();
   // there is a problem within the firefox plugin on windows
   // we do not get enough CPU time there
   // no problem on linux
@@ -211,8 +211,6 @@ MainWindow::MainWindow()
   if(opt.arg_host[0] != '\0') url = opt.arg_host;
   else                        url = opt.initialhost;
   add_host(url.toAscii());
-  //winmurx moved to main() slotReconnect();
-  //winmurx moved to main() slotTimeOut(); // send @hello VERSION
 
   if(opt.arg_x != -1 && opt.arg_y != -1 && opt.arg_w != -1 && opt.arg_h != -1)
   {
@@ -230,7 +228,12 @@ MainWindow::MainWindow()
   {
     resize(800,600);
   }
-  textbrowser = new dlgTextBrowser;
+// delay textbrowser for speedup starting on windows  
+// loading the help file is damn slow on windows
+// thus we delay this operation until help is really needed
+//QMessageBox::information(this,"pvbrowser","step begin",1);
+//  textbrowser = new dlgTextBrowser;
+//QMessageBox::information(this,"pvbrowser","step end",1);
 }
 
 MainWindow::~MainWindow()
@@ -355,6 +358,7 @@ void MainWindow::slotManual()
   //dlg->show();
   //tb textbrowser->form->textBrowser->setSource(QUrl::fromLocalFile("index.html"));
   //tb textbrowser->form->textBrowser->reload();
+  if(textbrowser == NULL) textbrowser = new dlgTextBrowser;
   textbrowser->form->textBrowser->load(QUrl("index.html"));
   textbrowser->show();
 }

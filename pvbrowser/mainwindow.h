@@ -92,6 +92,7 @@ public:
   dlgTextBrowser *textbrowser;
   PVBTAB pvbtab[MAX_TABS];
   QComboBox *urlComboBox;
+  MyThread mythread;
 
 public slots:
   void slotUrl(const QString &url);
@@ -173,7 +174,6 @@ private:
   int isReconnect;
   QString url;
   QLabel *logoLabel;
-  MyThread mythread;
   QTimer *timer;
 };
 

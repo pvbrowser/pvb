@@ -1354,7 +1354,11 @@ void Interpreter::interpreth(const char *command)
       if(i == -2) mainWindow->fileToolBar->hide();
       if(i == -3) mainWindow->statusBar()->hide();
       if(i == -4) mainWindow->hide();
-      if(i == -5) mainWindow->textbrowser->hide();
+      if(i == -5) 
+      {
+        if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
+        mainWindow->textbrowser->hide();
+      }  
       int id_dock = i - DOCK_WIDGETS_BASE;
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {
@@ -2946,8 +2950,7 @@ void Interpreter::interprets(const char *command)
           get_text(command,text); // text = html filename
           if(i == -5) // ID_HELP
           {
-            //tb mainWindow->textbrowser->form->textBrowser->setSource(QUrl::fromLocalFile(temp + text));
-            //tb mainWindow->textbrowser->form->textBrowser->reload();
+            if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
             mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
             return;
           }
@@ -3671,7 +3674,11 @@ void Interpreter::interprets(const char *command)
       if(i == -2) mainWindow->fileToolBar->show();
       if(i == -3) mainWindow->statusBar()->show();
       if(i == -4) mainWindow->show();
-      if(i == -5) mainWindow->textbrowser->show();
+      if(i == -5)
+      {
+        if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
+        mainWindow->textbrowser->show();
+      }  
       int id_dock = i - DOCK_WIDGETS_BASE;
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {

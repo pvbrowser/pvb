@@ -19,6 +19,7 @@
 #include <QPushButton>
 #include <QInputDialog>
 #include <QLineEdit>
+#include <QFile>
 #include <qmessagebox.h>
 #include "opt.h"
 #include <stdio.h>
@@ -54,18 +55,20 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
   strcpy(cmd,buf);
 #endif
 
-  //QMessageBox::information(this, tr("html-file"),cmd);
-  FILE *fin = fopen(cmd,"r");
-  if(fin == NULL)
+  QFile fin(cmd);
+  if(fin.exists())
   {
-    form->textBrowser->setHtml("<html><head></head><body>Sorry no application specific help specified.</body></html>");
+    // this is damn slow on windows begin
+    QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+    form->textBrowser->load(QUrl::fromLocalFile(cmd));
+    QApplication::restoreOverrideCursor();
+    // this is damn slow on windows end
+    home = cmd;
+    homeIsSet = 1;
   }
   else
   {
-    fclose(fin);
-    form->textBrowser->load(QUrl::fromLocalFile(cmd));
-    home = cmd;
-    homeIsSet = 1;
+    form->textBrowser->setHtml("<html><head></head><body>Sorry no application specific help specified.</body></html>");
   }
 
   QObject::connect(form->pushButtonBack,SIGNAL(clicked()),form->textBrowser,SLOT(back()));
