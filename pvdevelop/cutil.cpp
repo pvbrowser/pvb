@@ -385,7 +385,11 @@ void generateInitialProject(const char *name)
   fprintf(fout,"#ifndef _PVAPP_H_\n");
   fprintf(fout,"#define _PVAPP_H_\n");
   fprintf(fout,"\n");
+  fprintf(fout,"#ifdef USE_INETD\n");
+  fprintf(fout,"static int trace=0; // todo: set trace=0 if you do not want printf() within event loop\n");
+  fprintf(fout,"#else\n");
   fprintf(fout,"static int trace=1; // todo: set trace=0 if you do not want printf() within event loop\n");
+  fprintf(fout,"#endif\n");
   fprintf(fout,"\n");
   fprintf(fout,"#include \"processviewserver.h\"\n");
   fprintf(fout,"// todo: comment me out\n");

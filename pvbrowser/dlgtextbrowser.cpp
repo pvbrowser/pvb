@@ -59,9 +59,11 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
   if(fin.exists())
   {
     // this is damn slow on windows begin
+#ifdef PVDEVELOP
     QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
     form->textBrowser->load(QUrl::fromLocalFile(cmd));
     QApplication::restoreOverrideCursor();
+#endif
     // this is damn slow on windows end
     home = cmd;
     homeIsSet = 1;
@@ -110,7 +112,7 @@ void dlgTextBrowser::slotFind()
 
 void dlgTextBrowser::slotHome()
 {
-  if(homeIsSet) form->textBrowser->load(QUrl::fromLocalFile(home));
+  if(homeIsSet) form->textBrowser->load(QUrl(home));
 }
 
 

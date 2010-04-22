@@ -700,21 +700,21 @@ GOTO :EOF
 
 rem Echo the new content of the pvb_make_modbusdaemon.bat file into the original one.
 :ReplacePvbMakeModbusdaemonBatFile
-ECHO g++ modbusdaemon.cpp "%%PVBDIR%%\%WINMINGWDIR%\bin\librllib.a" "%%MINGWDIR%%\lib\libws2_32.a" "-I%%PVBDIR%%\rllib\lib" "%%MINGWDIR%%\lib\libadvapi32.a" -o modbusdaemon.exe   >  %PVBMAKEMODBUSDAEMON_BAT%
+ECHO g++ modbusdaemon.cpp "%%PVBDIR%%\%WINMINGWDIR%\bin\librllib.a" "%%MINGWDIR%%\lib\libws2_32.a" "-I%%PVBDIR%%\rllib\lib" "%%MINGWDIR%%\lib\libadvapi32.a"  -static-libgcc -o modbusdaemon.exe   >  %PVBMAKEMODBUSDAEMON_BAT%
 ECHO pause                                                                                                                                                                  >> %PVBMAKEMODBUSDAEMON_BAT%
 ECHO exit                                                                                                                                                                   >> %PVBMAKEMODBUSDAEMON_BAT%
 GOTO :EOF
 
 rem Echo the new content of the pvb_make_ppidaemon.bat file into the original one.
 :ReplacePvbMakePpidaemonBatFile
-ECHO g++ ppidaemon.cpp "%%PVBDIR%%\%WINMINGWDIR%\nodave_mingw.o" "%%PVBDIR%%\%WINMINGWDIR%\bin\librllib.a" "%MINGWDIR%\lib\libws2_32.a" "-I%%PVBDIR%%\rllib\lib" -o ppidaemon.exe                                                                      >  %PVBMAKEPPIDAEMON_BAT%
+ECHO g++ ppidaemon.cpp "%%PVBDIR%%\%WINMINGWDIR%\nodave_mingw.o" "%%PVBDIR%%\%WINMINGWDIR%\bin\librllib.a" "%MINGWDIR%\lib\libws2_32.a" "-I%%PVBDIR%%\rllib\lib"  -static-libgcc -o ppidaemon.exe                                                                      >  %PVBMAKEPPIDAEMON_BAT%
 ECHO pause                                                                                                                                                                  >> %PVBMAKEPPIDAEMON_BAT%
 ECHO exit                                                                                                                                                                   >> %PVBMAKEPPIDAEMON_BAT%
 GOTO :EOF
 
 rem Echo the new content of the pvb_make_siemensdaemon.bat file into the original one.
 :ReplacePvbMakeSiemensdaemonBatFile
-ECHO g++ siemensdaemon.cpp "%%PVBDIR%%\%WINMINGWDIR%\bin\librllib.a" "%%MINGWDIR%%\lib\libws2_32.a" "-I%%PVBDIR%%\rllib\lib" "%%MINGWDIR%%\lib\libadvapi32.a" -o siemensdaemon.exe >  %PVBMAKESIEMENSDAEMON_BAT%
+ECHO g++ siemensdaemon.cpp "%%PVBDIR%%\%WINMINGWDIR%\bin\librllib.a" "%%MINGWDIR%%\lib\libws2_32.a" "-I%%PVBDIR%%\rllib\lib" "%%MINGWDIR%%\lib\libadvapi32.a"  -static-libgcc -o siemensdaemon.exe >  %PVBMAKESIEMENSDAEMON_BAT%
 ECHO pause                                                                                                                                                                  >> %PVBMAKESIEMENSDAEMON_BAT%
 ECHO exit                                                                                                                                                                   >> %PVBMAKESIEMENSDAEMON_BAT%
 GOTO :EOF
