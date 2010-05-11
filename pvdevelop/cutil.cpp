@@ -256,6 +256,8 @@ void generateInitialProject(const char *name)
   //fprintf(fout,"unix:QMAKE_LFLAGS += -static-libgcc\n");
   fprintf(fout,"\n");
   fprintf(fout,"# Input\n");
+  fprintf(fout,"HEADERS += processviewserver.h\n");
+  fprintf(fout,"#HEADERS += rldefine.h\n");
   fprintf(fout,"HEADERS += pvapp.h      \\\n");
   fprintf(fout,"           mask1_slots.h\n");
   fprintf(fout,"SOURCES += main.cpp     \\\n");
@@ -1342,6 +1344,10 @@ void uncommentRllib(const char *project)
   {
     fl = fl->next;
     if(fl->line[0]=='#' && (strstr(fl->line,"rllib") != NULL || strstr(fl->line,"RLLIB") != NULL))
+    {
+      fprintf(fout,"%s",&fl->line[1]);
+    }
+    else if(fl->line[0]=='#' && strstr(fl->line,"rldefine.h") != NULL )
     {
       fprintf(fout,"%s",&fl->line[1]);
     }
