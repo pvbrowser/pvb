@@ -778,7 +778,11 @@ void Interpreter::interpretc(const char *command)
     else if(all[i]->type == TQMultiLineEdit)
     {
       MyMultiLineEdit *ptr = (MyMultiLineEdit *) all[i]->w;
-      if(ptr != NULL) ptr->clear();
+      if(ptr != NULL) 
+      {
+        ptr->clear();
+        ptr->num_lines = 0;
+      }  
     }
     else if(all[i]->type == TQListView)
     {
