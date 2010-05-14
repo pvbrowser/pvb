@@ -90,12 +90,12 @@ It waits on TCP port for clients. See <a class="el" href="rlevent_8h.html">rleve
 <pre>
     event_log_server will not be deleted by the destructor
     </pre> 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00171">171</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00172"></a>00172 {
-<a name="l00173"></a>00173   <a class="code" href="rlsocket_8cpp.html#0a9b8ddbe56e24b68eacf127767f3024">rlwsa</a>();
-<a name="l00174"></a>00174   <a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a> = Port;
-<a name="l00175"></a>00175   event_log_server = EventLogServer;
-<a name="l00176"></a>00176 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00176">176</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00177"></a>00177 {
+<a name="l00178"></a>00178   <a class="code" href="rlsocket_8cpp.html#0a9b8ddbe56e24b68eacf127767f3024">rlwsa</a>();
+<a name="l00179"></a>00179   <a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a> = Port;
+<a name="l00180"></a>00180   event_log_server = EventLogServer;
+<a name="l00181"></a>00181 }
 </pre></div>
 <p>
 
@@ -118,9 +118,9 @@ It waits on TCP port for clients. See <a class="el" href="rlevent_8h.html">rleve
 
 <p>
 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00178">178</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00179"></a>00179 {
-<a name="l00180"></a>00180 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00183">183</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00184"></a>00184 {
+<a name="l00185"></a>00185 }
 </pre></div>
 <p>
 
@@ -144,10 +144,10 @@ It waits on TCP port for clients. See <a class="el" href="rlevent_8h.html">rleve
 
 <p>
 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00190">190</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00191"></a>00191 {
-<a name="l00192"></a>00192   <span class="keywordflow">return</span> <a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a>;
-<a name="l00193"></a>00193 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00195">195</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00196"></a>00196 {
+<a name="l00197"></a>00197   <span class="keywordflow">return</span> <a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a>;
+<a name="l00198"></a>00198 }
 </pre></div>
 <p>
 
@@ -170,13 +170,13 @@ It waits on TCP port for clients. See <a class="el" href="rlevent_8h.html">rleve
 
 <p>
 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00182">182</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00183"></a>00183 {
-<a name="l00184"></a>00184   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a> &lt;= 0)                <span class="keywordflow">return</span>;
-<a name="l00185"></a>00185   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a> &gt;= 256*256)          <span class="keywordflow">return</span>;
-<a name="l00186"></a>00186   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServerThreads.html#b5ac48ea7d64edfe7483c0c4d2240f1e">event_log_server</a> == NULL) <span class="keywordflow">return</span>;
-<a name="l00187"></a>00187   <a class="code" href="classrlEventLogServerThreads.html#9b436816e012596bf2eb68cbad36403b">acceptThread</a>.<a class="code" href="classrlThread.html#2e26bec1d1bc3bc35a3c8a1c9930f2fb">create</a>(<a class="code" href="rleventlogserver_8cpp.html#f9ff547c6bb0a5160c659f5cabde1419">rlAcceptThread</a>,<span class="keyword">this</span>);
-<a name="l00188"></a>00188 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00187">187</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00188"></a>00188 {
+<a name="l00189"></a>00189   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a> &lt;= 0)                <span class="keywordflow">return</span>;
+<a name="l00190"></a>00190   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServerThreads.html#e9277fc272eb9210150df2d82c230f4b">port</a> &gt;= 256*256)          <span class="keywordflow">return</span>;
+<a name="l00191"></a>00191   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServerThreads.html#b5ac48ea7d64edfe7483c0c4d2240f1e">event_log_server</a> == NULL) <span class="keywordflow">return</span>;
+<a name="l00192"></a>00192   <a class="code" href="classrlEventLogServerThreads.html#9b436816e012596bf2eb68cbad36403b">acceptThread</a>.<a class="code" href="classrlThread.html#2e26bec1d1bc3bc35a3c8a1c9930f2fb">create</a>(<a class="code" href="rleventlogserver_8cpp.html#f9ff547c6bb0a5160c659f5cabde1419">rlAcceptThread</a>,<span class="keyword">this</span>);
+<a name="l00193"></a>00193 }
 </pre></div>
 <p>
 

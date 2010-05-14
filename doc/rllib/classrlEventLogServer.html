@@ -198,19 +198,24 @@ You may use it with <a class="el" href="rlevent_8h.html">rlevent.h</a>
 <a name="l00060"></a>00060   <span class="keywordflow">else</span>                                            <span class="comment">// read next record</span>
 <a name="l00061"></a>00061   {
 <a name="l00062"></a>00062     (*num)++;
-<a name="l00063"></a>00063     <span class="keywordflow">if</span>(*num &gt;= <a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>)
+<a name="l00063"></a>00063     <span class="keywordflow">if</span>(*num &gt;= <a class="code" href="rleventlogserver_8h.html#0ca0884a2fa217c7b1237992cd2b49e2">rlMAX_MESSAGES</a>) 
 <a name="l00064"></a>00064     {
-<a name="l00065"></a>00065       <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#c2b2977e51dfa6ea6213e83974bbe085">unlock</a>();
-<a name="l00066"></a>00066       <span class="keywordflow">return</span> <span class="stringliteral">""</span>;
-<a name="l00067"></a>00067     }
-<a name="l00068"></a>00068     strcpy(buf,&amp;<a class="code" href="classrlEventLogServer.html#aa8c5a635c6a4c515c66d33401c81ddb">memory</a>[(*num)*<a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>]);
-<a name="l00069"></a>00069     cptr = strchr(buf,<span class="charliteral">'\n'</span>);
-<a name="l00070"></a>00070     <span class="keywordflow">if</span>(cptr != NULL) *cptr = <span class="charliteral">'\0'</span>;                <span class="comment">// delete newline</span>
-<a name="l00071"></a>00071     <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#c2b2977e51dfa6ea6213e83974bbe085">unlock</a>();
-<a name="l00072"></a>00072     <span class="keywordflow">if</span>(buf[0] &lt; <span class="charliteral">' '</span>) <span class="keywordflow">return</span> <span class="stringliteral">""</span>;
-<a name="l00073"></a>00073     <span class="keywordflow">return</span> buf;
-<a name="l00074"></a>00074   }
-<a name="l00075"></a>00075 }
+<a name="l00065"></a>00065       *num = 0;
+<a name="l00066"></a>00066       <span class="keywordflow">if</span>(*num == <a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a>)
+<a name="l00067"></a>00067       {
+<a name="l00068"></a>00068         buf[0] = <span class="charliteral">'\0'</span>;
+<a name="l00069"></a>00069         <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#c2b2977e51dfa6ea6213e83974bbe085">unlock</a>();
+<a name="l00070"></a>00070         <span class="keywordflow">return</span> NULL;
+<a name="l00071"></a>00071       }  
+<a name="l00072"></a>00072     }
+<a name="l00073"></a>00073     strcpy(buf,&amp;<a class="code" href="classrlEventLogServer.html#aa8c5a635c6a4c515c66d33401c81ddb">memory</a>[(*num)*<a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>]);
+<a name="l00074"></a>00074     cptr = strchr(buf,<span class="charliteral">'\n'</span>);
+<a name="l00075"></a>00075     <span class="keywordflow">if</span>(cptr != NULL) *cptr = <span class="charliteral">'\0'</span>;                <span class="comment">// delete newline</span>
+<a name="l00076"></a>00076     <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#c2b2977e51dfa6ea6213e83974bbe085">unlock</a>();
+<a name="l00077"></a>00077     <span class="keywordflow">if</span>(buf[0] &lt; <span class="charliteral">' '</span>) <span class="keywordflow">return</span> <span class="stringliteral">""</span>;
+<a name="l00078"></a>00078     <span class="keywordflow">return</span> buf;
+<a name="l00079"></a>00079   }
+<a name="l00080"></a>00080 }
 </pre></div>
 <p>
 
@@ -234,43 +239,43 @@ You may use it with <a class="el" href="rlevent_8h.html">rlevent.h</a>
 
 <p>
 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00077">77</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00078"></a>00078 {
-<a name="l00079"></a>00079   <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#d9d3b571205672f8c85ce51731944ff4">lock</a>();
-<a name="l00080"></a>00080   <a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a>++;
-<a name="l00081"></a>00081   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a> &gt;= <a class="code" href="rleventlogserver_8h.html#0ca0884a2fa217c7b1237992cd2b49e2">rlMAX_MESSAGES</a>) <a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a> = 0;
-<a name="l00082"></a>00082   <a class="code" href="rlcutil_8cpp.html#9a639b36f6ac0c0281ef3b03f821a406">rlstrncpy</a>(&amp;<a class="code" href="classrlEventLogServer.html#aa8c5a635c6a4c515c66d33401c81ddb">memory</a>[<a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a>*<a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>],event,rlMAX_EVENT-1);
-<a name="l00083"></a>00083   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> == NULL &amp;&amp; <a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a> != NULL)
-<a name="l00084"></a>00084   {
-<a name="l00085"></a>00085     <span class="keywordtype">char</span> name[1024],<a class="code" href="rlevent_8cpp.html#cf6c371f558a71d8a8bbc899e4429e0c">time</a>[50];
-<a name="l00086"></a>00086     <a class="code" href="classrlTime.html">rlTime</a> t;
-<a name="l00087"></a>00087 
-<a name="l00088"></a>00088     t.<a class="code" href="classrlTime.html#58e753a2b74eea66ef8df028f266f7e2">getLocalTime</a>();
-<a name="l00089"></a>00089     strcpy(time,t.<a class="code" href="classrlTime.html#8496f80861d25f8206461c9b0afe81e3">getTimeString</a>()); time[10] = <span class="charliteral">'_'</span>; time[13] = <span class="charliteral">'_'</span>; time[16] = <span class="charliteral">'\0'</span>;
-<a name="l00090"></a>00090     strcpy(name,<a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a>);
-<a name="l00091"></a>00091     strcat(name,time);
-<a name="l00092"></a>00092     strcat(name,<span class="stringliteral">".rlEventLog"</span>);
-<a name="l00093"></a>00093     <span class="comment">//printf("openEventlog(%s)\n",name);</span>
-<a name="l00094"></a>00094 <span class="preprocessor">#ifdef __VMS</span>
-<a name="l00095"></a>00095 <span class="preprocessor"></span>    <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> = (<span class="keywordtype">void</span> *) fopen(name,<span class="stringliteral">"w"</span>,<span class="stringliteral">"shr=get"</span>);
-<a name="l00096"></a>00096 <span class="preprocessor">#else</span>
-<a name="l00097"></a>00097 <span class="preprocessor"></span>    <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> = (<span class="keywordtype">void</span> *) fopen(name,<span class="stringliteral">"w"</span>);
-<a name="l00098"></a>00098 <span class="preprocessor">#endif  </span>
-<a name="l00099"></a>00099 <span class="preprocessor"></span>  }
-<a name="l00100"></a>00100   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> != NULL &amp;&amp; <a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a> != NULL)
-<a name="l00101"></a>00101   {
-<a name="l00102"></a>00102     fprintf((FILE *) <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a>,<span class="stringliteral">"%s"</span>,event);
-<a name="l00103"></a>00103     fflush((FILE *) <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a>);
-<a name="l00104"></a>00104     <a class="code" href="classrlEventLogServer.html#1963f1aef34da09240a60e6e102e5fae">num_events</a>++;
-<a name="l00105"></a>00105   }
-<a name="l00106"></a>00106   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#1963f1aef34da09240a60e6e102e5fae">num_events</a> &gt; <a class="code" href="classrlEventLogServer.html#28ec40fec23e1d34ae71b344c80cdfb9">max_events</a> &amp;&amp; <a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a> != NULL)
-<a name="l00107"></a>00107   {
-<a name="l00108"></a>00108     <a class="code" href="classrlEventLogServer.html#1963f1aef34da09240a60e6e102e5fae">num_events</a> = 0;
-<a name="l00109"></a>00109     fclose((FILE *) <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a>);
-<a name="l00110"></a>00110     <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> = NULL;
-<a name="l00111"></a>00111   }
-<a name="l00112"></a>00112   <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#c2b2977e51dfa6ea6213e83974bbe085">unlock</a>();
-<a name="l00113"></a>00113 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00082">82</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00083"></a>00083 {
+<a name="l00084"></a>00084   <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#d9d3b571205672f8c85ce51731944ff4">lock</a>();
+<a name="l00085"></a>00085   <a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a>++;
+<a name="l00086"></a>00086   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a> &gt;= <a class="code" href="rleventlogserver_8h.html#0ca0884a2fa217c7b1237992cd2b49e2">rlMAX_MESSAGES</a>) <a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a> = 0;
+<a name="l00087"></a>00087   <a class="code" href="rlcutil_8cpp.html#9a639b36f6ac0c0281ef3b03f821a406">rlstrncpy</a>(&amp;<a class="code" href="classrlEventLogServer.html#aa8c5a635c6a4c515c66d33401c81ddb">memory</a>[<a class="code" href="classrlEventLogServer.html#0f80058773d690b4308a2169d0d62442">front</a>*<a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>],event,rlMAX_EVENT-1);
+<a name="l00088"></a>00088   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> == NULL &amp;&amp; <a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a> != NULL)
+<a name="l00089"></a>00089   {
+<a name="l00090"></a>00090     <span class="keywordtype">char</span> name[1024],<a class="code" href="rlevent_8cpp.html#cf6c371f558a71d8a8bbc899e4429e0c">time</a>[50];
+<a name="l00091"></a>00091     <a class="code" href="classrlTime.html">rlTime</a> t;
+<a name="l00092"></a>00092 
+<a name="l00093"></a>00093     t.<a class="code" href="classrlTime.html#58e753a2b74eea66ef8df028f266f7e2">getLocalTime</a>();
+<a name="l00094"></a>00094     strcpy(time,t.<a class="code" href="classrlTime.html#8496f80861d25f8206461c9b0afe81e3">getTimeString</a>()); time[10] = <span class="charliteral">'_'</span>; time[13] = <span class="charliteral">'_'</span>; time[16] = <span class="charliteral">'\0'</span>;
+<a name="l00095"></a>00095     strcpy(name,<a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a>);
+<a name="l00096"></a>00096     strcat(name,time);
+<a name="l00097"></a>00097     strcat(name,<span class="stringliteral">".rlEventLog"</span>);
+<a name="l00098"></a>00098     <span class="comment">//printf("openEventlog(%s)\n",name);</span>
+<a name="l00099"></a>00099 <span class="preprocessor">#ifdef __VMS</span>
+<a name="l00100"></a>00100 <span class="preprocessor"></span>    <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> = (<span class="keywordtype">void</span> *) fopen(name,<span class="stringliteral">"w"</span>,<span class="stringliteral">"shr=get"</span>);
+<a name="l00101"></a>00101 <span class="preprocessor">#else</span>
+<a name="l00102"></a>00102 <span class="preprocessor"></span>    <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> = (<span class="keywordtype">void</span> *) fopen(name,<span class="stringliteral">"w"</span>);
+<a name="l00103"></a>00103 <span class="preprocessor">#endif  </span>
+<a name="l00104"></a>00104 <span class="preprocessor"></span>  }
+<a name="l00105"></a>00105   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> != NULL &amp;&amp; <a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a> != NULL)
+<a name="l00106"></a>00106   {
+<a name="l00107"></a>00107     fprintf((FILE *) <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a>,<span class="stringliteral">"%s"</span>,event);
+<a name="l00108"></a>00108     fflush((FILE *) <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a>);
+<a name="l00109"></a>00109     <a class="code" href="classrlEventLogServer.html#1963f1aef34da09240a60e6e102e5fae">num_events</a>++;
+<a name="l00110"></a>00110   }
+<a name="l00111"></a>00111   <span class="keywordflow">if</span>(<a class="code" href="classrlEventLogServer.html#1963f1aef34da09240a60e6e102e5fae">num_events</a> &gt; <a class="code" href="classrlEventLogServer.html#28ec40fec23e1d34ae71b344c80cdfb9">max_events</a> &amp;&amp; <a class="code" href="classrlEventLogServer.html#5cdfe8c2883247aea3e638997f92bec0">filename</a> != NULL)
+<a name="l00112"></a>00112   {
+<a name="l00113"></a>00113     <a class="code" href="classrlEventLogServer.html#1963f1aef34da09240a60e6e102e5fae">num_events</a> = 0;
+<a name="l00114"></a>00114     fclose((FILE *) <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a>);
+<a name="l00115"></a>00115     <a class="code" href="classrlEventLogServer.html#abaae24e482a2fef28e18aa3e41ae8ed">fp</a> = NULL;
+<a name="l00116"></a>00116   }
+<a name="l00117"></a>00117   <a class="code" href="classrlEventLogServer.html#a48e4e5ddd13f300b542dfb0e81706da">mutex</a>.<a class="code" href="classrlMutex.html#c2b2977e51dfa6ea6213e83974bbe085">unlock</a>();
+<a name="l00118"></a>00118 }
 </pre></div>
 <p>
 

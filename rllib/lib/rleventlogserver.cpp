@@ -60,10 +60,15 @@ const char *rlEventLogServer::getEvent(char *buf, int *num)
   else                                            // read next record
   {
     (*num)++;
-    if(*num >= rlMAX_EVENT)
+    if(*num >= rlMAX_MESSAGES) 
     {
-      mutex.unlock();
-      return "";
+      *num = 0;
+      if(*num == front)
+      {
+        buf[0] = '\0';
+        mutex.unlock();
+        return NULL;
+      }  
     }
     strcpy(buf,&memory[(*num)*rlMAX_EVENT]);
     cptr = strchr(buf,'\n');

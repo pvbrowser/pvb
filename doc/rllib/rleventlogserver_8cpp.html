@@ -68,30 +68,30 @@ Include dependency graph for rleventlogserver.cpp:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00146">146</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00147"></a>00147 {
-<a name="l00148"></a>00148   <span class="keywordtype">int</span> port,s;
-<a name="l00149"></a>00149   <a class="code" href="classrlThread.html">rlThread</a> worker;
-<a name="l00150"></a>00150   <a class="code" href="structWORKER__DATA.html">WORKER_DATA</a> worker_data;
-<a name="l00151"></a>00151   <a class="code" href="classrlEventLogServerThreads.html">rlEventLogServerThreads</a> *thread;
-<a name="l00152"></a>00152   <a class="code" href="classrlSocket.html">rlSocket</a> *socket;
-<a name="l00153"></a>00153   <a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *p = (<a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *) arg;
-<a name="l00154"></a>00154 
-<a name="l00155"></a>00155   thread = (<a class="code" href="classrlEventLogServerThreads.html">rlEventLogServerThreads</a> *) p-&gt;<a class="code" href="structTHREAD__PARAM.html#bb08567308ed25b8bd3329ae84279b3d">user</a>;
-<a name="l00156"></a>00156   port = thread-&gt;<a class="code" href="classrlEventLogServerThreads.html#8019908c2dc78176f96365c360ef00f4">getPort</a>();
-<a name="l00157"></a>00157   socket = <span class="keyword">new</span> <a class="code" href="classrlSocket.html">rlSocket</a>(<span class="stringliteral">"localhost"</span>,port,0);
-<a name="l00158"></a>00158   <span class="keywordflow">while</span>(1)
-<a name="l00159"></a>00159   {
-<a name="l00160"></a>00160     s = socket-&gt;<a class="code" href="classrlSocket.html#d30990162e716dce512116d9336de89e">connect</a>();
-<a name="l00161"></a>00161     <span class="keywordflow">if</span>(s == -1) <span class="keywordflow">break</span>;
-<a name="l00162"></a>00162     worker_data.<a class="code" href="structWORKER__DATA.html#fd7deb75251f5799bfac27cf1f25006b">thread</a> = thread;
-<a name="l00163"></a>00163     worker_data.<a class="code" href="structWORKER__DATA.html#ab85a3a94a5c41a042cc28d0d511d9a0">socket</a> = s;
-<a name="l00164"></a>00164     worker.<a class="code" href="classrlThread.html#2e26bec1d1bc3bc35a3c8a1c9930f2fb">create</a>(<a class="code" href="rleventlogserver_8cpp.html#e2a3a761e4cf9d98caf2c4779a581e43">workerThread</a>,&amp;worker_data);
-<a name="l00165"></a>00165     <a class="code" href="rlwthread_8cpp.html#604b0dba29427e3514cd37136458e0c5">rlsleep</a>(100);
-<a name="l00166"></a>00166   }
-<a name="l00167"></a>00167   <span class="keyword">delete</span> socket;
-<a name="l00168"></a>00168   <span class="keywordflow">return</span> NULL;
-<a name="l00169"></a>00169 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00151">151</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00152"></a>00152 {
+<a name="l00153"></a>00153   <span class="keywordtype">int</span> port,s;
+<a name="l00154"></a>00154   <a class="code" href="classrlThread.html">rlThread</a> worker;
+<a name="l00155"></a>00155   <a class="code" href="structWORKER__DATA.html">WORKER_DATA</a> worker_data;
+<a name="l00156"></a>00156   <a class="code" href="classrlEventLogServerThreads.html">rlEventLogServerThreads</a> *thread;
+<a name="l00157"></a>00157   <a class="code" href="classrlSocket.html">rlSocket</a> *socket;
+<a name="l00158"></a>00158   <a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *p = (<a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *) arg;
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160   thread = (<a class="code" href="classrlEventLogServerThreads.html">rlEventLogServerThreads</a> *) p-&gt;<a class="code" href="structTHREAD__PARAM.html#bb08567308ed25b8bd3329ae84279b3d">user</a>;
+<a name="l00161"></a>00161   port = thread-&gt;<a class="code" href="classrlEventLogServerThreads.html#8019908c2dc78176f96365c360ef00f4">getPort</a>();
+<a name="l00162"></a>00162   socket = <span class="keyword">new</span> <a class="code" href="classrlSocket.html">rlSocket</a>(<span class="stringliteral">"localhost"</span>,port,0);
+<a name="l00163"></a>00163   <span class="keywordflow">while</span>(1)
+<a name="l00164"></a>00164   {
+<a name="l00165"></a>00165     s = socket-&gt;<a class="code" href="classrlSocket.html#d30990162e716dce512116d9336de89e">connect</a>();
+<a name="l00166"></a>00166     <span class="keywordflow">if</span>(s == -1) <span class="keywordflow">break</span>;
+<a name="l00167"></a>00167     worker_data.<a class="code" href="structWORKER__DATA.html#fd7deb75251f5799bfac27cf1f25006b">thread</a> = thread;
+<a name="l00168"></a>00168     worker_data.<a class="code" href="structWORKER__DATA.html#ab85a3a94a5c41a042cc28d0d511d9a0">socket</a> = s;
+<a name="l00169"></a>00169     worker.<a class="code" href="classrlThread.html#2e26bec1d1bc3bc35a3c8a1c9930f2fb">create</a>(<a class="code" href="rleventlogserver_8cpp.html#e2a3a761e4cf9d98caf2c4779a581e43">workerThread</a>,&amp;worker_data);
+<a name="l00170"></a>00170     <a class="code" href="rlwthread_8cpp.html#604b0dba29427e3514cd37136458e0c5">rlsleep</a>(100);
+<a name="l00171"></a>00171   }
+<a name="l00172"></a>00172   <span class="keyword">delete</span> socket;
+<a name="l00173"></a>00173   <span class="keywordflow">return</span> NULL;
+<a name="l00174"></a>00174 }
 </pre></div>
 <p>
 
@@ -115,28 +115,28 @@ Include dependency graph for rleventlogserver.cpp:</div>
 
 <p>
 
-<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00123">123</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
-<div class="fragment"><pre class="fragment"><a name="l00124"></a>00124 {
-<a name="l00125"></a>00125   <span class="keywordtype">char</span>                     message[<a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>];
-<a name="l00126"></a>00126   <span class="keywordtype">int</span>                      s,ret;
-<a name="l00127"></a>00127   <a class="code" href="structWORKER__DATA.html">WORKER_DATA</a>             *worker_data;
-<a name="l00128"></a>00128   <a class="code" href="classrlEventLogServerThreads.html">rlEventLogServerThreads</a> *thread;
-<a name="l00129"></a>00129   <a class="code" href="classrlSocket.html">rlSocket</a>                *socket;
-<a name="l00130"></a>00130 
-<a name="l00131"></a>00131   <a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *p = (<a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *) arg;
-<a name="l00132"></a>00132   worker_data     = (<a class="code" href="structWORKER__DATA.html">WORKER_DATA</a> *) p-&gt;<a class="code" href="structTHREAD__PARAM.html#bb08567308ed25b8bd3329ae84279b3d">user</a>;
-<a name="l00133"></a>00133   s               = worker_data-&gt;<a class="code" href="structWORKER__DATA.html#ab85a3a94a5c41a042cc28d0d511d9a0">socket</a>;
-<a name="l00134"></a>00134   thread          = worker_data-&gt;<a class="code" href="structWORKER__DATA.html#fd7deb75251f5799bfac27cf1f25006b">thread</a>;
-<a name="l00135"></a>00135   socket          = <span class="keyword">new</span> <a class="code" href="classrlSocket.html">rlSocket</a>(s);
-<a name="l00136"></a>00136 
-<a name="l00137"></a>00137   <span class="keywordflow">while</span>(socket-&gt;<a class="code" href="classrlSocket.html#4ca3288e228e58fe41e9e64ad1c0ed6a">isConnected</a>())
-<a name="l00138"></a>00138   {
-<a name="l00139"></a>00139     ret = socket-&gt;<a class="code" href="classrlSocket.html#ca6b7edd806bc447008cc025a0b72dbf">readStr</a>(message,<span class="keyword">sizeof</span>(message)-1);
-<a name="l00140"></a>00140     <span class="keywordflow">if</span>(ret &gt; 0) thread-&gt;<a class="code" href="classrlEventLogServerThreads.html#b5ac48ea7d64edfe7483c0c4d2240f1e">event_log_server</a>-&gt;<a class="code" href="classrlEventLogServer.html#a6cdabaffdc6fbe4819b52fd28992eda">putEvent</a>(message);
-<a name="l00141"></a>00141   }
-<a name="l00142"></a>00142   <span class="keyword">delete</span> socket;
-<a name="l00143"></a>00143   <span class="keywordflow">return</span> NULL;
-<a name="l00144"></a>00144 }
+<p>Definition at line <a class="el" href="rleventlogserver_8cpp_source.html#l00128">128</a> of file <a class="el" href="rleventlogserver_8cpp_source.html">rleventlogserver.cpp</a>.</p>
+<div class="fragment"><pre class="fragment"><a name="l00129"></a>00129 {
+<a name="l00130"></a>00130   <span class="keywordtype">char</span>                     message[<a class="code" href="rlevent_8h.html#bd29ce0a431efd421fae942553dbb5e1">rlMAX_EVENT</a>];
+<a name="l00131"></a>00131   <span class="keywordtype">int</span>                      s,ret;
+<a name="l00132"></a>00132   <a class="code" href="structWORKER__DATA.html">WORKER_DATA</a>             *worker_data;
+<a name="l00133"></a>00133   <a class="code" href="classrlEventLogServerThreads.html">rlEventLogServerThreads</a> *thread;
+<a name="l00134"></a>00134   <a class="code" href="classrlSocket.html">rlSocket</a>                *socket;
+<a name="l00135"></a>00135 
+<a name="l00136"></a>00136   <a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *p = (<a class="code" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *) arg;
+<a name="l00137"></a>00137   worker_data     = (<a class="code" href="structWORKER__DATA.html">WORKER_DATA</a> *) p-&gt;<a class="code" href="structTHREAD__PARAM.html#bb08567308ed25b8bd3329ae84279b3d">user</a>;
+<a name="l00138"></a>00138   s               = worker_data-&gt;<a class="code" href="structWORKER__DATA.html#ab85a3a94a5c41a042cc28d0d511d9a0">socket</a>;
+<a name="l00139"></a>00139   thread          = worker_data-&gt;<a class="code" href="structWORKER__DATA.html#fd7deb75251f5799bfac27cf1f25006b">thread</a>;
+<a name="l00140"></a>00140   socket          = <span class="keyword">new</span> <a class="code" href="classrlSocket.html">rlSocket</a>(s);
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142   <span class="keywordflow">while</span>(socket-&gt;<a class="code" href="classrlSocket.html#4ca3288e228e58fe41e9e64ad1c0ed6a">isConnected</a>())
+<a name="l00143"></a>00143   {
+<a name="l00144"></a>00144     ret = socket-&gt;<a class="code" href="classrlSocket.html#ca6b7edd806bc447008cc025a0b72dbf">readStr</a>(message,<span class="keyword">sizeof</span>(message)-1);
+<a name="l00145"></a>00145     <span class="keywordflow">if</span>(ret &gt; 0) thread-&gt;<a class="code" href="classrlEventLogServerThreads.html#b5ac48ea7d64edfe7483c0c4d2240f1e">event_log_server</a>-&gt;<a class="code" href="classrlEventLogServer.html#a6cdabaffdc6fbe4819b52fd28992eda">putEvent</a>(message);
+<a name="l00146"></a>00146   }
+<a name="l00147"></a>00147   <span class="keyword">delete</span> socket;
+<a name="l00148"></a>00148   <span class="keywordflow">return</span> NULL;
+<a name="l00149"></a>00149 }
 </pre></div>
 <p>
 
