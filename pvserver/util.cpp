@@ -756,7 +756,8 @@ int pvtcpsend_binary(PARAM *p, const char *buf, int len)
 /* send a packet to tcp or a file with range check */
 int pvtcpsend(PARAM *p, const char *buf, int len)
 {
-  if(len >= MAX_PRINTF_LENGTH-1)
+  // if(len >= MAX_PRINTF_LENGTH-1) // old version
+  if(len >= MAX_PRINTF_LENGTH)      // fixed by mur 
   {
     char message[80];
     strncpy(message,buf,10);

@@ -48,6 +48,26 @@ Requires:  Mesa
 BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel
 %endif
 
+%if 0%{?rhel_version}
+# Requires:  ld-linux.so.2
+Requires:  qt4
+Requires:  Mesa
+# Requires:  VTK
+# Requires:  tcl
+# Requires:  tk
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel
+%endif
+
+%if 0%{?centos_version}
+# Requires:  ld-linux.so.2
+Requires:  qt4
+Requires:  Mesa
+# Requires:  VTK
+# Requires:  tcl
+# Requires:  tk
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel
+%endif
+
 %if 0%{?mandriva_version}
 # Requires:  ld-linux.so.2
 Requires:  libqt4
