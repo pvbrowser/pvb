@@ -153,7 +153,7 @@ static void generate(const char *name)
 {
   FILE *fout,*fp;
   char *cptr,adr[256],plc_type[256],org[256];
-  int  slave,dbnum,start,len,fetch_write;
+  int  slave,dbnum,start,len,fetch_write,rack,slot;
 
   sprintf(line,"%s.cpp",target);
   fout = fopen(line,"w");
@@ -199,6 +199,7 @@ static void generate(const char *name)
     {
       slave = -1;
       fetch_write = 1;
+      rack = slot = -1;
       adr[0] = plc_type[0] = '\0';
       sscanf(line,"slave=%d",&slave);
       cptr = strstr(line,"adr=");
@@ -213,6 +214,10 @@ static void generate(const char *name)
       if(cptr!=NULL) *cptr = '\0';
       cptr = strstr(line,"fetch_write=");
       if(cptr!=NULL) sscanf(cptr,"fetch_write=%d",&fetch_write);
+      cptr = strstr(line,"rack=");
+      if(cptr!=NULL) sscanf(cptr,"rack=%d",&rack);
+      cptr = strstr(line,"slot=");
+      if(cptr!=NULL) sscanf(cptr,"slot=%d",&rack);
       
       if(adr[0] == '\0' || plc_type == '\0' || slave < 0)
       {
@@ -221,7 +226,7 @@ static void generate(const char *name)
         fclose(fout);
         exit(-1);
       }
-      fprintf(fout,"rlSiemensTCP   slave%d(\"%s\",rlSiemensTCP::%s,%d);\n",slave,adr,plc_type,fetch_write);
+      fprintf(fout,"rlSiemensTCP   slave%d(\"%s\",rlSiemensTCP::%s,%d,%d,%d);\n",slave,adr,plc_type,fetch_write,rack,slot);
     }
   }
   fclose(fp);    

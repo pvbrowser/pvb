@@ -168,8 +168,8 @@ void dlgDaemon::load(QString name)
         form->textEdit->append("shared_memory=/srv/automation/shm/siemens.shm");
         form->textEdit->append("mailbox=/srv/automation/mbx/siemens.mbx");
         form->textEdit->append("# type := S7_200 | S7_300 | S7_400 | S5");
-        form->textEdit->append("slave=0 adr=192.168.1.101 type=S7_200 fetch_write=1");
-        form->textEdit->append("slave=1 adr=192.168.1.102 type=S7_200 fetch_write=0");
+        form->textEdit->append("slave=0 adr=192.168.1.101 type=S7_200 fetch_write=1 rack=-1 slot=-1");
+        form->textEdit->append("slave=1 adr=192.168.1.102 type=S7_200 fetch_write=0 rack=-1 slot=-1");
         form->textEdit->append("idletime=50 milliseconds");
         form->textEdit->append("#eventlog host=localhost port=6000");
         form->textEdit->append("# ORG := ORG_DB | ORG_M | ORG_E | ORG_A | ORG_PEPA | ORG_Z | ORG_T");
