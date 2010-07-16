@@ -5306,6 +5306,7 @@ void Interpreter::showMyBrowser(const char *url)
       if(all != NULL) free(all);
       //v = new MyQWidget(s,0,mainWindow);
       dlgMyBrowser *browser = new dlgMyBrowser(s,0,mainWindow);
+      if(opt.arg_debug) printf("showMyBrowser url=%s\n", url);
       browser->setUrl(url);
       v = (MyQWidget *) browser;
     }

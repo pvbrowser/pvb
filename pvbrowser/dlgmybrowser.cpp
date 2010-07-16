@@ -60,7 +60,8 @@ void dlgMyBrowser::setUrl(const char *url)
 {
   if(url == NULL) return; 
   homeurl = url;
-#ifdef USE_WEBKIT  
+#ifdef USE_WEBKIT
+  if(opt.arg_debug) printf("dlgMyBrowser::setUrl url=%s\n", url);
   form->browser->setUrl(QUrl(url));
   form->browser->page()->setLinkDelegationPolicy(QWebPage::DelegateExternalLinks);
   //form->browser->page()->setLinkDelegationPolicy(QWebPage::DontDelegateLinks);
@@ -112,6 +113,10 @@ void dlgMyBrowser::slotUrlChanged(const QUrl &url)
   int currentTab = mainWindow->currentTab;
   mainWindow->pvbtab[currentTab].url = text;
   mainWindow->urlComboBox->setEditText(text);
+  if(opt.arg_debug) printf("dlgMyBrowser::slotUrlChanged url=%s\n", (const char *) text.toAscii());
+  // anchors not working now
+  // void QWebFrame::scrollToAnchor ( const QString & anchor )
+  // will be introduced in Qt 4.7
 #endif
 }
 
@@ -135,6 +140,7 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   }
   else
   {
+    if(opt.arg_debug) printf("dlgMyBrowser::slotLinkClicked url=%s\n", (const char *) text.toAscii());
     form->browser->load(url);
     homepath = webpath;
   }
