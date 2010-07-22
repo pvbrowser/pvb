@@ -2163,7 +2163,7 @@ Set the Minimum Size of the widget.
 </pre> */
 int pvSetMinSize(PARAM *p, int id, int w, int h);
 /*! <pre>
-Set the Minimum Size of the widget.
+Set the Maximum Size of the widget.
 </pre> */
 int pvSetMaxSize(PARAM *p, int id, int w, int h);
 /*! <pre>
