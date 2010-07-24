@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$rlpcontrol_8h.html" title="rlpcontrol.h" alt="" coords="292,80,377,107"/>
-<area shape="rect" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="189,80,253,107"/>
-<area shape="rect" href="$rltime_8h.html" title="rltime.h" alt="" coords="313,155,377,181"/>
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="239,229,313,256"/>
+<area shape="rect" id="node3" href="$rlpcontrol_8h.html" title="rlpcontrol.h" alt="" coords="296,83,381,112"/>
+<area shape="rect" id="node15" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="193,83,257,112"/>
+<area shape="rect" id="node5" href="$rltime_8h.html" title="rltime.h" alt="" coords="317,160,381,189"/>
+<area shape="rect" id="node7" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="243,237,317,267"/>
 </map>

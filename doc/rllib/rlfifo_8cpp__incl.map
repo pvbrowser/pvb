@@ -1,7 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$rlfifo_8h.html" title="rlfifo.h" alt="" coords="257,80,313,107"/>
-<area shape="rect" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="103,80,167,107"/>
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="123,304,197,331"/>
-<area shape="rect" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="323,155,397,181"/>
-<area shape="rect" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="373,229,456,256"/>
+<area shape="rect" id="node8" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="151,238,225,267"/>
+<area shape="rect" id="node15" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="383,83,457,112"/>
+<area shape="rect" id="node23" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="192,83,256,112"/>
+<area shape="rect" id="node18" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="457,160,543,190"/>
 </map>

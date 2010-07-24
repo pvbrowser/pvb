@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$classrlCanNode.html" title="class to manage one node of a CanOpenMaster board in a CanOpen network" alt="" coords="7,5,87,32"/>
+<area shape="rect" id="node1" href="$classrlCanOpenClient.html" title="Class performs API rlcanopen functions remotely through tcp sockets." alt="" coords="7,5,121,35"/>
+<area shape="rect" id="node3" href="$classrlCanClient.html" title="rlCanClient" alt="" coords="171,5,256,35"/>
 </map>

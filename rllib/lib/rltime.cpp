@@ -273,7 +273,7 @@ rlTime rlTime::operator+(rlTime &time)
   m = t.month;
   if(t.month > 12 || (t.month==12 && t.day==31 && t.hour>=24)) m = 1;
 
-  switch(m)
+  switch(m % 12)
   {
     case 1: // january
       maxmonth = 31;

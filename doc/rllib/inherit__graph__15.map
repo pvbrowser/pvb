@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" href="$classrlCanOpenDaemon.html" title="canopen tcp/ip interface for concurrent device&#45;access of multiple clientprocesses..." alt="" coords="5,5,136,32"/>
+<area shape="rect" id="node1" href="$structrlCanPDO.html" title="PDO object which is part of one of the two pdo lists in the node class." alt="" coords="5,5,85,35"/>
 </map>

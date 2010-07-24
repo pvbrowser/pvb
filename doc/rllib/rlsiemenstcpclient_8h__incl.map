@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="164,229,239,256"/>
-<area shape="rect" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="5,155,88,181"/>
-<area shape="rect" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="315,80,437,107"/>
-<area shape="rect" href="$rlsiemenstcp_8h.html" title="rlsiemenstcp.h" alt="" coords="133,80,240,107"/>
-<area shape="rect" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="365,155,448,181"/>
-<area shape="rect" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="163,155,240,181"/>
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="179,237,253,267"/>
+<area shape="rect" id="node11" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="5,160,91,189"/>
+<area shape="rect" id="node14" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="296,83,421,112"/>
+<area shape="rect" id="node22" href="$rlsiemenstcp_8h.html" title="rlsiemenstcp.h" alt="" coords="165,83,272,112"/>
+<area shape="rect" id="node17" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="368,160,453,189"/>
+<area shape="rect" id="node25" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="216,160,293,189"/>
 </map>

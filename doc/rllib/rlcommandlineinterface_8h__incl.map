@@ -1,6 +1,8 @@
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="316,304,391,331">
-<area shape="rect" href="$rlserial_8h.html" title="rlserial.h" alt="" coords="225,80,295,107">
-<area shape="rect" href="$rlspawn_8h.html" title="rlspawn.h" alt="" coords="297,229,372,256">
-<area shape="rect" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="372,80,449,107">
-<area shape="rect" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="124,155,199,181">
-<area shape="rect" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="120,229,203,256">
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="141,315,216,344"/>
+<area shape="rect" id="node11" href="$rlserial_8h.html" title="rlserial.h" alt="" coords="71,83,140,112"/>
+<area shape="rect" id="node21" href="$rlspawn_8h.html" title="rlspawn.h" alt="" coords="140,160,217,189"/>
+<area shape="rect" id="node24" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="216,237,293,267"/>
+<area shape="rect" id="node13" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="41,160,116,189"/>
+<area shape="rect" id="node16" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="5,237,91,267"/>
+</map>

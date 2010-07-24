@@ -1,7 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$rlevent_8cpp.html" title="rlevent.cpp" alt="" coords="5,80,91,107"/>
-<area shape="rect" href="$rleventlogserver_8h.html" title="rleventlogserver.h" alt="" coords="115,80,237,107"/>
-<area shape="rect" href="$rllib_8h.html" title="rllib.h" alt="" coords="249,155,300,181"/>
-<area shape="rect" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="312,80,389,107"/>
-<area shape="rect" href="$rleventlogserver_8cpp.html" title="rleventlogserver.cpp" alt="" coords="89,155,225,181"/>
+<area shape="rect" id="node3" href="$rleventlogserver_8cpp.html" title="rleventlogserver.cpp" alt="" coords="5,83,139,112"/>
+<area shape="rect" id="node6" href="$rleventlogserver_8h.html" title="rleventlogserver.h" alt="" coords="187,83,307,112"/>
+<area shape="rect" id="node8" href="$rllib_8h.html" title="rllib.h" alt="" coords="268,160,321,189"/>
+<area shape="rect" id="node12" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="381,83,459,112"/>
 </map>

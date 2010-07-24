@@ -1,13 +1,11 @@
 <map id="G" name="G">
-<area shape="rect" href="$classrlEventLogServerThreads.html" title="rlEventLogServerThreads" alt="" coords="37,277,205,304"/>
-<area shape="rect" href="$classrlThread.html" title="rlThread" alt="" coords="368,187,435,213"/>
-<area shape="rect" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="421,277,549,304"/>
-<area shape="rect" href="$classrlDataProviderThreads.html" title="rlDataProviderThreads" alt="" coords="229,277,379,304"/>
-<area shape="rect" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="201,5,319,32"/>
-<area shape="rect" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="160,96,253,123"/>
-<area shape="rect" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="395,96,496,123"/>
-<area shape="rect" href="$struct____sched__param.html" title="__sched_param" alt="" coords="389,5,501,32"/>
-<area shape="rect" href="$classrlEventLogServer.html" title="rlEventLogServer" alt="" coords="5,187,125,213"/>
-<area shape="rect" href="$classrlMutex.html" title="rlMutex" alt="" coords="49,96,113,123"/>
-<area shape="rect" href="$classrlDataProvider.html" title="rlDataProvider" alt="" coords="149,187,253,213"/>
+<area shape="rect" id="node2" href="$classrlEventLogServerThreads.html" title="rlEventLogServerThreads" alt="" coords="337,293,500,323"/>
+<area shape="rect" id="node4" href="$classrlThread.html" title="rlThread" alt="" coords="105,197,172,227"/>
+<area shape="rect" id="node6" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="5,293,131,323"/>
+<area shape="rect" id="node15" href="$classrlDataProviderThreads.html" title="rlDataProviderThreads" alt="" coords="167,293,313,323"/>
+<area shape="rect" id="node9" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="124,5,241,35"/>
+<area shape="rect" id="node20" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="228,101,321,131"/>
+<area shape="rect" id="node11" href="$classrlEventLogServer.html" title="rlEventLogServer" alt="" coords="400,197,517,227"/>
+<area shape="rect" id="node13" href="$classrlMutex.html" title="rlMutex" alt="" coords="392,101,456,131"/>
+<area shape="rect" id="node18" href="$classrlDataProvider.html" title="rlDataProvider" alt="" coords="275,197,376,227"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="115,155,189,181"/>
-<area shape="rect" href="$rlspawn_8h.html" title="rlspawn.h" alt="" coords="91,80,165,107"/>
-<area shape="rect" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="291,80,355,107"/>
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="87,160,161,189"/>
+<area shape="rect" id="node22" href="$rlspawn_8h.html" title="rlspawn.h" alt="" coords="33,83,111,112"/>
+<area shape="rect" id="node25" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="236,83,300,112"/>
 </map>

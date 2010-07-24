@@ -1,7 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$rldataacquisition_8h.html" title="rldataacquisition.h" alt="" coords="151,80,276,107"/>
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="75,304,149,331"/>
-<area shape="rect" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="123,229,205,256"/>
-<area shape="rect" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="201,155,324,181"/>
-<area shape="rect" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="280,229,363,256"/>
+<area shape="rect" id="node4" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="73,160,148,190"/>
+<area shape="rect" id="node12" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="157,83,243,112"/>
 </map>
