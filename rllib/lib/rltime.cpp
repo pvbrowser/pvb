@@ -313,7 +313,7 @@ rlTime rlTime::operator+(rlTime &time)
       maxmonth = 31;
       break;
     default:
-      maxmonth = 0;
+      maxmonth = 31;
       break;
   }
 
