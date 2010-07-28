@@ -37,6 +37,7 @@ static char tty[4096];
 static int  baudrate;
 static int  rtscts;
 static int  parity;
+static int  protocol;
 static char tcpadr[4096];
 static int  tcpport;
 static int  base;
@@ -59,6 +60,7 @@ static void init(const char *name)
   eventport = -1;
   rtscts = 1;
   parity = 0;
+  protocol = 0; // RTU
   while(fgets(line,sizeof(line)-1,fp) != NULL)
   {
     if(strncmp("target=",line,7) == 0)
@@ -88,6 +90,10 @@ static void init(const char *name)
     else if(strncmp("parity=",line,7) == 0)
     {
       sscanf(line,"parity=%d",&parity);
+    }
+    else if(strncmp("protocol=",line,9) == 0)
+    {
+      sscanf(line,"protocol=%d",&protocol);
     }
     else if(strncmp("communication=",line,14) == 0)
     {
@@ -128,6 +134,7 @@ static void init(const char *name)
   printf("baudrate=%d\n",baudrate);
   printf("rtscts=%d\n",rtscts);
   printf("parity=%d\n",parity);
+  printf("protocol=%d\n",protocol);
   printf("tcpadr=%s\n",tcpadr);
   printf("tcpport=%d\n",tcpport);
   if(eventport != -1) printf("eventlog host=%s port=%d\n",eventhost,eventport);
@@ -231,7 +238,14 @@ static void generate(const char *name)
   if(baudrate <= 0) baudrate = 9600;
   fprintf(fout,"#define MODBUS_IDLETIME (4*1000)/%d\n",baudrate/100);
   fprintf(fout,"#define SERIAL_DEVICE   \"%s\"\n",tty);
-  fprintf(fout,"rlModbus       modbus(256+1,rlModbus::MODBUS_RTU);\n");
+  if(protocol == 1 && communication == SERIAL) 
+  {
+    fprintf(fout,"rlModbus       modbus(1024+1,rlModbus::MODBUS_ASCII);\n");
+  }  
+  else
+  {
+    fprintf(fout,"rlModbus       modbus(256+1,rlModbus::MODBUS_RTU);\n");
+  }  
   if(communication == SERIAL)
   {
     fprintf(fout,"rlSerial       serial;\n");

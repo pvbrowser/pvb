@@ -189,7 +189,8 @@ void dlgDaemon::load(QString name)
         form->textEdit->append("tty=/dev/ttyS0");
         form->textEdit->append("baudrate=9600");
         form->textEdit->append("rtscts=1");
-        form->textEdit->append("parity=0 # 0=NONE 1=ODD 2=EVEN");
+        form->textEdit->append("parity=0   # 0=NONE 1=ODD 2=EVEN");
+        form->textEdit->append("protocol=0 # 0=RTU  1=ASCII");
         form->textEdit->append("communication=socket");
         form->textEdit->append("tcpadr=lehrig2");
         form->textEdit->append("tcpport=502");
