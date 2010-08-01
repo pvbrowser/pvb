@@ -468,7 +468,7 @@ class for handling time.
 <a name="l00357"></a>00357     y = t.<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>;
 <a name="l00358"></a>00358     m = t.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>;
 <a name="l00359"></a>00359     <span class="keywordflow">if</span>(m &lt;= 0) { m += 12; y--; }
-<a name="l00360"></a>00360     <span class="keywordflow">switch</span>(m)
+<a name="l00360"></a>00360     <span class="keywordflow">switch</span>(m % 12)
 <a name="l00361"></a>00361     {
 <a name="l00362"></a>00362       <span class="keywordflow">case</span> 1: <span class="comment">// january</span>
 <a name="l00363"></a>00363         maxmonth = 31;
@@ -1029,7 +1029,7 @@ class for handling time.
 <li><a class="el" href="rltime_8cpp_source.html">rltime.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 1 12:04:37 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Aug 1 12:16:13 2010 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
