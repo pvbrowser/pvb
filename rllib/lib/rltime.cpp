@@ -280,7 +280,13 @@ rlTime rlTime::operator+(rlTime &time)
       break;
     case 2: // february
       maxmonth = 28;
-      if(y%4==0) maxmonth = 29;
+      if(y%4==0) 
+      {
+        maxmonth = 29;
+        int hth = y % 100;
+        int special = y % 400; // 1900-+-2100-2200-2300-+-2500-2600-2700
+        if(hth == 0 && special != 0) maxmonth = 28;
+      }  
       break;
     case 3: // march
       maxmonth = 31;
@@ -300,7 +306,7 @@ rlTime rlTime::operator+(rlTime &time)
     case 8: // august
       maxmonth = 31;
       break;
-    case 9: // semptember
+    case 9: // september
       maxmonth = 30;
       break;
     case 10: // october
@@ -357,7 +363,13 @@ rlTime rlTime::operator-(rlTime &time)
         break;
       case 2: // february
         maxmonth = 28;
-        if(y%4==0) maxmonth = 29;
+        if(y%4==0) 
+        {
+          maxmonth = 29;
+          int hth = y % 100;
+          int special = y % 400; // 1900-+-2100-2200-2300-+-2500-2600-2700
+          if(hth == 0 && special != 0) maxmonth = 28;
+        }  
         break;
       case 3: // march
         maxmonth = 31;
@@ -377,7 +389,7 @@ rlTime rlTime::operator-(rlTime &time)
       case 8: // august
         maxmonth = 31;
         break;
-      case 9: // semptember
+      case 9: // september
         maxmonth = 30;
         break;
       case 10: // october
