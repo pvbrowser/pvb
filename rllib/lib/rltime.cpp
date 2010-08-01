@@ -280,6 +280,7 @@ rlTime rlTime::operator+(rlTime &time)
       break;
     case 2: // february
       maxmonth = 28;
+      // Annus bisextilis (calendario Gregoriano)
       if(y%4==0) 
       {
         maxmonth = 29;
@@ -363,6 +364,7 @@ rlTime rlTime::operator-(rlTime &time)
         break;
       case 2: // february
         maxmonth = 28;
+        // Annus bisextilis (calendario Gregoriano)
         if(y%4==0) 
         {
           maxmonth = 29;
