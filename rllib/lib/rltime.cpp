@@ -516,6 +516,6 @@ double rlTime::secondsSinceEpoche()
   time_t t0 = mktime(&begin);
   time_t t1 = mktime(&test);
 
-  return difftime(t1,t0);
+  return difftime(t1,t0) + (((double) millisecond) / 1000);
 }
 
