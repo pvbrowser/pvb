@@ -332,6 +332,7 @@ public:
     void setTableCheckBox(int row, int col, int state, QString text);
     void setTableComboBox(int row, int col, int editable, const char *text);
     void setTableLabel(int row, int col, QString text);
+    void copyToClipboard(int title);
     void saveTextfile(const char *filename=NULL);
     int wrap,read_only,updates,autoresize;
 

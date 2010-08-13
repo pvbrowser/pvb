@@ -39,6 +39,7 @@ extern QString l_delete_tab;
 extern QString l_exit;
 extern QString l_edit;
 extern QString l_copy;
+extern QString l_copy_plus_title;
 extern QString l_view;
 extern QString l_editmenu;
 extern QString l_toolbar;

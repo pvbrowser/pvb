@@ -31,6 +31,53 @@
 
 extern OPT opt;
 
+extern QString l_file;
+extern QString l_options;
+extern QString l_new_window;
+extern QString l_reconnect;
+extern QString l_save_as_bmp;
+extern QString l_log_as_bmp;
+extern QString l_log_as_pvm;
+extern QString l_print;
+extern QString l_new_tab;
+extern QString l_delete_tab;
+extern QString l_exit;
+extern QString l_edit;
+extern QString l_copy;
+extern QString l_copy_plus_title;
+extern QString l_view;
+extern QString l_editmenu;
+extern QString l_toolbar;
+extern QString l_statusbar;
+extern QString l_maximized;
+extern QString l_fullscreen;
+extern QString l_help;
+extern QString l_manual;
+extern QString l_about;
+
+extern QString l_status_connection_lost;
+extern QString l_status_connected;
+extern QString l_status_could_not_connect;
+extern QString l_status_reconnect;
+extern QString l_status_options;
+extern QString l_status_new_window;
+extern QString l_status_save_as_bmp;
+extern QString l_status_log_as_bmp;
+extern QString l_status_log_as_pvm;
+extern QString l_status_print;
+extern QString l_status_new_tab;
+extern QString l_status_exit;
+extern QString l_status_copy;
+extern QString l_status_editmenu;
+extern QString l_status_toolbar;
+extern QString l_status_statusbar;
+extern QString l_status_toggle_maximized;
+extern QString l_status_toggle_full_screen;
+extern QString l_status_manual;
+extern QString l_status_about;
+
+extern QString l_print_header;
+
 static const char *decode(QString text)
 {
   if(opt.codec == pvbUTF8) return text.toUtf8();
@@ -1209,6 +1256,8 @@ void MyTable::mousePressEvent(QMouseEvent *event)
     QAction *ret;
     QString buf;
 
+    popupMenu.addAction(l_copy);
+    popupMenu.addAction(l_copy_plus_title);
     popupMenu.addAction("Save table as CSV file");
     if(opt.view_csv[0] != '\0')
     {
@@ -1218,7 +1267,15 @@ void MyTable::mousePressEvent(QMouseEvent *event)
     ret = popupMenu.exec(QCursor::pos());
     if(ret != NULL)
     {
-      if(ret->text().startsWith("Save")) 
+      if(ret->text().startsWith(l_copy_plus_title)) 
+      {
+        copyToClipboard(1);
+      }  
+      else if(ret->text().startsWith(l_copy)) 
+      {
+        copyToClipboard(0);
+      }  
+      else if(ret->text().startsWith("Save")) 
       {
         saveTextfile();
       }  
@@ -1289,6 +1346,48 @@ void MyTable::slotValueChanged(int row, int col)
   if(strlen(cptr) > MAX_PRINTF_LENGTH-40) return;
   sprintf(buf,"QTableValue(%d,%d,%d,\"%s\")\n",id,row,col,cptr);
   tcp_send(s,buf,strlen(buf));
+}
+
+void MyTable::copyToClipboard(int title)
+{
+  int x,y;
+  QString text,cell;
+
+  if(title)
+  {
+    cell = "";
+    for(x=0; x<columnCount(); x++)
+    {
+      if(horizontalHeaderItem(x) == NULL) cell = "";
+      else                                cell = horizontalHeaderItem(x)->text();
+      text += "\t";
+      text += cell;
+    }
+    text += "\n";
+  }
+
+  for(y=0; y<rowCount(); y++)
+  {
+    if(title)
+    {
+      if(verticalHeaderItem(y) == NULL)   cell = "";
+      else                                cell = verticalHeaderItem(y)->text();
+      if(cell.isEmpty()) cell = "";
+      text += cell;
+      text += "\t";
+    }
+    for(x=0; x<columnCount(); x++)
+    {
+      if(item(y,x) == NULL) cell = "";
+      else                  cell = item(y,x)->text();
+      if(cell.isEmpty())    cell = "";
+      text += cell;
+      if(x < columnCount() - 1) text += "\t";
+    }
+    text += "\n";
+  }
+
+  QApplication::clipboard()->setText(text);
 }
 
 void MyTable::saveTextfile(const char *filename)
