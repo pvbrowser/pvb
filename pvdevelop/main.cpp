@@ -26,6 +26,8 @@
 #include "widgetgenerator.h"
 
 extern OPT opt;
+QString l_copy            = "&Copy"; 
+QString l_copy_plus_title = "Cop&y including title"; 
 
 void usage()
 {

@@ -930,7 +930,8 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
         f.pointSize(),f.bold(),f.italic(),f.underline(),f.strikeOut());
     }
   }
-  if(!tooltip.isEmpty()) fprintf(fout,"  pvToolTip(p,%s,\"%s\");\n",itemname, quote(tooltip));
+  if(!tooltip.isEmpty())   fprintf(fout,"  pvToolTip(p,%s,\"%s\");\n",itemname, quote(tooltip));
+  if(!whatsthis.isEmpty()) fprintf(fout,"  pvSetWhatsThis(p,%s,\"%s\");\n",itemname, quote(whatsthis));
   if(type == "TQLabel")
   {
     MyLabel *label = (MyLabel *) widget;
