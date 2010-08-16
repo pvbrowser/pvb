@@ -101,11 +101,22 @@ int rlUdpSocket::setSockopt(int opt)
   if(s == -1) return -1;
   // set socket options
 #ifdef RLWIN32
-  setsockopt(s,SOL_SOCKET,opt,(const char *) &on,sizeof(on));
+  return setsockopt(s,SOL_SOCKET,opt,(const char *) &on,sizeof(on));
 #else
-  setsockopt(s,SOL_SOCKET,opt,&on,sizeof(on));
+  return setsockopt(s,SOL_SOCKET,opt,&on,sizeof(on));
 #endif
-  return 0;
+}
+
+int rlUdpSocket::setSockopt(int level, int optname, void *optval, int optlen)
+{
+  if(s == -1) return -1;
+  if(optlen <= 0) return -1;
+  // set socket options
+#ifdef RLWIN32
+  return setsockopt(s,level,optname,(const char *) &optval,optlen);
+#else
+  return setsockopt(s,level,optname,optval,optlen);
+#endif
 }
 
 int rlUdpSocket::bind(int port)

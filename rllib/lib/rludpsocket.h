@@ -57,9 +57,14 @@ public:
   virtual ~rlUdpSocket();
 
   /*! <pre>
-  setsocketopt
+  setsocketopt for SOL_SOCKET level
   </pre> */
   int setSockopt(int opt);
+
+  /*! <pre>
+  setsocketopt with full control
+  </pre> */
+  int setSockopt(int level, int optname, void *optval, int optlen);
 
   /*! <pre>
   return > 0 -> socket else error

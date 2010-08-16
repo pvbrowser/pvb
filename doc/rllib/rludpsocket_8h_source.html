@@ -76,26 +76,28 @@
 <a name="l00058"></a>00058 
 <a name="l00062"></a>00062   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a27f70be8fdfbc4bc5dcfb4fa7dec5927">setSockopt</a>(<span class="keywordtype">int</span> opt);
 <a name="l00063"></a>00063 
-<a name="l00067"></a>00067   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a56aabc572183ad00a54b5e3233555052">bind</a>(<span class="keywordtype">int</span> port);
+<a name="l00067"></a>00067   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a27f70be8fdfbc4bc5dcfb4fa7dec5927">setSockopt</a>(<span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keywordtype">void</span> *optval, <span class="keywordtype">int</span> optlen);
 <a name="l00068"></a>00068 
-<a name="l00072"></a>00072   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a235a1d63d81864b0065e90f318a379ec">select</a>(<span class="keywordtype">int</span> timeout);
+<a name="l00072"></a>00072   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a56aabc572183ad00a54b5e3233555052">bind</a>(<span class="keywordtype">int</span> port);
 <a name="l00073"></a>00073 
-<a name="l00077"></a>00077   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#abd70dc730af98464e0b7d4f1ca3d44d8">recvfrom</a>(<span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> maxlen, <a class="code" href="classrlIpAdr.html">rlIpAdr</a> *source, <span class="keywordtype">int</span> timeout = -1);
+<a name="l00077"></a>00077   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a235a1d63d81864b0065e90f318a379ec">select</a>(<span class="keywordtype">int</span> timeout);
 <a name="l00078"></a>00078 
-<a name="l00082"></a>00082   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#aea90e8b8afef698f7be7cacba733fde8">sendto</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> len, <a class="code" href="classrlIpAdr.html">rlIpAdr</a> *dest);
+<a name="l00082"></a>00082   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#abd70dc730af98464e0b7d4f1ca3d44d8">recvfrom</a>(<span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> maxlen, <a class="code" href="classrlIpAdr.html">rlIpAdr</a> *source, <span class="keywordtype">int</span> timeout = -1);
 <a name="l00083"></a>00083 
-<a name="l00087"></a>00087   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">printf</a>(<a class="code" href="classrlIpAdr.html">rlIpAdr</a> *dest, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00087"></a>00087   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#aea90e8b8afef698f7be7cacba733fde8">sendto</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> len, <a class="code" href="classrlIpAdr.html">rlIpAdr</a> *dest);
 <a name="l00088"></a>00088 
-<a name="l00089"></a><a class="code" href="classrlUdpSocket.html#a637e4e66ebdce3641dd30d14205ba120">00089</a>   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a6104de2d13cd329c5db92d7e1c6ff284">debug</a>, <a class="code" href="classrlUdpSocket.html#a65486634246a2792efee3420427e133b">readflag</a>, <a class="code" href="classrlUdpSocket.html#a637e4e66ebdce3641dd30d14205ba120">writeflag</a>;
-<a name="l00090"></a>00090 
-<a name="l00091"></a>00091 <span class="keyword">private</span>:
-<a name="l00092"></a><a class="code" href="classrlUdpSocket.html#ab49ac7d1fc4323d981c1b2abd8a5cbd1">00092</a>   <span class="keyword">struct </span>sockaddr_in <a class="code" href="classrlUdpSocket.html#ab49ac7d1fc4323d981c1b2abd8a5cbd1">address</a>;
-<a name="l00093"></a><a class="code" href="classrlUdpSocket.html#a19e7817ca9eacaef8b686496bfe9a36c">00093</a>   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a19e7817ca9eacaef8b686496bfe9a36c">s</a>;
-<a name="l00094"></a>00094 };
+<a name="l00092"></a>00092   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">printf</a>(<a class="code" href="classrlIpAdr.html">rlIpAdr</a> *dest, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00093"></a>00093 
+<a name="l00094"></a><a class="code" href="classrlUdpSocket.html#a637e4e66ebdce3641dd30d14205ba120">00094</a>   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a6104de2d13cd329c5db92d7e1c6ff284">debug</a>, <a class="code" href="classrlUdpSocket.html#a65486634246a2792efee3420427e133b">readflag</a>, <a class="code" href="classrlUdpSocket.html#a637e4e66ebdce3641dd30d14205ba120">writeflag</a>;
 <a name="l00095"></a>00095 
-<a name="l00096"></a>00096 <span class="preprocessor">#endif</span>
+<a name="l00096"></a>00096 <span class="keyword">private</span>:
+<a name="l00097"></a><a class="code" href="classrlUdpSocket.html#ab49ac7d1fc4323d981c1b2abd8a5cbd1">00097</a>   <span class="keyword">struct </span>sockaddr_in <a class="code" href="classrlUdpSocket.html#ab49ac7d1fc4323d981c1b2abd8a5cbd1">address</a>;
+<a name="l00098"></a><a class="code" href="classrlUdpSocket.html#a19e7817ca9eacaef8b686496bfe9a36c">00098</a>   <span class="keywordtype">int</span> <a class="code" href="classrlUdpSocket.html#a19e7817ca9eacaef8b686496bfe9a36c">s</a>;
+<a name="l00099"></a>00099 };
+<a name="l00100"></a>00100 
+<a name="l00101"></a>00101 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Aug 6 08:12:35 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Aug 16 11:16:02 2010 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

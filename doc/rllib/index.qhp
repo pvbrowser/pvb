@@ -2120,6 +2120,7 @@
       <keyword name="rlUdpSocket" id="rlUdpSocket::rlUdpSocket" ref="classrlUdpSocket.html" />
       <keyword name="~rlUdpSocket" id="rlUdpSocket::~rlUdpSocket" ref="classrlUdpSocket.html" />
       <keyword name="setSockopt" id="rlUdpSocket::setSockopt" ref="classrlUdpSocket.html" />
+      <keyword name="setSockopt" id="rlUdpSocket::setSockopt" ref="classrlUdpSocket.html" />
       <keyword name="bind" id="rlUdpSocket::bind" ref="classrlUdpSocket.html" />
       <keyword name="select" id="rlUdpSocket::select" ref="classrlUdpSocket.html" />
       <keyword name="recvfrom" id="rlUdpSocket::recvfrom" ref="classrlUdpSocket.html" />
