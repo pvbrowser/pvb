@@ -448,11 +448,12 @@ int pvThreadFatal(PARAM *p, const char *text)
   //printf("Thread finished3: %s s=%d\n",text,p->s);
   closesocket(p->s);
   //printf("Thread finished4: %s s=%d free=%d\n",text,p->s,p->free);
-  if(p->free == 1) free(p);
+  // if(p->free == 1) free(p); // valgrind: "Invalid write of size 4"
   //printf("Thread finished5: %s\n",text);
   printf("pvthread_exit\n");
   p->my_pvlock_count = 0; // ensure that mutex gets unlocked
-  pvunlock(p);
+  pvunlock(p); // valgrind: "Invalid write of size 4"
+  if(p->free == 1) free(p);
   //printf("Thread finished6: %s\n",text);
   if(exit_after_last_client_terminates == 1 && num_threads <= 0) exit(0);
   //printf("Thread finished7: %s\n",text);
