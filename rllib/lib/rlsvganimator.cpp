@@ -112,11 +112,8 @@ void rlSvgPosition::rotate(float _alpha, float _cx, float _cy)
 
 rlSvgAnimator::rlSvgAnimator()
 {
-  first = NULL;
   s = NULL;
   id = 0;
-  comment = NULL;
-  num_lines = 0;
   isModified = 1;
 
   // zoomer follows
@@ -131,25 +128,6 @@ rlSvgAnimator::rlSvgAnimator()
 
 rlSvgAnimator::~rlSvgAnimator()
 {
-  closefile();
-}
-
-int rlSvgAnimator::closefile()
-{
-  SVG_LINE *current_line, *next_line;
-
-  if(first == NULL) return -1;
-  if(comment != NULL) delete [] comment;
-  current_line = first;
-  while(current_line != NULL)
-  {
-    next_line = current_line->next;
-    if(current_line->line != NULL) delete [] current_line->line;
-    delete current_line;
-    current_line = next_line;
-  }
-  first = NULL;
-  return 0;
 }
 
 int rlSvgAnimator::tcpsend(const char *buf, int len)
@@ -190,48 +168,11 @@ int rlSvgAnimator::tcpsend(const char *buf, int len)
   return 0;
 }
 
-//#ifdef RLUNIX
-//#define USE_INTERNAL
-//#endif
-
-#ifdef USE_INTERNAL
-int rlSvgAnimator::read(const char *infile)
-{
-  if(id != 0 && s != NULL && infile != NULL)
-  {
-    isModified = 1;
-    // tell client about svg file
-    rlSvgCat *svgCat = new rlSvgCat;
-    char command[MAXLINE];
-    if(svgCat->reopenSocket(infile,*s) == -1)
-    {
-      delete svgCat;
-      printf("rlSvgAnimator::read:ERROR: reopenSocket\n");
-      return -1;
-    }
-    else
-    {
-
-      sprintf(command,"gsvgRead(%d)\n",id);
-      tcpsend(command,strlen(command));
-      svgCat->cat();
-      delete svgCat;
-      sprintf(command,"\n<svgend></svgend>\n");
-      tcpsend(command, strlen(command));;
-      return 0;
-    }
-  }
-  return -1;
-}
-#endif
-
-#ifndef USE_INTERNAL 
 int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
 {
   isModified = 1;
 #ifdef RLUNIX
   rlSpawn rlsvg;
-  SVG_LINE *current_line, *next_line;
   int ret, use_stdout;
   char command[MAXLINE];
   const char *line;
@@ -243,7 +184,6 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
   if(s != NULL && *s == 1) use_stdout = 1;
 
   rlDebugPrintf("rlSvgAnimator step=1 infile=%s\n",infile);
-  closefile(); // free old file
   if(use_stdout == 0) 
   {
     sprintf(command,"rlsvgcat %s",infile);
@@ -290,33 +230,17 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
       }  
     }
     sprintf(command,"\n<svgend></svgend>\n");
-    tcpsend(command, strlen(command));;
+    tcpsend(command,strlen(command));
     return 0;
   }
-
-  if((line = rlsvg.readLine()) == NULL) return -1;
-  first = new SVG_LINE;
-  first->line = new char[strlen(line)+1];
-  strcpy(first->line,line);
-  first->next = NULL;
-  current_line = first;
-  num_lines = 1;
-  rlDebugPrintf("rlSvgAnimator step=3\n");
-  while((line = rlsvg.readLine()) != NULL)
+  else 
   {
-    current_line->next = new SVG_LINE;
-    next_line = current_line->next;
-    next_line->line = new char[strlen(line)+1];
-    strcpy(next_line->line,line);
-    next_line->next = NULL;
-    current_line = next_line;
-    num_lines++;
-  }
-  rlDebugPrintf("rlSvgAnimator step=4\n");
+    return -1;
+  }  
 #else
+  // Windows: use file instead of pipe
   FILE *fin;
-  SVG_LINE *current_line, *next_line;
-  int ret;
+  int  ret;
   char filename[1024];
   char cmd[1024];
   char command[MAXLINE];
@@ -325,7 +249,6 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
 
   inifileState = 0;
   inifileCount = 0;
-  closefile(); // free old file
   if(s==NULL) sprintf(filename,"PVTEMP%s",infile);
   else        sprintf(filename,"PVTEMP%d%s",*s,infile);
   sprintf(cmd,"rlsvgcat %s %s",infile,filename);
@@ -333,75 +256,24 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
   if(ret < 0) return -1;
   fin = fopen(filename,"r");
   if(fin == NULL) return -1;
-
-  if(fgets(line,sizeof(line)-1,fin) == NULL) return -1;
-
-  cptr = strchr(line,0x0d);
-  if(cptr != NULL) *cptr = '\0';
-  cptr = strchr(line,0x0a);
-  if(cptr != NULL) *cptr = '\0';
-
-  first = new SVG_LINE;
-  first->line = new char[strlen(line)+1];
-  strcpy(first->line,line);
-  first->next = NULL;
-  current_line = first;
-  num_lines = 1;
+  sprintf(command,"gsvgRead(%d)\n",id);
+  tcpsend(command,strlen(command));
   while(fgets(line,sizeof(line)-1,fin) != NULL)
   {
     cptr = strchr(line,0x0d);
     if(cptr != NULL) *cptr = '\0';
     cptr = strchr(line,0x0a);
     if(cptr != NULL) *cptr = '\0';
+    tcpsend(line,strlen(line));
+    tcpsend("\n",strlen("\n"));
     if(inifile != NULL) fillIniFile(inifile, line);
-
-    current_line->next = new SVG_LINE;
-    next_line = current_line->next;
-    next_line->line = new char[strlen(line)+1];
-    strcpy(next_line->line,line);
-    next_line->next = NULL;
-    current_line = next_line;
-    num_lines++;
   }
+  sprintf(command,"\n<svgend></svgend>\n");
+  tcpsend(command, strlen(command));;
   unlink(filename);
-#endif
-
-  comment = new char[num_lines+1];
-  comment[num_lines] = '\0';
-  for(int i=0; i<num_lines; i++)
-  {
-    comment[i] = ' ';
-  }
-  rlDebugPrintf("rlSvgAnimator step=5\n");
-  if(id != 0)
-  {
-    // tell client about svg file
-    int i;
-    char *cptr;
-    SVG_LINE *current_line = first;
-    if(first == NULL)
-    {
-      printf("rlSvgAnimator::read first == NULL\n");
-      return -1;
-    }
-    sprintf(command,"gsvgRead(%d)\n",id);
-    tcpsend(command,strlen(command));
-    for(i=0; i<num_lines; i++)
-    {
-      sprintf(command,"%s",current_line->line);
-      cptr = strchr(command,'\n');
-      if(cptr == NULL) strcat(command,"\n");
-      tcpsend(command,strlen(command));
-      current_line = current_line->next;
-    }
-    sprintf(command,"<svgend></svgend>\n");
-    tcpsend(command, strlen(command));;
-    closefile();
-    return 0;
-  }
   return 0;
-}
 #endif
+}
 
 int rlSvgAnimator::setSocket(int *socket)
 {
@@ -417,22 +289,11 @@ int rlSvgAnimator::setId(int _id)
   return 0;
 }
 
-int rlSvgAnimator::writeSocket(int *socket)
+int rlSvgAnimator::writeSocket()
 {
   char buf[80];
-  SVG_LINE *current_line = first;
   
-  //if(isModified == 0) return 0;
   isModified = 0;
-
-  if(socket != 0)
-  {
-    // support old style programming
-    // new style programming should not use a socket
-    // instead use setSocket(int *socket)
-    s = socket;
-    id = 0;
-  }
 
   if(s == NULL)
   {
@@ -445,28 +306,7 @@ int rlSvgAnimator::writeSocket(int *socket)
     tcpsend(buf, strlen(buf));
     return 0;
   }
-  if(first == NULL) return -1;
-
-  sprintf(buf,"gplaySVGsocket()\n");
-  tcpsend(buf, strlen(buf));
-
-  for(int i=0; i<num_lines; i++)
-  {
-    if(comment[i] == ' ')
-    {
-      if(tcpsend(current_line->line,strlen(current_line->line)) < 0) return -1;
-    }
-    else
-    {
-      rlDebugPrintf("rlSvgAnimator.writeSocket comment=# line=%s",current_line->line);
-    }
-    current_line = current_line->next;
-  }
-
-  sprintf(buf,"\n<svgend></svgend>\n");
-  if(tcpsend(buf, strlen(buf)) < 0) return -1;
-  rlDebugPrintf("rlSvgAnimator.writeSocket return=0\n");
-  return 0;
+  return -1;
 }
 
 #define MAXBUF 1024
@@ -475,12 +315,7 @@ int rlSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char
 {
   char buf[MAXBUF+40];
   char text[MAXBUF];
-  SVG_LINE *current_line = first;
-  SVG_LINE *last_open = NULL;
-  SVG_LINE *last = NULL;
-  SVG_LINE *next = NULL;
-  int i,ilast;
-  int len = strlen(objectname);
+  int  len = strlen(objectname);
 
   isModified = 1;
   if(id != 0)
@@ -508,78 +343,7 @@ int rlSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char
     tcpsend(text, len);
     return len;
   }
-  if(first == NULL) return -1;
-
-  ilast = 0;
-  for(i=0; i<num_lines; i++) // find objectname
-  {
-    if(current_line->line[0] == '<') 
-    {
-      ilast = i;
-      last_open = current_line;
-    }
-    if(strncmp(current_line->line,"id=",3) == 0)
-    {
-      if(strstr(current_line->line,objectname) != NULL)
-      {
-        rlDebugPrintf("rlSvgAnimator.svgPrintf found objectname=%s\n",objectname);
-        break;
-      }
-    }
-    current_line = current_line->next;
-  }
-  if(i >= num_lines) return -1;
-  len = strlen(tag);
-  for(i=ilast; i<num_lines; i++) // find tag
-  {
-    if(strncmp(current_line->line,tag,len) == 0)
-    {
-      rlDebugPrintf("rlSvgAnimator.svgPrintf found last_line=%s",last->line);
-      rlDebugPrintf("rlSvgAnimator.svgPrintf found line=%s",current_line->line);
-      break;
-    }
-    if(strncmp(current_line->line,"/>",2) == 0)
-    {
-      break;
-    }
-    last = current_line;
-    current_line = current_line->next;
-  }
-  if(i >= num_lines) return -1;
-
-  rlDebugPrintf("rlSvgAnimator.svgPrintf vsnprintf(%s)\n",format);
-  va_list ap;
-  va_start(ap,format);
-#ifdef RLWIN32
-  _vsnprintf(text, MAXBUF - 1, format, ap);
-#endif
-#ifdef __VMS
-  vsprintf(text, format, ap);
-#endif
-#ifdef RLUNIX
-  vsnprintf(text, MAXBUF - 1, format, ap);
-#endif
-  va_end(ap);
-
-  next = current_line->next;
-  len = strlen(text);
-  sprintf(buf,"%s\"",tag);
-  strcat(buf,text);
-  strcat(buf,"\"\n");
-  delete [] current_line->line;
-  delete current_line;
-  current_line = new SVG_LINE;
-  current_line->line = new char[strlen(buf) + 1];
-  strcpy(current_line->line,buf);
-  if(last != NULL)
-  {
-    last->next = current_line;
-  }
-  current_line->next = next;
-  rlDebugPrintf("rlSvgAnimator.svgPrintf last=%s",last->line);
-  rlDebugPrintf("rlSvgAnimator.svgPrintf return=%d line=%s",len,current_line->line);
-  rlDebugPrintf("rlSvgAnimator.svgPrintf next=%s",current_line->next->line);
-  return len;
+  return -1;
 }
 
 int rlSvgAnimator::svgRecursivePrintf(const char *objectname, const char *tag, const char *format, ...)
@@ -653,13 +417,7 @@ int rlSvgAnimator::svgTextPrintf(const char *objectname, const char *format, ...
 {
   char buf[MAXBUF+40];
   char text[MAXBUF];
-  SVG_LINE *current_line = first;
-  SVG_LINE *last_open = NULL;
-  SVG_LINE *last = NULL;
-  SVG_LINE *next = NULL;
-  int i,ilast;
-  int len = strlen(objectname);
-  ilast = 0;
+  int  len = strlen(objectname);
 
   isModified = 1;
   if(id != 0)
@@ -685,114 +443,12 @@ int rlSvgAnimator::svgTextPrintf(const char *objectname, const char *format, ...
     tcpsend(text, len);
     return len;
   }
-  if(first == NULL) return -1;
-
-  for(i=0; i<num_lines; i++) // find objectname
-  {
-    if(current_line->line[0] == '<') 
-    {
-      ilast = i;
-      last_open = current_line;
-    }
-    if(strncmp(current_line->line,"id=",3) == 0)
-    {
-      if(strstr(current_line->line,objectname) != NULL)
-      {
-        rlDebugPrintf("rlSvgAnimator.svgTextPrintf found objectname=%s\n",objectname);
-        break;
-      }
-    }
-    current_line = current_line->next;
-  }
-  if(i >= num_lines) return -1;
-  for(i=ilast; i<num_lines; i++) // '>'
-  {
-    if(strncmp(current_line->line,">",1) == 0)
-    {
-      rlDebugPrintf("rlSvgAnimator.svgTextPrintf found last_line=%s",last->line);
-      rlDebugPrintf("rlSvgAnimator.svgTextPrintf found line=%s",current_line->line);
-      break;
-    }
-    if(strncmp(current_line->line,"/>",2) == 0)
-    {
-      break;
-    }
-    last = current_line;
-    current_line = current_line->next;
-  }
-  if(i >= num_lines) return -1;
-
-  rlDebugPrintf("rlSvgAnimator.svgTextPrintf vsnprintf(%s)\n",format);
-  va_list ap;
-  va_start(ap,format);
-#ifdef RLWIN32
-  _vsnprintf(text, MAXBUF - 1, format, ap);
-#endif
-#ifdef __VMS
-  vsprintf(text, format, ap);
-#endif
-#ifdef RLUNIX
-  vsnprintf(text, MAXBUF - 1, format, ap);
-#endif
-  va_end(ap);
-
-  last = current_line; // the line with '>'
-  current_line = current_line->next;
-
-  //perhaps <tspan
-  if(strstr(current_line->line,"<tspan") != NULL)
-  {
-    rlDebugPrintf("rlSvgAnimator.svgTextPrintf tspan=%s",current_line->line);
-    while(current_line != NULL) // '>'
-    {
-      if(strncmp(current_line->line,">",1) == 0)
-      {
-        rlDebugPrintf("rlSvgAnimator.svgTextPrintf found line=%s",current_line->line);
-        break;
-      }
-      last = current_line;
-      current_line = current_line->next;
-    }
-    if(current_line != NULL) current_line = current_line->next;
-    next = current_line->next;
-    len = strlen(text);
-    sprintf(buf,"%s\n",text);
-    delete [] current_line->line;
-    delete current_line;
-    current_line = new SVG_LINE;
-    current_line->line = new char[strlen(buf) + 1];
-    strcpy(current_line->line,buf);
-    current_line->next = next;
-    return len;
-  }
-
-  next = current_line->next;
-  len = strlen(text);
-  sprintf(buf,"%s\n",text);
-  delete [] current_line->line;
-  delete current_line;
-  current_line = new SVG_LINE;
-  current_line->line = new char[strlen(buf) + 1];
-  strcpy(current_line->line,buf);
-  if(last != NULL)
-  {
-    last->next = current_line;
-  }
-  current_line->next = next;
-  rlDebugPrintf("rlSvgAnimator.svgTextPrintf last=%s",last->line);
-  rlDebugPrintf("rlSvgAnimator.svgTextPrintf return=%d line=%s",len,current_line->line);
-  rlDebugPrintf("rlSvgAnimator.svgTextPrintf next=%s",current_line->next->line);
-  return len;
+  return -1;
 }
 
 int rlSvgAnimator::show(const char *objectname, int state)
 {
-  int i,ilast,len,open_cnt;
-  SVG_LINE *current_line = first;
-  SVG_LINE *last_open = NULL;
-  len = strlen(objectname);
   rlDebugPrintf("rlSvgAnimator.show state=%d objectname=%s\n",state,objectname);
-
   isModified = 1;
   if(id != 0)
   {
@@ -804,78 +460,7 @@ int rlSvgAnimator::show(const char *objectname, int state)
     tcpsend(buf, strlen(buf));
     return 0;
   }
-  if(first == NULL) return -1;
-
-  ilast = 0;
-  for(i=0; i<num_lines; i++) // find objectname
-  {
-    rlDebugPrintf("rlSvgAnimator.show line=%s\n",current_line->line);
-    if(current_line->line[0] == '<') 
-    {
-      ilast = i;
-      last_open = current_line;
-    }
-    if(strncmp(current_line->line,"id=",3) == 0)
-    {
-      if(strstr(current_line->line,objectname) != NULL)
-      {
-        rlDebugPrintf("rlSvgAnimator.show found objectname=%s\n",objectname);
-        break;
-      }
-    }
-    current_line = current_line->next;
-  }
-  if(i >= num_lines) return -1;
-
-  if(last_open != NULL) 
-  {
-    open_cnt = 0;
-    current_line = last_open;
-    for(i=ilast; i<num_lines; i++) // set comment
-    {
-      if     (strncmp(current_line->line,"</",2) == 0) open_cnt--;
-      else if(strncmp(current_line->line,"<",1)  == 0) open_cnt++;
-      else if(strncmp(current_line->line,"/>",2) == 0) open_cnt--;
-      if(state == 0 && open_cnt >= 0) 
-      { 
-        comment[i] = '#';
-        rlDebugPrintf("rlSvgAnimator.show cnt=%d comment='#' line=%s",open_cnt,current_line->line);
-      }
-      else if(open_cnt >= 0)
-      {
-        comment[i] = ' ';
-        rlDebugPrintf("rlSvgAnimator.show cnt=%d comment=' ' line=%s",open_cnt,current_line->line);
-      }
-      if(open_cnt < 0 || (open_cnt == 0 && strncmp(current_line->line,"/>",2) == 0)) 
-      { 
-        rlDebugPrintf("rlSvgAnimator.show cnt=%d return=0 line=%s",open_cnt,current_line->line);
-        return 0;
-      }
-      current_line = current_line->next;
-    }
-  }
-
-  rlDebugPrintf("rlSvgAnimator.show return=-1\n");
   return -1;
-}
-
-int rlSvgAnimator::testoutput()
-{
-  int i;
-  printf("rlSvgAnimator::testoutput start\n");
-  SVG_LINE *current_line = first;
-  if(first == NULL)
-  {
-    printf("rlSvgAnimator::testoutput first == NULL\n");
-    return -1;
-  }
-  for(i=0; i<num_lines; i++)
-  {
-    printf("rlSvgAnimator:line=%s\n",current_line->line);
-    current_line = current_line->next;
-  }
-  printf("rlSvgAnimator::testoutput return\n");
-  return 0;
 }
 
 int rlSvgAnimator::setMatrix(const char *objectname, rlSvgPosition &pos)

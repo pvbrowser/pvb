@@ -40,12 +40,6 @@ class rlSvgPosition
     void rotate(float alpha, float cx, float cy);
 };
 
-typedef struct _SVG_LINE_
-{
-  char *line;
-  struct _SVG_LINE_ *next;
-}SVG_LINE;
-
 /*! <pre>
 This class allows you to animate SVG graphics within pvbrowser.
 First the SVG is send to pvbrowser.
@@ -68,7 +62,7 @@ class rlSvgAnimator
     /*! update the SVG graphic with:
         gBeginDraw(p,id); d->svgAnimator.writeSocket(); gEndDraw(p); */
     //! The following methods are for modifying a object within a SVG graphic identified by objectname
-    int writeSocket(int *socket=0);
+    int writeSocket();
     /*! change a property of tag = "name=" */
 
     int svgPrintf(const char *objectname, const char *tag, const char *format, ...);
@@ -82,7 +76,6 @@ class rlSvgAnimator
     int svgTextPrintf(const char *objectname, const char *format, ...);
     /*! hide/show object state := 0=hide 1=show */
     int show(const char *objectname, int state); // state := 0|1
-    int testoutput();
     /*! set transformation matrix of object */
     int setMatrix(const char *objectname, float sx, float alpha, float x0, float y0, float cx, float cy);
     /*! set transformation matrix of object */
@@ -123,18 +116,14 @@ class rlSvgAnimator
     int isModified;
 
   private:
-    int closefile();
     int tcpsend(const char *buf, int len);
     int fillIniFile(rlIniFile *inifile, const char *line);
     int fileFillIniFile(const char *infile, rlIniFile *inifile);
     int inifileState, inifileCount;
     rlSpreadsheetCell  inifileID;
     rlSpreadsheetTable inifileTable;
-    SVG_LINE *first;
-    char *comment;
-    int *s;
-    int id;
-    int num_lines;
+    int  *s;
+    int  id;
     // zoomer variables follow
     float svgX0, svgY0, svgWindowWidth, svgWindowHeight, svgScale, svgMouseX0, svgMouseY0, svgMouseX1, svgMouseY1;
     rlString main_object_name;

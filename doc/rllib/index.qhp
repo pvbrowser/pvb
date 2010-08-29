@@ -12,7 +12,6 @@
           <section title="_rlHistoryReaderLine_" ref="struct__rlHistoryReaderLine__.html" />
           <section title="rlIniFile::_rlSection_" ref="structrlIniFile_1_1__rlSection__.html" />
           <section title="rlIniFile::_rlSectionName_" ref="structrlIniFile_1_1__rlSectionName__.html" />
-          <section title="_SVG_LINE_" ref="struct__SVG__LINE__.html" />
           <section title="ADD" ref="structADD.html" />
           <section title="rlEIBnetIP::EIB_TEL" ref="structrlEIBnetIP_1_1EIB__TEL.html" />
           <section title="rlSiemensTCP::FA" ref="structrlSiemensTCP_1_1FA.html" />
@@ -80,9 +79,9 @@
           <section title="rlTime" ref="classrlTime.html" />
           <section title="rlUdpSocket" ref="classrlUdpSocket.html" />
           <section title="rlWebcam" ref="classrlWebcam.html" />
+          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
-          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -100,7 +99,6 @@
           <section title="_rlHistoryReaderLine_" ref="struct__rlHistoryReaderLine__.html" />
           <section title="rlIniFile::_rlSection_" ref="structrlIniFile_1_1__rlSection__.html" />
           <section title="rlIniFile::_rlSectionName_" ref="structrlIniFile_1_1__rlSectionName__.html" />
-          <section title="_SVG_LINE_" ref="struct__SVG__LINE__.html" />
           <section title="ADD" ref="structADD.html" />
           <section title="rlEIBnetIP::EIB_TEL" ref="structrlEIBnetIP_1_1EIB__TEL.html" />
           <section title="rlSiemensTCP::FA" ref="structrlSiemensTCP_1_1FA.html" />
@@ -177,9 +175,9 @@
             <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
           </section>
           <section title="rlWebcam" ref="classrlWebcam.html" />
+          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
-          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -594,7 +592,6 @@
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html" />
       <keyword name="MAXLINE" id="rlsvganimator.cpp::MAXLINE" ref="rlsvganimator_8cpp.html" />
       <keyword name="MAXBUF" id="rlsvganimator.cpp::MAXBUF" ref="rlsvganimator_8cpp.html" />
-      <keyword name="SVG_LINE" id="rlsvganimator.h::SVG_LINE" ref="rlsvganimator_8h.html" />
       <keyword name="USE_OLD_JOIN" id="rlwthread.cpp::USE_OLD_JOIN" ref="rlwthread_8cpp.html" />
       <keyword name="TESTINGx" id="rlwthread.cpp::TESTINGx" ref="rlwthread_8cpp.html" />
       <keyword name="rlwthread_attr_init" id="rlwthread.cpp::rlwthread_attr_init" ref="rlwthread_8cpp.html" />
@@ -640,9 +637,6 @@
       <keyword name="_rlHistoryReaderLine_" id="_rlHistoryReaderLine_" ref="struct__rlHistoryReaderLine__.html" />
       <keyword name="next" id="_rlHistoryReaderLine_::next" ref="struct__rlHistoryReaderLine__.html" />
       <keyword name="line" id="_rlHistoryReaderLine_::line" ref="struct__rlHistoryReaderLine__.html" />
-      <keyword name="_SVG_LINE_" id="_SVG_LINE_" ref="struct__SVG__LINE__.html" />
-      <keyword name="line" id="_SVG_LINE_::line" ref="struct__SVG__LINE__.html" />
-      <keyword name="next" id="_SVG_LINE_::next" ref="struct__SVG__LINE__.html" />
       <keyword name="ADD" id="ADD" ref="structADD.html" />
       <keyword name="start" id="ADD::start" ref="structADD.html" />
       <keyword name="end" id="ADD::end" ref="structADD.html" />
@@ -1987,7 +1981,6 @@
       <keyword name="svgRecursiveSearchAndReplace" id="rlSvgAnimator::svgRecursiveSearchAndReplace" ref="classrlSvgAnimator.html" />
       <keyword name="svgTextPrintf" id="rlSvgAnimator::svgTextPrintf" ref="classrlSvgAnimator.html" />
       <keyword name="show" id="rlSvgAnimator::show" ref="classrlSvgAnimator.html" />
-      <keyword name="testoutput" id="rlSvgAnimator::testoutput" ref="classrlSvgAnimator.html" />
       <keyword name="setMatrix" id="rlSvgAnimator::setMatrix" ref="classrlSvgAnimator.html" />
       <keyword name="setMatrix" id="rlSvgAnimator::setMatrix" ref="classrlSvgAnimator.html" />
       <keyword name="setMainObject" id="rlSvgAnimator::setMainObject" ref="classrlSvgAnimator.html" />
@@ -2011,7 +2004,6 @@
       <keyword name="windowHeight" id="rlSvgAnimator::windowHeight" ref="classrlSvgAnimator.html" />
       <keyword name="moveMainObject" id="rlSvgAnimator::moveMainObject" ref="classrlSvgAnimator.html" />
       <keyword name="isModified" id="rlSvgAnimator::isModified" ref="classrlSvgAnimator.html" />
-      <keyword name="closefile" id="rlSvgAnimator::closefile" ref="classrlSvgAnimator.html" />
       <keyword name="tcpsend" id="rlSvgAnimator::tcpsend" ref="classrlSvgAnimator.html" />
       <keyword name="fillIniFile" id="rlSvgAnimator::fillIniFile" ref="classrlSvgAnimator.html" />
       <keyword name="fileFillIniFile" id="rlSvgAnimator::fileFillIniFile" ref="classrlSvgAnimator.html" />
@@ -2019,11 +2011,8 @@
       <keyword name="inifileCount" id="rlSvgAnimator::inifileCount" ref="classrlSvgAnimator.html" />
       <keyword name="inifileID" id="rlSvgAnimator::inifileID" ref="classrlSvgAnimator.html" />
       <keyword name="inifileTable" id="rlSvgAnimator::inifileTable" ref="classrlSvgAnimator.html" />
-      <keyword name="first" id="rlSvgAnimator::first" ref="classrlSvgAnimator.html" />
-      <keyword name="comment" id="rlSvgAnimator::comment" ref="classrlSvgAnimator.html" />
       <keyword name="s" id="rlSvgAnimator::s" ref="classrlSvgAnimator.html" />
       <keyword name="id" id="rlSvgAnimator::id" ref="classrlSvgAnimator.html" />
-      <keyword name="num_lines" id="rlSvgAnimator::num_lines" ref="classrlSvgAnimator.html" />
       <keyword name="svgX0" id="rlSvgAnimator::svgX0" ref="classrlSvgAnimator.html" />
       <keyword name="svgY0" id="rlSvgAnimator::svgY0" ref="classrlSvgAnimator.html" />
       <keyword name="svgWindowWidth" id="rlSvgAnimator::svgWindowWidth" ref="classrlSvgAnimator.html" />
@@ -2798,10 +2787,6 @@
       <file>struct__rlHistoryReaderLine____coll__graph.png</file>
       <file>struct__rlHistoryReaderLine____coll__graph.png</file>
       <file>struct__rlHistoryReaderLine__-members.html</file>
-      <file>struct__SVG__LINE__.html</file>
-      <file>struct__SVG__LINE____coll__graph.png</file>
-      <file>struct__SVG__LINE____coll__graph.png</file>
-      <file>struct__SVG__LINE__-members.html</file>
       <file>structADD.html</file>
       <file>structADD-members.html</file>
       <file>structIOSB.html</file>
@@ -3156,7 +3141,6 @@
       <file>inherit__graph__74.png</file>
       <file>inherit__graph__75.png</file>
       <file>inherit__graph__76.png</file>
-      <file>inherit__graph__77.png</file>
       <file>graph_legend.png</file>
       <file>graph_legend.html</file>
       <file>files.html</file>

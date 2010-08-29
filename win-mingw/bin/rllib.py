@@ -1198,27 +1198,6 @@ class rlSvgPosition_init(_object):
 rlSvgPosition_init_swigregister = _rllib.rlSvgPosition_init_swigregister
 rlSvgPosition_init_swigregister(rlSvgPosition_init)
 
-class SVG_LINE(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, SVG_LINE, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, SVG_LINE, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["line"] = _rllib.SVG_LINE_line_set
-    __swig_getmethods__["line"] = _rllib.SVG_LINE_line_get
-    if _newclass:line = _swig_property(_rllib.SVG_LINE_line_get, _rllib.SVG_LINE_line_set)
-    __swig_setmethods__["next"] = _rllib.SVG_LINE_next_set
-    __swig_getmethods__["next"] = _rllib.SVG_LINE_next_get
-    if _newclass:next = _swig_property(_rllib.SVG_LINE_next_get, _rllib.SVG_LINE_next_set)
-    def __init__(self, *args): 
-        this = _rllib.new_SVG_LINE(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_SVG_LINE
-    __del__ = lambda self : None;
-SVG_LINE_swigregister = _rllib.SVG_LINE_swigregister
-SVG_LINE_swigregister(SVG_LINE)
-
 class rlSvgAnimator(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlSvgAnimator, name, value)
@@ -1241,7 +1220,6 @@ class rlSvgAnimator(_object):
     def svgRecursiveSearchAndReplace(*args): return _rllib.rlSvgAnimator_svgRecursiveSearchAndReplace(*args)
     def svgTextPrintf(*args): return _rllib.rlSvgAnimator_svgTextPrintf(*args)
     def show(*args): return _rllib.rlSvgAnimator_show(*args)
-    def testoutput(*args): return _rllib.rlSvgAnimator_testoutput(*args)
     def setMatrix(*args): return _rllib.rlSvgAnimator_setMatrix(*args)
     def setMainObject(*args): return _rllib.rlSvgAnimator_setMainObject(*args)
     def mainObject(*args): return _rllib.rlSvgAnimator_mainObject(*args)

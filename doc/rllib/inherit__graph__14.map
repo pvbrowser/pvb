@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlCanOpenTypes.html" title="class to handle CANopen types" alt="" coords="7,5,124,35"/>
+<area shape="rect" id="node1" href="$structrlCanPDO.html" title="PDO object which is part of one of the two pdo lists in the node class." alt="" coords="5,5,85,35"/>
 </map>

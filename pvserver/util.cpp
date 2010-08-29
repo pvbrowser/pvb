@@ -815,7 +815,7 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 
 static int show_usage()
 {
-  printf("pvserver 4.5.2 (C) by Lehrig Software Engineering 2000-2010       lehrig@t-online.de\n\n");
+  printf("pvserver 4.5.3 (C) by Lehrig Software Engineering 2000-2010       lehrig@t-online.de\n\n");
   printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6\n");
   printf("default:\n");
   printf("-port=5050\n");

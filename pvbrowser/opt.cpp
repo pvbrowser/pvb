@@ -557,7 +557,6 @@ int i;
         fprintf(fp,"-print_header              = Gedruckt von pvbrowser am: \n");
         fprintf(fp,"}\n");
         fprintf(fp,"#---------------------------------------\n");
-        fprintf(fp,"# Ne pas oublier de dï¿½ommanter ISO-8859-1\n");
         fprintf(fp,"french {\n");
         fprintf(fp,"-file               = Fichier\n");
         fprintf(fp,"-options            = Option\n");
