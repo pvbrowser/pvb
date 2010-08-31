@@ -52,7 +52,7 @@ public:
     WriteBit   = 1,
     WriteByte  = 2
   };
-  rlSiemensTCP(const char *adr, int _plc_type, int _fetch_write = 1, int rackNumber = -1, int slotNumber = -1);
+  rlSiemensTCP(const char *adr, int _plc_type, int _fetch_write = 1, int function = -1, int rack_slot = -1);
   virtual ~rlSiemensTCP();
   /*! <pre>
   </pre> */
@@ -137,7 +137,7 @@ private:
   FH fh;
   FA fa;
   IH ih;
-  int rack_number, slot_number;
+  int function, rack_slot;
   int plc_type;
   int fetch_write;
   unsigned char pdu[2048];

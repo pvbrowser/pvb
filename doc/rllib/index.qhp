@@ -1736,8 +1736,8 @@
       <keyword name="fh" id="rlSiemensTCP::fh" ref="classrlSiemensTCP.html" />
       <keyword name="fa" id="rlSiemensTCP::fa" ref="classrlSiemensTCP.html" />
       <keyword name="ih" id="rlSiemensTCP::ih" ref="classrlSiemensTCP.html" />
-      <keyword name="rack_number" id="rlSiemensTCP::rack_number" ref="classrlSiemensTCP.html" />
-      <keyword name="slot_number" id="rlSiemensTCP::slot_number" ref="classrlSiemensTCP.html" />
+      <keyword name="function" id="rlSiemensTCP::function" ref="classrlSiemensTCP.html" />
+      <keyword name="rack_slot" id="rlSiemensTCP::rack_slot" ref="classrlSiemensTCP.html" />
       <keyword name="plc_type" id="rlSiemensTCP::plc_type" ref="classrlSiemensTCP.html" />
       <keyword name="fetch_write" id="rlSiemensTCP::fetch_write" ref="classrlSiemensTCP.html" />
       <keyword name="pdu" id="rlSiemensTCP::pdu" ref="classrlSiemensTCP.html" />

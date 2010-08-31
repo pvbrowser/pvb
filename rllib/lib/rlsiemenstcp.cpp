@@ -34,13 +34,13 @@
 
 extern int rlDebugPrintfState;
 
-rlSiemensTCP::rlSiemensTCP(const char *a, int _plc_type, int _fetch_write, int rackNumber, int slotNumber)
+rlSiemensTCP::rlSiemensTCP(const char *a, int _plc_type, int _fetch_write, int _function, int _rack_slot)
              :rlSocket(a,ISO_PORT,1)
 {
   plc_type = _plc_type;
   fetch_write = _fetch_write;
-  rack_number = rackNumber;
-  slot_number = slotNumber;
+  function = _function;
+  rack_slot = _rack_slot;
   doConnect();
 }
 
@@ -70,8 +70,14 @@ void rlSiemensTCP::doConnect()
   else if(plc_type == S7_300) memcpy(connect_block,s7_300_connect_block,sizeof(connect_block));
   else if(plc_type == S7_400) memcpy(connect_block,s7_400_connect_block,sizeof(connect_block));
   else                        memcpy(connect_block,other_connect_block,sizeof(connect_block));
-  if(rack_number != -1) connect_block[17] = rack_number;
-  if(slot_number != -1) connect_block[18] = slot_number;
+
+  // according to an unproofen theory siemens chooses the TSAP as follows
+  // connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)
+  // connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot
+  // Hint: use tcpdump to figure it out (host = ip_adr of your PLC)
+  // tcpdump -A -i eth0 -t -q -s 0 "host 192.168.1.14 && port 102"
+  if(function  != -1) connect_block[17] = function;
+  if(rack_slot != -1) connect_block[18] = rack_slot;
 
   for(i=0; i<3; i++)
   {
