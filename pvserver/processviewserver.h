@@ -1918,6 +1918,11 @@ Set the text of a ListViewItem.
 example:
 path = "/dir/subdir/subsubdir"
 path := similar to a unix directory path
+
+Example for colored cells:
+pvSetListViewText(p,myListView,"/path/to",0,"color(255,0,0)this is the colored text");
+prepend: color(r,g,b)
+
 Allowed widgets: QListView
 </pre> */
 int pvSetListViewText(PARAM *p, int id, const char *path, int column, const char *text);
@@ -1927,6 +1932,11 @@ Works as printf(format,...);
 example:
 path = "/dir/subdir/subsubdir"
 path := similar to a unix directory path
+
+Example for colored cells:
+pvListViewPrintf(p,myListView,"/path/to",0,"color(255,0,0)this is the colored text");
+prepend: color(r,g,b)
+
 Allowed widgets: QListView
 </pre> */
 int pvListViewPrintf(PARAM *p, int id, const char *path, int column, const char *format, ...);
