@@ -277,6 +277,12 @@ int rlDataAcquisitionProvider::writeErrorCount()
   return shmheader->writeErrorCount;
 }
 
+int rlDataAcquisitionProvider::lifeCounter()
+{
+  if(shmheader == NULL) return DAQ_PROVIDER_ERROR;
+  return shmheader->lifeCounter;
+}
+
 int rlDataAcquisitionProvider::setReadErrorCount(int count)
 {
   if(shmheader == NULL) return DAQ_PROVIDER_ERROR;
@@ -288,6 +294,13 @@ int rlDataAcquisitionProvider::setWriteErrorCount(int count)
 {
   if(shmheader == NULL) return DAQ_PROVIDER_ERROR;
   shmheader->writeErrorCount = count;
+  return 0;
+}
+
+int rlDataAcquisitionProvider::setLifeCounter(int count)
+{
+  if(shmheader == NULL) return DAQ_PROVIDER_ERROR;
+  shmheader->lifeCounter = count;
   return 0;
 }
 

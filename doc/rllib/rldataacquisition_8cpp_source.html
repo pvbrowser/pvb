@@ -141,53 +141,59 @@
 <a name="l00117"></a>00117   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a689f3f13bf986e2afd81e2d70f7ad5de">writeErrorCount</a>;
 <a name="l00118"></a>00118 }
 <a name="l00119"></a>00119 
-<a name="l00120"></a><a class="code" href="classrlDataAcquisition.html#a5cdcfa9524275ce0b677ab1be5f17cb3">00120</a> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a5cdcfa9524275ce0b677ab1be5f17cb3">rlDataAcquisition::firstVariable</a>()
+<a name="l00120"></a><a class="code" href="classrlDataAcquisition.html#abc05b8d37c72db4007b2a514f1190e06">00120</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisition.html#abc05b8d37c72db4007b2a514f1190e06">rlDataAcquisition::lifeCounter</a>()
 <a name="l00121"></a>00121 {
-<a name="l00122"></a>00122   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
-<a name="l00123"></a>00123 
-<a name="l00124"></a>00124   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
-<a name="l00125"></a>00125   <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a141a94e2d96e54e7e2ae19ddea2a3ca1">ident</a>,<span class="stringliteral">&quot;daq&quot;</span>) != 0) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
-<a name="l00126"></a>00126   cptr = <a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">shmvalues</a>;
-<a name="l00127"></a>00127   <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a> = 1;
-<a name="l00128"></a>00128   <span class="keywordflow">return</span> cptr;
-<a name="l00129"></a>00129 }
-<a name="l00130"></a>00130 
-<a name="l00131"></a><a class="code" href="classrlDataAcquisition.html#a280153f2cad74a08acf1d342d608eb52">00131</a> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a280153f2cad74a08acf1d342d608eb52">rlDataAcquisition::nextVariable</a>()
-<a name="l00132"></a>00132 {
-<a name="l00133"></a>00133   <span class="keywordtype">int</span> value_offset, delta_index, nmax, i;
-<a name="l00134"></a>00134   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
-<a name="l00135"></a>00135 
-<a name="l00136"></a>00136   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a> &lt; 0) <span class="keywordflow">return</span> NULL;
-<a name="l00137"></a>00137   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
-<a name="l00138"></a>00138   <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a141a94e2d96e54e7e2ae19ddea2a3ca1">ident</a>,<span class="stringliteral">&quot;daq&quot;</span>) != 0) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
-<a name="l00139"></a>00139   value_offset = <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a44023de7e85aa5543f8ff2a253476113">maxItemNameLength</a> + 1;
-<a name="l00140"></a>00140   delta_index  = value_offset + <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a68ed0f1684521d61385ec0b40101da95">maxNameLength</a> + 1;
-<a name="l00141"></a>00141   nmax         = <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a52185f25e56d6f5ae1d9771680ac1600">numItems</a>;
-<a name="l00142"></a>00142 
-<a name="l00143"></a>00143   cptr = <a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">shmvalues</a>;
-<a name="l00144"></a>00144   <span class="keywordflow">for</span>(i=0; i&lt;nmax; i++)
-<a name="l00145"></a>00145   {
-<a name="l00146"></a>00146     <span class="keywordflow">if</span>(i == <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a>)
-<a name="l00147"></a>00147     {
-<a name="l00148"></a>00148       <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a>++;
-<a name="l00149"></a>00149       <span class="keywordflow">return</span> cptr;
-<a name="l00150"></a>00150     }
-<a name="l00151"></a>00151     cptr += delta_index;
-<a name="l00152"></a>00152   }
-<a name="l00153"></a>00153 
-<a name="l00154"></a>00154   <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a> = -1;
-<a name="l00155"></a>00155   <span class="keywordflow">return</span> NULL;
-<a name="l00156"></a>00156 }
-<a name="l00157"></a>00157 
-<a name="l00158"></a><a class="code" href="classrlDataAcquisition.html#a814d0932030d5c06faebe12a844e6dba">00158</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisition.html#a814d0932030d5c06faebe12a844e6dba">rlDataAcquisition::shmStatus</a>()
-<a name="l00159"></a>00159 {
-<a name="l00160"></a>00160   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a>;
-<a name="l00161"></a>00161   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#af72c7bbf4626ed70100e5cfa2cd48a28">shm</a>-&gt;<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> == <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a>) <span class="keywordflow">return</span> 0;
-<a name="l00162"></a>00162   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a>;
-<a name="l00163"></a>00163 }
-<a name="l00164"></a>00164 
+<a name="l00122"></a>00122   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a>;
+<a name="l00123"></a>00123   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a63363c7709a725667b182acd4e41fe24">lifeCounter</a>;
+<a name="l00124"></a>00124 }
+<a name="l00125"></a>00125 
+<a name="l00126"></a><a class="code" href="classrlDataAcquisition.html#a5cdcfa9524275ce0b677ab1be5f17cb3">00126</a> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a5cdcfa9524275ce0b677ab1be5f17cb3">rlDataAcquisition::firstVariable</a>()
+<a name="l00127"></a>00127 {
+<a name="l00128"></a>00128   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
+<a name="l00129"></a>00129 
+<a name="l00130"></a>00130   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
+<a name="l00131"></a>00131   <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a141a94e2d96e54e7e2ae19ddea2a3ca1">ident</a>,<span class="stringliteral">&quot;daq&quot;</span>) != 0) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
+<a name="l00132"></a>00132   cptr = <a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">shmvalues</a>;
+<a name="l00133"></a>00133   <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a> = 1;
+<a name="l00134"></a>00134   <span class="keywordflow">return</span> cptr;
+<a name="l00135"></a>00135 }
+<a name="l00136"></a>00136 
+<a name="l00137"></a><a class="code" href="classrlDataAcquisition.html#a280153f2cad74a08acf1d342d608eb52">00137</a> <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a280153f2cad74a08acf1d342d608eb52">rlDataAcquisition::nextVariable</a>()
+<a name="l00138"></a>00138 {
+<a name="l00139"></a>00139   <span class="keywordtype">int</span> value_offset, delta_index, nmax, i;
+<a name="l00140"></a>00140   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
+<a name="l00141"></a>00141 
+<a name="l00142"></a>00142   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a> &lt; 0) <span class="keywordflow">return</span> NULL;
+<a name="l00143"></a>00143   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
+<a name="l00144"></a>00144   <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a141a94e2d96e54e7e2ae19ddea2a3ca1">ident</a>,<span class="stringliteral">&quot;daq&quot;</span>) != 0) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
+<a name="l00145"></a>00145   value_offset = <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a44023de7e85aa5543f8ff2a253476113">maxItemNameLength</a> + 1;
+<a name="l00146"></a>00146   delta_index  = value_offset + <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a68ed0f1684521d61385ec0b40101da95">maxNameLength</a> + 1;
+<a name="l00147"></a>00147   nmax         = <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a52185f25e56d6f5ae1d9771680ac1600">numItems</a>;
+<a name="l00148"></a>00148 
+<a name="l00149"></a>00149   cptr = <a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">shmvalues</a>;
+<a name="l00150"></a>00150   <span class="keywordflow">for</span>(i=0; i&lt;nmax; i++)
+<a name="l00151"></a>00151   {
+<a name="l00152"></a>00152     <span class="keywordflow">if</span>(i == <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a>)
+<a name="l00153"></a>00153     {
+<a name="l00154"></a>00154       <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a>++;
+<a name="l00155"></a>00155       <span class="keywordflow">return</span> cptr;
+<a name="l00156"></a>00156     }
+<a name="l00157"></a>00157     cptr += delta_index;
+<a name="l00158"></a>00158   }
+<a name="l00159"></a>00159 
+<a name="l00160"></a>00160   <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a> = -1;
+<a name="l00161"></a>00161   <span class="keywordflow">return</span> NULL;
+<a name="l00162"></a>00162 }
+<a name="l00163"></a>00163 
+<a name="l00164"></a><a class="code" href="classrlDataAcquisition.html#a814d0932030d5c06faebe12a844e6dba">00164</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisition.html#a814d0932030d5c06faebe12a844e6dba">rlDataAcquisition::shmStatus</a>()
+<a name="l00165"></a>00165 {
+<a name="l00166"></a>00166   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a>;
+<a name="l00167"></a>00167   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#af72c7bbf4626ed70100e5cfa2cd48a28">shm</a>-&gt;<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> == <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a>) <span class="keywordflow">return</span> 0;
+<a name="l00168"></a>00168   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a>;
+<a name="l00169"></a>00169 }
+<a name="l00170"></a>00170 
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Aug 30 20:16:15 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Sep 20 09:16:15 2010 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

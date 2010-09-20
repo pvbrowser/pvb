@@ -36,7 +36,8 @@ public:
     int  numItems;          // number of items in shared memory
     int  readErrorCount;    // 0...65536 incremented by each read error
     int  writeErrorCount;   // 0...65536 incremented by each write error
-    int  spare[8];          // for future use
+    int  lifeCounter;       // 0...65536 incremented each cycle
+    int  spare[7];          // for future use
     char cspare[32];        // for future use
   }SHM_HEADER;
   
@@ -62,8 +63,10 @@ public:
   int         setFloatValue(const char *variable, float value);
   int         readErrorCount();
   int         writeErrorCount();
+  int         lifeCounter();
   int         setReadErrorCount(int count);
   int         setWriteErrorCount(int count);
+  int         setLifeCounter(int count);
   int         shmStatus(); // 0 if shared memory is ok | DAQ_PROVIDER_ERROR if shared memory is not ok
   int         setAllowAddValues(int allow, int maxItemNameLength);
 

@@ -2090,7 +2090,18 @@ void MyListView::nameVersionSetListViewText(const char *path, int column, QStrin
   item = firstChild(parent);
   while(item != NULL)
   {
-    if(strcmp(path,item->path.toAscii()) == 0) { item->setText(column,text); return; } // update existing item
+    if(strcmp(path,item->path.toAscii()) == 0) // update existing item
+    { 
+      if(text.startsWith("color("))
+      {
+        int r,g,b;
+        sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+        text = text.section(')',1);
+        item->setBackground(column,QBrush(QColor(r,g,b)));
+      }
+      item->setText(column,text); 
+      return; 
+    }     
     if(starts_with(path,item->path.toAscii()))
     {
       cptr = strchr(&relpath[1],'/');
@@ -2106,7 +2117,18 @@ void MyListView::nameVersionSetListViewText(const char *path, int column, QStrin
   else                 item = new MyListViewItem((MyListViewItem *) NULL); // add root path
   item->path = root_path(path,num_slash);
   insertItem(item,parent,num_slash);
-  if(item->path == path) { item->setText(column,text); return; }
+  if(item->path == path)
+  {
+    if(text.startsWith("color("))
+    {
+      int r,g,b;
+      sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+      text = text.section(')',1);
+      item->setBackground(column,QBrush(QColor(r,g,b)));
+    }
+    item->setText(column,text); 
+    return; 
+  }
   cptr = strchr(&relpath[1],'/');
   if(cptr == NULL) return;
   recursion++;

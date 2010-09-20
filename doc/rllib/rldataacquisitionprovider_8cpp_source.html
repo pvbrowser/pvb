@@ -301,38 +301,51 @@
 <a name="l00277"></a>00277   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#aa4ce44f1357828c27ef06ab47ae4301a">writeErrorCount</a>;
 <a name="l00278"></a>00278 }
 <a name="l00279"></a>00279 
-<a name="l00280"></a><a class="code" href="classrlDataAcquisitionProvider.html#a95c89ca080d659c8533f2a2a12e568cd">00280</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a95c89ca080d659c8533f2a2a12e568cd">rlDataAcquisitionProvider::setReadErrorCount</a>(<span class="keywordtype">int</span> count)
+<a name="l00280"></a><a class="code" href="classrlDataAcquisitionProvider.html#a8734e6262fb261d588ebac1c6577a0ff">00280</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a8734e6262fb261d588ebac1c6577a0ff">rlDataAcquisitionProvider::lifeCounter</a>()
 <a name="l00281"></a>00281 {
 <a name="l00282"></a>00282   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
-<a name="l00283"></a>00283   <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#aa13eb53e39d5df00dabcdd1e6d7d3f8d">readErrorCount</a> = count;
-<a name="l00284"></a>00284   <span class="keywordflow">return</span> 0;
-<a name="l00285"></a>00285 }
-<a name="l00286"></a>00286 
-<a name="l00287"></a><a class="code" href="classrlDataAcquisitionProvider.html#acfcf76c15f4df5e4c808e8b916373974">00287</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#acfcf76c15f4df5e4c808e8b916373974">rlDataAcquisitionProvider::setWriteErrorCount</a>(<span class="keywordtype">int</span> count)
-<a name="l00288"></a>00288 {
-<a name="l00289"></a>00289   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
-<a name="l00290"></a>00290   <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#aa4ce44f1357828c27ef06ab47ae4301a">writeErrorCount</a> = count;
-<a name="l00291"></a>00291   <span class="keywordflow">return</span> 0;
-<a name="l00292"></a>00292 }
-<a name="l00293"></a>00293 
-<a name="l00294"></a><a class="code" href="classrlDataAcquisitionProvider.html#a000684382d16b77df3844d36f063351c">00294</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a000684382d16b77df3844d36f063351c">rlDataAcquisitionProvider::shmStatus</a>()
-<a name="l00295"></a>00295 {
-<a name="l00296"></a>00296   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
-<a name="l00297"></a>00297   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a4f060b336242a912e4a5dba0ba0e541e">shm</a>-&gt;<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> == <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a>) <span class="keywordflow">return</span> 0;
-<a name="l00298"></a>00298   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
-<a name="l00299"></a>00299 }
-<a name="l00300"></a>00300 
-<a name="l00301"></a><a class="code" href="classrlDataAcquisitionProvider.html#a41913c939a1382dce709d7ef05606fe3">00301</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a41913c939a1382dce709d7ef05606fe3">rlDataAcquisitionProvider::setAllowAddValues</a>(<span class="keywordtype">int</span> allow, <span class="keywordtype">int</span> maxItemNameLength)
-<a name="l00302"></a>00302 {
-<a name="l00303"></a>00303   <span class="keywordflow">if</span>(allow == 0) <a class="code" href="classrlDataAcquisitionProvider.html#a61251fdaa308793ca04d3140e3380ea1">allow_add_values</a> = 0;
-<a name="l00304"></a>00304   <span class="keywordflow">else</span>           <a class="code" href="classrlDataAcquisitionProvider.html#a61251fdaa308793ca04d3140e3380ea1">allow_add_values</a> = 1;
-<a name="l00305"></a>00305   <span class="keywordflow">if</span>(maxItemNameLength &gt; 0) <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#ae11025340ee5d8790910dfcd9eb0b6be">maxItemNameLength</a> = maxItemNameLength;
-<a name="l00306"></a>00306   <span class="keywordflow">return</span> 0;
-<a name="l00307"></a>00307 }
-<a name="l00308"></a>00308 
-<a name="l00309"></a>00309 
+<a name="l00283"></a>00283   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#a4b72d1f8bd3af7570d41087cfedd2abc">lifeCounter</a>;
+<a name="l00284"></a>00284 }
+<a name="l00285"></a>00285 
+<a name="l00286"></a><a class="code" href="classrlDataAcquisitionProvider.html#a95c89ca080d659c8533f2a2a12e568cd">00286</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a95c89ca080d659c8533f2a2a12e568cd">rlDataAcquisitionProvider::setReadErrorCount</a>(<span class="keywordtype">int</span> count)
+<a name="l00287"></a>00287 {
+<a name="l00288"></a>00288   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
+<a name="l00289"></a>00289   <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#aa13eb53e39d5df00dabcdd1e6d7d3f8d">readErrorCount</a> = count;
+<a name="l00290"></a>00290   <span class="keywordflow">return</span> 0;
+<a name="l00291"></a>00291 }
+<a name="l00292"></a>00292 
+<a name="l00293"></a><a class="code" href="classrlDataAcquisitionProvider.html#acfcf76c15f4df5e4c808e8b916373974">00293</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#acfcf76c15f4df5e4c808e8b916373974">rlDataAcquisitionProvider::setWriteErrorCount</a>(<span class="keywordtype">int</span> count)
+<a name="l00294"></a>00294 {
+<a name="l00295"></a>00295   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
+<a name="l00296"></a>00296   <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#aa4ce44f1357828c27ef06ab47ae4301a">writeErrorCount</a> = count;
+<a name="l00297"></a>00297   <span class="keywordflow">return</span> 0;
+<a name="l00298"></a>00298 }
+<a name="l00299"></a>00299 
+<a name="l00300"></a><a class="code" href="classrlDataAcquisitionProvider.html#a913bc8a3ad413164b01fdf5f67422e4b">00300</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a913bc8a3ad413164b01fdf5f67422e4b">rlDataAcquisitionProvider::setLifeCounter</a>(<span class="keywordtype">int</span> count)
+<a name="l00301"></a>00301 {
+<a name="l00302"></a>00302   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
+<a name="l00303"></a>00303   <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#a4b72d1f8bd3af7570d41087cfedd2abc">lifeCounter</a> = count;
+<a name="l00304"></a>00304   <span class="keywordflow">return</span> 0;
+<a name="l00305"></a>00305 }
+<a name="l00306"></a>00306 
+<a name="l00307"></a><a class="code" href="classrlDataAcquisitionProvider.html#a000684382d16b77df3844d36f063351c">00307</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a000684382d16b77df3844d36f063351c">rlDataAcquisitionProvider::shmStatus</a>()
+<a name="l00308"></a>00308 {
+<a name="l00309"></a>00309   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
+<a name="l00310"></a>00310   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisitionProvider.html#a4f060b336242a912e4a5dba0ba0e541e">shm</a>-&gt;<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> == <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a>) <span class="keywordflow">return</span> 0;
+<a name="l00311"></a>00311   <span class="keywordflow">return</span> <a class="code" href="classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2">DAQ_PROVIDER_ERROR</a>;
+<a name="l00312"></a>00312 }
+<a name="l00313"></a>00313 
+<a name="l00314"></a><a class="code" href="classrlDataAcquisitionProvider.html#a41913c939a1382dce709d7ef05606fe3">00314</a> <span class="keywordtype">int</span> <a class="code" href="classrlDataAcquisitionProvider.html#a41913c939a1382dce709d7ef05606fe3">rlDataAcquisitionProvider::setAllowAddValues</a>(<span class="keywordtype">int</span> allow, <span class="keywordtype">int</span> maxItemNameLength)
+<a name="l00315"></a>00315 {
+<a name="l00316"></a>00316   <span class="keywordflow">if</span>(allow == 0) <a class="code" href="classrlDataAcquisitionProvider.html#a61251fdaa308793ca04d3140e3380ea1">allow_add_values</a> = 0;
+<a name="l00317"></a>00317   <span class="keywordflow">else</span>           <a class="code" href="classrlDataAcquisitionProvider.html#a61251fdaa308793ca04d3140e3380ea1">allow_add_values</a> = 1;
+<a name="l00318"></a>00318   <span class="keywordflow">if</span>(maxItemNameLength &gt; 0) <a class="code" href="classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisitionProvider_1_1SHM__HEADER.html#ae11025340ee5d8790910dfcd9eb0b6be">maxItemNameLength</a> = maxItemNameLength;
+<a name="l00319"></a>00319   <span class="keywordflow">return</span> 0;
+<a name="l00320"></a>00320 }
+<a name="l00321"></a>00321 
+<a name="l00322"></a>00322 
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Aug 30 20:16:15 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Sep 20 09:16:15 2010 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

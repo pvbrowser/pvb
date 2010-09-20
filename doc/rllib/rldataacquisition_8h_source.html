@@ -56,45 +56,47 @@
 <a name="l00037"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a52185f25e56d6f5ae1d9771680ac1600">00037</a>     <span class="keywordtype">int</span>  numItems;          <span class="comment">// number of items in shared memory</span>
 <a name="l00038"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a320d385eeeb8fec93cdba43a758e5dc3">00038</a>     <span class="keywordtype">int</span>  <a class="code" href="classrlDataAcquisition.html#a3f91544a3db35cd18fdee3268025f6dd">readErrorCount</a>;    <span class="comment">// 0...65536 incremented by each read error</span>
 <a name="l00039"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a689f3f13bf986e2afd81e2d70f7ad5de">00039</a>     <span class="keywordtype">int</span>  <a class="code" href="classrlDataAcquisition.html#ab83f7948efacdd7420b9acd7fb0cb763">writeErrorCount</a>;   <span class="comment">// 0...65536 incremented by each write error</span>
-<a name="l00040"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#ac8fce8264aaf924f284a59bd60f5b572">00040</a>     <span class="keywordtype">int</span>  spare[8];          <span class="comment">// for future use</span>
-<a name="l00041"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#ac634622c2cba6a784a1af2590496db7d">00041</a>     <span class="keywordtype">char</span> cspare[32];        <span class="comment">// for future use</span>
-<a name="l00042"></a>00042   }<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html">SHM_HEADER</a>;
-<a name="l00043"></a>00043   
-<a name="l00044"></a><a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759">00044</a>   <span class="keyword">enum</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759">DAQ_ENUM</a>
-<a name="l00045"></a>00045   {
-<a name="l00046"></a><a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">00046</a>     <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a> = 256*256*128
-<a name="l00047"></a>00047   };
-<a name="l00048"></a>00048 
-<a name="l00049"></a>00049 <span class="preprocessor">#ifdef RLWIN32  </span>
-<a name="l00050"></a>00050 <span class="preprocessor"></span>  <a class="code" href="classrlDataAcquisition.html#af95ae72f623c1ee510d53764da551d94">rlDataAcquisition</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *mailbox=<span class="stringliteral">&quot;c:\\automation\\mbx\\dataacquisition.mbx&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *shared_memory=<span class="stringliteral">&quot;c:\\automation\\shm\\dataacquisition.shm&quot;</span>, <span class="keywordtype">long</span> shared_memory_size=65536);
-<a name="l00051"></a>00051 <span class="preprocessor">#else</span>
-<a name="l00052"></a>00052 <span class="preprocessor"></span>  <a class="code" href="classrlDataAcquisition.html#af95ae72f623c1ee510d53764da551d94">rlDataAcquisition</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *mailbox=<span class="stringliteral">&quot;/srv/automation/mbx/dataacquisition.mbx&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *shared_memory=<span class="stringliteral">&quot;/srv/automation/shm/dataacquisition.shm&quot;</span>, <span class="keywordtype">long</span> shared_memory_size=65536);
-<a name="l00053"></a>00053 <span class="preprocessor">#endif</span>
-<a name="l00054"></a>00054 <span class="preprocessor"></span>  <span class="keyword">virtual</span>    <a class="code" href="classrlDataAcquisition.html#a6ed992fcfc67061aaf863d06d3768b8b">~rlDataAcquisition</a>();
-<a name="l00055"></a>00055   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#aa6124d923c3cff962901a5771ef79239">stringValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable);
-<a name="l00056"></a>00056   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a4b5b5ea2cd7369f9cd846cf0b804ea95">intValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable);
-<a name="l00057"></a>00057   <span class="keywordtype">float</span>       <a class="code" href="classrlDataAcquisition.html#a722b4d84bd630435dc91793a95951034">floatValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable);
-<a name="l00058"></a>00058   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#ae6106249f2d90554e5c14a9261c443b8">writeStringValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);
-<a name="l00059"></a>00059   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#ab9772675aa4efe737c0dfa531f3bed18">writeIntValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable, <span class="keywordtype">int</span> value);
-<a name="l00060"></a>00060   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a755a42b4937326bdad8c5b7a2245bcc4">writeFloatValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable, <span class="keywordtype">float</span> value);
-<a name="l00061"></a>00061   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a3f91544a3db35cd18fdee3268025f6dd">readErrorCount</a>();
-<a name="l00062"></a>00062   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#ab83f7948efacdd7420b9acd7fb0cb763">writeErrorCount</a>();
-<a name="l00063"></a>00063   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a5cdcfa9524275ce0b677ab1be5f17cb3">firstVariable</a>();
-<a name="l00064"></a>00064   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a280153f2cad74a08acf1d342d608eb52">nextVariable</a>();
-<a name="l00065"></a>00065   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a814d0932030d5c06faebe12a844e6dba">shmStatus</a>(); <span class="comment">// 0 if shared memory is ok | DAQ_ERROR if shared memory is not ok</span>
-<a name="l00066"></a>00066 
-<a name="l00067"></a>00067 <span class="keyword">private</span>:
-<a name="l00068"></a><a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">00068</a>   <a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html">SHM_HEADER</a>     *<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>;
-<a name="l00069"></a><a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">00069</a>   <span class="keyword">const</span> <span class="keywordtype">char</span>     *<a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">shmvalues</a>;
-<a name="l00070"></a><a class="code" href="classrlDataAcquisition.html#a1a88c92e025b26a0ddea98218fbe0982">00070</a>   <a class="code" href="classrlMailbox.html">rlMailbox</a>      *<a class="code" href="classrlDataAcquisition.html#a1a88c92e025b26a0ddea98218fbe0982">mbx</a>;
-<a name="l00071"></a><a class="code" href="classrlDataAcquisition.html#af72c7bbf4626ed70100e5cfa2cd48a28">00071</a>   <a class="code" href="classrlSharedMemory.html">rlSharedMemory</a> *<a class="code" href="classrlDataAcquisition.html#af72c7bbf4626ed70100e5cfa2cd48a28">shm</a>;
-<a name="l00072"></a><a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">00072</a>   <span class="keywordtype">int</span>             <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a>;
-<a name="l00073"></a>00073 };
-<a name="l00074"></a>00074 
-<a name="l00075"></a>00075 <span class="preprocessor">#endif</span>
-<a name="l00076"></a>00076 <span class="preprocessor"></span>
+<a name="l00040"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a63363c7709a725667b182acd4e41fe24">00040</a>     <span class="keywordtype">int</span>  <a class="code" href="classrlDataAcquisition.html#abc05b8d37c72db4007b2a514f1190e06">lifeCounter</a>;       <span class="comment">// 0...65536 incremented on each cycle</span>
+<a name="l00041"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a9a97405b1c42ec32a5f2078389959608">00041</a>     <span class="keywordtype">int</span>  spare[7];          <span class="comment">// for future use</span>
+<a name="l00042"></a><a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#ac634622c2cba6a784a1af2590496db7d">00042</a>     <span class="keywordtype">char</span> cspare[32];        <span class="comment">// for future use</span>
+<a name="l00043"></a>00043   }<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html">SHM_HEADER</a>;
+<a name="l00044"></a>00044   
+<a name="l00045"></a><a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759">00045</a>   <span class="keyword">enum</span> <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759">DAQ_ENUM</a>
+<a name="l00046"></a>00046   {
+<a name="l00047"></a><a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">00047</a>     <a class="code" href="classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b">DAQ_ERROR</a> = 256*256*128
+<a name="l00048"></a>00048   };
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050 <span class="preprocessor">#ifdef RLWIN32  </span>
+<a name="l00051"></a>00051 <span class="preprocessor"></span>  <a class="code" href="classrlDataAcquisition.html#af95ae72f623c1ee510d53764da551d94">rlDataAcquisition</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *mailbox=<span class="stringliteral">&quot;c:\\automation\\mbx\\dataacquisition.mbx&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *shared_memory=<span class="stringliteral">&quot;c:\\automation\\shm\\dataacquisition.shm&quot;</span>, <span class="keywordtype">long</span> shared_memory_size=65536);
+<a name="l00052"></a>00052 <span class="preprocessor">#else</span>
+<a name="l00053"></a>00053 <span class="preprocessor"></span>  <a class="code" href="classrlDataAcquisition.html#af95ae72f623c1ee510d53764da551d94">rlDataAcquisition</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *mailbox=<span class="stringliteral">&quot;/srv/automation/mbx/dataacquisition.mbx&quot;</span>, <span class="keyword">const</span> <span class="keywordtype">char</span> *shared_memory=<span class="stringliteral">&quot;/srv/automation/shm/dataacquisition.shm&quot;</span>, <span class="keywordtype">long</span> shared_memory_size=65536);
+<a name="l00054"></a>00054 <span class="preprocessor">#endif</span>
+<a name="l00055"></a>00055 <span class="preprocessor"></span>  <span class="keyword">virtual</span>    <a class="code" href="classrlDataAcquisition.html#a6ed992fcfc67061aaf863d06d3768b8b">~rlDataAcquisition</a>();
+<a name="l00056"></a>00056   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#aa6124d923c3cff962901a5771ef79239">stringValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable);
+<a name="l00057"></a>00057   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a4b5b5ea2cd7369f9cd846cf0b804ea95">intValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable);
+<a name="l00058"></a>00058   <span class="keywordtype">float</span>       <a class="code" href="classrlDataAcquisition.html#a722b4d84bd630435dc91793a95951034">floatValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable);
+<a name="l00059"></a>00059   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#ae6106249f2d90554e5c14a9261c443b8">writeStringValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable, <span class="keyword">const</span> <span class="keywordtype">char</span> *value);
+<a name="l00060"></a>00060   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#ab9772675aa4efe737c0dfa531f3bed18">writeIntValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable, <span class="keywordtype">int</span> value);
+<a name="l00061"></a>00061   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a755a42b4937326bdad8c5b7a2245bcc4">writeFloatValue</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *variable, <span class="keywordtype">float</span> value);
+<a name="l00062"></a>00062   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a3f91544a3db35cd18fdee3268025f6dd">readErrorCount</a>();
+<a name="l00063"></a>00063   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#ab83f7948efacdd7420b9acd7fb0cb763">writeErrorCount</a>();
+<a name="l00064"></a>00064   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#abc05b8d37c72db4007b2a514f1190e06">lifeCounter</a>();
+<a name="l00065"></a>00065   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a5cdcfa9524275ce0b677ab1be5f17cb3">firstVariable</a>();
+<a name="l00066"></a>00066   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlDataAcquisition.html#a280153f2cad74a08acf1d342d608eb52">nextVariable</a>();
+<a name="l00067"></a>00067   <span class="keywordtype">int</span>         <a class="code" href="classrlDataAcquisition.html#a814d0932030d5c06faebe12a844e6dba">shmStatus</a>(); <span class="comment">// 0 if shared memory is ok | DAQ_ERROR if shared memory is not ok</span>
+<a name="l00068"></a>00068 
+<a name="l00069"></a>00069 <span class="keyword">private</span>:
+<a name="l00070"></a><a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">00070</a>   <a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html">SHM_HEADER</a>     *<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>;
+<a name="l00071"></a><a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">00071</a>   <span class="keyword">const</span> <span class="keywordtype">char</span>     *<a class="code" href="classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917">shmvalues</a>;
+<a name="l00072"></a><a class="code" href="classrlDataAcquisition.html#a1a88c92e025b26a0ddea98218fbe0982">00072</a>   <a class="code" href="classrlMailbox.html">rlMailbox</a>      *<a class="code" href="classrlDataAcquisition.html#a1a88c92e025b26a0ddea98218fbe0982">mbx</a>;
+<a name="l00073"></a><a class="code" href="classrlDataAcquisition.html#af72c7bbf4626ed70100e5cfa2cd48a28">00073</a>   <a class="code" href="classrlSharedMemory.html">rlSharedMemory</a> *<a class="code" href="classrlDataAcquisition.html#af72c7bbf4626ed70100e5cfa2cd48a28">shm</a>;
+<a name="l00074"></a><a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">00074</a>   <span class="keywordtype">int</span>             <a class="code" href="classrlDataAcquisition.html#aff1a8972bdb5c95c648046e078bb99da">iCurrent</a>;
+<a name="l00075"></a>00075 };
+<a name="l00076"></a>00076 
+<a name="l00077"></a>00077 <span class="preprocessor">#endif</span>
+<a name="l00078"></a>00078 <span class="preprocessor"></span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Aug 30 20:16:15 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Sep 20 09:16:15 2010 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

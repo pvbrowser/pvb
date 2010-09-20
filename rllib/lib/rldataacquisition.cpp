@@ -117,6 +117,12 @@ int rlDataAcquisition::writeErrorCount()
   return shmheader->writeErrorCount;
 }
 
+int rlDataAcquisition::lifeCounter()
+{
+  if(shmheader == NULL) return DAQ_ERROR;
+  return shmheader->lifeCounter;
+}
+
 const char *rlDataAcquisition::firstVariable()
 {
   const char *cptr;

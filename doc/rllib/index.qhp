@@ -1091,6 +1091,7 @@
       <keyword name="writeFloatValue" id="rlDataAcquisition::writeFloatValue" ref="classrlDataAcquisition.html" />
       <keyword name="readErrorCount" id="rlDataAcquisition::readErrorCount" ref="classrlDataAcquisition.html" />
       <keyword name="writeErrorCount" id="rlDataAcquisition::writeErrorCount" ref="classrlDataAcquisition.html" />
+      <keyword name="lifeCounter" id="rlDataAcquisition::lifeCounter" ref="classrlDataAcquisition.html" />
       <keyword name="firstVariable" id="rlDataAcquisition::firstVariable" ref="classrlDataAcquisition.html" />
       <keyword name="nextVariable" id="rlDataAcquisition::nextVariable" ref="classrlDataAcquisition.html" />
       <keyword name="shmStatus" id="rlDataAcquisition::shmStatus" ref="classrlDataAcquisition.html" />
@@ -1107,6 +1108,7 @@
       <keyword name="numItems" id="rlDataAcquisition::SHM_HEADER::numItems" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
       <keyword name="readErrorCount" id="rlDataAcquisition::SHM_HEADER::readErrorCount" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
       <keyword name="writeErrorCount" id="rlDataAcquisition::SHM_HEADER::writeErrorCount" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
+      <keyword name="lifeCounter" id="rlDataAcquisition::SHM_HEADER::lifeCounter" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
       <keyword name="spare" id="rlDataAcquisition::SHM_HEADER::spare" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
       <keyword name="cspare" id="rlDataAcquisition::SHM_HEADER::cspare" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
       <keyword name="rlDataAcquisitionProvider" id="rlDataAcquisitionProvider" ref="classrlDataAcquisitionProvider.html" />
@@ -1123,8 +1125,10 @@
       <keyword name="setFloatValue" id="rlDataAcquisitionProvider::setFloatValue" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="readErrorCount" id="rlDataAcquisitionProvider::readErrorCount" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="writeErrorCount" id="rlDataAcquisitionProvider::writeErrorCount" ref="classrlDataAcquisitionProvider.html" />
+      <keyword name="lifeCounter" id="rlDataAcquisitionProvider::lifeCounter" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="setReadErrorCount" id="rlDataAcquisitionProvider::setReadErrorCount" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="setWriteErrorCount" id="rlDataAcquisitionProvider::setWriteErrorCount" ref="classrlDataAcquisitionProvider.html" />
+      <keyword name="setLifeCounter" id="rlDataAcquisitionProvider::setLifeCounter" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="shmStatus" id="rlDataAcquisitionProvider::shmStatus" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="setAllowAddValues" id="rlDataAcquisitionProvider::setAllowAddValues" ref="classrlDataAcquisitionProvider.html" />
       <keyword name="shmheader" id="rlDataAcquisitionProvider::shmheader" ref="classrlDataAcquisitionProvider.html" />
@@ -1141,6 +1145,7 @@
       <keyword name="numItems" id="rlDataAcquisitionProvider::SHM_HEADER::numItems" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
       <keyword name="readErrorCount" id="rlDataAcquisitionProvider::SHM_HEADER::readErrorCount" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
       <keyword name="writeErrorCount" id="rlDataAcquisitionProvider::SHM_HEADER::writeErrorCount" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
+      <keyword name="lifeCounter" id="rlDataAcquisitionProvider::SHM_HEADER::lifeCounter" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
       <keyword name="spare" id="rlDataAcquisitionProvider::SHM_HEADER::spare" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
       <keyword name="cspare" id="rlDataAcquisitionProvider::SHM_HEADER::cspare" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
       <keyword name="rlDataProvider" id="rlDataProvider" ref="classrlDataProvider.html" />
