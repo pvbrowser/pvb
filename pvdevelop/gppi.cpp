@@ -263,7 +263,7 @@ static void generate(const char *name)
   fprintf(fout,"%s","      if(ret!=0) printf(\"daveWriteBytes ret=%d\\n\",ret);\n");  
   if(eventport != -1)
   {
-    fprintf(fout,"%s","      if(ret != 0) { rlEvent(rlWarning,\"daveWriteBytes ret=%d\",ret); }\n");
+    fprintf(fout,"%s","      if(ret != 0) { rlEvent(rlWarning,\"daveWriteBytes ret=%d slave=%d\",ret,slave); }\n");
   }  
   fprintf(fout,"%s","    }\n");
   fprintf(fout,"%s","  }\n");
@@ -371,8 +371,8 @@ static void generate(const char *name)
 
 int gppi(const char *name)
 {
-  init(name);
   strcpy(target,"ppidaemon");
+  init(name);
   generate(name);
   return 0;
 }

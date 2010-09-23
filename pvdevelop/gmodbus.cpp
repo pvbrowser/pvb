@@ -196,6 +196,10 @@ static void init(const char *name)
       cyclecnt++;
     }
   }
+  fprintf(fout,"\n");
+  fprintf(fout,"#define %s_LIFE_COUNTER_BASE %d\n",target,base); base += 2;
+  fprintf(fout,"#define %s_READ_ERROR_COUNT_BASE %d\n",target,base); base += 2;
+  fprintf(fout,"#define %s_WRITE_ERROR_COUNT_BASE %d\n",target,base); base += 2;
   fprintf(fout,"\n#define %s_SHARED_MEMORY_SIZE %d\n",target,base);
 
   fclose(fp);
@@ -234,6 +238,7 @@ static void generate(const char *name)
   {
     fprintf(fout,"%s","#include \"rlevent.h\"\n");
   }
+  fprintf(fout,"#include \"modbusdaemon.h\"\n");
   fprintf(fout,"\n");
   if(baudrate <= 0) baudrate = 9600;
   fprintf(fout,"#define MODBUS_IDLETIME (4*1000)/%d\n",baudrate/100);
@@ -258,6 +263,9 @@ static void generate(const char *name)
   fprintf(fout,"rlMailbox      mbx(\"%s\");\n",mailbox);
   fprintf(fout,"rlThread       thread;\n");
   fprintf(fout,"rlThread       watchdog;\n");
+  fprintf(fout,"short          lifeCounter     = 0;\n");
+  fprintf(fout,"short          readErrorCount  = 0;\n");
+  fprintf(fout,"short          writeErrorCount = 0;\n");
   fprintf(fout,"\n");
   fprintf(fout,"// watchdog\n");
   fprintf(fout,"static const char *av0 = \"\";\n");
@@ -299,10 +307,16 @@ static void generate(const char *name)
   if(communication != SERIAL) fprintf(fout,"    if(ret != rlModbus::MODBUS_SUCCESS) sock.disconnect();\n");
   if(eventport != -1)
   {
-    fprintf(fout,"%s","    if(ret <= 0) { rlEvent(rlWarning,\"modbus.response mbx ret=%d\",ret); }\n");
+    fprintf(fout,"%s","    if(ret <= 0) { rlEvent(rlWarning,\"modbus.response mbx ret=%d slave=%d function=%d\",ret, slave, function); }\n");
   }  
   fprintf(fout,"    rlsleep(MODBUS_IDLETIME);\n");
   fprintf(fout,"    thread.unlock();\n");
+  fprintf(fout,"    if(ret < 0)\n");
+  fprintf(fout,"    {\n");
+  fprintf(fout,"      writeErrorCount++;\n");
+  fprintf(fout,"      if(writeErrorCount >= 256*128) writeErrorCount = 0;\n");
+  fprintf(fout,"      shm.write(modbusdaemon_WRITE_ERROR_COUNT_BASE,&writeErrorCount,2);\n");
+  fprintf(fout,"    }\n");
   strcpy(line, "    printf(\"mbx ret=%d slave=%d function=%d buf[2]=%d\\n\",ret,slave,function,buf[2]);");
   fprintf(fout,"%s\n",line);
   fprintf(fout,"  }\n");
@@ -324,9 +338,15 @@ static void generate(const char *name)
   if(communication == SOCKET) fprintf(fout,"  if(ret < 0) sock.disconnect();\n");
   fprintf(fout,"  thread.unlock();\n");
   fprintf(fout,"  if(ret > 0) shm.write(offset,data,ret);\n");
+  fprintf(fout,"  else\n");
+  fprintf(fout,"  {\n");
+  fprintf(fout,"    readErrorCount++;\n");
+  fprintf(fout,"    if(readErrorCount >= 256*128) readErrorCount = 0;\n");
+  fprintf(fout,"    shm.write(modbusdaemon_READ_ERROR_COUNT_BASE,&readErrorCount,2);\n");
+  fprintf(fout,"  }\n");
   if(eventport != -1)
   {
-    fprintf(fout,"%s","  if(ret <= 0) { rlEvent(rlWarning,\"modbus.response cycle ret=%d\",ret); rlsleep(5000); }\n");
+    fprintf(fout,"%s","  if(ret <= 0) { rlEvent(rlWarning,\"modbus.response cycle ret=%d slave=%d function=%d start_adr=%d num_register=%d\",ret,slave,function,start_adr,num_register); rlsleep(5000); }\n");
   }  
   strcpy(line, "  printf(\"cycle ret=%d slave=%d function=%d data[0]=%d\\n\",ret,slave,function,data[0]);");
   fprintf(fout,"%s\n",line);
@@ -374,8 +394,14 @@ static void generate(const char *name)
   fprintf(fout,"  thread.create(reader,NULL);\n");
   fprintf(fout,"  watchdog.create(watchdogthread,NULL);\n");
   fprintf(fout,"\n");
+  fprintf(fout,"  shm.write(modbusdaemon_LIFE_COUNTER_BASE,&lifeCounter,2);\n");
+  fprintf(fout,"  shm.write(modbusdaemon_READ_ERROR_COUNT_BASE,&readErrorCount,2);\n");
+  fprintf(fout,"  shm.write(modbusdaemon_WRITE_ERROR_COUNT_BASE,&writeErrorCount,2);\n");
   fprintf(fout,"  while(1)\n");
   fprintf(fout,"  {\n");
+  fprintf(fout,"    lifeCounter++;\n");
+  fprintf(fout,"    if(lifeCounter >= 256*128) lifeCounter = 0;\n");
+  fprintf(fout,"    shm.write(modbusdaemon_LIFE_COUNTER_BASE,&lifeCounter,2);\n");
   fprintf(fout,"    offset = 0;\n");
   fprintf(fout,"    //    modbusCycle(offset, slave, function, start_adr, num_register);\n");
   //fprintf(fout,"    ret = modbusCycle(offset, 1, rlModbus::ReadInputStatus, 0, 10);\n");
@@ -426,8 +452,8 @@ static void generate(const char *name)
 
 int gmodbus(const char *name)
 {
-  init(name);
   strcpy(target,"modbusdaemon");
+  init(name);
   generate(name);
   return 0;
 }

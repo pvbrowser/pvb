@@ -277,7 +277,7 @@ static void generate(const char *name)
   fprintf(fout,"%s","  thread.unlock();\n");
   if(eventport != -1)
   {
-    fprintf(fout,"%s","  if(ret < 0) { rlEvent(rlWarning,\"fetch ret=%d\",ret); rlsleep(5000); }\n");
+    fprintf(fout,"%s","  if(ret < 0) { rlEvent(rlWarning,\"fetch ret=%d slave=%d\",ret,slave); rlsleep(5000); }\n");
   }  
   fprintf(fout,"%s","  if(ret > 0) shm.write(offset,data,ret);\n");
   fprintf(fout,"%s","  else        printf(\"E\"); // Error\n");
@@ -382,8 +382,8 @@ static void generate(const char *name)
 
 int gsiemens(const char *name)
 {
-  init(name);
   strcpy(target,"siemensdaemon");
+  init(name);
   generate(name);
   return 0;
 }
