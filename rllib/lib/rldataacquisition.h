@@ -59,8 +59,11 @@ public:
   int         writeStringValue(const char *variable, const char *value);
   int         writeIntValue(const char *variable, int value);
   int         writeFloatValue(const char *variable, float value);
+  /*! Incremented by the daemon on each read error */
   int         readErrorCount();
+  /*! Incremented by the daemon on each write error */
   int         writeErrorCount();
+  /*! Incremented by the daemon in each cycle */
   int         lifeCounter();
   const char *firstVariable();
   const char *nextVariable();
