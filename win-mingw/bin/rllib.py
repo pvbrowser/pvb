@@ -1739,6 +1739,7 @@ class rlDataAcquisition(_object):
     def writeFloatValue(*args): return _rllib.rlDataAcquisition_writeFloatValue(*args)
     def readErrorCount(*args): return _rllib.rlDataAcquisition_readErrorCount(*args)
     def writeErrorCount(*args): return _rllib.rlDataAcquisition_writeErrorCount(*args)
+    def lifeCounter(*args): return _rllib.rlDataAcquisition_lifeCounter(*args)
     def firstVariable(*args): return _rllib.rlDataAcquisition_firstVariable(*args)
     def nextVariable(*args): return _rllib.rlDataAcquisition_nextVariable(*args)
     def shmStatus(*args): return _rllib.rlDataAcquisition_shmStatus(*args)
@@ -1769,6 +1770,9 @@ class rlDataAcquisition_SHM_HEADER(_object):
     __swig_setmethods__["writeErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_set
     __swig_getmethods__["writeErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_get
     if _newclass:writeErrorCount = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_get, _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_set)
+    __swig_setmethods__["lifeCounter"] = _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_set
+    __swig_getmethods__["lifeCounter"] = _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_get
+    if _newclass:lifeCounter = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_get, _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_set)
     __swig_setmethods__["spare"] = _rllib.rlDataAcquisition_SHM_HEADER_spare_set
     __swig_getmethods__["spare"] = _rllib.rlDataAcquisition_SHM_HEADER_spare_get
     if _newclass:spare = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_spare_get, _rllib.rlDataAcquisition_SHM_HEADER_spare_set)
@@ -1808,8 +1812,10 @@ class rlDataAcquisitionProvider(_object):
     def setFloatValue(*args): return _rllib.rlDataAcquisitionProvider_setFloatValue(*args)
     def readErrorCount(*args): return _rllib.rlDataAcquisitionProvider_readErrorCount(*args)
     def writeErrorCount(*args): return _rllib.rlDataAcquisitionProvider_writeErrorCount(*args)
+    def lifeCounter(*args): return _rllib.rlDataAcquisitionProvider_lifeCounter(*args)
     def setReadErrorCount(*args): return _rllib.rlDataAcquisitionProvider_setReadErrorCount(*args)
     def setWriteErrorCount(*args): return _rllib.rlDataAcquisitionProvider_setWriteErrorCount(*args)
+    def setLifeCounter(*args): return _rllib.rlDataAcquisitionProvider_setLifeCounter(*args)
     def shmStatus(*args): return _rllib.rlDataAcquisitionProvider_shmStatus(*args)
     def setAllowAddValues(*args): return _rllib.rlDataAcquisitionProvider_setAllowAddValues(*args)
 rlDataAcquisitionProvider_swigregister = _rllib.rlDataAcquisitionProvider_swigregister
@@ -1839,6 +1845,9 @@ class rlDataAcquisitionProvider_SHM_HEADER(_object):
     __swig_setmethods__["writeErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_set
     __swig_getmethods__["writeErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_get
     if _newclass:writeErrorCount = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_set)
+    __swig_setmethods__["lifeCounter"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_set
+    __swig_getmethods__["lifeCounter"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_get
+    if _newclass:lifeCounter = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_set)
     __swig_setmethods__["spare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_set
     __swig_getmethods__["spare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_get
     if _newclass:spare = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_set)

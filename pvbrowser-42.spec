@@ -1,6 +1,6 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   4.5.3
+Version:   4.5.4
 Release:   0
 Group:     Applications/Browser
 #Copyright: GPL with the possibility of commercial use
