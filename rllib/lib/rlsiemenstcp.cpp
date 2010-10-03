@@ -408,6 +408,7 @@ int rlSiemensTCP::fetch(int org, int dbnr, int start_adr, int len, unsigned char
   }
   else
   {
+    rlDebugPrintf("fetch:starting org=%d dbnr=%d start_adr=%d len=%d\n", org, dbnr, start_adr, len);
     i = 0;
     pdu[i++] = 0x02;  // [0]
     pdu[i++] = 0xF0;  // [0]
@@ -439,11 +440,27 @@ int rlSiemensTCP::fetch(int org, int dbnr, int start_adr, int len, unsigned char
     pdu[i++] = ((start_adr*8)/256) & 0x0ff; //0x00;  // [12] start adr/bits
     pdu[i++] =  (start_adr*8)      & 0x0ff; //0x00;  // [13] start adr/bits
     ret = write_iso(pdu,i);
-    if(ret < 0) return ret;
+    if(ret < 0)
+    {
+      rlDebugPrintf("fetch:write_iso error ret==%d -> return -1\n", ret);
+      return ret;
+    }  
     ret = read_iso(pdu);
-    if(ret < 0) return ret;    
-    if(pdu[15] != 0x04) return -1;
-    if(pdu[16] != 0x01) return -1;
+    if(ret < 0)
+    {
+      rlDebugPrintf("fetch:read_iso error ret==%d -> return -1\n", ret);
+      return ret;
+    }  
+    if(pdu[15] != 0x04)
+    {
+      rlDebugPrintf("fetch:pdu[15]=%d is not equal 0x04-> return -1\n", pdu[15]);
+      return -1;
+    }  
+    if(pdu[16] != 0x01)
+    {
+      rlDebugPrintf("fetch:pdu[16]=%d is not equal 0x04-> return -1\n", pdu[16]);
+      return -1;
+    }  
     i = 21;
     if(ret < i+len_byte) return -1;
     for(int ibuf = 0; ibuf < len_byte; ibuf++)
@@ -451,6 +468,7 @@ int rlSiemensTCP::fetch(int org, int dbnr, int start_adr, int len, unsigned char
       buf[ibuf] = pdu[i++];
     }
   }
+  rlDebugPrintf("fetch:success len_byte=%d\n", len_byte);
 
   return len_byte;
 }
@@ -460,13 +478,38 @@ int rlSiemensTCP::read_iso(unsigned char *buf)
   int i,ret,len;
 
   ret = rlSocket::read(&ih,sizeof(ih),TIMEOUT);
-  if(ret < 0)                 { rlSocket::disconnect(); return ret; }
-  if(ih.version != 3)         { rlSocket::disconnect(); return -1;  }
+  if(ret < 0)                
+  { 
+    rlDebugPrintf("read_iso:failure to read iso header ret=%d -> disconnecting\n", ret);
+    rlSocket::disconnect(); 
+    return ret; 
+  }
+  if(ih.version != 3)
+  { 
+    rlDebugPrintf("read_iso:header vesion mismatch version==%d -> disconnecting\n", ret);
+    rlSocket::disconnect(); 
+    return -1;  
+  }
   len = ih.length_high*256 + ih.length_low - 4;
-  if(len <= 0)                { rlSocket::disconnect(); return -1;  }
-  if(len > (int) sizeof(pdu)) { rlSocket::disconnect(); return -1;  }
+  if(len <= 0)                
+  { 
+    rlDebugPrintf("read_iso:len==%d from iso header is negative -> disconnecting\n", len);
+    rlSocket::disconnect(); 
+    return -1;  
+  }
+  if(len > (int) sizeof(pdu))
+  { 
+    rlDebugPrintf("read_iso:len==%d from iso header is larger than max PDU size -> disconnecting\n", len);
+    rlSocket::disconnect(); 
+    return -1;  
+  }
   ret = rlSocket::read(buf,len,TIMEOUT);
-  if(ret < 0)                 { rlSocket::disconnect(); return ret; }
+  if(ret < 0)                 
+  { 
+    rlDebugPrintf("read_iso:read buf got timeout -> disconnecting\n");
+    rlSocket::disconnect(); 
+    return ret; 
+  }
   if(rlDebugPrintfState != 0)
   {
     ::printf("read_iso() len=%d\n", len);
@@ -487,9 +530,19 @@ int rlSiemensTCP::write_iso(unsigned char *buf, int len)
   ih.length_high = (len+4) / 256;
   ih.length_low  = (len+4) & 0x0ff;
   ret = rlSocket::write(&ih,sizeof(ih));
-  if(ret < 0) { rlSocket::disconnect(); return ret; }  
+  if(ret < 0)
+  { 
+    rlDebugPrintf("write_iso:failure to write iso header -> disconnecting\n");
+    rlSocket::disconnect(); 
+    return ret; 
+  }  
   ret = rlSocket::write(buf,len);
-  if(ret < 0) { rlSocket::disconnect(); return ret; }
+  if(ret < 0)
+  { 
+    rlDebugPrintf("write_iso:failure to write buf -> disconnecting\n");
+    rlSocket::disconnect(); 
+    return ret; 
+  }
   if(rlDebugPrintfState != 0)
   {
     ::printf("write_iso() len=%d\n", len);
