@@ -59,8 +59,6 @@
       <keyword name="OLDENGLISH" id="processviewserver.h::OLDENGLISH" ref="processviewserver_8h.html" />
       <keyword name="SYSTEM" id="processviewserver.h::SYSTEM" ref="processviewserver_8h.html" />
       <keyword name="ANYSTYLE" id="processviewserver.h::ANYSTYLE" ref="processviewserver_8h.html" />
-      <keyword name="NORMAL" id="processviewserver.h::NORMAL" ref="processviewserver_8h.html" />
-      <keyword name="ITALIC" id="processviewserver.h::ITALIC" ref="processviewserver_8h.html" />
       <keyword name="RED" id="processviewserver.h::RED" ref="processviewserver_8h.html" />
       <keyword name="GREEN" id="processviewserver.h::GREEN" ref="processviewserver_8h.html" />
       <keyword name="BLUE" id="processviewserver.h::BLUE" ref="processviewserver_8h.html" />
@@ -78,10 +76,6 @@
       <keyword name="DARK_CYAN" id="processviewserver.h::DARK_CYAN" ref="processviewserver_8h.html" />
       <keyword name="DARK_YELLOW" id="processviewserver.h::DARK_YELLOW" ref="processviewserver_8h.html" />
       <keyword name="DARK_BLUE" id="processviewserver.h::DARK_BLUE" ref="processviewserver_8h.html" />
-      <keyword name="HORIZONTAL" id="processviewserver.h::HORIZONTAL" ref="processviewserver_8h.html" />
-      <keyword name="VERTICAL" id="processviewserver.h::VERTICAL" ref="processviewserver_8h.html" />
-      <keyword name="Horizontal" id="processviewserver.h::Horizontal" ref="processviewserver_8h.html" />
-      <keyword name="Vertical" id="processviewserver.h::Vertical" ref="processviewserver_8h.html" />
       <keyword name="DEFAULT_LANGUAGE" id="processviewserver.h::DEFAULT_LANGUAGE" ref="processviewserver_8h.html" />
       <keyword name="PARAM_P" id="processviewserver.h::PARAM_P" ref="processviewserver_8h.html" />
       <keyword name="INITIALIZE_GL" id="processviewserver.h::INITIALIZE_GL" ref="processviewserver_8h.html" />
@@ -501,8 +495,6 @@
       <keyword name="OLDENGLISH" id="DefinesAndEnums::OLDENGLISH" ref="group__DefinesAndEnums.html" />
       <keyword name="SYSTEM" id="DefinesAndEnums::SYSTEM" ref="group__DefinesAndEnums.html" />
       <keyword name="ANYSTYLE" id="DefinesAndEnums::ANYSTYLE" ref="group__DefinesAndEnums.html" />
-      <keyword name="NORMAL" id="DefinesAndEnums::NORMAL" ref="group__DefinesAndEnums.html" />
-      <keyword name="ITALIC" id="DefinesAndEnums::ITALIC" ref="group__DefinesAndEnums.html" />
       <keyword name="RED" id="DefinesAndEnums::RED" ref="group__DefinesAndEnums.html" />
       <keyword name="GREEN" id="DefinesAndEnums::GREEN" ref="group__DefinesAndEnums.html" />
       <keyword name="BLUE" id="DefinesAndEnums::BLUE" ref="group__DefinesAndEnums.html" />
@@ -520,10 +512,6 @@
       <keyword name="DARK_CYAN" id="DefinesAndEnums::DARK_CYAN" ref="group__DefinesAndEnums.html" />
       <keyword name="DARK_YELLOW" id="DefinesAndEnums::DARK_YELLOW" ref="group__DefinesAndEnums.html" />
       <keyword name="DARK_BLUE" id="DefinesAndEnums::DARK_BLUE" ref="group__DefinesAndEnums.html" />
-      <keyword name="HORIZONTAL" id="DefinesAndEnums::HORIZONTAL" ref="group__DefinesAndEnums.html" />
-      <keyword name="VERTICAL" id="DefinesAndEnums::VERTICAL" ref="group__DefinesAndEnums.html" />
-      <keyword name="Horizontal" id="DefinesAndEnums::Horizontal" ref="group__DefinesAndEnums.html" />
-      <keyword name="Vertical" id="DefinesAndEnums::Vertical" ref="group__DefinesAndEnums.html" />
       <keyword name="DEFAULT_LANGUAGE" id="DefinesAndEnums::DEFAULT_LANGUAGE" ref="group__DefinesAndEnums.html" />
       <keyword name="PARAM_P" id="DefinesAndEnums::PARAM_P" ref="group__DefinesAndEnums.html" />
       <keyword name="INITIALIZE_GL" id="DefinesAndEnums::INITIALIZE_GL" ref="group__DefinesAndEnums.html" />
@@ -615,6 +603,8 @@
       <keyword name="ALIGN_CENTER" id="DefinesAndEnums::ALIGN_CENTER" ref="group__DefinesAndEnums.html" />
       <keyword name="ALIGN_RIGHT" id="DefinesAndEnums::ALIGN_RIGHT" ref="group__DefinesAndEnums.html" />
       <keyword name="ALIGN_VERT_CENTER" id="DefinesAndEnums::ALIGN_VERT_CENTER" ref="group__DefinesAndEnums.html" />
+      <keyword name="NORMAL" id="DefinesAndEnums::NORMAL" ref="group__DefinesAndEnums.html" />
+      <keyword name="ITALIC" id="DefinesAndEnums::ITALIC" ref="group__DefinesAndEnums.html" />
       <keyword name="ShiftButton" id="DefinesAndEnums::ShiftButton" ref="group__DefinesAndEnums.html" />
       <keyword name="ControlButton" id="DefinesAndEnums::ControlButton" ref="group__DefinesAndEnums.html" />
       <keyword name="AltButton" id="DefinesAndEnums::AltButton" ref="group__DefinesAndEnums.html" />
@@ -717,6 +707,10 @@
       <keyword name="MDY" id="DefinesAndEnums::MDY" ref="group__DefinesAndEnums.html" />
       <keyword name="YMD" id="DefinesAndEnums::YMD" ref="group__DefinesAndEnums.html" />
       <keyword name="YDM" id="DefinesAndEnums::YDM" ref="group__DefinesAndEnums.html" />
+      <keyword name="Horizontal" id="DefinesAndEnums::Horizontal" ref="group__DefinesAndEnums.html" />
+      <keyword name="Vertical" id="DefinesAndEnums::Vertical" ref="group__DefinesAndEnums.html" />
+      <keyword name="HORIZONTAL" id="DefinesAndEnums::HORIZONTAL" ref="group__DefinesAndEnums.html" />
+      <keyword name="VERTICAL" id="DefinesAndEnums::VERTICAL" ref="group__DefinesAndEnums.html" />
       <keyword name="NoPen" id="DefinesAndEnums::NoPen" ref="group__DefinesAndEnums.html" />
       <keyword name="SolidLine" id="DefinesAndEnums::SolidLine" ref="group__DefinesAndEnums.html" />
       <keyword name="DashLine" id="DefinesAndEnums::DashLine" ref="group__DefinesAndEnums.html" />

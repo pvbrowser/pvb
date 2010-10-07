@@ -250,8 +250,11 @@ enum TextCursor {
 };
 
 /* font italic can be one of this */
-#define NORMAL 0
-#define ITALIC 1
+enum FontNormalItalic
+{
+  NORMAL = 0,
+  ITALIC = 1
+};
 
 /* insertion policies for QComboBox */
 enum Policy { NoInsertion=0, AtTop, AtCurrent, AtBottom, AfterCurrent, BeforeCurrent };
@@ -281,10 +284,17 @@ enum Mode2        { Hex=0, Dec, Oct, Bin };
 enum SegmentStyle { Outline=0, Filled, Flat };
 
 /* definitions for QSlider */
-#define HORIZONTAL 0
-#define VERTICAL   1
-#define Horizontal HORIZONTAL
-#define Vertical   VERTICAL
+enum ORIENTATION
+{
+  HORIZONTAL = 0,
+  VERTICAL   = 1
+};
+
+enum Orientation
+{
+  Horizontal = HORIZONTAL,
+  Vertical   = VERTICAL
+};
 
 /* definitions for MouseShape */
 enum MouseShape {
