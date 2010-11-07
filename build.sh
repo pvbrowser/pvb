@@ -78,10 +78,10 @@ cd pvbrowser
 ../qmake.sh pvbrowser.pro
 make $1
 cd ..
-# cd browserplugin
-# ../qmake.sh pvpluginmain.pro
-# make $1
-# cd ..
+cd browserplugin
+../qmake.sh pvpluginmain.pro
+make $1
+cd ..
 cd pvdevelop
 ../qmake.sh pvdevelop.pro
 make $1

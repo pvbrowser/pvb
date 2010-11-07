@@ -20,6 +20,8 @@ rm -f qrc_pvbrowser.cpp
 cd ..
 
 cd browserplugin
+rm -f *.dll
+rm -f *.so
 rm -f *.o
 rm -f moc_*
 rm -f ui_*.h

@@ -202,7 +202,9 @@ MainWindow::MainWindow()
   // no problem on linux
   // we get more CPU time if we continiously move the mouse over the widget
   // problem not solved jet
-  //mythread.start(QThread::HighestPriority); // this does not help also
+#ifdef BROWSERPLUGIN
+  mythread.start(QThread::HighestPriority); // this does not help also
+#endif
 
   // setup watchdog
   timer = new QTimer();

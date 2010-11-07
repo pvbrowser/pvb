@@ -8,7 +8,9 @@
 </head>
 <body>
 <p>This example demonstrates the combination of Javascript and a pvbrowser plugin.</p>
-  <object id="pvbrowserObject" TYPE=pvbrowser/pv WIDTH=640 HEIGHT=480 url="pv://pvbrowser.org"> 
+
+  <!-- <object id="pvbrowserObject" TYPE=pvbrowser/pv WIDTH=800 HEIGHT=520 url="pv://pvbrowser.org:5050"> -->
+  <object id="pvbrowserObject" TYPE="pvbrowser/pv" WIDTH=800 HEIGHT=520"> 
     <p>
       You do not have the pvbrowser plugin loaded. 
       Please 
@@ -19,7 +21,7 @@
 
   <script language=JavaScript>
   var pvbrowserObject = document.getElementById('pvbrowserObject');
-  <!-- pvbrowserObject.slotUrl('pv://localhost'); -->
+      pvbrowserObject.slotUrl('pv://pvbrowser.org:5050');
   </script>
 
   <!-- Special hookup code required for Internet Explorer -->

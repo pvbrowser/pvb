@@ -159,7 +159,7 @@ int main(int argc, char *argv[])
   app.processEvents();
   mainWin.slotReconnect();
   mainWin.slotTimeOut();
-  mainWin.mythread.start();
+  mainWin.mythread.start(QThread::HighestPriority);
   return app.exec();
 }
 #endif

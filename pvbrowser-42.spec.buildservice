@@ -226,9 +226,9 @@ cp    rllib/lib/setport.o                                 %{buildroot}/opt/pvb/r
 cp    designer/plugins/libpvb_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/README.txt                                 %{buildroot}/opt/pvb/designer/
-#cp    browserplugin/libpvbrowser.so                       %{buildroot}/opt/pvb/browserplugin/
-#cp    browserplugin/pvbrowserplugin-example.html          %{buildroot}/opt/pvb/browserplugin/
-#cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/browserplugin/
+cp    browserplugin/libpvbrowser.so                       %{buildroot}/opt/pvb/browserplugin/
+cp    browserplugin/pvbrowserplugin-example.html          %{buildroot}/opt/pvb/browserplugin/
+cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/browserplugin/
 
 %__mkdir_p %{buildroot}/usr/lib
 %__mkdir_p %{buildroot}%{_bindir}
@@ -430,7 +430,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/designer/plugins/libpvb_designer_plugin.so
 /opt/pvb/designer/plugins/libqwt_designer_plugin.so
 /opt/pvb/designer/README.txt
-#/opt/pvb/browserplugin/libpvbrowser.so
-#/opt/pvb/browserplugin/pvbrowserplugin-example.html
-#/opt/pvb/browserplugin/README.txt
+/opt/pvb/browserplugin/libpvbrowser.so
+/opt/pvb/browserplugin/pvbrowserplugin-example.html
+/opt/pvb/browserplugin/README.txt
 
