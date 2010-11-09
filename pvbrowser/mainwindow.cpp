@@ -1218,8 +1218,11 @@ void MainWindow::slotTimeOut()
   {
     if(opt.autoreconnect == 1) 
     {
-     isReconnect = 1;
-     slotReconnect();
+     if(strncmp(pvbtab[currentTab].url.toAscii(),"http://",7) != 0)
+     {
+       isReconnect = 1;
+       slotReconnect();
+     }  
     }
   }
 }
