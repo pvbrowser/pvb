@@ -9,6 +9,20 @@
 <body>
 <p>This example demonstrates the combination of Javascript and a pvbrowser plugin.</p>
 
+<p>Linux installation:</p> 
+<pre>
+# for 64 bit system
+cp /opt/pvb/browserplugin/libpvbrowser.so /usr/lib64/browser-plugins/ 
+# for 32 bit system
+cp /opt/pvb/browserplugin/libpvbrowser.so /usr/lib/browser-plugins/
+</pre>
+
+<p>Windows installation:<p>
+<pre>
+cd "c:\program files\mozilla firefox\plugins"
+copy "%PVBDIR%\win-mingw\bin\*.dll"
+</pre>
+
   <!-- <object id="pvbrowserObject" TYPE=pvbrowser/pv WIDTH=800 HEIGHT=520 url="pv://pvbrowser.org:5050"> -->
   <object id="pvbrowserObject" TYPE="pvbrowser/pv" WIDTH=800 HEIGHT=520"> 
     <p>

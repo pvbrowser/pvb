@@ -893,11 +893,13 @@ void MainWindow::slotWhatsThis()
 
 void MainWindow::slotWindow()
 {
-  int ret = 0;
+  int  ret = 0;
+  char buf[4096];
 #ifdef PVUNIX
-  char buf[1024];
   if(opt.arg_debug) printf("slotWindow opt.newwindow=%s\n",opt.newwindow);
   strcpy(buf,opt.newwindow);
+  strcat(buf," ");
+  strcat(buf,pvbtab[currentTab].url.toAscii());
   strcat(buf," &");
   //printf("before system(%s)\n",opt.newwindow);
   if(opt.newwindow[0] == '\0') ret = system("pvbrowser &");
@@ -906,16 +908,20 @@ void MainWindow::slotWindow()
 #endif
 
 #ifdef __VMS
-  char buf[1024];
   strcpy(buf,"spawn/nowait ");
   strcat(buf,opt.newwindow);
+  strcat(buf," ");
+  strcat(buf,pvbtab[currentTab].url.toAscii());
   if(opt.newwindow[0] == '\0') ret = system("spawn/nowait pvbrowser");
   else                         ret = system(buf);
 #endif
 
 #ifdef PVWIN32
+  strcpy(buf,opt.newwindow);
+  strcat(buf," ");
+  strcat(buf,pvbtab[currentTab].url.toAscii());
   if(opt.newwindow[0] == '\0') ret = mysystem("pvbrowser");
-  else                         ret = mysystem(opt.newwindow);
+  else                         ret = mysystem(buf);
 #endif
   if(ret < 0) return;
 }
@@ -982,6 +988,7 @@ void MainWindow::slotReconnect()
     }
     if(isReconnect == 0)
     {
+      isReconnect = 1;
       QString qbuf;
 #ifdef PVUNIX    
       qbuf.sprintf("xterm -e %s -L %d:%s:%d %s &",opt.ssh,opt.sshport,ssh_host,ssh_port,ssh_user_host);
