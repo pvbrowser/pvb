@@ -26,6 +26,10 @@
 #ifdef IS_OLD_MSVCPP
 #include <winsock.h>
 #else
+#if (_WIN32_WINNT < 0x0501)
+// mingw does not have helpers
+#undef AF_INET6_IS_AVAILABLE
+#endif
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #endif
