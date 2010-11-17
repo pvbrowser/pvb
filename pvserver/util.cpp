@@ -35,10 +35,10 @@
 #ifdef IS_OLD_MSVCPP
 #include <winsock.h>
 #else
-#if (_WIN32_WINNT < 0x0501)
-// mingw does not have helpers
-#undef AF_INET6_IS_AVAILABLE
-#endif
+//#if (_WIN32_WINNT < 0x0501)
+// mingw does not have helpers modify mingw header
+//#undef AF_INET6_IS_AVAILABLE
+//#endif
 #include <winsock2.h>
 #include <ws2tcpip.h>
 #endif
@@ -916,6 +916,30 @@ int i,ret;
     else if(strncmp(av[i],"-",1)                               == 0) printf("unknown option %s\n", av[i]);
   }
   return ret;
+}
+
+int pvClearMessageQueue(PARAM *p)
+{
+  struct timeval timeout;
+  fd_set wset,rset,eset;
+  int    ret,maxfdp1;
+  char   event[MAX_EVENT_LENGTH];
+
+  while(1)
+  {
+    maxfdp1 = p->s + 1;
+    FD_ZERO(&rset);
+    FD_SET(p->s, &rset);
+    FD_ZERO(&wset);
+    FD_ZERO(&eset);
+    timeout.tv_sec  = 0;
+    timeout.tv_usec = 0;
+
+    /* call select */
+    ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
+    if(ret == 0) return 0; /* timeout */
+    pvtcpreceive(p, event, MAX_EVENT_LENGTH);
+  }  
 }
 
 int pvGetInitialMask(PARAM *p)

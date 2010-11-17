@@ -272,6 +272,7 @@
       <keyword name="pvSendFile" id="processviewserver.h::pvSendFile" ref="processviewserver_8h.html" />
       <keyword name="pvDownloadFileAs" id="processviewserver.h::pvDownloadFileAs" ref="processviewserver_8h.html" />
       <keyword name="pvDownloadFile" id="processviewserver.h::pvDownloadFile" ref="processviewserver_8h.html" />
+      <keyword name="pvClearMessageQueue" id="processviewserver.h::pvClearMessageQueue" ref="processviewserver_8h.html" />
       <keyword name="pvtcpsend" id="processviewserver.h::pvtcpsend" ref="processviewserver_8h.html" />
       <keyword name="pvtcpsend_binary" id="processviewserver.h::pvtcpsend_binary" ref="processviewserver_8h.html" />
       <keyword name="pvtcpreceive" id="processviewserver.h::pvtcpreceive" ref="processviewserver_8h.html" />
@@ -1093,6 +1094,7 @@
       <keyword name="pvSendFile" id="Misc::pvSendFile" ref="group__Misc.html" />
       <keyword name="pvDownloadFileAs" id="Misc::pvDownloadFileAs" ref="group__Misc.html" />
       <keyword name="pvDownloadFile" id="Misc::pvDownloadFile" ref="group__Misc.html" />
+      <keyword name="pvClearMessageQueue" id="Misc::pvClearMessageQueue" ref="group__Misc.html" />
       <keyword name="pvtcpsend" id="Misc::pvtcpsend" ref="group__Misc.html" />
       <keyword name="pvtcpsend_binary" id="Misc::pvtcpsend_binary" ref="group__Misc.html" />
       <keyword name="pvtcpreceive" id="Misc::pvtcpreceive" ref="group__Misc.html" />

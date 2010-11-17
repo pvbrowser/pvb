@@ -2463,6 +2463,10 @@ download file to temp directory of the browser
 </pre> */
 int pvDownloadFile(PARAM *p, const char *filename);
 
+/*! <pre>
+read all pending messages from tcp
+</pre> */
+int pvClearMessageQueue(PARAM *p);
 int pvtcpsend(PARAM *p, const char *buf, int len);
 int pvtcpsend_binary(PARAM *p, const char *buf, int len);
 int pvtcpreceive(PARAM *p, char *buf, int maxlen);

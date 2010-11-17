@@ -2396,6 +2396,12 @@ static int getWidget(FILE *fin, QWidget *root)
     else if(isCommand("pvGlEnd(") == 1)
     {
     }
+    else if(isCommand("pvToolTip(") == 1)
+    {
+    }
+    else if(isCommand("pvSetWhatsThis(") == 1)
+    {
+    }
     else if(constructorFound == 0)
     {
       printf("getWidget unknown line=%s",line);
@@ -2411,7 +2417,7 @@ static int getWidget(FILE *fin, QWidget *root)
       if(whatsthislist.count() >= iitem)
       {
         QString qtext = whatsthislist.at(iitem-1);
-        qtext.replace('\\', "");
+        //qtext.replace('\\', "");
         item->setWhatsThis(qtext);
       }
     }

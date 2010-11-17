@@ -269,11 +269,11 @@ retry:
     else                     colors.append(qRgba(r,g,b,255));
   }
 
-printf("readBmpFromSocket: w=%d h=%d data[0]=%x\n",w,h,data[0]);
-printf("will crash on SuSE 10.2 with original lib from Trolltech it is OK :-( \n");
+  if(opt.arg_debug) printf("readBmpFromSocket: w=%d h=%d data[0]=%x\n",w,h,data[0]);
+  if(opt.arg_debug) printf("will crash on SuSE 10.2 with original lib from Trolltech it is OK :-( \n");
   //temp = new QImage((uchar *) data,w,h,8,rgb,icol,QImage::IgnoreEndian);
   temp = new QImage((uchar *) data,w,h,QImage::Format_Indexed8);
-printf("after new QImage\n");
+  if(opt.arg_debug) printf("after new QImage\n");
   temp->setColorTable(colors);
   *d = data;
   mySetAlphaBuffer(temp);

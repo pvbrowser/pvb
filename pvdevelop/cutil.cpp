@@ -503,6 +503,7 @@ void generateInitialMask(int imask)
   fprintf(fout,"%s","  if((ret=slotInit(p,&d)) != 0) return ret;\n"                                 );
   fprintf(fout,"%s","  readData(&d); // from shared memory, database or something else\n"           );
   fprintf(fout,"%s","  showData(p,&d);\n"                                                           );
+  fprintf(fout,"%s","  pvClearMessageQueue(p);\n"                                                   );
   fprintf(fout,"%s","  while(1)\n"                                                                  );
   fprintf(fout,"%s","  {\n"                                                                         );
   fprintf(fout,"%s","    pvPollEvent(p,event);\n"                                                   );

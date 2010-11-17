@@ -36,6 +36,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab">pvSendFile</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga4892512cf39a6b3b51c60136b3ddd667">pvDownloadFileAs</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *filename, const char *newname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#gad00140754b048cb7c60fa968fec98d41">pvDownloadFile</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga2756f2e38843461fa0ab9d6b3207fb93">pvClearMessageQueue</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a">pvtcpsend</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *buf, int len)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa">pvtcpsend_binary</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *buf, int len)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga7b677664cb5cc96171e62eb64579ada4">pvtcpreceive</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, char *buf, int maxlen)</td></tr>
@@ -44,6 +45,26 @@
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>These are the misc routines </p>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ga2756f2e38843461fa0ab9d6b3207fb93"></a><!-- doxytag: member="processviewserver.h::pvClearMessageQueue" ref="ga2756f2e38843461fa0ab9d6b3207fb93" args="(PARAM *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvClearMessageQueue </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+read all pending messages from tcp
+</pre> 
+</div>
+</div>
 <a class="anchor" id="gaedea1ed47ee2a1407a1ec9d9b741a4f0"></a><!-- doxytag: member="processviewserver.h::pvCloseFile" ref="gaedea1ed47ee2a1407a1ec9d9b741a4f0" args="(PARAM *p)" -->
 <div class="memitem">
 <div class="memproto">
@@ -658,7 +679,7 @@ return=1 success
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Oct 7 18:07:01 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Nov 17 09:19:05 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

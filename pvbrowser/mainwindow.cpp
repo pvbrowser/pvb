@@ -938,6 +938,15 @@ void MainWindow::slotReconnect()
   sshstring[0] = '\0';
   url.truncate(sizeof(buf) - 80);
   strcpy(buf,url.toAscii());
+  // eleminate spaces
+  for(i=0; buf[i] != '\0'; i++)
+  {
+    if(buf[i] == ' ' || buf[i] == '\t')
+    {
+      buf[i] = '\0';
+      break;
+    }
+  }
 
   if(strncmp(buf,"http://",7) == 0 || strncmp(buf,"https://",8) == 0) 
   {
@@ -1333,6 +1342,7 @@ void MainWindow::slotPrint()
   }
   QPixmap pm;
   QPrinter printer;
+  printer.setOrientation(QPrinter::Landscape);
   snapshot(pm);
   QPrintDialog printDialog(&printer, this);
   if(printDialog.exec() == QDialog::Accepted)

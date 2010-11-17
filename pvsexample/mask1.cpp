@@ -103,6 +103,7 @@ int show_mask1(PARAM *p)
   if((ret=slotInit(p,&d)) != 0) return ret;
   readData(&d); // from shared memory, database or something else
   showData(p,&d);
+  pvClearMessageQueue(p);
   while(1)
   {
     pvPollEvent(p,event);
@@ -212,7 +213,7 @@ int show_mask1(PARAM *p)
         break;
       case MOUSE_OVER_EVENT:
         sscanf(text,"%d",&val);
-        if(trace) printf("MOUSE_OVER_EVENT %d\n",val);
+        if(trace) printf("MOUSE_OVER_EVENT id=%d %d\n",i,val);
         if((ret=slotMouseOverEvent(p,i,&d,val)) != 0) return ret;
         break;
       case USER_EVENT:

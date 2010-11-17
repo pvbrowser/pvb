@@ -194,6 +194,7 @@ int show_mask3(PARAM *p)
   if((ret=slotInit(p,&d)) != 0) return ret;
   readData(&d); // from shared memory, database or something else
   showData(p,&d);
+  pvClearMessageQueue(p);
   while(1)
   {
     pvPollEvent(p,event);
