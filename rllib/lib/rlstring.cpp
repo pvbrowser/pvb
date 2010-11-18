@@ -169,3 +169,41 @@ char *rlString::strrchr(int c)
   return ::strrchr(txt,c);
 }
 
+int rlString::removeQuotas(char q)
+{
+  char c;
+  int  state=0, inquotas=0, j=0;
+  int  len = strlen(txt);
+
+  for(int i=0;i<len;i++) 
+  {
+    c = txt[i];
+    switch(state) 
+    {
+      case 0: //START
+        if(c==q) 
+        {
+          state=1;
+          inquotas=1;
+          break;
+        }
+        state=1;
+      case 1: // BODY
+        if(inquotas==1) 
+        {
+          if(c==q) 
+          {
+             inquotas=0;
+             break;
+          }
+        }
+        txt[j++]=c;
+        break;
+      default:
+        break;
+    }
+  }
+  txt[j++]=0;
+  return j;
+}
+

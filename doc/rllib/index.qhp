@@ -1972,6 +1972,7 @@
       <keyword name="strstr" id="rlString::strstr" ref="classrlString.html" />
       <keyword name="strchr" id="rlString::strchr" ref="classrlString.html" />
       <keyword name="strrchr" id="rlString::strrchr" ref="classrlString.html" />
+      <keyword name="removeQuotas" id="rlString::removeQuotas" ref="classrlString.html" />
       <keyword name="txt" id="rlString::txt" ref="classrlString.html" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator" ref="classrlSvgAnimator.html" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator::rlSvgAnimator" ref="classrlSvgAnimator.html" />

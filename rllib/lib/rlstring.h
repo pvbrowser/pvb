@@ -106,6 +106,12 @@ public:
   </pre> */
   char *strrchr(int c);
 
+  /*! <pre>
+  Remove quotas around a string.
+  This might be usefull together with CSV files.
+  </pre> */
+  int removeQuotas(char c='"');
+
 private:
   char *txt;
 };

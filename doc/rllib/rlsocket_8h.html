@@ -84,39 +84,39 @@ you have to call this function before you use any sockets
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00060">60</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00064">64</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 
-<p><div class="fragment"><pre class="fragment"><a name="l00061"></a>00061 {
-<a name="l00062"></a>00062 <span class="preprocessor">#ifdef RLWIN32</span>
-<a name="l00063"></a>00063 <span class="preprocessor"></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> first = 1;
-<a name="l00064"></a>00064   WORD    wVersionRequested;
-<a name="l00065"></a>00065   WSADATA wsadata;
-<a name="l00066"></a>00066   <span class="keywordtype">int</span>     err;
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068   <span class="keywordflow">if</span>(first == 1)
-<a name="l00069"></a>00069   {
-<a name="l00070"></a>00070 <span class="preprocessor">#ifdef IS_OLD_MSVCPP</span>
-<a name="l00071"></a>00071 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(1,1);
-<a name="l00072"></a>00072 <span class="preprocessor">#else</span>
-<a name="l00073"></a>00073 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(2,0);
-<a name="l00074"></a>00074 <span class="preprocessor">#endif</span>
-<a name="l00075"></a>00075 <span class="preprocessor"></span>    err = WSAStartup(wVersionRequested, &amp;wsadata);
-<a name="l00076"></a>00076     <span class="keywordflow">if</span>(err != 0)
-<a name="l00077"></a>00077     {
-<a name="l00078"></a>00078       ::printf(<span class="stringliteral">&quot;Startup error=%d on windows\n&quot;</span>,err);
-<a name="l00079"></a>00079       exit(0);
-<a name="l00080"></a>00080     }
-<a name="l00081"></a>00081     first = 0;
-<a name="l00082"></a>00082   }
-<a name="l00083"></a>00083 <span class="preprocessor">#endif</span>
-<a name="l00084"></a>00084 <span class="preprocessor"></span>  <span class="keywordflow">return</span> 0;
-<a name="l00085"></a>00085 }
+<p><div class="fragment"><pre class="fragment"><a name="l00065"></a>00065 {
+<a name="l00066"></a>00066 <span class="preprocessor">#ifdef RLWIN32</span>
+<a name="l00067"></a>00067 <span class="preprocessor"></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> first = 1;
+<a name="l00068"></a>00068   WORD    wVersionRequested;
+<a name="l00069"></a>00069   WSADATA wsadata;
+<a name="l00070"></a>00070   <span class="keywordtype">int</span>     err;
+<a name="l00071"></a>00071 
+<a name="l00072"></a>00072   <span class="keywordflow">if</span>(first == 1)
+<a name="l00073"></a>00073   {
+<a name="l00074"></a>00074 <span class="preprocessor">#ifdef IS_OLD_MSVCPP</span>
+<a name="l00075"></a>00075 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(1,1);
+<a name="l00076"></a>00076 <span class="preprocessor">#else</span>
+<a name="l00077"></a>00077 <span class="preprocessor"></span>    wVersionRequested = MAKEWORD(2,0);
+<a name="l00078"></a>00078 <span class="preprocessor">#endif</span>
+<a name="l00079"></a>00079 <span class="preprocessor"></span>    err = WSAStartup(wVersionRequested, &amp;wsadata);
+<a name="l00080"></a>00080     <span class="keywordflow">if</span>(err != 0)
+<a name="l00081"></a>00081     {
+<a name="l00082"></a>00082       ::printf(<span class="stringliteral">&quot;Startup error=%d on windows\n&quot;</span>,err);
+<a name="l00083"></a>00083       exit(0);
+<a name="l00084"></a>00084     }
+<a name="l00085"></a>00085     first = 0;
+<a name="l00086"></a>00086   }
+<a name="l00087"></a>00087 <span class="preprocessor">#endif</span>
+<a name="l00088"></a>00088 <span class="preprocessor"></span>  <span class="keywordflow">return</span> 0;
+<a name="l00089"></a>00089 }
 </pre></div></p>
 
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Oct 1 11:14:45 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Nov 18 10:36:41 2010 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
