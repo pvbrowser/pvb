@@ -36,6 +36,7 @@
 // define WIN
 #ifdef _WIN32
 #define PVWIN32
+#include <windows.h>
 #endif
 //*********************************************
 

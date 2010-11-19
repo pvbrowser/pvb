@@ -762,6 +762,7 @@ pvSaveAsBmp = _pv.pvSaveAsBmp
 pvSendFile = _pv.pvSendFile
 pvDownloadFileAs = _pv.pvDownloadFileAs
 pvDownloadFile = _pv.pvDownloadFile
+pvClearMessageQueue = _pv.pvClearMessageQueue
 pvtcpsend = _pv.pvtcpsend
 pvtcpsend_binary = _pv.pvtcpsend_binary
 pvtcpreceive = _pv.pvtcpreceive

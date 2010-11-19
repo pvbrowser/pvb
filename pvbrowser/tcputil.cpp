@@ -195,10 +195,14 @@ tryagain:
           return -2;
         }  
         qApp->processEvents();
-        if(*s != -1) goto tryagain;
+        if(*s != -1)
+        {
+          goto tryagain;
+        }  
       }
 #endif
       if(*s != -1) closesocket(*s);
+      *s = -1;
       msg[0] = '\n';
       msg[1] = '\0';
       if(opt.arg_log) printf("close connection\n");;
@@ -236,7 +240,10 @@ tryagain:
 #ifdef PVWIN32
       if(WSAEWOULDBLOCK == WSAGetLastError())
       {
-        if(*s != -1) goto tryagain;
+        if(*s != -1)
+        {
+          goto tryagain;
+        }  
       }
 #endif
       if(*s != -1) closesocket(*s);
