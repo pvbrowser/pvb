@@ -108,7 +108,12 @@ void MyThread::run()
       //ret = ::select(pv->maxfd+1,&rset,NULL,NULL,&timout);
       if(maxfd == -1)
       {
+#ifdef PVWIN32
+        msleep(500); // windows select() does not support 3 NULL pointers
+        ret = 0; // timeout
+#else
         ret = ::select(1,NULL,NULL,NULL,&timout);
+#endif        
       }
       else
       {
