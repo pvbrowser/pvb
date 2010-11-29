@@ -40,6 +40,7 @@ static int slotInit(PARAM *p, DATA *d)
   d->svgAnimator.setId(svg1);
   d->svgAnimator.read("test1.svg");
   drawSVG1(p,svg1,d);
+  pvRequestGeometry(p,svg1);
   return 0;
 }
 
@@ -128,26 +129,35 @@ static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
   if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;
   float x,y,w,h;
   float m11,m12,m21,m22,det,dx,dy;
-  printf("objectname=%s\n",svgObjectName(text));
   switch(textEventType(text))
   {
     case PLAIN_TEXT_EVENT:
       printf("plain\n");
       break;
+    case WIDGET_GEOMETRY:
+      int X,Y,W,H;
+      getGeometry(text,&X,&Y,&W,&H);
+      printf("geometry(%d)=%d,%d,%d,%d\n",id,X,Y,W,H);
+      break;
     case SVG_LEFT_BUTTON_PRESSED:
       printf("left pressed\n");
+      printf("objectname=%s\n",svgObjectName(text));
       break;
     case SVG_MIDDLE_BUTTON_PRESSED:
       printf("middle pressed\n");
+      printf("objectname=%s\n",svgObjectName(text));
       break;
     case SVG_RIGHT_BUTTON_PRESSED:
       printf("right pressed\n");
+      printf("objectname=%s\n",svgObjectName(text));
       break;
     case SVG_LEFT_BUTTON_RELEASED:
       printf("left released\n");
+      printf("objectname=%s\n",svgObjectName(text));
       break;
     case SVG_MIDDLE_BUTTON_RELEASED:
       printf("middle released\n");
+      printf("objectname=%s\n",svgObjectName(text));
       break;
     case SVG_RIGHT_BUTTON_RELEASED:
       printf("right released\n");

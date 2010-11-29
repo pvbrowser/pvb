@@ -2001,6 +2001,19 @@ void Interpreter::interpretr(const char *command)
       if(ptr != NULL) ptr->deleteIconViewItem(text);
     }
   }
+  else if(strncmp(command,"requestGeometry(",16) == 0)
+  {
+    char buf[MAX_PRINTF_LENGTH];
+    sscanf(command,"requestGeometry(%d",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    QWidget *ptr = all[i]->w;
+    if(ptr != NULL)
+    {
+        sprintf(buf,"text(%d,\"geometry:%d,%d,%d,%d\n", i, ptr->x(), ptr->y(), ptr->width(), ptr->height());
+        tcp_send(s,buf,strlen(buf));
+    }
+  }
   else if(strncmp(command,"requestSvgBoundsOnElement(",26) == 0)
   {
     sscanf(command,"requestSvgBoundsOnElement(%d",&i);

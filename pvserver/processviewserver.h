@@ -564,7 +564,8 @@ enum TextEvents
   SVG_MIDDLE_BUTTON_RELEASED,
   SVG_RIGHT_BUTTON_RELEASED,
   SVG_BOUNDS_ON_ELEMENT,
-  SVG_MATRIX_FOR_ELEMENT
+  SVG_MATRIX_FOR_ELEMENT,
+  WIDGET_GEOMETRY
 };
 
 /* this is for convenience when you want to write files */
@@ -2146,6 +2147,12 @@ Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit
 </pre> */
 int pvText(PARAM *p, int id);
 /*! <pre>
+Request the geometry from the widget. The text will arrive in an TEXT_EVENT.
+geometry:x,y,width,height
+Allowed widgets: all widgets
+</pre> */
+int pvRequestGeometry(PARAM *p, int id);
+/*! <pre>
 Request the selected items from a QListBox or QListView. The text will arrive in an SELECTION_EVENT.
 Allowed widgets: QListBox, QListView
 </pre> */
@@ -3419,6 +3426,11 @@ Allowed widgets: QDrawWidget
 </pre> */
 int getSvgMatrixForElement(const char *text, float *m11, float *m12, float *m21, float *m22,
                                              float *det, float *dx,  float *dy);
+/*! <pre>
+Returns the geometry for a widget from a TEXT_EVENT
+Allowed widgets: QDrawWidget
+</pre> */
+int getGeometry(const char *text, int *x, int *y, int *width, int *height);
 /** @} */ // end of group
 
 #endif

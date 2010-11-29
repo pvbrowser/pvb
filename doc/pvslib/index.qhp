@@ -217,6 +217,7 @@
       <keyword name="pvEnsureCellVisible" id="processviewserver.h::pvEnsureCellVisible" ref="processviewserver_8h.html" />
       <keyword name="pvMoveCursor" id="processviewserver.h::pvMoveCursor" ref="processviewserver_8h.html" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html" />
+      <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html" />
       <keyword name="pvSelection" id="processviewserver.h::pvSelection" ref="processviewserver_8h.html" />
       <keyword name="pvRequestSvgBoundsOnElement" id="processviewserver.h::pvRequestSvgBoundsOnElement" ref="processviewserver_8h.html" />
       <keyword name="pvRequestSvgMatrixForElement" id="processviewserver.h::pvRequestSvgMatrixForElement" ref="processviewserver_8h.html" />
@@ -467,6 +468,7 @@
       <keyword name="svgObjectName" id="processviewserver.h::svgObjectName" ref="processviewserver_8h.html" />
       <keyword name="getSvgBoundsOnElement" id="processviewserver.h::getSvgBoundsOnElement" ref="processviewserver_8h.html" />
       <keyword name="getSvgMatrixForElement" id="processviewserver.h::getSvgMatrixForElement" ref="processviewserver_8h.html" />
+      <keyword name="getGeometry" id="processviewserver.h::getGeometry" ref="processviewserver_8h.html" />
       <keyword name="null_string" id="processviewserver.h::null_string" ref="processviewserver_8h.html" />
       <keyword name="pvthread_attr_init" id="wthread.h::pvthread_attr_init" ref="wthread_8h.html" />
       <keyword name="pvthread_create" id="wthread.h::pvthread_create" ref="wthread_8h.html" />
@@ -833,6 +835,7 @@
       <keyword name="SVG_RIGHT_BUTTON_RELEASED" id="DefinesAndEnums::SVG_RIGHT_BUTTON_RELEASED" ref="group__DefinesAndEnums.html" />
       <keyword name="SVG_BOUNDS_ON_ELEMENT" id="DefinesAndEnums::SVG_BOUNDS_ON_ELEMENT" ref="group__DefinesAndEnums.html" />
       <keyword name="SVG_MATRIX_FOR_ELEMENT" id="DefinesAndEnums::SVG_MATRIX_FOR_ELEMENT" ref="group__DefinesAndEnums.html" />
+      <keyword name="WIDGET_GEOMETRY" id="DefinesAndEnums::WIDGET_GEOMETRY" ref="group__DefinesAndEnums.html" />
       <keyword name="SingleLine" id="DefinesAndEnums::SingleLine" ref="group__DefinesAndEnums.html" />
       <keyword name="DontClip" id="DefinesAndEnums::DontClip" ref="group__DefinesAndEnums.html" />
       <keyword name="ExpandTabs" id="DefinesAndEnums::ExpandTabs" ref="group__DefinesAndEnums.html" />
@@ -1035,6 +1038,7 @@
       <keyword name="pvMoveCursor" id="Output::pvMoveCursor" ref="group__Output.html" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html" />
+      <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html" />
       <keyword name="pvSelection" id="Input::pvSelection" ref="group__Input.html" />
       <keyword name="pvRequestSvgBoundsOnElement" id="Input::pvRequestSvgBoundsOnElement" ref="group__Input.html" />
       <keyword name="pvRequestSvgMatrixForElement" id="Input::pvRequestSvgMatrixForElement" ref="group__Input.html" />
@@ -1306,6 +1310,7 @@
       <keyword name="svgObjectName" id="TextEvents::svgObjectName" ref="group__TextEvents.html" />
       <keyword name="getSvgBoundsOnElement" id="TextEvents::getSvgBoundsOnElement" ref="group__TextEvents.html" />
       <keyword name="getSvgMatrixForElement" id="TextEvents::getSvgMatrixForElement" ref="group__TextEvents.html" />
+      <keyword name="getGeometry" id="TextEvents::getGeometry" ref="group__TextEvents.html" />
       <keyword name="_PARAM_" id="_PARAM_" ref="struct__PARAM__.html" />
       <keyword name="s" id="_PARAM_::s" ref="struct__PARAM__.html" />
       <keyword name="os" id="_PARAM_::os" ref="struct__PARAM__.html" />

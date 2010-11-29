@@ -1712,6 +1712,15 @@ char buf[80];
   return 0;
 }
 
+int pvRequestGeometry(PARAM *p, int id)
+{
+char buf[80];
+
+  sprintf(buf,"requestGeometry(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSelection(PARAM *p, int id)
 {
 char buf[80];
@@ -6033,7 +6042,8 @@ float unit(PARAM *p, float val, int conversion)
 
 int textEventType(const char *text)
 {
-  if     (strncmp(text,"svgPressedLeftButton="  ,21) == 0) return SVG_LEFT_BUTTON_PRESSED;
+  if     (strncmp(text,"geometry:"              , 9) == 0) return WIDGET_GEOMETRY;
+  else if(strncmp(text,"svgPressedLeftButton="  ,21) == 0) return SVG_LEFT_BUTTON_PRESSED;
   else if(strncmp(text,"svgPressedMidButton="   ,20) == 0) return SVG_MIDDLE_BUTTON_PRESSED;
   else if(strncmp(text,"svgPressedRightButton=" ,22) == 0) return SVG_RIGHT_BUTTON_PRESSED;
   else if(strncmp(text,"svgReleasedLeftButton=" ,22) == 0) return SVG_LEFT_BUTTON_RELEASED;
@@ -6091,6 +6101,23 @@ int getSvgMatrixForElement(const char *text, float *m11, float *m12, float *m21,
     }
   }
   *m11 = *m12 = *m21 = *m22 = *det = *dx = *dy = 0.0f;
+  return -1;
+}
+
+int getGeometry(const char *text, int *x, int *y, int *w, int *h)
+{
+  const char *cptr;
+  if(strncmp(text,"geometry:",9) == 0)
+  {
+    cptr = strchr(text,':');
+    if(cptr != NULL)
+    {
+      cptr++;
+      sscanf(cptr,"%d,%d,%d,%d",x,y,w,h);
+      return 0;
+    }
+  }
+  *x = *y = *w = *h = 0;
   return -1;
 }
 

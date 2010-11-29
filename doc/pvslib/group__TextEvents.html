@@ -25,10 +25,59 @@
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga0a673c7bb5f11962061d59542ea793da">svgObjectName</a> (const char *text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gaa3e7bc6849494b3a51e6a44776db3de6">getSvgBoundsOnElement</a> (const char *text, float *x, float *y, float *width, float *height)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gacca451d6eb51024d4e18da3f9b68beaf">getSvgMatrixForElement</a> (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga08801d410f976196767f34eaf9658cbe">getGeometry</a> (const char *text, int *x, int *y, int *width, int *height)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>These are parsing functions for TEXT_EVENT </p>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="ga08801d410f976196767f34eaf9658cbe"></a><!-- doxytag: member="processviewserver.h::getGeometry" ref="ga08801d410f976196767f34eaf9658cbe" args="(const char *text, int *x, int *y, int *width, int *height)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getGeometry </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>y</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>height</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Returns the geometry for a widget from a TEXT_EVENT
+Allowed widgets: QDrawWidget
+</pre> 
+</div>
+</div>
 <a class="anchor" id="gaa3e7bc6849494b3a51e6a44776db3de6"></a><!-- doxytag: member="processviewserver.h::getSvgBoundsOnElement" ref="gaa3e7bc6849494b3a51e6a44776db3de6" args="(const char *text, float *x, float *y, float *width, float *height)" -->
 <div class="memitem">
 <div class="memproto">
@@ -187,7 +236,7 @@ Allowed widgets: QDrawWidget
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Nov 17 09:19:05 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 29 12:13:42 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

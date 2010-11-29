@@ -605,7 +605,8 @@
 <a class="el" href="group__DefinesAndEnums.html#gga1d1fdb8ef10a7eb89196d12253e68dd0af7df34710b873e503b324899e5623869">SVG_RIGHT_BUTTON_RELEASED</a>, 
 <a class="el" href="group__DefinesAndEnums.html#gga1d1fdb8ef10a7eb89196d12253e68dd0a8f9eefa8c1d0fc46150deed4115b629c">SVG_BOUNDS_ON_ELEMENT</a>, 
 <br/>
-&nbsp;&nbsp;<a class="el" href="group__DefinesAndEnums.html#gga1d1fdb8ef10a7eb89196d12253e68dd0a481ff051d16ad2d74d16661c91392714">SVG_MATRIX_FOR_ELEMENT</a>
+&nbsp;&nbsp;<a class="el" href="group__DefinesAndEnums.html#gga1d1fdb8ef10a7eb89196d12253e68dd0a481ff051d16ad2d74d16661c91392714">SVG_MATRIX_FOR_ELEMENT</a>, 
+<a class="el" href="group__DefinesAndEnums.html#gga1d1fdb8ef10a7eb89196d12253e68dd0a63ab18c0812d87c7725c51a8160bf057">WIDGET_GEOMETRY</a>
 <br/>
  }</td></tr>
 <tr><td colspan="2"><h2>Functions</h2></td></tr>
@@ -742,6 +743,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gac0298c9cfcfcfe2f53b4df31a5321eef">pvEnsureCellVisible</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int row, int col=1)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga12886a0096c348da03b884d42df5c2c0">pvMoveCursor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int cursor)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc">pvText</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db">pvRequestGeometry</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gaa9daf67935f26a7b4b076d1cfff5f4a0">pvSelection</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gaf613d4358f7df90307e537dfdbc7c76e">pvRequestSvgBoundsOnElement</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *objectname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#ga16f54f9891c976df51e5895febf63682">pvRequestSvgMatrixForElement</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *objectname)</td></tr>
@@ -992,11 +994,12 @@
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga0a673c7bb5f11962061d59542ea793da">svgObjectName</a> (const char *text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gaa3e7bc6849494b3a51e6a44776db3de6">getSvgBoundsOnElement</a> (const char *text, float *x, float *y, float *width, float *height)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gacca451d6eb51024d4e18da3f9b68beaf">getSvgMatrixForElement</a> (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga08801d410f976196767f34eaf9658cbe">getGeometry</a> (const char *text, int *x, int *y, int *width, int *height)</td></tr>
 <tr><td colspan="2"><h2>Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DefinesAndEnums.html#gac11bf696f7287842ed6c53430fb6e884">null_string</a> [] = &quot;&quot;</td></tr>
 </table>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Nov 17 09:19:04 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 29 12:13:42 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
