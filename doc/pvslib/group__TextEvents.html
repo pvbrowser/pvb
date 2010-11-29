@@ -26,6 +26,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gaa3e7bc6849494b3a51e6a44776db3de6">getSvgBoundsOnElement</a> (const char *text, float *x, float *y, float *width, float *height)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#gacca451d6eb51024d4e18da3f9b68beaf">getSvgMatrixForElement</a> (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga08801d410f976196767f34eaf9658cbe">getGeometry</a> (const char *text, int *x, int *y, int *width, int *height)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga2b07a747dfb377928b56ecbae3376841">getParentWidgetId</a> (const char *text, int *parent)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>These are parsing functions for TEXT_EVENT </p>
@@ -74,7 +75,37 @@
 <div class="memdoc">
 <pre>
 Returns the geometry for a widget from a TEXT_EVENT
-Allowed widgets: QDrawWidget
+Allowed widgets: all widgets
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga2b07a747dfb377928b56ecbae3376841"></a><!-- doxytag: member="processviewserver.h::getParentWidgetId" ref="ga2b07a747dfb377928b56ecbae3376841" args="(const char *text, int *parent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int getParentWidgetId </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&nbsp;</td>
+          <td class="paramname"> <em>parent</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Returns the parent id for a widget from a TEXT_EVENT
+Allowed widgets: all widgets
 </pre> 
 </div>
 </div>
@@ -236,7 +267,7 @@ Allowed widgets: QDrawWidget
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 29 12:13:42 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 29 14:12:41 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

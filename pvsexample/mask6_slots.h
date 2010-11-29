@@ -41,6 +41,7 @@ static int slotInit(PARAM *p, DATA *d)
   d->svgAnimator.read("test1.svg");
   drawSVG1(p,svg1,d);
   pvRequestGeometry(p,svg1);
+  pvRequestParentWidgetId(p,svg1);
   return 0;
 }
 
@@ -138,6 +139,11 @@ static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
       int X,Y,W,H;
       getGeometry(text,&X,&Y,&W,&H);
       printf("geometry(%d)=%d,%d,%d,%d\n",id,X,Y,W,H);
+      break;
+    case PARENT_WIDGET_ID:
+      int PID;
+      getParentWidgetId(text,&PID);
+      printf("parent(%d)=%d\n",id,PID);
       break;
     case SVG_LEFT_BUTTON_PRESSED:
       printf("left pressed\n");

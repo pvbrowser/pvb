@@ -565,7 +565,8 @@ enum TextEvents
   SVG_RIGHT_BUTTON_RELEASED,
   SVG_BOUNDS_ON_ELEMENT,
   SVG_MATRIX_FOR_ELEMENT,
-  WIDGET_GEOMETRY
+  WIDGET_GEOMETRY,
+  PARENT_WIDGET_ID
 };
 
 /* this is for convenience when you want to write files */
@@ -2153,6 +2154,12 @@ Allowed widgets: all widgets
 </pre> */
 int pvRequestGeometry(PARAM *p, int id);
 /*! <pre>
+Request the parent id for the widget. The text will arrive in an TEXT_EVENT.
+parent:parent
+Allowed widgets: all widgets
+</pre> */
+int pvRequestParentWidgetId(PARAM *p, int id);
+/*! <pre>
 Request the selected items from a QListBox or QListView. The text will arrive in an SELECTION_EVENT.
 Allowed widgets: QListBox, QListView
 </pre> */
@@ -3428,9 +3435,14 @@ int getSvgMatrixForElement(const char *text, float *m11, float *m12, float *m21,
                                              float *det, float *dx,  float *dy);
 /*! <pre>
 Returns the geometry for a widget from a TEXT_EVENT
-Allowed widgets: QDrawWidget
+Allowed widgets: all widgets
 </pre> */
 int getGeometry(const char *text, int *x, int *y, int *width, int *height);
+/*! <pre>
+Returns the parent id for a widget from a TEXT_EVENT
+Allowed widgets: all widgets
+</pre> */
+int getParentWidgetId(const char *text, int *parent);
 /** @} */ // end of group
 
 #endif

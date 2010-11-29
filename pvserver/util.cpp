@@ -1721,6 +1721,15 @@ char buf[80];
   return 0;
 }
 
+int pvRequestParentWidgetId(PARAM *p, int id)
+{
+char buf[80];
+
+  sprintf(buf,"requestParent(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSelection(PARAM *p, int id)
 {
 char buf[80];
@@ -6043,6 +6052,7 @@ float unit(PARAM *p, float val, int conversion)
 int textEventType(const char *text)
 {
   if     (strncmp(text,"geometry:"              , 9) == 0) return WIDGET_GEOMETRY;
+  else if(strncmp(text,"parent:"                , 7) == 0) return PARENT_WIDGET_ID;
   else if(strncmp(text,"svgPressedLeftButton="  ,21) == 0) return SVG_LEFT_BUTTON_PRESSED;
   else if(strncmp(text,"svgPressedMidButton="   ,20) == 0) return SVG_MIDDLE_BUTTON_PRESSED;
   else if(strncmp(text,"svgPressedRightButton=" ,22) == 0) return SVG_RIGHT_BUTTON_PRESSED;
@@ -6118,6 +6128,23 @@ int getGeometry(const char *text, int *x, int *y, int *w, int *h)
     }
   }
   *x = *y = *w = *h = 0;
+  return -1;
+}
+
+int getParentWidgetId(const char *text, int *parent)
+{
+  const char *cptr;
+  if(strncmp(text,"parent:",7) == 0)
+  {
+    cptr = strchr(text,':');
+    if(cptr != NULL)
+    {
+      cptr++;
+      sscanf(cptr,"%d",parent);
+      return 0;
+    }
+  }
+  *parent = -1;
   return -1;
 }
 

@@ -2010,8 +2010,31 @@ void Interpreter::interpretr(const char *command)
     QWidget *ptr = all[i]->w;
     if(ptr != NULL)
     {
-        sprintf(buf,"text(%d,\"geometry:%d,%d,%d,%d\n", i, ptr->x(), ptr->y(), ptr->width(), ptr->height());
-        tcp_send(s,buf,strlen(buf));
+      sprintf(buf,"text(%d,\"geometry:%d,%d,%d,%d\n", i, ptr->x(), ptr->y(), ptr->width(), ptr->height());
+      tcp_send(s,buf,strlen(buf));
+    }
+  }
+  else if(strncmp(command,"requestParent(",14) == 0)
+  {
+    char buf[MAX_PRINTF_LENGTH];
+    sscanf(command,"requestParent(%d",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    QWidget *ptr = all[i]->w;
+    if(ptr != NULL)
+    {
+      QWidget *parent = (QWidget *) ptr->parent();
+      for(int pid=0; pid<=nmax; pid++)
+      {
+        if(parent == all[pid]->w)
+        {
+          sprintf(buf,"text(%d,\"parent:%d\n", i, pid);
+          tcp_send(s,buf,strlen(buf));
+          return;
+        }
+      }
+      sprintf(buf,"text(%d,\"parent:%d\n", i, -1);
+      tcp_send(s,buf,strlen(buf));
     }
   }
   else if(strncmp(command,"requestSvgBoundsOnElement(",26) == 0)
