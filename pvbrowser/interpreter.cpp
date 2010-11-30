@@ -3849,6 +3849,24 @@ void Interpreter::interprett(const char *command)
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
+    else if(all[i]->type == TQRadio)
+    {
+      MyRadioButton *w = (MyRadioButton *) all[i]->w;
+      if(w != NULL)
+      {
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
+      }
+    }
+    else if(all[i]->type == TQCheck)
+    {
+      MyCheckBox *w = (MyCheckBox *) all[i]->w;
+      if(w != NULL)
+      {
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
+      }
+    }
     else if(all[i]->type == TQLineEdit)
     {
       MyLineEdit *w = (MyLineEdit *) all[i]->w;
@@ -3865,6 +3883,15 @@ void Interpreter::interprett(const char *command)
       {
         sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->currentText().toUtf8());
         //sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->currentText());
+        if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
+      }
+    }
+    else if(all[i]->type == TQGroupBox)
+    {
+      MyGroupBox *w = (MyGroupBox *) all[i]->w;
+      if(w != NULL)
+      {
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->title().toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
