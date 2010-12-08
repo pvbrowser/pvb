@@ -285,7 +285,7 @@ void MainWindow::slotBackup()
 void MainWindow::about()
 {
   QMessageBox::about(this, tr("About pvdevelop"),
-            tr("(C) 2000-2010 Lehrig Software Engineering\n"
+            tr("(C) 2000-2011 Lehrig Software Engineering\n"
                "develop pvserver's easily\n"
                "IDE for editing and designing pvserver and data acquisition\n"
                "Have a lot of fun: Your's pvbrowser community\n"
