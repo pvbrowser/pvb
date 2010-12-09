@@ -5278,8 +5278,15 @@ void Interpreter::interpretQ(const char *command)
       ((QVBoxLayout *) mainLayout)->setSpacing(6);
     }
     else
-    {
-      all[i]->w = (QWidget *) new QVBoxLayout;
+    { 
+      if(p >= 0) 
+      {
+        all[i]->w = (QWidget *) new QVBoxLayout(all[p]->w);
+      }
+      else
+      {
+        all[i]->w = (QWidget *) new QVBoxLayout();
+      }
       all[i]->type = TQVbox;
     }
     hasLayout = 1;
@@ -5300,7 +5307,14 @@ void Interpreter::interpretQ(const char *command)
     }
     else
     {
-      all[i]->w = (QWidget *) new QHBoxLayout;
+      if(p >= 0) 
+      {
+        all[i]->w = (QWidget *) new QHBoxLayout(all[p]->w);
+      }  
+      else
+      {
+        all[i]->w = (QWidget *) new QHBoxLayout();
+      }
       all[i]->type = TQHbox;
     }
     hasLayout = 1;
@@ -5321,7 +5335,14 @@ void Interpreter::interpretQ(const char *command)
     }
     else
     {
-      all[i]->w = (QWidget *) new QGridLayout;
+      if(p >= 0) 
+      {
+        all[i]->w = (QWidget *) new QGridLayout(all[p]->w);
+      }  
+      else
+      {
+        all[i]->w = (QWidget *) new QGridLayout();
+      }
       all[i]->type = TQGrid;
     }
     hasLayout = 1;

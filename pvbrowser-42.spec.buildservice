@@ -48,6 +48,11 @@ Requires:  Mesa
 BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel
 %endif
 
+%if 0%{?fedora_version} >= 14
+BuildRequires: qt4-webkit-devel
+#!BuildIgnore: post-build-checks
+%endif
+
 %if 0%{?rhel_version}
 # Requires:  ld-linux.so.2
 Requires:  qt4
@@ -95,6 +100,11 @@ Requires:  libqt4
 # Requires:  tcl
 # Requires:  tk
 BuildRequires: libqt4-dev gcc-c++ python-devel
+%endif
+
+%if 0%{?ubuntu_version} >= 1010
+BuildRequires: libqt4-webkit-dev
+#!BuildIgnore: post-build-checks
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}
@@ -263,7 +273,7 @@ rm -rf /opt/pvb
 
 %package     devel
 Summary:     Package pvbrowser + pvdevelop + rlsvgcat + libraries
-Group:       Development/Scada
+Group:       Productivity/Graphics/Visualization/Other
 License:     GPL
 
 %description devel
