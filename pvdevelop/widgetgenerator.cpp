@@ -1011,6 +1011,19 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
     {
       strcpy(tabparentname,(const char *) widget->objectName().toAscii());
     }
+    if(widget->statusTip().startsWith("TQWidget:"))
+    {
+      QWidget *p = (QWidget *) widget->parent();
+      if(p != NULL)
+      {
+        QWidget *gp = (QWidget *) p->parent();
+        if(gp != NULL)
+        {
+          // printf("tabparentname=%s\n",(const char *) gp->objectName().toAscii());
+          strcpy(tabparentname,(const char *) gp->objectName().toAscii());
+        }  
+      }
+    }
     if(widget != NULL)
     {
       generateDefineMaskWidget(fout,widget,tabparentname);
