@@ -3283,7 +3283,7 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
   {
     //palette.setColor(QPalette::Button,QColor(r,g,b));
 #ifdef PVWIN32
-    w->setStyle(new QWindowsStyle);
+    w->setStyle(QApplication::style());
 #endif
     w->setAutoFillBackground(false);
     QBrush brush(QColor(r,g,b,255));
@@ -3298,7 +3298,7 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
           type == TQTextBrowser   )
   {
 #ifdef PVWIN32
-    w->setStyle(new QWindowsStyle);
+    w->setStyle(QApplication::style());
 #endif
     w->setAutoFillBackground(false);
     QBrush brush(QColor(r,g,b,255));
