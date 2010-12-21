@@ -3269,6 +3269,16 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
 {
   if(opt.arg_debug) printf("mySetBackgroundColor: type=%d r=%d g=%d b=%d\n",type,r,g,b);
   if(w == NULL) return;
+#ifdef PVWIN32
+  // WinXP style does not support background colors
+  static int     first = 1;
+  static QStyle *style = NULL;
+  if(first)
+  {
+    style = new QWindowsStyle;
+    first = 0;
+  }  
+#endif
   if(r==-1 && g==-1 && b==-1)
   {
     //w->unsetPalette();
@@ -3283,7 +3293,7 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
   {
     //palette.setColor(QPalette::Button,QColor(r,g,b));
 #ifdef PVWIN32
-    w->setStyle(QApplication::style());
+    w->setStyle(style);
 #endif
     w->setAutoFillBackground(false);
     QBrush brush(QColor(r,g,b,255));
@@ -3298,7 +3308,7 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
           type == TQTextBrowser   )
   {
 #ifdef PVWIN32
-    w->setStyle(QApplication::style());
+    w->setStyle(style);
 #endif
     w->setAutoFillBackground(false);
     QBrush brush(QColor(r,g,b,255));
