@@ -29,8 +29,68 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__TextEvents.html#ga2b07a747dfb377928b56ecbae3376841">getParentWidgetId</a> (const char *text, int *parent)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
-<p>These are parsing functions for TEXT_EVENT </p>
-<hr/><h2>Function Documentation</h2>
+<p>These are parsing functions for TEXT_EVENT <pre>
+  Example for useing TEXT_EVENTS:
+  ------------------------------------------
+  static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
+  {
+    if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;
+    float x,y,w,h;
+    float m11,m12,m21,m22,det,dx,dy;
+    switch(textEventType(text))
+    {
+      case PLAIN_TEXT_EVENT:
+        printf("plain\n");
+        break;
+      case WIDGET_GEOMETRY:
+        int X,Y,W,H;
+        getGeometry(text,&amp;X,&amp;Y,&amp;W,&amp;H);
+        printf("geometry(%d)=%d,%d,%d,%d\n",id,X,Y,W,H);
+        break;
+      case PARENT_WIDGET_ID:
+        int PID;
+        getParentWidgetId(text,&amp;PID);
+        printf("parent(%d)=%d\n",id,PID);
+        break;
+      case SVG_LEFT_BUTTON_PRESSED:
+        printf("left pressed\n");
+        printf("objectname=%s\n",svgObjectName(text));
+        break;
+      case SVG_MIDDLE_BUTTON_PRESSED:
+        printf("middle pressed\n");
+        printf("objectname=%s\n",svgObjectName(text));
+        break;
+      case SVG_RIGHT_BUTTON_PRESSED:
+        printf("right pressed\n");
+        printf("objectname=%s\n",svgObjectName(text));
+        break;
+      case SVG_LEFT_BUTTON_RELEASED:
+        printf("left released\n");
+        printf("objectname=%s\n",svgObjectName(text));
+        break;
+      case SVG_MIDDLE_BUTTON_RELEASED:
+        printf("middle released\n");
+        printf("objectname=%s\n",svgObjectName(text));
+        break;
+      case SVG_RIGHT_BUTTON_RELEASED:
+        printf("right released\n");
+        break;
+      case SVG_BOUNDS_ON_ELEMENT:
+        getSvgBoundsOnElement(text, &amp;x, &amp;y, &amp;w, &amp;h);
+        printf("bounds object=%s xywh=%f,%f,%f,%f\n",svgObjectName(text),x,y,w,h);
+        break;
+      case SVG_MATRIX_FOR_ELEMENT:
+        getSvgMatrixForElement(text, &amp;m11, &amp;m12, &amp;m21, &amp;m22, &amp;det, &amp;dx, &amp;dy);
+        printf("matrix object=%s m=%f,%f,%f,%f det=%f dx=%f dy=%f\n",svgObjectName(text),
+                                 m11,m12,m21,m22,det,dx,dy);
+        break;
+      default:
+        printf("default\n");
+        break;
+    }
+    return 0;
+  }
+  </pre> <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="ga08801d410f976196767f34eaf9658cbe"></a><!-- doxytag: member="processviewserver.h::getGeometry" ref="ga08801d410f976196767f34eaf9658cbe" args="(const char *text, int *x, int *y, int *width, int *height)" -->
 <div class="memitem">
 <div class="memproto">
@@ -267,7 +327,7 @@ Allowed widgets: QDrawWidget
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Nov 29 14:12:41 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Dec 29 11:55:08 2010 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

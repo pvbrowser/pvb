@@ -3410,6 +3410,69 @@ float unit(PARAM *p, float val, int conversion);
 
 /** @defgroup  TextEvents TextEvents
  *  These are parsing functions for TEXT_EVENT
+ *  <PRE>
+ *  Example for useing TEXT_EVENTS:
+ *  ------------------------------------------
+ *  static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
+ *  {
+ *    if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;
+ *    float x,y,w,h;
+ *    float m11,m12,m21,m22,det,dx,dy;
+ *    switch(textEventType(text))
+ *    {
+ *      case PLAIN_TEXT_EVENT:
+ *        printf("plain\n");
+ *        break;
+ *      case WIDGET_GEOMETRY:
+ *        int X,Y,W,H;
+ *        getGeometry(text,&X,&Y,&W,&H);
+ *        printf("geometry(%d)=%d,%d,%d,%d\n",id,X,Y,W,H);
+ *        break;
+ *      case PARENT_WIDGET_ID:
+ *        int PID;
+ *        getParentWidgetId(text,&PID);
+ *        printf("parent(%d)=%d\n",id,PID);
+ *        break;
+ *      case SVG_LEFT_BUTTON_PRESSED:
+ *        printf("left pressed\n");
+ *        printf("objectname=%s\n",svgObjectName(text));
+ *        break;
+ *      case SVG_MIDDLE_BUTTON_PRESSED:
+ *        printf("middle pressed\n");
+ *        printf("objectname=%s\n",svgObjectName(text));
+ *        break;
+ *      case SVG_RIGHT_BUTTON_PRESSED:
+ *        printf("right pressed\n");
+ *        printf("objectname=%s\n",svgObjectName(text));
+ *        break;
+ *      case SVG_LEFT_BUTTON_RELEASED:
+ *        printf("left released\n");
+ *        printf("objectname=%s\n",svgObjectName(text));
+ *        break;
+ *      case SVG_MIDDLE_BUTTON_RELEASED:
+ *        printf("middle released\n");
+ *        printf("objectname=%s\n",svgObjectName(text));
+ *        break;
+ *      case SVG_RIGHT_BUTTON_RELEASED:
+ *        printf("right released\n");
+ *        break;
+ *      case SVG_BOUNDS_ON_ELEMENT:
+ *        getSvgBoundsOnElement(text, &x, &y, &w, &h);
+ *        printf("bounds object=%s xywh=%f,%f,%f,%f\n",svgObjectName(text),x,y,w,h);
+ *        break;
+ *      case SVG_MATRIX_FOR_ELEMENT:
+ *        getSvgMatrixForElement(text, &m11, &m12, &m21, &m22, &det, &dx, &dy);
+ *        printf("matrix object=%s m=%f,%f,%f,%f det=%f dx=%f dy=%f\n",svgObjectName(text),
+ *                                 m11,m12,m21,m22,det,dx,dy);
+ *        break;
+ *      default:
+ *        printf("default\n");
+ *        break;
+ *    }
+ *    return 0;
+ *  }
+ *  </PRE>
+ *
  *  @{ */
 /*! <pre>
 Return the enum #TextEvents
