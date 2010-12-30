@@ -989,7 +989,7 @@ void Interpreter::interprete(const char *command)
     {
       QString capt;
       if(opt.arg_debug) printf("endDefinition allBase != NULL modalDialog\n");
-      capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toAscii());
+      capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
       modalDialog->setWindowTitle(capt);
       modalDialog->show();
     }
@@ -1017,7 +1017,7 @@ void Interpreter::interprete(const char *command)
     {
       get_text(command,text);
       MyListView *l = (MyListView *) all[i]->w;
-      if(l != NULL) l->ensureVisible(text.toAscii(), (MyListViewItem *) l->firstChild(NULL));
+      if(l != NULL) l->ensureVisible(text.toUtf8(), (MyListViewItem *) l->firstChild(NULL));
     }
   }
 }
@@ -1548,7 +1548,7 @@ void Interpreter::interpreti(const char *command)
     else
     {
       text.sprintf("text(%d,\"\")\n", id_return);
-      tcp_send(s,text.toAscii(),strlen(text.toAscii()));
+      tcp_send(s,text.toUtf8(),strlen(text.toUtf8()));
     }
   }
 }
@@ -1595,7 +1595,7 @@ void Interpreter::interpretm(const char *command)
       if(text[i] == 12) text[i] = '\n'; // replace FF
     }
     ret = -1;
-    if(opt.arg_debug) printf("QMessageBox type=%d text=%s\n",type,(const char *) text.toAscii());
+    if(opt.arg_debug) printf("QMessageBox type=%d text=%s\n",type,(const char *) text.toUtf8());
     if(type==0) ret = QMessageBox::information(mainWindow,"pvbrowser",text,b0,b1,b2);
     if(type==1) ret = QMessageBox::warning    (mainWindow,"pvbrowser",text,b0,b1,b2);
     if(type==2) ret = QMessageBox::critical   (mainWindow,"pvbrowser",text,b0,b1,b2);
@@ -1780,7 +1780,7 @@ void Interpreter::interpretp(const char *command)
 //          painter.translate(-painter.viewport().width(),0.0f);
 //        }
 //#endif
-          if(strlen(l_print_header.toAscii()) > 0)
+          if(strlen(l_print_header.toUtf8()) > 0)
           {
             QString date_time;
             date_time  = l_print_header;
@@ -1850,7 +1850,7 @@ void Interpreter::interpretp(const char *command)
     int id_return;
     sscanf(command,"popupMenu(%d",&id_return);
     get_text(command,text);
-    popupMenu(id_return,text.toAscii());
+    popupMenu(id_return,text.toUtf8());
   }
 }
 
@@ -1986,7 +1986,7 @@ void Interpreter::interpretr(const char *command)
     if(all[i]->type == TQListView)
     {
       MyListView *ptr = (MyListView *) all[i]->w;
-      if(ptr != NULL) ptr->deleteListViewItem(text.toAscii(), (MyListViewItem *) ptr->firstChild(NULL));
+      if(ptr != NULL) ptr->deleteListViewItem(text.toUtf8(), (MyListViewItem *) ptr->firstChild(NULL));
     }
   }
   else if(strncmp(command,"removeIconViewItem(",19) == 0)
@@ -2669,7 +2669,7 @@ void Interpreter::interprets(const char *command)
           if(all[i]->type == TQListView)
           {
             MyListView *lv = (MyListView*) all[i]->w;
-            if(lv != NULL) lv->setListViewText(path.toAscii(),column,text);
+            if(lv != NULL) lv->setListViewText(path.toUtf8(),column,text);
           }
         }
         break;
@@ -2824,7 +2824,7 @@ void Interpreter::interprets(const char *command)
           {
             get_text(command,text);
             MyListView *l = (MyListView *) all[i]->w;
-            if(l != NULL) l->setItemOpen(text.toAscii(),open, (MyListViewItem *) l->firstChild(NULL));
+            if(l != NULL) l->setItemOpen(text.toUtf8(),open, (MyListViewItem *) l->firstChild(NULL));
           }
         }
         break;
@@ -2958,12 +2958,12 @@ void Interpreter::interprets(const char *command)
           get_text(command,text); // text = path
           if(i < 0) return;
           if(i >= nmax) return;
-          if(opt.arg_debug > 0) printf("setSelected(%d,%d,%d,%s)\n",i,col,mode, (const char *) text.toAscii());
+          if(opt.arg_debug > 0) printf("setSelected(%d,%d,%d,%s)\n",i,col,mode, (const char *) text.toUtf8());
           if(all[i]->type == TQListView)
           {
             MyListView *lv = (MyListView *) all[i]->w;
             if(opt.arg_debug > 0) printf("setSelected 1\n");
-            if(lv != NULL) lv->setSelected(mode,text.toAscii());
+            if(lv != NULL) lv->setSelected(mode,text.toUtf8());
             if(opt.arg_debug > 0) printf("setSelected 2\n");
           }
         }
@@ -3006,7 +3006,7 @@ void Interpreter::interprets(const char *command)
               {
                 t->home      = text;
                 t->homeIsSet = 1;
-                if(opt.arg_debug) printf("home=%s\n", (const char *) text.toAscii());
+                if(opt.arg_debug) printf("home=%s\n", (const char *) text.toUtf8());
               }
               //tb t->setSource(QUrl::fromLocalFile(temp + text));
               //tb t->reload();
@@ -3167,7 +3167,7 @@ void Interpreter::interprets(const char *command)
           sscanf(command,"setText(%d,",&i);
           if(i >= nmax && i > 0) return;
           get_text(command,text);
-          if(opt.arg_debug) printf("setText text='%s'\n",(const char *)text.toAscii());
+          if(opt.arg_debug) printf("setText text='%s'\n",(const char *)text.toUtf8());
           if(strncmp(text.toAscii(),"alloc(",6) == 0) // allocate big buffer for big text
           {
             int len,ret;
@@ -3542,7 +3542,7 @@ void Interpreter::interprets(const char *command)
           if(all[i]->type == TQTable)
           {
             MyTable *t = (MyTable *) all[i]->w;
-            if(t != NULL) t->setTableComboBox(x,y,editable,text.toAscii());
+            if(t != NULL) t->setTableComboBox(x,y,editable,text.toUtf8());
           }
         }
         else if(strncmp(command,"setTableLabel(",14) == 0) // set label in table
@@ -5469,7 +5469,7 @@ void Interpreter::showMyBrowser(const char *url)
     {
       QString capt;
       if(opt.arg_debug) printf("endDefinition allBase != NULL modalDialog\n");
-      capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toAscii());
+      capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
       modalDialog->setWindowTitle(capt);
       modalDialog->show();
     }
