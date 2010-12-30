@@ -338,7 +338,7 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     //xx removeCurve( curves[pos] );
     //xx curves[pos] = insertCurve(text);
     if(curves[pos] != NULL) delete curves[pos];
-    if(opt.arg_debug) printf("new QwtPlotCurve(%s)\n",(const char *) text.toAscii());
+    if(opt.arg_debug) printf("new QwtPlotCurve(%s)\n",(const char *) text.toUtf8());
     curves[pos] = new QwtPlotCurve(text);
     curves[pos]->attach(this);
     if(legend != NULL)

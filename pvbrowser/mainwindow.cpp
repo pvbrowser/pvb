@@ -219,7 +219,7 @@ MainWindow::MainWindow()
 
   if(opt.arg_host[0] != '\0') url = opt.arg_host;
   else                        url = opt.initialhost;
-  add_host(url.toAscii());
+  add_host(url.toUtf8());
 
   if(opt.arg_x != -1 && opt.arg_y != -1 && opt.arg_w != -1 && opt.arg_h != -1)
   {
@@ -304,7 +304,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         fp = fopen(passfile(),"w");
         if(fp != NULL)
         {
-          fprintf(fp,"%s\n",pvpass(pass.toAscii()));
+          fprintf(fp,"%s\n",pvpass(pass.toUtf8()));
           fclose(fp);
         }
         opt.closed = 1;
@@ -326,7 +326,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
         char buf[1024];
         cptr = fgets(buf,sizeof(buf)-1,fp);
         fclose(fp);
-        if(cptr != NULL && strncmp(buf,pvpass(pass.toAscii()),strlen(buf)-1) != 0)
+        if(cptr != NULL && strncmp(buf,pvpass(pass.toUtf8()),strlen(buf)-1) != 0)
         {
           QMessageBox::information(this,"pvbrowser","Wrong Password",1);
           event->ignore();
@@ -651,7 +651,7 @@ void MainWindow::slotTabChanged(int index)
   int  ipvbtab, ww, hh, ii;
   char buf[32];
 
-  if(opt.arg_debug) printf("old_url=%s\n",(const char *) pvbtab[currentTab].url.toAscii());
+  if(opt.arg_debug) printf("old_url=%s\n",(const char *) pvbtab[currentTab].url.toUtf8());
   if(pvbtab[currentTab].s != -1) // pause old tab
   {
     sprintf(buf,"@pause(%d)\n",1);
@@ -670,7 +670,7 @@ void MainWindow::slotTabChanged(int index)
   w = centralWidget();
   pvbtab[currentTab].view = (MyQWidget *) ((QScrollArea *) w)->takeWidget();
   text = tabBar->tabWhatsThis(index);
-  sscanf((const char *) text.toAscii(),"%d", &ipvbtab);
+  sscanf((const char *) text.toUtf8(),"%d", &ipvbtab);
   if(opt.arg_debug) printf("Tab changed to index=%d ipvbtab=%d begin\n", index, ipvbtab);
   for(ii=0; ii<MAX_DOCK_WIDGETS; ii++) // perhaps hide the docks
   {
@@ -683,7 +683,7 @@ void MainWindow::slotTabChanged(int index)
   }  
 
   currentTab = ipvbtab;
-  if(opt.arg_debug) printf("new_url=%s\n",(const char *) pvbtab[currentTab].url.toAscii());
+  if(opt.arg_debug) printf("new_url=%s\n",(const char *) pvbtab[currentTab].url.toUtf8());
   urlComboBox->setEditText(pvbtab[currentTab].url);
   ww = pvbtab[currentTab].interpreter.width();
   hh = pvbtab[currentTab].interpreter.height();
@@ -735,7 +735,7 @@ void MainWindow::setTabText(const char *title)
   for(i=0; i<numTabs; i++)
   {
     text = tabBar->tabWhatsThis(i);
-    sscanf((const char *) text.toAscii(),"%d", &ipvbtab);
+    sscanf((const char *) text.toUtf8(),"%d", &ipvbtab);
     if(ipvbtab == currentTab)
     {
       tabBar->setTabText(i,title);
@@ -759,7 +759,7 @@ void MainWindow::slotNewTab()
         pvbtab[i].url = opt.initialhost;
         pvbtab[i].hasLayout = 0;
         urlComboBox->setEditText(pvbtab[i].url);
-        if(opt.arg_debug) printf("new_tab_url=%s\n",(const char *) pvbtab[i].url.toAscii());
+        if(opt.arg_debug) printf("new_tab_url=%s\n",(const char *) pvbtab[i].url.toUtf8());
         break;
       }  
     }
@@ -784,7 +784,7 @@ void MainWindow::slotDeleteTab()
 
   index = tabBar->currentIndex();
   text = tabBar->tabWhatsThis(index);
-  sscanf((const char *) text.toAscii(),"%d", &ipvbtab);
+  sscanf((const char *) text.toUtf8(),"%d", &ipvbtab);
   if(opt.arg_debug) printf("slotDeleteTab ipvbtab=%d\n", ipvbtab);
   pvbtab[ipvbtab].in_use = 0;
   if(pvbtab[ipvbtab].s != -1)
@@ -905,7 +905,7 @@ void MainWindow::slotWindow()
   if(opt.arg_debug) printf("slotWindow opt.newwindow=%s\n",opt.newwindow);
   strcpy(buf,opt.newwindow);
   strcat(buf," ");
-  strcat(buf,pvbtab[currentTab].url.toAscii());
+  strcat(buf,pvbtab[currentTab].url.toUtf8());
   strcat(buf," &");
   //printf("before system(%s)\n",opt.newwindow);
   if(opt.newwindow[0] == '\0') ret = system("pvbrowser &");
@@ -917,7 +917,7 @@ void MainWindow::slotWindow()
   strcpy(buf,"spawn/nowait ");
   strcat(buf,opt.newwindow);
   strcat(buf," ");
-  strcat(buf,pvbtab[currentTab].url.toAscii());
+  strcat(buf,pvbtab[currentTab].url.toUtf8());
   if(opt.newwindow[0] == '\0') ret = system("spawn/nowait pvbrowser");
   else                         ret = system(buf);
 #endif
@@ -925,7 +925,7 @@ void MainWindow::slotWindow()
 #ifdef PVWIN32
   strcpy(buf,opt.newwindow);
   strcat(buf," ");
-  strcat(buf,pvbtab[currentTab].url.toAscii());
+  strcat(buf,pvbtab[currentTab].url.toUtf8());
   if(opt.newwindow[0] == '\0') ret = mysystem("pvbrowser");
   else                         ret = mysystem(buf);
 #endif
@@ -938,12 +938,12 @@ void MainWindow::slotReconnect()
   QString qbuf;
   int iport,i,ssh,max,maxtab;
 
-  if(opt.arg_debug) printf("slotReconnect url=%s\n",(const char *) url.toAscii());
+  if(opt.arg_debug) printf("slotReconnect url=%s\n",(const char *) url.toUtf8());
   pvbtab[currentTab].url = url;
   ssh = 0;
   sshstring[0] = '\0';
   url.truncate(sizeof(buf) - 80);
-  strcpy(buf,url.toAscii());
+  strcpy(buf,url.toUtf8());
   // eleminate spaces
   for(i=0; buf[i] != '\0'; i++)
   {
@@ -1011,8 +1011,8 @@ void MainWindow::slotReconnect()
 #ifdef PVWIN32
       qbuf.sprintf("%s -ssh -L %d:%s:%d %s",opt.ssh,opt.sshport,ssh_host,ssh_port,ssh_user_host);
 #endif
-      if(opt.arg_debug) printf("mysystem(%s)\n",(const char *) qbuf.toAscii());
-      mysystem(qbuf.toAscii());
+      if(opt.arg_debug) printf("mysystem(%s)\n",(const char *) qbuf.toUtf8());
+      mysystem(qbuf.toUtf8());
     }
   }
   else if(strncmp(buf,"pv://"  ,5) == 0) 
@@ -1086,7 +1086,7 @@ void MainWindow::slotReconnect()
   }
 
   // send initial url
-  sprintf(buf,"@url=%s\n", (const char *) url.toAscii());
+  sprintf(buf,"@url=%s\n", (const char *) url.toUtf8());
   tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
 
   if(pvbtab[currentTab].s != -1)
@@ -1240,7 +1240,7 @@ void MainWindow::slotTimeOut()
   {
     if(opt.autoreconnect == 1) 
     {
-     if(strncmp(pvbtab[currentTab].url.toAscii(),"http://",7) != 0)
+     if(strncmp(pvbtab[currentTab].url.toUtf8(),"http://",7) != 0)
      {
        isReconnect = 1;
        slotReconnect();
@@ -1352,7 +1352,7 @@ void MainWindow::slotPrint()
     // print ...
     QPainter painter;
     painter.begin(&printer);
-    if(strlen(l_print_header.toAscii()) > 0)
+    if(strlen(l_print_header.toUtf8()) > 0)
     {
       QString date_time;
       date_time  = l_print_header;
@@ -1391,7 +1391,7 @@ void MainWindow::snapshot(QPixmap &pm)
 void MainWindow::slotUrl(const QString &urlin)
 {
   url = urlin;
-  if(opt.arg_debug) printf("slotUrl url=%s\n",(const char*) url.toAscii());
+  if(opt.arg_debug) printf("slotUrl url=%s\n",(const char*) url.toUtf8());
   isReconnect = 0;
   slotReconnect();
 }
@@ -1424,8 +1424,8 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
   if(modifier != 0)
   {
     char buf[80];
-    if(opt.arg_debug) printf("key modifier=%d key=%d ascii=%s\n",modifier,e->key(),(const char *) e->text().toAscii());
-    sprintf(buf,"key(%d,%d,\"%s\")\n",modifier,key,(const char *) e->text().toAscii());
+    if(opt.arg_debug) printf("key modifier=%d key=%d ascii=%s\n",modifier,e->key(),(const char *) e->text().toUtf8());
+    sprintf(buf,"key(%d,%d,\"%s\")\n",modifier,key,(const char *) e->text().toUtf8());
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
   }
   QMainWindow::keyPressEvent(e);
@@ -1459,8 +1459,8 @@ void MainWindow::keyReleaseEvent(QKeyEvent *e)
   if(modifier != 0)
   {
     char buf[80];
-    if(opt.arg_debug) printf("key modifier=%d key=%d ascii=%s\n",modifier,e->key(),(const char *) e->text().toAscii());
-    sprintf(buf,"key(%d,%d,\"%s\")\n",modifier,key,(const char *) e->text().toAscii());
+    if(opt.arg_debug) printf("key modifier=%d key=%d ascii=%s\n",modifier,e->key(),(const char *) e->text().toUtf8());
+    sprintf(buf,"key(%d,%d,\"%s\")\n",modifier,key,(const char *) e->text().toUtf8());
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
   }
   QMainWindow::keyReleaseEvent(e);

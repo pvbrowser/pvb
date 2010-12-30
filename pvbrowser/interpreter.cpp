@@ -294,7 +294,7 @@ QString dir;
       {
         char filename[MAX_PRINTF_LENGTH],buf[80];
         sprintf(buf,"pvMetaFile%d.pvm",i);
-        strcpy(filename,(const char *) dir.toAscii()); strcat(filename,buf);
+        strcpy(filename,(const char *) dir.toUtf8()); strcat(filename,buf);
         QDrawWidget *ptr = (QDrawWidget *) all[i]->w;
         if(opt.arg_debug) printf("logpvm(%s)\n",filename);
         if(ptr != NULL) ptr->logToFile(filename);
@@ -317,7 +317,7 @@ QString dir;
       {
         char filename[MAX_PRINTF_LENGTH],buf[80];
         sprintf(buf,"pvMetaFile%d.bmp",i);
-        strcpy(filename,(const char *) dir.toAscii()); strcat(filename,buf);
+        strcpy(filename,(const char *) dir.toUtf8()); strcat(filename,buf);
         QDrawWidget *ptr = (QDrawWidget *) all[i]->w;
         if(opt.arg_debug) printf("logbmp(%s)\n",filename);
         if(ptr != NULL) ptr->logBmpToFile(filename);
@@ -363,15 +363,15 @@ void Interpreter::downloadFile(const char *file)
   if(strstr(file,"..") != NULL) filename = temp + "suspicious.dat";
   else                          filename = temp + file;
 
-  unlink(filename.toAscii());
+  unlink(filename.toUtf8());
 #ifdef PVUNIX
-  int fhdl = ::open(filename.toAscii(), O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP);
+  int fhdl = ::open(filename.toUtf8(), O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IRGRP);
 #endif
 #ifdef PVWIN32
-  int fhdl = ::open(filename.toAscii(), _O_CREAT | _O_WRONLY | _O_BINARY, _S_IREAD | _S_IWRITE);
+  int fhdl = ::open(filename.toUtf8(), _O_CREAT | _O_WRONLY | _O_BINARY, _S_IREAD | _S_IWRITE);
 #endif
 #ifdef __VMS
-  int fhdl = ::open(filename.toAscii(), O_CREAT | O_WRONLY, 0);
+  int fhdl = ::open(filename.toUtf8(), O_CREAT | O_WRONLY, 0);
 #endif
   if(fhdl <= 0)
   {
@@ -934,7 +934,7 @@ void Interpreter::interpretd(const char *command)
   else if(strncmp(command,"downloadFile(",13) == 0)
   {
     get_text(command,text);
-    downloadFile(text.toAscii());
+    downloadFile(text.toUtf8());
   }
 }
 
@@ -1044,7 +1044,7 @@ void Interpreter::interpretf(const char *command)
       ,&remote.tm_isdst);
     get_text(command,text);
     timet = mktime(&remote);
-    ret = stat(text.toAscii(),&statbuf);
+    ret = stat(text.toUtf8(),&statbuf);
     if(ret < 0) // file does not exist
     {
       strcpy(buf,"cache(0)\n");   // file was not cached
@@ -1069,8 +1069,8 @@ void Interpreter::interpretf(const char *command)
     if     (type==0) result = QFileDialog::getOpenFileName();
     else if(type==1) result = QFileDialog::getSaveFileName();
     else if(type==2) result = QFileDialog::getExistingDirectory();
-    text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toAscii());
-    tcp_send(s,text.toAscii(),strlen(text.toAscii()));
+    text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
+    tcp_send(s,text.toUtf8(),strlen(text.toUtf8()));
   }
 }
 
@@ -1321,7 +1321,7 @@ void Interpreter::interpretg(const char *command)
     if(all[i]->type == TQDraw)
     {
       QDrawWidget *p = (QDrawWidget *) all[i]->w;
-      if(p != NULL) p->logToFile(text.toAscii());
+      if(p != NULL) p->logToFile(text.toUtf8());
     }
   }
   else if(strncmp(command,"gSaveAsBmp(",11) == 0)
@@ -1333,7 +1333,7 @@ void Interpreter::interpretg(const char *command)
     if(all[i]->type == TQDraw)
     {
       QDrawWidget *p = (QDrawWidget *) all[i]->w;
-      if(p != NULL) p->logBmpToFile(text.toAscii());
+      if(p != NULL) p->logBmpToFile(text.toUtf8());
     }
     else
     {
@@ -1388,7 +1388,7 @@ void Interpreter::interpreth(const char *command)
 #ifdef PVUNIX
       cmd += " &";
 #endif
-      mysystem(cmd.toAscii());
+      mysystem(cmd.toUtf8());
     }
     else
     {
@@ -1472,7 +1472,7 @@ void Interpreter::interpreti(const char *command)
           cptr = strchr(text2,'\n');
           if(cptr != NULL) *cptr = '\0';
           filename = temp + text2;
-          QPixmap pm(filename.toAscii());
+          QPixmap pm(filename.toUtf8());
           if(ptr != NULL) ptr->insertItem(index,pm,text);
         }
         else
@@ -1830,7 +1830,7 @@ void Interpreter::interpretp(const char *command)
   else if(strncmp(command,"playSound(",10) == 0) // play a (WAV) sound
   {
     get_text(command,text);
-    printf("playSound(\"%s\")\n",(const char *) text.toAscii());
+    printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
     if(QSound::isAvailable())
     {
       QSound::play(text);
@@ -2050,7 +2050,7 @@ void Interpreter::interpretr(const char *command)
       if(ptr != NULL)
       {
         QRectF rectf = ptr->renderer.boundsOnElement(text);
-        sprintf(buf,"text(%d,\"svgBoundsOnElement:%f,%f,%f,%f=%s\"\n", i, rectf.x(), rectf.y(), rectf.width(), rectf.height(), (const char *) text.toAscii());
+        sprintf(buf,"text(%d,\"svgBoundsOnElement:%f,%f,%f,%f=%s\"\n", i, rectf.x(), rectf.y(), rectf.width(), rectf.height(), (const char *) text.toUtf8());
         tcp_send(s,buf,strlen(buf));
       }
     }
@@ -2069,7 +2069,7 @@ void Interpreter::interpretr(const char *command)
       {
         QMatrix m = ptr->renderer.matrixForElement(text);
         sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", i, 
-        m.m11(), m.m12(), m.m21(), m.m22(), m.det(), m.dx(), m.dy(), (const char *) text.toAscii());
+        m.m11(), m.m12(), m.m21(), m.m22(), m.det(), m.dx(), m.dy(), (const char *) text.toUtf8());
         tcp_send(s,buf,strlen(buf));
       }
     }
@@ -2602,7 +2602,7 @@ void Interpreter::interprets(const char *command)
             QImageWidget *iw = (QImageWidget *) all[i]->w;
             if(iw != NULL) 
             {
-              iw->setImage(filename.toAscii());
+              iw->setImage(filename.toUtf8());
             }  
           }
         }
@@ -2627,7 +2627,7 @@ void Interpreter::interprets(const char *command)
             if(w==0 && h==0)
             {
               QPixmap pm;
-              if(lv != NULL) lv->setListViewPixmap(text.toAscii(),column,pm);
+              if(lv != NULL) lv->setListViewPixmap(text.toUtf8(),column,pm);
             }
             else
             {
@@ -2638,7 +2638,7 @@ void Interpreter::interprets(const char *command)
               {
                 myCreateHeuristicMask(pm,temp);
               }
-              if(lv != NULL) lv->setListViewPixmap(text.toAscii(),column,pm);
+              if(lv != NULL) lv->setListViewPixmap(text.toUtf8(),column,pm);
               if(data != NULL) delete [] data;
               if(temp != NULL) delete temp;
             }
@@ -3168,11 +3168,11 @@ void Interpreter::interprets(const char *command)
           if(i >= nmax && i > 0) return;
           get_text(command,text);
           if(opt.arg_debug) printf("setText text='%s'\n",(const char *)text.toUtf8());
-          if(strncmp(text.toAscii(),"alloc(",6) == 0) // allocate big buffer for big text
+          if(strncmp(text.toUtf8(),"alloc(",6) == 0) // allocate big buffer for big text
           {
             int len,ret;
             char *buf;
-            sscanf(text.toAscii(),"alloc(%d,",&len);
+            sscanf(text.toUtf8(),"alloc(%d,",&len);
             //printf("alloc(%d)\n",len);
             buf = new char[len+1];
             ret = tcp_rec_binary(s, buf, len);
@@ -3188,7 +3188,7 @@ void Interpreter::interprets(const char *command)
             char *cptr;
             char cbuf[MAX_PRINTF_LENGTH];
             char buf[MAX_PRINTF_LENGTH];
-            strcpy(cbuf,text.toAscii());
+            strcpy(cbuf,text.toUtf8());
             cptr = strchr(cbuf,'=');
             if(cptr == NULL) // request cookie
             {
@@ -3196,7 +3196,7 @@ void Interpreter::interprets(const char *command)
               f = fopen(cbuf,"r");
               if(f == NULL)
               {
-                printf("could not read Cookie %s\n", (const char *) text.toAscii());
+                printf("could not read Cookie %s\n", (const char *) text.toUtf8());
                 sprintf(buf,"text(-6,\"%s\")\n", "null");
                 tcp_send(s,buf,strlen(buf));
               }
@@ -3204,7 +3204,7 @@ void Interpreter::interprets(const char *command)
               {
                 if(fgets(cbuf,sizeof(cbuf)-1,f) == NULL)
                 {
-                  printf("could not read a line from Cookie %s\n", (const char *) text.toAscii());
+                  printf("could not read a line from Cookie %s\n", (const char *) text.toUtf8());
                   sprintf(buf,"text(-6,\"%s\")\n", "null");
                   tcp_send(s,buf,strlen(buf));
                 }
@@ -3235,11 +3235,11 @@ void Interpreter::interprets(const char *command)
                   f = fopen(cbuf,"w");
                   if(f == NULL)
                   {
-                    printf("could not write Cookie %s\n", (const char *) text.toAscii());
+                    printf("could not write Cookie %s\n", (const char *) text.toUtf8());
                   }
                   else
                   {
-                    fprintf(f,"%s\n", (const char *) text.toAscii());
+                    fprintf(f,"%s\n", (const char *) text.toUtf8());
                     fclose(f);
                   }
                 }
@@ -3353,7 +3353,7 @@ void Interpreter::interprets(const char *command)
               int r,g,b;
               if(text.startsWith("color("))
               {
-                sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+                sscanf(text.toUtf8(),"color(%d,%d,%d",&r,&g,&b);
                 text = text.section(')',1);
               }
               else
@@ -4019,7 +4019,7 @@ void Interpreter::interpretv(const char *command)
     if(all[i]->type == TQVtk)
     {
       pvVtkTclWidget *w = (pvVtkTclWidget *) all[i]->w;
-      if(w != NULL) w->interpretFile(text.toAscii());
+      if(w != NULL) w->interpretFile(text.toUtf8());
     }
   }
 #endif
@@ -4912,7 +4912,7 @@ void Interpreter::interpretQ(const char *command)
       QImageWidget *imagewidget = new QImageWidget(s, i, all[p]->w);
       all[i]->w = (QWidget *) imagewidget;
       all[i]->type = TQImage;
-      imagewidget->setImage(filename.toAscii());
+      imagewidget->setImage(filename.toUtf8());
       return;
     }
     else if(depth == 8)

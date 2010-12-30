@@ -1241,7 +1241,7 @@ void pvSvgAnimator::perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line)
   }
 
   next_line->line = new char[str.length()+1];
-  strcpy(next_line->line, str.toAscii());
+  strcpy(next_line->line, str.toUtf8());
 }
 
 int pvSvgAnimator::read()
@@ -1557,7 +1557,7 @@ for(int itest=0; ; itest++)
     QString qbuf(cptr);
     QRegExp rx(text,Qt::CaseSensitive,QRegExp::Wildcard);
     qbuf.replace(rx,after);
-    strcat(buf,qbuf.toAscii());
+    strcat(buf,qbuf.toUtf8());
     strcat(buf,"\"\n");
     //printf("svgPrintf(%s,%s,%s) old_line=%s\n",objectname,tag,text,current_line->line);
     delete [] current_line->line;
@@ -1669,7 +1669,7 @@ for(int itest=0; ; itest++)
         QString qbuf(cptr);
         QRegExp rx(text,Qt::CaseSensitive,QRegExp::Wildcard);
         qbuf.replace(rx,after);
-        strcat(buf,qbuf.toAscii());
+        strcat(buf,qbuf.toUtf8());
         strcat(buf,"\"\n");
         //printf("svgPrintf(%s,%s,%s) old_line=%s\n",objectname,tag,text,current_line->line);
         delete [] current_line->line;
@@ -1910,21 +1910,21 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
       name = &svgline->line[4];
       name.remove('\"');
       bounds = draw->renderer.boundsOnElement(name);
-      if(opt.arg_debug) printf("id=%s bounds(%f,%f,%f,%f)\n", (const char *) name.toAscii(), bounds.x(), bounds.y(), bounds.width(), bounds.height());
+      if(opt.arg_debug) printf("id=%s bounds(%f,%f,%f,%f)\n", (const char *) name.toUtf8(), bounds.x(), bounds.y(), bounds.width(), bounds.height());
 
       matrix = draw->renderer.matrixForElement(name);
 
       mappedBounds =  matrix.mapRect(bounds); 
-      if(opt.arg_debug) printf("id=%s mappedBounds(%f,%f,%f,%f)\n", (const char *) name.toAscii(), mappedBounds.x(), mappedBounds.y(), mappedBounds.width(), mappedBounds.height());
+      if(opt.arg_debug) printf("id=%s mappedBounds(%f,%f,%f,%f)\n", (const char *) name.toUtf8(), mappedBounds.x(), mappedBounds.y(), mappedBounds.width(), mappedBounds.height());
 
       if(x >= mappedBounds.x() && x <= (mappedBounds.x()+mappedBounds.width()) &&
          y >= mappedBounds.y() && y <= (mappedBounds.y()+mappedBounds.height()) )
       {
         if(opt.arg_debug) printf("inside\n");
-        buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) name.toAscii());
+        buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) name.toUtf8());
         if(buf.length() < MAX_PRINTF_LENGTH)
         {
-          tcp_send(s, buf.toAscii(), strlen(buf.toAscii())); // send TEXT_EVENT to pvserver
+          tcp_send(s, buf.toUtf8(), strlen(buf.toUtf8())); // send TEXT_EVENT to pvserver
         }
       }
     }

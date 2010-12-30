@@ -68,7 +68,7 @@ void dlgMyBrowser::setUrl(const char *url)
   homepath = QUrl(url).host() + QUrl(url).path();
 #endif
   mainWindow->setTabText("www");
-  //mainWindow->setTabText(form->browser->title().toAscii());
+  //mainWindow->setTabText(form->browser->title().toUtf8());
 }
 
 void dlgMyBrowser::slotBack()
@@ -113,7 +113,7 @@ void dlgMyBrowser::slotUrlChanged(const QUrl &url)
   int currentTab = mainWindow->currentTab;
   mainWindow->pvbtab[currentTab].url = text;
   mainWindow->urlComboBox->setEditText(text);
-  if(opt.arg_debug) printf("dlgMyBrowser::slotUrlChanged url=%s\n", (const char *) text.toAscii());
+  if(opt.arg_debug) printf("dlgMyBrowser::slotUrlChanged url=%s\n", (const char *) text.toUtf8());
   // anchors not working now
   // void QWebFrame::scrollToAnchor ( const QString & anchor )
   // will be introduced in Qt 4.7
@@ -125,7 +125,7 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   if(url.isEmpty()) return;
 #ifdef USE_WEBKIT  
   QString text = url.toString();
-  //printf("link=%s\n", (const char *) text.toAscii());
+  //printf("link=%s\n", (const char *) text.toUtf8());
   QString webpath = url.host() + url.path();
   //int currentTab = mainWindow->currentTab;
   //mainWindow->pvbtab[currentTab].url = text;
@@ -140,7 +140,7 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   }
   else
   {
-    if(opt.arg_debug) printf("dlgMyBrowser::slotLinkClicked url=%s\n", (const char *) text.toAscii());
+    if(opt.arg_debug) printf("dlgMyBrowser::slotLinkClicked url=%s\n", (const char *) text.toUtf8());
     form->browser->load(url);
     homepath = webpath;
   }

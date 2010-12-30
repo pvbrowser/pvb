@@ -1135,7 +1135,7 @@ void MyTable::setTableButton(int row, int col, QString text)
   r = g = b = -2;
   if(text.startsWith("color("))
   {
-    sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+    sscanf(text.toUtf8(),"color(%d,%d,%d",&r,&g,&b);
     text = text.section(')',1);
   }
   MyQPushButton *button = new MyQPushButton(s,id,0);
@@ -1152,7 +1152,7 @@ void MyTable::setTableCheckBox(int row, int col, int state, QString text)
   r = g = b = -2;
   if(text.startsWith("color("))
   {
-    sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+    sscanf(text.toUtf8(),"color(%d,%d,%d",&r,&g,&b);
     text = text.section(')',1);
   }
   MyCheckBox *check = new MyCheckBox(s,id,0);
@@ -1408,7 +1408,7 @@ void MyTable::saveTextfile(const char *filename)
   if(name.isEmpty()) return;
   if(filename == NULL)
   {
-    fp = fopen(name.toAscii(),"r");
+    fp = fopen(name.toUtf8(),"r");
     if(fp != NULL)
     {
       fclose(fp);
@@ -1416,7 +1416,7 @@ void MyTable::saveTextfile(const char *filename)
       if(ret == QMessageBox::No) return;
     }
   }  
-  fp = fopen(name.toAscii(),"w");
+  fp = fopen(name.toUtf8(),"w");
   if(fp == NULL)
   {
     QMessageBox::warning(this,"Save Table","could not write file",QMessageBox::Ok,0,0);
@@ -1793,7 +1793,7 @@ void MyTextBrowser::moveContent(int pos)
   }  
 
   if(myurl.isEmpty()) return;
-  if(opt.arg_debug) printf("moveContent(%s)\n", (const char *) myurl.toAscii());
+  if(opt.arg_debug) printf("moveContent(%s)\n", (const char *) myurl.toUtf8());
   if(myurl.length()+40 > MAX_PRINTF_LENGTH) return;
   sprintf(buf,"text(%d,\"%s\")\n", id,decode(myurl));
   tcp_send(s,buf,strlen(buf));
@@ -1811,7 +1811,7 @@ void MyTextBrowser::setHTML(QString &text)
     text = text.replace(i,7,"href=\"awite://");
   }
 
-  if(opt.arg_debug) printf("MyTextBrowser::setHTML:: %s\n", (const char *) text.toAscii());
+  if(opt.arg_debug) printf("MyTextBrowser::setHTML:: %s\n", (const char *) text.toUtf8());
   setHtml(text);
 }
 
@@ -1829,10 +1829,10 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
     i = url.indexOf("awite://");
     if(i < 0) break;
     url = url.replace(i,8,"/");
-    if(opt.arg_debug) printf("MyTextBrowser::slotLinkClicked::link clicked = %s\n", (const char *) url.toAscii());
+    if(opt.arg_debug) printf("MyTextBrowser::slotLinkClicked::link clicked = %s\n", (const char *) url.toUtf8());
   }
 
-  if(opt.arg_debug) printf("slotLinkClicked(%s)\n", (const char *) url.toAscii());
+  if(opt.arg_debug) printf("slotLinkClicked(%s)\n", (const char *) url.toUtf8());
   if(url.length()+40 > MAX_PRINTF_LENGTH) return;
   sprintf(buf,"text(%d,\"%s\")\n", id,decode(url));
   tcp_send(s,buf,strlen(buf));
@@ -1845,7 +1845,7 @@ void MyTextBrowser::slotUrlChanged(const QUrl &link)
   QString url;
 
   url = link.toString();
-  if(opt.arg_debug) printf("slotUrlChanged(%s)\n", (const char *) url.toAscii());
+  if(opt.arg_debug) printf("slotUrlChanged(%s)\n", (const char *) url.toUtf8());
   if(url.length()+40 > MAX_PRINTF_LENGTH) return;
   sprintf(buf,"text(%d,\"%s\")\n", id,decode(url));
   tcp_send(s,buf,strlen(buf));
@@ -1973,7 +1973,7 @@ void MyListView::mouseReleaseEvent(QMouseEvent *event)
 
 void MyListView::addColumn(QString text, int size)
 {
-  if(opt.arg_debug) printf("addColumn(%s) icol=%d\n",(const char *) text.toAscii(), icol);
+  if(opt.arg_debug) printf("addColumn(%s) icol=%d\n",(const char *) text.toUtf8(), icol);
   setColumnCount(icol+1);
   headerItem()->setText(icol,text);
   if(size > 0)
@@ -2090,19 +2090,19 @@ void MyListView::nameVersionSetListViewText(const char *path, int column, QStrin
   item = firstChild(parent);
   while(item != NULL)
   {
-    if(strcmp(path,item->path.toAscii()) == 0) // update existing item
+    if(strcmp(path,item->path.toUtf8()) == 0) // update existing item
     { 
       if(text.startsWith("color("))
       {
         int r,g,b;
-        sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+        sscanf(text.toUtf8(),"color(%d,%d,%d",&r,&g,&b);
         text = text.section(')',1);
         item->setBackground(column,QBrush(QColor(r,g,b)));
       }
       item->setText(column,text); 
       return; 
     }     
-    if(starts_with(path,item->path.toAscii()))
+    if(starts_with(path,item->path.toUtf8()))
     {
       cptr = strchr(&relpath[1],'/');
       if(cptr == NULL) return;
@@ -2122,7 +2122,7 @@ void MyListView::nameVersionSetListViewText(const char *path, int column, QStrin
     if(text.startsWith("color("))
     {
       int r,g,b;
-      sscanf(text.toAscii(),"color(%d,%d,%d",&r,&g,&b);
+      sscanf(text.toUtf8(),"color(%d,%d,%d",&r,&g,&b);
       text = text.section(')',1);
       item->setBackground(column,QBrush(QColor(r,g,b)));
     }
@@ -2145,8 +2145,8 @@ void MyListView::nameVersionSetListViewPixmap(const char *path, int column, QPix
   item = firstChild(parent);
   while(item != NULL)
   {
-    if(strcmp(path,item->path.toAscii()) == 0) { item->setIcon(column,pixmap); return; }  // update existing item
-    if(starts_with(path,item->path.toAscii()))
+    if(strcmp(path,item->path.toUtf8()) == 0) { item->setIcon(column,pixmap); return; }  // update existing item
+    if(starts_with(path,item->path.toUtf8()))
     {
       cptr = strchr(&relpath[1],'/');
       if(cptr == NULL) return;
@@ -2193,7 +2193,7 @@ int MyListView::deleteListViewItem(const char *path, MyListViewItem *item)
 
   while(item != NULL)
   {
-    if(strcmp(item->path.toAscii(),path) == 0)
+    if(strcmp(item->path.toUtf8(),path) == 0)
     {
       delete item;
       return 1;
@@ -2222,7 +2222,7 @@ int MyListView::ensureVisible(const char *path, MyListViewItem *item)
 
   while(item != NULL)
   {
-    if(strcmp(item->path.toAscii(),path) == 0)
+    if(strcmp(item->path.toUtf8(),path) == 0)
     {
       scrollToItem(item, QAbstractItemView::EnsureVisible);
       return 1;
@@ -2251,7 +2251,7 @@ int MyListView::setItemOpen(const char *path, int open, MyListViewItem *item)
 
   while(item != NULL)
   {
-    if(strcmp(item->path.toAscii(),path) == 0)
+    if(strcmp(item->path.toUtf8(),path) == 0)
     {
       setItemExpanded(item, (bool) open);
       return 1;
@@ -2303,8 +2303,8 @@ void MyListView::setSelected(int mode, const char *path)
   {
     do
     {
-      if((!strncmp((const char *) plvi->path.toAscii(), path, ptr-(const char *)path)) &&
-          (strlen((const char *) plvi->path.toAscii())==(unsigned)(ptr-(const char *)path)))
+      if((!strncmp((const char *) plvi->path.toUtf8(), path, ptr-(const char *)path)) &&
+          (strlen((const char *) plvi->path.toUtf8())==(unsigned)(ptr-(const char *)path)))
       {
         setItemExpanded(plvi, (bool) mode);
         break;
@@ -2319,7 +2319,7 @@ void MyListView::setSelected(int mode, const char *path)
 
   while(plvi)
   {
-    if(!strcmp((const char *) plvi->path.toAscii(), path))
+    if(!strcmp((const char *) plvi->path.toUtf8(), path))
     {
       setItemExpanded(plvi, (bool) mode); //plvi->setOpen(mode);
       setItemSelected(plvi, (bool) mode);
@@ -2339,7 +2339,7 @@ void MyListView::slotClicked(QTreeWidgetItem *item, int column)
 
   if(item == NULL) return;
   if(opt.arg_debug) printf("clicked\n");
-  if(opt.arg_debug) printf("path=%s\n",(const char *) myitem->path.toAscii());
+  if(opt.arg_debug) printf("path=%s\n",(const char *) myitem->path.toUtf8());
   int col = icol; //columnCount();
   while(col > 0)
   {
