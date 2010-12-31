@@ -3826,6 +3826,7 @@ void Interpreter::interprett(const char *command)
 {
   if(strncmp(command,"text(",5) == 0)
   {
+    QString quote;
     char buf[MAX_PRINTF_LENGTH];
     sscanf(command,"text(%d)",&i);
     buf[0] = '\0';
@@ -3836,7 +3837,9 @@ void Interpreter::interprett(const char *command)
       MyLabel *w = (MyLabel *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        quote = w->text();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
@@ -3845,7 +3848,9 @@ void Interpreter::interprett(const char *command)
       MyQPushButton *w = (MyQPushButton *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        quote = w->text();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
@@ -3854,7 +3859,9 @@ void Interpreter::interprett(const char *command)
       MyRadioButton *w = (MyRadioButton *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        quote = w->text();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
@@ -3863,7 +3870,9 @@ void Interpreter::interprett(const char *command)
       MyCheckBox *w = (MyCheckBox *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        quote = w->text();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
@@ -3872,7 +3881,9 @@ void Interpreter::interprett(const char *command)
       MyLineEdit *w = (MyLineEdit *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->text().toUtf8());
+        quote = w->text();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }
@@ -3881,7 +3892,9 @@ void Interpreter::interprett(const char *command)
       MyComboBox *w = (MyComboBox *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->currentText().toUtf8());
+        quote = w->currentText();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         //sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->currentText());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
@@ -3891,7 +3904,9 @@ void Interpreter::interprett(const char *command)
       MyGroupBox *w = (MyGroupBox *) all[i]->w;
       if(w != NULL)
       {
-        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) w->title().toUtf8());
+        quote = w->title();
+        quote.replace("\n","\\n");
+        sprintf(buf,"text(%d,\"%s\")\n", i, (const char *) quote.toUtf8());
         if(buf[0] != '\0') tcp_send(s,buf,strlen(buf));
       }
     }

@@ -1663,10 +1663,10 @@ get_args:
       if(tabstopFound == 0)
       {
         tabstopFound = 1;
-        fprintf(fout, "%s<tabstops>\n", space);
-        fprintf(fout, "%s <tabstop>%s</tabstop>\n", space, p[0]);
+        // fprintf(fout, "%s<tabstops>\n", space);
+        // fprintf(fout, "%s <tabstop>%s</tabstop>\n", space, p[0]);
       }
-      fprintf(fout, "%s <tabstop>%s</tabstop>\n", space, p[1]);
+      // fprintf(fout, "%s <tabstop>%s</tabstop>\n", space, p[1]);
     }
     if(isConstructor == 1)
     { 
@@ -2194,7 +2194,7 @@ get_args:
       if(cptr != NULL) *cptr = '\0';
       if(strstr(line,"  return 0;") != NULL)
       {
-        if(tabstopFound == 1) fprintf(fout, "%s</tabstops>\n", space);
+        // if(tabstopFound == 1) fprintf(fout, "%s</tabstops>\n", space);
         return 0; // end reached
       }  
       if     (strstr(line,"pvDownloadFile(")     != NULL) ;                  // not necessary in ui file
