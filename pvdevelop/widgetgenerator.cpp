@@ -278,12 +278,24 @@ static const char *quote(QString &text)
   static char buf[1024];
   int i;
 
-  i = 0; // convert to utf8 and quote '"'
+  i = 0; // convert to utf8 and quote '"' and '\n'
   cptr = text.toUtf8().constData();
   while(*cptr != '\0' && i < (int) (sizeof(buf)-2))
   {
-    if(*cptr == '\"') buf[i++] = '\\';
-    buf[i++] = *cptr;
+    if     (*cptr == '\"')
+    {
+      buf[i++] = '\\';
+      buf[i++] = *cptr;
+    }  
+    else if(*cptr == '\n') 
+    {
+      buf[i++] = '\\';
+      buf[i++] = 'n';
+    }
+    else
+    {
+      buf[i++] = *cptr;
+    }
     cptr++;
   }
   buf[i] = '\0';
@@ -1397,6 +1409,12 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
       {
         break;
       }
+      else if(*cptr1 == '\\' && cptr1[1] == 'n')
+      {
+        text[i++] = '\n';
+        cptr1++;
+        cptr1++;
+      }
       else if(*cptr1 == '\\')
       {
         cptr1++;
@@ -2203,7 +2221,7 @@ static int getWidget(FILE *fin, QWidget *root)
           ((MyQPushButton *) item)->setText(qtext);
           break;
         case TQRadio:
-          ((MyRadioButton *) item)->setText(qtext);
+          ((MyRadioButton *) item)->setText(text);
           break;
         case TQCheck:
           ((MyCheckBox *) item)->setText(qtext);

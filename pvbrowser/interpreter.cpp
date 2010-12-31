@@ -5478,3 +5478,12 @@ void Interpreter::showMyBrowser(const char *url)
   if(opt.arg_debug) printf("showMyBrowser end\n");
 }
 
+void Interpreter::perhapsCloseModalDialog()
+{
+  if(modalDialog != NULL)
+  {
+    delete modalDialog;
+    modalDialog = NULL;
+  }
+}
+

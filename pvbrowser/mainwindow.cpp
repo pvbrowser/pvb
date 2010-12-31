@@ -664,6 +664,7 @@ void MainWindow::slotTabChanged(int index)
       statusBar()->showMessage(l_status_connection_lost);
       if(opt.arg_debug) printf("view->setDisabled1 tcp_close(%d)\n", currentTab);
       view->setDisabled(1);
+      pvbtab[currentTab].interpreter.perhapsCloseModalDialog();
       qApp->beep();
     }
   }
@@ -711,6 +712,7 @@ void MainWindow::slotTabChanged(int index)
       statusBar()->showMessage(l_status_connection_lost);
       if(opt.arg_debug) printf("view->setDisabled2 tcp_close(%d)\n", currentTab);
       view->setDisabled(1);
+      pvbtab[currentTab].interpreter.perhapsCloseModalDialog();
       qApp->beep();
     }
   }
@@ -1231,6 +1233,7 @@ void MainWindow::slotTimeOut()
         statusBar()->showMessage(l_status_connection_lost);
         if(opt.arg_debug) printf("view->setDisabled\n");
         view->setDisabled(1);
+        pvbtab[i].interpreter.perhapsCloseModalDialog();
         qApp->beep();
       }
     }
@@ -1299,6 +1302,7 @@ char buf[MAX_PRINTF_LENGTH] = "";
     if(opt.arg_debug) printf("view->setDisabled4\n");
     if(pvbtab[ind].view != NULL) pvbtab[ind].view->setDisabled(1); // crash when pvservers are forced to abort -> test if own|qt|os problem
     if(opt.arg_debug) printf("view->setDisabled4 end\n");
+    pvbtab[ind].interpreter.perhapsCloseModalDialog();
     qApp->beep();
   }
   else

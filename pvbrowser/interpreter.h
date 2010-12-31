@@ -102,6 +102,7 @@ class Interpreter
     void metaFileLog();
     void metaFileBmp();
     void slotModalTerminate();
+    void perhapsCloseModalDialog();
     int  width();
     int  height();
     QString temp;

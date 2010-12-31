@@ -146,6 +146,8 @@ dlgProperty::dlgProperty(QWidget *_widget)
   {
     form->lineEditText->hide();
   }
+  QString quote = form->lineEditText->text().replace("\n","\\n");
+  form->lineEditText->setText(quote);
 
   if(type.contains("TQLabel:") || type.contains("TQFrame:"))
   {
@@ -427,33 +429,34 @@ void dlgProperty::slotUpdate()
     }
   }
 
+  QString quote = form->lineEditText->text().replace("\\n","\n");
   if(type.contains("TQLabel:"))
   {
-    ((MyLabel *)widget)->setText(form->lineEditText->text());
+    ((MyLabel *)widget)->setText(quote);
   }
   else if(type.contains("TQLineEdit:"))
   {
-    ((MyLineEdit *)widget)->setText(form->lineEditText->text());
+    ((MyLineEdit *)widget)->setText(quote);
   }
   else if(type.contains("TQPushButton:"))
   {
-    ((MyQPushButton *)widget)->setText(form->lineEditText->text());
+    ((MyQPushButton *)widget)->setText(quote);
   }
   else if(type.contains("TQRadio:"))
   {
-    ((MyRadioButton *)widget)->setText(form->lineEditText->text());
+    ((MyRadioButton *)widget)->setText(quote);
   }
   else if(type.contains("TQCheck:"))
   {
-    ((MyCheckBox *)widget)->setText(form->lineEditText->text());
+    ((MyCheckBox *)widget)->setText(quote);
   }
   else if(type.contains("TQButtonGroup:"))
   {
-    ((MyButtonGroup *)widget)->setTitle(form->lineEditText->text());
+    ((MyButtonGroup *)widget)->setTitle(quote);
   }
   else if(type.contains("TQGroupBox:"))
   {
-    ((MyGroupBox *)widget)->setTitle(form->lineEditText->text());
+    ((MyGroupBox *)widget)->setTitle(quote);
   }
 
   if(type.contains("TQLabel:"))
