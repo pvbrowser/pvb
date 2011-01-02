@@ -873,6 +873,7 @@ void MainWindow::viewDesigner()
   if(opt.arg_debug) printf("viewDesigner before new Designer\n");;
   designer = new Designer(buf);
   if(opt.arg_debug) printf("viewDesigner after new Designer\n");;
+  designer->root->mainWindow = this;
   designer->root->resize(opt.xmax,opt.ymax);
   scroll->setMaximumSize(opt.xmax,opt.ymax);
   scroll->setWidget(designer->root);
@@ -1428,6 +1429,13 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
     else if(event->key() == Qt::Key_L)
     {
       designer->root->EditLayout();
+    }
+    else if(event->key() == Qt::Key_Left  || 
+            event->key() == Qt::Key_Right ||
+            event->key() == Qt::Key_Up    ||
+            event->key() == Qt::Key_Down  )
+    {
+      designer->root->MoveKey(event->key());
     }
   }
   //printf("ctrlPressed=%d\n",opt.ctrlPressed);

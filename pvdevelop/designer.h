@@ -35,6 +35,8 @@ class MyRootWidget : public QWidget
     void GrabMouse();
     void ReleaseMouse();
     void EditLayout();
+    void MoveKey(int key);
+    QMainWindow  *mainWindow;
   private:
     void mouseDoubleClickEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
