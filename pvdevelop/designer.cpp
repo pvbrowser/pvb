@@ -214,23 +214,23 @@ void MyRootWidget::MoveKey(int key)
   {
     if     (key == Qt::Key_Left)
     {
-      wNew = wChild0 - opt.xGrid;
-      hNew = hChild0;
+      wNew = child->width() - opt.xGrid;
+      hNew = child->height();
     }
     else if(key == Qt::Key_Right)
     {
-      wNew = wChild0 + opt.xGrid;
-      hNew = hChild0;
+      wNew = child->width() + opt.xGrid;
+      hNew = child->height();
     }
     else if(key == Qt::Key_Up)
     {
-      wNew = wChild0;
-      hNew = hChild0 - opt.yGrid;
+      wNew = child->width();
+      hNew = child->height() - opt.yGrid;
     }
     else if(key == Qt::Key_Down)
     {
-      wNew = wChild0;
-      hNew = hChild0 + opt.yGrid;
+      wNew = child->width();
+      hNew = child->height() + opt.yGrid;
     }
     else
     {
@@ -243,8 +243,6 @@ void MyRootWidget::MoveKey(int key)
     if(wNew>=0 && hNew>=0)
     {
       myResize(child,wNew,hNew);
-      wChild0 = wNew;
-      hChild0 = hNew;
       modified = 1;
     }  
   }
@@ -252,23 +250,23 @@ void MyRootWidget::MoveKey(int key)
   {
     if     (key == Qt::Key_Left)
     {
-      xNew = xChild0 - opt.xGrid;
-      yNew = yChild0;
+      xNew = child->x() - opt.xGrid;
+      yNew = child->y();
     }
     else if(key == Qt::Key_Right)
     {
-      xNew = xChild0 + opt.xGrid;
-      yNew = yChild0;
+      xNew = child->x() + opt.xGrid;
+      yNew = child->y();
     }
     else if(key == Qt::Key_Up)
     {
-      xNew = xChild0;
-      yNew = yChild0 - opt.yGrid;
+      xNew = child->x();
+      yNew = child->y() - opt.yGrid;
     }
     else if(key == Qt::Key_Down)
     {
-      xNew = xChild0;
-      yNew = yChild0 + opt.yGrid;
+      xNew = child->x();
+      yNew = child->y() + opt.yGrid;
     }
     else
     {
@@ -280,8 +278,6 @@ void MyRootWidget::MoveKey(int key)
        xNew<((QWidget *)child->parent())->width() && yNew<((QWidget *)child->parent())->height())
     {
       myMove(child,xNew,yNew);
-      xChild0 = xNew;
-      yChild0 = yNew;
       modified = 1;
     }
   }
