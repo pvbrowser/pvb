@@ -2820,13 +2820,21 @@ static int setWidgetTree(QWidget *root, const char *uifile)
       {
         widget->setStatusTip("TQMultiLineEdit:");
       }
-      else if(widget->inherits("QListView"))
+//      else if(widget->inherits("QListView"))
+//      {
+//        widget->setStatusTip("TQListView:");
+//      }
+//      else if(widget->inherits("QListWidget"))
+//      {
+//        widget->setStatusTip("TQListView:");
+//      }
+      else if(widget->inherits("QTreeView"))
       {
         widget->setStatusTip("TQListView:");
       }
-      else if(widget->inherits("QListWidget"))
+      else if(widget->inherits("QListView"))
       {
-        widget->setStatusTip("TQListView:");
+        widget->setStatusTip("TQListBox:");
       }
       else if(widget->inherits("PvbIconview"))
       {
