@@ -152,9 +152,10 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
-  int xs = scroll->width();
-  int ys = scroll->height();
+  //int xs = scroll->width();
+  //int ys = scroll->height();
   if(opt.arg_debug > 0) printf("DoubleClickEvent\n");
+/*
   if((x<0 || y<0 || x>xs || y>ys) && grabbed == 1)
   {
     releaseMouse();
@@ -168,7 +169,26 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
     grabMouse();
     mainWindow->grabKeyboard();
   }
-  else // call insertdialog
+*/  
+//#####################################
+  if(aboveDesignArea(x,y))
+  {
+    grabbed = 1;
+    grabMouse();
+    mainWindow->grabKeyboard();
+    QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+  }
+  else
+  {
+    QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+    releaseMouse();
+    mainWindow->releaseKeyboard();
+    grabbed = 2;
+    return;
+  }
+//#####################################
+//  else // call insertdialog
+  if(1)
   {
     QWidget *p = this;
     if(parentLevel == 0)
@@ -195,10 +215,11 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
         modified = 1;
       }
     }
+    grabbed = 1;
     grabMouse();
     mainWindow->grabKeyboard();
-    grabbed = 1;
-    QApplication::setOverrideCursor(QCursor(Qt::SizeAllCursor));
+    QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+    //QApplication::setOverrideCursor(QCursor(Qt::SizeAllCursor));
   }
 }
 
@@ -287,13 +308,14 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
-  int xs = scroll->width();
-  int ys = scroll->height();
+  //int xs = scroll->width();
+  //int ys = scroll->height();
   int xx = -1;
   int yy = -1;
   int ww = -1;
   int hh = -1;
   if(opt.arg_debug > 0) printf("mouseMoveEvent x=%d y=%d\n",x,y);
+/*
   if((x<0 || y<0 || x>xs || y>ys) && grabbed == 1)
   {
     QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
@@ -309,6 +331,24 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
     mainWindow->grabKeyboard();
     QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
   }
+*/  
+//#####################################
+  if(aboveDesignArea(x,y))
+  {
+    grabbed = 1;
+    grabMouse();
+    mainWindow->grabKeyboard();
+    QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+  }
+  else
+  {
+    QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+    releaseMouse();
+    mainWindow->releaseKeyboard();
+    grabbed = 2;
+    return;
+  }
+//#####################################
   QWidget *child = clickedChild;
   if(child != NULL && grabbed)
   {
@@ -425,14 +465,32 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
   }
 }
 
+int MyRootWidget::aboveDesignArea(int x, int y)
+{
+  if(y < 0) return 0;
+  QWidget *child = childAt(x,y);
+  if(opt.arg_debug > 0)  printf("aboveDesignArea: child=%ld, x=%d y=%d grabbed=%d\n", child, x, y, grabbed);
+  if     (underMouse())  return 1;
+  else if(child == NULL) return 0;
+
+  const QObjectList childs = children();
+  int count = childs.count();
+  for(int i=0; i<count; i++)
+  {
+    if(child == (QWidget *) childs.at(i)) return 1;
+  }
+  return 0;
+}
+
 void MyRootWidget::mousePressEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
-  int xs = scroll->width();
-  int ys = scroll->height();
+  //int xs = scroll->width();
+  //int ys = scroll->height();
   if(opt.arg_debug > 0) printf("mousePressEvent x=%d y=%d\n",x,y);
   reparentDone = 0;
+/*
   if((x<0 || y<0 || x>xs || y>ys) && grabbed == 1)
   {
     releaseMouse();
@@ -446,6 +504,22 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
     grabMouse();
     mainWindow->grabKeyboard();
   }
+*/
+//#####################################
+  if(aboveDesignArea(x,y))
+  {
+    grabbed = 1;
+    grabMouse();
+    mainWindow->grabKeyboard();
+  }
+  else
+  {
+    releaseMouse();
+    mainWindow->releaseKeyboard();
+    grabbed = 2;
+    return;
+  }
+//#####################################
   QWidget *child = getChild(x,y);
   if(event->button() == Qt::LeftButton)
   {
@@ -780,9 +854,10 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
-  int xs = scroll->width();
-  int ys = scroll->height();
+  //int xs = scroll->width();
+  //int ys = scroll->height();
   if(opt.arg_debug > 0) printf("mouseReleaseEvent x=%d y=%d\n",x,y);
+/*
   if((x<0 || y<0 || x>xs || y>ys) && grabbed == 1)
   {
     releaseMouse();
@@ -796,6 +871,22 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
     grabMouse();
     mainWindow->grabKeyboard();
   }
+*/  
+//#####################################
+  if(aboveDesignArea(x,y))
+  {
+    grabbed = 1;
+    grabMouse();
+    mainWindow->grabKeyboard();
+  }
+  else
+  {
+    releaseMouse();
+    mainWindow->releaseKeyboard();
+    grabbed = 2;
+    return;
+  }
+//#####################################
   if(clickedChild != NULL)
   {
     clickedChild->hide();
@@ -990,3 +1081,4 @@ void MyRootWidget::EditLayout()
   modified = 1;
   GrabMouse();
 }
+

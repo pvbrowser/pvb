@@ -46,6 +46,7 @@ class MyRootWidget : public QWidget
     void showWidgets(QObject *item);
     void restoreColors(QWidget *item);
     void copyAttributes(QWidget *source, QWidget *destination);
+    int  aboveDesignArea(int x, int y);
     QScrollArea *scroll;
     int xOld,yOld,buttonDown,xChild0,yChild0,wChild0,hChild0,grabbed,tabbing,copying, inMiddle,parentLevel,reparentDone;
     QWidget *clickedChild, *lastChild, *lastTabChild, *parentLevel0, *parentLevel1, *parentLevel2;
