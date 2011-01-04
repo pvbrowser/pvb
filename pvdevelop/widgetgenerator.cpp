@@ -1014,25 +1014,38 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget->statusTip().startsWith("TQTabWidget:"))
     {
-      strcpy(tabparentname,(const char *) widget->objectName().toAscii());
+      strcpy(tabparentname,(const char *) widget->objectName().toUtf8());
     }
     if(widget->statusTip().startsWith("TQToolBox:"))
     {
-      strcpy(tabparentname,(const char *) widget->objectName().toAscii());
+      strcpy(tabparentname,(const char *) widget->objectName().toUtf8());
     }
     if(widget->statusTip().startsWith("TQWidget:"))
     {
+      if(opt.arg_debug) printf("tabparentname0=%s\n",(const char *) widget->objectName().toUtf8());
       QWidget *p = (QWidget *) widget->parent();
       if(p != NULL)
       {
+        strcpy(tabparentname,(const char *) p->objectName().toUtf8());
+        if(opt.arg_debug) printf("tabparentname1=%s\n",tabparentname);
         QWidget *gp = (QWidget *) p->parent();
         if(gp != NULL)
         {
-          // printf("tabparentname=%s\n",(const char *) gp->objectName().toAscii());
-          strcpy(tabparentname,(const char *) gp->objectName().toAscii());
+          int what = 0;
+          if(strcmp(tabparentname,"qt_scrollarea_viewport")     == 0) what = 1;
+          if(strcmp(tabparentname,"qt_tabwidget_stackedwidget") == 0) what = 2;
+          strcpy(tabparentname,(const char *) gp->objectName().toUtf8());
+          if(opt.arg_debug) printf("tabparentname2=%s\n",tabparentname);
+          QWidget *ggp = (QWidget *) gp->parent();
+          if(ggp != NULL && strlen(tabparentname) == 0 && what == 1)
+          {
+            strcpy(tabparentname,(const char *) ggp->objectName().toUtf8());
+            if(opt.arg_debug) printf("tabparentname3=%s\n",tabparentname);
+          }
+          if(what == 0) strcpy(tabparentname,"ERROR_PLEASE_FIX_ME");
         }  
       }
     }
