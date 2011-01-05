@@ -276,6 +276,7 @@ void MyRootWidget::MoveKey(int key)
       modified = 1;
     }
   }
+  printStatusMessage(child);
 }
 
 void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
@@ -396,12 +397,17 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
       inMiddle = 1;
     }
   }
+  printStatusMessage(child);
+}
+
+void MyRootWidget::printStatusMessage(QWidget *child)
+{
   if(child != NULL && statusBar != NULL)
   {
     QString pos;
-    pos.sprintf(" x=%d y=%d",xx,yy);
+    pos.sprintf(" x=%d y=%d",child->x(),child->y());
     QString dim;
-    dim.sprintf(" width=%d height=%d",ww,hh);
+    dim.sprintf(" width=%d height=%d",child->width(),child->height());
     QString message = child->statusTip();
     message += " objectName=\"";
     message += child->objectName();
@@ -410,8 +416,8 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
     message += "\" whatsThis=\"";
     message += child->whatsThis();
     message += "\"";
-    if(xx != -1 && yy != -1) message += pos;
-    if(ww != -1 && hh != -1) message += dim;
+    message += pos;
+    message += dim;
     statusBar->showMessage(message);
   }
   else if(statusBar != NULL)

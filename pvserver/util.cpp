@@ -2637,11 +2637,8 @@ int pvSetTabPosition(PARAM *p, int id, int pos)
 {
 char buf[80];
 
-  if(pos == 0 || pos == 1)
-  {
-    sprintf(buf,"setTabPosition(%d,%d)\n",id,pos);
-    pvtcpsend(p, buf, strlen(buf));
-  }
+  sprintf(buf,"setTabPosition(%d,%d)\n",id,pos);
+  pvtcpsend(p, buf, strlen(buf));
   return 0;
 }
 
