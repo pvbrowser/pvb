@@ -63,6 +63,7 @@ dlgInsertWidget::dlgInsertWidget()
   form->comboBoxProgressBarOrientation->addItem("Vertical");
 
   ret = 1;
+  myrootwidget = NULL;
 
   QObject::connect(form->okButton,     SIGNAL(clicked()),SLOT(slotOk()));
   QObject::connect(form->cancelButton, SIGNAL(clicked()),SLOT(slotCancel()));
@@ -89,7 +90,11 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
   if     (form->wTabWidget->isChecked())
   {
     bool ok;
-    releaseMouse();
+    if(myrootwidget != NULL)
+    {
+      myrootwidget->releaseMouse();
+      myrootwidget->releaseKeyboard();
+    }  
     QString text = QInputDialog::getText(this, "pvdevelop: Add TabWidget",
                                                "Title of first tab", QLineEdit::Normal,
                                                "", &ok);
@@ -110,7 +115,6 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
       setDefaultObjectName(root,tab);
       ((MyQTabWidget *)w)->addTab(tab,text);
     }
-    grabMouse();
   }
   else if(form->wLabel->isChecked())
   {
@@ -322,7 +326,11 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
   {
     QString text;
     bool ok;
-    releaseMouse();
+    if(myrootwidget != NULL)
+    {
+      myrootwidget->releaseMouse();
+      myrootwidget->releaseKeyboard();
+    }  
     text = QInputDialog::getText(this, "pvdevelop: Add ToolBox",
                                        "Title of first item", QLineEdit::Normal,
                                        "", &ok);
@@ -335,6 +343,11 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
       setDefaultObjectName(root,item);
       ((MyQToolBox *)w)->addItem(item,text);
     }
+    if(myrootwidget != NULL)
+    {
+      myrootwidget->releaseMouse();
+      myrootwidget->releaseKeyboard();
+    }  
     text = QInputDialog::getText(this, "pvdevelop: Add ToolBox",
                                        "Title of second item", QLineEdit::Normal,
                                        "", &ok);
@@ -345,7 +358,6 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
       setDefaultObjectName(root,item);
       ((MyQToolBox *)w)->addItem(item,text);
     }
-    grabMouse();
   }
   else if(form->wQwtPlot->isChecked())
   {

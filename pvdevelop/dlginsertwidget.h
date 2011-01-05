@@ -33,6 +33,7 @@ public:
     void newWidget(QWidget *root, QWidget *parent, int x, int y);
     void setDefaultObjectName(QWidget *root, QWidget *item);
     int  ret;
+    QWidget *myrootwidget;
 public slots:
     void slotOk();
     void slotCancel();

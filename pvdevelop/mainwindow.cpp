@@ -826,7 +826,8 @@ void MainWindow::viewEditor()
   if(editor != NULL || designer != NULL) centralWidget()->hide();
   if(designer != NULL)
   {
-    //designer->root->releaseMouse();
+    designer->root->releaseMouse();
+    designer->root->releaseKeyboard();
     delete designer;
   }
   designer = NULL;
@@ -889,7 +890,6 @@ void MainWindow::viewDesigner()
   if (curFile.isEmpty()) shownName = "no project loaded";
   else                   shownName.sprintf("design mask%d (click right button)",imask);
   setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("pvdevelop")));
-  //designer->root->grabMouse();
 
   if(opt.arg_debug) printf("viewDesigner end\n");;
 }

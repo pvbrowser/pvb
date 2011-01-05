@@ -2277,7 +2277,7 @@ Allowed widgets QListView
 </pre> */
 int pvSetSorting(PARAM *p, int id, int column, int mode);
 /*! <pre>
-Set tab position 0=Top|1=Bottom
+Set tab position 0=Top | 1=Bottom | 2=West | 3=East
 Allowed widgets QTabWidget
 </pre> */
 int pvSetTabPosition(PARAM *p, int id, int pos);
