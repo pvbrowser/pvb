@@ -743,6 +743,7 @@ void MainWindow::loadFile(const QString &fileName)
   }
 
   QTextStream in(&file);
+  QApplication::restoreOverrideCursor();
   QApplication::setOverrideCursor(Qt::WaitCursor);
 
   editor->setSyntax(CPP_SYNTAX);
@@ -773,6 +774,7 @@ bool MainWindow::saveFile(const QString &fileName)
   }
 
   QTextStream out(&file);
+  QApplication::restoreOverrideCursor();
   QApplication::setOverrideCursor(Qt::WaitCursor);
   out << editor->edit->toPlainText().toUtf8().constData(); //rlehrig
   QApplication::restoreOverrideCursor();
@@ -787,6 +789,7 @@ bool MainWindow::saveFile(const QString &fileName)
     return false;
   }
 
+  QApplication::restoreOverrideCursor();
   QApplication::setOverrideCursor(Qt::WaitCursor);
   fprintf(fout,"%s",editor->edit->toPlainText().toUtf8().constData()); //rlehrig
   QApplication::restoreOverrideCursor();

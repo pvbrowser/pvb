@@ -87,7 +87,8 @@ Designer::~Designer()
   }
   delete editlayout;
   editlayout = NULL;
-  QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+  QApplication::restoreOverrideCursor();
+  QApplication::setOverrideCursor(Qt::ArrowCursor);
 }
 
 MyRootWidget::MyRootWidget(MyRootWidget *parent)
@@ -107,14 +108,14 @@ MyRootWidget::MyRootWidget(MyRootWidget *parent)
   grabbed = 2;
   opt.ctrlPressed = 0;
   insert.myrootwidget = this;
-  QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+  setCursor(Qt::CrossCursor);
 }
 
 MyRootWidget::~MyRootWidget()
 {
   releaseMouse();
   mainWindow->releaseKeyboard();
-  QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+  setCursor(Qt::ArrowCursor);
 }
 
 void MyRootWidget::setScroll(QScrollArea *_scroll)
@@ -158,7 +159,7 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
   grabbed = 0;
   releaseMouse();
   mainWindow->releaseKeyboard();
-  QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+  setCursor(Qt::ArrowCursor);
   //#####################################
   QWidget *p = this;
   if(parentLevel == 0)
@@ -185,7 +186,7 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
   grabbed = 1;
   grabMouse();
   mainWindow->grabKeyboard();
-  QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+  setCursor(Qt::CrossCursor);
 }
 
 void MyRootWidget::MoveKey(int key)
@@ -281,14 +282,14 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
     grabbed = 1;
     grabMouse();
     mainWindow->grabKeyboard();
-    QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+    if(currentCursor == Qt::ArrowCursor) setCursor(Qt::CrossCursor);
   }
   else
   {
     grabbed = 0;
     releaseMouse();
     mainWindow->releaseKeyboard();
-    QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+    setCursor(Qt::ArrowCursor);
     return;
   }
   //#####################################
@@ -364,19 +365,19 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
     if(opt.arg_debug > 0) printf("x0=%d y0=%d x=%d y=%d w=%d h=%d\n",x0,y0,x,y,w,h);
     if((x-x0)>(w-5) && (y-y0)>(h-5))
     {
-      QApplication::setOverrideCursor(QCursor(Qt::SizeFDiagCursor));
+      setCursor(Qt::SizeFDiagCursor);
       inMiddle = 0;
     }
     else if(child != NULL &&
             child->statusTip().startsWith("TQ") &&
            !child->statusTip().startsWith("TQWidget"))
     {
-      QApplication::setOverrideCursor(QCursor(Qt::SizeAllCursor));
+      setCursor(Qt::SizeAllCursor);
       inMiddle = 1;
     }
     else
     {
-      QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+      setCursor(Qt::CrossCursor);
       inMiddle = 1;
     }
   }
@@ -409,11 +410,17 @@ void MyRootWidget::printStatusMessage(QWidget *child)
   }
 }
 
+void MyRootWidget::setCursor(Qt::CursorShape cursor)
+{
+  QApplication::restoreOverrideCursor();
+  QApplication::setOverrideCursor(cursor);
+  currentCursor = cursor;
+}
+
 int MyRootWidget::aboveDesignArea(int x, int y)
 {
   if(y < 0) return 0;
   QWidget *child = childAt(x,y);
-  if(opt.arg_debug > 0)  printf("aboveDesignArea: child=%ld, x=%d y=%d grabbed=%d\n", (long) child, x, y, grabbed);
   if     (underMouse())  return 1;
   else if(grabbed)       return 1;
   else if(child == NULL) return 0;
@@ -504,10 +511,10 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         grabbed = 0;
         releaseMouse();
         mainWindow->releaseKeyboard();
-        QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+        setCursor(Qt::ArrowCursor);
         insert.myrootwidget = this;
         insert.newWidget(this,p,xw,yw);
-        QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+        setCursor(Qt::CrossCursor);
         modified = 1;
         grabbed = 1;
         grabMouse();
@@ -538,18 +545,26 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       if(child->statusTip().startsWith("TQTabWidget:"))
       {
         releaseMouse();
+        releaseKeyboard();
         mainWindow->releaseKeyboard();
         QMessageBox::information(0,"pvdevelop: define new TabOrder.",
                      "TabWidget added to TabOrder\n",
                      QMessageBox::Ok);
+        grabbed = 1;
+        grabMouse();
+        mainWindow->grabKeyboard();
       }
       else if(child->statusTip().startsWith("TQToolBox:"))
       {
         releaseMouse();
+        releaseKeyboard();
         mainWindow->releaseKeyboard();
         QMessageBox::information(0,"pvdevelop: define new TabOrder.",
                      "TollBox added to TabOrder\n",
                      QMessageBox::Ok);
+        grabbed = 1;
+        grabMouse();
+        mainWindow->grabKeyboard();
       }
       else
       {
@@ -585,14 +600,14 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
     if((grabbed == 1 && tabbing == 1) || copying == 1) popupMenu.addSeparator();
     if(grabbed == 0) popupMenu.addAction("grabMouse");
     if(grabbed == 1) popupMenu.addAction("releaseMouse");
-    QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+    setCursor(Qt::ArrowCursor);
     ret = popupMenu.exec(QCursor::pos());
     if(ret == NULL)
     {
       grabbed = 1;
       grabMouse();
       mainWindow->grabKeyboard();
-      QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+      setCursor(Qt::CrossCursor);
       return;
     }
     else
@@ -632,7 +647,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           }
           releaseMouse();
           mainWindow->releaseKeyboard();
-          QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+          setCursor(Qt::ArrowCursor);
           insert.myrootwidget = this;
           insert.run();
           if(insert.ret == 1)
@@ -646,7 +661,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             insert.newWidget(this,p,xw,yw);
             modified = 1;
           }
-          QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+          setCursor(Qt::CrossCursor);
         }
       }
       else if(ret->text() == "Delete Widget")
@@ -667,7 +682,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           bool ok;
           releaseMouse();
           mainWindow->releaseKeyboard();
-          QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+          setCursor(Qt::ArrowCursor);
           QString text = QInputDialog::getText(this, "pvdevelop: Add Tab",
                                                      "Title of tab", QLineEdit::Normal,
                                                      "", &ok);
@@ -679,7 +694,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             insert.setDefaultObjectName(this,tab);
             ((MyQTabWidget *)child)->addTab(tab, text);
           }
-          QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+          setCursor(Qt::CrossCursor);
         }
       }
       else if(ret->text() == "Add Item")
@@ -690,7 +705,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           bool ok;
           releaseMouse();
           mainWindow->releaseKeyboard();
-          QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+          setCursor(Qt::ArrowCursor);
           text = QInputDialog::getText(this, "pvdevelop: Add Item",
                                                      "Title of Item", QLineEdit::Normal,
                                                      "", &ok);
@@ -702,14 +717,14 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             insert.setDefaultObjectName(this,item);
             ((MyQToolBox *)child)->addItem(item, text);
           }
-          QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+          setCursor(Qt::CrossCursor);
         }
       }
       else if(ret->text() == "grabMouse")
       {
         grabMouse();
         mainWindow->grabKeyboard();
-        QApplication::setOverrideCursor(QCursor(Qt::SizeAllCursor));
+        setCursor(Qt::SizeAllCursor);
       }
       else if(ret->text() == "releaseMouse")
       {
@@ -721,7 +736,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         releaseMouse();
         mainWindow->releaseKeyboard();
         grabbed = 0;
-        QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+        setCursor(Qt::ArrowCursor);
         return;
       }
       else if(ret->text() == "define new TabOrder")
@@ -764,7 +779,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       {
         releaseMouse();
         mainWindow->releaseKeyboard();
-        QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+        setCursor(Qt::ArrowCursor);
         editlayout->exec();
         modified = 1;
       }
@@ -775,7 +790,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       grabbed = 1;
       grabMouse();
       mainWindow->grabKeyboard();
-      QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+      setCursor(Qt::ArrowCursor);
     }
   }
 }
@@ -952,7 +967,7 @@ void MyRootWidget::showProperties()
     lastChild->setAutoFillBackground(false);
     lastChild->setPalette(savedPalette);
     dlgProperty dlg(lastChild);
-    QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+    setCursor(Qt::ArrowCursor);
     releaseMouse();
     mainWindow->releaseKeyboard();
     int ret = dlg.run();
@@ -965,7 +980,7 @@ void MyRootWidget::GrabMouse()
   grabMouse();
   mainWindow->grabKeyboard();
   grabbed = 1;
-  QApplication::setOverrideCursor(QCursor(Qt::CrossCursor));
+  setCursor(Qt::CrossCursor);
 }
 
 void MyRootWidget::ReleaseMouse()
@@ -978,14 +993,14 @@ void MyRootWidget::ReleaseMouse()
   releaseMouse();
   mainWindow->releaseKeyboard();
   grabbed = 0;
-  QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+  setCursor(Qt::ArrowCursor);
 }
 
 void MyRootWidget::EditLayout()
 {
   releaseMouse();
   mainWindow->releaseKeyboard();
-  QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
+  setCursor(Qt::ArrowCursor);
   editlayout->exec();
   modified = 1;
   GrabMouse();

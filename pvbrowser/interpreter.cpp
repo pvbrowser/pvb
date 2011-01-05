@@ -2692,6 +2692,7 @@ void Interpreter::interprets(const char *command)
         {
           int shape = 0;
           sscanf(command,"setMouseShape(%d",&shape);
+          QApplication::restoreOverrideCursor();
           QApplication::setOverrideCursor(QCursor((Qt::CursorShape) shape));
         }
         else if(strncmp(command,"setMultiSelection(",18) == 0) // set selection mode in QListView

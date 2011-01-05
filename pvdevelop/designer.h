@@ -48,6 +48,8 @@ class MyRootWidget : public QWidget
     void copyAttributes(QWidget *source, QWidget *destination);
     int  aboveDesignArea(int x, int y);
     void printStatusMessage(QWidget *child);
+    void setCursor(Qt::CursorShape cursor);
+    Qt::CursorShape currentCursor;
     QScrollArea *scroll;
     int xOld,yOld,buttonDown,xChild0,yChild0,wChild0,hChild0,grabbed,tabbing,copying, inMiddle,parentLevel,reparentDone;
     QWidget *clickedChild, *lastChild, *lastTabChild, *parentLevel0, *parentLevel1, *parentLevel2;
