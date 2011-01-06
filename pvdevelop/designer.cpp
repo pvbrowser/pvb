@@ -88,7 +88,7 @@ Designer::~Designer()
   delete editlayout;
   editlayout = NULL;
   QApplication::restoreOverrideCursor();
-  QApplication::setOverrideCursor(Qt::ArrowCursor);
+  QApplication::setOverrideCursor(QCursor(Qt::ArrowCursor));
 }
 
 MyRootWidget::MyRootWidget(MyRootWidget *parent)
@@ -413,7 +413,7 @@ void MyRootWidget::printStatusMessage(QWidget *child)
 void MyRootWidget::setCursor(Qt::CursorShape cursor)
 {
   QApplication::restoreOverrideCursor();
-  QApplication::setOverrideCursor(cursor);
+  QApplication::setOverrideCursor(QCursor(cursor));
   currentCursor = cursor;
 }
 

@@ -744,7 +744,7 @@ void MainWindow::loadFile(const QString &fileName)
 
   QTextStream in(&file);
   QApplication::restoreOverrideCursor();
-  QApplication::setOverrideCursor(Qt::WaitCursor);
+  QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
 
   editor->setSyntax(CPP_SYNTAX);
   // add additional language here
@@ -762,23 +762,6 @@ void MainWindow::loadFile(const QString &fileName)
 
 bool MainWindow::saveFile(const QString &fileName)
 {
-/*
-  QFile file(fileName);
-  if(!file.open(QFile::WriteOnly | QFile::Text))
-  {
-    QMessageBox::warning(this, tr("pvdevelop"),
-                             tr("Cannot write file %1:\n%2.")
-                             .arg(fileName)
-                             .arg(file.errorString()));
-    return false;
-  }
-
-  QTextStream out(&file);
-  QApplication::restoreOverrideCursor();
-  QApplication::setOverrideCursor(Qt::WaitCursor);
-  out << editor->edit->toPlainText().toUtf8().constData(); //rlehrig
-  QApplication::restoreOverrideCursor();
-*/
   FILE *fout = fopen(fileName.toAscii(),"w");
   if(fout == NULL)
   {
@@ -790,8 +773,8 @@ bool MainWindow::saveFile(const QString &fileName)
   }
 
   QApplication::restoreOverrideCursor();
-  QApplication::setOverrideCursor(Qt::WaitCursor);
-  fprintf(fout,"%s",editor->edit->toPlainText().toUtf8().constData()); //rlehrig
+  QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
+  fprintf(fout,"%s",editor->edit->toPlainText().toUtf8().constData());
   QApplication::restoreOverrideCursor();
   fclose(fout);
 
