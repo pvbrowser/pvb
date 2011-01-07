@@ -2692,6 +2692,10 @@ void Interpreter::interprets(const char *command)
         {
           int shape = 0;
           sscanf(command,"setMouseShape(%d",&shape);
+#ifdef PVWIN32
+          // damn windows may reset cursor otherwise
+          QApplication::processEvents();
+#endif
           QApplication::restoreOverrideCursor();
           QApplication::setOverrideCursor(QCursor((Qt::CursorShape) shape));
         }

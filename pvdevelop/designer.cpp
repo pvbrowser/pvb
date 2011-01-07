@@ -108,7 +108,7 @@ MyRootWidget::MyRootWidget(MyRootWidget *parent)
   grabbed = 2;
   opt.ctrlPressed = 0;
   insert.myrootwidget = this;
-  setCursor(Qt::CrossCursor);
+  setCursor(Qt::ArrowCursor);
 }
 
 MyRootWidget::~MyRootWidget()
@@ -412,6 +412,10 @@ void MyRootWidget::printStatusMessage(QWidget *child)
 
 void MyRootWidget::setCursor(Qt::CursorShape cursor)
 {
+#ifdef PVWIN32
+  // damn windows resets cursor otherwise
+  QApplication::processEvents();
+#endif
   QApplication::restoreOverrideCursor();
   QApplication::setOverrideCursor(QCursor(cursor));
   currentCursor = cursor;

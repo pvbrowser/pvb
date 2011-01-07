@@ -134,6 +134,7 @@ Editor::~Editor()
   if(checkBoxSuServer->isChecked()) opt.su = 1;
   else                              opt.su = 0;
   delete highlighter;
+  delete root;
 }
 
 int Editor::setSyntax(int language)
