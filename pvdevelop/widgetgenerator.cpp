@@ -2383,6 +2383,7 @@ static int getWidget(FILE *fin, QWidget *root)
     }
     else if(isCommand("pvToolTip(") == 1)
     {
+      qtext.replace("\n","\\n");
       item->setToolTip(qtext);
     }
     else if(isCommand("pvAddTab(") == 1)
