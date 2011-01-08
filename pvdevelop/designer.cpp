@@ -412,12 +412,15 @@ void MyRootWidget::printStatusMessage(QWidget *child)
 
 void MyRootWidget::setCursor(Qt::CursorShape cursor)
 {
+  if(cursor != currentCursor)
+  {
 #ifdef PVWIN32
-  // damn windows resets cursor otherwise
-  QApplication::processEvents();
+    // damn windows resets cursor otherwise
+    QApplication::processEvents();
 #endif
-  QApplication::restoreOverrideCursor();
-  QApplication::setOverrideCursor(QCursor(cursor));
+    QApplication::restoreOverrideCursor();
+    QApplication::setOverrideCursor(QCursor(cursor));
+  }  
   currentCursor = cursor;
 }
 
