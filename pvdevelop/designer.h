@@ -46,7 +46,7 @@ class MyRootWidget : public QWidget
     void showWidgets(QObject *item);
     void restoreColors(QWidget *item);
     void copyAttributes(QWidget *source, QWidget *destination);
-    int  aboveDesignArea(int x, int y);
+    int  aboveDesignArea(int x, int y, int gx, int gy);
     void printStatusMessage(QWidget *child);
     void setCursor(Qt::CursorShape cursor);
     Qt::CursorShape currentCursor;

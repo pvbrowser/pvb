@@ -275,9 +275,11 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
+  int gx = event->globalX();
+  int gy = event->globalY();
   if(opt.arg_debug > 0) printf("mouseMoveEvent x=%d y=%d\n",x,y);
   //#####################################
-  if(aboveDesignArea(x,y))
+  if(aboveDesignArea(x,y,gx,gy))
   {
     grabbed = 1;
     grabMouse();
@@ -412,20 +414,41 @@ void MyRootWidget::printStatusMessage(QWidget *child)
 
 void MyRootWidget::setCursor(Qt::CursorShape cursor)
 {
+
+#ifdef PVWIN32
+  // damn windows resets cursor otherwise
+  QApplication::processEvents();
+  QApplication::restoreOverrideCursor();
+  QApplication::setOverrideCursor(QCursor(cursor));
+#endif
+
+#ifdef PVUNIX
   if(cursor != currentCursor)
   {
-#ifdef PVWIN32
-    // damn windows resets cursor otherwise
-    QApplication::processEvents();
-#endif
     QApplication::restoreOverrideCursor();
     QApplication::setOverrideCursor(QCursor(cursor));
   }  
   currentCursor = cursor;
+#endif  
+
 }
 
-int MyRootWidget::aboveDesignArea(int x, int y)
+int MyRootWidget::aboveDesignArea(int x, int y, int gx, int gy)
 {
+  if(x < 0) return 0;
+  if(y < 0) return 0;
+  int dx = 0;
+  int dy = 0;
+  QWidget *vp = scroll->viewport();
+  if(vp->width()  < scroll->width())  dx = scroll->verticalScrollBar()->width();
+  if(vp->height() < scroll->height()) dy = scroll->horizontalScrollBar()->height();
+  QPoint gm = mainWindow->mapToGlobal(QPoint(0,0));
+  if(gx < gm.x()) return 0;
+  if(gy < gm.y()) return 0;
+  if(gx > gm.x() + mainWindow->width()                                      - dx) return 0;
+  if(gy > gm.y() + mainWindow->height() - mainWindow->statusBar()->height() - dy) return 0;
+  return 1;
+/*
   if(y < 0) return 0;
   QWidget *child = childAt(x,y);
   if     (underMouse())  return 1;
@@ -439,16 +462,19 @@ int MyRootWidget::aboveDesignArea(int x, int y)
     if(child == (QWidget *) childs.at(i)) return 1;
   }
   return 0;
+*/
 }
 
 void MyRootWidget::mousePressEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
+  int gx = event->globalX();
+  int gy = event->globalY();
   if(opt.arg_debug > 0) printf("mousePressEvent x=%d y=%d\n",x,y);
   reparentDone = 0;
   //#####################################
-  if(aboveDesignArea(x,y))
+  if(aboveDesignArea(x,y,gx,gy))
   {
     grabbed = 1;
     grabMouse();
@@ -806,9 +832,11 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
+  int gx = event->globalX();
+  int gy = event->globalY();
   if(opt.arg_debug > 0) printf("mouseReleaseEvent x=%d y=%d\n",x,y);
   //#####################################
-  if(aboveDesignArea(x,y))
+  if(aboveDesignArea(x,y,gx,gy))
   {
     grabbed = 1;
     grabMouse();
@@ -1012,4 +1040,3 @@ void MyRootWidget::EditLayout()
   modified = 1;
   GrabMouse();
 }
-
