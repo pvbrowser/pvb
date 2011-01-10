@@ -437,17 +437,21 @@ int MyRootWidget::aboveDesignArea(int x, int y, int gx, int gy)
 {
   if(x < 0) return 0;
   if(y < 0) return 0;
-  int dx = 0;
-  int dy = 0;
-  QWidget *vp = scroll->viewport();
-  if(vp->width()  < scroll->width())  dx = scroll->verticalScrollBar()->width();
-  if(vp->height() < scroll->height()) dy = scroll->horizontalScrollBar()->height();
-  QPoint gm = mainWindow->mapToGlobal(QPoint(0,0));
-  if(gx < gm.x()) return 0;
-  if(gy < gm.y()) return 0;
-  if(gx > gm.x() + mainWindow->width()                                      - dx) return 0;
-  if(gy > gm.y() + mainWindow->height() - mainWindow->statusBar()->height() - dy) return 0;
-  return 1;
+  if(isActiveWindow())
+  {
+    int dx = 0;
+    int dy = 0;
+    QWidget *vp = scroll->viewport();
+    if(vp->width()  < scroll->width())  dx = scroll->verticalScrollBar()->width();
+    if(vp->height() < scroll->height()) dy = scroll->horizontalScrollBar()->height();
+    QPoint gm = mainWindow->mapToGlobal(QPoint(0,0));
+    if(gx < gm.x()) return 0;
+    if(gy < gm.y()) return 0;
+    if(gx > gm.x() + mainWindow->width()                                      - dx) return 0;
+    if(gy > gm.y() + mainWindow->height() - mainWindow->statusBar()->height() - dy) return 0;
+    return 1;
+  }
+  return 0;
 /*
   if(y < 0) return 0;
   QWidget *child = childAt(x,y);
