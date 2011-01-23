@@ -5370,7 +5370,7 @@ void Interpreter::interpretQ(const char *command)
 
   if(i>0 && i<nmax)
   {
-    if(all[i]->type != TQVbox && all[i]->type != TQHbox && all[i]->type != TQGrid)
+    if(all[i]->type != TQVbox && all[i]->type != TQHbox && all[i]->type != TQGrid && all[i]->type != TQLineEdit)
     {
       if(all[i]->w != NULL) all[i]->w->setAutoFillBackground(true);
       // all[i]->w->setBackgroundMode(Qt::PaletteBackground);
