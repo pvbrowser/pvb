@@ -656,118 +656,6 @@ class rlPcontrol(_object):
 rlPcontrol_swigregister = _rllib.rlPcontrol_swigregister
 rlPcontrol_swigregister(rlPcontrol)
 
-
-def rlSetDebugPrintf(*args):
-  return _rllib.rlSetDebugPrintf(*args)
-rlSetDebugPrintf = _rllib.rlSetDebugPrintf
-
-def rlDebugPrintf(*args):
-  return _rllib.rlDebugPrintf(*args)
-rlDebugPrintf = _rllib.rlDebugPrintf
-
-def rlLastLinePrintf(*args):
-  return _rllib.rlLastLinePrintf(*args)
-rlLastLinePrintf = _rllib.rlLastLinePrintf
-
-def rlpass(*args):
-  return _rllib.rlpass(*args)
-rlpass = _rllib.rlpass
-
-def rlstrncpy(*args):
-  return _rllib.rlstrncpy(*args)
-rlstrncpy = _rllib.rlstrncpy
-
-def rlsnprintf(*args):
-  return _rllib.rlsnprintf(*args)
-rlsnprintf = _rllib.rlsnprintf
-
-def rlSetSigtermHandler(*args):
-  return _rllib.rlSetSigtermHandler(*args)
-rlSetSigtermHandler = _rllib.rlSetSigtermHandler
-
-def rlFindFile(*args):
-  return _rllib.rlFindFile(*args)
-rlFindFile = _rllib.rlFindFile
-
-def rlGetInifile(*args):
-  return _rllib.rlGetInifile(*args)
-rlGetInifile = _rllib.rlGetInifile
-
-def rlSwapShort(*args):
-  return _rllib.rlSwapShort(*args)
-rlSwapShort = _rllib.rlSwapShort
-
-def rlEib1(*args):
-  return _rllib.rlEib1(*args)
-rlEib1 = _rllib.rlEib1
-
-def rlEib2(*args):
-  return _rllib.rlEib2(*args)
-rlEib2 = _rllib.rlEib2
-
-def rlLon1(*args):
-  return _rllib.rlLon1(*args)
-rlLon1 = _rllib.rlLon1
-
-def rlLon2(*args):
-  return _rllib.rlLon2(*args)
-rlLon2 = _rllib.rlLon2
-
-def rlProfibus1(*args):
-  return _rllib.rlProfibus1(*args)
-rlProfibus1 = _rllib.rlProfibus1
-
-def rlProfibus2(*args):
-  return _rllib.rlProfibus2(*args)
-rlProfibus2 = _rllib.rlProfibus2
-
-def rlCan1(*args):
-  return _rllib.rlCan1(*args)
-rlCan1 = _rllib.rlCan1
-
-def rlCan2(*args):
-  return _rllib.rlCan2(*args)
-rlCan2 = _rllib.rlCan2
-
-def rlBrowser(*args):
-  return _rllib.rlBrowser(*args)
-rlBrowser = _rllib.rlBrowser
-
-def rlsystem(*args):
-  return _rllib.rlsystem(*args)
-rlsystem = _rllib.rlsystem
-
-def rlOption(*args):
-  return _rllib.rlOption(*args)
-rlOption = _rllib.rlOption
-
-def rlIntOption(*args):
-  return _rllib.rlIntOption(*args)
-rlIntOption = _rllib.rlIntOption
-
-def rlFloatOption(*args):
-  return _rllib.rlFloatOption(*args)
-rlFloatOption = _rllib.rlFloatOption
-
-def rlTextOption(*args):
-  return _rllib.rlTextOption(*args)
-rlTextOption = _rllib.rlTextOption
-
-def rlCopyTextfile(*args):
-  return _rllib.rlCopyTextfile(*args)
-rlCopyTextfile = _rllib.rlCopyTextfile
-
-def rlupper(*args):
-  return _rllib.rlupper(*args)
-rlupper = _rllib.rlupper
-
-def rllower(*args):
-  return _rllib.rllower(*args)
-rllower = _rllib.rllower
-
-def rlStartsWith(*args):
-  return _rllib.rlStartsWith(*args)
-rlStartsWith = _rllib.rlStartsWith
 rl_PRINTF_LENGTH = _rllib.rl_PRINTF_LENGTH
 rl_PRINTF_LENGTH_SPREADSHEET = _rllib.rl_PRINTF_LENGTH_SPREADSHEET
 BIT0 = _rllib.BIT0
@@ -839,10 +727,6 @@ class rlEventLogServer(_object):
     def putEvent(self, *args): return _rllib.rlEventLogServer_putEvent(self, *args)
 rlEventLogServer_swigregister = _rllib.rlEventLogServer_swigregister
 rlEventLogServer_swigregister(rlEventLogServer)
-
-def rlSubmitPvserver(*args):
-  return _rllib.rlSubmitPvserver(*args)
-rlSubmitPvserver = _rllib.rlSubmitPvserver
 cvar = _rllib.cvar
 rlevent_name = cvar.rlevent_name
 
@@ -1617,157 +1501,6 @@ class rlUdpSocket(_object):
 rlUdpSocket_swigregister = _rllib.rlUdpSocket_swigregister
 rlUdpSocket_swigregister(rlUdpSocket)
 
-EIB_ON = _rllib.EIB_ON
-EIB_OFF = _rllib.EIB_OFF
-class rlEIBnetIP(rlUdpSocket):
-    __swig_setmethods__ = {}
-    for _s in [rlUdpSocket]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEIBnetIP, name, value)
-    __swig_getmethods__ = {}
-    for _s in [rlUdpSocket]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, rlEIBnetIP, name)
-    __repr__ = _swig_repr
-    PORT = _rllib.rlEIBnetIP_PORT
-    SUCCESS = _rllib.rlEIBnetIP_SUCCESS
-    EIBERROR = _rllib.rlEIBnetIP_EIBERROR
-    TIMEOUT = _rllib.rlEIBnetIP_TIMEOUT
-    COULD_NOT_CONNECT = _rllib.rlEIBnetIP_COULD_NOT_CONNECT
-    def __init__(self, num_signals = 1000, debug = 0, provider = None): 
-        this = _rllib.new_rlEIBnetIP(num_signals, debug, provider)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlEIBnetIP
-    __del__ = lambda self : None;
-    def setServer(self, *args): return _rllib.rlEIBnetIP_setServer(self, *args)
-    def setClient(self, *args): return _rllib.rlEIBnetIP_setClient(self, *args)
-    def startReading(self): return _rllib.rlEIBnetIP_startReading(self)
-    def stopReading(self): return _rllib.rlEIBnetIP_stopReading(self)
-    def value(self, *args): return _rllib.rlEIBnetIP_value(self, *args)
-    def valueUnsigned(self, *args): return _rllib.rlEIBnetIP_valueUnsigned(self, *args)
-    def valueFloat2(self, *args): return _rllib.rlEIBnetIP_valueFloat2(self, *args)
-    def valueFloat4(self, *args): return _rllib.rlEIBnetIP_valueFloat4(self, *args)
-    def setValue(self, *args): return _rllib.rlEIBnetIP_setValue(self, *args)
-    def setValueUnsigned(self, *args): return _rllib.rlEIBnetIP_setValueUnsigned(self, *args)
-    def setValueFloat(self, *args): return _rllib.rlEIBnetIP_setValueFloat(self, *args)
-    def setText(self, *args): return _rllib.rlEIBnetIP_setText(self, *args)
-    def getText(self, *args): return _rllib.rlEIBnetIP_getText(self, *args)
-    def setSourceAdr(self, *args): return _rllib.rlEIBnetIP_setSourceAdr(self, *args)
-    def dump(self, *args): return _rllib.rlEIBnetIP_dump(self, *args)
-    def setValuesFromCSV(self, *args): return _rllib.rlEIBnetIP_setValuesFromCSV(self, *args)
-    __swig_setmethods__["debug"] = _rllib.rlEIBnetIP_debug_set
-    __swig_getmethods__["debug"] = _rllib.rlEIBnetIP_debug_get
-    if _newclass:debug = _swig_property(_rllib.rlEIBnetIP_debug_get, _rllib.rlEIBnetIP_debug_set)
-    __swig_setmethods__["watch_eib"] = _rllib.rlEIBnetIP_watch_eib_set
-    __swig_getmethods__["watch_eib"] = _rllib.rlEIBnetIP_watch_eib_get
-    if _newclass:watch_eib = _swig_property(_rllib.rlEIBnetIP_watch_eib_get, _rllib.rlEIBnetIP_watch_eib_set)
-    def connect(self): return _rllib.rlEIBnetIP_connect(self)
-    def disconnect(self): return _rllib.rlEIBnetIP_disconnect(self)
-    def isConnected(self): return _rllib.rlEIBnetIP_isConnected(self)
-    def recv(self, *args): return _rllib.rlEIBnetIP_recv(self, *args)
-    def storeBuffer(self, *args): return _rllib.rlEIBnetIP_storeBuffer(self, *args)
-    def sendDisconnectRequest(self): return _rllib.rlEIBnetIP_sendDisconnectRequest(self)
-    __swig_setmethods__["mem"] = _rllib.rlEIBnetIP_mem_set
-    __swig_getmethods__["mem"] = _rllib.rlEIBnetIP_mem_get
-    if _newclass:mem = _swig_property(_rllib.rlEIBnetIP_mem_get, _rllib.rlEIBnetIP_mem_set)
-    __swig_setmethods__["memsize"] = _rllib.rlEIBnetIP_memsize_set
-    __swig_getmethods__["memsize"] = _rllib.rlEIBnetIP_memsize_get
-    if _newclass:memsize = _swig_property(_rllib.rlEIBnetIP_memsize_get, _rllib.rlEIBnetIP_memsize_set)
-    __swig_setmethods__["running"] = _rllib.rlEIBnetIP_running_set
-    __swig_getmethods__["running"] = _rllib.rlEIBnetIP_running_get
-    if _newclass:running = _swig_property(_rllib.rlEIBnetIP_running_get, _rllib.rlEIBnetIP_running_set)
-    __swig_setmethods__["channelid"] = _rllib.rlEIBnetIP_channelid_set
-    __swig_getmethods__["channelid"] = _rllib.rlEIBnetIP_channelid_get
-    if _newclass:channelid = _swig_property(_rllib.rlEIBnetIP_channelid_get, _rllib.rlEIBnetIP_channelid_set)
-    __swig_setmethods__["thread"] = _rllib.rlEIBnetIP_thread_set
-    __swig_getmethods__["thread"] = _rllib.rlEIBnetIP_thread_get
-    if _newclass:thread = _swig_property(_rllib.rlEIBnetIP_thread_get, _rllib.rlEIBnetIP_thread_set)
-    __swig_setmethods__["server"] = _rllib.rlEIBnetIP_server_set
-    __swig_getmethods__["server"] = _rllib.rlEIBnetIP_server_get
-    if _newclass:server = _swig_property(_rllib.rlEIBnetIP_server_get, _rllib.rlEIBnetIP_server_set)
-    __swig_setmethods__["send_sequencecounter"] = _rllib.rlEIBnetIP_send_sequencecounter_set
-    __swig_getmethods__["send_sequencecounter"] = _rllib.rlEIBnetIP_send_sequencecounter_get
-    if _newclass:send_sequencecounter = _swig_property(_rllib.rlEIBnetIP_send_sequencecounter_get, _rllib.rlEIBnetIP_send_sequencecounter_set)
-    __swig_setmethods__["tunnel_ack"] = _rllib.rlEIBnetIP_tunnel_ack_set
-    __swig_getmethods__["tunnel_ack"] = _rllib.rlEIBnetIP_tunnel_ack_get
-    if _newclass:tunnel_ack = _swig_property(_rllib.rlEIBnetIP_tunnel_ack_get, _rllib.rlEIBnetIP_tunnel_ack_set)
-    __swig_setmethods__["provider"] = _rllib.rlEIBnetIP_provider_set
-    __swig_getmethods__["provider"] = _rllib.rlEIBnetIP_provider_get
-    if _newclass:provider = _swig_property(_rllib.rlEIBnetIP_provider_get, _rllib.rlEIBnetIP_provider_set)
-rlEIBnetIP_swigregister = _rllib.rlEIBnetIP_swigregister
-rlEIBnetIP_swigregister(rlEIBnetIP)
-
-class rlEIBnetIP_EIB_TEL(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEIBnetIP_EIB_TEL, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlEIBnetIP_EIB_TEL, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["mc"] = _rllib.rlEIBnetIP_EIB_TEL_mc_set
-    __swig_getmethods__["mc"] = _rllib.rlEIBnetIP_EIB_TEL_mc_get
-    if _newclass:mc = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_mc_get, _rllib.rlEIBnetIP_EIB_TEL_mc_set)
-    __swig_setmethods__["addi1"] = _rllib.rlEIBnetIP_EIB_TEL_addi1_set
-    __swig_getmethods__["addi1"] = _rllib.rlEIBnetIP_EIB_TEL_addi1_get
-    if _newclass:addi1 = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_addi1_get, _rllib.rlEIBnetIP_EIB_TEL_addi1_set)
-    __swig_setmethods__["ctrl1"] = _rllib.rlEIBnetIP_EIB_TEL_ctrl1_set
-    __swig_getmethods__["ctrl1"] = _rllib.rlEIBnetIP_EIB_TEL_ctrl1_get
-    if _newclass:ctrl1 = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_ctrl1_get, _rllib.rlEIBnetIP_EIB_TEL_ctrl1_set)
-    __swig_setmethods__["ctrl2"] = _rllib.rlEIBnetIP_EIB_TEL_ctrl2_set
-    __swig_getmethods__["ctrl2"] = _rllib.rlEIBnetIP_EIB_TEL_ctrl2_get
-    if _newclass:ctrl2 = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_ctrl2_get, _rllib.rlEIBnetIP_EIB_TEL_ctrl2_set)
-    __swig_setmethods__["saddr"] = _rllib.rlEIBnetIP_EIB_TEL_saddr_set
-    __swig_getmethods__["saddr"] = _rllib.rlEIBnetIP_EIB_TEL_saddr_get
-    if _newclass:saddr = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_saddr_get, _rllib.rlEIBnetIP_EIB_TEL_saddr_set)
-    __swig_setmethods__["daddr"] = _rllib.rlEIBnetIP_EIB_TEL_daddr_set
-    __swig_getmethods__["daddr"] = _rllib.rlEIBnetIP_EIB_TEL_daddr_get
-    if _newclass:daddr = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_daddr_get, _rllib.rlEIBnetIP_EIB_TEL_daddr_set)
-    __swig_setmethods__["apci_length"] = _rllib.rlEIBnetIP_EIB_TEL_apci_length_set
-    __swig_getmethods__["apci_length"] = _rllib.rlEIBnetIP_EIB_TEL_apci_length_get
-    if _newclass:apci_length = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_apci_length_get, _rllib.rlEIBnetIP_EIB_TEL_apci_length_set)
-    __swig_setmethods__["apci"] = _rllib.rlEIBnetIP_EIB_TEL_apci_set
-    __swig_getmethods__["apci"] = _rllib.rlEIBnetIP_EIB_TEL_apci_get
-    if _newclass:apci = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_apci_get, _rllib.rlEIBnetIP_EIB_TEL_apci_set)
-    __swig_setmethods__["val"] = _rllib.rlEIBnetIP_EIB_TEL_val_set
-    __swig_getmethods__["val"] = _rllib.rlEIBnetIP_EIB_TEL_val_get
-    if _newclass:val = _swig_property(_rllib.rlEIBnetIP_EIB_TEL_val_get, _rllib.rlEIBnetIP_EIB_TEL_val_set)
-    def __init__(self): 
-        this = _rllib.new_rlEIBnetIP_EIB_TEL()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlEIBnetIP_EIB_TEL
-    __del__ = lambda self : None;
-rlEIBnetIP_EIB_TEL_swigregister = _rllib.rlEIBnetIP_EIB_TEL_swigregister
-rlEIBnetIP_EIB_TEL_swigregister(rlEIBnetIP_EIB_TEL)
-
-class rlEIBnetIP_PDU(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEIBnetIP_PDU, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlEIBnetIP_PDU, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["headersize"] = _rllib.rlEIBnetIP_PDU_headersize_set
-    __swig_getmethods__["headersize"] = _rllib.rlEIBnetIP_PDU_headersize_get
-    if _newclass:headersize = _swig_property(_rllib.rlEIBnetIP_PDU_headersize_get, _rllib.rlEIBnetIP_PDU_headersize_set)
-    __swig_setmethods__["version"] = _rllib.rlEIBnetIP_PDU_version_set
-    __swig_getmethods__["version"] = _rllib.rlEIBnetIP_PDU_version_get
-    if _newclass:version = _swig_property(_rllib.rlEIBnetIP_PDU_version_get, _rllib.rlEIBnetIP_PDU_version_set)
-    __swig_setmethods__["servicetype"] = _rllib.rlEIBnetIP_PDU_servicetype_set
-    __swig_getmethods__["servicetype"] = _rllib.rlEIBnetIP_PDU_servicetype_get
-    if _newclass:servicetype = _swig_property(_rllib.rlEIBnetIP_PDU_servicetype_get, _rllib.rlEIBnetIP_PDU_servicetype_set)
-    __swig_setmethods__["totalsize"] = _rllib.rlEIBnetIP_PDU_totalsize_set
-    __swig_getmethods__["totalsize"] = _rllib.rlEIBnetIP_PDU_totalsize_get
-    if _newclass:totalsize = _swig_property(_rllib.rlEIBnetIP_PDU_totalsize_get, _rllib.rlEIBnetIP_PDU_totalsize_set)
-    __swig_setmethods__["data"] = _rllib.rlEIBnetIP_PDU_data_set
-    __swig_getmethods__["data"] = _rllib.rlEIBnetIP_PDU_data_get
-    if _newclass:data = _swig_property(_rllib.rlEIBnetIP_PDU_data_get, _rllib.rlEIBnetIP_PDU_data_set)
-    def __init__(self): 
-        this = _rllib.new_rlEIBnetIP_PDU()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlEIBnetIP_PDU
-    __del__ = lambda self : None;
-rlEIBnetIP_PDU_swigregister = _rllib.rlEIBnetIP_PDU_swigregister
-rlEIBnetIP_PDU_swigregister(rlEIBnetIP_PDU)
-
 class rlOpcXmlDa(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlOpcXmlDa, name, value)
@@ -1980,6 +1713,113 @@ class rlDataAcquisitionProvider_SHM_HEADER(_object):
     __del__ = lambda self : None;
 rlDataAcquisitionProvider_SHM_HEADER_swigregister = _rllib.rlDataAcquisitionProvider_SHM_HEADER_swigregister
 rlDataAcquisitionProvider_SHM_HEADER_swigregister(rlDataAcquisitionProvider_SHM_HEADER)
+
+class rlPlcState(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPlcState, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlPlcState, name)
+    __repr__ = _swig_repr
+    def __init__(self, numInt = 100, numFloat = 100, numDouble = 0): 
+        this = _rllib.new_rlPlcState(numInt, numFloat, numDouble)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlPlcState
+    __del__ = lambda self : None;
+    __swig_setmethods__["i"] = _rllib.rlPlcState_i_set
+    __swig_getmethods__["i"] = _rllib.rlPlcState_i_get
+    if _newclass:i = _swig_property(_rllib.rlPlcState_i_get, _rllib.rlPlcState_i_set)
+    __swig_setmethods__["i_old"] = _rllib.rlPlcState_i_old_set
+    __swig_getmethods__["i_old"] = _rllib.rlPlcState_i_old_get
+    if _newclass:i_old = _swig_property(_rllib.rlPlcState_i_old_get, _rllib.rlPlcState_i_old_set)
+    __swig_setmethods__["f"] = _rllib.rlPlcState_f_set
+    __swig_getmethods__["f"] = _rllib.rlPlcState_f_get
+    if _newclass:f = _swig_property(_rllib.rlPlcState_f_get, _rllib.rlPlcState_f_set)
+    __swig_setmethods__["f_old"] = _rllib.rlPlcState_f_old_set
+    __swig_getmethods__["f_old"] = _rllib.rlPlcState_f_old_get
+    if _newclass:f_old = _swig_property(_rllib.rlPlcState_f_old_get, _rllib.rlPlcState_f_old_set)
+    __swig_setmethods__["d"] = _rllib.rlPlcState_d_set
+    __swig_getmethods__["d"] = _rllib.rlPlcState_d_get
+    if _newclass:d = _swig_property(_rllib.rlPlcState_d_get, _rllib.rlPlcState_d_set)
+    __swig_setmethods__["d_old"] = _rllib.rlPlcState_d_old_set
+    __swig_getmethods__["d_old"] = _rllib.rlPlcState_d_old_get
+    if _newclass:d_old = _swig_property(_rllib.rlPlcState_d_old_get, _rllib.rlPlcState_d_old_set)
+    def rememberState(self): return _rllib.rlPlcState_rememberState(self)
+    def intChanged(self, *args): return _rllib.rlPlcState_intChanged(self, *args)
+    def floatChanged(self, *args): return _rllib.rlPlcState_floatChanged(self, *args)
+    def doubleChanged(self, *args): return _rllib.rlPlcState_doubleChanged(self, *args)
+    def intHasIncreased(self, *args): return _rllib.rlPlcState_intHasIncreased(self, *args)
+    def floatHasIncreased(self, *args): return _rllib.rlPlcState_floatHasIncreased(self, *args)
+    def doubleHasIncreased(self, *args): return _rllib.rlPlcState_doubleHasIncreased(self, *args)
+    def intHasDecreased(self, *args): return _rllib.rlPlcState_intHasDecreased(self, *args)
+    def floatHasDecreased(self, *args): return _rllib.rlPlcState_floatHasDecreased(self, *args)
+    def doubleHasDecreased(self, *args): return _rllib.rlPlcState_doubleHasDecreased(self, *args)
+    def deltaInt(self, *args): return _rllib.rlPlcState_deltaInt(self, *args)
+    def deltaFloat(self, *args): return _rllib.rlPlcState_deltaFloat(self, *args)
+    def deltaDouble(self, *args): return _rllib.rlPlcState_deltaDouble(self, *args)
+    def set(self, *args): return _rllib.rlPlcState_set(self, *args)
+    def clear(self, *args): return _rllib.rlPlcState_clear(self, *args)
+    def isSet(self, *args): return _rllib.rlPlcState_isSet(self, *args)
+    def isClear(self, *args): return _rllib.rlPlcState_isClear(self, *args)
+    def hasBeenSet(self, *args): return _rllib.rlPlcState_hasBeenSet(self, *args)
+    def hasBeenCleared(self, *args): return _rllib.rlPlcState_hasBeenCleared(self, *args)
+    def maxInt(self): return _rllib.rlPlcState_maxInt(self)
+    def maxFloat(self): return _rllib.rlPlcState_maxFloat(self)
+    def maxDouble(self): return _rllib.rlPlcState_maxDouble(self)
+rlPlcState_swigregister = _rllib.rlPlcState_swigregister
+rlPlcState_swigregister(rlPlcState)
+
+class rlPlcMem(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPlcMem, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlPlcMem, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlPlcMem()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlPlcMem
+    __del__ = lambda self : None;
+    __swig_setmethods__["i"] = _rllib.rlPlcMem_i_set
+    __swig_getmethods__["i"] = _rllib.rlPlcMem_i_get
+    if _newclass:i = _swig_property(_rllib.rlPlcMem_i_get, _rllib.rlPlcMem_i_set)
+    __swig_setmethods__["i_old"] = _rllib.rlPlcMem_i_old_set
+    __swig_getmethods__["i_old"] = _rllib.rlPlcMem_i_old_get
+    if _newclass:i_old = _swig_property(_rllib.rlPlcMem_i_old_get, _rllib.rlPlcMem_i_old_set)
+    __swig_setmethods__["f"] = _rllib.rlPlcMem_f_set
+    __swig_getmethods__["f"] = _rllib.rlPlcMem_f_get
+    if _newclass:f = _swig_property(_rllib.rlPlcMem_f_get, _rllib.rlPlcMem_f_set)
+    __swig_setmethods__["f_old"] = _rllib.rlPlcMem_f_old_set
+    __swig_getmethods__["f_old"] = _rllib.rlPlcMem_f_old_get
+    if _newclass:f_old = _swig_property(_rllib.rlPlcMem_f_old_get, _rllib.rlPlcMem_f_old_set)
+    __swig_setmethods__["d"] = _rllib.rlPlcMem_d_set
+    __swig_getmethods__["d"] = _rllib.rlPlcMem_d_get
+    if _newclass:d = _swig_property(_rllib.rlPlcMem_d_get, _rllib.rlPlcMem_d_set)
+    __swig_setmethods__["d_old"] = _rllib.rlPlcMem_d_old_set
+    __swig_getmethods__["d_old"] = _rllib.rlPlcMem_d_old_get
+    if _newclass:d_old = _swig_property(_rllib.rlPlcMem_d_old_get, _rllib.rlPlcMem_d_old_set)
+    def rememberState(self): return _rllib.rlPlcMem_rememberState(self)
+    def intChanged(self): return _rllib.rlPlcMem_intChanged(self)
+    def floatChanged(self): return _rllib.rlPlcMem_floatChanged(self)
+    def doubleChanged(self): return _rllib.rlPlcMem_doubleChanged(self)
+    def intHasIncreased(self): return _rllib.rlPlcMem_intHasIncreased(self)
+    def floatHasIncreased(self): return _rllib.rlPlcMem_floatHasIncreased(self)
+    def doubleHasIncreased(self): return _rllib.rlPlcMem_doubleHasIncreased(self)
+    def intHasDecreased(self): return _rllib.rlPlcMem_intHasDecreased(self)
+    def floatHasDecreased(self): return _rllib.rlPlcMem_floatHasDecreased(self)
+    def doubleHasDecreased(self): return _rllib.rlPlcMem_doubleHasDecreased(self)
+    def deltaInt(self): return _rllib.rlPlcMem_deltaInt(self)
+    def deltaFloat(self): return _rllib.rlPlcMem_deltaFloat(self)
+    def deltaDouble(self): return _rllib.rlPlcMem_deltaDouble(self)
+    def set(self, *args): return _rllib.rlPlcMem_set(self, *args)
+    def clear(self, *args): return _rllib.rlPlcMem_clear(self, *args)
+    def isSet(self, *args): return _rllib.rlPlcMem_isSet(self, *args)
+    def isClear(self, *args): return _rllib.rlPlcMem_isClear(self, *args)
+    def hasBeenSet(self, *args): return _rllib.rlPlcMem_hasBeenSet(self, *args)
+    def hasBeenCleared(self, *args): return _rllib.rlPlcMem_hasBeenCleared(self, *args)
+rlPlcMem_swigregister = _rllib.rlPlcMem_swigregister
+rlPlcMem_swigregister(rlPlcMem)
 
 
 

@@ -14,3 +14,6 @@ Windows users will have to:
 SET PYTHONPATH=%PVBDIR%\win\bin;%PYTHONPATH%
 or
 SET PYTHONPATH=%PVBDIR%\win-mingw\bin;%PYTHONPATH%
+
+In the project file you may have to adjust the version number of your python library.
+

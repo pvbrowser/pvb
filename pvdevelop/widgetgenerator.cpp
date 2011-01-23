@@ -1045,7 +1045,7 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
             strcpy(tabparentname,(const char *) ggp->objectName().toUtf8());
             if(opt.arg_debug) printf("tabparentname3=%s\n",tabparentname);
           }
-          if(what == 0) strcpy(tabparentname,"ERROR_PLEASE_FIX_ME");
+          // if(what == 0) strcpy(tabparentname,"ERROR_PLEASE_FIX_ME");
         }  
       }
     }

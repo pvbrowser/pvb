@@ -60,10 +60,11 @@ echo "### Create python bindings for rllib ... #################################
 if [ "x${1}" = "x" ]; then
   echo "running swig for rllib ..."
   swig -c++ -python -Dunix -DSWIG_SESSION language_binding_rllib.i
+  mv language_binding_rllib_wrap.cxx language_binding_rllib_wrap_python.cxx
 fi
 echo "you can ignore the following fatal error"
-g++ -c -fpic language_binding_rllib_wrap.cxx -I$PYTHON_INCLUDE
-g++ -shared ../rllib/lib/librllib.so.1 language_binding_rllib_wrap.o -o _rllib.so
+g++ -c -fpic language_binding_rllib_wrap_python.cxx -I$PYTHON_INCLUDE
+g++ -shared ../rllib/lib/librllib.so.1 language_binding_rllib_wrap_python.o -o _rllib.so
 cp _rllib.so python/id/
 cp _rllib.so python/mt/
 cp rllib.py python/id/

@@ -2001,7 +2001,10 @@ get_args:
       {
         fprintf(fout,"%s <property name=\"tabPosition\" >\n", space);
         if     (strcmp("Bottom",p[1]) == 0) fprintf(fout,"%s  <enum>QTabWidget::South</enum>\n", space);
-        else if(strcmp("1",p[1])      == 0) fprintf(fout,"%s  <enum>QTabWidget::South</enum>\n", space);
+        else if(strcmp("1"     ,p[1]) == 0) fprintf(fout,"%s  <enum>QTabWidget::South</enum>\n", space);
+        else if(strcmp("0"     ,p[1]) == 0) fprintf(fout,"%s  <enum>QTabWidget::North</enum>\n", space);
+        else if(strcmp("2"     ,p[1]) == 0) fprintf(fout,"%s  <enum>QTabWidget::West</enum>\n",  space);
+        else if(strcmp("3"     ,p[1]) == 0) fprintf(fout,"%s  <enum>QTabWidget::East</enum>\n",  space);
         else                                fprintf(fout,"%s  <enum>QTabWidget::North</enum>\n", space);
         fprintf(fout,"%s </property>\n", space);
       }
