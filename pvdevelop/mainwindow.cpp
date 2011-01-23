@@ -99,9 +99,14 @@ void MainWindow::newFile()
   name = dlg.uidlg->lineEditName->text();
   if(ret == QDialog::Accepted && !name.isEmpty())
   {
+    name = name.simplified();
+    name = name.replace(" ","_");
+    name.truncate(sizeof(opt.arg_project) - 2);
+    strcpy(opt.arg_project,(const char *) name.toUtf8());
     if(dlg.uidlg->lineEditDirectory->text() != "") QDir::setCurrent(dlg.uidlg->lineEditDirectory->text());
     if(dlg.uidlg->checkBoxPython->isChecked())
     {
+      name = "pvs";
       strcpy(opt.arg_project, "pvs");
 #ifdef PVWIN32
       system("pvb_copy_python_template.bat");
