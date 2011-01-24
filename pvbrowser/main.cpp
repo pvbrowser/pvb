@@ -41,6 +41,7 @@ void init(int ac, char **av)
   opt.arg_w        = -1;
   opt.arg_h        = -1;
   opt.arg_log      = 0;
+  opt.arg_murn     = 0;
   for(int i=0; i<ac; i++)  // read command line args
   {
     if(strncmp(av[i],"-h",2) == 0 || strncmp(av[i],"--",2) == 0)
@@ -67,6 +68,10 @@ void init(int ac, char **av)
     if(strncmp(av[i],"-log",4) == 0)
     {
       opt.arg_log = 1; // print logging info
+    }
+    if(strncmp(av[i],"-murn",5) == 0)
+    {
+      opt.arg_murn = 1; // murnleitner special
     }
     if(strncmp(av[i],"-ini=",5) == 0)
     {

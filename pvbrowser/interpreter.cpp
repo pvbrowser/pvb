@@ -5368,10 +5368,9 @@ void Interpreter::interpretQ(const char *command)
     hasLayout = 1;
   }
 
-  /* hallo ernst das musste leider raus
-  if(i>0 && i<nmax)
+  if(opt.arg_murn == 1 && i>0 && i<nmax) // murnleitner special
   {
-    if(all[i]->type != TQVbox && all[i]->type != TQHbox && all[i]->type != TQGrid && all[i]->type != TQLineEdit) // fix white frame around QLineEdit
+    if(all[i]->type != TQVbox && all[i]->type != TQHbox && all[i]->type != TQGrid)
     {
       if(all[i]->w != NULL) all[i]->w->setAutoFillBackground(true);
       // all[i]->w->setBackgroundMode(Qt::PaletteBackground);
@@ -5382,7 +5381,6 @@ void Interpreter::interpretQ(const char *command)
       // all[i]->w->setForegroundRole(QPalette::WindowText);
     }
   }
-  */
 
   // font zoom issue reported by ernst murnleitner
   //if(i == 0 && (zoom != 100 || opt.fontzoom != 100) && hasLayout == 0)

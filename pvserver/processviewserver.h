@@ -907,6 +907,7 @@ pvSetFont()
 pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
+pvSetAlignment()
 pvSetText()
 pvPrintf()
 pvClear()
@@ -1325,6 +1326,7 @@ pvInsertItem()
 pvRemoveItem()
 pvRemoveItemByName()
 pvSelection()
+pvSetMultiSelection()
 </pre> */
 int pvQListBox(PARAM *p, int id, int parent);
 /*! <pre>
@@ -1542,6 +1544,7 @@ pvListViewSetSelected()
 pvSetListViewPixmap()
 pvRemoveListViewItem()
 pvSelection()
+pvSetMultiSelection()
 pvSetSorting()
 pvListViewEnsureVisible()
 </pre> */
