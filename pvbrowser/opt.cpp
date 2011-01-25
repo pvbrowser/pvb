@@ -362,6 +362,10 @@ int i;
           sscanf(buf,"ssh=%s",buf);
           strcpy(opt.ssh,buf);
         }
+        else if(strncmp(buf,"murn=1",6) == 0)
+        {
+          opt.arg_murn = 1;
+        }
         else if(strncmp(buf,"view.pdf=",9) == 0)
         {
           sscanf(buf,"view.pdf=%s",opt.view_pdf);

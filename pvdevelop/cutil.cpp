@@ -2105,7 +2105,48 @@ get_args:
         fprintf(fout,"%s  </size>\n", space);
         fprintf(fout,"%s </property>\n", space);
       }
-
+      else if(strstr(line,"pvSetAlignment(") != NULL)
+      {
+        QString align;
+        int flags = 0;
+        if(strstr(line,"AlignLeft") != NULL)    
+        { 
+          flags++; align += "Qt::AlignLeft";    
+        }
+        if(strstr(line,"AlignRight") != NULL)  
+        { 
+          if(flags) align += "|";
+          flags++; align += "Qt::AlignRight";   
+        }
+        if(strstr(line,"AlignHCenter") != NULL) 
+        { 
+          if(flags) align += "|";
+          flags++; align += "Qt::AlignHCenter"; 
+        }
+        if(strstr(line,"AlignJustify") != NULL) 
+        { 
+          if(flags) align += "|";
+          flags++; align += "Qt::AlignJustify"; 
+        }
+        if(strstr(line,"AlignTop") != NULL)    
+        { 
+          if(flags) align += "|";
+          flags++; align += "Qt::AlignTop";     
+        }
+        if(strstr(line,"AlignBottom") != NULL)  
+        { 
+          if(flags) align += "|";
+          flags++; align += "Qt::AlignBottom";  
+        }
+        if(strstr(line,"AlignVCenter") != NULL) 
+        { 
+          if(flags) align += "|";
+          flags++; align += "Qt::AlignVCenter"; 
+        }
+        fprintf(fout,"%s <property name=\"alignment\" >\n", space);
+        fprintf(fout,"%s  <set>%s</set>\n", space, (const char *) align.toUtf8());
+        fprintf(fout,"%s </property>\n", space);
+      }
       // Qwt properties. Currently these properties are ignored and set to default values. Init them in slotInit().
       else if(strstr(line,"qpwSetCanvasBackground(") != NULL)
       {

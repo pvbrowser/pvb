@@ -386,10 +386,54 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     fprintf(fout,"  pvQLabel(p,%s,%s);\n",itemname,parentname);
     fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
     if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
-    if(obj->statusTip().contains(":align:"))
-    {
-      fprintf(fout,"  pvSetAlignment(p,%s,%d);\n",itemname,(int) obj->alignment());
+    // alignment
+    //if(obj->statusTip().contains(":align:"))
+    //{
+    //  fprintf(fout,"  pvSetAlignment(p,%s,%d);\n",itemname,(int) obj->alignment());
+    //}
+    QString align;
+    int flags = 0;
+    int alignment = (int) obj->alignment();
+    if(alignment & Qt::AlignLeft)    
+    { 
+      flags++; align += "AlignLeft";    
     }
+    if(alignment & Qt::AlignRight)   
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignRight";   
+    }
+    if(alignment & Qt::AlignHCenter) 
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignHCenter"; 
+    }
+    if(alignment & Qt::AlignJustify) 
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignJustify"; 
+    }
+    if(alignment & Qt::AlignTop)     
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignTop";     
+    }
+    if(alignment & Qt::AlignBottom)  
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignBottom";  
+    }
+    if(alignment & Qt::AlignVCenter) 
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignVCenter"; 
+    }
+    if(align.contains("Align"))
+    {
+      if(align.contains("AlignLeft|AlignVCenter") != NULL) flags = 0; 
+      if(flags) fprintf(fout,"  pvSetAlignment(p,%s,%s);\n",itemname,(const char *) align.toUtf8());
+    }
+
     iitem++;
   }
   else if(type == "TQLineEdit")
@@ -411,10 +455,54 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     {
       fprintf(fout,"  pvSetEchoMode(p,%s,0);\n",itemname);
     }
-    if(obj->statusTip().contains(":align:"))
-    {
-      fprintf(fout,"  pvSetAlignment(p,%s,%d);\n",itemname,(int) obj->alignment());
+    // alignment
+    //if(obj->statusTip().contains(":align:"))
+    //{
+    //  fprintf(fout,"  pvSetAlignment(p,%s,%d);\n",itemname,(int) obj->alignment());
+    //}
+    QString align;
+    int flags = 0;
+    int alignment = (int) obj->alignment();
+    if(alignment & Qt::AlignLeft)    
+    { 
+      flags++; align += "AlignLeft";    
     }
+    if(alignment & Qt::AlignRight)   
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignRight";   
+    }
+    if(alignment & Qt::AlignHCenter) 
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignHCenter"; 
+    }
+    if(alignment & Qt::AlignJustify) 
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignJustify"; 
+    }
+    if(alignment & Qt::AlignTop)     
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignTop";     
+    }
+    if(alignment & Qt::AlignBottom)  
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignBottom";  
+    }
+    if(alignment & Qt::AlignVCenter) 
+    { 
+      if(flags) align += "|";
+      flags++; align += "AlignVCenter"; 
+    }
+    if(align.contains("Align"))
+    {
+      if(strstr(line,"AlignLeft|AlignVCenter") != NULL) flags = 0; 
+      if(flags) fprintf(fout,"  pvSetAlignment(p,%s,%s);\n",itemname,(const char *) align.toUtf8());
+    }
+    
     iitem++;
   }
   else if(type == "TQMultiLineEdit")
@@ -2248,6 +2336,53 @@ static int getWidget(FILE *fin, QWidget *root)
         default:
           printf("unknown pvSetText(%s) itemtype=%d\n",text,itemtype);
           break;
+      }
+    }
+    else if(isCommand("pvSetAlignment(") == 1)
+    {
+      int align = 0;
+      if(strstr(line,"AlignLeft") != NULL)    
+      { 
+        align |= Qt::AlignLeft;    
+      }
+      if(strstr(line,"AlignRight") != NULL)  
+      { 
+        align |= Qt::AlignRight;   
+      }
+      if(strstr(line,"AlignHCenter") != NULL) 
+      { 
+        align |= Qt::AlignHCenter; 
+      }
+      if(strstr(line,"AlignJustify") != NULL) 
+      { 
+        align |= Qt::AlignJustify; 
+      }
+      if(strstr(line,"AlignTop") != NULL)    
+      { 
+        align |= Qt::AlignTop;     
+      }
+      if(strstr(line,"AlignBottom") != NULL)  
+      { 
+        align |= Qt::AlignBottom;  
+      }
+      if(strstr(line,"AlignVCenter") != NULL) 
+      { 
+        align |= Qt::AlignVCenter; 
+      }
+      if(align != 0)
+      {
+        switch(itemtype)
+        {
+          case TQLabel:
+            ((MyLabel *) item)->setAlignment((Qt::Alignment) align);
+            break;
+          case TQLineEdit:
+            ((MyLineEdit *) item)->setAlignment((Qt::Alignment) align);
+            break;
+          default:
+            printf("unknown pvSetAlignment() itemtype=%d\n",itemtype);
+            break;
+        }
       }
     }
     else if(isCommand("pvSetChecked(") == 1)
