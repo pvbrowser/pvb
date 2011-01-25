@@ -387,10 +387,6 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
     if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
     // alignment
-    //if(obj->statusTip().contains(":align:"))
-    //{
-    //  fprintf(fout,"  pvSetAlignment(p,%s,%d);\n",itemname,(int) obj->alignment());
-    //}
     QString align;
     int flags = 0;
     int alignment = (int) obj->alignment();
@@ -430,7 +426,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     }
     if(align.contains("Align"))
     {
-      if(align.contains("AlignLeft|AlignVCenter") != NULL) flags = 0; 
+      if(align.contains("AlignLeft|AlignVCenter")) flags = 0; 
       if(flags) fprintf(fout,"  pvSetAlignment(p,%s,%s);\n",itemname,(const char *) align.toUtf8());
     }
 
@@ -456,10 +452,6 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
       fprintf(fout,"  pvSetEchoMode(p,%s,0);\n",itemname);
     }
     // alignment
-    //if(obj->statusTip().contains(":align:"))
-    //{
-    //  fprintf(fout,"  pvSetAlignment(p,%s,%d);\n",itemname,(int) obj->alignment());
-    //}
     QString align;
     int flags = 0;
     int alignment = (int) obj->alignment();
@@ -499,7 +491,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     }
     if(align.contains("Align"))
     {
-      if(strstr(line,"AlignLeft|AlignVCenter") != NULL) flags = 0; 
+      if(align.contains("AlignLeft|AlignVCenter")) flags = 0; 
       if(flags) fprintf(fout,"  pvSetAlignment(p,%s,%s);\n",itemname,(const char *) align.toUtf8());
     }
     
