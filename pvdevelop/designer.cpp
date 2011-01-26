@@ -28,6 +28,19 @@ extern OPT opt;
 extern QStringList tablist;
 dlgeditlayout *editlayout = NULL;
 
+#define Properties          "Properties (P)"
+#define Insert_Widget       "Insert Widget (Shift+Click)"
+#define Delete_Widget       "Delete Widget (Del | Backspace)"
+#define Add_Tab             "Add Tab"
+#define Add_Item            "Add Item"
+#define Copy_attributes     "copy attributes"
+#define Define_new_TabOrder "define new TabOrder"
+#define Edit_layout         "edit layout (L)"
+#define End_define_TabOrder "end define TabOrder"
+#define End_copy_attributes "end copy attributes"
+#define DGrabMouse          "grabMouse (G)"
+#define DReleaseMouse       "releaseMouse (R)"
+
 Designer::Designer(const char *mask)
 {
   root = new MyRootWidget(NULL);
@@ -499,6 +512,12 @@ void MyRootWidget::selectWidget(QWidget *child)
 
 void MyRootWidget::mousePressEvent(QMouseEvent *event)
 {
+  if(opt.shiftPressed)
+  {
+    mouseDoubleClickEvent(event); // show insert dialog
+    opt.shiftPressed = 0;
+    return;
+  }
   int x = event->x();
   int y = event->y();
   int gx = event->globalX();
@@ -625,25 +644,25 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
   {
     QMenu popupMenu;
     QAction *ret;
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Properties (P)");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Insert Widget (MouseDoubleClick)");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Delete Widget (Del | Backspace)");
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction(Properties);
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction(Insert_Widget);
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction(Delete_Widget);
     if(child != NULL && child->statusTip().startsWith("TQTabWidget:") &&
        tabbing == 0 && copying == 0)
-                                                     popupMenu.addAction("Add Tab");
+                                                     popupMenu.addAction(Add_Tab);
     if(child != NULL && child->statusTip().startsWith("TQToolBox:") &&
        tabbing == 0 && copying == 0)
-                                                     popupMenu.addAction("Add Item");
+                                                     popupMenu.addAction(Add_Item);
     if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addSeparator();
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("copy attributes");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("define new TabOrder");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("edit layout (L)");
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction(Copy_attributes);
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction(Define_new_TabOrder);
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction(Edit_layout);
     if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addSeparator();
-    if(grabbed == 1 && tabbing == 1)                 popupMenu.addAction("end define TabOrder");
-    if(grabbed == 1 && copying == 1)                 popupMenu.addAction("end copy attributes");
+    if(grabbed == 1 && tabbing == 1)                 popupMenu.addAction(End_define_TabOrder);
+    if(grabbed == 1 && copying == 1)                 popupMenu.addAction(End_copy_attributes);
     if((grabbed == 1 && tabbing == 1) || copying == 1) popupMenu.addSeparator();
-    if(grabbed == 0) popupMenu.addAction("grabMouse (G)");
-    if(grabbed == 1) popupMenu.addAction("releaseMouse (R)");
+    if(grabbed == 0) popupMenu.addAction(DGrabMouse);
+    if(grabbed == 1) popupMenu.addAction(DReleaseMouse);
     setCursor(Qt::ArrowCursor);
     ret = popupMenu.exec(QCursor::pos());
     stackClear();
@@ -657,7 +676,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
     }
     else
     {
-      if(ret->text() == "Properties (P)" && child != NULL &&
+      if(ret->text() == Properties && child != NULL &&
          !child->statusTip().startsWith("TQWidget:"))
       {
         if(child != NULL)
@@ -679,10 +698,10 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         }
         modified = 1;
       }
-      else if(ret->text() == "Properties (P)")
+      else if(ret->text() == Properties)
       {
       }
-      else if(ret->text() == "Insert Widget (MouseDoubleClick)")
+      else if(ret->text() == Insert_Widget)
       {
         QWidget *p = child;
         if(p == NULL && x>0 && y>0) p = this;
@@ -715,7 +734,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           setCursor(Qt::CrossCursor);
         }
       }
-      else if(ret->text() == "Delete Widget (Del | Backspace)")
+      else if(ret->text() == Delete_Widget)
       {
         if(lastChild != NULL)
         {
@@ -727,7 +746,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         modified = 1;
         stackClear();
       }
-      else if(ret->text() == "Add Tab")
+      else if(ret->text() == Add_Tab)
       {
         if(child != NULL)
         {
@@ -750,7 +769,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           setCursor(Qt::CrossCursor);
         }
       }
-      else if(ret->text() == "Add Item")
+      else if(ret->text() == Add_Item)
       {
         if(child != NULL)
         {
@@ -774,13 +793,13 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           setCursor(Qt::CrossCursor);
         }
       }
-      else if(ret->text() == "grabMouse (G)")
+      else if(ret->text() == DGrabMouse)
       {
         grabMouse();
         mainWindow->grabKeyboard();
         setCursor(Qt::SizeAllCursor);
       }
-      else if(ret->text() == "releaseMouse (R)")
+      else if(ret->text() == DReleaseMouse)
       {
         if(lastChild != NULL)
         {
@@ -793,7 +812,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         setCursor(Qt::ArrowCursor);
         return;
       }
-      else if(ret->text() == "define new TabOrder")
+      else if(ret->text() == Define_new_TabOrder)
       {
         tabbing = modified = 1;
         tablist.clear();
@@ -810,13 +829,13 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
                      QMessageBox::Ok);
         stackClear();
       }
-      else if(ret->text() == "end define TabOrder")
+      else if(ret->text() == End_define_TabOrder)
       {
         tabbing = 0;
         showWidgets(this);
         stackClear();
       }
-      else if(ret->text() == "copy attributes")
+      else if(ret->text() == Copy_attributes)
       {
         copying = 1;
         releaseMouse();
@@ -828,11 +847,11 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
                      QMessageBox::Ok);
         stackClear();
       }
-      else if(ret->text() == "end copy attributes")
+      else if(ret->text() == End_copy_attributes)
       {
         copying = 0;
       }
-      else if(ret->text() == "edit layout (L)")
+      else if(ret->text() == Edit_layout)
       {
         releaseMouse();
         mainWindow->releaseKeyboard();

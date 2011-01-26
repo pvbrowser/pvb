@@ -1402,6 +1402,8 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
 {
   if(event->modifiers() & Qt::ControlModifier) opt.ctrlPressed = 1;
   else                                         opt.ctrlPressed = 0;
+  if(event->modifiers() & Qt::ShiftModifier)   opt.shiftPressed = 1;
+  else                                         opt.shiftPressed = 0;
 
   if(designer != NULL && designer->root != NULL)
   {
@@ -1445,6 +1447,7 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
 void MainWindow::keyReleaseEvent(QKeyEvent * event)
 {
   opt.ctrlPressed = 0;
+  opt.shiftPressed = 0;
   //printf("ctrlPressed=%d\n",opt.ctrlPressed);
   QWidget::keyPressEvent(event);
 }

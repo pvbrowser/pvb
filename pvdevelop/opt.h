@@ -29,11 +29,12 @@ typedef struct
 {
   // inifile args
   char manual[MAXOPT];
-  int  xGrid;       // grid for graphical designer
+  int  xGrid;        // grid for graphical designer
   int  yGrid;
-  int  murx;        // option for testing pvdevelop
-  int  ctrlPressed; // ctrl key pressed
-  int  su;          // run pvs as root
+  int  murx;         // option for testing pvdevelop
+  int  ctrlPressed;  // ctrl key pressed
+  int  shiftPressed; // shift key pressed
+  int  su;           // run pvs as root
   char backupLocation[MAXOPT];
 
   // options from project file
