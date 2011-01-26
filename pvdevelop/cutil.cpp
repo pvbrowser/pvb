@@ -39,7 +39,7 @@ int mysystem(const char *command)
   if(strncmp(command,"start",5) == 0 || strncmp(command,"START",5) == 0)
   {
     ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
-    ret = system(cmd);
+    ret  = system(cmd);
   }
   else
   {

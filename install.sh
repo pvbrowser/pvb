@@ -40,32 +40,32 @@ cp -r . /opt/pvb/
 if [ "$PVB_OSTYPE" == "linux" ]; then
 
 echo 'set links on linux'
-ln -s /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so
-ln -s /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1
-ln -s /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1.0
-ln -s /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1.0.0
+ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so
+ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1
+ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1.0
+ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1.0.0
 
-ln -s /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so
-ln -s /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1
-ln -s /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0
-ln -s /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0.0
+ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so
+ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1
+ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0
+ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0.0
 
-#ln -s /opt/pvb/pvbrowser/pvbrowser           /usr/local/bin/pvbrowser_system
-#ln -s /opt/pvb/tested_qt/pvbrowser_tested.sh /usr/local/bin/pvbrowser
-#ln -s /opt/pvb/pvdevelop/pvdevelop           /usr/local/bin/pvdevelop_system
-#ln -s /opt/pvb/tested_qt/pvdevelop_tested.sh /usr/local/bin/pvdevelop
-ln -s /opt/pvb/pvbrowser/pvbrowser           /usr/local/bin/pvbrowser
-ln -s /opt/pvb/pvdevelop/pvdevelop           /usr/local/bin/pvdevelop
-ln -s /opt/pvb/rllib/rlsvg/rlsvgcat          /usr/local/bin/rlsvgcat
-ln -s /opt/pvb/rllib/rlsvg/rlsvgcat          /usr/bin/rlsvgcat
-ln -s /opt/pvb/start_pvbapp/start_pvbapp     /usr/local/bin/start_pvbapp
-ln -s /opt/pvb/rllib/rlhistory/rlhistory     /usr/local/bin/rlhistory
-ln -s /opt/pvb/update_pvbrowser.sh           /usr/local/bin/update_pvbrowser
+#ln -sf /opt/pvb/pvbrowser/pvbrowser           /usr/local/bin/pvbrowser_system
+#ln -sf /opt/pvb/tested_qt/pvbrowser_tested.sh /usr/local/bin/pvbrowser
+#ln -sf /opt/pvb/pvdevelop/pvdevelop           /usr/local/bin/pvdevelop_system
+#ln -sf /opt/pvb/tested_qt/pvdevelop_tested.sh /usr/local/bin/pvdevelop
+ln -sf /opt/pvb/pvbrowser/pvbrowser           /usr/local/bin/pvbrowser
+ln -sf /opt/pvb/pvdevelop/pvdevelop           /usr/local/bin/pvdevelop
+ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat          /usr/local/bin/rlsvgcat
+ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat          /usr/bin/rlsvgcat
+ln -sf /opt/pvb/start_pvbapp/start_pvbapp     /usr/local/bin/start_pvbapp
+ln -sf /opt/pvb/rllib/rlhistory/rlhistory     /usr/local/bin/rlhistory
+ln -sf /opt/pvb/update_pvbrowser.sh           /usr/local/bin/update_pvbrowser
 
-ln -s /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so
-ln -s /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1
-ln -s /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1.0
-ln -s /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1.0.0
+ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so
+ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1
+ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1.0
+ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1.0.0
 
 echo 'Now running ldconfig...'
 ldconfig
@@ -74,17 +74,17 @@ else
 
 echo 'set links on OS-X'
 
-ln -s /opt/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser           /usr/bin/pvbrowser
-ln -s /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop           /usr/bin/pvdevelop
-ln -s /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp  /usr/local/bin/start_pvbapp
-ln -s /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat           /usr/bin/rlsvgcat
-ln -s /opt/pvb/rllib/rlhistory/rlhistory.app/Contents/MacOS/rlhistory     /usr/bin/rlhistory
-ln -s /opt/pvb/update_pvbrowser.sh                                        /usr/bin/update_pvbrowser
+ln -sf /opt/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser           /usr/bin/pvbrowser
+ln -sf /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop           /usr/bin/pvdevelop
+ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp  /usr/local/bin/start_pvbapp
+ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat           /usr/bin/rlsvgcat
+ln -sf /opt/pvb/rllib/rlhistory/rlhistory.app/Contents/MacOS/rlhistory     /usr/bin/rlhistory
+ln -sf /opt/pvb/update_pvbrowser.sh                                        /usr/bin/update_pvbrowser
 
-ln -s /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib
-ln -s /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1
-ln -s /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1.0
-ln -s /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1.0.0
+ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib
+ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1
+ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1.0
+ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1.0.0
 
 fi
 

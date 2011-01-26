@@ -32,6 +32,7 @@ typedef struct
   int  xGrid;        // grid for graphical designer
   int  yGrid;
   int  murx;         // option for testing pvdevelop
+  int  altPressed;   // alt key pressed
   int  ctrlPressed;  // ctrl key pressed
   int  shiftPressed; // shift key pressed
   int  su;           // run pvs as root

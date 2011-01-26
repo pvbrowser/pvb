@@ -119,7 +119,9 @@ MyRootWidget::MyRootWidget(MyRootWidget *parent)
   setMouseTracking(true);
   //setFocusPolicy(Qt::NoFocus);
   grabbed = 2;
+  opt.altPressed = 0;
   opt.ctrlPressed = 0;
+  opt.shiftPressed = 0;
   insert.myrootwidget = this;
   setCursor(Qt::ArrowCursor);
 }
@@ -512,12 +514,6 @@ void MyRootWidget::selectWidget(QWidget *child)
 
 void MyRootWidget::mousePressEvent(QMouseEvent *event)
 {
-  if(opt.shiftPressed)
-  {
-    mouseDoubleClickEvent(event); // show insert dialog
-    opt.shiftPressed = 0;
-    return;
-  }
   int x = event->x();
   int y = event->y();
   int gx = event->globalX();
@@ -540,6 +536,39 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
   }
   //#####################################
   QWidget *child = getChild(x,y);
+  if(opt.altPressed)
+  {
+    if(child != NULL)
+    {
+      if(lastChild != NULL)
+      {
+        lastChild->setAutoFillBackground(false);
+        if( lastChild->statusTip().contains("TQLabel:")) lastChild->setAutoFillBackground(true);
+        if( lastChild->statusTip().contains("TQFrame:")) lastChild->setAutoFillBackground(true);
+        if( lastChild->statusTip().contains("TQRadio:")) lastChild->setAutoFillBackground(true);
+        if( lastChild->statusTip().contains("TQCheck:")) lastChild->setAutoFillBackground(true);
+        lastChild->setPalette(savedPalette);
+      }
+      dlgProperty dlg(child);
+      releaseMouse();
+      mainWindow->releaseKeyboard();
+      setCursor(Qt::ArrowCursor);
+      dlg.run();
+      grabbed = 1;
+      grabMouse();
+      mainWindow->grabKeyboard();
+      modified = 1;
+    }
+    opt.altPressed = 0;
+    return;
+  }
+  if(opt.shiftPressed)
+  {
+    mouseDoubleClickEvent(event); // show insert dialog
+    opt.shiftPressed = 0;
+    return;
+  }
+  
   if(event->button() == Qt::LeftButton)
   {
     if(opt.arg_debug > 0) printf("mousePressEvent LeftButton parentLevel=%d ctrlPressed=%d\n",parentLevel,opt.ctrlPressed);

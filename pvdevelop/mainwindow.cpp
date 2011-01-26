@@ -1400,6 +1400,8 @@ int ret;
 
 void MainWindow::keyPressEvent(QKeyEvent * event)
 {
+  if(event->modifiers() & Qt::AltModifier)     opt.altPressed = 1;
+  else                                         opt.altPressed = 0;
   if(event->modifiers() & Qt::ControlModifier) opt.ctrlPressed = 1;
   else                                         opt.ctrlPressed = 0;
   if(event->modifiers() & Qt::ShiftModifier)   opt.shiftPressed = 1;
@@ -1446,6 +1448,7 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
 
 void MainWindow::keyReleaseEvent(QKeyEvent * event)
 {
+  opt.altPressed = 0;
   opt.ctrlPressed = 0;
   opt.shiftPressed = 0;
   //printf("ctrlPressed=%d\n",opt.ctrlPressed);
