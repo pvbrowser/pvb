@@ -333,8 +333,8 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
           myMove(child,xNew,yNew);
           child->show();
           reparentDone = 1;
-          xChild0 = child->x();
-          yChild0 = child->y();
+          xChild0 = child->x() - child->width()/2;
+          yChild0 = child->y() - child->height()/2;
           wChild0 = child->width();
           hChild0 = child->height();
           xOld = xNew;
