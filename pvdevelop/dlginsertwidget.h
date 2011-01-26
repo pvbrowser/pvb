@@ -30,7 +30,7 @@ public:
     dlgInsertWidget();
     ~dlgInsertWidget();
     void run();
-    void newWidget(QWidget *root, QWidget *parent, int x, int y);
+    QWidget *newWidget(QWidget *root, QWidget *parent, int x, int y);
     void setDefaultObjectName(QWidget *root, QWidget *item);
     int  ret;
     QWidget *myrootwidget;

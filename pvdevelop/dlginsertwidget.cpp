@@ -80,10 +80,10 @@ void dlgInsertWidget::run()
 
 static int nullSocket = -1;
 
-void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
+QWidget *dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
 {
   QWidget *w = NULL;
-  if(parent == NULL) return;
+  if(parent == NULL) return NULL;
   ret = 1;
 
   if(opt.arg_debug) printf("newWidget at(%d,%d)\n",x,y);
@@ -422,6 +422,8 @@ void dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y)
     setDefaultObjectName(root,w);
     w->show();
   }
+
+  return w;
 }
 
 void myMove(QWidget *w, int x, int y)

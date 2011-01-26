@@ -17,8 +17,16 @@
 #define DESIGNER_H
 #include <QString>
 #include <QStatusBar>
+#include <QStack>
 #include <qwidget.h>
 #include "dlginsertwidget.h"
+
+typedef struct
+{
+  QWidget *OldParent;
+  QWidget *OldCurrent;
+  int     OldX, OldY, OldWidth, OldHeight;
+}OldState;
 
 class QScrollArea;
 
@@ -36,6 +44,8 @@ class MyRootWidget : public QWidget
     void ReleaseMouse();
     void EditLayout();
     void MoveKey(int key);
+    void stackClear();
+    QWidget *pop(QWidget *current);
     QMainWindow  *mainWindow;
   private:
     void mouseDoubleClickEvent(QMouseEvent *event);
@@ -49,6 +59,9 @@ class MyRootWidget : public QWidget
     int  aboveDesignArea(int x, int y, int gx, int gy);
     void printStatusMessage(QWidget *child);
     void setCursor(Qt::CursorShape cursor);
+    void push(QWidget *current);
+    void perhapsDeselectOldWidget();
+    void selectWidget(QWidget *child);
     Qt::CursorShape currentCursor;
     QScrollArea *scroll;
     int xOld,yOld,buttonDown,xChild0,yChild0,wChild0,hChild0,grabbed,tabbing,copying, inMiddle,parentLevel,reparentDone;
@@ -57,6 +70,7 @@ class MyRootWidget : public QWidget
     QString savedStatusTip;
     QString lastTab;
     dlgInsertWidget insert;
+    QStack<OldState> stack;
 };
 
 class Designer

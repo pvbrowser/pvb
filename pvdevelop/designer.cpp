@@ -181,6 +181,7 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
       if(opt.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
       insert.newWidget(this,p,xw,yw);
       modified = 1;
+      stackClear();
     }
   }
   grabbed = 1;
@@ -197,6 +198,7 @@ void MyRootWidget::MoveKey(int key)
   if(child == NULL) return;
   if(grabbed == 0)  return;
 
+  push(child);
   if(opt.ctrlPressed)
   {
     if     (key == Qt::Key_Left)
@@ -309,6 +311,7 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
       if(xNew>=0 && yNew>=0 &&
          xNew<((QWidget *)child->parent())->width() && yNew<((QWidget *)child->parent())->height())
       {
+        push(child);
         myMove(child,xNew,yNew);
       }
       else if(reparentDone == 0) // reparent
@@ -316,17 +319,26 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
         QWidget *root = scroll->widget();
         if(root != NULL)
         {
+          push(child);
+          int dx = child->x();
+          int dy = child->y();
           QPoint childPos0  = child->mapToGlobal(QPoint(0,0));
           QPoint parentPos0 = root->mapToGlobal(QPoint(0,0));
           child->hide();
           child->setParent(root);
           xNew = childPos0.x() - parentPos0.x();
           yNew = childPos0.y() - parentPos0.y();
-          xNew = (xNew/opt.xGrid)*opt.xGrid;
-          yNew = (yNew/opt.yGrid)*opt.yGrid;
+          xNew = (xNew/opt.xGrid)*opt.xGrid + dx;
+          yNew = (yNew/opt.yGrid)*opt.yGrid + dy;
           myMove(child,xNew,yNew);
           child->show();
           reparentDone = 1;
+          xChild0 = child->x();
+          yChild0 = child->y();
+          wChild0 = child->width();
+          hChild0 = child->height();
+          xOld = xNew;
+          yOld = yNew;
         }
       }
       modified = 1;
@@ -340,6 +352,7 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
       hNew = (hNew/opt.yGrid)*opt.yGrid;
       if(wNew < opt.xGrid) wNew = opt.xGrid;
       if(hNew < opt.yGrid) hNew = opt.yGrid;
+      push(child);
       if(wNew>=0 && hNew>=0) myResize(child,wNew,hNew);
       modified = 1;
     }
@@ -452,21 +465,36 @@ int MyRootWidget::aboveDesignArea(int x, int y, int gx, int gy)
     return 1;
   }
   return 0;
-/*
-  if(y < 0) return 0;
-  QWidget *child = childAt(x,y);
-  if     (underMouse())  return 1;
-  else if(grabbed)       return 1;
-  else if(child == NULL) return 0;
+}
 
-  const QObjectList childs = children();
-  int count = childs.count();
-  for(int i=0; i<count; i++)
+void MyRootWidget::perhapsDeselectOldWidget()
+{
+  if(lastChild != NULL && tabbing == 0 && copying == 0)
   {
-    if(child == (QWidget *) childs.at(i)) return 1;
+    if(opt.arg_debug > 0) printf("deselect old widget\n");
+    if(!lastChild->statusTip().contains("TQImage:")) lastChild->setAutoFillBackground(false);
+    if( lastChild->statusTip().contains("TQLabel:")) lastChild->setAutoFillBackground(true);
+    if( lastChild->statusTip().contains("TQFrame:")) lastChild->setAutoFillBackground(true);
+    if( lastChild->statusTip().contains("TQRadio:")) lastChild->setAutoFillBackground(true);
+    if( lastChild->statusTip().contains("TQCheck:")) lastChild->setAutoFillBackground(true);
+    lastChild->setPalette(savedPalette);
+    lastChild = NULL;
   }
-  return 0;
-*/
+}
+void MyRootWidget::selectWidget(QWidget *child)
+{
+  if(opt.arg_debug > 0) printf("mousePressEvent LeftButton set background2\n");
+  if(child == NULL) return;
+  savedPalette = child->palette();
+  savedStatusTip = child->statusTip();
+  child->setAutoFillBackground(true);
+  child->setPalette(QPalette(QColor(0,0,0)));
+  xChild0 = child->x();
+  yChild0 = child->y();
+  wChild0 = child->width();
+  hChild0 = child->height();
+  clickedChild = child;
+  lastChild = child;
 }
 
 void MyRootWidget::mousePressEvent(QMouseEvent *event)
@@ -496,36 +524,13 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
   if(event->button() == Qt::LeftButton)
   {
     if(opt.arg_debug > 0) printf("mousePressEvent LeftButton parentLevel=%d ctrlPressed=%d\n",parentLevel,opt.ctrlPressed);
-    if(lastChild != NULL && opt.ctrlPressed ==  0 && tabbing == 0 && copying == 0)
-    {
-      if(opt.arg_debug > 0) printf("mousePressEvent LeftButton reset background\n");
-      if(!lastChild->statusTip().contains("TQImage:")) lastChild->setAutoFillBackground(false);
-      if( lastChild->statusTip().contains("TQLabel:")) lastChild->setAutoFillBackground(true);
-      if( lastChild->statusTip().contains("TQFrame:")) lastChild->setAutoFillBackground(true);
-      if( lastChild->statusTip().contains("TQRadio:")) lastChild->setAutoFillBackground(true);
-      if( lastChild->statusTip().contains("TQCheck:")) lastChild->setAutoFillBackground(true);
-      if(opt.arg_debug > 0) printf("mousePressEvent LeftButton Verzweifelung1\n");
-      lastChild->setPalette(savedPalette);
-      if(opt.arg_debug > 0) printf("mousePressEvent LeftButton Verzweifelung2\n");
-      lastChild = NULL;
-    }
-    if(opt.arg_debug > 0) printf("mousePressEvent LeftButton murx1\n");
+    perhapsDeselectOldWidget();
     if(child != NULL && opt.ctrlPressed==0 && tabbing == 0 && copying == 0) // set highlight
     {
       if(opt.arg_debug > 0) printf("mousePressEvent LeftButton set background\n");
       if(!child->statusTip().contains("TQWidget:"))
       {
-        if(opt.arg_debug > 0) printf("mousePressEvent LeftButton set background2\n");
-        savedPalette = child->palette();
-        savedStatusTip = child->statusTip();
-        child->setAutoFillBackground(true);
-        child->setPalette(QPalette(QColor(0,0,0)));
-        xChild0 = child->x();
-        yChild0 = child->y();
-        wChild0 = child->width();
-        hChild0 = child->height();
-        clickedChild = child;
-        lastChild = child;
+        selectWidget(child);
       }
     }
     if(opt.arg_debug > 0) printf("mousePressEvent LeftButton murx2\n");
@@ -550,12 +555,14 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         mainWindow->releaseKeyboard();
         setCursor(Qt::ArrowCursor);
         insert.myrootwidget = this;
-        insert.newWidget(this,p,xw,yw);
+        QWidget *wnew = insert.newWidget(this,p,xw,yw);
         setCursor(Qt::CrossCursor);
         modified = 1;
         grabbed = 1;
         grabMouse();
         mainWindow->grabKeyboard();
+        stackClear();
+        selectWidget(wnew);
       }
     }
     if(child != NULL && grabbed == 1 && tabbing == 1 && copying == 0
@@ -618,9 +625,9 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
   {
     QMenu popupMenu;
     QAction *ret;
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Properties");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Insert Widget");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Delete Widget");
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Properties (P)");
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Insert Widget (MouseDoubleClick)");
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("Delete Widget (Del | Backspace)");
     if(child != NULL && child->statusTip().startsWith("TQTabWidget:") &&
        tabbing == 0 && copying == 0)
                                                      popupMenu.addAction("Add Tab");
@@ -630,15 +637,16 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
     if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addSeparator();
     if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("copy attributes");
     if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("define new TabOrder");
-    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("edit layout");
+    if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addAction("edit layout (L)");
     if(grabbed == 1 && tabbing == 0 && copying == 0) popupMenu.addSeparator();
     if(grabbed == 1 && tabbing == 1)                 popupMenu.addAction("end define TabOrder");
     if(grabbed == 1 && copying == 1)                 popupMenu.addAction("end copy attributes");
     if((grabbed == 1 && tabbing == 1) || copying == 1) popupMenu.addSeparator();
-    if(grabbed == 0) popupMenu.addAction("grabMouse");
-    if(grabbed == 1) popupMenu.addAction("releaseMouse");
+    if(grabbed == 0) popupMenu.addAction("grabMouse (G)");
+    if(grabbed == 1) popupMenu.addAction("releaseMouse (R)");
     setCursor(Qt::ArrowCursor);
     ret = popupMenu.exec(QCursor::pos());
+    stackClear();
     if(ret == NULL)
     {
       grabbed = 1;
@@ -649,7 +657,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
     }
     else
     {
-      if(ret->text() == "Properties" && child != NULL &&
+      if(ret->text() == "Properties (P)" && child != NULL &&
          !child->statusTip().startsWith("TQWidget:"))
       {
         if(child != NULL)
@@ -671,7 +679,10 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         }
         modified = 1;
       }
-      else if(ret->text() == "Insert Widget")
+      else if(ret->text() == "Properties (P)")
+      {
+      }
+      else if(ret->text() == "Insert Widget (MouseDoubleClick)")
       {
         QWidget *p = child;
         if(p == NULL && x>0 && y>0) p = this;
@@ -695,13 +706,16 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             xw = thisxy.x() - parent0.x();
             yw = thisxy.y() - parent0.y();
             if(opt.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
-            insert.newWidget(this,p,xw,yw);
+            QWidget *wnew = insert.newWidget(this,p,xw,yw);
             modified = 1;
+            stackClear();
+            perhapsDeselectOldWidget();
+            selectWidget(wnew);
           }
           setCursor(Qt::CrossCursor);
         }
       }
-      else if(ret->text() == "Delete Widget")
+      else if(ret->text() == "Delete Widget (Del | Backspace)")
       {
         if(lastChild != NULL)
         {
@@ -711,6 +725,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
         lastChild = clickedChild = NULL;
         if(child != NULL) delete child;
         modified = 1;
+        stackClear();
       }
       else if(ret->text() == "Add Tab")
       {
@@ -730,6 +745,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             insert.myrootwidget = this;
             insert.setDefaultObjectName(this,tab);
             ((MyQTabWidget *)child)->addTab(tab, text);
+            stackClear();
           }
           setCursor(Qt::CrossCursor);
         }
@@ -753,17 +769,18 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             insert.myrootwidget = this;
             insert.setDefaultObjectName(this,item);
             ((MyQToolBox *)child)->addItem(item, text);
+            stackClear();
           }
           setCursor(Qt::CrossCursor);
         }
       }
-      else if(ret->text() == "grabMouse")
+      else if(ret->text() == "grabMouse (G)")
       {
         grabMouse();
         mainWindow->grabKeyboard();
         setCursor(Qt::SizeAllCursor);
       }
-      else if(ret->text() == "releaseMouse")
+      else if(ret->text() == "releaseMouse (R)")
       {
         if(lastChild != NULL)
         {
@@ -791,11 +808,13 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
                      "In order to switch TabWidget: release mouse and grab it again.\n"
                      "In order to switch ToolBox: release mouse and grab it again.",
                      QMessageBox::Ok);
+        stackClear();
       }
       else if(ret->text() == "end define TabOrder")
       {
         tabbing = 0;
         showWidgets(this);
+        stackClear();
       }
       else if(ret->text() == "copy attributes")
       {
@@ -807,18 +826,20 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
                      "Now click on the widgets you want to copy to.\n"
                      "When you are finished with copying click right mouse button and end copying.\n",
                      QMessageBox::Ok);
+        stackClear();
       }
       else if(ret->text() == "end copy attributes")
       {
         copying = 0;
       }
-      else if(ret->text() == "edit layout")
+      else if(ret->text() == "edit layout (L)")
       {
         releaseMouse();
         mainWindow->releaseKeyboard();
         setCursor(Qt::ArrowCursor);
         editlayout->exec();
         modified = 1;
+        stackClear();
       }
       else
       {
@@ -861,11 +882,11 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
     if(item != NULL)
     {
       int xNew, yNew;
+      push(clickedChild);
       QPoint parentPos0 = item->mapToGlobal(QPoint(0,0));
       QPoint childPos0  = clickedChild->mapToGlobal(QPoint(0,0));
       item->hide();
       clickedChild->setParent(item);
-      //printf("parentPos0(%d,%d) childPos(%d,%d)\n",parentPos0.x(),parentPos0.y(),childPos0.x(),childPos0.y());
       xNew = childPos0.x() - parentPos0.x();
       yNew = childPos0.y() - parentPos0.y();
       xNew = (xNew/opt.xGrid)*opt.xGrid;
@@ -1044,3 +1065,57 @@ void MyRootWidget::EditLayout()
   modified = 1;
   GrabMouse();
 }
+
+void MyRootWidget::push(QWidget *current)
+{
+  OldState state;
+  if(current == NULL) return;
+
+  state.OldX       = current->x();
+  state.OldY       = current->y();
+  state.OldWidth   = current->width();
+  state.OldHeight  = current->height();
+  state.OldParent  = (QWidget *) current->parent();
+  state.OldCurrent = (QWidget *) current;
+  stack.push(state);
+}
+
+QWidget *MyRootWidget::pop(QWidget *current)
+{
+  // current may be NULL
+  OldState state;
+  if(stack.isEmpty())
+  {
+    qApp->beep();
+    return current;
+  }
+  state = stack.pop();
+  if(current == state.OldCurrent)
+  {
+    if(current->parent() != state.OldParent)
+    {
+      state.OldParent->hide();
+      current->setParent(state.OldParent);
+      state.OldParent->show();
+    }  
+  }
+  else
+  {
+    current = state.OldCurrent;
+    if(current->parent() != state.OldParent)
+    {
+      state.OldParent->hide();
+      current->setParent(state.OldParent);
+      state.OldParent->show();
+    }  
+  }
+  current->setGeometry(state.OldX, state.OldY, state.OldWidth, state.OldHeight);
+  printStatusMessage(current);
+  return current;
+}
+
+void MyRootWidget::stackClear()
+{
+  stack.clear();
+}
+

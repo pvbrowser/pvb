@@ -111,7 +111,8 @@ void MainWindow::newFile()
 #ifdef PVWIN32
       system("pvb_copy_python_template.bat");
 #else
-      system("cp /opt/pvb/language_bindings/python/template/* .");
+      ret = system("cp /opt/pvb/language_bindings/python/template/* .");
+      if(ret < 0) printf("ERROR system(cp /opt/pvb/language_bindings/python/template/* .)\n");
 #endif
     }
     else
@@ -228,7 +229,8 @@ void MainWindow::open()
       char cmd[1024];
       sprintf(cmd,"qmake %s.pro -o Makefile",(const char *) name.toAscii());
       if(opt.arg_debug) printf("cmd=%s\n",cmd);
-      system(cmd);
+      ret = system(cmd);
+      if(ret < 0) printf("ERROR system(%s)\n", cmd);
 #endif
       load(name + ".pro");
       if(editor != NULL) editor->radioProject->setChecked(TRUE);
@@ -284,7 +286,8 @@ void MainWindow::slotBackup()
   command.sprintf("tar -zcf %s/%s.tar.gz .",opt.backupLocation,(const char *) localname.toAscii());
   message.append(command);
   QMessageBox::information(this, tr("pvdevelop"),message);
-  system(command.toAscii());
+  int ret = system(command.toAscii());
+  if(ret < 0) printf("ERROR system(%s)\n", (const char *) command.toAscii());
 }
 
 void MainWindow::about()
@@ -952,7 +955,8 @@ void MainWindow::slotImportUI()
 #else
   sprintf(cmd,"start pvb_import_ui.bat %s %d", (const char *) name.toAscii(), mymask);
   if(opt.arg_debug) printf("cmd=%s\n",cmd);
-  system(cmd);
+  int ret = system(cmd);
+  if(ret < 0) printf("ERROR system(%s)\n", cmd);
 #endif
 }
 
@@ -1404,6 +1408,7 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
     if(event->key() == Qt::Key_Delete || event->key() == Qt::Key_Backspace)
     {
       designer->root->deleteLastChild();
+      designer->root->stackClear();
     }
     else if(event->key() == Qt::Key_P)
     {
@@ -1427,6 +1432,10 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
             event->key() == Qt::Key_Down  )
     {
       designer->root->MoveKey(event->key());
+    }
+    else if(event->key() == Qt::Key_Z && opt.ctrlPressed)
+    {
+      designer->root->pop(NULL);
     }
   }
   //printf("ctrlPressed=%d\n",opt.ctrlPressed);
