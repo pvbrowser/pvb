@@ -28,7 +28,7 @@ extern OPT opt;
 extern QStringList tablist;
 dlgeditlayout *editlayout = NULL;
 
-#define Properties          "Properties (P)"
+#define Properties          "Properties (Alt+Click)"
 #define Insert_Widget       "Insert Widget (Shift+Click)"
 #define Delete_Widget       "Delete Widget (Del | Backspace)"
 #define Add_Tab             "Add Tab"

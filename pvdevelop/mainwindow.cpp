@@ -882,8 +882,9 @@ void MainWindow::viewDesigner()
   centralWidget()->show();
   if(opt.arg_debug) printf("viewDesigner after centralWidget->show\n");;
   if (curFile.isEmpty()) shownName = "no project loaded";
-  else                   shownName.sprintf("design mask%d (click right button)",imask);
-  setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("pvdevelop")));
+  else                   shownName.sprintf("design mask%d   ClickRightMouse->PopupDialog   Alt+Click->PropertyDialog   Shift+Click->InsertDialog   Ctrl+Click->InsertLastSelectedWidget   Ctrl-Z->UndoLastMove   R->ReleaseMouse",imask);
+  //setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("pvdevelop")));
+  setWindowTitle(tr("%1[*]").arg(shownName));
 
   if(opt.arg_debug) printf("viewDesigner end\n");;
 }
