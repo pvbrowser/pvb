@@ -342,8 +342,6 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
 
   if     (type == "TQWidget")
   {
-    fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,tabparentname);
-    //fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
     QWidget *grandpa = NULL;
     QWidget *grandpa_parent = NULL;
     QWidget *pa = (QWidget *) widget->parent();
@@ -353,17 +351,20 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     {
       QTabWidget *tab = (QTabWidget *) grandpa;
       QString txt = tab->tabText(tab->indexOf(widget));
-      fprintf(fout,"  pvAddTab(p,%s,%s,\"%s\");\n",tabparentname,itemname,quote(txt));
+      fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,(const char *) tab->objectName().toUtf8() );
+      fprintf(fout,"  pvAddTab(p,%s,%s,\"%s\");\n",(const char *) tab->objectName().toUtf8() ,itemname,quote(txt));
     }
     else if(grandpa_parent != NULL && grandpa_parent->statusTip().startsWith("TQToolBox:"))
     {
       QToolBox *tool = (QToolBox *) grandpa_parent;
       QString txt = tool->itemText(tool->indexOf(widget));
-      fprintf(fout,"  pvAddTab(p,%s,%s,\"%s\");\n",tabparentname,itemname,quote(txt));
+      fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,(const char *) tool->objectName().toUtf8());
+      fprintf(fout,"  pvAddTab(p,%s,%s,\"%s\");\n",(const char *) tool->objectName().toUtf8() ,itemname,quote(txt));
     }
     else
     {
       printf("unknown ancestor of TQWidget\n");
+      fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,tabparentname);
       if(pa != NULL) printf("pa->statusTip=%s\n",(const char *) pa->statusTip().toAscii());
       if(grandpa != NULL) printf("grandpa->statusTip=%s\n",(const char *) grandpa->statusTip().toAscii());
       if(grandpa->parent() != NULL) printf("grandpa->parent()->statusTip=%s\n",(const char *) ((QWidget *) grandpa->parent())->statusTip().toAscii());

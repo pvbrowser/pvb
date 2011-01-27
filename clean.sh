@@ -1,4 +1,6 @@
 #!/bin/bash
+find . -name "*~" -exec rm "{}" ";"
+
 rm -f *.lnk
 
 cd qwt/src/obj

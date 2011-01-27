@@ -28,6 +28,9 @@
 
 extern OPT opt;
 
+extern QStringList tablist;
+static int tabstopFound = 0;
+
 int mysystem(const char *command)
 {
   char cmd[4096];
@@ -1568,7 +1571,7 @@ int writeStartscript(const char *dir, const char *name)
 
 #define MAX_IVAL 20
 
-static int export_widgets(FILE *fin, FILE *fout, char *line, int maxline, const char *space, QStringList *traceback)
+static int export_widgets(FILE *fin, FILE *fout, char *line, int maxline, const char *space, QStringList *traceback, int isTabOrTool)
 {
 #ifdef PVWIN32
   // supid windows
@@ -1576,8 +1579,8 @@ static int export_widgets(FILE *fin, FILE *fout, char *line, int maxline, const 
 #else
   char *cptr, *cptrtemp, *p[20], pnull[2], myline[maxline+1], lastConstructor[maxline+1], subspace[maxline], ourParentName[maxline];
 #endif
-  int   i;
-  int   isConstructor, tabstopFound, widgetTerminated, loopCount;
+  int i;
+  int isConstructor, widgetTerminated, loopCount;
 
   pnull[0] = lastConstructor[0] = '\0';
   strcpy(subspace, space); strcat(subspace," "); // indentation
@@ -1663,10 +1666,9 @@ get_args:
       if(tabstopFound == 0)
       {
         tabstopFound = 1;
-        // fprintf(fout, "%s<tabstops>\n", space);
-        // fprintf(fout, "%s <tabstop>%s</tabstop>\n", space, p[0]);
+        tablist.append(QString(p[0]));
       }
-      // fprintf(fout, "%s <tabstop>%s</tabstop>\n", space, p[1]);
+      tablist.append(QString(p[1]));
     }
     if(isConstructor == 1)
     { 
@@ -1685,7 +1687,7 @@ get_args:
              return 0;
            }  
          }
-         export_widgets(fin, fout, line, maxline, subspace, traceback); // recursive export children
+         export_widgets(fin, fout, line, maxline, subspace, traceback, isTabOrTool); // recursive export children
          fprintf(fout,"%s </widget>\n", space); 
          widgetTerminated = 0;
          if(strstr(line,"  return 0;") != NULL) return 0;               // finito
@@ -1785,6 +1787,12 @@ get_args:
       else if(strstr(line,"pvQTabWidget(") != NULL)
       {
         fprintf(fout,"%s<widget class=\"QTabWidget\" name=\"%s\" >\n", space, p[0]);
+        isTabOrTool = 1;
+      }
+      else if(strstr(line,"pvQToolBox(") != NULL)
+      {
+        fprintf(fout,"%s<widget class=\"QToolBox\" name=\"%s\" >\n", space, p[0]);
+        isTabOrTool = 2;
       }
       else if(strstr(line,"pvQWidget(") != NULL)
       {
@@ -2083,9 +2091,23 @@ get_args:
       }
       else if(strstr(line,"pvAddTab(") != NULL)
       {
-        fprintf(fout,"%s <attribute name=\"title\" >\n",   space);
-        fprintf(fout,"%s  <string>%s</string>\n",          space,  p[2]);
-        fprintf(fout,"%s </attribute>\n",                  space);
+        if(isTabOrTool == 1) // TabWidget
+        {
+          fprintf(fout,"%s <attribute name=\"title\" >\n",   space);
+          fprintf(fout,"%s  <string>%s</string>\n",          space,  p[2]);
+          fprintf(fout,"%s </attribute>\n",                  space);
+        }
+        else if(isTabOrTool == 2) // ToolBox
+        {
+          fprintf(fout,"%s <attribute name=\"label\" >\n",   space);
+          fprintf(fout,"%s  <string>%s</string>\n",          space,  p[2]);
+          fprintf(fout,"%s </attribute>\n",                  space);
+        }
+        else
+        {
+          printf("isTabOrTool=%d\n", isTabOrTool);
+          printf("ERROR: line %s not allowed without TabWidget or ToolBox\n", line);
+        }
       }
       else if(strstr(line,"pvSetMinSize(") != NULL)
       {
@@ -2262,6 +2284,7 @@ int export_ui(int imask)
   FILE *fin, *fout;
   char *cptr, line[4096];
   QStringList traceback;
+  int isTabOrTool = 0;
 
   traceback.clear();
   sprintf(line, "mask%d.cpp", imask);
@@ -2318,9 +2341,22 @@ start1:
 start2:  
   cptr = strchr(line,'\n');
   if(cptr != NULL) *cptr = '\0';
-  export_widgets(fin, fout, line, sizeof(line)-1, "  ", &traceback);
+  tablist.clear();
+  export_widgets(fin, fout, line, sizeof(line)-1, "  ", &traceback, isTabOrTool);
 
   fprintf(fout, " </widget>\n");
+  if(tabstopFound)
+  {
+    fprintf(fout, " <tabstops>\n");
+    for(int i=0; i<tablist.size(); i++)
+    {
+      QString item = tablist.at(i);
+      fprintf(fout,"  <tabstop>%s</tabstop>\n",(const char *) item.toUtf8().constData());
+    }
+    fprintf(fout, " </tabstops>\n");
+    tablist.clear();
+    tabstopFound = 0;
+  }
   fprintf(fout, " <resources/>\n");
   fprintf(fout, " <connections/>\n");
   fprintf(fout, "</ui>\n");
