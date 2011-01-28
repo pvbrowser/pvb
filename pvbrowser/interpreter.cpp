@@ -948,6 +948,7 @@ void Interpreter::interprete(const char *command)
       QWidget *wid = mainWindow->centralWidget();
       if(wid != NULL)
       {
+        if(wid->layout() != NULL) delete wid->layout(); //rl removed layout warning
         mainWindow->view = (MyQWidget *) ((QScrollArea *) wid)->takeWidget();
         if(mainWindow->view != NULL) delete mainWindow->view;
       }  

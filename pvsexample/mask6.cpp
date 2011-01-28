@@ -119,11 +119,11 @@ static int generated_defineMask(PARAM *p)
 
   pvQLayoutHbox(p,ID_MAIN_WIDGET,-1);
 
-  pvQLayoutVbox(p,layout1,ID_MAIN_WIDGET);
+  pvQLayoutVbox(p,layout1,-1);
 
-  pvQLayoutHbox(p,layout2,ID_MAIN_WIDGET);
+  pvQLayoutHbox(p,layout2,-1);
 
-  pvQLayoutVbox(p,layout3,ID_MAIN_WIDGET);
+  pvQLayoutVbox(p,layout3,-1);
 
   pvAddWidgetOrLayout(p,layout1,buttonHideCircle,-1,-1);
   pvAddWidgetOrLayout(p,layout1,buttonShowCircle,-1,-1);

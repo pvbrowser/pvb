@@ -146,7 +146,7 @@ static int generated_defineMask(PARAM *p)
 
   pvQLayoutHbox(p,ID_MAIN_WIDGET,-1);
 
-  pvQLayoutVbox(p,layout1,ID_MAIN_WIDGET);
+  pvQLayoutVbox(p,layout1,-1);
 
   pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,layout1,-1,-1);
   pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,OpenGL1,-1,-1);

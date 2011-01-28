@@ -253,16 +253,16 @@ cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/b
 %__ln_s /opt/pvb/pvserver/libpvsmt.so.1.0.0      %{buildroot}/usr/lib/libpvsmt.so.1.0
 %__ln_s /opt/pvb/pvserver/libpvsmt.so.1.0.0      %{buildroot}/usr/lib/libpvsmt.so.1.0.0
 
+%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so
+%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so.1
+%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so.1.0
+%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so.1.0.0
+
 %__ln_s /opt/pvb/pvbrowser/pvbrowser             %{buildroot}%{_bindir}/pvbrowser
 %__ln_s /opt/pvb/pvdevelop/pvdevelop             %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/start_pvbapp/start_pvbapp       %{buildroot}%{_bindir}/start_pvbapp
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat            %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory       %{buildroot}%{_bindir}/rlhistory
-
-%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so
-%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so.1
-%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so.1.0
-%__ln_s /opt/pvb/rllib/lib/librllib.so.1.0.0     %{buildroot}/usr/lib/librllib.so.1.0.0
 
 %__mkdir_p %{buildroot}/srv/automation/shm
 %__mkdir_p %{buildroot}/srv/automation/mbx

@@ -56,9 +56,9 @@ static int generated_defineMask(PARAM *p)
 
   pvQLayoutVbox(p,ID_MAIN_WIDGET,-1);
 
-  pvQLayoutHbox(p,layout1,ID_MAIN_WIDGET);
+  pvQLayoutHbox(p,layout1,-1);
 
-  pvQLayoutHbox(p,layout2,ID_MAIN_WIDGET);
+  pvQLayoutHbox(p,layout2,-1);
 
   pvAddWidgetOrLayout(p,layout1,back,-1,-1);
   pvAddStretch(p,layout1,1);
