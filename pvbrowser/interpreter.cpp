@@ -2135,6 +2135,18 @@ void Interpreter::interprets(const char *command)
             if(all[i]->w != NULL) mySetBackgroundColor(all[i]->w,all[i]->type,r,g,b);
           }
         }
+        else if(strncmp(command,"setBoxSelected(",15) == 0) // set selection of ListBox
+        {
+          int index,mode;
+          sscanf(command,"setBoxSelected(%d,%d,%d",&i,&index,&mode);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->type == TQListBox)
+          {
+            MyListBox *lb = (MyListBox *) all[i]->w;
+            if(lb != NULL) lb->item(index)->setSelected(mode);
+          }
+        }
         break;
       case 'C':
         if(strncmp(command,"setChecked(",11) == 0) // set button state

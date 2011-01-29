@@ -51,6 +51,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gaaf7113f843b4f217999b5953efae3f33">pvSetListViewText</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *path, int column, const char *text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga8e55e951760f9e3a17ad82953832176d">pvListViewPrintf</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *path, int column, const char *format,...)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga744e7eeb791bd67838a8c5f1d4b25321">pvListViewSetSelected</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *path, int column, int selected)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga36b2739e05cd22be85919a1b3a0d938f">pvListBoxSetSelected</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int index, int selected)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gaff9f010475ed2ce5622ef88e7eec1955">pvSetColumnWidth</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int column, int width)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga562eeb90bd01756bd35990201d09df2a">pvSetRowHeight</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int row, int height)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga85e6a09e8c43bddd16a463c9e6c08b82">pvSetWordWrap</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int wrap)</td></tr>
@@ -608,6 +609,49 @@ Allowed widgets: QListBox, QComboBox
 </pre> 
 </div>
 </div>
+<a class="anchor" id="ga36b2739e05cd22be85919a1b3a0d938f"></a><!-- doxytag: member="processviewserver.h::pvListBoxSetSelected" ref="ga36b2739e05cd22be85919a1b3a0d938f" args="(PARAM *p, int id, int index, int selected)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvListBoxSetSelected </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>index</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>selected</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+selected = 0 | 1 | 2
+if selected == 0 item is unselected
+if selected == 1 item is selected
+</pre> 
+</div>
+</div>
 <a class="anchor" id="ga8e55e951760f9e3a17ad82953832176d"></a><!-- doxytag: member="processviewserver.h::pvListViewPrintf" ref="ga8e55e951760f9e3a17ad82953832176d" args="(PARAM *p, int id, const char *path, int column, const char *format,...)" -->
 <div class="memitem">
 <div class="memproto">
@@ -711,9 +755,9 @@ prepend: color(r,g,b)</pre><pre>Allowed widgets: QListView
 <div class="memdoc">
 <pre>
 selected = 0 | 1 | 2
-if mode == 0 item is unselected
-if mode == 1 item is selected
-if mode == 2 item is selected and all other tree branches are closed
+if selected == 0 item is unselected
+if selected == 1 item is selected
+if selected == 2 item is selected and all other tree branches are closed
 </pre> 
 </div>
 </div>
@@ -2634,7 +2678,7 @@ Set a QToolTip for the widget. It will be displayed near the widget when you mov
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Jan 24 07:11:58 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Jan 29 15:10:38 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

@@ -2522,6 +2522,15 @@ char buf[MAX_PRINTF_LENGTH+40];
   return 0;
 }
 
+int pvListBoxSetSelected(PARAM *p, int id, int index, int selected)
+{
+char buf[MAX_PRINTF_LENGTH+40];
+
+  sprintf(buf, "setBoxSelected(%d,%d,%d)\n", id, index, selected);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSetColumnWidth(PARAM *p, int id, int column, int width)
 {
 char buf[80];

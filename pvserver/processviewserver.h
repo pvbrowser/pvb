@@ -1327,6 +1327,7 @@ pvRemoveItem()
 pvRemoveItemByName()
 pvSelection()
 pvSetMultiSelection()
+pvListBoxSetSelected();
 </pre> */
 int pvQListBox(PARAM *p, int id, int parent);
 /*! <pre>
@@ -1958,11 +1959,17 @@ Allowed widgets: QListView
 int pvListViewPrintf(PARAM *p, int id, const char *path, int column, const char *format, ...);
 /*! <pre>
 selected = 0 | 1 | 2
-if mode == 0 item is unselected
-if mode == 1 item is selected
-if mode == 2 item is selected and all other tree branches are closed
+if selected == 0 item is unselected
+if selected == 1 item is selected
+if selected == 2 item is selected and all other tree branches are closed
 </pre> */
 int pvListViewSetSelected(PARAM *p, int id, const char *path, int column, int selected);
+/*! <pre>
+selected = 0 | 1 | 2
+if selected == 0 item is unselected
+if selected == 1 item is selected
+</pre> */
+int pvListBoxSetSelected(PARAM *p, int id, int index, int selected);
 #define pvSetColumnWith pvSetColumnWidth
 /*! <pre>
 Set the width of a table column.

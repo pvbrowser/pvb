@@ -187,6 +187,7 @@
       <keyword name="pvSetListViewText" id="processviewserver.h::pvSetListViewText" ref="processviewserver_8h.html" />
       <keyword name="pvListViewPrintf" id="processviewserver.h::pvListViewPrintf" ref="processviewserver_8h.html" />
       <keyword name="pvListViewSetSelected" id="processviewserver.h::pvListViewSetSelected" ref="processviewserver_8h.html" />
+      <keyword name="pvListBoxSetSelected" id="processviewserver.h::pvListBoxSetSelected" ref="processviewserver_8h.html" />
       <keyword name="pvSetColumnWidth" id="processviewserver.h::pvSetColumnWidth" ref="processviewserver_8h.html" />
       <keyword name="pvSetRowHeight" id="processviewserver.h::pvSetRowHeight" ref="processviewserver_8h.html" />
       <keyword name="pvSetWordWrap" id="processviewserver.h::pvSetWordWrap" ref="processviewserver_8h.html" />
@@ -1010,6 +1011,7 @@
       <keyword name="pvSetListViewText" id="Output::pvSetListViewText" ref="group__Output.html" />
       <keyword name="pvListViewPrintf" id="Output::pvListViewPrintf" ref="group__Output.html" />
       <keyword name="pvListViewSetSelected" id="Output::pvListViewSetSelected" ref="group__Output.html" />
+      <keyword name="pvListBoxSetSelected" id="Output::pvListBoxSetSelected" ref="group__Output.html" />
       <keyword name="pvSetColumnWidth" id="Output::pvSetColumnWidth" ref="group__Output.html" />
       <keyword name="pvSetRowHeight" id="Output::pvSetRowHeight" ref="group__Output.html" />
       <keyword name="pvSetWordWrap" id="Output::pvSetWordWrap" ref="group__Output.html" />
