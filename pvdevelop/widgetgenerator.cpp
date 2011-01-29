@@ -3139,7 +3139,8 @@ static int perhapsSetLayout(const char *cppfile)
 {
   FILE *fin;
   if(editlayout == NULL) return -1;
-  QTextEdit *e = editlayout->uidlg->textEditConstructors;
+  QTextEdit *e    = editlayout->uidlg->textEditConstructors;
+  QTextEdit *edef = editlayout->uidlg->textEditDef;
   int found = 0;
 
   e->clear();
@@ -3156,7 +3157,14 @@ static int perhapsSetLayout(const char *cppfile)
     if(strstr(line,"pvEndDefinition") != NULL) break;
     if(found == 1)
     {
-      e->append(line);
+      if(strstr(line,"pvAdd") != NULL)
+      {
+        edef->append(line);
+      }
+      else
+      {
+        e->append(line);
+      }  
     }
   }
 

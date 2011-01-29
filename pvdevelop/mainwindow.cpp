@@ -911,6 +911,9 @@ void MainWindow::slotExportUI()
 {
   char file[80];
   FILE *fin;
+  
+  imask = 1;
+  if(editor != NULL) imask = editor->spinBoxMask->value();
   if(opt.arg_debug) printf("export ui %s imask=%d\n", (const char *) name.toAscii(), imask);
  
   if(name.isEmpty())
