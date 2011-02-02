@@ -24,6 +24,7 @@ const char pvserver_version[] = "4.5.9";
 /* #include "qimage.h" */
 #include <time.h>
 #include <sys/stat.h>
+#include <ctype.h>
 
 #ifndef IS_OLD_MSVCPP
 #ifndef __VMS
@@ -550,6 +551,74 @@ int pvSetXY(PARAM *p, int i, float x, float y)
   p->x[i] = x;
   p->y[i] = y;
   return 0;
+}
+
+int getIntegers(const char *text, IntegerArray *ia)
+{
+  int i, ind, ival;
+
+  i = ind = 0;
+  do
+  {
+    if(isdigit(text[i]) || text[i] == '-')
+    {
+      ival = atoi(&text[i]);
+      ia->i[ind++] = ival;
+      if(ind >= 10) break;
+      while(isdigit(text[i]) || text[i] == '-') i++;
+    }
+    i++;
+  }
+  while(text[i] != '\0');
+  ia->i0 = ia->i[0];
+  ia->i1 = ia->i[1];
+  ia->i2 = ia->i[2];
+  ia->i3 = ia->i[3];
+  ia->i4 = ia->i[4];
+  ia->i5 = ia->i[5];
+  ia->i6 = ia->i[6];
+  ia->i7 = ia->i[7];
+  ia->i8 = ia->i[8];
+  ia->i9 = ia->i[9];
+  return ind;
+}
+
+int getFloats(const char *text, FloatArray *fa)
+{
+  int i, ind;
+  float fval;
+
+  i = ind = 0;
+  do
+  {
+    if(isdigit(text[i]) || text[i] == '-' || text[i] == '.')
+    {
+      fval = (float) atof(&text[i]);
+      fa->f[ind++] = fval;
+      if(ind >= 10) break;
+      while(isdigit(text[i]) || text[i] == '-' || text[i] == '.') i++;
+    }
+    i++;
+  }
+  while(text[i] != '\0');
+  fa->f0 = fa->f[0];
+  fa->f1 = fa->f[1];
+  fa->f2 = fa->f[2];
+  fa->f3 = fa->f[3];
+  fa->f4 = fa->f[4];
+  fa->f5 = fa->f[5];
+  fa->f6 = fa->f[6];
+  fa->f7 = fa->f[7];
+  fa->f8 = fa->f[8];
+  fa->f9 = fa->f[9];
+  return ind;
+}
+
+const char *getTextFromText(const char *text)
+{
+  static char buf[MAX_PRINTF_LENGTH];
+  pvGetText(text,buf);
+  return buf;
 }
 
 int pvAccept(PARAM *p)

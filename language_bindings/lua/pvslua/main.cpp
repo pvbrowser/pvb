@@ -136,6 +136,13 @@ int main(int ac, char **av)
 PARAM p;
 int   s;
 
+  IntegerArray ia;
+  FloatArray fa;
+  getIntegers("hallo123welt456", &ia);
+  printf("IntergerArray = %d %d\n", ia.i[0], ia.i[1]);
+  getFloats("hallo123.5welt-456.5", &fa);
+  printf("FloatArray = %f %f\n", fa.f[0], fa.f[1]);
+
   trace = 1;
   pvInit(ac,av,&p);
   /* here you may interpret ac,av and set p->user to your data */

@@ -569,6 +569,18 @@ enum TextEvents
   PARENT_WIDGET_ID
 };
 
+typedef struct
+{
+  int i[10];
+  int i0,i1,i2,i3,i4,i5,i6,i7,i8,i9;
+}IntegerArray;
+
+typedef struct
+{
+  float f[10];
+  int f0,f1,f2,f3,f4,f5,f6,f7,f8,f9;
+}FloatArray;
+
 /* this is for convenience when you want to write files */
 #define PARAM_P  PARAM p;pvInit(0,NULL,&p);
 
@@ -606,6 +618,18 @@ int pvsystem(const char *command);
 Allocate x,y array for script language
 </pre> */
 int pvXYAllocate(PARAM *p, int n);
+/*! <pre>
+Get integer array from string for script language
+</pre> */
+int getIntegers(const char *text, IntegerArray *ia);
+/*! <pre>
+Get integer array from string for script language
+</pre> */
+int getFloats(const char *text, FloatArray *fa);
+/*! <pre>
+Get text in parentesis from text for script language
+</pre> */
+const char *getTextFromText(const char *text);
 /*! <pre>
 Set x,y array for script language
 </pre> */

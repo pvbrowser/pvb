@@ -3,11 +3,16 @@
 --------------------------------------------------------------------------------------
 
 function showMask1(p)
-  ------------------------------------------------------------------------------------
-  ID_MAIN_WIDGET = 0
+  --- begin variables that are private to this mask ----------------------------------
+  ID_MAIN_WIDGET = 0                          -- begin of our widget names
   PushButtonBack = 1
-  ID_END_OF_WIDGETS = 2
+  Table          = 2
+  ID_END_OF_WIDGETS = 3                       -- end of our widget name
   ------------------------------------------------------------------------------------
+  iarray = pv.IntegerArray()                  -- see pv.getIntegers(text,iarray) below
+  farray = pv.FloatArray()                    -- see pv.getFloats(text,farray) below
+  --- end variables that are private to this mask ------------------------------------
+  --- begin construction of our mask -------------------------------------------------
   pv.pvStartDefinition(p,ID_END_OF_WIDGETS)
 
   pv.pvQPushButton(p,PushButtonBack,0)
@@ -15,111 +20,120 @@ function showMask1(p)
   pv.pvSetText(p,PushButtonBack,"Lua test")
   pv.pvToolTip(p,PushButtonBack,"back")
 
-  pv.pvEndDefinition(p)
-  ------------------------------------------------------------------------------------
-  dofile("mask1_slots.lua")
+  pv.pvQTable(p,Table,0,4,5)
+  pv.pvSetGeometry(p,Table,10,50,400,300)
   
-  pv.pvClearMessageQueue(p)
-  while(1)
+  pv.pvEndDefinition(p)
+  --- end construction of our mask ---------------------------------------------------
+  dofile("mask1_slots.lua")                   -- include our slot functions
+
+  if trace == 1 then print("show mask1") end
+  pv.pvClearMessageQueue(p)                   -- clear all pending events
+  ret = slotInit(p)                           -- intitialize our variables
+  if ret ~= 0 then return ret end             -- return number of next mask to call
+  while(1)                                    -- event loop
   do
-    event  = pv.pvGetEvent(p)
-    result = pv.pvParseEventStruct(p,event)
+    event  = pv.pvGetEvent(p)                 -- get the next event
+    result = pv.pvParseEventStruct(p,event)   -- parse the event
     id     = result.event
     i      = result.i
     text   = result.text
-
+                                              -- now call the according slot function
     if     id == pv.NULL_EVENT then
         ret = slotNullEvent(p)
-        if ret ~= 0 then return ret end 
     elseif id == pv.BUTTON_EVENT then    
         if trace==1 then print("BUTTON_EVENT id=", i) end
         ret = slotButtonEvent(p,i)
-        if ret ~= 0 then return ret end 
     elseif id == pv.BUTTON_PRESSED_EVENT then
-        print("BUTTON_PRESSED_EVENT")
-        --if(trace) printf("BUTTON_PRESSED_EVENT id=%d\n",i);
-        --if((ret=slotButtonPressedEvent(p,i,&d)) != 0) return ret;
-      --case BUTTON_RELEASED_EVENT:
-        --if(trace) printf("BUTTON_RELEASED_EVENT id=%d\n",i);
-        --if((ret=slotButtonReleasedEvent(p,i,&d)) != 0) return ret;
-      --case TEXT_EVENT:
-        --if(trace) printf("TEXT_EVENT id=%d %s\n",i,text);
-        --if((ret=slotTextEvent(p,i,&d,text)) != 0) return ret;
-      --case SLIDER_EVENT:
-        --sscanf(text,"(%d)",&val);
-        --if(trace) printf("SLIDER_EVENT val=%d\n",val);
-        --if((ret=slotSliderEvent(p,i,&d,val)) != 0) return ret;
-      --case CHECKBOX_EVENT:
-        --if(trace) printf("CHECKBOX_EVENT id=%d %s\n",i,text);
-        --if((ret=slotCheckboxEvent(p,i,&d,text)) != 0) return ret;
-      --case RADIOBUTTON_EVENT:
-        --if(trace) printf("RADIOBUTTON_EVENT id=%d %s\n",i,text);
-        --if((ret=slotRadioButtonEvent(p,i,&d,text)) != 0) return ret;
-      --case GL_INITIALIZE_EVENT:
-        --if(trace) printf("you have to call initializeGL()\n");
-        --if((ret=slotGlInitializeEvent(p,i,&d)) != 0) return ret;
-      --case GL_PAINT_EVENT:
-        --if(trace) printf("you have to call paintGL()\n");
-        --if((ret=slotGlPaintEvent(p,i,&d)) != 0) return ret;
-      --case GL_RESIZE_EVENT:
-        --sscanf(text,"(%d,%d)",&w,&h);
-        --if(trace) printf("you have to call resizeGL(w,h)\n");
-        --if((ret=slotGlResizeEvent(p,i,&d,w,h)) != 0) return ret;
-      --case GL_IDLE_EVENT:
-        --if((ret=slotGlIdleEvent(p,i,&d)) != 0) return ret;
-      --case TAB_EVENT:
-        --sscanf(text,"(%d)",&val);
-        --if(trace) printf("TAB_EVENT(%d,page=%d)\n",i,val);
-        --if((ret=slotTabEvent(p,i,&d,val)) != 0) return ret;
-      --case TABLE_TEXT_EVENT:
-        --sscanf(text,"(%d,%d,",&x,&y);
-        --pvGetText(text,str1);
-        --if(trace) printf("TABLE_TEXT_EVENT(%d,%d,\"%s\")\n",x,y,str1);
-        --if((ret=slotTableTextEvent(p,i,&d,x,y,str1)) != 0) return ret;
-      --case TABLE_CLICKED_EVENT:
-        --sscanf(text,"(%d,%d,%d)",&x,&y,&button);
-        --if(trace) printf("TABLE_CLICKED_EVENT(%d,%d,button=%d)\n",x,y,button);
-        --if((ret=slotTableClickedEvent(p,i,&d,x,y,button)) != 0) return ret;
-      --case SELECTION_EVENT:
-        --sscanf(text,"(%d,",&val);
-        --pvGetText(text,str1);
-        --if(trace) printf("SELECTION_EVENT(column=%d,\"%s\")\n",val,str1);
-        --if((ret=slotSelectionEvent(p,i,&d,val,str1)) != 0) return ret;
-      --case CLIPBOARD_EVENT:
-        --sscanf(text,"(%d",&val);
-        --if(trace) printf("CLIPBOARD_EVENT(id=%d)\n",val);
-        --if(trace) printf("clipboard = \n%s\n",p->clipboard);
-        --if((ret=slotClipboardEvent(p,i,&d,val)) != 0) return ret;
-      --case RIGHT_MOUSE_EVENT:
-        --if(trace) printf("RIGHT_MOUSE_EVENT id=%d text=%s\n",i,text);
-        --if((ret=slotRightMouseEvent(p,i,&d,text)) != 0) return ret;
-      --case KEYBOARD_EVENT:
-        --sscanf(text,"(%d",&val);
-        --if(trace) printf("KEYBOARD_EVENT modifier=%d key=%d\n",i,val);
-        --if((ret=slotKeyboardEvent(p,i,&d,val,i)) != 0) return ret;
-      --case PLOT_MOUSE_MOVED_EVENT:
-        --sscanf(text,"(%f,%f)",&xval,&yval);
-        --if(trace) printf("PLOT_MOUSE_MOVE %f %f\n",xval,yval);
-        --if((ret=slotMouseMovedEvent(p,i,&d,xval,yval)) != 0) return ret;
-      --case PLOT_MOUSE_PRESSED_EVENT:
-        --sscanf(text,"(%f,%f)",&xval,&yval);
-        --if(trace) printf("PLOT_MOUSE_PRESSED %f %f\n",xval,yval);
-        --if((ret=slotMousePressedEvent(p,i,&d,xval,yval)) != 0) return ret;
-      --case PLOT_MOUSE_RELEASED_EVENT:
-        --sscanf(text,"(%f,%f)",&xval,&yval);
-        --if(trace) printf("PLOT_MOUSE_RELEASED %f %f\n",xval,yval);
-        --if((ret=slotMouseReleasedEvent(p,i,&d,xval,yval)) != 0) return ret;
-      --case MOUSE_OVER_EVENT:
-        --sscanf(text,"%d",&val);
-        --if(trace) printf("MOUSE_OVER_EVENT %d\n",val);
-        --if((ret=slotMouseOverEvent(p,i,&d,val)) != 0) return ret;
-      --case USER_EVENT:
-        --if(trace) printf("USER_EVENT id=%d %s\n",i,text);
-        --if((ret=slotUserEvent(p,i,&d,text)) != 0) return ret;
-      --default:
-        --if(trace) printf("UNKNOWN_EVENT id=%d %s\n",i,text);
+        if trace == 1 then print("BUTTON_PRESSED_EVENT id=",i) end
+        ret=slotButtonPressedEvent(p,i)
+    elseif id == pv.BUTTON_RELEASED_EVENT then
+        if trace == 1 then print("BUTTON_RELEASED_EVENT id=",i) end
+        ret=slotButtonReleasedEvent(p,i)
+    elseif id == pv.TEXT_EVENT then
+        if trace == 1 then print("TEXT_EVENT id=",i," text=",text) end
+        ret=slotTextEvent(p,i,text)
+    elseif id == pv.SLIDER_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("SLIDER_EVENT val=",iarray.i0) end
+        ret=slotSliderEvent(p,i,iarray.i0)
+    elseif id == pv.CHECKBOX_EVENT then
+        if trace == 1 then print("CHECKBOX_EVENT id=",i," text=",text) end
+        ret=slotCheckboxEvent(p,i,text)
+    elseif id == pv.RADIOBUTTON_EVENT then
+        if trace == 1 then print("RADIOBUTTON_EVENT id=",i," text=",text) end
+        ret=slotRadioButtonEvent(p,i,text)
+    elseif id == pv.GL_INITIALIZE_EVENT then
+        if trace == 1 then print("you have to call initializeGL()") end
+        ret=slotGlInitializeEvent(p,i)
+    elseif id == pv.GL_PAINT_EVENT then
+        if trace == 1 then print("you have to call paintGL()") end
+        ret=slotGlPaintEvent(p,i)
+    elseif id == pv.GL_RESIZE_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("you have to call resizeGL(w,h)") end
+        ret=slotGlResizeEvent(p,i,iarray.i0,iarray.i1)
+    elseif id == pv.GL_IDLE_EVENT then
+        ret=slotGlIdleEvent(p,i)
+    elseif id == pv.TAB_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("TAB_EVENT id=",i,"page=",iarray.i0) end
+        ret=slotTabEvent(p,i,iarray.i0)
+    elseif id == pv.TABLE_TEXT_EVENT then
+        pv.getIntegers(text,iarray)
+        pv.pvlock(p)
+        str1 = pv.getTextFromText(text)
+        pv.pvunlock(p)
+        if trace == 1 then print("TABLE_TEXT_EVENT id=",i," x=",iarray.i0," y=",iarray.i1," text=",str1) end
+        ret=slotTableTextEvent(p,i,iarray.i0,iarray.i1,str1)
+    elseif id == pv.TABLE_CLICKED_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("TABLE_CLICKED_EVENT id=",i," x=",iarray.i0," y=",iarray.i1," button=",iarray.i2) end
+        ret=slotTableClickedEvent(p,i,iarray.i0,iarray.i1,iarray.i2)
+    elseif id == pv.SELECTION_EVENT then
+        pv.getIntegers(text,iarray)
+        pv.pvlock(p)
+        str1 = pv.getTextFromText(text)
+        pv.pvunlock(p)
+        if trace == 1 then print("SELECTION_EVENT id=",i," column=",iarray.i0," text=",str1) end
+        ret=slotSelectionEvent(p,i,iarray.i0,str1)
+    elseif id == pv.CLIPBOARD_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("CLIPBOARD_EVENT id=",iarray.i0) end
+        if trace == 1 then print("clipboard = ",p.clipboard) end
+        ret=slotClipboardEvent(p,i,iarray.i0)
+    elseif id == pv.RIGHT_MOUSE_EVENT then
+        if trace == 1 then print("RIGHT_MOUSE_EVENT id=",i," text=",text) end
+        ret=slotRightMouseEvent(p,i,text)
+    elseif id == pv.KEYBOARD_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("KEYBOARD_EVENT modifier=",i," key=",iarray.i0) end
+        ret=slotKeyboardEvent(p,i,iarray.i0,i)
+    elseif id == pv.PLOT_MOUSE_MOVED_EVENT then
+        pv.getFloats(text,farray)
+        if trace == 1 then print("PLOT_MOUSE_MOVE ",farray.f0,farray.f1) end
+        ret=slotMouseMovedEvent(p,i,farray.f0,farray.f1)
+    elseif id == pv.PLOT_MOUSE_PRESSED_EVENT then
+        pv.getFloats(text,farray)
+        if trace == 1 then print("PLOT_MOUSE_PRESSED ",farray.f0,farray.f1) end
+        ret=slotMousePressedEvent(p,i,farray.f0,farray.f1)
+    elseif id == pv.PLOT_MOUSE_RELEASED_EVENT then
+        pv.getFloats(text,farray)
+        if trace == 1 then print("PLOT_MOUSE_RELEASED ",farray.f0,farray.f1) end
+        ret=slotMouseReleasedEvent(p,i,farray.f0,farray.f1)
+    elseif id == pv.MOUSE_OVER_EVENT then
+        pv.getIntegers(text,iarray)
+        if trace == 1 then print("MOUSE_OVER_EVENT ",iarray.i0) end
+        ret=slotMouseOverEvent(p,i,iarray.i0)
+    elseif id == pv.USER_EVENT then
+        if trace == 1 then print("USER_EVENT id=",i," text=",text) end
+        ret=slotUserEvent(p,i,text)
+    else
+        if trace == 1 then print("UNKNOWN_EVENT id=",i," text=",text) end
+        ret = 0
     end    
-  end
-  return 0
+    if ret ~= 0 then return ret end                -- return number of next mask to call
+  end                                              -- end of event loop
+  return 0                                         -- never come here
 end
 
