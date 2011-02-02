@@ -2744,11 +2744,11 @@ enable grid
 </pre> */
 int qpwEnableGridXMin(PARAM *p, int id);
 /*! <pre>
-style = DotLine
+style = #PenStyle.
 </pre> */
 int qpwSetGridMajPen(PARAM *p, int id, int r, int g, int b, int style);
 /*! <pre>
-style = DotLine
+style = #PenStyle.
 </pre> */
 int qpwSetGridMinPen(PARAM *p, int id, int r, int g, int b, int style);
 /*! <pre>

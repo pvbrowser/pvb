@@ -2796,6 +2796,7 @@ namespace swig {
 
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
+PARAM *getParam(unsigned long p);
 int *new_int(int ivalue);
 int  get_int(int *i);
 void delete_int(int *i);
@@ -10717,6 +10718,55 @@ SWIGINTERN PyObject *_wrap_pvListViewSetSelected(PyObject *SWIGUNUSEDPARM(self),
   return resultobj;
 fail:
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvListBoxSetSelected(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:pvListBoxSetSelected",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvListBoxSetSelected" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvListBoxSetSelected" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvListBoxSetSelected" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "pvListBoxSetSelected" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  result = (int)pvListBoxSetSelected(arg1,arg2,arg3,arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -31551,6 +31601,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_getParam(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  unsigned long arg1 ;
+  unsigned long val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  PARAM *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:getParam",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_unsigned_SS_long(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "getParam" "', argument " "1"" of type '" "unsigned long""'");
+  } 
+  arg1 = static_cast< unsigned long >(val1);
+  result = (PARAM *)getParam(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p__PARAM_, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_int(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -31807,6 +31879,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSetListViewText", _wrap_pvSetListViewText, METH_VARARGS, NULL},
 	 { (char *)"pvListViewPrintf", _wrap_pvListViewPrintf, METH_VARARGS, NULL},
 	 { (char *)"pvListViewSetSelected", _wrap_pvListViewSetSelected, METH_VARARGS, NULL},
+	 { (char *)"pvListBoxSetSelected", _wrap_pvListBoxSetSelected, METH_VARARGS, NULL},
 	 { (char *)"pvSetColumnWidth", _wrap_pvSetColumnWidth, METH_VARARGS, NULL},
 	 { (char *)"pvSetRowHeight", _wrap_pvSetRowHeight, METH_VARARGS, NULL},
 	 { (char *)"pvSetWordWrap", _wrap_pvSetWordWrap, METH_VARARGS, NULL},
@@ -32101,6 +32174,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"getSvgMatrixForElement", _wrap_getSvgMatrixForElement, METH_VARARGS, NULL},
 	 { (char *)"getGeometry", _wrap_getGeometry, METH_VARARGS, NULL},
 	 { (char *)"getParentWidgetId", _wrap_getParentWidgetId, METH_VARARGS, NULL},
+	 { (char *)"getParam", _wrap_getParam, METH_VARARGS, NULL},
 	 { (char *)"new_int", _wrap_new_int, METH_VARARGS, NULL},
 	 { (char *)"get_int", _wrap_get_int, METH_VARARGS, NULL},
 	 { (char *)"delete_int", _wrap_delete_int, METH_VARARGS, NULL},

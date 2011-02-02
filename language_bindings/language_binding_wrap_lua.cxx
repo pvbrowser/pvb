@@ -1544,6 +1544,7 @@ typedef struct{} LANGUAGE_OBJ;
 
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
+PARAM *getParam(unsigned long p);
 int *new_int(int ivalue);
 int  get_int(int *i);
 void delete_int(int *i);
@@ -7519,6 +7520,39 @@ static int _wrap_pvListViewSetSelected(lua_State* L) {
   arg4 = (int)lua_tonumber(L, 4);
   arg5 = (int)lua_tonumber(L, 5);
   result = (int)pvListViewSetSelected(arg1,arg2,(char const *)arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvListBoxSetSelected(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("pvListBoxSetSelected",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvListBoxSetSelected",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvListBoxSetSelected",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvListBoxSetSelected",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvListBoxSetSelected",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvListBoxSetSelected",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)pvListBoxSetSelected(arg1,arg2,arg3,arg4);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -22557,6 +22591,27 @@ fail:
 }
 
 
+static int _wrap_getParam(lua_State* L) {
+  int SWIG_arg = 0;
+  unsigned long arg1 ;
+  PARAM *result = 0 ;
+  
+  SWIG_check_num_args("getParam",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("getParam",1,"unsigned long");
+  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative")
+  arg1 = (unsigned long)lua_tonumber(L, 1);
+  result = (PARAM *)getParam(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p__PARAM_,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_int(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
@@ -22732,6 +22787,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvSetListViewText", _wrap_pvSetListViewText},
     { "pvListViewPrintf", _wrap_pvListViewPrintf},
     { "pvListViewSetSelected", _wrap_pvListViewSetSelected},
+    { "pvListBoxSetSelected", _wrap_pvListBoxSetSelected},
     { "pvSetColumnWidth", _wrap_pvSetColumnWidth},
     { "pvSetRowHeight", _wrap_pvSetRowHeight},
     { "pvSetWordWrap", _wrap_pvSetWordWrap},
@@ -23015,6 +23071,7 @@ static const struct luaL_reg swig_commands[] = {
     { "getSvgMatrixForElement", _wrap_getSvgMatrixForElement},
     { "getGeometry", _wrap_getGeometry},
     { "getParentWidgetId", _wrap_getParentWidgetId},
+    { "getParam", _wrap_getParam},
     { "new_int", _wrap_new_int},
     { "get_int", _wrap_get_int},
     { "delete_int", _wrap_delete_int},

@@ -8,39 +8,43 @@ CONFIG  -= qt
 
 # Input
 HEADERS += processviewserver.h
-#HEADERS += rldefine.h
+HEADERS += rldefine.h
 HEADERS += pvapp.h      \
            mask1_slots.h
 SOURCES += main.cpp     \
            mask1.cpp
 
 !macx {
-unix:LIBS          += /usr/lib64/liblua.a -ldl
 unix:LIBS          += /usr/lib/libpvsmt.so -pthread
 #unix:LIBS         += /usr/lib/libpvsid.so
 unix:INCLUDEPATH   += /opt/pvb/pvserver
-#unix:LIBS         += /usr/lib/librllib.so
-#unix:INCLUDEPATH  += /opt/pvb/rllib/lib
+unix:LIBS          += /usr/lib/librllib.so
+unix:INCLUDEPATH   += /opt/pvb/rllib/lib
+unix:LIBS          += /usr/lib64/liblua.a
+unix:LIBS          += -ldl
+unix:LIBS          += ../language_binding_wrap_lua.o
+unix:LIBS          += ../language_binding_rllib_wrap_lua.o
+unix:LIBS          += ../pvmain.o
 }
 
 macx:LIBS          += /opt/pvb/pvserver/libpvsmt.a /usr/lib/libpthread.dylib
 #macx:LIBS         += /opt/pvb/pvserver/libpvsid.a
 macx:INCLUDEPATH   += /opt/pvb/pvserver
-#macx:LIBS         += /usr/lib/librllib.dylib
-#macx:INCLUDEPATH  += /opt/pvb/rllib/lib
+macx:LIBS         += /usr/lib/librllib.dylib
+macx:INCLUDEPATH  += /opt/pvb/rllib/lib
 
 win32-g++ {
 QMAKE_LFLAGS       += -static-libgcc
-#win32:LIBS        += "$(PVBDIR)/win-mingw/bin/librllib.a"
+win32:LIBS        += "$(PVBDIR)/win-mingw/bin/librllib.a"
 win32:LIBS         += "$(PVBDIR)/win-mingw/bin/libserverlib.a" "$(MINGWDIR)/lib/libws2_32.a" "$(MINGWDIR)/lib/libadvapi32.a"
 win32:INCLUDEPATH  += "$(PVBDIR)/pvserver"
-#win32:INCLUDEPATH += "$(PVBDIR)/rllib/lib"
+win32:INCLUDEPATH += "$(PVBDIR)/rllib/lib"
 }
 else {
 win32:LIBS         += "$(PVBDIR)/win/bin/serverlib.lib" wsock32.lib advapi32.lib
 win32:INCLUDEPATH  += "$(PVBDIR)/pvserver"
-#win32:LIBS        += "$(PVBDIR)/win/bin/rllib.lib"
-#win32:INCLUDEPATH += "$(PVBDIR)/rllib/lib"
+win32:LIBS        += "$(PVBDIR)/win/bin/rllib.lib"
+win32:INCLUDEPATH += "$(PVBDIR)/rllib/lib"
 }
 
 #DEFINES += USE_INETD

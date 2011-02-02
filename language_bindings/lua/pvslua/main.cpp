@@ -7,59 +7,96 @@
 //***************************************************************************
 #include "pvapp.h"
 // Include the Lua API header files
-//#include <luaconf.h>
-//#include <lua.h>
 #include <lua.hpp>
 #include <lualib.h>
 #include <lauxlib.h>
 
-// todo: comment me out. you can insert these objects as extern in your masks.
-//rlModbusClient     modbus(modbusdaemon_MAILBOX,modbusdaemon_SHARED_MEMORY,modbusdaemon_SHARED_MEMORY_SIZE);
-//rlSiemensTCPClient siemensTCP(siemensdaemon_MAILBOX,siemensdaemon_SHARED_MEMORY,siemensdaemon_SHARED_MEMORY_SIZE);
-//rlPPIClient        ppi(ppidaemon_MAILBOX,ppidaemon_SHARED_MEMORY,ppidaemon_SHARED_MEMORY_SIZE);
+#ifdef __cplusplus
+extern "C" {
+#endif
+extern int luaopen_pv(lua_State* L);    // declare the wrapped module
+extern int luaopen_rllib(lua_State* L); // declare the wrapped module
+#ifdef __cplusplus
+}
+#endif
+
+typedef struct
+{
+  int s;
+  lua_State *L;
+}CleanData;
+
+CleanData clean_data[MAX_CLIENTS];
+
+static int cleanup(void *ptr)
+{
+  PARAM *p = (PARAM *) ptr;
+  if(trace) printf("cleanup p->s=%d\n", p->s);
+  for(int i=0; i<MAX_CLIENTS; i++)
+  {
+    if(clean_data[i].s == p->s)
+    {
+      if(trace) printf("cleanup lua_close\n");
+      lua_State *L = (lua_State *) clean_data[i].L;
+      lua_close(L);
+      clean_data[i].s = -1;
+      clean_data[i].L = NULL;
+      break;
+    }
+  }
+  return 0;
+}
 
 int pvMain(PARAM *p)
 {
-int ret, status;
-lua_State* L;
+  int i, ret, status;
+  lua_State* L;
 
   // initialize Lua
-  printf("step1\n");
+  if(trace) printf("lua_open\n");
   L = lua_open();
-
-  /// load various Lua libraries
   luaL_openlibs(L);
-  //luaopen_base(L);
-  //luaopen_table(L);
-  //panic luaopen_io(L);
-  //luaopen_string(L);
-  //luaopen_math(L);
 
-  // run the script
-  //luaL_dofile(L,"main.lua");
-  printf("Loading '%s'\n", "main.lua");
-  status = luaL_loadfile(L, "main.lua");
+  // initialize cleanup
+  for(i=0; i<MAX_CLIENTS; i++)
+  {
+    if(clean_data[i].s == -1 && clean_data[i].L == NULL)
+    {
+      clean_data[i].s = p->s;
+      clean_data[i].L = L;
+      break;
+    }
+  }
+  pvSetCleanup(p, cleanup, p);
+
+  // load pv and rllib 
+  ret = luaopen_pv(L);
+  if(trace) printf("luaopen_pv ret=%d\n", ret);
+  ret = luaopen_rllib(L);
+  if(trace) printf("luaopen_rllib ret=%d\n", ret);
+
+  // load the script
+  if(trace) printf("Loading '%s'\n", "main.lua");
+  status = luaL_dofile(L, "main.lua");
   if(status)
   {
     printf("Couldn't load file: %s\n", lua_tostring(L, -1));
     pvThreadFatal(p,"Lua terminateing");
   }
-  lua_pushnumber(L, 7);
+
+  // call luaMain
+  lua_getglobal(L, "luaMain");
+  lua_pushnumber(L, (long) p);
   status = lua_pcall(L, 1, 1, 0); 
   if(status)
   {
     printf("Exception in running lua: %s\n", lua_tostring(L, -1));
     lua_pop(L, 1);
-    pvThreadFatal(p,"Lua terminateing");
+    pvThreadFatal(p,"Lua terminating");
   }
-  lua_pop(L, 1);
-
-  // cleanup Lua
-  printf("step9\n");
-  lua_close(L);
-  printf("step10\n");
-
-  pvSetCaption(p,"pvslua");
+  pvThreadFatal(p,"Lua terminating");
+/*  
+  //pvSetCaption(p,"pvslua");
   pvResize(p,0,1280,1024);
   //pvScreenHint(p,1024,768); // this may be used to automatically set the zoomfactor
   ret = 1;
@@ -79,6 +116,8 @@ lua_State* L;
         return 0;
     }
   }
+*/  
+  return 0;
 }
 
 #ifdef USE_INETD
@@ -97,8 +136,15 @@ int main(int ac, char **av)
 PARAM p;
 int   s;
 
+  trace = 1;
   pvInit(ac,av,&p);
   /* here you may interpret ac,av and set p->user to your data */
+  // initialize cleanup
+  for(int i=0; i<MAX_CLIENTS; i++)
+  {
+    clean_data[i].s = -1;
+    clean_data[i].L = NULL;
+  }
   while(1)
   {
     s = pvAccept(&p);

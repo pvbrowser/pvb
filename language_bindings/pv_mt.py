@@ -1004,6 +1004,10 @@ def pvListViewSetSelected(*args):
   return _pv.pvListViewSetSelected(*args)
 pvListViewSetSelected = _pv.pvListViewSetSelected
 
+def pvListBoxSetSelected(*args):
+  return _pv.pvListBoxSetSelected(*args)
+pvListBoxSetSelected = _pv.pvListBoxSetSelected
+
 def pvSetColumnWidth(*args):
   return _pv.pvSetColumnWidth(*args)
 pvSetColumnWidth = _pv.pvSetColumnWidth
@@ -2136,6 +2140,10 @@ getGeometry = _pv.getGeometry
 def getParentWidgetId(*args):
   return _pv.getParentWidgetId(*args)
 getParentWidgetId = _pv.getParentWidgetId
+
+def getParam(*args):
+  return _pv.getParam(*args)
+getParam = _pv.getParam
 
 def new_int(*args):
   return _pv.new_int(*args)

@@ -10,16 +10,24 @@
 // our mask contains the following objects
 enum {
   ID_MAIN_WIDGET = 0,
+  obj1,
   ID_END_OF_WIDGETS
 };
 
-static const char *toolTip[] = {
-  ""
-};
+  static const char *toolTip[] = {
+  "",
+  "",
+  ""};
 
-static const char *whatsThis[] = {
-  ""
-};
+  static const char *whatsThis[] = {
+  "",
+  "",
+  ""};
+
+  static const int widgetType[ID_END_OF_WIDGETS+1] = {
+  0,
+  TQPushButton,
+  -1 };
 
 static int generated_defineMask(PARAM *p)
 {
@@ -27,8 +35,15 @@ static int generated_defineMask(PARAM *p)
 
   if(p == NULL) return 1;
   w = h = depth = strcmp(toolTip[0],whatsThis[0]);
+  if(widgetType[0] == -1) return 1;
   if(w==h) depth=0; // fool the compiler
   pvStartDefinition(p,ID_END_OF_WIDGETS);
+
+  pvQPushButton(p,obj1,0);
+  pvSetGeometry(p,obj1,70,40,100,30);
+  pvSetText(p,obj1,"PushButton");
+
+
   pvEndDefinition(p);
   return 0;
 }
