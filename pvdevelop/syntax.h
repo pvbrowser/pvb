@@ -25,6 +25,7 @@
 #define PERL_SYNTAX   2
 #define PHP_SYNTAX    3
 #define TCL_SYNTAX    4
+#define LUA_SYNTAX    5
 
 class syntax: public QSyntaxHighlighter
 {

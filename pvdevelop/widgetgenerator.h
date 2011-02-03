@@ -26,5 +26,6 @@ int generatePython(int imask, QWidget *root);
 int generatePHP(int imask, QWidget *root);
 int generatePerl(int imask, QWidget *root);
 int generateTcl(int imask, QWidget *root);
+int generateLua(int imask, QWidget *root);
 
 #endif

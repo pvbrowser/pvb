@@ -35,6 +35,7 @@ HEADERS       = ../../pvbrowser/ui_dlgtextbrowser.h \
                 ../../pvdevelop/generatephp.h \
                 ../../pvdevelop/generateperl.h \
                 ../../pvdevelop/generatetcl.h \
+                ../../pvdevelop/generatelua.h \
                 ../../pvdevelop/ui_dlgnewprj.h \
                 ../../pvdevelop/ui_dlgsearchreplace.h \
                 ../../pvdevelop/ui_dlginsertfunction.h \

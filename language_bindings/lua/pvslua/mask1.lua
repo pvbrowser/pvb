@@ -7,7 +7,7 @@ function showMask1(p)
   ID_MAIN_WIDGET = 0                          -- begin of our widget names
   PushButtonBack = 1
   Table          = 2
-  ID_END_OF_WIDGETS = 3                       -- end of our widget name
+  ID_END_OF_WIDGETS = 3                       -- end of our widget names
   ------------------------------------------------------------------------------------
   iarray = pv.IntegerArray()                  -- see pv.getIntegers(text,iarray) below
   farray = pv.FloatArray()                    -- see pv.getFloats(text,farray) below

@@ -2780,6 +2780,7 @@ int getWidgetsFromMask(const char *filename, QWidget *root)
 #include "generatephp.h"
 #include "generateperl.h"
 #include "generatetcl.h"
+#include "generatelua.h"
 
 #ifdef PVWIN32
 static int win32Hack(QWidget *root, const char *uifile, QList<QObject *> *widgets)
@@ -3227,6 +3228,10 @@ int importUi(const char *uifile, Designer *designer)
   if(opt.script == PV_TCL)
   {
     generateTcl(imask, designer->root);
+  }
+  if(opt.script == PV_LUA)
+  {
+    generateLua(imask, designer->root);
   }
   designer->root->modified = 0;
   return 0;

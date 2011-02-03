@@ -31,6 +31,7 @@ HEADERS       = mainwindow.h \
                 generatephp.h \
                 generateperl.h \
                 generatetcl.h \
+                generatelua.h \
                 ui_dlgnewprj.h \
                 ui_dlgsearchreplace.h \
                 ui_dlginsertfunction.h \

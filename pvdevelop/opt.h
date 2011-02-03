@@ -24,6 +24,7 @@
 #define PV_PERL   2
 #define PV_PHP    3
 #define PV_TCL    4
+#define PV_LUA    5
 
 typedef struct
 {

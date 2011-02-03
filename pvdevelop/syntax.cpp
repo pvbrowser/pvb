@@ -16,6 +16,8 @@
 #include "../pvbrowser/pvdefine.h"
 #include "syntax.h"
 #include <ctype.h>
+#include <stdio.h>
+
 const char *cKeywords[] = {
   "break", "case", "continue", "default", "do", "else", "enum", "extern",
   "for", "goto", "if", /*"interrupt",*/  "return", "sizeof", "struct",
@@ -57,6 +59,18 @@ const char *pyKeywords[] = {
   "None", "self", "True", "False", "NotImplemented", "Ellipsis", "SIGNAL", "SLOT", "connect", 0L};
   // "id" removed
 
+const char *luaKeywords[] = {
+  "while", "for", "elseif", "if", "else", "then", "do", "end", "return", "function", 0L};
+
+const char *luaLibs[] = {
+  "string", "os", "file", "io", "math", "package", "table", "debug", "coroutine", "pv", "rllib",
+  "assert", "collectgarbage", "dofile", "error", "getfenv", "getmetatable", "ipairs", "load", "loadfile", "loadstring", "module", "next", "pairs",
+  "pcall", "print", "rawequal", "rawget", "rawset", "require", "select", "setfenv", "setmetatable", "tonumber", "tostring", "type", "unpack", "xpcall", 
+  0L};
+
+const char *luaMine[] = {
+  "p", "id", "x", "y", "width", "height", "text", "button", "modifier", "enter", "val", 0L};
+
 syntax::syntax(QTextEdit *edit) 
        :QSyntaxHighlighter(edit)
 {
@@ -75,6 +89,7 @@ int syntax::setSyntax(int language)
   if(language == PERL_SYNTAX)   lang_syntax = language;
   if(language == PHP_SYNTAX)    lang_syntax = language;
   if(language == TCL_SYNTAX)    lang_syntax = language;
+  if(language == LUA_SYNTAX)    lang_syntax = language;
   return 0;
 }
 
@@ -244,5 +259,72 @@ void syntax::highlightBlock(const QString &text)
   {
   }
 
+  if(lang_syntax == LUA_SYNTAX)
+  {
+  //##########################################################################
+  for(i=0; luaKeywords[i] != 0L; i++)
+  {
+    len = strlen(luaKeywords[i]);
+    for(start=0; buf[start] != '\0'; start++)
+    {
+      if(strncmp(&buf[start],luaKeywords[i],len) == 0 && (isspace(buf[start+len]) || buf[start+len] == '(' || buf[start+len] == ':' || buf[start+len] == '\0'))
+      {
+        if(start == 0)                 setFormat(start,len,red);
+        else if(isspace(buf[start-1])) setFormat(start,len,red);
+      }
+    }
+  }
+  //##########################################################################
+  for(i=0; luaLibs[i] != 0L; i++)
+  {
+    len = strlen(luaLibs[i]);
+    for(start=0; buf[start] != '\0'; start++)
+    {
+      if(strncmp(&buf[start],luaLibs[i],len) == 0 && (isspace(buf[start+len]) || buf[start+len] == '(' || buf[start+len] == '.' || buf[start+len] == ':' || buf[start+len] == '\0'))
+      {
+        if(start == 0)                 setFormat(start,len,blue);
+        else if(isspace(buf[start-1])) setFormat(start,len,blue);
+        else if(buf[start-1] == '(')   setFormat(start,len,blue);
+      }
+    }
+  }
+  //##########################################################################
+  for(i=0; luaMine[i] != 0L; i++)
+  {
+    len = strlen(luaMine[i]);
+    for(start=0; buf[start] != '\0'; start++)
+    {
+      if(strncmp(&buf[start],luaMine[i],len) == 0 && (isspace(buf[start+len]) || buf[start+len] == '.' || buf[start+len] == ',' || buf[start+len] == ')'))
+      {
+        if(start == 0)                 setFormat(start,len,green);
+        else if(isspace(buf[start-1])) setFormat(start,len,green);
+        else if(buf[start-1] == '(')   setFormat(start,len,green);
+        else if(buf[start-1] == ',')   setFormat(start,len,green);
+      }
+    }
+  }
+  //##########################################################################
+  for(start=0; buf[start] != '\0'; start++)
+  {
+    if(buf[start] == '-' && buf[start+1] == '-')
+    {
+      setFormat(start,strlen(&buf[start]),grey);
+      return;
+    }
+    else if(buf[start] == '(' || buf[start] == ')')
+    {
+      setFormat(start,1,blue);
+    }
+    else if(buf[start] == '[' || buf[start] == ']')
+    {
+      setFormat(start,1,blue);
+    }
+    else if(buf[start] == '{' || buf[start] == '}')
+    {
+      setFormat(start,1,blue);
+    }
+  }
+  //##########################################################################
+  }
   return;
 }

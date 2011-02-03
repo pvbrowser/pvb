@@ -93,6 +93,7 @@ void getargs(int ac, char **av)
       else if(strcmp(buf,"Perl")   == 0) opt.script = PV_PERL;
       else if(strcmp(buf,"PHP")    == 0) opt.script = PV_PHP;
       else if(strcmp(buf,"Tcl")    == 0) opt.script = PV_TCL;
+      else if(strcmp(buf,"Lua")    == 0) opt.script = PV_LUA;
       else
       {
         printf("programming_language=%s not supported\n", buf);
@@ -228,6 +229,10 @@ void  perhapsDoAction()
     if(opt.script == PV_TCL)
     {
       fprintf(fout,"script=Tcl\n");
+    }
+    if(opt.script == PV_LUA)
+    {
+      fprintf(fout,"script=Lua\n");
     }
     fclose(fout);
   }

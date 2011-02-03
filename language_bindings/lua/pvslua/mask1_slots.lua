@@ -13,7 +13,7 @@ function slotNullEvent(p)
   print("slotNullEvent called")
   return 0
 end
-    
+
 function slotButtonEvent(p,id)
   print("local button PushButtonBack=", PushButtonBack)
   return 0

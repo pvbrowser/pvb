@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>newprj</class>
- <widget class="QDialog" name="newprj" >
-  <property name="geometry" >
+ <widget class="QDialog" name="newprj">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,23 +10,23 @@
     <height>122</height>
    </rect>
   </property>
-  <property name="minimumSize" >
+  <property name="minimumSize">
    <size>
     <width>559</width>
     <height>122</height>
    </size>
   </property>
-  <property name="maximumSize" >
+  <property name="maximumSize">
    <size>
     <width>559</width>
     <height>122</height>
    </size>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>Create a new visualization</string>
   </property>
-  <widget class="QLabel" name="textLabel4" >
-   <property name="geometry" >
+  <widget class="QLabel" name="textLabel4">
+   <property name="geometry">
     <rect>
      <x>10</x>
      <y>10</y>
@@ -33,12 +34,12 @@
      <height>31</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Directory:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="textLabel5" >
-   <property name="geometry" >
+  <widget class="QLabel" name="textLabel5">
+   <property name="geometry">
     <rect>
      <x>10</x>
      <y>50</y>
@@ -46,12 +47,12 @@
      <height>31</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Name:</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonCancel" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="pushButtonCancel">
+   <property name="geometry">
     <rect>
      <x>390</x>
      <y>80</y>
@@ -59,12 +60,12 @@
      <height>31</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Cancel</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonOk" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="pushButtonOk">
+   <property name="geometry">
     <rect>
      <x>490</x>
      <y>80</y>
@@ -72,15 +73,15 @@
      <height>31</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string>Ok</string>
    </property>
-   <property name="default" >
+   <property name="default">
     <bool>true</bool>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditDirectory" >
-   <property name="geometry" >
+  <widget class="QLineEdit" name="lineEditDirectory">
+   <property name="geometry">
     <rect>
      <x>100</x>
      <y>10</y>
@@ -89,8 +90,8 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEditName" >
-   <property name="geometry" >
+  <widget class="QLineEdit" name="lineEditName">
+   <property name="geometry">
     <rect>
      <x>100</x>
      <y>50</y>
@@ -99,8 +100,8 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButtonDir" >
-   <property name="geometry" >
+  <widget class="QPushButton" name="pushButtonDir">
+   <property name="geometry">
     <rect>
      <x>490</x>
      <y>10</y>
@@ -108,30 +109,56 @@
      <height>30</height>
     </rect>
    </property>
-   <property name="text" >
+   <property name="text">
     <string/>
    </property>
-   <property name="icon" >
-    <iconset resource="pvdevelop.qrc" >:/images/open.png</iconset>
+   <property name="icon">
+    <iconset resource="pvdevelop.qrc">
+     <normaloff>:/images/open.png</normaloff>:/images/open.png</iconset>
    </property>
   </widget>
-  <widget class="QCheckBox" name="checkBoxPython" >
-   <property name="geometry" >
+  <widget class="QComboBox" name="comboBoxLanguage">
+   <property name="geometry">
     <rect>
      <x>100</x>
-     <y>90</y>
-     <width>101</width>
+     <y>80</y>
+     <width>201</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>C/C++</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Lua</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Python (experimental)</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>80</y>
+     <width>71</width>
      <height>21</height>
     </rect>
    </property>
-   <property name="text" >
-    <string>Use Python</string>
+   <property name="text">
+    <string>Language:</string>
    </property>
   </widget>
  </widget>
- <layoutdefault spacing="6" margin="11" />
+ <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="pvdevelop.qrc" />
+  <include location="pvdevelop.qrc"/>
  </resources>
  <connections/>
 </ui>

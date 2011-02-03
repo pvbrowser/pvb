@@ -89,25 +89,49 @@ int action(const char *command)
   }
   else if(strncmp(command,"insertMask=",11) == 0)
   {
-    sscanf(command,"insertMask=%s",project);
-    strcat(project,".pro");
-    for(imask=1; ;imask++)
+    if(opt.script == PV_LUA)
     {
-      sprintf(name,"mask%d.cpp",imask);
-      fin = fopen(name,"r");
-      if(fin == NULL)
+      sscanf(command,"insertMask=%s",project);
+      strcat(project,".pro");
+      for(imask=1; ;imask++)
       {
-        generateInitialMask(imask);
-        generateInitialSlots(imask);
-        addMaskToProject(project,imask);
-        addMaskToMain(imask);
-        addMaskToHeader(imask);
-        return imask;
-      }
-      else
+        sprintf(name,"mask%d.lua",imask);
+        fin = fopen(name,"r");
+        if(fin == NULL)
+        {
+          generateInitialMask(imask);
+          generateInitialSlots(imask);
+          addMaskToMain(imask);
+          return imask;
+        }
+        else
+        {
+          fclose(fin);
+        }
+      }  
+    }
+    else
+    {
+      sscanf(command,"insertMask=%s",project);
+      strcat(project,".pro");
+      for(imask=1; ;imask++)
       {
-        fclose(fin);
-      }
+        sprintf(name,"mask%d.cpp",imask);
+        fin = fopen(name,"r");
+        if(fin == NULL)
+        {
+          generateInitialMask(imask);
+          generateInitialSlots(imask);
+          addMaskToProject(project,imask);
+          addMaskToMain(imask);
+          addMaskToHeader(imask);
+          return imask;
+        }
+        else
+        {
+          fclose(fin);
+        }
+      }  
     }
   }
   else if(strncmp(command,"make",4) == 0)
@@ -225,6 +249,10 @@ void generateInitialProject(const char *name)
     system("cp /opt/pvb/language_bindings/tcl/template/* .");
 #endif
     return;
+  }
+  else if(opt.script == PV_LUA)
+  {
+    return lua_generateInitialProject(name);
   }
 
   strcpy(time,QDateTime::currentDateTime().toString().toAscii());
@@ -420,6 +448,7 @@ void generateInitialMask(int imask)
   FILE *fout;
   char fname[80],maskname[80],time[80];
 
+  if(opt.script == PV_LUA) return lua_generateInitialMask(imask);
   strcpy(time,QDateTime::currentDateTime().toString().toAscii());
   sprintf(maskname,"mask%d",imask);
   sprintf(fname,"mask%d.cpp",imask);
@@ -637,6 +666,7 @@ void generateInitialSlots(int imask)
   FILE *fout;
   char fname[80],maskname[80],time[80];
 
+  if(opt.script == PV_LUA) return lua_generateInitialSlots(imask);
   strcpy(time,QDateTime::currentDateTime().toString().toAscii());
   sprintf(maskname,"mask%d",imask);
   sprintf(fname,"mask%d_slots.h",imask);
@@ -1234,6 +1264,7 @@ void addMaskToProject(const char *name, int imask)
   FileLines *fl;
 
   if(opt.arg_debug) printf("addMaskToProject imask=%d name=%s\n",imask,name);
+  if(opt.script == PV_LUA) return;
   if(loadFile(name) == -1) return;
   fout = fopen(name,"w");
   if(fout == NULL) return;
@@ -1267,6 +1298,7 @@ void addMaskToMain(int imask)
   int while_found, switch_found, case_found, done;
 
   if(opt.arg_debug) printf("addMaskToMain imask=%d\n",imask);
+  if(opt.script == PV_LUA) return lua_addMaskToMain(imask);
   if(loadFile("main.cpp") == -1) return;
   while_found = switch_found = case_found = done = 0;
   fout = fopen("main.cpp","w");
@@ -1312,6 +1344,7 @@ void addMaskToHeader(int imask)
   int done;
 
   if(opt.arg_debug) printf("addMaskToHeader imask=%d\n",imask);
+  if(opt.script == PV_LUA) return;
   if(loadFile("pvapp.h") == -1) return;
   fout = fopen("pvapp.h","w");
   if(fout == NULL) return;
@@ -1340,6 +1373,7 @@ void uncommentRllib(const char *project)
   FILE *fout;
   FileLines *fl;
 
+  if(opt.script == PV_LUA) return;
   if(loadFile(project) == -1) return;
   fout = fopen(project,"w");
   if(fout == NULL) return;
@@ -1369,6 +1403,7 @@ void uncommentModbus()
   FILE *fout;
   FileLines *fl;
 
+  if(opt.script == PV_LUA) return;
   if(loadFile("main.cpp") == -1) return;
   fout = fopen("main.cpp","w");
   if(fout == NULL) return;
@@ -1417,6 +1452,7 @@ void uncommentSiemenstcp()
   FILE *fout;
   FileLines *fl;
 
+  if(opt.script == PV_LUA) return;
   if(loadFile("main.cpp") == -1) return;
   fout = fopen("main.cpp","w");
   if(fout == NULL) return;
@@ -1465,6 +1501,7 @@ void uncommentPpi()
   FILE *fout;
   FileLines *fl;
 
+  if(opt.script == PV_LUA) return;
   if(loadFile("main.cpp") == -1) return;
   fout = fopen("main.cpp","w");
   if(fout == NULL) return;
@@ -2364,3 +2401,384 @@ start2:
   fclose(fout);
   return 0;
 }
+
+void lua_addMaskToMain(int imask)
+{
+  FILE *fout;
+  FileLines *fl;
+  int while_found, else_found, done, dofile_found;
+
+  if(opt.arg_debug) printf("lua_addMaskToMain imask=%d\n",imask);
+  if(loadFile("main.lua") == -1) return;
+  while_found = else_found = done = dofile_found = 0;
+  fout = fopen("main.lua","w");
+  if(fout == NULL) return;
+  fl = &file_lines;
+  while(fl->next != NULL)
+  {
+    fl = fl->next;
+    if(dofile_found==0 && strstr(fl->line,"dofile(\"mask") != NULL)
+    {
+      fprintf(fout,"dofile(\"mask%d.lua\")    -- include your masks here\n",imask);
+      dofile_found = 1;
+    }
+    else if(while_found==0 && 
+      strstr(fl->line,"while 1 do") != NULL &&
+      strstr(fl->line,"show your masks") != NULL )
+    {
+      while_found = 1;
+    }
+    if(while_found==1 && else_found==0 && 
+      strstr(fl->line,"if") == NULL &&
+      strstr(fl->line,"else") != NULL)
+    {
+      else_found = 1;
+    }
+    if(else_found==1 && done==0)
+    {
+      fprintf(fout,"    elseif (ret==%d) then\n",imask);
+      fprintf(fout,"      ret = showMask%d(p);\n",imask);
+      fprintf(fout,"%s",fl->line);
+      done = 1;
+    }
+    else
+    {
+      fprintf(fout,"%s",fl->line);
+    }
+  }
+  fclose(fout);
+  unloadFile();
+}
+
+void lua_generateInitialMask(int imask)
+{
+  char fname[1024];
+  FILE *fout;
+  
+  sprintf(fname,"mask%d.lua", imask);
+  fout = fopen(fname,"w");
+  if(fout == NULL)
+  {
+    printf("could not open %s for writing\n", fname);
+    return;
+  }
+  fprintf(fout,"%s","--------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","-- this file is generated by pvdevelop. DO NOT EDIT !!!\n");
+  fprintf(fout,"%s","--------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,     "function showMask%d(p)\n", imask);
+  fprintf(fout,"%s","  --- begin variables that are private to this mask ----------------------------------\n");
+  fprintf(fout,"%s","  ID_MAIN_WIDGET = 0                          -- begin of our widget names\n");
+  fprintf(fout,"%s","  PushButtonBack = 1\n");
+  fprintf(fout,"%s","  ID_END_OF_WIDGETS = 2                       -- end of our widget names\n");
+  fprintf(fout,"%s","  ------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","  iarray = pv.IntegerArray()                  -- see pv.getIntegers(text,iarray) below\n");
+  fprintf(fout,"%s","  farray = pv.FloatArray()                    -- see pv.getFloats(text,farray) below\n");
+  fprintf(fout,"%s","  --- end variables that are private to this mask ------------------------------------\n");
+  fprintf(fout,"%s","  --- begin construction of our mask -------------------------------------------------\n");
+  fprintf(fout,"%s","  pv.pvStartDefinition(p,ID_END_OF_WIDGETS)\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","  pv.pvQPushButton(p,PushButtonBack,0)\n");
+  fprintf(fout,"%s","  pv.pvSetGeometry(p,PushButtonBack,10,10,111,40)\n");
+  fprintf(fout,"%s","  pv.pvSetText(p,PushButtonBack,\"Lua test\")\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","  pv.pvEndDefinition(p)\n");
+  fprintf(fout,"%s","  --- end construction of our mask ---------------------------------------------------\n");
+  fprintf(fout,     "  dofile(\"mask%d_slots.lua\")                   -- include our slot functions\n", imask);
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","  if trace == 1 then print(\"show mask1\") end\n");
+  fprintf(fout,"%s","  pv.pvClearMessageQueue(p)                   -- clear all pending events\n");
+  fprintf(fout,"%s","  ret = slotInit(p)                           -- intitialize our variables\n");
+  fprintf(fout,"%s","  if ret ~= 0 then return ret end             -- return number of next mask to call\n");
+  fprintf(fout,"%s","  while(1)                                    -- event loop\n");
+  fprintf(fout,"%s","  do\n");
+  fprintf(fout,"%s","    event  = pv.pvGetEvent(p)                 -- get the next event\n");
+  fprintf(fout,"%s","    result = pv.pvParseEventStruct(p,event)   -- parse the event\n");
+  fprintf(fout,"%s","    id     = result.event\n");
+  fprintf(fout,"%s","    i      = result.i\n");
+  fprintf(fout,"%s","    text   = result.text\n");
+  fprintf(fout,"%s","                                              -- now call the according slot function\n");
+  fprintf(fout,"%s","    if     id == pv.NULL_EVENT then\n");
+  fprintf(fout,"%s","        ret = slotNullEvent(p)\n");
+  fprintf(fout,"%s","    elseif id == pv.BUTTON_EVENT then    \n");
+  fprintf(fout,"%s","        if trace==1 then print(\"BUTTON_EVENT id=\", i) end\n");
+  fprintf(fout,"%s","        ret = slotButtonEvent(p,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.BUTTON_PRESSED_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"BUTTON_PRESSED_EVENT id=\",i) end\n");
+  fprintf(fout,"%s","        ret=slotButtonPressedEvent(p,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.BUTTON_RELEASED_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"BUTTON_RELEASED_EVENT id=\",i) end\n");
+  fprintf(fout,"%s","        ret=slotButtonReleasedEvent(p,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.TEXT_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"TEXT_EVENT id=\",i,\" text=\",text) end\n");
+  fprintf(fout,"%s","        ret=slotTextEvent(p,i,text)\n");
+  fprintf(fout,"%s","    elseif id == pv.SLIDER_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"SLIDER_EVENT val=\",iarray.i0) end\n");
+  fprintf(fout,"%s","        ret=slotSliderEvent(p,i,iarray.i0)\n");
+  fprintf(fout,"%s","    elseif id == pv.CHECKBOX_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"CHECKBOX_EVENT id=\",i,\" text=\",text) end\n");
+  fprintf(fout,"%s","        ret=slotCheckboxEvent(p,i,text)\n");
+  fprintf(fout,"%s","    elseif id == pv.RADIOBUTTON_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"RADIOBUTTON_EVENT id=\",i,\" text=\",text) end\n");
+  fprintf(fout,"%s","        ret=slotRadioButtonEvent(p,i,text)\n");
+  fprintf(fout,"%s","    elseif id == pv.GL_INITIALIZE_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"you have to call initializeGL()\") end\n");
+  fprintf(fout,"%s","        ret=slotGlInitializeEvent(p,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.GL_PAINT_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"you have to call paintGL()\") end\n");
+  fprintf(fout,"%s","        ret=slotGlPaintEvent(p,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.GL_RESIZE_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"you have to call resizeGL(w,h)\") end\n");
+  fprintf(fout,"%s","        ret=slotGlResizeEvent(p,i,iarray.i0,iarray.i1)\n");
+  fprintf(fout,"%s","    elseif id == pv.GL_IDLE_EVENT then\n");
+  fprintf(fout,"%s","        ret=slotGlIdleEvent(p,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.TAB_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"TAB_EVENT id=\",i,\"page=\",iarray.i0) end\n");
+  fprintf(fout,"%s","        ret=slotTabEvent(p,i,iarray.i0)\n");
+  fprintf(fout,"%s","    elseif id == pv.TABLE_TEXT_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        pv.pvlock(p)\n");
+  fprintf(fout,"%s","        str1 = pv.getTextFromText(text)\n");
+  fprintf(fout,"%s","        pv.pvunlock(p)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"TABLE_TEXT_EVENT id=\",i,\" x=\",iarray.i0,\" y=\",iarray.i1,\" text=\",str1) end\n");
+  fprintf(fout,"%s","        ret=slotTableTextEvent(p,i,iarray.i0,iarray.i1,str1)\n");
+  fprintf(fout,"%s","    elseif id == pv.TABLE_CLICKED_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"TABLE_CLICKED_EVENT id=\",i,\" x=\",iarray.i0,\" y=\",iarray.i1,\" button=\",iarray.i2) end\n");
+  fprintf(fout,"%s","        ret=slotTableClickedEvent(p,i,iarray.i0,iarray.i1,iarray.i2)\n");
+  fprintf(fout,"%s","    elseif id == pv.SELECTION_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        pv.pvlock(p)\n");
+  fprintf(fout,"%s","        str1 = pv.getTextFromText(text)\n");
+  fprintf(fout,"%s","        pv.pvunlock(p)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"SELECTION_EVENT id=\",i,\" column=\",iarray.i0,\" text=\",str1) end\n");
+  fprintf(fout,"%s","        ret=slotSelectionEvent(p,i,iarray.i0,str1)\n");
+  fprintf(fout,"%s","    elseif id == pv.CLIPBOARD_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"CLIPBOARD_EVENT id=\",iarray.i0) end\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"clipboard = \",p.clipboard) end\n");
+  fprintf(fout,"%s","        ret=slotClipboardEvent(p,i,iarray.i0)\n");
+  fprintf(fout,"%s","    elseif id == pv.RIGHT_MOUSE_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"RIGHT_MOUSE_EVENT id=\",i,\" text=\",text) end\n");
+  fprintf(fout,"%s","        ret=slotRightMouseEvent(p,i,text)\n");
+  fprintf(fout,"%s","    elseif id == pv.KEYBOARD_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"KEYBOARD_EVENT modifier=\",i,\" key=\",iarray.i0) end\n");
+  fprintf(fout,"%s","        ret=slotKeyboardEvent(p,i,iarray.i0,i)\n");
+  fprintf(fout,"%s","    elseif id == pv.PLOT_MOUSE_MOVED_EVENT then\n");
+  fprintf(fout,"%s","        pv.getFloats(text,farray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"PLOT_MOUSE_MOVE \",farray.f0,farray.f1) end\n");
+  fprintf(fout,"%s","        ret=slotMouseMovedEvent(p,i,farray.f0,farray.f1)\n");
+  fprintf(fout,"%s","    elseif id == pv.PLOT_MOUSE_PRESSED_EVENT then\n");
+  fprintf(fout,"%s","        pv.getFloats(text,farray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"PLOT_MOUSE_PRESSED \",farray.f0,farray.f1) end\n");
+  fprintf(fout,"%s","        ret=slotMousePressedEvent(p,i,farray.f0,farray.f1)\n");
+  fprintf(fout,"%s","    elseif id == pv.PLOT_MOUSE_RELEASED_EVENT then\n");
+  fprintf(fout,"%s","        pv.getFloats(text,farray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"PLOT_MOUSE_RELEASED \",farray.f0,farray.f1) end\n");
+  fprintf(fout,"%s","        ret=slotMouseReleasedEvent(p,i,farray.f0,farray.f1)\n");
+  fprintf(fout,"%s","    elseif id == pv.MOUSE_OVER_EVENT then\n");
+  fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"MOUSE_OVER_EVENT \",iarray.i0) end\n");
+  fprintf(fout,"%s","        ret=slotMouseOverEvent(p,i,iarray.i0)\n");
+  fprintf(fout,"%s","    elseif id == pv.USER_EVENT then\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"USER_EVENT id=\",i,\" text=\",text) end\n");
+  fprintf(fout,"%s","        ret=slotUserEvent(p,i,text)\n");
+  fprintf(fout,"%s","    else\n");
+  fprintf(fout,"%s","        if trace == 1 then print(\"UNKNOWN_EVENT id=\",i,\" text=\",text) end\n");
+  fprintf(fout,"%s","        ret = 0\n");
+  fprintf(fout,"%s","    end    \n");
+  fprintf(fout,"%s","    if ret ~= 0 then return ret end                -- return number of next mask to call\n");
+  fprintf(fout,"%s","  end                                              -- end of event loop\n");
+  fprintf(fout,"%s","  return 0                                         -- never come here\n");
+  fprintf(fout,"%s","end\n");
+  fclose(fout);
+}
+
+void lua_generateInitialSlots(int imask)
+{
+  char fname[1024];
+  FILE *fout;
+  
+  sprintf(fname,"mask%d_slots.lua", imask);
+  fout = fopen(fname,"w");
+  if(fout == NULL)
+  {
+    printf("could not open %s for writing\n", fname);
+    return;
+  }
+  fprintf(fout,"%s","-------------------------------------------------------------------------------------\n");
+  fprintf(fout,     "-- mask%d_slots.lua       Please edit this file in order to define your logic\n", imask);
+  fprintf(fout,"%s","-------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","                         -- here you may define variables local for your mask\n");
+  fprintf(fout,"%s","                         -- also see the variables in the generated maskX.lua\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotInit(p)     -- this function will be called before the event loop starts\n");
+  fprintf(fout,"%s","  print(\"slotInit called\")\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotNullEvent(p)\n");
+  fprintf(fout,"%s","  print(\"slotNullEvent called\")\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotButtonEvent(p,id)\n");
+  fprintf(fout,"%s","  print(\"local button PushButtonBack=\", PushButtonBack)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotButtonPressedEvent(p,id)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotButtonReleasedEvent(p,id)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotTextEvent(p,id,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotSliderEvent(p,id,val)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotCheckboxEvent(p,id,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotRadioButtonEvent(p,id,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotGlInitializeEvent(p,id)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotGlPaintEvent(p,id)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotGlResizeEvent(p,id,width,height)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotGlIdleEvent(p,id)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotTabEvent(p,id,val)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotTableTextEvent(p,id,x,y,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotTableClickedEvent(p,id,x,y,button)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotSelectionEvent(p,id,val,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotClipboardEvent(p,id,val)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotRightMouseEvent(p,id,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotKeyboardEvent(p,id,val,modifier)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotMouseMovedEvent(p,id,x,y)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotMousePressedEvent(p,id,x,y)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotMouseReleasedEvent(p,id,x,y)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotMouseOverEvent(p,id,enter)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","function slotUserEvent(p,id,text)\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","end\n");
+  fclose(fout);
+}
+
+void lua_generateInitialProject(const char *name)
+{
+  char fname[1024];
+  FILE *fout;
+
+  if(name == NULL) return;
+  strcpy(fname,name); strcat(fname,".pvproject");
+  fout = fopen(fname,"w");
+  if(fout == NULL)
+  {
+    printf("could not open %s for writing\n", fname);
+    return;
+  }
+  fprintf(fout,"target=%s\n", name);
+  fprintf(fout,"xmax=1280\n");
+  fprintf(fout,"ymax=1024\n");
+  fprintf(fout,"script=Lua\n");
+  fclose(fout);
+
+  strcpy(fname,"main.lua");
+  fout = fopen(fname,"w");
+  if(fout == NULL)
+  {
+    printf("could not open %s for writing\n", fname);
+    return;
+  }
+  fprintf(fout,"%s","-------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","-- pvserver in lua     run: pvslua -port=5050 -cd=/your/directory/with/your/lua/code\n");
+  fprintf(fout,"%s","-------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","trace = 1              -- here you may put variables global for all your masks\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","dofile(\"mask1.lua\")    -- include your masks here\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","-------------------------------------------------------------------------------------\n");
+  fprintf(fout,"%s","function luaMain(ptr)  -- pvserver Lua Main Program\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","  p = pv.getParam(ptr) -- get the PARAM structure\n");
+  fprintf(fout,"%s","  pv.pvSetCaption(p,string.format(\"Hello Lua %d\",123))\n");
+  fprintf(fout,"%s","  pv.pvResize(p,0,1280,1024)\n");
+  fprintf(fout,"%s","  pv.pvGetInitialMask(p)\n");
+  fprintf(fout,"%s","  print(\"Inital mask = \", p.initial_mask)\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","  ret = 1\n");
+  fprintf(fout,"%s","  while 1 do           -- show your masks\n");
+  fprintf(fout,"%s","    if     (ret==1) then\n");
+  fprintf(fout,"%s","      ret = showMask1(p)\n");
+  fprintf(fout,"%s","    else\n");
+  fprintf(fout,"%s","      ret = 1\n");
+  fprintf(fout,"%s","    end\n");
+  fprintf(fout,"%s","  end\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","  pv.pvThreadFatal(p,\"Lua calling ThreadFatal\")\n");
+  fprintf(fout,"%s","  return 0\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","end\n");
+  fclose(fout);
+
+  lua_generateInitialMask(1);
+  lua_generateInitialSlots(1);
+}
+

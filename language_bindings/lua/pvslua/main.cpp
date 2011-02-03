@@ -95,28 +95,6 @@ int pvMain(PARAM *p)
     pvThreadFatal(p,"Lua terminating");
   }
   pvThreadFatal(p,"Lua terminating");
-/*  
-  //pvSetCaption(p,"pvslua");
-  pvResize(p,0,1280,1024);
-  //pvScreenHint(p,1024,768); // this may be used to automatically set the zoomfactor
-  ret = 1;
-  pvGetInitialMask(p);
-  if(strcmp(p->initial_mask,"mask1") == 0) ret = 1;
-
-  while(1)
-  {
-    if(trace) printf("show_mask%d\n", ret);
-    switch(ret)
-    {
-      case 1:
-        pvStatusMessage(p,-1,-1,-1,"mask1");
-        ret = show_mask1(p);
-        break;
-      default:
-        return 0;
-    }
-  }
-*/  
   return 0;
 }
 
@@ -136,15 +114,9 @@ int main(int ac, char **av)
 PARAM p;
 int   s;
 
-  IntegerArray ia;
-  FloatArray fa;
-  getIntegers("hallo123welt456", &ia);
-  printf("IntergerArray = %d %d\n", ia.i[0], ia.i[1]);
-  getFloats("hallo123.5welt-456.5", &fa);
-  printf("FloatArray = %f %f\n", fa.f[0], fa.f[1]);
-
   trace = 1;
   pvInit(ac,av,&p);
+  if(trace) printf("This is the Lua pvserver\n");
   /* here you may interpret ac,av and set p->user to your data */
   // initialize cleanup
   for(int i=0; i<MAX_CLIENTS; i++)
