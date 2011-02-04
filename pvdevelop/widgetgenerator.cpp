@@ -45,9 +45,9 @@ static int isConstructor = 1;
 
 #define MAX_IVAL 20
 
-static QWidget *theroot;
+QWidget *theroot;
 
-static QWidget *findChild(const char *item) // Yes I know: It's a dirty hack                                                    // because of MSDEV 6.0 :-)
+QWidget *findChild(const char *item) // Yes I know: It's a dirty hack                                                    // because of MSDEV 6.0 :-)
 {
   //printf("findChild(%s)\n",item);
   QWidget *ret;
@@ -88,7 +88,7 @@ static int createStrList(QObject *item)
           if(!rlist.at(isub)->objectName().isEmpty())
           {
             //printf("objectName=%s\n",
-            //      (const char *) rlist.at(isub)->objectName().toAscii());
+            //      (const char *) rlist.at(isub)->objectName().toUtf8());
             strlist.append(rlist.at(isub)->objectName());
             createStrList(rlist.at(isub));
           }
@@ -209,25 +209,42 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
 {
   QString item;
   QWidget *widget;
+  int ind;
 
   theroot = root;
-  fprintf(fout,"// our mask contains the following objects\n");
-  fprintf(fout,"enum {\n");
-  fprintf(fout,"  ID_MAIN_WIDGET = 0,\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  ID_MAIN_WIDGET = 0\n");
+  }
+  else
+  {
+    fprintf(fout,"// our mask contains the following objects\n");
+    fprintf(fout,"enum {\n");
+    fprintf(fout,"  ID_MAIN_WIDGET = 0,\n");
+  }
 
   // loop over widgets
+  ind = 1;
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); // root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); // root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
-      fprintf(fout,"  %s,\n",(const char *) widget->objectName().toAscii());
+      if(opt.script == PV_LUA)
+      {
+        fprintf(fout,"  %s = %d\n",(const char *) widget->objectName().toUtf8(), ind);
+      }
+      else
+      {
+        fprintf(fout,"  %s,\n",(const char *) widget->objectName().toUtf8());
+      }
     }
     else
     {
-      printf("WARNING generateWidgetEnum:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateWidgetEnum:findChild=%s not found\n",(const char *) item.toUtf8());
     }
+    ind++;
   }
 
   // may be we have to include the layout BEGIN
@@ -256,7 +273,14 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
             start++;
             end = strchr(start,',');
             if(end != NULL) *end = '\0';
-            fprintf(fout,"  %s,\n",start);
+            if(opt.script == PV_LUA)
+            {
+              fprintf(fout,"  %s = %d\n",start,ind++);
+            }
+            else
+            {
+              fprintf(fout,"  %s,\n",start);
+            }
           }
         }
         else printf("too long layout string: %s\n",(const char *) txt.toUtf8().constData());
@@ -266,9 +290,17 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
   }
   // may be we have to include the layout END
 
-  fprintf(fout,"  ID_END_OF_WIDGETS\n");
-  fprintf(fout,"};\n");
-  fprintf(fout,"\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  ID_END_OF_WIDGETS = %d\n", ind);
+    fprintf(fout,"\n");
+  }
+  else
+  {
+    fprintf(fout,"  ID_END_OF_WIDGETS\n");
+    fprintf(fout,"};\n");
+    fprintf(fout,"\n");
+  }
   return 0;
 }
 
@@ -305,8 +337,21 @@ static const char *quote(QString &text)
 static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tabparentname)
 {
   QString qbuf,type,tooltip,whatsthis,statustip,text;
-  char buf[1024], itemname[512],parentname[512],*cptr;
+  char buf[1024], itemname[512],parentname[512],*cptr,prefix[16],midfix[16],postfix[16];
   int x,y,w,h;
+
+  if(opt.script == PV_LUA)
+  {
+    strcpy(prefix,"  pv.");
+    strcpy(midfix,"pv.");
+    strcpy(postfix,"");
+  }
+  else
+  {
+    strcpy(prefix,"  ");
+    strcpy(midfix,"");
+    strcpy(postfix,";");
+  }
 
   if(fout == NULL || widget == NULL)
   {
@@ -315,7 +360,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   }
   // get values begin ######################################################
   qbuf = widget->statusTip(); // parse statusTip
-  strcpy(buf,qbuf.toAscii());
+  strcpy(buf,qbuf.toUtf8());
   cptr = strstr(buf,":");
   if(cptr != NULL) *cptr = '\0';
   type = buf;
@@ -332,13 +377,13 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   h = widget->height();
   strcpy(itemname,"error: too long");
   strcpy(parentname,"error: too long");
-  if(strlen(widget->objectName().toAscii()) < (sizeof(itemname)-1))
-    strcpy(itemname,widget->objectName().toAscii());
-  if(strlen(widget->parent()->objectName().toAscii()) < (sizeof(parentname)-1))
-    strcpy(parentname,widget->parent()->objectName().toAscii());
+  if(strlen(widget->objectName().toUtf8()) < (sizeof(itemname)-1))
+    strcpy(itemname,widget->objectName().toUtf8());
+  if(strlen(widget->parent()->objectName().toUtf8()) < (sizeof(parentname)-1))
+    strcpy(parentname,widget->parent()->objectName().toUtf8());
   // get properties end ####################################################
 
-  if(opt.arg_debug) printf("generateDefineMaskWidget(%s,%s)\n",(const char *) type.toAscii(), (const char *) widget->objectName().toAscii());
+  if(opt.arg_debug) printf("generateDefineMaskWidget(%s,%s)\n",(const char *) type.toUtf8(), (const char *) widget->objectName().toUtf8());
 
   if     (type == "TQWidget")
   {
@@ -351,42 +396,42 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     {
       QTabWidget *tab = (QTabWidget *) grandpa;
       QString txt = tab->tabText(tab->indexOf(widget));
-      fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,(const char *) tab->objectName().toUtf8() );
-      fprintf(fout,"  pvAddTab(p,%s,%s,\"%s\");\n",(const char *) tab->objectName().toUtf8() ,itemname,quote(txt));
+      fprintf(fout,"%spvQWidget(p,%s,%s)%s\n",prefix,itemname,(const char *) tab->objectName().toUtf8(),postfix);
+      fprintf(fout,"%spvAddTab(p,%s,%s,\"%s\")%s\n",prefix,(const char *) tab->objectName().toUtf8() ,itemname,quote(txt),postfix);
     }
     else if(grandpa_parent != NULL && grandpa_parent->statusTip().startsWith("TQToolBox:"))
     {
       QToolBox *tool = (QToolBox *) grandpa_parent;
       QString txt = tool->itemText(tool->indexOf(widget));
-      fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,(const char *) tool->objectName().toUtf8());
-      fprintf(fout,"  pvAddTab(p,%s,%s,\"%s\");\n",(const char *) tool->objectName().toUtf8() ,itemname,quote(txt));
+      fprintf(fout,"%spvQWidget(p,%s,%s)%s\n",prefix,itemname,(const char *) tool->objectName().toUtf8(),postfix);
+      fprintf(fout,"%spvAddTab(p,%s,%s,\"%s\")%s\n",prefix,(const char *) tool->objectName().toUtf8() ,itemname,quote(txt),postfix);
     }
     else
     {
       printf("unknown ancestor of TQWidget\n");
-      fprintf(fout,"  pvQWidget(p,%s,%s);\n",itemname,tabparentname);
-      if(pa != NULL) printf("pa->statusTip=%s\n",(const char *) pa->statusTip().toAscii());
-      if(grandpa != NULL) printf("grandpa->statusTip=%s\n",(const char *) grandpa->statusTip().toAscii());
-      if(grandpa->parent() != NULL) printf("grandpa->parent()->statusTip=%s\n",(const char *) ((QWidget *) grandpa->parent())->statusTip().toAscii());
+      fprintf(fout,"%spvQWidget(p,%s,%s)%s\n",prefix,itemname,tabparentname,postfix);
+      if(pa != NULL) printf("pa->statusTip=%s\n",(const char *) pa->statusTip().toUtf8());
+      if(grandpa != NULL) printf("grandpa->statusTip=%s\n",(const char *) grandpa->statusTip().toUtf8());
+      if(grandpa->parent() != NULL) printf("grandpa->parent()->statusTip=%s\n",(const char *) ((QWidget *) grandpa->parent())->statusTip().toUtf8());
     }
     iitem++;
   }
   else if(type == "TQPushButton")
   {
-    fprintf(fout,"  pvQPushButton(p,%s,%s);\n",itemname,parentname);
+    fprintf(fout,"%spvQPushButton(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
     MyQPushButton *obj = (MyQPushButton *) widget;
     text = obj->text();
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    if(!text.isEmpty()) fprintf(fout,"%spvSetText(p,%s,\"%s\")%s\n",prefix,itemname, quote(text),postfix);
     iitem++;
   }
   else if(type == "TQLabel")
   {
     MyLabel *obj = (MyLabel *) widget;
     text = obj->text();
-    fprintf(fout,"  pvQLabel(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
+    fprintf(fout,"%spvQLabel(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    if(!text.isEmpty()) fprintf(fout,"%spvSetText(p,%s,\"%s\")%s\n",prefix,itemname, quote(text),postfix);
     // alignment
     QString align;
     int flags = 0;
@@ -428,7 +473,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(align.contains("Align"))
     {
       if(align.contains("AlignLeft|AlignVCenter")) flags = 0; 
-      if(flags) fprintf(fout,"  pvSetAlignment(p,%s,%s);\n",itemname,(const char *) align.toUtf8());
+      if(flags) fprintf(fout,"%spvSetAlignment(p,%s,%s%s)%s\n",prefix,itemname,midfix,(const char *) align.toUtf8(),postfix);
     }
 
     iitem++;
@@ -437,20 +482,20 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   {
     MyLineEdit *obj = (MyLineEdit *) widget;
     text = obj->text();
-    fprintf(fout,"  pvQLineEdit(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
+    fprintf(fout,"%spvQLineEdit(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    if(!text.isEmpty()) fprintf(fout,"%spvSetText(p,%s,\"%s\")%s\n",prefix,itemname, quote(text),postfix);
     if(obj->isReadOnly())
     {
-      fprintf(fout,"  pvSetEditable(p,%s,0);\n",itemname);
+      fprintf(fout,"%spvSetEditable(p,%s,0)%s\n",prefix,itemname,postfix);
     }
     if(obj->echoMode() == QLineEdit::Password)
     {
-      fprintf(fout,"  pvSetEchoMode(p,%s,2);\n",itemname);
+      fprintf(fout,"%spvSetEchoMode(p,%s,2)%s\n",prefix,itemname,postfix);
     }
     else if(obj->echoMode() == QLineEdit::NoEcho)
     {
-      fprintf(fout,"  pvSetEchoMode(p,%s,0);\n",itemname);
+      fprintf(fout,"%spvSetEchoMode(p,%s,0)%s\n",prefix,itemname,postfix);
     }
     // alignment
     QString align;
@@ -493,7 +538,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(align.contains("Align"))
     {
       if(align.contains("AlignLeft|AlignVCenter")) flags = 0; 
-      if(flags) fprintf(fout,"  pvSetAlignment(p,%s,%s);\n",itemname,(const char *) align.toUtf8());
+      if(flags) fprintf(fout,"%spvSetAlignment(p,%s,%s%s)%s\n",prefix,itemname,midfix,(const char *) align.toUtf8(),postfix);
     }
     
     iitem++;
@@ -508,32 +553,32 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     else                  editable = 1;
     tooltip = obj->toolTip();
     maxlines = obj->maxlines;
-    fprintf(fout,"  pvQMultiLineEdit(p,%s,%s,%d,%d);\n",itemname,parentname,editable,maxlines);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQMultiLineEdit(p,%s,%s,%d,%d)%s\n",prefix,itemname,parentname,editable,maxlines,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQTextBrowser")
   {
-    fprintf(fout,"  pvQTextBrowser(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQTextBrowser(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQListView")
   {
     MyListView *obj = (MyListView *) widget;
-    fprintf(fout,"  pvQListView(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQListView(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     if     (obj->selectionMode() == QAbstractItemView::MultiSelection)
     {
-      fprintf(fout,"  pvSetMultiSelection(p,%s,1);\n",itemname);
+      fprintf(fout,"%spvSetMultiSelection(p,%s,1)%s\n",prefix,itemname,postfix);
     }
     else if(obj->selectionMode() == QAbstractItemView::NoSelection)
     {
-      fprintf(fout,"  pvSetMultiSelection(p,%s,2);\n",itemname);
+      fprintf(fout,"%spvSetMultiSelection(p,%s,2)%s\n",prefix,itemname,postfix);
     }
     else
     {
-      fprintf(fout,"  pvSetMultiSelection(p,%s,0);\n",itemname);
+      fprintf(fout,"%spvSetMultiSelection(p,%s,0)%s\n",prefix,itemname,postfix);
     }
     iitem++;
   }
@@ -549,8 +594,8 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if((int) obj->insertPolicy() == 3) insertionpolicy = "AtBottom";
     if((int) obj->insertPolicy() == 4) insertionpolicy = "AfterCurrent";
     if((int) obj->insertPolicy() == 5) insertionpolicy = "BeforeCurrent";
-    fprintf(fout,"  pvQComboBox(p,%s,%s,%d,%s);\n",itemname,parentname,editable,(const char *) insertionpolicy.toAscii());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQComboBox(p,%s,%s,%d,%s%s)%s\n",prefix,itemname,parentname,editable,midfix,(const char *) insertionpolicy.toUtf8(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQLCDNumber")
@@ -565,8 +610,8 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(obj->mode() == QLCDNumber::Dec) mode = "Dec";
     if(obj->mode() == QLCDNumber::Oct) mode = "Oct";
     if(obj->mode() == QLCDNumber::Bin) mode = "Bin";
-    fprintf(fout,"  pvQLCDNumber(p,%s,%s,%d,%s,%s);\n",itemname,parentname,numdigits, (const char *) style.toAscii(), (const char *) mode.toAscii());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQLCDNumber(p,%s,%s,%d,%s%s,%s%s)%s\n",prefix,itemname,parentname,numdigits,midfix, (const char *) style.toUtf8(),midfix, (const char *) mode.toUtf8(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQSlider")
@@ -578,75 +623,74 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     int maxvalue = obj->maximum();
     QString orientation = "Vertical";
     if(obj->orientation() == Qt::Horizontal ) orientation = "Horizontal";
-    fprintf(fout,"  pvQSlider(p,%s,%s,%d,%d,%d,%d,%s);\n",itemname,parentname,minvalue,maxvalue,pagestep,value,(const char *) orientation.toAscii());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQSlider(p,%s,%s,%d,%d,%d,%d,%s%s)%s\n",prefix,itemname,parentname,minvalue,maxvalue,pagestep,value,midfix,(const char *) orientation.toUtf8(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQButtonGroup")
   {
     MyButtonGroup *obj = (MyButtonGroup *) widget;
     text = obj->title();
-    fprintf(fout,"  pvQButtonGroup(p,%s,%s,-1,HORIZONTAL,\"%s\");\n",itemname,parentname,quote(text));
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQButtonGroup(p,%s,%s,-1,%sHORIZONTAL,\"%s\")%s\n",prefix,itemname,parentname,midfix,quote(text),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQGroupBox")
   {
     MyGroupBox *obj = (MyGroupBox *) widget;
     text = obj->title();
-    fprintf(fout,"  pvQGroupBox(p,%s,%s,-1,HORIZONTAL,\"%s\");\n",itemname,parentname,quote(text));
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQGroupBox(p,%s,%s,-1,%sHORIZONTAL,\"%s\")%s\n",prefix,itemname,parentname,midfix,quote(text),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQListBox")
   {
     MyListBox *obj = (MyListBox *) widget;
-    fprintf(fout,"  pvQListBox(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQListBox(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     if     (obj->selectionMode() == QAbstractItemView::MultiSelection)
     {
-      fprintf(fout,"  pvSetMultiSelection(p,%s,1);\n",itemname);
+      fprintf(fout,"%spvSetMultiSelection(p,%s,1)%s\n",prefix,itemname,postfix);
     }
     else if(obj->selectionMode() == QAbstractItemView::NoSelection)
     {
-      fprintf(fout,"  pvSetMultiSelection(p,%s,2);\n",itemname);
+      fprintf(fout,"%spvSetMultiSelection(p,%s,2)%s\n",prefix,itemname,postfix);
     }
     else
     {
-      fprintf(fout,"  pvSetMultiSelection(p,%s,0);\n",itemname);
+      fprintf(fout,"%spvSetMultiSelection(p,%s,0)%s\n",prefix,itemname,postfix);
     }
     iitem++;
   }
   else if(type == "TQIconView")
   {
-    fprintf(fout,"  pvQIconView(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQIconView(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQTable")
   {
     MyTable *obj = (MyTable *) widget;
-    fprintf(fout,"  pvQTable(p,%s,%s,%d,%d);\n",itemname,parentname,obj->rowCount(),obj->columnCount());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    //if(obj->isReadOnly())
+    fprintf(fout,"%spvQTable(p,%s,%s,%d,%d)%s\n",prefix,itemname,parentname,obj->rowCount(),obj->columnCount(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     if(!obj->isEnabled())
     {
-      fprintf(fout,"  pvSetEditable(p,%s,0);\n",itemname);
+      fprintf(fout,"%spvSetEditable(p,%s,0)%s\n",prefix,itemname,postfix);
     }
     iitem++;
   }
   else if(type == "TQSpinBox")
   {
     MySpinBox *obj = (MySpinBox *) widget;
-    fprintf(fout,"  pvQSpinBox(p,%s,%s,%d,%d,1);\n",itemname,parentname,obj->minimum(),obj->maximum());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQSpinBox(p,%s,%s,%d,%d,1)%s\n",prefix,itemname,parentname,obj->minimum(),obj->maximum(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQDial")
   {
     MyDial *obj = (MyDial *) widget;
-    fprintf(fout,"  pvQDial(p,%s,%s,%d,%d,%d,%d);\n",itemname,parentname,obj->minimum(),obj->maximum(),obj->pageStep(),obj->value());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQDial(p,%s,%s,%d,%d,%d,%d)%s\n",prefix,itemname,parentname,obj->minimum(),obj->maximum(),obj->pageStep(),obj->value(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQProgressBar")
@@ -654,20 +698,20 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     MyProgressBar *obj = (MyProgressBar *) widget;
     QString orientation = "Horizontal";
     if(obj->orientation() == Qt::Vertical ) orientation = "Vertical";
-    fprintf(fout,"  pvQProgressBar(p,%s,%s,%d,%s);\n",itemname,parentname,obj->maximum(),(const char *) orientation.toAscii());
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQProgressBar(p,%s,%s,%d,%s%s)%s\n",prefix,itemname,parentname,obj->maximum(),midfix,(const char *) orientation.toUtf8(),postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQRadio")
   {
     MyRadioButton *obj = (MyRadioButton *) widget;
     text = obj->text();
-    fprintf(fout,"  pvQRadioButton(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
+    fprintf(fout,"%spvQRadioButton(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    if(!text.isEmpty()) fprintf(fout,"%spvSetText(p,%s,\"%s\")%s\n",prefix,itemname, quote(text),postfix);
     if(obj->isChecked())
     {
-      fprintf(fout,"  pvSetChecked(p,%s,1);\n",itemname);
+      fprintf(fout,"%spvSetChecked(p,%s,1)%s\n",prefix,itemname,postfix);
     }
     iitem++;
   }
@@ -675,12 +719,12 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   {
     MyCheckBox *obj = (MyCheckBox *) widget;
     text = obj->text();
-    fprintf(fout,"  pvQCheckBox(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    if(!text.isEmpty()) fprintf(fout,"  pvSetText(p,%s,\"%s\");\n",itemname, quote(text));
+    fprintf(fout,"%spvQCheckBox(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    if(!text.isEmpty()) fprintf(fout,"%spvSetText(p,%s,\"%s\")%s\n",prefix,itemname, quote(text),postfix);
     if(obj->isChecked())
     {
-      fprintf(fout,"  pvSetChecked(p,%s,1);\n",itemname);
+      fprintf(fout,"%spvSetChecked(p,%s,1)%s\n",prefix,itemname,postfix);
     }
     iitem++;
   }
@@ -699,104 +743,94 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(obj->frameShadow() == QFrame::Sunken)     shadow = "Sunken";
     int linewidth = obj->lineWidth();
     int margin = 1; //obj->margin();
-    fprintf(fout,"  pvQFrame(p,%s,%s,%s,%s,%d,%d);\n",itemname,parentname,(const char *) shape.toAscii(), (const char *) shadow.toAscii(), linewidth, margin);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQFrame(p,%s,%s,%s%s,%s%s,%d,%d)%s\n",prefix,itemname,parentname,midfix,(const char *) shape.toUtf8(),midfix, (const char *) shadow.toUtf8(), linewidth, margin,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQDraw")
   {
-    fprintf(fout,"  pvQDraw(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQDraw(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQImage")
   {
     if(whatsthis.contains(".bmp") || whatsthis.contains(".BMP"))
     {
-      fprintf(fout,"  pvQImage(p,%s,%s,\"%s\",&w,&h,&depth);\n",itemname,parentname,(const char *) whatsthis.toAscii());
-      fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+      fprintf(fout,"%spvQImage(p,%s,%s,\"%s\",&w,&h,&depth)%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     }
     else
     {
-      fprintf(fout,"  pvDownloadFile(p,\"%s\");\n",(const char *) whatsthis.toAscii());
-      fprintf(fout,"  pvQImage(p,%s,%s,\"%s\",&w,&h,&depth);\n",itemname,parentname,(const char *) whatsthis.toAscii());
-      fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+      fprintf(fout,"%spvDownloadFile(p,\"%s\")%s\n",prefix,(const char *) whatsthis.toUtf8(),postfix);
+      fprintf(fout,"%spvQImage(p,%s,%s,\"%s\",&w,&h,&depth)%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     }
     iitem++;
   }
   else if(type == "TQGl")
   {
-    fprintf(fout,"  pvQGL(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    fprintf(fout,"  pvGlBegin(p,%s);\n",itemname);
+    fprintf(fout,"%spvQGL(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    fprintf(fout,"%spvGlBegin(p,%s)%s\n",prefix,itemname,postfix);
     fprintf(fout,"  initializeGL(p);    // (todo: write your gl initialization routine) see example\n");
     fprintf(fout,"  resizeGL(p,%d,%d);  // (todo: write your resize routine) see example\n",w,h);
-    fprintf(fout,"  pvGlEnd(p);\n");
+    fprintf(fout,"%spvGlEnd(p)%s\n",postfix,postfix);
     iitem++;
   }
   else if(type == "TQVtk")
   {
-    fprintf(fout,"  pvQVtkTclWidget(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQVtkTclWidget(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQTabWidget")
   {
     MyQTabWidget *obj = (MyQTabWidget *) widget;
-    fprintf(fout,"  pvQTabWidget(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQTabWidget(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     int tabposition = 0;
     if(obj->tabPosition() == QTabWidget::South) tabposition = 1;
     if(obj->tabPosition() == QTabWidget::West)  tabposition = 2;
     if(obj->tabPosition() == QTabWidget::East)  tabposition = 3;
     if(tabposition != 0)
     {
-      fprintf(fout,"  pvSetTabPosition(p,%s,%d);\n",itemname,tabposition);
+      fprintf(fout,"%spvSetTabPosition(p,%s,%d)%s\n",prefix,itemname,tabposition,postfix);
     }
     iitem++;
   }
   else if(type == "TQToolBox")
   {
-    fprintf(fout,"  pvQToolBox(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    //int tabposition = 0;
-    //if(tabposition != 0)
-    //{
-    //  fprintf(fout,"  pvSetTabPosition(p,%s,%d);\n",itemname,tabposition);
-    //}
+    fprintf(fout,"%spvQToolBox(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQwtPlotWidget")
   {
     QwtPlotWidget *obj = (QwtPlotWidget *) widget;
-    fprintf(fout,"  pvQwtPlotWidget(p,%s,%s,%d,%d);\n",itemname,parentname,obj->nCurves,obj->nMarker);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQwtPlotWidget(p,%s,%s,%d,%d)%s\n",prefix,itemname,parentname,obj->nCurves,obj->nMarker,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     QColor c = obj->canvasBackground();
-    fprintf(fout,"  qpwSetCanvasBackground(p,%s,%d,%d,%d);\n",itemname,c.red(),c.green(),c.blue());
-    //qwtmurx
-    if(obj->axisEnabled(QwtPlot::yLeft))   fprintf(fout,"  qpwEnableAxis(p,%s,yLeft);\n",itemname);
-    if(obj->axisEnabled(QwtPlot::yRight))  fprintf(fout,"  qpwEnableAxis(p,%s,yRight);\n",itemname);
-    if(obj->axisEnabled(QwtPlot::xBottom)) fprintf(fout,"  qpwEnableAxis(p,%s,xBottom);\n",itemname);
-    if(obj->axisEnabled(QwtPlot::xTop))    fprintf(fout,"  qpwEnableAxis(p,%s,xTop);\n",itemname);
-    //if(obj->yLeftAxisEnabled())   fprintf(fout,"  qpwEnableAxis(p,%s,yLeft);\n",itemname);
-    //if(obj->yRightAxisEnabled())  fprintf(fout,"  qpwEnableAxis(p,%s,yRight);\n",itemname);
-    //if(obj->xBottomAxisEnabled()) fprintf(fout,"  qpwEnableAxis(p,%s,xBottom);\n",itemname);
-    //if(obj->xTopAxisEnabled())    fprintf(fout,"  qpwEnableAxis(p,%s,xTop);\n",itemname);
+    fprintf(fout,"%sqpwSetCanvasBackground(p,%s,%d,%d,%d)%s\n",prefix,itemname,c.red(),c.green(),c.blue(),postfix);
+    if(obj->axisEnabled(QwtPlot::yLeft))   fprintf(fout,"%sqpwEnableAxis(p,%s,%syLeft)%s\n",prefix,itemname,midfix,postfix);
+    if(obj->axisEnabled(QwtPlot::yRight))  fprintf(fout,"%sqpwEnableAxis(p,%s,%syRight)%s\n",prefix,itemname,midfix,postfix);
+    if(obj->axisEnabled(QwtPlot::xBottom)) fprintf(fout,"%sqpwEnableAxis(p,%s,%sxBottom)%s\n",prefix,itemname,midfix,postfix);
+    if(obj->axisEnabled(QwtPlot::xTop))    fprintf(fout,"%sqpwEnableAxis(p,%s,%sxTop)%s\n",prefix,itemname,midfix,postfix);
     text = obj->title().text();
-    if(!text.isEmpty()) fprintf(fout,"  qpwSetTitle(p,%s,\"%s\");\n",itemname,quote(text));
+    if(!text.isEmpty()) fprintf(fout,"%sqpwSetTitle(p,%s,\"%s\")%s\n",prefix,itemname,quote(text),postfix);
     iitem++;
   }
   else if(type == "TQwtScale")
   {
     MyQwtScale *obj = (MyQwtScale *) widget;
-    fprintf(fout,"  pvQwtScale(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    if(obj->scaleDraw()->alignment() == QwtScaleDraw::LeftScale)   fprintf(fout,"  qwtScaleSetPosition(p,%s,ScaleLeft);\n",itemname);
-    if(obj->scaleDraw()->alignment() == QwtScaleDraw::RightScale)   fprintf(fout,"  qwtScaleSetPosition(p,%s,ScaleRight);\n",itemname);
-    if(obj->scaleDraw()->alignment() == QwtScaleDraw::TopScale)   fprintf(fout,"  qwtScaleSetPosition(p,%s,ScaleTop);\n",itemname);
-    if(obj->scaleDraw()->alignment() == QwtScaleDraw::BottomScale)   fprintf(fout,"  qwtScaleSetPosition(p,%s,ScaleBottom);\n",itemname);
+    fprintf(fout,"%spvQwtScale(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    if(obj->scaleDraw()->alignment() == QwtScaleDraw::LeftScale)   fprintf(fout,"%sqwtScaleSetPosition(p,%s,ScaleLeft)%s\n",prefix,itemname,postfix);
+    if(obj->scaleDraw()->alignment() == QwtScaleDraw::RightScale)   fprintf(fout,"%sqwtScaleSetPosition(p,%s,ScaleRight)%s\n",prefix,itemname,postfix);
+    if(obj->scaleDraw()->alignment() == QwtScaleDraw::TopScale)   fprintf(fout,"%sqwtScaleSetPosition(p,%s,ScaleTop)%s\n",prefix,itemname,postfix);
+    if(obj->scaleDraw()->alignment() == QwtScaleDraw::BottomScale)   fprintf(fout,"%sqwtScaleSetPosition(p,%s,ScaleBottom)%s\n",prefix,itemname,postfix);
     text = obj->title().text();
-    if(!text.isEmpty()) fprintf(fout,"  qwtScaleSetTitle(p,%s,\"%s\");\n",itemname,quote(text));
+    if(!text.isEmpty()) fprintf(fout,"%sqwtScaleSetTitle(p,%s,\"%s\")%s\n",prefix,itemname,quote(text),postfix);
     text = obj->title().font().family();
     int size      = obj->title().font().pointSize();
     int bold, italic, underline, strikeout;
@@ -805,163 +839,119 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(obj->title().font().italic())    italic = 1;
     if(obj->title().font().underline()) underline = 1;
     if(obj->title().font().strikeOut()) strikeout = 1;
-    if(obj->statusTip().contains(":font:")) fprintf(fout,"  qwtScaleSetTitleFont(p,%s,\"%s\",%d,%d,%d,%d,%d);\n",itemname,quote(text),size,bold,italic,underline,strikeout);
+    if(obj->statusTip().contains(":font:")) fprintf(fout,"%sqwtScaleSetTitleFont(p,%s,\"%s\",%d,%d,%d,%d,%d)%s\n",prefix,itemname,quote(text),size,bold,italic,underline,strikeout,postfix);
     QColor c = obj->title().color();
-    fprintf(fout,"  qwtScaleSetTitleColor(p,%s,%d,%d,%d);\n",itemname,c.red(),c.green(),c.blue());
+    fprintf(fout,"%sqwtScaleSetTitleColor(p,%s,%d,%d,%d)%s\n",prefix,itemname,c.red(),c.green(),c.blue(),postfix);
     iitem++;
   }
   else if(type == "TQwtThermo")
   {
-    fprintf(fout,"  pvQwtThermo(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQwtThermo(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQwtKnob")
   {
     MyQwtKnob *obj = (MyQwtKnob *) widget;
-    fprintf(fout,"  pvQwtKnob(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-/*
-    if(readOnly == "true" ) fout << "  qwtKnobSetReadOnly(p," << id << ",1);" << ENDL;
-    if(readOnly == "false") fout << "  qwtKnobSetReadOnly(p," << id << ",0);" << ENDL;
-    if(mass     != "") fout << "  qwtKnobSetMass(p," << id << "," << mass << ");" << ENDL;
-    if(orientation != "") fout << "  qwtKnobSetOrientation(p," << id << "," << orientation << ");" << ENDL;
-*/
-    fprintf(fout,"  qwtKnobSetKnobWidth(p,%s,%d);\n",itemname,obj->knobWidth());
-    fprintf(fout,"  qwtKnobSetBorderWidth(p,%s,%d);\n",itemname,obj->borderWidth());
-    fprintf(fout,"  qwtKnobSetTotalAngle(p,%s,%f);\n",itemname,obj->totalAngle());
+    fprintf(fout,"%spvQwtKnob(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    fprintf(fout,"%sqwtKnobSetKnobWidth(p,%s,%d)%s\n",prefix,itemname,obj->knobWidth(),postfix);
+    fprintf(fout,"%sqwtKnobSetBorderWidth(p,%s,%d)%s\n",prefix,itemname,obj->borderWidth(),postfix);
+    fprintf(fout,"%sqwtKnobSetTotalAngle(p,%s,%f)%s\n",prefix,itemname,obj->totalAngle(),postfix);
     if(obj->symbol() == QwtKnob::Line)
-      fprintf(fout,"  qwtKnobSetSymbol(p,%s,KnobLine);\n",itemname);
+      fprintf(fout,"%sqwtKnobSetSymbol(p,%s,%sKnobLine)%s\n",prefix,itemname,midfix,postfix);
     else 
-      fprintf(fout,"  qwtKnobSetSymbol(p,%s,KnobDot);\n",itemname);
+      fprintf(fout,"%sqwtKnobSetSymbol(p,%s,%sKnobDot)%s\n",prefix,itemname,midfix,postfix);
     iitem++;
   }
   else if(type == "TQwtCounter")
   {
     MyQwtCounter *obj = (MyQwtCounter *) widget;
-    fprintf(fout,"  pvQwtCounter(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-    fprintf(fout,"  qwtCounterSetNumButtons(p,%s,%d);\n",itemname,obj->numButtons());
-    fprintf(fout,"  qwtCounterSetStep(p,%s,%f);\n",itemname,obj->step());
-    fprintf(fout,"  qwtCounterSetMinValue(p,%s,%f);\n",itemname,obj->minVal());
-    fprintf(fout,"  qwtCounterSetMaxValue(p,%s,%f);\n",itemname,obj->maxVal());
-    fprintf(fout,"  qwtCounterSetStepButton1(p,%s,%d);\n",itemname,obj->stepButton1());
-    fprintf(fout,"  qwtCounterSetStepButton2(p,%s,%d);\n",itemname,obj->stepButton2());
-    fprintf(fout,"  qwtCounterSetStepButton3(p,%s,%d);\n",itemname,obj->stepButton3());
-    fprintf(fout,"  qwtCounterSetValue(p,%s,%f);\n",itemname,obj->value());
+    fprintf(fout,"%spvQwtCounter(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    fprintf(fout,"%sqwtCounterSetNumButtons(p,%s,%d)%s\n",prefix,itemname,obj->numButtons(),postfix);
+    fprintf(fout,"%sqwtCounterSetStep(p,%s,%f)%s\n",prefix,itemname,obj->step(),postfix);
+    fprintf(fout,"%sqwtCounterSetMinValue(p,%s,%f)%s\n",prefix,itemname,obj->minVal(),postfix);
+    fprintf(fout,"%sqwtCounterSetMaxValue(p,%s,%f)%s\n",prefix,itemname,obj->maxVal(),postfix);
+    fprintf(fout,"%sqwtCounterSetStepButton1(p,%s,%d)%s\n",prefix,itemname,obj->stepButton1(),postfix);
+    fprintf(fout,"%sqwtCounterSetStepButton2(p,%s,%d)%s\n",prefix,itemname,obj->stepButton2(),postfix);
+    fprintf(fout,"%sqwtCounterSetStepButton3(p,%s,%d)%s\n",prefix,itemname,obj->stepButton3(),postfix);
+    fprintf(fout,"%sqwtCounterSetValue(p,%s,%f)%s\n",prefix,itemname,obj->value(),postfix);
     iitem++;
   }
   else if(type == "TQwtWheel")
   {
     MyQwtWheel *obj = (MyQwtWheel *) widget;
-    fprintf(fout,"  pvQwtWheel(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-/*
-    if(readOnly == "true" ) fout << "  qwtWheelSetReadOnly(p," << id << ",1);" << ENDL;
-    if(readOnly == "false") fout << "  qwtWheelSetReadOnly(p," << id << ",0);" << ENDL;
-*/
-    fprintf(fout,"  qwtWheelSetMass(p,%s,%f);\n",itemname,obj->mass());
-/*
-    if(orientation != "") fout << "  qwtWheelSetOrientation(p," << id << "," << orientation << ");" << ENDL;
-*/
-    fprintf(fout,"  qwtWheelSetTotalAngle(p,%s,%f);\n",itemname,obj->viewAngle());
-    fprintf(fout,"  qwtWheelSetViewAngle(p,%s,%f);\n",itemname,obj->viewAngle());
-    fprintf(fout,"  qwtWheelSetTickCnt(p,%s,%d);\n",itemname,obj->tickCnt());
-    fprintf(fout,"  qwtWheelSetInternalBorder(p,%s,%d);\n",itemname,obj->internalBorder());
+    fprintf(fout,"%spvQwtWheel(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    fprintf(fout,"%sqwtWheelSetMass(p,%s,%f)%s\n",prefix,itemname,obj->mass(),postfix);
+    fprintf(fout,"%sqwtWheelSetTotalAngle(p,%s,%f)%s\n",prefix,itemname,obj->viewAngle(),postfix);
+    fprintf(fout,"%sqwtWheelSetViewAngle(p,%s,%f)%s\n",prefix,itemname,obj->viewAngle(),postfix);
+    fprintf(fout,"%sqwtWheelSetTickCnt(p,%s,%d)%s\n",prefix,itemname,obj->tickCnt(),postfix);
+    fprintf(fout,"%sqwtWheelSetInternalBorder(p,%s,%d)%s\n",prefix,itemname,obj->internalBorder(),postfix);
     iitem++;
   }
   else if(type == "TQwtSlider")
   {
     MyQwtSlider *obj = (MyQwtSlider *) widget;
-    fprintf(fout,"  pvQwtSlider(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-/*
-    if(readOnly == "true" ) fout << "  qwtSliderSetReadOnly(p," << id << ",1);" << ENDL;
-    if(readOnly == "false") fout << "  qwtSliderSetReadOnly(p," << id << ",0);" << ENDL;
-    if(mass     != "") fout << "  qwtSliderSetMass(p," << id << "," << mass << ");" << ENDL;
-    if(orientation != "") fout << "  qwtSliderSetOrientation(p," << id << "," << orientation << ");" << ENDL;
-*/
-    fprintf(fout,"  qwtSliderSetThumbLength(p,%s,%d);\n",itemname,obj->thumbLength());
-    fprintf(fout,"  qwtSliderSetThumbWidth(p,%s,%d);\n",itemname,obj->thumbWidth());
-    fprintf(fout,"  qwtSliderSetBorderWidth(p,%s,%d);\n",itemname,obj->borderWidth());
-    //enum BGSTYLE { BgTrough = 0x1, BgSlot = 0x2, BgBoth = BgTrough | BgSlot};
+    fprintf(fout,"%spvQwtSlider(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    fprintf(fout,"%sqwtSliderSetThumbLength(p,%s,%d)%s\n",prefix,itemname,obj->thumbLength(),postfix);
+    fprintf(fout,"%sqwtSliderSetThumbWidth(p,%s,%d)%s\n",prefix,itemname,obj->thumbWidth(),postfix);
+    fprintf(fout,"%sqwtSliderSetBorderWidth(p,%s,%d)%s\n",prefix,itemname,obj->borderWidth(),postfix);
     if(obj->bgStyle() == QwtSlider::BgTrough)
-      fprintf(fout,"  qwtSliderSetBgStyle(p,%s,SliderBgTrough);\n",itemname);
+      fprintf(fout,"%sqwtSliderSetBgStyle(p,%s,%sSliderBgTrough)%s\n",prefix,itemname,midfix,postfix);
     if(obj->bgStyle() == QwtSlider::BgSlot)
-      fprintf(fout,"  qwtSliderSetBgStyle(p,%s,SliderBgSlot);\n",itemname);
+      fprintf(fout,"%sqwtSliderSetBgStyle(p,%s,%sSliderBgSlot)%s\n",prefix,itemname,midfix,postfix);
     if(obj->bgStyle() == QwtSlider::BgBoth)
-      fprintf(fout,"  qwtSliderSetBgStyle(p,%s,SliderBgBoth);\n",itemname);
-    //enum ScalePos { None, Left, Right, Top, Bottom };
-    //qwtmurx
+      fprintf(fout,"%sqwtSliderSetBgStyle(p,%s,%sSliderBgBoth)%s\n",prefix,itemname,midfix,postfix);
     if(obj->scalePosition() == QwtSlider::NoScale)
-      fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderNone);\n",itemname);
+      fprintf(fout,"%sqwtSliderSetScalePos(p,%s,%sSliderNone)%s\n",prefix,itemname,midfix,postfix);
     if(obj->scalePosition() == QwtSlider::LeftScale)
-      fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderLeft);\n",itemname);
+      fprintf(fout,"%sqwtSliderSetScalePos(p,%s,%sSliderLeft)%s\n",prefix,itemname,midfix,postfix);
     if(obj->scalePosition() == QwtSlider::RightScale)
-      fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderRight);\n",itemname);
+      fprintf(fout,"%sqwtSliderSetScalePos(p,%s,%sSliderRight)%s\n",prefix,itemname,midfix,postfix);
     if(obj->scalePosition() == QwtSlider::TopScale)
-      fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderTop);\n",itemname);
+      fprintf(fout,"%sqwtSliderSetScalePos(p,%s,%sSliderTop)%s\n",prefix,itemname,midfix,postfix);
     if(obj->scalePosition() == QwtSlider::BottomScale)
-      fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderBottom);\n",itemname);
-    //if(obj->scalePosition() == QwtSlider::None)
-    //  fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderNone);\n",itemname);
-    //if(obj->scalePosition() == QwtSlider::Left)
-    //  fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderLeft);\n",itemname);
-    //if(obj->scalePosition() == QwtSlider::Right)
-    //  fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderRight);\n",itemname);
-    //if(obj->scalePosition() == QwtSlider::Top)
-    //  fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderTop);\n",itemname);
-    //if(obj->scalePosition() == QwtSlider::Bottom)
-    //  fprintf(fout,"  qwtSliderSetScalePos(p,%s,SliderBottom);\n",itemname);
-    fprintf(fout,"  qwtSliderSetValue(p,%s,%f);\n",itemname,obj->value());
+      fprintf(fout,"%sqwtSliderSetScalePos(p,%s,%sSliderBottom)%s\n",prefix,itemname,midfix,postfix);
+    fprintf(fout,"%sqwtSliderSetValue(p,%s,%f)%s\n",prefix,itemname,obj->value(),postfix);
     iitem++;
   }
   else if(type == "TQwtCompass")
   {
-    fprintf(fout,"  pvQwtCompass(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQwtCompass(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQwtAnalogClock")
   {
-    fprintf(fout,"  pvQwtAnalogClock(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQwtAnalogClock(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQwtDial")
   {
-    fprintf(fout,"  pvQwtDial(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQwtDial(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQDateEdit")
   {
-    fprintf(fout,"  pvQDateEdit(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQDateEdit(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQTimeEdit")
   {
-    fprintf(fout,"  pvQTimeEdit(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
-/*
-    if(timeDisplay != "")
-    {
-      int h,m,s,ap;
-      h = m = s = ap = 0;
-      if(strstr((const char *) timeDisplay, "Hours")   != NULL) h = 1;
-      if(strstr((const char *) timeDisplay, "Minutes") != NULL) m = 1;
-      if(strstr((const char *) timeDisplay, "Seconds") != NULL) s = 1;
-      if(strstr((const char *) timeDisplay, "AMPM")    != NULL) ap = 1;
-      fout << "  pvSetTimeEditDisplay(p," << id << "," << h << "," << m << "," << s << "," << ap << ");" << ENDL;
-    }
-*/
+    fprintf(fout,"%spvQTimeEdit(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQDateTimeEdit")
   {
-    fprintf(fout,"  pvQDateTimeEdit(p,%s,%s);\n",itemname,parentname);
-    fprintf(fout,"  pvSetGeometry(p,%s,%d,%d,%d,%d);\n",itemname,x,y,w,h);
+    fprintf(fout,"%spvQDateTimeEdit(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
   else if(type == "TQVbox")
@@ -982,7 +972,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     QColor col;
     if(type == "TQPushButton") col = widget->palette().color(QPalette::ButtonText);
     else                       col = widget->palette().color(QPalette::WindowText);
-    fprintf(fout,"  pvSetPaletteForegroundColor(p,%s,%d,%d,%d);\n",itemname,col.red(),col.green(),col.blue());
+    fprintf(fout,"%spvSetPaletteForegroundColor(p,%s,%d,%d,%d)%s\n",prefix,itemname,col.red(),col.green(),col.blue(),postfix);
   }
   if(statustip.contains(":background:"))
   {
@@ -995,17 +985,9 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
             type == "TQTextBrowser"   )
                                     col = widget->palette().color(QPalette::Base);
     else                            col = widget->palette().color(QPalette::Window);
-    fprintf(fout,"  pvSetPaletteBackgroundColor(p,%s,%d,%d,%d);\n",itemname,col.red(),col.green(),col.blue());
+    fprintf(fout,"%spvSetPaletteBackgroundColor(p,%s,%d,%d,%d)%s\n",prefix,itemname,col.red(),col.green(),col.blue(),postfix);
   }
   QFont f = widget->font();
-  /*
-  if(f.family()    != "Sans Serif" ||
-     f.pointSize() != 9 ||
-     f.bold()      != 0 ||
-     f.italic()    != 0 ||
-     f.underline() != 0 ||
-     f.strikeOut() != 0 )
-  */
   if(statustip.contains("font:"))
   {
     if(f.family()    == "MS Shell Dlg 2" &&
@@ -1018,13 +1000,13 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     }
     else
     {
-      fprintf(fout,"  pvSetFont(p,%s,\"%s\",%d,%d,%d,%d,%d);\n",
-        itemname,(const char *) f.family().toAscii(),
-        f.pointSize(),f.bold(),f.italic(),f.underline(),f.strikeOut());
+      fprintf(fout,"%spvSetFont(p,%s,\"%s\",%d,%d,%d,%d,%d)%s\n",prefix,
+        itemname,(const char *) f.family().toUtf8(),
+        f.pointSize(),f.bold(),f.italic(),f.underline(),f.strikeOut(),postfix);
     }
   }
-  if(!tooltip.isEmpty())   fprintf(fout,"  pvToolTip(p,%s,\"%s\");\n",itemname, quote(tooltip));
-  if(!whatsthis.isEmpty()) fprintf(fout,"  pvSetWhatsThis(p,%s,\"%s\");\n",itemname, quote(whatsthis));
+  if(!tooltip.isEmpty())   fprintf(fout,"%spvToolTip(p,%s,\"%s\")%s\n",prefix,itemname, quote(tooltip),postfix);
+  if(!whatsthis.isEmpty()) fprintf(fout,"%spvSetWhatsThis(p,%s,\"%s\")%s\n",prefix,itemname, quote(whatsthis),postfix);
   if(type == "TQLabel")
   {
     MyLabel *label = (MyLabel *) widget;
@@ -1048,25 +1030,25 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(label->frameShadow() == QFrame::Sunken) shadow = "Sunken";
 
     if(label->frameShape() != QFrame::NoFrame)
-      fprintf(fout,"  pvSetStyle(p,%s,%s,-1,-1,-1);\n",itemname,(const char *) shape.toAscii());
+      fprintf(fout,"%spvSetStyle(p,%s,%s%s,-1,-1,-1)%s\n",prefix,itemname,midfix,(const char *) shape.toUtf8(),postfix);
     if(label->frameShadow() != QFrame::Plain)
-      fprintf(fout,"  pvSetStyle(p,%s,-1,%s,-1,-1);\n",itemname,(const char *) shadow.toAscii());
+      fprintf(fout,"%spvSetStyle(p,%s,-1,%s%s,-1,-1)%s\n",prefix,itemname,midfix,(const char *) shadow.toUtf8(),postfix);
     if(linewidth != 1)
-      fprintf(fout,"  pvSetStyle(p,%s,-1,-1,%d,-1);\n",itemname,linewidth);
+      fprintf(fout,"%spvSetStyle(p,%s,-1,-1,%d,-1)%s\n",prefix,itemname,linewidth,postfix);
     if(margin != 0)
-      fprintf(fout,"  pvSetStyle(p,%s,-1,-1,-1,%d);\n",itemname,margin);
+      fprintf(fout,"%spvSetStyle(p,%s,-1,-1,-1,%d)%s\n",prefix,itemname,margin,postfix);
   }
   w = widget->minimumWidth();
   h = widget->minimumHeight();
   if(w > 0 || h > 0)
   {
-    fprintf(fout,"  pvSetMinSize(p,%s,%d,%d);\n",itemname,w,h);
+    fprintf(fout,"%spvSetMinSize(p,%s,%d,%d)%s\n",prefix,itemname,w,h,postfix);
   }
   w = widget->maximumWidth();
   h = widget->maximumHeight();
   if(w < 5000 || h < 5000)
   {
-    fprintf(fout,"  pvSetMaxSize(p,%s,%d,%d);\n",itemname,w,h);
+    fprintf(fout,"%spvSetMaxSize(p,%s,%d,%d)%s\n",prefix,itemname,w,h,postfix);
   }
   fprintf(fout,"\n");
   return 0;
@@ -1079,16 +1061,24 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
   char tabparentname[512];
 
   theroot = root;
-  fprintf(fout,"static int generated_defineMask(PARAM *p)\n");
-  fprintf(fout,"{\n");
-  fprintf(fout,"  int w,h,depth;\n");
-  fprintf(fout,"\n");
-  fprintf(fout,"  if(p == NULL) return 1;\n");
-  fprintf(fout,"  w = h = depth = strcmp(toolTip[0],whatsThis[0]);\n");
-  fprintf(fout,"  if(widgetType[0] == -1) return 1;\n");
-  fprintf(fout,"  if(w==h) depth=0; // fool the compiler\n");
-  fprintf(fout,"  pvStartDefinition(p,ID_END_OF_WIDGETS);\n");
-  fprintf(fout,"\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  pv.pvStartDefinition(p,ID_END_OF_WIDGETS)\n");
+    fprintf(fout,"\n");
+  }
+  else
+  {
+    fprintf(fout,"static int generated_defineMask(PARAM *p)\n");
+    fprintf(fout,"{\n");
+    fprintf(fout,"  int w,h,depth;\n");
+    fprintf(fout,"\n");
+    fprintf(fout,"  if(p == NULL) return 1;\n");
+    fprintf(fout,"  w = h = depth = strcmp(toolTip[0],whatsThis[0]);\n");
+    fprintf(fout,"  if(widgetType[0] == -1) return 1;\n");
+    fprintf(fout,"  if(w==h) depth=0; // fool the compiler\n");
+    fprintf(fout,"  pvStartDefinition(p,ID_END_OF_WIDGETS);\n");
+    fprintf(fout,"\n");
+  }
 
   strcpy(tabparentname,"0");
   // loop over widgets
@@ -1136,7 +1126,7 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
     }
     else
     {
-      printf("WARNING generateDefineMaskWidgets:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateDefineMaskWidgets:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
@@ -1144,7 +1134,14 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
   generateLayoutConstuctors(fout);
   generateLayoutDefinition(fout);
 
-  fprintf(fout,"  pvEndDefinition(p);\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  pv.pvEndDefinition(p);\n");
+  }
+  else
+  {
+    fprintf(fout,"  pvEndDefinition(p);\n");
+  }
 
   // generate TabOrder
   for(int i=0; i<tablist.size(); i++)
@@ -1153,9 +1150,15 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
     fprintf(fout,"%s",(const char *) item.toUtf8().constData());
   }
 
-  fprintf(fout,"  return 0;\n");
-  fprintf(fout,"}\n");
-  fprintf(fout,"\n");
+  if(opt.script == PV_LUA)
+  {
+  }
+  else
+  {
+    fprintf(fout,"  return 0;\n");
+    fprintf(fout,"}\n");
+    fprintf(fout,"\n");
+  }
   return 0;
 }
 
@@ -1165,27 +1168,49 @@ static int generateToolTip(FILE *fout, QWidget *root)
   QWidget *widget;
 
   theroot = root;
-  fprintf(fout,"  static const char *toolTip[] = {\n");
-  fprintf(fout,"  \"\",\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  toolTip = {}\n");
+    fprintf(fout,"  toolTip[0] = \"\"\n");
+  }
+  else
+  {
+    fprintf(fout,"  static const char *toolTip[] = {\n");
+    fprintf(fout,"  \"\",\n");
+  }
 
   // loop over widgets
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
       qbuf = widget->toolTip();
-      fprintf(fout,"  \"%s\",\n",quote(qbuf));
+      if(opt.script == PV_LUA)
+      {
+        fprintf(fout,"  toolTip[%d] = \"%s\"\n",i+1,quote(qbuf));
+      }
+      else
+      {
+        fprintf(fout,"  \"%s\",\n",quote(qbuf));
+      }
     }
     else
     {
-      printf("WARNING generateToolTip:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateToolTip:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
-  fprintf(fout,"  \"\"};\n");
-  fprintf(fout,"\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"\n");
+  }
+  else
+  {
+    fprintf(fout,"  \"\"};\n");
+    fprintf(fout,"\n");
+  }
 
   return 0;
 }
@@ -1196,28 +1221,49 @@ static int generateWhatsThis(FILE *fout, QWidget *root)
   QWidget *widget;
 
   theroot = root;
-  fprintf(fout,"  static const char *whatsThis[] = {\n");
-  fprintf(fout,"  \"\",\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  whatsThis = {}\n");
+    fprintf(fout,"  whatsThis[0] = \"\"\n");
+  }
+  else
+  {
+    fprintf(fout,"  static const char *whatsThis[] = {\n");
+    fprintf(fout,"  \"\",\n");
+  }
 
   // loop over widgets
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
       qbuf = widget->whatsThis();
-      fprintf(fout,"  \"%s\",\n",quote(qbuf));
+      if(opt.script == PV_LUA)
+      {
+        fprintf(fout,"  whatsThis[%d] = \"%s\"\n",i+1,quote(qbuf));
+      }
+      else
+      {
+        fprintf(fout,"  \"%s\",\n",quote(qbuf));
+      }
     }
     else
     {
-      printf("WARNING generateWhatsThis:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateWhatsThis:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
-  fprintf(fout,"  \"\"};\n");
-  fprintf(fout,"\n");
-
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"\n");
+  }
+  else
+  {
+    fprintf(fout,"  \"\"};\n");
+    fprintf(fout,"\n");
+  }
   return 0;
 }
 
@@ -1228,31 +1274,52 @@ static int generateWidgetType(FILE *fout, QWidget *root)
   char    buf[1024],*cptr;
 
   theroot = root;
-  fprintf(fout,"  static const int widgetType[ID_END_OF_WIDGETS+1] = {\n  0,\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  widgetType = {}\n");
+    fprintf(fout,"  widgetType[0] = pv.TQWidget\n");
+  }
+  else
+  {
+    fprintf(fout,"  static const int widgetType[ID_END_OF_WIDGETS+1] = {\n  0,\n");
+  }
 
   // loop over widgets
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
       qbuf = widget->statusTip(); // parse statusTip
-      strcpy(buf,qbuf.toAscii());
+      strcpy(buf,qbuf.toUtf8());
       cptr = strstr(buf,":");
       if(cptr != NULL) *cptr = '\0';
       if(strncmp(buf,"TQ",2) != 0) strcpy(buf,"0");
-      fprintf(fout,"  %s,\n",buf);
+      if(opt.script == PV_LUA)
+      {
+        fprintf(fout,"  widgetType[%d] = pv.%s\n",i+1,buf);
+      }
+      else
+      {
+        fprintf(fout,"  %s,\n",buf);
+      }
     }
     else
     {
-      printf("WARNING generateWidgetType:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateWidgetType:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
-  fprintf(fout,"  -1 };\n");
-  fprintf(fout,"\n");
-
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"\n");
+  }
+  else
+  {
+    fprintf(fout,"  -1 };\n");
+    fprintf(fout,"\n");
+  }
   return 0;
 }
 
@@ -1393,8 +1460,15 @@ static int generateGeneratedArea(FILE *fout, QWidget *root)
   strlist.clear();
   iitem = 1;
 
-  fprintf(fout,"// _begin_of_generated_area_ (do not edit -> use ui2pvc) -------------------\n");
-  fprintf(fout,"\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  --- begin construction of our mask -------------------------------------------------\n");
+  }
+  else
+  {
+    fprintf(fout,"// _begin_of_generated_area_ (do not edit -> use ui2pvc) -------------------\n");
+    fprintf(fout,"\n");
+  }
 
   getStrList(root);
   generateWidgetEnum(fout, root);
@@ -1403,7 +1477,14 @@ static int generateGeneratedArea(FILE *fout, QWidget *root)
   generateWidgetType(fout,root);
   generateDefineMaskWidgets(fout, root);
 
-  fprintf(fout,"// _end_of_generated_area_ (do not edit -> use ui2pvc) ---------------------\n");
+  if(opt.script == PV_LUA)
+  {
+    fprintf(fout,"  --- end construction of our mask ---------------------------------------------------\n");
+  }
+  else
+  {
+    fprintf(fout,"// _end_of_generated_area_ (do not edit -> use ui2pvc) ---------------------\n");
+  }
   strlist.clear();
   return 0;
 }
@@ -1438,8 +1519,16 @@ int generateMask(const char *filename, QWidget *root)
   fl = fl->next;
   while(fl != NULL)
   {
-    if(strstr(fl->line,"_begin_of_generated_area_") != NULL) found_begin = 1;
-    if(strstr(fl->line,"_end_of_generated_area_")   != NULL) found_end = 1;
+    if(opt.script == PV_LUA)
+    {
+      if(strstr(fl->line,"--- begin construction of our mask ---") != NULL) found_begin = 1;
+      if(strstr(fl->line,"--- end construction of our mask ---")   != NULL) found_end = 1;
+    }
+    else
+    {
+      if(strstr(fl->line,"_begin_of_generated_area_") != NULL) found_begin = 1;
+      if(strstr(fl->line,"_end_of_generated_area_")   != NULL) found_end = 1;
+    }
     if(found_begin == 0)
     {
       fprintf(fout,"%s",fl->line);
@@ -1466,8 +1555,19 @@ int generateMask(const char *filename, QWidget *root)
 static int isCommand(const char *cmd)
 {
   const char *cptr;
-  cptr = strstr(line,"pv");
-  if(cptr == NULL) return 0;
+  if(opt.script == PV_LUA)
+  {
+    cptr = strstr(line,"pv.pv");
+    if(cptr == NULL) return 0;
+    cptr++;
+    cptr++;
+    cptr++;
+  }
+  else
+  {
+    cptr = strstr(line,"pv");
+    if(cptr == NULL) return 0;
+  }
 
   for(int i=0; i<(int) (sizeof(line)-1); i++)
   {
@@ -1690,6 +1790,14 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
   int   pvTabOrder (PARAM *p, int id1, int id2)
 */
 
+static int isHorizontal(const char *cval)
+{
+  if(strstr(cval,"Horizontal") != NULL) return 1;
+  if(strstr(cval,"HORIZONTAL") != NULL) return 1;
+  if(strstr(cval,"horizontal") != NULL) return 1;
+  return 0;
+}
+
 static int getWidget(FILE *fin, QWidget *root)
 {
   char id[sizeof(line)],parent[sizeof(line)],text[sizeof(line)],cval[sizeof(line)];
@@ -1872,8 +1980,8 @@ static int getWidget(FILE *fin, QWidget *root)
       int ori = ival[4];
       if(ori == -1)
       {
-        if(cval[0] == 'h' || cval[0] == 'H') ori = Qt::Horizontal;
-        else                                 ori = Qt::Vertical;
+        if(isHorizontal(cval)) ori = Qt::Horizontal;
+        else                   ori = Qt::Vertical;
       }
       item = (QWidget *) new MySlider(&s, 0, ival[0], ival[1], ival[2], ival[3], (Qt::Orientation) ori, pw, id);;
       itemtype = TQSlider;
@@ -1885,8 +1993,8 @@ static int getWidget(FILE *fin, QWidget *root)
       int ori = ival[1];
       if(ori == -1)
       {
-        if(cval[0] == 'h' || cval[0] == 'H') ori = Qt::Horizontal;
-        else                                 ori = Qt::Vertical;
+        if(isHorizontal(cval)) ori = Qt::Horizontal;
+        else                   ori = Qt::Vertical;
       }
       item = (QWidget *) new MyButtonGroup(&s, 0, ival[0], (Qt::Orientation) ori, qtext, pw, id);
       itemtype = TQButtonGroup;
@@ -1951,9 +2059,9 @@ static int getWidget(FILE *fin, QWidget *root)
       item->setStatusTip("TQImage:");
       qtext.replace('\\', "");
       item->setWhatsThis(qtext);
-      if(strlen(qtext.toAscii()) > 0)
+      if(strlen(qtext.toUtf8()) > 0)
       {
-        ((QImageWidget *)item)->setImage(qtext.toAscii());
+        ((QImageWidget *)item)->setImage(qtext.toUtf8());
       }
       iitem++;
     }
@@ -1994,8 +2102,8 @@ static int getWidget(FILE *fin, QWidget *root)
       int ori = ival[1];
       if(ori == -1)
       {
-        if(cval[0] == 'h' || cval[0] == 'H') ori = Qt::Horizontal;
-        else                                 ori = Qt::Vertical;
+        if(isHorizontal(cval)) ori = Qt::Horizontal;
+        else                   ori = Qt::Vertical;
       }
       item = (QWidget *) new MyGroupBox(&s ,0 ,columns ,(Qt::Orientation) ori, qtext, pw);
       item->setObjectName(id);
@@ -2040,8 +2148,8 @@ static int getWidget(FILE *fin, QWidget *root)
       int ori = ival[1];
       if(ori == -1)
       {
-        if(cval[0] == 'v' || cval[0] == 'V') ori = Qt::Vertical;
-        else                                 ori = Qt::Horizontal;
+        if(isHorizontal(cval)) ori = Qt::Horizontal;
+        else                   ori = Qt::Horizontal;
       }
       item = (QWidget *) new MyProgressBar(&s, 0, ival[0], (Qt::Orientation) ori, pw);
       item->setObjectName(id);
@@ -2590,13 +2698,9 @@ static int getWidget(FILE *fin, QWidget *root)
       if(whatsthislist.count() >= iitem)
       {
         QString qtext = whatsthislist.at(iitem-1);
-        //qtext.replace('\\', "");
         item->setWhatsThis(qtext);
       }
     }
-    //printf("whatsThis(%s) objectname(%s)\n"
-    //       ,(const char *) item->whatsThis().toAscii()
-    //       ,(const char *) item->objectName().toAscii());
   }
   while(fgets(line,sizeof(line)-1,fin) != NULL);
   return -1;
@@ -2606,8 +2710,15 @@ static int getWidgets(FILE *fin, QWidget *root)
 {
   while(fgets(line,sizeof(line)-1,fin) != NULL)
   {
-    if(strstr(line,"pvEndDefinition(p);") != NULL) return 0;
-    if(strstr(line,"pv") != NULL) getWidget(fin,root);
+    if(strstr(line,"pvEndDefinition(p)") != NULL) return 0;
+    if(opt.script == PV_LUA)
+    {
+      if(strstr(line,"pv.pv") != NULL) getWidget(fin,root);
+    }
+    else
+    {
+      if(strstr(line,"pv") != NULL) getWidget(fin,root);
+    }
   }
   return -1;
 }
@@ -2634,7 +2745,6 @@ static int appendToolTip()
 {
   char *cptr_begin, *cptr_end;
 
-  //printf("appendToolTip=%s",line);
   cptr_begin = strchr(line,'\"');
   cptr_end   = strrchr(line,'\"');
   if(cptr_begin != NULL)
@@ -2660,7 +2770,6 @@ static int appendWhatsThis()
 {
   char *cptr_begin, *cptr_end;
 
-  //printf("appendWhatsThis=%s",line);
   cptr_begin = strchr(line,'\"');
   cptr_end   = strrchr(line,'\"');
   if(cptr_begin != NULL)
@@ -2682,6 +2791,96 @@ static int appendWhatsThis()
   return 0;
 }
 
+int lua_getWidgetsFromMask(const char *filename, QWidget *root)
+{
+  FILE *fin;
+  int ret, found_begin, found_start;
+  int found_enum_start, found_enum_end;
+  int found_tooltip_start, found_tooltip_end;
+  int found_whatsthis_start, found_whatsthis_end;
+
+  iitem = 1;
+  enumlist.clear();
+  tooltiplist.clear();
+  whatsthislist.clear();
+  tablist.clear();
+  if(editlayout != NULL)
+  {
+    editlayout->uidlg->textEditConstructors->clear();
+    editlayout->uidlg->textEditDef->clear();
+  }
+  ret = 0;
+  fin = fopen(filename,"r");
+  if(fin == NULL)
+  {
+    printf("getWidgetsFromMask could not open %s\n", filename);
+    return -1;
+  }
+
+  // find start
+  found_begin = found_start = 0;
+  found_enum_start = found_enum_end = 0;
+  found_tooltip_start = found_tooltip_end = 0;
+  found_whatsthis_start = found_whatsthis_end = 0;
+  while(fgets(line,sizeof(line)-1,fin) != NULL)
+  {
+    if(strstr(line,"--- begin construction of our mask ---") != NULL) found_begin = 1;
+    if(found_begin==1)
+    {
+      if(strstr(line,"ID_MAIN_WIDGET") != NULL) found_enum_start = 1;
+      if(found_enum_start==1 && found_enum_end==0)
+      {
+        if(strstr(line,"=") == NULL) found_enum_end = 1;
+        else appendEnum();
+      }
+
+      if(strstr(line,"toolTip") != NULL && strstr(line,"{}") == NULL) found_tooltip_start = 1;
+      if(found_tooltip_start==1 && found_tooltip_end==0)
+      {
+        if(strstr(line,"=") == NULL) found_tooltip_end = 1;
+        else appendToolTip();
+      }
+
+      if(strstr(line,"whatsThis") != NULL && strstr(line,"{}") == NULL) found_whatsthis_start = 1;
+      if(found_whatsthis_start==1 && found_whatsthis_end==0)
+      {
+        if(strstr(line,"=") == NULL) found_whatsthis_end = 1;
+        else appendWhatsThis();
+      }
+
+      if(strstr(line,"pvStartDefinition(p,") != NULL)
+      {
+        found_start = 1;
+        break;
+      }
+    }
+  }
+
+  if(found_start==1)
+  {
+    getWidgets(fin,root);
+    while(fgets(line,sizeof(line)-1,fin) != NULL)
+    {
+      if(isCommand("pvTabOrder(") == 1) // get TabOrder
+      {
+        tablist.append(QString::fromUtf8(line));
+      }
+      if(strstr(line,"return") != NULL) break;
+    }
+  }
+  else
+  {
+    printf("WARNING getWidgetsFromMask could not get widgets from %s\n", filename);
+    ret = -1;
+  }
+
+  fclose(fin);
+  enumlist.clear();
+  tooltiplist.clear();
+  whatsthislist.clear();
+  return ret;
+}
+
 int getWidgetsFromMask(const char *filename, QWidget *root)
 {
   FILE *fin;
@@ -2689,6 +2888,8 @@ int getWidgetsFromMask(const char *filename, QWidget *root)
   int found_enum_start, found_enum_end;
   int found_tooltip_start, found_tooltip_end;
   int found_whatsthis_start, found_whatsthis_end;
+
+  if(opt.script == PV_LUA) return lua_getWidgetsFromMask(filename, root);
 
   iitem = 1;
   enumlist.clear();
@@ -2873,13 +3074,13 @@ static int setWidgetTree(QWidget *root, const char *uifile)
     {
       if(widget->objectName().startsWith("qt_"))
       {
-        //printf("qt_: %s\n", (const char *) widget->objectName().toAscii());
+        //printf("qt_: %s\n", (const char *) widget->objectName().toUtf8());
         sprintf(buf,"qtobj%d", iobj++);
         widget->setObjectName(buf);
       }
       else if(widget->objectName() == "")
       {
-        //printf(": %s\n", (const char *) widget->objectName().toAscii());
+        //printf(": %s\n", (const char *) widget->objectName().toUtf8());
         sprintf(buf,"qtobj%d", iobj++);
         widget->setObjectName(buf);
       }
@@ -3070,7 +3271,7 @@ static int setWidgetTree(QWidget *root, const char *uifile)
     }
     else // not a widget type
     {
-      //printf("not a widget type %s\n", (const char *) widget->objectName().toAscii());
+      //printf("not a widget type %s\n", (const char *) widget->objectName().toUtf8());
       if     (widget->inherits("QVBoxLayout"))
       {
         printf("TQVbox\n");
@@ -3202,7 +3403,14 @@ int importUi(const char *uifile, Designer *designer)
   strcpy(filename, uifile);
   cptr = strchr(filename, '.');
   if(cptr != NULL) *cptr = '\0';
-  strcat(filename,".cpp");
+  if(opt.script == PV_LUA)
+  {
+    strcat(filename,".lua");
+  }
+  else
+  {
+    strcat(filename,".cpp");
+  }
   sscanf(filename, "mask%d", &imask);
   perhapsSetLayout(filename);
   if(setWidgetTree(root, uifile) < 0)

@@ -106,7 +106,7 @@ void syntax::highlightBlock(const QString &text)
 
   if(text.isNull()) return;
   if(text.length() >= (int) sizeof(buf)) return;
-  strcpy(buf,text.toAscii());
+  strcpy(buf,text.toUtf8());
 
   setFormat(0,sizeof(buf)-1,black);
   if(lang_syntax == CPP_SYNTAX)

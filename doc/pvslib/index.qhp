@@ -33,8 +33,10 @@
         </section>
         <section title="Data Structures" ref="annotated.html">
           <section title="_PARAM_" ref="struct__PARAM__.html" />
+          <section title="FloatArray" ref="structFloatArray.html" />
           <section title="glFont" ref="classglFont.html" />
           <section title="glFont::Glyph" ref="structglFont_1_1Glyph.html" />
+          <section title="IntegerArray" ref="structIntegerArray.html" />
           <section title="PARSE_EVENT_STRUCT" ref="structPARSE__EVENT__STRUCT.html" />
           <section title="WSEMAPHORE" ref="structWSEMAPHORE.html" />
         </section>
@@ -89,6 +91,9 @@
       <keyword name="pvunlock" id="processviewserver.h::pvunlock" ref="processviewserver_8h.html" />
       <keyword name="pvsystem" id="processviewserver.h::pvsystem" ref="processviewserver_8h.html" />
       <keyword name="pvXYAllocate" id="processviewserver.h::pvXYAllocate" ref="processviewserver_8h.html" />
+      <keyword name="getIntegers" id="processviewserver.h::getIntegers" ref="processviewserver_8h.html" />
+      <keyword name="getFloats" id="processviewserver.h::getFloats" ref="processviewserver_8h.html" />
+      <keyword name="getTextFromText" id="processviewserver.h::getTextFromText" ref="processviewserver_8h.html" />
       <keyword name="pvSetXY" id="processviewserver.h::pvSetXY" ref="processviewserver_8h.html" />
       <keyword name="pvInitInternal" id="processviewserver.h::pvInitInternal" ref="processviewserver_8h.html" />
       <keyword name="pvInit" id="processviewserver.h::pvInit" ref="processviewserver_8h.html" />
@@ -910,6 +915,9 @@
       <keyword name="pvunlock" id="IniAndGlobal::pvunlock" ref="group__IniAndGlobal.html" />
       <keyword name="pvsystem" id="IniAndGlobal::pvsystem" ref="group__IniAndGlobal.html" />
       <keyword name="pvXYAllocate" id="IniAndGlobal::pvXYAllocate" ref="group__IniAndGlobal.html" />
+      <keyword name="getIntegers" id="IniAndGlobal::getIntegers" ref="group__IniAndGlobal.html" />
+      <keyword name="getFloats" id="IniAndGlobal::getFloats" ref="group__IniAndGlobal.html" />
+      <keyword name="getTextFromText" id="IniAndGlobal::getTextFromText" ref="group__IniAndGlobal.html" />
       <keyword name="pvSetXY" id="IniAndGlobal::pvSetXY" ref="group__IniAndGlobal.html" />
       <keyword name="pvInitInternal" id="IniAndGlobal::pvInitInternal" ref="group__IniAndGlobal.html" />
       <keyword name="pvInit" id="IniAndGlobal::pvInit" ref="group__IniAndGlobal.html" />
@@ -1356,6 +1364,18 @@
       <keyword name="mouse_x" id="_PARAM_::mouse_x" ref="struct__PARAM__.html" />
       <keyword name="mouse_y" id="_PARAM_::mouse_y" ref="struct__PARAM__.html" />
       <keyword name="mytext" id="_PARAM_::mytext" ref="struct__PARAM__.html" />
+      <keyword name="FloatArray" id="FloatArray" ref="structFloatArray.html" />
+      <keyword name="f" id="FloatArray::f" ref="structFloatArray.html" />
+      <keyword name="f0" id="FloatArray::f0" ref="structFloatArray.html" />
+      <keyword name="f1" id="FloatArray::f1" ref="structFloatArray.html" />
+      <keyword name="f2" id="FloatArray::f2" ref="structFloatArray.html" />
+      <keyword name="f3" id="FloatArray::f3" ref="structFloatArray.html" />
+      <keyword name="f4" id="FloatArray::f4" ref="structFloatArray.html" />
+      <keyword name="f5" id="FloatArray::f5" ref="structFloatArray.html" />
+      <keyword name="f6" id="FloatArray::f6" ref="structFloatArray.html" />
+      <keyword name="f7" id="FloatArray::f7" ref="structFloatArray.html" />
+      <keyword name="f8" id="FloatArray::f8" ref="structFloatArray.html" />
+      <keyword name="f9" id="FloatArray::f9" ref="structFloatArray.html" />
       <keyword name="glFont" id="glFont" ref="classglFont.html" />
       <keyword name="glFont" id="glFont::glFont" ref="classglFont.html" />
       <keyword name="~glFont" id="glFont::~glFont" ref="classglFont.html" />
@@ -1380,6 +1400,18 @@
       <keyword name="tex_y1" id="glFont::Glyph::tex_y1" ref="structglFont_1_1Glyph.html" />
       <keyword name="tex_x2" id="glFont::Glyph::tex_x2" ref="structglFont_1_1Glyph.html" />
       <keyword name="advance" id="glFont::Glyph::advance" ref="structglFont_1_1Glyph.html" />
+      <keyword name="IntegerArray" id="IntegerArray" ref="structIntegerArray.html" />
+      <keyword name="i" id="IntegerArray::i" ref="structIntegerArray.html" />
+      <keyword name="i0" id="IntegerArray::i0" ref="structIntegerArray.html" />
+      <keyword name="i1" id="IntegerArray::i1" ref="structIntegerArray.html" />
+      <keyword name="i2" id="IntegerArray::i2" ref="structIntegerArray.html" />
+      <keyword name="i3" id="IntegerArray::i3" ref="structIntegerArray.html" />
+      <keyword name="i4" id="IntegerArray::i4" ref="structIntegerArray.html" />
+      <keyword name="i5" id="IntegerArray::i5" ref="structIntegerArray.html" />
+      <keyword name="i6" id="IntegerArray::i6" ref="structIntegerArray.html" />
+      <keyword name="i7" id="IntegerArray::i7" ref="structIntegerArray.html" />
+      <keyword name="i8" id="IntegerArray::i8" ref="structIntegerArray.html" />
+      <keyword name="i9" id="IntegerArray::i9" ref="structIntegerArray.html" />
       <keyword name="PARSE_EVENT_STRUCT" id="PARSE_EVENT_STRUCT" ref="structPARSE__EVENT__STRUCT.html" />
       <keyword name="event" id="PARSE_EVENT_STRUCT::event" ref="structPARSE__EVENT__STRUCT.html" />
       <keyword name="i" id="PARSE_EVENT_STRUCT::i" ref="structPARSE__EVENT__STRUCT.html" />
@@ -1433,8 +1465,10 @@
       <file>functions_func.html</file>
       <file>functions_vars.html</file>
       <file>struct__PARAM__.html</file>
+      <file>structFloatArray.html</file>
       <file>classglFont.html</file>
       <file>structglFont_1_1Glyph.html</file>
+      <file>structIntegerArray.html</file>
       <file>structPARSE__EVENT__STRUCT.html</file>
       <file>structWSEMAPHORE.html</file>
       <file>files.html</file>

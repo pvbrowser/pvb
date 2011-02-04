@@ -51,7 +51,18 @@ Designer::Designer(const char *mask)
   sscanf(mask,"mask%d", &imask);
   xclick = yclick = 0;
   if(opt.arg_debug) printf("Designer::Designer: before getWidgetsFromMask(%s)\n",mask);
-  if(opt.arg_mask_to_generate == -1) getWidgetsFromMask(mask, root);
+  if(opt.arg_mask_to_generate == -1) 
+  {
+    if(opt.script == PV_LUA) 
+    {
+      filename.sprintf("mask%d.lua", imask); 
+      getWidgetsFromMask(filename.toUtf8(), root);
+    }
+    else
+    {
+      getWidgetsFromMask(mask, root);
+    }
+  }  
   if(opt.arg_debug) printf("Designer::Designer: after getWidgetsFromMask(%s)\n",mask);
 }
 
@@ -74,7 +85,7 @@ Designer::~Designer()
     }
     if(ret == QMessageBox::Yes)
     { 
-      generateMask(filename.toAscii(), root); // generate C/C++
+      generateMask(filename.toUtf8(), root); // generate C/C++
       // add additional language here
       if(opt.script == PV_PYTHON)
       {
@@ -315,7 +326,7 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
   QWidget *child = clickedChild;
   if(child != NULL && grabbed)
   {
-    if(opt.arg_debug > 0) printf("child->statusTip=%s\n",(const char *) child->statusTip().toAscii());
+    if(opt.arg_debug > 0) printf("child->statusTip=%s\n",(const char *) child->statusTip().toUtf8());
     if(buttonDown && inMiddle==1)
     {
       int xNew, yNew;
@@ -891,7 +902,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       }
       else
       {
-        printf("unknown popup text=%s\n",(const char *) ret->text().toAscii());
+        printf("unknown popup text=%s\n",(const char *) ret->text().toUtf8());
       }
       grabbed = 1;
       grabMouse();

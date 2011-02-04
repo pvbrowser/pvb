@@ -460,7 +460,7 @@ void mySetGeometry(QWidget *w, int x, int y, int width, int height)
     QImageWidget *image = (QImageWidget *) w;
     image->setGeometry(x,y,width,height);
     QString filename = w->whatsThis();
-    if(!filename.isEmpty()) image->setImage(filename.toAscii());
+    if(!filename.isEmpty()) image->setImage(filename.toUtf8());
     image->clearMask();
   }
   else if(w->statusTip().startsWith("TQDraw:"))
@@ -477,17 +477,17 @@ void mySetGeometry(QWidget *w, int x, int y, int width, int height)
     }
     else
     {
-      if(opt.arg_debug) printf("draw->playSVG(%s)\n", (const char *) filename.toAscii());
+      if(opt.arg_debug) printf("draw->playSVG(%s)\n", (const char *) filename.toUtf8());
       draw->beginDraw();
       draw->setBackgroundColor(255,255,255);
-      draw->playSVG(filename.toAscii());
+      draw->playSVG(filename.toUtf8());
       draw->endDraw();
     }
   }
   else
   {
     //printf("mySetGeometry(%s,%d,%d,%d,%d)\n",
-    //      (const char *)w->statusTip().toAscii(), x,y,width,height);
+    //      (const char *)w->statusTip().toUtf8(), x,y,width,height);
     w->setGeometry(x,y,width,height);
   }
 }
@@ -509,7 +509,7 @@ void dlgInsertWidget::findMax(QObject *w, int *max)
       if(name.length() < 80)
       {
         char buf[81];
-        strcpy(buf,name.toAscii());
+        strcpy(buf,name.toUtf8());
         if(isdigit(buf[3]))
         {
           sscanf(buf,"obj%d",&val);

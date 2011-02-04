@@ -30,14 +30,14 @@ static int generateWidgetEnumPython(FILE *fout, QWidget *root)
   for(i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); // root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); // root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
-      fprintf(fout,"  %s = %d\n",(const char *) widget->objectName().toAscii(), i+1);
+      fprintf(fout,"  %s = %d\n",(const char *) widget->objectName().toUtf8(), i+1);
     }
     else
     {
-      printf("WARNING generateWidgetEnumPython:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateWidgetEnumPython:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
@@ -59,7 +59,7 @@ static int generateToolTipPython(FILE *fout, QWidget *root)
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
       qbuf = widget->toolTip();
@@ -67,7 +67,7 @@ static int generateToolTipPython(FILE *fout, QWidget *root)
     }
     else
     {
-      printf("WARNING generateToolTipPython:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateToolTipPython:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
@@ -90,7 +90,7 @@ static int generateWhatsThisPython(FILE *fout, QWidget *root)
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
       qbuf = widget->whatsThis();
@@ -98,7 +98,7 @@ static int generateWhatsThisPython(FILE *fout, QWidget *root)
     }
     else
     {
-      printf("WARNING generateWhatsThisPython:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateWhatsThisPython:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 
@@ -122,11 +122,11 @@ static int generateWidgetTypePython(FILE *fout, QWidget *root)
   for(int i=0; i<strlist.size(); i++)
   {
     item = strlist.at(i);
-    widget = findChild(item.toAscii()); //root->findChild<QWidget *>(item);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
       qbuf = widget->statusTip(); // parse statusTip
-      strcpy(buf,qbuf.toAscii());
+      strcpy(buf,qbuf.toUtf8());
       cptr = strstr(buf,":");
       if(cptr != NULL) *cptr = '\0';
       if(strncmp(buf,"TQ",2) != 0) strcpy(buf,"0");
@@ -134,7 +134,7 @@ static int generateWidgetTypePython(FILE *fout, QWidget *root)
     }
     else
     {
-      printf("WARNING generateWidgetTypePython:findChild=%s not found\n",(const char *) item.toAscii());
+      printf("WARNING generateWidgetTypePython:findChild=%s not found\n",(const char *) item.toUtf8());
     }
   }
 

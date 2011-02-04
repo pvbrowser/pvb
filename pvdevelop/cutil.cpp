@@ -65,7 +65,7 @@ int action(const char *command)
 {
   FILE *fin;
   char name[1024],cmd[1024],project[1024];
-  int imask;
+  int imask, ret;
   int checked = 0;
 
   if(strlen(command) > 1024-80)
@@ -137,12 +137,12 @@ int action(const char *command)
   else if(strncmp(command,"make",4) == 0)
   {
 #ifdef PVUNIX
-    if(opt.arg_action[0] != '\0') system("make");
+    if(opt.arg_action[0] != '\0') ret = system("make");
     else                          mysystem("xterm -e \"make;echo ready;read\"");
 #else
     sscanf(command,"make=%s",name);
     sprintf(cmd,"start pvb_make.bat %s", name);
-    system(cmd);
+    ret = system(cmd);
 #endif
   }
   else if(strncmp(command,"startserver=",12) == 0)
@@ -151,25 +151,53 @@ int action(const char *command)
     if(checked == 1)
     {
 #ifdef PVUNIX
-      sprintf(cmd,"xterm -e \"make;su -c ./%s\"", name);
+      if(opt.script == PV_LUA)
+      {
+        sprintf(cmd,"xterm -e \"su -c ./pvslua\"");
+      }
+      else
+      {
+        sprintf(cmd,"xterm -e \"make;su -c ./%s\"", name);
+      }
       if(opt.arg_debug) printf("cmd=%s\n",cmd);
       mysystem(cmd);
 #else
-      sprintf(cmd,"start pvb_server.bat %s", name);
+      if(opt.script == PV_LUA)
+      {
+        sprintf(cmd,"start pvslua.exe");
+      }
+      else
+      {
+        sprintf(cmd,"start pvb_server.bat %s", name);
+      }
       if(opt.arg_debug) printf("cmd=%s\n",cmd);
-      system(cmd);
+      ret = system(cmd);
 #endif
     }
     else
     {
 #ifdef PVUNIX
-      sprintf(cmd,"xterm -e \"make;./%s\"", name);
+      if(opt.script == PV_LUA)
+      {
+        sprintf(cmd,"xterm -e \"pvslua\"");
+      }
+      else
+      {
+        sprintf(cmd,"xterm -e \"make;./%s\"", name);
+      }
       if(opt.arg_debug) printf("cmd=%s\n",cmd);
       mysystem(cmd);
 #else
-      sprintf(cmd,"start pvb_server.bat %s", name);
+      if(opt.script == PV_LUA)
+      {
+        sprintf(cmd,"start pvslua.exe");
+      }
+      else
+      {
+        sprintf(cmd,"start pvb_server.bat %s", name);
+      }
       if(opt.arg_debug) printf("cmd=%s\n",cmd);
-      system(cmd);
+      ret = system(cmd);
 #endif
     }
   }
@@ -188,7 +216,7 @@ int action(const char *command)
     mysystem(cmd);
 #else
     sprintf(cmd,"start pvb_startserver.bat %s", name);
-    system(cmd);
+    ret = system(cmd);
 #endif
   }
   else if(strcmp(command,"pvbrowser") == 0)
@@ -202,6 +230,7 @@ void generateInitialProject(const char *name)
 {
   char fname[1024],time[1024];
   FILE *fout;
+  int ret = 0;
 
   if(strlen(name) > 1024-80)
   {
@@ -214,9 +243,9 @@ void generateInitialProject(const char *name)
   {
     strcpy(opt.arg_project, "pvs");
 #ifdef PVWIN32
-    system("pvb_copy_python_template.bat");
+    ret = system("pvb_copy_python_template.bat");
 #else
-    system("cp /opt/pvb/language_bindings/python/template/* .");
+    ret = system("cp /opt/pvb/language_bindings/python/template/* .");
 #endif
     return;
   }
@@ -224,9 +253,9 @@ void generateInitialProject(const char *name)
   {
     strcpy(opt.arg_project, "pvs");
 #ifdef PVWIN32
-    system("pvb_copy_perl_template.bat");
+    ret = system("pvb_copy_perl_template.bat");
 #else
-    system("cp /opt/pvb/language_bindings/perl/template/* .");
+    ret = system("cp /opt/pvb/language_bindings/perl/template/* .");
 #endif
     return;
   }
@@ -234,9 +263,9 @@ void generateInitialProject(const char *name)
   {
     strcpy(opt.arg_project, "pvs");
 #ifdef PVWIN32
-    system("pvb_copy_php_template.bat");
+    ret = system("pvb_copy_php_template.bat");
 #else
-    system("cp /opt/pvb/language_bindings/php/template/* .");
+    ret = system("cp /opt/pvb/language_bindings/php/template/* .");
 #endif
     return;
   }
@@ -244,9 +273,9 @@ void generateInitialProject(const char *name)
   {
     strcpy(opt.arg_project, "pvs");
 #ifdef PVWIN32
-    system("pvb_copy_tcl_template.bat");
+    ret = system("pvb_copy_tcl_template.bat");
 #else
-    system("cp /opt/pvb/language_bindings/tcl/template/* .");
+    ret = system("cp /opt/pvb/language_bindings/tcl/template/* .");
 #endif
     return;
   }
@@ -255,7 +284,7 @@ void generateInitialProject(const char *name)
     return lua_generateInitialProject(name);
   }
 
-  strcpy(time,QDateTime::currentDateTime().toString().toAscii());
+  strcpy(time,QDateTime::currentDateTime().toString().toUtf8());
 
   strcpy(fname,name); strcat(fname,".pvproject");
   fout = fopen(fname,"w");
@@ -441,15 +470,18 @@ void generateInitialProject(const char *name)
   generateInitialMask(1);
 
   generateInitialSlots(1);
+  
+  if(ret < 0) printf("generateInitialProject:error in system() call\n");
 }
 
 void generateInitialMask(int imask)
 {
   FILE *fout;
   char fname[80],maskname[80],time[80];
+  int ret = 0;
 
   if(opt.script == PV_LUA) return lua_generateInitialMask(imask);
-  strcpy(time,QDateTime::currentDateTime().toString().toAscii());
+  strcpy(time,QDateTime::currentDateTime().toString().toUtf8());
   sprintf(maskname,"mask%d",imask);
   sprintf(fname,"mask%d.cpp",imask);
   fout = fopen(fname,"w");
@@ -659,6 +691,7 @@ void generateInitialMask(int imask)
   fprintf(fout,"%s","  }\n"                                                                         );
   fprintf(fout,"%s","}\n"                                                                           );
   fclose(fout);
+  if(ret < 0) printf("generateInitialMask:error in system() call\n");
 }
 
 void generateInitialSlots(int imask)
@@ -667,7 +700,7 @@ void generateInitialSlots(int imask)
   char fname[80],maskname[80],time[80];
 
   if(opt.script == PV_LUA) return lua_generateInitialSlots(imask);
-  strcpy(time,QDateTime::currentDateTime().toString().toAscii());
+  strcpy(time,QDateTime::currentDateTime().toString().toUtf8());
   sprintf(maskname,"mask%d",imask);
   sprintf(fname,"mask%d_slots.h",imask);
   fout = fopen(fname,"w");
@@ -2468,14 +2501,12 @@ void lua_generateInitialMask(int imask)
   fprintf(fout,"%s","\n");
   fprintf(fout,     "function showMask%d(p)\n", imask);
   fprintf(fout,"%s","  --- begin variables that are private to this mask ----------------------------------\n");
+  fprintf(fout,"%s","  iarray = pv.IntegerArray()                  -- see pv.getIntegers(text,iarray) below\n");
+  fprintf(fout,"%s","  farray = pv.FloatArray()                    -- see pv.getFloats(text,farray) below\n");
+  fprintf(fout,"%s","  --- begin construction of our mask -------------------------------------------------\n");
   fprintf(fout,"%s","  ID_MAIN_WIDGET = 0                          -- begin of our widget names\n");
   fprintf(fout,"%s","  PushButtonBack = 1\n");
   fprintf(fout,"%s","  ID_END_OF_WIDGETS = 2                       -- end of our widget names\n");
-  fprintf(fout,"%s","  ------------------------------------------------------------------------------------\n");
-  fprintf(fout,"%s","  iarray = pv.IntegerArray()                  -- see pv.getIntegers(text,iarray) below\n");
-  fprintf(fout,"%s","  farray = pv.FloatArray()                    -- see pv.getFloats(text,farray) below\n");
-  fprintf(fout,"%s","  --- end variables that are private to this mask ------------------------------------\n");
-  fprintf(fout,"%s","  --- begin construction of our mask -------------------------------------------------\n");
   fprintf(fout,"%s","  pv.pvStartDefinition(p,ID_END_OF_WIDGETS)\n");
   fprintf(fout,"%s","\n");
   fprintf(fout,"%s","  pv.pvQPushButton(p,PushButtonBack,0)\n");
@@ -2484,6 +2515,7 @@ void lua_generateInitialMask(int imask)
   fprintf(fout,"%s","\n");
   fprintf(fout,"%s","  pv.pvEndDefinition(p)\n");
   fprintf(fout,"%s","  --- end construction of our mask ---------------------------------------------------\n");
+  fprintf(fout,"%s","  --- end variables that are private to this mask ------------------------------------\n");
   fprintf(fout,     "  dofile(\"mask%d_slots.lua\")                   -- include our slot functions\n", imask);
   fprintf(fout,"%s","\n");
   fprintf(fout,"%s","  if trace == 1 then print(\"show mask1\") end\n");

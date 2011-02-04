@@ -288,7 +288,14 @@ bool MainWindow::save()
   if(designer != NULL)
   {
     char buf[80];
-    sprintf(buf,"mask%d.cpp",imask);
+    if(opt.script == PV_LUA)
+    {
+      sprintf(buf,"mask%d.lua",imask);
+    }
+    else
+    {
+      sprintf(buf,"mask%d.cpp",imask);
+    }
     generateMask(buf, designer->root);
     // add additional language here
     if(opt.script == PV_PYTHON)
@@ -306,10 +313,6 @@ bool MainWindow::save()
     if(opt.script == PV_TCL)
     {
       generateTcl(imask, designer->root);
-    }
-    if(opt.script == PV_LUA)
-    {
-      generateLua(imask, designer->root);
     }
     designer->root->modified = 0;
     return true;

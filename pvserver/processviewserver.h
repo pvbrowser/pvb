@@ -939,6 +939,7 @@ pvInsertItem()
 pvRemoveItem()
 pvRemoveItemByName()
 pvSetCurrentItem()
+pvSetEditable()
 </pre> */
 int pvQComboBox(PARAM *p, int id, int parent, int editable, int policy);
 /*! <pre>
@@ -2281,7 +2282,7 @@ mode = 0=NoEcho|1=Normal|2=Password
 int pvSetEchoMode(PARAM *p, int id, int mode);
 /*! <pre>
 Set editable 0|1
-Allowed widgets QLineEdit, QMultiLineEdit, QTable
+Allowed widgets QLineEdit, QMultiLineEdit, QTable, QComboBox
 </pre> */
 int pvSetEditable(PARAM *p, int id, int editable);
 /*! <pre>

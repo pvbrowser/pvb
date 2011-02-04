@@ -232,13 +232,13 @@ void dlgDaemon::generate()
   switch(what)
   {
     case PPI_DAEMON:
-      gppi(filename.toAscii());
+      gppi(filename.toUtf8());
       break;
     case SIEMENSTCP_DAEMON:
-      gsiemens(filename.toAscii());
+      gsiemens(filename.toUtf8());
       break;
     case MODBUS_DAEMON:
-      gmodbus(filename.toAscii());
+      gmodbus(filename.toUtf8());
       break;
     default:
       break;

@@ -2350,6 +2350,15 @@ void Interpreter::interprets(const char *command)
             //else if(mode == 1) t->setEnabled(true);
             if(t != NULL) t->setEditable(mode);
           }
+          else if(all[i]->type == TQComboBox)
+          {
+            MyComboBox *cb = (MyComboBox *) all[i]->w;
+            if(cb != NULL)
+            {
+              if     (mode == 0) cb->setEditable(false);
+              else if(mode == 1) cb->setEditable(true);
+            }
+          }
         }
         else if(strncmp(command,"setEnabled(",11) == 0) // set enabled all widgets
         {
