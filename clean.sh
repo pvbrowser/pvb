@@ -67,5 +67,5 @@ rm -f *.obj
 cd ..
 
 cd language_bindings
-make clean
+find . -name "*.o" -exec rm "{}" ";"
 cd ..

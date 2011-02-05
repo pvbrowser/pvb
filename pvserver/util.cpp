@@ -3333,11 +3333,12 @@ int pvQImage(PARAM *p, int id, int parent, const char *imagename, int *w, int *h
 {
 PVB_IMAGE *image;
 char buf[MAX_PRINTF_LENGTH+40];
+int myw, myh, mydepth;
 
+  myw = myh = mydepth = 0;
   if(strstr(imagename,".bmp") == NULL && strstr(imagename,".BMP") == NULL)
   { // image format other than 8bpp bmp
-    *w = *h = *depth = 0;
-    sprintf(buf,"QImage(%d,%d,%d,%d,%d,\"%s\")\n",id,parent,*w,*h,*depth,pvFilename(imagename));
+    sprintf(buf,"QImage(%d,%d,%d,%d,%d,\"%s\")\n",id,parent,myw,myh,mydepth,pvFilename(imagename));
     pvtcpsend(p, buf, strlen(buf));
     return 0;
   }
@@ -3346,16 +3347,19 @@ char buf[MAX_PRINTF_LENGTH+40];
     image = pvbImageRead(imagename);
     if(image != NULL && image->bpp == 8)
     {
-      *w = image->w;
-      *h = image->h;
-      *depth = image->bpp;
-      sprintf(buf,"QImage(%d,%d,%d,%d,%d)\n",id,parent,*w,*h,*depth);
+      myw = image->w;
+      myh = image->h;
+      mydepth = image->bpp;
+      sprintf(buf,"QImage(%d,%d,%d,%d,%d)\n",id,parent,myw,myh,mydepth);
       pvtcpsend(p, buf, strlen(buf));
       sendBmpToSocket(p, image);
     }
     pvbImageFree(image);
   }
-  if(*depth != 8) return -1;
+  if(w     != NULL) *w     = myw;
+  if(h     != NULL) *h     = myh;
+  if(depth != NULL) *depth = mydepth;
+  if(mydepth != 8) return -1;
   return 0;
 }
 

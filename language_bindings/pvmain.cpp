@@ -12,6 +12,12 @@ PARAM *getParam(unsigned long p)
   return param;
 }
 
+int pvQImageScript(PARAM *p, int id, int parent, const char *imagename)
+{
+  pvQImage(p,id,parent,imagename,NULL,NULL,NULL);
+  return 0;
+}
+
 #ifndef LUA
 int pvMain(PARAM *p)
 {
@@ -26,6 +32,7 @@ int *new_int(int ivalue)
   *i = ivalue;
   return i;
 }
+
 int get_int(int *i)
 {
   return *i;

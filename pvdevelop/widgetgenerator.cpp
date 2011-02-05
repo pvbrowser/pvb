@@ -757,13 +757,27 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   {
     if(whatsthis.contains(".bmp") || whatsthis.contains(".BMP"))
     {
-      fprintf(fout,"%spvQImage(p,%s,%s,\"%s\",&w,&h,&depth)%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      if(opt.script == PV_LUA)
+      {
+        fprintf(fout,"%spvQImageScript(p,%s,%s,\"%s\")%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      }
+      else
+      {
+        fprintf(fout,"%spvQImage(p,%s,%s,\"%s\",&w,&h,&depth)%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      }
       fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     }
     else
     {
       fprintf(fout,"%spvDownloadFile(p,\"%s\")%s\n",prefix,(const char *) whatsthis.toUtf8(),postfix);
-      fprintf(fout,"%spvQImage(p,%s,%s,\"%s\",&w,&h,&depth)%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      if(opt.script == PV_LUA)
+      {
+        fprintf(fout,"%spvQImageScript(p,%s,%s,\"%s\")%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      }
+      else
+      {
+        fprintf(fout,"%spvQImage(p,%s,%s,\"%s\",&w,&h,&depth)%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
+      }
       fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     }
     iitem++;
@@ -1739,57 +1753,6 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
   if(opt.arg_debug > 1) printf("getParams: id=%s parent=%s text='%s' ival=%d:%d:%d:%d cval='%s' %s",id,parent,text,ival[0],ival[1],ival[2],ival[3],cval,line);
 }
 
-/*
-  int   pvStartDefinition (PARAM *p, int num_objects)
-  int   pvQLayoutVbox (PARAM *p, int id, int parent)
-  int   pvQLayoutHbox (PARAM *p, int id, int parent)
-  int   pvQLayoutGrid (PARAM *p, int id, int parent)
-  int   pvQWidget (PARAM *p, int id, int parent)
-  int   pvQLabel (PARAM *p, int id, int parent)
-  int   pvQComboBox (PARAM *p, int id, int parent, int editable, int policy)
-  int   pvQLineEdit (PARAM *p, int id, int parent)
-  int   pvQPushButton (PARAM *p, int id, int parent)
-  int   pvQLCDNumber (PARAM *p, int id, int parent, int numDigits, int segmentStyle, int mode)
-  int   pvQSlider (PARAM *p, int id, int parent, int minValue, int maxValue, int pageStep, int value, int orientation)
-  int   pvQButtonGroup (PARAM *p, int id, int parent, int columns, int orientation, const char *title)
-  int   pvQRadioButton (PARAM *p, int id, int parent)
-  int   pvQCheckBox (PARAM *p, int id, int parent)
-  int   pvQFrame (PARAM *p, int id, int parent, int shape, int shadow, int line_width, int margin)
-  int   pvQDraw (PARAM *p, int id, int parent)
-  int   pvQImage (PARAM *p, int id, int parent, const char *imagename, int *w, int *h, int *depth)
-  int   pvQGL (PARAM *p, int id, int parent)
-  int   pvQTabWidget (PARAM *p, int id, int parent)
-  int   pvQToolBox (PARAM *p, int id, int parent)
-  int   pvQGroupBox (PARAM *p, int id, int parent, int columns, int orientation, const char *title)
-  int   pvQListBox (PARAM *p, int id, int parent)
-  int   pvQTable (PARAM *p, int id, int parent, int rows, int columns)
-  int   pvQSpinBox (PARAM *p, int id, int parent, int min, int max, int step)
-  int   pvQDial (PARAM *p, int id, int parent, int min, int max, int page_step, int value)
-  int   pvQProgressBar (PARAM *p, int id, int parent, int total_steps)
-  int   pvQMultiLineEdit (PARAM *p, int id, int parent, int editable, int max_lines)
-  int   pvQTextBrowser (PARAM *p, int id, int parent)
-  int   pvQListView (PARAM *p, int id, int parent)
-  int   pvQIconView (PARAM *p, int id, int parent)
-  int   pvQVtkTclWidget (PARAM *p, int id, int parent)
-  int   pvQwtPlotWidget (PARAM *p, int id, int parent, int nCurves, int nMarker)
-  int   pvQwtScale (PARAM *p, int id, int parent, int pos)
-  int   pvQwtThermo (PARAM *p, int id, int parent)
-  int   pvQwtKnob (PARAM *p, int id, int parent)
-  int   pvQwtCounter (PARAM *p, int id, int parent)
-  int   pvQwtWheel (PARAM *p, int id, int parent)
-  int   pvQwtSlider (PARAM *p, int id, int parent)
-  int   pvQwtDial (PARAM *p, int id, int parent)
-  int   pvQwtCompass (PARAM *p, int id, int parent)
-  int   pvQwtAnalogClock (PARAM *p, int id, int parent)
-  int   pvQDateEdit (PARAM *p, int id, int parent)
-  int   pvQTimeEdit (PARAM *p, int id, int parent)
-  int   pvQDateTimeEdit (PARAM *p, int id, int parent)
-  int   pvEndDefinition (PARAM *p)
-  int   pvAddWidgetOrLayout (PARAM *p, int id, int item, int row, int col)
-  int   pvAddStretch (PARAM *p, int id, int param)
-  int   pvTabOrder (PARAM *p, int id1, int id2)
-*/
-
 static int isHorizontal(const char *cval)
 {
   if(strstr(cval,"Horizontal") != NULL) return 1;
@@ -2052,7 +2015,7 @@ static int getWidget(FILE *fin, QWidget *root)
       item->setWhatsThis(fname);
       iitem++;
     }
-    else if(isCommand("pvQImage(") == 1)
+    else if(isCommand("pvQImage(") == 1 || isCommand("pvQImageScript(") == 1)
     {
       item = (QImageWidget *) new QImageWidget(&s, 0, pw, id);
       itemtype = TQImage;
@@ -3325,7 +3288,14 @@ static int perhapsSetTabOrder(const char *uifile)
           else
           {
             currentTab = cptrbegin;
-            tablist.append("  pvTabOrder(p," + lastTab + "," + currentTab + ");\n");
+            if(opt.script == PV_LUA)
+            {
+              tablist.append("  pv.pvTabOrder(p," + lastTab + "," + currentTab + ")\n");
+            }
+            else
+            {
+              tablist.append("  pvTabOrder(p," + lastTab + "," + currentTab + ");\n");
+            }
             lastTab = currentTab;
           }  
         }

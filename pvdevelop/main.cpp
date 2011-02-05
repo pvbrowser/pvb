@@ -50,7 +50,7 @@ void usage()
   printf("-action=writeStartscript\n");
   printf("-action=writeDimension:<xmax>:<ymax>\n");
   printf("-action=importUi:<masknumber>\n");
-  printf("-programming_language=<Python>\n");
+  printf("-programming_language=<Lua|Python>\n");
   exit(0);
 }
 

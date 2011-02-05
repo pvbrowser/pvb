@@ -128,6 +128,9 @@ cd ..
 #  ./build_python_interface.sh noswig
 #  cd ..
 #fi
+cd language_bindings
+./build_lua_interface.sh
+cd ..
 echo '################################################################'
 echo '# finished !!!                                                 #'
 echo '# verify that no errors occured by running me again            #'

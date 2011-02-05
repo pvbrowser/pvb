@@ -76,7 +76,7 @@ int action(const char *command)
   }
 
   if(opt.arg_debug) printf("action(%s)\n",command);
-  if(strncmp(command,"qmake=",6) == 0)
+  if(strncmp(command,"qmake=",6) == 0 && opt.script != PV_LUA)
   {
     sscanf(command,"qmake=%s",project);
     sprintf(cmd,"qmake %s.pro",project);
@@ -134,7 +134,7 @@ int action(const char *command)
       }  
     }
   }
-  else if(strncmp(command,"make",4) == 0)
+  else if(strncmp(command,"make",4) == 0 && opt.script != PV_LUA)
   {
 #ifdef PVUNIX
     if(opt.arg_action[0] != '\0') ret = system("make");
@@ -1714,7 +1714,14 @@ get_args:
         isText = 1;
         cptr++;
       }
-      if(*cptr == ';') break; 
+      if(opt.script == PV_LUA)
+      {
+        if(*cptr == ')') break; 
+      }
+      else
+      {
+        if(*cptr == ';') break; 
+      }
     }
     // get args end
 
@@ -1730,7 +1737,9 @@ get_args:
     }
 
     //--- begin interpret ---------------------------------------------------------------
-    if((cptr = strstr(line, "pvTabOrder(p,")) != NULL)
+    if(opt.script == PV_LUA) cptr = strstr(line, "pv.pvTabOrder(p,");
+    else                     cptr = strstr(line, "pvTabOrder(p,");
+    if(cptr != NULL)
     { 
       isConstructor = 0;
       if(tabstopFound == 0)
@@ -1760,7 +1769,8 @@ get_args:
          export_widgets(fin, fout, line, maxline, subspace, traceback, isTabOrTool); // recursive export children
          fprintf(fout,"%s </widget>\n", space); 
          widgetTerminated = 0;
-         if(strstr(line,"  return 0;") != NULL) return 0;               // finito
+         if(strstr(line,"  return 0;") != NULL)                          return 0;               // finito
+         if(strstr(line,"--- end construction of our mask ---") != NULL) return 0;               // finito
          goto get_args;                                                 // goto start of main loop
       } 
       // check recursive end
@@ -1999,7 +2009,7 @@ get_args:
       {
         fprintf(fout,"%s<widget class=\"PvbDraw\" name=\"%s\" >\n", space, p[0]);
       }
-      else if(strstr(line,"pvQImage(") != NULL)
+      else if(strstr(line,"pvQImage(") != NULL || strstr(line,"pvQImageScript(") != NULL)
       {
         fprintf(fout,"%s<widget class=\"PvbImage\" name=\"%s\" >\n", space, p[0]);
         fprintf(fout,"%s <property name=\"whatsThis\" >\n", space);
@@ -2324,15 +2334,25 @@ get_args:
 
     // get next line of information begin 
     isConstructor = 0;
-    while(fgets(line, maxline, fin) != NULL)
+    char *fret;
+    while((fret =fgets(line, maxline, fin)) != NULL)
     {
       cptr = strchr(line,'\n');
       if(cptr != NULL) *cptr = '\0';
-      if(strstr(line,"  return 0;") != NULL)
+      if(opt.script == PV_LUA)
       {
-        // if(tabstopFound == 1) fprintf(fout, "%s</tabstops>\n", space);
-        return 0; // end reached
-      }  
+        if(strstr(line,"--- end construction of our mask ---") != NULL)
+        {
+          return 0; // end reached
+        }  
+      }
+      else
+      {
+        if(strstr(line,"  return 0;") != NULL)
+        {
+          return 0; // end reached
+        }  
+      }
       if     (strstr(line,"pvDownloadFile(")     != NULL) ;                  // not necessary in ui file
       else if(strstr(line,"pvGl")                != NULL) ;                  // not necessary in ui file
       else if(strstr(line,"pvQLayout")           != NULL) ;                  // not necessary in ui file
@@ -2345,6 +2365,7 @@ get_args:
       else if(strstr(line,"qwt")                 != NULL) break;             // information found
       else                                             isConstructor = 1; // empty line found
     }
+    if(fret == NULL) return -1;
     // get next line of information end 
   }
 }
@@ -2357,7 +2378,8 @@ int export_ui(int imask)
   int isTabOrTool = 0;
 
   traceback.clear();
-  sprintf(line, "mask%d.cpp", imask);
+  if(opt.script == PV_LUA) sprintf(line, "mask%d.lua", imask);
+  else                     sprintf(line, "mask%d.cpp", imask);
   fin = fopen(line,"r");
   if(fin == NULL)
   {

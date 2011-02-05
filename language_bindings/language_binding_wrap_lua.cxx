@@ -1547,6 +1547,7 @@ typedef struct{} LANGUAGE_OBJ;
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
 PARAM *getParam(unsigned long p);
+int pvQImageScript(PARAM *p, int id, int parent, const char *imagename);
 int *new_int(int ivalue);
 int  get_int(int *i);
 void delete_int(int *i);
@@ -6251,7 +6252,7 @@ fail:
 }
 
 
-static int _wrap_pvQImage(lua_State* L) {
+static int _wrap_pvQImage__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
   int arg2 ;
@@ -6302,6 +6303,320 @@ static int _wrap_pvQImage(lua_State* L) {
 fail:
   lua_error(L);
   return SWIG_arg;
+}
+
+
+static int _wrap_pvQImage__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int *arg5 = (int *) 0 ;
+  int *arg6 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvQImage",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvQImage",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvQImage",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvQImage",3,"int");
+  if(!lua_isstring(L,4)) SWIG_fail_arg("pvQImage",4,"char const *");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("pvQImage",5,"int *");
+  if(!SWIG_isptrtype(L,6)) SWIG_fail_arg("pvQImage",6,"int *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvQImage",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("pvQImage",5,SWIGTYPE_p_int);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,6,(void**)&arg6,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("pvQImage",6,SWIGTYPE_p_int);
+  }
+  
+  result = (int)pvQImage(arg1,arg2,arg3,(char const *)arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvQImage__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int *arg5 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvQImage",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvQImage",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvQImage",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvQImage",3,"int");
+  if(!lua_isstring(L,4)) SWIG_fail_arg("pvQImage",4,"char const *");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("pvQImage",5,"int *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvQImage",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("pvQImage",5,SWIGTYPE_p_int);
+  }
+  
+  result = (int)pvQImage(arg1,arg2,arg3,(char const *)arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvQImage__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvQImage",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvQImage",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvQImage",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvQImage",3,"int");
+  if(!lua_isstring(L,4)) SWIG_fail_arg("pvQImage",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvQImage",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)pvQImage(arg1,arg2,arg3,(char const *)arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvQImage(lua_State* L) {
+  int argc;
+  int argv[8]={
+    1,2,3,4,5,6,7,8
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isstring(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_pvQImage__SWIG_3(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isstring(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_pvQImage__SWIG_2(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isstring(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                void *ptr;
+                if (SWIG_isptrtype(L,argv[5])==0 || SWIG_ConvertPtr(L,argv[5], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                  _v = 0;
+                } else {
+                  _v = 1;
+                }
+              }
+              if (_v) {
+                return _wrap_pvQImage__SWIG_1(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 7) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isstring(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                void *ptr;
+                if (SWIG_isptrtype(L,argv[5])==0 || SWIG_ConvertPtr(L,argv[5], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                  _v = 0;
+                } else {
+                  _v = 1;
+                }
+              }
+              if (_v) {
+                {
+                  void *ptr;
+                  if (SWIG_isptrtype(L,argv[6])==0 || SWIG_ConvertPtr(L,argv[6], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                    _v = 0;
+                  } else {
+                    _v = 1;
+                  }
+                }
+                if (_v) {
+                  return _wrap_pvQImage__SWIG_0(L);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'pvQImage'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvQImage(PARAM *,int,int,char const *,int *,int *,int *)\n"
+    "    pvQImage(PARAM *,int,int,char const *,int *,int *)\n"
+    "    pvQImage(PARAM *,int,int,char const *,int *)\n"
+    "    pvQImage(PARAM *,int,int,char const *)\n");
+  lua_error(L);return 0;
 }
 
 
@@ -23888,6 +24203,39 @@ fail:
 }
 
 
+static int _wrap_pvQImageScript(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvQImageScript",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvQImageScript",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvQImageScript",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvQImageScript",3,"int");
+  if(!lua_isstring(L,4)) SWIG_fail_arg("pvQImageScript",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvQImageScript",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)pvQImageScript(arg1,arg2,arg3,(char const *)arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_int(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
@@ -24005,7 +24353,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvQCheckBox", _wrap_pvQCheckBox},
     { "pvQFrame", _wrap_pvQFrame},
     { "pvQDraw", _wrap_pvQDraw},
-    { "pvQImage", _wrap_pvQImage},
+    { "pvQImage",_wrap_pvQImage},
     { "pvQGL", _wrap_pvQGL},
     { "pvQTabWidget", _wrap_pvQTabWidget},
     { "pvQToolBox", _wrap_pvQToolBox},
@@ -24351,6 +24699,7 @@ static const struct luaL_reg swig_commands[] = {
     { "getGeometry", _wrap_getGeometry},
     { "getParentWidgetId", _wrap_getParentWidgetId},
     { "getParam", _wrap_getParam},
+    { "pvQImageScript", _wrap_pvQImageScript},
     { "new_int", _wrap_new_int},
     { "get_int", _wrap_get_int},
     { "delete_int", _wrap_delete_int},

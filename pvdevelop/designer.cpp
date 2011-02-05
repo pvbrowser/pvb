@@ -635,11 +635,14 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       else
       {
         QString newTab = child->objectName();
-        QString tabCommand = "  pvTabOrder(p,";
+        QString tabCommand;
+        if(opt.script == PV_LUA) tabCommand = "  pv.pvTabOrder(p,";
+        else                     tabCommand = "  pvTabOrder(p,";
         tabCommand.append(lastTab);
         tabCommand.append(",");
         tabCommand.append(newTab);
-        tabCommand.append(");\n");
+        if(opt.script == PV_LUA) tabCommand.append(")\n");
+        else                     tabCommand.append(");\n");
         tablist.append(tabCommand);
         if(lastTabChild != NULL && child != NULL) QWidget::setTabOrder(lastTabChild,child);
         lastTab = newTab;

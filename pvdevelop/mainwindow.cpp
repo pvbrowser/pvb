@@ -172,7 +172,6 @@ int readProject()
   fin = fopen(project.toUtf8(),"r");
   if(fin == NULL)
   {
-    printf("could not open %s\n",(const char *) project.toUtf8());
     return -1;
   }
 

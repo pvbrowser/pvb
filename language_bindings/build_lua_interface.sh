@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# usage: ./build_lua_interface.sh <swig>
+#
 # Attention: you must install
 #            - gcc
 #            - qt-devel
@@ -19,42 +21,41 @@ export liblua=$(find /usr/lib -name liblua.a)
 if [ "x${liblua}" = "x" ]; then
   export liblua=$(find /usr/lib64 -name liblua.a)
 fi
-echo liblua = $liblua
+if [ "x${liblua}" = "x" ]; then
+  echo could not find liblua.a
+  echo skipping build lua language binding
+  exit
+fi
+echo found liblua = $liblua
 
 mkdir -p lua
-if [ "x${1}swig" = "xswig" ]; then
+if [ "x${1}" = "xswig" ]; then
   echo "predefined colors within processviewserver.h can't be used in lua. You can ignore the following warnings"
   echo "running swig ..."
+  rm -f lua/language_binding_wrap_lua.o
+  rm -f lua/language_binding_rllib_wrap_lua.o
+  rm -f lua/pvmain.o
   swig -c++ -lua -Dunix language_binding.i
+  mv language_binding_wrap.cxx       language_binding_wrap_lua.cxx
   swig -c++ -lua -Dunix language_binding_rllib.i
+  mv language_binding_rllib_wrap.cxx language_binding_rllib_wrap_lua.cxx
 fi
 
-echo compiling pvsbinding ...
-cp language_binding_wrap.cxx language_binding_wrap_lua.cxx
-g++ -c -fpic language_binding_wrap_lua.cxx
-echo compiling rllibbinding ... You can ignore the 'PACKED' warnings from cif_user.h
-cp language_binding_rllib_wrap.cxx language_binding_rllib_wrap_lua.cxx
-g++ -c -fpic language_binding_rllib_wrap_lua.cxx
-g++ -c -fpic -DLUA pvmain.cpp -o pvmain.o
-mv language_binding_wrap_lua.o       lua/
-mv language_binding_rllib_wrap_lua.o lua/
-mv pvmain.o                          lua/
-rm language_binding_wrap.cxx
-rm language_binding_rllib_wrap.cxx
-
-echo "created:"
-ls -al lua
+if [ -e lua/language_binding_wrap_lua.o ]; then
+  echo skip recompiling lua
+else
+  echo compiling pvsbinding ...
+  g++ -c -fpic language_binding_wrap_lua.cxx
+  g++ -c -fpic -DLUA pvmain.cpp -o pvmain.o
+  echo compiling rllibbinding ... You can ignore the 'PACKED' warnings from cif_user.h
+  g++ -c -fpic language_binding_rllib_wrap_lua.cxx
+  mv language_binding_wrap_lua.o       lua/
+  mv pvmain.o                          lua/
+  mv language_binding_rllib_wrap_lua.o lua/
+fi
 
 cd lua/pvslua
-qmake pvslua.pro
-make  clean
+../../../qmake.sh pvslua.pro
 make
+cd ../..
 
-echo created lua pvserver lua/pvslua/pvslua
-echo "####################################################"
-echo "# usage: ./build_lua_interface.sh <swig>           #"
-echo "# Now run the following for installation of pvslua #"
-echo "# su                                               #"
-echo "# cp lua/pvslua/pvslua /usr/bin/                   #"
-echo "# exit                                             #"
-echo "####################################################"

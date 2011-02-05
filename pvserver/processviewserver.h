@@ -1224,7 +1224,7 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetImage()
  </pre> */
-int pvQImage(PARAM *p, int id, int parent, const char *imagename, int *w, int *h, int *depth);
+int pvQImage(PARAM *p, int id, int parent, const char *imagename, int *w=NULL, int *h=NULL, int *depth=NULL);
 /*! <pre>
 Creates a new OpenGL Widget . See also pvQWidget().
 
