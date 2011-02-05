@@ -1237,7 +1237,7 @@ void MainWindow::slotRadioMask(bool checked)
 
 void MainWindow::slotComboEvents(int i)
 {
-  if((curFile.contains("_slots.h") || curFile.contains(".py")) && editor != NULL)
+  if((curFile.contains("_slots.h") || curFile.contains("_slots.lua") || curFile.contains(".py")) && editor != NULL)
   {
     QString what = editor->comboBoxEvent->itemText(i);
     if(what.contains("//###"))
@@ -1431,6 +1431,15 @@ void MainWindow::slotInsertFunction()
   if((ret.contains(");") || ret.contains("=") || ret.contains("BIT")) && !ret.contains("(...)"))
   {
     if(curFile.contains(".py")) ret.remove(";");
+    if(opt.script == PV_LUA)
+    {
+      ret.remove(";");
+      QString tmp;
+      if(ret.startsWith("pv")) tmp = "pv.";
+      if(ret.startsWith("rl")) tmp = "rllib.";
+      tmp += ret;
+      ret = tmp;
+    }  
     editor->edit->textCursor().insertText(ret);
     return;
   }
@@ -1470,11 +1479,16 @@ void MainWindow::getWidgetNames(const QString &filename)
   if(editor == NULL) return;
   if(opt.arg_debug) printf("getWidgetNames(%s)\n",(const char *) filename.toUtf8());
 
+  char buf[1024];
+  int i;
   QString line;
   editor->widgetname->clear();
   if(!filename.startsWith("mask")) return;
   QTextStream in;
-  QFile mask("mask" + editor->spinBoxMask->text() + ".cpp");
+  QString name;
+  if(opt.script == PV_LUA) name = "mask" + editor->spinBoxMask->text() + ".lua";
+  else                     name = "mask" + editor->spinBoxMask->text() + ".cpp";
+  QFile mask(name);
   if(!mask.open(QFile::ReadOnly)) return;
 
   in.setDevice(&mask);
@@ -1491,9 +1505,20 @@ void MainWindow::getWidgetNames(const QString &filename)
     if(line.contains("ID_END_OF_WIDGETS")) break;
     else
     {
-      line.remove(' ');
-      line.remove(',');
-      editor->widgetname->addItem(line);
+      line.remove(" ");
+      if(line.length() < (int) (sizeof(buf) - 1))
+      {
+        strcpy(buf,line.toUtf8());
+        for(i=0; buf[i] != '\0'; i++)
+        {
+          if(buf[i]==',' || buf[i]=='=' || buf[i]==';')
+          {
+            buf[i] = '\0';
+            break;
+          }
+        }
+        editor->widgetname->addItem(buf);
+      }  
     }
   }
   mask.close();

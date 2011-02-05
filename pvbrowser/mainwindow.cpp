@@ -1413,6 +1413,11 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
   else if(e->modifiers() == Qt::ControlModifier)
   {
     modifier = 3;
+    if(key == Qt::Key_R)
+    {
+      slotReconnect();
+      return;
+    }  
   }
   else if(e->modifiers() == Qt::AltModifier)
   {
