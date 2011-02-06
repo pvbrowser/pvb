@@ -66,127 +66,40 @@ except AttributeError:
     _newclass = 0
 
 
-class rlSpawn(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSpawn, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlSpawn, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlSpawn()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlSpawn
-    __del__ = lambda self : None;
-    def spawn(self, *args): return _rllib.rlSpawn_spawn(self, *args)
-    def readLine(self): return _rllib.rlSpawn_readLine(self)
-    def getchar(self): return _rllib.rlSpawn_getchar(self)
-    def select(self, timeout = 50): return _rllib.rlSpawn_select(self, timeout)
-    def writeString(self, *args): return _rllib.rlSpawn_writeString(self, *args)
-    def write(self, *args): return _rllib.rlSpawn_write(self, *args)
-    def printf(self, *args): return _rllib.rlSpawn_printf(self, *args)
-    def printAll(self): return _rllib.rlSpawn_printAll(self)
-    __swig_setmethods__["pid"] = _rllib.rlSpawn_pid_set
-    __swig_getmethods__["pid"] = _rllib.rlSpawn_pid_get
-    if _newclass:pid = _swig_property(_rllib.rlSpawn_pid_get, _rllib.rlSpawn_pid_set)
-rlSpawn_swigregister = _rllib.rlSpawn_swigregister
-rlSpawn_swigregister(rlSpawn)
-
-class WSEMAPHORE(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, WSEMAPHORE, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, WSEMAPHORE, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["cmax"] = _rllib.WSEMAPHORE_cmax_set
-    __swig_getmethods__["cmax"] = _rllib.WSEMAPHORE_cmax_get
-    if _newclass:cmax = _swig_property(_rllib.WSEMAPHORE_cmax_get, _rllib.WSEMAPHORE_cmax_set)
-    __swig_setmethods__["nready"] = _rllib.WSEMAPHORE_nready_set
-    __swig_getmethods__["nready"] = _rllib.WSEMAPHORE_nready_get
-    if _newclass:nready = _swig_property(_rllib.WSEMAPHORE_nready_get, _rllib.WSEMAPHORE_nready_set)
-    __swig_setmethods__["mutex"] = _rllib.WSEMAPHORE_mutex_set
-    __swig_getmethods__["mutex"] = _rllib.WSEMAPHORE_mutex_get
-    if _newclass:mutex = _swig_property(_rllib.WSEMAPHORE_mutex_get, _rllib.WSEMAPHORE_mutex_set)
-    __swig_setmethods__["cond"] = _rllib.WSEMAPHORE_cond_set
-    __swig_getmethods__["cond"] = _rllib.WSEMAPHORE_cond_get
-    if _newclass:cond = _swig_property(_rllib.WSEMAPHORE_cond_get, _rllib.WSEMAPHORE_cond_set)
-    def __init__(self): 
-        this = _rllib.new_WSEMAPHORE()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_WSEMAPHORE
-    __del__ = lambda self : None;
-WSEMAPHORE_swigregister = _rllib.WSEMAPHORE_swigregister
-WSEMAPHORE_swigregister(WSEMAPHORE)
-
-
-def rlwthread_attr_init(*args):
-  return _rllib.rlwthread_attr_init(*args)
-rlwthread_attr_init = _rllib.rlwthread_attr_init
-
-def rlwthread_create(*args):
-  return _rllib.rlwthread_create(*args)
-rlwthread_create = _rllib.rlwthread_create
-
-def rlwthread_close_handle(*args):
-  return _rllib.rlwthread_close_handle(*args)
-rlwthread_close_handle = _rllib.rlwthread_close_handle
-
-def rlwthread_exit(*args):
-  return _rllib.rlwthread_exit(*args)
-rlwthread_exit = _rllib.rlwthread_exit
-
-def rlwthread_join(*args):
-  return _rllib.rlwthread_join(*args)
-rlwthread_join = _rllib.rlwthread_join
-
-def rlwthread_mutex_init(*args):
-  return _rllib.rlwthread_mutex_init(*args)
-rlwthread_mutex_init = _rllib.rlwthread_mutex_init
-
-def rlwthread_mutex_destroy(*args):
-  return _rllib.rlwthread_mutex_destroy(*args)
-rlwthread_mutex_destroy = _rllib.rlwthread_mutex_destroy
-
-def rlwthread_mutex_lock(*args):
-  return _rllib.rlwthread_mutex_lock(*args)
-rlwthread_mutex_lock = _rllib.rlwthread_mutex_lock
-
-def rlwthread_mutex_trylock(*args):
-  return _rllib.rlwthread_mutex_trylock(*args)
-rlwthread_mutex_trylock = _rllib.rlwthread_mutex_trylock
-
-def rlwthread_mutex_unlock(*args):
-  return _rllib.rlwthread_mutex_unlock(*args)
-rlwthread_mutex_unlock = _rllib.rlwthread_mutex_unlock
-
-def rlwthread_cancel(*args):
-  return _rllib.rlwthread_cancel(*args)
-rlwthread_cancel = _rllib.rlwthread_cancel
-
-def rlwrapinit_semaphore(*args):
-  return _rllib.rlwrapinit_semaphore(*args)
-rlwrapinit_semaphore = _rllib.rlwrapinit_semaphore
-
-def rlwrapdestroy_semaphore(*args):
-  return _rllib.rlwrapdestroy_semaphore(*args)
-rlwrapdestroy_semaphore = _rllib.rlwrapdestroy_semaphore
-
-def rlwrapincrement_semaphore(*args):
-  return _rllib.rlwrapincrement_semaphore(*args)
-rlwrapincrement_semaphore = _rllib.rlwrapincrement_semaphore
-
-def rlwrapwait_semaphore(*args):
-  return _rllib.rlwrapwait_semaphore(*args)
-rlwrapwait_semaphore = _rllib.rlwrapwait_semaphore
-
-def rlwthread_sleep(*args):
-  return _rllib.rlwthread_sleep(*args)
-rlwthread_sleep = _rllib.rlwthread_sleep
-
-def rlsleep(*args):
-  return _rllib.rlsleep(*args)
-rlsleep = _rllib.rlsleep
+rl_PRINTF_LENGTH = _rllib.rl_PRINTF_LENGTH
+rl_PRINTF_LENGTH_SPREADSHEET = _rllib.rl_PRINTF_LENGTH_SPREADSHEET
+BIT0 = _rllib.BIT0
+BIT1 = _rllib.BIT1
+BIT2 = _rllib.BIT2
+BIT3 = _rllib.BIT3
+BIT4 = _rllib.BIT4
+BIT5 = _rllib.BIT5
+BIT6 = _rllib.BIT6
+BIT7 = _rllib.BIT7
+BIT8 = _rllib.BIT8
+BIT9 = _rllib.BIT9
+BIT10 = _rllib.BIT10
+BIT11 = _rllib.BIT11
+BIT12 = _rllib.BIT12
+BIT13 = _rllib.BIT13
+BIT14 = _rllib.BIT14
+BIT15 = _rllib.BIT15
+BIT16 = _rllib.BIT16
+BIT17 = _rllib.BIT17
+BIT18 = _rllib.BIT18
+BIT19 = _rllib.BIT19
+BIT20 = _rllib.BIT20
+BIT21 = _rllib.BIT21
+BIT22 = _rllib.BIT22
+BIT23 = _rllib.BIT23
+BIT24 = _rllib.BIT24
+BIT25 = _rllib.BIT25
+BIT26 = _rllib.BIT26
+BIT27 = _rllib.BIT27
+BIT28 = _rllib.BIT28
+BIT29 = _rllib.BIT29
+BIT30 = _rllib.BIT30
+BIT31 = _rllib.BIT31
 class THREAD_PARAM(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, THREAD_PARAM, name, value)
@@ -288,6 +201,94 @@ class rlSemaphore(_object):
 rlSemaphore_swigregister = _rllib.rlSemaphore_swigregister
 rlSemaphore_swigregister(rlSemaphore)
 
+class rlSharedMemory(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSharedMemory, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlSharedMemory, name)
+    __repr__ = _swig_repr
+    OK = _rllib.rlSharedMemory_OK
+    ERROR_FILE = _rllib.rlSharedMemory_ERROR_FILE
+    ERROR_SHMGET = _rllib.rlSharedMemory_ERROR_SHMGET
+    ERROR_SHMAT = _rllib.rlSharedMemory_ERROR_SHMAT
+    ERROR_SHMCTL = _rllib.rlSharedMemory_ERROR_SHMCTL
+    def __init__(self, *args): 
+        this = _rllib.new_rlSharedMemory(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlSharedMemory
+    __del__ = lambda self : None;
+    def deleteSharedMemory(self): return _rllib.rlSharedMemory_deleteSharedMemory(self)
+    def write(self, *args): return _rllib.rlSharedMemory_write(self, *args)
+    def read(self, *args): return _rllib.rlSharedMemory_read(self, *args)
+    def readInt(self, *args): return _rllib.rlSharedMemory_readInt(self, *args)
+    def readShort(self, *args): return _rllib.rlSharedMemory_readShort(self, *args)
+    def readByte(self, *args): return _rllib.rlSharedMemory_readByte(self, *args)
+    def readFloat(self, *args): return _rllib.rlSharedMemory_readFloat(self, *args)
+    def writeInt(self, *args): return _rllib.rlSharedMemory_writeInt(self, *args)
+    def writeShort(self, *args): return _rllib.rlSharedMemory_writeShort(self, *args)
+    def writeByte(self, *args): return _rllib.rlSharedMemory_writeByte(self, *args)
+    def writeFloat(self, *args): return _rllib.rlSharedMemory_writeFloat(self, *args)
+    def getUserAdr(self): return _rllib.rlSharedMemory_getUserAdr(self)
+    __swig_setmethods__["status"] = _rllib.rlSharedMemory_status_set
+    __swig_getmethods__["status"] = _rllib.rlSharedMemory_status_get
+    if _newclass:status = _swig_property(_rllib.rlSharedMemory_status_get, _rllib.rlSharedMemory_status_set)
+    __swig_setmethods__["name"] = _rllib.rlSharedMemory_name_set
+    __swig_getmethods__["name"] = _rllib.rlSharedMemory_name_get
+    if _newclass:name = _swig_property(_rllib.rlSharedMemory_name_get, _rllib.rlSharedMemory_name_set)
+rlSharedMemory_swigregister = _rllib.rlSharedMemory_swigregister
+rlSharedMemory_swigregister(rlSharedMemory)
+
+class rlIpAdr(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlIpAdr, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlIpAdr, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlIpAdr()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlIpAdr
+    __del__ = lambda self : None;
+    def setAdr(self, *args): return _rllib.rlIpAdr_setAdr(self, *args)
+    def __eq__(self, *args): return _rllib.rlIpAdr___eq__(self, *args)
+    __swig_setmethods__["address"] = _rllib.rlIpAdr_address_set
+    __swig_getmethods__["address"] = _rllib.rlIpAdr_address_get
+    if _newclass:address = _swig_property(_rllib.rlIpAdr_address_get, _rllib.rlIpAdr_address_set)
+rlIpAdr_swigregister = _rllib.rlIpAdr_swigregister
+rlIpAdr_swigregister(rlIpAdr)
+
+class rlUdpSocket(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlUdpSocket, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlUdpSocket, name)
+    __repr__ = _swig_repr
+    def __init__(self, debug = 0): 
+        this = _rllib.new_rlUdpSocket(debug)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlUdpSocket
+    __del__ = lambda self : None;
+    def setSockopt(self, *args): return _rllib.rlUdpSocket_setSockopt(self, *args)
+    def bind(self, *args): return _rllib.rlUdpSocket_bind(self, *args)
+    def select(self, *args): return _rllib.rlUdpSocket_select(self, *args)
+    def recvfrom(self, *args): return _rllib.rlUdpSocket_recvfrom(self, *args)
+    def sendto(self, *args): return _rllib.rlUdpSocket_sendto(self, *args)
+    def printf(self, *args): return _rllib.rlUdpSocket_printf(self, *args)
+    __swig_setmethods__["debug"] = _rllib.rlUdpSocket_debug_set
+    __swig_getmethods__["debug"] = _rllib.rlUdpSocket_debug_get
+    if _newclass:debug = _swig_property(_rllib.rlUdpSocket_debug_get, _rllib.rlUdpSocket_debug_set)
+    __swig_setmethods__["readflag"] = _rllib.rlUdpSocket_readflag_set
+    __swig_getmethods__["readflag"] = _rllib.rlUdpSocket_readflag_get
+    if _newclass:readflag = _swig_property(_rllib.rlUdpSocket_readflag_get, _rllib.rlUdpSocket_readflag_set)
+    __swig_setmethods__["writeflag"] = _rllib.rlUdpSocket_writeflag_set
+    __swig_getmethods__["writeflag"] = _rllib.rlUdpSocket_writeflag_get
+    if _newclass:writeflag = _swig_property(_rllib.rlUdpSocket_writeflag_get, _rllib.rlUdpSocket_writeflag_set)
+rlUdpSocket_swigregister = _rllib.rlUdpSocket_swigregister
+rlUdpSocket_swigregister(rlUdpSocket)
+
 
 def rlwsa():
   return _rllib.rlwsa()
@@ -335,57 +336,737 @@ class rlSocket(_object):
 rlSocket_swigregister = _rllib.rlSocket_swigregister
 rlSocket_swigregister(rlSocket)
 
-class rlTime(_object):
+class rl3964R(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlTime, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rl3964R, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlTime, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, rl3964R, name)
     __repr__ = _swig_repr
-    def __init__(self, Year = 0, Month = 0, Day = 0, Hour = 0, Minute = 0, 
-    Second = 0, Millisecond = 0): 
-        this = _rllib.new_rlTime(Year, Month, Day, Hour, Minute, Second, Millisecond)
+    highPriority = _rllib.rl3964R_highPriority
+    lowPriority = _rllib.rl3964R_lowPriority
+    def __init__(self, *args): 
+        this = _rllib.new_rl3964R(*args)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlTime
+    __swig_destroy__ = _rllib.delete_rl3964R
     __del__ = lambda self : None;
-    def getTimeString(self): return _rllib.rlTime_getTimeString(self)
-    def getLocalTime(self): return _rllib.rlTime_getLocalTime(self)
-    def getFileModificationTime(self, *args): return _rllib.rlTime_getFileModificationTime(self, *args)
-    def setTimeFromString(self, *args): return _rllib.rlTime_setTimeFromString(self, *args)
-    def setLocalTime(self): return _rllib.rlTime_setLocalTime(self)
-    def secondsSinceEpoche(self): return _rllib.rlTime_secondsSinceEpoche(self)
-    def __iadd__(self, *args): return _rllib.rlTime___iadd__(self, *args)
-    def __isub__(self, *args): return _rllib.rlTime___isub__(self, *args)
-    def __add__(self, *args): return _rllib.rlTime___add__(self, *args)
-    def __sub__(self, *args): return _rllib.rlTime___sub__(self, *args)
-    def __eq__(self, *args): return _rllib.rlTime___eq__(self, *args)
-    def __lt__(self, *args): return _rllib.rlTime___lt__(self, *args)
-    def __le__(self, *args): return _rllib.rlTime___le__(self, *args)
-    def __gt__(self, *args): return _rllib.rlTime___gt__(self, *args)
-    def __ge__(self, *args): return _rllib.rlTime___ge__(self, *args)
-    __swig_setmethods__["year"] = _rllib.rlTime_year_set
-    __swig_getmethods__["year"] = _rllib.rlTime_year_get
-    if _newclass:year = _swig_property(_rllib.rlTime_year_get, _rllib.rlTime_year_set)
-    __swig_setmethods__["month"] = _rllib.rlTime_month_set
-    __swig_getmethods__["month"] = _rllib.rlTime_month_get
-    if _newclass:month = _swig_property(_rllib.rlTime_month_get, _rllib.rlTime_month_set)
-    __swig_setmethods__["day"] = _rllib.rlTime_day_set
-    __swig_getmethods__["day"] = _rllib.rlTime_day_get
-    if _newclass:day = _swig_property(_rllib.rlTime_day_get, _rllib.rlTime_day_set)
-    __swig_setmethods__["hour"] = _rllib.rlTime_hour_set
-    __swig_getmethods__["hour"] = _rllib.rlTime_hour_get
-    if _newclass:hour = _swig_property(_rllib.rlTime_hour_get, _rllib.rlTime_hour_set)
-    __swig_setmethods__["minute"] = _rllib.rlTime_minute_set
-    __swig_getmethods__["minute"] = _rllib.rlTime_minute_get
-    if _newclass:minute = _swig_property(_rllib.rlTime_minute_get, _rllib.rlTime_minute_set)
-    __swig_setmethods__["second"] = _rllib.rlTime_second_set
-    __swig_getmethods__["second"] = _rllib.rlTime_second_get
-    if _newclass:second = _swig_property(_rllib.rlTime_second_get, _rllib.rlTime_second_set)
-    __swig_setmethods__["millisecond"] = _rllib.rlTime_millisecond_set
-    __swig_getmethods__["millisecond"] = _rllib.rlTime_millisecond_get
-    if _newclass:millisecond = _swig_property(_rllib.rlTime_millisecond_get, _rllib.rlTime_millisecond_set)
-rlTime_swigregister = _rllib.rlTime_swigregister
-rlTime_swigregister(rlTime)
+    def open(self, *args): return _rllib.rl3964R_open(self, *args)
+    def close(self): return _rllib.rl3964R_close(self)
+    def setReadCallback(self, *args): return _rllib.rl3964R_setReadCallback(self, *args)
+    def write(self, *args): return _rllib.rl3964R_write(self, *args)
+    def send(self): return _rllib.rl3964R_send(self)
+    def receive(self): return _rllib.rl3964R_receive(self)
+    __swig_setmethods__["receiver"] = _rllib.rl3964R_receiver_set
+    __swig_getmethods__["receiver"] = _rllib.rl3964R_receiver_get
+    if _newclass:receiver = _swig_property(_rllib.rl3964R_receiver_get, _rllib.rl3964R_receiver_set)
+    __swig_setmethods__["tty"] = _rllib.rl3964R_tty_set
+    __swig_getmethods__["tty"] = _rllib.rl3964R_tty_get
+    if _newclass:tty = _swig_property(_rllib.rl3964R_tty_get, _rllib.rl3964R_tty_set)
+    __swig_setmethods__["state"] = _rllib.rl3964R_state_set
+    __swig_getmethods__["state"] = _rllib.rl3964R_state_get
+    if _newclass:state = _swig_property(_rllib.rl3964R_state_get, _rllib.rl3964R_state_set)
+    __swig_setmethods__["priority"] = _rllib.rl3964R_priority_set
+    __swig_getmethods__["priority"] = _rllib.rl3964R_priority_get
+    if _newclass:priority = _swig_property(_rllib.rl3964R_priority_get, _rllib.rl3964R_priority_set)
+    __swig_setmethods__["run"] = _rllib.rl3964R_run_set
+    __swig_getmethods__["run"] = _rllib.rl3964R_run_get
+    if _newclass:run = _swig_property(_rllib.rl3964R_run_get, _rllib.rl3964R_run_set)
+    __swig_setmethods__["debug"] = _rllib.rl3964R_debug_set
+    __swig_getmethods__["debug"] = _rllib.rl3964R_debug_get
+    if _newclass:debug = _swig_property(_rllib.rl3964R_debug_get, _rllib.rl3964R_debug_set)
+    def dprintf(self, *args): return _rllib.rl3964R_dprintf(self, *args)
+rl3964R_swigregister = _rllib.rl3964R_swigregister
+rl3964R_swigregister(rl3964R)
+
+class rlCommandlineInterface(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlCommandlineInterface, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlCommandlineInterface, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlCommandlineInterface()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlCommandlineInterface
+    __del__ = lambda self : None;
+    def start(self, *args): return _rllib.rlCommandlineInterface_start(self, *args)
+    def readLine(self, timeout = 0): return _rllib.rlCommandlineInterface_readLine(self, timeout)
+    def readBlock(self, *args): return _rllib.rlCommandlineInterface_readBlock(self, *args)
+    def printf(self, *args): return _rllib.rlCommandlineInterface_printf(self, *args)
+    def writeBlock(self, *args): return _rllib.rlCommandlineInterface_writeBlock(self, *args)
+rlCommandlineInterface_swigregister = _rllib.rlCommandlineInterface_swigregister
+rlCommandlineInterface_swigregister(rlCommandlineInterface)
+
+
+def rlSetDebugPrintf(*args):
+  return _rllib.rlSetDebugPrintf(*args)
+rlSetDebugPrintf = _rllib.rlSetDebugPrintf
+
+def rlDebugPrintf(*args):
+  return _rllib.rlDebugPrintf(*args)
+rlDebugPrintf = _rllib.rlDebugPrintf
+
+def rlLastLinePrintf(*args):
+  return _rllib.rlLastLinePrintf(*args)
+rlLastLinePrintf = _rllib.rlLastLinePrintf
+
+def rlexec(*args):
+  return _rllib.rlexec(*args)
+rlexec = _rllib.rlexec
+
+def rlpass(*args):
+  return _rllib.rlpass(*args)
+rlpass = _rllib.rlpass
+
+def rlstrncpy(*args):
+  return _rllib.rlstrncpy(*args)
+rlstrncpy = _rllib.rlstrncpy
+
+def rlsnprintf(*args):
+  return _rllib.rlsnprintf(*args)
+rlsnprintf = _rllib.rlsnprintf
+
+def rlSetSigtermHandler(*args):
+  return _rllib.rlSetSigtermHandler(*args)
+rlSetSigtermHandler = _rllib.rlSetSigtermHandler
+
+def rlFindFile(*args):
+  return _rllib.rlFindFile(*args)
+rlFindFile = _rllib.rlFindFile
+
+def rlGetInifile(*args):
+  return _rllib.rlGetInifile(*args)
+rlGetInifile = _rllib.rlGetInifile
+
+def rlSwapShort(*args):
+  return _rllib.rlSwapShort(*args)
+rlSwapShort = _rllib.rlSwapShort
+
+def rlEib1(*args):
+  return _rllib.rlEib1(*args)
+rlEib1 = _rllib.rlEib1
+
+def rlEib2(*args):
+  return _rllib.rlEib2(*args)
+rlEib2 = _rllib.rlEib2
+
+def rlLon1(*args):
+  return _rllib.rlLon1(*args)
+rlLon1 = _rllib.rlLon1
+
+def rlLon2(*args):
+  return _rllib.rlLon2(*args)
+rlLon2 = _rllib.rlLon2
+
+def rlProfibus1(*args):
+  return _rllib.rlProfibus1(*args)
+rlProfibus1 = _rllib.rlProfibus1
+
+def rlProfibus2(*args):
+  return _rllib.rlProfibus2(*args)
+rlProfibus2 = _rllib.rlProfibus2
+
+def rlCan1(*args):
+  return _rllib.rlCan1(*args)
+rlCan1 = _rllib.rlCan1
+
+def rlCan2(*args):
+  return _rllib.rlCan2(*args)
+rlCan2 = _rllib.rlCan2
+
+def rlBrowser(*args):
+  return _rllib.rlBrowser(*args)
+rlBrowser = _rllib.rlBrowser
+
+def rlsystem(*args):
+  return _rllib.rlsystem(*args)
+rlsystem = _rllib.rlsystem
+
+def rlOption(*args):
+  return _rllib.rlOption(*args)
+rlOption = _rllib.rlOption
+
+def rlIntOption(*args):
+  return _rllib.rlIntOption(*args)
+rlIntOption = _rllib.rlIntOption
+
+def rlFloatOption(*args):
+  return _rllib.rlFloatOption(*args)
+rlFloatOption = _rllib.rlFloatOption
+
+def rlTextOption(*args):
+  return _rllib.rlTextOption(*args)
+rlTextOption = _rllib.rlTextOption
+
+def rlCopyTextfile(*args):
+  return _rllib.rlCopyTextfile(*args)
+rlCopyTextfile = _rllib.rlCopyTextfile
+
+def rlupper(*args):
+  return _rllib.rlupper(*args)
+rlupper = _rllib.rlupper
+
+def rllower(*args):
+  return _rllib.rllower(*args)
+rllower = _rllib.rllower
+
+def rlStartsWith(*args):
+  return _rllib.rlStartsWith(*args)
+rlStartsWith = _rllib.rlStartsWith
+class rlDataAcquisition(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisition, name)
+    __repr__ = _swig_repr
+    DAQ_ERROR = _rllib.rlDataAcquisition_DAQ_ERROR
+    def __init__(self, mailbox = "/srv/automation/mbx/dataacquisition.mbx", 
+    shared_memory = "/srv/automation/shm/dataacquisition.shm", 
+    shared_memory_size = 65536): 
+        this = _rllib.new_rlDataAcquisition(mailbox, shared_memory, shared_memory_size)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataAcquisition
+    __del__ = lambda self : None;
+    def stringValue(self, *args): return _rllib.rlDataAcquisition_stringValue(self, *args)
+    def intValue(self, *args): return _rllib.rlDataAcquisition_intValue(self, *args)
+    def floatValue(self, *args): return _rllib.rlDataAcquisition_floatValue(self, *args)
+    def writeStringValue(self, *args): return _rllib.rlDataAcquisition_writeStringValue(self, *args)
+    def writeIntValue(self, *args): return _rllib.rlDataAcquisition_writeIntValue(self, *args)
+    def writeFloatValue(self, *args): return _rllib.rlDataAcquisition_writeFloatValue(self, *args)
+    def readErrorCount(self): return _rllib.rlDataAcquisition_readErrorCount(self)
+    def writeErrorCount(self): return _rllib.rlDataAcquisition_writeErrorCount(self)
+    def lifeCounter(self): return _rllib.rlDataAcquisition_lifeCounter(self)
+    def firstVariable(self): return _rllib.rlDataAcquisition_firstVariable(self)
+    def nextVariable(self): return _rllib.rlDataAcquisition_nextVariable(self)
+    def shmStatus(self): return _rllib.rlDataAcquisition_shmStatus(self)
+rlDataAcquisition_swigregister = _rllib.rlDataAcquisition_swigregister
+rlDataAcquisition_swigregister(rlDataAcquisition)
+
+def rlSubmitPvserver(*args):
+  return _rllib.rlSubmitPvserver(*args)
+rlSubmitPvserver = _rllib.rlSubmitPvserver
+
+class rlDataAcquisition_SHM_HEADER(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition_SHM_HEADER, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisition_SHM_HEADER, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["ident"] = _rllib.rlDataAcquisition_SHM_HEADER_ident_set
+    __swig_getmethods__["ident"] = _rllib.rlDataAcquisition_SHM_HEADER_ident_get
+    if _newclass:ident = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_ident_get, _rllib.rlDataAcquisition_SHM_HEADER_ident_set)
+    __swig_setmethods__["maxItemNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_set
+    __swig_getmethods__["maxItemNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_get
+    if _newclass:maxItemNameLength = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_get, _rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_set)
+    __swig_setmethods__["maxNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_set
+    __swig_getmethods__["maxNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_get
+    if _newclass:maxNameLength = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_get, _rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_set)
+    __swig_setmethods__["numItems"] = _rllib.rlDataAcquisition_SHM_HEADER_numItems_set
+    __swig_getmethods__["numItems"] = _rllib.rlDataAcquisition_SHM_HEADER_numItems_get
+    if _newclass:numItems = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_numItems_get, _rllib.rlDataAcquisition_SHM_HEADER_numItems_set)
+    __swig_setmethods__["readErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_set
+    __swig_getmethods__["readErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_get
+    if _newclass:readErrorCount = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_get, _rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_set)
+    __swig_setmethods__["writeErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_set
+    __swig_getmethods__["writeErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_get
+    if _newclass:writeErrorCount = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_get, _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_set)
+    __swig_setmethods__["lifeCounter"] = _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_set
+    __swig_getmethods__["lifeCounter"] = _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_get
+    if _newclass:lifeCounter = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_get, _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_set)
+    __swig_setmethods__["spare"] = _rllib.rlDataAcquisition_SHM_HEADER_spare_set
+    __swig_getmethods__["spare"] = _rllib.rlDataAcquisition_SHM_HEADER_spare_get
+    if _newclass:spare = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_spare_get, _rllib.rlDataAcquisition_SHM_HEADER_spare_set)
+    __swig_setmethods__["cspare"] = _rllib.rlDataAcquisition_SHM_HEADER_cspare_set
+    __swig_getmethods__["cspare"] = _rllib.rlDataAcquisition_SHM_HEADER_cspare_get
+    if _newclass:cspare = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_cspare_get, _rllib.rlDataAcquisition_SHM_HEADER_cspare_set)
+    def __init__(self): 
+        this = _rllib.new_rlDataAcquisition_SHM_HEADER()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataAcquisition_SHM_HEADER
+    __del__ = lambda self : None;
+rlDataAcquisition_SHM_HEADER_swigregister = _rllib.rlDataAcquisition_SHM_HEADER_swigregister
+rlDataAcquisition_SHM_HEADER_swigregister(rlDataAcquisition_SHM_HEADER)
+
+class rlDataAcquisitionProvider(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisitionProvider, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisitionProvider, name)
+    __repr__ = _swig_repr
+    DAQ_PROVIDER_ERROR = _rllib.rlDataAcquisitionProvider_DAQ_PROVIDER_ERROR
+    def __init__(self, maxNameLength = 31, shared_memory = "/srv/automation/shm/dataacquisition.shm", 
+    shared_memory_size = 65536): 
+        this = _rllib.new_rlDataAcquisitionProvider(maxNameLength, shared_memory, shared_memory_size)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataAcquisitionProvider
+    __del__ = lambda self : None;
+    def readItemList(self, *args): return _rllib.rlDataAcquisitionProvider_readItemList(self, *args)
+    def firstItem(self): return _rllib.rlDataAcquisitionProvider_firstItem(self)
+    def nextItem(self): return _rllib.rlDataAcquisitionProvider_nextItem(self)
+    def stringValue(self, *args): return _rllib.rlDataAcquisitionProvider_stringValue(self, *args)
+    def intValue(self, *args): return _rllib.rlDataAcquisitionProvider_intValue(self, *args)
+    def floatValue(self, *args): return _rllib.rlDataAcquisitionProvider_floatValue(self, *args)
+    def setStringValue(self, *args): return _rllib.rlDataAcquisitionProvider_setStringValue(self, *args)
+    def setIntValue(self, *args): return _rllib.rlDataAcquisitionProvider_setIntValue(self, *args)
+    def setFloatValue(self, *args): return _rllib.rlDataAcquisitionProvider_setFloatValue(self, *args)
+    def readErrorCount(self): return _rllib.rlDataAcquisitionProvider_readErrorCount(self)
+    def writeErrorCount(self): return _rllib.rlDataAcquisitionProvider_writeErrorCount(self)
+    def lifeCounter(self): return _rllib.rlDataAcquisitionProvider_lifeCounter(self)
+    def setReadErrorCount(self, *args): return _rllib.rlDataAcquisitionProvider_setReadErrorCount(self, *args)
+    def setWriteErrorCount(self, *args): return _rllib.rlDataAcquisitionProvider_setWriteErrorCount(self, *args)
+    def setLifeCounter(self, *args): return _rllib.rlDataAcquisitionProvider_setLifeCounter(self, *args)
+    def shmStatus(self): return _rllib.rlDataAcquisitionProvider_shmStatus(self)
+    def setAllowAddValues(self, *args): return _rllib.rlDataAcquisitionProvider_setAllowAddValues(self, *args)
+rlDataAcquisitionProvider_swigregister = _rllib.rlDataAcquisitionProvider_swigregister
+rlDataAcquisitionProvider_swigregister(rlDataAcquisitionProvider)
+
+class rlDataAcquisitionProvider_SHM_HEADER(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisitionProvider_SHM_HEADER, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisitionProvider_SHM_HEADER, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["ident"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_set
+    __swig_getmethods__["ident"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_get
+    if _newclass:ident = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_set)
+    __swig_setmethods__["maxItemNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_set
+    __swig_getmethods__["maxItemNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_get
+    if _newclass:maxItemNameLength = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_set)
+    __swig_setmethods__["maxNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_set
+    __swig_getmethods__["maxNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_get
+    if _newclass:maxNameLength = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_set)
+    __swig_setmethods__["numItems"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_set
+    __swig_getmethods__["numItems"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_get
+    if _newclass:numItems = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_set)
+    __swig_setmethods__["readErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_set
+    __swig_getmethods__["readErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_get
+    if _newclass:readErrorCount = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_set)
+    __swig_setmethods__["writeErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_set
+    __swig_getmethods__["writeErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_get
+    if _newclass:writeErrorCount = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_set)
+    __swig_setmethods__["lifeCounter"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_set
+    __swig_getmethods__["lifeCounter"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_get
+    if _newclass:lifeCounter = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_set)
+    __swig_setmethods__["spare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_set
+    __swig_getmethods__["spare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_get
+    if _newclass:spare = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_set)
+    __swig_setmethods__["cspare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_set
+    __swig_getmethods__["cspare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_get
+    if _newclass:cspare = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_set)
+    def __init__(self): 
+        this = _rllib.new_rlDataAcquisitionProvider_SHM_HEADER()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataAcquisitionProvider_SHM_HEADER
+    __del__ = lambda self : None;
+rlDataAcquisitionProvider_SHM_HEADER_swigregister = _rllib.rlDataAcquisitionProvider_SHM_HEADER_swigregister
+rlDataAcquisitionProvider_SHM_HEADER_swigregister(rlDataAcquisitionProvider_SHM_HEADER)
+
+class rlDataProvider(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataProvider, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataProvider, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _rllib.new_rlDataProvider(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataProvider
+    __del__ = lambda self : None;
+    def getInt(self, *args): return _rllib.rlDataProvider_getInt(self, *args)
+    def getFloat(self, *args): return _rllib.rlDataProvider_getFloat(self, *args)
+    def getIntArray(self, *args): return _rllib.rlDataProvider_getIntArray(self, *args)
+    def getFloatArray(self, *args): return _rllib.rlDataProvider_getFloatArray(self, *args)
+    def getString(self, *args): return _rllib.rlDataProvider_getString(self, *args)
+    def setInt(self, *args): return _rllib.rlDataProvider_setInt(self, *args)
+    def setFloat(self, *args): return _rllib.rlDataProvider_setFloat(self, *args)
+    def setIntArray(self, *args): return _rllib.rlDataProvider_setIntArray(self, *args)
+    def setFloatArray(self, *args): return _rllib.rlDataProvider_setFloatArray(self, *args)
+    def setString(self, *args): return _rllib.rlDataProvider_setString(self, *args)
+    def getIntAndReset(self, *args): return _rllib.rlDataProvider_getIntAndReset(self, *args)
+    def setIntAndWaitForReset(self, *args): return _rllib.rlDataProvider_setIntAndWaitForReset(self, *args)
+    def setInt0Semaphore(self, *args): return _rllib.rlDataProvider_setInt0Semaphore(self, *args)
+    def getInt0Semaphore(self): return _rllib.rlDataProvider_getInt0Semaphore(self)
+    def run(self, *args): return _rllib.rlDataProvider_run(self, *args)
+rlDataProvider_swigregister = _rllib.rlDataProvider_swigregister
+rlDataProvider_swigregister(rlDataProvider)
+
+class rlDataProviderClient(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataProviderClient, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataProviderClient, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlDataProviderClient()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataProviderClient
+    __del__ = lambda self : None;
+    def getInt(self, *args): return _rllib.rlDataProviderClient_getInt(self, *args)
+    def getFloat(self, *args): return _rllib.rlDataProviderClient_getFloat(self, *args)
+    def getIntArray(self, *args): return _rllib.rlDataProviderClient_getIntArray(self, *args)
+    def getFloatArray(self, *args): return _rllib.rlDataProviderClient_getFloatArray(self, *args)
+    def getString(self, *args): return _rllib.rlDataProviderClient_getString(self, *args)
+    def setInt(self, *args): return _rllib.rlDataProviderClient_setInt(self, *args)
+    def setFloat(self, *args): return _rllib.rlDataProviderClient_setFloat(self, *args)
+    def setIntArray(self, *args): return _rllib.rlDataProviderClient_setIntArray(self, *args)
+    def setFloatArray(self, *args): return _rllib.rlDataProviderClient_setFloatArray(self, *args)
+    def setString(self, *args): return _rllib.rlDataProviderClient_setString(self, *args)
+    def getIntAndReset(self, *args): return _rllib.rlDataProviderClient_getIntAndReset(self, *args)
+    def setIntAndWaitForReset(self, *args): return _rllib.rlDataProviderClient_setIntAndWaitForReset(self, *args)
+    def getInt0Semaphore(self, *args): return _rllib.rlDataProviderClient_getInt0Semaphore(self, *args)
+rlDataProviderClient_swigregister = _rllib.rlDataProviderClient_swigregister
+rlDataProviderClient_swigregister(rlDataProviderClient)
+
+class rlDataProviderThreads(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataProviderThreads, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlDataProviderThreads, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _rllib.new_rlDataProviderThreads(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlDataProviderThreads
+    __del__ = lambda self : None;
+    def start(self): return _rllib.rlDataProviderThreads_start(self)
+    __swig_setmethods__["provider"] = _rllib.rlDataProviderThreads_provider_set
+    __swig_getmethods__["provider"] = _rllib.rlDataProviderThreads_provider_get
+    if _newclass:provider = _swig_property(_rllib.rlDataProviderThreads_provider_get, _rllib.rlDataProviderThreads_provider_set)
+    __swig_setmethods__["thread"] = _rllib.rlDataProviderThreads_thread_set
+    __swig_getmethods__["thread"] = _rllib.rlDataProviderThreads_thread_get
+    if _newclass:thread = _swig_property(_rllib.rlDataProviderThreads_thread_get, _rllib.rlDataProviderThreads_thread_set)
+    __swig_setmethods__["port"] = _rllib.rlDataProviderThreads_port_set
+    __swig_getmethods__["port"] = _rllib.rlDataProviderThreads_port_get
+    if _newclass:port = _swig_property(_rllib.rlDataProviderThreads_port_get, _rllib.rlDataProviderThreads_port_set)
+rlDataProviderThreads_swigregister = _rllib.rlDataProviderThreads_swigregister
+rlDataProviderThreads_swigregister(rlDataProviderThreads)
+
+rlMAX_EVENT = _rllib.rlMAX_EVENT
+rlInfo = _rllib.rlInfo
+rlWarning = _rllib.rlWarning
+rlError = _rllib.rlError
+rlCritical = _rllib.rlCritical
+rlFatal = _rllib.rlFatal
+rlTest = _rllib.rlTest
+rlEVENT_SIZE = _rllib.rlEVENT_SIZE
+
+def rlEventInit(*args):
+  return _rllib.rlEventInit(*args)
+rlEventInit = _rllib.rlEventInit
+
+def rlSetEventLocation(*args):
+  return _rllib.rlSetEventLocation(*args)
+rlSetEventLocation = _rllib.rlSetEventLocation
+
+def rlEventPrintf(*args):
+  return _rllib.rlEventPrintf(*args)
+rlEventPrintf = _rllib.rlEventPrintf
+rlMAX_MESSAGES = _rllib.rlMAX_MESSAGES
+class rlEventLogServer(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEventLogServer, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlEventLogServer, name)
+    __repr__ = _swig_repr
+    def __init__(self, filename = None, max_events = 10000): 
+        this = _rllib.new_rlEventLogServer(filename, max_events)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlEventLogServer
+    __del__ = lambda self : None;
+    def getEvent(self, *args): return _rllib.rlEventLogServer_getEvent(self, *args)
+    def putEvent(self, *args): return _rllib.rlEventLogServer_putEvent(self, *args)
+rlEventLogServer_swigregister = _rllib.rlEventLogServer_swigregister
+rlEventLogServer_swigregister(rlEventLogServer)
+cvar = _rllib.cvar
+rlevent_name = cvar.rlevent_name
+
+class rlEventLogServerThreads(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEventLogServerThreads, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlEventLogServerThreads, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _rllib.new_rlEventLogServerThreads(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlEventLogServerThreads
+    __del__ = lambda self : None;
+    def start(self): return _rllib.rlEventLogServerThreads_start(self)
+    def getPort(self): return _rllib.rlEventLogServerThreads_getPort(self)
+    __swig_setmethods__["event_log_server"] = _rllib.rlEventLogServerThreads_event_log_server_set
+    __swig_getmethods__["event_log_server"] = _rllib.rlEventLogServerThreads_event_log_server_get
+    if _newclass:event_log_server = _swig_property(_rllib.rlEventLogServerThreads_event_log_server_get, _rllib.rlEventLogServerThreads_event_log_server_set)
+rlEventLogServerThreads_swigregister = _rllib.rlEventLogServerThreads_swigregister
+rlEventLogServerThreads_swigregister(rlEventLogServerThreads)
+
+class rlFifo(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlFifo, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlFifo, name)
+    __repr__ = _swig_repr
+    def __init__(self, maxmessages = 0): 
+        this = _rllib.new_rlFifo(maxmessages)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlFifo
+    __del__ = lambda self : None;
+    DATA_AVAILABLE = _rllib.rlFifo_DATA_AVAILABLE
+    NO_DATA_AVAILABLE = _rllib.rlFifo_NO_DATA_AVAILABLE
+    MESSAGE_TO_BIG = _rllib.rlFifo_MESSAGE_TO_BIG
+    FIFO_FULL = _rllib.rlFifo_FIFO_FULL
+    def read(self, *args): return _rllib.rlFifo_read(self, *args)
+    def poll(self): return _rllib.rlFifo_poll(self)
+    def write(self, *args): return _rllib.rlFifo_write(self, *args)
+    def printf(self, *args): return _rllib.rlFifo_printf(self, *args)
+rlFifo_swigregister = _rllib.rlFifo_swigregister
+rlFifo_swigregister(rlFifo)
+
+class rlFileLines(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlFileLines, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlFileLines, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["line"] = _rllib.rlFileLines_line_set
+    __swig_getmethods__["line"] = _rllib.rlFileLines_line_get
+    if _newclass:line = _swig_property(_rllib.rlFileLines_line_get, _rllib.rlFileLines_line_set)
+    __swig_setmethods__["next"] = _rllib.rlFileLines_next_set
+    __swig_getmethods__["next"] = _rllib.rlFileLines_next_get
+    if _newclass:next = _swig_property(_rllib.rlFileLines_next_get, _rllib.rlFileLines_next_set)
+    def __init__(self): 
+        this = _rllib.new_rlFileLines()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlFileLines
+    __del__ = lambda self : None;
+rlFileLines_swigregister = _rllib.rlFileLines_swigregister
+rlFileLines_swigregister(rlFileLines)
+
+class rlFileLoad(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlFileLoad, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlFileLoad, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlFileLoad()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlFileLoad
+    __del__ = lambda self : None;
+    def load(self, *args): return _rllib.rlFileLoad_load(self, *args)
+    def unload(self): return _rllib.rlFileLoad_unload(self)
+    def firstLine(self): return _rllib.rlFileLoad_firstLine(self)
+    def nextLine(self): return _rllib.rlFileLoad_nextLine(self)
+    def setDebug(self, *args): return _rllib.rlFileLoad_setDebug(self, *args)
+rlFileLoad_swigregister = _rllib.rlFileLoad_swigregister
+rlFileLoad_swigregister(rlFileLoad)
+
+class rlHilscherCIF(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHilscherCIF, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlHilscherCIF, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlHilscherCIF()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlHilscherCIF
+    __del__ = lambda self : None;
+    __swig_setmethods__["debug"] = _rllib.rlHilscherCIF_debug_set
+    __swig_getmethods__["debug"] = _rllib.rlHilscherCIF_debug_get
+    if _newclass:debug = _swig_property(_rllib.rlHilscherCIF_debug_get, _rllib.rlHilscherCIF_debug_set)
+    def open(self): return _rllib.rlHilscherCIF_open(self)
+    def close(self): return _rllib.rlHilscherCIF_close(self)
+    def devGetMessage(self, *args): return _rllib.rlHilscherCIF_devGetMessage(self, *args)
+    def devPutMessage(self, *args): return _rllib.rlHilscherCIF_devPutMessage(self, *args)
+    def devExchangeIO(self, *args): return _rllib.rlHilscherCIF_devExchangeIO(self, *args)
+    def devOpenDriver(self): return _rllib.rlHilscherCIF_devOpenDriver(self)
+    def devInitBoard(self): return _rllib.rlHilscherCIF_devInitBoard(self)
+    def devGetInfo(self, *args): return _rllib.rlHilscherCIF_devGetInfo(self, *args)
+    def devSetHostState(self, *args): return _rllib.rlHilscherCIF_devSetHostState(self, *args)
+    def devPutTaskParameter(self): return _rllib.rlHilscherCIF_devPutTaskParameter(self)
+    def devReset(self): return _rllib.rlHilscherCIF_devReset(self)
+    def devExitBoard(self): return _rllib.rlHilscherCIF_devExitBoard(self)
+    def devCloseDriver(self): return _rllib.rlHilscherCIF_devCloseDriver(self)
+    def printFirmwareInfo(self): return _rllib.rlHilscherCIF_printFirmwareInfo(self)
+    __swig_setmethods__["usBoardNumber"] = _rllib.rlHilscherCIF_usBoardNumber_set
+    __swig_getmethods__["usBoardNumber"] = _rllib.rlHilscherCIF_usBoardNumber_get
+    if _newclass:usBoardNumber = _swig_property(_rllib.rlHilscherCIF_usBoardNumber_get, _rllib.rlHilscherCIF_usBoardNumber_set)
+    __swig_setmethods__["usDevState"] = _rllib.rlHilscherCIF_usDevState_set
+    __swig_getmethods__["usDevState"] = _rllib.rlHilscherCIF_usDevState_get
+    if _newclass:usDevState = _swig_property(_rllib.rlHilscherCIF_usDevState_get, _rllib.rlHilscherCIF_usDevState_set)
+    __swig_setmethods__["usHostState"] = _rllib.rlHilscherCIF_usHostState_set
+    __swig_getmethods__["usHostState"] = _rllib.rlHilscherCIF_usHostState_get
+    if _newclass:usHostState = _swig_property(_rllib.rlHilscherCIF_usHostState_get, _rllib.rlHilscherCIF_usHostState_set)
+    __swig_setmethods__["abInfo"] = _rllib.rlHilscherCIF_abInfo_set
+    __swig_getmethods__["abInfo"] = _rllib.rlHilscherCIF_abInfo_get
+    if _newclass:abInfo = _swig_property(_rllib.rlHilscherCIF_abInfo_get, _rllib.rlHilscherCIF_abInfo_set)
+    __swig_setmethods__["aParameter"] = _rllib.rlHilscherCIF_aParameter_set
+    __swig_getmethods__["aParameter"] = _rllib.rlHilscherCIF_aParameter_get
+    if _newclass:aParameter = _swig_property(_rllib.rlHilscherCIF_aParameter_get, _rllib.rlHilscherCIF_aParameter_set)
+    __swig_setmethods__["tIoInfo"] = _rllib.rlHilscherCIF_tIoInfo_set
+    __swig_getmethods__["tIoInfo"] = _rllib.rlHilscherCIF_tIoInfo_get
+    if _newclass:tIoInfo = _swig_property(_rllib.rlHilscherCIF_tIoInfo_get, _rllib.rlHilscherCIF_tIoInfo_set)
+    __swig_setmethods__["tMessage"] = _rllib.rlHilscherCIF_tMessage_set
+    __swig_getmethods__["tMessage"] = _rllib.rlHilscherCIF_tMessage_get
+    if _newclass:tMessage = _swig_property(_rllib.rlHilscherCIF_tMessage_get, _rllib.rlHilscherCIF_tMessage_set)
+    __swig_setmethods__["mutex"] = _rllib.rlHilscherCIF_mutex_set
+    __swig_getmethods__["mutex"] = _rllib.rlHilscherCIF_mutex_get
+    if _newclass:mutex = _swig_property(_rllib.rlHilscherCIF_mutex_get, _rllib.rlHilscherCIF_mutex_set)
+rlHilscherCIF_swigregister = _rllib.rlHilscherCIF_swigregister
+rlHilscherCIF_swigregister(rlHilscherCIF)
+
+class rlHistoryLogLine(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryLogLine, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryLogLine, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["next"] = _rllib.rlHistoryLogLine_next_set
+    __swig_getmethods__["next"] = _rllib.rlHistoryLogLine_next_get
+    if _newclass:next = _swig_property(_rllib.rlHistoryLogLine_next_get, _rllib.rlHistoryLogLine_next_set)
+    __swig_setmethods__["line"] = _rllib.rlHistoryLogLine_line_set
+    __swig_getmethods__["line"] = _rllib.rlHistoryLogLine_line_get
+    if _newclass:line = _swig_property(_rllib.rlHistoryLogLine_line_get, _rllib.rlHistoryLogLine_line_set)
+    def __init__(self): 
+        this = _rllib.new_rlHistoryLogLine()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlHistoryLogLine
+    __del__ = lambda self : None;
+rlHistoryLogLine_swigregister = _rllib.rlHistoryLogLine_swigregister
+rlHistoryLogLine_swigregister(rlHistoryLogLine)
+
+class rlHistoryLogger(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryLogger, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryLogger, name)
+    __repr__ = _swig_repr
+    def __init__(self, *args): 
+        this = _rllib.new_rlHistoryLogger(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlHistoryLogger
+    __del__ = lambda self : None;
+    def pushLine(self, *args): return _rllib.rlHistoryLogger_pushLine(self, *args)
+    def firstLine(self): return _rllib.rlHistoryLogger_firstLine(self)
+    def nextLine(self): return _rllib.rlHistoryLogger_nextLine(self)
+    __swig_setmethods__["mutex"] = _rllib.rlHistoryLogger_mutex_set
+    __swig_getmethods__["mutex"] = _rllib.rlHistoryLogger_mutex_get
+    if _newclass:mutex = _swig_property(_rllib.rlHistoryLogger_mutex_get, _rllib.rlHistoryLogger_mutex_set)
+    __swig_setmethods__["debug"] = _rllib.rlHistoryLogger_debug_set
+    __swig_getmethods__["debug"] = _rllib.rlHistoryLogger_debug_get
+    if _newclass:debug = _swig_property(_rllib.rlHistoryLogger_debug_get, _rllib.rlHistoryLogger_debug_set)
+rlHistoryLogger_swigregister = _rllib.rlHistoryLogger_swigregister
+rlHistoryLogger_swigregister(rlHistoryLogger)
+
+class rlHistoryReaderLine(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryReaderLine, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryReaderLine, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["next"] = _rllib.rlHistoryReaderLine_next_set
+    __swig_getmethods__["next"] = _rllib.rlHistoryReaderLine_next_get
+    if _newclass:next = _swig_property(_rllib.rlHistoryReaderLine_next_get, _rllib.rlHistoryReaderLine_next_set)
+    __swig_setmethods__["line"] = _rllib.rlHistoryReaderLine_line_set
+    __swig_getmethods__["line"] = _rllib.rlHistoryReaderLine_line_get
+    if _newclass:line = _swig_property(_rllib.rlHistoryReaderLine_line_get, _rllib.rlHistoryReaderLine_line_set)
+    def __init__(self): 
+        this = _rllib.new_rlHistoryReaderLine()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlHistoryReaderLine
+    __del__ = lambda self : None;
+rlHistoryReaderLine_swigregister = _rllib.rlHistoryReaderLine_swigregister
+rlHistoryReaderLine_swigregister(rlHistoryReaderLine)
+
+class rlHistoryReader(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryReader, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryReader, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlHistoryReader()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlHistoryReader
+    __del__ = lambda self : None;
+    def read(self, *args): return _rllib.rlHistoryReader_read(self, *args)
+    def firstLine(self): return _rllib.rlHistoryReader_firstLine(self)
+    def nextLine(self): return _rllib.rlHistoryReader_nextLine(self)
+    def clean(self): return _rllib.rlHistoryReader_clean(self)
+    def cat(self, *args): return _rllib.rlHistoryReader_cat(self, *args)
+    __swig_setmethods__["debug"] = _rllib.rlHistoryReader_debug_set
+    __swig_getmethods__["debug"] = _rllib.rlHistoryReader_debug_get
+    if _newclass:debug = _swig_property(_rllib.rlHistoryReader_debug_get, _rllib.rlHistoryReader_debug_set)
+rlHistoryReader_swigregister = _rllib.rlHistoryReader_swigregister
+rlHistoryReader_swigregister(rlHistoryReader)
+
+class rlIniFile(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlIniFile, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlIniFile, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlIniFile()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlIniFile
+    __del__ = lambda self : None;
+    def read(self, *args): return _rllib.rlIniFile_read(self, *args)
+    def write(self, *args): return _rllib.rlIniFile_write(self, *args)
+    def filename(self): return _rllib.rlIniFile_filename(self)
+    def text(self, *args): return _rllib.rlIniFile_text(self, *args)
+    def setText(self, *args): return _rllib.rlIniFile_setText(self, *args)
+    def printf(self, *args): return _rllib.rlIniFile_printf(self, *args)
+    def remove(self, *args): return _rllib.rlIniFile_remove(self, *args)
+    def firstSection(self): return _rllib.rlIniFile_firstSection(self)
+    def nextSection(self): return _rllib.rlIniFile_nextSection(self)
+    def firstName(self, *args): return _rllib.rlIniFile_firstName(self, *args)
+    def nextName(self, *args): return _rllib.rlIniFile_nextName(self, *args)
+    def setDefaultSection(self, *args): return _rllib.rlIniFile_setDefaultSection(self, *args)
+    def defaultSection(self): return _rllib.rlIniFile_defaultSection(self)
+    def i18n(self, *args): return _rllib.rlIniFile_i18n(self, *args)
+rlIniFile_swigregister = _rllib.rlIniFile_swigregister
+rlIniFile_swigregister(rlIniFile)
+
+class rlInterpreter(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlInterpreter, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlInterpreter, name)
+    __repr__ = _swig_repr
+    def __init__(self, Maxline = 4096): 
+        this = _rllib.new_rlInterpreter(Maxline)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlInterpreter
+    __del__ = lambda self : None;
+    __swig_setmethods__["line"] = _rllib.rlInterpreter_line_set
+    __swig_getmethods__["line"] = _rllib.rlInterpreter_line_get
+    if _newclass:line = _swig_property(_rllib.rlInterpreter_line_get, _rllib.rlInterpreter_line_set)
+    def isCommand(self, *args): return _rllib.rlInterpreter_isCommand(self, *args)
+    def copyStringParam(self, *args): return _rllib.rlInterpreter_copyStringParam(self, *args)
+    def maxchar(self): return _rllib.rlInterpreter_maxchar(self)
+rlInterpreter_swigregister = _rllib.rlInterpreter_swigregister
+rlInterpreter_swigregister(rlInterpreter)
 
 class rlMailbox(_object):
     __swig_setmethods__ = {}
@@ -421,66 +1102,480 @@ class rlMailbox(_object):
 rlMailbox_swigregister = _rllib.rlMailbox_swigregister
 rlMailbox_swigregister(rlMailbox)
 
-class rlFifo(_object):
+class rlModbusClient(rlMailbox):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlFifo, name, value)
+    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlModbusClient, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlFifo, name)
+    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, rlModbusClient, name)
     __repr__ = _swig_repr
-    def __init__(self, maxmessages = 0): 
-        this = _rllib.new_rlFifo(maxmessages)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlFifo
-    __del__ = lambda self : None;
-    DATA_AVAILABLE = _rllib.rlFifo_DATA_AVAILABLE
-    NO_DATA_AVAILABLE = _rllib.rlFifo_NO_DATA_AVAILABLE
-    MESSAGE_TO_BIG = _rllib.rlFifo_MESSAGE_TO_BIG
-    FIFO_FULL = _rllib.rlFifo_FIFO_FULL
-    def read(self, *args): return _rllib.rlFifo_read(self, *args)
-    def poll(self): return _rllib.rlFifo_poll(self)
-    def write(self, *args): return _rllib.rlFifo_write(self, *args)
-    def printf(self, *args): return _rllib.rlFifo_printf(self, *args)
-rlFifo_swigregister = _rllib.rlFifo_swigregister
-rlFifo_swigregister(rlFifo)
-
-class rlSharedMemory(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSharedMemory, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlSharedMemory, name)
-    __repr__ = _swig_repr
-    OK = _rllib.rlSharedMemory_OK
-    ERROR_FILE = _rllib.rlSharedMemory_ERROR_FILE
-    ERROR_SHMGET = _rllib.rlSharedMemory_ERROR_SHMGET
-    ERROR_SHMAT = _rllib.rlSharedMemory_ERROR_SHMAT
-    ERROR_SHMCTL = _rllib.rlSharedMemory_ERROR_SHMCTL
     def __init__(self, *args): 
-        this = _rllib.new_rlSharedMemory(*args)
+        this = _rllib.new_rlModbusClient(*args)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlSharedMemory
+    __swig_destroy__ = _rllib.delete_rlModbusClient
     __del__ = lambda self : None;
-    def deleteSharedMemory(self): return _rllib.rlSharedMemory_deleteSharedMemory(self)
-    def write(self, *args): return _rllib.rlSharedMemory_write(self, *args)
-    def read(self, *args): return _rllib.rlSharedMemory_read(self, *args)
-    def readInt(self, *args): return _rllib.rlSharedMemory_readInt(self, *args)
-    def readShort(self, *args): return _rllib.rlSharedMemory_readShort(self, *args)
-    def readByte(self, *args): return _rllib.rlSharedMemory_readByte(self, *args)
-    def readFloat(self, *args): return _rllib.rlSharedMemory_readFloat(self, *args)
-    def writeInt(self, *args): return _rllib.rlSharedMemory_writeInt(self, *args)
-    def writeShort(self, *args): return _rllib.rlSharedMemory_writeShort(self, *args)
-    def writeByte(self, *args): return _rllib.rlSharedMemory_writeByte(self, *args)
-    def writeFloat(self, *args): return _rllib.rlSharedMemory_writeFloat(self, *args)
-    def getUserAdr(self): return _rllib.rlSharedMemory_getUserAdr(self)
-    __swig_setmethods__["status"] = _rllib.rlSharedMemory_status_set
-    __swig_getmethods__["status"] = _rllib.rlSharedMemory_status_get
-    if _newclass:status = _swig_property(_rllib.rlSharedMemory_status_get, _rllib.rlSharedMemory_status_set)
-    __swig_setmethods__["name"] = _rllib.rlSharedMemory_name_set
-    __swig_getmethods__["name"] = _rllib.rlSharedMemory_name_get
-    if _newclass:name = _swig_property(_rllib.rlSharedMemory_name_get, _rllib.rlSharedMemory_name_set)
-rlSharedMemory_swigregister = _rllib.rlSharedMemory_swigregister
-rlSharedMemory_swigregister(rlSharedMemory)
+    def write(self, *args): return _rllib.rlModbusClient_write(self, *args)
+    def writeSingleCoil(self, *args): return _rllib.rlModbusClient_writeSingleCoil(self, *args)
+    def writeMultipleCoils(self, *args): return _rllib.rlModbusClient_writeMultipleCoils(self, *args)
+    def writePresetSingleRegister(self, *args): return _rllib.rlModbusClient_writePresetSingleRegister(self, *args)
+    def writePresetMultipleRegisters(self, *args): return _rllib.rlModbusClient_writePresetMultipleRegisters(self, *args)
+    def readBit(self, *args): return _rllib.rlModbusClient_readBit(self, *args)
+    def readByte(self, *args): return _rllib.rlModbusClient_readByte(self, *args)
+    def readShort(self, *args): return _rllib.rlModbusClient_readShort(self, *args)
+rlModbusClient_swigregister = _rllib.rlModbusClient_swigregister
+rlModbusClient_swigregister(rlModbusClient)
+
+class rlModbus(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlModbus, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlModbus, name)
+    __repr__ = _swig_repr
+    MODBUS_CHECKSUM_ERROR = _rllib.rlModbus_MODBUS_CHECKSUM_ERROR
+    MODBUS_ERROR = _rllib.rlModbus_MODBUS_ERROR
+    MODBUS_SUCCESS = _rllib.rlModbus_MODBUS_SUCCESS
+    MODBUS_RTU = _rllib.rlModbus_MODBUS_RTU
+    MODBUS_ASCII = _rllib.rlModbus_MODBUS_ASCII
+    ReadCoilStatus = _rllib.rlModbus_ReadCoilStatus
+    ReadInputStatus = _rllib.rlModbus_ReadInputStatus
+    ReadHoldingRegisters = _rllib.rlModbus_ReadHoldingRegisters
+    ReadInputRegisters = _rllib.rlModbus_ReadInputRegisters
+    ForceSingleCoil = _rllib.rlModbus_ForceSingleCoil
+    PresetSingleRegister = _rllib.rlModbus_PresetSingleRegister
+    ReadExceptionStatus = _rllib.rlModbus_ReadExceptionStatus
+    FetchCommEventCtr = _rllib.rlModbus_FetchCommEventCtr
+    FetchCommEventLog = _rllib.rlModbus_FetchCommEventLog
+    ForceMultipleCoils = _rllib.rlModbus_ForceMultipleCoils
+    PresetMultipleRegs = _rllib.rlModbus_PresetMultipleRegs
+    ReportSlaveID = _rllib.rlModbus_ReportSlaveID
+    ReadGeneralReference = _rllib.rlModbus_ReadGeneralReference
+    WriteGeneralReference = _rllib.rlModbus_WriteGeneralReference
+    MaskWrite4XRegisters = _rllib.rlModbus_MaskWrite4XRegisters
+    ReadWrite4XRegisters = _rllib.rlModbus_ReadWrite4XRegisters
+    ReadFifoQueue = _rllib.rlModbus_ReadFifoQueue
+    def __init__(self, *args): 
+        this = _rllib.new_rlModbus(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlModbus
+    __del__ = lambda self : None;
+    def write(self, *args): return _rllib.rlModbus_write(self, *args)
+    def request(self, *args): return _rllib.rlModbus_request(self, *args)
+    def response(self, *args): return _rllib.rlModbus_response(self, *args)
+    def readRequest(self, *args): return _rllib.rlModbus_readRequest(self, *args)
+    def registerSocket(self, *args): return _rllib.rlModbus_registerSocket(self, *args)
+    def registerSerial(self, *args): return _rllib.rlModbus_registerSerial(self, *args)
+    def data2int(self, *args): return _rllib.rlModbus_data2int(self, *args)
+    def int2data(self, *args): return _rllib.rlModbus_int2data(self, *args)
+    def intsize(self): return _rllib.rlModbus_intsize(self)
+    __swig_setmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_set
+    __swig_getmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_get
+    if _newclass:autoreconnectSocket = _swig_property(_rllib.rlModbus_autoreconnectSocket_get, _rllib.rlModbus_autoreconnectSocket_set)
+rlModbus_swigregister = _rllib.rlModbus_swigregister
+rlModbus_swigregister(rlModbus)
+
+class rlOpcXmlDa(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlOpcXmlDa, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlOpcXmlDa, name)
+    __repr__ = _swig_repr
+    OPCXMLDA_ERROR = _rllib.rlOpcXmlDa_OPCXMLDA_ERROR
+    def __init__(self, mailbox = "/srv/automation/mbx/opcxmlda.mbx", shared_memory = "/srv/automation/shm/opcxmlda.shm", 
+    shared_memory_size = 65536): 
+        this = _rllib.new_rlOpcXmlDa(mailbox, shared_memory, shared_memory_size)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlOpcXmlDa
+    __del__ = lambda self : None;
+    def stringValue(self, *args): return _rllib.rlOpcXmlDa_stringValue(self, *args)
+    def intValue(self, *args): return _rllib.rlOpcXmlDa_intValue(self, *args)
+    def floatValue(self, *args): return _rllib.rlOpcXmlDa_floatValue(self, *args)
+    def writeStringValue(self, *args): return _rllib.rlOpcXmlDa_writeStringValue(self, *args)
+    def writeIntValue(self, *args): return _rllib.rlOpcXmlDa_writeIntValue(self, *args)
+    def writeFloatValue(self, *args): return _rllib.rlOpcXmlDa_writeFloatValue(self, *args)
+    def readErrorCount(self): return _rllib.rlOpcXmlDa_readErrorCount(self)
+    def writeErrorCount(self): return _rllib.rlOpcXmlDa_writeErrorCount(self)
+    def shmStatus(self): return _rllib.rlOpcXmlDa_shmStatus(self)
+rlOpcXmlDa_swigregister = _rllib.rlOpcXmlDa_swigregister
+rlOpcXmlDa_swigregister(rlOpcXmlDa)
+
+class rlOpcXmlDa_SHM_HEADER(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlOpcXmlDa_SHM_HEADER, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlOpcXmlDa_SHM_HEADER, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["ident"] = _rllib.rlOpcXmlDa_SHM_HEADER_ident_set
+    __swig_getmethods__["ident"] = _rllib.rlOpcXmlDa_SHM_HEADER_ident_get
+    if _newclass:ident = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_ident_get, _rllib.rlOpcXmlDa_SHM_HEADER_ident_set)
+    __swig_setmethods__["maxItemNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_set
+    __swig_getmethods__["maxItemNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_get
+    if _newclass:maxItemNameLength = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_get, _rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_set)
+    __swig_setmethods__["maxNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_set
+    __swig_getmethods__["maxNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_get
+    if _newclass:maxNameLength = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_get, _rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_set)
+    __swig_setmethods__["numItems"] = _rllib.rlOpcXmlDa_SHM_HEADER_numItems_set
+    __swig_getmethods__["numItems"] = _rllib.rlOpcXmlDa_SHM_HEADER_numItems_get
+    if _newclass:numItems = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_numItems_get, _rllib.rlOpcXmlDa_SHM_HEADER_numItems_set)
+    __swig_setmethods__["readErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_set
+    __swig_getmethods__["readErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_get
+    if _newclass:readErrorCount = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_get, _rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_set)
+    __swig_setmethods__["writeErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_set
+    __swig_getmethods__["writeErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_get
+    if _newclass:writeErrorCount = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_get, _rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_set)
+    __swig_setmethods__["spare"] = _rllib.rlOpcXmlDa_SHM_HEADER_spare_set
+    __swig_getmethods__["spare"] = _rllib.rlOpcXmlDa_SHM_HEADER_spare_get
+    if _newclass:spare = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_spare_get, _rllib.rlOpcXmlDa_SHM_HEADER_spare_set)
+    __swig_setmethods__["cspare"] = _rllib.rlOpcXmlDa_SHM_HEADER_cspare_set
+    __swig_getmethods__["cspare"] = _rllib.rlOpcXmlDa_SHM_HEADER_cspare_get
+    if _newclass:cspare = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_cspare_get, _rllib.rlOpcXmlDa_SHM_HEADER_cspare_set)
+    def __init__(self): 
+        this = _rllib.new_rlOpcXmlDa_SHM_HEADER()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlOpcXmlDa_SHM_HEADER
+    __del__ = lambda self : None;
+rlOpcXmlDa_SHM_HEADER_swigregister = _rllib.rlOpcXmlDa_SHM_HEADER_swigregister
+rlOpcXmlDa_SHM_HEADER_swigregister(rlOpcXmlDa_SHM_HEADER)
+
+class rlPcontrol(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPcontrol, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlPcontrol, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlPcontrol()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlPcontrol
+    __del__ = lambda self : None;
+    def setStartupCommand(self, *args): return _rllib.rlPcontrol_setStartupCommand(self, *args)
+    def start(self): return _rllib.rlPcontrol_start(self)
+    def sigterm(self): return _rllib.rlPcontrol_sigterm(self)
+    def sigkill(self): return _rllib.rlPcontrol_sigkill(self)
+    def isAlive(self): return _rllib.rlPcontrol_isAlive(self)
+    def startupCommand(self): return _rllib.rlPcontrol_startupCommand(self)
+    def processName(self): return _rllib.rlPcontrol_processName(self)
+    def processTime(self): return _rllib.rlPcontrol_processTime(self)
+    def setPID(self, *args): return _rllib.rlPcontrol_setPID(self, *args)
+    def pid(self): return _rllib.rlPcontrol_pid(self)
+    def getNext(self): return _rllib.rlPcontrol_getNext(self)
+    def addNew(self): return _rllib.rlPcontrol_addNew(self)
+    def setPriority(self, *args): return _rllib.rlPcontrol_setPriority(self, *args)
+    def priority(self): return _rllib.rlPcontrol_priority(self)
+rlPcontrol_swigregister = _rllib.rlPcontrol_swigregister
+rlPcontrol_swigregister(rlPcontrol)
+
+class rlPlcState(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPlcState, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlPlcState, name)
+    __repr__ = _swig_repr
+    def __init__(self, numInt = 100, numFloat = 100, numDouble = 0): 
+        this = _rllib.new_rlPlcState(numInt, numFloat, numDouble)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlPlcState
+    __del__ = lambda self : None;
+    __swig_setmethods__["i"] = _rllib.rlPlcState_i_set
+    __swig_getmethods__["i"] = _rllib.rlPlcState_i_get
+    if _newclass:i = _swig_property(_rllib.rlPlcState_i_get, _rllib.rlPlcState_i_set)
+    __swig_setmethods__["i_old"] = _rllib.rlPlcState_i_old_set
+    __swig_getmethods__["i_old"] = _rllib.rlPlcState_i_old_get
+    if _newclass:i_old = _swig_property(_rllib.rlPlcState_i_old_get, _rllib.rlPlcState_i_old_set)
+    __swig_setmethods__["f"] = _rllib.rlPlcState_f_set
+    __swig_getmethods__["f"] = _rllib.rlPlcState_f_get
+    if _newclass:f = _swig_property(_rllib.rlPlcState_f_get, _rllib.rlPlcState_f_set)
+    __swig_setmethods__["f_old"] = _rllib.rlPlcState_f_old_set
+    __swig_getmethods__["f_old"] = _rllib.rlPlcState_f_old_get
+    if _newclass:f_old = _swig_property(_rllib.rlPlcState_f_old_get, _rllib.rlPlcState_f_old_set)
+    __swig_setmethods__["d"] = _rllib.rlPlcState_d_set
+    __swig_getmethods__["d"] = _rllib.rlPlcState_d_get
+    if _newclass:d = _swig_property(_rllib.rlPlcState_d_get, _rllib.rlPlcState_d_set)
+    __swig_setmethods__["d_old"] = _rllib.rlPlcState_d_old_set
+    __swig_getmethods__["d_old"] = _rllib.rlPlcState_d_old_get
+    if _newclass:d_old = _swig_property(_rllib.rlPlcState_d_old_get, _rllib.rlPlcState_d_old_set)
+    def rememberState(self): return _rllib.rlPlcState_rememberState(self)
+    def intChanged(self, *args): return _rllib.rlPlcState_intChanged(self, *args)
+    def floatChanged(self, *args): return _rllib.rlPlcState_floatChanged(self, *args)
+    def doubleChanged(self, *args): return _rllib.rlPlcState_doubleChanged(self, *args)
+    def intHasIncreased(self, *args): return _rllib.rlPlcState_intHasIncreased(self, *args)
+    def floatHasIncreased(self, *args): return _rllib.rlPlcState_floatHasIncreased(self, *args)
+    def doubleHasIncreased(self, *args): return _rllib.rlPlcState_doubleHasIncreased(self, *args)
+    def intHasDecreased(self, *args): return _rllib.rlPlcState_intHasDecreased(self, *args)
+    def floatHasDecreased(self, *args): return _rllib.rlPlcState_floatHasDecreased(self, *args)
+    def doubleHasDecreased(self, *args): return _rllib.rlPlcState_doubleHasDecreased(self, *args)
+    def deltaInt(self, *args): return _rllib.rlPlcState_deltaInt(self, *args)
+    def deltaFloat(self, *args): return _rllib.rlPlcState_deltaFloat(self, *args)
+    def deltaDouble(self, *args): return _rllib.rlPlcState_deltaDouble(self, *args)
+    def set(self, *args): return _rllib.rlPlcState_set(self, *args)
+    def clear(self, *args): return _rllib.rlPlcState_clear(self, *args)
+    def isSet(self, *args): return _rllib.rlPlcState_isSet(self, *args)
+    def isClear(self, *args): return _rllib.rlPlcState_isClear(self, *args)
+    def hasBeenSet(self, *args): return _rllib.rlPlcState_hasBeenSet(self, *args)
+    def hasBeenCleared(self, *args): return _rllib.rlPlcState_hasBeenCleared(self, *args)
+    def maxInt(self): return _rllib.rlPlcState_maxInt(self)
+    def maxFloat(self): return _rllib.rlPlcState_maxFloat(self)
+    def maxDouble(self): return _rllib.rlPlcState_maxDouble(self)
+rlPlcState_swigregister = _rllib.rlPlcState_swigregister
+rlPlcState_swigregister(rlPlcState)
+
+class rlPlcMem(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPlcMem, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlPlcMem, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlPlcMem()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlPlcMem
+    __del__ = lambda self : None;
+    __swig_setmethods__["i"] = _rllib.rlPlcMem_i_set
+    __swig_getmethods__["i"] = _rllib.rlPlcMem_i_get
+    if _newclass:i = _swig_property(_rllib.rlPlcMem_i_get, _rllib.rlPlcMem_i_set)
+    __swig_setmethods__["i_old"] = _rllib.rlPlcMem_i_old_set
+    __swig_getmethods__["i_old"] = _rllib.rlPlcMem_i_old_get
+    if _newclass:i_old = _swig_property(_rllib.rlPlcMem_i_old_get, _rllib.rlPlcMem_i_old_set)
+    __swig_setmethods__["f"] = _rllib.rlPlcMem_f_set
+    __swig_getmethods__["f"] = _rllib.rlPlcMem_f_get
+    if _newclass:f = _swig_property(_rllib.rlPlcMem_f_get, _rllib.rlPlcMem_f_set)
+    __swig_setmethods__["f_old"] = _rllib.rlPlcMem_f_old_set
+    __swig_getmethods__["f_old"] = _rllib.rlPlcMem_f_old_get
+    if _newclass:f_old = _swig_property(_rllib.rlPlcMem_f_old_get, _rllib.rlPlcMem_f_old_set)
+    __swig_setmethods__["d"] = _rllib.rlPlcMem_d_set
+    __swig_getmethods__["d"] = _rllib.rlPlcMem_d_get
+    if _newclass:d = _swig_property(_rllib.rlPlcMem_d_get, _rllib.rlPlcMem_d_set)
+    __swig_setmethods__["d_old"] = _rllib.rlPlcMem_d_old_set
+    __swig_getmethods__["d_old"] = _rllib.rlPlcMem_d_old_get
+    if _newclass:d_old = _swig_property(_rllib.rlPlcMem_d_old_get, _rllib.rlPlcMem_d_old_set)
+    def rememberState(self): return _rllib.rlPlcMem_rememberState(self)
+    def intChanged(self): return _rllib.rlPlcMem_intChanged(self)
+    def floatChanged(self): return _rllib.rlPlcMem_floatChanged(self)
+    def doubleChanged(self): return _rllib.rlPlcMem_doubleChanged(self)
+    def intHasIncreased(self): return _rllib.rlPlcMem_intHasIncreased(self)
+    def floatHasIncreased(self): return _rllib.rlPlcMem_floatHasIncreased(self)
+    def doubleHasIncreased(self): return _rllib.rlPlcMem_doubleHasIncreased(self)
+    def intHasDecreased(self): return _rllib.rlPlcMem_intHasDecreased(self)
+    def floatHasDecreased(self): return _rllib.rlPlcMem_floatHasDecreased(self)
+    def doubleHasDecreased(self): return _rllib.rlPlcMem_doubleHasDecreased(self)
+    def deltaInt(self): return _rllib.rlPlcMem_deltaInt(self)
+    def deltaFloat(self): return _rllib.rlPlcMem_deltaFloat(self)
+    def deltaDouble(self): return _rllib.rlPlcMem_deltaDouble(self)
+    def set(self, *args): return _rllib.rlPlcMem_set(self, *args)
+    def clear(self, *args): return _rllib.rlPlcMem_clear(self, *args)
+    def isSet(self, *args): return _rllib.rlPlcMem_isSet(self, *args)
+    def isClear(self, *args): return _rllib.rlPlcMem_isClear(self, *args)
+    def hasBeenSet(self, *args): return _rllib.rlPlcMem_hasBeenSet(self, *args)
+    def hasBeenCleared(self, *args): return _rllib.rlPlcMem_hasBeenCleared(self, *args)
+rlPlcMem_swigregister = _rllib.rlPlcMem_swigregister
+rlPlcMem_swigregister(rlPlcMem)
+
+class rlPPIClient(rlMailbox):
+    __swig_setmethods__ = {}
+    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPPIClient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, rlPPIClient, name)
+    __repr__ = _swig_repr
+    daveSD = _rllib.rlPPIClient_daveSD
+    daveInputs = _rllib.rlPPIClient_daveInputs
+    daveOutputs = _rllib.rlPPIClient_daveOutputs
+    daveFlags = _rllib.rlPPIClient_daveFlags
+    daveDB = _rllib.rlPPIClient_daveDB
+    daveDI = _rllib.rlPPIClient_daveDI
+    daveLocal = _rllib.rlPPIClient_daveLocal
+    daveV = _rllib.rlPPIClient_daveV
+    daveCounter = _rllib.rlPPIClient_daveCounter
+    daveTimer = _rllib.rlPPIClient_daveTimer
+    def __init__(self, *args): 
+        this = _rllib.new_rlPPIClient(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlPPIClient
+    __del__ = lambda self : None;
+    def write(self, *args): return _rllib.rlPPIClient_write(self, *args)
+    def writeFloat(self, *args): return _rllib.rlPPIClient_writeFloat(self, *args)
+    def writeDword(self, *args): return _rllib.rlPPIClient_writeDword(self, *args)
+    def writeShort(self, *args): return _rllib.rlPPIClient_writeShort(self, *args)
+    def writeUDword(self, *args): return _rllib.rlPPIClient_writeUDword(self, *args)
+    def writeUShort(self, *args): return _rllib.rlPPIClient_writeUShort(self, *args)
+    def read(self, *args): return _rllib.rlPPIClient_read(self, *args)
+    def Float(self, *args): return _rllib.rlPPIClient_Float(self, *args)
+    def Dword(self, *args): return _rllib.rlPPIClient_Dword(self, *args)
+    def Short(self, *args): return _rllib.rlPPIClient_Short(self, *args)
+    def UDword(self, *args): return _rllib.rlPPIClient_UDword(self, *args)
+    def UShort(self, *args): return _rllib.rlPPIClient_UShort(self, *args)
+    __swig_setmethods__["buf"] = _rllib.rlPPIClient_buf_set
+    __swig_getmethods__["buf"] = _rllib.rlPPIClient_buf_get
+    if _newclass:buf = _swig_property(_rllib.rlPPIClient_buf_get, _rllib.rlPPIClient_buf_set)
+rlPPIClient_swigregister = _rllib.rlPPIClient_swigregister
+rlPPIClient_swigregister(rlPPIClient)
+
+B0 = _rllib.B0
+B50 = _rllib.B50
+B75 = _rllib.B75
+B110 = _rllib.B110
+B134 = _rllib.B134
+B150 = _rllib.B150
+B200 = _rllib.B200
+B300 = _rllib.B300
+B600 = _rllib.B600
+B1200 = _rllib.B1200
+B1800 = _rllib.B1800
+B2400 = _rllib.B2400
+B4800 = _rllib.B4800
+B9600 = _rllib.B9600
+B19200 = _rllib.B19200
+B38400 = _rllib.B38400
+B57600 = _rllib.B57600
+B115200 = _rllib.B115200
+B230400 = _rllib.B230400
+B460800 = _rllib.B460800
+B500000 = _rllib.B500000
+B576000 = _rllib.B576000
+B921600 = _rllib.B921600
+B1000000 = _rllib.B1000000
+B1152000 = _rllib.B1152000
+B1500000 = _rllib.B1500000
+B2000000 = _rllib.B2000000
+B2500000 = _rllib.B2500000
+B3000000 = _rllib.B3000000
+B3500000 = _rllib.B3500000
+B4000000 = _rllib.B4000000
+class rlSerial(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSerial, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlSerial, name)
+    __repr__ = _swig_repr
+    NONE = _rllib.rlSerial_NONE
+    ODD = _rllib.rlSerial_ODD
+    EVEN = _rllib.rlSerial_EVEN
+    def __init__(self): 
+        this = _rllib.new_rlSerial()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlSerial
+    __del__ = lambda self : None;
+    def openDevice(self, *args): return _rllib.rlSerial_openDevice(self, *args)
+    def select(self, timeout = 500): return _rllib.rlSerial_select(self, timeout)
+    def readChar(self): return _rllib.rlSerial_readChar(self)
+    def writeChar(self, *args): return _rllib.rlSerial_writeChar(self, *args)
+    def readBlock(self, *args): return _rllib.rlSerial_readBlock(self, *args)
+    def writeBlock(self, *args): return _rllib.rlSerial_writeBlock(self, *args)
+    def readLine(self, *args): return _rllib.rlSerial_readLine(self, *args)
+    def closeDevice(self): return _rllib.rlSerial_closeDevice(self)
+    def setTrace(self, *args): return _rllib.rlSerial_setTrace(self, *args)
+rlSerial_swigregister = _rllib.rlSerial_swigregister
+rlSerial_swigregister(rlSerial)
+
+class rlSiemensTCPClient(rlMailbox):
+    __swig_setmethods__ = {}
+    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSiemensTCPClient, name, value)
+    __swig_getmethods__ = {}
+    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, rlSiemensTCPClient, name)
+    __repr__ = _swig_repr
+    ORG_DB = _rllib.rlSiemensTCPClient_ORG_DB
+    ORG_M = _rllib.rlSiemensTCPClient_ORG_M
+    ORG_E = _rllib.rlSiemensTCPClient_ORG_E
+    ORG_A = _rllib.rlSiemensTCPClient_ORG_A
+    ORG_PEPA = _rllib.rlSiemensTCPClient_ORG_PEPA
+    ORG_Z = _rllib.rlSiemensTCPClient_ORG_Z
+    ORG_T = _rllib.rlSiemensTCPClient_ORG_T
+    def __init__(self, *args): 
+        this = _rllib.new_rlSiemensTCPClient(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlSiemensTCPClient
+    __del__ = lambda self : None;
+    def write(self, *args): return _rllib.rlSiemensTCPClient_write(self, *args)
+    def writeBit(self, *args): return _rllib.rlSiemensTCPClient_writeBit(self, *args)
+    def writeByte(self, *args): return _rllib.rlSiemensTCPClient_writeByte(self, *args)
+    def writeFloat(self, *args): return _rllib.rlSiemensTCPClient_writeFloat(self, *args)
+    def writeDword(self, *args): return _rllib.rlSiemensTCPClient_writeDword(self, *args)
+    def writeShort(self, *args): return _rllib.rlSiemensTCPClient_writeShort(self, *args)
+    def writeUDword(self, *args): return _rllib.rlSiemensTCPClient_writeUDword(self, *args)
+    def writeUShort(self, *args): return _rllib.rlSiemensTCPClient_writeUShort(self, *args)
+    def read(self, *args): return _rllib.rlSiemensTCPClient_read(self, *args)
+    def Float(self, *args): return _rllib.rlSiemensTCPClient_Float(self, *args)
+    def Dword(self, *args): return _rllib.rlSiemensTCPClient_Dword(self, *args)
+    def Short(self, *args): return _rllib.rlSiemensTCPClient_Short(self, *args)
+    def UDword(self, *args): return _rllib.rlSiemensTCPClient_UDword(self, *args)
+    def UShort(self, *args): return _rllib.rlSiemensTCPClient_UShort(self, *args)
+    __swig_setmethods__["buf"] = _rllib.rlSiemensTCPClient_buf_set
+    __swig_getmethods__["buf"] = _rllib.rlSiemensTCPClient_buf_get
+    if _newclass:buf = _swig_property(_rllib.rlSiemensTCPClient_buf_get, _rllib.rlSiemensTCPClient_buf_set)
+rlSiemensTCPClient_swigregister = _rllib.rlSiemensTCPClient_swigregister
+rlSiemensTCPClient_swigregister(rlSiemensTCPClient)
+
+class rlSiemensTCP(rlSocket):
+    __swig_setmethods__ = {}
+    for _s in [rlSocket]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSiemensTCP, name, value)
+    __swig_getmethods__ = {}
+    for _s in [rlSocket]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    __getattr__ = lambda self, name: _swig_getattr(self, rlSiemensTCP, name)
+    __repr__ = _swig_repr
+    ORG_DB = _rllib.rlSiemensTCP_ORG_DB
+    ORG_M = _rllib.rlSiemensTCP_ORG_M
+    ORG_E = _rllib.rlSiemensTCP_ORG_E
+    ORG_A = _rllib.rlSiemensTCP_ORG_A
+    ORG_PEPA = _rllib.rlSiemensTCP_ORG_PEPA
+    ORG_Z = _rllib.rlSiemensTCP_ORG_Z
+    ORG_T = _rllib.rlSiemensTCP_ORG_T
+    S7_200 = _rllib.rlSiemensTCP_S7_200
+    S7_300 = _rllib.rlSiemensTCP_S7_300
+    S7_400 = _rllib.rlSiemensTCP_S7_400
+    S5 = _rllib.rlSiemensTCP_S5
+    RACK_SLOT = _rllib.rlSiemensTCP_RACK_SLOT
+    WriteBit = _rllib.rlSiemensTCP_WriteBit
+    WriteByte = _rllib.rlSiemensTCP_WriteByte
+    def __init__(self, *args): 
+        this = _rllib.new_rlSiemensTCP(*args)
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlSiemensTCP
+    __del__ = lambda self : None;
+    def write(self, *args): return _rllib.rlSiemensTCP_write(self, *args)
+    def fetch(self, *args): return _rllib.rlSiemensTCP_fetch(self, *args)
+rlSiemensTCP_swigregister = _rllib.rlSiemensTCP_swigregister
+rlSiemensTCP_swigregister(rlSiemensTCP)
+
+class rlSpawn(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSpawn, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, rlSpawn, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _rllib.new_rlSpawn()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _rllib.delete_rlSpawn
+    __del__ = lambda self : None;
+    def spawn(self, *args): return _rllib.rlSpawn_spawn(self, *args)
+    def readLine(self): return _rllib.rlSpawn_readLine(self)
+    def getchar(self): return _rllib.rlSpawn_getchar(self)
+    def select(self, timeout = 50): return _rllib.rlSpawn_select(self, timeout)
+    def writeString(self, *args): return _rllib.rlSpawn_writeString(self, *args)
+    def write(self, *args): return _rllib.rlSpawn_write(self, *args)
+    def printf(self, *args): return _rllib.rlSpawn_printf(self, *args)
+    def printAll(self): return _rllib.rlSpawn_printAll(self)
+    __swig_setmethods__["pid"] = _rllib.rlSpawn_pid_set
+    __swig_getmethods__["pid"] = _rllib.rlSpawn_pid_get
+    if _newclass:pid = _swig_property(_rllib.rlSpawn_pid_get, _rllib.rlSpawn_pid_set)
+rlSpawn_swigregister = _rllib.rlSpawn_swigregister
+rlSpawn_swigregister(rlSpawn)
 
 class rlSpreadsheetCell(_object):
     __swig_setmethods__ = {}
@@ -577,551 +1672,35 @@ class rlSpreadsheetWorkbook(_object):
 rlSpreadsheetWorkbook_swigregister = _rllib.rlSpreadsheetWorkbook_swigregister
 rlSpreadsheetWorkbook_swigregister(rlSpreadsheetWorkbook)
 
-class rlIniFile(_object):
+class rlString(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlIniFile, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlString, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlIniFile, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlIniFile()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlIniFile
-    __del__ = lambda self : None;
-    def read(self, *args): return _rllib.rlIniFile_read(self, *args)
-    def write(self, *args): return _rllib.rlIniFile_write(self, *args)
-    def filename(self): return _rllib.rlIniFile_filename(self)
-    def text(self, *args): return _rllib.rlIniFile_text(self, *args)
-    def setText(self, *args): return _rllib.rlIniFile_setText(self, *args)
-    def printf(self, *args): return _rllib.rlIniFile_printf(self, *args)
-    def remove(self, *args): return _rllib.rlIniFile_remove(self, *args)
-    def firstSection(self): return _rllib.rlIniFile_firstSection(self)
-    def nextSection(self): return _rllib.rlIniFile_nextSection(self)
-    def firstName(self, *args): return _rllib.rlIniFile_firstName(self, *args)
-    def nextName(self, *args): return _rllib.rlIniFile_nextName(self, *args)
-    def setDefaultSection(self, *args): return _rllib.rlIniFile_setDefaultSection(self, *args)
-    def defaultSection(self): return _rllib.rlIniFile_defaultSection(self)
-    def i18n(self, *args): return _rllib.rlIniFile_i18n(self, *args)
-rlIniFile_swigregister = _rllib.rlIniFile_swigregister
-rlIniFile_swigregister(rlIniFile)
-
-class rlInterpreter(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlInterpreter, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlInterpreter, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, rlString, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
-        this = _rllib.new_rlInterpreter(*args)
+        this = _rllib.new_rlString(*args)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlInterpreter
+    __swig_destroy__ = _rllib.delete_rlString
     __del__ = lambda self : None;
-    __swig_setmethods__["line"] = _rllib.rlInterpreter_line_set
-    __swig_getmethods__["line"] = _rllib.rlInterpreter_line_get
-    if _newclass:line = _swig_property(_rllib.rlInterpreter_line_get, _rllib.rlInterpreter_line_set)
-    def isCommand(self, *args): return _rllib.rlInterpreter_isCommand(self, *args)
-    def copyStringParam(self, *args): return _rllib.rlInterpreter_copyStringParam(self, *args)
-    def maxchar(self): return _rllib.rlInterpreter_maxchar(self)
-rlInterpreter_swigregister = _rllib.rlInterpreter_swigregister
-rlInterpreter_swigregister(rlInterpreter)
-
-class rlPcontrol(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPcontrol, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlPcontrol, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlPcontrol()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlPcontrol
-    __del__ = lambda self : None;
-    def setStartupCommand(self, *args): return _rllib.rlPcontrol_setStartupCommand(self, *args)
-    def start(self): return _rllib.rlPcontrol_start(self)
-    def sigterm(self): return _rllib.rlPcontrol_sigterm(self)
-    def sigkill(self): return _rllib.rlPcontrol_sigkill(self)
-    def isAlive(self): return _rllib.rlPcontrol_isAlive(self)
-    def startupCommand(self): return _rllib.rlPcontrol_startupCommand(self)
-    def processName(self): return _rllib.rlPcontrol_processName(self)
-    def processTime(self): return _rllib.rlPcontrol_processTime(self)
-    def setPID(self, *args): return _rllib.rlPcontrol_setPID(self, *args)
-    def pid(self): return _rllib.rlPcontrol_pid(self)
-    def getNext(self): return _rllib.rlPcontrol_getNext(self)
-    def addNew(self): return _rllib.rlPcontrol_addNew(self)
-    def setPriority(self, *args): return _rllib.rlPcontrol_setPriority(self, *args)
-    def priority(self): return _rllib.rlPcontrol_priority(self)
-rlPcontrol_swigregister = _rllib.rlPcontrol_swigregister
-rlPcontrol_swigregister(rlPcontrol)
-
-rl_PRINTF_LENGTH = _rllib.rl_PRINTF_LENGTH
-rl_PRINTF_LENGTH_SPREADSHEET = _rllib.rl_PRINTF_LENGTH_SPREADSHEET
-BIT0 = _rllib.BIT0
-BIT1 = _rllib.BIT1
-BIT2 = _rllib.BIT2
-BIT3 = _rllib.BIT3
-BIT4 = _rllib.BIT4
-BIT5 = _rllib.BIT5
-BIT6 = _rllib.BIT6
-BIT7 = _rllib.BIT7
-BIT8 = _rllib.BIT8
-BIT9 = _rllib.BIT9
-BIT10 = _rllib.BIT10
-BIT11 = _rllib.BIT11
-BIT12 = _rllib.BIT12
-BIT13 = _rllib.BIT13
-BIT14 = _rllib.BIT14
-BIT15 = _rllib.BIT15
-BIT16 = _rllib.BIT16
-BIT17 = _rllib.BIT17
-BIT18 = _rllib.BIT18
-BIT19 = _rllib.BIT19
-BIT20 = _rllib.BIT20
-BIT21 = _rllib.BIT21
-BIT22 = _rllib.BIT22
-BIT23 = _rllib.BIT23
-BIT24 = _rllib.BIT24
-BIT25 = _rllib.BIT25
-BIT26 = _rllib.BIT26
-BIT27 = _rllib.BIT27
-BIT28 = _rllib.BIT28
-BIT29 = _rllib.BIT29
-BIT30 = _rllib.BIT30
-BIT31 = _rllib.BIT31
-rlMAX_EVENT = _rllib.rlMAX_EVENT
-rlInfo = _rllib.rlInfo
-rlWarning = _rllib.rlWarning
-rlError = _rllib.rlError
-rlCritical = _rllib.rlCritical
-rlFatal = _rllib.rlFatal
-rlTest = _rllib.rlTest
-rlEVENT_SIZE = _rllib.rlEVENT_SIZE
-
-def rlEventInit(*args):
-  return _rllib.rlEventInit(*args)
-rlEventInit = _rllib.rlEventInit
-
-def rlSetEventLocation(*args):
-  return _rllib.rlSetEventLocation(*args)
-rlSetEventLocation = _rllib.rlSetEventLocation
-
-def rlEventPrintf(*args):
-  return _rllib.rlEventPrintf(*args)
-rlEventPrintf = _rllib.rlEventPrintf
-rlMAX_MESSAGES = _rllib.rlMAX_MESSAGES
-class rlEventLogServer(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEventLogServer, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlEventLogServer, name)
-    __repr__ = _swig_repr
-    def __init__(self, filename = None, max_events = 10000): 
-        this = _rllib.new_rlEventLogServer(filename, max_events)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlEventLogServer
-    __del__ = lambda self : None;
-    def getEvent(self, *args): return _rllib.rlEventLogServer_getEvent(self, *args)
-    def putEvent(self, *args): return _rllib.rlEventLogServer_putEvent(self, *args)
-rlEventLogServer_swigregister = _rllib.rlEventLogServer_swigregister
-rlEventLogServer_swigregister(rlEventLogServer)
-cvar = _rllib.cvar
-rlevent_name = cvar.rlevent_name
-
-class rlEventLogServerThreads(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlEventLogServerThreads, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlEventLogServerThreads, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _rllib.new_rlEventLogServerThreads(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlEventLogServerThreads
-    __del__ = lambda self : None;
-    def start(self): return _rllib.rlEventLogServerThreads_start(self)
-    def getPort(self): return _rllib.rlEventLogServerThreads_getPort(self)
-    __swig_setmethods__["event_log_server"] = _rllib.rlEventLogServerThreads_event_log_server_set
-    __swig_getmethods__["event_log_server"] = _rllib.rlEventLogServerThreads_event_log_server_get
-    if _newclass:event_log_server = _swig_property(_rllib.rlEventLogServerThreads_event_log_server_get, _rllib.rlEventLogServerThreads_event_log_server_set)
-rlEventLogServerThreads_swigregister = _rllib.rlEventLogServerThreads_swigregister
-rlEventLogServerThreads_swigregister(rlEventLogServerThreads)
-
-class rlDataProvider(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataProvider, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataProvider, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _rllib.new_rlDataProvider(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataProvider
-    __del__ = lambda self : None;
-    def getInt(self, *args): return _rllib.rlDataProvider_getInt(self, *args)
-    def getFloat(self, *args): return _rllib.rlDataProvider_getFloat(self, *args)
-    def getIntArray(self, *args): return _rllib.rlDataProvider_getIntArray(self, *args)
-    def getFloatArray(self, *args): return _rllib.rlDataProvider_getFloatArray(self, *args)
-    def getString(self, *args): return _rllib.rlDataProvider_getString(self, *args)
-    def setInt(self, *args): return _rllib.rlDataProvider_setInt(self, *args)
-    def setFloat(self, *args): return _rllib.rlDataProvider_setFloat(self, *args)
-    def setIntArray(self, *args): return _rllib.rlDataProvider_setIntArray(self, *args)
-    def setFloatArray(self, *args): return _rllib.rlDataProvider_setFloatArray(self, *args)
-    def setString(self, *args): return _rllib.rlDataProvider_setString(self, *args)
-    def getIntAndReset(self, *args): return _rllib.rlDataProvider_getIntAndReset(self, *args)
-    def setIntAndWaitForReset(self, *args): return _rllib.rlDataProvider_setIntAndWaitForReset(self, *args)
-    def setInt0Semaphore(self, *args): return _rllib.rlDataProvider_setInt0Semaphore(self, *args)
-    def getInt0Semaphore(self): return _rllib.rlDataProvider_getInt0Semaphore(self)
-    def run(self, *args): return _rllib.rlDataProvider_run(self, *args)
-rlDataProvider_swigregister = _rllib.rlDataProvider_swigregister
-rlDataProvider_swigregister(rlDataProvider)
-
-class rlDataProviderClient(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataProviderClient, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataProviderClient, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlDataProviderClient()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataProviderClient
-    __del__ = lambda self : None;
-    def getInt(self, *args): return _rllib.rlDataProviderClient_getInt(self, *args)
-    def getFloat(self, *args): return _rllib.rlDataProviderClient_getFloat(self, *args)
-    def getIntArray(self, *args): return _rllib.rlDataProviderClient_getIntArray(self, *args)
-    def getFloatArray(self, *args): return _rllib.rlDataProviderClient_getFloatArray(self, *args)
-    def getString(self, *args): return _rllib.rlDataProviderClient_getString(self, *args)
-    def setInt(self, *args): return _rllib.rlDataProviderClient_setInt(self, *args)
-    def setFloat(self, *args): return _rllib.rlDataProviderClient_setFloat(self, *args)
-    def setIntArray(self, *args): return _rllib.rlDataProviderClient_setIntArray(self, *args)
-    def setFloatArray(self, *args): return _rllib.rlDataProviderClient_setFloatArray(self, *args)
-    def setString(self, *args): return _rllib.rlDataProviderClient_setString(self, *args)
-    def getIntAndReset(self, *args): return _rllib.rlDataProviderClient_getIntAndReset(self, *args)
-    def setIntAndWaitForReset(self, *args): return _rllib.rlDataProviderClient_setIntAndWaitForReset(self, *args)
-    def getInt0Semaphore(self, *args): return _rllib.rlDataProviderClient_getInt0Semaphore(self, *args)
-rlDataProviderClient_swigregister = _rllib.rlDataProviderClient_swigregister
-rlDataProviderClient_swigregister(rlDataProviderClient)
-
-class rlDataProviderThreads(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataProviderThreads, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataProviderThreads, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _rllib.new_rlDataProviderThreads(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataProviderThreads
-    __del__ = lambda self : None;
-    def start(self): return _rllib.rlDataProviderThreads_start(self)
-    __swig_setmethods__["provider"] = _rllib.rlDataProviderThreads_provider_set
-    __swig_getmethods__["provider"] = _rllib.rlDataProviderThreads_provider_get
-    if _newclass:provider = _swig_property(_rllib.rlDataProviderThreads_provider_get, _rllib.rlDataProviderThreads_provider_set)
-    __swig_setmethods__["thread"] = _rllib.rlDataProviderThreads_thread_set
-    __swig_getmethods__["thread"] = _rllib.rlDataProviderThreads_thread_get
-    if _newclass:thread = _swig_property(_rllib.rlDataProviderThreads_thread_get, _rllib.rlDataProviderThreads_thread_set)
-    __swig_setmethods__["port"] = _rllib.rlDataProviderThreads_port_set
-    __swig_getmethods__["port"] = _rllib.rlDataProviderThreads_port_get
-    if _newclass:port = _swig_property(_rllib.rlDataProviderThreads_port_get, _rllib.rlDataProviderThreads_port_set)
-rlDataProviderThreads_swigregister = _rllib.rlDataProviderThreads_swigregister
-rlDataProviderThreads_swigregister(rlDataProviderThreads)
-
-B0 = _rllib.B0
-B50 = _rllib.B50
-B75 = _rllib.B75
-B110 = _rllib.B110
-B134 = _rllib.B134
-B150 = _rllib.B150
-B200 = _rllib.B200
-B300 = _rllib.B300
-B600 = _rllib.B600
-B1200 = _rllib.B1200
-B1800 = _rllib.B1800
-B2400 = _rllib.B2400
-B4800 = _rllib.B4800
-B9600 = _rllib.B9600
-B19200 = _rllib.B19200
-B38400 = _rllib.B38400
-B57600 = _rllib.B57600
-B115200 = _rllib.B115200
-B230400 = _rllib.B230400
-B460800 = _rllib.B460800
-B500000 = _rllib.B500000
-B576000 = _rllib.B576000
-B921600 = _rllib.B921600
-B1000000 = _rllib.B1000000
-B1152000 = _rllib.B1152000
-B1500000 = _rllib.B1500000
-B2000000 = _rllib.B2000000
-B2500000 = _rllib.B2500000
-B3000000 = _rllib.B3000000
-B3500000 = _rllib.B3500000
-B4000000 = _rllib.B4000000
-class rlSerial(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSerial, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlSerial, name)
-    __repr__ = _swig_repr
-    NONE = _rllib.rlSerial_NONE
-    ODD = _rllib.rlSerial_ODD
-    EVEN = _rllib.rlSerial_EVEN
-    def __init__(self): 
-        this = _rllib.new_rlSerial()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlSerial
-    __del__ = lambda self : None;
-    def openDevice(self, *args): return _rllib.rlSerial_openDevice(self, *args)
-    def select(self, timeout = 500): return _rllib.rlSerial_select(self, timeout)
-    def readChar(self): return _rllib.rlSerial_readChar(self)
-    def writeChar(self, *args): return _rllib.rlSerial_writeChar(self, *args)
-    def readBlock(self, *args): return _rllib.rlSerial_readBlock(self, *args)
-    def writeBlock(self, *args): return _rllib.rlSerial_writeBlock(self, *args)
-    def readLine(self, *args): return _rllib.rlSerial_readLine(self, *args)
-    def closeDevice(self): return _rllib.rlSerial_closeDevice(self)
-    def setTrace(self, *args): return _rllib.rlSerial_setTrace(self, *args)
-rlSerial_swigregister = _rllib.rlSerial_swigregister
-rlSerial_swigregister(rlSerial)
-
-class rlModbus(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlModbus, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlModbus, name)
-    __repr__ = _swig_repr
-    MODBUS_CHECKSUM_ERROR = _rllib.rlModbus_MODBUS_CHECKSUM_ERROR
-    MODBUS_ERROR = _rllib.rlModbus_MODBUS_ERROR
-    MODBUS_SUCCESS = _rllib.rlModbus_MODBUS_SUCCESS
-    MODBUS_RTU = _rllib.rlModbus_MODBUS_RTU
-    MODBUS_ASCII = _rllib.rlModbus_MODBUS_ASCII
-    ReadCoilStatus = _rllib.rlModbus_ReadCoilStatus
-    ReadInputStatus = _rllib.rlModbus_ReadInputStatus
-    ReadHoldingRegisters = _rllib.rlModbus_ReadHoldingRegisters
-    ReadInputRegisters = _rllib.rlModbus_ReadInputRegisters
-    ForceSingleCoil = _rllib.rlModbus_ForceSingleCoil
-    PresetSingleRegister = _rllib.rlModbus_PresetSingleRegister
-    ReadExceptionStatus = _rllib.rlModbus_ReadExceptionStatus
-    FetchCommEventCtr = _rllib.rlModbus_FetchCommEventCtr
-    FetchCommEventLog = _rllib.rlModbus_FetchCommEventLog
-    ForceMultipleCoils = _rllib.rlModbus_ForceMultipleCoils
-    PresetMultipleRegs = _rllib.rlModbus_PresetMultipleRegs
-    ReportSlaveID = _rllib.rlModbus_ReportSlaveID
-    ReadGeneralReference = _rllib.rlModbus_ReadGeneralReference
-    WriteGeneralReference = _rllib.rlModbus_WriteGeneralReference
-    MaskWrite4XRegisters = _rllib.rlModbus_MaskWrite4XRegisters
-    ReadWrite4XRegisters = _rllib.rlModbus_ReadWrite4XRegisters
-    ReadFifoQueue = _rllib.rlModbus_ReadFifoQueue
-    def __init__(self, *args): 
-        this = _rllib.new_rlModbus(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlModbus
-    __del__ = lambda self : None;
-    def write(self, *args): return _rllib.rlModbus_write(self, *args)
-    def request(self, *args): return _rllib.rlModbus_request(self, *args)
-    def response(self, *args): return _rllib.rlModbus_response(self, *args)
-    def readRequest(self, *args): return _rllib.rlModbus_readRequest(self, *args)
-    def registerSocket(self, *args): return _rllib.rlModbus_registerSocket(self, *args)
-    def registerSerial(self, *args): return _rllib.rlModbus_registerSerial(self, *args)
-    def data2int(self, *args): return _rllib.rlModbus_data2int(self, *args)
-    def int2data(self, *args): return _rllib.rlModbus_int2data(self, *args)
-    def intsize(self): return _rllib.rlModbus_intsize(self)
-    __swig_setmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_set
-    __swig_getmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_get
-    if _newclass:autoreconnectSocket = _swig_property(_rllib.rlModbus_autoreconnectSocket_get, _rllib.rlModbus_autoreconnectSocket_set)
-rlModbus_swigregister = _rllib.rlModbus_swigregister
-rlModbus_swigregister(rlModbus)
-
-class rlModbusClient(rlMailbox):
-    __swig_setmethods__ = {}
-    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlModbusClient, name, value)
-    __swig_getmethods__ = {}
-    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, rlModbusClient, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _rllib.new_rlModbusClient(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlModbusClient
-    __del__ = lambda self : None;
-    def write(self, *args): return _rllib.rlModbusClient_write(self, *args)
-    def writeSingleCoil(self, *args): return _rllib.rlModbusClient_writeSingleCoil(self, *args)
-    def writeMultipleCoils(self, *args): return _rllib.rlModbusClient_writeMultipleCoils(self, *args)
-    def writePresetSingleRegister(self, *args): return _rllib.rlModbusClient_writePresetSingleRegister(self, *args)
-    def writePresetMultipleRegisters(self, *args): return _rllib.rlModbusClient_writePresetMultipleRegisters(self, *args)
-    def readBit(self, *args): return _rllib.rlModbusClient_readBit(self, *args)
-    def readByte(self, *args): return _rllib.rlModbusClient_readByte(self, *args)
-    def readShort(self, *args): return _rllib.rlModbusClient_readShort(self, *args)
-rlModbusClient_swigregister = _rllib.rlModbusClient_swigregister
-rlModbusClient_swigregister(rlModbusClient)
-
-class rl3964R(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rl3964R, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rl3964R, name)
-    __repr__ = _swig_repr
-    highPriority = _rllib.rl3964R_highPriority
-    lowPriority = _rllib.rl3964R_lowPriority
-    def __init__(self, *args): 
-        this = _rllib.new_rl3964R(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rl3964R
-    __del__ = lambda self : None;
-    def open(self, *args): return _rllib.rl3964R_open(self, *args)
-    def close(self): return _rllib.rl3964R_close(self)
-    def setReadCallback(self, *args): return _rllib.rl3964R_setReadCallback(self, *args)
-    def write(self, *args): return _rllib.rl3964R_write(self, *args)
-    def send(self): return _rllib.rl3964R_send(self)
-    def receive(self): return _rllib.rl3964R_receive(self)
-    __swig_setmethods__["receiver"] = _rllib.rl3964R_receiver_set
-    __swig_getmethods__["receiver"] = _rllib.rl3964R_receiver_get
-    if _newclass:receiver = _swig_property(_rllib.rl3964R_receiver_get, _rllib.rl3964R_receiver_set)
-    __swig_setmethods__["tty"] = _rllib.rl3964R_tty_set
-    __swig_getmethods__["tty"] = _rllib.rl3964R_tty_get
-    if _newclass:tty = _swig_property(_rllib.rl3964R_tty_get, _rllib.rl3964R_tty_set)
-    __swig_setmethods__["state"] = _rllib.rl3964R_state_set
-    __swig_getmethods__["state"] = _rllib.rl3964R_state_get
-    if _newclass:state = _swig_property(_rllib.rl3964R_state_get, _rllib.rl3964R_state_set)
-    __swig_setmethods__["priority"] = _rllib.rl3964R_priority_set
-    __swig_getmethods__["priority"] = _rllib.rl3964R_priority_get
-    if _newclass:priority = _swig_property(_rllib.rl3964R_priority_get, _rllib.rl3964R_priority_set)
-    __swig_setmethods__["run"] = _rllib.rl3964R_run_set
-    __swig_getmethods__["run"] = _rllib.rl3964R_run_get
-    if _newclass:run = _swig_property(_rllib.rl3964R_run_get, _rllib.rl3964R_run_set)
-    __swig_setmethods__["debug"] = _rllib.rl3964R_debug_set
-    __swig_getmethods__["debug"] = _rllib.rl3964R_debug_get
-    if _newclass:debug = _swig_property(_rllib.rl3964R_debug_get, _rllib.rl3964R_debug_set)
-    def dprintf(self, *args): return _rllib.rl3964R_dprintf(self, *args)
-rl3964R_swigregister = _rllib.rl3964R_swigregister
-rl3964R_swigregister(rl3964R)
-
-class rlSiemensTCP(rlSocket):
-    __swig_setmethods__ = {}
-    for _s in [rlSocket]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSiemensTCP, name, value)
-    __swig_getmethods__ = {}
-    for _s in [rlSocket]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, rlSiemensTCP, name)
-    __repr__ = _swig_repr
-    ORG_DB = _rllib.rlSiemensTCP_ORG_DB
-    ORG_M = _rllib.rlSiemensTCP_ORG_M
-    ORG_E = _rllib.rlSiemensTCP_ORG_E
-    ORG_A = _rllib.rlSiemensTCP_ORG_A
-    ORG_PEPA = _rllib.rlSiemensTCP_ORG_PEPA
-    ORG_Z = _rllib.rlSiemensTCP_ORG_Z
-    ORG_T = _rllib.rlSiemensTCP_ORG_T
-    S7_200 = _rllib.rlSiemensTCP_S7_200
-    S7_300 = _rllib.rlSiemensTCP_S7_300
-    S7_400 = _rllib.rlSiemensTCP_S7_400
-    S5 = _rllib.rlSiemensTCP_S5
-    RACK_SLOT = _rllib.rlSiemensTCP_RACK_SLOT
-    WriteBit = _rllib.rlSiemensTCP_WriteBit
-    WriteByte = _rllib.rlSiemensTCP_WriteByte
-    def __init__(self, *args): 
-        this = _rllib.new_rlSiemensTCP(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlSiemensTCP
-    __del__ = lambda self : None;
-    def write(self, *args): return _rllib.rlSiemensTCP_write(self, *args)
-    def fetch(self, *args): return _rllib.rlSiemensTCP_fetch(self, *args)
-rlSiemensTCP_swigregister = _rllib.rlSiemensTCP_swigregister
-rlSiemensTCP_swigregister(rlSiemensTCP)
-
-class rlSiemensTCPClient(rlMailbox):
-    __swig_setmethods__ = {}
-    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlSiemensTCPClient, name, value)
-    __swig_getmethods__ = {}
-    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, rlSiemensTCPClient, name)
-    __repr__ = _swig_repr
-    ORG_DB = _rllib.rlSiemensTCPClient_ORG_DB
-    ORG_M = _rllib.rlSiemensTCPClient_ORG_M
-    ORG_E = _rllib.rlSiemensTCPClient_ORG_E
-    ORG_A = _rllib.rlSiemensTCPClient_ORG_A
-    ORG_PEPA = _rllib.rlSiemensTCPClient_ORG_PEPA
-    ORG_Z = _rllib.rlSiemensTCPClient_ORG_Z
-    ORG_T = _rllib.rlSiemensTCPClient_ORG_T
-    def __init__(self, *args): 
-        this = _rllib.new_rlSiemensTCPClient(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlSiemensTCPClient
-    __del__ = lambda self : None;
-    def write(self, *args): return _rllib.rlSiemensTCPClient_write(self, *args)
-    def writeBit(self, *args): return _rllib.rlSiemensTCPClient_writeBit(self, *args)
-    def writeByte(self, *args): return _rllib.rlSiemensTCPClient_writeByte(self, *args)
-    def writeFloat(self, *args): return _rllib.rlSiemensTCPClient_writeFloat(self, *args)
-    def writeDword(self, *args): return _rllib.rlSiemensTCPClient_writeDword(self, *args)
-    def writeShort(self, *args): return _rllib.rlSiemensTCPClient_writeShort(self, *args)
-    def writeUDword(self, *args): return _rllib.rlSiemensTCPClient_writeUDword(self, *args)
-    def writeUShort(self, *args): return _rllib.rlSiemensTCPClient_writeUShort(self, *args)
-    def read(self, *args): return _rllib.rlSiemensTCPClient_read(self, *args)
-    def Float(self, *args): return _rllib.rlSiemensTCPClient_Float(self, *args)
-    def Dword(self, *args): return _rllib.rlSiemensTCPClient_Dword(self, *args)
-    def Short(self, *args): return _rllib.rlSiemensTCPClient_Short(self, *args)
-    def UDword(self, *args): return _rllib.rlSiemensTCPClient_UDword(self, *args)
-    def UShort(self, *args): return _rllib.rlSiemensTCPClient_UShort(self, *args)
-    __swig_setmethods__["buf"] = _rllib.rlSiemensTCPClient_buf_set
-    __swig_getmethods__["buf"] = _rllib.rlSiemensTCPClient_buf_get
-    if _newclass:buf = _swig_property(_rllib.rlSiemensTCPClient_buf_get, _rllib.rlSiemensTCPClient_buf_set)
-rlSiemensTCPClient_swigregister = _rllib.rlSiemensTCPClient_swigregister
-rlSiemensTCPClient_swigregister(rlSiemensTCPClient)
-
-class rlPPIClient(rlMailbox):
-    __swig_setmethods__ = {}
-    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPPIClient, name, value)
-    __swig_getmethods__ = {}
-    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
-    __getattr__ = lambda self, name: _swig_getattr(self, rlPPIClient, name)
-    __repr__ = _swig_repr
-    daveSD = _rllib.rlPPIClient_daveSD
-    daveInputs = _rllib.rlPPIClient_daveInputs
-    daveOutputs = _rllib.rlPPIClient_daveOutputs
-    daveFlags = _rllib.rlPPIClient_daveFlags
-    daveDB = _rllib.rlPPIClient_daveDB
-    daveDI = _rllib.rlPPIClient_daveDI
-    daveLocal = _rllib.rlPPIClient_daveLocal
-    daveV = _rllib.rlPPIClient_daveV
-    daveCounter = _rllib.rlPPIClient_daveCounter
-    daveTimer = _rllib.rlPPIClient_daveTimer
-    def __init__(self, *args): 
-        this = _rllib.new_rlPPIClient(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlPPIClient
-    __del__ = lambda self : None;
-    def write(self, *args): return _rllib.rlPPIClient_write(self, *args)
-    def writeFloat(self, *args): return _rllib.rlPPIClient_writeFloat(self, *args)
-    def writeDword(self, *args): return _rllib.rlPPIClient_writeDword(self, *args)
-    def writeShort(self, *args): return _rllib.rlPPIClient_writeShort(self, *args)
-    def writeUDword(self, *args): return _rllib.rlPPIClient_writeUDword(self, *args)
-    def writeUShort(self, *args): return _rllib.rlPPIClient_writeUShort(self, *args)
-    def read(self, *args): return _rllib.rlPPIClient_read(self, *args)
-    def Float(self, *args): return _rllib.rlPPIClient_Float(self, *args)
-    def Dword(self, *args): return _rllib.rlPPIClient_Dword(self, *args)
-    def Short(self, *args): return _rllib.rlPPIClient_Short(self, *args)
-    def UDword(self, *args): return _rllib.rlPPIClient_UDword(self, *args)
-    def UShort(self, *args): return _rllib.rlPPIClient_UShort(self, *args)
-    __swig_setmethods__["buf"] = _rllib.rlPPIClient_buf_set
-    __swig_getmethods__["buf"] = _rllib.rlPPIClient_buf_get
-    if _newclass:buf = _swig_property(_rllib.rlPPIClient_buf_get, _rllib.rlPPIClient_buf_set)
-rlPPIClient_swigregister = _rllib.rlPPIClient_swigregister
-rlPPIClient_swigregister(rlPPIClient)
+    def __add__(self, *args): return _rllib.rlString___add__(self, *args)
+    def __iadd__(self, *args): return _rllib.rlString___iadd__(self, *args)
+    def text(self): return _rllib.rlString_text(self)
+    def setText(self, *args): return _rllib.rlString_setText(self, *args)
+    def printf(self, *args): return _rllib.rlString_printf(self, *args)
+    def cat(self, *args): return _rllib.rlString_cat(self, *args)
+    def upper(self): return _rllib.rlString_upper(self)
+    def lower(self): return _rllib.rlString_lower(self)
+    def startsWith(self, *args): return _rllib.rlString_startsWith(self, *args)
+    def strnocasecmp(self, *args): return _rllib.rlString_strnocasecmp(self, *args)
+    def strnnocasecmp(self, *args): return _rllib.rlString_strnnocasecmp(self, *args)
+    def strstr(self, *args): return _rllib.rlString_strstr(self, *args)
+    def strchr(self, *args): return _rllib.rlString_strchr(self, *args)
+    def strrchr(self, *args): return _rllib.rlString_strrchr(self, *args)
+    def removeQuotas(self, c = '\"'): return _rllib.rlString_removeQuotas(self, c)
+rlString_swigregister = _rllib.rlString_swigregister
+rlString_swigregister(rlString)
 
 class rlSvgPosition(_object):
     __swig_setmethods__ = {}
@@ -1265,561 +1844,181 @@ class rlSvgCat(_object):
 rlSvgCat_swigregister = _rllib.rlSvgCat_swigregister
 rlSvgCat_swigregister(rlSvgCat)
 
-class rlFileLines(_object):
+class rlTime(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlFileLines, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlTime, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlFileLines, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, rlTime, name)
     __repr__ = _swig_repr
-    __swig_setmethods__["line"] = _rllib.rlFileLines_line_set
-    __swig_getmethods__["line"] = _rllib.rlFileLines_line_get
-    if _newclass:line = _swig_property(_rllib.rlFileLines_line_get, _rllib.rlFileLines_line_set)
-    __swig_setmethods__["next"] = _rllib.rlFileLines_next_set
-    __swig_getmethods__["next"] = _rllib.rlFileLines_next_get
-    if _newclass:next = _swig_property(_rllib.rlFileLines_next_get, _rllib.rlFileLines_next_set)
-    def __init__(self): 
-        this = _rllib.new_rlFileLines()
+    def __init__(self, Year = 0, Month = 0, Day = 0, Hour = 0, Minute = 0, 
+    Second = 0, Millisecond = 0): 
+        this = _rllib.new_rlTime(Year, Month, Day, Hour, Minute, Second, Millisecond)
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlFileLines
+    __swig_destroy__ = _rllib.delete_rlTime
     __del__ = lambda self : None;
-rlFileLines_swigregister = _rllib.rlFileLines_swigregister
-rlFileLines_swigregister(rlFileLines)
+    def getTimeString(self): return _rllib.rlTime_getTimeString(self)
+    def getLocalTime(self): return _rllib.rlTime_getLocalTime(self)
+    def getFileModificationTime(self, *args): return _rllib.rlTime_getFileModificationTime(self, *args)
+    def setTimeFromString(self, *args): return _rllib.rlTime_setTimeFromString(self, *args)
+    def setLocalTime(self): return _rllib.rlTime_setLocalTime(self)
+    def secondsSinceEpoche(self): return _rllib.rlTime_secondsSinceEpoche(self)
+    def __iadd__(self, *args): return _rllib.rlTime___iadd__(self, *args)
+    def __isub__(self, *args): return _rllib.rlTime___isub__(self, *args)
+    def __add__(self, *args): return _rllib.rlTime___add__(self, *args)
+    def __sub__(self, *args): return _rllib.rlTime___sub__(self, *args)
+    def __eq__(self, *args): return _rllib.rlTime___eq__(self, *args)
+    def __lt__(self, *args): return _rllib.rlTime___lt__(self, *args)
+    def __le__(self, *args): return _rllib.rlTime___le__(self, *args)
+    def __gt__(self, *args): return _rllib.rlTime___gt__(self, *args)
+    def __ge__(self, *args): return _rllib.rlTime___ge__(self, *args)
+    __swig_setmethods__["year"] = _rllib.rlTime_year_set
+    __swig_getmethods__["year"] = _rllib.rlTime_year_get
+    if _newclass:year = _swig_property(_rllib.rlTime_year_get, _rllib.rlTime_year_set)
+    __swig_setmethods__["month"] = _rllib.rlTime_month_set
+    __swig_getmethods__["month"] = _rllib.rlTime_month_get
+    if _newclass:month = _swig_property(_rllib.rlTime_month_get, _rllib.rlTime_month_set)
+    __swig_setmethods__["day"] = _rllib.rlTime_day_set
+    __swig_getmethods__["day"] = _rllib.rlTime_day_get
+    if _newclass:day = _swig_property(_rllib.rlTime_day_get, _rllib.rlTime_day_set)
+    __swig_setmethods__["hour"] = _rllib.rlTime_hour_set
+    __swig_getmethods__["hour"] = _rllib.rlTime_hour_get
+    if _newclass:hour = _swig_property(_rllib.rlTime_hour_get, _rllib.rlTime_hour_set)
+    __swig_setmethods__["minute"] = _rllib.rlTime_minute_set
+    __swig_getmethods__["minute"] = _rllib.rlTime_minute_get
+    if _newclass:minute = _swig_property(_rllib.rlTime_minute_get, _rllib.rlTime_minute_set)
+    __swig_setmethods__["second"] = _rllib.rlTime_second_set
+    __swig_getmethods__["second"] = _rllib.rlTime_second_get
+    if _newclass:second = _swig_property(_rllib.rlTime_second_get, _rllib.rlTime_second_set)
+    __swig_setmethods__["millisecond"] = _rllib.rlTime_millisecond_set
+    __swig_getmethods__["millisecond"] = _rllib.rlTime_millisecond_get
+    if _newclass:millisecond = _swig_property(_rllib.rlTime_millisecond_get, _rllib.rlTime_millisecond_set)
+rlTime_swigregister = _rllib.rlTime_swigregister
+rlTime_swigregister(rlTime)
 
-class rlFileLoad(_object):
+class rlWebcam(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlFileLoad, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, rlWebcam, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlFileLoad, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlFileLoad()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlFileLoad
-    __del__ = lambda self : None;
-    def load(self, *args): return _rllib.rlFileLoad_load(self, *args)
-    def unload(self): return _rllib.rlFileLoad_unload(self)
-    def firstLine(self): return _rllib.rlFileLoad_firstLine(self)
-    def nextLine(self): return _rllib.rlFileLoad_nextLine(self)
-    def setDebug(self, *args): return _rllib.rlFileLoad_setDebug(self, *args)
-rlFileLoad_swigregister = _rllib.rlFileLoad_swigregister
-rlFileLoad_swigregister(rlFileLoad)
-
-class rlHistoryLogLine(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryLogLine, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryLogLine, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["next"] = _rllib.rlHistoryLogLine_next_set
-    __swig_getmethods__["next"] = _rllib.rlHistoryLogLine_next_get
-    if _newclass:next = _swig_property(_rllib.rlHistoryLogLine_next_get, _rllib.rlHistoryLogLine_next_set)
-    __swig_setmethods__["line"] = _rllib.rlHistoryLogLine_line_set
-    __swig_getmethods__["line"] = _rllib.rlHistoryLogLine_line_get
-    if _newclass:line = _swig_property(_rllib.rlHistoryLogLine_line_get, _rllib.rlHistoryLogLine_line_set)
-    def __init__(self): 
-        this = _rllib.new_rlHistoryLogLine()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlHistoryLogLine
-    __del__ = lambda self : None;
-rlHistoryLogLine_swigregister = _rllib.rlHistoryLogLine_swigregister
-rlHistoryLogLine_swigregister(rlHistoryLogLine)
-
-class rlHistoryLogger(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryLogger, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryLogger, name)
-    __repr__ = _swig_repr
-    def __init__(self, *args): 
-        this = _rllib.new_rlHistoryLogger(*args)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlHistoryLogger
-    __del__ = lambda self : None;
-    def pushLine(self, *args): return _rllib.rlHistoryLogger_pushLine(self, *args)
-    def firstLine(self): return _rllib.rlHistoryLogger_firstLine(self)
-    def nextLine(self): return _rllib.rlHistoryLogger_nextLine(self)
-    __swig_setmethods__["mutex"] = _rllib.rlHistoryLogger_mutex_set
-    __swig_getmethods__["mutex"] = _rllib.rlHistoryLogger_mutex_get
-    if _newclass:mutex = _swig_property(_rllib.rlHistoryLogger_mutex_get, _rllib.rlHistoryLogger_mutex_set)
-    __swig_setmethods__["debug"] = _rllib.rlHistoryLogger_debug_set
-    __swig_getmethods__["debug"] = _rllib.rlHistoryLogger_debug_get
-    if _newclass:debug = _swig_property(_rllib.rlHistoryLogger_debug_get, _rllib.rlHistoryLogger_debug_set)
-rlHistoryLogger_swigregister = _rllib.rlHistoryLogger_swigregister
-rlHistoryLogger_swigregister(rlHistoryLogger)
-
-class rlHistoryReaderLine(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryReaderLine, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryReaderLine, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["next"] = _rllib.rlHistoryReaderLine_next_set
-    __swig_getmethods__["next"] = _rllib.rlHistoryReaderLine_next_get
-    if _newclass:next = _swig_property(_rllib.rlHistoryReaderLine_next_get, _rllib.rlHistoryReaderLine_next_set)
-    __swig_setmethods__["line"] = _rllib.rlHistoryReaderLine_line_set
-    __swig_getmethods__["line"] = _rllib.rlHistoryReaderLine_line_get
-    if _newclass:line = _swig_property(_rllib.rlHistoryReaderLine_line_get, _rllib.rlHistoryReaderLine_line_set)
-    def __init__(self): 
-        this = _rllib.new_rlHistoryReaderLine()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlHistoryReaderLine
-    __del__ = lambda self : None;
-rlHistoryReaderLine_swigregister = _rllib.rlHistoryReaderLine_swigregister
-rlHistoryReaderLine_swigregister(rlHistoryReaderLine)
-
-class rlHistoryReader(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHistoryReader, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlHistoryReader, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, rlWebcam, name)
     __repr__ = _swig_repr
     def __init__(self): 
-        this = _rllib.new_rlHistoryReader()
+        this = _rllib.new_rlWebcam()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlHistoryReader
+    __swig_destroy__ = _rllib.delete_rlWebcam
     __del__ = lambda self : None;
-    def read(self, *args): return _rllib.rlHistoryReader_read(self, *args)
-    def firstLine(self): return _rllib.rlHistoryReader_firstLine(self)
-    def nextLine(self): return _rllib.rlHistoryReader_nextLine(self)
-    def clean(self): return _rllib.rlHistoryReader_clean(self)
-    def cat(self, *args): return _rllib.rlHistoryReader_cat(self, *args)
-    __swig_setmethods__["debug"] = _rllib.rlHistoryReader_debug_set
-    __swig_getmethods__["debug"] = _rllib.rlHistoryReader_debug_get
-    if _newclass:debug = _swig_property(_rllib.rlHistoryReader_debug_get, _rllib.rlHistoryReader_debug_set)
-rlHistoryReader_swigregister = _rllib.rlHistoryReader_swigregister
-rlHistoryReader_swigregister(rlHistoryReader)
+    def setUrl(self, *args): return _rllib.rlWebcam_setUrl(self, *args)
+    def disconnect(self): return _rllib.rlWebcam_disconnect(self)
+    def getSnapshot(self, timeout = 3000): return _rllib.rlWebcam_getSnapshot(self, timeout)
+    def getFrame(self, timeout = 3000): return _rllib.rlWebcam_getFrame(self, timeout)
+    def getUrl(self): return _rllib.rlWebcam_getUrl(self)
+    def getHost(self): return _rllib.rlWebcam_getHost(self)
+    def getPort(self): return _rllib.rlWebcam_getPort(self)
+    def getPath(self): return _rllib.rlWebcam_getPath(self)
+    __swig_setmethods__["debug"] = _rllib.rlWebcam_debug_set
+    __swig_getmethods__["debug"] = _rllib.rlWebcam_debug_get
+    if _newclass:debug = _swig_property(_rllib.rlWebcam_debug_get, _rllib.rlWebcam_debug_set)
+    __swig_setmethods__["filename"] = _rllib.rlWebcam_filename_set
+    __swig_getmethods__["filename"] = _rllib.rlWebcam_filename_get
+    if _newclass:filename = _swig_property(_rllib.rlWebcam_filename_get, _rllib.rlWebcam_filename_set)
+rlWebcam_swigregister = _rllib.rlWebcam_swigregister
+rlWebcam_swigregister(rlWebcam)
 
-class rlHilscherCIF(_object):
+class WSEMAPHORE(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHilscherCIF, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, WSEMAPHORE, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlHilscherCIF, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, WSEMAPHORE, name)
     __repr__ = _swig_repr
+    __swig_setmethods__["cmax"] = _rllib.WSEMAPHORE_cmax_set
+    __swig_getmethods__["cmax"] = _rllib.WSEMAPHORE_cmax_get
+    if _newclass:cmax = _swig_property(_rllib.WSEMAPHORE_cmax_get, _rllib.WSEMAPHORE_cmax_set)
+    __swig_setmethods__["nready"] = _rllib.WSEMAPHORE_nready_set
+    __swig_getmethods__["nready"] = _rllib.WSEMAPHORE_nready_get
+    if _newclass:nready = _swig_property(_rllib.WSEMAPHORE_nready_get, _rllib.WSEMAPHORE_nready_set)
+    __swig_setmethods__["mutex"] = _rllib.WSEMAPHORE_mutex_set
+    __swig_getmethods__["mutex"] = _rllib.WSEMAPHORE_mutex_get
+    if _newclass:mutex = _swig_property(_rllib.WSEMAPHORE_mutex_get, _rllib.WSEMAPHORE_mutex_set)
+    __swig_setmethods__["cond"] = _rllib.WSEMAPHORE_cond_set
+    __swig_getmethods__["cond"] = _rllib.WSEMAPHORE_cond_get
+    if _newclass:cond = _swig_property(_rllib.WSEMAPHORE_cond_get, _rllib.WSEMAPHORE_cond_set)
     def __init__(self): 
-        this = _rllib.new_rlHilscherCIF()
+        this = _rllib.new_WSEMAPHORE()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlHilscherCIF
+    __swig_destroy__ = _rllib.delete_WSEMAPHORE
     __del__ = lambda self : None;
-    __swig_setmethods__["debug"] = _rllib.rlHilscherCIF_debug_set
-    __swig_getmethods__["debug"] = _rllib.rlHilscherCIF_debug_get
-    if _newclass:debug = _swig_property(_rllib.rlHilscherCIF_debug_get, _rllib.rlHilscherCIF_debug_set)
-    def open(self): return _rllib.rlHilscherCIF_open(self)
-    def close(self): return _rllib.rlHilscherCIF_close(self)
-    def devGetMessage(self, *args): return _rllib.rlHilscherCIF_devGetMessage(self, *args)
-    def devPutMessage(self, *args): return _rllib.rlHilscherCIF_devPutMessage(self, *args)
-    def devExchangeIO(self, *args): return _rllib.rlHilscherCIF_devExchangeIO(self, *args)
-    def devOpenDriver(self): return _rllib.rlHilscherCIF_devOpenDriver(self)
-    def devInitBoard(self): return _rllib.rlHilscherCIF_devInitBoard(self)
-    def devGetInfo(self, *args): return _rllib.rlHilscherCIF_devGetInfo(self, *args)
-    def devSetHostState(self, *args): return _rllib.rlHilscherCIF_devSetHostState(self, *args)
-    def devPutTaskParameter(self): return _rllib.rlHilscherCIF_devPutTaskParameter(self)
-    def devReset(self): return _rllib.rlHilscherCIF_devReset(self)
-    def devExitBoard(self): return _rllib.rlHilscherCIF_devExitBoard(self)
-    def devCloseDriver(self): return _rllib.rlHilscherCIF_devCloseDriver(self)
-    def printFirmwareInfo(self): return _rllib.rlHilscherCIF_printFirmwareInfo(self)
-    __swig_setmethods__["usBoardNumber"] = _rllib.rlHilscherCIF_usBoardNumber_set
-    __swig_getmethods__["usBoardNumber"] = _rllib.rlHilscherCIF_usBoardNumber_get
-    if _newclass:usBoardNumber = _swig_property(_rllib.rlHilscherCIF_usBoardNumber_get, _rllib.rlHilscherCIF_usBoardNumber_set)
-    __swig_setmethods__["usDevState"] = _rllib.rlHilscherCIF_usDevState_set
-    __swig_getmethods__["usDevState"] = _rllib.rlHilscherCIF_usDevState_get
-    if _newclass:usDevState = _swig_property(_rllib.rlHilscherCIF_usDevState_get, _rllib.rlHilscherCIF_usDevState_set)
-    __swig_setmethods__["usHostState"] = _rllib.rlHilscherCIF_usHostState_set
-    __swig_getmethods__["usHostState"] = _rllib.rlHilscherCIF_usHostState_get
-    if _newclass:usHostState = _swig_property(_rllib.rlHilscherCIF_usHostState_get, _rllib.rlHilscherCIF_usHostState_set)
-    __swig_setmethods__["abInfo"] = _rllib.rlHilscherCIF_abInfo_set
-    __swig_getmethods__["abInfo"] = _rllib.rlHilscherCIF_abInfo_get
-    if _newclass:abInfo = _swig_property(_rllib.rlHilscherCIF_abInfo_get, _rllib.rlHilscherCIF_abInfo_set)
-    __swig_setmethods__["aParameter"] = _rllib.rlHilscherCIF_aParameter_set
-    __swig_getmethods__["aParameter"] = _rllib.rlHilscherCIF_aParameter_get
-    if _newclass:aParameter = _swig_property(_rllib.rlHilscherCIF_aParameter_get, _rllib.rlHilscherCIF_aParameter_set)
-    __swig_setmethods__["tIoInfo"] = _rllib.rlHilscherCIF_tIoInfo_set
-    __swig_getmethods__["tIoInfo"] = _rllib.rlHilscherCIF_tIoInfo_get
-    if _newclass:tIoInfo = _swig_property(_rllib.rlHilscherCIF_tIoInfo_get, _rllib.rlHilscherCIF_tIoInfo_set)
-    __swig_setmethods__["tMessage"] = _rllib.rlHilscherCIF_tMessage_set
-    __swig_getmethods__["tMessage"] = _rllib.rlHilscherCIF_tMessage_get
-    if _newclass:tMessage = _swig_property(_rllib.rlHilscherCIF_tMessage_get, _rllib.rlHilscherCIF_tMessage_set)
-    __swig_setmethods__["mutex"] = _rllib.rlHilscherCIF_mutex_set
-    __swig_getmethods__["mutex"] = _rllib.rlHilscherCIF_mutex_get
-    if _newclass:mutex = _swig_property(_rllib.rlHilscherCIF_mutex_get, _rllib.rlHilscherCIF_mutex_set)
-rlHilscherCIF_swigregister = _rllib.rlHilscherCIF_swigregister
-rlHilscherCIF_swigregister(rlHilscherCIF)
+WSEMAPHORE_swigregister = _rllib.WSEMAPHORE_swigregister
+WSEMAPHORE_swigregister(WSEMAPHORE)
 
-class rlIpAdr(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlIpAdr, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlIpAdr, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlIpAdr()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlIpAdr
-    __del__ = lambda self : None;
-    def setAdr(self, *args): return _rllib.rlIpAdr_setAdr(self, *args)
-    def __eq__(self, *args): return _rllib.rlIpAdr___eq__(self, *args)
-    __swig_setmethods__["address"] = _rllib.rlIpAdr_address_set
-    __swig_getmethods__["address"] = _rllib.rlIpAdr_address_get
-    if _newclass:address = _swig_property(_rllib.rlIpAdr_address_get, _rllib.rlIpAdr_address_set)
-rlIpAdr_swigregister = _rllib.rlIpAdr_swigregister
-rlIpAdr_swigregister(rlIpAdr)
 
-class rlUdpSocket(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlUdpSocket, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlUdpSocket, name)
-    __repr__ = _swig_repr
-    def __init__(self, debug = 0): 
-        this = _rllib.new_rlUdpSocket(debug)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlUdpSocket
-    __del__ = lambda self : None;
-    def setSockopt(self, *args): return _rllib.rlUdpSocket_setSockopt(self, *args)
-    def bind(self, *args): return _rllib.rlUdpSocket_bind(self, *args)
-    def select(self, *args): return _rllib.rlUdpSocket_select(self, *args)
-    def recvfrom(self, *args): return _rllib.rlUdpSocket_recvfrom(self, *args)
-    def sendto(self, *args): return _rllib.rlUdpSocket_sendto(self, *args)
-    def printf(self, *args): return _rllib.rlUdpSocket_printf(self, *args)
-    __swig_setmethods__["debug"] = _rllib.rlUdpSocket_debug_set
-    __swig_getmethods__["debug"] = _rllib.rlUdpSocket_debug_get
-    if _newclass:debug = _swig_property(_rllib.rlUdpSocket_debug_get, _rllib.rlUdpSocket_debug_set)
-    __swig_setmethods__["readflag"] = _rllib.rlUdpSocket_readflag_set
-    __swig_getmethods__["readflag"] = _rllib.rlUdpSocket_readflag_get
-    if _newclass:readflag = _swig_property(_rllib.rlUdpSocket_readflag_get, _rllib.rlUdpSocket_readflag_set)
-    __swig_setmethods__["writeflag"] = _rllib.rlUdpSocket_writeflag_set
-    __swig_getmethods__["writeflag"] = _rllib.rlUdpSocket_writeflag_get
-    if _newclass:writeflag = _swig_property(_rllib.rlUdpSocket_writeflag_get, _rllib.rlUdpSocket_writeflag_set)
-rlUdpSocket_swigregister = _rllib.rlUdpSocket_swigregister
-rlUdpSocket_swigregister(rlUdpSocket)
+def rlwthread_attr_init(*args):
+  return _rllib.rlwthread_attr_init(*args)
+rlwthread_attr_init = _rllib.rlwthread_attr_init
 
-class rlOpcXmlDa(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlOpcXmlDa, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlOpcXmlDa, name)
-    __repr__ = _swig_repr
-    OPCXMLDA_ERROR = _rllib.rlOpcXmlDa_OPCXMLDA_ERROR
-    def __init__(self, mailbox = "/srv/automation/mbx/opcxmlda.mbx", shared_memory = "/srv/automation/shm/opcxmlda.shm", 
-    shared_memory_size = 65536): 
-        this = _rllib.new_rlOpcXmlDa(mailbox, shared_memory, shared_memory_size)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlOpcXmlDa
-    __del__ = lambda self : None;
-    def stringValue(self, *args): return _rllib.rlOpcXmlDa_stringValue(self, *args)
-    def intValue(self, *args): return _rllib.rlOpcXmlDa_intValue(self, *args)
-    def floatValue(self, *args): return _rllib.rlOpcXmlDa_floatValue(self, *args)
-    def writeStringValue(self, *args): return _rllib.rlOpcXmlDa_writeStringValue(self, *args)
-    def writeIntValue(self, *args): return _rllib.rlOpcXmlDa_writeIntValue(self, *args)
-    def writeFloatValue(self, *args): return _rllib.rlOpcXmlDa_writeFloatValue(self, *args)
-    def readErrorCount(self): return _rllib.rlOpcXmlDa_readErrorCount(self)
-    def writeErrorCount(self): return _rllib.rlOpcXmlDa_writeErrorCount(self)
-    def shmStatus(self): return _rllib.rlOpcXmlDa_shmStatus(self)
-rlOpcXmlDa_swigregister = _rllib.rlOpcXmlDa_swigregister
-rlOpcXmlDa_swigregister(rlOpcXmlDa)
+def rlwthread_create(*args):
+  return _rllib.rlwthread_create(*args)
+rlwthread_create = _rllib.rlwthread_create
 
-class rlOpcXmlDa_SHM_HEADER(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlOpcXmlDa_SHM_HEADER, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlOpcXmlDa_SHM_HEADER, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["ident"] = _rllib.rlOpcXmlDa_SHM_HEADER_ident_set
-    __swig_getmethods__["ident"] = _rllib.rlOpcXmlDa_SHM_HEADER_ident_get
-    if _newclass:ident = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_ident_get, _rllib.rlOpcXmlDa_SHM_HEADER_ident_set)
-    __swig_setmethods__["maxItemNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_set
-    __swig_getmethods__["maxItemNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_get
-    if _newclass:maxItemNameLength = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_get, _rllib.rlOpcXmlDa_SHM_HEADER_maxItemNameLength_set)
-    __swig_setmethods__["maxNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_set
-    __swig_getmethods__["maxNameLength"] = _rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_get
-    if _newclass:maxNameLength = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_get, _rllib.rlOpcXmlDa_SHM_HEADER_maxNameLength_set)
-    __swig_setmethods__["numItems"] = _rllib.rlOpcXmlDa_SHM_HEADER_numItems_set
-    __swig_getmethods__["numItems"] = _rllib.rlOpcXmlDa_SHM_HEADER_numItems_get
-    if _newclass:numItems = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_numItems_get, _rllib.rlOpcXmlDa_SHM_HEADER_numItems_set)
-    __swig_setmethods__["readErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_set
-    __swig_getmethods__["readErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_get
-    if _newclass:readErrorCount = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_get, _rllib.rlOpcXmlDa_SHM_HEADER_readErrorCount_set)
-    __swig_setmethods__["writeErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_set
-    __swig_getmethods__["writeErrorCount"] = _rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_get
-    if _newclass:writeErrorCount = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_get, _rllib.rlOpcXmlDa_SHM_HEADER_writeErrorCount_set)
-    __swig_setmethods__["spare"] = _rllib.rlOpcXmlDa_SHM_HEADER_spare_set
-    __swig_getmethods__["spare"] = _rllib.rlOpcXmlDa_SHM_HEADER_spare_get
-    if _newclass:spare = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_spare_get, _rllib.rlOpcXmlDa_SHM_HEADER_spare_set)
-    __swig_setmethods__["cspare"] = _rllib.rlOpcXmlDa_SHM_HEADER_cspare_set
-    __swig_getmethods__["cspare"] = _rllib.rlOpcXmlDa_SHM_HEADER_cspare_get
-    if _newclass:cspare = _swig_property(_rllib.rlOpcXmlDa_SHM_HEADER_cspare_get, _rllib.rlOpcXmlDa_SHM_HEADER_cspare_set)
-    def __init__(self): 
-        this = _rllib.new_rlOpcXmlDa_SHM_HEADER()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlOpcXmlDa_SHM_HEADER
-    __del__ = lambda self : None;
-rlOpcXmlDa_SHM_HEADER_swigregister = _rllib.rlOpcXmlDa_SHM_HEADER_swigregister
-rlOpcXmlDa_SHM_HEADER_swigregister(rlOpcXmlDa_SHM_HEADER)
+def rlwthread_close_handle(*args):
+  return _rllib.rlwthread_close_handle(*args)
+rlwthread_close_handle = _rllib.rlwthread_close_handle
 
-class rlDataAcquisition(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisition, name)
-    __repr__ = _swig_repr
-    DAQ_ERROR = _rllib.rlDataAcquisition_DAQ_ERROR
-    def __init__(self, mailbox = "/srv/automation/mbx/dataacquisition.mbx", 
-    shared_memory = "/srv/automation/shm/dataacquisition.shm", 
-    shared_memory_size = 65536): 
-        this = _rllib.new_rlDataAcquisition(mailbox, shared_memory, shared_memory_size)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataAcquisition
-    __del__ = lambda self : None;
-    def stringValue(self, *args): return _rllib.rlDataAcquisition_stringValue(self, *args)
-    def intValue(self, *args): return _rllib.rlDataAcquisition_intValue(self, *args)
-    def floatValue(self, *args): return _rllib.rlDataAcquisition_floatValue(self, *args)
-    def writeStringValue(self, *args): return _rllib.rlDataAcquisition_writeStringValue(self, *args)
-    def writeIntValue(self, *args): return _rllib.rlDataAcquisition_writeIntValue(self, *args)
-    def writeFloatValue(self, *args): return _rllib.rlDataAcquisition_writeFloatValue(self, *args)
-    def readErrorCount(self): return _rllib.rlDataAcquisition_readErrorCount(self)
-    def writeErrorCount(self): return _rllib.rlDataAcquisition_writeErrorCount(self)
-    def lifeCounter(self): return _rllib.rlDataAcquisition_lifeCounter(self)
-    def firstVariable(self): return _rllib.rlDataAcquisition_firstVariable(self)
-    def nextVariable(self): return _rllib.rlDataAcquisition_nextVariable(self)
-    def shmStatus(self): return _rllib.rlDataAcquisition_shmStatus(self)
-rlDataAcquisition_swigregister = _rllib.rlDataAcquisition_swigregister
-rlDataAcquisition_swigregister(rlDataAcquisition)
+def rlwthread_exit(*args):
+  return _rllib.rlwthread_exit(*args)
+rlwthread_exit = _rllib.rlwthread_exit
 
-class rlDataAcquisition_SHM_HEADER(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition_SHM_HEADER, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisition_SHM_HEADER, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["ident"] = _rllib.rlDataAcquisition_SHM_HEADER_ident_set
-    __swig_getmethods__["ident"] = _rllib.rlDataAcquisition_SHM_HEADER_ident_get
-    if _newclass:ident = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_ident_get, _rllib.rlDataAcquisition_SHM_HEADER_ident_set)
-    __swig_setmethods__["maxItemNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_set
-    __swig_getmethods__["maxItemNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_get
-    if _newclass:maxItemNameLength = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_get, _rllib.rlDataAcquisition_SHM_HEADER_maxItemNameLength_set)
-    __swig_setmethods__["maxNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_set
-    __swig_getmethods__["maxNameLength"] = _rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_get
-    if _newclass:maxNameLength = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_get, _rllib.rlDataAcquisition_SHM_HEADER_maxNameLength_set)
-    __swig_setmethods__["numItems"] = _rllib.rlDataAcquisition_SHM_HEADER_numItems_set
-    __swig_getmethods__["numItems"] = _rllib.rlDataAcquisition_SHM_HEADER_numItems_get
-    if _newclass:numItems = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_numItems_get, _rllib.rlDataAcquisition_SHM_HEADER_numItems_set)
-    __swig_setmethods__["readErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_set
-    __swig_getmethods__["readErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_get
-    if _newclass:readErrorCount = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_get, _rllib.rlDataAcquisition_SHM_HEADER_readErrorCount_set)
-    __swig_setmethods__["writeErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_set
-    __swig_getmethods__["writeErrorCount"] = _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_get
-    if _newclass:writeErrorCount = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_get, _rllib.rlDataAcquisition_SHM_HEADER_writeErrorCount_set)
-    __swig_setmethods__["lifeCounter"] = _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_set
-    __swig_getmethods__["lifeCounter"] = _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_get
-    if _newclass:lifeCounter = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_get, _rllib.rlDataAcquisition_SHM_HEADER_lifeCounter_set)
-    __swig_setmethods__["spare"] = _rllib.rlDataAcquisition_SHM_HEADER_spare_set
-    __swig_getmethods__["spare"] = _rllib.rlDataAcquisition_SHM_HEADER_spare_get
-    if _newclass:spare = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_spare_get, _rllib.rlDataAcquisition_SHM_HEADER_spare_set)
-    __swig_setmethods__["cspare"] = _rllib.rlDataAcquisition_SHM_HEADER_cspare_set
-    __swig_getmethods__["cspare"] = _rllib.rlDataAcquisition_SHM_HEADER_cspare_get
-    if _newclass:cspare = _swig_property(_rllib.rlDataAcquisition_SHM_HEADER_cspare_get, _rllib.rlDataAcquisition_SHM_HEADER_cspare_set)
-    def __init__(self): 
-        this = _rllib.new_rlDataAcquisition_SHM_HEADER()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataAcquisition_SHM_HEADER
-    __del__ = lambda self : None;
-rlDataAcquisition_SHM_HEADER_swigregister = _rllib.rlDataAcquisition_SHM_HEADER_swigregister
-rlDataAcquisition_SHM_HEADER_swigregister(rlDataAcquisition_SHM_HEADER)
+def rlwthread_join(*args):
+  return _rllib.rlwthread_join(*args)
+rlwthread_join = _rllib.rlwthread_join
 
-class rlDataAcquisitionProvider(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisitionProvider, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisitionProvider, name)
-    __repr__ = _swig_repr
-    DAQ_PROVIDER_ERROR = _rllib.rlDataAcquisitionProvider_DAQ_PROVIDER_ERROR
-    def __init__(self, maxNameLength = 31, shared_memory = "/srv/automation/shm/dataacquisition.shm", 
-    shared_memory_size = 65536): 
-        this = _rllib.new_rlDataAcquisitionProvider(maxNameLength, shared_memory, shared_memory_size)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataAcquisitionProvider
-    __del__ = lambda self : None;
-    def readItemList(self, *args): return _rllib.rlDataAcquisitionProvider_readItemList(self, *args)
-    def firstItem(self): return _rllib.rlDataAcquisitionProvider_firstItem(self)
-    def nextItem(self): return _rllib.rlDataAcquisitionProvider_nextItem(self)
-    def stringValue(self, *args): return _rllib.rlDataAcquisitionProvider_stringValue(self, *args)
-    def intValue(self, *args): return _rllib.rlDataAcquisitionProvider_intValue(self, *args)
-    def floatValue(self, *args): return _rllib.rlDataAcquisitionProvider_floatValue(self, *args)
-    def setStringValue(self, *args): return _rllib.rlDataAcquisitionProvider_setStringValue(self, *args)
-    def setIntValue(self, *args): return _rllib.rlDataAcquisitionProvider_setIntValue(self, *args)
-    def setFloatValue(self, *args): return _rllib.rlDataAcquisitionProvider_setFloatValue(self, *args)
-    def readErrorCount(self): return _rllib.rlDataAcquisitionProvider_readErrorCount(self)
-    def writeErrorCount(self): return _rllib.rlDataAcquisitionProvider_writeErrorCount(self)
-    def lifeCounter(self): return _rllib.rlDataAcquisitionProvider_lifeCounter(self)
-    def setReadErrorCount(self, *args): return _rllib.rlDataAcquisitionProvider_setReadErrorCount(self, *args)
-    def setWriteErrorCount(self, *args): return _rllib.rlDataAcquisitionProvider_setWriteErrorCount(self, *args)
-    def setLifeCounter(self, *args): return _rllib.rlDataAcquisitionProvider_setLifeCounter(self, *args)
-    def shmStatus(self): return _rllib.rlDataAcquisitionProvider_shmStatus(self)
-    def setAllowAddValues(self, *args): return _rllib.rlDataAcquisitionProvider_setAllowAddValues(self, *args)
-rlDataAcquisitionProvider_swigregister = _rllib.rlDataAcquisitionProvider_swigregister
-rlDataAcquisitionProvider_swigregister(rlDataAcquisitionProvider)
+def rlwthread_mutex_init(*args):
+  return _rllib.rlwthread_mutex_init(*args)
+rlwthread_mutex_init = _rllib.rlwthread_mutex_init
 
-class rlDataAcquisitionProvider_SHM_HEADER(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisitionProvider_SHM_HEADER, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlDataAcquisitionProvider_SHM_HEADER, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["ident"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_set
-    __swig_getmethods__["ident"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_get
-    if _newclass:ident = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_ident_set)
-    __swig_setmethods__["maxItemNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_set
-    __swig_getmethods__["maxItemNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_get
-    if _newclass:maxItemNameLength = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxItemNameLength_set)
-    __swig_setmethods__["maxNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_set
-    __swig_getmethods__["maxNameLength"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_get
-    if _newclass:maxNameLength = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_maxNameLength_set)
-    __swig_setmethods__["numItems"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_set
-    __swig_getmethods__["numItems"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_get
-    if _newclass:numItems = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_numItems_set)
-    __swig_setmethods__["readErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_set
-    __swig_getmethods__["readErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_get
-    if _newclass:readErrorCount = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_readErrorCount_set)
-    __swig_setmethods__["writeErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_set
-    __swig_getmethods__["writeErrorCount"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_get
-    if _newclass:writeErrorCount = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_writeErrorCount_set)
-    __swig_setmethods__["lifeCounter"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_set
-    __swig_getmethods__["lifeCounter"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_get
-    if _newclass:lifeCounter = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_lifeCounter_set)
-    __swig_setmethods__["spare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_set
-    __swig_getmethods__["spare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_get
-    if _newclass:spare = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_spare_set)
-    __swig_setmethods__["cspare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_set
-    __swig_getmethods__["cspare"] = _rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_get
-    if _newclass:cspare = _swig_property(_rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_get, _rllib.rlDataAcquisitionProvider_SHM_HEADER_cspare_set)
-    def __init__(self): 
-        this = _rllib.new_rlDataAcquisitionProvider_SHM_HEADER()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlDataAcquisitionProvider_SHM_HEADER
-    __del__ = lambda self : None;
-rlDataAcquisitionProvider_SHM_HEADER_swigregister = _rllib.rlDataAcquisitionProvider_SHM_HEADER_swigregister
-rlDataAcquisitionProvider_SHM_HEADER_swigregister(rlDataAcquisitionProvider_SHM_HEADER)
+def rlwthread_mutex_destroy(*args):
+  return _rllib.rlwthread_mutex_destroy(*args)
+rlwthread_mutex_destroy = _rllib.rlwthread_mutex_destroy
 
-class rlPlcState(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPlcState, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlPlcState, name)
-    __repr__ = _swig_repr
-    def __init__(self, numInt = 100, numFloat = 100, numDouble = 0): 
-        this = _rllib.new_rlPlcState(numInt, numFloat, numDouble)
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlPlcState
-    __del__ = lambda self : None;
-    __swig_setmethods__["i"] = _rllib.rlPlcState_i_set
-    __swig_getmethods__["i"] = _rllib.rlPlcState_i_get
-    if _newclass:i = _swig_property(_rllib.rlPlcState_i_get, _rllib.rlPlcState_i_set)
-    __swig_setmethods__["i_old"] = _rllib.rlPlcState_i_old_set
-    __swig_getmethods__["i_old"] = _rllib.rlPlcState_i_old_get
-    if _newclass:i_old = _swig_property(_rllib.rlPlcState_i_old_get, _rllib.rlPlcState_i_old_set)
-    __swig_setmethods__["f"] = _rllib.rlPlcState_f_set
-    __swig_getmethods__["f"] = _rllib.rlPlcState_f_get
-    if _newclass:f = _swig_property(_rllib.rlPlcState_f_get, _rllib.rlPlcState_f_set)
-    __swig_setmethods__["f_old"] = _rllib.rlPlcState_f_old_set
-    __swig_getmethods__["f_old"] = _rllib.rlPlcState_f_old_get
-    if _newclass:f_old = _swig_property(_rllib.rlPlcState_f_old_get, _rllib.rlPlcState_f_old_set)
-    __swig_setmethods__["d"] = _rllib.rlPlcState_d_set
-    __swig_getmethods__["d"] = _rllib.rlPlcState_d_get
-    if _newclass:d = _swig_property(_rllib.rlPlcState_d_get, _rllib.rlPlcState_d_set)
-    __swig_setmethods__["d_old"] = _rllib.rlPlcState_d_old_set
-    __swig_getmethods__["d_old"] = _rllib.rlPlcState_d_old_get
-    if _newclass:d_old = _swig_property(_rllib.rlPlcState_d_old_get, _rllib.rlPlcState_d_old_set)
-    def rememberState(self): return _rllib.rlPlcState_rememberState(self)
-    def intChanged(self, *args): return _rllib.rlPlcState_intChanged(self, *args)
-    def floatChanged(self, *args): return _rllib.rlPlcState_floatChanged(self, *args)
-    def doubleChanged(self, *args): return _rllib.rlPlcState_doubleChanged(self, *args)
-    def intHasIncreased(self, *args): return _rllib.rlPlcState_intHasIncreased(self, *args)
-    def floatHasIncreased(self, *args): return _rllib.rlPlcState_floatHasIncreased(self, *args)
-    def doubleHasIncreased(self, *args): return _rllib.rlPlcState_doubleHasIncreased(self, *args)
-    def intHasDecreased(self, *args): return _rllib.rlPlcState_intHasDecreased(self, *args)
-    def floatHasDecreased(self, *args): return _rllib.rlPlcState_floatHasDecreased(self, *args)
-    def doubleHasDecreased(self, *args): return _rllib.rlPlcState_doubleHasDecreased(self, *args)
-    def deltaInt(self, *args): return _rllib.rlPlcState_deltaInt(self, *args)
-    def deltaFloat(self, *args): return _rllib.rlPlcState_deltaFloat(self, *args)
-    def deltaDouble(self, *args): return _rllib.rlPlcState_deltaDouble(self, *args)
-    def set(self, *args): return _rllib.rlPlcState_set(self, *args)
-    def clear(self, *args): return _rllib.rlPlcState_clear(self, *args)
-    def isSet(self, *args): return _rllib.rlPlcState_isSet(self, *args)
-    def isClear(self, *args): return _rllib.rlPlcState_isClear(self, *args)
-    def hasBeenSet(self, *args): return _rllib.rlPlcState_hasBeenSet(self, *args)
-    def hasBeenCleared(self, *args): return _rllib.rlPlcState_hasBeenCleared(self, *args)
-    def maxInt(self): return _rllib.rlPlcState_maxInt(self)
-    def maxFloat(self): return _rllib.rlPlcState_maxFloat(self)
-    def maxDouble(self): return _rllib.rlPlcState_maxDouble(self)
-rlPlcState_swigregister = _rllib.rlPlcState_swigregister
-rlPlcState_swigregister(rlPlcState)
+def rlwthread_mutex_lock(*args):
+  return _rllib.rlwthread_mutex_lock(*args)
+rlwthread_mutex_lock = _rllib.rlwthread_mutex_lock
 
-class rlPlcMem(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlPlcMem, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlPlcMem, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlPlcMem()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlPlcMem
-    __del__ = lambda self : None;
-    __swig_setmethods__["i"] = _rllib.rlPlcMem_i_set
-    __swig_getmethods__["i"] = _rllib.rlPlcMem_i_get
-    if _newclass:i = _swig_property(_rllib.rlPlcMem_i_get, _rllib.rlPlcMem_i_set)
-    __swig_setmethods__["i_old"] = _rllib.rlPlcMem_i_old_set
-    __swig_getmethods__["i_old"] = _rllib.rlPlcMem_i_old_get
-    if _newclass:i_old = _swig_property(_rllib.rlPlcMem_i_old_get, _rllib.rlPlcMem_i_old_set)
-    __swig_setmethods__["f"] = _rllib.rlPlcMem_f_set
-    __swig_getmethods__["f"] = _rllib.rlPlcMem_f_get
-    if _newclass:f = _swig_property(_rllib.rlPlcMem_f_get, _rllib.rlPlcMem_f_set)
-    __swig_setmethods__["f_old"] = _rllib.rlPlcMem_f_old_set
-    __swig_getmethods__["f_old"] = _rllib.rlPlcMem_f_old_get
-    if _newclass:f_old = _swig_property(_rllib.rlPlcMem_f_old_get, _rllib.rlPlcMem_f_old_set)
-    __swig_setmethods__["d"] = _rllib.rlPlcMem_d_set
-    __swig_getmethods__["d"] = _rllib.rlPlcMem_d_get
-    if _newclass:d = _swig_property(_rllib.rlPlcMem_d_get, _rllib.rlPlcMem_d_set)
-    __swig_setmethods__["d_old"] = _rllib.rlPlcMem_d_old_set
-    __swig_getmethods__["d_old"] = _rllib.rlPlcMem_d_old_get
-    if _newclass:d_old = _swig_property(_rllib.rlPlcMem_d_old_get, _rllib.rlPlcMem_d_old_set)
-    def rememberState(self): return _rllib.rlPlcMem_rememberState(self)
-    def intChanged(self): return _rllib.rlPlcMem_intChanged(self)
-    def floatChanged(self): return _rllib.rlPlcMem_floatChanged(self)
-    def doubleChanged(self): return _rllib.rlPlcMem_doubleChanged(self)
-    def intHasIncreased(self): return _rllib.rlPlcMem_intHasIncreased(self)
-    def floatHasIncreased(self): return _rllib.rlPlcMem_floatHasIncreased(self)
-    def doubleHasIncreased(self): return _rllib.rlPlcMem_doubleHasIncreased(self)
-    def intHasDecreased(self): return _rllib.rlPlcMem_intHasDecreased(self)
-    def floatHasDecreased(self): return _rllib.rlPlcMem_floatHasDecreased(self)
-    def doubleHasDecreased(self): return _rllib.rlPlcMem_doubleHasDecreased(self)
-    def deltaInt(self): return _rllib.rlPlcMem_deltaInt(self)
-    def deltaFloat(self): return _rllib.rlPlcMem_deltaFloat(self)
-    def deltaDouble(self): return _rllib.rlPlcMem_deltaDouble(self)
-    def set(self, *args): return _rllib.rlPlcMem_set(self, *args)
-    def clear(self, *args): return _rllib.rlPlcMem_clear(self, *args)
-    def isSet(self, *args): return _rllib.rlPlcMem_isSet(self, *args)
-    def isClear(self, *args): return _rllib.rlPlcMem_isClear(self, *args)
-    def hasBeenSet(self, *args): return _rllib.rlPlcMem_hasBeenSet(self, *args)
-    def hasBeenCleared(self, *args): return _rllib.rlPlcMem_hasBeenCleared(self, *args)
-rlPlcMem_swigregister = _rllib.rlPlcMem_swigregister
-rlPlcMem_swigregister(rlPlcMem)
+def rlwthread_mutex_trylock(*args):
+  return _rllib.rlwthread_mutex_trylock(*args)
+rlwthread_mutex_trylock = _rllib.rlwthread_mutex_trylock
 
+def rlwthread_mutex_unlock(*args):
+  return _rllib.rlwthread_mutex_unlock(*args)
+rlwthread_mutex_unlock = _rllib.rlwthread_mutex_unlock
+
+def rlwthread_cancel(*args):
+  return _rllib.rlwthread_cancel(*args)
+rlwthread_cancel = _rllib.rlwthread_cancel
+
+def rlwrapinit_semaphore(*args):
+  return _rllib.rlwrapinit_semaphore(*args)
+rlwrapinit_semaphore = _rllib.rlwrapinit_semaphore
+
+def rlwrapdestroy_semaphore(*args):
+  return _rllib.rlwrapdestroy_semaphore(*args)
+rlwrapdestroy_semaphore = _rllib.rlwrapdestroy_semaphore
+
+def rlwrapincrement_semaphore(*args):
+  return _rllib.rlwrapincrement_semaphore(*args)
+rlwrapincrement_semaphore = _rllib.rlwrapincrement_semaphore
+
+def rlwrapwait_semaphore(*args):
+  return _rllib.rlwrapwait_semaphore(*args)
+rlwrapwait_semaphore = _rllib.rlwrapwait_semaphore
+
+def rlwthread_sleep(*args):
+  return _rllib.rlwthread_sleep(*args)
+rlwthread_sleep = _rllib.rlwthread_sleep
+
+def rlsleep(*args):
+  return _rllib.rlsleep(*args)
+rlsleep = _rllib.rlsleep
 
 

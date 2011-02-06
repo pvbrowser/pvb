@@ -2683,21 +2683,23 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_FILE swig_types[0]
-#define SWIGTYPE_p_GLuint swig_types[1]
-#define SWIGTYPE_p_PARSE_EVENT_STRUCT swig_types[2]
-#define SWIGTYPE_p__PARAM_ swig_types[3]
-#define SWIGTYPE_p_char swig_types[4]
-#define SWIGTYPE_p_double swig_types[5]
-#define SWIGTYPE_p_f_p__PARAM___int swig_types[6]
-#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[7]
-#define SWIGTYPE_p_f_p_void__int swig_types[8]
-#define SWIGTYPE_p_float swig_types[9]
-#define SWIGTYPE_p_glFont swig_types[10]
-#define SWIGTYPE_p_int swig_types[11]
-#define SWIGTYPE_p_p_char swig_types[12]
-#define SWIGTYPE_p_void swig_types[13]
-static swig_type_info *swig_types[15];
-static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
+#define SWIGTYPE_p_FloatArray swig_types[1]
+#define SWIGTYPE_p_GLuint swig_types[2]
+#define SWIGTYPE_p_IntegerArray swig_types[3]
+#define SWIGTYPE_p_PARSE_EVENT_STRUCT swig_types[4]
+#define SWIGTYPE_p__PARAM_ swig_types[5]
+#define SWIGTYPE_p_char swig_types[6]
+#define SWIGTYPE_p_double swig_types[7]
+#define SWIGTYPE_p_f_p__PARAM___int swig_types[8]
+#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[9]
+#define SWIGTYPE_p_f_p_void__int swig_types[10]
+#define SWIGTYPE_p_float swig_types[11]
+#define SWIGTYPE_p_glFont swig_types[12]
+#define SWIGTYPE_p_int swig_types[13]
+#define SWIGTYPE_p_p_char swig_types[14]
+#define SWIGTYPE_p_void swig_types[15]
+static swig_type_info *swig_types[17];
+static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2797,6 +2799,7 @@ namespace swig {
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
 PARAM *getParam(unsigned long p);
+int pvQImageScript(PARAM *p, int id, int parent, const char *imagename);
 int *new_int(int ivalue);
 int  get_int(int *i);
 void delete_int(int *i);
@@ -5426,6 +5429,1246 @@ SWIGINTERN PyObject *Swig_var_null_string_get(void) {
 }
 
 
+SWIGINTERN PyObject *_wrap_IntegerArray_i_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "IntegerArray_i_set" "', argument " "2"" of type '" "int [10]""'"); 
+  } 
+  arg2 = reinterpret_cast< int * >(argp2);
+  {
+    if (arg2) {
+      size_t ii = 0;
+      for (; ii < (size_t)10; ++ii) arg1->i[ii] = arg2[ii];
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""i""' of type '""int [10]""'");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int *)(int *) ((arg1)->i);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i0_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i0_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i0_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i0_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i0 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i0_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i0_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i0_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i0);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i1_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i1_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i1_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i1_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i1 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i1_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i1_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i1_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i2_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i2_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i2_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i2_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i2 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i2_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i2_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i2_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i3_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i3_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i3_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i3_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i3 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i3_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i3_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i3_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i4_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i4_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i4_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i4_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i4 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i4_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i4_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i4_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i5_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i5_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i5_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i5_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i5 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i5_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i5_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i5_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i5);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i6_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i6_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i6_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i6_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i6 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i6_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i6_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i6_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i6);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i7_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i7_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i7_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i7_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i7 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i7_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i7_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i7_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i7);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i8_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i8_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i8_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i8_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i8 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i8_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i8_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i8_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i8);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i9_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:IntegerArray_i9_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i9_set" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "IntegerArray_i9_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->i9 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_IntegerArray_i9_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:IntegerArray_i9_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "IntegerArray_i9_get" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  result = (int) ((arg1)->i9);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_IntegerArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_IntegerArray")) SWIG_fail;
+  result = (IntegerArray *)new IntegerArray();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_IntegerArray, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_IntegerArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  IntegerArray *arg1 = (IntegerArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_IntegerArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_IntegerArray, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_IntegerArray" "', argument " "1"" of type '" "IntegerArray *""'"); 
+  }
+  arg1 = reinterpret_cast< IntegerArray * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *IntegerArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_IntegerArray, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_FloatArray_f_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  float *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "FloatArray_f_set" "', argument " "2"" of type '" "float [10]""'"); 
+  } 
+  arg2 = reinterpret_cast< float * >(argp2);
+  {
+    if (arg2) {
+      size_t ii = 0;
+      for (; ii < (size_t)10; ++ii) arg1->f[ii] = arg2[ii];
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""f""' of type '""float [10]""'");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  float *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (float *)(float *) ((arg1)->f);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_float, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f0_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f0_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f0_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f0_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f0 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f0_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f0_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f0_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f0);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f1_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f1_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f1_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f1_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f1 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f1_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f1_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f1_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f2_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f2_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f2_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f2_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f2 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f2_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f2_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f2_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f3_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f3_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f3_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f3_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f3 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f3_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f3_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f3_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f4_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f4_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f4_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f4_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f4 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f4_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f4_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f4_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f5_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f5_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f5_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f5_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f5 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f5_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f5_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f5_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f5);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f6_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f6_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f6_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f6_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f6 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f6_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f6_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f6_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f6);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f7_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f7_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f7_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f7_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f7 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f7_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f7_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f7_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f7);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f8_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f8_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f8_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f8_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f8 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f8_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f8_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f8_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f8);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f9_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:FloatArray_f9_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f9_set" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "FloatArray_f9_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->f9 = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_FloatArray_f9_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:FloatArray_f9_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "FloatArray_f9_get" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  result = (int) ((arg1)->f9);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_FloatArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_FloatArray")) SWIG_fail;
+  result = (FloatArray *)new FloatArray();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FloatArray, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_FloatArray(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FloatArray *arg1 = (FloatArray *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_FloatArray",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FloatArray, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_FloatArray" "', argument " "1"" of type '" "FloatArray *""'"); 
+  }
+  arg1 = reinterpret_cast< FloatArray * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *FloatArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_FloatArray, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_glencode_set_param(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -5544,6 +6787,99 @@ SWIGINTERN PyObject *_wrap_pvXYAllocate(PyObject *SWIGUNUSEDPARM(self), PyObject
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_getIntegers(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  IntegerArray *arg2 = (IntegerArray *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:getIntegers",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "getIntegers" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_IntegerArray, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "getIntegers" "', argument " "2"" of type '" "IntegerArray *""'"); 
+  }
+  arg2 = reinterpret_cast< IntegerArray * >(argp2);
+  result = (int)getIntegers((char const *)arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_getFloats(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  FloatArray *arg2 = (FloatArray *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:getFloats",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "getFloats" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_FloatArray, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "getFloats" "', argument " "2"" of type '" "FloatArray *""'"); 
+  }
+  arg2 = reinterpret_cast< FloatArray * >(argp2);
+  result = (int)getFloats((char const *)arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_getTextFromText(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:getTextFromText",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "getTextFromText" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  result = (char *)getTextFromText((char const *)arg1);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return NULL;
 }
 
@@ -7043,7 +8379,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_pvQImage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_pvQImage__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
   int arg2 ;
@@ -7118,6 +8454,341 @@ SWIGINTERN PyObject *_wrap_pvQImage(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   return resultobj;
 fail:
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvQImage__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int *arg5 = (int *) 0 ;
+  int *arg6 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  void *argp6 = 0 ;
+  int res6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:pvQImage",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQImage" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQImage" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQImage" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvQImage" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "pvQImage" "', argument " "5"" of type '" "int *""'"); 
+  }
+  arg5 = reinterpret_cast< int * >(argp5);
+  res6 = SWIG_ConvertPtr(obj5, &argp6,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "pvQImage" "', argument " "6"" of type '" "int *""'"); 
+  }
+  arg6 = reinterpret_cast< int * >(argp6);
+  result = (int)pvQImage(arg1,arg2,arg3,(char const *)arg4,arg5,arg6);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvQImage__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int *arg5 = (int *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  void *argp5 = 0 ;
+  int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:pvQImage",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQImage" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQImage" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQImage" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvQImage" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  res5 = SWIG_ConvertPtr(obj4, &argp5,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "pvQImage" "', argument " "5"" of type '" "int *""'"); 
+  }
+  arg5 = reinterpret_cast< int * >(argp5);
+  result = (int)pvQImage(arg1,arg2,arg3,(char const *)arg4,arg5);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvQImage__SWIG_3(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:pvQImage",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQImage" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQImage" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQImage" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvQImage" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)pvQImage(arg1,arg2,arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvQImage(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[8];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = (int)PyObject_Length(args);
+  for (ii = 0; (ii < argc) && (ii < 7); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p__PARAM_, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_pvQImage__SWIG_3(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p__PARAM_, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_int, 0);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_pvQImage__SWIG_2(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p__PARAM_, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_int, 0);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_int, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                return _wrap_pvQImage__SWIG_1(self, args);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 7) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p__PARAM_, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            void *vptr = 0;
+            int res = SWIG_ConvertPtr(argv[4], &vptr, SWIGTYPE_p_int, 0);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              void *vptr = 0;
+              int res = SWIG_ConvertPtr(argv[5], &vptr, SWIGTYPE_p_int, 0);
+              _v = SWIG_CheckState(res);
+              if (_v) {
+                void *vptr = 0;
+                int res = SWIG_ConvertPtr(argv[6], &vptr, SWIGTYPE_p_int, 0);
+                _v = SWIG_CheckState(res);
+                if (_v) {
+                  return _wrap_pvQImage__SWIG_0(self, args);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number of arguments for overloaded function 'pvQImage'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvQImage(PARAM *,int,int,char const *,int *,int *,int *)\n"
+    "    pvQImage(PARAM *,int,int,char const *,int *,int *)\n"
+    "    pvQImage(PARAM *,int,int,char const *,int *)\n"
+    "    pvQImage(PARAM *,int,int,char const *)\n");
   return NULL;
 }
 
@@ -31623,6 +33294,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvQImageScript(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:pvQImageScript",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQImageScript" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQImageScript" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQImageScript" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvQImageScript" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)pvQImageScript(arg1,arg2,arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_int(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -31776,11 +33499,64 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_PARAM", _wrap_new_PARAM, METH_VARARGS, NULL},
 	 { (char *)"delete_PARAM", _wrap_delete_PARAM, METH_VARARGS, NULL},
 	 { (char *)"PARAM_swigregister", PARAM_swigregister, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i_set", _wrap_IntegerArray_i_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i_get", _wrap_IntegerArray_i_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i0_set", _wrap_IntegerArray_i0_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i0_get", _wrap_IntegerArray_i0_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i1_set", _wrap_IntegerArray_i1_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i1_get", _wrap_IntegerArray_i1_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i2_set", _wrap_IntegerArray_i2_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i2_get", _wrap_IntegerArray_i2_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i3_set", _wrap_IntegerArray_i3_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i3_get", _wrap_IntegerArray_i3_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i4_set", _wrap_IntegerArray_i4_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i4_get", _wrap_IntegerArray_i4_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i5_set", _wrap_IntegerArray_i5_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i5_get", _wrap_IntegerArray_i5_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i6_set", _wrap_IntegerArray_i6_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i6_get", _wrap_IntegerArray_i6_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i7_set", _wrap_IntegerArray_i7_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i7_get", _wrap_IntegerArray_i7_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i8_set", _wrap_IntegerArray_i8_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i8_get", _wrap_IntegerArray_i8_get, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i9_set", _wrap_IntegerArray_i9_set, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_i9_get", _wrap_IntegerArray_i9_get, METH_VARARGS, NULL},
+	 { (char *)"new_IntegerArray", _wrap_new_IntegerArray, METH_VARARGS, NULL},
+	 { (char *)"delete_IntegerArray", _wrap_delete_IntegerArray, METH_VARARGS, NULL},
+	 { (char *)"IntegerArray_swigregister", IntegerArray_swigregister, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f_set", _wrap_FloatArray_f_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f_get", _wrap_FloatArray_f_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f0_set", _wrap_FloatArray_f0_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f0_get", _wrap_FloatArray_f0_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f1_set", _wrap_FloatArray_f1_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f1_get", _wrap_FloatArray_f1_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f2_set", _wrap_FloatArray_f2_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f2_get", _wrap_FloatArray_f2_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f3_set", _wrap_FloatArray_f3_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f3_get", _wrap_FloatArray_f3_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f4_set", _wrap_FloatArray_f4_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f4_get", _wrap_FloatArray_f4_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f5_set", _wrap_FloatArray_f5_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f5_get", _wrap_FloatArray_f5_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f6_set", _wrap_FloatArray_f6_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f6_get", _wrap_FloatArray_f6_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f7_set", _wrap_FloatArray_f7_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f7_get", _wrap_FloatArray_f7_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f8_set", _wrap_FloatArray_f8_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f8_get", _wrap_FloatArray_f8_get, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f9_set", _wrap_FloatArray_f9_set, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_f9_get", _wrap_FloatArray_f9_get, METH_VARARGS, NULL},
+	 { (char *)"new_FloatArray", _wrap_new_FloatArray, METH_VARARGS, NULL},
+	 { (char *)"delete_FloatArray", _wrap_delete_FloatArray, METH_VARARGS, NULL},
+	 { (char *)"FloatArray_swigregister", FloatArray_swigregister, METH_VARARGS, NULL},
 	 { (char *)"glencode_set_param", _wrap_glencode_set_param, METH_VARARGS, NULL},
 	 { (char *)"pvlock", _wrap_pvlock, METH_VARARGS, NULL},
 	 { (char *)"pvunlock", _wrap_pvunlock, METH_VARARGS, NULL},
 	 { (char *)"pvsystem", _wrap_pvsystem, METH_VARARGS, NULL},
 	 { (char *)"pvXYAllocate", _wrap_pvXYAllocate, METH_VARARGS, NULL},
+	 { (char *)"getIntegers", _wrap_getIntegers, METH_VARARGS, NULL},
+	 { (char *)"getFloats", _wrap_getFloats, METH_VARARGS, NULL},
+	 { (char *)"getTextFromText", _wrap_getTextFromText, METH_VARARGS, NULL},
 	 { (char *)"pvSetXY", _wrap_pvSetXY, METH_VARARGS, NULL},
 	 { (char *)"pvInitInternal", _wrap_pvInitInternal, METH_VARARGS, NULL},
 	 { (char *)"pvInit", _wrap_pvInit, METH_VARARGS, NULL},
@@ -32175,6 +33951,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"getGeometry", _wrap_getGeometry, METH_VARARGS, NULL},
 	 { (char *)"getParentWidgetId", _wrap_getParentWidgetId, METH_VARARGS, NULL},
 	 { (char *)"getParam", _wrap_getParam, METH_VARARGS, NULL},
+	 { (char *)"pvQImageScript", _wrap_pvQImageScript, METH_VARARGS, NULL},
 	 { (char *)"new_int", _wrap_new_int, METH_VARARGS, NULL},
 	 { (char *)"get_int", _wrap_get_int, METH_VARARGS, NULL},
 	 { (char *)"delete_int", _wrap_delete_int, METH_VARARGS, NULL},
@@ -32185,7 +33962,9 @@ static PyMethodDef SwigMethods[] = {
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static swig_type_info _swigt__p_FILE = {"_p_FILE", "FILE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_FloatArray = {"_p_FloatArray", "FloatArray *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_GLuint = {"_p_GLuint", "GLuint *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_IntegerArray = {"_p_IntegerArray", "IntegerArray *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PARSE_EVENT_STRUCT = {"_p_PARSE_EVENT_STRUCT", "PARSE_EVENT_STRUCT *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__PARAM_ = {"_p__PARAM_", "PARAM *|_PARAM_ *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
@@ -32201,7 +33980,9 @@ static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_FILE,
+  &_swigt__p_FloatArray,
   &_swigt__p_GLuint,
+  &_swigt__p_IntegerArray,
   &_swigt__p_PARSE_EVENT_STRUCT,
   &_swigt__p__PARAM_,
   &_swigt__p_char,
@@ -32217,7 +33998,9 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_FloatArray[] = {  {&_swigt__p_FloatArray, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_GLuint[] = {  {&_swigt__p_GLuint, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_IntegerArray[] = {  {&_swigt__p_IntegerArray, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PARSE_EVENT_STRUCT[] = {  {&_swigt__p_PARSE_EVENT_STRUCT, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__PARAM_[] = {  {&_swigt__p__PARAM_, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -32233,7 +34016,9 @@ static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0,
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_FILE,
+  _swigc__p_FloatArray,
   _swigc__p_GLuint,
+  _swigc__p_IntegerArray,
   _swigc__p_PARSE_EVENT_STRUCT,
   _swigc__p__PARAM_,
   _swigc__p_char,

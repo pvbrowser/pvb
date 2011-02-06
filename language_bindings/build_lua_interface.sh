@@ -35,23 +35,10 @@ if [ "x${1}" = "xswig" ]; then
   rm -f lua/language_binding_wrap_lua.o
   rm -f lua/language_binding_rllib_wrap_lua.o
   rm -f lua/pvmain.o
-  swig -c++ -lua -Dunix language_binding.i
-  mv language_binding_wrap.cxx       language_binding_wrap_lua.cxx
-  swig -c++ -lua -Dunix language_binding_rllib.i
-  mv language_binding_rllib_wrap.cxx language_binding_rllib_wrap_lua.cxx
-fi
-
-if [ -e lua/language_binding_wrap_lua.o ]; then
-  echo skip recompiling lua
-else
-  echo compiling pvsbinding ...
-  g++ -c -fpic language_binding_wrap_lua.cxx
-  g++ -c -fpic -DLUA pvmain.cpp -o pvmain.o
-  echo compiling rllibbinding ... You can ignore the 'PACKED' warnings from cif_user.h
-  g++ -c -fpic language_binding_rllib_wrap_lua.cxx
-  mv language_binding_wrap_lua.o       lua/
-  mv pvmain.o                          lua/
-  mv language_binding_rllib_wrap_lua.o lua/
+  swig -c++ -lua -Dunix -DSWIG_SESSION language_binding.i
+  mv language_binding_wrap.cxx         language_binding_wrap_lua.cxx
+  swig -c++ -lua -Dunix -DSWIG_SESSIOM language_binding_rllib.i
+  mv language_binding_rllib_wrap.cxx   language_binding_rllib_wrap_lua.cxx
 fi
 
 cd lua/pvslua

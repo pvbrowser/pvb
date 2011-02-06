@@ -38,7 +38,9 @@ int rlLastLinePrintf(const char *format, ...);
 /*! <pre>
   call execvp(arg[0],arg) on unix
 </pre> */
+#ifndef SWIG
 int rlexec(const char *command);
+#endif
 #endif
 
 /*! <pre>
@@ -54,7 +56,7 @@ char *rlstrncpy(char *dest, const char *source, int n);
 /*! <pre>
   like vsnprintf but portable
 </pre> */
-#ifndef SWIG_SESSION
+#ifndef SWIG
 int rlvsnprintf(char *text, int len, const char *format, va_list ap);
 #endif
 

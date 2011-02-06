@@ -609,6 +609,104 @@ SVG_BOUNDS_ON_ELEMENT = _pv.SVG_BOUNDS_ON_ELEMENT
 SVG_MATRIX_FOR_ELEMENT = _pv.SVG_MATRIX_FOR_ELEMENT
 WIDGET_GEOMETRY = _pv.WIDGET_GEOMETRY
 PARENT_WIDGET_ID = _pv.PARENT_WIDGET_ID
+class IntegerArray(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, IntegerArray, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, IntegerArray, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["i"] = _pv.IntegerArray_i_set
+    __swig_getmethods__["i"] = _pv.IntegerArray_i_get
+    if _newclass:i = _swig_property(_pv.IntegerArray_i_get, _pv.IntegerArray_i_set)
+    __swig_setmethods__["i0"] = _pv.IntegerArray_i0_set
+    __swig_getmethods__["i0"] = _pv.IntegerArray_i0_get
+    if _newclass:i0 = _swig_property(_pv.IntegerArray_i0_get, _pv.IntegerArray_i0_set)
+    __swig_setmethods__["i1"] = _pv.IntegerArray_i1_set
+    __swig_getmethods__["i1"] = _pv.IntegerArray_i1_get
+    if _newclass:i1 = _swig_property(_pv.IntegerArray_i1_get, _pv.IntegerArray_i1_set)
+    __swig_setmethods__["i2"] = _pv.IntegerArray_i2_set
+    __swig_getmethods__["i2"] = _pv.IntegerArray_i2_get
+    if _newclass:i2 = _swig_property(_pv.IntegerArray_i2_get, _pv.IntegerArray_i2_set)
+    __swig_setmethods__["i3"] = _pv.IntegerArray_i3_set
+    __swig_getmethods__["i3"] = _pv.IntegerArray_i3_get
+    if _newclass:i3 = _swig_property(_pv.IntegerArray_i3_get, _pv.IntegerArray_i3_set)
+    __swig_setmethods__["i4"] = _pv.IntegerArray_i4_set
+    __swig_getmethods__["i4"] = _pv.IntegerArray_i4_get
+    if _newclass:i4 = _swig_property(_pv.IntegerArray_i4_get, _pv.IntegerArray_i4_set)
+    __swig_setmethods__["i5"] = _pv.IntegerArray_i5_set
+    __swig_getmethods__["i5"] = _pv.IntegerArray_i5_get
+    if _newclass:i5 = _swig_property(_pv.IntegerArray_i5_get, _pv.IntegerArray_i5_set)
+    __swig_setmethods__["i6"] = _pv.IntegerArray_i6_set
+    __swig_getmethods__["i6"] = _pv.IntegerArray_i6_get
+    if _newclass:i6 = _swig_property(_pv.IntegerArray_i6_get, _pv.IntegerArray_i6_set)
+    __swig_setmethods__["i7"] = _pv.IntegerArray_i7_set
+    __swig_getmethods__["i7"] = _pv.IntegerArray_i7_get
+    if _newclass:i7 = _swig_property(_pv.IntegerArray_i7_get, _pv.IntegerArray_i7_set)
+    __swig_setmethods__["i8"] = _pv.IntegerArray_i8_set
+    __swig_getmethods__["i8"] = _pv.IntegerArray_i8_get
+    if _newclass:i8 = _swig_property(_pv.IntegerArray_i8_get, _pv.IntegerArray_i8_set)
+    __swig_setmethods__["i9"] = _pv.IntegerArray_i9_set
+    __swig_getmethods__["i9"] = _pv.IntegerArray_i9_get
+    if _newclass:i9 = _swig_property(_pv.IntegerArray_i9_get, _pv.IntegerArray_i9_set)
+    def __init__(self): 
+        this = _pv.new_IntegerArray()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_IntegerArray
+    __del__ = lambda self : None;
+IntegerArray_swigregister = _pv.IntegerArray_swigregister
+IntegerArray_swigregister(IntegerArray)
+cvar = _pv.cvar
+null_string = cvar.null_string
+
+class FloatArray(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, FloatArray, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, FloatArray, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["f"] = _pv.FloatArray_f_set
+    __swig_getmethods__["f"] = _pv.FloatArray_f_get
+    if _newclass:f = _swig_property(_pv.FloatArray_f_get, _pv.FloatArray_f_set)
+    __swig_setmethods__["f0"] = _pv.FloatArray_f0_set
+    __swig_getmethods__["f0"] = _pv.FloatArray_f0_get
+    if _newclass:f0 = _swig_property(_pv.FloatArray_f0_get, _pv.FloatArray_f0_set)
+    __swig_setmethods__["f1"] = _pv.FloatArray_f1_set
+    __swig_getmethods__["f1"] = _pv.FloatArray_f1_get
+    if _newclass:f1 = _swig_property(_pv.FloatArray_f1_get, _pv.FloatArray_f1_set)
+    __swig_setmethods__["f2"] = _pv.FloatArray_f2_set
+    __swig_getmethods__["f2"] = _pv.FloatArray_f2_get
+    if _newclass:f2 = _swig_property(_pv.FloatArray_f2_get, _pv.FloatArray_f2_set)
+    __swig_setmethods__["f3"] = _pv.FloatArray_f3_set
+    __swig_getmethods__["f3"] = _pv.FloatArray_f3_get
+    if _newclass:f3 = _swig_property(_pv.FloatArray_f3_get, _pv.FloatArray_f3_set)
+    __swig_setmethods__["f4"] = _pv.FloatArray_f4_set
+    __swig_getmethods__["f4"] = _pv.FloatArray_f4_get
+    if _newclass:f4 = _swig_property(_pv.FloatArray_f4_get, _pv.FloatArray_f4_set)
+    __swig_setmethods__["f5"] = _pv.FloatArray_f5_set
+    __swig_getmethods__["f5"] = _pv.FloatArray_f5_get
+    if _newclass:f5 = _swig_property(_pv.FloatArray_f5_get, _pv.FloatArray_f5_set)
+    __swig_setmethods__["f6"] = _pv.FloatArray_f6_set
+    __swig_getmethods__["f6"] = _pv.FloatArray_f6_get
+    if _newclass:f6 = _swig_property(_pv.FloatArray_f6_get, _pv.FloatArray_f6_set)
+    __swig_setmethods__["f7"] = _pv.FloatArray_f7_set
+    __swig_getmethods__["f7"] = _pv.FloatArray_f7_get
+    if _newclass:f7 = _swig_property(_pv.FloatArray_f7_get, _pv.FloatArray_f7_set)
+    __swig_setmethods__["f8"] = _pv.FloatArray_f8_set
+    __swig_getmethods__["f8"] = _pv.FloatArray_f8_get
+    if _newclass:f8 = _swig_property(_pv.FloatArray_f8_get, _pv.FloatArray_f8_set)
+    __swig_setmethods__["f9"] = _pv.FloatArray_f9_set
+    __swig_getmethods__["f9"] = _pv.FloatArray_f9_get
+    if _newclass:f9 = _swig_property(_pv.FloatArray_f9_get, _pv.FloatArray_f9_set)
+    def __init__(self): 
+        this = _pv.new_FloatArray()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_FloatArray
+    __del__ = lambda self : None;
+FloatArray_swigregister = _pv.FloatArray_swigregister
+FloatArray_swigregister(FloatArray)
+
 INITIALIZE_GL = _pv.INITIALIZE_GL
 RESIZE_GL = _pv.RESIZE_GL
 
@@ -631,6 +729,18 @@ pvsystem = _pv.pvsystem
 def pvXYAllocate(*args):
   return _pv.pvXYAllocate(*args)
 pvXYAllocate = _pv.pvXYAllocate
+
+def getIntegers(*args):
+  return _pv.getIntegers(*args)
+getIntegers = _pv.getIntegers
+
+def getFloats(*args):
+  return _pv.getFloats(*args)
+getFloats = _pv.getFloats
+
+def getTextFromText(*args):
+  return _pv.getTextFromText(*args)
+getTextFromText = _pv.getTextFromText
 
 def pvSetXY(*args):
   return _pv.pvSetXY(*args)
@@ -779,10 +889,6 @@ pvQFrame = _pv.pvQFrame
 def pvQDraw(*args):
   return _pv.pvQDraw(*args)
 pvQDraw = _pv.pvQDraw
-
-def pvQImage(*args):
-  return _pv.pvQImage(*args)
-pvQImage = _pv.pvQImage
 
 def pvQGL(*args):
   return _pv.pvQGL(*args)
@@ -1353,8 +1459,10 @@ class glFont(_object):
     def setFontSize(self, *args): return _pv.glFont_setFontSize(self, *args)
 glFont_swigregister = _pv.glFont_swigregister
 glFont_swigregister(glFont)
-cvar = _pv.cvar
-null_string = cvar.null_string
+
+def pvQImage(*args):
+  return _pv.pvQImage(*args)
+pvQImage = _pv.pvQImage
 
 def pvQProgressBar(*args):
   return _pv.pvQProgressBar(*args)
@@ -2144,6 +2252,10 @@ getParentWidgetId = _pv.getParentWidgetId
 def getParam(*args):
   return _pv.getParam(*args)
 getParam = _pv.getParam
+
+def pvQImageScript(*args):
+  return _pv.pvQImageScript(*args)
+pvQImageScript = _pv.pvQImageScript
 
 def new_int(*args):
   return _pv.new_int(*args)

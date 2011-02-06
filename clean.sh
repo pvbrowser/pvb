@@ -68,4 +68,6 @@ cd ..
 
 cd language_bindings
 find . -name "*.o" -exec rm "{}" ";"
+rm -f lua/pvslua/*.exe
+rm -f lua/pvslua/Makefile.win
 cd ..

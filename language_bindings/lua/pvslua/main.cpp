@@ -6,14 +6,15 @@
 //  email            : lehrig@t-online.de
 //***************************************************************************
 #include "pvapp.h"
-// Include the Lua API header files
-#include <lua.hpp>
-#include <lualib.h>
-#include <lauxlib.h>
+#include <unistd.h>
 
+// Include the Lua API header files
 #ifdef __cplusplus
 extern "C" {
 #endif
+//#include <lua.hpp>
+#include <lualib.h>
+#include <lauxlib.h>
 extern int luaopen_pv(lua_State* L);    // declare the wrapped module
 extern int luaopen_rllib(lua_State* L); // declare the wrapped module
 #ifdef __cplusplus
@@ -26,6 +27,7 @@ typedef struct
   lua_State *L;
 }CleanData;
 
+char pvarg0[1024];
 CleanData clean_data[MAX_CLIENTS];
 
 static int cleanup(void *ptr)
@@ -98,13 +100,29 @@ int pvMain(PARAM *p)
   return 0;
 }
 
+static int luaInit()
+{
+  trace = 1;
+  getcwd(pvarg0, sizeof(pvarg0)-20);
+  strcat(pvarg0,"\\main.lua");
+  if(trace) printf("This is the Lua pvserver %s\n", pvarg0);
+  /* here you may interpret ac,av and set p->user to your data */
+  // initialize cleanup
+  for(int i=0; i<MAX_CLIENTS; i++)
+  {
+    clean_data[i].s = -1;
+    clean_data[i].L = NULL;
+  }
+  return 0;
+}
+
 #ifdef USE_INETD
 int main(int ac, char **av)
 {
 PARAM p;
 
   pvInit(ac,av,&p);
-  /* here you may interpret ac,av and set p->user to your data */
+  luaInit();
   pvMain(&p);
   return 0;
 }
@@ -114,16 +132,8 @@ int main(int ac, char **av)
 PARAM p;
 int   s;
 
-  trace = 1;
   pvInit(ac,av,&p);
-  if(trace) printf("This is the Lua pvserver\n");
-  /* here you may interpret ac,av and set p->user to your data */
-  // initialize cleanup
-  for(int i=0; i<MAX_CLIENTS; i++)
-  {
-    clean_data[i].s = -1;
-    clean_data[i].L = NULL;
-  }
+  luaInit();
   while(1)
   {
     s = pvAccept(&p);
