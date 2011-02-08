@@ -123,14 +123,12 @@ cd ..
 cd pvsexample
 ../qmake.sh pvsexample.pro
 cd ..
-#if [ "$PVB_OSTYPE" == "linux" ]; then
-#  cd language_bindings
-#  ./build_python_interface.sh noswig
-#  cd ..
-#fi
+if [ "$PVB_OSTYPE" == "linux" ]; then
 cd language_bindings
+#  ./build_python_interface.sh noswig
 ./build_lua_interface.sh
 cd ..
+fi
 echo '################################################################'
 echo '# finished !!!                                                 #'
 echo '# verify that no errors occured by running me again            #'

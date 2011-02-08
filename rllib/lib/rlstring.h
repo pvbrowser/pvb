@@ -62,6 +62,11 @@ public:
   int printf(const char *format, ...);
 
   /*! <pre>
+  copy text
+  </pre> */
+  int strcpy(const char *text);
+
+  /*! <pre>
   append text
   </pre> */
   int cat(const char *text);

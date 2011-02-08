@@ -553,6 +553,11 @@ int pvSetXY(PARAM *p, int i, float x, float y)
   return 0;
 }
 
+int *pvGetSocketPointer(PARAM *p)
+{
+  return &p->s;
+}
+
 int getIntegers(const char *text, IntegerArray *ia)
 {
   int i, ind, ival;

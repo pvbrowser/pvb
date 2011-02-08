@@ -23318,6 +23318,33 @@ fail:
 }
 
 
+static int _wrap_rlString_strcpy(lua_State* L) {
+  int SWIG_arg = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("strcpy",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("strcpy",1,"rlString *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("strcpy",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString_strcpy",1,SWIGTYPE_p_rlString);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->strcpy((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlString_cat(lua_State* L) {
   int SWIG_arg = 0;
   rlString *arg1 = (rlString *) 0 ;
@@ -23667,6 +23694,7 @@ static swig_lua_method swig_rlString_methods[] = {
     {"text", _wrap_rlString_text}, 
     {"setText", _wrap_rlString_setText}, 
     {"printf", _wrap_rlString_printf}, 
+    {"strcpy", _wrap_rlString_strcpy}, 
     {"cat", _wrap_rlString_cat}, 
     {"upper", _wrap_rlString_upper}, 
     {"lower", _wrap_rlString_lower}, 

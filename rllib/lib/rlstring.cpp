@@ -107,6 +107,16 @@ int rlString::printf(const char *format, ...)
   return ret;
 }
 
+int rlString::strcpy(const char *text)
+{
+  char *cptr = txt;
+  int  len = strlen(text);
+  txt = new char [len+1];
+  ::strcpy(txt, text);
+  delete [] cptr;
+  return len;
+}
+
 int rlString::cat(const char *text)
 {
   char *cptr = txt;

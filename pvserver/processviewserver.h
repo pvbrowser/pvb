@@ -635,6 +635,10 @@ Set x,y array for script language
 </pre> */
 int pvSetXY(PARAM *p, int i, float x, float y);
 /*! <pre>
+Get a pointer to the socket for script language
+</pre> */
+int *pvGetSocketPointer(PARAM *p);
+/*! <pre>
 see pvInit
 Init for script languages
 </pre> */

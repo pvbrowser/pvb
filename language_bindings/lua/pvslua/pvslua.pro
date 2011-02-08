@@ -3,36 +3,37 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG   = warn_on release
-CONFIG  -= qt
+CONFIG   = warn_on release qt
+QT      += sql
 DEFINES += LUA
 
 # Input
-HEADERS += pvapp.h                                    \
-           mask1_slots.h
-SOURCES += main.cpp                                   \
-           mask1.cpp                                  \
-           ../../language_binding_rllib_wrap_lua.cxx  \
-           ../../language_binding_wrap_lua.cxx        \
-           ../../pvmain.cpp
+HEADERS     += pvapp.h                                    \
+               mask1_slots.h                              \                     
+               ../../sql/qtdatabase.h
+SOURCES     += main.cpp                                   \
+               mask1.cpp                                  \
+               ../../sql/qtdatabase.cpp                   \
+               ../../language_binding_rllib_wrap_lua.cxx  \
+               ../../language_binding_wrap_lua.cxx        \
+               ../../pvmain.cpp
+INCLUDEPATH += ../..
 
 !macx {
-unix:LIBS          += /usr/lib/libpvsmt.so -pthread
-#unix:LIBS         += /usr/lib/libpvsid.so
-unix:INCLUDEPATH   += /opt/pvb/pvserver
-unix:LIBS          += /usr/lib/librllib.so
-unix:INCLUDEPATH   += /opt/pvb/rllib/lib
-unix:LIBS          +=                                            \
-#                     /home/lehrig/temp/lua/lua-5.1/src/liblua.a \
-                      ${liblua}                                  \
+unix:LIBS          += ../../../pvserver/libpvsmt.so -pthread
+#unix:LIBS         += ../../../pvserver/libpvsid.so
+unix:INCLUDEPATH   += ../../../pvserver
+unix:LIBS          += ../../../rllib/lib/librllib.so
+unix:INCLUDEPATH   += ../../../rllib/lib
+unix:LIBS          += ${liblua} \
                       -ldl
 }
 
-macx:LIBS          += /opt/pvb/pvserver/libpvsmt.a /usr/lib/libpthread.dylib
-#macx:LIBS         += /opt/pvb/pvserver/libpvsid.a
-macx:INCLUDEPATH   += /opt/pvb/pvserver
-macx:LIBS          += /usr/lib/librllib.dylib
-macx:INCLUDEPATH   += /opt/pvb/rllib/lib
+macx:LIBS          += ../../../pvserver/libpvsmt.a /usr/lib/libpthread.dylib
+#macx:LIBS         += ../../../pvserver/libpvsid.a
+macx:INCLUDEPATH   += ../../../pvserver
+macx:LIBS          += ../../../rllib/lib/librllib.dylib
+macx:INCLUDEPATH   += ../../../rllib/lib
 
 win32-g++ {
 QMAKE_LFLAGS       += -static-libgcc
@@ -41,8 +42,8 @@ win32:LIBS         += $(PVBDIR)/win-mingw/bin/librllib.a
 win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
 win32:INCLUDEPATH  += $(PVBDIR)/pvserver
 win32:INCLUDEPATH  += $(PVBDIR)/rllib/lib
-win32:INCLUDEPATH  += Z:/temp/lua/lua-5.1/src
-win32:LIBS         += Z:/temp/lua/lua-5.1/src/liblua.a
+win32:INCLUDEPATH  += ../../../../lua/lua-5.1/src
+win32:LIBS         += ../../../../lua/lua-5.1/src/liblua.a
 }
 else {
 win32:LIBS         += $(PVBDIR)\win\bin\serverlib.lib wsock32.lib advapi32.lib

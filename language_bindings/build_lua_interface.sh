@@ -17,9 +17,9 @@
 # Attention: there will be a lot of warnings that are due to foreign software
 #            You can ignore these warnings
 #
-export liblua=$(find /usr/lib -name liblua.a)
+export liblua=$(find /usr/lib -name "liblua*.a")
 if [ "x${liblua}" = "x" ]; then
-  export liblua=$(find /usr/lib64 -name liblua.a)
+  export liblua=$(find /usr/lib64 -name "liblua*.a")
 fi
 if [ "x${liblua}" = "x" ]; then
   echo could not find liblua.a

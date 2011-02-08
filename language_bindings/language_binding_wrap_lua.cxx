@@ -1514,19 +1514,23 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 #define SWIGTYPE_p_GLuint swig_types[2]
 #define SWIGTYPE_p_IntegerArray swig_types[3]
 #define SWIGTYPE_p_PARSE_EVENT_STRUCT swig_types[4]
-#define SWIGTYPE_p__PARAM_ swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_f_p__PARAM___int swig_types[8]
-#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[9]
-#define SWIGTYPE_p_f_p_void__int swig_types[10]
-#define SWIGTYPE_p_float swig_types[11]
-#define SWIGTYPE_p_glFont swig_types[12]
-#define SWIGTYPE_p_int swig_types[13]
-#define SWIGTYPE_p_p_char swig_types[14]
-#define SWIGTYPE_p_void swig_types[15]
-static swig_type_info *swig_types[17];
-static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
+#define SWIGTYPE_p_QSqlDatabase swig_types[5]
+#define SWIGTYPE_p_QSqlError swig_types[6]
+#define SWIGTYPE_p_QSqlQuery swig_types[7]
+#define SWIGTYPE_p__PARAM_ swig_types[8]
+#define SWIGTYPE_p_char swig_types[9]
+#define SWIGTYPE_p_double swig_types[10]
+#define SWIGTYPE_p_f_p__PARAM___int swig_types[11]
+#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[12]
+#define SWIGTYPE_p_f_p_void__int swig_types[13]
+#define SWIGTYPE_p_float swig_types[14]
+#define SWIGTYPE_p_glFont swig_types[15]
+#define SWIGTYPE_p_int swig_types[16]
+#define SWIGTYPE_p_p_char swig_types[17]
+#define SWIGTYPE_p_qtDatabase swig_types[18]
+#define SWIGTYPE_p_void swig_types[19]
+static swig_type_info *swig_types[21];
+static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1546,6 +1550,7 @@ typedef struct{} LANGUAGE_OBJ;
 
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
+#include "sql/qtdatabase.h"
 PARAM *getParam(unsigned long p);
 int pvQImageScript(PARAM *p, int id, int parent, const char *imagename);
 int *new_int(int ivalue);
@@ -5169,6 +5174,30 @@ static int _wrap_pvSetXY(lua_State* L) {
   arg4 = (float)lua_tonumber(L, 4);
   result = (int)pvSetXY(arg1,arg2,arg3,arg4);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvGetSocketPointer(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int *result = 0 ;
+  
+  SWIG_check_num_args("pvGetSocketPointer",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvGetSocketPointer",1,"PARAM *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvGetSocketPointer",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  result = (int *)pvGetSocketPointer(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_int,0); SWIG_arg++; 
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -24182,6 +24211,397 @@ fail:
 }
 
 
+static int _wrap_new_qtDatabase(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase",0,0)
+  result = (qtDatabase *)new qtDatabase();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_qtDatabase,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_open(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  char *arg5 = (char *) 0 ;
+  char *arg6 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("open",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("open",1,"qtDatabase *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("open",2,"char const *");
+  if(!lua_isstring(L,3)) SWIG_fail_arg("open",3,"char const *");
+  if(!lua_isstring(L,4)) SWIG_fail_arg("open",4,"char const *");
+  if(!lua_isstring(L,5)) SWIG_fail_arg("open",5,"char const *");
+  if(!lua_isstring(L,6)) SWIG_fail_arg("open",6,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_open",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  arg5 = (char *)lua_tostring(L, 5);
+  arg6 = (char *)lua_tostring(L, 6);
+  result = (int)(arg1)->open((char const *)arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5,(char const *)arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_close(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("close",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("close",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_close",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (int)(arg1)->close();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_query(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("query",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("query",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("query",2,"PARAM *");
+  if(!lua_isstring(L,3)) SWIG_fail_arg("query",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_query",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("qtDatabase_query",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->query(arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_populateTable(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("populateTable",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("populateTable",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("populateTable",2,"PARAM *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("populateTable",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_populateTable",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("qtDatabase_populateTable",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->populateTable(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_recordFieldValue(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("recordFieldValue",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("recordFieldValue",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("recordFieldValue",2,"PARAM *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("recordFieldValue",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_recordFieldValue",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("qtDatabase_recordFieldValue",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (char *)(arg1)->recordFieldValue(arg2,arg3);
+  lua_pushstring(L,(const char*)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_nextRecord(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("nextRecord",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("nextRecord",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_nextRecord",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (int)(arg1)->nextRecord();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_db_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlDatabase *arg2 = (QSqlDatabase *) 0 ;
+  
+  SWIG_check_num_args("db",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("db",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("db",2,"QSqlDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_db_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_QSqlDatabase,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("qtDatabase_db_set",2,SWIGTYPE_p_QSqlDatabase);
+  }
+  
+  if (arg1) (arg1)->db = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_db_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlDatabase *result = 0 ;
+  
+  SWIG_check_num_args("db",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("db",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_db_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (QSqlDatabase *) ((arg1)->db);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_QSqlDatabase,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_result_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlQuery *arg2 = (QSqlQuery *) 0 ;
+  
+  SWIG_check_num_args("result",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("result",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("result",2,"QSqlQuery *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_result_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_QSqlQuery,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("qtDatabase_result_set",2,SWIGTYPE_p_QSqlQuery);
+  }
+  
+  if (arg1) (arg1)->result = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_result_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlQuery *result = 0 ;
+  
+  SWIG_check_num_args("result",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("result",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_result_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (QSqlQuery *) ((arg1)->result);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_QSqlQuery,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_error_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlError *arg2 = (QSqlError *) 0 ;
+  
+  SWIG_check_num_args("error",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("error",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("error",2,"QSqlError *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_error_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_QSqlError,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("qtDatabase_error_set",2,SWIGTYPE_p_QSqlError);
+  }
+  
+  if (arg1) (arg1)->error = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_error_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlError *result = 0 ;
+  
+  SWIG_check_num_args("error",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("error",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_error_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (QSqlError *) ((arg1)->error);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_QSqlError,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_qtDatabase(void *obj) {
+qtDatabase *arg1 = (qtDatabase *) obj;
+delete arg1;
+}
+static swig_lua_method swig_qtDatabase_methods[] = {
+    {"open", _wrap_qtDatabase_open}, 
+    {"close", _wrap_qtDatabase_close}, 
+    {"query", _wrap_qtDatabase_query}, 
+    {"populateTable", _wrap_qtDatabase_populateTable}, 
+    {"recordFieldValue", _wrap_qtDatabase_recordFieldValue}, 
+    {"nextRecord", _wrap_qtDatabase_nextRecord}, 
+    {0,0}
+};
+static swig_lua_attribute swig_qtDatabase_attributes[] = {
+    { "db", _wrap_qtDatabase_db_get, _wrap_qtDatabase_db_set},
+    { "result", _wrap_qtDatabase_result_get, _wrap_qtDatabase_result_set},
+    { "error", _wrap_qtDatabase_error_get, _wrap_qtDatabase_error_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_qtDatabase_bases[] = {0};
+static const char *swig_qtDatabase_base_names[] = {0};
+static swig_lua_class _wrap_class_qtDatabase = { "qtDatabase", &SWIGTYPE_p_qtDatabase,_wrap_new_qtDatabase, swig_delete_qtDatabase, swig_qtDatabase_methods, swig_qtDatabase_attributes, swig_qtDatabase_bases, swig_qtDatabase_base_names };
+
 static int _wrap_getParam(lua_State* L) {
   int SWIG_arg = 0;
   unsigned long arg1 ;
@@ -24317,6 +24737,7 @@ static const struct luaL_reg swig_commands[] = {
     { "getFloats", _wrap_getFloats},
     { "getTextFromText", _wrap_getTextFromText},
     { "pvSetXY", _wrap_pvSetXY},
+    { "pvGetSocketPointer", _wrap_pvGetSocketPointer},
     { "pvInitInternal", _wrap_pvInitInternal},
     { "pvInit", _wrap_pvInit},
     { "pvAccept", _wrap_pvAccept},
@@ -25117,6 +25538,9 @@ static swig_type_info _swigt__p_FloatArray = {"_p_FloatArray", "FloatArray *", 0
 static swig_type_info _swigt__p_GLuint = {"_p_GLuint", "GLuint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_IntegerArray = {"_p_IntegerArray", "IntegerArray *", 0, 0, (void*)&_wrap_class_IntegerArray, 0};
 static swig_type_info _swigt__p_PARSE_EVENT_STRUCT = {"_p_PARSE_EVENT_STRUCT", "PARSE_EVENT_STRUCT *", 0, 0, (void*)&_wrap_class_PARSE_EVENT_STRUCT, 0};
+static swig_type_info _swigt__p_QSqlDatabase = {"_p_QSqlDatabase", "QSqlDatabase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlError = {"_p_QSqlError", "QSqlError *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlQuery = {"_p_QSqlQuery", "QSqlQuery *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__PARAM_ = {"_p__PARAM_", "PARAM *|_PARAM_ *", 0, 0, (void*)&_wrap_class_PARAM, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -25127,6 +25551,7 @@ static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_glFont = {"_p_glFont", "glFont *", 0, 0, (void*)&_wrap_class_glFont, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_qtDatabase = {"_p_qtDatabase", "qtDatabase *", 0, 0, (void*)&_wrap_class_qtDatabase, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -25135,6 +25560,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_GLuint,
   &_swigt__p_IntegerArray,
   &_swigt__p_PARSE_EVENT_STRUCT,
+  &_swigt__p_QSqlDatabase,
+  &_swigt__p_QSqlError,
+  &_swigt__p_QSqlQuery,
   &_swigt__p__PARAM_,
   &_swigt__p_char,
   &_swigt__p_double,
@@ -25145,6 +25573,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_glFont,
   &_swigt__p_int,
   &_swigt__p_p_char,
+  &_swigt__p_qtDatabase,
   &_swigt__p_void,
 };
 
@@ -25153,6 +25582,9 @@ static swig_cast_info _swigc__p_FloatArray[] = {  {&_swigt__p_FloatArray, 0, 0, 
 static swig_cast_info _swigc__p_GLuint[] = {  {&_swigt__p_GLuint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_IntegerArray[] = {  {&_swigt__p_IntegerArray, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PARSE_EVENT_STRUCT[] = {  {&_swigt__p_PARSE_EVENT_STRUCT, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlDatabase[] = {  {&_swigt__p_QSqlDatabase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlError[] = {  {&_swigt__p_QSqlError, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlQuery[] = {  {&_swigt__p_QSqlQuery, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__PARAM_[] = {  {&_swigt__p__PARAM_, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -25163,6 +25595,7 @@ static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_glFont[] = {  {&_swigt__p_glFont, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_qtDatabase[] = {  {&_swigt__p_qtDatabase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -25171,6 +25604,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_GLuint,
   _swigc__p_IntegerArray,
   _swigc__p_PARSE_EVENT_STRUCT,
+  _swigc__p_QSqlDatabase,
+  _swigc__p_QSqlError,
+  _swigc__p_QSqlQuery,
   _swigc__p__PARAM_,
   _swigc__p_char,
   _swigc__p_double,
@@ -25181,6 +25617,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_glFont,
   _swigc__p_int,
   _swigc__p_p_char,
+  _swigc__p_qtDatabase,
   _swigc__p_void,
 };
 

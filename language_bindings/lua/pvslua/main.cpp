@@ -71,7 +71,7 @@ int pvMain(PARAM *p)
   }
   pvSetCleanup(p, cleanup, p);
 
-  // load pv and rllib 
+  // load our custom libs
   ret = luaopen_pv(L);
   if(trace) printf("luaopen_pv ret=%d\n", ret);
   ret = luaopen_rllib(L);
@@ -103,7 +103,7 @@ int pvMain(PARAM *p)
 static int luaInit()
 {
   trace = 1;
-  getcwd(pvarg0, sizeof(pvarg0)-20);
+  if(getcwd(pvarg0, sizeof(pvarg0)-20) == NULL) return -1;
   strcat(pvarg0,"\\main.lua");
   if(trace) printf("This is the Lua pvserver %s\n", pvarg0);
   /* here you may interpret ac,av and set p->user to your data */

@@ -1963,6 +1963,7 @@
       <keyword name="text" id="rlString::text" ref="classrlString.html" />
       <keyword name="setText" id="rlString::setText" ref="classrlString.html" />
       <keyword name="printf" id="rlString::printf" ref="classrlString.html" />
+      <keyword name="strcpy" id="rlString::strcpy" ref="classrlString.html" />
       <keyword name="cat" id="rlString::cat" ref="classrlString.html" />
       <keyword name="upper" id="rlString::upper" ref="classrlString.html" />
       <keyword name="lower" id="rlString::lower" ref="classrlString.html" />

@@ -30,7 +30,7 @@ Requires:  libpng
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel lua-devel
 %endif
 
 %if 0%{?fedora_version}
@@ -40,7 +40,7 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel lua-devel
 %endif
 
 %if 0%{?mandriva_version}
@@ -49,7 +49,7 @@ Requires:  libqt4
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel gcc-c++ qt4-devel python-devel
+BuildRequires: libqt4-devel gcc-c++ qt4-devel python-devel lua-devel
 %endif
 
 %if 0%{?debian_version}
@@ -59,7 +59,7 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel lua5.1-0-dev
 %endif
 
 %if 0%{?ubuntu_version}
@@ -69,7 +69,7 @@ Requires:  libqt4
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-dev gcc-c++ python-devel
+BuildRequires: libqt4-dev gcc-c++ python-devel lua5.1-0-dev
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}
@@ -147,6 +147,7 @@ cd ..
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/lib
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlsvg
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhistory
+%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvslua
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
@@ -179,6 +180,7 @@ cp    rllib/lib/librllib.so.1.0.0                         %{buildroot}/opt/pvb/r
 cp    rllib/lib/*.h                                       %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/nodave.o                                  %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/setport.o                                 %{buildroot}/opt/pvb/rllib/lib/
+cp    language_bindings/lua/pvslua/pvslua                 %{buildroot}/opt/pvb/language_bindings/lua/pvslua/
 cp    language_bindings/python/id/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/id/
 cp    language_bindings/python/id/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/id/
 cp    language_bindings/python/id/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/id/
@@ -381,6 +383,7 @@ License:     GPL
 /opt/pvb/rllib/lib/rldataacquisitionprovider.h
 /opt/pvb/rllib/lib/rlwebcam.h
 /opt/pvb/rllib/lib/rlcommandlineinterface.h
+/opt/pvb/language_bindings/lua/pvslua/pvslua
 /opt/pvb/language_bindings/python/id/pv.py
 /opt/pvb/language_bindings/python/id/_pv.so
 /opt/pvb/language_bindings/python/id/rllib.py

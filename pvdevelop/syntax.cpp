@@ -60,7 +60,7 @@ const char *pyKeywords[] = {
   // "id" removed
 
 const char *luaKeywords[] = {
-  "while", "for", "elseif", "if", "else", "then", "do", "end", "return", "function", 0L};
+  "while", "for", "elseif", "if", "else", "then", "do", "end", "return", "function", "and", "or", "not", "nil", "true", "false", 0L};
 
 const char *luaLibs[] = {
   "string", "os", "file", "io", "math", "package", "table", "debug", "coroutine", "pv", "rllib",
@@ -285,6 +285,7 @@ void syntax::highlightBlock(const QString &text)
         if(start == 0)                 setFormat(start,len,blue);
         else if(isspace(buf[start-1])) setFormat(start,len,blue);
         else if(buf[start-1] == '(')   setFormat(start,len,blue);
+        else if(buf[start-1] == ',')   setFormat(start,len,blue);
       }
     }
   }
@@ -326,5 +327,29 @@ void syntax::highlightBlock(const QString &text)
   }
   //##########################################################################
   }
+
+
+  //##########################################################################
+  // highlight strings
+  i = 0;
+  while(buf[i] != '\0')
+  {
+    if(buf[i] == '\"')
+    {
+      start = i;
+      i++;
+      while(buf[i] != '\"' || buf[i-1] == '\\')
+      {
+	if(buf[i] == '\0') return;
+	i++;
+      }
+      i++;
+      setFormat(start,i-start,green);
+    }
+    else
+    {
+      i++;
+    }  
+  }	  
   return;
 }

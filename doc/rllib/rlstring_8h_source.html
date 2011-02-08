@@ -67,33 +67,35 @@
 <a name="l00058"></a>00058 
 <a name="l00062"></a>00062   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb">printf</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
 <a name="l00063"></a>00063 
-<a name="l00067"></a>00067   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ad1e6769a61802dc7d39d99c69a47cb99">cat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *text);
+<a name="l00067"></a>00067   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ad1a9088b6d5d8756d67cb7602603dd26">strcpy</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *text);
 <a name="l00068"></a>00068 
-<a name="l00072"></a>00072   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d">upper</a>();
+<a name="l00072"></a>00072   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ad1e6769a61802dc7d39d99c69a47cb99">cat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *text);
 <a name="l00073"></a>00073 
-<a name="l00077"></a>00077   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ab4f56d7cad146a696ead2fcf4ea4fae8">lower</a>();
+<a name="l00077"></a>00077   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d">upper</a>();
 <a name="l00078"></a>00078 
-<a name="l00082"></a>00082   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a10a7b086caf7fc80d52a11a5fb93ccc8">startsWith</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *startstr);
+<a name="l00082"></a>00082   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ab4f56d7cad146a696ead2fcf4ea4fae8">lower</a>();
 <a name="l00083"></a>00083 
-<a name="l00087"></a>00087   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ac8cf45fe7c81b6a15c22e025c8cd2972">strnocasecmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *other);
+<a name="l00087"></a>00087   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a10a7b086caf7fc80d52a11a5fb93ccc8">startsWith</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *startstr);
 <a name="l00088"></a>00088 
-<a name="l00092"></a>00092   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a4386ab35af5e598e960f0cbb236b39c6">strnnocasecmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *other, <span class="keywordtype">int</span> n);
+<a name="l00092"></a>00092   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#ac8cf45fe7c81b6a15c22e025c8cd2972">strnocasecmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *other);
 <a name="l00093"></a>00093 
-<a name="l00097"></a>00097   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d">strstr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *substring);
+<a name="l00097"></a>00097   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a4386ab35af5e598e960f0cbb236b39c6">strnnocasecmp</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *other, <span class="keywordtype">int</span> n);
 <a name="l00098"></a>00098 
-<a name="l00102"></a>00102   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#abcdf9c1322753b2dd7bae1dbc43b3a38">strchr</a>(<span class="keywordtype">int</span> c);
+<a name="l00102"></a>00102   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d">strstr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *substring);
 <a name="l00103"></a>00103 
-<a name="l00107"></a>00107   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#a0b353cf1b96b45dd9809202a336019e3">strrchr</a>(<span class="keywordtype">int</span> c);
+<a name="l00107"></a>00107   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#abcdf9c1322753b2dd7bae1dbc43b3a38">strchr</a>(<span class="keywordtype">int</span> c);
 <a name="l00108"></a>00108 
-<a name="l00113"></a>00113   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304">removeQuotas</a>(<span class="keywordtype">char</span> c=<span class="charliteral">&#39;&quot;&#39;</span>);
-<a name="l00114"></a>00114 
-<a name="l00115"></a>00115 <span class="keyword">private</span>:
-<a name="l00116"></a><a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">00116</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>;
-<a name="l00117"></a>00117 };
-<a name="l00118"></a>00118 
-<a name="l00119"></a>00119 <span class="preprocessor">#endif</span>
+<a name="l00112"></a>00112   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#a0b353cf1b96b45dd9809202a336019e3">strrchr</a>(<span class="keywordtype">int</span> c);
+<a name="l00113"></a>00113 
+<a name="l00118"></a>00118   <span class="keywordtype">int</span> <a class="code" href="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304">removeQuotas</a>(<span class="keywordtype">char</span> c=<span class="charliteral">&#39;&quot;&#39;</span>);
+<a name="l00119"></a>00119 
+<a name="l00120"></a>00120 <span class="keyword">private</span>:
+<a name="l00121"></a><a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">00121</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>;
+<a name="l00122"></a>00122 };
+<a name="l00123"></a>00123 
+<a name="l00124"></a>00124 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Nov 18 10:36:38 2010 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Tue Feb 8 16:11:16 2011 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
