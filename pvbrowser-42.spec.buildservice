@@ -184,6 +184,7 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlsvg
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhistory
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvslua
+%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvapplua
 #%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
 #%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
 #%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
@@ -217,6 +218,7 @@ cp    rllib/lib/*.h                                       %{buildroot}/opt/pvb/r
 cp    rllib/lib/nodave.o                                  %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/setport.o                                 %{buildroot}/opt/pvb/rllib/lib/
 cp    language_bindings/lua/pvslua/pvslua                 %{buildroot}/opt/pvb/language_bindings/lua/pvslua/
+cp    language_bindings/lua/pvapplua/pvapplua             %{buildroot}/opt/pvb/language_bindings/lua/pvapplua/
 #cp    language_bindings/python/id/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/id/
 #cp    language_bindings/python/id/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/id/
 #cp    language_bindings/python/id/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/id/
@@ -422,6 +424,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/rllib/lib/rlwebcam.h
 /opt/pvb/rllib/lib/rlcommandlineinterface.h
 /opt/pvb/language_bindings/lua/pvslua/pvslua
+/opt/pvb/language_bindings/lua/pvapplua/pvapplua
 #/opt/pvb/language_bindings/python/id/pv.py
 #/opt/pvb/language_bindings/python/id/_pv.so
 #/opt/pvb/language_bindings/python/id/rllib.py

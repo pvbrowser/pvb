@@ -24,6 +24,8 @@ Wrapper for posix threads (UNIX,VMS,windows)
 #ifndef _RL_WTHREAD_H_
 #define _RL_WTHREAD_H_
 
+#ifndef SWIG
+
 #include "rldefine.h"
 
 #ifdef RLWIN32
@@ -108,5 +110,10 @@ void rlsleep(long msec);
 //#ifdef __cplusplus
 //};
 //#endif
+
+#else
+// SWIG
+void rlsleep(long msec);
+#endif
 
 #endif

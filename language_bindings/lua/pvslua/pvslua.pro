@@ -9,10 +9,8 @@ DEFINES += LUA
 
 # Input
 HEADERS     += pvapp.h                                    \
-               mask1_slots.h                              \                     
                ../../sql/qtdatabase.h
 SOURCES     += main.cpp                                   \
-               mask1.cpp                                  \
                ../../sql/qtdatabase.cpp                   \
                ../../language_binding_rllib_wrap_lua.cxx  \
                ../../language_binding_wrap_lua.cxx        \

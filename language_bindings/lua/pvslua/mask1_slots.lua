@@ -106,4 +106,3 @@ end
 function slotUserEvent(p,id,text)
   return 0
 end
-

@@ -61,7 +61,8 @@ ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                /usr/bin/rlsvgcat
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp           /usr/local/bin/start_pvbapp
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory           /usr/local/bin/rlhistory
 ln -sf /opt/pvb/update_pvbrowser.sh                 /usr/local/bin/update_pvbrowser
-ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua /usr/local/bin/pvslua
+ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua     /usr/local/bin/pvslua
+ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua /usr/local/bin/pvapplua
 
 ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so
 ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1

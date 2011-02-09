@@ -18,8 +18,6 @@ function luaMain(ptr)  -- pvserver Lua Main Program
   while 1 do           -- show your masks
     if     (ret==1) then
       ret = showMask1(p)
-    elseif (ret==2) then
-      ret = showMask2(p)
     else
       ret = 1
     end

@@ -44,5 +44,8 @@ fi
 cd lua/pvslua
 ../../../qmake.sh pvslua.pro
 make
+cd ../pvapplua
+../../../qmake.sh pvapplua.pro
+make
 cd ../..
 

@@ -87,7 +87,8 @@ COPY %QTDIR%\bin\QtNetwork4.dll         %PVBMINGWDIR%\%PVBINDIRNAME%
 COPY %QTDIR%\bin\phonon4.dll            %PVBMINGWDIR%\%PVBINDIRNAME%
 COPY %MINGWDIR%\bin\mingwm10.dll        %PVBMINGWDIR%\%PVBINDIRNAME%
 COPY %MINGWDIR%\bin\libgcc_s_dw2-1.dll  %PVBMINGWDIR%\%PVBINDIRNAME%
-COPY %PVBDIR%\language_bindings\lua\pvslua\pvslua.exe %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %PVBDIR%\language_bindings\lua\pvslua\pvslua.exe     %PVBMINGWDIR%\%PVBINDIRNAME%
+COPY %PVBDIR%\language_bindings\lua\pvapplua\pvapplua.exe %PVBMINGWDIR%\%PVBINDIRNAME%
 
 rem  7.a) Copy some bat files to the new bin directory.
 COPY %PVBDIR%\win\bin\pvb_copy_python_template.bat %PVBDIR%\win-mingw\bin\

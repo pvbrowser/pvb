@@ -42,7 +42,7 @@
 #include"../rllib/lib/rlsvgcat.h"
 #include"../rllib/lib/rltime.h"
 #include"../rllib/lib/rlwebcam.h"
-//win #include"../rllib/lib/rlwthread.h"
+#include"../rllib/lib/rlwthread.h"
 %}
 %include"../rllib/lib/rldefine.h"
 %include"../rllib/lib/rlthread.h"
@@ -84,5 +84,5 @@
 %include"../rllib/lib/rlsvgcat.h"
 %include"../rllib/lib/rltime.h"
 %include"../rllib/lib/rlwebcam.h"
-//win %include"../rllib/lib/rlwthread.h"
+%include"../rllib/lib/rlwthread.h"
 

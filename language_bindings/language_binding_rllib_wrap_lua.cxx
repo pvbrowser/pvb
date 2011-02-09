@@ -1643,7 +1643,7 @@ typedef struct{} LANGUAGE_OBJ;
 #include"../rllib/lib/rlsvgcat.h"
 #include"../rllib/lib/rltime.h"
 #include"../rllib/lib/rlwebcam.h"
-//win #include"../rllib/lib/rlwthread.h"
+#include"../rllib/lib/rlwthread.h"
 
 
 typedef struct {
@@ -27719,6 +27719,25 @@ static swig_lua_class *swig_rlWebcam_bases[] = {0};
 static const char *swig_rlWebcam_base_names[] = {0};
 static swig_lua_class _wrap_class_rlWebcam = { "rlWebcam", &SWIGTYPE_p_rlWebcam,_wrap_new_rlWebcam, swig_delete_rlWebcam, swig_rlWebcam_methods, swig_rlWebcam_attributes, swig_rlWebcam_bases, swig_rlWebcam_base_names };
 
+static int _wrap_rlsleep(lua_State* L) {
+  int SWIG_arg = 0;
+  long arg1 ;
+  
+  SWIG_check_num_args("rlsleep",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlsleep",1,"long");
+  arg1 = (long)lua_tonumber(L, 1);
+  rlsleep(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 #ifdef __cplusplus
 }
 #endif
@@ -27757,6 +27776,7 @@ static const struct luaL_reg swig_commands[] = {
     { "rlEventInit", _wrap_rlEventInit},
     { "rlSetEventLocation", _wrap_rlSetEventLocation},
     { "rlEventPrintf", _wrap_rlEventPrintf},
+    { "rlsleep", _wrap_rlsleep},
     {0,0}
 };
 

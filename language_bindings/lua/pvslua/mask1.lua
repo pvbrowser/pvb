@@ -4,27 +4,21 @@
 
 function showMask1(p)
   --- begin variables that are private to this mask ----------------------------------
-  ID_MAIN_WIDGET = 0                          -- begin of our widget names
-  PushButtonBack = 1
-  Table          = 2
-  ID_END_OF_WIDGETS = 3                       -- end of our widget names
-  ------------------------------------------------------------------------------------
   iarray = pv.IntegerArray()                  -- see pv.getIntegers(text,iarray) below
   farray = pv.FloatArray()                    -- see pv.getFloats(text,farray) below
-  --- end variables that are private to this mask ------------------------------------
   --- begin construction of our mask -------------------------------------------------
+  ID_MAIN_WIDGET = 0                          -- begin of our widget names
+  PushButtonBack = 1
+  ID_END_OF_WIDGETS = 2                       -- end of our widget names
   pv.pvStartDefinition(p,ID_END_OF_WIDGETS)
 
   pv.pvQPushButton(p,PushButtonBack,0)
   pv.pvSetGeometry(p,PushButtonBack,10,10,111,40)
   pv.pvSetText(p,PushButtonBack,"Lua test")
-  pv.pvToolTip(p,PushButtonBack,"back")
 
-  pv.pvQTable(p,Table,0,4,5)
-  pv.pvSetGeometry(p,Table,10,50,400,300)
-  
   pv.pvEndDefinition(p)
   --- end construction of our mask ---------------------------------------------------
+  --- end variables that are private to this mask ------------------------------------
   dofile("mask1_slots.lua")                   -- include our slot functions
 
   if trace == 1 then print("show mask1") end
@@ -136,4 +130,3 @@ function showMask1(p)
   end                                              -- end of event loop
   return 0                                         -- never come here
 end
-
