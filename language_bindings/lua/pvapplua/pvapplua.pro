@@ -25,16 +25,11 @@ macx:INCLUDEPATH   += ../../../rllib/lib
 
 win32-g++ {
 QMAKE_LFLAGS       += -static-libgcc
-win32:LIBS         += $(PVBDIR)/win-mingw/bin/librllib.a
+win32:LIBS         += ../../../win-mingw/bin/librllib.a
 win32:LIBS         += $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
-win32:INCLUDEPATH  += $(PVBDIR)/rllib/lib
+win32:INCLUDEPATH  += ../../../rllib/lib
 win32:INCLUDEPATH  += ../../../../lua/lua-5.1/src
 win32:LIBS         += ../../../../lua/lua-5.1/src/liblua.a
-}
-else {
-win32:LIBS         += wsock32.lib advapi32.lib
-win32:LIBS         += $(PVBDIR)\win\bin\rllib.lib
-win32:INCLUDEPATH  += $(PVBDIR)\rllib\lib
 }
 
 #DEFINES += USE_INETD

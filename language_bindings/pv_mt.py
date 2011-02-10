@@ -746,6 +746,10 @@ def pvSetXY(*args):
   return _pv.pvSetXY(*args)
 pvSetXY = _pv.pvSetXY
 
+def pvGetSocketPointer(*args):
+  return _pv.pvGetSocketPointer(*args)
+pvGetSocketPointer = _pv.pvGetSocketPointer
+
 def pvInitInternal(*args):
   return _pv.pvInitInternal(*args)
 pvInitInternal = _pv.pvInitInternal
@@ -2248,27 +2252,35 @@ getGeometry = _pv.getGeometry
 def getParentWidgetId(*args):
   return _pv.getParentWidgetId(*args)
 getParentWidgetId = _pv.getParentWidgetId
-
-def getParam(*args):
-  return _pv.getParam(*args)
-getParam = _pv.getParam
-
-def pvQImageScript(*args):
-  return _pv.pvQImageScript(*args)
-pvQImageScript = _pv.pvQImageScript
-
-def new_int(*args):
-  return _pv.new_int(*args)
-new_int = _pv.new_int
-
-def get_int(*args):
-  return _pv.get_int(*args)
-get_int = _pv.get_int
-
-def delete_int(*args):
-  return _pv.delete_int(*args)
-delete_int = _pv.delete_int
-
+class qtDatabase(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, qtDatabase, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, qtDatabase, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _pv.new_qtDatabase()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_qtDatabase
+    __del__ = lambda self : None;
+    def open(self, *args): return _pv.qtDatabase_open(self, *args)
+    def close(self): return _pv.qtDatabase_close(self)
+    def query(self, *args): return _pv.qtDatabase_query(self, *args)
+    def populateTable(self, *args): return _pv.qtDatabase_populateTable(self, *args)
+    def recordFieldValue(self, *args): return _pv.qtDatabase_recordFieldValue(self, *args)
+    def nextRecord(self): return _pv.qtDatabase_nextRecord(self)
+    __swig_setmethods__["db"] = _pv.qtDatabase_db_set
+    __swig_getmethods__["db"] = _pv.qtDatabase_db_get
+    if _newclass:db = _swig_property(_pv.qtDatabase_db_get, _pv.qtDatabase_db_set)
+    __swig_setmethods__["result"] = _pv.qtDatabase_result_set
+    __swig_getmethods__["result"] = _pv.qtDatabase_result_get
+    if _newclass:result = _swig_property(_pv.qtDatabase_result_get, _pv.qtDatabase_result_set)
+    __swig_setmethods__["error"] = _pv.qtDatabase_error_set
+    __swig_getmethods__["error"] = _pv.qtDatabase_error_get
+    if _newclass:error = _swig_property(_pv.qtDatabase_error_get, _pv.qtDatabase_error_set)
+qtDatabase_swigregister = _pv.qtDatabase_swigregister
+qtDatabase_swigregister(qtDatabase)
 
 def pvSendOpenGL(*args):
   return _pv.pvSendOpenGL(*args)
@@ -2313,4 +2325,26 @@ qwtDialSetNeedle = _pv.qwtDialSetNeedle
 def qwtAnalogClockSetNeedle(*args):
   return _pv.qwtAnalogClockSetNeedle(*args)
 qwtAnalogClockSetNeedle = _pv.qwtAnalogClockSetNeedle
+
+
+def getParam(*args):
+  return _pv.getParam(*args)
+getParam = _pv.getParam
+
+def pvQImageScript(*args):
+  return _pv.pvQImageScript(*args)
+pvQImageScript = _pv.pvQImageScript
+
+def new_int(*args):
+  return _pv.new_int(*args)
+new_int = _pv.new_int
+
+def get_int(*args):
+  return _pv.get_int(*args)
+get_int = _pv.get_int
+
+def delete_int(*args):
+  return _pv.delete_int(*args)
+delete_int = _pv.delete_int
+
 

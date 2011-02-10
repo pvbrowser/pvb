@@ -2682,87 +2682,82 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_ASC_PARAMETER swig_types[0]
-#define SWIGTYPE_p_FILE swig_types[1]
-#define SWIGTYPE_p_IOINFO swig_types[2]
-#define SWIGTYPE_p_RCS_MESSAGETELEGRAM_10 swig_types[3]
-#define SWIGTYPE_p_THREAD_PARAM swig_types[4]
-#define SWIGTYPE_p_WSEMAPHORE swig_types[5]
-#define SWIGTYPE_p__rlFileLines_ swig_types[6]
-#define SWIGTYPE_p__rlHistoryLogLine_ swig_types[7]
-#define SWIGTYPE_p__rlHistoryReaderLine_ swig_types[8]
-#define SWIGTYPE_p_a_4__char swig_types[9]
-#define SWIGTYPE_p_char swig_types[10]
-#define SWIGTYPE_p_double swig_types[11]
-#define SWIGTYPE_p_f_p_q_const__unsigned_char_int__void swig_types[12]
-#define SWIGTYPE_p_f_p_void__p_void swig_types[13]
-#define SWIGTYPE_p_f_p_void__void swig_types[14]
-#define SWIGTYPE_p_float swig_types[15]
-#define SWIGTYPE_p_int swig_types[16]
-#define SWIGTYPE_p_p_char swig_types[17]
-#define SWIGTYPE_p_p_void swig_types[18]
-#define SWIGTYPE_p_pthread_attr_t swig_types[19]
-#define SWIGTYPE_p_pthread_cond_t swig_types[20]
-#define SWIGTYPE_p_pthread_mutex_t swig_types[21]
-#define SWIGTYPE_p_pthread_mutexattr_t swig_types[22]
-#define SWIGTYPE_p_pthread_t swig_types[23]
-#define SWIGTYPE_p_rl3964R swig_types[24]
-#define SWIGTYPE_p_rlCommandlineInterface swig_types[25]
-#define SWIGTYPE_p_rlDataAcquisition swig_types[26]
-#define SWIGTYPE_p_rlDataAcquisitionProvider swig_types[27]
-#define SWIGTYPE_p_rlDataAcquisitionProvider_SHM_HEADER swig_types[28]
-#define SWIGTYPE_p_rlDataAcquisition_SHM_HEADER swig_types[29]
-#define SWIGTYPE_p_rlDataProvider swig_types[30]
-#define SWIGTYPE_p_rlDataProviderClient swig_types[31]
-#define SWIGTYPE_p_rlDataProviderThreads swig_types[32]
-#define SWIGTYPE_p_rlEventLogServer swig_types[33]
-#define SWIGTYPE_p_rlEventLogServerThreads swig_types[34]
-#define SWIGTYPE_p_rlFifo swig_types[35]
-#define SWIGTYPE_p_rlFileLoad swig_types[36]
-#define SWIGTYPE_p_rlHilscherCIF swig_types[37]
-#define SWIGTYPE_p_rlHistoryLogger swig_types[38]
-#define SWIGTYPE_p_rlHistoryReader swig_types[39]
-#define SWIGTYPE_p_rlIniFile swig_types[40]
-#define SWIGTYPE_p_rlInterpreter swig_types[41]
-#define SWIGTYPE_p_rlIpAdr swig_types[42]
-#define SWIGTYPE_p_rlMailbox swig_types[43]
-#define SWIGTYPE_p_rlModbus swig_types[44]
-#define SWIGTYPE_p_rlModbusClient swig_types[45]
-#define SWIGTYPE_p_rlMutex swig_types[46]
-#define SWIGTYPE_p_rlOpcXmlDa swig_types[47]
-#define SWIGTYPE_p_rlOpcXmlDa_SHM_HEADER swig_types[48]
-#define SWIGTYPE_p_rlPPIClient swig_types[49]
-#define SWIGTYPE_p_rlPcontrol swig_types[50]
-#define SWIGTYPE_p_rlPlcMem swig_types[51]
-#define SWIGTYPE_p_rlPlcState swig_types[52]
-#define SWIGTYPE_p_rlSemaphore swig_types[53]
-#define SWIGTYPE_p_rlSerial swig_types[54]
-#define SWIGTYPE_p_rlSharedMemory swig_types[55]
-#define SWIGTYPE_p_rlSiemensTCP swig_types[56]
-#define SWIGTYPE_p_rlSiemensTCPClient swig_types[57]
-#define SWIGTYPE_p_rlSocket swig_types[58]
-#define SWIGTYPE_p_rlSpawn swig_types[59]
-#define SWIGTYPE_p_rlSpreadsheetCell swig_types[60]
-#define SWIGTYPE_p_rlSpreadsheetRow swig_types[61]
-#define SWIGTYPE_p_rlSpreadsheetTable swig_types[62]
-#define SWIGTYPE_p_rlSpreadsheetWorkbook swig_types[63]
-#define SWIGTYPE_p_rlString swig_types[64]
-#define SWIGTYPE_p_rlSvgAnimator swig_types[65]
-#define SWIGTYPE_p_rlSvgCat swig_types[66]
-#define SWIGTYPE_p_rlSvgPosition swig_types[67]
-#define SWIGTYPE_p_rlSvgPosition_init swig_types[68]
-#define SWIGTYPE_p_rlThread swig_types[69]
-#define SWIGTYPE_p_rlTime swig_types[70]
-#define SWIGTYPE_p_rlUdpSocket swig_types[71]
-#define SWIGTYPE_p_rlWebcam swig_types[72]
-#define SWIGTYPE_p_short swig_types[73]
-#define SWIGTYPE_p_sockaddr_in swig_types[74]
-#define SWIGTYPE_p_unsigned_char swig_types[75]
-#define SWIGTYPE_p_unsigned_int swig_types[76]
-#define SWIGTYPE_p_unsigned_short swig_types[77]
-#define SWIGTYPE_p_void swig_types[78]
-static swig_type_info *swig_types[80];
-static swig_module_info swig_module = {swig_types, 79, 0, 0, 0, 0};
+#define SWIGTYPE_p_FILE swig_types[0]
+#define SWIGTYPE_p_THREAD_PARAM swig_types[1]
+#define SWIGTYPE_p_WSEMAPHORE swig_types[2]
+#define SWIGTYPE_p__rlFileLines_ swig_types[3]
+#define SWIGTYPE_p__rlHistoryLogLine_ swig_types[4]
+#define SWIGTYPE_p__rlHistoryReaderLine_ swig_types[5]
+#define SWIGTYPE_p_a_4__char swig_types[6]
+#define SWIGTYPE_p_char swig_types[7]
+#define SWIGTYPE_p_double swig_types[8]
+#define SWIGTYPE_p_f_p_q_const__unsigned_char_int__void swig_types[9]
+#define SWIGTYPE_p_f_p_void__p_void swig_types[10]
+#define SWIGTYPE_p_f_p_void__void swig_types[11]
+#define SWIGTYPE_p_float swig_types[12]
+#define SWIGTYPE_p_int swig_types[13]
+#define SWIGTYPE_p_p_char swig_types[14]
+#define SWIGTYPE_p_p_void swig_types[15]
+#define SWIGTYPE_p_pthread_attr_t swig_types[16]
+#define SWIGTYPE_p_pthread_mutex_t swig_types[17]
+#define SWIGTYPE_p_pthread_mutexattr_t swig_types[18]
+#define SWIGTYPE_p_pthread_t swig_types[19]
+#define SWIGTYPE_p_rl3964R swig_types[20]
+#define SWIGTYPE_p_rlCommandlineInterface swig_types[21]
+#define SWIGTYPE_p_rlDataAcquisition swig_types[22]
+#define SWIGTYPE_p_rlDataAcquisitionProvider swig_types[23]
+#define SWIGTYPE_p_rlDataAcquisitionProvider_SHM_HEADER swig_types[24]
+#define SWIGTYPE_p_rlDataAcquisition_SHM_HEADER swig_types[25]
+#define SWIGTYPE_p_rlDataProvider swig_types[26]
+#define SWIGTYPE_p_rlDataProviderClient swig_types[27]
+#define SWIGTYPE_p_rlDataProviderThreads swig_types[28]
+#define SWIGTYPE_p_rlEventLogServer swig_types[29]
+#define SWIGTYPE_p_rlEventLogServerThreads swig_types[30]
+#define SWIGTYPE_p_rlFifo swig_types[31]
+#define SWIGTYPE_p_rlFileLoad swig_types[32]
+#define SWIGTYPE_p_rlHistoryLogger swig_types[33]
+#define SWIGTYPE_p_rlHistoryReader swig_types[34]
+#define SWIGTYPE_p_rlIniFile swig_types[35]
+#define SWIGTYPE_p_rlInterpreter swig_types[36]
+#define SWIGTYPE_p_rlIpAdr swig_types[37]
+#define SWIGTYPE_p_rlMailbox swig_types[38]
+#define SWIGTYPE_p_rlModbus swig_types[39]
+#define SWIGTYPE_p_rlModbusClient swig_types[40]
+#define SWIGTYPE_p_rlMutex swig_types[41]
+#define SWIGTYPE_p_rlOpcXmlDa swig_types[42]
+#define SWIGTYPE_p_rlOpcXmlDa_SHM_HEADER swig_types[43]
+#define SWIGTYPE_p_rlPPIClient swig_types[44]
+#define SWIGTYPE_p_rlPcontrol swig_types[45]
+#define SWIGTYPE_p_rlPlcMem swig_types[46]
+#define SWIGTYPE_p_rlPlcState swig_types[47]
+#define SWIGTYPE_p_rlSemaphore swig_types[48]
+#define SWIGTYPE_p_rlSerial swig_types[49]
+#define SWIGTYPE_p_rlSharedMemory swig_types[50]
+#define SWIGTYPE_p_rlSiemensTCP swig_types[51]
+#define SWIGTYPE_p_rlSiemensTCPClient swig_types[52]
+#define SWIGTYPE_p_rlSocket swig_types[53]
+#define SWIGTYPE_p_rlSpawn swig_types[54]
+#define SWIGTYPE_p_rlSpreadsheetCell swig_types[55]
+#define SWIGTYPE_p_rlSpreadsheetRow swig_types[56]
+#define SWIGTYPE_p_rlSpreadsheetTable swig_types[57]
+#define SWIGTYPE_p_rlSpreadsheetWorkbook swig_types[58]
+#define SWIGTYPE_p_rlString swig_types[59]
+#define SWIGTYPE_p_rlSvgAnimator swig_types[60]
+#define SWIGTYPE_p_rlSvgCat swig_types[61]
+#define SWIGTYPE_p_rlSvgPosition swig_types[62]
+#define SWIGTYPE_p_rlSvgPosition_init swig_types[63]
+#define SWIGTYPE_p_rlThread swig_types[64]
+#define SWIGTYPE_p_rlTime swig_types[65]
+#define SWIGTYPE_p_rlUdpSocket swig_types[66]
+#define SWIGTYPE_p_rlWebcam swig_types[67]
+#define SWIGTYPE_p_short swig_types[68]
+#define SWIGTYPE_p_sockaddr_in swig_types[69]
+#define SWIGTYPE_p_unsigned_char swig_types[70]
+#define SWIGTYPE_p_unsigned_int swig_types[71]
+#define SWIGTYPE_p_unsigned_short swig_types[72]
+#define SWIGTYPE_p_void swig_types[73]
+static swig_type_info *swig_types[75];
+static swig_module_info swig_module = {swig_types, 74, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2877,7 +2872,7 @@ namespace swig {
 #include"../rllib/lib/rleventlogserver.h"
 #include"../rllib/lib/rlfifo.h"
 #include"../rllib/lib/rlfileload.h"
-#include"../rllib/lib/rlhilschercif.h"
+//win #include"../rllib/lib/rlhilschercif.h"
 #include"../rllib/lib/rlhistorylogger.h"
 #include"../rllib/lib/rlhistoryreader.h"
 #include"../rllib/lib/rlinifile.h"
@@ -3317,37 +3312,6 @@ typedef struct {
 
 
 SWIGINTERN int
-SWIG_AsVal_unsigned_SS_short (PyObject * obj, unsigned short *val)
-{
-  unsigned long v;
-  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v > USHRT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< unsigned short >(v);
-    }
-  }  
-  return res;
-}
-
-
-SWIGINTERNINLINE PyObject* 
-SWIG_From_unsigned_SS_long  (unsigned long value)
-{
-  return (value > LONG_MAX) ?
-    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value)); 
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_unsigned_SS_short  (unsigned short value)
-{    
-  return SWIG_From_unsigned_SS_long  (value);
-}
-
-
-SWIGINTERN int
 SWIG_AsVal_char (PyObject * obj, char *val)
 {    
   int res = SWIG_AsCharArray(obj, val, 1);
@@ -3377,6 +3341,14 @@ typedef struct {
     char cspare[32];                         
   } rlOpcXmlDa_SHM_HEADER;
 
+
+
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value)); 
+}
 
 
 SWIGINTERNINLINE PyObject *
@@ -4087,10 +4059,10 @@ fail:
 SWIGINTERN PyObject *_wrap_rlThread_semaphore_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlThread *arg1 = (rlThread *) 0 ;
-  WSEMAPHORE *arg2 = (WSEMAPHORE *) 0 ;
+  WSEMAPHORE arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
+  void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -4101,12 +4073,20 @@ SWIGINTERN PyObject *_wrap_rlThread_semaphore_set(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlThread_semaphore_set" "', argument " "1"" of type '" "rlThread *""'"); 
   }
   arg1 = reinterpret_cast< rlThread * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlThread_semaphore_set" "', argument " "2"" of type '" "WSEMAPHORE *""'"); 
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_WSEMAPHORE,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlThread_semaphore_set" "', argument " "2"" of type '" "WSEMAPHORE""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlThread_semaphore_set" "', argument " "2"" of type '" "WSEMAPHORE""'");
+    } else {
+      WSEMAPHORE * temp = reinterpret_cast< WSEMAPHORE * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
   }
-  arg2 = reinterpret_cast< WSEMAPHORE * >(argp2);
-  if (arg1) (arg1)->semaphore = *arg2;
+  if (arg1) (arg1)->semaphore = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4120,7 +4100,7 @@ SWIGINTERN PyObject *_wrap_rlThread_semaphore_get(PyObject *SWIGUNUSEDPARM(self)
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  WSEMAPHORE *result = 0 ;
+  WSEMAPHORE result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:rlThread_semaphore_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlThread, 0 |  0 );
@@ -4128,8 +4108,8 @@ SWIGINTERN PyObject *_wrap_rlThread_semaphore_get(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlThread_semaphore_get" "', argument " "1"" of type '" "rlThread *""'"); 
   }
   arg1 = reinterpret_cast< rlThread * >(argp1);
-  result = (WSEMAPHORE *)& ((arg1)->semaphore);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
+  result =  ((arg1)->semaphore);
+  resultobj = SWIG_NewPointerObj((new WSEMAPHORE(static_cast< const WSEMAPHORE& >(result))), SWIGTYPE_p_WSEMAPHORE, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4500,10 +4480,10 @@ fail:
 SWIGINTERN PyObject *_wrap_rlSemaphore_semaphore_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlSemaphore *arg1 = (rlSemaphore *) 0 ;
-  WSEMAPHORE *arg2 = (WSEMAPHORE *) 0 ;
+  WSEMAPHORE arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
+  void *argp2 ;
   int res2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -4514,12 +4494,20 @@ SWIGINTERN PyObject *_wrap_rlSemaphore_semaphore_set(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSemaphore_semaphore_set" "', argument " "1"" of type '" "rlSemaphore *""'"); 
   }
   arg1 = reinterpret_cast< rlSemaphore * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSemaphore_semaphore_set" "', argument " "2"" of type '" "WSEMAPHORE *""'"); 
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_WSEMAPHORE,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSemaphore_semaphore_set" "', argument " "2"" of type '" "WSEMAPHORE""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlSemaphore_semaphore_set" "', argument " "2"" of type '" "WSEMAPHORE""'");
+    } else {
+      WSEMAPHORE * temp = reinterpret_cast< WSEMAPHORE * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
   }
-  arg2 = reinterpret_cast< WSEMAPHORE * >(argp2);
-  if (arg1) (arg1)->semaphore = *arg2;
+  if (arg1) (arg1)->semaphore = arg2;
   resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
@@ -4533,7 +4521,7 @@ SWIGINTERN PyObject *_wrap_rlSemaphore_semaphore_get(PyObject *SWIGUNUSEDPARM(se
   void *argp1 = 0 ;
   int res1 = 0 ;
   PyObject * obj0 = 0 ;
-  WSEMAPHORE *result = 0 ;
+  WSEMAPHORE result;
   
   if (!PyArg_ParseTuple(args,(char *)"O:rlSemaphore_semaphore_get",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSemaphore, 0 |  0 );
@@ -4541,8 +4529,8 @@ SWIGINTERN PyObject *_wrap_rlSemaphore_semaphore_get(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSemaphore_semaphore_get" "', argument " "1"" of type '" "rlSemaphore *""'"); 
   }
   arg1 = reinterpret_cast< rlSemaphore * >(argp1);
-  result = (WSEMAPHORE *)& ((arg1)->semaphore);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
+  result =  ((arg1)->semaphore);
+  resultobj = SWIG_NewPointerObj((new WSEMAPHORE(static_cast< const WSEMAPHORE& >(result))), SWIGTYPE_p_WSEMAPHORE, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -8651,31 +8639,6 @@ SWIGINTERN PyObject *_wrap_rlLastLinePrintf(PyObject *self, PyObject *args) {
   Py_XDECREF(newargs);
   Py_XDECREF(varargs);
   return resultobj;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlexec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  char *arg1 = (char *) 0 ;
-  int res1 ;
-  char *buf1 = 0 ;
-  int alloc1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlexec",&obj0)) SWIG_fail;
-  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlexec" "', argument " "1"" of type '" "char const *""'");
-  }
-  arg1 = reinterpret_cast< char * >(buf1);
-  result = (int)rlexec((char const *)arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return resultobj;
-fail:
-  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
-  return NULL;
 }
 
 
@@ -14771,952 +14734,6 @@ SWIGINTERN PyObject *rlFileLoad_swigregister(PyObject *SWIGUNUSEDPARM(self), PyO
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
   SWIG_TypeNewClientData(SWIGTYPE_p_rlFileLoad, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_new_rlHilscherCIF(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)":new_rlHilscherCIF")) SWIG_fail;
-  result = (rlHilscherCIF *)new rlHilscherCIF();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_rlHilscherCIF, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_rlHilscherCIF(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_rlHilscherCIF",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_rlHilscherCIF" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_debug_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_debug_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_debug_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_debug_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->debug = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_debug_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_debug_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_debug_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int) ((arg1)->debug);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_open",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_open" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->open();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_close(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_close",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_close" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->close();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devGetMessage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_devGetMessage",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devGetMessage" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_devGetMessage" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  result = (int)(arg1)->devGetMessage(arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devPutMessage(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_devPutMessage",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devPutMessage" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_devPutMessage" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  result = (int)(arg1)->devPutMessage(arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devExchangeIO(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  unsigned char *arg4 = (unsigned char *) 0 ;
-  int arg5 ;
-  int arg6 ;
-  unsigned char *arg7 = (unsigned char *) 0 ;
-  int arg8 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  void *argp4 = 0 ;
-  int res4 = 0 ;
-  int val5 ;
-  int ecode5 = 0 ;
-  int val6 ;
-  int ecode6 = 0 ;
-  void *argp7 = 0 ;
-  int res7 = 0 ;
-  int val8 ;
-  int ecode8 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  PyObject * obj4 = 0 ;
-  PyObject * obj5 = 0 ;
-  PyObject * obj6 = 0 ;
-  PyObject * obj7 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOOOOOOO:rlHilscherCIF_devExchangeIO",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5,&obj6,&obj7)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
-  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_unsigned_char, 0 |  0 );
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "4"" of type '" "unsigned char *""'"); 
-  }
-  arg4 = reinterpret_cast< unsigned char * >(argp4);
-  ecode5 = SWIG_AsVal_int(obj4, &val5);
-  if (!SWIG_IsOK(ecode5)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode5), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "5"" of type '" "int""'");
-  } 
-  arg5 = static_cast< int >(val5);
-  ecode6 = SWIG_AsVal_int(obj5, &val6);
-  if (!SWIG_IsOK(ecode6)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode6), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "6"" of type '" "int""'");
-  } 
-  arg6 = static_cast< int >(val6);
-  res7 = SWIG_ConvertPtr(obj6, &argp7,SWIGTYPE_p_unsigned_char, 0 |  0 );
-  if (!SWIG_IsOK(res7)) {
-    SWIG_exception_fail(SWIG_ArgError(res7), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "7"" of type '" "unsigned char *""'"); 
-  }
-  arg7 = reinterpret_cast< unsigned char * >(argp7);
-  ecode8 = SWIG_AsVal_int(obj7, &val8);
-  if (!SWIG_IsOK(ecode8)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "rlHilscherCIF_devExchangeIO" "', argument " "8"" of type '" "int""'");
-  } 
-  arg8 = static_cast< int >(val8);
-  result = (int)(arg1)->devExchangeIO(arg2,arg3,arg4,arg5,arg6,arg7,arg8);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devOpenDriver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_devOpenDriver",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devOpenDriver" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->devOpenDriver();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devInitBoard(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_devInitBoard",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devInitBoard" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->devInitBoard();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devGetInfo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_devGetInfo",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devGetInfo" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_devGetInfo" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  result = (int)(arg1)->devGetInfo(arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devSetHostState(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_devSetHostState",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devSetHostState" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_devSetHostState" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  result = (int)(arg1)->devSetHostState(arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devPutTaskParameter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_devPutTaskParameter",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devPutTaskParameter" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->devPutTaskParameter();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devReset(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_devReset",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devReset" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->devReset();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devExitBoard(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_devExitBoard",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devExitBoard" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->devExitBoard();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_devCloseDriver(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_devCloseDriver",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_devCloseDriver" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (int)(arg1)->devCloseDriver();
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_printFirmwareInfo(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_printFirmwareInfo",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_printFirmwareInfo" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  (arg1)->printFirmwareInfo();
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_usBoardNumber_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  unsigned short arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned short val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_usBoardNumber_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_usBoardNumber_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_short(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_usBoardNumber_set" "', argument " "2"" of type '" "unsigned short""'");
-  } 
-  arg2 = static_cast< unsigned short >(val2);
-  if (arg1) (arg1)->usBoardNumber = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_usBoardNumber_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  unsigned short result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_usBoardNumber_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_usBoardNumber_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (unsigned short) ((arg1)->usBoardNumber);
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_usDevState_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  unsigned short arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned short val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_usDevState_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_usDevState_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_short(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_usDevState_set" "', argument " "2"" of type '" "unsigned short""'");
-  } 
-  arg2 = static_cast< unsigned short >(val2);
-  if (arg1) (arg1)->usDevState = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_usDevState_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  unsigned short result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_usDevState_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_usDevState_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (unsigned short) ((arg1)->usDevState);
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_usHostState_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  unsigned short arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  unsigned short val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_usHostState_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_usHostState_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  ecode2 = SWIG_AsVal_unsigned_SS_short(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlHilscherCIF_usHostState_set" "', argument " "2"" of type '" "unsigned short""'");
-  } 
-  arg2 = static_cast< unsigned short >(val2);
-  if (arg1) (arg1)->usHostState = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_usHostState_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  unsigned short result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_usHostState_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_usHostState_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (unsigned short) ((arg1)->usHostState);
-  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_abInfo_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  unsigned char *arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_abInfo_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_abInfo_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlHilscherCIF_abInfo_set" "', argument " "2"" of type '" "unsigned char [300]""'"); 
-  } 
-  arg2 = reinterpret_cast< unsigned char * >(argp2);
-  {
-    if (arg2) {
-      size_t ii = 0;
-      for (; ii < (size_t)300; ++ii) arg1->abInfo[ii] = arg2[ii];
-    } else {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""abInfo""' of type '""unsigned char [300]""'");
-    }
-  }
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_abInfo_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  unsigned char *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_abInfo_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_abInfo_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (unsigned char *)(unsigned char *) ((arg1)->abInfo);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_aParameter_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  ASC_PARAMETER arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_aParameter_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_aParameter_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ASC_PARAMETER,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlHilscherCIF_aParameter_set" "', argument " "2"" of type '" "ASC_PARAMETER""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlHilscherCIF_aParameter_set" "', argument " "2"" of type '" "ASC_PARAMETER""'");
-    } else {
-      ASC_PARAMETER * temp = reinterpret_cast< ASC_PARAMETER * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  if (arg1) (arg1)->aParameter = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_aParameter_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  ASC_PARAMETER result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_aParameter_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_aParameter_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result =  ((arg1)->aParameter);
-  resultobj = SWIG_NewPointerObj((new ASC_PARAMETER(static_cast< const ASC_PARAMETER& >(result))), SWIGTYPE_p_ASC_PARAMETER, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_tIoInfo_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  IOINFO arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_tIoInfo_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_tIoInfo_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_IOINFO,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlHilscherCIF_tIoInfo_set" "', argument " "2"" of type '" "IOINFO""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlHilscherCIF_tIoInfo_set" "', argument " "2"" of type '" "IOINFO""'");
-    } else {
-      IOINFO * temp = reinterpret_cast< IOINFO * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  if (arg1) (arg1)->tIoInfo = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_tIoInfo_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  IOINFO result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_tIoInfo_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_tIoInfo_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result =  ((arg1)->tIoInfo);
-  resultobj = SWIG_NewPointerObj((new IOINFO(static_cast< const IOINFO& >(result))), SWIGTYPE_p_IOINFO, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_tMessage_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  RCS_MESSAGETELEGRAM_10 arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_tMessage_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_tMessage_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_RCS_MESSAGETELEGRAM_10,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlHilscherCIF_tMessage_set" "', argument " "2"" of type '" "RCS_MESSAGETELEGRAM_10""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlHilscherCIF_tMessage_set" "', argument " "2"" of type '" "RCS_MESSAGETELEGRAM_10""'");
-    } else {
-      RCS_MESSAGETELEGRAM_10 * temp = reinterpret_cast< RCS_MESSAGETELEGRAM_10 * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  if (arg1) (arg1)->tMessage = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_tMessage_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  RCS_MESSAGETELEGRAM_10 result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_tMessage_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_tMessage_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result =  ((arg1)->tMessage);
-  resultobj = SWIG_NewPointerObj((new RCS_MESSAGETELEGRAM_10(static_cast< const RCS_MESSAGETELEGRAM_10& >(result))), SWIGTYPE_p_RCS_MESSAGETELEGRAM_10, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_mutex_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  rlMutex *arg2 = (rlMutex *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlHilscherCIF_mutex_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_mutex_set" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_rlMutex, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlHilscherCIF_mutex_set" "', argument " "2"" of type '" "rlMutex *""'"); 
-  }
-  arg2 = reinterpret_cast< rlMutex * >(argp2);
-  if (arg1) (arg1)->mutex = *arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlHilscherCIF_mutex_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  rlHilscherCIF *arg1 = (rlHilscherCIF *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  rlMutex *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlHilscherCIF_mutex_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlHilscherCIF, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlHilscherCIF_mutex_get" "', argument " "1"" of type '" "rlHilscherCIF *""'"); 
-  }
-  arg1 = reinterpret_cast< rlHilscherCIF * >(argp1);
-  result = (rlMutex *)& ((arg1)->mutex);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_rlMutex, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *rlHilscherCIF_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_rlHilscherCIF, SWIG_NewClientData(obj));
   return SWIG_Py_Void();
 }
 
@@ -29498,6 +28515,40 @@ SWIGINTERN PyObject *_wrap_rlString_printf(PyObject *self, PyObject *args) {
 }
 
 
+SWIGINTERN PyObject *_wrap_rlString_strcpy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlString_strcpy",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlString, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlString_strcpy" "', argument " "1"" of type '" "rlString *""'"); 
+  }
+  arg1 = reinterpret_cast< rlString * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlString_strcpy" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)(arg1)->strcpy((char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlString_cat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlString *arg1 = (rlString *) 0 ;
@@ -34635,686 +33686,6 @@ SWIGINTERN PyObject *rlWebcam_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Py_Void();
 }
 
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_cmax_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:WSEMAPHORE_cmax_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_cmax_set" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "WSEMAPHORE_cmax_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->cmax = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_cmax_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:WSEMAPHORE_cmax_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_cmax_get" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result = (int) ((arg1)->cmax);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_nready_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:WSEMAPHORE_nready_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_nready_set" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "WSEMAPHORE_nready_set" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  if (arg1) (arg1)->nready = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_nready_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:WSEMAPHORE_nready_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_nready_get" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result = (int) ((arg1)->nready);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_mutex_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  pthread_mutex_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:WSEMAPHORE_mutex_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_mutex_set" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_pthread_mutex_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WSEMAPHORE_mutex_set" "', argument " "2"" of type '" "pthread_mutex_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WSEMAPHORE_mutex_set" "', argument " "2"" of type '" "pthread_mutex_t""'");
-    } else {
-      pthread_mutex_t * temp = reinterpret_cast< pthread_mutex_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  if (arg1) (arg1)->mutex = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_mutex_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  pthread_mutex_t result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:WSEMAPHORE_mutex_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_mutex_get" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result =  ((arg1)->mutex);
-  resultobj = SWIG_NewPointerObj((new pthread_mutex_t(static_cast< const pthread_mutex_t& >(result))), SWIGTYPE_p_pthread_mutex_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_cond_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  pthread_cond_t arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:WSEMAPHORE_cond_set",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_cond_set" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_pthread_cond_t,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "WSEMAPHORE_cond_set" "', argument " "2"" of type '" "pthread_cond_t""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "WSEMAPHORE_cond_set" "', argument " "2"" of type '" "pthread_cond_t""'");
-    } else {
-      pthread_cond_t * temp = reinterpret_cast< pthread_cond_t * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
-  }
-  if (arg1) (arg1)->cond = arg2;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_WSEMAPHORE_cond_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  pthread_cond_t result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:WSEMAPHORE_cond_get",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WSEMAPHORE_cond_get" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result =  ((arg1)->cond);
-  resultobj = SWIG_NewPointerObj((new pthread_cond_t(static_cast< const pthread_cond_t& >(result))), SWIGTYPE_p_pthread_cond_t, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_new_WSEMAPHORE(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)":new_WSEMAPHORE")) SWIG_fail;
-  result = (WSEMAPHORE *)new WSEMAPHORE();
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_WSEMAPHORE, SWIG_POINTER_NEW |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_delete_WSEMAPHORE(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:delete_WSEMAPHORE",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, SWIG_POINTER_DISOWN |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_WSEMAPHORE" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  delete arg1;
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *WSEMAPHORE_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *obj;
-  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
-  SWIG_TypeNewClientData(SWIGTYPE_p_WSEMAPHORE, SWIG_NewClientData(obj));
-  return SWIG_Py_Void();
-}
-
-SWIGINTERN PyObject *_wrap_rlwthread_attr_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_attr_t *arg1 = (pthread_attr_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_attr_init",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_attr_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_attr_init" "', argument " "1"" of type '" "pthread_attr_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_attr_t * >(argp1);
-  result = (int)rlwthread_attr_init(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_create(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_t *arg1 = (pthread_t *) 0 ;
-  pthread_attr_t *arg2 = (pthread_attr_t *) 0 ;
-  void *(*arg3)(void *) = (void *(*)(void *)) 0 ;
-  void *arg4 = (void *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  int res4 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  PyObject * obj3 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOOO:rlwthread_create",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_create" "', argument " "1"" of type '" "pthread_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_t * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_pthread_attr_t, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlwthread_create" "', argument " "2"" of type '" "pthread_attr_t const *""'"); 
-  }
-  arg2 = reinterpret_cast< pthread_attr_t * >(argp2);
-  {
-    int res = SWIG_ConvertFunctionPtr(obj2, (void**)(&arg3), SWIGTYPE_p_f_p_void__p_void);
-    if (!SWIG_IsOK(res)) {
-      SWIG_exception_fail(SWIG_ArgError(res), "in method '" "rlwthread_create" "', argument " "3"" of type '" "void *(*)(void *)""'"); 
-    }
-  }
-  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
-  if (!SWIG_IsOK(res4)) {
-    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "rlwthread_create" "', argument " "4"" of type '" "void *""'"); 
-  }
-  result = (int)rlwthread_create(arg1,(pthread_attr_t const *)arg2,arg3,arg4);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_close_handle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_t *arg1 = (pthread_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_close_handle",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_close_handle" "', argument " "1"" of type '" "pthread_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_t * >(argp1);
-  rlwthread_close_handle(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_exit(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  void *arg1 = (void *) 0 ;
-  int res1 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_exit",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_exit" "', argument " "1"" of type '" "void *""'"); 
-  }
-  rlwthread_exit(arg1);
-  resultobj = SWIG_Py_Void();
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_join(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_t arg1 ;
-  void **arg2 = (void **) 0 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlwthread_join",&obj0,&obj1)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_pthread_t,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_join" "', argument " "1"" of type '" "pthread_t""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlwthread_join" "', argument " "1"" of type '" "pthread_t""'");
-    } else {
-      pthread_t * temp = reinterpret_cast< pthread_t * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_void, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlwthread_join" "', argument " "2"" of type '" "void **""'"); 
-  }
-  arg2 = reinterpret_cast< void ** >(argp2);
-  result = (int)rlwthread_join(arg1,arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_mutex_init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_mutex_t *arg1 = (pthread_mutex_t *) 0 ;
-  pthread_mutexattr_t *arg2 = (pthread_mutexattr_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlwthread_mutex_init",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_mutex_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_mutex_init" "', argument " "1"" of type '" "pthread_mutex_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_mutex_t * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_pthread_mutexattr_t, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlwthread_mutex_init" "', argument " "2"" of type '" "pthread_mutexattr_t const *""'"); 
-  }
-  arg2 = reinterpret_cast< pthread_mutexattr_t * >(argp2);
-  result = (int)rlwthread_mutex_init(arg1,(pthread_mutexattr_t const *)arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_mutex_destroy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_mutex_t *arg1 = (pthread_mutex_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_mutex_destroy",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_mutex_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_mutex_destroy" "', argument " "1"" of type '" "pthread_mutex_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_mutex_t * >(argp1);
-  result = (int)rlwthread_mutex_destroy(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_mutex_lock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_mutex_t *arg1 = (pthread_mutex_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_mutex_lock",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_mutex_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_mutex_lock" "', argument " "1"" of type '" "pthread_mutex_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_mutex_t * >(argp1);
-  result = (int)rlwthread_mutex_lock(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_mutex_trylock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_mutex_t *arg1 = (pthread_mutex_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_mutex_trylock",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_mutex_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_mutex_trylock" "', argument " "1"" of type '" "pthread_mutex_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_mutex_t * >(argp1);
-  result = (int)rlwthread_mutex_trylock(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_mutex_unlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_mutex_t *arg1 = (pthread_mutex_t *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_mutex_unlock",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pthread_mutex_t, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_mutex_unlock" "', argument " "1"" of type '" "pthread_mutex_t *""'"); 
-  }
-  arg1 = reinterpret_cast< pthread_mutex_t * >(argp1);
-  result = (int)rlwthread_mutex_unlock(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_cancel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  pthread_t arg1 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_cancel",&obj0)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_pthread_t,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwthread_cancel" "', argument " "1"" of type '" "pthread_t""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlwthread_cancel" "', argument " "1"" of type '" "pthread_t""'");
-    } else {
-      pthread_t * temp = reinterpret_cast< pthread_t * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  result = (int)rlwthread_cancel(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwrapinit_semaphore(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  int arg2 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:rlwrapinit_semaphore",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwrapinit_semaphore" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlwrapinit_semaphore" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  result = (int)rlwrapinit_semaphore(arg1,arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwrapdestroy_semaphore(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwrapdestroy_semaphore",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwrapdestroy_semaphore" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result = (int)rlwrapdestroy_semaphore(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwrapincrement_semaphore(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwrapincrement_semaphore",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwrapincrement_semaphore" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result = (int)rlwrapincrement_semaphore(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwrapwait_semaphore(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  WSEMAPHORE *arg1 = (WSEMAPHORE *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwrapwait_semaphore",&obj0)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WSEMAPHORE, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlwrapwait_semaphore" "', argument " "1"" of type '" "WSEMAPHORE *""'"); 
-  }
-  arg1 = reinterpret_cast< WSEMAPHORE * >(argp1);
-  result = (int)rlwrapwait_semaphore(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_rlwthread_sleep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  long arg1 ;
-  long val1 ;
-  int ecode1 = 0 ;
-  PyObject * obj0 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:rlwthread_sleep",&obj0)) SWIG_fail;
-  ecode1 = SWIG_AsVal_long(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "rlwthread_sleep" "', argument " "1"" of type '" "long""'");
-  } 
-  arg1 = static_cast< long >(val1);
-  result = (int)rlwthread_sleep(arg1);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_rlsleep(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   long arg1 ;
@@ -35479,7 +33850,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSetDebugPrintf", _wrap_rlSetDebugPrintf, METH_VARARGS, NULL},
 	 { (char *)"rlDebugPrintf", _wrap_rlDebugPrintf, METH_VARARGS, NULL},
 	 { (char *)"rlLastLinePrintf", _wrap_rlLastLinePrintf, METH_VARARGS, NULL},
-	 { (char *)"rlexec", _wrap_rlexec, METH_VARARGS, NULL},
 	 { (char *)"rlpass", _wrap_rlpass, METH_VARARGS, NULL},
 	 { (char *)"rlstrncpy", _wrap_rlstrncpy, METH_VARARGS, NULL},
 	 { (char *)"rlsnprintf", _wrap_rlsnprintf, METH_VARARGS, NULL},
@@ -35664,41 +34034,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlFileLoad_nextLine", _wrap_rlFileLoad_nextLine, METH_VARARGS, NULL},
 	 { (char *)"rlFileLoad_setDebug", _wrap_rlFileLoad_setDebug, METH_VARARGS, NULL},
 	 { (char *)"rlFileLoad_swigregister", rlFileLoad_swigregister, METH_VARARGS, NULL},
-	 { (char *)"new_rlHilscherCIF", _wrap_new_rlHilscherCIF, METH_VARARGS, NULL},
-	 { (char *)"delete_rlHilscherCIF", _wrap_delete_rlHilscherCIF, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_debug_set", _wrap_rlHilscherCIF_debug_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_debug_get", _wrap_rlHilscherCIF_debug_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_open", _wrap_rlHilscherCIF_open, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_close", _wrap_rlHilscherCIF_close, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devGetMessage", _wrap_rlHilscherCIF_devGetMessage, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devPutMessage", _wrap_rlHilscherCIF_devPutMessage, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devExchangeIO", _wrap_rlHilscherCIF_devExchangeIO, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devOpenDriver", _wrap_rlHilscherCIF_devOpenDriver, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devInitBoard", _wrap_rlHilscherCIF_devInitBoard, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devGetInfo", _wrap_rlHilscherCIF_devGetInfo, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devSetHostState", _wrap_rlHilscherCIF_devSetHostState, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devPutTaskParameter", _wrap_rlHilscherCIF_devPutTaskParameter, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devReset", _wrap_rlHilscherCIF_devReset, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devExitBoard", _wrap_rlHilscherCIF_devExitBoard, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_devCloseDriver", _wrap_rlHilscherCIF_devCloseDriver, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_printFirmwareInfo", _wrap_rlHilscherCIF_printFirmwareInfo, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_usBoardNumber_set", _wrap_rlHilscherCIF_usBoardNumber_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_usBoardNumber_get", _wrap_rlHilscherCIF_usBoardNumber_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_usDevState_set", _wrap_rlHilscherCIF_usDevState_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_usDevState_get", _wrap_rlHilscherCIF_usDevState_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_usHostState_set", _wrap_rlHilscherCIF_usHostState_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_usHostState_get", _wrap_rlHilscherCIF_usHostState_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_abInfo_set", _wrap_rlHilscherCIF_abInfo_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_abInfo_get", _wrap_rlHilscherCIF_abInfo_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_aParameter_set", _wrap_rlHilscherCIF_aParameter_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_aParameter_get", _wrap_rlHilscherCIF_aParameter_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_tIoInfo_set", _wrap_rlHilscherCIF_tIoInfo_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_tIoInfo_get", _wrap_rlHilscherCIF_tIoInfo_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_tMessage_set", _wrap_rlHilscherCIF_tMessage_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_tMessage_get", _wrap_rlHilscherCIF_tMessage_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_mutex_set", _wrap_rlHilscherCIF_mutex_set, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_mutex_get", _wrap_rlHilscherCIF_mutex_get, METH_VARARGS, NULL},
-	 { (char *)"rlHilscherCIF_swigregister", rlHilscherCIF_swigregister, METH_VARARGS, NULL},
 	 { (char *)"rlHistoryLogLine_next_set", _wrap_rlHistoryLogLine_next_set, METH_VARARGS, NULL},
 	 { (char *)"rlHistoryLogLine_next_get", _wrap_rlHistoryLogLine_next_get, METH_VARARGS, NULL},
 	 { (char *)"rlHistoryLogLine_line_set", _wrap_rlHistoryLogLine_line_set, METH_VARARGS, NULL},
@@ -36033,6 +34368,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlString_text", _wrap_rlString_text, METH_VARARGS, NULL},
 	 { (char *)"rlString_setText", _wrap_rlString_setText, METH_VARARGS, NULL},
 	 { (char *)"rlString_printf", _wrap_rlString_printf, METH_VARARGS, NULL},
+	 { (char *)"rlString_strcpy", _wrap_rlString_strcpy, METH_VARARGS, NULL},
 	 { (char *)"rlString_cat", _wrap_rlString_cat, METH_VARARGS, NULL},
 	 { (char *)"rlString_upper", _wrap_rlString_upper, METH_VARARGS, NULL},
 	 { (char *)"rlString_lower", _wrap_rlString_lower, METH_VARARGS, NULL},
@@ -36171,33 +34507,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlWebcam_filename_set", _wrap_rlWebcam_filename_set, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_filename_get", _wrap_rlWebcam_filename_get, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_swigregister", rlWebcam_swigregister, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_cmax_set", _wrap_WSEMAPHORE_cmax_set, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_cmax_get", _wrap_WSEMAPHORE_cmax_get, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_nready_set", _wrap_WSEMAPHORE_nready_set, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_nready_get", _wrap_WSEMAPHORE_nready_get, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_mutex_set", _wrap_WSEMAPHORE_mutex_set, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_mutex_get", _wrap_WSEMAPHORE_mutex_get, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_cond_set", _wrap_WSEMAPHORE_cond_set, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_cond_get", _wrap_WSEMAPHORE_cond_get, METH_VARARGS, NULL},
-	 { (char *)"new_WSEMAPHORE", _wrap_new_WSEMAPHORE, METH_VARARGS, NULL},
-	 { (char *)"delete_WSEMAPHORE", _wrap_delete_WSEMAPHORE, METH_VARARGS, NULL},
-	 { (char *)"WSEMAPHORE_swigregister", WSEMAPHORE_swigregister, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_attr_init", _wrap_rlwthread_attr_init, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_create", _wrap_rlwthread_create, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_close_handle", _wrap_rlwthread_close_handle, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_exit", _wrap_rlwthread_exit, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_join", _wrap_rlwthread_join, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_mutex_init", _wrap_rlwthread_mutex_init, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_mutex_destroy", _wrap_rlwthread_mutex_destroy, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_mutex_lock", _wrap_rlwthread_mutex_lock, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_mutex_trylock", _wrap_rlwthread_mutex_trylock, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_mutex_unlock", _wrap_rlwthread_mutex_unlock, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_cancel", _wrap_rlwthread_cancel, METH_VARARGS, NULL},
-	 { (char *)"rlwrapinit_semaphore", _wrap_rlwrapinit_semaphore, METH_VARARGS, NULL},
-	 { (char *)"rlwrapdestroy_semaphore", _wrap_rlwrapdestroy_semaphore, METH_VARARGS, NULL},
-	 { (char *)"rlwrapincrement_semaphore", _wrap_rlwrapincrement_semaphore, METH_VARARGS, NULL},
-	 { (char *)"rlwrapwait_semaphore", _wrap_rlwrapwait_semaphore, METH_VARARGS, NULL},
-	 { (char *)"rlwthread_sleep", _wrap_rlwthread_sleep, METH_VARARGS, NULL},
 	 { (char *)"rlsleep", _wrap_rlsleep, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -36226,10 +34535,7 @@ static void *_p_rlPPIClientTo_p_rlSharedMemory(void *x, int *SWIGUNUSEDPARM(newm
 static void *_p_rlSiemensTCPClientTo_p_rlSharedMemory(void *x, int *SWIGUNUSEDPARM(newmemory)) {
     return (void *)((rlSharedMemory *)  ((rlSiemensTCPClient *) x));
 }
-static swig_type_info _swigt__p_ASC_PARAMETER = {"_p_ASC_PARAMETER", "ASC_PARAMETER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FILE = {"_p_FILE", "FILE *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_IOINFO = {"_p_IOINFO", "IOINFO *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RCS_MESSAGETELEGRAM_10 = {"_p_RCS_MESSAGETELEGRAM_10", "RCS_MESSAGETELEGRAM_10 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_THREAD_PARAM = {"_p_THREAD_PARAM", "THREAD_PARAM *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_WSEMAPHORE = {"_p_WSEMAPHORE", "WSEMAPHORE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__rlFileLines_ = {"_p__rlFileLines_", "rlFileLines *|_rlFileLines_ *", 0, 0, (void*)0, 0};
@@ -36246,7 +34552,6 @@ static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_attr_t = {"_p_pthread_attr_t", "pthread_attr_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_pthread_cond_t = {"_p_pthread_cond_t", "pthread_cond_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_mutex_t = {"_p_pthread_mutex_t", "pthread_mutex_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_mutexattr_t = {"_p_pthread_mutexattr_t", "pthread_mutexattr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_t = {"_p_pthread_t", "pthread_t *", 0, 0, (void*)0, 0};
@@ -36263,7 +34568,6 @@ static swig_type_info _swigt__p_rlEventLogServer = {"_p_rlEventLogServer", "rlEv
 static swig_type_info _swigt__p_rlEventLogServerThreads = {"_p_rlEventLogServerThreads", "rlEventLogServerThreads *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rlFifo = {"_p_rlFifo", "rlFifo *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rlFileLoad = {"_p_rlFileLoad", "rlFileLoad *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_rlHilscherCIF = {"_p_rlHilscherCIF", "rlHilscherCIF *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rlHistoryLogger = {"_p_rlHistoryLogger", "rlHistoryLogger *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rlHistoryReader = {"_p_rlHistoryReader", "rlHistoryReader *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rlIniFile = {"_p_rlIniFile", "rlIniFile *", 0, 0, (void*)0, 0};
@@ -36307,10 +34611,7 @@ static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_ASC_PARAMETER,
   &_swigt__p_FILE,
-  &_swigt__p_IOINFO,
-  &_swigt__p_RCS_MESSAGETELEGRAM_10,
   &_swigt__p_THREAD_PARAM,
   &_swigt__p_WSEMAPHORE,
   &_swigt__p__rlFileLines_,
@@ -36327,7 +34628,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_char,
   &_swigt__p_p_void,
   &_swigt__p_pthread_attr_t,
-  &_swigt__p_pthread_cond_t,
   &_swigt__p_pthread_mutex_t,
   &_swigt__p_pthread_mutexattr_t,
   &_swigt__p_pthread_t,
@@ -36344,7 +34644,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_rlEventLogServerThreads,
   &_swigt__p_rlFifo,
   &_swigt__p_rlFileLoad,
-  &_swigt__p_rlHilscherCIF,
   &_swigt__p_rlHistoryLogger,
   &_swigt__p_rlHistoryReader,
   &_swigt__p_rlIniFile,
@@ -36388,10 +34687,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_void,
 };
 
-static swig_cast_info _swigc__p_ASC_PARAMETER[] = {  {&_swigt__p_ASC_PARAMETER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FILE[] = {  {&_swigt__p_FILE, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_IOINFO[] = {  {&_swigt__p_IOINFO, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RCS_MESSAGETELEGRAM_10[] = {  {&_swigt__p_RCS_MESSAGETELEGRAM_10, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_THREAD_PARAM[] = {  {&_swigt__p_THREAD_PARAM, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_WSEMAPHORE[] = {  {&_swigt__p_WSEMAPHORE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__rlFileLines_[] = {  {&_swigt__p__rlFileLines_, 0, 0, 0},{0, 0, 0, 0}};
@@ -36408,7 +34704,6 @@ static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_attr_t[] = {  {&_swigt__p_pthread_attr_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pthread_cond_t[] = {  {&_swigt__p_pthread_cond_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_mutex_t[] = {  {&_swigt__p_pthread_mutex_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_mutexattr_t[] = {  {&_swigt__p_pthread_mutexattr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_t[] = {  {&_swigt__p_pthread_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -36425,7 +34720,6 @@ static swig_cast_info _swigc__p_rlEventLogServer[] = {  {&_swigt__p_rlEventLogSe
 static swig_cast_info _swigc__p_rlEventLogServerThreads[] = {  {&_swigt__p_rlEventLogServerThreads, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rlFifo[] = {  {&_swigt__p_rlFifo, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rlFileLoad[] = {  {&_swigt__p_rlFileLoad, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_rlHilscherCIF[] = {  {&_swigt__p_rlHilscherCIF, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rlHistoryLogger[] = {  {&_swigt__p_rlHistoryLogger, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rlHistoryReader[] = {  {&_swigt__p_rlHistoryReader, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rlIniFile[] = {  {&_swigt__p_rlIniFile, 0, 0, 0},{0, 0, 0, 0}};
@@ -36469,10 +34763,7 @@ static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_ASC_PARAMETER,
   _swigc__p_FILE,
-  _swigc__p_IOINFO,
-  _swigc__p_RCS_MESSAGETELEGRAM_10,
   _swigc__p_THREAD_PARAM,
   _swigc__p_WSEMAPHORE,
   _swigc__p__rlFileLines_,
@@ -36489,7 +34780,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_char,
   _swigc__p_p_void,
   _swigc__p_pthread_attr_t,
-  _swigc__p_pthread_cond_t,
   _swigc__p_pthread_mutex_t,
   _swigc__p_pthread_mutexattr_t,
   _swigc__p_pthread_t,
@@ -36506,7 +34796,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_rlEventLogServerThreads,
   _swigc__p_rlFifo,
   _swigc__p_rlFileLoad,
-  _swigc__p_rlHilscherCIF,
   _swigc__p_rlHistoryLogger,
   _swigc__p_rlHistoryReader,
   _swigc__p_rlIniFile,

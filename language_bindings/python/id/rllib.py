@@ -411,10 +411,6 @@ def rlLastLinePrintf(*args):
   return _rllib.rlLastLinePrintf(*args)
 rlLastLinePrintf = _rllib.rlLastLinePrintf
 
-def rlexec(*args):
-  return _rllib.rlexec(*args)
-rlexec = _rllib.rlexec
-
 def rlpass(*args):
   return _rllib.rlpass(*args)
 rlpass = _rllib.rlpass
@@ -872,62 +868,6 @@ class rlFileLoad(_object):
     def setDebug(self, *args): return _rllib.rlFileLoad_setDebug(self, *args)
 rlFileLoad_swigregister = _rllib.rlFileLoad_swigregister
 rlFileLoad_swigregister(rlFileLoad)
-
-class rlHilscherCIF(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, rlHilscherCIF, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, rlHilscherCIF, name)
-    __repr__ = _swig_repr
-    def __init__(self): 
-        this = _rllib.new_rlHilscherCIF()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_rlHilscherCIF
-    __del__ = lambda self : None;
-    __swig_setmethods__["debug"] = _rllib.rlHilscherCIF_debug_set
-    __swig_getmethods__["debug"] = _rllib.rlHilscherCIF_debug_get
-    if _newclass:debug = _swig_property(_rllib.rlHilscherCIF_debug_get, _rllib.rlHilscherCIF_debug_set)
-    def open(self): return _rllib.rlHilscherCIF_open(self)
-    def close(self): return _rllib.rlHilscherCIF_close(self)
-    def devGetMessage(self, *args): return _rllib.rlHilscherCIF_devGetMessage(self, *args)
-    def devPutMessage(self, *args): return _rllib.rlHilscherCIF_devPutMessage(self, *args)
-    def devExchangeIO(self, *args): return _rllib.rlHilscherCIF_devExchangeIO(self, *args)
-    def devOpenDriver(self): return _rllib.rlHilscherCIF_devOpenDriver(self)
-    def devInitBoard(self): return _rllib.rlHilscherCIF_devInitBoard(self)
-    def devGetInfo(self, *args): return _rllib.rlHilscherCIF_devGetInfo(self, *args)
-    def devSetHostState(self, *args): return _rllib.rlHilscherCIF_devSetHostState(self, *args)
-    def devPutTaskParameter(self): return _rllib.rlHilscherCIF_devPutTaskParameter(self)
-    def devReset(self): return _rllib.rlHilscherCIF_devReset(self)
-    def devExitBoard(self): return _rllib.rlHilscherCIF_devExitBoard(self)
-    def devCloseDriver(self): return _rllib.rlHilscherCIF_devCloseDriver(self)
-    def printFirmwareInfo(self): return _rllib.rlHilscherCIF_printFirmwareInfo(self)
-    __swig_setmethods__["usBoardNumber"] = _rllib.rlHilscherCIF_usBoardNumber_set
-    __swig_getmethods__["usBoardNumber"] = _rllib.rlHilscherCIF_usBoardNumber_get
-    if _newclass:usBoardNumber = _swig_property(_rllib.rlHilscherCIF_usBoardNumber_get, _rllib.rlHilscherCIF_usBoardNumber_set)
-    __swig_setmethods__["usDevState"] = _rllib.rlHilscherCIF_usDevState_set
-    __swig_getmethods__["usDevState"] = _rllib.rlHilscherCIF_usDevState_get
-    if _newclass:usDevState = _swig_property(_rllib.rlHilscherCIF_usDevState_get, _rllib.rlHilscherCIF_usDevState_set)
-    __swig_setmethods__["usHostState"] = _rllib.rlHilscherCIF_usHostState_set
-    __swig_getmethods__["usHostState"] = _rllib.rlHilscherCIF_usHostState_get
-    if _newclass:usHostState = _swig_property(_rllib.rlHilscherCIF_usHostState_get, _rllib.rlHilscherCIF_usHostState_set)
-    __swig_setmethods__["abInfo"] = _rllib.rlHilscherCIF_abInfo_set
-    __swig_getmethods__["abInfo"] = _rllib.rlHilscherCIF_abInfo_get
-    if _newclass:abInfo = _swig_property(_rllib.rlHilscherCIF_abInfo_get, _rllib.rlHilscherCIF_abInfo_set)
-    __swig_setmethods__["aParameter"] = _rllib.rlHilscherCIF_aParameter_set
-    __swig_getmethods__["aParameter"] = _rllib.rlHilscherCIF_aParameter_get
-    if _newclass:aParameter = _swig_property(_rllib.rlHilscherCIF_aParameter_get, _rllib.rlHilscherCIF_aParameter_set)
-    __swig_setmethods__["tIoInfo"] = _rllib.rlHilscherCIF_tIoInfo_set
-    __swig_getmethods__["tIoInfo"] = _rllib.rlHilscherCIF_tIoInfo_get
-    if _newclass:tIoInfo = _swig_property(_rllib.rlHilscherCIF_tIoInfo_get, _rllib.rlHilscherCIF_tIoInfo_set)
-    __swig_setmethods__["tMessage"] = _rllib.rlHilscherCIF_tMessage_set
-    __swig_getmethods__["tMessage"] = _rllib.rlHilscherCIF_tMessage_get
-    if _newclass:tMessage = _swig_property(_rllib.rlHilscherCIF_tMessage_get, _rllib.rlHilscherCIF_tMessage_set)
-    __swig_setmethods__["mutex"] = _rllib.rlHilscherCIF_mutex_set
-    __swig_getmethods__["mutex"] = _rllib.rlHilscherCIF_mutex_get
-    if _newclass:mutex = _swig_property(_rllib.rlHilscherCIF_mutex_get, _rllib.rlHilscherCIF_mutex_set)
-rlHilscherCIF_swigregister = _rllib.rlHilscherCIF_swigregister
-rlHilscherCIF_swigregister(rlHilscherCIF)
 
 class rlHistoryLogLine(_object):
     __swig_setmethods__ = {}
@@ -1689,6 +1629,7 @@ class rlString(_object):
     def text(self): return _rllib.rlString_text(self)
     def setText(self, *args): return _rllib.rlString_setText(self, *args)
     def printf(self, *args): return _rllib.rlString_printf(self, *args)
+    def strcpy(self, *args): return _rllib.rlString_strcpy(self, *args)
     def cat(self, *args): return _rllib.rlString_cat(self, *args)
     def upper(self): return _rllib.rlString_upper(self)
     def lower(self): return _rllib.rlString_lower(self)
@@ -1925,97 +1866,6 @@ class rlWebcam(_object):
 rlWebcam_swigregister = _rllib.rlWebcam_swigregister
 rlWebcam_swigregister(rlWebcam)
 
-class WSEMAPHORE(_object):
-    __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, WSEMAPHORE, name, value)
-    __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, WSEMAPHORE, name)
-    __repr__ = _swig_repr
-    __swig_setmethods__["cmax"] = _rllib.WSEMAPHORE_cmax_set
-    __swig_getmethods__["cmax"] = _rllib.WSEMAPHORE_cmax_get
-    if _newclass:cmax = _swig_property(_rllib.WSEMAPHORE_cmax_get, _rllib.WSEMAPHORE_cmax_set)
-    __swig_setmethods__["nready"] = _rllib.WSEMAPHORE_nready_set
-    __swig_getmethods__["nready"] = _rllib.WSEMAPHORE_nready_get
-    if _newclass:nready = _swig_property(_rllib.WSEMAPHORE_nready_get, _rllib.WSEMAPHORE_nready_set)
-    __swig_setmethods__["mutex"] = _rllib.WSEMAPHORE_mutex_set
-    __swig_getmethods__["mutex"] = _rllib.WSEMAPHORE_mutex_get
-    if _newclass:mutex = _swig_property(_rllib.WSEMAPHORE_mutex_get, _rllib.WSEMAPHORE_mutex_set)
-    __swig_setmethods__["cond"] = _rllib.WSEMAPHORE_cond_set
-    __swig_getmethods__["cond"] = _rllib.WSEMAPHORE_cond_get
-    if _newclass:cond = _swig_property(_rllib.WSEMAPHORE_cond_get, _rllib.WSEMAPHORE_cond_set)
-    def __init__(self): 
-        this = _rllib.new_WSEMAPHORE()
-        try: self.this.append(this)
-        except: self.this = this
-    __swig_destroy__ = _rllib.delete_WSEMAPHORE
-    __del__ = lambda self : None;
-WSEMAPHORE_swigregister = _rllib.WSEMAPHORE_swigregister
-WSEMAPHORE_swigregister(WSEMAPHORE)
-
-
-def rlwthread_attr_init(*args):
-  return _rllib.rlwthread_attr_init(*args)
-rlwthread_attr_init = _rllib.rlwthread_attr_init
-
-def rlwthread_create(*args):
-  return _rllib.rlwthread_create(*args)
-rlwthread_create = _rllib.rlwthread_create
-
-def rlwthread_close_handle(*args):
-  return _rllib.rlwthread_close_handle(*args)
-rlwthread_close_handle = _rllib.rlwthread_close_handle
-
-def rlwthread_exit(*args):
-  return _rllib.rlwthread_exit(*args)
-rlwthread_exit = _rllib.rlwthread_exit
-
-def rlwthread_join(*args):
-  return _rllib.rlwthread_join(*args)
-rlwthread_join = _rllib.rlwthread_join
-
-def rlwthread_mutex_init(*args):
-  return _rllib.rlwthread_mutex_init(*args)
-rlwthread_mutex_init = _rllib.rlwthread_mutex_init
-
-def rlwthread_mutex_destroy(*args):
-  return _rllib.rlwthread_mutex_destroy(*args)
-rlwthread_mutex_destroy = _rllib.rlwthread_mutex_destroy
-
-def rlwthread_mutex_lock(*args):
-  return _rllib.rlwthread_mutex_lock(*args)
-rlwthread_mutex_lock = _rllib.rlwthread_mutex_lock
-
-def rlwthread_mutex_trylock(*args):
-  return _rllib.rlwthread_mutex_trylock(*args)
-rlwthread_mutex_trylock = _rllib.rlwthread_mutex_trylock
-
-def rlwthread_mutex_unlock(*args):
-  return _rllib.rlwthread_mutex_unlock(*args)
-rlwthread_mutex_unlock = _rllib.rlwthread_mutex_unlock
-
-def rlwthread_cancel(*args):
-  return _rllib.rlwthread_cancel(*args)
-rlwthread_cancel = _rllib.rlwthread_cancel
-
-def rlwrapinit_semaphore(*args):
-  return _rllib.rlwrapinit_semaphore(*args)
-rlwrapinit_semaphore = _rllib.rlwrapinit_semaphore
-
-def rlwrapdestroy_semaphore(*args):
-  return _rllib.rlwrapdestroy_semaphore(*args)
-rlwrapdestroy_semaphore = _rllib.rlwrapdestroy_semaphore
-
-def rlwrapincrement_semaphore(*args):
-  return _rllib.rlwrapincrement_semaphore(*args)
-rlwrapincrement_semaphore = _rllib.rlwrapincrement_semaphore
-
-def rlwrapwait_semaphore(*args):
-  return _rllib.rlwrapwait_semaphore(*args)
-rlwrapwait_semaphore = _rllib.rlwrapwait_semaphore
-
-def rlwthread_sleep(*args):
-  return _rllib.rlwthread_sleep(*args)
-rlwthread_sleep = _rllib.rlwthread_sleep
 
 def rlsleep(*args):
   return _rllib.rlsleep(*args)

@@ -23,6 +23,8 @@ extern int luaopen_rllib(lua_State* L); // declare the wrapped module
 }
 #endif
 
+char pvarg0[1024];
+
 int pvMain(void *dummy)
 {
   if(dummy == NULL) return -1;
@@ -83,6 +85,9 @@ int main(int ac, char **av)
       printf("You may use functions from rllib there\n");
     }  
   }
+  if(getcwd(pvarg0, sizeof(pvarg0)-20) == NULL) return -1;
+  strcat(pvarg0,"\\main.lua");
+
   luaMain();
   return 0;
 }

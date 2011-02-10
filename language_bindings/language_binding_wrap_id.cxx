@@ -2687,19 +2687,23 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_GLuint swig_types[2]
 #define SWIGTYPE_p_IntegerArray swig_types[3]
 #define SWIGTYPE_p_PARSE_EVENT_STRUCT swig_types[4]
-#define SWIGTYPE_p__PARAM_ swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_f_p__PARAM___int swig_types[8]
-#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[9]
-#define SWIGTYPE_p_f_p_void__int swig_types[10]
-#define SWIGTYPE_p_float swig_types[11]
-#define SWIGTYPE_p_glFont swig_types[12]
-#define SWIGTYPE_p_int swig_types[13]
-#define SWIGTYPE_p_p_char swig_types[14]
-#define SWIGTYPE_p_void swig_types[15]
-static swig_type_info *swig_types[17];
-static swig_module_info swig_module = {swig_types, 16, 0, 0, 0, 0};
+#define SWIGTYPE_p_QSqlDatabase swig_types[5]
+#define SWIGTYPE_p_QSqlError swig_types[6]
+#define SWIGTYPE_p_QSqlQuery swig_types[7]
+#define SWIGTYPE_p__PARAM_ swig_types[8]
+#define SWIGTYPE_p_char swig_types[9]
+#define SWIGTYPE_p_double swig_types[10]
+#define SWIGTYPE_p_f_p__PARAM___int swig_types[11]
+#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[12]
+#define SWIGTYPE_p_f_p_void__int swig_types[13]
+#define SWIGTYPE_p_float swig_types[14]
+#define SWIGTYPE_p_glFont swig_types[15]
+#define SWIGTYPE_p_int swig_types[16]
+#define SWIGTYPE_p_p_char swig_types[17]
+#define SWIGTYPE_p_qtDatabase swig_types[18]
+#define SWIGTYPE_p_void swig_types[19]
+static swig_type_info *swig_types[21];
+static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2798,6 +2802,7 @@ namespace swig {
 
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
+#include "sql/qtdatabase.h"
 PARAM *getParam(unsigned long p);
 int pvQImageScript(PARAM *p, int id, int parent, const char *imagename);
 int *new_int(int ivalue);
@@ -6927,6 +6932,28 @@ SWIGINTERN PyObject *_wrap_pvSetXY(PyObject *SWIGUNUSEDPARM(self), PyObject *arg
   arg4 = static_cast< float >(val4);
   result = (int)pvSetXY(arg1,arg2,arg3,arg4);
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvGetSocketPointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvGetSocketPointer",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvGetSocketPointer" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  result = (int *)pvGetSocketPointer(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_int, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -33272,6 +33299,452 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_qtDatabase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_qtDatabase")) SWIG_fail;
+  result = (qtDatabase *)new qtDatabase();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_qtDatabase, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_qtDatabase(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_qtDatabase",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_qtDatabase" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_open(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  char *arg5 = (char *) 0 ;
+  char *arg6 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  int res5 ;
+  char *buf5 = 0 ;
+  int alloc5 = 0 ;
+  int res6 ;
+  char *buf6 = 0 ;
+  int alloc6 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  PyObject * obj5 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOOO:qtDatabase_open",&obj0,&obj1,&obj2,&obj3,&obj4,&obj5)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_open" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_open" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "qtDatabase_open" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "qtDatabase_open" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  res5 = SWIG_AsCharPtrAndSize(obj4, &buf5, NULL, &alloc5);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "qtDatabase_open" "', argument " "5"" of type '" "char const *""'");
+  }
+  arg5 = reinterpret_cast< char * >(buf5);
+  res6 = SWIG_AsCharPtrAndSize(obj5, &buf6, NULL, &alloc6);
+  if (!SWIG_IsOK(res6)) {
+    SWIG_exception_fail(SWIG_ArgError(res6), "in method '" "qtDatabase_open" "', argument " "6"" of type '" "char const *""'");
+  }
+  arg6 = reinterpret_cast< char * >(buf6);
+  result = (int)(arg1)->open((char const *)arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5,(char const *)arg6);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  if (alloc5 == SWIG_NEWOBJ) delete[] buf5;
+  if (alloc6 == SWIG_NEWOBJ) delete[] buf6;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  if (alloc5 == SWIG_NEWOBJ) delete[] buf5;
+  if (alloc6 == SWIG_NEWOBJ) delete[] buf6;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_close(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:qtDatabase_close",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_close" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  result = (int)(arg1)->close();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_query(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:qtDatabase_query",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_query" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_query" "', argument " "2"" of type '" "PARAM *""'"); 
+  }
+  arg2 = reinterpret_cast< PARAM * >(argp2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "qtDatabase_query" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)(arg1)->query(arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_populateTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:qtDatabase_populateTable",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_populateTable" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_populateTable" "', argument " "2"" of type '" "PARAM *""'"); 
+  }
+  arg2 = reinterpret_cast< PARAM * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "qtDatabase_populateTable" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)(arg1)->populateTable(arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_recordFieldValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:qtDatabase_recordFieldValue",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_recordFieldValue" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_recordFieldValue" "', argument " "2"" of type '" "PARAM *""'"); 
+  }
+  arg2 = reinterpret_cast< PARAM * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "qtDatabase_recordFieldValue" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (char *)(arg1)->recordFieldValue(arg2,arg3);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_nextRecord(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:qtDatabase_nextRecord",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_nextRecord" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  result = (int)(arg1)->nextRecord();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_db_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlDatabase *arg2 = (QSqlDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:qtDatabase_db_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_db_set" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_QSqlDatabase, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_db_set" "', argument " "2"" of type '" "QSqlDatabase *""'"); 
+  }
+  arg2 = reinterpret_cast< QSqlDatabase * >(argp2);
+  if (arg1) (arg1)->db = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_db_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  QSqlDatabase *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:qtDatabase_db_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_db_get" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  result = (QSqlDatabase *) ((arg1)->db);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_QSqlDatabase, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_result_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlQuery *arg2 = (QSqlQuery *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:qtDatabase_result_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_result_set" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_QSqlQuery, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_result_set" "', argument " "2"" of type '" "QSqlQuery *""'"); 
+  }
+  arg2 = reinterpret_cast< QSqlQuery * >(argp2);
+  if (arg1) (arg1)->result = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_result_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  QSqlQuery *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:qtDatabase_result_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_result_get" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  result = (QSqlQuery *) ((arg1)->result);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_QSqlQuery, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_error_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlError *arg2 = (QSqlError *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:qtDatabase_error_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_error_set" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_QSqlError, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_error_set" "', argument " "2"" of type '" "QSqlError *""'"); 
+  }
+  arg2 = reinterpret_cast< QSqlError * >(argp2);
+  if (arg1) (arg1)->error = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_error_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  QSqlError *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:qtDatabase_error_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_error_get" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  result = (QSqlError *) ((arg1)->error);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_QSqlError, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *qtDatabase_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_qtDatabase, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_getParam(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   unsigned long arg1 ;
@@ -33558,6 +34031,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"getFloats", _wrap_getFloats, METH_VARARGS, NULL},
 	 { (char *)"getTextFromText", _wrap_getTextFromText, METH_VARARGS, NULL},
 	 { (char *)"pvSetXY", _wrap_pvSetXY, METH_VARARGS, NULL},
+	 { (char *)"pvGetSocketPointer", _wrap_pvGetSocketPointer, METH_VARARGS, NULL},
 	 { (char *)"pvInitInternal", _wrap_pvInitInternal, METH_VARARGS, NULL},
 	 { (char *)"pvInit", _wrap_pvInit, METH_VARARGS, NULL},
 	 { (char *)"pvAccept", _wrap_pvAccept, METH_VARARGS, NULL},
@@ -33950,6 +34424,21 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"getSvgMatrixForElement", _wrap_getSvgMatrixForElement, METH_VARARGS, NULL},
 	 { (char *)"getGeometry", _wrap_getGeometry, METH_VARARGS, NULL},
 	 { (char *)"getParentWidgetId", _wrap_getParentWidgetId, METH_VARARGS, NULL},
+	 { (char *)"new_qtDatabase", _wrap_new_qtDatabase, METH_VARARGS, NULL},
+	 { (char *)"delete_qtDatabase", _wrap_delete_qtDatabase, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_open", _wrap_qtDatabase_open, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_close", _wrap_qtDatabase_close, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_query", _wrap_qtDatabase_query, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_populateTable", _wrap_qtDatabase_populateTable, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_recordFieldValue", _wrap_qtDatabase_recordFieldValue, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_nextRecord", _wrap_qtDatabase_nextRecord, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_db_set", _wrap_qtDatabase_db_set, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_db_get", _wrap_qtDatabase_db_get, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_result_set", _wrap_qtDatabase_result_set, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_result_get", _wrap_qtDatabase_result_get, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_error_set", _wrap_qtDatabase_error_set, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_error_get", _wrap_qtDatabase_error_get, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_swigregister", qtDatabase_swigregister, METH_VARARGS, NULL},
 	 { (char *)"getParam", _wrap_getParam, METH_VARARGS, NULL},
 	 { (char *)"pvQImageScript", _wrap_pvQImageScript, METH_VARARGS, NULL},
 	 { (char *)"new_int", _wrap_new_int, METH_VARARGS, NULL},
@@ -33966,6 +34455,9 @@ static swig_type_info _swigt__p_FloatArray = {"_p_FloatArray", "FloatArray *", 0
 static swig_type_info _swigt__p_GLuint = {"_p_GLuint", "GLuint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_IntegerArray = {"_p_IntegerArray", "IntegerArray *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_PARSE_EVENT_STRUCT = {"_p_PARSE_EVENT_STRUCT", "PARSE_EVENT_STRUCT *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlDatabase = {"_p_QSqlDatabase", "QSqlDatabase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlError = {"_p_QSqlError", "QSqlError *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlQuery = {"_p_QSqlQuery", "QSqlQuery *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__PARAM_ = {"_p__PARAM_", "PARAM *|_PARAM_ *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -33976,6 +34468,7 @@ static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_glFont = {"_p_glFont", "glFont *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_qtDatabase = {"_p_qtDatabase", "qtDatabase *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -33984,6 +34477,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_GLuint,
   &_swigt__p_IntegerArray,
   &_swigt__p_PARSE_EVENT_STRUCT,
+  &_swigt__p_QSqlDatabase,
+  &_swigt__p_QSqlError,
+  &_swigt__p_QSqlQuery,
   &_swigt__p__PARAM_,
   &_swigt__p_char,
   &_swigt__p_double,
@@ -33994,6 +34490,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_glFont,
   &_swigt__p_int,
   &_swigt__p_p_char,
+  &_swigt__p_qtDatabase,
   &_swigt__p_void,
 };
 
@@ -34002,6 +34499,9 @@ static swig_cast_info _swigc__p_FloatArray[] = {  {&_swigt__p_FloatArray, 0, 0, 
 static swig_cast_info _swigc__p_GLuint[] = {  {&_swigt__p_GLuint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_IntegerArray[] = {  {&_swigt__p_IntegerArray, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PARSE_EVENT_STRUCT[] = {  {&_swigt__p_PARSE_EVENT_STRUCT, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlDatabase[] = {  {&_swigt__p_QSqlDatabase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlError[] = {  {&_swigt__p_QSqlError, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlQuery[] = {  {&_swigt__p_QSqlQuery, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__PARAM_[] = {  {&_swigt__p__PARAM_, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -34012,6 +34512,7 @@ static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_glFont[] = {  {&_swigt__p_glFont, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_qtDatabase[] = {  {&_swigt__p_qtDatabase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -34020,6 +34521,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_GLuint,
   _swigc__p_IntegerArray,
   _swigc__p_PARSE_EVENT_STRUCT,
+  _swigc__p_QSqlDatabase,
+  _swigc__p_QSqlError,
+  _swigc__p_QSqlQuery,
   _swigc__p__PARAM_,
   _swigc__p_char,
   _swigc__p_double,
@@ -34030,6 +34534,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_glFont,
   _swigc__p_int,
   _swigc__p_p_char,
+  _swigc__p_qtDatabase,
   _swigc__p_void,
 };
 

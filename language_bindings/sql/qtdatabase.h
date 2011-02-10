@@ -6,6 +6,8 @@
     TODO: customize / extend this class for your own purposes
 
 ***************************************************************************/
+#ifndef PV_QT_DATABASE_H
+#define PV_QT_DATABASE_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -48,4 +50,6 @@ class qtDatabase
     QSqlQuery    *result;
     QSqlError    *error;
 };
+
+#endif
 
