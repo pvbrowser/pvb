@@ -8,14 +8,17 @@ QT      += sql
 DEFINES += LUA
 
 # Input
-HEADERS     += pvapp.h                                    \
-               ../../sql/qtdatabase.h
-SOURCES     += main.cpp                                   \
-               ../../sql/qtdatabase.cpp                   \
-               ../../language_binding_rllib_wrap_lua.cxx  \
-               ../../language_binding_wrap_lua.cxx        \
-               ../../pvmain.cpp
-INCLUDEPATH += ../..
+HEADERS      += pvapp.h                                    \
+                ../../sql/qtdatabase.h
+SOURCES      += main.cpp                                   \
+                ../../sql/qtdatabase.cpp                   \
+                ../../language_binding_rllib_wrap_lua.cxx  \
+                ../../language_binding_wrap_lua.cxx        \
+                ../../pvmain.cpp
+INCLUDEPATH +=  ../..
+INCLUDEPATH +=  ../lua-5.1/src/
+
+LIBS               += ../lua-5.1/src/liblua.a
 
 !macx {
 unix:LIBS          += ../../../pvserver/libpvsmt.so -pthread
@@ -23,8 +26,7 @@ unix:LIBS          += ../../../pvserver/libpvsmt.so -pthread
 unix:INCLUDEPATH   += ../../../pvserver
 unix:LIBS          += ../../../rllib/lib/librllib.so
 unix:INCLUDEPATH   += ../../../rllib/lib
-unix:LIBS          += ${liblua} \
-                      -ldl
+unix:LIBS          += -ldl
 }
 
 macx:LIBS          += ../../../pvserver/libpvsmt.a /usr/lib/libpthread.dylib
@@ -40,8 +42,6 @@ win32:LIBS         += ../../../win-mingw/bin/librllib.a
 win32:LIBS         += ../../../win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
 win32:INCLUDEPATH  += ../../..//pvserver
 win32:INCLUDEPATH  += ../../../rllib/lib
-win32:INCLUDEPATH  += ../../../../lua/lua-5.1/src
-win32:LIBS         += ../../../../lua/lua-5.1/src/liblua.a
 }
 
 #DEFINES += USE_INETD
