@@ -7,6 +7,8 @@ find . -name "moc_*"             -exec rm "{}" ";"
 find . -name "qrc_*"             -exec rm "{}" ";"
 find . -name "ui_*"              -exec rm "{}" ";"
 
-cd win-mingw
-./clean.sh
-cd ..
+if [ -d win-mingw ]; then
+  cd win-mingw
+  ./clean.sh
+  cd ..
+fi  

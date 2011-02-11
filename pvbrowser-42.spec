@@ -40,7 +40,7 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel lua-devel
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel lua-devel lua-static
 %endif
 
 %if 0%{?mandriva_version}
