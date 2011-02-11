@@ -60,7 +60,8 @@ const char *pyKeywords[] = {
   // "id" removed
 
 const char *luaKeywords[] = {
-  "while", "for", "elseif", "if", "else", "then", "do", "end", "return", "function", "and", "or", "not", "nil", "true", "false", 0L};
+  "local", "in", "break", "while", "until", "for", "elseif", "if", "else", "then", "do", "end", "repeat", "return", 
+  "function", "and", "or", "not", "nil", "true", "false", 0L};
 
 const char *luaLibs[] = {
   "string", "os", "file", "io", "math", "package", "table", "debug", "coroutine", "pv", "rllib",
