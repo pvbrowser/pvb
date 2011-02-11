@@ -22,6 +22,9 @@ if [ "x${liblua}" = "x" ]; then
   export liblua=$(find /usr/lib64 -name "liblua*.a")
 fi
 if [ "x${liblua}" = "x" ]; then
+  export liblua=$(find /usr/local -name "liblua*.a")
+fi
+if [ "x${liblua}" = "x" ]; then
   echo could not find liblua.a
   echo skipping build lua language binding
   exit

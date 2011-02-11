@@ -59,7 +59,7 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel lua5.1-0-dev
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel liblua5.1-0.dev
 %endif
 
 %if 0%{?ubuntu_version}
@@ -69,7 +69,7 @@ Requires:  libqt4
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-dev gcc-c++ python-devel lua5.1-0-dev
+BuildRequires: libqt4-dev gcc-c++ python-devel liblua5.1-0.dev
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}
