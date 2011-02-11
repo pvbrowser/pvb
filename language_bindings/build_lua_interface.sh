@@ -17,7 +17,15 @@
 # Attention: there will be a lot of warnings that are due to foreign software
 #            You can ignore these warnings
 #
-export liblua=$(find /usr/lib -name "liblua*.a")
+cd lua/lua-5.1/src/
+ ../../../../qmake.sh qmake src.pro
+ make
+cd ../../../
+
+export liblua=$(find ${PWD}/lua -name "liblua*.a")
+if [ "x${liblua}" = "x" ]; then
+  export liblua=$(find /usr/lib -name "liblua*.a")
+fi
 if [ "x${liblua}" = "x" ]; then
   export liblua=$(find /usr/lib64 -name "liblua*.a")
 fi

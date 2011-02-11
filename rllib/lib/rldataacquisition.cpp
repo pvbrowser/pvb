@@ -38,8 +38,8 @@ const char *rlDataAcquisition::stringValue(const char *variable)
   int value_offset, delta_index, nmax, i;
   const char *cptr;
 
-  if(shmheader == NULL) return "DAQ_ERROR";
-  if(strcmp(shmheader->ident,"daq") != 0) return "DAQ_ERROR";
+  if(shmheader == NULL) return "DAQ_ERROR: shmheader==NULL";
+  if(strcmp(shmheader->ident,"daq") != 0) return "DAQ_ERROR: shmheader->ident is false";
   value_offset = shmheader->maxItemNameLength + 1;
   delta_index  = value_offset + shmheader->maxNameLength + 1;
   nmax         = shmheader->numItems;
@@ -54,7 +54,7 @@ const char *rlDataAcquisition::stringValue(const char *variable)
     cptr += delta_index;
   }
 
-  return "DAQ_ERROR";
+  return "DAQ_ERROR: variable not found in shared memory";
 }
 
 int rlDataAcquisition::intValue(const char *variable)
