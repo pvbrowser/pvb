@@ -3054,7 +3054,7 @@ void MyQDateEdit::slotValueChanged(const QDate &date)
 {
 char buf[80];
 
-  sprintf(buf,"text(%d,\"%d-%d-%d\")\n", id, date.year(), date.month(), date.day());
+  sprintf(buf,"text(%d,\"%4d-%2d-%2d\")\n", id, date.year(), date.month(), date.day());
   if(date.isValid()) tcp_send(s,buf,strlen(buf));
 }
 
@@ -3111,7 +3111,7 @@ void MyQTimeEdit::slotValueChanged(const QTime &time)
 {
 char buf[80];
 
-  sprintf(buf,"text(%d,\"%d:%d:%d.%d\")\n", id, time.hour(), time.minute(), time.second(), time.msec());
+  sprintf(buf,"text(%d,\"%2d:%2d:2%d.%d\")\n", id, time.hour(), time.minute(), time.second(), time.msec());
   if(time.isValid()) tcp_send(s,buf,strlen(buf));
 }
 
@@ -3168,13 +3168,13 @@ void MyQDateTimeEdit::slotValueChanged(const QDateTime &date_time)
 {
 char buf[200];
 
-  sprintf(buf,"text(%d,\"%d-%d-%dT%d:%d:%d.%d\")\n", id, date_time.date().year(),
-                                                         date_time.date().month(),
-                                                         date_time.date().day(),
-                                                         date_time.time().hour(),
-                                                         date_time.time().minute(),
-                                                         date_time.time().second(),
-                                                         date_time.time().msec());
+  sprintf(buf,"text(%d,\"%4d-%2d-%2dT%2d:%2d:%2d.%d\")\n", id, date_time.date().year(),
+                                                           date_time.date().month(),
+                                                           date_time.date().day(),
+                                                           date_time.time().hour(),
+                                                           date_time.time().minute(),
+                                                           date_time.time().second(),
+                                                           date_time.time().msec());
   if(date_time.isValid()) tcp_send(s,buf,strlen(buf));
 }
 
