@@ -86,9 +86,27 @@ void rlTime::setTimeFromString(const char *time_string)
   sscanf(time_string,"%d-%d-%d %d:%d:%d %d",&year,&month,&day, &hour,&minute,&second, &millisecond);
 }
 
+void rlTime::setTimeFromIsoString(const char *iso_time_string)
+{
+  year        = 0;
+  month       = 0;
+  day         = 0;
+  hour        = 0;
+  minute      = 0;
+  second      = 0;
+  millisecond = 0;
+  sscanf(iso_time_string,"%d-%d-%dT%d:%d:%d.%d",&year,&month,&day, &hour,&minute,&second, &millisecond);
+}
+
 const char *rlTime::getTimeString()
 {
   sprintf(time_string,"%04d-%02d-%02d %02d:%02d:%02d %04d",year,month,day, hour,minute,second, millisecond);
+  return time_string;
+}
+
+const char *rlTime::getIsoTimeString()
+{
+  sprintf(time_string,"%04d-%02d-%02dT%02d:%02d:%02d.%d",year,month,day, hour,minute,second, millisecond);
   return time_string;
 }
 

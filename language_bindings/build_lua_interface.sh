@@ -22,24 +22,6 @@ cd lua/lua-5.1/src/
  make
 cd ../../../
 
-export liblua=$(find ${PWD}/lua -name "liblua*.a")
-if [ "x${liblua}" = "x" ]; then
-  export liblua=$(find /usr/lib -name "liblua*.a")
-fi
-if [ "x${liblua}" = "x" ]; then
-  export liblua=$(find /usr/lib64 -name "liblua*.a")
-fi
-if [ "x${liblua}" = "x" ]; then
-  export liblua=$(find /usr/local -name "liblua*.a")
-fi
-if [ "x${liblua}" = "x" ]; then
-  echo could not find liblua.a
-  echo skipping build lua language binding
-  exit
-fi
-echo found liblua = $liblua
-
-mkdir -p lua
 if [ "x${1}" = "xswig" ]; then
   echo "predefined colors within processviewserver.h can't be used in lua. You can ignore the following warnings"
   echo "running swig ..."

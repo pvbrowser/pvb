@@ -416,8 +416,8 @@ Use it together with <a class="el" href="classrlDataAcquisitionProvider.html">rl
 <a name="l00038"></a>00038   <span class="keywordtype">int</span> value_offset, delta_index, nmax, i;
 <a name="l00039"></a>00039   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
 <a name="l00040"></a>00040 
-<a name="l00041"></a>00041   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
-<a name="l00042"></a>00042   <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a141a94e2d96e54e7e2ae19ddea2a3ca1">ident</a>,<span class="stringliteral">&quot;daq&quot;</span>) != 0) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
+<a name="l00041"></a>00041   <span class="keywordflow">if</span>(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a> == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR: shmheader==NULL&quot;</span>;
+<a name="l00042"></a>00042   <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a141a94e2d96e54e7e2ae19ddea2a3ca1">ident</a>,<span class="stringliteral">&quot;daq&quot;</span>) != 0) <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR: shmheader-&gt;ident is false&quot;</span>;
 <a name="l00043"></a>00043   value_offset = <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a44023de7e85aa5543f8ff2a253476113">maxItemNameLength</a> + 1;
 <a name="l00044"></a>00044   delta_index  = value_offset + <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a68ed0f1684521d61385ec0b40101da95">maxNameLength</a> + 1;
 <a name="l00045"></a>00045   nmax         = <a class="code" href="classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb">shmheader</a>-&gt;<a class="code" href="structrlDataAcquisition_1_1SHM__HEADER.html#a52185f25e56d6f5ae1d9771680ac1600">numItems</a>;
@@ -432,7 +432,7 @@ Use it together with <a class="el" href="classrlDataAcquisitionProvider.html">rl
 <a name="l00054"></a>00054     cptr += delta_index;
 <a name="l00055"></a>00055   }
 <a name="l00056"></a>00056 
-<a name="l00057"></a>00057   <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR&quot;</span>;
+<a name="l00057"></a>00057   <span class="keywordflow">return</span> <span class="stringliteral">&quot;DAQ_ERROR: variable not found in shared memory&quot;</span>;
 <a name="l00058"></a>00058 }
 </pre></div></p>
 
@@ -650,7 +650,7 @@ Use it together with <a class="el" href="classrlDataAcquisitionProvider.html">rl
 <li><a class="el" href="rldataacquisition_8cpp_source.html">rldataacquisition.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Feb 9 13:45:46 2011 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Feb 12 09:27:52 2011 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

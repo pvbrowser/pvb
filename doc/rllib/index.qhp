@@ -2090,9 +2090,11 @@
       <keyword name="rlTime" id="rlTime::rlTime" ref="classrlTime.html" />
       <keyword name="~rlTime" id="rlTime::~rlTime" ref="classrlTime.html" />
       <keyword name="getTimeString" id="rlTime::getTimeString" ref="classrlTime.html" />
+      <keyword name="getIsoTimeString" id="rlTime::getIsoTimeString" ref="classrlTime.html" />
       <keyword name="getLocalTime" id="rlTime::getLocalTime" ref="classrlTime.html" />
       <keyword name="getFileModificationTime" id="rlTime::getFileModificationTime" ref="classrlTime.html" />
       <keyword name="setTimeFromString" id="rlTime::setTimeFromString" ref="classrlTime.html" />
+      <keyword name="setTimeFromIsoString" id="rlTime::setTimeFromIsoString" ref="classrlTime.html" />
       <keyword name="setLocalTime" id="rlTime::setLocalTime" ref="classrlTime.html" />
       <keyword name="secondsSinceEpoche" id="rlTime::secondsSinceEpoche" ref="classrlTime.html" />
       <keyword name="operator+=" id="rlTime::operator+=" ref="classrlTime.html" />

@@ -48,34 +48,36 @@
 <a name="l00027"></a>00027   <a class="code" href="classrlTime.html#a457cc74862f31eee9e1a90be17420d9d">rlTime</a>(<span class="keywordtype">int</span> Year=0, <span class="keywordtype">int</span> Month=0, <span class="keywordtype">int</span> Day=0, <span class="keywordtype">int</span> Hour=0, <span class="keywordtype">int</span> Minute=0, <span class="keywordtype">int</span> Second=0, <span class="keywordtype">int</span> Millisecond=0);
 <a name="l00028"></a>00028   <span class="keyword">virtual</span> <a class="code" href="classrlTime.html#a04a079518ff398b3fb55118b79dcc565">~rlTime</a>();
 <a name="l00029"></a>00029   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>();
-<a name="l00030"></a>00030   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#a58e753a2b74eea66ef8df028f266f7e2">getLocalTime</a>();
-<a name="l00031"></a>00031   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ae872be25da7eaca0e34c9a24a8f91ed9">getFileModificationTime</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);
-<a name="l00032"></a>00032 
-<a name="l00036"></a>00036   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#ac79ee8d2f02f56c03642c8a96348e18e">setTimeFromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlTime.html#a8bf45af6290380cca3a194e1df1c5871">time_string</a>);
-<a name="l00037"></a>00037   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#a50d2f30371950e953b996399cc4e0a67">setLocalTime</a>();
-<a name="l00038"></a>00038   <span class="keywordtype">double</span>  <a class="code" href="classrlTime.html#ae670be42e72a2304171eaae8276615d9">secondsSinceEpoche</a>();
-<a name="l00039"></a>00039   <a class="code" href="classrlTime.html">rlTime</a>&amp; <a class="code" href="classrlTime.html#a97dc9f5e8ae26bf3fd8c8d6a7924321f">operator+=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;<a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a>);
-<a name="l00040"></a>00040   <a class="code" href="classrlTime.html">rlTime</a>&amp; <a class="code" href="classrlTime.html#ab1fcc930fa3cf13ac808dd8876f1008c">operator-=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00041"></a>00041   <a class="code" href="classrlTime.html">rlTime</a>  <a class="code" href="classrlTime.html#ae34bee194d7242b19417361a8ff4391e">operator+   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00042"></a>00042   <a class="code" href="classrlTime.html">rlTime</a>  <a class="code" href="classrlTime.html#a07fa574f68207e59833e23344995d91a">operator-   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00043"></a>00043   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ad30de878c0e849f71f209b1da8ebf665">operator==  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00044"></a>00044   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a68c246dcfca01e889bf2548f166df237">operator&lt;   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00045"></a>00045   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a144abe85af58859e05b5d6846ec70ac4">operator&lt;=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00046"></a>00046   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ab44a0aa97e0bb80a149b455262c4d076">operator&gt;   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00047"></a>00047   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a3af63f12af49067f9f53649f829d07ef">operator&gt;=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
-<a name="l00048"></a><a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">00048</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>;
-<a name="l00049"></a><a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">00049</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>;
-<a name="l00050"></a><a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">00050</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>;
-<a name="l00051"></a><a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">00051</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">hour</a>;
-<a name="l00052"></a><a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">00052</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">minute</a>;
-<a name="l00053"></a><a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">00053</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">second</a>;
-<a name="l00054"></a><a class="code" href="classrlTime.html#a348ab72053e91b194f84e35004793575">00054</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a348ab72053e91b194f84e35004793575">millisecond</a>;
-<a name="l00055"></a>00055 <span class="keyword">private</span>:
-<a name="l00056"></a><a class="code" href="classrlTime.html#a8bf45af6290380cca3a194e1df1c5871">00056</a>   <span class="keywordtype">char</span>    time_string[32]; <span class="comment">// 2001-11-23 12:52:60 0568</span>
-<a name="l00057"></a>00057 };
-<a name="l00058"></a>00058 <span class="preprocessor">#endif</span>
+<a name="l00030"></a>00030   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlTime.html#a7254d05ff0ddf6d681eb2d05b0a628b0">getIsoTimeString</a>();
+<a name="l00031"></a>00031   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#a58e753a2b74eea66ef8df028f266f7e2">getLocalTime</a>();
+<a name="l00032"></a>00032   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ae872be25da7eaca0e34c9a24a8f91ed9">getFileModificationTime</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);
+<a name="l00033"></a>00033 
+<a name="l00037"></a>00037   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#ac79ee8d2f02f56c03642c8a96348e18e">setTimeFromString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlTime.html#a8bf45af6290380cca3a194e1df1c5871">time_string</a>);
+<a name="l00038"></a>00038   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#a3c82dc04fb25c4c0b27a5206416a3c36">setTimeFromIsoString</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *iso_time_string);
+<a name="l00039"></a>00039   <span class="keywordtype">void</span>    <a class="code" href="classrlTime.html#a50d2f30371950e953b996399cc4e0a67">setLocalTime</a>();
+<a name="l00040"></a>00040   <span class="keywordtype">double</span>  <a class="code" href="classrlTime.html#ae670be42e72a2304171eaae8276615d9">secondsSinceEpoche</a>();
+<a name="l00041"></a>00041   <a class="code" href="classrlTime.html">rlTime</a>&amp; <a class="code" href="classrlTime.html#a97dc9f5e8ae26bf3fd8c8d6a7924321f">operator+=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;<a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a>);
+<a name="l00042"></a>00042   <a class="code" href="classrlTime.html">rlTime</a>&amp; <a class="code" href="classrlTime.html#ab1fcc930fa3cf13ac808dd8876f1008c">operator-=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00043"></a>00043   <a class="code" href="classrlTime.html">rlTime</a>  <a class="code" href="classrlTime.html#ae34bee194d7242b19417361a8ff4391e">operator+   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00044"></a>00044   <a class="code" href="classrlTime.html">rlTime</a>  <a class="code" href="classrlTime.html#a07fa574f68207e59833e23344995d91a">operator-   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00045"></a>00045   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ad30de878c0e849f71f209b1da8ebf665">operator==  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00046"></a>00046   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a68c246dcfca01e889bf2548f166df237">operator&lt;   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00047"></a>00047   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a144abe85af58859e05b5d6846ec70ac4">operator&lt;=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00048"></a>00048   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ab44a0aa97e0bb80a149b455262c4d076">operator&gt;   </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00049"></a>00049   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a3af63f12af49067f9f53649f829d07ef">operator&gt;=  </a>(<a class="code" href="classrlTime.html">rlTime</a> &amp;time);
+<a name="l00050"></a><a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">00050</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>;
+<a name="l00051"></a><a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">00051</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>;
+<a name="l00052"></a><a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">00052</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>;
+<a name="l00053"></a><a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">00053</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">hour</a>;
+<a name="l00054"></a><a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">00054</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">minute</a>;
+<a name="l00055"></a><a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">00055</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">second</a>;
+<a name="l00056"></a><a class="code" href="classrlTime.html#a348ab72053e91b194f84e35004793575">00056</a>   <span class="keywordtype">int</span>     <a class="code" href="classrlTime.html#a348ab72053e91b194f84e35004793575">millisecond</a>;
+<a name="l00057"></a>00057 <span class="keyword">private</span>:
+<a name="l00058"></a><a class="code" href="classrlTime.html#a8bf45af6290380cca3a194e1df1c5871">00058</a>   <span class="keywordtype">char</span>    time_string[32]; <span class="comment">// 2001-11-23 12:52:60 0568</span>
+<a name="l00059"></a>00059 };
+<a name="l00060"></a>00060 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Feb 9 13:45:42 2011 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Feb 12 09:27:48 2011 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>
