@@ -61,13 +61,14 @@ int qtDatabase::close()
 int qtDatabase::query(PARAM *p, const char *sqlcommand)
 {
   if(db == NULL) return -1;
-  *result = db->exec(sqlcommand);
+  QString qsqlcommand = QString::fromUtf8(sqlcommand);
+  *result = db->exec(qsqlcommand);
   *error = db->lastError();
   if(error->isValid())
   {
     QString e = error->databaseText();
-    printf("qtDatabase::query ERROR: %s\n", (const char *) e.toAscii());
-    pvStatusMessage(p,255,0,0,"ERROR: qtDatabase::query(%s) %s", sqlcommand, (const char *) e.toAscii());
+    printf("qtDatabase::query ERROR: %s\n", (const char *) e.toUtf8());
+    pvStatusMessage(p,255,0,0,"ERROR: qtDatabase::query(%s) %s", sqlcommand, (const char *) e.toUtf8());
     return -1;
   }
   return 0;
@@ -99,7 +100,7 @@ int qtDatabase::populateTable(PARAM *p, int id)
 
   for(x=0; x<xmax; x++)
   { // write name of fields
-    pvSetTableText(p, id, x, -1, (const char *) record.fieldName(x).toAscii());
+    pvSetTableText(p, id, x, -1, (const char *) record.fieldName(x).toUtf8());
   }
   result->next();
   for(y=0; y<ymax; y++)

@@ -474,6 +474,7 @@ public slots:
     void slotClicked(QTreeWidgetItem *item, int column);
     void slotSendSelected();
     void slotRightButtonPressed(QTreeWidgetItem *, int i);
+    void slotCustomContextMenuRequested(const QPoint &pos);
 
 private:
     virtual void mousePressEvent(QMouseEvent * event);

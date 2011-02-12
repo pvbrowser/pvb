@@ -1935,6 +1935,9 @@ MyListView::MyListView(int *sock, int ident, QWidget *parent, const char *name)
   connect(this, SIGNAL(itemSelectionChanged()), SLOT(slotSendSelected()));
   headerItem()->setHidden(false);
   for(int i=0; i<20; i++) colwidth[i] = 100;
+
+  header()->setContextMenuPolicy(Qt::CustomContextMenu);
+  connect(header(), SIGNAL(customContextMenuRequested(const QPoint &)), SLOT(slotCustomContextMenuRequested(const QPoint &)));
 }
 
 MyListView::~MyListView()
@@ -2330,6 +2333,16 @@ void MyListView::setSelected(int mode, const char *path)
   }
 
   //rllehrig not necessary ? repaint();
+}
+
+void MyListView::slotCustomContextMenuRequested(const QPoint &pos)
+{
+  char buf[MAX_PRINTF_LENGTH];
+  int col = header()->logicalIndexAt(pos);
+
+  if(opt.arg_debug) printf("slotCustomContextMenuRequested(%d)\n", col);
+  sprintf(buf,"selected(%d,%d,\"%s\")\n", id, col, "headerContextMenuRequested");
+  tcp_send(s,buf,strlen(buf));
 }
 
 void MyListView::slotClicked(QTreeWidgetItem *item, int column)
