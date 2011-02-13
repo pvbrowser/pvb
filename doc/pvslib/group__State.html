@@ -50,6 +50,8 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga0ee8f8d287b1be17de7fc2304af2385c">pvSetTimeEditDisplay</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int hour, int minute, int second, int ampm)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga3d9b971842a2970f54dcdb65dbfaa04b">pvListViewEnsureVisible</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *path)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga0c7fc71fb077e8ebd749d75bb31891ac">pvListViewSetOpen</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *path, int open)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga6131a966e2f32bc9fc9b2ab07a2fb01d">pvListViewSetHidden</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int column, int hidden)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga30422a92945f229533d3f2a84d4c37c1">pvListViewSetStandardPopupMenu</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int standard_menu)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga80ba211f08321375feb197753264a4f8">pvSetStyle</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int shape, int shadow, int line_width, int margin)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga497fa84cfe72a3932d79ad5f32de0b3c">pvSetMovie</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int background, const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__State.html#ga146d2b96a229157d31ce4b3d292e184d">pvMovieControl</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int step)</td></tr>
@@ -211,6 +213,47 @@ Allowed widgets QListView
 </pre> 
 </div>
 </div>
+<a class="anchor" id="ga6131a966e2f32bc9fc9b2ab07a2fb01d"></a><!-- doxytag: member="processviewserver.h::pvListViewSetHidden" ref="ga6131a966e2f32bc9fc9b2ab07a2fb01d" args="(PARAM *p, int id, int column, int hidden)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvListViewSetHidden </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>column</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>hidden</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Hide or show column
+</pre> 
+</div>
+</div>
 <a class="anchor" id="ga0c7fc71fb077e8ebd749d75bb31891ac"></a><!-- doxytag: member="processviewserver.h::pvListViewSetOpen" ref="ga0c7fc71fb077e8ebd749d75bb31891ac" args="(PARAM *p, int id, const char *path, int open)" -->
 <div class="memitem">
 <div class="memproto">
@@ -254,6 +297,44 @@ example:
 path = "/dir/subdir/subsubdir"
 path := similar to a unix directory path
 Allowed widgets QListView
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga30422a92945f229533d3f2a84d4c37c1"></a><!-- doxytag: member="processviewserver.h::pvListViewSetStandardPopupMenu" ref="ga30422a92945f229533d3f2a84d4c37c1" args="(PARAM *p, int id, int standard_menu)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvListViewSetStandardPopupMenu </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>standard_menu</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set standard popup menu of list view.
+standard_menu = 0 do not show standard popup menu
+standard_menu = 1 show standard popup menu and do not allow to hide column 1
+standard_menu = N show standard popup menu and do not allow to hide column N
 </pre> 
 </div>
 </div>
@@ -1379,7 +1460,7 @@ Allowed widgets QTable
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Feb 5 13:49:54 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Feb 13 11:13:41 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

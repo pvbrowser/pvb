@@ -30,6 +30,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga81dfdec8425cf4e7c411c06a942d9957">getFloats</a> (const char *text, <a class="el" href="structFloatArray.html">FloatArray</a> *fa)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga46f7db6fdbd0266ec27ed209ec78aa80">getTextFromText</a> (const char *text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gaf657e6c10b2559303f960304444a6a2f">pvSetXY</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int i, float x, float y)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga89e4482c3f75b1734ac2eb3ac159e4bd">pvGetSocketPointer</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga171d44435443470cbec90401a059d2f5">pvInitInternal</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gac1f0ac6427b1dea0f068a18ff35023fa">pvInit</a> (int ac, char **av, <a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gab79b2a51875d52f08fb65809b27102e4">pvAccept</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
@@ -282,6 +283,26 @@ Call this function in pvMain. See also pvMain.
 <pre>
 Get the initial mask the user wants to see
 p-&gt;initial_mask is a string identifying the initial mask 
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga89e4482c3f75b1734ac2eb3ac159e4bd"></a><!-- doxytag: member="processviewserver.h::pvGetSocketPointer" ref="ga89e4482c3f75b1734ac2eb3ac159e4bd" args="(PARAM *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int* pvGetSocketPointer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Get a pointer to the socket for script language
 </pre> 
 </div>
 </div>
@@ -945,7 +966,7 @@ Allocate x,y array for script language
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Feb 5 13:49:54 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Feb 13 11:13:40 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

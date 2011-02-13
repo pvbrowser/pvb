@@ -1577,6 +1577,8 @@ pvSelection()
 pvSetMultiSelection()
 pvSetSorting()
 pvListViewEnsureVisible()
+pvListViewSetHidden()
+pvListViewSetStandardPopupMenu()
 </pre> */
 int pvQListView(PARAM *p, int id, int parent);
 /*! <pre>
@@ -2379,6 +2381,17 @@ Allowed widgets QListView
 </pre> */
 int pvListViewSetOpen(PARAM *p, int id, const char *path, int open);
 /*! <pre>
+Hide or show column
+</pre> */
+int pvListViewSetHidden(PARAM *p, int id, int column, int hidden);
+/*! <pre>
+Set standard popup menu of list view.
+standard_menu = 0 do not show standard popup menu
+standard_menu = 1 show standard popup menu and do not allow to hide column 1
+standard_menu = N show standard popup menu and do not allow to hide column N
+</pre> */
+int pvListViewSetStandardPopupMenu(PARAM *p, int id, int standard_menu);
+/*! <pre>
 Set style of QLabel or QFrame
 #Shape. #Shadow.
 
@@ -2633,6 +2646,10 @@ The Text will be the selected item or ""
 Example for text:
 menu1,menu2,,menu3
 (Two commas means, separator)
+You can add a checkbox in front of each entry with "#c(1)"
+You can add a icon in front of each entry with "#i(name.png)"
+Example for text:
+menu1,,#c(1)#i(icon.png)menu2,#c(0)menu3,#i(icon.png)menu4
 </pre> */
 int pvPopupMenu(PARAM *p, int id_return, const char *text);
 /*! <pre>

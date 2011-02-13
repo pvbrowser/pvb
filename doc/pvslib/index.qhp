@@ -95,6 +95,7 @@
       <keyword name="getFloats" id="processviewserver.h::getFloats" ref="processviewserver_8h.html" />
       <keyword name="getTextFromText" id="processviewserver.h::getTextFromText" ref="processviewserver_8h.html" />
       <keyword name="pvSetXY" id="processviewserver.h::pvSetXY" ref="processviewserver_8h.html" />
+      <keyword name="pvGetSocketPointer" id="processviewserver.h::pvGetSocketPointer" ref="processviewserver_8h.html" />
       <keyword name="pvInitInternal" id="processviewserver.h::pvInitInternal" ref="processviewserver_8h.html" />
       <keyword name="pvInit" id="processviewserver.h::pvInit" ref="processviewserver_8h.html" />
       <keyword name="pvAccept" id="processviewserver.h::pvAccept" ref="processviewserver_8h.html" />
@@ -257,6 +258,8 @@
       <keyword name="pvSetTimeEditDisplay" id="processviewserver.h::pvSetTimeEditDisplay" ref="processviewserver_8h.html" />
       <keyword name="pvListViewEnsureVisible" id="processviewserver.h::pvListViewEnsureVisible" ref="processviewserver_8h.html" />
       <keyword name="pvListViewSetOpen" id="processviewserver.h::pvListViewSetOpen" ref="processviewserver_8h.html" />
+      <keyword name="pvListViewSetHidden" id="processviewserver.h::pvListViewSetHidden" ref="processviewserver_8h.html" />
+      <keyword name="pvListViewSetStandardPopupMenu" id="processviewserver.h::pvListViewSetStandardPopupMenu" ref="processviewserver_8h.html" />
       <keyword name="pvSetStyle" id="processviewserver.h::pvSetStyle" ref="processviewserver_8h.html" />
       <keyword name="pvSetMovie" id="processviewserver.h::pvSetMovie" ref="processviewserver_8h.html" />
       <keyword name="pvMovieControl" id="processviewserver.h::pvMovieControl" ref="processviewserver_8h.html" />
@@ -919,6 +922,7 @@
       <keyword name="getFloats" id="IniAndGlobal::getFloats" ref="group__IniAndGlobal.html" />
       <keyword name="getTextFromText" id="IniAndGlobal::getTextFromText" ref="group__IniAndGlobal.html" />
       <keyword name="pvSetXY" id="IniAndGlobal::pvSetXY" ref="group__IniAndGlobal.html" />
+      <keyword name="pvGetSocketPointer" id="IniAndGlobal::pvGetSocketPointer" ref="group__IniAndGlobal.html" />
       <keyword name="pvInitInternal" id="IniAndGlobal::pvInitInternal" ref="group__IniAndGlobal.html" />
       <keyword name="pvInit" id="IniAndGlobal::pvInit" ref="group__IniAndGlobal.html" />
       <keyword name="pvAccept" id="IniAndGlobal::pvAccept" ref="group__IniAndGlobal.html" />
@@ -1086,6 +1090,8 @@
       <keyword name="pvSetTimeEditDisplay" id="State::pvSetTimeEditDisplay" ref="group__State.html" />
       <keyword name="pvListViewEnsureVisible" id="State::pvListViewEnsureVisible" ref="group__State.html" />
       <keyword name="pvListViewSetOpen" id="State::pvListViewSetOpen" ref="group__State.html" />
+      <keyword name="pvListViewSetHidden" id="State::pvListViewSetHidden" ref="group__State.html" />
+      <keyword name="pvListViewSetStandardPopupMenu" id="State::pvListViewSetStandardPopupMenu" ref="group__State.html" />
       <keyword name="pvSetStyle" id="State::pvSetStyle" ref="group__State.html" />
       <keyword name="pvSetMovie" id="State::pvSetMovie" ref="group__State.html" />
       <keyword name="pvMovieControl" id="State::pvMovieControl" ref="group__State.html" />

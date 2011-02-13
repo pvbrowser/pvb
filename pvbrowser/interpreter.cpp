@@ -478,9 +478,53 @@ int Interpreter::get_text(const char *c, QString &txt)
   return 0;
 }
 
+void Interpreter::addPopupMenuAction(QMenu *m, const char *cmd)
+{
+  QAction *act;
+  const char *text, *arg;
+  text = strrchr(cmd,')');
+  if(cmd[0] != '#' || text == NULL) text = cmd;
+  else                              text++;
+  act = m->addAction(text);
+
+  while((arg = strchr(cmd,'#')) != NULL)
+  {
+    if     (strncmp(cmd,"#c(0)",5) == 0)
+    {
+      act->setCheckable(true);
+      act->setChecked(false);
+    }
+    else if(strncmp(cmd,"#c(1)",5) == 0)
+    {
+      act->setCheckable(true);
+      act->setChecked(true);
+    }
+    else if(strncmp(cmd,"#i(",3) == 0)
+    {
+      char name[1024];
+      const char *end;
+      int len;
+      
+      cmd++; cmd++; cmd++;
+      end = strchr(cmd,')');
+      if(end != NULL)
+      {
+        len = end - cmd;
+        if(len < (int) sizeof(name))
+        {
+          strncpy(name,cmd,len);
+          name[len] = '\0';
+          act->setIcon(QIcon(name));
+        }  
+      }  
+    }
+    cmd++;
+  } 
+}
+
 void Interpreter::popupMenu(int id_return, const char *menu)
 {
-  char buf[800];
+  char buf[800],check[16];
   int  i,ifirst;
   QMenu popupMenu;
   QAction *ret;
@@ -500,7 +544,7 @@ void Interpreter::popupMenu(int id_return, const char *menu)
         {
           strncpy(buf,&menu[ifirst],i-ifirst);
           buf[i-ifirst] = '\0';
-          popupMenu.addAction(buf);
+          addPopupMenuAction(&popupMenu, buf);
         }
         popupMenu.addSeparator();
       }
@@ -510,7 +554,7 @@ void Interpreter::popupMenu(int id_return, const char *menu)
         {
           strncpy(buf,&menu[ifirst],i-ifirst);
           buf[i-ifirst] = '\0';
-          popupMenu.addAction(buf);
+          addPopupMenuAction(&popupMenu, buf);
         }
       }
       ifirst = i+1;
@@ -519,9 +563,15 @@ void Interpreter::popupMenu(int id_return, const char *menu)
   }
 
   ret = popupMenu.exec(QCursor::pos());
+  check[0] = '\0';
+  if(ret != NULL && ret->isCheckable())
+  {
+    if(ret->isChecked()) strcpy(check,"#c(1)");
+    else                 strcpy(check,"#c(0)");
+  }
   if(ret != NULL)
   {
-    sprintf(buf,"text(%d,\"%s\")\n", id_return, (const char *) ret->text().toUtf8());
+    sprintf(buf,"text(%d,\"%s%s\")\n", id_return, check, (const char *) ret->text().toUtf8());
   }
   else
   {
@@ -2565,6 +2615,19 @@ void Interpreter::interprets(const char *command)
         }
         break;
       case 'H':
+        if(strncmp(command,"setHidden(",10) == 0) // hide column
+        {
+          int col, hidden;
+          sscanf(command,"setHidden(%d,%d,%d,",&i,&col,&hidden);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->type == TQListView)
+          {
+            MyListView *ptr = (MyListView *) all[i]->w;
+            if(hidden) ptr->hideColumn(col);
+            else       ptr->showColumn(col);
+          }
+        }  
         break;
       case 'I':
         if(strncmp(command,"setIconViewItem(",16) == 0) // set text and pixmap in QIconView
@@ -3050,6 +3113,18 @@ void Interpreter::interprets(const char *command)
           {
             MyListView *lv = (MyListView *) all[i]->w;
             if(lv != NULL) lv->setSorting(col,mode);
+          }
+        }
+        else if(strncmp(command,"setStandardPopup(",17) == 0) // set popup menu
+        {
+          int menu;
+          sscanf(command,"setStandardPopup(%d,%d",&i,&menu);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->type == TQListView)
+          {
+            MyListView *lv = (MyListView *) all[i]->w;
+            if(lv != NULL) lv->hasStandardPopupMenu = menu;
           }
         }
         else if(strncmp(command,"setStyle(",9) == 0) // set style of QLabel QFrame

@@ -130,6 +130,7 @@ class Interpreter
     void interpretq(const char *command);
     void interpretQ(const char *command);
     int  get_text(const char *c, QString &t);
+    void addPopupMenuAction(QMenu *m, const char *cmd);
     void popupMenu(int id_return, const char *menu);
     QImage *readBmpFromSocket(int w, int h, char **d);
     void downloadFile(const char *file);

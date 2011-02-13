@@ -1929,6 +1929,7 @@ MyListView::MyListView(int *sock, int ident, QWidget *parent, const char *name)
   s = sock;
   id = ident;
   recursion = icol = 0;
+  hasStandardPopupMenu = 1;
   if(name != NULL) setObjectName(name);
   setSortingEnabled(false);
   connect(this, SIGNAL(itemClicked(QTreeWidgetItem *, int)), SLOT(slotClicked(QTreeWidgetItem *, int)));
@@ -2335,14 +2336,52 @@ void MyListView::setSelected(int mode, const char *path)
   //rllehrig not necessary ? repaint();
 }
 
+void MyListView::standardPopupMenu()
+{
+  QMenu m;
+  QAction *act;
+  int col;
+
+  for(col=0; col<headerItem()->columnCount(); col++)
+  {
+    act = m.addAction(headerItem()->text(col));
+    act->setCheckable(true);
+    if(isColumnHidden(col)) act->setChecked(false);
+    else                    act->setChecked(true);
+    if(col+1 == hasStandardPopupMenu) act->setEnabled(false);
+  }
+  act = m.exec(QCursor::pos());
+  if(act != NULL)
+  {
+    QString txt = act->text();
+    for(col=0; col<headerItem()->columnCount(); col++)
+    {
+      if(txt == headerItem()->text(col))
+      {
+        if(act->isChecked()) setColumnHidden(col,false);
+        else                 setColumnHidden(col,true);
+        return;
+      }
+    }
+  }
+}
+
 void MyListView::slotCustomContextMenuRequested(const QPoint &pos)
 {
   char buf[MAX_PRINTF_LENGTH];
   int col = header()->logicalIndexAt(pos);
 
   if(opt.arg_debug) printf("slotCustomContextMenuRequested(%d)\n", col);
-  sprintf(buf,"selected(%d,%d,\"%s\")\n", id, col, "headerContextMenuRequested");
-  tcp_send(s,buf,strlen(buf));
+
+  if(hasStandardPopupMenu)
+  {
+    standardPopupMenu();
+  }   
+  else
+  {
+    sprintf(buf,"selected(%d,%d,\"%s\")\n", id, col, "headerContextMenuRequested");
+    tcp_send(s,buf,strlen(buf));
+  }  
 }
 
 void MyListView::slotClicked(QTreeWidgetItem *item, int column)

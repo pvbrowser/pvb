@@ -469,6 +469,7 @@ public:
     void addColumn(QString text, int size);
     void setMultiSelection(int mode);
     void setSorting(int col, int mode);
+    int hasStandardPopupMenu;
 
 public slots:
     void slotClicked(QTreeWidgetItem *item, int column);
@@ -485,6 +486,7 @@ private:
     void closeTree(MyListViewItem *lvi, int mode);
     void nameVersionSetListViewText(const char *path, int column, QString &text, MyListViewItem *item, const char *relpath, int num_slash);
     void nameVersionSetListViewPixmap(const char *path, int column, QPixmap &pixmap, MyListViewItem *item, const char *relpath, int num_slash);
+    void standardPopupMenu();
     int *s,id;
     int ichild[MAX_TREE_RECURSION],recursion,icol;
     int colwidth[20];

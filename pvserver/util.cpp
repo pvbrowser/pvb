@@ -2837,6 +2837,24 @@ char buf[80];
   return 0;
 }
 
+int pvListViewSetHidden(PARAM *p, int id, int column, int hidden)
+{
+char buf[80];
+
+  sprintf(buf,"setHidden(%d,%d,%d)\n",id,column,hidden);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvListViewSetStandardPopupMenu(PARAM *p, int id, int standard_menu)
+{
+char buf[80];
+
+  sprintf(buf,"setStandardPopup(%d,%d)\n",id,standard_menu);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSetStyle(PARAM *p, int id, int shape, int shadow, int line_width, int margin)
 {
 char buf[80];
