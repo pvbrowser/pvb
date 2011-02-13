@@ -2106,6 +2106,9 @@ Display string on a QLCDNumber
 int pvDisplayStr(PARAM *p, int id, const char *str);
 /*! <pre>
 Add a Tab to an QTabDialog
+id       := id of TabWidget
+id_child := id of the QWidget for this tab
+str      := text on the tab
 </pre> */
 int pvAddTab(PARAM *p, int id, int id_child, const char *str);
 /*! <pre>
@@ -2649,7 +2652,7 @@ menu1,menu2,,menu3
 You can add a checkbox in front of each entry with "#c(1)"
 You can add a icon in front of each entry with "#i(name.png)"
 Example for text:
-menu1,,#c(1)#i(icon.png)menu2,#c(0)menu3,#i(icon.png)menu4
+"menu1,,#c(1)#i(icon.png)menu2,#c(0)menu3,#i(icon.png)menu4"
 </pre> */
 int pvPopupMenu(PARAM *p, int id_return, const char *text);
 /*! <pre>

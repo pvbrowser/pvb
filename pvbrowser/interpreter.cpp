@@ -724,6 +724,10 @@ void Interpreter::interpreta(const char *command)
     get_text(command,text);
     if(i < 0) return;
     if(i >= nmax) return;
+    if(child < 0) return;
+    if(child >= nmax) return;
+    if(all[i]->w == NULL) return;
+    if(all[child]->w == NULL) return;
     if(all[i]->type == TQTabWidget)
     {
       MyQTabWidget *ptr = (MyQTabWidget *) all[i]->w;

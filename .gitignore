@@ -35,6 +35,7 @@ pvdevelop/pvdevelop
 pvserver/libpvsid.so.1.0.0
 pvserver/libpvsmt.so.1.0.0
 pvserver/processviewserver
+rllib/foreign
 rllib/lib/librllib.so.1.0.0
 rllib/rlhistory/rlhistory
 rllib/rlsvg/rlsvgcat
@@ -46,4 +47,3 @@ win-mingw/bin/pvdevelop.exe
 win-mingw/bin/rlhistory.exe
 win-mingw/bin/fake_qmake.exe
 win-mingw/bin/rlsvgcat.exe
-
