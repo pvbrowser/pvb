@@ -1075,9 +1075,38 @@
 <a name="l03562"></a>03562 <span class="keywordtype">int</span> <a class="code" href="group__TextEvents.html#ga08801d410f976196767f34eaf9658cbe">getGeometry</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *text, <span class="keywordtype">int</span> *x, <span class="keywordtype">int</span> *y, <span class="keywordtype">int</span> *width, <span class="keywordtype">int</span> *height);
 <a name="l03567"></a>03567 <span class="keywordtype">int</span> <a class="code" href="group__TextEvents.html#ga2b07a747dfb377928b56ecbae3376841">getParentWidgetId</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *text, <span class="keywordtype">int</span> *parent); <span class="comment">// end of group</span>
 <a name="l03569"></a>03569 
-<a name="l03570"></a>03570 <span class="preprocessor">#endif</span>
+<a name="l03616"></a>03616 <span class="preprocessor">#ifndef __VMS</span>
+<a name="l03617"></a>03617 <span class="preprocessor"></span><span class="preprocessor">#include &lt;string.h&gt;</span>
+<a name="l03618"></a>03618 <span class="preprocessor">#include &lt;iostream&gt;</span>
+<a name="l03619"></a>03619 <span class="preprocessor">#include &lt;map&gt;</span>
+<a name="l03620"></a>03620 
+<a name="l03621"></a><a class="code" href="classpvWidgetIdManager.html">03621</a> <span class="keyword">class </span><a class="code" href="classpvWidgetIdManager.html">pvWidgetIdManager</a>
+<a name="l03622"></a>03622 {
+<a name="l03623"></a>03623 <span class="keyword">public</span>:
+<a name="l03624"></a>03624   <a class="code" href="classpvWidgetIdManager.html#a7decd0a41989bf9180c3bdc41362bbcf">pvWidgetIdManager</a>();
+<a name="l03625"></a>03625   <span class="keyword">virtual</span> <a class="code" href="classpvWidgetIdManager.html#a20feebb7335d31db470547d5975f8a48">~pvWidgetIdManager</a>();
+<a name="l03626"></a>03626   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a90204de14bbf5977c021fac5fc830ccc">init</a>(<a class="code" href="struct__PARAM__.html">PARAM</a> *p, <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a1c366807af02f4e9f0f8fa7fb69d91e1">id_start</a>);
+<a name="l03627"></a>03627   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a4e3339cff7222f40b11766e608d02dee">newId</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classpvWidgetIdManager.html#af7017aa954749fe3da3db4dde72439a1">name</a>);
+<a name="l03628"></a>03628   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a5c5172d18fbbafc0760c12e125eae30f">deleteWidget</a>(<a class="code" href="struct__PARAM__.html">PARAM</a> *p, <span class="keyword">const</span> <span class="keywordtype">char</span> *name);
+<a name="l03629"></a>03629   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a01b08654b9a2addad5c565303dc684e7">id</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);
+<a name="l03630"></a>03630   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a0d9ff6716af90f3db87b94b71d9a6fc7">isInMap</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name);
+<a name="l03631"></a>03631   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a0d9ff6716af90f3db87b94b71d9a6fc7">isInMap</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l03632"></a>03632   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a9105b3ac3cbcbd929a0d8da6e0b9d770">first</a>();
+<a name="l03633"></a>03633   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#a4657918264b74535952b10a83688b00c">next</a>();
+<a name="l03634"></a>03634   <span class="keywordtype">int</span> <a class="code" href="classpvWidgetIdManager.html#ab8570041391121cfde6f0d1cc30b78b9">end</a>();
+<a name="l03635"></a>03635   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classpvWidgetIdManager.html#af7017aa954749fe3da3db4dde72439a1">name</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);
+<a name="l03636"></a>03636 <span class="keyword">private</span>:
+<a name="l03637"></a><a class="code" href="classpvWidgetIdManager.html#a34060f0329ff1ea11897885d3c903d20">03637</a>   <span class="keywordtype">int</span> id_start, <a class="code" href="classpvWidgetIdManager.html#a34060f0329ff1ea11897885d3c903d20">num_additional_widgets</a>;
+<a name="l03638"></a><a class="code" href="classpvWidgetIdManager.html#a325a240aeadcc4051281360c86aafd83">03638</a>   <span class="keywordtype">int</span> *<a class="code" href="classpvWidgetIdManager.html#a325a240aeadcc4051281360c86aafd83">free</a>;
+<a name="l03639"></a><a class="code" href="classpvWidgetIdManager.html#ae21682c7a61e09f2cba500ac83c133af">03639</a>   std::map      &lt;std::string, int&gt;           <a class="code" href="classpvWidgetIdManager.html#ae21682c7a61e09f2cba500ac83c133af">id_list</a>;  
+<a name="l03640"></a><a class="code" href="classpvWidgetIdManager.html#a1b55c25aa4a517a65eaf9113bf6a9714">03640</a>   std::multimap &lt;std::string, int&gt;::iterator <a class="code" href="classpvWidgetIdManager.html#a1b55c25aa4a517a65eaf9113bf6a9714">it</a>;
+<a name="l03641"></a>03641 };
+<a name="l03642"></a>03642 <span class="preprocessor">#endif</span>
+<a name="l03643"></a>03643 <span class="preprocessor"></span> <span class="comment">// end of group</span>
+<a name="l03644"></a>03644 
+<a name="l03645"></a>03645 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sun Feb 13 16:56:19 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Feb 14 14:28:32 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

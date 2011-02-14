@@ -6278,3 +6278,138 @@ int pvsystem(const char *command)
 #endif
 }
 
+pvWidgetIdManager::pvWidgetIdManager()
+{
+  id_start = -1;
+  num_additional_widgets = -1;
+  free = NULL;
+}
+
+pvWidgetIdManager::~pvWidgetIdManager()
+{
+  if(free != NULL) delete [] free;
+}
+
+int pvWidgetIdManager::init(PARAM *p, int id_start_in)
+{
+  if(id_start_in <= 0) return -1;
+  if(p->num_additional_widgets <= 0) return -1;
+  if(free != NULL)
+  { // delete the widget in the client
+    for(int i=0; i<num_additional_widgets; i++)
+    {
+      if(free[i] != -1) pvDeleteWidget(p,free[i]);
+    }
+  }
+  id_start = id_start_in;
+  num_additional_widgets = p->num_additional_widgets;
+  if(free != NULL) delete [] free;
+  free = new int[num_additional_widgets];
+  for(int i=0; i<num_additional_widgets; i++) free[i] = -1;
+  id_list.clear();
+  return num_additional_widgets;
+}
+
+int pvWidgetIdManager::newId(const char *name)
+{
+  if(name == NULL)  return 0;
+  if(isInMap(name))
+  {
+    printf("pvWidgetIdManager::newId(%s) ERROR name is already in map\n", name);
+    return 0;
+  }
+  for(int i=0; i<num_additional_widgets; i++)
+  {
+    if(free[i] == -1)
+    {
+      free[i] = i;
+      id_list[name] = id_start + i;
+      return id_start + i;
+    }
+  }
+  return 0;
+}
+
+int pvWidgetIdManager::deleteWidget(PARAM *p, const char *name)
+{
+  if(name == NULL) return -1;
+  int wid = id(name);
+  if(wid <= 0) return -1;
+  if(wid > id_start+num_additional_widgets) return 0;
+  free[wid - id_start] = -1;
+  id_list.erase(name);
+  pvDeleteWidget(p,wid); // delete the widget in the client
+  return wid;
+}
+
+int pvWidgetIdManager::id(const char *name)
+{
+  if(name == NULL) return 0;
+  int old_size = id_list.size();
+  int id = id_list[name];
+  int new_size = id_list.size();
+  if(old_size != new_size)
+  {
+    printf("pvWidgetIdManager::id(%s) ERROR name was not found in map\n", name);
+    id_list.erase(name);
+    return 0;
+  }
+  return id;
+}
+
+int pvWidgetIdManager::isInMap(const char *name)
+{
+  if(name == NULL) return 0;
+  int old_size = id_list.size();
+  int id = id_list[name];
+  int new_size = id_list.size();
+  if(old_size != new_size)
+  {
+    id = 0;
+    id_list.erase(name);
+    return 0;
+  }
+  return 1;
+}
+
+int pvWidgetIdManager::isInMap(int id)
+{
+  if(id < id_start) return 0;
+  if(id >= id_start+num_additional_widgets) return 0;
+  if(name(id) == NULL) return 0;
+  return 1;
+}
+
+int pvWidgetIdManager::first()
+{
+  if(free == NULL) return 0;
+  it = id_list.begin();
+  return (*it).second;
+}
+
+int pvWidgetIdManager::next()
+{
+  if(free == NULL) return 0;
+  it++;
+  if(it == id_list.end()) return 0;
+  return (*it).second;
+}
+
+int pvWidgetIdManager::end()
+{
+  if(free == NULL) return 0;
+  return (*id_list.end()).second;
+}
+
+const char *pvWidgetIdManager::name(int id)
+{
+  if(free == NULL) return NULL;
+  std::multimap <std::string, int>::iterator found;
+  for(found = id_list.begin(); found != id_list.end(); found++)
+  {
+    if((*found).second == id) return (*found).first.c_str();
+  }
+  return NULL;
+}
+
+

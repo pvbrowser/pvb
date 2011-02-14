@@ -30,6 +30,7 @@
           <section title="QwtAnalogClock" ref="group__QwtAnalogClock.html" />
           <section title="UnitConversion" ref="group__UnitConversion.html" />
           <section title="TextEvents" ref="group__TextEvents.html" />
+          <section title="Classes from pvslib" ref="group__Classe.html" />
         </section>
         <section title="Data Structures" ref="annotated.html">
           <section title="_PARAM_" ref="struct__PARAM__.html" />
@@ -38,6 +39,7 @@
           <section title="glFont::Glyph" ref="structglFont_1_1Glyph.html" />
           <section title="IntegerArray" ref="structIntegerArray.html" />
           <section title="PARSE_EVENT_STRUCT" ref="structPARSE__EVENT__STRUCT.html" />
+          <section title="pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
           <section title="WSEMAPHORE" ref="structWSEMAPHORE.html" />
         </section>
         <section title="Data Fields" ref="functions.html" />
@@ -1332,6 +1334,7 @@
       <keyword name="getSvgMatrixForElement" id="TextEvents::getSvgMatrixForElement" ref="group__TextEvents.html" />
       <keyword name="getGeometry" id="TextEvents::getGeometry" ref="group__TextEvents.html" />
       <keyword name="getParentWidgetId" id="TextEvents::getParentWidgetId" ref="group__TextEvents.html" />
+      <keyword name="Classes from pvslib" id="Classes from pvslib" ref="group__Classe.html" />
       <keyword name="_PARAM_" id="_PARAM_" ref="struct__PARAM__.html" />
       <keyword name="s" id="_PARAM_::s" ref="struct__PARAM__.html" />
       <keyword name="os" id="_PARAM_::os" ref="struct__PARAM__.html" />
@@ -1422,6 +1425,24 @@
       <keyword name="event" id="PARSE_EVENT_STRUCT::event" ref="structPARSE__EVENT__STRUCT.html" />
       <keyword name="i" id="PARSE_EVENT_STRUCT::i" ref="structPARSE__EVENT__STRUCT.html" />
       <keyword name="text" id="PARSE_EVENT_STRUCT::text" ref="structPARSE__EVENT__STRUCT.html" />
+      <keyword name="pvWidgetIdManager" id="pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
+      <keyword name="pvWidgetIdManager" id="pvWidgetIdManager::pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
+      <keyword name="~pvWidgetIdManager" id="pvWidgetIdManager::~pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
+      <keyword name="init" id="pvWidgetIdManager::init" ref="classpvWidgetIdManager.html" />
+      <keyword name="newId" id="pvWidgetIdManager::newId" ref="classpvWidgetIdManager.html" />
+      <keyword name="deleteWidget" id="pvWidgetIdManager::deleteWidget" ref="classpvWidgetIdManager.html" />
+      <keyword name="id" id="pvWidgetIdManager::id" ref="classpvWidgetIdManager.html" />
+      <keyword name="isInMap" id="pvWidgetIdManager::isInMap" ref="classpvWidgetIdManager.html" />
+      <keyword name="isInMap" id="pvWidgetIdManager::isInMap" ref="classpvWidgetIdManager.html" />
+      <keyword name="first" id="pvWidgetIdManager::first" ref="classpvWidgetIdManager.html" />
+      <keyword name="next" id="pvWidgetIdManager::next" ref="classpvWidgetIdManager.html" />
+      <keyword name="end" id="pvWidgetIdManager::end" ref="classpvWidgetIdManager.html" />
+      <keyword name="name" id="pvWidgetIdManager::name" ref="classpvWidgetIdManager.html" />
+      <keyword name="id_start" id="pvWidgetIdManager::id_start" ref="classpvWidgetIdManager.html" />
+      <keyword name="num_additional_widgets" id="pvWidgetIdManager::num_additional_widgets" ref="classpvWidgetIdManager.html" />
+      <keyword name="free" id="pvWidgetIdManager::free" ref="classpvWidgetIdManager.html" />
+      <keyword name="id_list" id="pvWidgetIdManager::id_list" ref="classpvWidgetIdManager.html" />
+      <keyword name="it" id="pvWidgetIdManager::it" ref="classpvWidgetIdManager.html" />
       <keyword name="WSEMAPHORE" id="WSEMAPHORE" ref="structWSEMAPHORE.html" />
       <keyword name="cmax" id="WSEMAPHORE::cmax" ref="structWSEMAPHORE.html" />
       <keyword name="nready" id="WSEMAPHORE::nready" ref="structWSEMAPHORE.html" />
@@ -1464,6 +1485,7 @@
       <file>group__QwtAnalogClock.html</file>
       <file>group__UnitConversion.html</file>
       <file>group__TextEvents.html</file>
+      <file>group__Classe.html</file>
       <file>modules.html</file>
       <file>annotated.html</file>
       <file>classes.html</file>
@@ -1476,6 +1498,7 @@
       <file>structglFont_1_1Glyph.html</file>
       <file>structIntegerArray.html</file>
       <file>structPARSE__EVENT__STRUCT.html</file>
+      <file>classpvWidgetIdManager.html</file>
       <file>structWSEMAPHORE.html</file>
       <file>files.html</file>
       <file>globals.html</file>

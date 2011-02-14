@@ -3567,4 +3567,79 @@ Allowed widgets: all widgets
 int getParentWidgetId(const char *text, int *parent);
 /** @} */ // end of group
 
+/** @defgroup Classe Classes from pvslib
+ *  Here are classes for the pvslib.
+ *  @{ */
+/*! <pre>
+Use this class for manageing p->num_additional_widgets by widget names
+Example:
+
+typedef struct // (todo: define your data structure here)
+{
+  pvWidgetIdManager mgr;
+}
+DATA;
+
+static int slotInit(PARAM *p, DATA *d)
+{
+  if(p == NULL || d == NULL) return -1;
+  int id;
+          
+  d->mgr.init(p,ID_END_OF_WIDGETS);
+
+  id = d->mgr.newId("test1");
+  pvQPushButton(p,id,0);
+  pvSetGeometry(p,id,270,40,100,30);
+  pvSetText(p,id,"test1");
+  pvShow(p,id);
+
+  return 0;
+}                                                      }
+
+static int slotButtonPressedEvent(PARAM *p, int id, DATA *d)
+{
+  if(p == NULL || id == 0 || d == NULL) return -1;
+  if(id == obj1)
+  {
+    printf("knowns id's:\n");
+    int i = d->mgr.first();
+    while(i > 0)
+    {
+      printf("name=%s id=%d\n", d->mgr.name(i),i);
+      i = d->mgr.next();
+    }
+  }
+  return 0;
+}
+
+</pre> */
+#ifndef __VMS
+#include <string.h>
+#include <iostream>
+#include <map>
+
+class pvWidgetIdManager
+{
+public:
+  pvWidgetIdManager();
+  virtual ~pvWidgetIdManager();
+  int init(PARAM *p, int id_start);
+  int newId(const char *name);
+  int deleteWidget(PARAM *p, const char *name);
+  int id(const char *name);
+  int isInMap(const char *name);
+  int isInMap(int id);
+  int first();
+  int next();
+  int end();
+  const char *name(int id);
+private:
+  int id_start, num_additional_widgets;
+  int *free;
+  std::map      <std::string, int>           id_list;  
+  std::multimap <std::string, int>::iterator it;
+};
+#endif
+/** @} */ // end of group
+
 #endif
