@@ -776,6 +776,7 @@ void MainWindow::slotNewTab()
   }
   tabToolBar->hide();
   tabToolBar->show();
+  slotGohome();
 }
 
 void MainWindow::slotDeleteTab()
