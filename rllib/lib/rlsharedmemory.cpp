@@ -470,3 +470,14 @@ void *rlSharedMemory::getUserAdr()
 {
   return (void *) user_adr;
 }
+
+int rlSharedMemory::shmKey()
+{
+  return shmkey;
+}
+
+int rlSharedMemory::shmId()
+{
+  return id;
+}
+

@@ -68,6 +68,8 @@ public:
   const char *firstVariable();
   const char *nextVariable();
   int         shmStatus(); // 0 if shared memory is ok | DAQ_ERROR if shared memory is not ok
+  int         shmKey();    // key of shared memory
+  int         shmId();     // id of shared memory
 
 private:
   SHM_HEADER     *shmheader;

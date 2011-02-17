@@ -86,7 +86,8 @@ int qtDatabase::populateTable(PARAM *p, int id)
 
   // set table dimension
   xmax = result->record().count();
-  ymax = result->size();
+  //ymax = result->size();
+  ymax = result->numRowsAffected();
   pvSetNumRows(p,id,ymax);
   pvSetNumCols(p,id,xmax);
 

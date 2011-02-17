@@ -54,6 +54,8 @@ public:
   int   writeByte(unsigned long offset, int index, unsigned char val);
   int   writeFloat(unsigned long offset, int index, float val);
   void  *getUserAdr();
+  int   shmKey();
+  int   shmId();
   int   status;
   char *name;
 private:

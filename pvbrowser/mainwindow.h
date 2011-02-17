@@ -26,6 +26,7 @@
 #include <QSemaphore>
 #include <QTabBar>
 #define  MAX_TABS 32
+#define  MAX_TAB_TEXT_LENGTH 20
 #define  MAX_DOCK_WIDGETS   32
 #define  DOCK_WIDGETS_BASE -1000
 typedef  MyQDockWidget* MyQDockWidgetPtr;

@@ -63,6 +63,8 @@ Inheritance diagram for rlSharedMemory:</div>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02">writeByte</a> (unsigned long offset, int index, unsigned char val)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa">writeFloat</a> (unsigned long offset, int index, float val)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">getUserAdr</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d">shmKey</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">shmId</a> ()</td></tr>
 <tr><td colspan="2"><h2>Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a></td></tr>
@@ -701,6 +703,54 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 
 </div>
 </div>
+<a class="anchor" id="ae2d0562b6cd1a7e16d7f80cd21ae8d3a"></a><!-- doxytag: member="rlSharedMemory::shmId" ref="ae2d0562b6cd1a7e16d7f80cd21ae8d3a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSharedMemory::shmId </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00479">479</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00480"></a>00480 {
+<a name="l00481"></a>00481   <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;
+<a name="l00482"></a>00482 }
+</pre></div></p>
+
+</div>
+</div>
+<a class="anchor" id="a2ba4572a598ca60b3d1b21f0f202917d"></a><!-- doxytag: member="rlSharedMemory::shmKey" ref="a2ba4572a598ca60b3d1b21f0f202917d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSharedMemory::shmKey </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00474">474</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+
+<p><div class="fragment"><pre class="fragment"><a name="l00475"></a>00475 {
+<a name="l00476"></a>00476   <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;
+<a name="l00477"></a>00477 }
+</pre></div></p>
+
+</div>
+</div>
 <a class="anchor" id="a1e70f49eb1ab8aa6563b0353ff1425c2"></a><!-- doxytag: member="rlSharedMemory::write" ref="a1e70f49eb1ab8aa6563b0353ff1425c2" args="(unsigned long offset, const void *buf, int len)" -->
 <div class="memitem">
 <div class="memproto">
@@ -944,7 +994,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00062">62</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00064">64</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -959,7 +1009,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00060">60</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00062">62</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -974,7 +1024,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00065">65</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00067">67</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -989,7 +1039,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00058">58</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00060">60</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1004,7 +1054,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00061">61</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00063">63</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1019,7 +1069,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00064">64</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00066">66</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1034,7 +1084,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00057">57</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00059">59</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1049,7 +1099,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00063">63</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00065">65</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1058,7 +1108,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <li><a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Feb 12 09:27:53 2011 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Feb 17 13:40:06 2011 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

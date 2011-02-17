@@ -147,9 +147,15 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
 #endif
 }
 
-void dlgMyBrowser::slotTitleChanged(const QString &title)
+void dlgMyBrowser::slotTitleChanged(const QString &title_in)
 {
 #ifdef USE_WEBKIT  
+  QString title = title_in;
+  if(title.length() > MAX_TAB_TEXT_LENGTH)
+  {
+    title.truncate(MAX_TAB_TEXT_LENGTH);
+    title.append("...");
+  }
   mainWindow->tabBar->setTabText(mainWindow->currentTab,title);
 #endif
 }

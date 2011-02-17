@@ -69,20 +69,22 @@
 <a name="l00054"></a>00054   <span class="keywordtype">int</span>   <a class="code" href="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02">writeByte</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> val);
 <a name="l00055"></a>00055   <span class="keywordtype">int</span>   <a class="code" href="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa">writeFloat</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">float</span> val);
 <a name="l00056"></a>00056   <span class="keywordtype">void</span>  *<a class="code" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">getUserAdr</a>();
-<a name="l00057"></a><a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">00057</a>   <span class="keywordtype">int</span>   <a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a>;
-<a name="l00058"></a><a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">00058</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;
-<a name="l00059"></a>00059 <span class="keyword">private</span>:
-<a name="l00060"></a><a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">00060</a>   <span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;
-<a name="l00061"></a><a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">00061</a>   <span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;
-<a name="l00062"></a><a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">00062</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;
-<a name="l00063"></a><a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">00063</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>;
-<a name="l00064"></a><a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">00064</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>;
-<a name="l00065"></a><a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">00065</a>   pthread_mutex_t *<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>;
-<a name="l00066"></a>00066 };
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068 <span class="preprocessor">#endif</span>
+<a name="l00057"></a>00057   <span class="keywordtype">int</span>   <a class="code" href="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d">shmKey</a>();
+<a name="l00058"></a>00058   <span class="keywordtype">int</span>   <a class="code" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">shmId</a>();
+<a name="l00059"></a><a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">00059</a>   <span class="keywordtype">int</span>   <a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a>;
+<a name="l00060"></a><a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">00060</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;
+<a name="l00061"></a>00061 <span class="keyword">private</span>:
+<a name="l00062"></a><a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">00062</a>   <span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;
+<a name="l00063"></a><a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">00063</a>   <span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;
+<a name="l00064"></a><a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">00064</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;
+<a name="l00065"></a><a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">00065</a>   <span class="keywordtype">char</span> *<a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>;
+<a name="l00066"></a><a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">00066</a>   <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>;
+<a name="l00067"></a><a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">00067</a>   pthread_mutex_t *<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>;
+<a name="l00068"></a>00068 };
+<a name="l00069"></a>00069 
+<a name="l00070"></a>00070 <span class="preprocessor">#endif</span>
 </pre></div></div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Sat Feb 12 09:27:48 2011 for rllib by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Thu Feb 17 13:40:04 2011 for rllib by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

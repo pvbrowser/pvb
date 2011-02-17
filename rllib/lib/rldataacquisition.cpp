@@ -168,3 +168,16 @@ int rlDataAcquisition::shmStatus()
   return DAQ_ERROR;
 }
 
+int rlDataAcquisition::shmKey()
+{
+  if(shm == NULL) return -1;
+  return shm->shmKey();
+}
+
+int rlDataAcquisition::shmId()
+{
+  if(shm == NULL) return -1;
+  return shm->shmId();
+}
+
+

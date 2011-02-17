@@ -48,23 +48,23 @@ public:
     vboxLayout->setObjectName(QString::fromUtf8("vboxLayout"));
     groupBoxNavigation = new QGroupBox(MyBrowser);
     groupBoxNavigation->setObjectName(QString::fromUtf8("groupBoxNavigation"));
-    groupBoxNavigation->setMinimumSize(QSize(0, 61));
-    groupBoxNavigation->setMaximumSize(QSize(16777215, 61));
+    groupBoxNavigation->setMinimumSize(QSize(0, 28));
+    groupBoxNavigation->setMaximumSize(QSize(16777215, 28));
     pushButtonBack = new QPushButton(groupBoxNavigation);
     pushButtonBack->setObjectName(QString::fromUtf8("pushButtonBack"));
-    pushButtonBack->setGeometry(QRect(10, 20, 75, 26));
+    pushButtonBack->setGeometry(QRect(10, 3, 75, 26));
     pushButtonBack->setIcon(QIcon(QString::fromUtf8(":/images/back.png")));
     pushButtonHome = new QPushButton(groupBoxNavigation);
     pushButtonHome->setObjectName(QString::fromUtf8("pushButtonHome"));
-    pushButtonHome->setGeometry(QRect(90, 20, 75, 26));
+    pushButtonHome->setGeometry(QRect(90, 3, 75, 26));
     pushButtonHome->setIcon(QIcon(QString::fromUtf8(":/images/gohome.png")));
     pushButtonForward = new QPushButton(groupBoxNavigation);
     pushButtonForward->setObjectName(QString::fromUtf8("pushButtonForward"));
-    pushButtonForward->setGeometry(QRect(170, 20, 75, 26));
+    pushButtonForward->setGeometry(QRect(170, 3, 75, 26));
     pushButtonForward->setIcon(QIcon(QString::fromUtf8(":/images/reconnect.png")));
     pushButtonReload = new QPushButton(groupBoxNavigation);
     pushButtonReload->setObjectName(QString::fromUtf8("pushButtonReload"));
-    pushButtonReload->setGeometry(QRect(250, 20, 75, 26));
+    pushButtonReload->setGeometry(QRect(250, 3, 75, 26));
     pushButtonReload->setIcon(QIcon(QString::fromUtf8(":/images/reload.png")));
 
     vboxLayout->addWidget(groupBoxNavigation);
@@ -92,7 +92,7 @@ public:
     void retranslateUi(QWidget *MyBrowser)
     {
     MyBrowser->setWindowTitle(QApplication::translate("MyBrowser", "Form", 0, QApplication::UnicodeUTF8));
-    groupBoxNavigation->setTitle(QApplication::translate("MyBrowser", "Navigation", 0, QApplication::UnicodeUTF8));
+    groupBoxNavigation->setTitle(QApplication::translate("MyBrowser", "", 0, QApplication::UnicodeUTF8));
     pushButtonBack->setToolTip(QApplication::translate("MyBrowser", "Back", 0, QApplication::UnicodeUTF8));
     pushButtonBack->setText(QApplication::translate("MyBrowser", "Back", 0, QApplication::UnicodeUTF8));
     pushButtonHome->setToolTip(QApplication::translate("MyBrowser", "Home", 0, QApplication::UnicodeUTF8));

@@ -740,7 +740,13 @@ void MainWindow::setTabText(const char *title)
     sscanf((const char *) text.toUtf8(),"%d", &ipvbtab);
     if(ipvbtab == currentTab)
     {
-      tabBar->setTabText(i,title);
+      QString qtitle = title;
+      if(qtitle.length() > MAX_TAB_TEXT_LENGTH)
+      {
+        qtitle.truncate(MAX_TAB_TEXT_LENGTH);
+        qtitle.append("...");
+      }
+      tabBar->setTabText(i,qtitle);
       break;
     }
   }

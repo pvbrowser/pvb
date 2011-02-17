@@ -1527,10 +1527,11 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 #define SWIGTYPE_p_glFont swig_types[15]
 #define SWIGTYPE_p_int swig_types[16]
 #define SWIGTYPE_p_p_char swig_types[17]
-#define SWIGTYPE_p_qtDatabase swig_types[18]
-#define SWIGTYPE_p_void swig_types[19]
-static swig_type_info *swig_types[21];
-static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
+#define SWIGTYPE_p_pvWidgetIdManager swig_types[18]
+#define SWIGTYPE_p_qtDatabase swig_types[19]
+#define SWIGTYPE_p_void swig_types[20]
+static swig_type_info *swig_types[22];
+static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -12574,6 +12575,69 @@ static int _wrap_pvListViewSetOpen(lua_State* L) {
   arg3 = (char *)lua_tostring(L, 3);
   arg4 = (int)lua_tonumber(L, 4);
   result = (int)pvListViewSetOpen(arg1,arg2,(char const *)arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvListViewSetHidden(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("pvListViewSetHidden",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvListViewSetHidden",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvListViewSetHidden",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvListViewSetHidden",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvListViewSetHidden",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvListViewSetHidden",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)pvListViewSetHidden(arg1,arg2,arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvListViewSetStandardPopupMenu(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("pvListViewSetStandardPopupMenu",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvListViewSetStandardPopupMenu",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvListViewSetStandardPopupMenu",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvListViewSetStandardPopupMenu",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvListViewSetStandardPopupMenu",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)pvListViewSetStandardPopupMenu(arg1,arg2,arg3);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -24211,6 +24275,375 @@ fail:
 }
 
 
+static int _wrap_new_pvWidgetIdManager(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *result = 0 ;
+  
+  SWIG_check_num_args("pvWidgetIdManager",0,0)
+  result = (pvWidgetIdManager *)new pvWidgetIdManager();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_pvWidgetIdManager,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_init(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("init",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("init",1,"pvWidgetIdManager *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("init",2,"PARAM *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("init",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_init",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_init",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->init(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_newId(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("newId",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("newId",1,"pvWidgetIdManager *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("newId",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_newId",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->newId((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_deleteWidget(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("deleteWidget",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("deleteWidget",1,"pvWidgetIdManager *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("deleteWidget",2,"PARAM *");
+  if(!lua_isstring(L,3)) SWIG_fail_arg("deleteWidget",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_deleteWidget",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_deleteWidget",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->deleteWidget(arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_id(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("id",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("id",1,"pvWidgetIdManager *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("id",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_id",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->id((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_isInMap__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("isInMap",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isInMap",1,"pvWidgetIdManager *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("isInMap",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_isInMap",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->isInMap((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_isInMap__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("isInMap",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("isInMap",1,"pvWidgetIdManager *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("isInMap",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_isInMap",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)(arg1)->isInMap(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_isInMap(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_pvWidgetIdManager, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_pvWidgetIdManager_isInMap__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_pvWidgetIdManager, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_pvWidgetIdManager_isInMap__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'pvWidgetIdManager_isInMap'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    isInMap(pvWidgetIdManager *,char const *)\n"
+    "    isInMap(pvWidgetIdManager *,int)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_pvWidgetIdManager_first(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("first",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("first",1,"pvWidgetIdManager *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_first",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  result = (int)(arg1)->first();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_next(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("next",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("next",1,"pvWidgetIdManager *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_next",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  result = (int)(arg1)->next();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_end(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("end",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("end",1,"pvWidgetIdManager *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_end",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  result = (int)(arg1)->end();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_name(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("name",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("name",1,"pvWidgetIdManager *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("name",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_name",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (char *)(arg1)->name(arg2);
+  lua_pushstring(L,(const char*)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_pvWidgetIdManager(void *obj) {
+pvWidgetIdManager *arg1 = (pvWidgetIdManager *) obj;
+delete arg1;
+}
+static swig_lua_method swig_pvWidgetIdManager_methods[] = {
+    {"init", _wrap_pvWidgetIdManager_init}, 
+    {"newId", _wrap_pvWidgetIdManager_newId}, 
+    {"deleteWidget", _wrap_pvWidgetIdManager_deleteWidget}, 
+    {"id", _wrap_pvWidgetIdManager_id}, 
+    {"isInMap", _wrap_pvWidgetIdManager_isInMap}, 
+    {"first", _wrap_pvWidgetIdManager_first}, 
+    {"next", _wrap_pvWidgetIdManager_next}, 
+    {"end", _wrap_pvWidgetIdManager_end}, 
+    {"name", _wrap_pvWidgetIdManager_name}, 
+    {0,0}
+};
+static swig_lua_attribute swig_pvWidgetIdManager_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_class *swig_pvWidgetIdManager_bases[] = {0};
+static const char *swig_pvWidgetIdManager_base_names[] = {0};
+static swig_lua_class _wrap_class_pvWidgetIdManager = { "pvWidgetIdManager", &SWIGTYPE_p_pvWidgetIdManager,_wrap_new_pvWidgetIdManager, swig_delete_pvWidgetIdManager, swig_pvWidgetIdManager_methods, swig_pvWidgetIdManager_attributes, swig_pvWidgetIdManager_bases, swig_pvWidgetIdManager_base_names };
+
 static int _wrap_new_qtDatabase(lua_State* L) {
   int SWIG_arg = 0;
   qtDatabase *result = 0 ;
@@ -24900,6 +25333,8 @@ static const struct luaL_reg swig_commands[] = {
     { "pvSetTimeEditDisplay", _wrap_pvSetTimeEditDisplay},
     { "pvListViewEnsureVisible", _wrap_pvListViewEnsureVisible},
     { "pvListViewSetOpen", _wrap_pvListViewSetOpen},
+    { "pvListViewSetHidden", _wrap_pvListViewSetHidden},
+    { "pvListViewSetStandardPopupMenu", _wrap_pvListViewSetStandardPopupMenu},
     { "pvSetStyle", _wrap_pvSetStyle},
     { "pvSetMovie", _wrap_pvSetMovie},
     { "pvMovieControl", _wrap_pvMovieControl},
@@ -25551,6 +25986,7 @@ static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_glFont = {"_p_glFont", "glFont *", 0, 0, (void*)&_wrap_class_glFont, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pvWidgetIdManager = {"_p_pvWidgetIdManager", "pvWidgetIdManager *", 0, 0, (void*)&_wrap_class_pvWidgetIdManager, 0};
 static swig_type_info _swigt__p_qtDatabase = {"_p_qtDatabase", "qtDatabase *", 0, 0, (void*)&_wrap_class_qtDatabase, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
@@ -25573,6 +26009,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_glFont,
   &_swigt__p_int,
   &_swigt__p_p_char,
+  &_swigt__p_pvWidgetIdManager,
   &_swigt__p_qtDatabase,
   &_swigt__p_void,
 };
@@ -25595,6 +26032,7 @@ static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_glFont[] = {  {&_swigt__p_glFont, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvWidgetIdManager[] = {  {&_swigt__p_pvWidgetIdManager, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_qtDatabase[] = {  {&_swigt__p_qtDatabase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -25617,6 +26055,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_glFont,
   _swigc__p_int,
   _swigc__p_p_char,
+  _swigc__p_pvWidgetIdManager,
   _swigc__p_qtDatabase,
   _swigc__p_void,
 };

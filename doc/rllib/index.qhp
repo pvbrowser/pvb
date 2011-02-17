@@ -1095,6 +1095,8 @@
       <keyword name="firstVariable" id="rlDataAcquisition::firstVariable" ref="classrlDataAcquisition.html" />
       <keyword name="nextVariable" id="rlDataAcquisition::nextVariable" ref="classrlDataAcquisition.html" />
       <keyword name="shmStatus" id="rlDataAcquisition::shmStatus" ref="classrlDataAcquisition.html" />
+      <keyword name="shmKey" id="rlDataAcquisition::shmKey" ref="classrlDataAcquisition.html" />
+      <keyword name="shmId" id="rlDataAcquisition::shmId" ref="classrlDataAcquisition.html" />
       <keyword name="shmheader" id="rlDataAcquisition::shmheader" ref="classrlDataAcquisition.html" />
       <keyword name="shmvalues" id="rlDataAcquisition::shmvalues" ref="classrlDataAcquisition.html" />
       <keyword name="mbx" id="rlDataAcquisition::mbx" ref="classrlDataAcquisition.html" />
@@ -1712,6 +1714,8 @@
       <keyword name="writeByte" id="rlSharedMemory::writeByte" ref="classrlSharedMemory.html" />
       <keyword name="writeFloat" id="rlSharedMemory::writeFloat" ref="classrlSharedMemory.html" />
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html" />
+      <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html" />
+      <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html" />
       <keyword name="status" id="rlSharedMemory::status" ref="classrlSharedMemory.html" />
       <keyword name="name" id="rlSharedMemory::name" ref="classrlSharedMemory.html" />
       <keyword name="id" id="rlSharedMemory::id" ref="classrlSharedMemory.html" />
