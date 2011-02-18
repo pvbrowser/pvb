@@ -23,6 +23,10 @@
 #endif
 #endif
 
+#ifdef USE_WEBKIT
+#include <QWebFrame>
+#endif
+
 #include "pvdefine.h"
 #include "dlgmybrowser.h"
 #include "dlgmybrowser_ui.h"
@@ -45,6 +49,7 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   QObject::connect(form->browser,SIGNAL(urlChanged(const QUrl &))      ,this, SLOT(slotUrlChanged(const QUrl &)));
   QObject::connect(form->browser,SIGNAL(linkClicked(const QUrl &))     ,this, SLOT(slotLinkClicked(const QUrl &)));
   QObject::connect(form->browser,SIGNAL(titleChanged(const QString &)) ,this, SLOT(slotTitleChanged(const QString &)));
+  QObject::connect(form->browser,SIGNAL(loadFinished(bool))            ,this, SLOT(slotLoadFinished(bool)));
   //QWebPage *page = form->browser->page();
   //QObject::connect(page,SIGNAL(unsupportedContent(QNetworkReply *)),this, SLOT(slotUnsupportedContent(QNetworkReply *)));
 #endif
@@ -125,10 +130,11 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   if(url.isEmpty()) return;
 #ifdef USE_WEBKIT  
   QString text = url.toString();
-  //printf("link=%s\n", (const char *) text.toUtf8());
+  QStringList list = text.split("#"); // split anchor
+  anchor = url.fragment();
+  if(opt.arg_debug) printf("dlgMyBrowser::slotLinkClicked url=%s fragment=%s\n", (const char *) text.toUtf8(), (const char *) anchor.toUtf8());
   QString webpath = url.host() + url.path();
-  //int currentTab = mainWindow->currentTab;
-  //mainWindow->pvbtab[currentTab].url = text;
+  anchor = url.fragment();
   mainWindow->urlComboBox->setEditText(text);
   if(text.startsWith("pv:") || text.startsWith("pvssh:"))
   {
@@ -136,14 +142,33 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   }
   else if(webpath == homepath)
   {
-    form->browser->setUrl(url);
+    //form->browser->setUrl(url);
+    form->browser->setUrl(QUrl(list.at(0)));
   }
   else
   {
-    if(opt.arg_debug) printf("dlgMyBrowser::slotLinkClicked url=%s\n", (const char *) text.toUtf8());
-    form->browser->load(url);
+    //form->browser->load(url);
+    form->browser->load(QUrl(list.at(0)));
     homepath = webpath;
   }
+#endif
+}
+
+void dlgMyBrowser::slotLoadFinished(bool ok)
+{
+  if(ok == false) return;
+#ifdef USE_WEBKIT  
+  if(opt.arg_debug) printf("dlgMyBrowser::slotLoadFinshed anchor=%s\n",  (const char *) anchor.toUtf8());
+#if QT_VERSION >= 0x040700
+  if(anchor.length() > 0)
+  {
+    QWebPage *page = form->browser->page();
+    if(page != NULL)
+    {
+      page->currentFrame()->scrollToAnchor(anchor);
+    }
+  }
+#endif  
 #endif
 }
 

@@ -7,6 +7,11 @@ copy language_binding_wrap.cxx        language_binding_wrap_lua.cxx
 %swigdir%\swig -c++ -lua -DRLWIN32 -D_WIN32 -DSWIG_SESSIOM language_binding_rllib.i
 copy language_binding_rllib_wrap.cxx  language_binding_rllib_wrap_lua.cxx
 
+cd lua\lua-5.1\src
+%qtdir%\bin\qmake src.pro
+mingw32-make.exe
+cd ..\..\..
+
 cd lua\pvslua
 %qtdir%\bin\qmake pvslua.pro
 mingw32-make.exe

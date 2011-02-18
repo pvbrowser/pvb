@@ -11302,6 +11302,36 @@ fail:
 }
 
 
+static int _wrap_pvScrollToAnchor(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvScrollToAnchor",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvScrollToAnchor",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvScrollToAnchor",2,"int");
+  if(!lua_isstring(L,3)) SWIG_fail_arg("pvScrollToAnchor",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvScrollToAnchor",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)pvScrollToAnchor(arg1,arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvText(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -25298,6 +25328,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvSetMaxTime",_wrap_pvSetMaxTime},
     { "pvEnsureCellVisible",_wrap_pvEnsureCellVisible},
     { "pvMoveCursor", _wrap_pvMoveCursor},
+    { "pvScrollToAnchor", _wrap_pvScrollToAnchor},
     { "pvText", _wrap_pvText},
     { "pvRequestGeometry", _wrap_pvRequestGeometry},
     { "pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId},

@@ -225,6 +225,7 @@
       <keyword name="pvSetMaxTime" id="processviewserver.h::pvSetMaxTime" ref="processviewserver_8h.html" />
       <keyword name="pvEnsureCellVisible" id="processviewserver.h::pvEnsureCellVisible" ref="processviewserver_8h.html" />
       <keyword name="pvMoveCursor" id="processviewserver.h::pvMoveCursor" ref="processviewserver_8h.html" />
+      <keyword name="pvScrollToAnchor" id="processviewserver.h::pvScrollToAnchor" ref="processviewserver_8h.html" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html" />
       <keyword name="pvRequestParentWidgetId" id="processviewserver.h::pvRequestParentWidgetId" ref="processviewserver_8h.html" />
@@ -1055,6 +1056,7 @@
       <keyword name="pvSetMaxTime" id="Output::pvSetMaxTime" ref="group__Output.html" />
       <keyword name="pvEnsureCellVisible" id="Output::pvEnsureCellVisible" ref="group__Output.html" />
       <keyword name="pvMoveCursor" id="Output::pvMoveCursor" ref="group__Output.html" />
+      <keyword name="pvScrollToAnchor" id="Output::pvScrollToAnchor" ref="group__Output.html" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html" />
       <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html" />

@@ -1543,6 +1543,7 @@ pvPrintf()
 pvSetSource()
 pvMoveContent()
 pvMoveCursor()
+pvScrollToAnchor()
 </pre> */
 int pvQTextBrowser(PARAM *p, int id, int parent);
 /*! <pre>
@@ -2180,6 +2181,11 @@ allowed widgets: QTextBrowser, QMultiLineEdit
 cursor := #TextCursor
 </pre> */
 int pvMoveCursor(PARAM *p, int id, int cursor);
+/*! <pre>
+Scroll to anchor
+allowed widgets: QTextBrowser
+</pre> */
+int pvScrollToAnchor(PARAM *p, int id, const char *anchor);
 /** @} */ // end of group
 
 /** @defgroup Input Input

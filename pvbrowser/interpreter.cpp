@@ -3795,6 +3795,27 @@ void Interpreter::interprets(const char *command)
         break;
     }
   }
+  else if(strncmp(command,"scrollToAnchor(",15) == 0) // TextBrowser / WebKit
+  {
+    sscanf(command,"scrollToAnchor(%d",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    get_text(command,text);
+#if QT_VERSION >= 0x040700    
+    if(all[i]->type == TQTextBrowser)
+    {
+      MyTextBrowser *tb = (MyTextBrowser *) all[i]->w;
+      if(tb != NULL) 
+      {
+        QWebPage *page = tb->page();
+        if(page != NULL)
+        {
+          page->currentFrame()->scrollToAnchor(text);
+        }
+      }  
+    }
+#endif    
+  }
   else if(strncmp(command,"selection(",10) == 0) // request selection in QListView
   {
     sscanf(command,"selection(%d",&i);

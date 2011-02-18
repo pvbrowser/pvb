@@ -2275,6 +2275,16 @@ char buf[80];
   return 0;
 }
 
+int pvScrollToAnchor(PARAM *p, int id, const char *anchor)
+{
+  char buf[MAX_PRINTF_LENGTH+40];
+  pv_length_check(p,anchor);
+  sprintf(buf,"scrollToAnchor(%d,\"%s\")\n",id,anchor);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+
 int pvAddColumn(PARAM *p, int id, const char *text, int size)
 {
   char buf[80],*cptr;

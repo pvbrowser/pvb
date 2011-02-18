@@ -44,8 +44,9 @@ public slots:
     void slotLinkClicked(const QUrl &url);
     void slotTitleChanged(const QString &title);
     void slotUnsupportedContent(QNetworkReply *reply);
+    void slotLoadFinished(bool ok);
 private:
-    QString homeurl, homepath;
+    QString homeurl, homepath, anchor;
     int *s, id;
     MainWindow *mainWindow;
 };
