@@ -159,6 +159,7 @@ cp -r pvsexample                                          %{buildroot}/opt/pvb/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
 cp    logo1.xpm                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/
+cp    gamsleiten.png                                      %{buildroot}/opt/pvb/
 cp    pvbrowser.desktop                                   %{buildroot}/opt/pvb/
 cp    pvdevelop.desktop                                   %{buildroot}/opt/pvb/
 cp    pvserver/libpvsid.so.1.0.0                          %{buildroot}/opt/pvb/pvserver/
@@ -295,6 +296,7 @@ License:     GPL
 /opt/pvb/LICENSE.GPL
 /opt/pvb/logo1.xpm
 /opt/pvb/custom.bmp
+/opt/pvb/gamsleiten.png
 /opt/pvb/pvbrowser.desktop
 /opt/pvb/pvdevelop.desktop
 /opt/pvb/doc

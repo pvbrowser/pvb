@@ -461,13 +461,13 @@ int i;
 #endif
         fprintf(fp,"# your custom logo\n");
 #ifdef PVUNIX
-        fprintf(fp,"customlogo=/opt/pvb/custom.bmp\n");
+        fprintf(fp,"customlogo=/opt/pvb/gamsleiten.png\n");
 #endif
 #ifdef PVWIN32
-        fprintf(fp,"customlogo=%%PVBDIR%%\\custom.bmp\n");
+        fprintf(fp,"customlogo=%%PVBDIR%%\\gamsleiten.png\n");
 #endif
 #ifdef __VMS
-        fprintf(fp,"customlogo=[ProcessView.processview.processview]custom.bmp\n");
+        fprintf(fp,"customlogo=[ProcessView.processview.processview]gamsleiten.png\n");
 #endif
         fprintf(fp,"# howto start \"New Window\", can be commented out\n");
         fprintf(fp,"#newwindow=pvbrowser\n");
