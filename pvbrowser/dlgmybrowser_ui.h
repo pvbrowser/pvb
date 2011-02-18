@@ -31,6 +31,8 @@ public:
     QPushButton *pushButtonHome;
     QPushButton *pushButtonForward;
     QPushButton *pushButtonReload;
+    QLineEdit   *lineEditPattern;
+    QPushButton *pushButtonFind;
 #ifdef USE_WEBKIT
     QWebView *browser;
 #else
@@ -66,6 +68,13 @@ public:
     pushButtonReload->setObjectName(QString::fromUtf8("pushButtonReload"));
     pushButtonReload->setGeometry(QRect(250, 3, 75, 26));
     pushButtonReload->setIcon(QIcon(QString::fromUtf8(":/images/reload.png")));
+    lineEditPattern = new QLineEdit(groupBoxNavigation);
+    lineEditPattern->setObjectName(QString::fromUtf8("lineEditPattern"));
+    lineEditPattern->setGeometry(QRect(330, 3, 75, 26));
+    pushButtonFind = new QPushButton(groupBoxNavigation);
+    pushButtonFind->setObjectName(QString::fromUtf8("pushButtonFind"));
+    pushButtonFind->setGeometry(QRect(410, 3, 75, 26));
+    pushButtonFind->setIcon(QIcon(QString::fromUtf8(":/images/find.png")));
 
     vboxLayout->addWidget(groupBoxNavigation);
 
@@ -100,6 +109,7 @@ public:
     pushButtonForward->setToolTip(QApplication::translate("MyBrowser", "Forward", 0, QApplication::UnicodeUTF8));
     pushButtonForward->setText(QApplication::translate("MyBrowser", "Forward", 0, QApplication::UnicodeUTF8));
     pushButtonReload->setText(QApplication::translate("MyBrowser", "Reload", 0, QApplication::UnicodeUTF8));
+    pushButtonFind->setText(QApplication::translate("MyBrowser", "Find", 0, QApplication::UnicodeUTF8));
 #ifndef USE_WEBKIT
     browser->setText(QApplication::translate("MyBrowser", "KHTML/WebKit is only available on<br>QT_VERSION >= 4.4.0", 0, QApplication::UnicodeUTF8));
 #endif

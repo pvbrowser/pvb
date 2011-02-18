@@ -40,6 +40,7 @@ public slots:
     void slotHome();
     void slotForward();
     void slotReload();
+    void slotFind();
     void slotUrlChanged(const QUrl &url);
     void slotLinkClicked(const QUrl &url);
     void slotTitleChanged(const QString &title);

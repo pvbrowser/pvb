@@ -17,6 +17,7 @@
 #include <QtGui/QDialog>
 #include <QtGui/QHBoxLayout>
 #include <QtGui/QPushButton>
+#include <QtGui/QLineEdit>
 #include <QtGui/QSpacerItem>
 #include <QWebView>
 #include <QtGui/QVBoxLayout>
@@ -30,6 +31,7 @@ public:
     QHBoxLayout *hboxLayout;
     QPushButton *pushButtonBack;
     QPushButton *pushButtonHome;
+    QLineEdit   *lineEditPattern;
     QPushButton *pushButtonFind;
     QSpacerItem *spacerItem;
     QPushButton *pushButtonClose;
@@ -58,8 +60,15 @@ public:
 
     hboxLayout->addWidget(pushButtonHome);
 
+    lineEditPattern = new QLineEdit(DialogTextBrowser);
+    lineEditPattern->setObjectName(QString::fromUtf8("lineEditPattern"));
+    
+    hboxLayout->addWidget(lineEditPattern);
+
     pushButtonFind = new QPushButton(DialogTextBrowser);
     pushButtonFind->setObjectName(QString::fromUtf8("pushButtonFind"));
+    const QIcon icon2 = QIcon(QString::fromUtf8(":/images/find.png"));
+    pushButtonFind->setIcon(icon2);
 
     hboxLayout->addWidget(pushButtonFind);
 

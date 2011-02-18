@@ -31,7 +31,9 @@ public:
 public slots:
     void slotFind();
     void slotHome();
+    void slotBack();
 private:
     QString findWhat;
+    int find;
 };
 #endif

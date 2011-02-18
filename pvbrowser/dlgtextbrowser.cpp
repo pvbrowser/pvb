@@ -73,10 +73,12 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
     form->textBrowser->setHtml("<html><head></head><body>Sorry no application specific help specified.</body></html>");
   }
 
-  QObject::connect(form->pushButtonBack,SIGNAL(clicked()),form->textBrowser,SLOT(back()));
-  QObject::connect(form->pushButtonHome,SIGNAL(clicked()),this,SLOT(slotHome()));
-  QObject::connect(form->pushButtonClose,SIGNAL(clicked()),this,SLOT(hide()));
   QObject::connect(form->pushButtonFind,SIGNAL(clicked()),this,SLOT(slotFind()));
+  QObject::connect(form->lineEditPattern,SIGNAL(returnPressed()),this,SLOT(slotFind()));
+  QObject::connect(form->pushButtonClose,SIGNAL(clicked()),this,SLOT(hide()));
+  QObject::connect(form->pushButtonHome,SIGNAL(clicked()),this,SLOT(slotHome()));
+  QObject::connect(form->pushButtonBack,SIGNAL(clicked()),this,SLOT(slotBack()));
+  find = 0;
 }
 
 dlgTextBrowser::~dlgTextBrowser()
@@ -86,28 +88,21 @@ dlgTextBrowser::~dlgTextBrowser()
 
 void dlgTextBrowser::slotFind()
 {
-  bool ok, found;
-  form->textBrowser->pageAction(QWebPage::MoveToStartOfDocument) ; //moveCursor(QTextCursor::Start);
-  while(1)
+  find = 1;
+  QString pattern = form->lineEditPattern->text();
+  QWebPage *page = form->textBrowser->page();
+  if(page == NULL) return;
+  page->findText(pattern,QWebPage::FindWrapsAroundDocument);
+}
+
+void dlgTextBrowser::slotBack()
+{
+  if(find)
   {
-    QString text = QInputDialog::getText(this, tr("Find"), tr("String to search for:"), QLineEdit::Normal, findWhat, &ok);
-    if(ok && !text.isEmpty())
-    {
-      findWhat = text;
-      found = form->textBrowser->findText(text);
-      if(found == false)
-      {
-        QMessageBox::information(NULL,"pvbrowser","String not found"); 
-        hide();
-        show();
-        return;
-      }
-    }
-    else
-    {
-      return;
-    }
+    find = 0;
+    return;
   }
+  form->textBrowser->back();
 }
 
 void dlgTextBrowser::slotHome()

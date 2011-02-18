@@ -46,6 +46,8 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   QObject::connect(form->pushButtonHome,SIGNAL(clicked())              ,this, SLOT(slotHome()));
   QObject::connect(form->pushButtonForward,SIGNAL(clicked())           ,this, SLOT(slotForward()));
   QObject::connect(form->pushButtonReload,SIGNAL(clicked())            ,this, SLOT(slotReload()));
+  QObject::connect(form->pushButtonFind,SIGNAL(clicked())              ,this, SLOT(slotFind()));
+  QObject::connect(form->lineEditPattern,SIGNAL(returnPressed())       ,this, SLOT(slotFind()));
   QObject::connect(form->browser,SIGNAL(urlChanged(const QUrl &))      ,this, SLOT(slotUrlChanged(const QUrl &)));
   QObject::connect(form->browser,SIGNAL(linkClicked(const QUrl &))     ,this, SLOT(slotLinkClicked(const QUrl &)));
   QObject::connect(form->browser,SIGNAL(titleChanged(const QString &)) ,this, SLOT(slotTitleChanged(const QString &)));
@@ -107,6 +109,16 @@ void dlgMyBrowser::slotReload()
 {
 #ifdef USE_WEBKIT  
   form->browser->reload();
+#endif
+}
+
+void dlgMyBrowser::slotFind()
+{
+#ifdef USE_WEBKIT  
+  QString pattern = form->lineEditPattern->text();
+  QWebPage *page = form->browser->page();
+  if(page == NULL) return;
+  page->findText(pattern,QWebPage::FindWrapsAroundDocument);
 #endif
 }
 

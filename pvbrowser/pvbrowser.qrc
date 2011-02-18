@@ -18,6 +18,7 @@
     <file>images/deletetab.png</file>
     <file>images/reload.png</file>
     <file>images/gohome.png</file>
+    <file>images/find.png</file>
 </qresource>
 </RCC>
 
