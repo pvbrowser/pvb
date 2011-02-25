@@ -930,9 +930,9 @@ void MainWindow::viewDesigner()
   editor = NULL;
   scroll = new QScrollArea;
   sprintf(buf,"mask%d.cpp",imask);
-  if(opt.arg_debug) printf("viewDesigner before new Designer\n");;
+  if(opt.arg_debug) printf("viewDesigner before new Designer buf=%s\n", buf);
   designer = new Designer(buf);
-  if(opt.arg_debug) printf("viewDesigner after new Designer\n");;
+  if(opt.arg_debug) printf("viewDesigner after new Designer\n");
   designer->root->mainWindow = this;
   designer->root->resize(opt.xmax,opt.ymax);
   scroll->setMaximumSize(opt.xmax,opt.ymax);

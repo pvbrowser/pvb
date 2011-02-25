@@ -3,7 +3,7 @@ you have to create the language binding first.
 (if the binding is not already available)
 
 For this run:
-./build_python_interface.sh <noswig>
+./build_python_interface.sh <swig>
 from within this directory
 
 Create a new pvserver with pvdevelop and "Use Python".

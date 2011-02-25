@@ -1202,6 +1202,10 @@ def pvMoveCursor(*args):
   return _pv.pvMoveCursor(*args)
 pvMoveCursor = _pv.pvMoveCursor
 
+def pvScrollToAnchor(*args):
+  return _pv.pvScrollToAnchor(*args)
+pvScrollToAnchor = _pv.pvScrollToAnchor
+
 def pvText(*args):
   return _pv.pvText(*args)
 pvText = _pv.pvText
@@ -1333,6 +1337,14 @@ pvListViewEnsureVisible = _pv.pvListViewEnsureVisible
 def pvListViewSetOpen(*args):
   return _pv.pvListViewSetOpen(*args)
 pvListViewSetOpen = _pv.pvListViewSetOpen
+
+def pvListViewSetHidden(*args):
+  return _pv.pvListViewSetHidden(*args)
+pvListViewSetHidden = _pv.pvListViewSetHidden
+
+def pvListViewSetStandardPopupMenu(*args):
+  return _pv.pvListViewSetStandardPopupMenu(*args)
+pvListViewSetStandardPopupMenu = _pv.pvListViewSetStandardPopupMenu
 
 def pvSetStyle(*args):
   return _pv.pvSetStyle(*args)
@@ -2252,35 +2264,29 @@ getGeometry = _pv.getGeometry
 def getParentWidgetId(*args):
   return _pv.getParentWidgetId(*args)
 getParentWidgetId = _pv.getParentWidgetId
-class qtDatabase(_object):
+class pvWidgetIdManager(_object):
     __swig_setmethods__ = {}
-    __setattr__ = lambda self, name, value: _swig_setattr(self, qtDatabase, name, value)
+    __setattr__ = lambda self, name, value: _swig_setattr(self, pvWidgetIdManager, name, value)
     __swig_getmethods__ = {}
-    __getattr__ = lambda self, name: _swig_getattr(self, qtDatabase, name)
+    __getattr__ = lambda self, name: _swig_getattr(self, pvWidgetIdManager, name)
     __repr__ = _swig_repr
     def __init__(self): 
-        this = _pv.new_qtDatabase()
+        this = _pv.new_pvWidgetIdManager()
         try: self.this.append(this)
         except: self.this = this
-    __swig_destroy__ = _pv.delete_qtDatabase
+    __swig_destroy__ = _pv.delete_pvWidgetIdManager
     __del__ = lambda self : None;
-    def open(self, *args): return _pv.qtDatabase_open(self, *args)
-    def close(self): return _pv.qtDatabase_close(self)
-    def query(self, *args): return _pv.qtDatabase_query(self, *args)
-    def populateTable(self, *args): return _pv.qtDatabase_populateTable(self, *args)
-    def recordFieldValue(self, *args): return _pv.qtDatabase_recordFieldValue(self, *args)
-    def nextRecord(self): return _pv.qtDatabase_nextRecord(self)
-    __swig_setmethods__["db"] = _pv.qtDatabase_db_set
-    __swig_getmethods__["db"] = _pv.qtDatabase_db_get
-    if _newclass:db = _swig_property(_pv.qtDatabase_db_get, _pv.qtDatabase_db_set)
-    __swig_setmethods__["result"] = _pv.qtDatabase_result_set
-    __swig_getmethods__["result"] = _pv.qtDatabase_result_get
-    if _newclass:result = _swig_property(_pv.qtDatabase_result_get, _pv.qtDatabase_result_set)
-    __swig_setmethods__["error"] = _pv.qtDatabase_error_set
-    __swig_getmethods__["error"] = _pv.qtDatabase_error_get
-    if _newclass:error = _swig_property(_pv.qtDatabase_error_get, _pv.qtDatabase_error_set)
-qtDatabase_swigregister = _pv.qtDatabase_swigregister
-qtDatabase_swigregister(qtDatabase)
+    def init(self, *args): return _pv.pvWidgetIdManager_init(self, *args)
+    def newId(self, *args): return _pv.pvWidgetIdManager_newId(self, *args)
+    def deleteWidget(self, *args): return _pv.pvWidgetIdManager_deleteWidget(self, *args)
+    def id(self, *args): return _pv.pvWidgetIdManager_id(self, *args)
+    def isInMap(self, *args): return _pv.pvWidgetIdManager_isInMap(self, *args)
+    def first(self): return _pv.pvWidgetIdManager_first(self)
+    def next(self): return _pv.pvWidgetIdManager_next(self)
+    def end(self): return _pv.pvWidgetIdManager_end(self)
+    def name(self, *args): return _pv.pvWidgetIdManager_name(self, *args)
+pvWidgetIdManager_swigregister = _pv.pvWidgetIdManager_swigregister
+pvWidgetIdManager_swigregister(pvWidgetIdManager)
 
 def pvSendOpenGL(*args):
   return _pv.pvSendOpenGL(*args)
@@ -2325,6 +2331,36 @@ qwtDialSetNeedle = _pv.qwtDialSetNeedle
 def qwtAnalogClockSetNeedle(*args):
   return _pv.qwtAnalogClockSetNeedle(*args)
 qwtAnalogClockSetNeedle = _pv.qwtAnalogClockSetNeedle
+
+class qtDatabase(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, qtDatabase, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, qtDatabase, name)
+    __repr__ = _swig_repr
+    def __init__(self): 
+        this = _pv.new_qtDatabase()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_qtDatabase
+    __del__ = lambda self : None;
+    def open(self, *args): return _pv.qtDatabase_open(self, *args)
+    def close(self): return _pv.qtDatabase_close(self)
+    def query(self, *args): return _pv.qtDatabase_query(self, *args)
+    def populateTable(self, *args): return _pv.qtDatabase_populateTable(self, *args)
+    def recordFieldValue(self, *args): return _pv.qtDatabase_recordFieldValue(self, *args)
+    def nextRecord(self): return _pv.qtDatabase_nextRecord(self)
+    __swig_setmethods__["db"] = _pv.qtDatabase_db_set
+    __swig_getmethods__["db"] = _pv.qtDatabase_db_get
+    if _newclass:db = _swig_property(_pv.qtDatabase_db_get, _pv.qtDatabase_db_set)
+    __swig_setmethods__["result"] = _pv.qtDatabase_result_set
+    __swig_getmethods__["result"] = _pv.qtDatabase_result_get
+    if _newclass:result = _swig_property(_pv.qtDatabase_result_get, _pv.qtDatabase_result_set)
+    __swig_setmethods__["error"] = _pv.qtDatabase_error_set
+    __swig_getmethods__["error"] = _pv.qtDatabase_error_get
+    if _newclass:error = _swig_property(_pv.qtDatabase_error_get, _pv.qtDatabase_error_set)
+qtDatabase_swigregister = _pv.qtDatabase_swigregister
+qtDatabase_swigregister(qtDatabase)
 
 
 def getParam(*args):

@@ -230,6 +230,8 @@ class rlSharedMemory(_object):
     def writeByte(self, *args): return _rllib.rlSharedMemory_writeByte(self, *args)
     def writeFloat(self, *args): return _rllib.rlSharedMemory_writeFloat(self, *args)
     def getUserAdr(self): return _rllib.rlSharedMemory_getUserAdr(self)
+    def shmKey(self): return _rllib.rlSharedMemory_shmKey(self)
+    def shmId(self): return _rllib.rlSharedMemory_shmId(self)
     __swig_setmethods__["status"] = _rllib.rlSharedMemory_status_set
     __swig_getmethods__["status"] = _rllib.rlSharedMemory_status_get
     if _newclass:status = _swig_property(_rllib.rlSharedMemory_status_get, _rllib.rlSharedMemory_status_set)
@@ -537,6 +539,8 @@ class rlDataAcquisition(_object):
     def firstVariable(self): return _rllib.rlDataAcquisition_firstVariable(self)
     def nextVariable(self): return _rllib.rlDataAcquisition_nextVariable(self)
     def shmStatus(self): return _rllib.rlDataAcquisition_shmStatus(self)
+    def shmKey(self): return _rllib.rlDataAcquisition_shmKey(self)
+    def shmId(self): return _rllib.rlDataAcquisition_shmId(self)
 rlDataAcquisition_swigregister = _rllib.rlDataAcquisition_swigregister
 rlDataAcquisition_swigregister(rlDataAcquisition)
 
@@ -1799,9 +1803,11 @@ class rlTime(_object):
     __swig_destroy__ = _rllib.delete_rlTime
     __del__ = lambda self : None;
     def getTimeString(self): return _rllib.rlTime_getTimeString(self)
+    def getIsoTimeString(self): return _rllib.rlTime_getIsoTimeString(self)
     def getLocalTime(self): return _rllib.rlTime_getLocalTime(self)
     def getFileModificationTime(self, *args): return _rllib.rlTime_getFileModificationTime(self, *args)
     def setTimeFromString(self, *args): return _rllib.rlTime_setTimeFromString(self, *args)
+    def setTimeFromIsoString(self, *args): return _rllib.rlTime_setTimeFromIsoString(self, *args)
     def setLocalTime(self): return _rllib.rlTime_setLocalTime(self)
     def secondsSinceEpoche(self): return _rllib.rlTime_secondsSinceEpoche(self)
     def __iadd__(self, *args): return _rllib.rlTime___iadd__(self, *args)

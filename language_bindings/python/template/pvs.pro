@@ -1,6 +1,6 @@
 ########################################################################
 # Template projectfile for pvbrowser server using Python 
-# Attention: Please adjust "/usr/lib64/libpython2.5.so" for your system
+# Attention: Please adjust "/usr/lib64/libpython2.6.so" for your system
 ########################################################################
 
 TEMPLATE = app
@@ -15,7 +15,7 @@ SOURCES += main.cpp     \
            mask1.cpp
 
 !macx {
-unix:LIBS          += /usr/lib/libpvsmt.so -pthread /usr/lib64/libpython2.5.so
+unix:LIBS          += /usr/lib/libpvsmt.so -pthread /usr/lib64/libpython2.6.so
 #unix:LIBS         += /usr/lib/libpvsid.so
 unix:INCLUDEPATH   += /opt/pvb/pvserver /usr/include/python
 unix:LIBS          += /usr/lib/librllib.so
