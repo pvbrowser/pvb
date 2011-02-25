@@ -18,7 +18,7 @@
 #            You can ignore these warnings
 #
 cd lua/lua-5.1/src/
- ../../../../qmake.sh qmake src.pro
+ ../../../../qmake.sh src.pro
  make
 cd ../../../
 

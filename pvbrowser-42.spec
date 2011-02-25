@@ -30,7 +30,7 @@ Requires:  libpng
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel lua-devel
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel
 %endif
 
 %if 0%{?fedora_version}
@@ -40,7 +40,7 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel lua-devel lua-static
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel
 %endif
 
 %if 0%{?mandriva_version}
@@ -49,7 +49,7 @@ Requires:  libqt4
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel gcc-c++ qt4-devel python-devel lua-devel
+BuildRequires: libqt4-devel gcc-c++ qt4-devel python-devel
 %endif
 
 %if 0%{?debian_version}
@@ -59,7 +59,7 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel liblua5.1-0.dev
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel
 %endif
 
 %if 0%{?ubuntu_version}
@@ -69,7 +69,7 @@ Requires:  libqt4
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-dev gcc-c++ python-devel liblua5.1-0.dev
+BuildRequires: libqt4-dev gcc-c++ python-devel
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}

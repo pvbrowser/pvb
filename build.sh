@@ -125,6 +125,11 @@ cd pvsexample
 cd ..
 if [ "$PVB_OSTYPE" == "linux" ]; then
 cd language_bindings
+export libpython=$(find /usr/lib64 -name "libpython2.*.so")
+if [ "x${libpython}" = "x" ]; then
+  export libpython=$(find /usr/lib64 -name "libpython2.*.so")
+fi
+echo libpython=$libpython
 #  ./build_python_interface.sh noswig
 ./build_lua_interface.sh
 cd ..
