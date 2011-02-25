@@ -55,7 +55,8 @@ ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0.0
 #ln -sf /opt/pvb/pvdevelop/pvdevelop                /usr/local/bin/pvdevelop_system
 #ln -sf /opt/pvb/tested_qt/pvdevelop_tested.sh      /usr/local/bin/pvdevelop
 ln -sf /opt/pvb/pvbrowser/pvbrowser                 /usr/local/bin/pvbrowser
-ln -sf /opt/pvb/pvdevelop/pvdevelop                 /usr/local/bin/pvdevelop
+#ln -sf /opt/pvb/pvdevelop/pvdevelop                 /usr/local/bin/pvdevelop
+cp /opt/pvb/pvdevelop/pvdevelop.sh                  /usr/local/bin/pvdevelop
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                /usr/local/bin/rlsvgcat
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                /usr/bin/rlsvgcat
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp           /usr/local/bin/start_pvbapp

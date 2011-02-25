@@ -172,6 +172,7 @@ cp    pvserver/vmsgl.h                                    %{buildroot}/opt/pvb/p
 cp    pvserver/processviewserver.h                        %{buildroot}/opt/pvb/pvserver/
 cp    pvbrowser/pvbrowser                                 %{buildroot}/opt/pvb/pvbrowser/
 cp    pvdevelop/pvdevelop                                 %{buildroot}/opt/pvb/pvdevelop/
+cp    pvdevelop/pvdevelop.sh                              %{buildroot}/opt/pvb/pvdevelop/
 cp    start_pvbapp/start_pvbapp                           %{buildroot}/opt/pvb/start_pvbapp/
 cp    start_pvbapp/README.txt                             %{buildroot}/opt/pvb/start_pvbapp/
 cp    start_pvbapp/example.ini.linux                      %{buildroot}/opt/pvb/start_pvbapp/example.ini
@@ -223,7 +224,8 @@ cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/b
 %__ln_s /opt/pvb/pvserver/libpvsmt.so.1.0.0      %{buildroot}/usr/lib/libpvsmt.so.1.0.0
 
 %__ln_s /opt/pvb/pvbrowser/pvbrowser             %{buildroot}%{_bindir}/pvbrowser
-%__ln_s /opt/pvb/pvdevelop/pvdevelop             %{buildroot}%{_bindir}/pvdevelop
+#%__ln_s /opt/pvb/pvdevelop/pvdevelop             %{buildroot}%{_bindir}/pvdevelop
+cp /opt/pvb/pvdevelop/pvdevelop.sh               %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/start_pvbapp/start_pvbapp       %{buildroot}%{_bindir}/start_pvbapp
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat            %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory       %{buildroot}%{_bindir}/rlhistory
@@ -313,6 +315,7 @@ License:     GPL
 %endif
 /opt/pvb/pvbrowser/pvbrowser
 /opt/pvb/pvdevelop/pvdevelop
+/opt/pvb/pvdevelop/pvdevelop.sh
 /opt/pvb/rllib/rlsvg/rlsvgcat
 /opt/pvb/rllib/rlhistory/rlhistory
 /opt/pvb/pvserver/wthread.h
