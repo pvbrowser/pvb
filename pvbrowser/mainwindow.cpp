@@ -93,7 +93,8 @@ void MyThread::run()
     }
     else
     {
-      if(emit_count == 1) pv->semaphore.acquire(); // slot dataReceived() will call semaphore.release(); before return
+      // slot dataReceived() will call semaphore.release(); before return
+      if(emit_count > 0) pv->semaphore.acquire(); 
       FD_ZERO(&rset);
       num_tabs = pv->numTabs;
       maxfd = -1;
@@ -104,7 +105,7 @@ void MyThread::run()
         if(s > maxfd) maxfd = s;
       }
       timout.tv_sec  = 0;
-      timout.tv_usec = 500;
+      timout.tv_usec = 500000;
       //ret = ::select(pv->maxfd+1,&rset,NULL,NULL,&timout);
       if(maxfd == -1)
       {
@@ -169,12 +170,12 @@ MainWindow::MainWindow()
   maxfd = currentTab = numTabs = 0;
   for(i=0; i<MAX_TABS; i++)
   {
-    pvbtab[i].s         = -1;      // socket
-    pvbtab[i].in_use    = 0;       // tab is currently not used
-    pvbtab[i].w         = 1280;    // default width
-    pvbtab[i].h         = 1024;    // default height
-    pvbtab[i].view      = NULL;
-    pvbtab[i].hasLayout = 0;
+    pvbtab[i].s          = -1;      // socket
+    pvbtab[i].in_use     = 0;       // tab is currently not used
+    pvbtab[i].w          = 1280;    // default width
+    pvbtab[i].h          = 1024;    // default height
+    pvbtab[i].rootWidget = NULL;
+    pvbtab[i].hasLayout  = 0;
     for(int ii=0; ii<MAX_DOCK_WIDGETS; ii++) 
     {
       pvbtab[i].dock[ii] = NULL;
@@ -569,10 +570,9 @@ void MainWindow::createToolBars()
   {
     pvbtab[i].interpreter.temp = opt.temp;
     pvbtab[i].interpreter.registerMainWindow(this,&pvbtab[i].s);
-    pvbtab[i].view   = new MyQWidget(&pvbtab[i].s,0,this);
+    pvbtab[i].rootWidget   = new MyQWidget(&pvbtab[i].s,0,NULL);
   }
   pvbtab[0].in_use = 1;
-  view   = pvbtab[0].view;
   scroll = new QScrollArea();
   setCentralWidget(scroll);
   fileToolBar = addToolBar(tr("File"));
@@ -646,7 +646,6 @@ void MainWindow::createToolBars()
 
 void MainWindow::slotTabChanged(int index)
 {
-  QWidget *w;
   QString text;
   int  ipvbtab, ww, hh, ii;
   char buf[32];
@@ -663,13 +662,12 @@ void MainWindow::slotTabChanged(int index)
       statusBar()->setPalette(palette);
       statusBar()->showMessage(l_status_connection_lost);
       if(opt.arg_debug) printf("view->setDisabled1 tcp_close(%d)\n", currentTab);
-      view->setDisabled(1);
+      pvbtab[currentTab].rootWidget->setDisabled(1);
       pvbtab[currentTab].interpreter.perhapsCloseModalDialog();
       qApp->beep();
     }
   }
-  w = centralWidget();
-  pvbtab[currentTab].view = (MyQWidget *) ((QScrollArea *) w)->takeWidget();
+  pvbtab[currentTab].rootWidget = scroll->takeWidget();
   text = tabBar->tabWhatsThis(index);
   sscanf((const char *) text.toUtf8(),"%d", &ipvbtab);
   if(opt.arg_debug) printf("Tab changed to index=%d ipvbtab=%d begin\n", index, ipvbtab);
@@ -688,13 +686,9 @@ void MainWindow::slotTabChanged(int index)
   urlComboBox->setEditText(pvbtab[currentTab].url);
   ww = pvbtab[currentTab].interpreter.width();
   hh = pvbtab[currentTab].interpreter.height();
-  if(pvbtab[currentTab].view == NULL)
-  {
-    pvbtab[currentTab].view = new MyQWidget(&pvbtab[currentTab].s,0,this);
-  }  
-  pvbtab[currentTab].view->resize(ww,hh);
+  pvbtab[currentTab].rootWidget->resize(ww,hh);
   scroll->resize(ww,hh);
-  scroll->setWidget(pvbtab[currentTab].view);
+  scroll->setWidget(pvbtab[currentTab].rootWidget);
   // workaround for qt
   if(pvbtab[currentTab].interpreter.hasLayout == 1) scroll->setWidgetResizable(true);
   else                                              scroll->setWidgetResizable(false);
@@ -711,7 +705,7 @@ void MainWindow::slotTabChanged(int index)
       statusBar()->setPalette(palette);
       statusBar()->showMessage(l_status_connection_lost);
       if(opt.arg_debug) printf("view->setDisabled2 tcp_close(%d)\n", currentTab);
-      view->setDisabled(1);
+      pvbtab[currentTab].rootWidget->setDisabled(1);
       pvbtab[currentTab].interpreter.perhapsCloseModalDialog();
       qApp->beep();
     }
@@ -787,7 +781,6 @@ void MainWindow::slotNewTab()
 
 void MainWindow::slotDeleteTab()
 {
-  QWidget *w;
   QString  text;
   int index, ipvbtab;
 
@@ -809,12 +802,10 @@ void MainWindow::slotDeleteTab()
     }  
     tcp_close(&pvbtab[ipvbtab].s);
     pvbtab[ipvbtab].s = -1;
-    if(ipvbtab == currentTab && view != NULL) view->setDisabled(1);
-    w = centralWidget();
-    pvbtab[currentTab].view = (MyQWidget *) ((QScrollArea *) w)->takeWidget();
-    delete pvbtab[currentTab].view;
-    pvbtab[currentTab].view = new MyQWidget(&pvbtab[currentTab].s,0,this);
-    scroll->setWidget(pvbtab[currentTab].view);
+    pvbtab[ipvbtab].in_use = 0;
+    delete scroll->takeWidget();
+    pvbtab[ipvbtab].rootWidget = new MyQWidget(&pvbtab[ipvbtab].s,0,NULL);
+    scroll->setWidget(pvbtab[ipvbtab].rootWidget);
   }
   tabBar->removeTab(index);
   if(tabBar->count() == 1) tabToolBar->hide();
@@ -947,8 +938,15 @@ void MainWindow::slotReconnect()
   QString qbuf;
   int iport,i,ssh,max,maxtab;
 
-  if(opt.arg_debug) printf("slotReconnect url=%s\n",(const char *) url.toUtf8());
-  pvbtab[currentTab].url = url;
+  if(opt.arg_debug)
+  {
+    printf("slotReconnect url=%s current=%s isReconnect=%d\n",
+           (const char *) url.toUtf8(),
+           (const char *) pvbtab[currentTab].url.toUtf8(),
+           isReconnect);
+  }         
+  if(isReconnect == 1) url = pvbtab[currentTab].url;
+  else                 pvbtab[currentTab].url = url;
   ssh = 0;
   sshstring[0] = '\0';
   url.truncate(sizeof(buf) - 80);
@@ -1070,11 +1068,15 @@ void MainWindow::slotReconnect()
   if(cptr != NULL) *cptr = '\0';
   QApplication::setOverrideCursor( Qt::WaitCursor );
   pvbtab[currentTab].s = tcp_con(buf,iport);
+  if(pvbtab[currentTab].s > 0)
+  {
+    pvbtab[currentTab].in_use = 1;
+  }  
   max = maxtab= 0;
   for(i=0; i<MAX_TABS; i++)
   {
     if(pvbtab[i].s > max) max = pvbtab[i].s;
-    if(pvbtab[i].s != -1) maxtab = i;
+    if(pvbtab[i].in_use)  maxtab = i;
   }
   maxfd = max;
   numTabs = maxtab+1;
@@ -1239,7 +1241,7 @@ void MainWindow::slotTimeOut()
         //statusBar()->setPaletteBackgroundColor(QColor(255,0,0));
         statusBar()->showMessage(l_status_connection_lost);
         if(opt.arg_debug) printf("view->setDisabled\n");
-        view->setDisabled(1);
+        pvbtab[i].rootWidget->setDisabled(1);
         pvbtab[i].interpreter.perhapsCloseModalDialog();
         qApp->beep();
       }
@@ -1287,28 +1289,14 @@ char buf[MAX_PRINTF_LENGTH] = "";
   if(opt.arg_debug > 1) printf("dataReceived:");
   ret = tcp_rec(&pvbtab[ind].s, buf, sizeof(buf)-1);
   if(opt.arg_debug > 1) printf("%s",buf);
-
   if(ret == -1)
   {
-    if(numTabs > 1)
-    {
-      // crash when pvservers are forced to abort -> test if own|qt|os problem
-      opt.closed = 1; // terminate tcp watch/select thread
-      qApp->beep();
-      printf("pvserver(s) aborted abnormally: terminating ...\n");
-      qApp->beep();
-      QMessageBox::critical(this,"MainWindow","pvserver(s) aborted abnormally: terminating ...\nProbably the developer(s) of the corresponding pvserver(s) have restarted a modified visualization.");
-      exit(-1);
-    }
     tcp_close(&pvbtab[ind].s);
     pvbtab[ind].s = -1;
     QPalette palette(QColor(255,0,0));
     statusBar()->setPalette(palette);
-    //statusBar()->setPaletteBackgroundColor(QColor(255,0,0));
     statusBar()->showMessage(l_status_connection_lost);
-    if(opt.arg_debug) printf("view->setDisabled4\n");
-    if(pvbtab[ind].view != NULL) pvbtab[ind].view->setDisabled(1); // crash when pvservers are forced to abort -> test if own|qt|os problem
-    if(opt.arg_debug) printf("view->setDisabled4 end\n");
+    pvbtab[ind].rootWidget->setDisabled(1); 
     pvbtab[ind].interpreter.perhapsCloseModalDialog();
     qApp->beep();
   }

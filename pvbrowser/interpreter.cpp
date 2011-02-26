@@ -79,7 +79,7 @@ Interpreter::Interpreter()
   allModal = allBase = NULL;
   allBase = allModal = 0;
   modalDialog = NULL;
-  v = NULL;
+  mainWidget = NULL;
 
 #ifdef USE_OPEN_GL
   //QGLWidget gl;
@@ -140,14 +140,14 @@ void Interpreter::deleteWidget(QWidget *w)
 
 int Interpreter::width()
 {
-  if(v == NULL) return 1280;
-  return v->width();
+  if(mainWidget == NULL) return 1280;
+  return mainWidget->width();
 }
 
 int Interpreter::height()
 {
-  if(v == NULL) return 1024;
-  return v->height();
+  if(mainWidget == NULL) return 1024;
+  return mainWidget->height();
 }
 
 void Interpreter::myCreateHeuristicMask(QPixmap &pm, QImage *temp)
@@ -999,19 +999,12 @@ void Interpreter::interprete(const char *command)
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("endDefinition begin\n");
-      QWidget *wid = mainWindow->centralWidget();
-      if(wid != NULL)
-      {
-        if(wid->layout() != NULL) delete wid->layout(); //rl removed layout warning
-        mainWindow->view = (MyQWidget *) ((QScrollArea *) wid)->takeWidget();
-        if(mainWindow->view != NULL) delete mainWindow->view;
-      }  
-      mainWindow->view = NULL;
+      delete mainWindow->scroll->takeWidget();
       w = mainWindow->width();
       h = mainWindow->height();
       mainWindow->pvbtab[mainWindow->currentTab].w = w;
       mainWindow->pvbtab[mainWindow->currentTab].h = h;
-      v->resize(w,h);
+      all[0]->w->resize(w,h);
       if(mainWindow->scroll == NULL)
       {
         printf("BIG FAT ERROR: scroll==NULL\n");
@@ -1033,7 +1026,8 @@ void Interpreter::interprete(const char *command)
         mainWindow->scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
         mainWindow->scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
       }
-      mainWindow->scroll->setWidget(v);
+      mainWindow->scroll->setWidget(all[0]->w);
+      mainWindow->pvbtab[mainWindow->currentTab].rootWidget = all[0]->w;
       // workaround for qt
       QApplication::postEvent(mainWindow, new QResizeEvent(QSize(w-1,h-1),QSize(w,h))); // force qt to update sliders
       //QCoreApplication::processEvents();
@@ -1952,11 +1946,9 @@ void Interpreter::interpretr(const char *command)
     }
     else if(i == 0)
     {
-      if(mainWindow->view   != NULL) mainWindow->view->resize(w,h);
       if(mainWindow->scroll != NULL)
       {
         mainWindow->scroll->resize(w,h);
-        //mainWindow->scroll->resizeContents(w,h);
         QEvent event(QEvent::Resize);
         QApplication::sendEvent(mainWindow, &event);
       }
@@ -3876,7 +3868,7 @@ void Interpreter::interprets(const char *command)
     {
       if(opt.arg_debug) printf("startDefinition free(all)\n");
       if(all != NULL) free(all);
-      v = new MyQWidget(s,0,mainWindow);
+      mainWidget = new MyQWidget(s,0,NULL);
     }
     if(opt.arg_debug) printf("startDefinition malloc(all)\n");
     ptr = (char *) malloc(n*sizeof(ptr) + n*sizeof(ALL));
@@ -3887,7 +3879,7 @@ void Interpreter::interprets(const char *command)
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("startDefinition all[0]->w = v;\n");
-      all[0]->w = v;
+      all[0]->w = mainWidget;
       for(int ii=0; ii<MAX_DOCK_WIDGETS; ii++) 
       {
         if(mainWindow->pvbtab[mainWindow->currentTab].dock[ii] != NULL) 
@@ -5534,7 +5526,7 @@ void Interpreter::showMyBrowser(const char *url)
       dlgMyBrowser *browser = new dlgMyBrowser(s,0,mainWindow);
       if(opt.arg_debug) printf("showMyBrowser url=%s\n", url);
       browser->setUrl(url);
-      v = (MyQWidget *) browser;
+      mainWidget = (MyQWidget *) browser;
     }
     if(opt.arg_debug) printf("startDefinition malloc(all)\n");
     ptr = (char *) malloc(n*sizeof(ptr) + n*sizeof(ALL));
@@ -5545,7 +5537,7 @@ void Interpreter::showMyBrowser(const char *url)
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("startDefinition all[0]->w = v;\n");
-      all[0]->w = v;
+      all[0]->w = mainWidget;
     }
     else
     {
@@ -5574,18 +5566,12 @@ void Interpreter::showMyBrowser(const char *url)
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("endDefinition begin\n");
-      QWidget *wid = mainWindow->centralWidget();
-      if(wid != NULL)
-      {
-        mainWindow->view = (MyQWidget *) ((QScrollArea *) wid)->takeWidget();
-        if(mainWindow->view != NULL) delete mainWindow->view;
-      }
-      mainWindow->view = NULL;
+      delete mainWindow->scroll->takeWidget();
       w = mainWindow->width();
       h = mainWindow->height();
       mainWindow->pvbtab[mainWindow->currentTab].w = w;
       mainWindow->pvbtab[mainWindow->currentTab].h = h;
-      v->resize(w,h);
+      all[0]->w->resize(w,h);
       if(mainWindow->scroll == NULL)
       {
         printf("BIG FAT ERROR: scroll==NULL\n");
@@ -5600,7 +5586,7 @@ void Interpreter::showMyBrowser(const char *url)
         mainWindow->scroll->setWidgetResizable(false);
         if(all[0]->w != NULL) all[0]->w->resize(1280,1024); // resize to default screen dimension
       }  
-      mainWindow->scroll->setWidget(v);
+      mainWindow->scroll->setWidget(all[0]->w);
       // workaround for qt
       QApplication::postEvent(mainWindow, new QResizeEvent(QSize(w-1,h-1),QSize(w,h))); // force qt to update sliders
       //QCoreApplication::processEvents();

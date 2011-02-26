@@ -70,7 +70,7 @@ class MainWindow : public QMainWindow
     int in_use;      // 1 if is used else 0
     int w,h;         // width, height
     QString          url;
-    MyQWidget       *view;
+    QWidget         *rootWidget;
     Interpreter      interpreter;
     int              hasLayout;
     MyQDockWidgetPtr dock[MAX_DOCK_WIDGETS];
@@ -85,7 +85,6 @@ public:
   void setCurrentFile(const QString &fileName);
   void setTabText(const char *text);
   QScrollArea *scroll;
-  MyQWidget *view;
   QString curFile;
   QToolBar *fileToolBar;
   QToolBar *tabToolBar;

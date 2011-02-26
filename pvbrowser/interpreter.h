@@ -147,7 +147,7 @@ class Interpreter
     QWidget *mainLayout;
     int      mainLayoutType;
 
-    MyQWidget *v;
+    QWidget *mainWidget;
     int  nmax;
     int  nmaxBase;
     int  nmaxModal;
