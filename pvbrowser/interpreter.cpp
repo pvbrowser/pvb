@@ -4166,7 +4166,7 @@ void Interpreter::interpretv(const char *command)
     {
       strcpy(buf, opt.view_audio);
       strcat(buf, " ");
-      strcat(buf, &command[8]);
+      strcat(buf, &command[10]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
 #ifndef PVWIN32
@@ -4182,7 +4182,7 @@ void Interpreter::interpretv(const char *command)
     {
       strcpy(buf, opt.view_video);
       strcat(buf, " ");
-      strcat(buf, &command[8]);
+      strcat(buf, &command[10]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
 #ifndef PVWIN32

@@ -368,6 +368,14 @@ int i;
         {
           opt.arg_murn = 1;
         }
+        else if(strncmp(buf,"view.audio=",11) == 0)
+        {
+          sscanf(buf,"view.audio=%s",opt.view_audio);
+        }
+        else if(strncmp(buf,"view.video=",11) == 0)
+        {
+          sscanf(buf,"view.video=%s",opt.view_video);
+        }
         else if(strncmp(buf,"view.pdf=",9) == 0)
         {
           sscanf(buf,"view.pdf=%s",opt.view_pdf);
