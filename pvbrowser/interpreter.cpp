@@ -4159,7 +4159,39 @@ void Interpreter::interpretv(const char *command)
     }
   }
 #endif
-  if(strncmp(command,"view.pdf", 8) == 0)
+  if(strncmp(command,"view.audio", 10) == 0)
+  {
+    char *cptr, buf[1024];
+    if(strlen(command) <= (sizeof(buf) - 128))
+    {
+      strcpy(buf, opt.view_audio);
+      strcat(buf, " ");
+      strcat(buf, &command[8]);
+      cptr = strstr(buf,"\n");
+      if(cptr != NULL) *cptr = '\0';
+#ifndef PVWIN32
+      strcat(buf, " &");
+#endif
+      if(strlen(opt.view_audio) >= 3) mysystem(buf);
+    }  
+  }
+  else if(strncmp(command,"view.video", 10) == 0)
+  {
+    char *cptr, buf[1024];
+    if(strlen(command) <= (sizeof(buf) - 128))
+    {
+      strcpy(buf, opt.view_video);
+      strcat(buf, " ");
+      strcat(buf, &command[8]);
+      cptr = strstr(buf,"\n");
+      if(cptr != NULL) *cptr = '\0';
+#ifndef PVWIN32
+      strcat(buf, " &");
+#endif
+      if(strlen(opt.view_video) >= 3) mysystem(buf);
+    }  
+  }
+  else if(strncmp(command,"view.pdf", 8) == 0)
   {
     char *cptr, buf[1024];
     if(strlen(command) <= (sizeof(buf) - 128))

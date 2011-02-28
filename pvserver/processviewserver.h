@@ -817,7 +817,9 @@ Commands understood by client:
            txt-viewer
            csv-viewer
            html-viewer
-command := pdf | img | svg | txt | csv | html 
+           audio-player
+           video-player
+command := pdf | img | svg | txt | csv | html | audio | video
 </pre> */
 int pvClientCommand(PARAM *p, const char *command, const char *filename);
 /** @} */ // end of group

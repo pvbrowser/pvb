@@ -52,6 +52,8 @@ typedef struct
   int  codec;               // strongly advised to use pvbUTF8
   int  closed;
   int  cookies;             // 0=NO 1=YES 2=ASK
+  char view_audio[MAXOPT];  // vlc
+  char view_video[MAXOPT];  // vlc
   char view_pdf[MAXOPT];    // okular
   char view_img[MAXOPT];    // gimp
   char view_svg[MAXOPT];    // inkscape

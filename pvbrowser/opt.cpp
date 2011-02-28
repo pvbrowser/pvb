@@ -241,6 +241,8 @@ int i;
   opt.customlogo[0] = '\0';
   opt.newwindow[0] = '\0';
   opt.ssh[0] = '\0';
+  opt.view_audio[0] = '\0';
+  opt.view_video[0] = '\0';
   opt.view_pdf[0] = '\0';
   opt.view_img[0] = '\0';
   opt.view_svg[0] = '\0';
@@ -487,6 +489,8 @@ int i;
         fprintf(fp,"view.txt=\"c:\\windows\\system32\\write\"\n");
         fprintf(fp,"view.csv=\"c:\\path\\to\\ooffice\"\n");
         fprintf(fp,"view.html=\"c:\\path\\to\\firefox\"\n");
+        fprintf(fp,"view.audio=\"c:\\path\\to\\vlc\"\n");
+        fprintf(fp,"view.video=\"c:\\path\\to\\vlc\"\n");
 #elif   defined(PVMAC)
         fprintf(fp,"view.pdf=okular\n");
         fprintf(fp,"view.img=gimp\n");
@@ -494,6 +498,8 @@ int i;
         fprintf(fp,"view.txt=kwrite\n");
         fprintf(fp,"view.csv=ooffice\n");
         fprintf(fp,"view.html=firefox\n");
+        fprintf(fp,"view.audio=vlc\n");
+        fprintf(fp,"view.video=vlc\n");
 #elif   defined(PVUNIX)
         fprintf(fp,"view.pdf=okular\n");
         fprintf(fp,"view.img=gimp\n");
@@ -501,6 +507,8 @@ int i;
         fprintf(fp,"view.txt=kwrite\n");
         fprintf(fp,"view.csv=ooffice\n");
         fprintf(fp,"view.html=firefox\n");
+        fprintf(fp,"view.audio=vlc\n");
+        fprintf(fp,"view.video=vlc\n");
 #endif
 
         fprintf(fp,"##################################################################\n");
