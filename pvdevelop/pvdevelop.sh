@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 export PYTHON_INCLUDE=$(find /usr/include -name "python2.*")
 if [ "x${PYTHON_INCLUDE}" = "x" ]; then

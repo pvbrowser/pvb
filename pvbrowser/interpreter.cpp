@@ -3269,12 +3269,14 @@ void Interpreter::interprets(const char *command)
           if(strncmp(text.toUtf8(),"alloc(",6) == 0) // allocate big buffer for big text
           {
             int len,ret;
-            char *buf;
+            char *buf, *cptr;
             sscanf(text.toUtf8(),"alloc(%d,",&len);
             //printf("alloc(%d)\n",len);
             buf = new char[len+1];
             ret = tcp_rec_binary(s, buf, len);
             buf[len] = '\0';
+            cptr = &buf[0];
+            while((cptr = strchr(cptr,27)) != NULL) *cptr = '\n'; // escape
             //text = buf; // this didn't support unicode, fixed in next line
             text = QString::fromUtf8(buf);
             buf[len] = '\0';
