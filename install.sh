@@ -60,8 +60,6 @@ cp    custom.bmp                                          /opt/pvb/
 cp    gamsleiten.png                                      /opt/pvb/
 cp    pvbrowser.desktop                                   /opt/pvb/
 cp    pvdevelop.desktop                                   /opt/pvb/
-cp    pvserver/libpvsid.so.1.0.0                          /opt/pvb/pvserver/
-cp    pvserver/libpvsmt.so.1.0.0                          /opt/pvb/pvserver/
 cp    pvserver/wthread.h                                  /opt/pvb/pvserver/
 cp    pvserver/BMP.h                                      /opt/pvb/pvserver/
 cp    pvserver/vmsglext.h                                 /opt/pvb/pvserver/
@@ -77,21 +75,12 @@ cp    start_pvbapp/example.ini.linux                      /opt/pvb/start_pvbapp/
 cp    start_pvbapp/start_if_not_already_running.sh        /opt/pvb/start_pvbapp/
 cp    rllib/rlsvg/rlsvgcat                                /opt/pvb/rllib/rlsvg/
 cp    rllib/rlhistory/rlhistory                           /opt/pvb/rllib/rlhistory/
-cp    rllib/lib/librllib.so.1.0.0                         /opt/pvb/rllib/lib/
 cp    rllib/lib/*.h                                       /opt/pvb/rllib/lib/
 cp    rllib/lib/nodave.o                                  /opt/pvb/rllib/lib/
 cp    rllib/lib/setport.o                                 /opt/pvb/rllib/lib/
 cp    language_bindings/lua/pvslua/pvslua                 /opt/pvb/language_bindings/lua/pvslua/
 cp    language_bindings/lua/pvapplua/pvapplua             /opt/pvb/language_bindings/lua/pvapplua/
-cp    language_bindings/python/id/pv.py                   /opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/_pv.so                  /opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/rllib.py                /opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/_rllib.so               /opt/pvb/language_bindings/python/id/
 cp    language_bindings/README_PYTHON.txt                 /opt/pvb/language_bindings/
-cp    language_bindings/python/mt/pv.py                   /opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/_pv.so                  /opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/rllib.py                /opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/_rllib.so               /opt/pvb/language_bindings/python/mt/
 cp    language_bindings/python/template/main.cpp          /opt/pvb/language_bindings/python/template/
 cp    language_bindings/python/template/Makefile          /opt/pvb/language_bindings/python/template/
 cp    language_bindings/python/template/mask1.cpp         /opt/pvb/language_bindings/python/template/
@@ -101,65 +90,89 @@ cp    language_bindings/python/template/pvapp.h           /opt/pvb/language_bind
 cp    language_bindings/python/template/pvs_init.py       /opt/pvb/language_bindings/python/template/
 cp    language_bindings/python/template/pvs.pro           /opt/pvb/language_bindings/python/template/
 cp    language_bindings/python/template/pvs.pvproject     /opt/pvb/language_bindings/python/template/
-cp    designer/plugins/libpvb_designer_plugin.so          /opt/pvb/designer/plugins/
-cp    designer/plugins/libqwt_designer_plugin.so          /opt/pvb/designer/plugins/
 cp    designer/README.txt                                 /opt/pvb/designer/
-cp    browserplugin/libpvbrowser.so                       /opt/pvb/browserplugin/
 cp    browserplugin/pvbrowserplugin-example.html          /opt/pvb/browserplugin/
 cp    browserplugin/README.txt                            /opt/pvb/browserplugin/
+if [ "$PVB_OSTYPE" == "linux" ]; then
+echo 'copy shared objects on linux'
+cp    browserplugin/libpvbrowser.so                       /opt/pvb/browserplugin/
+cp    language_bindings/python/mt/pv.py                   /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/mt/_pv.so                  /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/mt/rllib.py                /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/mt/_rllib.so               /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/id/pv.py                   /opt/pvb/language_bindings/python/id/
+cp    language_bindings/python/id/_pv.so                  /opt/pvb/language_bindings/python/id/
+cp    language_bindings/python/id/rllib.py                /opt/pvb/language_bindings/python/id/
+cp    language_bindings/python/id/_rllib.so               /opt/pvb/language_bindings/python/id/
+cp    designer/plugins/libpvb_designer_plugin.so          /opt/pvb/designer/plugins/
+cp    designer/plugins/libqwt_designer_plugin.so          /opt/pvb/designer/plugins/
+cp    pvserver/libpvsid.so.1.0.0                          /opt/pvb/pvserver/
+cp    pvserver/libpvsmt.so.1.0.0                          /opt/pvb/pvserver/
+cp    rllib/lib/librllib.so.1.0.0                         /opt/pvb/rllib/lib/
+else
+echo 'copy shared objects on OS-X'
+cp    designer/plugins/libpvb_designer_plugin.dylib       /opt/pvb/designer/plugins/
+cp    designer/plugins/libqwt_designer_plugin.dylib       /opt/pvb/designer/plugins/
+cp    pvserver/libpvsid.dylib                             /opt/pvb/pvserver/
+cp    pvserver/libpvsmt.dylib                             /opt/pvb/pvserver/
+cp    rllib/lib/librllib.dylib                            /opt/pvb/rllib/lib/
+fi
+
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
-
 echo 'set links on linux'
-ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so
-ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1
-ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1.0
-ln -sf /opt/pvb/pvserver/libpvsid.so   /usr/lib/libpvsid.so.1.0.0
+ln -sf /opt/pvb/pvbrowser/pvbrowser                     /usr/bin/pvbrowser
+cp /opt/pvb/pvdevelop/pvdevelop.sh                      /usr/bin/pvdevelop
+ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
+ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
+ln -sf /opt/pvb/start_pvbapp/start_pvbapp               /usr/bin/start_pvbapp
+ln -sf /opt/pvb/rllib/rlhistory/rlhistory               /usr/bin/rlhistory
+ln -sf /opt/pvb/update_pvbrowser.sh                     /usr/bin/update_pvbrowser
+ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua     /usr/bin/pvslua
+ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua /usr/bin/pvapplua
 
-ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so
-ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1
-ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0
-ln -sf /opt/pvb/pvserver/libpvsmt.so   /usr/lib/libpvsmt.so.1.0.0
+ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so
+ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so.1
+ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so.1.0
+ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so.1.0.0
 
-#ln -sf /opt/pvb/pvbrowser/pvbrowser                /usr/local/bin/pvbrowser_system
-#ln -sf /opt/pvb/tested_qt/pvbrowser_tested.sh      /usr/local/bin/pvbrowser
-#ln -sf /opt/pvb/pvdevelop/pvdevelop                /usr/local/bin/pvdevelop_system
-#ln -sf /opt/pvb/tested_qt/pvdevelop_tested.sh      /usr/local/bin/pvdevelop
-ln -sf /opt/pvb/pvbrowser/pvbrowser                 /usr/local/bin/pvbrowser
-#ln -sf /opt/pvb/pvdevelop/pvdevelop                 /usr/local/bin/pvdevelop
-cp /opt/pvb/pvdevelop/pvdevelop.sh                  /usr/local/bin/pvdevelop
-ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                /usr/local/bin/rlsvgcat
-ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                /usr/bin/rlsvgcat
-ln -sf /opt/pvb/start_pvbapp/start_pvbapp           /usr/local/bin/start_pvbapp
-ln -sf /opt/pvb/rllib/rlhistory/rlhistory           /usr/local/bin/rlhistory
-ln -sf /opt/pvb/update_pvbrowser.sh                 /usr/local/bin/update_pvbrowser
-ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua     /usr/local/bin/pvslua
-ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua /usr/local/bin/pvapplua
+ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so
+ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so.1
+ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so.1.0
+ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so.1.0.0
 
-ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so
-ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1
-ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1.0
-ln -sf /opt/pvb/rllib/lib/librllib.so   /usr/lib/librllib.so.1.0.0
-
+ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so
+ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1
+ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1.0
+ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1.0.0
 echo 'Now running ldconfig...'
 ldconfig
 
 else 
-
 echo 'set links on OS-X'
+ln -sf /opt/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser                     /usr/bin/pvbrowser
+ln -sf /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop                     /usr/bin/pvdevelop
+ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp            /usr/bin/start_pvbapp
+ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat                     /usr/bin/rlsvgcat
+ln -sf /opt/pvb/rllib/rlhistory/rlhistory.app/Contents/MacOS/rlhistory               /usr/bin/rlhistory
+ln -sf /opt/pvb/update_pvbrowser.sh                                                  /usr/bin/update_pvbrowser
+ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua.app/Contents/MacOS/pvslua        /usr/bin/pvslua
+ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua.app/Contents/MacOS/pvapplua  /usr/bin/pvapplua
 
-ln -sf /opt/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser           /usr/bin/pvbrowser
-ln -sf /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop           /usr/bin/pvdevelop
-ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp  /usr/local/bin/start_pvbapp
-ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat           /usr/bin/rlsvgcat
-ln -sf /opt/pvb/rllib/rlhistory/rlhistory.app/Contents/MacOS/rlhistory     /usr/bin/rlhistory
-ln -sf /opt/pvb/update_pvbrowser.sh                                        /usr/bin/update_pvbrowser
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib.1
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib.1.0
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib.1.0.0
 
-ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib
-ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1
-ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1.0
-ln -sf /opt/pvb/rllib/lib/librllib.dylib  /usr/lib/librllib.dylib.1.0.0
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib.1
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib.1.0
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib.1.0.0
 
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1.0
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1.0.0
 fi
 
 echo 'Makeing /opt/pvb/pvsexample writeable...'
@@ -169,15 +182,12 @@ cd /opt/pvb/pvsexample
 chmod ugoa+w *
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
-
 echo 'creating pvbrowserdemo...'
-echo '#!/bin/bash'                                                                     > /usr/local/bin/pvbrowserdemo
-echo '# run pvsexample'                                                               >> /usr/local/bin/pvbrowserdemo
-echo 'xterm -e "/opt/pvb/pvsexample/pvsexample -cd=/opt/pvb/pvsexample -sleep=300" &' >> /usr/local/bin/pvbrowserdemo
-echo 'pvbrowser &'                                                                    >> /usr/local/bin/pvbrowserdemo
-chmod ugoa+x /usr/local/bin/pvbrowserdemo
-#cp /opt/pvb/tested_qt/qt.conf /opt/pvb/pvbrowser/
-#cp /opt/pvb/tested_qt/qt.conf /opt/pvb/pvdevelop/
+echo '#!/bin/bash'                                                                     > /usr/bin/pvbrowserdemo
+echo '# run pvsexample'                                                               >> /usr/bin/pvbrowserdemo
+echo 'xterm -e "/opt/pvb/pvsexample/pvsexample -cd=/opt/pvb/pvsexample -sleep=300" &' >> /usr/bin/pvbrowserdemo
+echo 'pvbrowser &'                                                                    >> /usr/bin/pvbrowserdemo
+chmod ugoa+x /usr/bin/pvbrowserdemo
 
 echo 'begin copy Qt Designer plugins to destination'
 export PLUGIN=$(find /usr/lib64/qt4/plugins/ -name designer)
@@ -200,11 +210,13 @@ echo '# commands:                                                    #'
 echo '#   pvbrowserdemo                                              #'
 echo '#   pvbrowser                                                  #'
 echo '#   pvdevelop                                                  #'
+echo '#   pvslua                                  - the lua pvserver #'
 echo '#   Hint: copy the following shortcuts to your desktop         #'
 echo '#   /opt/pvb/pvbrowser.desktop /opt/pvb/pvdevelop.desktop      #'
 echo '#                                                              #'
 echo '# Example pvserver:                                            #'
 echo '#   cd /opt/pvb/pvsexample                                     #'
+echo '#   qmake pvsexample.pro                                       #'
 echo '#   make clean                                                 #'
 echo '#   make                                                       #'
 echo '#   ./pvsexample -sleep=100                                    #'
