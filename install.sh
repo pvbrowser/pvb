@@ -29,7 +29,7 @@ fi
 
 ./uninstall.sh
 
-echo 'Now installing new version of pvbrowser...'
+echo 'installing new version of pvbrowser...'
 mkdir -p /srv/automation/shm
 mkdir -p /srv/automation/mbx
 mkdir -p /srv/automation/log
@@ -52,8 +52,11 @@ mkdir -p  /opt/pvb/language_bindings/python/mt
 mkdir -p  /opt/pvb/language_bindings/python/template
 mkdir -p  /opt/pvb/browserplugin
 
+echo 'copy documentation...'
 cp -r doc                                                 /opt/pvb/
+echo 'copy pvsexample...'
 cp -r pvsexample                                          /opt/pvb/
+echo 'copy other files...'
 cp    LICENSE.GPL                                         /opt/pvb/
 cp    logo1.xpm                                           /opt/pvb/
 cp    custom.bmp                                          /opt/pvb/
@@ -94,7 +97,7 @@ cp    designer/README.txt                                 /opt/pvb/designer/
 cp    browserplugin/pvbrowserplugin-example.html          /opt/pvb/browserplugin/
 cp    browserplugin/README.txt                            /opt/pvb/browserplugin/
 if [ "$PVB_OSTYPE" == "linux" ]; then
-echo 'copy shared objects on linux'
+echo 'copy shared objects on linux...'
 cp    browserplugin/libpvbrowser.so                       /opt/pvb/browserplugin/
 cp    language_bindings/python/mt/pv.py                   /opt/pvb/language_bindings/python/mt/
 cp    language_bindings/python/mt/_pv.so                  /opt/pvb/language_bindings/python/mt/
@@ -110,7 +113,7 @@ cp    pvserver/libpvsid.so.1.0.0                          /opt/pvb/pvserver/
 cp    pvserver/libpvsmt.so.1.0.0                          /opt/pvb/pvserver/
 cp    rllib/lib/librllib.so.1.0.0                         /opt/pvb/rllib/lib/
 else
-echo 'copy shared objects on OS-X'
+echo 'copy shared objects on OS-X ...'
 cp    designer/plugins/libpvb_designer_plugin.dylib       /opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.dylib       /opt/pvb/designer/plugins/
 cp    pvserver/libpvsid.dylib                             /opt/pvb/pvserver/
@@ -120,7 +123,7 @@ fi
 
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
-echo 'set links on linux'
+echo 'set links on linux...'
 ln -sf /opt/pvb/pvbrowser/pvbrowser                     /usr/bin/pvbrowser
 cp /opt/pvb/pvdevelop/pvdevelop.sh                      /usr/bin/pvdevelop
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
@@ -145,11 +148,11 @@ ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so
 ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1
 ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1.0
 ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1.0.0
-echo 'Now running ldconfig...'
+echo 'running ldconfig...'
 ldconfig
 
 else 
-echo 'set links on OS-X'
+echo 'set links on OS-X ...'
 ln -sf /opt/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser                     /usr/bin/pvbrowser
 ln -sf /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop                     /usr/bin/pvdevelop
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp            /usr/bin/start_pvbapp
@@ -175,7 +178,7 @@ ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1.0
 ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1.0.0
 fi
 
-echo 'Makeing /opt/pvb/pvsexample writeable...'
+echo 'makeing /opt/pvb/pvsexample writeable...'
 cd /opt/pvb
 chmod ugoa+w pvsexample
 cd /opt/pvb/pvsexample
@@ -189,28 +192,31 @@ echo 'xterm -e "/opt/pvb/pvsexample/pvsexample -cd=/opt/pvb/pvsexample -sleep=30
 echo 'pvbrowser &'                                                                    >> /usr/bin/pvbrowserdemo
 chmod ugoa+x /usr/bin/pvbrowserdemo
 
-echo 'begin copy Qt Designer plugins to destination'
-export PLUGIN=$(find /usr/lib64/qt4/plugins/ -name designer)
-if [ "x$PLUGIN" != "x" ]; then
-echo copy plugins to $PLUGIN/
-cp /opt/pvb/designer/plugins/* $PLUGIN/
-fi
-export PLUGIN=$(find /usr/lib/qt4/plugins/ -name designer)
-if [ "x$PLUGIN" != "x" ]; then
-echo copy plugins to $PLUGIN/
-cp /opt/pvb/designer/plugins/* $PLUGIN/
-fi
-echo 'end copy Qt Designer plugins to destination'
+# copy qt designer plugins to destination
+if [ -d /usr/lib64/qt4/plugins ]; then
+  export PLUGIN=$(find /usr/lib64/qt4/plugins/ -name designer)
+  if [ "x$PLUGIN" != "x" ]; then
+  echo copy qt designer plugins to $PLUGIN/ ...
+  cp /opt/pvb/designer/plugins/* $PLUGIN/
+  fi
+fi  
+if [ -d /usr/lib/qt4/plugins ]; then
+  export PLUGIN=$(find /usr/lib/qt4/plugins/ -name designer)
+  if [ "x$PLUGIN" != "x" ]; then
+  echo copy qt designer plugins to $PLUGIN/ ...
+  cp /opt/pvb/designer/plugins/* $PLUGIN/
+  fi
+fi  
 fi
 
 echo '################################################################'
 echo '# pvbrowser is now installed !!!                               #'
 echo '# Have a lot of fun                                            #'
 echo '# commands:                                                    #'
-echo '#   pvbrowserdemo                                              #'
-echo '#   pvbrowser                                                  #'
-echo '#   pvdevelop                                                  #'
-echo '#   pvslua                                  - the lua pvserver #'
+echo '#   pvbrowserdemo         - a small demo                       #'
+echo '#   pvbrowser             - pvbrowser client                   #'
+echo '#   pvdevelop             - integrated development environment #'
+echo '#   pvslua                - the lua pvserver                   #'
 echo '#   Hint: copy the following shortcuts to your desktop         #'
 echo '#   /opt/pvb/pvbrowser.desktop /opt/pvb/pvdevelop.desktop      #'
 echo '#                                                              #'
