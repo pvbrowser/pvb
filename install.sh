@@ -34,8 +34,79 @@ mkdir -p /srv/automation/shm
 mkdir -p /srv/automation/mbx
 mkdir -p /srv/automation/log
 chmod -R ugoa+rwx /srv/automation
-mkdir -p /opt/pvb
-cp -r . /opt/pvb/
+mkdir -p  /opt/pvb
+mkdir -p  /opt/pvb/doc
+mkdir -p  /opt/pvb/pvsexample
+mkdir -p  /opt/pvb/pvserver
+mkdir -p  /opt/pvb/pvbrowser
+mkdir -p  /opt/pvb/pvdevelop
+mkdir -p  /opt/pvb/start_pvbapp
+mkdir -p  /opt/pvb/designer/plugins
+mkdir -p  /opt/pvb/rllib/lib
+mkdir -p  /opt/pvb/rllib/rlsvg
+mkdir -p  /opt/pvb/rllib/rlhistory
+mkdir -p  /opt/pvb/language_bindings/lua/pvslua
+mkdir -p  /opt/pvb/language_bindings/lua/pvapplua
+mkdir -p  /opt/pvb/language_bindings/python/id
+mkdir -p  /opt/pvb/language_bindings/python/mt
+mkdir -p  /opt/pvb/language_bindings/python/template
+mkdir -p  /opt/pvb/browserplugin
+
+cp -r doc                                                 /opt/pvb/
+cp -r pvsexample                                          /opt/pvb/
+cp    LICENSE.GPL                                         /opt/pvb/
+cp    logo1.xpm                                           /opt/pvb/
+cp    custom.bmp                                          /opt/pvb/
+cp    gamsleiten.png                                      /opt/pvb/
+cp    pvbrowser.desktop                                   /opt/pvb/
+cp    pvdevelop.desktop                                   /opt/pvb/
+cp    pvserver/libpvsid.so.1.0.0                          /opt/pvb/pvserver/
+cp    pvserver/libpvsmt.so.1.0.0                          /opt/pvb/pvserver/
+cp    pvserver/wthread.h                                  /opt/pvb/pvserver/
+cp    pvserver/BMP.h                                      /opt/pvb/pvserver/
+cp    pvserver/vmsglext.h                                 /opt/pvb/pvserver/
+cp    pvserver/pvbImage.h                                 /opt/pvb/pvserver/
+cp    pvserver/vmsgl.h                                    /opt/pvb/pvserver/
+cp    pvserver/processviewserver.h                        /opt/pvb/pvserver/
+cp    pvbrowser/pvbrowser                                 /opt/pvb/pvbrowser/
+cp    pvdevelop/pvdevelop                                 /opt/pvb/pvdevelop/
+cp    pvdevelop/pvdevelop.sh                              /opt/pvb/pvdevelop/
+cp    start_pvbapp/start_pvbapp                           /opt/pvb/start_pvbapp/
+cp    start_pvbapp/README.txt                             /opt/pvb/start_pvbapp/
+cp    start_pvbapp/example.ini.linux                      /opt/pvb/start_pvbapp/example.ini
+cp    start_pvbapp/start_if_not_already_running.sh        /opt/pvb/start_pvbapp/
+cp    rllib/rlsvg/rlsvgcat                                /opt/pvb/rllib/rlsvg/
+cp    rllib/rlhistory/rlhistory                           /opt/pvb/rllib/rlhistory/
+cp    rllib/lib/librllib.so.1.0.0                         /opt/pvb/rllib/lib/
+cp    rllib/lib/*.h                                       /opt/pvb/rllib/lib/
+cp    rllib/lib/nodave.o                                  /opt/pvb/rllib/lib/
+cp    rllib/lib/setport.o                                 /opt/pvb/rllib/lib/
+cp    language_bindings/lua/pvslua/pvslua                 /opt/pvb/language_bindings/lua/pvslua/
+cp    language_bindings/lua/pvapplua/pvapplua             /opt/pvb/language_bindings/lua/pvapplua/
+cp    language_bindings/python/id/pv.py                   /opt/pvb/language_bindings/python/id/
+cp    language_bindings/python/id/_pv.so                  /opt/pvb/language_bindings/python/id/
+cp    language_bindings/python/id/rllib.py                /opt/pvb/language_bindings/python/id/
+cp    language_bindings/python/id/_rllib.so               /opt/pvb/language_bindings/python/id/
+cp    language_bindings/README_PYTHON.txt                 /opt/pvb/language_bindings/
+cp    language_bindings/python/mt/pv.py                   /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/mt/_pv.so                  /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/mt/rllib.py                /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/mt/_rllib.so               /opt/pvb/language_bindings/python/mt/
+cp    language_bindings/python/template/main.cpp          /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/Makefile          /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/mask1.cpp         /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/mask1.py          /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/mask1_slots.h     /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/pvapp.h           /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/pvs_init.py       /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/pvs.pro           /opt/pvb/language_bindings/python/template/
+cp    language_bindings/python/template/pvs.pvproject     /opt/pvb/language_bindings/python/template/
+cp    designer/plugins/libpvb_designer_plugin.so          /opt/pvb/designer/plugins/
+cp    designer/plugins/libqwt_designer_plugin.so          /opt/pvb/designer/plugins/
+cp    designer/README.txt                                 /opt/pvb/designer/
+cp    browserplugin/libpvbrowser.so                       /opt/pvb/browserplugin/
+cp    browserplugin/pvbrowserplugin-example.html          /opt/pvb/browserplugin/
+cp    browserplugin/README.txt                            /opt/pvb/browserplugin/
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
 
@@ -96,40 +167,6 @@ cd /opt/pvb
 chmod ugoa+w pvsexample
 cd /opt/pvb/pvsexample
 chmod ugoa+w *
-
-echo 'Deleting not needed files...'
-cd /opt/pvb
-rm -rf win
-rm -rf qwt
-rm -rf inc
-rm -f  install* build* clean* *.spec edit porting* todo* vms* *.bat
-export notNeeded='*~ *.cpp *.h *.pro *.ui *.o *.exe *.obj *.bat *.sh *.xpm *.qrc *.txt PVT* Makefile edit'
-cd /opt/pvb/pvbrowser
-rm -rf images
-rm -f $notNeeded
-cd /opt/pvb/browserplugin
-rm -rf images
-rm -f $notNeeded
-cd /opt/pvb/pvdevelop
-rm -rf images
-rm -f $notNeeded
-cd /opt/pvb/pvserver
-rm -f *~ *.o *.exe *.obj PVT*
-cd /opt/pvb/pvsexample
-rm -f *~ *.o *.exe *.obj PVT*
-cd /opt/pvb/rllib/lib
-rm -f *~ *.cpp rl*.o *.pro Makefile
-cd /opt/pvb/rllib/rlsvg
-rm -f *~ *.cpp *.o *.pro Makefile
-cd /opt/pvb/rllib
-rm -rf foreign
-cd /opt/pvb/designer
-rm -rf src
-cd /opt/pvb/language_bindings
-rm -f *.cxx *.o *.i *.py *.cpp *.sh *.txt Makefile
-cd /opt/pvb
-rm -rf win-mingw
-rm -f Readme_for_*.txt
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
 

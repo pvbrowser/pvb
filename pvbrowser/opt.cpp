@@ -220,7 +220,7 @@ const char *pvpass(const char *p)
 const char *readIniFile()
 {
 FILE *fp;
-char buf[MAXOPT],buf2[MAXOPT];
+char buf[MAXOPT],buf2[MAXOPT],cmd[MAXOPT];
 const char *cptr;
 int i;
 
@@ -294,6 +294,10 @@ int i;
         {
           int ret;
           sscanf(buf,"temp=%s",buf2);
+#ifdef PVUNIX
+          sprintf(cmd,"mkdir -p %s", buf2);
+          if(system(cmd) != 0) printf("could not create temporary directory: %s\n", cmd);
+#endif
 #ifdef PVWIN32
           ExpandEnvironmentStrings(buf2,buf,sizeof(buf)-1);
           if(strstr(buf,"%") != NULL) QMessageBox::warning(NULL,buf,"readIniFile temp directory unknown: adjust pvbrowser.ini temp=");
@@ -460,7 +464,10 @@ int i;
         fprintf(fp,"echo_table_updates=0 # 0|1\n");
         fprintf(fp,"# temporary directory\n");
 #ifdef PVUNIX
-        fprintf(fp,"temp=/tmp\n");
+        sprintf(buf,"mkdir -p /tmp/pvb-%s", getenv("USER"));
+        if(system(buf) != 0) printf("could not create temporary directory: %s\n", buf);
+        sprintf(buf,"temp=/tmp/pvb-%s\n", getenv("USER"));
+        fprintf(fp,buf);
 #endif
 #ifdef PVWIN32
         //fprintf(fp,"temp=%%PVBDIR%%\\win\\temp\n");
