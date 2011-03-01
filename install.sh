@@ -109,9 +109,9 @@ cp    language_bindings/python/id/rllib.py                /opt/pvb/language_bind
 cp    language_bindings/python/id/_rllib.so               /opt/pvb/language_bindings/python/id/
 cp    designer/plugins/libpvb_designer_plugin.so          /opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.so          /opt/pvb/designer/plugins/
-cp    pvserver/libpvsid.so.1.0.0                          /opt/pvb/pvserver/
-cp    pvserver/libpvsmt.so.1.0.0                          /opt/pvb/pvserver/
-cp    rllib/lib/librllib.so.1.0.0                         /opt/pvb/rllib/lib/
+cp    pvserver/libpvsid.so                                /opt/pvb/pvserver/
+cp    pvserver/libpvsmt.so                                /opt/pvb/pvserver/
+cp    rllib/lib/librllib.so                               /opt/pvb/rllib/lib/
 else
 echo 'copy shared objects on OS-X ...'
 cp    designer/plugins/libpvb_designer_plugin.dylib       /opt/pvb/designer/plugins/
@@ -134,20 +134,20 @@ ln -sf /opt/pvb/update_pvbrowser.sh                     /usr/bin/update_pvbrowse
 ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua     /usr/bin/pvslua
 ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua /usr/bin/pvapplua
 
-ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so
-ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so.1
-ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so.1.0
-ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0   /usr/lib/librllib.so.1.0.0
+ln -sf /opt/pvb/rllib/lib/librllib.so         /usr/lib/librllib.so
+ln -sf /opt/pvb/rllib/lib/librllib.so         /usr/lib/librllib.so.1
+ln -sf /opt/pvb/rllib/lib/librllib.so         /usr/lib/librllib.so.1.0
+ln -sf /opt/pvb/rllib/lib/librllib.so         /usr/lib/librllib.so.1.0.0
 
-ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so
-ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so.1
-ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so.1.0
-ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0    /usr/lib/libpvsid.so.1.0.0
+ln -sf /opt/pvb/pvserver/libpvsid.so          /usr/lib/libpvsid.so
+ln -sf /opt/pvb/pvserver/libpvsid.so          /usr/lib/libpvsid.so.1
+ln -sf /opt/pvb/pvserver/libpvsid.so          /usr/lib/libpvsid.so.1.0
+ln -sf /opt/pvb/pvserver/libpvsid.so          /usr/lib/libpvsid.so.1.0.0
 
-ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so
-ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1
-ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1.0
-ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0    /usr/lib/libpvsmt.so.1.0.0
+ln -sf /opt/pvb/pvserver/libpvsmt.so          /usr/lib/libpvsmt.so
+ln -sf /opt/pvb/pvserver/libpvsmt.so          /usr/lib/libpvsmt.so.1
+ln -sf /opt/pvb/pvserver/libpvsmt.so          /usr/lib/libpvsmt.so.1.0
+ln -sf /opt/pvb/pvserver/libpvsmt.so          /usr/lib/libpvsmt.so.1.0.0
 echo 'running ldconfig...'
 ldconfig
 
