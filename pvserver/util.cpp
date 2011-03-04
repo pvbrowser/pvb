@@ -6349,15 +6349,16 @@ int pvWidgetIdManager::newId(const char *name)
     printf("pvWidgetIdManager::newId(%s) ERROR name is already in map\n", name);
     return id(name);
   }
-  for(int i=0; i<num_additional_widgets; i++)
+  for(int i=0; i<(id_start + num_additional_widgets); i++)
   {
-    if(free[id_start + i] == -1)
+    if(free[i] == -1)
     {
-      free[id_start +i] = i;
-      id_list[name] = id_start + i;
-      return id_start + i;
+      free[i] = i;
+      id_list[name] = i;
+      return i;
     }
   }
+  printf("pvWidgetIdManager::newId(%s) ERROR no more free id left\n", name);
   return -1;
 }
 
