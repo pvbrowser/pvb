@@ -40,10 +40,14 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a01b08654b9a2addad5c565303dc684e7">id</a> (const char *name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a0d9ff6716af90f3db87b94b71d9a6fc7">isInMap</a> (const char *name)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a2f3a57f922b382f8a2abc1be3c47e4b5">isInMap</a> (int id)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a9105b3ac3cbcbd929a0d8da6e0b9d770">first</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a4657918264b74535952b10a83688b00c">next</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#ab8570041391121cfde6f0d1cc30b78b9">end</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a98efdfa4d4736ccb80232166ff082ab5">firstId</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a68e972f1c858a688c51d6048d19979b4">nextId</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a59327d2e4575e9d10e653b06372d2eb2">endId</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#af7017aa954749fe3da3db4dde72439a1">name</a> (int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a624867fef109c81ba92e138a1267817b">idStart</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#ae0de419611c3cb5668583d5426b436ce">readEnumFromMask</a> (const char *maskname)</td></tr>
+<tr><td colspan="2"><h2>Private Member Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#aabae5e7df18a28b0bf98f66734864b1a">insertBasicId</a> (int id, const char *name)</td></tr>
 <tr><td colspan="2"><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a1c366807af02f4e9f0f8fa7fb69d91e1">id_start</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html#a34060f0329ff1ea11897885d3c903d20">num_additional_widgets</a></td></tr>
@@ -144,12 +148,12 @@ DATA;</pre><pre>static int slotInit(PARAM *p, DATA *d)
 
 </div>
 </div>
-<a class="anchor" id="ab8570041391121cfde6f0d1cc30b78b9"></a><!-- doxytag: member="pvWidgetIdManager::end" ref="ab8570041391121cfde6f0d1cc30b78b9" args="()" -->
+<a class="anchor" id="a59327d2e4575e9d10e653b06372d2eb2"></a><!-- doxytag: member="pvWidgetIdManager::endId" ref="a59327d2e4575e9d10e653b06372d2eb2" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int pvWidgetIdManager::end </td>
+          <td class="memname">int pvWidgetIdManager::endId </td>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
@@ -161,12 +165,12 @@ DATA;</pre><pre>static int slotInit(PARAM *p, DATA *d)
 
 </div>
 </div>
-<a class="anchor" id="a9105b3ac3cbcbd929a0d8da6e0b9d770"></a><!-- doxytag: member="pvWidgetIdManager::first" ref="a9105b3ac3cbcbd929a0d8da6e0b9d770" args="()" -->
+<a class="anchor" id="a98efdfa4d4736ccb80232166ff082ab5"></a><!-- doxytag: member="pvWidgetIdManager::firstId" ref="a98efdfa4d4736ccb80232166ff082ab5" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int pvWidgetIdManager::first </td>
+          <td class="memname">int pvWidgetIdManager::firstId </td>
           <td>(</td>
           <td class="paramname"></td>
           <td>&nbsp;)&nbsp;</td>
@@ -196,6 +200,23 @@ DATA;</pre><pre>static int slotInit(PARAM *p, DATA *d)
 
 </div>
 </div>
+<a class="anchor" id="a624867fef109c81ba92e138a1267817b"></a><!-- doxytag: member="pvWidgetIdManager::idStart" ref="a624867fef109c81ba92e138a1267817b" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvWidgetIdManager::idStart </td>
+          <td>(</td>
+          <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a90204de14bbf5977c021fac5fc830ccc"></a><!-- doxytag: member="pvWidgetIdManager::init" ref="a90204de14bbf5977c021fac5fc830ccc" args="(PARAM *p, int id_start)" -->
 <div class="memitem">
 <div class="memproto">
@@ -216,6 +237,33 @@ DATA;</pre><pre>static int slotInit(PARAM *p, DATA *d)
           <td></td>
           <td>)</td>
           <td></td><td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aabae5e7df18a28b0bf98f66734864b1a"></a><!-- doxytag: member="pvWidgetIdManager::insertBasicId" ref="aabae5e7df18a28b0bf98f66734864b1a" args="(int id, const char *name)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvWidgetIdManager::insertBasicId </td>
+          <td>(</td>
+          <td class="paramtype">int&nbsp;</td>
+          <td class="paramname"> <em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>name</em></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -295,14 +343,32 @@ DATA;</pre><pre>static int slotInit(PARAM *p, DATA *d)
 
 </div>
 </div>
-<a class="anchor" id="a4657918264b74535952b10a83688b00c"></a><!-- doxytag: member="pvWidgetIdManager::next" ref="a4657918264b74535952b10a83688b00c" args="()" -->
+<a class="anchor" id="a68e972f1c858a688c51d6048d19979b4"></a><!-- doxytag: member="pvWidgetIdManager::nextId" ref="a68e972f1c858a688c51d6048d19979b4" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int pvWidgetIdManager::next </td>
+          <td class="memname">int pvWidgetIdManager::nextId </td>
           <td>(</td>
           <td class="paramname"></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae0de419611c3cb5668583d5426b436ce"></a><!-- doxytag: member="pvWidgetIdManager::readEnumFromMask" ref="ae0de419611c3cb5668583d5426b436ce" args="(const char *maskname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvWidgetIdManager::readEnumFromMask </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>maskname</em></td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
         </tr>
@@ -382,7 +448,7 @@ DATA;</pre><pre>static int slotInit(PARAM *p, DATA *d)
 <li><a class="el" href="processviewserver_8h_source.html">processviewserver.h</a></li>
 </ul>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Mon Feb 28 18:31:39 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Mar 4 14:13:19 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

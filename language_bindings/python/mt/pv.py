@@ -2281,10 +2281,12 @@ class pvWidgetIdManager(_object):
     def deleteWidget(self, *args): return _pv.pvWidgetIdManager_deleteWidget(self, *args)
     def id(self, *args): return _pv.pvWidgetIdManager_id(self, *args)
     def isInMap(self, *args): return _pv.pvWidgetIdManager_isInMap(self, *args)
-    def first(self): return _pv.pvWidgetIdManager_first(self)
-    def next(self): return _pv.pvWidgetIdManager_next(self)
-    def end(self): return _pv.pvWidgetIdManager_end(self)
+    def firstId(self): return _pv.pvWidgetIdManager_firstId(self)
+    def nextId(self): return _pv.pvWidgetIdManager_nextId(self)
+    def endId(self): return _pv.pvWidgetIdManager_endId(self)
     def name(self, *args): return _pv.pvWidgetIdManager_name(self, *args)
+    def idStart(self): return _pv.pvWidgetIdManager_idStart(self)
+    def readEnumFromMask(self, *args): return _pv.pvWidgetIdManager_readEnumFromMask(self, *args)
 pvWidgetIdManager_swigregister = _pv.pvWidgetIdManager_swigregister
 pvWidgetIdManager_swigregister(pvWidgetIdManager)
 

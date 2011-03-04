@@ -1757,6 +1757,7 @@ int pvDeleteWidget(PARAM *p, int id)
 {
 char buf[80];
 
+  if(id <= 0) return -1;
   sprintf(buf,"deleteWidget(%d)\n",id);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -6290,8 +6291,8 @@ int pvsystem(const char *command)
 
 pvWidgetIdManager::pvWidgetIdManager()
 {
-  id_start = -1;
-  num_additional_widgets = -1;
+  id_start = 0;
+  num_additional_widgets = 0;
   free = NULL;
 }
 
@@ -6300,13 +6301,17 @@ pvWidgetIdManager::~pvWidgetIdManager()
   if(free != NULL) delete [] free;
 }
 
+int pvWidgetIdManager::idStart()
+{
+  return id_start;
+}
+
 int pvWidgetIdManager::init(PARAM *p, int id_start_in)
 {
-  if(id_start_in <= 0) return -1;
-  if(p->num_additional_widgets <= 0) return -1;
+  if(p->num_additional_widgets < 0) return -1;
   if(free != NULL)
-  { // delete the widget in the client
-    for(int i=0; i<num_additional_widgets; i++)
+  { // delete the additional widgets in the client
+    for(int i=id_start; i<(id_start + num_additional_widgets); i++)
     {
       if(free[i] != -1) pvDeleteWidget(p,free[i]);
     }
@@ -6314,41 +6319,61 @@ int pvWidgetIdManager::init(PARAM *p, int id_start_in)
   id_start = id_start_in;
   num_additional_widgets = p->num_additional_widgets;
   if(free != NULL) delete [] free;
-  free = new int[num_additional_widgets];
-  for(int i=0; i<num_additional_widgets; i++) free[i] = -1;
+  free = new int[id_start + num_additional_widgets];
+  for(int i=0; i<(id_start + num_additional_widgets); i++) free[i] = -1;
   id_list.clear();
-  return num_additional_widgets;
+  return id_start + num_additional_widgets;
 }
 
-int pvWidgetIdManager::newId(const char *name)
+int pvWidgetIdManager::insertBasicId(int id, const char *name)
 {
   if(name == NULL)  return 0;
   if(isInMap(name))
   {
-    printf("pvWidgetIdManager::newId(%s) ERROR name is already in map\n", name);
+    printf("pvWidgetIdManager::insertBasicId(%d,%s) ERROR name is already in map\n", id, name);
     return 0;
+  }
+  if(free[id] == -1)
+  {
+    free[id] = id;
+    id_list[name] = id;
+  }
+  return 0;
+}
+
+int pvWidgetIdManager::newId(const char *name)
+{
+  if(name == NULL)  return -1;
+  if(isInMap(name))
+  {
+    printf("pvWidgetIdManager::newId(%s) ERROR name is already in map\n", name);
+    return id(name);
   }
   for(int i=0; i<num_additional_widgets; i++)
   {
-    if(free[i] == -1)
+    if(free[id_start + i] == -1)
     {
-      free[i] = i;
+      free[id_start +i] = i;
       id_list[name] = id_start + i;
       return id_start + i;
     }
   }
-  return 0;
+  return -1;
 }
 
 int pvWidgetIdManager::deleteWidget(PARAM *p, const char *name)
 {
   if(name == NULL) return -1;
-  int wid = id(name);
-  if(wid <= 0) return -1;
-  if(wid > id_start+num_additional_widgets) return 0;
-  free[wid - id_start] = -1;
-  id_list.erase(name);
-  pvDeleteWidget(p,wid); // delete the widget in the client
+  int wid = -1;
+  if(isInMap(name))
+  {
+    wid = id(name);
+    if(wid <= 0) return -1;
+    if(wid > (id_start + num_additional_widgets)) return -1;
+    free[wid] = -1;
+    id_list.erase(name);
+    pvDeleteWidget(p,wid); // delete the widget in the client
+  }  
   return wid;
 }
 
@@ -6390,24 +6415,24 @@ int pvWidgetIdManager::isInMap(int id)
   return 1;
 }
 
-int pvWidgetIdManager::first()
+int pvWidgetIdManager::firstId()
 {
-  if(free == NULL) return 0;
+  if(free == NULL) return -1;
   it = id_list.begin();
   return (*it).second;
 }
 
-int pvWidgetIdManager::next()
+int pvWidgetIdManager::nextId()
 {
-  if(free == NULL) return 0;
+  if(free == NULL) return -1;
   it++;
-  if(it == id_list.end()) return 0;
+  if(it == id_list.end()) return -1;
   return (*it).second;
 }
 
-int pvWidgetIdManager::end()
+int pvWidgetIdManager::endId()
 {
-  if(free == NULL) return 0;
+  if(free == NULL) return -1;
   return (*id_list.end()).second;
 }
 
@@ -6422,4 +6447,54 @@ const char *pvWidgetIdManager::name(int id)
   return NULL;
 }
 
+int pvWidgetIdManager::readEnumFromMask(const char *maskname)
+{
+  char line[1024], *name , *cptr;
+  if(maskname == NULL) return -1;
+  FILE *fin = fopen(maskname,"r");
+  if(fin == NULL)
+  {
+    printf("readEnumFromMask ERROR: could not read %s\n", maskname);
+    return -1;
+  }
+
+  int found = 0;
+  int i = 0;
+  while(fgets(line, sizeof(line)-1, fin) != NULL)
+  {
+    if(found == 0)
+    {
+      if(strstr(line,"ID_MAIN_WIDGET") != NULL)
+      {
+        insertBasicId(i,"ID_MAIN_WIDGET");
+        i++;
+        found = 1;
+      }
+    }
+    else
+    {
+      if(strstr(line,"ID_END_OF_WIDGETS") != NULL)
+      {
+        break;
+      }
+      name = &line[0];
+      while(*name == ' ') name++;
+      cptr = strchr(name,' ');
+      if(cptr == NULL)
+      {
+        cptr = strchr(name,',');
+        if(cptr != NULL) *cptr = '\0';
+      }
+      else
+      {
+        *cptr = '\0';
+      }
+      insertBasicId(i,name);
+      i++;
+    }
+  }
+
+  fclose(fin);
+  return i;
+}
 

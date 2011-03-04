@@ -1436,10 +1436,13 @@
       <keyword name="id" id="pvWidgetIdManager::id" ref="classpvWidgetIdManager.html" />
       <keyword name="isInMap" id="pvWidgetIdManager::isInMap" ref="classpvWidgetIdManager.html" />
       <keyword name="isInMap" id="pvWidgetIdManager::isInMap" ref="classpvWidgetIdManager.html" />
-      <keyword name="first" id="pvWidgetIdManager::first" ref="classpvWidgetIdManager.html" />
-      <keyword name="next" id="pvWidgetIdManager::next" ref="classpvWidgetIdManager.html" />
-      <keyword name="end" id="pvWidgetIdManager::end" ref="classpvWidgetIdManager.html" />
+      <keyword name="firstId" id="pvWidgetIdManager::firstId" ref="classpvWidgetIdManager.html" />
+      <keyword name="nextId" id="pvWidgetIdManager::nextId" ref="classpvWidgetIdManager.html" />
+      <keyword name="endId" id="pvWidgetIdManager::endId" ref="classpvWidgetIdManager.html" />
       <keyword name="name" id="pvWidgetIdManager::name" ref="classpvWidgetIdManager.html" />
+      <keyword name="idStart" id="pvWidgetIdManager::idStart" ref="classpvWidgetIdManager.html" />
+      <keyword name="readEnumFromMask" id="pvWidgetIdManager::readEnumFromMask" ref="classpvWidgetIdManager.html" />
+      <keyword name="insertBasicId" id="pvWidgetIdManager::insertBasicId" ref="classpvWidgetIdManager.html" />
       <keyword name="id_start" id="pvWidgetIdManager::id_start" ref="classpvWidgetIdManager.html" />
       <keyword name="num_additional_widgets" id="pvWidgetIdManager::num_additional_widgets" ref="classpvWidgetIdManager.html" />
       <keyword name="free" id="pvWidgetIdManager::free" ref="classpvWidgetIdManager.html" />

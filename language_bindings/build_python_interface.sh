@@ -8,14 +8,14 @@ if [ "${1}" = "swig" ]; then
   SWIG=$(which swig)
   if [ "x${SWIG}" = "x" ]; then
     echo "swig not found. Install package swig !"
-    return
+    exit
   fi
 fi
 
 export PYTHON_INCLUDE=$(find /usr/include -name "python2.*")
 if [ "x${PYTHON_INCLUDE}" = "x" ]; then
   echo "No Python Includes found. Install package python-devel !"
-  return
+  exit
 fi
 
 export PYTHON_LIB=$(find /usr/lib64 -name "libpython2.*.so")
@@ -23,7 +23,7 @@ if [ "x${PYTHON_LIB}" = "x" ]; then
   export PYTHON_LIB=$(find /usr/lib -name "libpython2.*.so")
   if [ "x${PYTHON_LIB}" = "x" ]; then
     echo "No Python library found. Install package python-devel !"
-    return
+    exit
   fi
 fi
 

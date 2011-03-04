@@ -24552,19 +24552,19 @@ static int _wrap_pvWidgetIdManager_isInMap(lua_State* L) {
 }
 
 
-static int _wrap_pvWidgetIdManager_first(lua_State* L) {
+static int _wrap_pvWidgetIdManager_firstId(lua_State* L) {
   int SWIG_arg = 0;
   pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
   int result;
   
-  SWIG_check_num_args("first",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("first",1,"pvWidgetIdManager *");
+  SWIG_check_num_args("firstId",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("firstId",1,"pvWidgetIdManager *");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
-    SWIG_fail_ptr("pvWidgetIdManager_first",1,SWIGTYPE_p_pvWidgetIdManager);
+    SWIG_fail_ptr("pvWidgetIdManager_firstId",1,SWIGTYPE_p_pvWidgetIdManager);
   }
   
-  result = (int)(arg1)->first();
+  result = (int)(arg1)->firstId();
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -24576,19 +24576,19 @@ fail:
 }
 
 
-static int _wrap_pvWidgetIdManager_next(lua_State* L) {
+static int _wrap_pvWidgetIdManager_nextId(lua_State* L) {
   int SWIG_arg = 0;
   pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
   int result;
   
-  SWIG_check_num_args("next",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("next",1,"pvWidgetIdManager *");
+  SWIG_check_num_args("nextId",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("nextId",1,"pvWidgetIdManager *");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
-    SWIG_fail_ptr("pvWidgetIdManager_next",1,SWIGTYPE_p_pvWidgetIdManager);
+    SWIG_fail_ptr("pvWidgetIdManager_nextId",1,SWIGTYPE_p_pvWidgetIdManager);
   }
   
-  result = (int)(arg1)->next();
+  result = (int)(arg1)->nextId();
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -24600,19 +24600,19 @@ fail:
 }
 
 
-static int _wrap_pvWidgetIdManager_end(lua_State* L) {
+static int _wrap_pvWidgetIdManager_endId(lua_State* L) {
   int SWIG_arg = 0;
   pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
   int result;
   
-  SWIG_check_num_args("end",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("end",1,"pvWidgetIdManager *");
+  SWIG_check_num_args("endId",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("endId",1,"pvWidgetIdManager *");
   
   if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
-    SWIG_fail_ptr("pvWidgetIdManager_end",1,SWIGTYPE_p_pvWidgetIdManager);
+    SWIG_fail_ptr("pvWidgetIdManager_endId",1,SWIGTYPE_p_pvWidgetIdManager);
   }
   
-  result = (int)(arg1)->end();
+  result = (int)(arg1)->endId();
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -24651,6 +24651,57 @@ fail:
 }
 
 
+static int _wrap_pvWidgetIdManager_idStart(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("idStart",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("idStart",1,"pvWidgetIdManager *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_idStart",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  result = (int)(arg1)->idStart();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvWidgetIdManager_readEnumFromMask(lua_State* L) {
+  int SWIG_arg = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("readEnumFromMask",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("readEnumFromMask",1,"pvWidgetIdManager *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("readEnumFromMask",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvWidgetIdManager,0))){
+    SWIG_fail_ptr("pvWidgetIdManager_readEnumFromMask",1,SWIGTYPE_p_pvWidgetIdManager);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->readEnumFromMask((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_pvWidgetIdManager(void *obj) {
 pvWidgetIdManager *arg1 = (pvWidgetIdManager *) obj;
 delete arg1;
@@ -24661,10 +24712,12 @@ static swig_lua_method swig_pvWidgetIdManager_methods[] = {
     {"deleteWidget", _wrap_pvWidgetIdManager_deleteWidget}, 
     {"id", _wrap_pvWidgetIdManager_id}, 
     {"isInMap", _wrap_pvWidgetIdManager_isInMap}, 
-    {"first", _wrap_pvWidgetIdManager_first}, 
-    {"next", _wrap_pvWidgetIdManager_next}, 
-    {"end", _wrap_pvWidgetIdManager_end}, 
+    {"firstId", _wrap_pvWidgetIdManager_firstId}, 
+    {"nextId", _wrap_pvWidgetIdManager_nextId}, 
+    {"endId", _wrap_pvWidgetIdManager_endId}, 
     {"name", _wrap_pvWidgetIdManager_name}, 
+    {"idStart", _wrap_pvWidgetIdManager_idStart}, 
+    {"readEnumFromMask", _wrap_pvWidgetIdManager_readEnumFromMask}, 
     {0,0}
 };
 static swig_lua_attribute swig_pvWidgetIdManager_attributes[] = {

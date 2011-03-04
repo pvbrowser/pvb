@@ -33730,7 +33730,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_pvWidgetIdManager_first(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_pvWidgetIdManager_firstId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
   void *argp1 = 0 ;
@@ -33738,13 +33738,13 @@ SWIGINTERN PyObject *_wrap_pvWidgetIdManager_first(PyObject *SWIGUNUSEDPARM(self
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_first",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_firstId",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvWidgetIdManager, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_first" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_firstId" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
   }
   arg1 = reinterpret_cast< pvWidgetIdManager * >(argp1);
-  result = (int)(arg1)->first();
+  result = (int)(arg1)->firstId();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -33752,7 +33752,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_pvWidgetIdManager_next(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_pvWidgetIdManager_nextId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
   void *argp1 = 0 ;
@@ -33760,13 +33760,13 @@ SWIGINTERN PyObject *_wrap_pvWidgetIdManager_next(PyObject *SWIGUNUSEDPARM(self)
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_next",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_nextId",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvWidgetIdManager, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_next" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_nextId" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
   }
   arg1 = reinterpret_cast< pvWidgetIdManager * >(argp1);
-  result = (int)(arg1)->next();
+  result = (int)(arg1)->nextId();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -33774,7 +33774,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_pvWidgetIdManager_end(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_pvWidgetIdManager_endId(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
   void *argp1 = 0 ;
@@ -33782,13 +33782,13 @@ SWIGINTERN PyObject *_wrap_pvWidgetIdManager_end(PyObject *SWIGUNUSEDPARM(self),
   PyObject * obj0 = 0 ;
   int result;
   
-  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_end",&obj0)) SWIG_fail;
+  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_endId",&obj0)) SWIG_fail;
   res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvWidgetIdManager, 0 |  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_end" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_endId" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
   }
   arg1 = reinterpret_cast< pvWidgetIdManager * >(argp1);
-  result = (int)(arg1)->end();
+  result = (int)(arg1)->endId();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -33823,6 +33823,62 @@ SWIGINTERN PyObject *_wrap_pvWidgetIdManager_name(PyObject *SWIGUNUSEDPARM(self)
   resultobj = SWIG_FromCharPtr((const char *)result);
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvWidgetIdManager_idStart(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvWidgetIdManager_idStart",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvWidgetIdManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_idStart" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
+  }
+  arg1 = reinterpret_cast< pvWidgetIdManager * >(argp1);
+  result = (int)(arg1)->idStart();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvWidgetIdManager_readEnumFromMask(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvWidgetIdManager *arg1 = (pvWidgetIdManager *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvWidgetIdManager_readEnumFromMask",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvWidgetIdManager, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvWidgetIdManager_readEnumFromMask" "', argument " "1"" of type '" "pvWidgetIdManager *""'"); 
+  }
+  arg1 = reinterpret_cast< pvWidgetIdManager * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvWidgetIdManager_readEnumFromMask" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)(arg1)->readEnumFromMask((char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
@@ -34969,10 +35025,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvWidgetIdManager_deleteWidget", _wrap_pvWidgetIdManager_deleteWidget, METH_VARARGS, NULL},
 	 { (char *)"pvWidgetIdManager_id", _wrap_pvWidgetIdManager_id, METH_VARARGS, NULL},
 	 { (char *)"pvWidgetIdManager_isInMap", _wrap_pvWidgetIdManager_isInMap, METH_VARARGS, NULL},
-	 { (char *)"pvWidgetIdManager_first", _wrap_pvWidgetIdManager_first, METH_VARARGS, NULL},
-	 { (char *)"pvWidgetIdManager_next", _wrap_pvWidgetIdManager_next, METH_VARARGS, NULL},
-	 { (char *)"pvWidgetIdManager_end", _wrap_pvWidgetIdManager_end, METH_VARARGS, NULL},
+	 { (char *)"pvWidgetIdManager_firstId", _wrap_pvWidgetIdManager_firstId, METH_VARARGS, NULL},
+	 { (char *)"pvWidgetIdManager_nextId", _wrap_pvWidgetIdManager_nextId, METH_VARARGS, NULL},
+	 { (char *)"pvWidgetIdManager_endId", _wrap_pvWidgetIdManager_endId, METH_VARARGS, NULL},
 	 { (char *)"pvWidgetIdManager_name", _wrap_pvWidgetIdManager_name, METH_VARARGS, NULL},
+	 { (char *)"pvWidgetIdManager_idStart", _wrap_pvWidgetIdManager_idStart, METH_VARARGS, NULL},
+	 { (char *)"pvWidgetIdManager_readEnumFromMask", _wrap_pvWidgetIdManager_readEnumFromMask, METH_VARARGS, NULL},
 	 { (char *)"pvWidgetIdManager_swigregister", pvWidgetIdManager_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_qtDatabase", _wrap_new_qtDatabase, METH_VARARGS, NULL},
 	 { (char *)"delete_qtDatabase", _wrap_delete_qtDatabase, METH_VARARGS, NULL},

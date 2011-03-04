@@ -3637,11 +3637,14 @@ public:
   int id(const char *name);
   int isInMap(const char *name);
   int isInMap(int id);
-  int first();
-  int next();
-  int end();
+  int firstId();
+  int nextId();
+  int endId();
   const char *name(int id);
+  int idStart();
+  int readEnumFromMask(const char *maskname);
 private:
+  int insertBasicId(int id, const char *name);
   int id_start, num_additional_widgets;
   int *free;
   std::map      <std::string, int>           id_list;  
