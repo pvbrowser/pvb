@@ -3632,17 +3632,17 @@ public:
   pvWidgetIdManager();
   virtual ~pvWidgetIdManager();
   int init(PARAM *p, int id_start);
-  int newId(const char *name);
-  int deleteWidget(PARAM *p, const char *name);
-  int id(const char *name);
-  int isInMap(const char *name);
+  virtual int newId(const char *name);
+  virtual int deleteWidget(PARAM *p, const char *name);
+  virtual int id(const char *name);
+  virtual int isInMap(const char *name);
   int isInMap(int id);
   int firstId();
   int nextId();
   int endId();
   const char *name(int id);
   int idStart();
-  int readEnumFromMask(const char *maskname);
+  virtual int readEnumFromMask(const char *maskname);
 private:
   int insertBasicId(int id, const char *name);
   int id_start, num_additional_widgets;
