@@ -92,6 +92,7 @@
       <keyword name="pvlock" id="processviewserver.h::pvlock" ref="processviewserver_8h.html" />
       <keyword name="pvunlock" id="processviewserver.h::pvunlock" ref="processviewserver_8h.html" />
       <keyword name="pvsystem" id="processviewserver.h::pvsystem" ref="processviewserver_8h.html" />
+      <keyword name="pvSendVersion" id="processviewserver.h::pvSendVersion" ref="processviewserver_8h.html" />
       <keyword name="pvXYAllocate" id="processviewserver.h::pvXYAllocate" ref="processviewserver_8h.html" />
       <keyword name="getIntegers" id="processviewserver.h::getIntegers" ref="processviewserver_8h.html" />
       <keyword name="getFloats" id="processviewserver.h::getFloats" ref="processviewserver_8h.html" />
@@ -920,6 +921,7 @@
       <keyword name="pvlock" id="IniAndGlobal::pvlock" ref="group__IniAndGlobal.html" />
       <keyword name="pvunlock" id="IniAndGlobal::pvunlock" ref="group__IniAndGlobal.html" />
       <keyword name="pvsystem" id="IniAndGlobal::pvsystem" ref="group__IniAndGlobal.html" />
+      <keyword name="pvSendVersion" id="IniAndGlobal::pvSendVersion" ref="group__IniAndGlobal.html" />
       <keyword name="pvXYAllocate" id="IniAndGlobal::pvXYAllocate" ref="group__IniAndGlobal.html" />
       <keyword name="getIntegers" id="IniAndGlobal::getIntegers" ref="group__IniAndGlobal.html" />
       <keyword name="getFloats" id="IniAndGlobal::getFloats" ref="group__IniAndGlobal.html" />
@@ -1364,6 +1366,7 @@
       <keyword name="file_prefix" id="_PARAM_::file_prefix" ref="struct__PARAM__.html" />
       <keyword name="free" id="_PARAM_::free" ref="struct__PARAM__.html" />
       <keyword name="version" id="_PARAM_::version" ref="struct__PARAM__.html" />
+      <keyword name="pvserver_version" id="_PARAM_::pvserver_version" ref="struct__PARAM__.html" />
       <keyword name="exit_on_bind_error" id="_PARAM_::exit_on_bind_error" ref="struct__PARAM__.html" />
       <keyword name="hello_counter" id="_PARAM_::hello_counter" ref="struct__PARAM__.html" />
       <keyword name="local_milliseconds" id="_PARAM_::local_milliseconds" ref="struct__PARAM__.html" />

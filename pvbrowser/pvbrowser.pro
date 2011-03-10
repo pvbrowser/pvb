@@ -9,7 +9,7 @@ linux-g++-gles2 {
 }  
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
-QT           += opengl svg webkit network
+QT           += xml opengl svg webkit network
 QMAKE_LFLAGS += -static-libgcc
 
 HEADERS       = mainwindow.h \

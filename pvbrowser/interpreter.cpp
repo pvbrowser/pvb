@@ -1876,6 +1876,13 @@ void Interpreter::interpretp(const char *command)
     }
   }
 #endif
+  else if(strncmp(command,"pvsVersion(",11) == 0)
+  {
+    int v1, v2, v3;
+    v1 = v2 = v3 = 0;
+    sscanf(command,"pvsVersion(%d.%d.%d)", &v1, &v2, &v3);
+    mainWindow->pvbtab[mainWindow->currentTab].pvsVersion = (v1*256 + v2)*256 + v3;
+  }
   else if(strncmp(command,"playSound(",10) == 0) // play a (WAV) sound
   {
     get_text(command,text);
@@ -5403,7 +5410,9 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    all[i]->w = (QWidget *) new MyQDateEdit(s,i,all[p]->w);
+    MyQDateEdit *ptr = new MyQDateEdit(s,i,all[p]->w);
+    ptr->pvsVersion = mainWindow->pvbtab[mainWindow->currentTab].pvsVersion;
+    all[i]->w = (QWidget *) ptr; 
     all[i]->type = TQDateEdit;
   }
   else if(strncmp(command,"QTimeEdit(",10) == 0) // create a new QTimeEdit
@@ -5412,7 +5421,9 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    all[i]->w = (QWidget *) new MyQTimeEdit(s,i,all[p]->w);
+    MyQTimeEdit *ptr = new MyQTimeEdit(s,i,all[p]->w);
+    ptr->pvsVersion = mainWindow->pvbtab[mainWindow->currentTab].pvsVersion;
+    all[i]->w = (QWidget *) ptr; 
     all[i]->type = TQTimeEdit;
   }
   else if(strncmp(command,"QDateTimeEdit(",14) == 0) // create a new QDateTimeEdit
@@ -5421,7 +5432,9 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    all[i]->w = (QWidget *) new MyQDateTimeEdit(s,i,all[p]->w);
+    MyQDateTimeEdit *ptr = new MyQDateTimeEdit(s,i,all[p]->w);
+    ptr->pvsVersion = mainWindow->pvbtab[mainWindow->currentTab].pvsVersion;
+    all[i]->w = (QWidget *) ptr; 
     all[i]->type = TQDateTimeEdit;
   }
   else if(strncmp(command,"QToolTip(",9) == 0) // create a new QToolTip

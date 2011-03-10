@@ -3116,6 +3116,63 @@ fail:
 }
 
 
+static int _wrap_PARAM_pvserver_version_set(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 ;
+  
+  SWIG_check_num_args("pvserver_version",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvserver_version",1,"PARAM *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("pvserver_version",2,"char [32]");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_pvserver_version_set",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  {
+    if(arg2) {
+      strncpy((char*)arg1->pvserver_version, (const char *)arg2, 32-1);
+      arg1->pvserver_version[32-1] = 0;
+    } else {
+      arg1->pvserver_version[0] = 0;
+    }
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PARAM_pvserver_version_get(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("pvserver_version",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvserver_version",1,"PARAM *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_pvserver_version_get",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  result = (char *)(char *) ((arg1)->pvserver_version);
+  lua_pushstring(L,(const char*)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_PARAM_exit_on_bind_error_set(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -3725,6 +3782,7 @@ static swig_lua_attribute swig_PARAM_attributes[] = {
     { "file_prefix", _wrap_PARAM_file_prefix_get, _wrap_PARAM_file_prefix_set},
     { "free", _wrap_PARAM_free_get, _wrap_PARAM_free_set},
     { "version", _wrap_PARAM_version_get, _wrap_PARAM_version_set},
+    { "pvserver_version", _wrap_PARAM_pvserver_version_get, _wrap_PARAM_pvserver_version_set},
     { "exit_on_bind_error", _wrap_PARAM_exit_on_bind_error_get, _wrap_PARAM_exit_on_bind_error_set},
     { "hello_counter", _wrap_PARAM_hello_counter_get, _wrap_PARAM_hello_counter_set},
     { "local_milliseconds", _wrap_PARAM_local_milliseconds_get, _wrap_PARAM_local_milliseconds_set},
@@ -5040,6 +5098,30 @@ static int _wrap_pvsystem(lua_State* L) {
   if(!lua_isstring(L,1)) SWIG_fail_arg("pvsystem",1,"char const *");
   arg1 = (char *)lua_tostring(L, 1);
   result = (int)pvsystem((char const *)arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendVersion(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendVersion",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendVersion",1,"PARAM *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendVersion",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  result = (int)pvSendVersion(arg1);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -25248,6 +25330,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvlock", _wrap_pvlock},
     { "pvunlock", _wrap_pvunlock},
     { "pvsystem", _wrap_pvsystem},
+    { "pvSendVersion", _wrap_pvSendVersion},
     { "pvXYAllocate", _wrap_pvXYAllocate},
     { "getIntegers", _wrap_getIntegers},
     { "getFloats", _wrap_getFloats},

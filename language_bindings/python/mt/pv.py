@@ -513,6 +513,9 @@ class PARAM(_object):
     __swig_setmethods__["version"] = _pv.PARAM_version_set
     __swig_getmethods__["version"] = _pv.PARAM_version_get
     if _newclass:version = _swig_property(_pv.PARAM_version_get, _pv.PARAM_version_set)
+    __swig_setmethods__["pvserver_version"] = _pv.PARAM_pvserver_version_set
+    __swig_getmethods__["pvserver_version"] = _pv.PARAM_pvserver_version_get
+    if _newclass:pvserver_version = _swig_property(_pv.PARAM_pvserver_version_get, _pv.PARAM_pvserver_version_set)
     __swig_setmethods__["exit_on_bind_error"] = _pv.PARAM_exit_on_bind_error_set
     __swig_getmethods__["exit_on_bind_error"] = _pv.PARAM_exit_on_bind_error_get
     if _newclass:exit_on_bind_error = _swig_property(_pv.PARAM_exit_on_bind_error_get, _pv.PARAM_exit_on_bind_error_set)
@@ -725,6 +728,10 @@ pvunlock = _pv.pvunlock
 def pvsystem(*args):
   return _pv.pvsystem(*args)
 pvsystem = _pv.pvsystem
+
+def pvSendVersion(*args):
+  return _pv.pvSendVersion(*args)
+pvSendVersion = _pv.pvSendVersion
 
 def pvXYAllocate(*args):
   return _pv.pvXYAllocate(*args)

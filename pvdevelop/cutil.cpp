@@ -379,6 +379,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"{\n");
   fprintf(fout,"int ret;\n");
   fprintf(fout,"\n");
+  fprintf(fout,"  pvSendVersion(p);\n");
   fprintf(fout,"  pvSetCaption(p,\"%s\");\n", name);
   fprintf(fout,"  pvResize(p,0,1280,1024);\n");
   fprintf(fout,"  //pvScreenHint(p,1024,768); // this may be used to automatically set the zoomfactor\n");

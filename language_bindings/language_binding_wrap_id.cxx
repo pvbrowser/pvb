@@ -4799,6 +4799,65 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_PARAM_pvserver_version_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char temp2[32] ;
+  int res2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PARAM_pvserver_version_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PARAM_pvserver_version_set" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  res2 = SWIG_AsCharArray(obj1, temp2, 32);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "PARAM_pvserver_version_set" "', argument " "2"" of type '" "char [32]""'");
+  }
+  arg2 = reinterpret_cast< char * >(temp2);
+  if (arg2) memcpy(arg1->pvserver_version,arg2,32*sizeof(char));
+  else memset(arg1->pvserver_version,0,32*sizeof(char));
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PARAM_pvserver_version_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:PARAM_pvserver_version_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PARAM_pvserver_version_get" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  result = (char *)(char *) ((arg1)->pvserver_version);
+  {
+    size_t size = 32;
+    
+    while (size && (result[size - 1] == '\0')) --size;
+    
+    resultobj = SWIG_FromCharPtrAndSize(result, size);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_PARAM_exit_on_bind_error_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -6762,6 +6821,28 @@ SWIGINTERN PyObject *_wrap_pvsystem(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   return resultobj;
 fail:
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSendVersion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvSendVersion",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSendVersion" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  result = (int)pvSendVersion(arg1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -34538,6 +34619,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"PARAM_free_get", _wrap_PARAM_free_get, METH_VARARGS, NULL},
 	 { (char *)"PARAM_version_set", _wrap_PARAM_version_set, METH_VARARGS, NULL},
 	 { (char *)"PARAM_version_get", _wrap_PARAM_version_get, METH_VARARGS, NULL},
+	 { (char *)"PARAM_pvserver_version_set", _wrap_PARAM_pvserver_version_set, METH_VARARGS, NULL},
+	 { (char *)"PARAM_pvserver_version_get", _wrap_PARAM_pvserver_version_get, METH_VARARGS, NULL},
 	 { (char *)"PARAM_exit_on_bind_error_set", _wrap_PARAM_exit_on_bind_error_set, METH_VARARGS, NULL},
 	 { (char *)"PARAM_exit_on_bind_error_get", _wrap_PARAM_exit_on_bind_error_get, METH_VARARGS, NULL},
 	 { (char *)"PARAM_hello_counter_set", _wrap_PARAM_hello_counter_set, METH_VARARGS, NULL},
@@ -34617,6 +34700,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvlock", _wrap_pvlock, METH_VARARGS, NULL},
 	 { (char *)"pvunlock", _wrap_pvunlock, METH_VARARGS, NULL},
 	 { (char *)"pvsystem", _wrap_pvsystem, METH_VARARGS, NULL},
+	 { (char *)"pvSendVersion", _wrap_pvSendVersion, METH_VARARGS, NULL},
 	 { (char *)"pvXYAllocate", _wrap_pvXYAllocate, METH_VARARGS, NULL},
 	 { (char *)"getIntegers", _wrap_getIntegers, METH_VARARGS, NULL},
 	 { (char *)"getFloats", _wrap_getFloats, METH_VARARGS, NULL},

@@ -19,7 +19,7 @@
 
 #include <locale.h>
 
-const char pvserver_version[] = "4.6.0";
+const char pvserver_version[] = "4.6.1";
 
 /* #include "qimage.h" */
 #include <time.h>
@@ -947,6 +947,7 @@ int i;
   p->initial_mask[0] = '\0';
   p->free = 1;
   strcpy(p->version,"unknown");
+  strcpy(p->pvserver_version,"unknown");
   p->exit_on_bind_error = 0;
   p->hello_counter = 0;
   p->local_milliseconds = 0;
@@ -1276,6 +1277,7 @@ static void *send_thread(void *ptr)
   PARAM *p;
   p = (PARAM *) ptr;
   pvFilePrefix(p);
+  pvSendVersion(p);
   pvMain(p);
   return NULL;
 }
@@ -6019,6 +6021,15 @@ int qwtAnalogClockSetValue(PARAM *p, int id, float value)
   return 0;
 }
 
+int pvSendVersion(PARAM *p)
+{
+  char buf[80];
+  strcpy(p->pvserver_version, pvserver_version);
+  sprintf(buf,"pvsVersion(%s)\n", pvserver_version);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 float unit(PARAM *p, float val, int conversion)
 {
   float ret;
@@ -6032,7 +6043,7 @@ float unit(PARAM *p, float val, int conversion)
       ret = val * 25.4f;
       break;
     case CM2FOOT:
-      ret = val / 30.48f;
+     ret = val / 30.48f;
       break;
     case FOOT2CM:
       ret = val * 30.48f;

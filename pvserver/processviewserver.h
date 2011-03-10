@@ -486,6 +486,7 @@ typedef struct _PARAM_
                                          /* deleted on connection lost         */
   int   free;                            /* free structure                     */
   char  version[32];                     /* pvbrowser VERSION of client        */
+  char  pvserver_version[32];            /* pvserver VERSION                   */
   int   exit_on_bind_error;              /* exit if we can not bind on port    */
   int   hello_counter;                   /* for thread timeout if no @hello    */
   int   local_milliseconds;              /* time of last call to select()      */
@@ -614,6 +615,10 @@ int pvunlock(PARAM *p);
 Same as system(command); but portable
 </pre> */
 int pvsystem(const char *command);
+/*! <pre>
+Send version of pvserver to client
+</pre> */
+int pvSendVersion(PARAM *p);
 /*! <pre>
 Allocate x,y array for script language
 </pre> */

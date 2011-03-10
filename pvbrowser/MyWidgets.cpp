@@ -3094,6 +3094,7 @@ MyQDateEdit::MyQDateEdit(int *sock, int ident, QWidget *parent, const char *name
 {
   s = sock;
   id = ident;
+  pvsVersion = 0;
   if(name != NULL) setObjectName(name);
   connect(this, SIGNAL(dateChanged(const QDate &)), SLOT(slotValueChanged(const QDate &)));
 }
@@ -3106,8 +3107,8 @@ void MyQDateEdit::slotValueChanged(const QDate &date)
 {
 char buf[80];
 
-  if(opt.arg_murn) sprintf(buf,"text(%d,\"%d:%d:%d\")\n", id, date.year(), date.month(), date.day());
-  else             sprintf(buf,"text(%d,\"%04d-%02d-%02d\")\n", id, date.year(), date.month(), date.day());
+  if(pvsVersion <= 0x040600) sprintf(buf,"text(%d,\"%d:%d:%d\")\n", id, date.year(), date.month(), date.day());
+  else                       sprintf(buf,"text(%d,\"%04d-%02d-%02d\")\n", id, date.year(), date.month(), date.day());
   if(date.isValid()) tcp_send(s,buf,strlen(buf));
 }
 
@@ -3152,6 +3153,7 @@ MyQTimeEdit::MyQTimeEdit(int *sock, int ident, QWidget *parent, const char *name
 {
   s = sock;
   id = ident;
+  pvsVersion = 0;
   if(name != NULL) setObjectName(name);
   connect(this, SIGNAL(timeChanged(const QTime &)), SLOT(slotValueChanged(const QTime &)));
 }
@@ -3164,8 +3166,8 @@ void MyQTimeEdit::slotValueChanged(const QTime &time)
 {
 char buf[80];
 
-  if(opt.arg_murn) sprintf(buf,"text(%d,\"%d.%d.%d.%d\")\n", id, time.hour(), time.minute(), time.second(), time.msec());
-  else             sprintf(buf,"text(%d,\"%02d:%02d:%02d.%d\")\n", id, time.hour(), time.minute(), time.second(), time.msec());
+  if(pvsVersion <= 0x040600) sprintf(buf,"text(%d,\"%d.%d.%d.%d\")\n", id, time.hour(), time.minute(), time.second(), time.msec());
+  else                       sprintf(buf,"text(%d,\"%02d:%02d:%02d.%d\")\n", id, time.hour(), time.minute(), time.second(), time.msec());
   if(time.isValid()) tcp_send(s,buf,strlen(buf));
 }
 
@@ -3210,6 +3212,7 @@ MyQDateTimeEdit::MyQDateTimeEdit(int *sock, int ident, QWidget *parent, const ch
 {
   s = sock;
   id = ident;
+  pvsVersion = 0;
   if(name != NULL) setObjectName(name);
   connect(this, SIGNAL(dateTimeChanged(const QDateTime &)), SLOT(slotValueChanged(const QDateTime &)));
 }
@@ -3222,7 +3225,7 @@ void MyQDateTimeEdit::slotValueChanged(const QDateTime &date_time)
 {
 char buf[200];
 
-  if(opt.arg_murn) sprintf(buf,"text(%d,\"%d:%d:%d-%d.%d.%d.%d\")\n", id, 
+  if(pvsVersion <= 0x040600) sprintf(buf,"text(%d,\"%d:%d:%d-%d.%d.%d.%d\")\n", id, 
                                                                  date_time.date().year(),
                                                                  date_time.date().month(),
                                                                  date_time.date().day(),

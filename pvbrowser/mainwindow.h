@@ -16,7 +16,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define VERSION "4.6.0"
+#define VERSION "4.6.1"
 
 #include "interpreter.h"
 
@@ -69,6 +69,7 @@ class MainWindow : public QMainWindow
     int s;           // socket
     int in_use;      // 1 if is used else 0
     int w,h;         // width, height
+    int pvsVersion;  // version of pvserver
     QString          url;
     QWidget         *rootWidget;
     Interpreter      interpreter;

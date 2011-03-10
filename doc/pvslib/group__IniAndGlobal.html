@@ -25,6 +25,7 @@
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga1b0519bc72b1168bec8dd173e6ce1e47">pvlock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga4ed35d24f18f4a747092558ead32dda8">pvunlock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gac61f8fa497b44e693020c265b21206bc">pvsystem</a> (const char *command)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gab63e49f56fbad68d7f24ae08426e8fa6">pvSendVersion</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gaa94a429d64753c7c016bf9f2202def63">pvXYAllocate</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int n)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga7f8f3c35707fbddf62a27ee70b8296eb">getIntegers</a> (const char *text, <a class="el" href="structIntegerArray.html">IntegerArray</a> *ia)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga81dfdec8425cf4e7c411c06a942d9957">getFloats</a> (const char *text, <a class="el" href="structFloatArray.html">FloatArray</a> *fa)</td></tr>
@@ -601,6 +602,26 @@ Optimal screen width=w height=h .
 </pre> 
 </div>
 </div>
+<a class="anchor" id="gab63e49f56fbad68d7f24ae08426e8fa6"></a><!-- doxytag: member="processviewserver.h::pvSendVersion" ref="gab63e49f56fbad68d7f24ae08426e8fa6" args="(PARAM *p)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSendVersion </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&nbsp;</td>
+          <td class="paramname"> <em>p</em></td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Send version of pvserver to client
+</pre> 
+</div>
+</div>
 <a class="anchor" id="ga995fefba9cbdfeeaf660df83a355401c"></a><!-- doxytag: member="processviewserver.h::pvSetCleanup" ref="ga995fefba9cbdfeeaf660df83a355401c" args="(PARAM *p, int(*cleanup)(void *), void *app_data)" -->
 <div class="memitem">
 <div class="memproto">
@@ -968,7 +989,7 @@ Allocate x,y array for script language
 </div>
 </div>
 </div>
-<hr class="footer"/><address style="text-align: right;"><small>Generated on Fri Mar 4 14:13:19 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
+<hr class="footer"/><address style="text-align: right;"><small>Generated on Wed Mar 9 20:51:38 2011 for ProcessViewBrowser-ServerProgramming by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.6.3 </small></address>
 </body>

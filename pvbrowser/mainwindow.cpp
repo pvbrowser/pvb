@@ -170,10 +170,11 @@ MainWindow::MainWindow()
   maxfd = currentTab = numTabs = 0;
   for(i=0; i<MAX_TABS; i++)
   {
-    pvbtab[i].s          = -1;      // socket
-    pvbtab[i].in_use     = 0;       // tab is currently not used
-    pvbtab[i].w          = 1280;    // default width
-    pvbtab[i].h          = 1024;    // default height
+    pvbtab[i].s          = -1;        // socket
+    pvbtab[i].in_use     = 0;         // tab is currently not used
+    pvbtab[i].w          = 1280;      // default width
+    pvbtab[i].h          = 1024;      // default height
+    pvbtab[i].pvsVersion = 0x0040600; // last version of pvserver that does not send version
     pvbtab[i].rootWidget = NULL;
     pvbtab[i].hasLayout  = 0;
     for(int ii=0; ii<MAX_DOCK_WIDGETS; ii++) 
@@ -1432,6 +1433,10 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
     sprintf(buf,"key(%d,%d,\"%s\")\n",modifier,key,(const char *) e->text().toUtf8());
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
   }
+
+  #ifdef PVWIN32
+  if (key != Qt::Key_F10)
+  #endif     
   QMainWindow::keyPressEvent(e);
 }
 

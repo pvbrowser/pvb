@@ -529,6 +529,7 @@ class MyQDateEdit : public QDateEdit
 public:
     MyQDateEdit(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQDateEdit();
+    int pvsVersion;
 
 public slots:
    void slotValueChanged(const QDate &date);
@@ -547,6 +548,7 @@ class MyQTimeEdit : public QTimeEdit
 public:
     MyQTimeEdit(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQTimeEdit();
+    int pvsVersion;
 
 public slots:
    void slotValueChanged(const QTime &time);
@@ -565,6 +567,7 @@ class MyQDateTimeEdit : public QDateTimeEdit
 public:
     MyQDateTimeEdit(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQDateTimeEdit();
+    int pvsVersion;
 
 public slots:
    void slotValueChanged(const QDateTime &date_time);
