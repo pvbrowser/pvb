@@ -225,7 +225,7 @@ cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/b
 
 %__ln_s /opt/pvb/pvbrowser/pvbrowser             %{buildroot}%{_bindir}/pvbrowser
 #%__ln_s /opt/pvb/pvdevelop/pvdevelop             %{buildroot}%{_bindir}/pvdevelop
-cp /opt/pvb/pvdevelop/pvdevelop.sh               %{buildroot}%{_bindir}/pvdevelop
+cp pvdevelop/pvdevelop.sh                        %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/start_pvbapp/start_pvbapp       %{buildroot}%{_bindir}/start_pvbapp
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat            %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory       %{buildroot}%{_bindir}/rlhistory
