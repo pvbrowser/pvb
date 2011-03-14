@@ -157,7 +157,7 @@ cd ..
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
-cp    logo1.xpm                                           %{buildroot}/opt/pvb/
+cp    logo1.png                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/
 cp    gamsleiten.png                                      %{buildroot}/opt/pvb/
 cp    pvbrowser.desktop                                   %{buildroot}/opt/pvb/
@@ -296,7 +296,7 @@ License:     GPL
 /srv/automation/mbx
 /srv/automation/log
 /opt/pvb/LICENSE.GPL
-/opt/pvb/logo1.xpm
+/opt/pvb/logo1.png
 /opt/pvb/custom.bmp
 /opt/pvb/gamsleiten.png
 /opt/pvb/pvbrowser.desktop

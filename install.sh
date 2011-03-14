@@ -58,7 +58,7 @@ echo 'copy pvsexample...'
 cp -r pvsexample                                          /opt/pvb/
 echo 'copy other files...'
 cp    LICENSE.GPL                                         /opt/pvb/
-cp    logo1.xpm                                           /opt/pvb/
+cp    logo1.png                                           /opt/pvb/
 cp    custom.bmp                                          /opt/pvb/
 cp    gamsleiten.png                                      /opt/pvb/
 cp    pvbrowser.desktop                                   /opt/pvb/

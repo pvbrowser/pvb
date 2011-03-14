@@ -30,7 +30,7 @@ Requires:  libpng
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel fdupes
 %endif
 
 %if 0%{?suse_version} >= 1100
@@ -191,9 +191,13 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/browserplugin
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
+%if 0%{?suse_version}
+%fdupes -s                                                %{buildroot}/opt/pvb/doc/pvslib
+%fdupes -s                                                %{buildroot}/opt/pvb/doc/rllib
+%endif
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
-cp    logo1.xpm                                           %{buildroot}/opt/pvb/
+cp    logo1.png                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/
 cp    gamsleiten.png                                      %{buildroot}/opt/pvb/
 cp    pvbrowser.desktop                                   %{buildroot}/opt/pvb/
@@ -333,7 +337,7 @@ chmod ugoa+rw /srv/automation/log
 /srv/automation/mbx
 /srv/automation/log
 /opt/pvb/LICENSE.GPL
-/opt/pvb/logo1.xpm
+/opt/pvb/logo1.png
 /opt/pvb/custom.bmp
 /opt/pvb/gamsleiten.png
 /opt/pvb/pvbrowser.desktop
