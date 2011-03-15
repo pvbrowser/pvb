@@ -152,6 +152,38 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   {
     return mainWindow->slotUrl(text);
   }
+  else if(text.endsWith(".pdf") || text.endsWith(".PDF"))
+  {
+    QString cmd = opt.view_pdf;
+    cmd += " ";
+    text.replace(" ","%20");
+    cmd += text;
+#ifndef PVWIN32
+    cmd +=  " &";
+#endif
+    mysystem(cmd.toUtf8());
+    return;
+  }
+  else if(text.endsWith(".mp3",  Qt::CaseInsensitive) ||
+          text.endsWith(".ogg",  Qt::CaseInsensitive) || 
+          text.endsWith(".m3u",  Qt::CaseInsensitive) || 
+          text.endsWith(".mp4",  Qt::CaseInsensitive) || 
+          text.endsWith(".mov",  Qt::CaseInsensitive) || 
+          text.endsWith(".asx",  Qt::CaseInsensitive) || 
+          text.contains(".pls?", Qt::CaseInsensitive) || 
+          text.contains("mp3e",  Qt::CaseInsensitive) || 
+          text.startsWith("http://www.youtube.com/watch?") ||
+          text.endsWith(".avi",  Qt::CaseInsensitive) )
+  {
+     QString cmd = opt.view_audio;
+     cmd += " ";
+     text.replace(" ","%20");
+     cmd += text;
+#ifndef PVWIN32
+     cmd +=  " &";
+#endif
+     mysystem(cmd.toUtf8());
+  }
   else if(webpath == homepath)
   {
     //form->browser->setUrl(url);

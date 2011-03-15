@@ -1833,10 +1833,44 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
   }
 
   if(opt.arg_debug) printf("slotLinkClicked(%s)\n", (const char *) url.toUtf8());
-  if(url.length()+40 > MAX_PRINTF_LENGTH) return;
-  sprintf(buf,"text(%d,\"%s\")\n", id,decode(url));
-  tcp_send(s,buf,strlen(buf));
-  load(link);
+  if(url.endsWith(".pdf") || url.endsWith(".PDF"))
+  {
+    QString cmd = opt.view_pdf;
+    cmd += " ";
+    url.replace(" ","%20");
+    cmd += url;
+#ifndef PVWIN32
+    cmd +=  " &";
+#endif
+    mysystem(cmd.toUtf8());
+  }
+  else if(url.endsWith(".mp3",  Qt::CaseInsensitive) || 
+          url.endsWith(".ogg",  Qt::CaseInsensitive) || 
+          url.endsWith(".m3u",  Qt::CaseInsensitive) || 
+          url.endsWith(".mp4",  Qt::CaseInsensitive) || 
+          url.endsWith(".mov",  Qt::CaseInsensitive) || 
+          url.endsWith(".asx",  Qt::CaseInsensitive) || 
+          url.contains(".pls?", Qt::CaseInsensitive) ||
+          url.contains("mp3e",  Qt::CaseInsensitive) ||
+          url.startsWith("http://www.youtube.com/watch?") ||
+          url.endsWith(".avi",  Qt::CaseInsensitive) )
+  {
+    QString cmd = opt.view_audio;
+    cmd += " ";
+    url.replace(" ","%20");
+    cmd += url;
+#ifndef PVWIN32
+    cmd +=  " &";
+#endif
+    mysystem(cmd.toUtf8());
+  }
+  else
+  {
+    if(url.length()+40 > MAX_PRINTF_LENGTH) return;
+    sprintf(buf,"text(%d,\"%s\")\n", id,decode(url));
+    tcp_send(s,buf,strlen(buf));
+    load(link);
+  }  
 }
 
 void MyTextBrowser::slotUrlChanged(const QUrl &link)
