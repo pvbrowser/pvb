@@ -1988,17 +1988,17 @@ static int getWidget(FILE *fin, QWidget *root)
       int margin     = ival[3];
 
       shape = QFrame::NoFrame;
-      if     (strstr(line,",StyledPanel,") != NULL) shape = QFrame::StyledPanel;
-      else if(strstr(line,",VLine,")       != NULL) shape = QFrame::VLine;
-      else if(strstr(line,",HLine,")       != NULL) shape = QFrame::HLine;
-      else if(strstr(line,",WinPanel,")    != NULL) shape = QFrame::WinPanel;
-      else if(strstr(line,",Panel,")       != NULL) shape = QFrame::Panel;
-      else if(strstr(line,",Box,")         != NULL) shape = QFrame::Box;
+      if     (strstr(line,"StyledPanel,") != NULL) shape = QFrame::StyledPanel;
+      else if(strstr(line,"VLine,")       != NULL) shape = QFrame::VLine;
+      else if(strstr(line,"HLine,")       != NULL) shape = QFrame::HLine;
+      else if(strstr(line,"WinPanel,")    != NULL) shape = QFrame::WinPanel;
+      else if(strstr(line,"Panel,")       != NULL) shape = QFrame::Panel;
+      else if(strstr(line,"Box,")         != NULL) shape = QFrame::Box;
 
       shadow = QFrame::Plain;
-      if(strstr(line,",Raised,")           != NULL) shadow = QFrame::Raised;
-      else if(strstr(line,",Sunken,")      != NULL) shadow = QFrame::Sunken;
-      else if(strstr(line,",MShadow,")     != NULL) shadow = QFrame::Plain;
+      if(strstr(line,"Raised,")           != NULL) shadow = QFrame::Raised;
+      else if(strstr(line,"Sunken,")      != NULL) shadow = QFrame::Sunken;
+      else if(strstr(line,"MShadow,")     != NULL) shadow = QFrame::Plain;
 
       item = (QWidget *) new MyFrame(&s, 0, shape, shadow, line_width, margin, pw, id);
       itemtype = TQFrame;
@@ -2551,17 +2551,17 @@ static int getWidget(FILE *fin, QWidget *root)
       line_width = ival[2];
       margin     = ival[3];
 
-      if(strstr(line,",NoFrame,")     != NULL) shape = QFrame::NoFrame;
-      if(strstr(line,",Box,")         != NULL) shape = QFrame::Box;
-      if(strstr(line,",Panel,")       != NULL) shape = QFrame::Panel;
-      if(strstr(line,",WinPanel,")    != NULL) shape = QFrame::WinPanel;
-      if(strstr(line,",HLine,")       != NULL) shape = QFrame::HLine;
-      if(strstr(line,",VLine,")       != NULL) shape = QFrame::VLine;
-      if(strstr(line,",StyledPanel,") != NULL) shape = QFrame::StyledPanel;
+      if(strstr(line,"NoFrame,")     != NULL) shape = QFrame::NoFrame;
+      if(strstr(line,"Box,")         != NULL) shape = QFrame::Box;
+      if(strstr(line,"Panel,")       != NULL) shape = QFrame::Panel;
+      if(strstr(line,"WinPanel,")    != NULL) shape = QFrame::WinPanel;
+      if(strstr(line,"HLine,")       != NULL) shape = QFrame::HLine;
+      if(strstr(line,"VLine,")       != NULL) shape = QFrame::VLine;
+      if(strstr(line,"StyledPanel,") != NULL) shape = QFrame::StyledPanel;
 
-      if(strstr(line,",Plain,")  != NULL) shadow = QFrame::Plain;
-      if(strstr(line,",Raised,") != NULL) shadow = QFrame::Raised;
-      if(strstr(line,",Sunken,") != NULL) shadow = QFrame::Sunken;
+      if(strstr(line,"Plain,")  != NULL) shadow = QFrame::Plain;
+      if(strstr(line,"Raised,") != NULL) shadow = QFrame::Raised;
+      if(strstr(line,"Sunken,") != NULL) shadow = QFrame::Sunken;
 
       if(itemtype == TQLabel)
       {

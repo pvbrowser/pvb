@@ -962,7 +962,7 @@ void MainWindow::slotReconnect()
     }
   }
 
-  if(strncmp(buf,"http://",7) == 0 || strncmp(buf,"https://",8) == 0) 
+  if(strncmp(buf,"http://",7) == 0 || strncmp(buf,"https://",8) == 0 || strncmp(buf,"file://",7) == 0) 
   {
     if(pvbtab[currentTab].s != -1) 
     {
@@ -1153,6 +1153,7 @@ void MainWindow::add_host(const char *host)
   else if(strncmp(host,"pvssh://",8) == 0) ;
   else if(strncmp(host,"http://",7)  == 0) ;
   else if(strncmp(host,"https://",8) == 0) ;
+  else if(strncmp(host,"file://",7)  == 0) ;
   else if(strncmp(host,"ssh://"  ,6) == 0) strcpy(buf,"pvssh://");
   else                                     strcpy(buf,"pv://");
   strcat(buf,host);

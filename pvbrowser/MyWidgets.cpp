@@ -1847,15 +1847,26 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
   else if(url.endsWith(".mp3",  Qt::CaseInsensitive) || 
           url.endsWith(".ogg",  Qt::CaseInsensitive) || 
           url.endsWith(".m3u",  Qt::CaseInsensitive) || 
-          url.endsWith(".mp4",  Qt::CaseInsensitive) || 
-          url.endsWith(".mov",  Qt::CaseInsensitive) || 
           url.endsWith(".asx",  Qt::CaseInsensitive) || 
           url.contains(".pls?", Qt::CaseInsensitive) ||
           url.contains("mp3e",  Qt::CaseInsensitive) ||
-          url.startsWith("http://www.youtube.com/watch?") ||
-          url.endsWith(".avi",  Qt::CaseInsensitive) )
+          url.startsWith("http://www.youtube.com/watch?") )
   {
     QString cmd = opt.view_audio;
+    cmd += " ";
+    url.replace(" ","%20");
+    cmd += url;
+#ifndef PVWIN32
+    cmd +=  " &";
+#endif
+    mysystem(cmd.toUtf8());
+  }
+  else if(url.endsWith(".mp4",  Qt::CaseInsensitive) || 
+          url.endsWith(".mov",  Qt::CaseInsensitive) || 
+          url.endsWith(".ogv",  Qt::CaseInsensitive) || 
+          url.endsWith(".avi",  Qt::CaseInsensitive) )
+  {
+    QString cmd = opt.view_video;
     cmd += " ";
     url.replace(" ","%20");
     cmd += url;
