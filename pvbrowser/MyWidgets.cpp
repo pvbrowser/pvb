@@ -1755,6 +1755,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
   connect(this, SIGNAL(linkClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
   //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
+  settings()->setAttribute(QWebSettings::PluginsEnabled, true);
 }
 
 MyTextBrowser::~MyTextBrowser()

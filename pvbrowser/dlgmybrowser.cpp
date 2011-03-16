@@ -55,6 +55,7 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   //QWebPage *page = form->browser->page();
   //QObject::connect(page,SIGNAL(unsupportedContent(QNetworkReply *)),this, SLOT(slotUnsupportedContent(QNetworkReply *)));
 #endif
+  form->browser->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
   if(manual == NULL) return;
 }
 
