@@ -237,7 +237,7 @@ int i;
   opt.fullscreen=0;
   opt.maximized=0;
   opt.echo_table_updates=0;
-  opt.enable_webkit_plugins=0;
+  opt.enable_webkit_plugins=1;
   opt.temp[0] = '\0';
   opt.customlogo[0] = '\0';
   opt.newwindow[0] = '\0';
@@ -467,7 +467,7 @@ int i;
         fprintf(fp,"maximized=0             # 0|1\n");
         fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
         fprintf(fp,"echo_table_updates=0    # 0|1\n");
-        fprintf(fp,"enable_webkit_plugins=0 # 0|1\n");
+        fprintf(fp,"enable_webkit_plugins=1 # 0|1\n");
         fprintf(fp,"# temporary directory\n");
 #ifdef PVUNIX
         sprintf(buf,"mkdir -p /tmp/pvb-%s", getenv("USER"));

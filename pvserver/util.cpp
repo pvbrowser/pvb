@@ -4293,7 +4293,7 @@ int pvRunModalDialogScript(PARAM *p, int width, int height)
 
   if(p->modal != 0)
   {
-    printf("you can not call a ModalDialog from a ModalDialog");
+    printf("you can not call a ModalDialog from a ModalDialog\n");
     return -1;
   }
   p->modal = 1;

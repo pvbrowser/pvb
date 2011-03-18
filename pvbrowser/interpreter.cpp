@@ -582,6 +582,7 @@ void Interpreter::popupMenu(int id_return, const char *menu)
 
 void Interpreter::interpret(const char *command)
 {
+  setlocale(LC_NUMERIC,"C"); // damn plugins may reset my locale. ensure my locale is set.
   switch(command[0])
   {
     case 'a':
