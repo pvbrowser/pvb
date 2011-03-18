@@ -42,6 +42,7 @@ typedef struct
   int fullscreen;           //=0      # 0|1
   int maximized;            //=0      # 0|1
   int echo_table_updates;   //=0      # 0|1
+  int enable_webkit_plugins;//=0      # 0|1
   char temp[MAXOPT];        //=/tmp
   char customlogo[MAXOPT];  //=/home/lehrig/cc/joschi/custom.bmp
   char newwindow[MAXOPT];   //=pvbrowser

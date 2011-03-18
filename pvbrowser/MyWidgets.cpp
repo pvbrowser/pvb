@@ -1756,7 +1756,16 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   connect(this, SIGNAL(linkClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
   //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
   //enabling plugins leads to problems
-  //settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+  //see: https://bugs.webkit.org/show_bug.cgi?id=56552 that we have reported
+  if(opt.enable_webkit_plugins)
+  {
+    if(opt.arg_debug) printf("enable_webkit_plugins\n");
+    settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+  }
+  else
+  {
+    if(opt.arg_debug) printf("do not enable_webkit_plugins\n");
+  }
 }
 
 MyTextBrowser::~MyTextBrowser()

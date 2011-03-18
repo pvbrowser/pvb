@@ -237,6 +237,7 @@ int i;
   opt.fullscreen=0;
   opt.maximized=0;
   opt.echo_table_updates=0;
+  opt.enable_webkit_plugins=0;
   opt.temp[0] = '\0';
   opt.customlogo[0] = '\0';
   opt.newwindow[0] = '\0';
@@ -289,6 +290,10 @@ int i;
         else if(strncmp(buf,"cookies=",8) == 0)
         {
           sscanf(buf,"cookies=%d",&opt.cookies);
+        }
+        else if(strncmp(buf,"enable_webkit_plugins=",22) == 0)
+        {
+          sscanf(buf,"enable_webkit_plugins=%d",&opt.enable_webkit_plugins);
         }
         else if(strncmp(buf,"temp=",5) == 0)
         {
@@ -448,20 +453,21 @@ int i;
         fprintf(fp,"# This is the default initialization file for\n");
         fprintf(fp,"# ProcessViewBrowser\n");
         fprintf(fp,"###############################################\n");
-        fprintf(fp,"port=5050            # default port\n");
-        fprintf(fp,"sshport=50500        # local port for ssh connections\n");
-        fprintf(fp,"zoom=100             # zoom factor in percent\n");
-        fprintf(fp,"fontzoom=100         # zoom factor for fonts in percent\n");
-        fprintf(fp,"autoreconnect=0      # 0|1\n");
-        fprintf(fp,"exitpassword=0       # 0|1\n");
-        fprintf(fp,"menubar=1            # 0|1\n");
-        fprintf(fp,"toolbar=1            # 0|1\n");
-        fprintf(fp,"statusbar=1          # 0|1\n");
-        fprintf(fp,"scrollbars=1         # 0|1\n");
-        fprintf(fp,"fullscreen=0         # 0|1\n");
-        fprintf(fp,"maximized=0          # 0|1\n");
-        fprintf(fp,"cookies=1            # 0=No 1=Yes 2=Ask\n");
-        fprintf(fp,"echo_table_updates=0 # 0|1\n");
+        fprintf(fp,"port=5050               # default port\n");
+        fprintf(fp,"sshport=50500           # local port for ssh connections\n");
+        fprintf(fp,"zoom=100                # zoom factor in percent\n");
+        fprintf(fp,"fontzoom=100            # zoom factor for fonts in percent\n");
+        fprintf(fp,"autoreconnect=0         # 0|1\n");
+        fprintf(fp,"exitpassword=0          # 0|1\n");
+        fprintf(fp,"menubar=1               # 0|1\n");
+        fprintf(fp,"toolbar=1               # 0|1\n");
+        fprintf(fp,"statusbar=1             # 0|1\n");
+        fprintf(fp,"scrollbars=1            # 0|1\n");
+        fprintf(fp,"fullscreen=0            # 0|1\n");
+        fprintf(fp,"maximized=0             # 0|1\n");
+        fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
+        fprintf(fp,"echo_table_updates=0    # 0|1\n");
+        fprintf(fp,"enable_webkit_plugins=0 # 0|1\n");
         fprintf(fp,"# temporary directory\n");
 #ifdef PVUNIX
         sprintf(buf,"mkdir -p /tmp/pvb-%s", getenv("USER"));
