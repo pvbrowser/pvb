@@ -2303,6 +2303,14 @@ int pvAddColumn(PARAM *p, int id, const char *text, int size)
   return 0;
 }
 
+int pvRemoveAllColumns(PARAM *p, int id)
+{
+  char buf[80];
+  sprintf(buf,"removeAllColums(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSetTableText(PARAM *p, int id, int x, int y, const char *text)
 {
   char buf[MAX_PRINTF_LENGTH+40],*cptr;

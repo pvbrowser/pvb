@@ -2056,6 +2056,13 @@ void MyListView::addColumn(QString text, int size)
   icol++;
 }
 
+void MyListView::removeAllColumns()
+{
+  if(opt.arg_debug) printf("removeAllColumns\n");
+  setColumnCount(1);
+  icol = 0;
+}
+
 void MyListView::setMultiSelection(int mode)
 {
   // mode := 0=SingleSelection|1=MultiSelection|2=NoSelection

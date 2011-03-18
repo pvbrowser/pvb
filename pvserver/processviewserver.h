@@ -1887,6 +1887,11 @@ Allowed widgets: QListView
 </pre> */
 int pvAddColumn(PARAM *p, int id, const char *text, int size);
 /*! <pre>
+Remove all Columns in a QListView.
+Allowed widgets: QListView
+</pre> */
+int pvRemoveAllColumns(PARAM *p, int id);
+/*! <pre>
 Set the text of a table cell.
 if x == -1 then set row text
 if y == -1 then set column text

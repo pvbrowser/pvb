@@ -467,6 +467,7 @@ public:
     MyListViewItem *firstChild(MyListViewItem *parent);
     MyListViewItem *nextSibling(MyListViewItem *sibling, QTreeWidgetItem *parent);
     void addColumn(QString text, int size);
+    void removeAllColumns();
     void setMultiSelection(int mode);
     void setSorting(int col, int mode);
     int hasStandardPopupMenu;

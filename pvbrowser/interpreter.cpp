@@ -1913,7 +1913,18 @@ void Interpreter::interpretp(const char *command)
 
 void Interpreter::interpretr(const char *command)
 {
-  if(strncmp(command,"removeCol(",10) == 0)
+  if(strncmp(command,"removeAllColums(",16) == 0)
+  {
+    sscanf(command,"removeAllColums(%d",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQListView)
+    {
+      MyListView *ptr = (MyListView *) all[i]->w;
+      if(ptr != NULL) ptr->removeAllColumns();
+    }
+  }
+  else if(strncmp(command,"removeCol(",10) == 0)
   {
     int col = 0;
     sscanf(command,"removeCol(%d,%d",&i,&col);
