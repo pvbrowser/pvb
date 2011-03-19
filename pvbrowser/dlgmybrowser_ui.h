@@ -21,6 +21,18 @@
 #include <QtGui/QVBoxLayout>
 #include <QtGui/QWidget>
 
+class pvQWebView : public QWebView
+{
+public:
+  pvQWebView(QWidget *parent);
+  ~pvQWebView();
+protected:
+  virtual QWebView *createWindow(QWebPage::WebWindowType type);
+private:
+  virtual void mousePressEvent(QMouseEvent *event);
+  QPoint pressPos;
+};
+
 class Ui_MyBrowser
 {
 public:
@@ -34,7 +46,7 @@ public:
     QLineEdit   *lineEditPattern;
     QPushButton *pushButtonFind;
 #ifdef USE_WEBKIT
-    QWebView *browser;
+    pvQWebView *browser;
 #else
     QLabel   *browser;
 #endif
@@ -79,7 +91,7 @@ public:
     vboxLayout->addWidget(groupBoxNavigation);
 
 #ifdef USE_WEBKIT
-    browser = new QWebView(MyBrowser);
+    browser = new pvQWebView(MyBrowser);
     browser->setObjectName(QString::fromUtf8("browser"));
 #else
     browser = new QLabel(MyBrowser);

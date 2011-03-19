@@ -439,12 +439,16 @@ public slots:
     void slotLinkClicked(const QUrl &link);
     void slotUrlChanged(const QUrl &link);
 
+protected:
+    virtual QWebView *createWindow(QWebPage::WebWindowType type);
+
 private:
     virtual void mousePressEvent(QMouseEvent *event);
     virtual void mouseReleaseEvent(QMouseEvent *event);
     virtual void enterEvent(QEvent *event);
     virtual void leaveEvent(QEvent *event);
     int *s,id;
+    QPoint pressPos;
 };
 
 class MyListViewItem;

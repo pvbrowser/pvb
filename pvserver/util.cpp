@@ -6368,7 +6368,7 @@ int pvWidgetIdManager::newId(const char *name)
     printf("pvWidgetIdManager::newId(%s) ERROR name is already in map\n", name);
     return id(name);
   }
-  for(int i=0; i<(id_start + num_additional_widgets); i++)
+  for(int i=id_start; i<(id_start + num_additional_widgets); i++)
   {
     if(free[i] == -1)
     {
@@ -6409,6 +6409,7 @@ int pvWidgetIdManager::id(const char *name)
     id_list.erase(name);
     return 0;
   }
+  printf("pvWidgetIdManager::id(%s)=%d\n", name, id);
   return id;
 }
 
@@ -6462,8 +6463,13 @@ const char *pvWidgetIdManager::name(int id)
   std::multimap <std::string, int>::iterator found;
   for(found = id_list.begin(); found != id_list.end(); found++)
   {
-    if((*found).second == id) return (*found).first.c_str();
+    if((*found).second == id) 
+    {
+      printf("pvWidgetIdManager::name(%d)=%s\n", id, (*found).first.c_str());
+      return (*found).first.c_str();
+    }  
   }
+  printf("pvWidgetIdManager::name(%d)=NULL\n", id);
   return NULL;
 }
 

@@ -46,6 +46,8 @@ public slots:
     void slotTitleChanged(const QString &title);
     void slotUnsupportedContent(QNetworkReply *reply);
     void slotLoadFinished(bool ok);
+protected:
+    virtual QWebView *createWindow(QWebPage::WebWindowType type);
 private:
     QString homeurl, homepath, anchor;
     int *s, id;

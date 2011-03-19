@@ -34,6 +34,43 @@
 
 extern OPT opt;
 
+pvQWebView::pvQWebView(QWidget *parent)
+           :QWebView(parent)
+{
+}
+
+pvQWebView::~pvQWebView()
+{
+}
+
+QWebView *pvQWebView::createWindow(QWebPage::WebWindowType type)
+{
+  QWebHitTestResult r = page()->mainFrame()->hitTestContent(pressPos);
+  if(!r.linkUrl().isEmpty() && type == QWebPage::WebBrowserWindow) 
+  {
+    QString cmd = opt.newwindow;
+    if(cmd.isEmpty()) cmd = "pvbrowser";
+    cmd += " \"";
+    cmd += r.linkUrl().toString();;
+    cmd += "\"";
+#ifdef PVUNIX
+    cmd += " &";
+    int ret = system(cmd.toUtf8());
+#endif
+#ifdef PVWIN32
+    int ret = mysystem(cmd.toUtf8());
+#endif
+    if(ret < 0) printf("ERROR system(%s)\n", (const char *) cmd.toUtf8());
+  }
+  return NULL;
+}
+
+void pvQWebView::mousePressEvent(QMouseEvent *event)
+{
+  pressPos = event->pos();
+  QWebView::mousePressEvent(event);
+}
+
 dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *manual)
 {
   s = sock;
@@ -60,6 +97,7 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   {
     if(opt.arg_debug) printf("enable_webkit_plugins\n");
     form->browser->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    form->browser->settings()->setAttribute(QWebSettings::JavascriptEnabled, true);
   }
   else
   {
@@ -72,6 +110,18 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
 dlgMyBrowser::~dlgMyBrowser()
 {
   delete form;
+}
+
+QWebView *dlgMyBrowser::createWindow(QWebPage::WebWindowType type)
+{
+  if(type == QWebPage::WebBrowserWindow)
+  {
+    QAction *act = form->browser->pageAction(QWebPage::OpenLinkInNewWindow);
+    QString str = act->text();
+    printf("TODO: find out howto get the url text=%s\n", (const char *) str.toUtf8());
+    //act->trigger();
+  }  
+  return NULL;
 }
 
 void dlgMyBrowser::setUrl(const char *url)

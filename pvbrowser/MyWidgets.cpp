@@ -27,6 +27,7 @@
 #include <QPixmap>
 #include <QMouseEvent>
 #include <QWebHistory>
+#include <QWebFrame>
 #include "tcputil.h"
 
 extern OPT opt;
@@ -1761,6 +1762,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   {
     if(opt.arg_debug) printf("enable_webkit_plugins\n");
     settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    settings()->setAttribute(QWebSettings::JavascriptEnabled, true);
   }
   else
   {
@@ -1770,6 +1772,28 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
 
 MyTextBrowser::~MyTextBrowser()
 {
+}
+
+QWebView *MyTextBrowser::createWindow(QWebPage::WebWindowType type)
+{
+  QWebHitTestResult r = page()->mainFrame()->hitTestContent(pressPos);
+  if(!r.linkUrl().isEmpty() && type == QWebPage::WebBrowserWindow) 
+  {
+    QString cmd = opt.newwindow;
+    if(cmd.isEmpty()) cmd = "pvbrowser";
+    cmd += " \"";
+    cmd += r.linkUrl().toString();;
+    cmd += "\"";
+#ifdef PVUNIX
+    cmd += " &";
+    int ret = system(cmd.toUtf8());
+#endif
+#ifdef PVWIN32
+    int ret = mysystem(cmd.toUtf8());
+#endif
+    if(ret < 0) printf("ERROR system(%s)", (const char *) cmd.toUtf8());
+  }
+  return NULL;
 }
 
 void MyTextBrowser::moveContent(int pos)
@@ -1912,6 +1936,7 @@ void MyTextBrowser::mousePressEvent(QMouseEvent *event)
   char buf[80];
 
   if(event == NULL) return;
+  pressPos = event->pos();
   sprintf(buf,"QPushButtonPressed(%d) -xy=%d,%d\n",id, event->x(), event->y());
   tcp_send(s,buf,strlen(buf));
   QWebView::mousePressEvent(event);
