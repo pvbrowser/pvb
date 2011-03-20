@@ -1,7 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$rlcannode_8h.html" title="rlcannode.h" alt="" coords="83,83,171,112"/>
-<area shape="rect" id="node5" href="$rlcanopen_8cpp.html" title="rlcanopen.cpp" alt="" coords="5,160,107,189"/>
-<area shape="rect" id="node8" href="$rlcanopen_8h.html" title="rlcanopen.h" alt="" coords="155,160,243,189"/>
-<area shape="rect" id="node10" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="29,237,179,267"/>
-<area shape="rect" id="node13" href="$rlcanopendaemon_8h.html" title="rlcanopendaemon.h" alt="" coords="227,237,360,267"/>
+<area shape="rect" id="node3" href="$rlcannode_8h.html" title="rlcannode.h" alt="" coords="71,83,159,112"/>
+<area shape="rect" id="node5" href="$rlcannode_8cpp.html" title="rlcannode.cpp" alt="" coords="5,160,107,189"/>
+<area shape="rect" id="node7" href="$rlcanopen_8h.html" title="rlcanopen.h" alt="" coords="131,160,219,189"/>
+<area shape="rect" id="node9" href="$rlcanopen_8cpp.html" title="rlcanopen.cpp" alt="" coords="53,237,155,267"/>
+<area shape="rect" id="node11" href="$rlcanopendaemon_8h.html" title="rlcanopendaemon.h" alt="" coords="179,237,312,267"/>
+<area shape="rect" id="node13" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="171,315,320,344"/>
 </map>

@@ -1,10 +1,9 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="161,83,225,112"/>
-<area shape="rect" id="node17" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="585,83,695,112"/>
-<area shape="rect" id="node31" href="$rlsvgcat_8h.html" title="rlsvgcat.h" alt="" coords="269,237,347,267"/>
-<area shape="rect" id="node34" href="$rlspawn_8h.html" title="rlspawn.h" alt="" coords="387,160,464,189"/>
-<area shape="rect" id="node9" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="456,315,531,344"/>
-<area shape="rect" id="node20" href="$rlinifile_8h.html" title="rlinifile.h" alt="" coords="605,160,675,189"/>
-<area shape="rect" id="node23" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="656,237,728,267"/>
-<area shape="rect" id="node27" href="$rlspreadsheet_8h.html" title="rlspreadsheet.h" alt="" coords="421,237,531,267"/>
+<area shape="rect" id="node3" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="152,83,216,112"/>
+<area shape="rect" id="node17" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="432,83,541,112"/>
+<area shape="rect" id="node31" href="$rlsvgcat_8h.html" title="rlsvgcat.h" alt="" coords="187,237,264,267"/>
+<area shape="rect" id="node9" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="356,315,431,344"/>
+<area shape="rect" id="node20" href="$rlinifile_8h.html" title="rlinifile.h" alt="" coords="452,160,521,189"/>
+<area shape="rect" id="node23" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="523,237,595,267"/>
+<area shape="rect" id="node27" href="$rlspreadsheet_8h.html" title="rlspreadsheet.h" alt="" coords="339,237,448,267"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$classrlCanOpenClient.html" title="Class performs API rlcanopen functions remotely through tcp sockets." alt="" coords="5,96,120,123"/>
-<area shape="rect" href="$classrlSocket.html" title="rlSocket" alt="" coords="28,5,97,32"/>
+<area shape="rect" id="node2" href="$classrlCanOpenClient.html" title="Class performs API rlcanopen functions remotely through tcp sockets." alt="" coords="5,101,123,131"/>
+<area shape="rect" id="node4" href="$classrlSocket.html" title="rlSocket" alt="" coords="29,5,99,35"/>
 </map>

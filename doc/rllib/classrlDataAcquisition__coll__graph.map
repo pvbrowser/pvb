@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,5,120,32"/>
-<area shape="rect" href="$structrlDataAcquisition_1_1SHM__HEADER.html" title="rlDataAcquisition::SHM_HEADER" alt="" coords="144,5,360,32"/>
-<area shape="rect" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="384,5,456,32"/>
+<area shape="rect" id="node2" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,5,123,35"/>
+<area shape="rect" id="node4" href="$structrlDataAcquisition_1_1SHM__HEADER.html" title="rlDataAcquisition::SHM_HEADER" alt="" coords="147,5,368,35"/>
+<area shape="rect" id="node6" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="392,5,467,35"/>
 </map>

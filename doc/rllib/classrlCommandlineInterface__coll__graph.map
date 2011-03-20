@@ -1,3 +1,5 @@
-<area shape="rect" href="$classrlSerial.html" title="rlSerial" alt="" coords="5,5,67,32">
-<area shape="rect" href="$classrlSpawn.html" title="rlSpawn" alt="" coords="91,5,157,32">
-<area shape="rect" href="$classrlSocket.html" title="rlSocket" alt="" coords="181,5,251,32">
+<map id="G" name="G">
+<area shape="rect" id="node2" href="$classrlSerial.html" title="rlSerial" alt="" coords="5,5,67,35"/>
+<area shape="rect" id="node4" href="$classrlSpawn.html" title="rlSpawn" alt="" coords="91,5,160,35"/>
+<area shape="rect" id="node6" href="$classrlSocket.html" title="rlSocket" alt="" coords="184,5,253,35"/>
+</map>

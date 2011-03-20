@@ -1,4 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="5,83,155,112"/>
-<area shape="rect" id="node6" href="$rlcanopendaemon_8h.html" title="rlcanopendaemon.h" alt="" coords="203,83,336,112"/>
+<area shape="rect" id="node3" href="$rlcanopen_8cpp.html" title="rlcanopen.cpp" alt="" coords="5,83,107,112"/>
+<area shape="rect" id="node5" href="$rlcanopendaemon_8h.html" title="rlcanopendaemon.h" alt="" coords="131,83,264,112"/>
+<area shape="rect" id="node7" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="123,160,272,189"/>
 </map>

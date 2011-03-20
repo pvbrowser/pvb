@@ -263,6 +263,8 @@ int i;
     {
       while( fgets(buf,sizeof(buf)-1,fp) != NULL )
       {
+        char *ptr = strchr(buf,'\n');
+        if(ptr != NULL) *ptr = '\0';
         if(strncmp(buf,"port=",5) == 0)
         {
           sscanf(buf,"port=%d",&opt.port);
@@ -379,35 +381,35 @@ int i;
         }
         else if(strncmp(buf,"view.audio=",11) == 0)
         {
-          sscanf(buf,"view.audio=%s",opt.view_audio);
+          strcpy(opt.view_audio,&buf[11]);
         }
         else if(strncmp(buf,"view.video=",11) == 0)
         {
-          sscanf(buf,"view.video=%s",opt.view_video);
+          strcpy(opt.view_video,&buf[11]);
         }
         else if(strncmp(buf,"view.pdf=",9) == 0)
         {
-          sscanf(buf,"view.pdf=%s",opt.view_pdf);
+          strcpy(opt.view_pdf,&buf[9]);
         }
         else if(strncmp(buf,"view.img=",9) == 0)
         {
-          sscanf(buf,"view.img=%s",opt.view_img);
+          strcpy(opt.view_img,&buf[9]);
         }
         else if(strncmp(buf,"view.svg=",9) == 0)
         {
-          sscanf(buf,"view.svg=%s",opt.view_svg);
+          strcpy(opt.view_svg,&buf[9]);
         }
         else if(strncmp(buf,"view.txt=",9) == 0)
         {
-          sscanf(buf,"view.txt=%s",opt.view_txt);
+          strcpy(opt.view_txt,&buf[9]);
         }
         else if(strncmp(buf,"view.csv=",9) == 0)
         {
-          sscanf(buf,"view.csv=%s",opt.view_csv);
+          strcpy(opt.view_csv,&buf[9]);
         }
         else if(strncmp(buf,"view.html=",10) == 0)
         {
-          sscanf(buf,"view.html=%s",opt.view_html);
+          strcpy(opt.view_html,&buf[10]);
         }
         else if(strncmp(buf,"language =",10) == 0)
         {

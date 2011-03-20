@@ -1,5 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node4" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="85,238,160,267"/>
-<area shape="rect" id="node12" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="129,83,255,112"/>
-<area shape="rect" id="node15" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="175,160,260,190"/>
+<area shape="rect" id="node3" href="$rldataacquisitionprovider_8h.html" title="rldataacquisitionprovider.h" alt="" coords="140,83,313,112"/>
+<area shape="rect" id="node5" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="73,315,148,344"/>
+<area shape="rect" id="node13" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="164,160,289,189"/>
+<area shape="rect" id="node16" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="247,237,332,267"/>
 </map>

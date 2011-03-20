@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="5,5,77,32"/>
-<area shape="rect" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="101,5,216,32"/>
+<area shape="rect" id="node2" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="5,5,80,35"/>
+<area shape="rect" id="node4" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="104,5,221,35"/>
 </map>

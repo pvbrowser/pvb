@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" href="$structrlIniFile_1_1__rlSection__.html" title="rlIniFile::_rlSection_" alt="" coords="23,96,159,123"/>
-<area shape="rect" href="$structrlIniFile_1_1__rlSectionName__.html" title="rlIniFile::_rlSectionName_" alt="" coords="5,5,176,32"/>
-<area shape="rect" href="$classrlString.html" title="rlString" alt="" coords="276,96,337,123"/>
+<area shape="rect" id="node2" href="$structrlIniFile_1_1__rlSection__.html" title="rlIniFile::_rlSection_" alt="" coords="23,101,159,131"/>
+<area shape="rect" id="node5" href="$structrlIniFile_1_1__rlSectionName__.html" title="rlIniFile::_rlSectionName_" alt="" coords="5,5,176,35"/>
+<area shape="rect" id="node8" href="$classrlString.html" title="rlString" alt="" coords="276,101,337,131"/>
 </map>

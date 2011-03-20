@@ -114,6 +114,7 @@ dlgMyBrowser::~dlgMyBrowser()
 
 QWebView *dlgMyBrowser::createWindow(QWebPage::WebWindowType type)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser::createWindow type=%d\n", (int) type);
   if(type == QWebPage::WebBrowserWindow)
   {
     QAction *act = form->browser->pageAction(QWebPage::OpenLinkInNewWindow);
@@ -258,13 +259,13 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
   }
   else if(webpath == homepath)
   {
-    //form->browser->setUrl(url);
-    form->browser->setUrl(QUrl(list.at(0)));
+    QString u = list.at(0);
+    form->browser->setUrl(QUrl(u));
   }
   else
   {
-    //form->browser->load(url);
-    form->browser->load(QUrl(list.at(0)));
+    QString u = list.at(0);
+    form->browser->load(QUrl(u));
     homepath = webpath;
   }
 #endif
@@ -273,6 +274,7 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
 void dlgMyBrowser::slotLoadFinished(bool ok)
 {
   if(ok == false) return;
+  
 #ifdef USE_WEBKIT  
   if(opt.arg_debug) printf("dlgMyBrowser::slotLoadFinshed anchor=%s\n",  (const char *) anchor.toUtf8());
 #if QT_VERSION >= 0x040700

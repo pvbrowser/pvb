@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="115,229,189,256"/>
-<area shape="rect" href="$rlinifile_8h.html" title="rlinifile.h" alt="" coords="129,80,199,107"/>
-<area shape="rect" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="201,155,273,181"/>
-<area shape="rect" href="$rlspreadsheet_8h.html" title="rlspreadsheet.h" alt="" coords="17,155,127,181"/>
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="123,237,198,267"/>
+<area shape="rect" id="node11" href="$rlinifile_8h.html" title="rlinifile.h" alt="" coords="139,83,209,112"/>
+<area shape="rect" id="node14" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="211,160,283,189"/>
+<area shape="rect" id="node18" href="$rlspreadsheet_8h.html" title="rlspreadsheet.h" alt="" coords="27,160,137,189"/>
 </map>
