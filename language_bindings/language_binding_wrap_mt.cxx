@@ -11434,6 +11434,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvRemoveAllColumns(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvRemoveAllColumns",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvRemoveAllColumns" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvRemoveAllColumns" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)pvRemoveAllColumns(arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvSetTableText(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -34790,6 +34821,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvRemoveItem", _wrap_pvRemoveItem, METH_VARARGS, NULL},
 	 { (char *)"pvRemoveItemByName", _wrap_pvRemoveItemByName, METH_VARARGS, NULL},
 	 { (char *)"pvAddColumn", _wrap_pvAddColumn, METH_VARARGS, NULL},
+	 { (char *)"pvRemoveAllColumns", _wrap_pvRemoveAllColumns, METH_VARARGS, NULL},
 	 { (char *)"pvSetTableText", _wrap_pvSetTableText, METH_VARARGS, NULL},
 	 { (char *)"pvSetTableButton", _wrap_pvSetTableButton, METH_VARARGS, NULL},
 	 { (char *)"pvSetTableCheckBox", _wrap_pvSetTableCheckBox, METH_VARARGS, NULL},

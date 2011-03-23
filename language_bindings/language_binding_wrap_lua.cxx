@@ -8542,6 +8542,33 @@ fail:
 }
 
 
+static int _wrap_pvRemoveAllColumns(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("pvRemoveAllColumns",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvRemoveAllColumns",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvRemoveAllColumns",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvRemoveAllColumns",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)pvRemoveAllColumns(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvSetTableText(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -25420,6 +25447,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvRemoveItem", _wrap_pvRemoveItem},
     { "pvRemoveItemByName", _wrap_pvRemoveItemByName},
     { "pvAddColumn", _wrap_pvAddColumn},
+    { "pvRemoveAllColumns", _wrap_pvRemoveAllColumns},
     { "pvSetTableText", _wrap_pvSetTableText},
     { "pvSetTableButton", _wrap_pvSetTableButton},
     { "pvSetTableCheckBox", _wrap_pvSetTableCheckBox},

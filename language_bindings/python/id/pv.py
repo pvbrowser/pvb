@@ -1073,6 +1073,10 @@ def pvAddColumn(*args):
   return _pv.pvAddColumn(*args)
 pvAddColumn = _pv.pvAddColumn
 
+def pvRemoveAllColumns(*args):
+  return _pv.pvRemoveAllColumns(*args)
+pvRemoveAllColumns = _pv.pvRemoveAllColumns
+
 def pvSetTableText(*args):
   return _pv.pvSetTableText(*args)
 pvSetTableText = _pv.pvSetTableText

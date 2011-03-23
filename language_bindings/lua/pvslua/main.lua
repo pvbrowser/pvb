@@ -2,7 +2,8 @@
 -- pvserver in lua     run: pvslua -port=5050 -cd=/your/directory/with/your/lua/code
 -------------------------------------------------------------------------------------
 trace = 1              -- here you may put variables global for all your masks
-
+                       -- example for loading a dll on windows
+                       -- local fn,err = package.loadlib('./bit.dll','luaopen_bit')
 dofile("mask1.lua")    -- include your masks here
 
 -------------------------------------------------------------------------------------
