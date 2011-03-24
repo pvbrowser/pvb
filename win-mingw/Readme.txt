@@ -23,3 +23,12 @@ http://qt.nokia.com/downloads
 During the installation of Qt you will be asked,
 if you want to install MinGW also.
 
+----------------------------------------------------------------
+
+For compiling pvbrowser from sourcecode adjust login.bat and run
+
+login.bat
+build.bat
+build_language_bindings.bat
+
+----------------------------------------------------------------
