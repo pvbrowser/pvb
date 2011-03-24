@@ -24,3 +24,6 @@ mingw32-make.exe clean
 
 cd ..\..
 del *.cxx
+
+copy lua\lua-5.1\src\lua.dll ..\win-mingw\bin\
+

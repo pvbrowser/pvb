@@ -98,17 +98,17 @@ static lua_CFunction ll_sym (lua_State *L, void *lib, const char *sym) {
 
 #undef setprogdir
 
-extern char pvarg0[];
+//extern char pvarg0[];
 
 static void setprogdir (lua_State *L) {
   char buff[MAX_PATH + 1];
   char *lb;
   DWORD nsize = sizeof(buff)/sizeof(char);
   //DWORD n = GetModuleFileName(NULL, buff, nsize);
-  //Robert Buehlmann because of unicodea, load dll's from lua
+  //Robert Buehlmann because of unicode, load dll's from lua
   DWORD n = GetModuleFileNameA(NULL, buff, nsize);
   //printf("rlmurx: GetModuelFilename n=%d buff=%s\n", n, buff);
-  strcpy(buff,pvarg0);
+  //strcpy(buff,pvarg0);
   //strcpy(buff,"z:\\cc\\priv\\cvs\\pvb\\language_bindings\\lua\\pvslua\\pvslua");
   if (n == 0 || n == nsize || (lb = strrchr(buff, '\\')) == NULL)
     luaL_error(L, "unable to get ModuleFileName");
