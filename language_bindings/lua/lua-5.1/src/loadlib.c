@@ -104,7 +104,9 @@ static void setprogdir (lua_State *L) {
   char buff[MAX_PATH + 1];
   char *lb;
   DWORD nsize = sizeof(buff)/sizeof(char);
-  DWORD n = GetModuleFileName(NULL, buff, nsize);
+  //DWORD n = GetModuleFileName(NULL, buff, nsize);
+  //Robert Buehlmann because of unicodea, load dll's from lua
+  DWORD n = GetModuleFileNameA(NULL, buff, nsize);
   //printf("rlmurx: GetModuelFilename n=%d buff=%s\n", n, buff);
   strcpy(buff,pvarg0);
   //strcpy(buff,"z:\\cc\\priv\\cvs\\pvb\\language_bindings\\lua\\pvslua\\pvslua");
@@ -121,7 +123,9 @@ static void setprogdir (lua_State *L) {
 static void pusherror (lua_State *L) {
   int error = GetLastError();
   char buffer[128];
-  if (FormatMessage(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM,
+  //if (FormatMessage(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM,
+  //Robert Buehlmann because of unicode, load dll's from lua
+  if (FormatMessageA(FORMAT_MESSAGE_IGNORE_INSERTS | FORMAT_MESSAGE_FROM_SYSTEM,
       NULL, error, 0, buffer, sizeof(buffer), NULL))
     lua_pushstring(L, buffer);
   else
@@ -134,7 +138,9 @@ static void ll_unloadlib (void *lib) {
 
 
 static void *ll_load (lua_State *L, const char *path) {
-  HINSTANCE lib = LoadLibrary(path);
+  //HINSTANCE lib = LoadLibrary(path);
+  //Robert Buehlmann because of unicode, load dll's from lua
+  HINSTANCE lib = LoadLibraryA(path);
   if (lib == NULL) pusherror(L);
   return lib;
 }
