@@ -49,6 +49,42 @@ public:
   printf("german_text=%s\n", ini->i18n("text1","This is text1") );
   </pre> */
   const char *i18n(const char *tag, const char *default_text);
+  /*! <pre>
+  Use this method for translating text within your application.
+
+  Example:
+
+  #define TR(txt) d->translator.tr(txt)
+
+  typedef struct // (todo: define your data structure here)
+  {
+        rlIniFile translator;
+  }
+  DATA;
+
+  static int slotInit(PARAM *p, DATA *d)
+  {
+    if(p == NULL || d == NULL) return -1;
+    d->translator.read("text.ini");
+    d->translator.setDefaultSection("DEUTSCH");
+    printf("test1=%s\n", TR("umlaute"));
+    printf("test2=%s\n", TR("Xumlaute"));
+    d->translator.setDefaultSection("ENGLISH");
+    printf("test1=%s\n", TR("umlaute"));
+    printf("test2=%s\n", TR("Xumlaute"));
+  }
+
+  With text.ini:
+  [DEUTSCH]
+  hello=Hallo
+  world=Welt
+  umlaute=äöüß
+
+  [ENGLISH]
+  hello=Hello
+  world=World
+  umlaute=german_umlaute=äöüß
+  </pre> */
   const char *tr(const char *txt);
 private:
   typedef struct _rlSectionName_

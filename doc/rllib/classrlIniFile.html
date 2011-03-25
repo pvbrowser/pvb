@@ -1019,7 +1019,30 @@ class for INI files as known from Windows.
       </table>
 </div>
 <div class="memdoc">
-
+<pre>
+  Use this method for translating text within your application.</pre><pre>  Example:</pre><pre>  #define TR(txt) d-&gt;translator.tr(txt)</pre><pre>  typedef struct // (todo: define your data structure here)
+  {
+        <a class="el" href="classrlIniFile.html">rlIniFile</a> translator;
+  }
+  DATA;</pre><pre>  static int slotInit(PARAM *p, DATA *d)
+  {
+    if(p == NULL || d == NULL) return -1;
+    d-&gt;translator.read("text.ini");
+    d-&gt;translator.setDefaultSection("DEUTSCH");
+    printf("test1=%s\n", TR("umlaute"));
+    printf("test2=%s\n", TR("Xumlaute"));
+    d-&gt;translator.setDefaultSection("ENGLISH");
+    printf("test1=%s\n", TR("umlaute"));
+    printf("test2=%s\n", TR("Xumlaute"));
+  }</pre><pre>  With text.ini:
+  [DEUTSCH]
+  hello=Hallo
+  world=Welt
+  umlaute=äöüß</pre><pre>  [ENGLISH]
+  hello=Hello
+  world=World
+  umlaute=german_umlaute=äöüß
+  </pre> 
 <p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00492">492</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(txt == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;ERROR:txt=NULL&quot;</span>;
@@ -1091,7 +1114,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00072">72</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00108">108</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1129,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00073">73</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00109">109</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1121,7 +1144,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00073">73</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00109">109</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1136,7 +1159,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00075">75</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00111">111</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1151,7 +1174,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00074">74</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00110">110</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>

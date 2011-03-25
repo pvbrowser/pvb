@@ -79,33 +79,33 @@
 <a name="l00042"></a>00042   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a5ae4c069708c7b441d343b4a3ab3a17a">setDefaultSection</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *section);
 <a name="l00043"></a>00043   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlIniFile.html#a70ed67c5a33a4d3b00b836c6c68f135c">defaultSection</a>();
 <a name="l00051"></a>00051   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlIniFile.html#a5e1de3dbd04f3580fe37b7b9415bc143">i18n</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *tag, <span class="keyword">const</span> <span class="keywordtype">char</span> *default_text);
-<a name="l00052"></a>00052   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlIniFile.html#a2f69e87bf36bbe38b679f163ce71de6d">tr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *txt);
-<a name="l00053"></a>00053 <span class="keyword">private</span>:
-<a name="l00054"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html">00054</a>   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrlIniFile_1_1__rlSectionName__.html">_rlSectionName_</a>
-<a name="l00055"></a>00055   {
-<a name="l00056"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a467995800dd7a4f898b081884c81afe8">00056</a>     <a class="code" href="structrlIniFile_1_1__rlSectionName__.html">_rlSectionName_</a> *<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a467995800dd7a4f898b081884c81afe8">nextName</a>;
-<a name="l00057"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html#aa3ac4619428903af881fc4fe6dff8b9f">00057</a>     <span class="keywordtype">char</span>            *<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#aa3ac4619428903af881fc4fe6dff8b9f">name</a>;
-<a name="l00058"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a85075750e5fb646cfb7adf861041cc5d">00058</a>     <span class="keywordtype">char</span>            *<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a85075750e5fb646cfb7adf861041cc5d">param</a>;
-<a name="l00059"></a>00059   }<a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a>;
-<a name="l00060"></a>00060 
-<a name="l00061"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html">00061</a>   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrlIniFile_1_1__rlSection__.html">_rlSection_</a>
-<a name="l00062"></a>00062   {
-<a name="l00063"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html#af61b25d01e1f62a82bf459eca82bcea9">00063</a>     <a class="code" href="structrlIniFile_1_1__rlSection__.html">_rlSection_</a>   *<a class="code" href="structrlIniFile_1_1__rlSection__.html#af61b25d01e1f62a82bf459eca82bcea9">nextSection</a>;
-<a name="l00064"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html#af978fc870045413494ec748777d3cca8">00064</a>     <a class="code" href="structrlIniFile_1_1__rlSectionName__.html">rlSectionName</a> *<a class="code" href="structrlIniFile_1_1__rlSection__.html#af978fc870045413494ec748777d3cca8">firstName</a>;
-<a name="l00065"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html#a1bbce7cbb87648b9b32c20791f8b8e46">00065</a>     <span class="keywordtype">char</span>          *<a class="code" href="structrlIniFile_1_1__rlSection__.html#a1bbce7cbb87648b9b32c20791f8b8e46">name</a>;
-<a name="l00066"></a>00066   }<a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a>;
-<a name="l00067"></a>00067 
-<a name="l00068"></a>00068   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a6a83aa5883c2c3ecd8bf0d9aae00739b">copyIdentifier</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *line);
-<a name="l00069"></a>00069   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a209150ef8500265a87aa0d232c6ddc15">copyName</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *line);
-<a name="l00070"></a>00070   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#af860a703b2597aafed70b00610df2401">copyParam</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *line);
-<a name="l00071"></a>00071   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a42df6222554051e4d6d2068ac00794de">deleteSectionNames</a>(<a class="code" href="structrlIniFile_1_1__rlSection__.html">rlSection</a> *section);
-<a name="l00072"></a><a class="code" href="classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442">00072</a>   <a class="code" href="structrlIniFile_1_1__rlSection__.html">rlSection</a> *<a class="code" href="classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442">_firstSection</a>;
-<a name="l00073"></a><a class="code" href="classrlIniFile.html#ade58732520eaec75532e2f434878dd7e">00073</a>   <span class="keywordtype">int</span> <a class="code" href="classrlIniFile.html#ade58732520eaec75532e2f434878dd7e">currentSection</a>, <a class="code" href="classrlIniFile.html#a929998cb2bc909c42529dd4762b29647">currentName</a>;
-<a name="l00074"></a><a class="code" href="classrlIniFile.html#a2347d7b297e781b7f60a5c3b4d26addf">00074</a>   <a class="code" href="classrlString.html">rlString</a> <a class="code" href="classrlIniFile.html#a2347d7b297e781b7f60a5c3b4d26addf">fname</a>;
-<a name="l00075"></a><a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">00075</a>   <a class="code" href="classrlString.html">rlString</a> <a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">default_section</a>;
-<a name="l00076"></a>00076 };
-<a name="l00077"></a>00077 
-<a name="l00078"></a>00078 <span class="preprocessor">#endif</span>
+<a name="l00088"></a>00088   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlIniFile.html#a2f69e87bf36bbe38b679f163ce71de6d">tr</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *txt);
+<a name="l00089"></a>00089 <span class="keyword">private</span>:
+<a name="l00090"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html">00090</a>   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrlIniFile_1_1__rlSectionName__.html">_rlSectionName_</a>
+<a name="l00091"></a>00091   {
+<a name="l00092"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a467995800dd7a4f898b081884c81afe8">00092</a>     <a class="code" href="structrlIniFile_1_1__rlSectionName__.html">_rlSectionName_</a> *<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a467995800dd7a4f898b081884c81afe8">nextName</a>;
+<a name="l00093"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html#aa3ac4619428903af881fc4fe6dff8b9f">00093</a>     <span class="keywordtype">char</span>            *<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#aa3ac4619428903af881fc4fe6dff8b9f">name</a>;
+<a name="l00094"></a><a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a85075750e5fb646cfb7adf861041cc5d">00094</a>     <span class="keywordtype">char</span>            *<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#a85075750e5fb646cfb7adf861041cc5d">param</a>;
+<a name="l00095"></a>00095   }<a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a>;
+<a name="l00096"></a>00096 
+<a name="l00097"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html">00097</a>   <span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structrlIniFile_1_1__rlSection__.html">_rlSection_</a>
+<a name="l00098"></a>00098   {
+<a name="l00099"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html#af61b25d01e1f62a82bf459eca82bcea9">00099</a>     <a class="code" href="structrlIniFile_1_1__rlSection__.html">_rlSection_</a>   *<a class="code" href="structrlIniFile_1_1__rlSection__.html#af61b25d01e1f62a82bf459eca82bcea9">nextSection</a>;
+<a name="l00100"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html#af978fc870045413494ec748777d3cca8">00100</a>     <a class="code" href="structrlIniFile_1_1__rlSectionName__.html">rlSectionName</a> *<a class="code" href="structrlIniFile_1_1__rlSection__.html#af978fc870045413494ec748777d3cca8">firstName</a>;
+<a name="l00101"></a><a class="code" href="structrlIniFile_1_1__rlSection__.html#a1bbce7cbb87648b9b32c20791f8b8e46">00101</a>     <span class="keywordtype">char</span>          *<a class="code" href="structrlIniFile_1_1__rlSection__.html#a1bbce7cbb87648b9b32c20791f8b8e46">name</a>;
+<a name="l00102"></a>00102   }<a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a>;
+<a name="l00103"></a>00103 
+<a name="l00104"></a>00104   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a6a83aa5883c2c3ecd8bf0d9aae00739b">copyIdentifier</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *line);
+<a name="l00105"></a>00105   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a209150ef8500265a87aa0d232c6ddc15">copyName</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *line);
+<a name="l00106"></a>00106   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#af860a703b2597aafed70b00610df2401">copyParam</a>(<span class="keywordtype">char</span> *buf, <span class="keyword">const</span> <span class="keywordtype">char</span> *line);
+<a name="l00107"></a>00107   <span class="keywordtype">void</span> <a class="code" href="classrlIniFile.html#a42df6222554051e4d6d2068ac00794de">deleteSectionNames</a>(<a class="code" href="structrlIniFile_1_1__rlSection__.html">rlSection</a> *section);
+<a name="l00108"></a><a class="code" href="classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442">00108</a>   <a class="code" href="structrlIniFile_1_1__rlSection__.html">rlSection</a> *<a class="code" href="classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442">_firstSection</a>;
+<a name="l00109"></a><a class="code" href="classrlIniFile.html#ade58732520eaec75532e2f434878dd7e">00109</a>   <span class="keywordtype">int</span> <a class="code" href="classrlIniFile.html#ade58732520eaec75532e2f434878dd7e">currentSection</a>, <a class="code" href="classrlIniFile.html#a929998cb2bc909c42529dd4762b29647">currentName</a>;
+<a name="l00110"></a><a class="code" href="classrlIniFile.html#a2347d7b297e781b7f60a5c3b4d26addf">00110</a>   <a class="code" href="classrlString.html">rlString</a> <a class="code" href="classrlIniFile.html#a2347d7b297e781b7f60a5c3b4d26addf">fname</a>;
+<a name="l00111"></a><a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">00111</a>   <a class="code" href="classrlString.html">rlString</a> <a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">default_section</a>;
+<a name="l00112"></a>00112 };
+<a name="l00113"></a>00113 
+<a name="l00114"></a>00114 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <hr class="footer"/><address class="footer"><small>Generated by&#160;
