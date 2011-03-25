@@ -988,6 +988,7 @@ class rlIniFile(_object):
     def setDefaultSection(self, *args): return _rllib.rlIniFile_setDefaultSection(self, *args)
     def defaultSection(self): return _rllib.rlIniFile_defaultSection(self)
     def i18n(self, *args): return _rllib.rlIniFile_i18n(self, *args)
+    def tr(self, *args): return _rllib.rlIniFile_tr(self, *args)
 rlIniFile_swigregister = _rllib.rlIniFile_swigregister
 rlIniFile_swigregister(rlIniFile)
 

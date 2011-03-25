@@ -82,6 +82,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a5ae4c069708c7b441d343b4a3ab3a17a">setDefaultSection</a> (const char *section)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a70ed67c5a33a4d3b00b836c6c68f135c">defaultSection</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a5e1de3dbd04f3580fe37b7b9415bc143">i18n</a> (const char *tag, const char *default_text)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a2f69e87bf36bbe38b679f163ce71de6d">tr</a> (const char *txt)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-types"></a>
 Private Types</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">typedef struct <br class="typebreak"/>
@@ -1004,6 +1005,32 @@ class for INI files as known from Windows.
 </pre></div>
 </div>
 </div>
+<a class="anchor" id="a2f69e87bf36bbe38b679f163ce71de6d"></a><!-- doxytag: member="rlIniFile::tr" ref="a2f69e87bf36bbe38b679f163ce71de6d" args="(const char *txt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * rlIniFile::tr </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>txt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00492">492</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordflow">if</span>(txt == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;ERROR:txt=NULL&quot;</span>;
+  <span class="keywordtype">char</span> default_text[1024];
+  <span class="keywordflow">if</span>(strlen(txt) &lt; (<span class="keyword">sizeof</span>(default_text) - 40)) sprintf(default_text,<span class="stringliteral">&quot;tr_error:%s&quot;</span>, txt);
+  <span class="keywordflow">else</span>                                          strcpy(default_text,<span class="stringliteral">&quot;tr_error:text too long&quot;</span>);
+  <span class="keywordflow">return</span> <a class="code" href="classrlIniFile.html#a5e1de3dbd04f3580fe37b7b9415bc143">i18n</a>(txt,default_text);
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="af94efae028ba003d1e937fe1a890d2e0"></a><!-- doxytag: member="rlIniFile::write" ref="af94efae028ba003d1e937fe1a890d2e0" args="(const char *filename)" -->
 <div class="memitem">
 <div class="memproto">
@@ -1064,7 +1091,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00071">71</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00072">72</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1079,7 +1106,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00072">72</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00073">73</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1094,7 +1121,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00072">72</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00073">73</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1109,7 +1136,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00074">74</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00075">75</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>
@@ -1124,7 +1151,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00073">73</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8h_source.html#l00074">74</a> of file <a class="el" href="rlinifile_8h_source.html">rlinifile.h</a>.</p>
 
 </div>
 </div>

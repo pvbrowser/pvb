@@ -49,6 +49,7 @@ public:
   printf("german_text=%s\n", ini->i18n("text1","This is text1") );
   </pre> */
   const char *i18n(const char *tag, const char *default_text);
+  const char *tr(const char *txt);
 private:
   typedef struct _rlSectionName_
   {

@@ -13028,6 +13028,33 @@ fail:
 }
 
 
+static int _wrap_rlIniFile_tr(lua_State* L) {
+  int SWIG_arg = 0;
+  rlIniFile *arg1 = (rlIniFile *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("tr",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("tr",1,"rlIniFile *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("tr",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlIniFile,0))){
+    SWIG_fail_ptr("rlIniFile_tr",1,SWIGTYPE_p_rlIniFile);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (char *)(arg1)->tr((char const *)arg2);
+  lua_pushstring(L,(const char*)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlIniFile(void *obj) {
 rlIniFile *arg1 = (rlIniFile *) obj;
 delete arg1;
@@ -13047,6 +13074,7 @@ static swig_lua_method swig_rlIniFile_methods[] = {
     {"setDefaultSection", _wrap_rlIniFile_setDefaultSection}, 
     {"defaultSection", _wrap_rlIniFile_defaultSection}, 
     {"i18n", _wrap_rlIniFile_i18n}, 
+    {"tr", _wrap_rlIniFile_tr}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlIniFile_attributes[] = {

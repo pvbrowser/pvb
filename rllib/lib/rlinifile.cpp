@@ -489,3 +489,11 @@ const char *rlIniFile::i18n(const char *tag, const char *default_text)
   else                              return cptr;
 }
 
+const char *rlIniFile::tr(const char *txt)
+{
+  if(txt == NULL) return "ERROR:txt=NULL";
+  char default_text[1024];
+  if(strlen(txt) < (sizeof(default_text) - 40)) sprintf(default_text,"tr_error:%s", txt);
+  else                                          strcpy(default_text,"tr_error:text too long");
+  return i18n(txt,default_text);
+}
