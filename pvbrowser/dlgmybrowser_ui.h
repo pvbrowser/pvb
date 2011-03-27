@@ -29,8 +29,10 @@ public:
 protected:
   virtual QWebView *createWindow(QWebPage::WebWindowType type);
 private:
+  virtual void keyPressEvent(QKeyEvent *event);
   virtual void mousePressEvent(QMouseEvent *event);
   QPoint pressPos;
+  float factor;
 };
 
 class Ui_MyBrowser

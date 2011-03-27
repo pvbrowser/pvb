@@ -3803,6 +3803,14 @@ void Interpreter::interprets(const char *command)
       case 'Y':
         break;
       case 'Z':
+        if(strncmp(command,"setZoomFactor(",14) == 0) // set zoom factor of HTML page
+        {
+          float factor;
+          sscanf(command,"setZoomFactor(%d,%f",&i,&factor);
+          if(i >= nmax && i > 0) return;
+          MyTextBrowser *b = (MyTextBrowser*) all[i]->w;
+          if(b != NULL) b->setZoomFactor(factor);
+        }
         break;
       default:
         break;

@@ -1551,6 +1551,7 @@ pvSetSource()
 pvMoveContent()
 pvMoveCursor()
 pvScrollToAnchor()
+pvSetZoomFactor()
 </pre> */
 int pvQTextBrowser(PARAM *p, int id, int parent);
 /*! <pre>
@@ -2199,6 +2200,11 @@ Scroll to anchor
 allowed widgets: QTextBrowser
 </pre> */
 int pvScrollToAnchor(PARAM *p, int id, const char *anchor);
+/*! <pre>
+Set zoom factor of the HTML page
+allowed widgets: QTextBrowser
+</pre> */
+int pvSetZoomFactor(PARAM *p, int id, float factor);
 /** @} */ // end of group
 
 /** @defgroup Input Input

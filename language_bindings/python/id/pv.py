@@ -1217,6 +1217,10 @@ def pvScrollToAnchor(*args):
   return _pv.pvScrollToAnchor(*args)
 pvScrollToAnchor = _pv.pvScrollToAnchor
 
+def pvSetZoomFactor(*args):
+  return _pv.pvSetZoomFactor(*args)
+pvSetZoomFactor = _pv.pvSetZoomFactor
+
 def pvText(*args):
   return _pv.pvText(*args)
 pvText = _pv.pvText

@@ -37,10 +37,29 @@ extern OPT opt;
 pvQWebView::pvQWebView(QWidget *parent)
            :QWebView(parent)
 {
+  factor = 1.0f;
 }
 
 pvQWebView::~pvQWebView()
 {
+}
+
+void pvQWebView::keyPressEvent(QKeyEvent *event)
+{
+  if(event->matches(QKeySequence::ZoomIn))
+  {
+    factor = factor*1.1f;
+    setZoomFactor(factor);
+  }
+  else if(event->matches(QKeySequence::ZoomOut))
+  {
+    factor = factor*0.9f;
+    setZoomFactor(factor);
+  }
+  else
+  {
+    QWebView::keyPressEvent(event);
+  }
 }
 
 QWebView *pvQWebView::createWindow(QWebPage::WebWindowType type)

@@ -2287,6 +2287,13 @@ int pvScrollToAnchor(PARAM *p, int id, const char *anchor)
   return 0;
 }
 
+int pvSetZoomFactor(PARAM *p, int id, float factor)
+{
+  char buf[80];
+  sprintf(buf,"setZoomFactor(%d,%f)\n",id,factor);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
 
 int pvAddColumn(PARAM *p, int id, const char *text, int size)
 {

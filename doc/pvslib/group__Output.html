@@ -103,6 +103,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gac0298c9cfcfcfe2f53b4df31a5321eef">pvEnsureCellVisible</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int row, int col=1)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga12886a0096c348da03b884d42df5c2c0">pvMoveCursor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int cursor)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2">pvScrollToAnchor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *anchor)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga6bcc86eac33d40828635dfb2a53f15f8">pvSetZoomFactor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, float factor)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>These are the output routines </p>
@@ -2617,6 +2618,42 @@ For QMultiLineEdit set maxlines = value
 Set word wrap for table.
 wrap = 0 | 1
 Allowed widgets: QTable
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga6bcc86eac33d40828635dfb2a53f15f8"></a><!-- doxytag: member="processviewserver.h::pvSetZoomFactor" ref="ga6bcc86eac33d40828635dfb2a53f15f8" args="(PARAM *p, int id, float factor)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetZoomFactor </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>factor</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set zoom factor of the HTML page
+allowed widgets: QTextBrowser
 </pre> 
 </div>
 </div>

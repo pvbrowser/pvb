@@ -1752,6 +1752,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   s = sock;
   id = ident;
   homeIsSet = 0;
+  factor = 1.0f;
   if(name != NULL) setObjectName(name);
   page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
   connect(this, SIGNAL(linkClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
@@ -1772,6 +1773,24 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
 
 MyTextBrowser::~MyTextBrowser()
 {
+}
+
+void MyTextBrowser::keyPressEvent(QKeyEvent *event)
+{
+  if(event->matches(QKeySequence::ZoomIn))
+  {
+    factor = factor*1.1f;
+    setZoomFactor(factor);
+  }
+  else if(event->matches(QKeySequence::ZoomOut))
+  {
+    factor = factor*0.9f;
+    setZoomFactor(factor);
+  }
+  else
+  {
+    QWebView::keyPressEvent(event);
+  }
 }
 
 QWebView *MyTextBrowser::createWindow(QWebPage::WebWindowType type)
