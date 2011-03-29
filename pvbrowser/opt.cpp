@@ -236,6 +236,7 @@ int i;
   opt.scrollbars=1;
   opt.fullscreen=0;
   opt.maximized=0;
+  opt.tabs_above_toolbar=0;
   opt.echo_table_updates=0;
   opt.enable_webkit_plugins=1;
   opt.temp[0] = '\0';
@@ -357,6 +358,10 @@ int i;
         {
           sscanf(buf,"maximized=%d",&opt.maximized);
         }
+        else if(strncmp(buf,"tabs_above_toolbar=",19) == 0)
+        {
+          sscanf(buf,"tabs_above_toolbar=%d",&opt.tabs_above_toolbar);
+        }
         else if(strncmp(buf,"exitpassword=",13) == 0)
         {
           sscanf(buf,"exitpassword=%d",&opt.exitpassword);
@@ -467,6 +472,7 @@ int i;
         fprintf(fp,"scrollbars=1            # 0|1\n");
         fprintf(fp,"fullscreen=0            # 0|1\n");
         fprintf(fp,"maximized=0             # 0|1\n");
+        fprintf(fp,"tabs_above_toolbar=0    # 0|1\n");
         fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
         fprintf(fp,"echo_table_updates=0    # 0|1\n");
         fprintf(fp,"enable_webkit_plugins=1 # 0|1\n");

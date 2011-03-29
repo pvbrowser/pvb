@@ -41,6 +41,7 @@ typedef struct
   int scrollbars;           //=1      # 0|1
   int fullscreen;           //=0      # 0|1
   int maximized;            //=0      # 0|1
+  int tabs_above_toolbar;   //=0      # 0|1
   int echo_table_updates;   //=0      # 0|1
   int enable_webkit_plugins;//=0      # 0|1
   char temp[MAXOPT];        //=/tmp

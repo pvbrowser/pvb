@@ -576,9 +576,18 @@ void MainWindow::createToolBars()
   pvbtab[0].in_use = 1;
   scroll = new QScrollArea();
   setCentralWidget(scroll);
-  fileToolBar = addToolBar(tr("File"));
-  addToolBarBreak(); 
-  tabToolBar  = addToolBar(tr("Tabs"));
+  if(opt.tabs_above_toolbar)
+  {
+    tabToolBar  = addToolBar(tr("Tabs"));
+    addToolBarBreak(); 
+    fileToolBar = addToolBar(tr("File"));
+  }
+  else
+  {
+    fileToolBar = addToolBar(tr("File"));
+    addToolBarBreak(); 
+    tabToolBar  = addToolBar(tr("Tabs"));
+  }
   tabBar      = new QTabBar();
   deleteTab   = new QPushButton();
   deleteTab->setToolTip(l_delete_tab);
