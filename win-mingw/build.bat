@@ -95,7 +95,7 @@ copy rlhistory\release\rlhistory.exe                             bin\rlhistory.e
 copy ..\start_pvbapp\start_pvbapp.exe                            bin\start_pvbapp.exe                            
 copy fake_qmake\fake_qmake.exe                                   bin\fake_qmake.exe                              
 copy setupregistry\SetupRegistry.exe                             bin\SetupRegistry.exe                           
-xcopy /e /y "c:\Qt\2010.05\qt\plugins\imageformats"              bin\imageformats                                
+xcopy /e /y "%QTDIR%\plugins\imageformats"                       bin\imageformats                                
 copy ..\qwt\designer\plugins\designer\qwt_designer_plugin5.dll   bin\plugins\designer\qwt_designer_plugin5.dll   
 copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\designer\libqwt_designer_plugin5.a  
 copy ..\designer\plugins\pvb_designer_plugin.dll                 bin\plugins\designer\pvb_designer_plugin.dll    

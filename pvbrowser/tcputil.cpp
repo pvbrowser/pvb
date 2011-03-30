@@ -48,11 +48,14 @@
 #include "winsock.h"
 #else
 //#if (_WIN32_WINNT < 0x0501)
-#warning mingw does not have ipv6 helpers modify mingw header in ws2tcpip.h
+//#warning mingw does not have ipv6 helpers modify mingw header in ws2tcpip.h
+#include "winsock2.h"
+#include <ws2tcpip.h>
+void WSAAPI freeaddrinfo(struct addrinfo*);
+int  WSAAPI getaddrinfo(const char*,const char*,const struct addrinfo*, struct addrinfo**);
+int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWORD,int);
 //#undef AF_INET6_IS_AVAILABLE
 //#endif
-#include <winsock2.h>
-#include <ws2tcpip.h>
 #endif
 #define MSG_NOSIGNAL 0
 #include <qapplication.h>
