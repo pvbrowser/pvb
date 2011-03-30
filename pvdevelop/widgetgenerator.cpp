@@ -1623,12 +1623,13 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
         cptr1++;
         cptr1++;
       }
-      else if(*cptr1 == '\\')
-      {
-        cptr1++;
-        text[i++] = *cptr1;
-        cptr1++;
-      }
+      //commented this out in order to allow \ in strings.
+      //else if(*cptr1 == '\\')
+      //{
+      //  cptr1++;
+      //  text[i++] = *cptr1;
+      //  cptr1++;
+      //}
       else
       {
         text[i++] = *cptr1;

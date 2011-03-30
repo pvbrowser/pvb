@@ -39,7 +39,7 @@ const char pvserver_version[] = "4.6.1";
 #include <winsock.h>
 #else
 //#if (_WIN32_WINNT < 0x0501)
-// mingw does not have helpers modify mingw header
+#warning  mingw does not have helpers modify mingw header in ws2tcpip.h
 //#undef AF_INET6_IS_AVAILABLE
 //#endif
 #include <winsock2.h>
