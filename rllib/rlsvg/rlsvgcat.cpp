@@ -151,6 +151,7 @@ int rlSvgCat::outValue(int i)
 {
   //printf("outValue=%s",&line[i]);
   int found_equal = 0;
+  int found_quotes = 0;
   FILE *out = (FILE *) fout;
   while(line[i] != '\0' && line[i] != '\n')
   {
@@ -179,9 +180,19 @@ int rlSvgCat::outValue(int i)
     }
     else if((line[i] == ' ' || line[i] == '\t') && found_equal==1)
     {
-      fputc('\n',out);
+      if(found_quotes == 0) fputc('\n',out);
       while(line[i] == ' ' || line[i] == '\t') i++;
       found_equal = 0;
+    }
+    else if(line[i] == '\"')
+    {
+      found_quotes++;
+      if(found_quotes == 2) found_quotes = 0;
+      fputc(line[i++],out);
+    }
+    else if((line[i] == ' ' || line[i] == '\t') && found_quotes == 0)
+    {
+      i++;
     }
     else
     {
