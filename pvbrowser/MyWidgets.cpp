@@ -1780,12 +1780,16 @@ void MyTextBrowser::keyPressEvent(QKeyEvent *event)
   if(event->matches(QKeySequence::ZoomIn))
   {
     factor = factor*1.1f;
+#if QT_VERSION >= 0x040500
     setZoomFactor(factor);
+#endif    
   }
   else if(event->matches(QKeySequence::ZoomOut))
   {
     factor = factor*0.9f;
+#if QT_VERSION >= 0x040500
     setZoomFactor(factor);
+#endif    
   }
   else
   {

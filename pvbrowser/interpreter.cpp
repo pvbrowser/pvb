@@ -3805,11 +3805,13 @@ void Interpreter::interprets(const char *command)
       case 'Z':
         if(strncmp(command,"setZoomFactor(",14) == 0) // set zoom factor of HTML page
         {
+#if QT_VERSION >= 0x040500
           float factor;
           sscanf(command,"setZoomFactor(%d,%f",&i,&factor);
           if(i >= nmax && i > 0) return;
           MyTextBrowser *b = (MyTextBrowser*) all[i]->w;
           if(b != NULL) b->setZoomFactor(factor);
+#endif          
         }
         break;
       default:
