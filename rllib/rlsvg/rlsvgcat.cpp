@@ -180,7 +180,7 @@ int rlSvgCat::outValue(int i)
     }
     else if((line[i] == ' ' || line[i] == '\t') && found_equal==1)
     {
-      if(found_quotes == 0) fputc('\n',out);
+      if(found_quotes == 0 && line[i+1] != '/') fputc('\n',out);
       while(line[i] == ' ' || line[i] == '\t') i++;
       found_equal = 0;
     }
