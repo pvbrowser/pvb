@@ -4078,9 +4078,14 @@ void Interpreter::interprett(const char *command)
       if(t != NULL)
       {
         item = t->item(y,x);
-        if(item != 0)
+        QWidget *widget = t->cellWidget(y,x);
+        if(widget != NULL)
         {
-          if(enabled) item->setFlags(Qt::ItemIsEnabled);
+          widget->setEnabled(enabled);
+        }
+        else if(item != 0)
+        {
+          if(enabled) item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
           else        item->setFlags(0);
         }
       }
