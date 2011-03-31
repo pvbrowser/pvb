@@ -150,6 +150,7 @@ int rlSvgCat::outUntilEnd(int i)
 int rlSvgCat::outValue(int i)
 {
   //printf("outValue=%s",&line[i]);
+  int found_equal = 0;
   FILE *out = (FILE *) fout;
   while(line[i] != '\0' && line[i] != '\n')
   {
@@ -170,6 +171,17 @@ int rlSvgCat::outValue(int i)
       fputc(line[i++],out);
       fputc(line[i],out);
       break;
+    }
+    else if(line[i] == '=')
+    {
+      found_equal = 1;
+      fputc(line[i++],out);
+    }
+    else if((line[i] == ' ' || line[i] == '\t') && found_equal==1)
+    {
+      fputc('\n',out);
+      while(line[i] == ' ' || line[i] == '\t') i++;
+      found_equal = 0;
     }
     else
     {
