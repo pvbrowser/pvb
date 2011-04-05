@@ -480,8 +480,7 @@ int i;
 #ifdef PVUNIX
         sprintf(buf,"mkdir -p /tmp/pvb-%s", getenv("USER"));
         if(system(buf) != 0) printf("could not create temporary directory: %s\n", buf);
-        sprintf(buf,"temp=/tmp/pvb-%s\n", getenv("USER"));
-        fprintf(fp,buf);
+        fprintf(fp,"temp=/tmp/pvb-%s\n", getenv("USER"));
 #endif
 #ifdef PVWIN32
         //fprintf(fp,"temp=%%PVBDIR%%\\win\\temp\n");

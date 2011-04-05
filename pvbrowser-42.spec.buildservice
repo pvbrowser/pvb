@@ -30,7 +30,7 @@ Requires:  libpng
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel fdupes
+BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel 
 %endif
 
 %if 0%{?suse_version} >= 1100
@@ -108,10 +108,6 @@ BuildRequires: libqt4-webkit-dev
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}
-
-#BuildRequires: fdupes
-#%fdupes %{buildroot}
-#%fdupes $RPM_BUILD_ROOT
 
 %description
  This is pvbrowser Qt4-Series:
@@ -191,10 +187,6 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/browserplugin
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
-%if 0%{?suse_version}
-%fdupes -s                                                %{buildroot}/opt/pvb/doc/pvslib
-%fdupes -s                                                %{buildroot}/opt/pvb/doc/rllib
-%endif
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
 cp    logo1.png                                           %{buildroot}/opt/pvb/
