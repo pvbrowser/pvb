@@ -1283,6 +1283,7 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetValue()
 pvSetTabPosition()
+pvEnableTabBar()
 </pre> */
 int pvQTabWidget(PARAM *p, int id, int parent);
 /*! <pre>
@@ -2350,6 +2351,11 @@ Set tab position 0=Top | 1=Bottom | 2=West | 3=East
 Allowed widgets QTabWidget
 </pre> */
 int pvSetTabPosition(PARAM *p, int id, int pos);
+/*! <pre>
+Enable the TabBar 0=disable | 1=enable
+Allowed widgets QTabWidget
+</pre> */
+int pvEnableTabBar(PARAM *p, int id, int state);
 /*! <pre>
 Set num rows in table
 Allowed widgets QTable

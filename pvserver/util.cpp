@@ -2756,6 +2756,15 @@ char buf[80];
   return 0;
 }
 
+int pvEnableTabBar(PARAM *p, int id, int state)
+{
+char buf[80];
+
+  sprintf(buf,"enableTabBar(%d,%d)\n",id,state);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSetNumRows(PARAM *p, int id, int num)
 {
 char buf[80];

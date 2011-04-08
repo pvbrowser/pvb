@@ -763,6 +763,12 @@ char buf[80];
   tcp_send(s,buf,strlen(buf));
 }
 
+void MyQTabWidget::enableTabBar(int state)
+{
+  if(state == 0) tabBar()->setEnabled(false);
+  else           tabBar()->setEnabled(true);
+}
+
 void MyQTabWidget::mousePressEvent(QMouseEvent *e)
 {
   char buf[80];

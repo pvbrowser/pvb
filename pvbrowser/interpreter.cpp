@@ -995,7 +995,19 @@ void Interpreter::interpretd(const char *command)
 
 void Interpreter::interprete(const char *command)
 {
-  if(strncmp(command,"endDefinition",13) == 0) // endDefinition of new MainWidget
+  if(strncmp(command,"enableTabBar(",13) == 0)
+  {
+    int state;
+    sscanf(command,"enableTabBar(%d,%d)",&i,&state);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQTabWidget)
+    {
+      MyQTabWidget *p = (MyQTabWidget *) all[i]->w;
+      p->enableTabBar(state);
+    }
+  }
+  else if(strncmp(command,"endDefinition",13) == 0) // endDefinition of new MainWidget
   {
     if(allBase == NULL)
     {

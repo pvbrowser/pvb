@@ -254,6 +254,7 @@ public:
 
 public slots:
     void slotCurrentChanged(int index);
+    void enableTabBar(int state);
 
 private:
     virtual void mousePressEvent(QMouseEvent *event);
