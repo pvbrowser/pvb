@@ -104,6 +104,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga12886a0096c348da03b884d42df5c2c0">pvMoveCursor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, int cursor)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2">pvScrollToAnchor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *anchor)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga6bcc86eac33d40828635dfb2a53f15f8">pvSetZoomFactor</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, float factor)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gab7381258e26336e219415df232945c89">pvPrintHtmlOnPrinter</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>These are the output routines </p>
@@ -929,6 +930,36 @@ Play Sound. filename should point to a *.wav audio file. First <a class="el" hre
 Set the text of a widget.
 The functions works like printf()
 Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser, QGroupBox
+</pre> 
+</div>
+</div>
+<a class="anchor" id="gab7381258e26336e219415df232945c89"></a><!-- doxytag: member="processviewserver.h::pvPrintHtmlOnPrinter" ref="gab7381258e26336e219415df232945c89" args="(PARAM *p, int id)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvPrintHtmlOnPrinter </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Print the HTML page on a printer
+allowed widgets: QTextBrowser
 </pre> 
 </div>
 </div>

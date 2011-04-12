@@ -1554,6 +1554,7 @@ pvMoveContent()
 pvMoveCursor()
 pvScrollToAnchor()
 pvSetZoomFactor()
+pvPrintHtmlOnPrinter()
 </pre> */
 int pvQTextBrowser(PARAM *p, int id, int parent);
 /*! <pre>
@@ -2207,6 +2208,11 @@ Set zoom factor of the HTML page
 allowed widgets: QTextBrowser
 </pre> */
 int pvSetZoomFactor(PARAM *p, int id, float factor);
+/*! <pre>
+Print the HTML page on a printer
+allowed widgets: QTextBrowser
+</pre> */
+int pvPrintHtmlOnPrinter(PARAM *p, int id);
 /** @} */ // end of group
 
 /** @defgroup Input Input

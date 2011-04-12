@@ -2298,6 +2298,14 @@ int pvSetZoomFactor(PARAM *p, int id, float factor)
   return 0;
 }
 
+int pvPrintHtmlOnPrinter(PARAM *p, int id)
+{
+  char buf[80];
+  sprintf(buf,"printHTML(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvAddColumn(PARAM *p, int id, const char *text, int size)
 {
   char buf[80],*cptr;

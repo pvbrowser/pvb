@@ -230,6 +230,7 @@
       <keyword name="pvMoveCursor" id="processviewserver.h::pvMoveCursor" ref="processviewserver_8h.html#ga12886a0096c348da03b884d42df5c2c0" />
       <keyword name="pvScrollToAnchor" id="processviewserver.h::pvScrollToAnchor" ref="processviewserver_8h.html#gaf032f69bc0a48521e79cfbbe668fd5d2" />
       <keyword name="pvSetZoomFactor" id="processviewserver.h::pvSetZoomFactor" ref="processviewserver_8h.html#ga6bcc86eac33d40828635dfb2a53f15f8" />
+      <keyword name="pvPrintHtmlOnPrinter" id="processviewserver.h::pvPrintHtmlOnPrinter" ref="processviewserver_8h.html#gab7381258e26336e219415df232945c89" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
       <keyword name="pvRequestParentWidgetId" id="processviewserver.h::pvRequestParentWidgetId" ref="processviewserver_8h.html#gad9d3203bb218829e4620b81b691918ac" />
@@ -1066,6 +1067,7 @@
       <keyword name="pvMoveCursor" id="Output::pvMoveCursor" ref="group__Output.html#ga12886a0096c348da03b884d42df5c2c0" />
       <keyword name="pvScrollToAnchor" id="Output::pvScrollToAnchor" ref="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2" />
       <keyword name="pvSetZoomFactor" id="Output::pvSetZoomFactor" ref="group__Output.html#ga6bcc86eac33d40828635dfb2a53f15f8" />
+      <keyword name="pvPrintHtmlOnPrinter" id="Output::pvPrintHtmlOnPrinter" ref="group__Output.html#gab7381258e26336e219415df232945c89" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />

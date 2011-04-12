@@ -1872,6 +1872,28 @@ void Interpreter::interpretp(const char *command)
       }
     }
   }
+  else if(strncmp(command,"printHTML(",10) == 0) // print QWebView
+  {
+    sscanf(command,"printHTML(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQTextBrowser)
+    {
+      MyTextBrowser *ptr = (MyTextBrowser *) all[i]->w;
+      QPrinter printer;
+      //printer.setOrientation(QPrinter::Landscape);
+      printer.setColorMode(QPrinter::Color);
+      QWidget *w = all[i]->w;
+      if(w != NULL)
+      {
+        QPrintDialog dialog(&printer, mainWindow);
+        if(dialog.exec() == QDialog::Accepted)
+        {
+          ptr->print(&printer);
+        }
+      }
+    }
+  }
 #ifdef USE_OPEN_GL
   else if(strncmp(command,"pvGlUpdate(",11) == 0) // update OpenGL widget
   {
