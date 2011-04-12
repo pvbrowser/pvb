@@ -1189,6 +1189,7 @@ pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetSelector()
+pvPrintSvgOnPrinter()
 See Module: Graphics
 </pre> */
 int pvQDraw(PARAM *p, int id, int parent);
@@ -3116,6 +3117,11 @@ Set Selector in QDraw Widget 0|1
 default 1
 </pre> */
 int pvSetSelector(PARAM *p, int id, int state);
+/*! <pre>
+Print the SVG on the QDraw widget on a printer
+</pre> */
+int pvPrintSvgOnPrinter(PARAM *p, int id);
+
 /** @} */ // end of group
 
 /** @defgroup QwtScale QwtScale

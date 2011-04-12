@@ -381,6 +381,7 @@
       <keyword name="gRotate" id="processviewserver.h::gRotate" ref="processviewserver_8h.html#ga247aeb87e66d2b1b4fb38e9c01e4f77e" />
       <keyword name="gScale" id="processviewserver.h::gScale" ref="processviewserver_8h.html#gab89e14cf4af8e13798d64910e7f15021" />
       <keyword name="pvSetSelector" id="processviewserver.h::pvSetSelector" ref="processviewserver_8h.html#ga03f19ce737cdc9608b48f3fc9d1ef345" />
+      <keyword name="pvPrintSvgOnPrinter" id="processviewserver.h::pvPrintSvgOnPrinter" ref="processviewserver_8h.html#ga7a38f8a9f11631175f7d03327b3242a6" />
       <keyword name="qwtScaleSetTitle" id="processviewserver.h::qwtScaleSetTitle" ref="processviewserver_8h.html#gad85c014b609b79c68cdd045b5a1865c8" />
       <keyword name="qwtScaleSetTitleColor" id="processviewserver.h::qwtScaleSetTitleColor" ref="processviewserver_8h.html#ga50e9c7fdb502e22c4bd0388108e35726" />
       <keyword name="qwtScaleSetTitleFont" id="processviewserver.h::qwtScaleSetTitleFont" ref="processviewserver_8h.html#gabcdb8bc6ab6524181656f0fadf655573" />
@@ -1227,6 +1228,7 @@
       <keyword name="gRotate" id="Graphics::gRotate" ref="group__Graphics.html#ga247aeb87e66d2b1b4fb38e9c01e4f77e" />
       <keyword name="gScale" id="Graphics::gScale" ref="group__Graphics.html#gab89e14cf4af8e13798d64910e7f15021" />
       <keyword name="pvSetSelector" id="Graphics::pvSetSelector" ref="group__Graphics.html#ga03f19ce737cdc9608b48f3fc9d1ef345" />
+      <keyword name="pvPrintSvgOnPrinter" id="Graphics::pvPrintSvgOnPrinter" ref="group__Graphics.html#ga7a38f8a9f11631175f7d03327b3242a6" />
       <keyword name="QwtScale" id="QwtScale" ref="group__QwtScale.html" />
       <keyword name="qwtScaleSetTitle" id="QwtScale::qwtScaleSetTitle" ref="group__QwtScale.html#gad85c014b609b79c68cdd045b5a1865c8" />
       <keyword name="qwtScaleSetTitleColor" id="QwtScale::qwtScaleSetTitleColor" ref="group__QwtScale.html#ga50e9c7fdb502e22c4bd0388108e35726" />

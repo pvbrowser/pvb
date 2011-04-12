@@ -4071,6 +4071,15 @@ char buf[80];
   return 0;
 }
 
+int pvPrintSvgOnPrinter(PARAM *p, int id)
+{
+char buf[80];
+
+  sprintf(buf,"gsvgPrintOnPrinter(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSendFile(PARAM *p, const char *filename)
 {
 FILE *fp;

@@ -1173,7 +1173,24 @@ void Interpreter::interpretg(const char *command)
       }
     }
   }
-  else if(strncmp(command,"gsvgPrintf(",11) == 0)
+  else if(strncmp(command,"gsvgPrintOnPrinter(",19) == 0)
+  {
+    sscanf(command,"gsvgPrintOnPrinter(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->update(1);
+        }
+      }
+    }
+  }
+   else if(strncmp(command,"gsvgPrintf(",11) == 0)
   {
     sscanf(command,"gsvgPrintf(%d)",&i);
     if(i < 0) return;

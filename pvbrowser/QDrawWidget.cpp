@@ -103,7 +103,7 @@ void QDrawWidget::layoutResize(int w, int h)
   if(svgAnimator != NULL)
   {
     beginDraw();
-    svgAnimator->update();
+    svgAnimator->update(0);
     endDraw();
   }
   // xlehrig
@@ -1109,7 +1109,7 @@ int x,y,w,h,r,g,b,n,i;
     case 'u':
       if(strncmp(linebuf,"gupdateSVG(",11) == 0)
       {
-        if(svgAnimator != NULL) svgAnimator->update();
+        if(svgAnimator != NULL) svgAnimator->update(0);
       }
       break;
     case 'x':
@@ -1154,6 +1154,25 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
   //printf("scale\n");
   p.scale(1.0,1.0);
   //printf("end\n");
+}
+
+void QDrawWidget::printSVG(QByteArray &stream)
+{
+  if(opt.arg_debug) printf("printSVG\n");
+  QPrinter printer;
+  //printer.setOrientation(QPrinter::Landscape);
+  printer.setColorMode(QPrinter::Color);
+  QPrintDialog printDialog(&printer, this);
+  if(printDialog.exec() == QDialog::Accepted)
+  {
+    // print ...
+    QSvgRenderer svgrenderer;
+    svgrenderer.load(stream);
+    QPainter painter;
+    painter.begin(&printer);
+    svgrenderer.render(&painter);
+    painter.end();
+  }
 }
 
 //#### pvSvgAnimator begin ###############################################################
@@ -1292,7 +1311,7 @@ int pvSvgAnimator::read()
   return 0;
 }
 
-int pvSvgAnimator::update()
+int pvSvgAnimator::update(int on_printer)
 {
   //char buf[MAXARRAY+1];
   char *buf;
@@ -1345,7 +1364,11 @@ int pvSvgAnimator::update()
   }
   //printf("svgUpdate start\n");
   if(opt.arg_debug) printf("animatorUpdate svgUpdate\n");
-  if(draw != NULL) draw->svgUpdate(stream);
+  if(draw != NULL)
+  {
+    if(on_printer == 0) draw->svgUpdate(stream);
+    else                draw->printSVG(stream);
+  }  
   if(opt.arg_debug) printf("animatorUpdate end\n");
   //printf("update end\n");
   return 0;

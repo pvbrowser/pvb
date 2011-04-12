@@ -37,7 +37,7 @@ class pvSvgAnimator
     pvSvgAnimator(int *socket, QDrawWidget *draw);
     ~pvSvgAnimator();
     int read();
-    int update();
+    int update(int on_printer);
     int wrapTransformation(int iline, SVG_LINE *last_open, const char *objectname, const char *tag, const char *text);
     int svgPrintf(const char *objectname, const char *tag, const char *text, const char *after=NULL);
     int svgRecursivePrintf(const char *objectname, const char *tag, const char *text, const char *after=NULL);
@@ -117,6 +117,7 @@ public:
     void playSVG(const char *filename);
     void socketPlaySVG();
     void svgUpdate(QByteArray &stream);
+    void printSVG(QByteArray &stream);
     //QString filename;
     int  hasLayout;
     void layoutResize(int w, int h);

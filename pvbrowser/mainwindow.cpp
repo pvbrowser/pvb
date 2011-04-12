@@ -1355,6 +1355,7 @@ void MainWindow::slotPrint()
   QPixmap pm;
   QPrinter printer;
   printer.setOrientation(QPrinter::Landscape);
+  printer.setColorMode(QPrinter::Color);
   snapshot(pm);
   QPrintDialog printDialog(&printer, this);
   if(printDialog.exec() == QDialog::Accepted)
