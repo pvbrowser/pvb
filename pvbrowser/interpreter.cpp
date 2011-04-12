@@ -1420,7 +1420,7 @@ void Interpreter::interpretg(const char *command)
       if(w != NULL)
       {
         QPixmap pm(QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height()));
-        pm.save(text,"BMP");
+        pm.toImage().save(text);
       }
     }
   }

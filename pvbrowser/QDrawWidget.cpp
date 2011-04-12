@@ -205,7 +205,7 @@ void QDrawWidget::print()
 
 void QDrawWidget::logBmpToFile(const char *filename)
 {
-  buffer->save(filename,"BMP");
+  buffer->toImage().save(filename);
 }
 
 void QDrawWidget::logToFile(const char *filename)
