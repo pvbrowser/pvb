@@ -70,6 +70,9 @@ Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48">MSG_NOSIGNAL</a>&#160;&#160;&#160;0</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void WSAAPI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#a01bb3f9d1bc8c8e071f29e0d162cf138">freeaddrinfo</a> (struct addrinfo *)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int WSAAPI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#aadf91875b0d8c3b5301f678b815b4f44">getaddrinfo</a> (const char *, const char *, const struct addrinfo *, struct addrinfo **)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int WSAAPI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458">getnameinfo</a> (const struct sockaddr *, socklen_t, char *, DWORD, char *, DWORD, int)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024">rlwsa</a> ()</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
@@ -84,7 +87,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00049">49</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00052">52</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 
 </div>
 </div>
@@ -99,11 +102,124 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00049">49</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00052">52</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 
 </div>
 </div>
 <hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a01bb3f9d1bc8c8e071f29e0d162cf138"></a><!-- doxytag: member="rlsocket.cpp::freeaddrinfo" ref="a01bb3f9d1bc8c8e071f29e0d162cf138" args="(struct addrinfo *)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void WSAAPI freeaddrinfo </td>
+          <td>(</td>
+          <td class="paramtype">struct addrinfo *&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aadf91875b0d8c3b5301f678b815b4f44"></a><!-- doxytag: member="rlsocket.cpp::getaddrinfo" ref="aadf91875b0d8c3b5301f678b815b4f44" args="(const char *, const char *, const struct addrinfo *, struct addrinfo **)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WSAAPI getaddrinfo </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct addrinfo *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct addrinfo **&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ace354e375e5dc4d9010217b83777a458"></a><!-- doxytag: member="rlsocket.cpp::getnameinfo" ref="ace354e375e5dc4d9010217b83777a458" args="(const struct sockaddr *, socklen_t, char *, DWORD, char *, DWORD, int)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int WSAAPI getnameinfo </td>
+          <td>(</td>
+          <td class="paramtype">const struct sockaddr *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">DWORD&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a0a9b8ddbe56e24b68eacf127767f3024"></a><!-- doxytag: member="rlsocket.cpp::rlwsa" ref="a0a9b8ddbe56e24b68eacf127767f3024" args="()" -->
 <div class="memitem">
 <div class="memproto">
@@ -118,7 +234,7 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00064">64</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00067">67</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
 <span class="preprocessor">#ifdef RLWIN32</span>
 <span class="preprocessor"></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> first = 1;

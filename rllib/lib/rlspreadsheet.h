@@ -82,6 +82,7 @@ public:
   rlSpreadsheetTable *getNextTable();
   rlSpreadsheetRow *getFirstRow();
   int  exists(int column, int row);
+  void setDelimitor(char delimitor);
 private:
   char delimitor;
   rlSpreadsheetRow   *firstRow;
@@ -106,6 +107,7 @@ public:
   int  write(const char *filename);
   int  exists(int column, int row, int page);
   rlSpreadsheetTable *getFirstTable();
+  void setDelimitor(char delimitor);
 private:
   char delimitor;
   rlSpreadsheetTable *firstTable;

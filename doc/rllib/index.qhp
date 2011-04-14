@@ -598,6 +598,9 @@
       <keyword name="BUFSIZE" id="rlsiemenstcpclient.cpp::BUFSIZE" ref="rlsiemenstcpclient_8cpp.html#aeca034f67218340ecb2261a22c2f3dcd" />
       <keyword name="MSG_NOSIGNAL" id="rlsocket.cpp::MSG_NOSIGNAL" ref="rlsocket_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MSG_NOSIGNAL" id="rlsocket.cpp::MSG_NOSIGNAL" ref="rlsocket_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
+      <keyword name="freeaddrinfo" id="rlsocket.cpp::freeaddrinfo" ref="rlsocket_8cpp.html#a01bb3f9d1bc8c8e071f29e0d162cf138" />
+      <keyword name="getaddrinfo" id="rlsocket.cpp::getaddrinfo" ref="rlsocket_8cpp.html#aadf91875b0d8c3b5301f678b815b4f44" />
+      <keyword name="getnameinfo" id="rlsocket.cpp::getnameinfo" ref="rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458" />
       <keyword name="rlwsa" id="rlsocket.cpp::rlwsa" ref="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="wsa" id="rlsocket.h::wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
       <keyword name="rlwsa" id="rlsocket.h::rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
@@ -1977,6 +1980,7 @@
       <keyword name="getNextTable" id="rlSpreadsheetTable::getNextTable" ref="classrlSpreadsheetTable.html#ab4af89c69d7540296234a453c19ca944" />
       <keyword name="getFirstRow" id="rlSpreadsheetTable::getFirstRow" ref="classrlSpreadsheetTable.html#a30b7553141cbb3f309243cfea83d279a" />
       <keyword name="exists" id="rlSpreadsheetTable::exists" ref="classrlSpreadsheetTable.html#a8c2a44121f59ff35d1962d03e8a76198" />
+      <keyword name="setDelimitor" id="rlSpreadsheetTable::setDelimitor" ref="classrlSpreadsheetTable.html#afc474f9165afe8d9b19ecc15d76e791a" />
       <keyword name="delimitor" id="rlSpreadsheetTable::delimitor" ref="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2" />
       <keyword name="firstRow" id="rlSpreadsheetTable::firstRow" ref="classrlSpreadsheetTable.html#ac364d28f79a265ca158d76ab90520380" />
       <keyword name="nextTable" id="rlSpreadsheetTable::nextTable" ref="classrlSpreadsheetTable.html#ad7343e5907cdc487f4c2381065ad397f" />
@@ -1991,6 +1995,7 @@
       <keyword name="write" id="rlSpreadsheetWorkbook::write" ref="classrlSpreadsheetWorkbook.html#a1474cc51769a707bf8fb2d644b84df62" />
       <keyword name="exists" id="rlSpreadsheetWorkbook::exists" ref="classrlSpreadsheetWorkbook.html#ad593666d18053526091d7c0a7756212b" />
       <keyword name="getFirstTable" id="rlSpreadsheetWorkbook::getFirstTable" ref="classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d" />
+      <keyword name="setDelimitor" id="rlSpreadsheetWorkbook::setDelimitor" ref="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2" />
       <keyword name="delimitor" id="rlSpreadsheetWorkbook::delimitor" ref="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91" />
       <keyword name="firstTable" id="rlSpreadsheetWorkbook::firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
       <keyword name="rlString" id="rlString" ref="classrlString.html" />
@@ -3186,6 +3191,7 @@
       <file>globals_0x63.html</file>
       <file>globals_0x64.html</file>
       <file>globals_0x65.html</file>
+      <file>globals_0x66.html</file>
       <file>globals_0x67.html</file>
       <file>globals_0x69.html</file>
       <file>globals_0x6c.html</file>

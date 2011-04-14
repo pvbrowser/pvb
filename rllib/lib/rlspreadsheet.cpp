@@ -197,7 +197,7 @@ void rlSpreadsheetRow::readRow(const unsigned char *line, char delimitor)
   i = 0;
   while(line[i] != '\0')
   {
-    if(line[i] == delimitor || line[i] == '\n') // normally delimitor='\t'
+    if(line[i] == delimitor || line[i] == '\n' || line[i] == 0x0d) // normally delimitor='\t'
     {
       tab1 = tab2;
       tab2 = i;
@@ -366,7 +366,7 @@ int rlSpreadsheetTable::read(const char *filename)
   }
   delete [] line;
   fclose(fp);
-  return 0;
+  return r - 1; // number of lines that have been read
 }
 
 int rlSpreadsheetTable::write(const char *filename)
@@ -417,6 +417,11 @@ int rlSpreadsheetTable::exists(int column, int row)
     item = item->getNextRow();
   }
   return 0;
+}
+
+void rlSpreadsheetTable::setDelimitor(char _delimitor)
+{
+  delimitor = _delimitor;
 }
 
 // rlSpreadsheetWorkbook
@@ -587,4 +592,10 @@ rlSpreadsheetTable *rlSpreadsheetWorkbook::getFirstTable()
 {
   return firstTable;
 }
+
+void rlSpreadsheetWorkbook::setDelimitor(char _delimitor)
+{
+  delimitor = _delimitor;
+}
+
 

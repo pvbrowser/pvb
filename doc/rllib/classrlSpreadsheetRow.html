@@ -321,7 +321,7 @@ A row within a spreadsheet.
   i = 0;
   <span class="keywordflow">while</span>(line[i] != <span class="charliteral">&#39;\0&#39;</span>)
   {
-    <span class="keywordflow">if</span>(line[i] == delimitor || line[i] == <span class="charliteral">&#39;\n&#39;</span>) <span class="comment">// normally delimitor=&#39;\t&#39;</span>
+    <span class="keywordflow">if</span>(line[i] == delimitor || line[i] == <span class="charliteral">&#39;\n&#39;</span> || line[i] == 0x0d) <span class="comment">// normally delimitor=&#39;\t&#39;</span>
     {
       tab1 = tab2;
       tab2 = i;

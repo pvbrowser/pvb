@@ -69,6 +69,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetWorkbook.html#a1474cc51769a707bf8fb2d644b84df62">write</a> (const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetWorkbook.html#ad593666d18053526091d7c0a7756212b">exists</a> (int column, int row, int page)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d">getFirstTable</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2">setDelimitor</a> (char <a class="el" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a></td></tr>
@@ -79,7 +80,7 @@ Private Attributes</h2></td></tr>
 A series of spreadsheet tables.
 The class works with CSV files.
 </pre> 
-<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00095">95</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00096">96</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1a5a86ee1206067a7b5c5ff6979e9148"></a><!-- doxytag: member="rlSpreadsheetWorkbook::rlSpreadsheetWorkbook" ref="a1a5a86ee1206067a7b5c5ff6979e9148" args="(char delimitor='\t')" -->
 <div class="memitem">
@@ -98,7 +99,7 @@ The class works with CSV files.
 
 <p>column = 1...N, row = 1...N, page = 1...N </p>
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00423">423</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00428">428</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">firstTable</a> = NULL;
   <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a> = del;
@@ -120,7 +121,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00429">429</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00434">434</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item,*last;
   item = <a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">firstTable</a>;
@@ -149,7 +150,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00487">487</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00492">492</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item;
 
@@ -194,7 +195,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00570">570</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00575">575</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item;
   <span class="keywordtype">int</span> p;
@@ -226,7 +227,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00586">586</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00591">591</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">firstTable</a>;
 }
@@ -276,7 +277,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00474">474</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00479">479</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> ret;
   <span class="keywordtype">char</span> buf[<a class="code" href="rldefine_8h.html#a7ee1c3aab1b7f7fa089acebc3fc55783">rl_PRINTF_LENGTH_SPREADSHEET</a>]; <span class="comment">// should be big enough</span>
@@ -306,7 +307,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00499">499</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00504">504</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   FILE *fp;
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item,*last,*next;
@@ -354,6 +355,28 @@ The class works with CSV files.
 </pre></div>
 </div>
 </div>
+<a class="anchor" id="aa21c81370f55b0b815c724da52ff0bd2"></a><!-- doxytag: member="rlSpreadsheetWorkbook::setDelimitor" ref="aa21c81370f55b0b815c724da52ff0bd2" args="(char delimitor)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlSpreadsheetWorkbook::setDelimitor </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>delimitor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00596">596</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a> = _delimitor;
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="a6b33fc978fe41d46bed474ec17310f5e"></a><!-- doxytag: member="rlSpreadsheetWorkbook::setText" ref="a6b33fc978fe41d46bed474ec17310f5e" args="(int column, int row, int page, const char *text)" -->
 <div class="memitem">
 <div class="memproto">
@@ -391,7 +414,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00456">456</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00461">461</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> p = 1;
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item,*nextitem;
@@ -442,7 +465,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00441">441</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00446">446</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> p = 1;
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item;
@@ -474,7 +497,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00545">545</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00550">550</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *item = NULL;
   <span class="keywordtype">int</span> p = 1;
@@ -513,7 +536,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00110">110</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00112">112</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
 
 </div>
 </div>
@@ -528,7 +551,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00111">111</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00113">113</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
 
 </div>
 </div>

@@ -968,13 +968,17 @@ int x,y,w,h,r,g,b,n,i;
       }
       else if(strncmp(linebuf,"gline(",6) == 0)
       {
-        float xa[MAXARRAY],ya[MAXARRAY];
+        int maxarray = MAXARRAY;
+        const char *cptr;
+        cptr = strstr(linebuf,"-n=");
+        if(cptr != NULL) sscanf(cptr,"-n=%d", &maxarray);
+        float xa[maxarray],ya[maxarray];
         char buf[80];
         for(n=0; 1; n++)
         {
           if(gets(buf,sizeof(buf)-1) == -1) break;
           if(buf[0] == '}') break;
-          if(n >= MAXARRAY) break;
+          if(n >= maxarray) break;
           sscanf(buf,"%f,%f",&xa[n],&ya[n]);
         }
         if(n>0) line(xa,ya,n);

@@ -71,6 +71,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetTable.html#ab4af89c69d7540296234a453c19ca944">getNextTable</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrlSpreadsheetRow.html">rlSpreadsheetRow</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetTable.html#a30b7553141cbb3f309243cfea83d279a">getFirstRow</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetTable.html#a8c2a44121f59ff35d1962d03e8a76198">exists</a> (int column, int row)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetTable.html#afc474f9165afe8d9b19ecc15d76e791a">setDelimitor</a> (char <a class="el" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a>)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a></td></tr>
@@ -357,7 +358,29 @@ The class works with CSV files.
   }
   <span class="keyword">delete</span> [] line;
   fclose(fp);
-  <span class="keywordflow">return</span> 0;
+  <span class="keywordflow">return</span> r - 1; <span class="comment">// number of lines that have been read</span>
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="afc474f9165afe8d9b19ecc15d76e791a"></a><!-- doxytag: member="rlSpreadsheetTable::setDelimitor" ref="afc474f9165afe8d9b19ecc15d76e791a" args="(char delimitor)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlSpreadsheetTable::setDelimitor </td>
+          <td>(</td>
+          <td class="paramtype">char&#160;</td>
+          <td class="paramname"><em>delimitor</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00422">422</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a> = _delimitor;
 }
 </pre></div>
 </div>
@@ -525,7 +548,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00086">86</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00087">87</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
 
 </div>
 </div>
@@ -540,7 +563,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00087">87</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00088">88</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
 
 </div>
 </div>
@@ -555,7 +578,7 @@ The class works with CSV files.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00088">88</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspreadsheet_8h_source.html#l00089">89</a> of file <a class="el" href="rlspreadsheet_8h_source.html">rlspreadsheet.h</a>.</p>
 
 </div>
 </div>

@@ -110,31 +110,33 @@
 <a name="l00082"></a>00082   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetTable.html#ab4af89c69d7540296234a453c19ca944">getNextTable</a>();
 <a name="l00083"></a>00083   <a class="code" href="classrlSpreadsheetRow.html">rlSpreadsheetRow</a> *<a class="code" href="classrlSpreadsheetTable.html#a30b7553141cbb3f309243cfea83d279a">getFirstRow</a>();
 <a name="l00084"></a>00084   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetTable.html#a8c2a44121f59ff35d1962d03e8a76198">exists</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row);
-<a name="l00085"></a>00085 <span class="keyword">private</span>:
-<a name="l00086"></a><a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">00086</a>   <span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a>;
-<a name="l00087"></a><a class="code" href="classrlSpreadsheetTable.html#ac364d28f79a265ca158d76ab90520380">00087</a>   <a class="code" href="classrlSpreadsheetRow.html">rlSpreadsheetRow</a>   *<a class="code" href="classrlSpreadsheetTable.html#ac364d28f79a265ca158d76ab90520380">firstRow</a>;
-<a name="l00088"></a><a class="code" href="classrlSpreadsheetTable.html#ad7343e5907cdc487f4c2381065ad397f">00088</a>   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetTable.html#ad7343e5907cdc487f4c2381065ad397f">nextTable</a>;
-<a name="l00089"></a>00089 };
-<a name="l00090"></a>00090 
-<a name="l00095"></a><a class="code" href="classrlSpreadsheetWorkbook.html">00095</a> <span class="keyword">class </span><a class="code" href="classrlSpreadsheetWorkbook.html">rlSpreadsheetWorkbook</a>
-<a name="l00096"></a>00096 {
-<a name="l00097"></a>00097 <span class="keyword">public</span>:
-<a name="l00099"></a>00099   <a class="code" href="classrlSpreadsheetWorkbook.html#a1a5a86ee1206067a7b5c5ff6979e9148" title="column = 1...N, row = 1...N, page = 1...N">rlSpreadsheetWorkbook</a>(<span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>=<span class="charliteral">&#39;\t&#39;</span>);
-<a name="l00100"></a>00100   <span class="keyword">virtual</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a08d4d99dc8e69dcc66ef14e61e5f8d08">~rlSpreadsheetWorkbook</a>();
-<a name="l00101"></a>00101   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSpreadsheetWorkbook.html#a576b7b2b0c0d0acad6f06aef40cb7ab6">text</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page);
-<a name="l00102"></a>00102   <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a6b33fc978fe41d46bed474ec17310f5e">setText</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);
-<a name="l00103"></a>00103   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#a7b0ffd935a77db7f50a3e25b07dcddd1">printf</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
-<a name="l00104"></a>00104   <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetWorkbook.html#aa9ee5cde0b6e9a2281fa49224dd00d61">clear</a>();
-<a name="l00105"></a>00105   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#a0eb8e49d473fac0d05bdcdf096a0f24b">read</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);
-<a name="l00106"></a>00106   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#a1474cc51769a707bf8fb2d644b84df62">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);
-<a name="l00107"></a>00107   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#ad593666d18053526091d7c0a7756212b">exists</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page);
-<a name="l00108"></a>00108   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d">getFirstTable</a>();
-<a name="l00109"></a>00109 <span class="keyword">private</span>:
-<a name="l00110"></a><a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">00110</a>   <span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>;
-<a name="l00111"></a><a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">00111</a>   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">firstTable</a>;
-<a name="l00112"></a>00112 };
-<a name="l00113"></a>00113 
-<a name="l00114"></a>00114 <span class="preprocessor">#endif</span>
+<a name="l00085"></a>00085   <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetTable.html#afc474f9165afe8d9b19ecc15d76e791a">setDelimitor</a>(<span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a>);
+<a name="l00086"></a>00086 <span class="keyword">private</span>:
+<a name="l00087"></a><a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">00087</a>   <span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a>;
+<a name="l00088"></a><a class="code" href="classrlSpreadsheetTable.html#ac364d28f79a265ca158d76ab90520380">00088</a>   <a class="code" href="classrlSpreadsheetRow.html">rlSpreadsheetRow</a>   *<a class="code" href="classrlSpreadsheetTable.html#ac364d28f79a265ca158d76ab90520380">firstRow</a>;
+<a name="l00089"></a><a class="code" href="classrlSpreadsheetTable.html#ad7343e5907cdc487f4c2381065ad397f">00089</a>   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetTable.html#ad7343e5907cdc487f4c2381065ad397f">nextTable</a>;
+<a name="l00090"></a>00090 };
+<a name="l00091"></a>00091 
+<a name="l00096"></a><a class="code" href="classrlSpreadsheetWorkbook.html">00096</a> <span class="keyword">class </span><a class="code" href="classrlSpreadsheetWorkbook.html">rlSpreadsheetWorkbook</a>
+<a name="l00097"></a>00097 {
+<a name="l00098"></a>00098 <span class="keyword">public</span>:
+<a name="l00100"></a>00100   <a class="code" href="classrlSpreadsheetWorkbook.html#a1a5a86ee1206067a7b5c5ff6979e9148" title="column = 1...N, row = 1...N, page = 1...N">rlSpreadsheetWorkbook</a>(<span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>=<span class="charliteral">&#39;\t&#39;</span>);
+<a name="l00101"></a>00101   <span class="keyword">virtual</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a08d4d99dc8e69dcc66ef14e61e5f8d08">~rlSpreadsheetWorkbook</a>();
+<a name="l00102"></a>00102   <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSpreadsheetWorkbook.html#a576b7b2b0c0d0acad6f06aef40cb7ab6">text</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page);
+<a name="l00103"></a>00103   <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a6b33fc978fe41d46bed474ec17310f5e">setText</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page, <span class="keyword">const</span> <span class="keywordtype">char</span> *text);
+<a name="l00104"></a>00104   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#a7b0ffd935a77db7f50a3e25b07dcddd1">printf</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page, <span class="keyword">const</span> <span class="keywordtype">char</span> *format, ...);
+<a name="l00105"></a>00105   <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetWorkbook.html#aa9ee5cde0b6e9a2281fa49224dd00d61">clear</a>();
+<a name="l00106"></a>00106   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#a0eb8e49d473fac0d05bdcdf096a0f24b">read</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);
+<a name="l00107"></a>00107   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#a1474cc51769a707bf8fb2d644b84df62">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename);
+<a name="l00108"></a>00108   <span class="keywordtype">int</span>  <a class="code" href="classrlSpreadsheetWorkbook.html#ad593666d18053526091d7c0a7756212b">exists</a>(<span class="keywordtype">int</span> column, <span class="keywordtype">int</span> row, <span class="keywordtype">int</span> page);
+<a name="l00109"></a>00109   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d">getFirstTable</a>();
+<a name="l00110"></a>00110   <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2">setDelimitor</a>(<span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>);
+<a name="l00111"></a>00111 <span class="keyword">private</span>:
+<a name="l00112"></a><a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">00112</a>   <span class="keywordtype">char</span> <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>;
+<a name="l00113"></a><a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">00113</a>   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *<a class="code" href="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a">firstTable</a>;
+<a name="l00114"></a>00114 };
+<a name="l00115"></a>00115 
+<a name="l00116"></a>00116 <span class="preprocessor">#endif</span>
 </pre></div></div>
 </div>
 <hr class="footer"/><address class="footer"><small>Generated by&#160;

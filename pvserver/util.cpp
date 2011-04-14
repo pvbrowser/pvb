@@ -3771,7 +3771,7 @@ int gLine(PARAM *p, float *x, float *y, int n)
 char buf[80];
 int  i;
 
-  sprintf(buf,"gline({\n");
+  sprintf(buf,"gline(-n=%d{\n", n);
   if(gfp == NULL) pvtcpsend(p, buf, strlen(buf));
   else            fprintf(gfp,"%s",buf);
   for(i=0; i<n; i++)
