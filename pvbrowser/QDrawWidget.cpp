@@ -972,6 +972,7 @@ int x,y,w,h,r,g,b,n,i;
         const char *cptr;
         cptr = strstr(linebuf,"-n=");
         if(cptr != NULL) sscanf(cptr,"-n=%d", &maxarray);
+        if(maxarray < 1) maxarray = MAXARRAY;
         float xa[maxarray],ya[maxarray];
         char buf[80];
         for(n=0; 1; n++)

@@ -3833,6 +3833,11 @@ void Interpreter::interprets(const char *command)
             MyMultiLineEdit *b = (MyMultiLineEdit*) all[i]->w;
             if(b != NULL) b->maxlines = value;
           }
+          else if(all[i]->type == TQToolBox)
+          {
+            MyQToolBox *b = (MyQToolBox*) all[i]->w;
+            if(b != NULL) b->setCurrentIndex(value);
+          }
         }
         break;
       case 'W':
