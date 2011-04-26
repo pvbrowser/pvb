@@ -113,7 +113,7 @@ Functions</h2></td></tr>
 <pre>
 Call internet browser
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00571">571</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00572">572</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">char</span> buf[4096];
   <span class="keywordtype">int</span> ret = 0;
@@ -210,7 +210,7 @@ Call internet browser
 <pre>
 Copy a Textfile (no binary file)
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00654">654</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00655">655</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   FILE *fin, *fout;
 
@@ -526,7 +526,7 @@ Send command to a bus system
 <pre>
 Get option from string
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00613">613</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00614">614</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
   <span class="keywordtype">float</span> ret;
@@ -619,7 +619,7 @@ USERPROFILE%\name    on Windows
 <pre>
 Get option from string
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00598">598</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00599">599</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
   <span class="keywordtype">int</span> ret;
@@ -749,7 +749,7 @@ Get option from string
 <pre>
 convert str to lower case
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00696">696</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00697">697</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(str == NULL) <span class="keywordflow">return</span> -1;
   <span class="keywordflow">while</span>(*str != <span class="charliteral">&#39;\0&#39;</span>)
@@ -791,7 +791,7 @@ Get option from string
 return = 0 # not found
 return = 1 # found
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00589">589</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00590">590</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
 
@@ -1041,7 +1041,7 @@ Some C functions.
 <pre>
 test if str starts with startstr
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00707">707</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00708">708</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> ret;
   <span class="keywordflow">if</span>(str == NULL || startstr == NULL) <span class="keywordflow">return</span> 0;
@@ -1141,7 +1141,7 @@ Submit a pvserver
 Example:
 rlSubmitPvserver("HOME","/temp/murx","pvs","-exit_on_bind_error -exit_after_last_client_terminates");
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00525">525</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00526">526</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(env == NULL || path == NULL || pvs == NULL) <span class="keywordflow">return</span> -1;
   <a class="code" href="classrlString.html">rlString</a> command,cd;
@@ -1230,7 +1230,7 @@ swaps bytes
 <pre>
 Call system(command)
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00516">516</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00517">517</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
 <span class="preprocessor">#ifdef RLWIN32</span>
 <span class="preprocessor"></span>   <span class="keywordflow">return</span> <a class="code" href="rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9">mysystem</a>(command);
@@ -1274,7 +1274,7 @@ Call system(command)
 <pre>
 Get option from string
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00628">628</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00629">629</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i = 0;
   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
@@ -1319,7 +1319,7 @@ Get option from string
 <pre>
 convert str to upper case
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00685">685</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00686">686</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(str == NULL) <span class="keywordflow">return</span> -1;
   <span class="keywordflow">while</span>(*str != <span class="charliteral">&#39;\0&#39;</span>)

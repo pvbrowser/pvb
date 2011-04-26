@@ -11471,6 +11471,33 @@ fail:
 }
 
 
+static int _wrap_pvPrintHtmlOnPrinter(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("pvPrintHtmlOnPrinter",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvPrintHtmlOnPrinter",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvPrintHtmlOnPrinter",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvPrintHtmlOnPrinter",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)pvPrintHtmlOnPrinter(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvText(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -12228,6 +12255,36 @@ static int _wrap_pvSetTabPosition(lua_State* L) {
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   result = (int)pvSetTabPosition(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvEnableTabBar(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("pvEnableTabBar",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvEnableTabBar",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvEnableTabBar",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvEnableTabBar",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvEnableTabBar",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)pvEnableTabBar(arg1,arg2,arg3);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -17888,6 +17945,33 @@ static int _wrap_pvSetSelector(lua_State* L) {
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   result = (int)pvSetSelector(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvPrintSvgOnPrinter(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("pvPrintSvgOnPrinter",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvPrintSvgOnPrinter",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvPrintSvgOnPrinter",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvPrintSvgOnPrinter",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)pvPrintSvgOnPrinter(arg1,arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -25524,6 +25608,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvMoveCursor", _wrap_pvMoveCursor},
     { "pvScrollToAnchor", _wrap_pvScrollToAnchor},
     { "pvSetZoomFactor", _wrap_pvSetZoomFactor},
+    { "pvPrintHtmlOnPrinter", _wrap_pvPrintHtmlOnPrinter},
     { "pvText", _wrap_pvText},
     { "pvRequestGeometry", _wrap_pvRequestGeometry},
     { "pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId},
@@ -25549,6 +25634,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvTableSetHeaderResizeEnabled", _wrap_pvTableSetHeaderResizeEnabled},
     { "pvSetSorting", _wrap_pvSetSorting},
     { "pvSetTabPosition", _wrap_pvSetTabPosition},
+    { "pvEnableTabBar", _wrap_pvEnableTabBar},
     { "pvSetNumRows", _wrap_pvSetNumRows},
     { "pvSetNumCols", _wrap_pvSetNumCols},
     { "pvInsertRows",_wrap_pvInsertRows},
@@ -25673,6 +25759,7 @@ static const struct luaL_reg swig_commands[] = {
     { "gRotate", _wrap_gRotate},
     { "gScale", _wrap_gScale},
     { "pvSetSelector", _wrap_pvSetSelector},
+    { "pvPrintSvgOnPrinter", _wrap_pvPrintSvgOnPrinter},
     { "qwtScaleSetTitle", _wrap_qwtScaleSetTitle},
     { "qwtScaleSetTitleColor", _wrap_qwtScaleSetTitleColor},
     { "qwtScaleSetTitleFont", _wrap_qwtScaleSetTitleFont},

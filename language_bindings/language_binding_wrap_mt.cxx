@@ -15553,6 +15553,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvPrintHtmlOnPrinter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvPrintHtmlOnPrinter",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvPrintHtmlOnPrinter" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvPrintHtmlOnPrinter" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)pvPrintHtmlOnPrinter(arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvText(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -16606,6 +16637,46 @@ SWIGINTERN PyObject *_wrap_pvSetTabPosition(PyObject *SWIGUNUSEDPARM(self), PyOb
   } 
   arg3 = static_cast< int >(val3);
   result = (int)pvSetTabPosition(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvEnableTabBar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:pvEnableTabBar",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvEnableTabBar" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvEnableTabBar" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvEnableTabBar" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)pvEnableTabBar(arg1,arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -24443,6 +24514,37 @@ SWIGINTERN PyObject *_wrap_pvSetSelector(PyObject *SWIGUNUSEDPARM(self), PyObjec
   } 
   arg3 = static_cast< int >(val3);
   result = (int)pvSetSelector(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvPrintSvgOnPrinter(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvPrintSvgOnPrinter",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvPrintSvgOnPrinter" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvPrintSvgOnPrinter" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)pvPrintSvgOnPrinter(arg1,arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -34908,6 +35010,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvMoveCursor", _wrap_pvMoveCursor, METH_VARARGS, NULL},
 	 { (char *)"pvScrollToAnchor", _wrap_pvScrollToAnchor, METH_VARARGS, NULL},
 	 { (char *)"pvSetZoomFactor", _wrap_pvSetZoomFactor, METH_VARARGS, NULL},
+	 { (char *)"pvPrintHtmlOnPrinter", _wrap_pvPrintHtmlOnPrinter, METH_VARARGS, NULL},
 	 { (char *)"pvText", _wrap_pvText, METH_VARARGS, NULL},
 	 { (char *)"pvRequestGeometry", _wrap_pvRequestGeometry, METH_VARARGS, NULL},
 	 { (char *)"pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId, METH_VARARGS, NULL},
@@ -34933,6 +35036,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvTableSetHeaderResizeEnabled", _wrap_pvTableSetHeaderResizeEnabled, METH_VARARGS, NULL},
 	 { (char *)"pvSetSorting", _wrap_pvSetSorting, METH_VARARGS, NULL},
 	 { (char *)"pvSetTabPosition", _wrap_pvSetTabPosition, METH_VARARGS, NULL},
+	 { (char *)"pvEnableTabBar", _wrap_pvEnableTabBar, METH_VARARGS, NULL},
 	 { (char *)"pvSetNumRows", _wrap_pvSetNumRows, METH_VARARGS, NULL},
 	 { (char *)"pvSetNumCols", _wrap_pvSetNumCols, METH_VARARGS, NULL},
 	 { (char *)"pvInsertRows", _wrap_pvInsertRows, METH_VARARGS, NULL},
@@ -35068,6 +35172,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"gRotate", _wrap_gRotate, METH_VARARGS, NULL},
 	 { (char *)"gScale", _wrap_gScale, METH_VARARGS, NULL},
 	 { (char *)"pvSetSelector", _wrap_pvSetSelector, METH_VARARGS, NULL},
+	 { (char *)"pvPrintSvgOnPrinter", _wrap_pvPrintSvgOnPrinter, METH_VARARGS, NULL},
 	 { (char *)"qwtScaleSetTitle", _wrap_qwtScaleSetTitle, METH_VARARGS, NULL},
 	 { (char *)"qwtScaleSetTitleColor", _wrap_qwtScaleSetTitleColor, METH_VARARGS, NULL},
 	 { (char *)"qwtScaleSetTitleFont", _wrap_qwtScaleSetTitleFont, METH_VARARGS, NULL},

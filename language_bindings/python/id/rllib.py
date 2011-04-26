@@ -1591,6 +1591,7 @@ class rlSpreadsheetTable(_object):
     def getNextTable(self): return _rllib.rlSpreadsheetTable_getNextTable(self)
     def getFirstRow(self): return _rllib.rlSpreadsheetTable_getFirstRow(self)
     def exists(self, *args): return _rllib.rlSpreadsheetTable_exists(self, *args)
+    def setDelimitor(self, *args): return _rllib.rlSpreadsheetTable_setDelimitor(self, *args)
 rlSpreadsheetTable_swigregister = _rllib.rlSpreadsheetTable_swigregister
 rlSpreadsheetTable_swigregister(rlSpreadsheetTable)
 
@@ -1614,6 +1615,7 @@ class rlSpreadsheetWorkbook(_object):
     def write(self, *args): return _rllib.rlSpreadsheetWorkbook_write(self, *args)
     def exists(self, *args): return _rllib.rlSpreadsheetWorkbook_exists(self, *args)
     def getFirstTable(self): return _rllib.rlSpreadsheetWorkbook_getFirstTable(self)
+    def setDelimitor(self, *args): return _rllib.rlSpreadsheetWorkbook_setDelimitor(self, *args)
 rlSpreadsheetWorkbook_swigregister = _rllib.rlSpreadsheetWorkbook_swigregister
 rlSpreadsheetWorkbook_swigregister(rlSpreadsheetWorkbook)
 

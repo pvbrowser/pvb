@@ -22757,6 +22757,32 @@ fail:
 }
 
 
+static int _wrap_rlSpreadsheetTable_setDelimitor(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSpreadsheetTable *arg1 = (rlSpreadsheetTable *) 0 ;
+  char arg2 ;
+  
+  SWIG_check_num_args("setDelimitor",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setDelimitor",1,"rlSpreadsheetTable *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("setDelimitor",2,"char");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSpreadsheetTable,0))){
+    SWIG_fail_ptr("rlSpreadsheetTable_setDelimitor",1,SWIGTYPE_p_rlSpreadsheetTable);
+  }
+  
+  arg2 = (lua_tostring(L, 2))[0];
+  (arg1)->setDelimitor(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlSpreadsheetTable(void *obj) {
 rlSpreadsheetTable *arg1 = (rlSpreadsheetTable *) obj;
 delete arg1;
@@ -22772,6 +22798,7 @@ static swig_lua_method swig_rlSpreadsheetTable_methods[] = {
     {"getNextTable", _wrap_rlSpreadsheetTable_getNextTable}, 
     {"getFirstRow", _wrap_rlSpreadsheetTable_getFirstRow}, 
     {"exists", _wrap_rlSpreadsheetTable_exists}, 
+    {"setDelimitor", _wrap_rlSpreadsheetTable_setDelimitor}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlSpreadsheetTable_attributes[] = {
@@ -23085,6 +23112,32 @@ fail:
 }
 
 
+static int _wrap_rlSpreadsheetWorkbook_setDelimitor(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSpreadsheetWorkbook *arg1 = (rlSpreadsheetWorkbook *) 0 ;
+  char arg2 ;
+  
+  SWIG_check_num_args("setDelimitor",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("setDelimitor",1,"rlSpreadsheetWorkbook *");
+  if(!lua_isstring(L,2)) SWIG_fail_arg("setDelimitor",2,"char");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSpreadsheetWorkbook,0))){
+    SWIG_fail_ptr("rlSpreadsheetWorkbook_setDelimitor",1,SWIGTYPE_p_rlSpreadsheetWorkbook);
+  }
+  
+  arg2 = (lua_tostring(L, 2))[0];
+  (arg1)->setDelimitor(arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlSpreadsheetWorkbook(void *obj) {
 rlSpreadsheetWorkbook *arg1 = (rlSpreadsheetWorkbook *) obj;
 delete arg1;
@@ -23098,6 +23151,7 @@ static swig_lua_method swig_rlSpreadsheetWorkbook_methods[] = {
     {"write", _wrap_rlSpreadsheetWorkbook_write}, 
     {"exists", _wrap_rlSpreadsheetWorkbook_exists}, 
     {"getFirstTable", _wrap_rlSpreadsheetWorkbook_getFirstTable}, 
+    {"setDelimitor", _wrap_rlSpreadsheetWorkbook_setDelimitor}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlSpreadsheetWorkbook_attributes[] = {

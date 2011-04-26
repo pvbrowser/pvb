@@ -54,6 +54,7 @@ typedef struct
   int  codec;               // strongly advised to use pvbUTF8
   int  closed;
   int  cookies;             // 0=NO 1=YES 2=ASK
+  int  i_have_started_servers; // count number of start commands
   char view_audio[MAXOPT];  // vlc
   char view_video[MAXOPT];  // vlc
   char view_pdf[MAXOPT];    // okular

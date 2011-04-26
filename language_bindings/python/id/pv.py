@@ -1221,6 +1221,10 @@ def pvSetZoomFactor(*args):
   return _pv.pvSetZoomFactor(*args)
 pvSetZoomFactor = _pv.pvSetZoomFactor
 
+def pvPrintHtmlOnPrinter(*args):
+  return _pv.pvPrintHtmlOnPrinter(*args)
+pvPrintHtmlOnPrinter = _pv.pvPrintHtmlOnPrinter
+
 def pvText(*args):
   return _pv.pvText(*args)
 pvText = _pv.pvText
@@ -1320,6 +1324,10 @@ pvSetSorting = _pv.pvSetSorting
 def pvSetTabPosition(*args):
   return _pv.pvSetTabPosition(*args)
 pvSetTabPosition = _pv.pvSetTabPosition
+
+def pvEnableTabBar(*args):
+  return _pv.pvEnableTabBar(*args)
+pvEnableTabBar = _pv.pvEnableTabBar
 
 def pvSetNumRows(*args):
   return _pv.pvSetNumRows(*args)
@@ -1879,6 +1887,10 @@ gScale = _pv.gScale
 def pvSetSelector(*args):
   return _pv.pvSetSelector(*args)
 pvSetSelector = _pv.pvSetSelector
+
+def pvPrintSvgOnPrinter(*args):
+  return _pv.pvPrintSvgOnPrinter(*args)
+pvPrintSvgOnPrinter = _pv.pvPrintSvgOnPrinter
 
 def qwtScaleSetTitle(*args):
   return _pv.qwtScaleSetTitle(*args)

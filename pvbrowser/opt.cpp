@@ -243,6 +243,7 @@ int i;
   opt.customlogo[0] = '\0';
   opt.newwindow[0] = '\0';
   opt.ssh[0] = '\0';
+  opt.i_have_started_servers = 0;
   opt.view_audio[0] = '\0';
   opt.view_video[0] = '\0';
   opt.view_pdf[0] = '\0';
@@ -379,6 +380,11 @@ int i;
         {
           sscanf(buf,"ssh=%s",buf);
           strcpy(opt.ssh,buf);
+        }
+        else if(strncmp(buf,"start=",6) == 0)
+        {
+          mysystem(&buf[6]);
+          opt.i_have_started_servers++;
         }
         else if(strncmp(buf,"murn=1",6) == 0)
         {

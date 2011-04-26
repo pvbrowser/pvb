@@ -4,6 +4,7 @@
 #include <string.h>
 #include "rlcutil.h"
 #include "rlinifile.h"
+#include "rlstring.h"
 
 #ifdef _WIN32
 #define SEP "\\" 
@@ -13,12 +14,25 @@
 
 int main(int ac, char **av)
 {
-  if(ac != 2)
+  if(ac < 2)
   {
-    printf("usage: start_pvbapp inifile\n");
+    printf("usage: start_pvbapp file.ini\n");
+    printf("OR\n");
+    printf("usage: start_pvbapp command arguments...\n");
     return -1;
-  }  
-  char command[1024];
+  }
+  if(strstr(av[1],".ini") == NULL) 
+  {
+    rlString cmd;
+    for(int i=1; i<ac; i++)
+    {
+      cmd += av[i];
+      cmd += " ";
+    }
+    return rlsystem(cmd.text());
+  }
+
+  char command[4096];
   rlIniFile ini;
   if(ini.read(av[1]) != 0) 
   {

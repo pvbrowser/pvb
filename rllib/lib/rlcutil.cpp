@@ -503,7 +503,8 @@ static int mysystem(const char *command)
   PROCESS_INFORMATION pi;
   char cmd[4096];
 
-  strcpy(cmd,command);
+  //strcpy(cmd,command);
+  ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
   ret = (int) CreateProcess( NULL, cmd
                            , NULL, NULL
                            , FALSE, CREATE_NO_WINDOW

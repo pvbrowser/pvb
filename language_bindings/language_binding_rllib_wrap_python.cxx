@@ -27700,6 +27700,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSpreadsheetTable_setDelimitor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSpreadsheetTable *arg1 = (rlSpreadsheetTable *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSpreadsheetTable_setDelimitor",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSpreadsheetTable, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSpreadsheetTable_setDelimitor" "', argument " "1"" of type '" "rlSpreadsheetTable *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSpreadsheetTable * >(argp1);
+  ecode2 = SWIG_AsVal_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlSpreadsheetTable_setDelimitor" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->setDelimitor(arg2);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *rlSpreadsheetTable_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -28135,6 +28165,36 @@ SWIGINTERN PyObject *_wrap_rlSpreadsheetWorkbook_getFirstTable(PyObject *SWIGUNU
   arg1 = reinterpret_cast< rlSpreadsheetWorkbook * >(argp1);
   result = (rlSpreadsheetTable *)(arg1)->getFirstTable();
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_rlSpreadsheetTable, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSpreadsheetWorkbook_setDelimitor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSpreadsheetWorkbook *arg1 = (rlSpreadsheetWorkbook *) 0 ;
+  char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSpreadsheetWorkbook_setDelimitor",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSpreadsheetWorkbook, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSpreadsheetWorkbook_setDelimitor" "', argument " "1"" of type '" "rlSpreadsheetWorkbook *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSpreadsheetWorkbook * >(argp1);
+  ecode2 = SWIG_AsVal_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlSpreadsheetWorkbook_setDelimitor" "', argument " "2"" of type '" "char""'");
+  } 
+  arg2 = static_cast< char >(val2);
+  (arg1)->setDelimitor(arg2);
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -34531,6 +34591,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSpreadsheetTable_getNextTable", _wrap_rlSpreadsheetTable_getNextTable, METH_VARARGS, NULL},
 	 { (char *)"rlSpreadsheetTable_getFirstRow", _wrap_rlSpreadsheetTable_getFirstRow, METH_VARARGS, NULL},
 	 { (char *)"rlSpreadsheetTable_exists", _wrap_rlSpreadsheetTable_exists, METH_VARARGS, NULL},
+	 { (char *)"rlSpreadsheetTable_setDelimitor", _wrap_rlSpreadsheetTable_setDelimitor, METH_VARARGS, NULL},
 	 { (char *)"rlSpreadsheetTable_swigregister", rlSpreadsheetTable_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlSpreadsheetWorkbook", _wrap_new_rlSpreadsheetWorkbook, METH_VARARGS, NULL},
 	 { (char *)"delete_rlSpreadsheetWorkbook", _wrap_delete_rlSpreadsheetWorkbook, METH_VARARGS, NULL},
@@ -34542,6 +34603,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSpreadsheetWorkbook_write", _wrap_rlSpreadsheetWorkbook_write, METH_VARARGS, NULL},
 	 { (char *)"rlSpreadsheetWorkbook_exists", _wrap_rlSpreadsheetWorkbook_exists, METH_VARARGS, NULL},
 	 { (char *)"rlSpreadsheetWorkbook_getFirstTable", _wrap_rlSpreadsheetWorkbook_getFirstTable, METH_VARARGS, NULL},
+	 { (char *)"rlSpreadsheetWorkbook_setDelimitor", _wrap_rlSpreadsheetWorkbook_setDelimitor, METH_VARARGS, NULL},
 	 { (char *)"rlSpreadsheetWorkbook_swigregister", rlSpreadsheetWorkbook_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlString", _wrap_new_rlString, METH_VARARGS, NULL},
 	 { (char *)"delete_rlString", _wrap_delete_rlString, METH_VARARGS, NULL},
