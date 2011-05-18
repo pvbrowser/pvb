@@ -428,6 +428,7 @@ int i;
           cptr++;
           if(*cptr == ' ') cptr++;
           sscanf(cptr,"%s",opt.language);
+          opt.language[100] = '\0';
         }
         else if(strncmp(buf,"customlogo=",11) == 0)
         {

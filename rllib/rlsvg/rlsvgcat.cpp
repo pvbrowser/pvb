@@ -193,6 +193,7 @@ int rlSvgCat::outValue(int i)
     }
     else if((line[i] == ' ' || line[i] == '\t') && found_quotes == 0)
     {
+      fputc('\n',out);
       i++;
     }
     else
