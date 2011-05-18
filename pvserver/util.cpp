@@ -661,7 +661,7 @@ int option = 1;
       localAddr.sin_family = AF_INET;
 bind:
       ret = bind(p->os, (struct sockaddr *) &localAddr, sizeof(localAddr));
-      if(ret == -1)
+      if(ret != 0)
       {
         sprintf(buf,"could not bind to port %d",p->port);
         pvWarning(p,buf);

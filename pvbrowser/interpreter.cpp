@@ -4036,7 +4036,30 @@ void Interpreter::interprett(const char *command)
     char buf[MAX_PRINTF_LENGTH];
     sscanf(command,"text(%d)",&i);
     buf[0] = '\0';
-    if(i < 0) return;
+    if(i < 0)
+    {
+      if(i == -8) // ID_OPTIONS
+      {
+        sprintf(buf,"text(-8,\"-zoom=%d -fontzoom=%d -menubar=%d -toolbar=%d -statusbar=%d -scrollbars=%d -fullscreen=%d -maximized=%d -tabs_above_toolbar=%d -cookies=%d -echo_table_updates=%d -enable_webit_plugins=%d -murn=%d -language=%s\")\n",
+        opt.zoom,
+        opt.fontzoom,
+        opt.menubar,
+        opt.toolbar,
+        opt.statusbar,
+        opt.scrollbars,
+        opt.fullscreen,
+        opt.maximized,
+        opt.tabs_above_toolbar,
+        opt.cookies,
+        opt.echo_table_updates,
+        opt.enable_webkit_plugins,
+        opt.arg_murn,
+        opt.language
+        );
+        tcp_send(s,buf,strlen(buf));
+      }
+      return;
+    }  
     if(i >= nmax) return;
     if(all[i]->type == TQLabel)
     {

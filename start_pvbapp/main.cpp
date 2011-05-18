@@ -21,7 +21,7 @@ int main(int ac, char **av)
     printf("usage: start_pvbapp command arguments...\n");
     return -1;
   }
-  if(strstr(av[1],".ini") == NULL) 
+  if(strstr(av[1],".ini") == NULL && strstr(av[1],".INI") == NULL) 
   {
     rlString cmd;
     for(int i=1; i<ac; i++)

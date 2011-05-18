@@ -82,7 +82,8 @@ ID_STATUSBAR    = -3,     /// # pvResize(p,ID_MAINWINDOW,width,height)
 ID_MAINWINDOW   = -4,     /// # pvHide(p,ID_HELP) pvShow(p,ID_HELP)
 ID_HELP         = -5,     /// # pvPrintf(p,ID_COOKIE,"%s=%s",cookie_name,cookie_values) pvPrintf(p,ID_COOKIE,cookie_name)
 ID_COOKIE       = -6,     /// # pvPrintf(p,ID_TAB,"%s", "title");
-ID_TAB          = -7,    
+ID_TAB          = -7,     /// # pvText(p,ID_OPTIONS); 
+ID_OPTIONS      = -8,     
 ID_DOCK_WIDGETS = -1000   /// # leave some space for dock widgets
 };
 
