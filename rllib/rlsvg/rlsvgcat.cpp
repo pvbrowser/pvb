@@ -231,11 +231,14 @@ void rlSvgCat::catline()
       }
       return;
     }
+    /* removed after report by H. Schauerte
+       normalize desc as well
     else if(strncmp(&line[i],"<desc",5) == 0)
     {
       fprintf(out,"%s",&line[i]);
       return;
     }
+    */
     else if(strncmp(&line[i],"</",2) == 0)
     {
       if(strncmp(&line[i],"</svg>",6) == 0)
