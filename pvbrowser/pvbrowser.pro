@@ -7,9 +7,15 @@
 linux-g++-gles2 {
   DEFINES    += USE_MAEMO
 }  
+android-g++ {
+  DEFINES    += USE_ANDROID
+  DEFINES    += USE_MAEMO
+}  
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
 QT           += xml opengl svg webkit network
+#mobile devices without opengl
+#QT           += xml svg webkit network
 QMAKE_LFLAGS += -static-libgcc
 
 HEADERS       = mainwindow.h \

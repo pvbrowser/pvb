@@ -1939,6 +1939,9 @@ void Interpreter::interpretp(const char *command)
   {
     get_text(command,text);
     printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
+#ifdef USE_ANDROID
+    qApp->beep();
+#else
     if(QSound::isAvailable())
     {
       QSound::play(text);
@@ -1952,6 +1955,7 @@ void Interpreter::interpretp(const char *command)
       printf("On Qt/Embedded, a built-in mixing sound server is used, which accesses /dev/dsp directly. Only the WAVE format is supported.\n");
       qApp->beep();
     }
+#endif    
   }
   else if(strncmp(command,"popupMenu(",10) == 0) // open a popupMenu()
   {
@@ -2018,6 +2022,8 @@ void Interpreter::interpretr(const char *command)
     {
       if(mainWindow->scroll != NULL)
       {
+        mainWindow->pvbtab[mainWindow->currentTab].w = w;
+        mainWindow->pvbtab[mainWindow->currentTab].h = h;
         mainWindow->scroll->resize(w,h);
         QEvent event(QEvent::Resize);
         QApplication::sendEvent(mainWindow, &event);

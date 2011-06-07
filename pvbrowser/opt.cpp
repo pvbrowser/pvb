@@ -17,6 +17,10 @@
 #include <QtCore>
 #include <QMessageBox>
 #include "opt.h"
+#ifdef USE_ANDROID
+#include <sys/stat.h> // android
+#include <sys/types.h> // android
+#endif
 #ifdef PVWIN32
 #include <windows.h>
 #include <direct.h>
@@ -163,8 +167,12 @@ const char *inifile()
     return name;
   }
 #ifdef PVUNIX
+#ifdef USE_ANDROID
+  strcpy(name,"/sdcard/pvbrowser/pvbrowser.ini"); // android
+#else
   strcpy(name,getenv("HOME"));
   strcat(name,"/.pvbrowser.ini");
+#endif
 #endif
 #ifdef __VMS
   strcpy(name,"sys$login:pvbrowser.ini");
@@ -187,8 +195,12 @@ const char *passfile()
     return name;
   }
 #ifdef PVUNIX
+#ifdef USE_ANDROID
+  strcpy(name,"/sdcard/pvbrowser/pvbrowserpass.ini"); // android
+#else
   strcpy(name,getenv("HOME"));
   strcat(name,"/.pvbrowserpass.ini");
+#endif
 #endif
 #ifdef __VMS
   strcpy(name,"sys$login:pvbrowserpass.ini");
@@ -460,6 +472,10 @@ int i;
     }
     else // write a default initialisation file
     {
+#ifdef USE_ANDROID
+      mkdir("/sdcard/pvbrowser", 0x0fff); // android
+      mkdir("/sdcard/pvbrowser/temp", 0x0fff); // android             
+#endif
       fp = fopen(inifile(),"w");
       if(fp != NULL)
       {
@@ -485,9 +501,13 @@ int i;
         fprintf(fp,"enable_webkit_plugins=1 # 0|1\n");
         fprintf(fp,"# temporary directory\n");
 #ifdef PVUNIX
+#ifdef USE_ANDROID
+        fprintf(fp,"temp=/sdcard/pvbrowser/temp\n");
+#else
         sprintf(buf,"mkdir -p /tmp/pvb-%s", getenv("USER"));
         if(system(buf) != 0) printf("could not create temporary directory: %s\n", buf);
         fprintf(fp,"temp=/tmp/pvb-%s\n", getenv("USER"));
+#endif
 #endif
 #ifdef PVWIN32
         //fprintf(fp,"temp=%%PVBDIR%%\\win\\temp\n");
