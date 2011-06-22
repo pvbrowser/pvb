@@ -583,6 +583,17 @@ typedef struct
   int f0,f1,f2,f3,f4,f5,f6,f7,f8,f9;
 }FloatArray;
 
+typedef struct
+{
+  int millisecond;
+  int second;
+  int minute;
+  int hour;
+  int day;
+  int month;
+  int year;
+}pvTime;
+
 /* this is for convenience when you want to write files */
 #define PARAM_P  PARAM p;pvInit(0,NULL,&p);
 
@@ -616,6 +627,32 @@ int pvunlock(PARAM *p);
 Same as system(command); but portable
 </pre> */
 int pvsystem(const char *command);
+/*! <pre>
+Get local time
+</pre> */
+void pvGetLocalTime(pvTime *pvtime);
+/*! <pre>
+Test if access is allowed by files "allow.ipv4" and "deny.ipv4" in your local directory
+adr := dottet ip address
+trace = 1 print messages on stdout
+trace = 0 do not print messages on stdout
+return = 1 access allowed
+return = 0 access is not allowed
+
+Example allow.ipv4:
+1.0.0.127/32         # allow localhost
+192.168.1.0/24       # allow 192.168.1.0 - 192.168.1.255
+# insert more areas here
+
+Example deny.ipv4:
+# deny a individual address
+192.168.2.14/32
+# insert more areas here
+
+The number behind the / is the number of significant bits of the ip address.
+Every pvserver will evaluate "allow.ipv4 and "deny.ipv4" when client connects.
+</pre> */
+int pvIsAccessAllowed(const char *adr, int trace);
 /*! <pre>
 Send version of pvserver to client
 </pre> */
@@ -816,16 +853,8 @@ Allowed Widgets: all Widgets
 int pvWhatsThisPrintf(PARAM *p, int id, const char *format, ...);
 /*! <pre>
 Run command on client.
-Commands understood by client:
-           pdf-viewer
-           image-viewer
-           svg-viewer
-           txt-viewer
-           csv-viewer
-           html-viewer
-           audio-player
-           video-player
 command := pdf | img | svg | txt | csv | html | audio | video
+See view.pdf, view.img, view.svg ... within pvbrowser options.
 </pre> */
 int pvClientCommand(PARAM *p, const char *command, const char *filename);
 /** @} */ // end of group

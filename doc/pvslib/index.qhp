@@ -39,6 +39,7 @@
           <section title="glFont::Glyph" ref="structglFont_1_1Glyph.html" />
           <section title="IntegerArray" ref="structIntegerArray.html" />
           <section title="PARSE_EVENT_STRUCT" ref="structPARSE__EVENT__STRUCT.html" />
+          <section title="pvTime" ref="structpvTime.html" />
           <section title="pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
           <section title="WSEMAPHORE" ref="structWSEMAPHORE.html" />
         </section>
@@ -93,6 +94,8 @@
       <keyword name="pvlock" id="processviewserver.h::pvlock" ref="processviewserver_8h.html#ga1b0519bc72b1168bec8dd173e6ce1e47" />
       <keyword name="pvunlock" id="processviewserver.h::pvunlock" ref="processviewserver_8h.html#ga4ed35d24f18f4a747092558ead32dda8" />
       <keyword name="pvsystem" id="processviewserver.h::pvsystem" ref="processviewserver_8h.html#gac61f8fa497b44e693020c265b21206bc" />
+      <keyword name="pvGetLocalTime" id="processviewserver.h::pvGetLocalTime" ref="processviewserver_8h.html#gabdbd0b925c0f35c556f66f5b1cf06609" />
+      <keyword name="pvIsAccessAllowed" id="processviewserver.h::pvIsAccessAllowed" ref="processviewserver_8h.html#ga8561f4762552cbd359ae7a4c8ef909fe" />
       <keyword name="pvSendVersion" id="processviewserver.h::pvSendVersion" ref="processviewserver_8h.html#gab63e49f56fbad68d7f24ae08426e8fa6" />
       <keyword name="pvXYAllocate" id="processviewserver.h::pvXYAllocate" ref="processviewserver_8h.html#gaa94a429d64753c7c016bf9f2202def63" />
       <keyword name="getIntegers" id="processviewserver.h::getIntegers" ref="processviewserver_8h.html#ga7f8f3c35707fbddf62a27ee70b8296eb" />
@@ -665,6 +668,7 @@
       <keyword name="ID_HELP" id="DefinesAndEnums::ID_HELP" ref="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9adb04d39ee1215e9958071f12b987e206" />
       <keyword name="ID_COOKIE" id="DefinesAndEnums::ID_COOKIE" ref="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9ae90c12663b573e0504e676e453069966" />
       <keyword name="ID_TAB" id="DefinesAndEnums::ID_TAB" ref="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9a62343c1992ada274894496756719c966" />
+      <keyword name="ID_OPTIONS" id="DefinesAndEnums::ID_OPTIONS" ref="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9af5740300afd6c8eba2249bc6076a1918" />
       <keyword name="ID_DOCK_WIDGETS" id="DefinesAndEnums::ID_DOCK_WIDGETS" ref="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9a6e27492c6d3e882426cac106489a8d71" />
       <keyword name="MarkerNone" id="DefinesAndEnums::MarkerNone" ref="group__DefinesAndEnums.html#ggacad5a4b1b15e5eb0bc2d83c5ce0138e1a14a67e783dc399763df2b264c8bc0b87" />
       <keyword name="MarkerEllipse" id="DefinesAndEnums::MarkerEllipse" ref="group__DefinesAndEnums.html#ggacad5a4b1b15e5eb0bc2d83c5ce0138e1a697c2d3822a6a39cd82bf36640970269" />
@@ -927,6 +931,8 @@
       <keyword name="pvlock" id="IniAndGlobal::pvlock" ref="group__IniAndGlobal.html#ga1b0519bc72b1168bec8dd173e6ce1e47" />
       <keyword name="pvunlock" id="IniAndGlobal::pvunlock" ref="group__IniAndGlobal.html#ga4ed35d24f18f4a747092558ead32dda8" />
       <keyword name="pvsystem" id="IniAndGlobal::pvsystem" ref="group__IniAndGlobal.html#gac61f8fa497b44e693020c265b21206bc" />
+      <keyword name="pvGetLocalTime" id="IniAndGlobal::pvGetLocalTime" ref="group__IniAndGlobal.html#gabdbd0b925c0f35c556f66f5b1cf06609" />
+      <keyword name="pvIsAccessAllowed" id="IniAndGlobal::pvIsAccessAllowed" ref="group__IniAndGlobal.html#ga8561f4762552cbd359ae7a4c8ef909fe" />
       <keyword name="pvSendVersion" id="IniAndGlobal::pvSendVersion" ref="group__IniAndGlobal.html#gab63e49f56fbad68d7f24ae08426e8fa6" />
       <keyword name="pvXYAllocate" id="IniAndGlobal::pvXYAllocate" ref="group__IniAndGlobal.html#gaa94a429d64753c7c016bf9f2202def63" />
       <keyword name="getIntegers" id="IniAndGlobal::getIntegers" ref="group__IniAndGlobal.html#ga7f8f3c35707fbddf62a27ee70b8296eb" />
@@ -1441,6 +1447,14 @@
       <keyword name="event" id="PARSE_EVENT_STRUCT::event" ref="structPARSE__EVENT__STRUCT.html#ad18f6ae3ccddea2702833a852e9b08c7" />
       <keyword name="i" id="PARSE_EVENT_STRUCT::i" ref="structPARSE__EVENT__STRUCT.html#a740db7e26499c8e840ed368eaa77fe9a" />
       <keyword name="text" id="PARSE_EVENT_STRUCT::text" ref="structPARSE__EVENT__STRUCT.html#a59dd335ba0c1645e656ef3ce91900f94" />
+      <keyword name="pvTime" id="pvTime" ref="structpvTime.html" />
+      <keyword name="millisecond" id="pvTime::millisecond" ref="structpvTime.html#ac0729ee482228169311edf9573ef8436" />
+      <keyword name="second" id="pvTime::second" ref="structpvTime.html#a72cf43ecb4305d3216b49191aaebc440" />
+      <keyword name="minute" id="pvTime::minute" ref="structpvTime.html#a323b2aa1180dd37c8666dd0f4b79c6a2" />
+      <keyword name="hour" id="pvTime::hour" ref="structpvTime.html#a5e1eec37060d2d83c47d9ca30fb04e0f" />
+      <keyword name="day" id="pvTime::day" ref="structpvTime.html#a842fc9d33d76e88ec13ea1048d3b60a6" />
+      <keyword name="month" id="pvTime::month" ref="structpvTime.html#ad15dc906bb71fd7507d6754e2f69ffc0" />
+      <keyword name="year" id="pvTime::year" ref="structpvTime.html#a5959407146a36f1741e8ba96e235d1f2" />
       <keyword name="pvWidgetIdManager" id="pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
       <keyword name="pvWidgetIdManager" id="pvWidgetIdManager::pvWidgetIdManager" ref="classpvWidgetIdManager.html#a7decd0a41989bf9180c3bdc41362bbcf" />
       <keyword name="~pvWidgetIdManager" id="pvWidgetIdManager::~pvWidgetIdManager" ref="classpvWidgetIdManager.html#a20feebb7335d31db470547d5975f8a48" />
@@ -1523,6 +1537,7 @@
       <file>structglFont_1_1Glyph.html</file>
       <file>structIntegerArray.html</file>
       <file>structPARSE__EVENT__STRUCT.html</file>
+      <file>structpvTime.html</file>
       <file>classpvWidgetIdManager.html</file>
       <file>structWSEMAPHORE.html</file>
       <file>files.html</file>

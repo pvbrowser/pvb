@@ -149,6 +149,9 @@ private:
   QAction *optionAct;
   QAction *windowAct;
   QAction *reconnectAct;
+  QAction *reconnectActToolBar;
+  QAction *editmenuActToolBar;
+  QAction *statusbarActToolBar;
   QAction *storebmpAct;
   QAction *gohomeAct;
   QAction *logbmpAct;

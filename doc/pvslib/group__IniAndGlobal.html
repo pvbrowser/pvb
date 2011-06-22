@@ -43,6 +43,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga1b0519bc72b1168bec8dd173e6ce1e47">pvlock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga4ed35d24f18f4a747092558ead32dda8">pvunlock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gac61f8fa497b44e693020c265b21206bc">pvsystem</a> (const char *command)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gabdbd0b925c0f35c556f66f5b1cf06609">pvGetLocalTime</a> (<a class="el" href="structpvTime.html">pvTime</a> *pvtime)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga8561f4762552cbd359ae7a4c8ef909fe">pvIsAccessAllowed</a> (const char *adr, int trace)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gab63e49f56fbad68d7f24ae08426e8fa6">pvSendVersion</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gaa94a429d64753c7c016bf9f2202def63">pvXYAllocate</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int n)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga7f8f3c35707fbddf62a27ee70b8296eb">getIntegers</a> (const char *text, <a class="el" href="structIntegerArray.html">IntegerArray</a> *ia)</td></tr>
@@ -219,16 +221,8 @@ see pvInit
 <div class="memdoc">
 <pre>
 Run command on client.
-Commands understood by client:
-           pdf-viewer
-           image-viewer
-           svg-viewer
-           txt-viewer
-           csv-viewer
-           html-viewer
-           audio-player
-           video-player
 command := pdf | img | svg | txt | csv | html | audio | video
+See view.pdf, view.img, view.svg ... within pvbrowser options.
 </pre> 
 </div>
 </div>
@@ -299,6 +293,25 @@ Call this function in pvMain. See also pvMain.
 <pre>
 Get the initial mask the user wants to see
 p-&gt;initial_mask is a string identifying the initial mask 
+</pre> 
+</div>
+</div>
+<a class="anchor" id="gabdbd0b925c0f35c556f66f5b1cf06609"></a><!-- doxytag: member="processviewserver.h::pvGetLocalTime" ref="gabdbd0b925c0f35c556f66f5b1cf06609" args="(pvTime *pvtime)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void pvGetLocalTime </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structpvTime.html">pvTime</a> *&#160;</td>
+          <td class="paramname"><em>pvtime</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Get local time
 </pre> 
 </div>
 </div>
@@ -418,6 +431,47 @@ here you may interpret ac,av and set p.user to your data
 <pre>
 see pvInit
 Init for script languages
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga8561f4762552cbd359ae7a4c8ef909fe"></a><!-- doxytag: member="processviewserver.h::pvIsAccessAllowed" ref="ga8561f4762552cbd359ae7a4c8ef909fe" args="(const char *adr, int trace)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvIsAccessAllowed </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>trace</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Test if access is allowed by files "allow.ipv4" and "deny.ipv4" in your local directory
+adr := dottet ip address
+trace = 1 print messages on stdout
+trace = 0 do not print messages on stdout
+return = 1 access allowed
+return = 0 access is not allowed</pre><pre>Example allow.ipv4:
+1.0.0.127/32         # allow localhost
+192.168.1.0/24       # allow 192.168.1.0 - 192.168.1.255
+# insert more areas here</pre><pre>Example deny.ipv4:
+# deny a individual address
+192.168.2.14/32
+# insert more areas here</pre><pre>The number behind the / is the number of significant bits of the ip address.
+Every pvserver will evaluate "allow.ipv4 and "deny.ipv4" when client connects.
 </pre> 
 </div>
 </div>

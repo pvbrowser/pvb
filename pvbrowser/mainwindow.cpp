@@ -385,7 +385,7 @@ void MainWindow::about()
                "\nhttp://www.lehrig.de"
                "\n"
                "\ndeveloped under Linux for:"
-               "\nLinux/Unix/Windows/OS-X/Maemo"
+               "\nLinux/Unix/Windows/OS-X/Maemo/Android"
                "\n+pvserver under OpenVMS"
              ));
 }
@@ -417,7 +417,7 @@ void MainWindow::createActions()
     connect(newtabAct, SIGNAL(triggered()), this, SLOT(slotNewTab()));
   }
 
-  reconnectAct = new QAction(QIcon(":/images/reconnect.png"), l_reconnect, this);
+  reconnectAct = new QAction(QIcon(":/images/view-refresh.png"), l_reconnect, this);
   reconnectAct->setShortcut(tr("Ctrl+R"));
   reconnectAct->setStatusTip(l_status_reconnect);
   connect(reconnectAct, SIGNAL(triggered()), this, SLOT(slotReconnect()));
@@ -633,12 +633,26 @@ void MainWindow::createToolBars()
                              ));
   fileToolBar->addWidget(urlComboBox);
   connect(urlComboBox, SIGNAL(activated(const QString &)), this, SLOT(slotUrl(const QString &)));
+  
+  reconnectActToolBar = new QAction(QIcon(":/images/view-refresh.png"), "reconnect", this);
+  fileToolBar->addAction(reconnectActToolBar);
+  connect(reconnectActToolBar, SIGNAL(triggered()), this, SLOT(slotReconnect()));
+
+  editmenuActToolBar = new QAction(QIcon(":/images/arrow-up.png"), "editmenu", this);
+  fileToolBar->addAction(editmenuActToolBar);
+  connect(editmenuActToolBar, SIGNAL(triggered()), this, SLOT(slotEditmenu()));
+
+  statusbarActToolBar = new QAction(QIcon(":/images/arrow-down.png"), "statusbar", this);
+  fileToolBar->addAction(statusbarActToolBar);
+  connect(statusbarActToolBar, SIGNAL(triggered()), this, SLOT(slotStatusbar()));
+
 #ifndef USE_MAEMO
   fileToolBar->addSeparator();
 
   whatsthisAct = new QAction(QIcon(":/images/whatsthis.png"), "whatsThis", this);
   fileToolBar->addAction(whatsthisAct);
   connect(whatsthisAct, SIGNAL(triggered()), this, SLOT(slotWhatsThis()));
+
   fileToolBar->addSeparator();
 
   logoLabel = new QLabel(NULL);

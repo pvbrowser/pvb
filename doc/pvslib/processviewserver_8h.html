@@ -62,6 +62,7 @@ Data Structures</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__PARAM__.html">_PARAM_</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structIntegerArray.html">IntegerArray</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structFloatArray.html">FloatArray</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpvTime.html">pvTime</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classglFont.html">glFont</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structglFont_1_1Glyph.html">glFont::Glyph</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classpvWidgetIdManager.html">pvWidgetIdManager</a></td></tr>
@@ -119,7 +120,8 @@ Enumerations</h2></td></tr>
 <a class="el" href="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9ae90c12663b573e0504e676e453069966">ID_COOKIE</a> =  -6, 
 <a class="el" href="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9a62343c1992ada274894496756719c966">ID_TAB</a> =  -7, 
 <br/>
-&#160;&#160;<a class="el" href="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9a6e27492c6d3e882426cac106489a8d71">ID_DOCK_WIDGETS</a> =  -1000
+&#160;&#160;<a class="el" href="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9af5740300afd6c8eba2249bc6076a1918">ID_OPTIONS</a> =  -8, 
+<a class="el" href="group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9a6e27492c6d3e882426cac106489a8d71">ID_DOCK_WIDGETS</a> =  -1000
 <br/>
  }</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DefinesAndEnums.html#ga312edd1912b98b17988e584ecc4263b4">PvEvent</a> { <br/>
@@ -647,6 +649,8 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga1b0519bc72b1168bec8dd173e6ce1e47">pvlock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga4ed35d24f18f4a747092558ead32dda8">pvunlock</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gac61f8fa497b44e693020c265b21206bc">pvsystem</a> (const char *command)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gabdbd0b925c0f35c556f66f5b1cf06609">pvGetLocalTime</a> (<a class="el" href="structpvTime.html">pvTime</a> *pvtime)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga8561f4762552cbd359ae7a4c8ef909fe">pvIsAccessAllowed</a> (const char *adr, int trace)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gab63e49f56fbad68d7f24ae08426e8fa6">pvSendVersion</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gaa94a429d64753c7c016bf9f2202def63">pvXYAllocate</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int n)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga7f8f3c35707fbddf62a27ee70b8296eb">getIntegers</a> (const char *text, <a class="el" href="structIntegerArray.html">IntegerArray</a> *ia)</td></tr>

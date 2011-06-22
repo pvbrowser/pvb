@@ -1279,6 +1279,28 @@ static void *send_thread(void *ptr)
 {
   PARAM *p;
   p = (PARAM *) ptr;
+  // struct sockaddr pvSockaddr; // sockaddr of last client. can be used for authorization.
+  // pvSocklen;                  // socklen  of last client. can be used for authorization.
+  struct sockaddr_in *sockaddr_in_ptr  = (sockaddr_in *) &pvSockaddr;
+  if(sockaddr_in_ptr->sin_family == AF_INET)
+  {
+    char adr[32];
+    unsigned int *ipadr_ptr, ipadr,a1,a2,a3,a4;
+    ipadr_ptr = (unsigned int *) &sockaddr_in_ptr->sin_addr;
+    ipadr = *ipadr_ptr;
+    a4 = ipadr & 0x0ff;
+    ipadr = ipadr / 256;
+    a3 = ipadr & 0x0ff;
+    ipadr = ipadr / 256;
+    a2 = ipadr & 0x0ff;
+    ipadr = ipadr / 256;
+    a1 = ipadr & 0x0ff;
+    sprintf(adr,"%d.%d.%d.%d", a1,a2,a3,a4);
+    if(pvIsAccessAllowed(adr, 1) == 0)
+    {
+      pvThreadFatal(p,"SECURITY ALARAM: unallowed connection request\n");
+    }
+  }  
   pvFilePrefix(p);
   pvSendVersion(p);
   pvMain(p);
@@ -6342,6 +6364,257 @@ int pvsystem(const char *command)
 #else
   return system(command);
 #endif
+}
+
+void pvGetLocalTime(pvTime *pvtime)
+{
+#ifdef PVUNIX
+  time_t t;
+  struct tm       *tms;
+  struct timeval  tv;
+  struct timezone tz;
+
+  time(&t);
+  tms = localtime(&t);
+  gettimeofday(&tv, &tz);
+
+  /* adjust year and month */
+  tms->tm_year += 1900;
+  tms->tm_mon  += 1;
+
+  pvtime->millisecond = (int)tv.tv_usec / 1000;
+  pvtime->second      = (int)tms->tm_sec;
+  pvtime->minute      = (int)tms->tm_min;
+  pvtime->hour        = (int)tms->tm_hour;
+  pvtime->day         = (int)tms->tm_mday;
+  pvtime->month       = (int)tms->tm_mon;
+  pvtime->year        = (int)tms->tm_year;
+#endif
+
+#ifdef __VMS
+  TDS    tds;
+  sys$numtim(&tds, 0);
+  pvtime->millisecond  = (int)tds.hth * 10;
+  pvtime->second       = (int)tds.sec;
+  pvtime->minute       = (int)tds.min;
+  pvtime->hour         = (int)tds.hour;
+  pvtime->day          = (int)tds.day;
+  pvtime->month        = (int)tds.month;
+  pvtime->year         = (int)tds.year;
+#endif
+
+#ifdef PVWIN32
+  SYSTEMTIME st;
+  GetLocalTime(&st);
+  pvtime->millisecond  = st.wMilliseconds;
+  pvtime->second       = st.wSecond;
+  pvtime->minute       = st.wMinute;
+  pvtime->hour         = st.wHour;
+  pvtime->day          = st.wDay;
+  pvtime->month        = st.wMonth;
+  pvtime->year         = st.wYear;
+#endif
+}
+
+int pvTestIp(const char *adr, const char *range)
+{
+  // test if adr is in range
+  unsigned int a1,a2,a3,a4,ar1,ar2,ar3,ar4,significant_bits;
+  unsigned long a,ar,mask,test;
+
+  if(isdigit(range[0]) == 0)    return 0;
+  if(strchr(range,'.') == NULL) return 0;
+  a1 = a2 = a3 = a4 = ar1 = ar2 = ar3 = ar4 = significant_bits = 0;
+  a = 0;
+  mask = 0x0ffffff;
+  sscanf(adr,  "%d.%d.%d.%d",    &a1,  &a2,  &a3,  &a4);
+  sscanf(range,"%d.%d.%d.%d/%d", &ar1, &ar2, &ar3, &ar4, &significant_bits);
+  a  = ((a1 *256+a2 )*256+a3 )*256+a4;
+  ar = ((ar1*256+ar2)*256+ar3)*256+ar4;
+  // 0 0 0 0   0 0 0 0 : 00
+  // 1 0 0 0   0 0 0 0 : 80
+  // 1 1 0 0   0 0 0 0 : c0
+  // 1 1 1 0   0 0 0 0 : e0
+  // 1 1 1 1   0 0 0 0 : f0
+  // 1 1 1 1   1 0 0 0 : f8
+  // 1 1 1 1   1 1 0 0 : fc
+  // 1 1 1 1   1 1 1 0 : fe
+  // 1 1 1 1   1 1 1 1 : ff
+  // ### 8 c e f ### 
+  switch(significant_bits)
+  {
+    case 0:
+      mask = 0x000000000;
+      break;
+    case 1:
+      mask = 0x080000000;
+      break;
+    case 2:
+      mask = 0x0c0000000;
+      break;
+    case 3:
+      mask = 0x0e0000000;
+      break;
+    case 4:
+      mask = 0x0f0000000;
+      break;
+    case 5:
+      mask = 0x0f8000000;
+      break;
+    case 6:
+      mask = 0x0fc000000;
+      break;
+    case 7:
+      mask = 0x0fe000000;
+      break;
+    case 8:
+      mask = 0x0ff000000;
+      break;
+    case 9:
+      mask = 0x0ff800000;
+      break;
+    case 10:
+      mask = 0x0ffc00000;
+      break;
+    case 11:
+      mask = 0x0ffe00000;
+      break;
+    case 12:
+      mask = 0x0fff00000;
+      break;
+    case 13:
+      mask = 0x0fff80000;
+      break;
+    case 14:
+      mask = 0x0fffc0000;
+      break;
+    case 15:
+      mask = 0x0fffe0000;
+      break;
+    case 16:
+      mask = 0x0ffff0000;
+      break;
+    case 17:
+      mask = 0x0ffff8000;
+      break;
+    case 18:
+      mask = 0x0ffffc000;
+      break;
+    case 19:
+      mask = 0x0ffffe000;
+      break;
+    case 20:
+      mask = 0x0fffff000;
+      break;
+    case 21:
+      mask = 0x0fffff800;
+      break;
+    case 22:
+      mask = 0x0fffffc00;
+      break;
+    case 23:
+      mask = 0x0fffffe00;
+      break;
+    case 24:
+      mask = 0x0ffffff00;
+      break;
+    case 25:
+      mask = 0x0ffffff80;
+      break;
+    case 26:
+      mask = 0x0ffffffc0;
+      break;
+    case 27:
+      mask = 0x0ffffffe0;
+      break;
+    case 28:
+      mask = 0x0fffffff0;
+      break;
+    case 29:
+      mask = 0x0fffffff8;
+      break;
+    case 30:
+      mask = 0x0fffffffc;
+      break;
+    case 31:
+      mask = 0x0fffffffe;
+      break;
+    case 32:
+      mask = 0x0ffffffff;
+      break;
+    default:
+      mask = 0x0ffffffff;
+      break;
+  }
+  test = a & mask;
+  // printf("pvTestIp %d.%d.%d.%d/%d a=%lx mask=%x test=%lx ar=%lx\n", 
+  //    a1,a2,a3,a4,significant_bits,a,    mask,   test,    ar);
+  if(test == ar) return 1; // does match
+  return 0;                // does not match
+}
+
+int pvIsAccessAllowed(const char *adr, int trace)
+{
+  char line[1024];
+  int haveAllow, haveDeny;
+  FILE *fin;
+  pvTime t;
+
+  haveAllow = haveDeny = 0;
+  if(isdigit(adr[0]) && strchr(adr,'.') != NULL)
+  {
+    // test ALLOW 
+    fin = fopen("allow.ipv4","r");
+    if(fin != NULL)
+    {
+      haveAllow = 1;
+      line[0] = '\0';
+      while(fgets(line,sizeof(line)-1,fin) != NULL)
+      {
+        if(pvTestIp(adr,line) == 1)
+        {
+          pvGetLocalTime(&t);
+          if(trace) printf("ALLOW IP=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d by allow.ipv4\n", 
+                    adr, 
+                    t.year, t.month, t.day, t.hour, t.minute, t.second);
+          fclose(fin);
+          return 1; 
+        }
+        line[0] = '\0';
+      }
+      fclose(fin);
+    }
+
+    // test DENY
+    fin = fopen("deny.ipv4","r");
+    if(fin != NULL)
+    {
+      haveDeny = 1;
+      line[0] = '\0';
+      while(fgets(line,sizeof(line)-1,fin) != NULL)
+      {
+        if(pvTestIp(adr,line) == 1)
+        {
+          pvGetLocalTime(&t);
+          if(trace) printf("DENY IP=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d by deny.ipv4\n", 
+                    adr, 
+                    t.year, t.month, t.day, t.hour, t.minute, t.second);
+          fclose(fin);
+          return 0; 
+        }
+        line[0] = '\0';
+      }
+      fclose(fin);
+    }
+
+    if(haveAllow) return 0;
+    //pvGetLocalTime(&t);
+    //if(trace) printf("ALLOW IP=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d without allow.ipv4\n", 
+    //          adr, 
+    //          t.year, t.month, t.day, t.hour, t.minute, t.second);
+    return 1; // if no allow file exists ALLOW
+  }
+  else return 0;
 }
 
 pvWidgetIdManager::pvWidgetIdManager()
