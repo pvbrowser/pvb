@@ -3163,7 +3163,7 @@ void Interpreter::interprets(const char *command)
             MyTextBrowser *t = (MyTextBrowser *) all[i]->w;
             if(t != NULL) 
             {
-              t->load(text);
+              t->load(QUrl(text));
               if(t->homeIsSet == 0)
               {
                 t->home      = text;
