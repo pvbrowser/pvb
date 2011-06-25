@@ -3163,7 +3163,29 @@ void Interpreter::interprets(const char *command)
             MyTextBrowser *t = (MyTextBrowser *) all[i]->w;
             if(t != NULL) 
             {
+#ifdef USE_ANDROID
+              // android permission problems
+              // google does not allow Qt to access local storage
+              // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
+              //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
+              if(strstr(text.toUtf8(),"://") == NULL)
+              {
+                  struct stat sb;
+                  if(stat(text.toUtf8(), &sb) < 0) return;
+                  char buf[sb.st_size+1];
+                  FILE *fin = fopen(text.toUtf8(),"r");
+                  if(fin == NULL) return;
+                  fread(buf,1,sb.st_size,fin);
+                  fclose(fin);
+                  t->setHtml(buf);
+              }
+              else
+              {
+                t->load(QUrl(text));
+              }
+#else
               t->load(QUrl(text));
+#endif
               if(t->homeIsSet == 0)
               {
                 t->home      = text;
