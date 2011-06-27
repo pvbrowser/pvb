@@ -594,6 +594,18 @@ typedef struct
   int year;
 }pvTime;
 
+typedef struct
+{
+  int s;                 // socket
+  int version;           // ip version 4|6
+  unsigned char adr[16]; // remote ip address
+}pvAddressTableItem;
+
+typedef struct
+{
+  pvAddressTableItem adr[MAX_CLIENTS];
+}pvAddressTable;
+
 /* this is for convenience when you want to write files */
 #define PARAM_P  PARAM p;pvInit(0,NULL,&p);
 
@@ -2600,6 +2612,30 @@ int pvDownloadFileAs(PARAM *p, const char *filename, const char *newname);
 download file to temp directory of the browser
 </pre> */
 int pvDownloadFile(PARAM *p, const char *filename);
+
+/*! <pre>
+Set the limit of clients the pvserver accepts from 1 ip address 
+</pre> */
+int pvSetMaxClientsPerIpAdr(int max_clients);
+/*! <pre>
+Get the limit of clients the pvserver accepts from 1 ip address 
+</pre> */
+int pvMaxClientsPerIpAdr();
+/*! <pre>
+Set the total limit of clients the pvserver accepts 
+0 < max_clients <= MAX_CLIENTS
+</pre> */
+int pvSetMaxClients(int max_clients);
+/*! <pre>
+Set the total limit of clients the pvserver accepts 
+0 < max_clients <= MAX_CLIENTS
+</pre> */
+int pvMaxClients();
+/*! <pre>
+Get the table of connected clients.
+It is an array of MAX_CLIENT elements.
+</pre> */
+const pvAddressTableItem *pvGetAdrTableItem(); 
 
 /*! <pre>
 read all pending messages from tcp

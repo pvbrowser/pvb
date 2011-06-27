@@ -137,6 +137,11 @@ static int clientsocket[MAX_CLIENTS];
 static char last_event[MAX_EVENT_LENGTH] = "";
 static char this_event[MAX_EVENT_LENGTH] = "";
 
+static pvAddressTable adrTable;           // table of connected clients
+
+static int maxClientsPerIpAdr = MAX_CLIENTS;
+static int maxClients         = MAX_CLIENTS;
+
 // gcc 4.4 workarounds now done right
 // they modified prototypes of str functions :-(
 static void mytext(PARAM *p, const char *text)
@@ -447,6 +452,14 @@ int pvThreadFatal(PARAM *p, const char *text)
   pvUnlink(p);
   if(p->cleanup != NULL) p->cleanup(p->app_data);
   //printf("Thread finished2: %s s=%d\n",text,p->s);
+  for(i=0; i<MAX_CLIENTS; i++) // remove from address table
+  {
+    if(adrTable.adr[i].s == p->s)
+    {
+      memset(&adrTable.adr[i],0,sizeof(pvAddressTableItem));
+      break;
+    }  
+  }
   for(i=0; i<MAX_CLIENTS; i++)
   {
     if(clientsocket[i] == p->s)
@@ -913,6 +926,7 @@ int pvInitInternal(PARAM *p)
 int i;
 
   setlocale(LC_NUMERIC, "C");
+  memset(&adrTable,0,sizeof(adrTable));
 #ifdef USE_INETD
   p->s = 1;
 #ifdef __VMS
@@ -1279,6 +1293,8 @@ static void *send_thread(void *ptr)
 {
   PARAM *p;
   p = (PARAM *) ptr;
+  pvFilePrefix(p);
+  pvSendVersion(p);
   // struct sockaddr pvSockaddr; // sockaddr of last client. can be used for authorization.
   // pvSocklen;                  // socklen  of last client. can be used for authorization.
   struct sockaddr_in *sockaddr_in_ptr  = (sockaddr_in *) &pvSockaddr;
@@ -1286,6 +1302,7 @@ static void *send_thread(void *ptr)
   {
     char adr[32];
     unsigned int *ipadr_ptr, ipadr,a1,a2,a3,a4;
+    int i,numClients,numThisClient;
     ipadr_ptr = (unsigned int *) &sockaddr_in_ptr->sin_addr;
     ipadr = *ipadr_ptr;
     a4 = ipadr & 0x0ff;
@@ -1296,13 +1313,122 @@ static void *send_thread(void *ptr)
     ipadr = ipadr / 256;
     a1 = ipadr & 0x0ff;
     sprintf(adr,"%d.%d.%d.%d", a1,a2,a3,a4);
+    printf("ipv4=%s\n",adr);
+    numClients = numThisClient = 0;
+    for(i=0; i<maxClients; i++) // count clients alread connected
+    {
+      if(adrTable.adr[i].s > 0 )
+      {
+        numClients++;
+        if(adrTable.adr[i].version == 4)
+        {
+          if(memcmp(&ipadr,&adrTable.adr[i].adr[0],4) == 0) numThisClient++;
+        }
+      }  
+    }
+    if(numClients >= maxClients)
+    {
+      pvStartDefinition(p,3);
+      pvQLabel(p,1,0);
+      pvSetGeometry(p,1,20,10,500,25);
+      pvSetText(p,1,"Did not accept because maxClients reached (IPv4)");
+      pvEndDefinition(p);
+      pvBeep(p);
+      sleep(3);
+      pvThreadFatal(p,"WARNING: did not accept client because maxClients reached (IPv4)\n");
+    }  
+    if(numThisClient >= maxClientsPerIpAdr)
+    {
+      pvStartDefinition(p,3);
+      pvQLabel(p,1,0);
+      pvSetGeometry(p,1,20,10,500,25);
+      pvSetText(p,1,"Did not accept because maxClientsPerIpAdr reached (IPv4)");
+      pvEndDefinition(p);
+      pvBeep(p);
+      sleep(3);
+      pvThreadFatal(p,"WARNING: did not accept client because maxClientsPerIpAdr reached (IPv4)\n");
+    }  
+    for(i=0; i<maxClients; i++) // insert client into table
+    {
+      if(adrTable.adr[i].s <= 0 )
+      {
+        adrTable.adr[i].s = p->s;
+        adrTable.adr[i].version = 4;
+        memcpy(&adrTable.adr[i].adr[0],&ipadr,4);
+        break;
+      }  
+    }
     if(pvIsAccessAllowed(adr, 1) == 0)
     {
-      pvThreadFatal(p,"SECURITY ALARAM: unallowed connection request\n");
+      pvThreadFatal(p,"SECURITY ALARAM: unallowed connection request (IPv4)\n");
     }
   }  
-  pvFilePrefix(p);
-  pvSendVersion(p);
+#ifdef AF_INET6_IS_AVAILABLE
+  else if(sockaddr_in_ptr->sin_family == AF_INET6)
+  {
+    char adr[32];
+    unsigned short *ipadr_ptr;
+    int i,numClients,numThisClient;
+    ipadr_ptr = (unsigned short *) &sockaddr_in_ptr->sin_addr;
+    printf("ipv6=%04x:%04x:%04x:%04x:%04x:%04x:%04x:%04x\n",
+            ipadr_ptr[0],
+            ipadr_ptr[1],
+            ipadr_ptr[2],
+            ipadr_ptr[3],
+            ipadr_ptr[4],
+            ipadr_ptr[5],
+            ipadr_ptr[6],
+            ipadr_ptr[7]);
+    numClients = numThisClient = 0;
+    for(i=0; i<maxClients; i++) // count clients alread connected
+    {
+      if(adrTable.adr[i].s > 0 )
+      {
+        numClients++;
+        if(adrTable.adr[i].version == 6)
+        {
+          if(memcmp(ipadr_ptr,&adrTable.adr[i].adr[0],16) == 0) numThisClient++;
+        }
+      }  
+    }
+    if(numClients >= maxClients)
+    {
+      pvStartDefinition(p,3);
+      pvQLabel(p,1,0);
+      pvSetGeometry(p,1,20,10,500,25);
+      pvSetText(p,1,"Did not accept because maxClients reached (IPv6)");
+      pvEndDefinition(p);
+      pvBeep(p);
+      sleep(3);
+      pvThreadFatal(p,"WARNING: did not accept client because maxClients reached (IPv6)\n");
+    }  
+    if(numThisClient >= maxClientsPerIpAdr)
+    {
+      pvStartDefinition(p,3);
+      pvQLabel(p,1,0);
+      pvSetGeometry(p,1,20,10,500,25);
+      pvSetText(p,1,"Did not accept because maxClientsPerIpAdr reached (IPv6)");
+      pvEndDefinition(p);
+      pvBeep(p);
+      sleep(3);
+      pvThreadFatal(p,"WARNING: did not accept client because maxClientsPerIpAdr reached (IPv6)\n");
+    }  
+    for(i=0; i<maxClients; i++) // insert client into table
+    {
+      if(adrTable.adr[i].s <= 0 )
+      {
+        adrTable.adr[i].s = p->s;
+        adrTable.adr[i].version = 6;
+        memcpy(&adrTable.adr[i].adr[0],ipadr_ptr,16);
+        break;
+      }  
+    }
+    if(pvIsAccessAllowed(adr, 1) == 0)
+    {
+      pvThreadFatal(p,"SECURITY ALARAM: unallowed connection request (IPv6)\n");
+    }
+  }
+#endif  
   pvMain(p);
   return NULL;
 }
@@ -4342,6 +4468,40 @@ int pvDownloadFile(PARAM *p, const char *filename)
   return pvDownloadFileAs(p,filename,filename);
 }
 
+int pvSetMaxClientsPerIpAdr(int max_clients)
+{
+  if(max_clients > 0 && max_clients < MAX_CLIENTS) maxClientsPerIpAdr = max_clients;
+  else                                             maxClientsPerIpAdr = 0;
+  return maxClientsPerIpAdr;
+}
+
+int pvMaxClientsPerIpAdr()
+{
+  if(maxClientsPerIpAdr > 0 && maxClientsPerIpAdr < MAX_CLIENTS) return maxClientsPerIpAdr;
+  return 0;
+}
+
+int pvSetMaxClients(int max_clients)
+{
+  if(max_clients > 0 && max_clients < MAX_CLIENTS) maxClients = max_clients;
+  else                                             maxClients = 0;
+  return maxClients;
+}
+
+int pvMaxClients()
+{
+  if(maxClients > 0 && maxClients < MAX_CLIENTS) return maxClients;
+  return 0;
+}
+
+const pvAddressTableItem *pvGetAdrTableItem()
+{
+  return (pvAddressTableItem *) &adrTable;
+}
+
+/*! <pre>
+Terminate the modal dialog box
+*/
 int pvTerminateModalDialog(PARAM *p)
 {
   char buf[80];
@@ -6561,7 +6721,7 @@ int pvIsAccessAllowed(const char *adr, int trace)
   pvTime t;
 
   haveAllow = haveDeny = 0;
-  if(isdigit(adr[0]) && strchr(adr,'.') != NULL)
+  if(rl_ipversion == 4 && isdigit(adr[0]) && strchr(adr,'.') != NULL)
   {
     // test ALLOW 
     fin = fopen("allow.ipv4","r");
@@ -6614,7 +6774,15 @@ int pvIsAccessAllowed(const char *adr, int trace)
     //          t.year, t.month, t.day, t.hour, t.minute, t.second);
     return 1; // if no allow file exists ALLOW
   }
-  else return 0;
+  else if(rl_ipversion == 6)
+  {
+    printf("TODO: implement IPv6 allow.ipv6, deny.ipv6\n");
+    return 1; // ALLOW
+  }
+  else 
+  {
+    return 0;
+  }  
 }
 
 pvWidgetIdManager::pvWidgetIdManager()
