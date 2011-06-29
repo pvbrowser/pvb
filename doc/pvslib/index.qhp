@@ -39,6 +39,8 @@
           <section title="glFont::Glyph" ref="structglFont_1_1Glyph.html" />
           <section title="IntegerArray" ref="structIntegerArray.html" />
           <section title="PARSE_EVENT_STRUCT" ref="structPARSE__EVENT__STRUCT.html" />
+          <section title="pvAddressTable" ref="structpvAddressTable.html" />
+          <section title="pvAddressTableItem" ref="structpvAddressTableItem.html" />
           <section title="pvTime" ref="structpvTime.html" />
           <section title="pvWidgetIdManager" ref="classpvWidgetIdManager.html" />
           <section title="WSEMAPHORE" ref="structWSEMAPHORE.html" />
@@ -295,6 +297,11 @@
       <keyword name="pvSendFile" id="processviewserver.h::pvSendFile" ref="processviewserver_8h.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="processviewserver.h::pvDownloadFileAs" ref="processviewserver_8h.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="processviewserver.h::pvDownloadFile" ref="processviewserver_8h.html#gad00140754b048cb7c60fa968fec98d41" />
+      <keyword name="pvSetMaxClientsPerIpAdr" id="processviewserver.h::pvSetMaxClientsPerIpAdr" ref="processviewserver_8h.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
+      <keyword name="pvMaxClientsPerIpAdr" id="processviewserver.h::pvMaxClientsPerIpAdr" ref="processviewserver_8h.html#ga0e8b6843979707a3e585de32f5b3767a" />
+      <keyword name="pvSetMaxClients" id="processviewserver.h::pvSetMaxClients" ref="processviewserver_8h.html#gae67a22a9458bd7d73a59fff05da3576f" />
+      <keyword name="pvMaxClients" id="processviewserver.h::pvMaxClients" ref="processviewserver_8h.html#ga0f76150667dd9e114c381c4105f8390d" />
+      <keyword name="pvGetAdrTableItem" id="processviewserver.h::pvGetAdrTableItem" ref="processviewserver_8h.html#ga28e1e0df8c3a8f08be0162a093038f19" />
       <keyword name="pvClearMessageQueue" id="processviewserver.h::pvClearMessageQueue" ref="processviewserver_8h.html#ga2756f2e38843461fa0ab9d6b3207fb93" />
       <keyword name="pvtcpsend" id="processviewserver.h::pvtcpsend" ref="processviewserver_8h.html#ga22600346bd510d5fcdaa97fbad74021a" />
       <keyword name="pvtcpsend_binary" id="processviewserver.h::pvtcpsend_binary" ref="processviewserver_8h.html#ga3c8d98351f250fbfae19348f117f9eaa" />
@@ -1140,6 +1147,11 @@
       <keyword name="pvSendFile" id="Misc::pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="Misc::pvDownloadFileAs" ref="group__Misc.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="Misc::pvDownloadFile" ref="group__Misc.html#gad00140754b048cb7c60fa968fec98d41" />
+      <keyword name="pvSetMaxClientsPerIpAdr" id="Misc::pvSetMaxClientsPerIpAdr" ref="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
+      <keyword name="pvMaxClientsPerIpAdr" id="Misc::pvMaxClientsPerIpAdr" ref="group__Misc.html#ga0e8b6843979707a3e585de32f5b3767a" />
+      <keyword name="pvSetMaxClients" id="Misc::pvSetMaxClients" ref="group__Misc.html#gae67a22a9458bd7d73a59fff05da3576f" />
+      <keyword name="pvMaxClients" id="Misc::pvMaxClients" ref="group__Misc.html#ga0f76150667dd9e114c381c4105f8390d" />
+      <keyword name="pvGetAdrTableItem" id="Misc::pvGetAdrTableItem" ref="group__Misc.html#ga28e1e0df8c3a8f08be0162a093038f19" />
       <keyword name="pvClearMessageQueue" id="Misc::pvClearMessageQueue" ref="group__Misc.html#ga2756f2e38843461fa0ab9d6b3207fb93" />
       <keyword name="pvtcpsend" id="Misc::pvtcpsend" ref="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a" />
       <keyword name="pvtcpsend_binary" id="Misc::pvtcpsend_binary" ref="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa" />
@@ -1447,6 +1459,12 @@
       <keyword name="event" id="PARSE_EVENT_STRUCT::event" ref="structPARSE__EVENT__STRUCT.html#ad18f6ae3ccddea2702833a852e9b08c7" />
       <keyword name="i" id="PARSE_EVENT_STRUCT::i" ref="structPARSE__EVENT__STRUCT.html#a740db7e26499c8e840ed368eaa77fe9a" />
       <keyword name="text" id="PARSE_EVENT_STRUCT::text" ref="structPARSE__EVENT__STRUCT.html#a59dd335ba0c1645e656ef3ce91900f94" />
+      <keyword name="pvAddressTable" id="pvAddressTable" ref="structpvAddressTable.html" />
+      <keyword name="adr" id="pvAddressTable::adr" ref="structpvAddressTable.html#a7123bece3f6877a34028dc2754e506c0" />
+      <keyword name="pvAddressTableItem" id="pvAddressTableItem" ref="structpvAddressTableItem.html" />
+      <keyword name="s" id="pvAddressTableItem::s" ref="structpvAddressTableItem.html#aeb73120b0105c07f097822f1fcf15005" />
+      <keyword name="version" id="pvAddressTableItem::version" ref="structpvAddressTableItem.html#a7089546705402af14afde3f7f2087b20" />
+      <keyword name="adr" id="pvAddressTableItem::adr" ref="structpvAddressTableItem.html#affdd943a0169a2f891ecb1cc90b9295f" />
       <keyword name="pvTime" id="pvTime" ref="structpvTime.html" />
       <keyword name="millisecond" id="pvTime::millisecond" ref="structpvTime.html#ac0729ee482228169311edf9573ef8436" />
       <keyword name="second" id="pvTime::second" ref="structpvTime.html#a72cf43ecb4305d3216b49191aaebc440" />
@@ -1537,6 +1555,8 @@
       <file>structglFont_1_1Glyph.html</file>
       <file>structIntegerArray.html</file>
       <file>structPARSE__EVENT__STRUCT.html</file>
+      <file>structpvAddressTable.html</file>
+      <file>structpvAddressTableItem.html</file>
       <file>structpvTime.html</file>
       <file>classpvWidgetIdManager.html</file>
       <file>structWSEMAPHORE.html</file>

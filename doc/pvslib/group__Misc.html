@@ -54,6 +54,11 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab">pvSendFile</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga4892512cf39a6b3b51c60136b3ddd667">pvDownloadFileAs</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *filename, const char *newname)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#gad00140754b048cb7c60fa968fec98d41">pvDownloadFile</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e">pvSetMaxClientsPerIpAdr</a> (int max_clients)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga0e8b6843979707a3e585de32f5b3767a">pvMaxClientsPerIpAdr</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#gae67a22a9458bd7d73a59fff05da3576f">pvSetMaxClients</a> (int max_clients)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga0f76150667dd9e114c381c4105f8390d">pvMaxClients</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const <a class="el" href="structpvAddressTableItem.html">pvAddressTableItem</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga28e1e0df8c3a8f08be0162a093038f19">pvGetAdrTableItem</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga2756f2e38843461fa0ab9d6b3207fb93">pvClearMessageQueue</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a">pvtcpsend</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *buf, int len)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa">pvtcpsend_binary</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *buf, int len)</td></tr>
@@ -196,6 +201,25 @@ The file in the temp directory is called newname
 </pre> 
 </div>
 </div>
+<a class="anchor" id="ga28e1e0df8c3a8f08be0162a093038f19"></a><!-- doxytag: member="processviewserver.h::pvGetAdrTableItem" ref="ga28e1e0df8c3a8f08be0162a093038f19" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="structpvAddressTableItem.html">pvAddressTableItem</a>* pvGetAdrTableItem </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Get the table of connected clients.
+It is an array of MAX_CLIENT elements.
+</pre> 
+</div>
+</div>
 <a class="anchor" id="ga3c5fd38aafdd95119203930badd861ef"></a><!-- doxytag: member="processviewserver.h::pvGetText" ref="ga3c5fd38aafdd95119203930badd861ef" args="(const char *command, char *text)" -->
 <div class="memitem">
 <div class="memproto">
@@ -254,6 +278,43 @@ This is useful to retrieve the text from an event.
 The function will get the "" surrounded text out of command.
 This is useful to retrieve the text from an event.
 Used in Script languages
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga0f76150667dd9e114c381c4105f8390d"></a><!-- doxytag: member="processviewserver.h::pvMaxClients" ref="ga0f76150667dd9e114c381c4105f8390d" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvMaxClients </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set the total limit of clients the pvserver accepts 
+0 &lt; max_clients &lt;= MAX_CLIENTS
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga0e8b6843979707a3e585de32f5b3767a"></a><!-- doxytag: member="processviewserver.h::pvMaxClientsPerIpAdr" ref="ga0e8b6843979707a3e585de32f5b3767a" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvMaxClientsPerIpAdr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Get the limit of clients the pvserver accepts from 1 ip address 
 </pre> 
 </div>
 </div>
@@ -515,6 +576,45 @@ send file to browser
 <div class="memdoc">
 <pre>
 Send a USER_EVENT to ourself
+</pre> 
+</div>
+</div>
+<a class="anchor" id="gae67a22a9458bd7d73a59fff05da3576f"></a><!-- doxytag: member="processviewserver.h::pvSetMaxClients" ref="gae67a22a9458bd7d73a59fff05da3576f" args="(int max_clients)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetMaxClients </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_clients</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set the total limit of clients the pvserver accepts 
+0 &lt; max_clients &lt;= MAX_CLIENTS
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga6c99167a0daa384e40f2cb1e0b1dd63e"></a><!-- doxytag: member="processviewserver.h::pvSetMaxClientsPerIpAdr" ref="ga6c99167a0daa384e40f2cb1e0b1dd63e" args="(int max_clients)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetMaxClientsPerIpAdr </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>max_clients</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set the limit of clients the pvserver accepts from 1 ip address 
 </pre> 
 </div>
 </div>

@@ -29,6 +29,9 @@ const char pvserver_version[] = "4.6.2";
 #ifndef IS_OLD_MSVCPP
 #ifndef __VMS
 #define AF_INET6_IS_AVAILABLE
+#ifndef _WIN32 
+#include <arpa/inet.h>
+#endif
 #endif
 #endif
 
@@ -141,6 +144,22 @@ static pvAddressTable adrTable;           // table of connected clients
 
 static int maxClientsPerIpAdr = MAX_CLIENTS;
 static int maxClients         = MAX_CLIENTS;
+
+#ifdef AF_INET6_IS_AVAILABLE
+#ifndef USE_INETD
+static int pvinet_ntop(int af,const unsigned char *p, char *adr, socklen_t len)
+{
+#ifdef PVWIN32
+  //InetNtop (AF_INET6,p,adr,len);
+  sprintf(adr,"%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x",
+  p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7],p[8],p[9],p[10],p[11],p[12],p[13],p[14],p[15]);
+#else
+  inet_ntop(af,p,adr,len);
+#endif
+  return 0;
+}
+#endif
+#endif
 
 // gcc 4.4 workarounds now done right
 // they modified prototypes of str functions :-(
@@ -1288,6 +1307,48 @@ char buf[80];
   return 0;
 }
 
+static int normalizeIPv6(char *adr)
+{
+  char buf[64], *cptr;
+  int a[8],b1,b2,b3,b4;
+  int ind, found_dot;
+
+  printf("normalize =%s\n", adr);
+  a[0] = a[1] = a[2] = a[3] = a[4] = a[5] = a[6] = a[7] = b1 = b2 = b3 = b4 = 0;
+  memset(buf,0,sizeof(buf));
+  strncpy(buf,adr,sizeof(buf)-1);
+
+  found_dot = 0;
+  ind = 7;
+  cptr = &buf[0] + strlen(buf); // cptr points to end of string
+  while(cptr >= &buf[0])
+  {
+    cptr--;
+    if(*cptr == '.' && found_dot == 0 && ind > 2)
+    {
+      found_dot = 1;
+      while(*cptr != ':' && cptr >= &buf[0]) cptr--;
+      sscanf(cptr,":%d.%d.%d.%d",&b1,&b2,&b3,&b4);
+      a[ind--] = 256*b3 + b4;
+      a[ind--] = 256*b1 + b2;
+    }
+    else if(*cptr == ':')
+    {
+      sscanf(cptr,":%x", &a[ind]);
+      ind--;
+      cptr--;
+      if(*cptr == ':' && ind >= 0)
+      {
+        a[ind] = 0;
+      }
+    }
+  }
+  //             1    2    3    4    5    6    7    8
+  sprintf(adr,"%04x:%04x:%04x:%04x:%04x:%04x:%04x:%04x", a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7]);
+  printf("normalized=%s\n", adr);
+  return 0;
+}
+
 #ifndef USE_INETD
 static void *send_thread(void *ptr)
 {
@@ -1300,18 +1361,16 @@ static void *send_thread(void *ptr)
   struct sockaddr_in *sockaddr_in_ptr  = (sockaddr_in *) &pvSockaddr;
   if(sockaddr_in_ptr->sin_family == AF_INET)
   {
-    char adr[32];
+    char adr[64];
     unsigned int *ipadr_ptr, ipadr,a1,a2,a3,a4;
     int i,numClients,numThisClient;
     ipadr_ptr = (unsigned int *) &sockaddr_in_ptr->sin_addr;
     ipadr = *ipadr_ptr;
-    a4 = ipadr & 0x0ff;
-    ipadr = ipadr / 256;
-    a3 = ipadr & 0x0ff;
-    ipadr = ipadr / 256;
-    a2 = ipadr & 0x0ff;
-    ipadr = ipadr / 256;
-    a1 = ipadr & 0x0ff;
+    unsigned char *uc = (unsigned char *) ipadr_ptr;
+    a1 = uc[0];
+    a2 = uc[1];
+    a3 = uc[2];
+    a4 = uc[3];
     sprintf(adr,"%d.%d.%d.%d", a1,a2,a3,a4);
     printf("ipv4=%s\n",adr);
     numClients = numThisClient = 0;
@@ -1334,7 +1393,7 @@ static void *send_thread(void *ptr)
       pvSetText(p,1,"Did not accept because maxClients reached (IPv4)");
       pvEndDefinition(p);
       pvBeep(p);
-      sleep(3);
+      pvSleep(3000);
       pvThreadFatal(p,"WARNING: did not accept client because maxClients reached (IPv4)\n");
     }  
     if(numThisClient >= maxClientsPerIpAdr)
@@ -1345,7 +1404,7 @@ static void *send_thread(void *ptr)
       pvSetText(p,1,"Did not accept because maxClientsPerIpAdr reached (IPv4)");
       pvEndDefinition(p);
       pvBeep(p);
-      sleep(3);
+      pvSleep(3000);
       pvThreadFatal(p,"WARNING: did not accept client because maxClientsPerIpAdr reached (IPv4)\n");
     }  
     for(i=0; i<maxClients; i++) // insert client into table
@@ -1366,19 +1425,22 @@ static void *send_thread(void *ptr)
 #ifdef AF_INET6_IS_AVAILABLE
   else if(sockaddr_in_ptr->sin_family == AF_INET6)
   {
-    char adr[32];
-    unsigned short *ipadr_ptr;
+    char adr[64];
+    unsigned char *ipadr_ptr;
     int i,numClients,numThisClient;
-    ipadr_ptr = (unsigned short *) &sockaddr_in_ptr->sin_addr;
-    printf("ipv6=%04x:%04x:%04x:%04x:%04x:%04x:%04x:%04x\n",
-            ipadr_ptr[0],
-            ipadr_ptr[1],
-            ipadr_ptr[2],
-            ipadr_ptr[3],
-            ipadr_ptr[4],
-            ipadr_ptr[5],
-            ipadr_ptr[6],
-            ipadr_ptr[7]);
+
+    ipadr_ptr = (unsigned char *) &sockaddr_in_ptr->sin_addr;
+    pvinet_ntop(AF_INET6,ipadr_ptr,adr,sizeof(adr));
+
+    //printf("UNSECIFIED=%d\n",IN6_IS_ADDR_UNSPECIFIED((const struct in6_addr *) ipadr_ptr));
+    //printf("  LOOPBACK=%d\n",IN6_IS_ADDR_LOOPBACK   ((const struct in6_addr *) ipadr_ptr));
+    //printf(" MULTICAST=%d\n",IN6_IS_ADDR_MULTICAST  ((const struct in6_addr *) ipadr_ptr));
+    //printf(" LINKLOCAL=%d\n",IN6_IS_ADDR_LINKLOCAL  ((const struct in6_addr *) ipadr_ptr));
+    //printf(" SITELOCAL=%d\n",IN6_IS_ADDR_SITELOCAL  ((const struct in6_addr *) ipadr_ptr));
+    //printf("  V4MAPPED=%d\n",IN6_IS_ADDR_V4MAPPED   ((const struct in6_addr *) ipadr_ptr));
+    //printf("  V4COMPAT=%d\n",IN6_IS_ADDR_V4COMPAT   ((const struct in6_addr *) ipadr_ptr));
+
+    normalizeIPv6(adr);
     numClients = numThisClient = 0;
     for(i=0; i<maxClients; i++) // count clients alread connected
     {
@@ -1399,7 +1461,7 @@ static void *send_thread(void *ptr)
       pvSetText(p,1,"Did not accept because maxClients reached (IPv6)");
       pvEndDefinition(p);
       pvBeep(p);
-      sleep(3);
+      pvSleep(3000);
       pvThreadFatal(p,"WARNING: did not accept client because maxClients reached (IPv6)\n");
     }  
     if(numThisClient >= maxClientsPerIpAdr)
@@ -1410,7 +1472,7 @@ static void *send_thread(void *ptr)
       pvSetText(p,1,"Did not accept because maxClientsPerIpAdr reached (IPv6)");
       pvEndDefinition(p);
       pvBeep(p);
-      sleep(3);
+      pvSleep(3000);
       pvThreadFatal(p,"WARNING: did not accept client because maxClientsPerIpAdr reached (IPv6)\n");
     }  
     for(i=0; i<maxClients; i++) // insert client into table
@@ -6576,7 +6638,7 @@ void pvGetLocalTime(pvTime *pvtime)
 #endif
 }
 
-int pvTestIp(const char *adr, const char *range)
+static int testIp(const char *adr, const char *range)
 {
   // test if adr is in range
   unsigned int a1,a2,a3,a4,ar1,ar2,ar3,ar4,significant_bits;
@@ -6707,10 +6769,133 @@ int pvTestIp(const char *adr, const char *range)
       break;
   }
   test = a & mask;
-  // printf("pvTestIp %d.%d.%d.%d/%d a=%lx mask=%x test=%lx ar=%lx\n", 
-  //    a1,a2,a3,a4,significant_bits,a,    mask,   test,    ar);
+  // printf("testIp %d.%d.%d.%d/%d a=%lx mask=%x test=%lx ar=%lx\n", 
+  //  a1,a2,a3,a4,significant_bits,a,    mask,   test,    ar);
   if(test == ar) return 1; // does match
   return 0;                // does not match
+}
+
+static int testIpV6(const char *adr, const char *range, const unsigned char *mask)
+{
+  int i,ind,ind2,val1,val2;
+  unsigned char test,a[16],r[16];
+
+  ind = 0;
+  printf("testIpV6   adr=%s\n", adr);
+  printf("testIpV6 range=%s\n", range);
+  printf("testIpV6  mask=");
+  for(i=0; i<8; i++)
+  {
+    printf("%02x%02x",mask[ind],mask[ind+1]);
+    ind += 2;
+    if(i<7) printf(":");
+  }
+  printf("\n");
+
+  ind = ind2 = 0;
+  for(i=0; i<8; i++)
+  {
+    sscanf(  &adr[ind],"%02x%02x", &val1, &val2);
+    a[ind2] = val1; a[ind2+1] = val2;
+    sscanf(&range[ind],"%02x%02x", &val1, &val2);
+    r[ind2] = val1; r[ind2+1] = val2;
+    ind2 += 2;
+    ind  += 5;
+  }
+
+  for(i=0; i<16; i++)
+  {
+    //printf("a=%02x m=%02x r=%02x\n", a[i], mask[i], r[i]);
+    test = a[i] & mask[i];
+    if(r[i] != test) 
+    {
+      printf("testIpV6 does not match\n");
+      return 0; // does not match
+    }  
+  }
+  printf("testIpV6 does match\n");
+  return 1;                        // does not match
+}
+
+static int calc_IPv6_range_mask(const char *a, char *range, unsigned char *mask)
+{
+  int significant_bits = 0;
+  int complete_bytes, remaining_bits, i, ind;
+  const char *cptr;
+
+  for(i=0; i<16; i++) mask[i] = 0;  
+
+  cptr = strchr(a,':');
+  if(cptr == NULL)
+  {
+    printf("calc_IPv6_mask: no : found\n");
+    return -1;
+  }
+  cptr = strchr(a,'/');
+  if(cptr == NULL)
+  {
+    printf("calc_IPv6_mask: no / found\n");
+    return -1;
+  }
+  sscanf(cptr,"/%d", &significant_bits);
+  for(i=0; i<64; i++)
+  {
+    if(a[i] == '/' || a[i] == '\0')
+    {
+      range[i] = '\0';
+      break;
+    }
+    range[i] = a[i];
+  }
+  normalizeIPv6(range);
+  if(significant_bits < 0  ) significant_bits = 0;
+  if(significant_bits > 128) significant_bits = 128;
+  if(strstr(a,"::1/128") != NULL) significant_bits = 128; // localhost
+  complete_bytes = significant_bits / 8;
+  remaining_bits = significant_bits % 8;
+
+  //printf("significant_bits=%d complete_bytes=%d remaining_bits=%d\n", 
+  //        significant_bits,   complete_bytes,   remaining_bits);
+
+  for(i=0; i<complete_bytes; i++)
+  {
+    mask[i] = 0x0ff;
+  }
+  ind = complete_bytes;
+  switch(remaining_bits)
+  {
+    case 0:
+      mask[ind] = 0;
+      break;
+    case 1:
+      mask[ind] = 0x080;
+      break;
+    case 2:
+      mask[ind] = 0x0c0;
+      break;
+    case 3:
+      mask[ind] = 0x0e0;
+      break;
+    case 4:
+      mask[ind] = 0x0f0;
+      break;
+    case 5:
+      mask[ind] = 0x0f8;
+      break;
+    case 6:
+      mask[ind] = 0x0fc;
+      break;
+    case 7:
+      mask[ind] = 0x0fe;
+      break;
+    case 8:
+      mask[ind] = 0x0f0;
+      break;
+    default:
+      mask[ind] = 0;
+      break;
+  }
+  return 0;
 }
 
 int pvIsAccessAllowed(const char *adr, int trace)
@@ -6731,7 +6916,7 @@ int pvIsAccessAllowed(const char *adr, int trace)
       line[0] = '\0';
       while(fgets(line,sizeof(line)-1,fin) != NULL)
       {
-        if(pvTestIp(adr,line) == 1)
+        if(testIp(adr,line) == 1)
         {
           pvGetLocalTime(&t);
           if(trace) printf("ALLOW IP=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d by allow.ipv4\n", 
@@ -6753,7 +6938,7 @@ int pvIsAccessAllowed(const char *adr, int trace)
       line[0] = '\0';
       while(fgets(line,sizeof(line)-1,fin) != NULL)
       {
-        if(pvTestIp(adr,line) == 1)
+        if(testIp(adr,line) == 1)
         {
           pvGetLocalTime(&t);
           if(trace) printf("DENY IP=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d by deny.ipv4\n", 
@@ -6776,8 +6961,65 @@ int pvIsAccessAllowed(const char *adr, int trace)
   }
   else if(rl_ipversion == 6)
   {
-    printf("TODO: implement IPv6 allow.ipv6, deny.ipv6\n");
-    return 1; // ALLOW
+    unsigned char mask[64];
+    char range[64];
+
+    // test ALLOW 
+    fin = fopen("allow.ipv6","r");
+    if(fin != NULL)
+    {
+      haveAllow = 1;
+      line[0] = '\0';
+      while(fgets(line,sizeof(line)-1,fin) != NULL)
+      {
+        if(calc_IPv6_range_mask(line, range, mask) >= 0)
+        {
+          if(testIpV6(adr,range,mask) == 1)
+          {
+            pvGetLocalTime(&t);
+            if(trace) printf("ALLOW IPv6=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d by allow.ipv4\n", 
+                     adr, 
+                     t.year, t.month, t.day, t.hour, t.minute, t.second);
+            fclose(fin);
+            return 1; 
+          }
+          line[0] = '\0';
+        }  
+      }
+      fclose(fin);
+    }
+
+    // test DENY
+    fin = fopen("deny.ipv6","r");
+    if(fin != NULL)
+    {
+      haveDeny = 1;
+      line[0] = '\0';
+      while(fgets(line,sizeof(line)-1,fin) != NULL)
+      {
+        if(calc_IPv6_range_mask(line, range, mask) >= 0)
+        {
+          if(testIpV6(adr,range,mask) == 1)
+          {
+            pvGetLocalTime(&t);
+            if(trace) printf("DENY IPv6=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d by deny.ipv4\n", 
+                      adr, 
+                      t.year, t.month, t.day, t.hour, t.minute, t.second);
+            fclose(fin);
+            return 0; 
+          }
+          line[0] = '\0';
+        }
+      }
+      fclose(fin);
+    }
+
+    if(haveAllow) return 0;
+    //pvGetLocalTime(&t);
+    //if(trace) printf("ALLOW IP=%s DATE_TIME=%04d-%02d-%02d %02d:%02d:%02d without allow.ipv4\n", 
+    //          adr, 
+    //          t.year, t.month, t.day, t.hour, t.minute, t.second);
+    return 1; // if no allow file exists ALLOW
   }
   else 
   {

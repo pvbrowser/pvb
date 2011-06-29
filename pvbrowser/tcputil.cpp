@@ -86,7 +86,7 @@ int tcp_con(const char *adr, int port)
   char                      portstr[32];
 #endif
 
-  if(opt.arg_log) printf("conn=%s:%d\n", adr, port);
+  if(opt.arg_log) printf("conn=%s port=%d\n", adr, port);
   if(rl_ipversion == 4)
   {
     s = socket(AF_INET,SOCK_STREAM,0);

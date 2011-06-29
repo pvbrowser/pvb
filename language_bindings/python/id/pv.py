@@ -79,6 +79,7 @@ ID_MAINWINDOW = _pv.ID_MAINWINDOW
 ID_HELP = _pv.ID_HELP
 ID_COOKIE = _pv.ID_COOKIE
 ID_TAB = _pv.ID_TAB
+ID_OPTIONS = _pv.ID_OPTIONS
 ID_DOCK_WIDGETS = _pv.ID_DOCK_WIDGETS
 MAX_DOCK_WIDGETS = _pv.MAX_DOCK_WIDGETS
 NULL_EVENT = _pv.NULL_EVENT
@@ -710,6 +711,84 @@ class FloatArray(_object):
 FloatArray_swigregister = _pv.FloatArray_swigregister
 FloatArray_swigregister(FloatArray)
 
+class pvTime(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, pvTime, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, pvTime, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["millisecond"] = _pv.pvTime_millisecond_set
+    __swig_getmethods__["millisecond"] = _pv.pvTime_millisecond_get
+    if _newclass:millisecond = _swig_property(_pv.pvTime_millisecond_get, _pv.pvTime_millisecond_set)
+    __swig_setmethods__["second"] = _pv.pvTime_second_set
+    __swig_getmethods__["second"] = _pv.pvTime_second_get
+    if _newclass:second = _swig_property(_pv.pvTime_second_get, _pv.pvTime_second_set)
+    __swig_setmethods__["minute"] = _pv.pvTime_minute_set
+    __swig_getmethods__["minute"] = _pv.pvTime_minute_get
+    if _newclass:minute = _swig_property(_pv.pvTime_minute_get, _pv.pvTime_minute_set)
+    __swig_setmethods__["hour"] = _pv.pvTime_hour_set
+    __swig_getmethods__["hour"] = _pv.pvTime_hour_get
+    if _newclass:hour = _swig_property(_pv.pvTime_hour_get, _pv.pvTime_hour_set)
+    __swig_setmethods__["day"] = _pv.pvTime_day_set
+    __swig_getmethods__["day"] = _pv.pvTime_day_get
+    if _newclass:day = _swig_property(_pv.pvTime_day_get, _pv.pvTime_day_set)
+    __swig_setmethods__["month"] = _pv.pvTime_month_set
+    __swig_getmethods__["month"] = _pv.pvTime_month_get
+    if _newclass:month = _swig_property(_pv.pvTime_month_get, _pv.pvTime_month_set)
+    __swig_setmethods__["year"] = _pv.pvTime_year_set
+    __swig_getmethods__["year"] = _pv.pvTime_year_get
+    if _newclass:year = _swig_property(_pv.pvTime_year_get, _pv.pvTime_year_set)
+    def __init__(self): 
+        this = _pv.new_pvTime()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_pvTime
+    __del__ = lambda self : None;
+pvTime_swigregister = _pv.pvTime_swigregister
+pvTime_swigregister(pvTime)
+
+class pvAddressTableItem(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, pvAddressTableItem, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, pvAddressTableItem, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["s"] = _pv.pvAddressTableItem_s_set
+    __swig_getmethods__["s"] = _pv.pvAddressTableItem_s_get
+    if _newclass:s = _swig_property(_pv.pvAddressTableItem_s_get, _pv.pvAddressTableItem_s_set)
+    __swig_setmethods__["version"] = _pv.pvAddressTableItem_version_set
+    __swig_getmethods__["version"] = _pv.pvAddressTableItem_version_get
+    if _newclass:version = _swig_property(_pv.pvAddressTableItem_version_get, _pv.pvAddressTableItem_version_set)
+    __swig_setmethods__["adr"] = _pv.pvAddressTableItem_adr_set
+    __swig_getmethods__["adr"] = _pv.pvAddressTableItem_adr_get
+    if _newclass:adr = _swig_property(_pv.pvAddressTableItem_adr_get, _pv.pvAddressTableItem_adr_set)
+    def __init__(self): 
+        this = _pv.new_pvAddressTableItem()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_pvAddressTableItem
+    __del__ = lambda self : None;
+pvAddressTableItem_swigregister = _pv.pvAddressTableItem_swigregister
+pvAddressTableItem_swigregister(pvAddressTableItem)
+
+class pvAddressTable(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, pvAddressTable, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, pvAddressTable, name)
+    __repr__ = _swig_repr
+    __swig_setmethods__["adr"] = _pv.pvAddressTable_adr_set
+    __swig_getmethods__["adr"] = _pv.pvAddressTable_adr_get
+    if _newclass:adr = _swig_property(_pv.pvAddressTable_adr_get, _pv.pvAddressTable_adr_set)
+    def __init__(self): 
+        this = _pv.new_pvAddressTable()
+        try: self.this.append(this)
+        except: self.this = this
+    __swig_destroy__ = _pv.delete_pvAddressTable
+    __del__ = lambda self : None;
+pvAddressTable_swigregister = _pv.pvAddressTable_swigregister
+pvAddressTable_swigregister(pvAddressTable)
+
 INITIALIZE_GL = _pv.INITIALIZE_GL
 RESIZE_GL = _pv.RESIZE_GL
 
@@ -728,6 +807,14 @@ pvunlock = _pv.pvunlock
 def pvsystem(*args):
   return _pv.pvsystem(*args)
 pvsystem = _pv.pvsystem
+
+def pvGetLocalTime(*args):
+  return _pv.pvGetLocalTime(*args)
+pvGetLocalTime = _pv.pvGetLocalTime
+
+def pvIsAccessAllowed(*args):
+  return _pv.pvIsAccessAllowed(*args)
+pvIsAccessAllowed = _pv.pvIsAccessAllowed
 
 def pvSendVersion(*args):
   return _pv.pvSendVersion(*args)
@@ -1452,6 +1539,26 @@ pvDownloadFileAs = _pv.pvDownloadFileAs
 def pvDownloadFile(*args):
   return _pv.pvDownloadFile(*args)
 pvDownloadFile = _pv.pvDownloadFile
+
+def pvSetMaxClientsPerIpAdr(*args):
+  return _pv.pvSetMaxClientsPerIpAdr(*args)
+pvSetMaxClientsPerIpAdr = _pv.pvSetMaxClientsPerIpAdr
+
+def pvMaxClientsPerIpAdr():
+  return _pv.pvMaxClientsPerIpAdr()
+pvMaxClientsPerIpAdr = _pv.pvMaxClientsPerIpAdr
+
+def pvSetMaxClients(*args):
+  return _pv.pvSetMaxClients(*args)
+pvSetMaxClients = _pv.pvSetMaxClients
+
+def pvMaxClients():
+  return _pv.pvMaxClients()
+pvMaxClients = _pv.pvMaxClients
+
+def pvGetAdrTableItem():
+  return _pv.pvGetAdrTableItem()
+pvGetAdrTableItem = _pv.pvGetAdrTableItem
 
 def pvClearMessageQueue(*args):
   return _pv.pvClearMessageQueue(*args)

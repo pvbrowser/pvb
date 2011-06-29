@@ -1527,11 +1527,15 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 #define SWIGTYPE_p_glFont swig_types[15]
 #define SWIGTYPE_p_int swig_types[16]
 #define SWIGTYPE_p_p_char swig_types[17]
-#define SWIGTYPE_p_pvWidgetIdManager swig_types[18]
-#define SWIGTYPE_p_qtDatabase swig_types[19]
-#define SWIGTYPE_p_void swig_types[20]
-static swig_type_info *swig_types[22];
-static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
+#define SWIGTYPE_p_pvAddressTable swig_types[18]
+#define SWIGTYPE_p_pvAddressTableItem swig_types[19]
+#define SWIGTYPE_p_pvTime swig_types[20]
+#define SWIGTYPE_p_pvWidgetIdManager swig_types[21]
+#define SWIGTYPE_p_qtDatabase swig_types[22]
+#define SWIGTYPE_p_unsigned_char swig_types[23]
+#define SWIGTYPE_p_void swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -5017,6 +5021,676 @@ static swig_lua_class *swig_FloatArray_bases[] = {0};
 static const char *swig_FloatArray_base_names[] = {0};
 static swig_lua_class _wrap_class_FloatArray = { "FloatArray", &SWIGTYPE_p_FloatArray,_wrap_new_FloatArray, swig_delete_FloatArray, swig_FloatArray_methods, swig_FloatArray_attributes, swig_FloatArray_bases, swig_FloatArray_base_names };
 
+static int _wrap_pvTime_millisecond_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("millisecond",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("millisecond",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("millisecond",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_millisecond_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->millisecond = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_millisecond_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("millisecond",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("millisecond",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_millisecond_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->millisecond);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_second_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("second",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("second",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("second",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_second_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->second = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_second_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("second",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("second",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_second_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->second);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_minute_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("minute",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("minute",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("minute",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_minute_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->minute = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_minute_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("minute",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("minute",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_minute_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->minute);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_hour_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("hour",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("hour",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("hour",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_hour_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->hour = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_hour_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("hour",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("hour",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_hour_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->hour);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_day_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("day",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("day",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("day",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_day_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->day = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_day_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("day",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("day",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_day_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->day);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_month_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("month",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("month",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("month",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_month_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->month = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_month_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("month",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("month",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_month_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->month);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_year_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("year",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("year",1,"pvTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("year",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_year_set",1,SWIGTYPE_p_pvTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->year = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvTime_year_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("year",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("year",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvTime_year_get",1,SWIGTYPE_p_pvTime);
+  }
+  
+  result = (int) ((arg1)->year);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_pvTime(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *result = 0 ;
+  
+  SWIG_check_num_args("pvTime::pvTime",0,0)
+  result = (pvTime *)new pvTime();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_pvTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_pvTime(void *obj) {
+pvTime *arg1 = (pvTime *) obj;
+delete arg1;
+}
+static swig_lua_method swig_pvTime_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_pvTime_attributes[] = {
+    { "millisecond", _wrap_pvTime_millisecond_get, _wrap_pvTime_millisecond_set},
+    { "second", _wrap_pvTime_second_get, _wrap_pvTime_second_set},
+    { "minute", _wrap_pvTime_minute_get, _wrap_pvTime_minute_set},
+    { "hour", _wrap_pvTime_hour_get, _wrap_pvTime_hour_set},
+    { "day", _wrap_pvTime_day_get, _wrap_pvTime_day_set},
+    { "month", _wrap_pvTime_month_get, _wrap_pvTime_month_set},
+    { "year", _wrap_pvTime_year_get, _wrap_pvTime_year_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_pvTime_bases[] = {0};
+static const char *swig_pvTime_base_names[] = {0};
+static swig_lua_class _wrap_class_pvTime = { "pvTime", &SWIGTYPE_p_pvTime,_wrap_new_pvTime, swig_delete_pvTime, swig_pvTime_methods, swig_pvTime_attributes, swig_pvTime_bases, swig_pvTime_base_names };
+
+static int _wrap_pvAddressTableItem_s_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("s",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("s",1,"pvAddressTableItem *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("s",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTableItem_s_set",1,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->s = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddressTableItem_s_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("s",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("s",1,"pvAddressTableItem *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTableItem_s_get",1,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  result = (int) ((arg1)->s);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddressTableItem_version_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("version",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("version",1,"pvAddressTableItem *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("version",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTableItem_version_set",1,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->version = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddressTableItem_version_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("version",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("version",1,"pvAddressTableItem *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTableItem_version_get",1,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  result = (int) ((arg1)->version);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddressTableItem_adr_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  unsigned char *arg2 ;
+  
+  SWIG_check_num_args("adr",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("adr",1,"pvAddressTableItem *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("adr",2,"unsigned char [16]");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTableItem_adr_set",1,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("pvAddressTableItem_adr_set",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  {
+    size_t ii;
+    unsigned char *b = (unsigned char *) arg1->adr;
+    for (ii = 0; ii < (size_t)16; ii++) b[ii] = *((unsigned char *) arg2 + ii);
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddressTableItem_adr_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  unsigned char *result = 0 ;
+  
+  SWIG_check_num_args("adr",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("adr",1,"pvAddressTableItem *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTableItem_adr_get",1,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  result = (unsigned char *)(unsigned char *) ((arg1)->adr);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_unsigned_char,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_pvAddressTableItem(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *result = 0 ;
+  
+  SWIG_check_num_args("pvAddressTableItem::pvAddressTableItem",0,0)
+  result = (pvAddressTableItem *)new pvAddressTableItem();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_pvAddressTableItem,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_pvAddressTableItem(void *obj) {
+pvAddressTableItem *arg1 = (pvAddressTableItem *) obj;
+delete arg1;
+}
+static swig_lua_method swig_pvAddressTableItem_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_pvAddressTableItem_attributes[] = {
+    { "s", _wrap_pvAddressTableItem_s_get, _wrap_pvAddressTableItem_s_set},
+    { "version", _wrap_pvAddressTableItem_version_get, _wrap_pvAddressTableItem_version_set},
+    { "adr", _wrap_pvAddressTableItem_adr_get, _wrap_pvAddressTableItem_adr_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_pvAddressTableItem_bases[] = {0};
+static const char *swig_pvAddressTableItem_base_names[] = {0};
+static swig_lua_class _wrap_class_pvAddressTableItem = { "pvAddressTableItem", &SWIGTYPE_p_pvAddressTableItem,_wrap_new_pvAddressTableItem, swig_delete_pvAddressTableItem, swig_pvAddressTableItem_methods, swig_pvAddressTableItem_attributes, swig_pvAddressTableItem_bases, swig_pvAddressTableItem_base_names };
+
+static int _wrap_pvAddressTable_adr_set(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTable *arg1 = (pvAddressTable *) 0 ;
+  pvAddressTableItem *arg2 ;
+  
+  SWIG_check_num_args("adr",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("adr",1,"pvAddressTable *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("adr",2,"pvAddressTableItem [100]");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTable,0))){
+    SWIG_fail_ptr("pvAddressTable_adr_set",1,SWIGTYPE_p_pvAddressTable);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_pvAddressTableItem,0))){
+    SWIG_fail_ptr("pvAddressTable_adr_set",2,SWIGTYPE_p_pvAddressTableItem);
+  }
+  
+  {
+    size_t ii;
+    pvAddressTableItem *b = (pvAddressTableItem *) arg1->adr;
+    for (ii = 0; ii < (size_t)100; ii++) b[ii] = *((pvAddressTableItem *) arg2 + ii);
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddressTable_adr_get(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTable *arg1 = (pvAddressTable *) 0 ;
+  pvAddressTableItem *result = 0 ;
+  
+  SWIG_check_num_args("adr",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("adr",1,"pvAddressTable *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvAddressTable,0))){
+    SWIG_fail_ptr("pvAddressTable_adr_get",1,SWIGTYPE_p_pvAddressTable);
+  }
+  
+  result = (pvAddressTableItem *)(pvAddressTableItem *) ((arg1)->adr);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_pvAddressTableItem,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_pvAddressTable(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTable *result = 0 ;
+  
+  SWIG_check_num_args("pvAddressTable::pvAddressTable",0,0)
+  result = (pvAddressTable *)new pvAddressTable();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_pvAddressTable,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_pvAddressTable(void *obj) {
+pvAddressTable *arg1 = (pvAddressTable *) obj;
+delete arg1;
+}
+static swig_lua_method swig_pvAddressTable_methods[] = {
+    {0,0}
+};
+static swig_lua_attribute swig_pvAddressTable_attributes[] = {
+    { "adr", _wrap_pvAddressTable_adr_get, _wrap_pvAddressTable_adr_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_pvAddressTable_bases[] = {0};
+static const char *swig_pvAddressTable_base_names[] = {0};
+static swig_lua_class _wrap_class_pvAddressTable = { "pvAddressTable", &SWIGTYPE_p_pvAddressTable,_wrap_new_pvAddressTable, swig_delete_pvAddressTable, swig_pvAddressTable_methods, swig_pvAddressTable_attributes, swig_pvAddressTable_bases, swig_pvAddressTable_base_names };
+
 static int _wrap_glencode_set_param(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -5098,6 +5772,52 @@ static int _wrap_pvsystem(lua_State* L) {
   if(!lua_isstring(L,1)) SWIG_fail_arg("pvsystem",1,"char const *");
   arg1 = (char *)lua_tostring(L, 1);
   result = (int)pvsystem((char const *)arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvGetLocalTime(lua_State* L) {
+  int SWIG_arg = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  
+  SWIG_check_num_args("pvGetLocalTime",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvGetLocalTime",1,"pvTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pvTime,0))){
+    SWIG_fail_ptr("pvGetLocalTime",1,SWIGTYPE_p_pvTime);
+  }
+  
+  pvGetLocalTime(arg1);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvIsAccessAllowed(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("pvIsAccessAllowed",2,2)
+  if(!lua_isstring(L,1)) SWIG_fail_arg("pvIsAccessAllowed",1,"char const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvIsAccessAllowed",2,"int");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)pvIsAccessAllowed((char const *)arg1,arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -13593,6 +14313,97 @@ static int _wrap_pvDownloadFile(lua_State* L) {
   arg2 = (char *)lua_tostring(L, 2);
   result = (int)pvDownloadFile(arg1,(char const *)arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetMaxClientsPerIpAdr(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetMaxClientsPerIpAdr",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("pvSetMaxClientsPerIpAdr",1,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  result = (int)pvSetMaxClientsPerIpAdr(arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvMaxClientsPerIpAdr(lua_State* L) {
+  int SWIG_arg = 0;
+  int result;
+  
+  SWIG_check_num_args("pvMaxClientsPerIpAdr",0,0)
+  result = (int)pvMaxClientsPerIpAdr();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetMaxClients(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetMaxClients",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("pvSetMaxClients",1,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  result = (int)pvSetMaxClients(arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvMaxClients(lua_State* L) {
+  int SWIG_arg = 0;
+  int result;
+  
+  SWIG_check_num_args("pvMaxClients",0,0)
+  result = (int)pvMaxClients();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvGetAdrTableItem(lua_State* L) {
+  int SWIG_arg = 0;
+  pvAddressTableItem *result = 0 ;
+  
+  SWIG_check_num_args("pvGetAdrTableItem",0,0)
+  result = (pvAddressTableItem *)pvGetAdrTableItem();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_pvAddressTableItem,0); SWIG_arg++; 
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -25471,6 +26282,8 @@ static const struct luaL_reg swig_commands[] = {
     { "pvlock", _wrap_pvlock},
     { "pvunlock", _wrap_pvunlock},
     { "pvsystem", _wrap_pvsystem},
+    { "pvGetLocalTime", _wrap_pvGetLocalTime},
+    { "pvIsAccessAllowed", _wrap_pvIsAccessAllowed},
     { "pvSendVersion", _wrap_pvSendVersion},
     { "pvXYAllocate", _wrap_pvXYAllocate},
     { "getIntegers", _wrap_getIntegers},
@@ -25669,6 +26482,11 @@ static const struct luaL_reg swig_commands[] = {
     { "pvSendFile", _wrap_pvSendFile},
     { "pvDownloadFileAs", _wrap_pvDownloadFileAs},
     { "pvDownloadFile", _wrap_pvDownloadFile},
+    { "pvSetMaxClientsPerIpAdr", _wrap_pvSetMaxClientsPerIpAdr},
+    { "pvMaxClientsPerIpAdr", _wrap_pvMaxClientsPerIpAdr},
+    { "pvSetMaxClients", _wrap_pvSetMaxClients},
+    { "pvMaxClients", _wrap_pvMaxClients},
+    { "pvGetAdrTableItem", _wrap_pvGetAdrTableItem},
     { "pvClearMessageQueue", _wrap_pvClearMessageQueue},
     { "pvtcpsend", _wrap_pvtcpsend},
     { "pvtcpsend_binary", _wrap_pvtcpsend_binary},
@@ -25894,6 +26712,7 @@ static swig_lua_const_info swig_constants[] = {
 { SWIG_LUA_INT,     (char *)"ID_HELP", (long) ID_HELP, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"ID_COOKIE", (long) ID_COOKIE, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"ID_TAB", (long) ID_TAB, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"ID_OPTIONS", (long) ID_OPTIONS, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"ID_DOCK_WIDGETS", (long) ID_DOCK_WIDGETS, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"MAX_DOCK_WIDGETS", (long) 32, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"NULL_EVENT", (long) NULL_EVENT, 0, 0, 0},
@@ -26299,8 +27118,12 @@ static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_glFont = {"_p_glFont", "glFont *", 0, 0, (void*)&_wrap_class_glFont, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pvAddressTable = {"_p_pvAddressTable", "pvAddressTable *", 0, 0, (void*)&_wrap_class_pvAddressTable, 0};
+static swig_type_info _swigt__p_pvAddressTableItem = {"_p_pvAddressTableItem", "pvAddressTableItem *", 0, 0, (void*)&_wrap_class_pvAddressTableItem, 0};
+static swig_type_info _swigt__p_pvTime = {"_p_pvTime", "pvTime *", 0, 0, (void*)&_wrap_class_pvTime, 0};
 static swig_type_info _swigt__p_pvWidgetIdManager = {"_p_pvWidgetIdManager", "pvWidgetIdManager *", 0, 0, (void*)&_wrap_class_pvWidgetIdManager, 0};
 static swig_type_info _swigt__p_qtDatabase = {"_p_qtDatabase", "qtDatabase *", 0, 0, (void*)&_wrap_class_qtDatabase, 0};
+static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -26322,8 +27145,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_glFont,
   &_swigt__p_int,
   &_swigt__p_p_char,
+  &_swigt__p_pvAddressTable,
+  &_swigt__p_pvAddressTableItem,
+  &_swigt__p_pvTime,
   &_swigt__p_pvWidgetIdManager,
   &_swigt__p_qtDatabase,
+  &_swigt__p_unsigned_char,
   &_swigt__p_void,
 };
 
@@ -26345,8 +27172,12 @@ static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_glFont[] = {  {&_swigt__p_glFont, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvAddressTable[] = {  {&_swigt__p_pvAddressTable, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvAddressTableItem[] = {  {&_swigt__p_pvAddressTableItem, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvTime[] = {  {&_swigt__p_pvTime, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pvWidgetIdManager[] = {  {&_swigt__p_pvWidgetIdManager, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_qtDatabase[] = {  {&_swigt__p_qtDatabase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -26368,8 +27199,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_glFont,
   _swigc__p_int,
   _swigc__p_p_char,
+  _swigc__p_pvAddressTable,
+  _swigc__p_pvAddressTableItem,
+  _swigc__p_pvTime,
   _swigc__p_pvWidgetIdManager,
   _swigc__p_qtDatabase,
+  _swigc__p_unsigned_char,
   _swigc__p_void,
 };
 

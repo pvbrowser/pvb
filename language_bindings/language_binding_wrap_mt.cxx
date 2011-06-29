@@ -2700,11 +2700,15 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 #define SWIGTYPE_p_glFont swig_types[15]
 #define SWIGTYPE_p_int swig_types[16]
 #define SWIGTYPE_p_p_char swig_types[17]
-#define SWIGTYPE_p_pvWidgetIdManager swig_types[18]
-#define SWIGTYPE_p_qtDatabase swig_types[19]
-#define SWIGTYPE_p_void swig_types[20]
-static swig_type_info *swig_types[22];
-static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
+#define SWIGTYPE_p_pvAddressTable swig_types[18]
+#define SWIGTYPE_p_pvAddressTableItem swig_types[19]
+#define SWIGTYPE_p_pvTime swig_types[20]
+#define SWIGTYPE_p_pvWidgetIdManager swig_types[21]
+#define SWIGTYPE_p_qtDatabase swig_types[22]
+#define SWIGTYPE_p_unsigned_char swig_types[23]
+#define SWIGTYPE_p_void swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -6734,6 +6738,715 @@ SWIGINTERN PyObject *FloatArray_swigregister(PyObject *SWIGUNUSEDPARM(self), PyO
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_pvTime_millisecond_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_millisecond_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_millisecond_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_millisecond_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->millisecond = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_millisecond_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_millisecond_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_millisecond_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->millisecond);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_second_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_second_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_second_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_second_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->second = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_second_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_second_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_second_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->second);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_minute_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_minute_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_minute_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_minute_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->minute = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_minute_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_minute_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_minute_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->minute);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_hour_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_hour_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_hour_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_hour_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->hour = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_hour_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_hour_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_hour_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->hour);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_day_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_day_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_day_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_day_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->day = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_day_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_day_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_day_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->day);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_month_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_month_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_month_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_month_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->month = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_month_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_month_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_month_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->month);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_year_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvTime_year_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_year_set" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvTime_year_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->year = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvTime_year_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvTime_year_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvTime_year_get" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  result = (int) ((arg1)->year);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_pvTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_pvTime")) SWIG_fail;
+  result = (pvTime *)new pvTime();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_pvTime, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_pvTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_pvTime",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_pvTime" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *pvTime_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_pvTime, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_pvAddressTableItem_s_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvAddressTableItem_s_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTableItem_s_set" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvAddressTableItem_s_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->s = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvAddressTableItem_s_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvAddressTableItem_s_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTableItem_s_get" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  result = (int) ((arg1)->s);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvAddressTableItem_version_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvAddressTableItem_version_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTableItem_version_set" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvAddressTableItem_version_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->version = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvAddressTableItem_version_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvAddressTableItem_version_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTableItem_version_get" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  result = (int) ((arg1)->version);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvAddressTableItem_adr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  unsigned char *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvAddressTableItem_adr_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTableItem_adr_set" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvAddressTableItem_adr_set" "', argument " "2"" of type '" "unsigned char [16]""'"); 
+  } 
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  {
+    if (arg2) {
+      size_t ii = 0;
+      for (; ii < (size_t)16; ++ii) arg1->adr[ii] = arg2[ii];
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""adr""' of type '""unsigned char [16]""'");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvAddressTableItem_adr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  unsigned char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvAddressTableItem_adr_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTableItem_adr_get" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  result = (unsigned char *)(unsigned char *) ((arg1)->adr);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_unsigned_char, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_pvAddressTableItem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_pvAddressTableItem")) SWIG_fail;
+  result = (pvAddressTableItem *)new pvAddressTableItem();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_pvAddressTableItem, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_pvAddressTableItem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *arg1 = (pvAddressTableItem *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_pvAddressTableItem",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTableItem, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_pvAddressTableItem" "', argument " "1"" of type '" "pvAddressTableItem *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTableItem * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *pvAddressTableItem_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_pvAddressTableItem, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_pvAddressTable_adr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTable *arg1 = (pvAddressTable *) 0 ;
+  pvAddressTableItem *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvAddressTable_adr_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTable, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTable_adr_set" "', argument " "1"" of type '" "pvAddressTable *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTable * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvAddressTable_adr_set" "', argument " "2"" of type '" "pvAddressTableItem [100]""'"); 
+  } 
+  arg2 = reinterpret_cast< pvAddressTableItem * >(argp2);
+  {
+    if (arg2) {
+      size_t ii = 0;
+      for (; ii < (size_t)100; ++ii) arg1->adr[ii] = arg2[ii];
+    } else {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in variable '""adr""' of type '""pvAddressTableItem [100]""'");
+    }
+  }
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvAddressTable_adr_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTable *arg1 = (pvAddressTable *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  pvAddressTableItem *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvAddressTable_adr_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTable, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvAddressTable_adr_get" "', argument " "1"" of type '" "pvAddressTable *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTable * >(argp1);
+  result = (pvAddressTableItem *)(pvAddressTableItem *) ((arg1)->adr);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_pvAddressTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTable *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_pvAddressTable")) SWIG_fail;
+  result = (pvAddressTable *)new pvAddressTable();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_pvAddressTable, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_pvAddressTable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTable *arg1 = (pvAddressTable *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_pvAddressTable",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvAddressTable, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_pvAddressTable" "', argument " "1"" of type '" "pvAddressTable *""'"); 
+  }
+  arg1 = reinterpret_cast< pvAddressTable * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *pvAddressTable_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_pvAddressTable, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_glencode_set_param(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -6816,6 +7529,61 @@ SWIGINTERN PyObject *_wrap_pvsystem(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   arg1 = reinterpret_cast< char * >(buf1);
   result = (int)pvsystem((char const *)arg1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvGetLocalTime(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvTime *arg1 = (pvTime *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvGetLocalTime",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_pvTime, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvGetLocalTime" "', argument " "1"" of type '" "pvTime *""'"); 
+  }
+  arg1 = reinterpret_cast< pvTime * >(argp1);
+  pvGetLocalTime(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvIsAccessAllowed(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvIsAccessAllowed",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvIsAccessAllowed" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvIsAccessAllowed" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)pvIsAccessAllowed((char const *)arg1,arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return resultobj;
@@ -18437,6 +19205,89 @@ SWIGINTERN PyObject *_wrap_pvDownloadFile(PyObject *SWIGUNUSEDPARM(self), PyObje
   return resultobj;
 fail:
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSetMaxClientsPerIpAdr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvSetMaxClientsPerIpAdr",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "pvSetMaxClientsPerIpAdr" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (int)pvSetMaxClientsPerIpAdr(arg1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvMaxClientsPerIpAdr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)":pvMaxClientsPerIpAdr")) SWIG_fail;
+  result = (int)pvMaxClientsPerIpAdr();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSetMaxClients(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:pvSetMaxClients",&obj0)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "pvSetMaxClients" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  result = (int)pvSetMaxClients(arg1);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvMaxClients(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)":pvMaxClients")) SWIG_fail;
+  result = (int)pvMaxClients();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvGetAdrTableItem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  pvAddressTableItem *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":pvGetAdrTableItem")) SWIG_fail;
+  result = (pvAddressTableItem *)pvGetAdrTableItem();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_pvAddressTableItem, 0 |  0 );
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -34869,10 +35720,43 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"new_FloatArray", _wrap_new_FloatArray, METH_VARARGS, NULL},
 	 { (char *)"delete_FloatArray", _wrap_delete_FloatArray, METH_VARARGS, NULL},
 	 { (char *)"FloatArray_swigregister", FloatArray_swigregister, METH_VARARGS, NULL},
+	 { (char *)"pvTime_millisecond_set", _wrap_pvTime_millisecond_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_millisecond_get", _wrap_pvTime_millisecond_get, METH_VARARGS, NULL},
+	 { (char *)"pvTime_second_set", _wrap_pvTime_second_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_second_get", _wrap_pvTime_second_get, METH_VARARGS, NULL},
+	 { (char *)"pvTime_minute_set", _wrap_pvTime_minute_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_minute_get", _wrap_pvTime_minute_get, METH_VARARGS, NULL},
+	 { (char *)"pvTime_hour_set", _wrap_pvTime_hour_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_hour_get", _wrap_pvTime_hour_get, METH_VARARGS, NULL},
+	 { (char *)"pvTime_day_set", _wrap_pvTime_day_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_day_get", _wrap_pvTime_day_get, METH_VARARGS, NULL},
+	 { (char *)"pvTime_month_set", _wrap_pvTime_month_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_month_get", _wrap_pvTime_month_get, METH_VARARGS, NULL},
+	 { (char *)"pvTime_year_set", _wrap_pvTime_year_set, METH_VARARGS, NULL},
+	 { (char *)"pvTime_year_get", _wrap_pvTime_year_get, METH_VARARGS, NULL},
+	 { (char *)"new_pvTime", _wrap_new_pvTime, METH_VARARGS, NULL},
+	 { (char *)"delete_pvTime", _wrap_delete_pvTime, METH_VARARGS, NULL},
+	 { (char *)"pvTime_swigregister", pvTime_swigregister, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_s_set", _wrap_pvAddressTableItem_s_set, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_s_get", _wrap_pvAddressTableItem_s_get, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_version_set", _wrap_pvAddressTableItem_version_set, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_version_get", _wrap_pvAddressTableItem_version_get, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_adr_set", _wrap_pvAddressTableItem_adr_set, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_adr_get", _wrap_pvAddressTableItem_adr_get, METH_VARARGS, NULL},
+	 { (char *)"new_pvAddressTableItem", _wrap_new_pvAddressTableItem, METH_VARARGS, NULL},
+	 { (char *)"delete_pvAddressTableItem", _wrap_delete_pvAddressTableItem, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTableItem_swigregister", pvAddressTableItem_swigregister, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTable_adr_set", _wrap_pvAddressTable_adr_set, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTable_adr_get", _wrap_pvAddressTable_adr_get, METH_VARARGS, NULL},
+	 { (char *)"new_pvAddressTable", _wrap_new_pvAddressTable, METH_VARARGS, NULL},
+	 { (char *)"delete_pvAddressTable", _wrap_delete_pvAddressTable, METH_VARARGS, NULL},
+	 { (char *)"pvAddressTable_swigregister", pvAddressTable_swigregister, METH_VARARGS, NULL},
 	 { (char *)"glencode_set_param", _wrap_glencode_set_param, METH_VARARGS, NULL},
 	 { (char *)"pvlock", _wrap_pvlock, METH_VARARGS, NULL},
 	 { (char *)"pvunlock", _wrap_pvunlock, METH_VARARGS, NULL},
 	 { (char *)"pvsystem", _wrap_pvsystem, METH_VARARGS, NULL},
+	 { (char *)"pvGetLocalTime", _wrap_pvGetLocalTime, METH_VARARGS, NULL},
+	 { (char *)"pvIsAccessAllowed", _wrap_pvIsAccessAllowed, METH_VARARGS, NULL},
 	 { (char *)"pvSendVersion", _wrap_pvSendVersion, METH_VARARGS, NULL},
 	 { (char *)"pvXYAllocate", _wrap_pvXYAllocate, METH_VARARGS, NULL},
 	 { (char *)"getIntegers", _wrap_getIntegers, METH_VARARGS, NULL},
@@ -35071,6 +35955,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSendFile", _wrap_pvSendFile, METH_VARARGS, NULL},
 	 { (char *)"pvDownloadFileAs", _wrap_pvDownloadFileAs, METH_VARARGS, NULL},
 	 { (char *)"pvDownloadFile", _wrap_pvDownloadFile, METH_VARARGS, NULL},
+	 { (char *)"pvSetMaxClientsPerIpAdr", _wrap_pvSetMaxClientsPerIpAdr, METH_VARARGS, NULL},
+	 { (char *)"pvMaxClientsPerIpAdr", _wrap_pvMaxClientsPerIpAdr, METH_VARARGS, NULL},
+	 { (char *)"pvSetMaxClients", _wrap_pvSetMaxClients, METH_VARARGS, NULL},
+	 { (char *)"pvMaxClients", _wrap_pvMaxClients, METH_VARARGS, NULL},
+	 { (char *)"pvGetAdrTableItem", _wrap_pvGetAdrTableItem, METH_VARARGS, NULL},
 	 { (char *)"pvClearMessageQueue", _wrap_pvClearMessageQueue, METH_VARARGS, NULL},
 	 { (char *)"pvtcpsend", _wrap_pvtcpsend, METH_VARARGS, NULL},
 	 { (char *)"pvtcpsend_binary", _wrap_pvtcpsend_binary, METH_VARARGS, NULL},
@@ -35338,8 +36227,12 @@ static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_glFont = {"_p_glFont", "glFont *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pvAddressTable = {"_p_pvAddressTable", "pvAddressTable *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pvAddressTableItem = {"_p_pvAddressTableItem", "pvAddressTableItem *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_pvTime = {"_p_pvTime", "pvTime *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pvWidgetIdManager = {"_p_pvWidgetIdManager", "pvWidgetIdManager *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_qtDatabase = {"_p_qtDatabase", "qtDatabase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
@@ -35361,8 +36254,12 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_glFont,
   &_swigt__p_int,
   &_swigt__p_p_char,
+  &_swigt__p_pvAddressTable,
+  &_swigt__p_pvAddressTableItem,
+  &_swigt__p_pvTime,
   &_swigt__p_pvWidgetIdManager,
   &_swigt__p_qtDatabase,
+  &_swigt__p_unsigned_char,
   &_swigt__p_void,
 };
 
@@ -35384,8 +36281,12 @@ static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_glFont[] = {  {&_swigt__p_glFont, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvAddressTable[] = {  {&_swigt__p_pvAddressTable, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvAddressTableItem[] = {  {&_swigt__p_pvAddressTableItem, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_pvTime[] = {  {&_swigt__p_pvTime, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pvWidgetIdManager[] = {  {&_swigt__p_pvWidgetIdManager, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_qtDatabase[] = {  {&_swigt__p_qtDatabase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
@@ -35407,8 +36308,12 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_glFont,
   _swigc__p_int,
   _swigc__p_p_char,
+  _swigc__p_pvAddressTable,
+  _swigc__p_pvAddressTableItem,
+  _swigc__p_pvTime,
   _swigc__p_pvWidgetIdManager,
   _swigc__p_qtDatabase,
+  _swigc__p_unsigned_char,
   _swigc__p_void,
 };
 
@@ -36016,6 +36921,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "ID_HELP",SWIG_From_int(static_cast< int >(ID_HELP)));
   SWIG_Python_SetConstant(d, "ID_COOKIE",SWIG_From_int(static_cast< int >(ID_COOKIE)));
   SWIG_Python_SetConstant(d, "ID_TAB",SWIG_From_int(static_cast< int >(ID_TAB)));
+  SWIG_Python_SetConstant(d, "ID_OPTIONS",SWIG_From_int(static_cast< int >(ID_OPTIONS)));
   SWIG_Python_SetConstant(d, "ID_DOCK_WIDGETS",SWIG_From_int(static_cast< int >(ID_DOCK_WIDGETS)));
   SWIG_Python_SetConstant(d, "MAX_DOCK_WIDGETS",SWIG_From_int(static_cast< int >(32)));
   SWIG_Python_SetConstant(d, "NULL_EVENT",SWIG_From_int(static_cast< int >(NULL_EVENT)));
