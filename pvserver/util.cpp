@@ -239,11 +239,7 @@ static int pvFilePrefix(PARAM *p)
 {
   int ret;
   char temp[32];
-  char *cptr;
-  FILE *fout;
 
-  cptr = NULL;
-  fout = NULL;
   sprintf(p->file_prefix,"PVTMP%06d",p->s);
   strcpy(temp,"PVTMPXXXXXX");
 
@@ -255,6 +251,9 @@ static int pvFilePrefix(PARAM *p)
 #endif
 
 #ifdef PVWIN32
+  char *cptr;
+  FILE *fout;
+
   cptr = _mktemp(temp);
   if(cptr == NULL) return -1;
   fout = fopen(cptr,"w");
@@ -266,6 +265,7 @@ static int pvFilePrefix(PARAM *p)
 #endif
 
 #ifdef __VMS
+  FILE *fout;
   //printf("file_prefix=%s\n",p->file_prefix);
   fout = fopen(p->file_prefix,"w");
   if(fout == NULL) return -1;
@@ -7027,6 +7027,7 @@ int pvIsAccessAllowed(const char *adr, int trace)
   }  
 }
 
+#ifndef __VMS
 pvWidgetIdManager::pvWidgetIdManager()
 {
   id_start = 0;
@@ -7242,4 +7243,6 @@ int pvWidgetIdManager::readEnumFromMask(const char *maskname)
   fclose(fin);
   return i;
 }
+// end ifdef _VMS
+#endif
 

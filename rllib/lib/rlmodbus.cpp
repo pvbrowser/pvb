@@ -189,14 +189,6 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
         default:
           return MODBUS_ERROR;
       }
-      byte_count = tel[2];
-      if(s->read((char *) &tel[3], byte_count, timeout) <= 0) return MODBUS_ERROR;
-      len = 3;
-      for(idata=0; idata<(byte_count/2); idata++)
-      {
-        data[idata] = buf2int_rtu(&tel[len]); len += 2;
-      }
-      data[idata] = 0x0ff;
     }
   }
   else if(tty != NULL)

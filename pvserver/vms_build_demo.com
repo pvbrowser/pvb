@@ -3,7 +3,8 @@ $ ! Build demo of ProcessViewServer
 $ !
 $ set veri
 $ !
-$ compiler := cxx/define=USE_INETD
+$ ! compiler := cxx/define=USE_INETD
+$ compiler := cxx
 $ linker   := cxxlink
 $
 $ 'compiler' main.cpp          
