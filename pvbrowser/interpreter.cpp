@@ -4104,7 +4104,7 @@ void Interpreter::interprett(const char *command)
         opt.cookies,
         opt.echo_table_updates,
         opt.enable_webkit_plugins,
-        opt.arg_murn,
+        opt.arg_fillbackground,
         opt.language
         );
         tcp_send(s,buf,strlen(buf));
@@ -5686,7 +5686,7 @@ void Interpreter::interpretQ(const char *command)
     hasLayout = 1;
   }
 
-  if(opt.arg_murn == 1 && i>0 && i<nmax) // murnleitner special
+  if(opt.arg_fillbackground == 1 && i>0 && i<nmax) // murnleitner special
   {
     if(all[i]->type != TQVbox && all[i]->type != TQHbox && all[i]->type != TQGrid)
     {

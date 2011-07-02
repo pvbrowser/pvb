@@ -30,18 +30,18 @@ extern OPT opt;
 void init(int ac, char **av)
 {
   setlocale(LC_NUMERIC, "C");
-  opt.arg_debug    = 0;     // default command line args
-  opt.arg_localini = 0;
-  opt.arg_ini[0]   = '\0';
-  opt.arg_font[0]  = '\0';
-  opt.arg_host[0]  = '\0';
-  opt.arg_disable  = 0;
-  opt.arg_x        = -1;
-  opt.arg_y        = -1;
-  opt.arg_w        = -1;
-  opt.arg_h        = -1;
-  opt.arg_log      = 0;
-  opt.arg_murn     = 0;
+  opt.arg_debug           = 0;     // default command line args
+  opt.arg_localini        = 0;
+  opt.arg_ini[0]          = '\0';
+  opt.arg_font[0]         = '\0';
+  opt.arg_host[0]         = '\0';
+  opt.arg_disable         = 0;
+  opt.arg_x               = -1;
+  opt.arg_y               = -1;
+  opt.arg_w               = -1;
+  opt.arg_h               = -1;
+  opt.arg_log             = 0;
+  opt.arg_fillbackground  = 0;
   for(int i=0; i<ac; i++)  // read command line args
   {
     if(strncmp(av[i],"-h",2) == 0 || strncmp(av[i],"--",2) == 0)
@@ -69,9 +69,9 @@ void init(int ac, char **av)
     {
       opt.arg_log = 1; // print logging info
     }
-    if(strncmp(av[i],"-murn",5) == 0)
+    if(strncmp(av[i],"-fillbackground",15) == 0)
     {
-      opt.arg_murn = 1; // murnleitner special
+      opt.arg_fillbackground = 1; // murnleitner special
     }
     if(strncmp(av[i],"-ini=",5) == 0)
     {

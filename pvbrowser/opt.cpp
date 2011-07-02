@@ -398,9 +398,9 @@ int i;
           mysystem(&buf[6]);
           opt.i_have_started_servers++;
         }
-        else if(strncmp(buf,"murn=1",6) == 0)
+        else if(strncmp(buf,"fillbackground=1",16) == 0)
         {
-          opt.arg_murn = 1;
+          opt.arg_fillbackground = 1;
         }
         else if(strncmp(buf,"view.audio=",11) == 0)
         {

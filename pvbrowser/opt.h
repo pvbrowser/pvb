@@ -76,7 +76,7 @@ typedef struct
   int  arg_w;
   int  arg_h;
   int  arg_log;
-  int  arg_murn;            // murnleitner special
+  int  arg_fillbackground;  // murnleitner special
 }OPT;
 
 int wsa();
