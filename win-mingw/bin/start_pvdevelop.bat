@@ -1,21 +1,29 @@
  @echo off                                                                            
- rem ###############################                                                 
- rem # start pvdevelop             #                                                 
- rem # no registry settings needed #                                                 
- rem ###############################                                                 
+ rem #########################################################################################                                                 
+ rem # This is the file start_pvdevelop.bat                                                  #                                                 
+ rem # You must install the Qt4 SDK including MinGW.                                         #
+ rem # During installation of Qt you are asked if you want to install MinGW also.            #
+ rem # You will have to define the environment variables %QTDIR% and %MINGWDIR% to point     #
+ rem # to the installation directories where the executables from Qt and MinGW can be found  #
+ rem # (qmake.exe, mingw32-make.exe and the C++ compiler).                                   #
+ rem # The qmake tool from Qt will be used to create a Makefile for your projects.           #
+ rem # The installation procedure of pvbrowser already defined the environment variable      #
+ rem # %PVBDIR% and added %PVBDIR%\win-mingw\bin to your %PATH% environment variable.        #
+ rem # Since it did not know where the Qt SDK is located this must be defined manually       #
+ rem # either in this file or within your system control center.                             #            
+ rem #########################################################################################                                                 
  if    [%QTDIR%]    == [] goto environment_not_set                                 
  if    [%MINGWDIR%] == [] goto environment_not_set                                 
  goto  start_pvdevelop                                                               
  :environment_not_set                                                                
  echo  ############################################################################# 
- echo  Please adjust environment variables within this file:                         
- echo  %PVBDIR%\win-mingw\bin\start_pvdevelop.bat                                  
- set   QTDIR=z:\win\qt
- set   MINGWDIR=z:\win\mingw
+ echo  Please adjust environment variables within %PVBDIR%\win-mingw\bin\start_pvdevelop.bat                                  
+ set   QTDIR=c:\qtsdk\Desktop\Qt\4.7.3\mingw
+ set   MINGWDIR=c:\qtsdk\mingw
  rem   if you want to use python
  set   PYDIR=c:\Python25
  start notepad "%PVBDIR%\win-mingw\bin\start_pvdevelop.bat"                        
- pause                                                                               
+ pause
  exit                                                                                
  echo  ############################################################################# 
  rem   remove start notepad, pause and exit above                                    

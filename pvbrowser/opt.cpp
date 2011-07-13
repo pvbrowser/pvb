@@ -487,6 +487,8 @@ int i;
         fprintf(fp,"sshport=50500           # local port for ssh connections\n");
         fprintf(fp,"zoom=100                # zoom factor in percent\n");
         fprintf(fp,"fontzoom=100            # zoom factor for fonts in percent\n");
+        fprintf(fp,"fillbackground=0        # 0|1 transparency in dialog boxes\n");
+        fprintf(fp,"codec=utf8              # utf8 | None where None uses latin charset\n");
         fprintf(fp,"autoreconnect=0         # 0|1\n");
         fprintf(fp,"exitpassword=0          # 0|1\n");
         fprintf(fp,"menubar=1               # 0|1\n");
