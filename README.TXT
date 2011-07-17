@@ -88,7 +88,10 @@ Build with VTK:
 ### Windows ##########################################
 build:
   cd win-mingw
-  CreatePvbWithMinGW.bat
+  # edit login.bat and define environment variables QTDIR and MINGWDIR 
+  # to point to the executables of qmake.exe, mingw32-make.exe and the C++ compiler
+  login.bat
+  build.bat
 
 run:
   pvbrowser
