@@ -390,8 +390,7 @@ int i;
         }
         else if(strncmp(buf,"ssh=",4) == 0)
         {
-          sscanf(buf,"ssh=%s",buf);
-          strcpy(opt.ssh,buf);
+          strcpy(opt.ssh,&buf[4]);
         }
         else if(strncmp(buf,"start=",6) == 0)
         {
