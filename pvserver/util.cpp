@@ -1718,8 +1718,13 @@ char buf[80];
 
 int pvQGroupBox(PARAM *p, int id, int parent, int columns, int orientation, const char *title)
 {
-char buf[80];
+char buf[MAX_PRINTF_LENGTH];
 
+  if((strlen(title) + 80) > MAX_PRINTF_LENGTH)
+  {
+    printf("pvQGroupBox:: too long title=%s\n", title);
+    return -1;
+  }
   sprintf(buf,"QGroupBox(%d,%d,%d,%d,\"%s\")\n",id,parent,columns,orientation,title);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
