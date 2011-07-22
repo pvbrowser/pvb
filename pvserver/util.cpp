@@ -369,7 +369,8 @@ static int pvUnlink(PARAM *p)
 
 static void pv_length_check(PARAM *p, const char *buf)
 {
-  if(strlen(buf) >= MAX_PRINTF_LENGTH-1)
+  if(buf == NULL) return;
+  if(strlen(buf) >= MAX_PRINTF_LENGTH-80)
   {
     char message[80];
     strncpy(message,buf,10);
@@ -433,7 +434,7 @@ int pvMainFatal(PARAM *p, const char *text)
 {
   int i;
 
-  printf("MainFatal1: %s s=%d\n",text,p->s);
+  fprintf(stderr, "MainFatal1: %s s=%d\n",text,p->s);
   pvlock(p);
   num_threads = 0;
   if(p->clipboard != NULL) free(p->clipboard);
@@ -460,7 +461,7 @@ int pvThreadFatal(PARAM *p, const char *text)
   int i;
 
   pvlock(p);
-  printf("Thread finished: %s s=%d\n",text,p->s);
+  fprintf(stderr,"Thread finished: %s s=%d\n",text,p->s);
   if(num_threads > 0) num_threads--;
   if(p->clipboard != NULL) free(p->clipboard);
   if(p->x != NULL) free(p->x);
@@ -1664,8 +1665,9 @@ char buf[132];
 
 int pvQButtonGroup(PARAM *p, int id, int parent, int columns, int o, const char *title)
 {
-char buf[132];
+char buf[MAX_PRINTF_LENGTH];
 
+  pv_length_check(p,title);
   sprintf(buf,"QButtonGroup(%d,%d,%d,%d,\"%s\")\n",id,parent,columns,o,title);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -1720,11 +1722,7 @@ int pvQGroupBox(PARAM *p, int id, int parent, int columns, int orientation, cons
 {
 char buf[MAX_PRINTF_LENGTH];
 
-  if((strlen(title) + 80) > MAX_PRINTF_LENGTH)
-  {
-    printf("pvQGroupBox:: too long title=%s\n", title);
-    return -1;
-  }
+  pv_length_check(p,title);
   sprintf(buf,"QGroupBox(%d,%d,%d,%d,\"%s\")\n",id,parent,columns,orientation,title);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -1985,7 +1983,8 @@ char buf[80];
 
 int pvToolTip(PARAM *p, int id, const char *text)
 {
-  char buf[1024],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
+  pv_length_check(p, text);
   mytext(p,text);
   while(1)
   {
@@ -2523,7 +2522,8 @@ int pvPrintHtmlOnPrinter(PARAM *p, int id)
 
 int pvAddColumn(PARAM *p, int id, const char *text, int size)
 {
-  char buf[80],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
+  pv_length_check(p, text);
   mytext(p,text);
   while(1)
   {
@@ -2593,6 +2593,7 @@ int pvSetTableButton(PARAM *p, int id, int x, int y, const char *text)
 {
 char buf[MAX_PRINTF_LENGTH+40];
 
+  pv_length_check(p, text);
   sprintf(buf,"setTableButton(%d,%d,%d,\"%s\")\n",id,y,x,text);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -2601,6 +2602,7 @@ char buf[MAX_PRINTF_LENGTH+40];
 int pvSetTableCheckBox(PARAM *p, int id, int x, int y, int state, const char *text)
 {
   char buf[MAX_PRINTF_LENGTH+40],*cptr;
+  pv_length_check(p, text);
   mytext(p,text);
   while(1)
   {
@@ -2616,6 +2618,7 @@ int pvSetTableCheckBox(PARAM *p, int id, int x, int y, int state, const char *te
 int pvSetTableComboBox(PARAM *p, int id, int x, int y, int editable, const char *textlist)
 {
   char buf[MAX_PRINTF_LENGTH+40],*cptr;
+  pv_length_check(p, textlist);
   mytext(p,textlist);
   while(1)
   {
@@ -2632,6 +2635,7 @@ int pvSetTableLabel(PARAM *p, int id, int x, int y, const char *text)
 {
 char buf[MAX_PRINTF_LENGTH+40];
 
+  pv_length_check(p, text);
   sprintf(buf,"setTableLabel(%d,%d,%d,\"%s\")\n",id,y,x,text);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -2643,11 +2647,7 @@ int pvMysqldump(PARAM *p, int id, const char *command)
   char line[MAX_EVENT_LENGTH],filename[32+14+1],*cptr1,*cptr2;
   int ret,row_cnt,field_cnt,first,x,y;
 
-  if(strlen(command) > (sizeof(line) - 80)) 
-  {
-    printf("pvMysqldump:: command too long\n");
-    return -1;
-  }
+  pv_length_check(p,command);
 
   // run mysqldump
   sprintf(filename,"%smysqldump.xml",p->file_prefix);
@@ -2788,9 +2788,12 @@ int pvCSVdump(PARAM *p, int id, const char *filename, char delimitor)
 
 int pvCSVcreate(PARAM *p, const char *command, const char *filename)
 {
-  char line[MAX_EVENT_LENGTH];
+  char line[MAX_EVENT_LENGTH*3];
 
+  pv_length_check(p,command);
+  pv_length_check(p,filename);
   sprintf(line,"%s > %s%s", command, p->file_prefix, filename);
+  pv_length_check(p,line);
   return pvsystem(line);
 }
 
@@ -2804,6 +2807,7 @@ int pvCSV(PARAM *p, int id, const char *command, char delimitor)
 int pvSetListViewText(PARAM *p, int id, const char *path, int column, const char *text)
 {
   char buf[MAX_PRINTF_LENGTH+40],*cptr;
+  pv_length_check(p, text);
   mytext(p,text);
   pv_length_check(p,text);
   while(1)
@@ -3093,7 +3097,9 @@ char buf[MAX_PRINTF_LENGTH];
 
 int pvListViewSetOpen(PARAM *p, int id, const char *path, int open)
 {
-char buf[80];
+char buf[MAX_PRINTF_LENGTH];
+
+  pv_length_check(p,path);
 
   sprintf(buf,"setOpen(%d,%d,\"%s\")\n",id,open,path);
   pvtcpsend(p, buf, strlen(buf));
@@ -3131,6 +3137,7 @@ int pvSetMovie(PARAM *p, int id, int background, const char *filename)
 {
 char buf[MAX_PRINTF_LENGTH+40];
 
+  pv_length_check(p, filename);
   sprintf(buf,"movie(%d,0,%d,\"%s\")\n",id,background,filename);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -3159,6 +3166,7 @@ int pvSetPixmap(PARAM *p, int id, const char *bmp_file, int download_icon)
 char buf[MAX_PRINTF_LENGTH+40];
 PVB_IMAGE *image;
 
+  pv_length_check(p, bmp_file);
   if(bmp_file == NULL)
   {
     sprintf(buf,"setPixmap(%d,0,0)\n",id);
@@ -3189,6 +3197,7 @@ int pvSetTablePixmap(PARAM *p, int id, int x, int y, const char *bmp_file, int d
 char buf[MAX_PRINTF_LENGTH+40];
 PVB_IMAGE *image;
 
+  pv_length_check(p, bmp_file);
   if(bmp_file == NULL)
   {
     sprintf(buf,"setTablePixmap(%d,%d,%d)\n",id,x,y);
@@ -3224,6 +3233,7 @@ int pvSetSource(PARAM *p, int id, const char *html_file)
 {
 char buf[MAX_PRINTF_LENGTH];
 
+  pv_length_check(p, html_file);
   sprintf(buf,"setSource(%d,\"%s\")\n",id,html_file);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -3389,6 +3399,7 @@ int pvSetFont(PARAM *p, int id, const char *family, int pointsize, int bold, int
 {
 char buf[MAX_PRINTF_LENGTH];
 
+  pv_length_check(p,family);
   sprintf(buf,"setFont(%d,%d,%d,%d,%d,%d,\"%s\")\n",id,pointsize,bold,italic,underline,strikeout,family);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -3398,7 +3409,7 @@ int pvSetImage(PARAM *p, int id, const char *filename)
 {
 char buf[MAX_PRINTF_LENGTH];
 
-  pv_length_check(p,filename);
+  pv_length_check(p, filename);
   sprintf(buf,"setImage(%d,\"%s\")\n",id,pvFilename(filename));
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -3621,6 +3632,7 @@ PVB_IMAGE *image;
 char buf[MAX_PRINTF_LENGTH+40];
 int myw, myh, mydepth;
 
+  pv_length_check(p, imagename);
   myw = myh = mydepth = 0;
   if(strstr(imagename,".bmp") == NULL && strstr(imagename,".BMP") == NULL)
   { // image format other than 8bpp bmp
@@ -3746,7 +3758,13 @@ char buf[80];
 
 int pvDisplayStr(PARAM *p, int id, const char *str)
 {
-char buf[80];
+char buf[MAX_PRINTF_LENGTH];
+
+  if((strlen(str) + 80) > MAX_PRINTF_LENGTH)
+  {
+    printf("pvDisplayStr:: too long str=%s\n", str);
+    return -1;
+  }
 
   sprintf(buf,"displayStr(%d,\"%s\")\n",id,str);
   pvtcpsend(p, buf, strlen(buf));
@@ -3851,11 +3869,7 @@ int pvHyperlink(PARAM *p, const char *link)
 {
 char buf[MAX_PRINTF_LENGTH+40];
 
-  if(strlen(link) > MAX_PRINTF_LENGTH)
-  {
-    printf("link tto long %s\n",link);
-    return -1;
-  }
+  pv_length_check(p, link);
   sprintf(buf,"hyperlink(\"%s\")\n",link);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
@@ -4730,8 +4744,9 @@ int qpwReplot(PARAM *p, int id)
 
 int qpwSetTitle(PARAM *p, int id, const char *text)
 {
-  char buf[1024],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
 
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -4869,8 +4884,9 @@ int qpwEnableAxis(PARAM *p, int id, int pos)
 
 int qpwSetAxisTitle(PARAM *p, int id, int pos, const char *text)
 {
-  char buf[1024],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
 
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -4922,6 +4938,7 @@ int qpwInsertCurve(PARAM *p, int id, int index, const char *text)
 {
   char buf[MAX_EVENT_LENGTH],*cptr;
 
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -5039,7 +5056,8 @@ int qpwSetMarkerLabelAlign(PARAM *p, int id, int index, int align)
 
 int qpwSetMarkerLabel(PARAM *p, int id, int pos, const char * text)
 {
-  char buf[256],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -5067,8 +5085,9 @@ int qpwSetMarkerPen(PARAM *p, int id, int index, int r, int g, int b, int style)
 
 int qpwSetMarkerFont(PARAM *p, int id, int index, const char *family, int size, int style)
 {
-  char buf[1024];
+  char buf[MAX_PRINTF_LENGTH];
 
+  pv_length_check(p,family);
   sprintf(buf,"qpw(%d)\n",id);
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"setMarkerFont(%d,%d,%d,\"%s\")\n",index,size,style,family);
@@ -5095,8 +5114,9 @@ int qpwSetMarkerSymbol(PARAM *p, int id, int index, int symbol, int r1, int g1, 
 
 int qpwInsertLineMarker(PARAM *p, int id, int index, const char *text, int pos)
 {
-  char buf[80],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
 
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -5111,9 +5131,10 @@ int qpwInsertLineMarker(PARAM *p, int id, int index, const char *text, int pos)
   return 0;
 }
 
-int qpwSetAxisScaleDraw( PARAM *p, int id, int pos, const char * text )
+int qpwSetAxisScaleDraw( PARAM *p, int id, int pos, const char *text )
 {
-  char buf[256],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -5141,8 +5162,9 @@ int qpwSetAxisScale( PARAM *p, int id, int pos, float min, float max, float step
 // --- QwtScale ----------------------------------------------------------------
 int qwtScaleSetTitle(PARAM *p, int id, const char *text)
 {
-  char buf[1024],*cptr;
+  char buf[MAX_PRINTF_LENGTH],*cptr;
 
+  pv_length_check(p,text);
   mytext(p,text);
   while(1)
   {
@@ -5170,7 +5192,8 @@ int qwtScaleSetTitleColor(PARAM *p, int id, int r, int g, int b)
 
 int qwtScaleSetTitleFont(PARAM *p, int id, const char *family, int pointsize, int bold, int italic, int underline, int strikeout)
 {
-  char buf[1024];
+  char buf[MAX_PRINTF_LENGTH];
+  pv_length_check(p,family);
 
   sprintf(buf,"qwt(%d)\n",id);
   pvtcpsend(p, buf, strlen(buf));
