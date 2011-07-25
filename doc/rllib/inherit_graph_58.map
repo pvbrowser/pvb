@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlSpawn.html" title="rlSpawn" alt="" coords="5,5,75,35"/>
+<area shape="rect" id="node1" href="$classrlSocket.html" title="rlSocket" alt="" coords="7,5,76,35"/>
+<area shape="rect" id="node3" href="$classrlSiemensTCP.html" title="rlSiemensTCP" alt="" coords="125,5,232,35"/>
 </map>

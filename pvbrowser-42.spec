@@ -390,6 +390,7 @@ License:     GPL
 /opt/pvb/rllib/lib/rldataacquisitionprovider.h
 /opt/pvb/rllib/lib/rlwebcam.h
 /opt/pvb/rllib/lib/rlcommandlineinterface.h
+/opt/pvb/rllib/lib/rlreport.h
 /opt/pvb/language_bindings/lua/pvslua/pvslua
 /opt/pvb/language_bindings/lua/pvapplua/pvapplua
 /opt/pvb/language_bindings/python/id/pv.py

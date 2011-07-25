@@ -62,6 +62,7 @@
           <section title="rlPlcState" ref="classrlPlcState.html" />
           <section title="rlSvgPosition::rlPositionInit" ref="structrlSvgPosition_1_1rlPositionInit.html" />
           <section title="rlPPIClient" ref="classrlPPIClient.html" />
+          <section title="rlReport" ref="classrlReport.html" />
           <section title="rlSemaphore" ref="classrlSemaphore.html" />
           <section title="rlSerial" ref="classrlSerial.html" />
           <section title="rlSharedMemory" ref="classrlSharedMemory.html" />
@@ -82,8 +83,8 @@
           <section title="rlUdpSocket" ref="classrlUdpSocket.html" />
           <section title="rlWebcam" ref="classrlWebcam.html" />
           <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
-          <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
+          <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -153,6 +154,7 @@
           <section title="rlPlcMem" ref="classrlPlcMem.html" />
           <section title="rlPlcState" ref="classrlPlcState.html" />
           <section title="rlSvgPosition::rlPositionInit" ref="structrlSvgPosition_1_1rlPositionInit.html" />
+          <section title="rlReport" ref="classrlReport.html" />
           <section title="rlSemaphore" ref="classrlSemaphore.html" />
           <section title="rlSerial" ref="classrlSerial.html" />
           <section title="rlSharedMemory" ref="classrlSharedMemory.html">
@@ -181,8 +183,8 @@
           </section>
           <section title="rlWebcam" ref="classrlWebcam.html" />
           <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
-          <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
+          <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -263,6 +265,8 @@
           <section title="rlplc.h" ref="rlplc_8h.html" />
           <section title="rlppiclient.cpp" ref="rlppiclient_8cpp.html" />
           <section title="rlppiclient.h" ref="rlppiclient_8h.html" />
+          <section title="rlreport.cpp" ref="rlreport_8cpp.html" />
+          <section title="rlreport.h" ref="rlreport_8h.html" />
           <section title="rlserial.cpp" ref="rlserial_8cpp.html" />
           <section title="rlserial.h" ref="rlserial_8h.html" />
           <section title="rlsharedmemory.cpp" ref="rlsharedmemory_8cpp.html" />
@@ -1711,6 +1715,22 @@
       <keyword name="daveV" id="rlPPIClient::daveV" ref="classrlPPIClient.html#a57474a72d3e44900e3a56b11c857f5dda67b6cce5061f61c1a5ce26632a7aa214" />
       <keyword name="daveCounter" id="rlPPIClient::daveCounter" ref="classrlPPIClient.html#a57474a72d3e44900e3a56b11c857f5ddad72395b21948b4689676595f59a6d66d" />
       <keyword name="daveTimer" id="rlPPIClient::daveTimer" ref="classrlPPIClient.html#a57474a72d3e44900e3a56b11c857f5ddacff2508ea7fb3136ad892567820ff5f9" />
+      <keyword name="rlReport" id="rlReport" ref="classrlReport.html" />
+      <keyword name="rlReport" id="rlReport::rlReport" ref="classrlReport.html#a29d9fbc12d8bd6fcf8465903e4ac8517" />
+      <keyword name="~rlReport" id="rlReport::~rlReport" ref="classrlReport.html#afc4b5040c4eb4b4db143a8486e3c6c5e" />
+      <keyword name="open" id="rlReport::open" ref="classrlReport.html#add7b6764e5253bcc50b3026d6ec8a18d" />
+      <keyword name="close" id="rlReport::close" ref="classrlReport.html#ace50714e5ce85a1908b67e35b2593c42" />
+      <keyword name="printf" id="rlReport::printf" ref="classrlReport.html#a7efe858648e7f7fab3fad4e95d2a041c" />
+      <keyword name="beginDocument" id="rlReport::beginDocument" ref="classrlReport.html#aba73fec1e9fee68aa27b399d2f5e9afa" />
+      <keyword name="endDocument" id="rlReport::endDocument" ref="classrlReport.html#af9e90549853cb72a9fd168caa7ffbac9" />
+      <keyword name="include" id="rlReport::include" ref="classrlReport.html#aa32da2c2efb7773b41379068ef028c35" />
+      <keyword name="includeHeader" id="rlReport::includeHeader" ref="classrlReport.html#a3a676c7a85d5b268d5799d5660dc3917" />
+      <keyword name="includeCSV" id="rlReport::includeCSV" ref="classrlReport.html#a6de378ea27efe2bdf482f80a8422d088" />
+      <keyword name="includeImage" id="rlReport::includeImage" ref="classrlReport.html#a8e486958cb3b422bf371f2c35302578a" />
+      <keyword name="spawn" id="rlReport::spawn" ref="classrlReport.html#acf75c601a70fc0484caeb359362cc526" />
+      <keyword name="pdflatex" id="rlReport::pdflatex" ref="classrlReport.html#aa800c1835b1df46117afc98d0a847c9e" />
+      <keyword name="fout" id="rlReport::fout" ref="classrlReport.html#a08d73a48b628865f219f7eb65a6dc325" />
+      <keyword name="file" id="rlReport::file" ref="classrlReport.html#a502d5b43d005463fd561ec9476578056" />
       <keyword name="rlSemaphore" id="rlSemaphore" ref="classrlSemaphore.html" />
       <keyword name="rlSemaphore" id="rlSemaphore::rlSemaphore" ref="classrlSemaphore.html#ae3ee24f3b59ab16d4e6916014b4b7276" />
       <keyword name="~rlSemaphore" id="rlSemaphore::~rlSemaphore" ref="classrlSemaphore.html#a0fa29c5ce8eebd8d6360991d635244ee" />
@@ -2311,6 +2331,8 @@
       <file>rlplc_8h_source.html</file>
       <file>rlppiclient_8cpp_source.html</file>
       <file>rlppiclient_8h_source.html</file>
+      <file>rlreport_8cpp_source.html</file>
+      <file>rlreport_8h_source.html</file>
       <file>rlserial_8cpp_source.html</file>
       <file>rlserial_8h_source.html</file>
       <file>rlsharedmemory_8cpp_source.html</file>
@@ -2604,6 +2626,14 @@
       <file>rlppiclient_8h__incl.png</file>
       <file>rlppiclient_8h__dep__incl.png</file>
       <file>rlppiclient_8h__dep__incl.png</file>
+      <file>rlreport_8cpp.html</file>
+      <file>rlreport_8cpp__incl.png</file>
+      <file>rlreport_8cpp__incl.png</file>
+      <file>rlreport_8h.html</file>
+      <file>rlreport_8h__incl.png</file>
+      <file>rlreport_8h__incl.png</file>
+      <file>rlreport_8h__dep__incl.png</file>
+      <file>rlreport_8h__dep__incl.png</file>
       <file>rlserial_8cpp.html</file>
       <file>rlserial_8cpp__incl.png</file>
       <file>rlserial_8cpp__incl.png</file>
@@ -2999,6 +3029,10 @@
       <file>classrlPPIClient__coll__graph.png</file>
       <file>classrlPPIClient__coll__graph.png</file>
       <file>classrlPPIClient-members.html</file>
+      <file>classrlReport.html</file>
+      <file>classrlReport__coll__graph.png</file>
+      <file>classrlReport__coll__graph.png</file>
+      <file>classrlReport-members.html</file>
       <file>classrlSemaphore.html</file>
       <file>classrlSemaphore__coll__graph.png</file>
       <file>classrlSemaphore__coll__graph.png</file>
@@ -3183,6 +3217,7 @@
       <file>inherit_graph_76.png</file>
       <file>inherit_graph_77.png</file>
       <file>inherit_graph_78.png</file>
+      <file>inherit_graph_79.png</file>
       <file>graph_legend.png</file>
       <file>graph_legend.html</file>
       <file>files.html</file>

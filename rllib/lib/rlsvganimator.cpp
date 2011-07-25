@@ -207,11 +207,7 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
     }
     else
     {
-#ifdef PVMAC
       sprintf(command,"/usr/bin/rlsvgcat %s",infile);
-#else
-      sprintf(command,"/usr/local/bin/rlsvgcat %s",infile);
-#endif
       ret = system(command);
       if(ret == -1) return -1;
       if(inifile != NULL) 

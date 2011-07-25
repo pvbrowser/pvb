@@ -1,10 +1,11 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$rlcanopentypes_8h.html" title="rlcanopentypes.h" alt="" coords="275,83,395,112"/>
 <area shape="rect" id="node5" href="$rlcannode_8h.html" title="rlcannode.h" alt="" coords="131,160,219,189"/>
-<area shape="rect" id="node24" href="$rlinifile_8cpp.html" title="rlinifile.cpp" alt="" coords="451,83,533,112"/>
+<area shape="rect" id="node24" href="$rlinifile_8cpp.html" title="rlinifile.cpp" alt="" coords="456,83,539,112"/>
 <area shape="rect" id="node26" href="$rllib_8h.html" title="rllib.h" alt="" coords="544,160,597,189"/>
-<area shape="rect" id="node28" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="619,83,728,112"/>
+<area shape="rect" id="node28" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="624,83,733,112"/>
 <area shape="rect" id="node31" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="771,160,848,189"/>
+<area shape="rect" id="node35" href="$rlreport_8h.html" title="rlreport.h" alt="" coords="872,83,944,112"/>
 <area shape="rect" id="node17" href="$rlcanopenclient_8h.html" title="rlcanopenclient.h" alt="" coords="243,160,363,189"/>
 <area shape="rect" id="node21" href="$rlcanopentypes_8cpp.html" title="rlcanopentypes.cpp" alt="" coords="387,160,520,189"/>
 <area shape="rect" id="node7" href="$rlcannode_8cpp.html" title="rlcannode.cpp" alt="" coords="5,237,107,267"/>
@@ -14,4 +15,5 @@
 <area shape="rect" id="node15" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="171,392,320,421"/>
 <area shape="rect" id="node19" href="$rlcanopenclient_8cpp.html" title="rlcanopenclient.cpp" alt="" coords="243,237,376,267"/>
 <area shape="rect" id="node33" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="621,160,747,189"/>
+<area shape="rect" id="node37" href="$rlreport_8cpp.html" title="rlreport.cpp" alt="" coords="872,160,957,189"/>
 </map>
