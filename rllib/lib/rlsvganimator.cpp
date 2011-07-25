@@ -214,11 +214,7 @@ int rlSvgAnimator::read(const char *infile, rlIniFile *inifile)
       {
         char outfile[80];
         sprintf(outfile,"PVTMP%d.svg",*s);
-#ifdef PVMAC
         sprintf(command,"/usr/bin/rlsvgcat %s %s",infile,outfile);
-#else
-        sprintf(command,"/usr/local/bin/rlsvgcat %s %s",infile,outfile);
-#endif
         ret = system(command);
         if(ret == -1) return -1;
         fileFillIniFile(outfile, inifile);
