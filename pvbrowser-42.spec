@@ -12,6 +12,9 @@ Source:    http://pvbrowser.de/pvbrowser/tar/pvbrowser-4.tar.gz
 
 #
 AutoReqProv: no
+Provides:  libpvsmt.a
+Provides:  libpvsid.a  
+Provides:  librllib.a
 Provides:  libpvsmt.so
 Provides:  libpvsmt.so.1
 Provides:  libpvsmt.so.1.0
@@ -164,6 +167,8 @@ cp    pvbrowser.desktop                                   %{buildroot}/opt/pvb/
 cp    pvdevelop.desktop                                   %{buildroot}/opt/pvb/
 cp    pvserver/libpvsid.so                                %{buildroot}/opt/pvb/pvserver/
 cp    pvserver/libpvsmt.so                                %{buildroot}/opt/pvb/pvserver/
+cp    pvserver/libpvsid.a                                 %{buildroot}/opt/pvb/pvserver/
+cp    pvserver/libpvsmt.a                                 %{buildroot}/opt/pvb/pvserver/
 cp    pvserver/wthread.h                                  %{buildroot}/opt/pvb/pvserver/
 cp    pvserver/BMP.h                                      %{buildroot}/opt/pvb/pvserver/
 cp    pvserver/vmsglext.h                                 %{buildroot}/opt/pvb/pvserver/
@@ -179,6 +184,7 @@ cp    start_pvbapp/example.ini.linux                      %{buildroot}/opt/pvb/s
 cp    start_pvbapp/start_if_not_already_running.sh        %{buildroot}/opt/pvb/start_pvbapp/
 cp    rllib/rlsvg/rlsvgcat                                %{buildroot}/opt/pvb/rllib/rlsvg/
 cp    rllib/rlhistory/rlhistory                           %{buildroot}/opt/pvb/rllib/rlhistory/
+cp    rllib/lib/librllib.a                                %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/librllib.so                               %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/*.h                                       %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/nodave.o                                  %{buildroot}/opt/pvb/rllib/lib/
@@ -213,6 +219,9 @@ cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/b
 %__mkdir_p %{buildroot}/usr/lib
 %__mkdir_p %{buildroot}%{_bindir}
 
+%__ln_s /opt/pvb/pvserver/libpvsmt.so      %{buildroot}/usr/lib/libpvsmt.a
+%__ln_s /opt/pvb/pvserver/libpvsid.so      %{buildroot}/usr/lib/libpvsid.a
+
 %__ln_s /opt/pvb/pvserver/libpvsid.so      %{buildroot}/usr/lib/libpvsid.so
 %__ln_s /opt/pvb/pvserver/libpvsid.so      %{buildroot}/usr/lib/libpvsid.so.1
 %__ln_s /opt/pvb/pvserver/libpvsid.so      %{buildroot}/usr/lib/libpvsid.so.1.0
@@ -230,6 +239,7 @@ cp pvdevelop/pvdevelop.sh                        %{buildroot}%{_bindir}/pvdevelo
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat            %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory       %{buildroot}%{_bindir}/rlhistory
 
+%__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.a
 %__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.so
 %__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.so.1
 %__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.so.1.0
@@ -275,6 +285,9 @@ License:     GPL
 
 %files devel
 %defattr(-,root,root)
+/usr/lib/libpvsmt.a
+/usr/lib/libpvsid.a
+/usr/lib/librllib.a
 /usr/lib/libpvsid.so
 /usr/lib/libpvsid.so.1
 /usr/lib/libpvsid.so.1.0
@@ -307,6 +320,9 @@ License:     GPL
 /opt/pvb/start_pvbapp/example.ini
 /opt/pvb/start_pvbapp/README.txt
 /opt/pvb/start_pvbapp/start_if_not_already_running.sh
+/opt/pvb/pvserver/libpvsid.a
+/opt/pvb/pvserver/libpvsmt.a
+/opt/pvb/pvserver/librllib.a
 /opt/pvb/pvserver/libpvsid.so
 /opt/pvb/pvserver/libpvsmt.so
 /opt/pvb/rllib/lib/librllib.so

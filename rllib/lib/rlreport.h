@@ -33,10 +33,10 @@ int report(PARAM *p)
   filename += ".tex";
   r.open(filename.text());
   r.includeHeader("\\documentclass[a4paper]{article}","\\usepackage[ngerman]{babel}"); // german article on A4 paper
-  // here we may include our own header definitions
+  //// here we may include our own header definitions
 
   r.beginDocument();
-  // --- begin here we use the methods: printf(), include(), includeCSV(), includeImage(), spawn() --------------
+  //// --- begin here we use the methods: printf(), include(), includeCSV(), includeImage(), spawn() --------------
   r.printf("\\section{Teil 1}\n");
   r.printf("Hallo Welt\n");
   r.includeImage("test.jpg","Testbild",0.8f);
@@ -47,7 +47,7 @@ int report(PARAM *p)
   r.printf("\\simplecodebegin{Verzeichnis Inhalt}\n");
   r.spawn("ls -al");
   r.printf("\\end{lstlisting}\n");
-  // --- end here we use the methods: printf(), include(), includeCSV(), includeImage(), spawn() ----------------
+  //// --- end here we use the methods: printf(), include(), includeCSV(), includeImage(), spawn() ----------------
   r.endDocument();
   r.close();
 
@@ -96,7 +96,7 @@ public:
   /*! <pre>
       Include a file to the output.
       If ini != NULL then the content of ini can be used as text modules as follows:
-      Withnin file we use something like \$[SECTION][NAME] to address the text module we want to include.
+      Withnin file we use something like \\$[SECTION][NAME] to address the text module we want to include.
   </pre> */
   int include(const char *filename, rlIniFile *ini=NULL);
 

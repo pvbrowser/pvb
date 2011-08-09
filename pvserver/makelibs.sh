@@ -1,8 +1,13 @@
 #!/bin/bash
-qmake pvsmt.pro -o pvsmt.mak
-qmake pvsid.pro -o pvsid.mak
-gmake -f pvsmt.mak clean
-gmake -f pvsmt.mak
-gmake -f pvsid.mak clean
-gmake -f pvsid.mak
-rm *.o
+
+../qmake.sh pvsid.pro -o pvsid.mak
+make -f pvsid.mak clean
+make -f pvsid.mak
+make -f pvsid.mak staticlib
+
+../qmake.sh pvsmt.pro -o pvsmt.mak
+make -f pvsmt.mak clean
+make -f pvsmt.mak
+make -f pvsmt.mak staticlib
+
+

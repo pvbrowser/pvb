@@ -90,15 +90,16 @@ cd designer/src
 ./build.sh
 cd ../..
 cd pvserver
-rm util.o glencode.o
-../qmake.sh pvsid.pro -o pvsid.mak
-make -f pvsid.mak
-rm util.o glencode.o
-../qmake.sh pvsmt.pro -o pvsmt.mak
-make -f pvsmt.mak
+#rm util.o glencode.o
+#../qmake.sh pvsid.pro -o pvsid.mak
+#make -f pvsid.mak
+#rm util.o glencode.o
+#../qmake.sh pvsmt.pro -o pvsmt.mak
+#make -f pvsmt.mak
+./makelibs.sh
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
-  rm util.o glencode.o
+  # rm util.o glencode.o
   ../qmake.sh processviewserver.pro
   make
 fi
@@ -107,6 +108,7 @@ cd ..
 cd rllib/lib
 ../../qmake.sh lib.pro
 make
+make staticlib
 cd ../..
 cd rllib/rlsvg
 ../../qmake.sh rlsvgcat.pro

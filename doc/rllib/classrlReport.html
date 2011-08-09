@@ -87,8 +87,8 @@ int report(PARAM *p)
   filename += ".tex";
   r.open(filename.text());
   r.includeHeader("\\documentclass[a4paper]{article}","\\usepackage[ngerman]{babel}"); // german article on A4 paper
-here we may include our own header definitions</pre><pre>  r.beginDocument();
---- begin here we use the methods: <a class="el" href="classrlReport.html#a7efe858648e7f7fab3fad4e95d2a041c">printf()</a>, <a class="el" href="classrlReport.html#aa32da2c2efb7773b41379068ef028c35">include()</a>, <a class="el" href="classrlReport.html#a6de378ea27efe2bdf482f80a8422d088">includeCSV()</a>, <a class="el" href="classrlReport.html#a8e486958cb3b422bf371f2c35302578a">includeImage()</a>, <a class="el" href="classrlReport.html#acf75c601a70fc0484caeb359362cc526">spawn()</a> --------------
+// here we may include our own header definitions</pre><pre>  r.beginDocument();
+// --- begin here we use the methods: <a class="el" href="classrlReport.html#a7efe858648e7f7fab3fad4e95d2a041c">printf()</a>, <a class="el" href="classrlReport.html#aa32da2c2efb7773b41379068ef028c35">include()</a>, <a class="el" href="classrlReport.html#a6de378ea27efe2bdf482f80a8422d088">includeCSV()</a>, <a class="el" href="classrlReport.html#a8e486958cb3b422bf371f2c35302578a">includeImage()</a>, <a class="el" href="classrlReport.html#acf75c601a70fc0484caeb359362cc526">spawn()</a> --------------
   r.printf("\\section{Teil 1}\n");
   r.printf("Hallo Welt\n");
   r.includeImage("test.jpg","Testbild",0.8f);
@@ -99,7 +99,7 @@ here we may include our own header definitions</pre><pre>  r.beginDocument();
   r.printf("\\simplecodebegin{Verzeichnis Inhalt}\n");
   r.spawn("ls -al");
   r.printf("\\end{lstlisting}\n");
---- end here we use the methods: <a class="el" href="classrlReport.html#a7efe858648e7f7fab3fad4e95d2a041c">printf()</a>, <a class="el" href="classrlReport.html#aa32da2c2efb7773b41379068ef028c35">include()</a>, <a class="el" href="classrlReport.html#a6de378ea27efe2bdf482f80a8422d088">includeCSV()</a>, <a class="el" href="classrlReport.html#a8e486958cb3b422bf371f2c35302578a">includeImage()</a>, <a class="el" href="classrlReport.html#acf75c601a70fc0484caeb359362cc526">spawn()</a> ----------------
+// --- end here we use the methods: <a class="el" href="classrlReport.html#a7efe858648e7f7fab3fad4e95d2a041c">printf()</a>, <a class="el" href="classrlReport.html#aa32da2c2efb7773b41379068ef028c35">include()</a>, <a class="el" href="classrlReport.html#a6de378ea27efe2bdf482f80a8422d088">includeCSV()</a>, <a class="el" href="classrlReport.html#a8e486958cb3b422bf371f2c35302578a">includeImage()</a>, <a class="el" href="classrlReport.html#acf75c601a70fc0484caeb359362cc526">spawn()</a> ----------------
   r.endDocument();
   r.close();</pre><pre>  r.pdflatex(); // pdflatex -interaction=nonstopmode file.tex</pre><pre>  filename  = p-&gt;file_prefix;
   filename += ".pdf";
@@ -253,7 +253,7 @@ here we may include our own header definitions</pre><pre>  r.beginDocument();
 <pre>
       Include a file to the output.
       If ini != NULL then the content of ini can be used as text modules as follows:
-      Withnin file we use something like $[SECTION][NAME] to address the text module we want to include.
+      Withnin file we use something like \$[SECTION][NAME] to address the text module we want to include.
   </pre> 
 <p>Definition at line <a class="el" href="rlreport_8cpp_source.html#l00077">77</a> of file <a class="el" href="rlreport_8cpp_source.html">rlreport.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
