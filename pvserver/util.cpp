@@ -2129,11 +2129,8 @@ int pvSetText(PARAM *p, int id, const char *text)
     else break;
   }
   len = strlen(p->mytext);
-  if(len < MAX_PRINTF_LENGTH-1)
+  if(len < MAX_PRINTF_LENGTH-4)
   {
-    pv_length_check(p,p->mytext);
-    //sprintf(buf,"setText(%d,\"%s\")\n",id,p->mytext);
-    //pvtcpsend(p, buf, strlen(buf));
     sprintf(buf,"setText(%d)\n",id);
     pvtcpsend(p, buf, strlen(buf));
     sprintf(buf,"%s\n",p->mytext);
