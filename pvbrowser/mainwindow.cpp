@@ -625,7 +625,7 @@ void MainWindow::createToolBars()
   //urlComboBox->setAutoCompletion(false);
   urlComboBox->setToolTip(tr("Connect to host:\n"
                              "pv://host<:port></mask>\n"
-                             "pvssh://host<:port></mask>\n"
+                             "pvssh://user@host<<:remote_host>:port></mask>\n"
                              "example: pv://localhost\n"
                              "example: pv://localhost:5050\n"
                              "example: pv://localhost:5050/maskname\n"
