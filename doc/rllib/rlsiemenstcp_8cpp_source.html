@@ -279,9 +279,9 @@
 <a name="l00239"></a>00239       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span>
 <a name="l00240"></a>00240       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span>
 <a name="l00241"></a>00241       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span>
-<a name="l00242"></a>00242       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr/256)    &amp; 0x0ff; <span class="comment">//0x00;  // [11] start adr/bits</span>
-<a name="l00243"></a>00243       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-<a name="l00244"></a>00244       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)      &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
+<a name="l00242"></a>00242       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x010000) &amp; 0x0ff; <span class="comment">//0x00;  // [11] start adr/bits</span>
+<a name="l00243"></a>00243       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100)   &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+<a name="l00244"></a>00244       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)           &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
 <a name="l00245"></a>00245       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;
 <a name="l00246"></a>00246       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x04;
 <a name="l00247"></a>00247       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;
@@ -346,9 +346,9 @@
 <a name="l00306"></a>00306     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span>
 <a name="l00307"></a>00307     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span>
 <a name="l00308"></a>00308     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span>
-<a name="l00309"></a>00309     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr / 8)  / 0x10000;
-<a name="l00310"></a>00310     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = (start_adr / 256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-<a name="l00311"></a>00311     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr + j)  &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
+<a name="l00309"></a>00309     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr / 8)/0x010000)  &amp; 0x0ff;
+<a name="l00310"></a>00310     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr / 0x0100)       &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+<a name="l00311"></a>00311     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr + j)            &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
 <a name="l00312"></a>00312   }
 <a name="l00313"></a>00313   <span class="keywordflow">for</span>(j=0; j&lt;len; j++)
 <a name="l00314"></a>00314   {
@@ -379,9 +379,9 @@
 <a name="l00339"></a>00339   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span>
 <a name="l00340"></a>00340   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span>
 <a name="l00341"></a>00341   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span>
-<a name="l00342"></a>00342   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =      start_adr      / 0x10000;
-<a name="l00343"></a>00343   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-<a name="l00344"></a>00344   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =   (start_adr*8)     &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
+<a name="l00342"></a>00342   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =     start_adr/0x10000  &amp; 0x0ff;
+<a name="l00343"></a>00343   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+<a name="l00344"></a>00344   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)         &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
 <a name="l00345"></a>00345   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;
 <a name="l00346"></a>00346   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x04;
 <a name="l00347"></a>00347   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = (len * 8) / 256;
@@ -474,11 +474,11 @@
 <a name="l00434"></a>00434     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;                  <span class="comment">//0x00;  // [8]  dbnum</span>
 <a name="l00435"></a>00435     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;                <span class="comment">//0x01;  // [9]  dbnum</span>
 <a name="l00436"></a>00436     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);                 <span class="comment">//10 </span>
-<a name="l00437"></a>00437     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i] =  (start_adr/256) &amp; 0x0ff;      <span class="comment">//0x00;  // [11] start adr/bits</span>
+<a name="l00437"></a>00437     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i]   = ((start_adr*8)/0x010000) &amp; 0x0ff; <span class="comment">//0x00;  // [11] start adr/bits</span>
 <a name="l00438"></a>00438     <span class="keywordflow">if</span> (<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>) <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i] = start_adr / 0x10000;
 <a name="l00439"></a>00439     i++;
-<a name="l00440"></a>00440     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-<a name="l00441"></a>00441     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)      &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
+<a name="l00440"></a>00440     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100)   &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+<a name="l00441"></a>00441     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)           &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
 <a name="l00442"></a>00442     ret = <a class="code" href="classrlSiemensTCP.html#a5f09e6c3ef726892e398b96a292c733a">write_iso</a>(<a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>,i);
 <a name="l00443"></a>00443     <span class="keywordflow">if</span>(ret &lt; 0)
 <a name="l00444"></a>00444     {

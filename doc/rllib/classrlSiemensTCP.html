@@ -529,11 +529,11 @@ class for communication with Siemens PLC's via TCP
     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;                  <span class="comment">//0x00;  // [8]  dbnum</span>
     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;                <span class="comment">//0x01;  // [9]  dbnum</span>
     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);                 <span class="comment">//10 </span>
-    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i] =  (start_adr/256) &amp; 0x0ff;      <span class="comment">//0x00;  // [11] start adr/bits</span>
+    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i]   = ((start_adr*8)/0x010000) &amp; 0x0ff; <span class="comment">//0x00;  // [11] start adr/bits</span>
     <span class="keywordflow">if</span> (<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>) <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i] = start_adr / 0x10000;
     i++;
-    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)      &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
+    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100)   &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)           &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
     ret = <a class="code" href="classrlSiemensTCP.html#a5f09e6c3ef726892e398b96a292c733a">write_iso</a>(<a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>,i);
     <span class="keywordflow">if</span>(ret &lt; 0)
     {
@@ -814,9 +814,9 @@ class for communication with Siemens PLC's via TCP
       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span>
       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span>
       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span>
-      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr/256)    &amp; 0x0ff; <span class="comment">//0x00;  // [11] start adr/bits</span>
-      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)      &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
+      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x010000) &amp; 0x0ff; <span class="comment">//0x00;  // [11] start adr/bits</span>
+      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100)   &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)           &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits</span>
       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;
       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x04;
       <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;
@@ -932,9 +932,9 @@ class for communication with Siemens PLC's via TCP
     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span>
     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span>
     <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span>
-    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr / 8)  / 0x10000;
-    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = (start_adr / 256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr + j)  &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
+    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr / 8)/0x010000)  &amp; 0x0ff;
+    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr / 0x0100)       &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr + j)            &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
   }
   <span class="keywordflow">for</span>(j=0; j&lt;len; j++)
   {
@@ -1016,9 +1016,9 @@ class for communication with Siemens PLC's via TCP
   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span>
   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span>
   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span>
-  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =      start_adr      / 0x10000;
-  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/256) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
-  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =   (start_adr*8)     &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
+  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =     start_adr/0x10000  &amp; 0x0ff;
+  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span>
+  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)         &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span>
   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;
   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x04;
   <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = (len * 8) / 256;

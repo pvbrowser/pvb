@@ -239,9 +239,9 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
       pdu[i++] = dbnr / 256;       //8 0x00;
       pdu[i++] = dbnr & 0x0ff;     //9 0x00;
       pdu[i++] = getOrg(org);      //10 
-      pdu[i++] =  (start_adr/256)    & 0x0ff; //0x00;  // [11] start adr/bits
-      pdu[i++] = ((start_adr*8)/256) & 0x0ff; //0x00;  // [12] start adr/bits
-      pdu[i++] =  (start_adr*8)      & 0x0ff; //0x00;  // [13] start adr/bits
+      pdu[i++] = ((start_adr*8)/0x010000) & 0x0ff; //0x00;  // [11] start adr/bits
+      pdu[i++] = ((start_adr*8)/0x0100)   & 0x0ff; //0x00;  // [12] start adr/bits
+      pdu[i++] =  (start_adr*8)           & 0x0ff; //0x00;  // [13] start adr/bits
       pdu[i++] = 0x00;
       pdu[i++] = 0x04;
       pdu[i++] = 0x00;
@@ -306,9 +306,9 @@ int rlSiemensTCP::write_bit(int& i, int org, int dbnr, int start_adr, int len, c
     pdu[i++] = dbnr / 256;       //8 0x00;
     pdu[i++] = dbnr & 0x0ff;     //9 0x00;
     pdu[i++] = getOrg(org);      //10 
-    pdu[i++] =  (start_adr / 8)  / 0x10000;
-    pdu[i++] = (start_adr / 256) & 0x0ff; //0x00;  // [12] start adr/bits
-    pdu[i++] =  (start_adr + j)  & 0x0ff; //0x00;  // [13] start adr/bits     
+    pdu[i++] = ((start_adr / 8)/0x010000)  & 0x0ff;
+    pdu[i++] =  (start_adr / 0x0100)       & 0x0ff; //0x00;  // [12] start adr/bits
+    pdu[i++] =  (start_adr + j)            & 0x0ff; //0x00;  // [13] start adr/bits     
   }
   for(j=0; j<len; j++)
   {
@@ -339,9 +339,9 @@ int rlSiemensTCP::write_byte(int& i, int org, int dbnr, int start_adr, int len, 
   pdu[i++] = dbnr / 256;       //8 0x00;
   pdu[i++] = dbnr & 0x0ff;     //9 0x00;
   pdu[i++] = getOrg(org);      //10 
-  pdu[i++] =      start_adr      / 0x10000;
-  pdu[i++] = ((start_adr*8)/256) & 0x0ff; //0x00;  // [12] start adr/bits
-  pdu[i++] =   (start_adr*8)     & 0x0ff; //0x00;  // [13] start adr/bits     
+  pdu[i++] =     start_adr/0x10000  & 0x0ff;
+  pdu[i++] = ((start_adr*8)/0x0100) & 0x0ff; //0x00;  // [12] start adr/bits
+  pdu[i++] =  (start_adr*8)         & 0x0ff; //0x00;  // [13] start adr/bits     
   pdu[i++] = 0x00;
   pdu[i++] = 0x04;
   pdu[i++] = (len * 8) / 256;
@@ -434,11 +434,11 @@ int rlSiemensTCP::fetch(int org, int dbnr, int start_adr, int len, unsigned char
     pdu[i++] = dbnr / 256;                  //0x00;  // [8]  dbnum
     pdu[i++] = dbnr & 0x0ff;                //0x01;  // [9]  dbnum
     pdu[i++] = getOrg(org);                 //10 
-    pdu[i] =  (start_adr/256) & 0x0ff;      //0x00;  // [11] start adr/bits
+    pdu[i]   = ((start_adr*8)/0x010000) & 0x0ff; //0x00;  // [11] start adr/bits
     if (plc_type == S7_200) pdu[i] = start_adr / 0x10000;
     i++;
-    pdu[i++] = ((start_adr*8)/256) & 0x0ff; //0x00;  // [12] start adr/bits
-    pdu[i++] =  (start_adr*8)      & 0x0ff; //0x00;  // [13] start adr/bits
+    pdu[i++] = ((start_adr*8)/0x0100)   & 0x0ff; //0x00;  // [12] start adr/bits
+    pdu[i++] =  (start_adr*8)           & 0x0ff; //0x00;  // [13] start adr/bits
     ret = write_iso(pdu,i);
     if(ret < 0)
     {
