@@ -94,7 +94,7 @@ PVB_IMAGE *pvbImageRead(const char *filename)
   PVB_IMAGE *image;
   myBITMAPFILEHEADER fileheader;
   myBITMAPINFOHEADER infoheader;
-  int i, isize, ioffset, ret;
+  int i, ioffset, ret; // isize
   LUT *rgb;
   char *cptr;
 
@@ -106,7 +106,7 @@ PVB_IMAGE *pvbImageRead(const char *filename)
   ret = pvmyread(fhdl,(char *) &fileheader,sizeof(myBITMAPFILEHEADER));
   if(ret < 0)                                               return NULL;
   if(memcmp(&fileheader.bfType,"BM",2) != 0) { close(fhdl); return NULL; }
-  isize   = 256*256*swap_short(fileheader.bfSize[1])    + swap_short(fileheader.bfSize[0]);
+  //isize   = 256*256*swap_short(fileheader.bfSize[1])    + swap_short(fileheader.bfSize[0]);
   ioffset = 256*256*swap_short(fileheader.bfOffBits[1]) + swap_short(fileheader.bfOffBits[0]);
 
   /* read infoheader */

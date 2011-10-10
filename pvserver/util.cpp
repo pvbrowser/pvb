@@ -7162,11 +7162,11 @@ int pvWidgetIdManager::isInMap(const char *name)
 {
   if(name == NULL) return 0;
   int old_size = id_list.size();
-  int id = id_list[name];
+  //int id = id_list[name];
   int new_size = id_list.size();
   if(old_size != new_size)
   {
-    id = 0;
+    //id = 0;
     id_list.erase(name);
     return 0;
   }
