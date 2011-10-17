@@ -5157,7 +5157,27 @@ void Interpreter::interpretz(const char *command)
           y = (all[i]->y      * percent) / 100;
           w = (all[i]->width  * percent) / 100;
           h = (all[i]->height * percent) / 100;
-          all[i]->w->setGeometry(x,y,w,h);
+          if(all[i]->type == TQImage)
+          {
+            QImageWidget *iw = (QImageWidget *) all[i]->w;
+            if(iw != NULL) iw->setGeometry(x,y,w,h);
+          }
+          else if(all[i]->type == TQDraw)
+          {
+            QDrawWidget *iw = (QDrawWidget *) all[i]->w;
+            iw->setGeometry(x,y,w,h);
+            iw->resize(w,h);
+            if(percent != 100)
+            {
+              float fzoom = ((float)percent)/100.0f;
+              iw->setZoomX(fzoom);
+              iw->setZoomY(fzoom);
+            }
+          }
+          else
+          {
+            all[i]->w->setGeometry(x,y,w,h);
+          }  
         }
       }
     }
