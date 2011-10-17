@@ -2088,6 +2088,16 @@ char buf[MAX_PRINTF_LENGTH];
   return 0;
 }
 
+int pvZoomMask(PARAM *p, int percent)
+{
+char buf[80];
+
+  if(percent <= 0) return -1;
+  sprintf(buf,"zoomMask(%d)\n",percent);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)
 {
 char text[MAX_PRINTF_LENGTH+40],*cptr;

@@ -72,6 +72,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga4cf6c6a3745f02a74c7b4648d8511a12">pvSetWhatsThis</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *text)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06">pvWhatsThisPrintf</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int id, const char *format,...)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga42e02e6a01a7c010d2759ea2ca91f9f0">pvClientCommand</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, const char *command, const char *filename)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf">pvZoomMask</a> (<a class="el" href="struct__PARAM__.html">PARAM</a> *p, int percent)</td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <p>These routines are used for initialisation. And also some global usable routines are available. </p>
@@ -1044,6 +1045,36 @@ Allowed Widgets: all Widgets
 <div class="memdoc">
 <pre>
 Allocate x,y array for script language
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga407ed489b344f88f1a83cb6ad055bacf"></a><!-- doxytag: member="processviewserver.h::pvZoomMask" ref="ga407ed489b344f88f1a83cb6ad055bacf" args="(PARAM *p, int percent)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvZoomMask </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct__PARAM__.html">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>percent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Zoom the whole mask.
+Zoom factor in percent.
 </pre> 
 </div>
 </div>

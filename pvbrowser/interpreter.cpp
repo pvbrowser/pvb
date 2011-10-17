@@ -633,6 +633,9 @@ void Interpreter::interpret(const char *command)
     case 'q':
       interpretq(command);
       break;
+    case 'z':
+      interpretz(command);
+      break;
     case 'Q':
       interpretQ(command);
       break;
@@ -1661,6 +1664,11 @@ void Interpreter::interpretm(const char *command)
       return;
     }        
     if(i >= nmax) return;
+    if(all[i]->w != NULL)
+    { // remember original geometry
+      all[i]->x = x;
+      all[i]->y = y;
+    }      
     if(all[i]->w != NULL) all[i]->w->move(x,y);
   }
   else if(strncmp(command,"messageBox(",11) == 0) // open a messageBox()
@@ -2045,6 +2053,11 @@ void Interpreter::interpretr(const char *command)
       return;
     }  
     if(i >= nmax) return;
+    if(all[i]->w != NULL)
+    { // remember original geometry
+      all[i]->width  = w;
+      all[i]->height = h;
+    }      
     if(all[i]->type == TQDraw)
     {
       QDrawWidget *iw = (QDrawWidget *) all[i]->w;
@@ -2589,6 +2602,13 @@ void Interpreter::interprets(const char *command)
             return;
           }  
           if(i >= nmax) return;
+          if(all[i]->w != NULL)
+          { // remember original geometry
+            all[i]->x      = x;
+            all[i]->y      = y;
+            all[i]->width  = w;
+            all[i]->height = h;
+          }  
           if(all[i]->type == TQImage)
           {
             QImageWidget *iw = (QImageWidget *) all[i]->w;
@@ -4013,7 +4033,11 @@ void Interpreter::interprets(const char *command)
     if(ptr==NULL) qFatal("out of memory -> exit");
     all = (ALL **) ptr;
     ptr += n*sizeof(ptr);
-    for(i=0; i<n; i++) all[i] = (ALL *) (ptr + i*sizeof(ALL));
+    for(i=0; i<n; i++) 
+    {
+      all[i] = (ALL *) (ptr + i*sizeof(ALL));
+      all[i]->x = all[i]->y = all[i]->width = all[i]->height = -1;
+    }  
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("startDefinition all[0]->w = v;\n");
@@ -5116,6 +5140,30 @@ void Interpreter::interpretq(const char *command)
 #endif //#ifndef NO_QWT
 }
 
+void Interpreter::interpretz(const char *command)
+{
+  if(command == NULL) return; // damn compiler warnings
+  if(strncmp(command,"zoomMask(",9) == 0)
+  {
+    int x,y,w,h,percent;
+    sscanf(command,"zoomMask(%d", &percent);
+    for(int i=0; i<nmax; i++)
+    {
+      if(all[i]->w != NULL)
+      {
+        if(all[i]->x >= 0 && all[i]->y >= 0 && all[i]->width >= 0 && all[i]->height >= 0)
+        {
+          x = (all[i]->x      * percent) / 100;
+          y = (all[i]->y      * percent) / 100;
+          w = (all[i]->width  * percent) / 100;
+          h = (all[i]->height * percent) / 100;
+          all[i]->w->setGeometry(x,y,w,h);
+        }
+      }
+    }
+  }
+}
+
 void Interpreter::interpretQ(const char *command)
 {
   if(strncmp(command,"QWidget(",8) == 0) // create a new QWidget
@@ -5737,7 +5785,11 @@ void Interpreter::showMyBrowser(const char *url)
     if(ptr==NULL) qFatal("out of memory -> exit");
     all = (ALL **) ptr;
     ptr += n*sizeof(ptr);
-    for(i=0; i<n; i++) all[i] = (ALL *) (ptr + i*sizeof(ALL));
+    for(i=0; i<n; i++)
+    {
+      all[i] = (ALL *) (ptr + i*sizeof(ALL));
+      all[i]->x = all[i]->y = all[i]->width = all[i]->height = -1;
+    }
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("startDefinition all[0]->w = v;\n");

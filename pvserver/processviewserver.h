@@ -869,6 +869,11 @@ command := pdf | img | svg | txt | csv | html | audio | video
 See view.pdf, view.img, view.svg ... within pvbrowser options.
 </pre> */
 int pvClientCommand(PARAM *p, const char *command, const char *filename);
+/*! <pre>
+Zoom the whole mask.
+Zoom factor in percent.
+</pre> */
+int pvZoomMask(PARAM *p, int percent);
 /** @} */ // end of group
 
 /** @defgroup Contruction Construction

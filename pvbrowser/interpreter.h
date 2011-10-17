@@ -83,6 +83,7 @@ typedef struct
 {
   QWidget *w;
   int     type;
+  int     x,y,width,height;
 }ALL;
 
 class MainWindow;
@@ -128,6 +129,7 @@ class Interpreter
     void interprett(const char *command);
     void interpretv(const char *command);
     void interpretq(const char *command);
+    void interpretz(const char *command);
     void interpretQ(const char *command);
     int  get_text(const char *c, QString &t);
     void addPopupMenuAction(QMenu *m, const char *cmd);
