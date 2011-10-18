@@ -80,6 +80,7 @@ Interpreter::Interpreter()
   allBase = allModal = 0;
   modalDialog = NULL;
   mainWidget = NULL;
+  percentZoomMask = 100;
 
 #ifdef USE_OPEN_GL
   //QGLWidget gl;
@@ -4020,6 +4021,7 @@ void Interpreter::interprets(const char *command)
     char *ptr;
     mainLayout = NULL;
     hasLayout = 0;
+    percentZoomMask = 100;
     if(opt.arg_debug) printf("startDefinition command=%s",command);
     sscanf(command,"startDefinition(%d)",&n);
     if(allBase == NULL)
@@ -5140,47 +5142,54 @@ void Interpreter::interpretq(const char *command)
 #endif //#ifndef NO_QWT
 }
 
+void Interpreter::zoomMask(int percent)
+{
+  int x,y,w,h;
+  percentZoomMask = percent;
+  for(int i=0; i<nmax; i++)
+  {
+    if(all[i]->w != NULL)
+    {
+      if(all[i]->x >= 0 && all[i]->y >= 0 && all[i]->width >= 0 && all[i]->height >= 0)
+      {
+        x = (all[i]->x      * percent) / 100;
+        y = (all[i]->y      * percent) / 100;
+        w = (all[i]->width  * percent) / 100;
+        h = (all[i]->height * percent) / 100;
+        if(all[i]->type == TQImage)
+        {
+          QImageWidget *iw = (QImageWidget *) all[i]->w;
+          if(iw != NULL) iw->setGeometry(x,y,w,h);
+        }
+        else if(all[i]->type == TQDraw)
+        {
+          QDrawWidget *iw = (QDrawWidget *) all[i]->w;
+          iw->setGeometry(x,y,w,h);
+          iw->resize(w,h);
+          if(percent != 100)
+          {
+            float fzoom = ((float)percent)/100.0f;
+            iw->setZoomX(fzoom);
+            iw->setZoomY(fzoom);
+          }
+        }
+        else
+        {
+          all[i]->w->setGeometry(x,y,w,h);
+        }  
+      }
+    }
+  }
+}
+
 void Interpreter::interpretz(const char *command)
 {
   if(command == NULL) return; // damn compiler warnings
   if(strncmp(command,"zoomMask(",9) == 0)
   {
-    int x,y,w,h,percent;
+    int percent;
     sscanf(command,"zoomMask(%d", &percent);
-    for(int i=0; i<nmax; i++)
-    {
-      if(all[i]->w != NULL)
-      {
-        if(all[i]->x >= 0 && all[i]->y >= 0 && all[i]->width >= 0 && all[i]->height >= 0)
-        {
-          x = (all[i]->x      * percent) / 100;
-          y = (all[i]->y      * percent) / 100;
-          w = (all[i]->width  * percent) / 100;
-          h = (all[i]->height * percent) / 100;
-          if(all[i]->type == TQImage)
-          {
-            QImageWidget *iw = (QImageWidget *) all[i]->w;
-            if(iw != NULL) iw->setGeometry(x,y,w,h);
-          }
-          else if(all[i]->type == TQDraw)
-          {
-            QDrawWidget *iw = (QDrawWidget *) all[i]->w;
-            iw->setGeometry(x,y,w,h);
-            iw->resize(w,h);
-            if(percent != 100)
-            {
-              float fzoom = ((float)percent)/100.0f;
-              iw->setZoomX(fzoom);
-              iw->setZoomY(fzoom);
-            }
-          }
-          else
-          {
-            all[i]->w->setGeometry(x,y,w,h);
-          }  
-        }
-      }
-    }
+    zoomMask(percent);
   }
 }
 

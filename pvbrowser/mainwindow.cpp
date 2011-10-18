@@ -73,6 +73,40 @@ extern QString l_status_about;
 
 extern QString l_print_header;
 
+MyScrollArea::MyScrollArea(QWidget *parent)
+             :QScrollArea(parent)
+{
+  mw = (MainWindow *) parent;
+}
+
+MyScrollArea::~MyScrollArea()
+{
+}
+
+void MyScrollArea::wheelEvent(QWheelEvent *event)
+{
+  if(event->modifiers() == Qt::ControlModifier)
+  {
+    int percent;
+    if(event->delta() > 0) 
+    {
+      percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask + 5; 
+      if(percent > 250) percent = 250;
+    }  
+    else
+    {
+      percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask - 5;
+      if(percent < 10) percent = 10;
+    }  
+    mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);
+    event->accept();
+  }
+  else
+  {
+    QScrollArea::wheelEvent(event);;
+  }  
+}
+
 void MyThread::run()
 {
   struct timeval timout;
@@ -245,6 +279,7 @@ MainWindow::MainWindow()
 //QMessageBox::information(this,"pvbrowser","step begin",1);
 //  textbrowser = new dlgTextBrowser;
 //QMessageBox::information(this,"pvbrowser","step end",1);
+  setFocus(Qt::MouseFocusReason);
 }
 
 MainWindow::~MainWindow()
@@ -574,7 +609,7 @@ void MainWindow::createToolBars()
     pvbtab[i].rootWidget   = new MyQWidget(&pvbtab[i].s,0,NULL);
   }
   pvbtab[0].in_use = 1;
-  scroll = new QScrollArea();
+  scroll = new MyScrollArea(this);
   setCentralWidget(scroll);
   if(opt.tabs_above_toolbar)
   {

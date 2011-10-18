@@ -106,8 +106,10 @@ class Interpreter
     void perhapsCloseModalDialog();
     int  width();
     int  height();
+    void zoomMask(int percent);
     QString temp;
     int  hasLayout;
+    int  percentZoomMask;
 
 //protected:
 //    bool eventFilter( QObject *o, QEvent *e );

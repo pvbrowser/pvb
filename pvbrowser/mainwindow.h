@@ -40,6 +40,19 @@ class MainWindow;
 class MyQWidget;
 #include "dlgtextbrowser.h"
 
+class MainWindow;
+
+class MyScrollArea : public QScrollArea
+{
+  Q_OBJECT
+  public:
+    MyScrollArea(QWidget *parent=0);
+    ~MyScrollArea();
+    void wheelEvent(QWheelEvent *event);
+  private:
+    MainWindow *mw;
+};            
+
 class MyThread : public QThread
 {
   Q_OBJECT
@@ -85,7 +98,7 @@ public:
   QSemaphore semaphore;
   void setCurrentFile(const QString &fileName);
   void setTabText(const char *text);
-  QScrollArea *scroll;
+  MyScrollArea *scroll;
   QString curFile;
   QToolBar *fileToolBar;
   QToolBar *tabToolBar;
