@@ -31,6 +31,7 @@ QImageWidget::QImageWidget(int *sock, int ident, QWidget *parent, const char *na
              : QWidget(parent)
 {
   image = QImage(); // construct a null image
+  original_image = QImage();
   xx = yy = w = h = 0;
   s = sock;
   id = ident;
@@ -60,6 +61,7 @@ void QImageWidget::setImage(const QImage *newimage)
   perhapsSetMask();
   w = image.width();
   h = image.height();
+  original_image = image.copy();
 }
 
 void QImageWidget::paintEvent( QPaintEvent *e )
@@ -125,6 +127,7 @@ void QImageWidget::setGeometry(int nx, int ny, int nw, int nh)
   h  = nh;
   //move(xx,yy);
   //resize(w,h);
+  image = original_image.copy();
   QWidget::setGeometry(xx,yy,w,h);
   if(w > 0 && h > 0 && ( w < image.width() || h < image.height() ) )
   {
@@ -180,6 +183,7 @@ void QImageWidget::setImage(const char *filename)
     }
   }
   perhapsSetMask();
+  original_image = image.copy();
   repaint();
 }
 

@@ -34,6 +34,7 @@ public:
     void            setImage(const QImage *newimage);
     void            setImage(const char *filename);
     QImage          image; // the loaded image
+    QImage          original_image; // the original loaded image
 
 protected:
     virtual void paintEvent(QPaintEvent *);
