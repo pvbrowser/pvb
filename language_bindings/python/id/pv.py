@@ -924,6 +924,10 @@ def pvClientCommand(*args):
   return _pv.pvClientCommand(*args)
 pvClientCommand = _pv.pvClientCommand
 
+def pvZoomMask(*args):
+  return _pv.pvZoomMask(*args)
+pvZoomMask = _pv.pvZoomMask
+
 def pvStartDefinition(*args):
   return _pv.pvStartDefinition(*args)
 pvStartDefinition = _pv.pvStartDefinition

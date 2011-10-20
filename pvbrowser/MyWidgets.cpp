@@ -3404,6 +3404,10 @@ MyQDockWidget::MyQDockWidget(QString &title, int *sock, int ident, int dockID, Q
   id = ident;
   dock_id = dockID;
   w = h = 400;
+  x_original = 400;
+  y_original = 400;
+  w_original = 400;
+  h_original = 400;
   connect(this, SIGNAL(topLevelChanged(bool)), SLOT(slotTopLevelChanged(bool)));
   if(name != NULL) setObjectName(name);
 }

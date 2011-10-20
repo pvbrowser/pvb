@@ -8469,6 +8469,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvZoomMask(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvZoomMask",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvZoomMask" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvZoomMask" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)pvZoomMask(arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvStartDefinition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -35784,6 +35815,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSetWhatsThis", _wrap_pvSetWhatsThis, METH_VARARGS, NULL},
 	 { (char *)"pvWhatsThisPrintf", _wrap_pvWhatsThisPrintf, METH_VARARGS, NULL},
 	 { (char *)"pvClientCommand", _wrap_pvClientCommand, METH_VARARGS, NULL},
+	 { (char *)"pvZoomMask", _wrap_pvZoomMask, METH_VARARGS, NULL},
 	 { (char *)"pvStartDefinition", _wrap_pvStartDefinition, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutVbox", _wrap_pvQLayoutVbox, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutHbox", _wrap_pvQLayoutHbox, METH_VARARGS, NULL},

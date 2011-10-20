@@ -1652,6 +1652,12 @@ void Interpreter::interpretm(const char *command)
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {
         MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock]; 
+        if(dock == NULL) return;
+        // remember original geometry
+        dock->x_original = x;
+        dock->y_original = y;
+        x = (x*percentZoomMask)/100;
+        y = (y*percentZoomMask)/100;
         x += mainWindow->x();
         y += mainWindow->y();
         QWidget *cw = mainWindow->centralWidget();
@@ -1669,6 +1675,8 @@ void Interpreter::interpretm(const char *command)
     { // remember original geometry
       all[i]->x = x;
       all[i]->y = y;
+      x = (x*percentZoomMask)/100;
+      y = (y*percentZoomMask)/100;
     }      
     if(all[i]->w != NULL) all[i]->w->move(x,y);
   }
@@ -2046,6 +2054,11 @@ void Interpreter::interpretr(const char *command)
         MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock]; 
         if(dock != NULL) 
         {
+          // remember original geometry
+          dock->w_original = w;
+          dock->h_original = h;
+          w = (w*percentZoomMask)/100;
+          h = (h*percentZoomMask)/100;
           dock->w = w;
           dock->h = h;
           dock->resize(w,h);
@@ -2058,6 +2071,8 @@ void Interpreter::interpretr(const char *command)
     { // remember original geometry
       all[i]->width  = w;
       all[i]->height = h;
+      w = (w*percentZoomMask)/100;
+      h = (h*percentZoomMask)/100;
     }      
     if(all[i]->type == TQDraw)
     {
@@ -2585,6 +2600,16 @@ void Interpreter::interprets(const char *command)
             if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
             {
               MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock]; 
+              if(dock == NULL) return;
+              // remember original geometry
+              dock->x_original = x;
+              dock->y_original = y;
+              dock->w_original = w;
+              dock->h_original = h;
+              x = (x*percentZoomMask)/100;
+              y = (y*percentZoomMask)/100;
+              w = (w*percentZoomMask)/100;
+              h = (h*percentZoomMask)/100;
               x += mainWindow->x();
               y += mainWindow->y();
               QWidget *cw = mainWindow->centralWidget();
@@ -2609,6 +2634,10 @@ void Interpreter::interprets(const char *command)
             all[i]->y      = y;
             all[i]->width  = w;
             all[i]->height = h;
+            x = (x*percentZoomMask)/100;
+            y = (y*percentZoomMask)/100;
+            w = (w*percentZoomMask)/100;
+            h = (h*percentZoomMask)/100;
           }  
           if(all[i]->type == TQImage)
           {

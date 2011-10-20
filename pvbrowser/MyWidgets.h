@@ -595,6 +595,7 @@ public:
     MyQDockWidget(QString &title, int *sock, int ident, int dock_id, QWidget *parent=0, const char *name=0);
     ~MyQDockWidget();
     int w, h;
+    int x_original, y_original, w_original, h_original;
 
 public slots:
    void slotTopLevelChanged(bool toplevel);
