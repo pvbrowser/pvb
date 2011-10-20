@@ -5173,9 +5173,9 @@ void Interpreter::interpretq(const char *command)
 
 void Interpreter::zoomMask(int percent)
 {
-  int x,y,w,h;
+  int i,x,y,w,h;
   percentZoomMask = percent;
-  for(int i=0; i<nmax; i++)
+  for(i=0; i<nmax; i++)
   {
     if(all[i]->w != NULL)
     {
@@ -5207,6 +5207,18 @@ void Interpreter::zoomMask(int percent)
           all[i]->w->setGeometry(x,y,w,h);
         }  
       }
+    }
+  }
+  for(i=0; i<MAX_DOCK_WIDGETS; i++)
+  {
+    MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[i];
+    if(dock != NULL)
+    {
+      x = (dock->x_original * percent) / 100;
+      y = (dock->y_original * percent) / 100;
+      w = (dock->w_original * percent) / 100;
+      h = (dock->h_original * percent) / 100;
+      dock->setGeometry(x,y,w,h);
     }
   }
 }
