@@ -77,11 +77,55 @@ MyScrollArea::MyScrollArea(QWidget *parent)
              :QScrollArea(parent)
 {
   mw = (MainWindow *) parent;
+  //grabGesture(Qt::TapGesture,        Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::TapAndHoldGesture, Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::PanGesture,        Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::PinchGesture,      Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::SwipeGesture,      Qt::DontStartGestureOnChildren);
 }
 
 MyScrollArea::~MyScrollArea()
 {
 }
+
+/*
+bool MyScrollArea::event(QEvent *event)
+{
+  if(event->type() == QEvent::Gesture)
+  {
+    char buf[MAX_PRINTF_LENGTH];
+    QGestureEvent *ge = static_cast<QGestureEvent*>(event);
+    if     (ge->gesture(Qt::TapGesture))
+    {
+      sprintf(buf,"text(0,\"Gesture=TapGesture\")\n");
+    }
+    else if(ge->gesture(Qt::TapAndHoldGesture))
+    {
+      sprintf(buf,"text(0,\"Gesture=TapAndHoldGesture\")\n");
+    }
+    else if(ge->gesture(Qt::PanGesture))
+    {
+      sprintf(buf,"text(0,\"Gesture=PanGesture\")\n");
+    }
+    else if(ge->gesture(Qt::PinchGesture))
+    {
+      sprintf(buf,"text(0,\"Gesture=PinchGesture\")\n");
+    }
+    else if(ge->gesture(Qt::SwipeGesture))
+    {
+      sprintf(buf,"text(0,\"Gesture=SwipeGesture\")\n");
+    }
+    else
+    {
+      sprintf(buf,"text(0,\"Gesture=unknown\")\n");
+    }
+    //int *s = mw->pvbtab[mw->currentTab].interpreter.s;
+    //tcp_send(s,buf,strlen(buf));
+    return true;
+  }             
+  return QWidget::event(event);
+}
+*/
 
 void MyScrollArea::wheelEvent(QWheelEvent *event)
 {

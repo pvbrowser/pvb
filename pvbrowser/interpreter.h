@@ -84,6 +84,7 @@ typedef struct
   QWidget *w;
   int     type;
   int     x,y,width,height;
+  int     fontsize;
 }ALL;
 
 class MainWindow;

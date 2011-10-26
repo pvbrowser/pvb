@@ -2533,6 +2533,7 @@ void Interpreter::interprets(const char *command)
           {
             pointsize = (pointsize*zoom*opt.fontzoom)/(100*100);
           }
+          all[i]->fontsize = pointsize; // remember original fontsize
           QFont font(text);
           font.setPointSize(pointsize);
           if(bold      == 0) font.setBold(false);
@@ -4068,6 +4069,7 @@ void Interpreter::interprets(const char *command)
     {
       all[i] = (ALL *) (ptr + i*sizeof(ALL));
       all[i]->x = all[i]->y = all[i]->width = all[i]->height = -1;
+      all[i]->fontsize = -1;
     }  
     if(allBase == NULL)
     {
@@ -5174,11 +5176,14 @@ void Interpreter::interpretq(const char *command)
 void Interpreter::zoomMask(int percent)
 {
   int i,x,y,w,h;
+  QFont f;
+
   percentZoomMask = percent;
   for(i=0; i<nmax; i++)
   {
     if(all[i]->w != NULL)
     {
+      // setGeometry
       if(all[i]->x >= 0 && all[i]->y >= 0 && all[i]->width >= 0 && all[i]->height >= 0)
       {
         x = (all[i]->x      * percent) / 100;
@@ -5207,6 +5212,214 @@ void Interpreter::zoomMask(int percent)
           all[i]->w->setGeometry(x,y,w,h);
         }  
       }
+
+      // setFont
+      switch(all[i]->type)
+      {
+        //TQWidget = 0,
+        case TQPushButton:
+          {
+            QPushButton *wi = (QPushButton *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQLabel:
+          {
+            QLabel *wi = (QLabel *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQLineEdit:
+          {
+            QLineEdit *wi = (QLineEdit *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQComboBox:
+          {
+            QComboBox *wi = (QComboBox *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        //TQLCDNumber,
+        //TQButtonGroup,
+        case TQRadio:
+          {
+            QRadioButton *wi = (QRadioButton *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQCheck:
+          {
+            QCheckBox *wi = (QCheckBox *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        //TQSlider,
+        //TQFrame,
+        //TQImage,
+        //TQDraw,
+        //TQGl,
+        case TQTabWidget:
+          {
+            QTabWidget *wi = (QTabWidget *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQGroupBox:
+          {
+            QGroupBox *wi = (QGroupBox *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQListBox:
+          {
+            QListWidget *wi = (QListWidget *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+/* does not look good
+        case TQTable:
+          {
+            QTableWidget *wi = (QTableWidget *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+*/          
+        case TQSpinBox:
+          {
+            QSpinBox *wi = (QSpinBox *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        //TQDial,
+        case TQProgressBar:
+          {
+            QProgressBar *wi = (QProgressBar *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQMultiLineEdit:
+          {
+            QTextEdit *wi = (QTextEdit *) all[i]->w;
+            f = wi->currentFont();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setCurrentFont(f);
+          }  
+          break;
+        //TQTextBrowser, not shure what todo best
+        case TQListView:
+          {
+            QTreeWidget *wi = (QTreeWidget *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQIconView:
+          {
+            QListWidget *wi = (QListWidget *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+/*        
+        //TQVtk,
+        //TQwtPlotWidget,
+        //TQwtScale,
+        //TQwtThermo,
+        //TQwtKnob,
+        //TQwtCounter,
+        //TQwtWheel,
+        //TQwtSlider,
+        //TQwtDial,
+        //TQwtCompass,
+        //TQwtAnalogClock,
+*/
+        case TQDateEdit:
+          {
+            QDateEdit *wi = (QDateEdit *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQTimeEdit:
+          {
+            QTimeEdit *wi = (QTimeEdit *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQDateTimeEdit:
+          {
+            QDateTimeEdit *wi = (QDateTimeEdit *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        case TQToolBox:
+          {
+            QToolBox *wi = (QToolBox *) all[i]->w;
+            f = wi->font();
+            if(all[i]->fontsize == -1) all[i]->fontsize = f.pointSize();
+            f.setPointSize((all[i]->fontsize * percentZoomMask)/100);
+            wi->setFont(f);
+          }  
+          break;
+        //TQVbox,
+        //TQHbox,
+        //TQGrid,
+        //case TQDock_Widget:
+        default:
+          break;
+      }
+
     }
   }
   for(i=0; i<MAX_DOCK_WIDGETS; i++)
@@ -5859,6 +6072,7 @@ void Interpreter::showMyBrowser(const char *url)
     {
       all[i] = (ALL *) (ptr + i*sizeof(ALL));
       all[i]->x = all[i]->y = all[i]->width = all[i]->height = -1;
+      all[i]->fontsize = -1;
     }
     if(allBase == NULL)
     {
