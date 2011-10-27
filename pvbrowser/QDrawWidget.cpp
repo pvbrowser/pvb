@@ -1319,15 +1319,16 @@ int pvSvgAnimator::read()
 int pvSvgAnimator::update(int on_printer)
 {
   //char buf[MAXARRAY+1];
+  QString qbuf;
   char *buf;
-  int foundw,foundh;
+  int foundw,foundh,found_open_tag;
   QByteArray stream;
   SVG_LINE *current_line = first;
   if(first == NULL) return -1;
 
   if(opt.arg_debug) printf("animatorUpdate\n");
   if(s == NULL) return -1;
-  foundw = foundh = 0;
+  foundw = foundh = found_open_tag = 0;
   //printf("update start\n");
   for(int i=0; i<num_lines; i++)
   {
@@ -1335,33 +1336,61 @@ int pvSvgAnimator::update(int on_printer)
     if(comment[i] == ' ' && current_line->line != NULL)
     {
       buf = new char [strlen(current_line->line) + 4];
-      //if(strlen(current_line->line) < (sizeof(buf) - 2))
-      //{
-        strcpy(buf,current_line->line);
-        if(foundw == 0 && strncmp(buf,"width",5) == 0)
+      strcpy(buf,current_line->line);
+      if(foundw == 0 && strncmp(buf,"width",5) == 0)
+      {
+        sprintf(buf,"width=\"%dpx\"\n",draw->width());
+        foundw = 1;
+      }
+      if(foundh == 0 && strncmp(buf,"height",6) == 0)
+      {
+        sprintf(buf,"height=\"%dpx\"\n",draw->height());
+        foundh = 1;
+      }
+      if(buf[0] != '\n')
+      {
+        // reassemble xml lines in order to avoid qt renderer problems with text position
+        if(buf[0] == '<' && buf[1] != '/')
         {
-          sprintf(buf,"width=\"%dpx\"\n",draw->width());
-          foundw = 1;
+          found_open_tag = 1;
+          qbuf = QString::fromUtf8(buf);
+          if(strchr(buf,'>') != NULL)
+          {
+            found_open_tag = 0;
+            if(opt.arg_debug)printf("append0: %s\n", (const char *) qbuf.toUtf8());
+            qbuf += "\n";
+            stream.append(qbuf.toUtf8());
+          }
+          else
+          {
+            qbuf += " ";
+          }
         }
-        if(foundh == 0 && strncmp(buf,"height",6) == 0)
+        else if(strchr(buf,'>') != NULL)
         {
-          sprintf(buf,"height=\"%dpx\"\n",draw->height());
-          foundh = 1;
+          if(found_open_tag == 1) qbuf += QString::fromUtf8(buf);
+          else                    qbuf  = QString::fromUtf8(buf);
+          found_open_tag = 0;
+          //qbuf += "\n"; do not do because of wrong text position offset 
+          if(opt.arg_debug)printf("append1: %s\n", (const char *) qbuf.toUtf8());
+          stream.append(qbuf.toUtf8());
         }
-        if(buf[0] != '\n')
+        else
         {
-          if(opt.arg_debug) printf("line=%s",buf);
-          if(strchr(buf,'\n') == NULL) strcat(buf,"\n");
-          if(opt.arg_debug) printf("end\n");
-          //stream.append(QString::fromUtf8(buf));
-          stream.append(buf);
-          //printf("%s", buf);
+          if(found_open_tag == 1)
+          {
+            qbuf += QString::fromUtf8(buf);
+            qbuf += " ";
+          }
+          else
+          {
+            strcat(buf,"\n");
+            stream.append(buf);
+            //stream.append(QString::fromUtf8(buf));
+            if(opt.arg_debug)printf("append2: %s\n", buf);
+          }
         }
-      //}
-      //else
-      //{
-      //  printf("WARNING: pvSvgAnimator::update buf too small\n");
-      //}
+      }
       delete [] buf;
     }
     current_line = current_line->next;
