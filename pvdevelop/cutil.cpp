@@ -324,7 +324,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"           mask1.cpp\n");
   fprintf(fout,"\n");
   fprintf(fout,"!macx {\n");
-  fprintf(fout,"unix:LIBS          += /usr/lib/libpvsmt.so -pthread\n");
+  fprintf(fout,"unix:LIBS          += /usr/lib/libpvsmt.so -lpthread\n");
   fprintf(fout,"#unix:LIBS         += /usr/lib/libpvsid.so\n");
   fprintf(fout,"unix:INCLUDEPATH   += /opt/pvb/pvserver\n");
   fprintf(fout,"#unix:LIBS         += /usr/lib/librllib.so\n");

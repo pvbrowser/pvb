@@ -74,8 +74,8 @@ void dlgDaemon::slotCompile()
       QMessageBox::information(this,"pvdevelop","libnodave is not available for OS-X",QMessageBox::Ok);
       //ret = system("xterm -e \"g++ ppidaemon.cpp /opt/pvb/rllib/nodave.o /opt/pvb/rllib/setport.o -o ppidaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
 #else
-      //ret = system("xterm -e \"g++ ppidaemon.cpp /opt/pvb/rllib/nodave.o /opt/pvb/rllib/setport.o -o ppidaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -pthread;echo compiler_finished;read\"");
-      ret = system("xterm -e \"g++ -c ppidaemon.cpp  -o ppidaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ ppidaemon.o /opt/pvb/rllib/lib/nodave.o /opt/pvb/rllib/lib/setport.o /usr/lib/librllib.so -pthread -o ppidaemon;echo compiler_finished;read\"");
+      //ret = system("xterm -e \"g++ ppidaemon.cpp /opt/pvb/rllib/nodave.o /opt/pvb/rllib/setport.o -o ppidaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -lpthread;echo compiler_finished;read\"");
+      ret = system("xterm -e \"g++ -c ppidaemon.cpp  -o ppidaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ ppidaemon.o /opt/pvb/rllib/lib/nodave.o /opt/pvb/rllib/lib/setport.o /usr/lib/librllib.so -lpthread -o ppidaemon;echo compiler_finished;read\"");
 #endif
 #else
       ret = system("start pvb_make_ppidaemon.bat");
@@ -86,8 +86,8 @@ void dlgDaemon::slotCompile()
 #ifdef PVMAC
       ret = system("xterm -e \"g++ siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
 #else
-      //ret = system("xterm -e \"g++ siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -pthread;echo compiler_finished;read\"");
-      ret = system("xterm -e \"g++ -c siemensdaemon.cpp  -o siemensdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ siemensdaemon.o /usr/lib/librllib.so -pthread -o siemensdaemon ;echo compiler_finished;read\"");
+      //ret = system("xterm -e \"g++ siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -lpthread;echo compiler_finished;read\"");
+      ret = system("xterm -e \"g++ -c siemensdaemon.cpp  -o siemensdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ siemensdaemon.o /usr/lib/librllib.so -lpthread -o siemensdaemon ;echo compiler_finished;read\"");
 #endif
 #else
       ret = system("start pvb_make_siemensdaemon.bat");
@@ -98,8 +98,8 @@ void dlgDaemon::slotCompile()
 #ifdef PVMAC
       ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
 #else
-      //ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -pthread;echo compiler_finished;read\"");
-      ret = system("xterm -e \"g++ -c modbusdaemon.cpp  -o modbusdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ modbusdaemon.o /usr/lib/librllib.so -pthread -o modbusdaemon;echo compiler_finished;read\"");
+      //ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -lpthread;echo compiler_finished;read\"");
+      ret = system("xterm -e \"g++ -c modbusdaemon.cpp  -o modbusdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ modbusdaemon.o /usr/lib/librllib.so -lpthread -o modbusdaemon;echo compiler_finished;read\"");
 #endif
 #else
       ret = system("start pvb_make_modbusdaemon.bat");
