@@ -12,7 +12,7 @@ INCLUDEPATH += ../lib
 SOURCES += rlhistory.cpp
 
 !macx {
-LIBS    += ../lib/librllib.so -pthread
+LIBS    += ../lib/librllib.so -lpthread
 }
 macx::LIBS    += ../lib/librllib.dylib
 

@@ -6,8 +6,7 @@ CFLAGS   = -pipe -Wall -W -O0 -march=i586 -mcpu=i686 -fmessage-length=0 -DNO_DEB
 # LITTLEENDIAN and LINUX is only for libnodave to work
 DEFINES           += LITTLEENDIAN
 unix:DEFINES      += LINUX
-#unix:QMAKE_LFLAGS += -lpthread -Wl --no-undefined -pthread
-unix:QMAKE_LFLAGS += -lpthread -pthread
+unix:QMAKE_LFLAGS += -lpthread -lpthread
 macx:DEFINES      += unix
 macx:DEFINES      += PVMAC
 

@@ -7,7 +7,7 @@ CONFIG              -= qt
 
 
 !macx {
-unix::LIBS          += ../rllib/lib/librllib.so -pthread
+unix::LIBS          += ../rllib/lib/librllib.so -lpthread
 unix::INCLUDEPATH   += ../rllib/lib
 }
 

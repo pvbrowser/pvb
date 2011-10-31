@@ -15,7 +15,7 @@ SOURCES += main.cpp     \
            periodic.cpp \
            maskvtk.cpp  \
            modal1.cpp
-LIBS    += /usr/lib/libpvsmt.so -pthread
-# LIBS    += /usr/lib/libpvsid.so -pthread
+LIBS    += /usr/lib/libpvsmt.so -lpthread
+# LIBS    += /usr/lib/libpvsid.so -lpthread
 # DEFINES += USE_INETD
 # TARGET = targetname

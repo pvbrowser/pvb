@@ -21,7 +21,7 @@ INCLUDEPATH +=  ../lua-5.1/src/
 LIBS               += ../lua-5.1/src/liblua.a
 
 !macx {
-unix:LIBS          += ../../../pvserver/libpvsmt.so -pthread
+unix:LIBS          += ../../../pvserver/libpvsmt.so -lpthread
 #unix:LIBS         += ../../../pvserver/libpvsid.so
 unix:INCLUDEPATH   += ../../../pvserver
 unix:LIBS          += ../../../rllib/lib/librllib.so

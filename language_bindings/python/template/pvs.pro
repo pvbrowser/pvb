@@ -15,7 +15,7 @@ SOURCES += main.cpp     \
            mask1.cpp
 
 !macx {
-unix:LIBS          += /usr/lib/libpvsmt.so -pthread ${PYTHON_LIB}
+unix:LIBS          += /usr/lib/libpvsmt.so -lpthread ${PYTHON_LIB}
 #unix:LIBS         += /usr/lib/libpvsid.so
 unix:INCLUDEPATH   += /opt/pvb/pvserver ${PYTHON_INCLUDE}
 unix:LIBS          += /usr/lib/librllib.so

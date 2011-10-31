@@ -9,7 +9,7 @@ CONFIG   = warn_on release
 HEADERS += pvapp.h
 SOURCES += main.cpp     \
            mask1.cpp
-unix:LIBS    += /usr/lib/libpvsmt.so -pthread
+unix:LIBS    += /usr/lib/libpvsmt.so -lpthread
 # unix:LIBS  += /usr/lib/libpvsid.so
 # unix:LIBS  += /usr/lib/librllib.so
 win32:LIBS   += $(PVBDIR)\bin\serverlib.lib wsock32.lib

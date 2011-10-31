@@ -12,7 +12,7 @@ CONFIG  -= qt
 SOURCES += data_acquisition_provider_template.cpp 
 
 !macx {
-unix:LIBS         += /usr/lib/librllib.so -pthread
+unix:LIBS         += /usr/lib/librllib.so -lpthread
 unix:INCLUDEPATH  += /opt/pvb/rllib/lib
 }
 
