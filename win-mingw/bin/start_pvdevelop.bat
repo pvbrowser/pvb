@@ -18,8 +18,8 @@
  :environment_not_set                                                                
  echo  ############################################################################# 
  echo  Please adjust environment variables within %PVBDIR%\win-mingw\bin\start_pvdevelop.bat                                  
- set   QTDIR=c:\qtsdk\Desktop\Qt\4.7.3\mingw
- set   MINGWDIR=c:\qtsdk\mingw
+ set   QTDIR=c:\Qt\4.7.4
+ set   MINGWDIR=c:\mingw
  rem   if you want to use python
  set   PYDIR=c:\Python25
  start notepad "%PVBDIR%\win-mingw\bin\start_pvdevelop.bat"                        

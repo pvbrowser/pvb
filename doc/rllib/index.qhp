@@ -1095,6 +1095,8 @@
       <keyword name="dt" id="rlController::dt" ref="classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549" />
       <keyword name="getMeasurement" id="rlController::getMeasurement" ref="classrlController.html#a6fde48997e009a469c6698370f29b1ba" />
       <keyword name="writeOutput" id="rlController::writeOutput" ref="classrlController.html#a0097511f56814a3daa58b677e7237e4e" />
+      <keyword name="sleepLocally" id="rlController::sleepLocally" ref="classrlController.html#a155171495dfa7e99c12c95a80de20aed" />
+      <keyword name="measurement" id="rlController::measurement" ref="classrlController.html#ae3513748d88e939322a808cc3a590bdf" />
       <keyword name="P" id="rlController::P" ref="classrlController.html#a111d33ec0f2e4c5601008421269b396ea37dc7235da93209ae9a1a14edb9da809" />
       <keyword name="I" id="rlController::I" ref="classrlController.html#a111d33ec0f2e4c5601008421269b396ea4f4d35caf37b1e892be4680e1f70cc2c" />
       <keyword name="D_T1" id="rlController::D_T1" ref="classrlController.html#a111d33ec0f2e4c5601008421269b396ea82d0e8d628e6a4eb667aac4c586af636" />

@@ -131,6 +131,8 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549">dt</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a6fde48997e009a469c6698370f29b1ba">getMeasurement</a> )()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a0097511f56814a3daa58b677e7237e4e">writeOutput</a> )(double output)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a155171495dfa7e99c12c95a80de20aed">sleepLocally</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">measurement</a></td></tr>
 </table>
 <hr/><a name="_details"></a><h2>Detailed Description</h2>
 <div class="textblock"><pre>
@@ -214,7 +216,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00069">69</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00070">70</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">             :<a class="code" href="classrlThread.html#a25bfd19bd7b382d71ecb12b554a31b3f">rlThread</a>()
 {
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = -1;
@@ -231,6 +233,8 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
   <a class="code" href="classrlController.html#a07c5e171c009fcdd2cfb0c82616b9b55">ek_2</a>  = 0.0f;
   <a class="code" href="classrlController.html#a1e5ae487392c46aa7b4351a9a8d40dfe">ek_1</a>  = 0.0f;
   <a class="code" href="classrlController.html#a4723fb3a6808c7809438e03523534728">ek</a>    = 0.0f;
+  <a class="code" href="classrlController.html#ad857f1f8b338e6f5d046beddf2c81e9a">reference</a> = <a class="code" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">measurement</a> = 0.0;
+  <a class="code" href="classrlController.html#a155171495dfa7e99c12c95a80de20aed">sleepLocally</a> = 1;
 }
 </pre></div>
 </div>
@@ -249,7 +253,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00088">88</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00091">91</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlController.html#a9320b12b8bf9a13f2123a5eae3b46643">stop</a>();
 }
@@ -293,7 +297,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                              1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00144">144</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00147">147</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea82d0e8d628e6a4eb667aac4c586af636">D_T1</a>;
@@ -339,7 +343,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                              T1 * s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00131">131</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00134">134</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea4f4d35caf37b1e892be4680e1f70cc2c">I</a>;
@@ -381,7 +385,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   Transfer function: Gr(s) = Kp
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00120">120</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea37dc7235da93209ae9a1a14edb9da809">P</a>;
@@ -436,7 +440,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                   1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00172">172</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00175">175</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396eaefffaf708db8055b16bd2ca85083e19f">PD_T1</a>;
@@ -495,7 +499,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                         1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00217">217</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00220">220</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396eaca0a3ac006d0b17220e0ad613c8e342b">PD_T1_SUM</a>;
@@ -547,7 +551,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                    Tn*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00158">158</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00161">161</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea07fb498708b0c8063b1caf5391eb4405">PI</a>;
@@ -599,7 +603,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                         Tn*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00205">205</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00208">208</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396eaf256d9429ac8b8cd2c63ab18f643275f">PI_SUM</a>;
@@ -661,7 +665,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                      TnP*s     1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00187">187</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00190">190</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea0ebfc0405d3d09ee9718788d04517a7f">PID_T1</a>;
@@ -729,7 +733,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                         Tn*s   1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00231">231</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00234">234</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea8239d215cefcf8cddc1489f15d4be4de">PID_T1_SUM</a>;
@@ -764,7 +768,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   Set the reference value for the controller
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00118">118</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlController.html#ad857f1f8b338e6f5d046beddf2c81e9a">reference</a> = _reference;
 }
@@ -785,7 +789,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00093">93</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00096">96</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a> = 1;
   <a class="code" href="classrlController.html#a85898bc18cf5d29abbdeb8a85beed41c">ydk_1</a> = 0.0f;
@@ -817,7 +821,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00109">109</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00112">112</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(<a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a>) <a class="code" href="classrlThread.html#a942c994869562d19a57919afa7d5d80a">rlThread::cancel</a>();
   <a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a> = 0;
@@ -1042,6 +1046,23 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 
 </div>
 </div>
+<a class="anchor" id="ae3513748d88e939322a808cc3a590bdf"></a><!-- doxytag: member="rlController::measurement" ref="ae3513748d88e939322a808cc3a590bdf" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">rlController::measurement</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+  last measurement 
+  </pre> 
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00146">146</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ad857f1f8b338e6f5d046beddf2c81e9a"></a><!-- doxytag: member="rlController::reference" ref="ad857f1f8b338e6f5d046beddf2c81e9a" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -1069,6 +1090,28 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00117">117</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a155171495dfa7e99c12c95a80de20aed"></a><!-- doxytag: member="rlController::sleepLocally" ref="a155171495dfa7e99c12c95a80de20aed" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classrlController.html#a155171495dfa7e99c12c95a80de20aed">rlController::sleepLocally</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+  Default sleepLocally = 1
+  But:
+  Sleeping locally might me inaccurate.
+  It might be better to have a central timer and wait for it in
+  double (*_getMeasurement)();
+  T = cycle time in seconds
+  </pre> 
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00142">142</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>

@@ -324,6 +324,9 @@ MainWindow::MainWindow()
 //  textbrowser = new dlgTextBrowser;
 //QMessageBox::information(this,"pvbrowser","step end",1);
   setFocus(Qt::MouseFocusReason);
+#ifdef BROWSERPLUGIN
+  QApplication::setActiveWindow(this); // now we will get keyboard events
+#endif
 }
 
 MainWindow::~MainWindow()

@@ -130,6 +130,20 @@ public:
   You have to supply this function for writing the output
   </pre> */
   void  (*writeOutput)(double output);
+
+  /*! <pre>
+  Default sleepLocally = 1
+  But:
+  Sleeping locally might me inaccurate.
+  It might be better to have a central timer and wait for it in
+  double (*_getMeasurement)();
+  T = cycle time in seconds
+  </pre> */
+  int sleepLocally;
+  /*! <pre>
+  last measurement 
+  </pre> */
+  double measurement;
 };
 
 #endif

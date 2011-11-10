@@ -6,8 +6,8 @@ rem -------------------------------------------------------
 
 rem set directories for needed tools
 rem directories where qt and mingw are installed
-SET QTDIR=C:\Qt\4.7.2
-SET MINGWDIR=C:\Qt\2010.05\mingw
+SET QTDIR=C:\Qt\4.7.4
+SET MINGWDIR=C:\mingw
 rem tools necessary for language bindings
 SET SWIGDIR=Z:\win\swigwin-1.3.33
 SET PYDIR=C:\Python25

@@ -21,15 +21,16 @@ static void *control(void *arg)
   rlController *c = (rlController *) p->user;
   while(c->running == 1)
   {
-    rlsleep(c->dt);
-    c->lock();
+    if(c->sleepLocally) rlsleep(c->dt);
+    c->measurement = c->getMeasurement();
+    c->lock(); // lock mutex because user might set another controller type
     c->ydk_1 = c->ydk;
     c->y1k_1 = c->y1k;
     c->yk_2  = c->yk_1;
     c->yk_1  = c->yk;
     c->ek_2  = c->ek_1;
     c->ek_1  = c->ek;
-    c->ek    = c->reference - c->getMeasurement();
+    c->ek    = c->reference - c->measurement;
     switch(c->type)
     {
       case rlController::P:
@@ -83,6 +84,8 @@ rlController::rlController(double (*_getMeasurement)() ,void (_writeOutput)(doub
   ek_2  = 0.0f;
   ek_1  = 0.0f;
   ek    = 0.0f;
+  reference = measurement = 0.0;
+  sleepLocally = 1;
 }
 
 rlController::~rlController()

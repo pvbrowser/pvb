@@ -78,15 +78,16 @@ Functions</h2></td></tr>
   <a class="code" href="classrlController.html">rlController</a> *c = (<a class="code" href="classrlController.html">rlController</a> *) p-&gt;<a class="code" href="structTHREAD__PARAM.html#abb08567308ed25b8bd3329ae84279b3d">user</a>;
   <span class="keywordflow">while</span>(c-&gt;<a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a> == 1)
   {
-    <a class="code" href="rlwthread_8cpp.html#a604b0dba29427e3514cd37136458e0c5">rlsleep</a>(c-&gt;<a class="code" href="classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549">dt</a>);
-    c-&gt;<a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">lock</a>();
+    <span class="keywordflow">if</span>(c-&gt;<a class="code" href="classrlController.html#a155171495dfa7e99c12c95a80de20aed">sleepLocally</a>) <a class="code" href="rlwthread_8cpp.html#a604b0dba29427e3514cd37136458e0c5">rlsleep</a>(c-&gt;<a class="code" href="classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549">dt</a>);
+    c-&gt;<a class="code" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">measurement</a> = c-&gt;<a class="code" href="classrlController.html#a6fde48997e009a469c6698370f29b1ba">getMeasurement</a>();
+    c-&gt;<a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">lock</a>(); <span class="comment">// lock mutex because user might set another controller type</span>
     c-&gt;<a class="code" href="classrlController.html#a85898bc18cf5d29abbdeb8a85beed41c">ydk_1</a> = c-&gt;<a class="code" href="classrlController.html#aafa3f7e90e65eae10b486d13330e15b0">ydk</a>;
     c-&gt;<a class="code" href="classrlController.html#a3a4bd61895d03c0468b7ab315af0447c">y1k_1</a> = c-&gt;<a class="code" href="classrlController.html#a7be4e2b88105975a83850a955f8f58b6">y1k</a>;
     c-&gt;<a class="code" href="classrlController.html#ab228f2fb00a7441af9f7206e3d72f3dd">yk_2</a>  = c-&gt;<a class="code" href="classrlController.html#a91235395759fd67e47b914b3b257b49e">yk_1</a>;
     c-&gt;<a class="code" href="classrlController.html#a91235395759fd67e47b914b3b257b49e">yk_1</a>  = c-&gt;<a class="code" href="classrlController.html#a75af0409513954ea207ae7fb1cfc4230">yk</a>;
     c-&gt;<a class="code" href="classrlController.html#a07c5e171c009fcdd2cfb0c82616b9b55">ek_2</a>  = c-&gt;<a class="code" href="classrlController.html#a1e5ae487392c46aa7b4351a9a8d40dfe">ek_1</a>;
     c-&gt;<a class="code" href="classrlController.html#a1e5ae487392c46aa7b4351a9a8d40dfe">ek_1</a>  = c-&gt;<a class="code" href="classrlController.html#a4723fb3a6808c7809438e03523534728">ek</a>;
-    c-&gt;<a class="code" href="classrlController.html#a4723fb3a6808c7809438e03523534728">ek</a>    = c-&gt;<a class="code" href="classrlController.html#ad857f1f8b338e6f5d046beddf2c81e9a">reference</a> - c-&gt;<a class="code" href="classrlController.html#a6fde48997e009a469c6698370f29b1ba">getMeasurement</a>();
+    c-&gt;<a class="code" href="classrlController.html#a4723fb3a6808c7809438e03523534728">ek</a>    = c-&gt;<a class="code" href="classrlController.html#ad857f1f8b338e6f5d046beddf2c81e9a">reference</a> - c-&gt;<a class="code" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">measurement</a>;
     <span class="keywordflow">switch</span>(c-&gt;<a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a>)
     {
       <span class="keywordflow">case</span> <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea37dc7235da93209ae9a1a14edb9da809">rlController::P</a>:
