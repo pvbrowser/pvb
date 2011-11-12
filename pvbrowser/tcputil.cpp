@@ -47,8 +47,9 @@
 #ifdef IS_OLD_MSVCPP
 #include "winsock.h"
 #else
-//#if (_WIN32_WINNT < 0x0501)
-//#warning mingw does not have ipv6 helpers modify mingw header in ws2tcpip.h
+#if (_WIN32_WINNT < 0x0501)
+#warning mingw does not have ipv6 helpers modify mingw header in ws2tcpip.h
+#endif
 #include "winsock2.h"
 #include <ws2tcpip.h>
 void WSAAPI freeaddrinfo(struct addrinfo*);

@@ -7,7 +7,7 @@
 DEFINES      -= UNICODE                                                    
 QT           += opengl svg webkit network                                  
 CONFIG       += uitools warn_on release                                    
-                                                                           
+
 HEADERS       = ../../pvbrowser/mainwindow.h \                             
                 ../../pvbrowser/dlgopt.h \                                 
                 ../../pvbrowser/opt.h \                                    
