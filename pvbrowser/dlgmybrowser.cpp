@@ -96,6 +96,7 @@ void pvQWebView::mousePressEvent(QMouseEvent *event)
 
 dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *manual)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:dlgMyBrowser()\n");
   s = sock;
   id = ident;
   mainWindow = (MainWindow *) parent;
@@ -125,6 +126,8 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   else
   {
     if(opt.arg_debug) printf("do not enable_webkit_plugins\n");
+    form->browser->settings()->setAttribute(QWebSettings::PluginsEnabled, false);
+    form->browser->settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
   }
 #endif
   if(manual == NULL) return;
@@ -132,6 +135,7 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
 
 dlgMyBrowser::~dlgMyBrowser()
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:~dlgMyBrowser()\n");
   delete form;
 }
 
@@ -150,6 +154,7 @@ QWebView *dlgMyBrowser::createWindow(QWebPage::WebWindowType type)
 
 void dlgMyBrowser::setUrl(const char *url)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:setUrl(%s)\n", url);
   if(url == NULL) return; 
   homeurl = url;
 #ifdef USE_WEBKIT
@@ -165,6 +170,7 @@ void dlgMyBrowser::setUrl(const char *url)
 
 void dlgMyBrowser::slotBack()
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotBack()\n");
 #ifdef USE_WEBKIT
   form->browser->back();
   QString text = form->browser->url().toString();
@@ -174,6 +180,7 @@ void dlgMyBrowser::slotBack()
 
 void dlgMyBrowser::slotHome()
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotHome()\n");
 #ifdef USE_WEBKIT  
   form->browser->setUrl(QUrl(homeurl));
   QString text = form->browser->url().toString();
@@ -183,6 +190,7 @@ void dlgMyBrowser::slotHome()
 
 void dlgMyBrowser::slotForward()
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotForward()\n");
 #ifdef USE_WEBKIT  
   form->browser->forward();
   QString text = form->browser->url().toString();
@@ -192,6 +200,7 @@ void dlgMyBrowser::slotForward()
 
 void dlgMyBrowser::slotReload()
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotReload()\n");
 #ifdef USE_WEBKIT  
   form->browser->reload();
 #endif
@@ -199,6 +208,7 @@ void dlgMyBrowser::slotReload()
 
 void dlgMyBrowser::slotFind()
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotFind()\n");
 #ifdef USE_WEBKIT  
   QString pattern = form->lineEditPattern->text();
   QWebPage *page = form->browser->page();
@@ -209,6 +219,7 @@ void dlgMyBrowser::slotFind()
 
 void dlgMyBrowser::slotUrlChanged(const QUrl &url)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotUrlChanged(%s)\n", (const char *) url.toString().toUtf8());
   if(url.isEmpty()) return;
 #ifdef USE_WEBKIT  
   QString text = url.toString();
@@ -224,6 +235,7 @@ void dlgMyBrowser::slotUrlChanged(const QUrl &url)
 
 void dlgMyBrowser::slotLinkClicked(const QUrl &url)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotLinkClicked(%s)\n", (const char *) url.toString().toUtf8());
   if(url.isEmpty()) return;
 #ifdef USE_WEBKIT  
   QString text = url.toString();
@@ -296,6 +308,7 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
 
 void dlgMyBrowser::slotLoadFinished(bool ok)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotLoadFinished(%d)\n", (int) ok);
   if(ok == false) return;
   
 #ifdef USE_WEBKIT  
@@ -306,6 +319,7 @@ void dlgMyBrowser::slotLoadFinished(bool ok)
     QWebPage *page = form->browser->page();
     if(page != NULL)
     {
+      if(opt.arg_debug) printf("dlgMyBrowser::slotLoadFinshed scrollToAnchor\n");
       page->currentFrame()->scrollToAnchor(anchor);
     }
   }
@@ -315,19 +329,34 @@ void dlgMyBrowser::slotLoadFinished(bool ok)
 
 void dlgMyBrowser::slotTitleChanged(const QString &title_in)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotTitleChanged(%s)\n", (const char *) title_in.toUtf8());
 #ifdef USE_WEBKIT  
   QString title = title_in;
   if(title.length() > MAX_TAB_TEXT_LENGTH)
   {
-    title.truncate(MAX_TAB_TEXT_LENGTH);
+    title.truncate(MAX_TAB_TEXT_LENGTH - 4);
     title.append("...");
   }
+  if(opt.arg_debug) printf("dlgMyBrowser:slotTitleChanged2(%d,%s)\n", mainWindow->currentTab, (const char *) title.toUtf8());
   mainWindow->tabBar->setTabText(mainWindow->currentTab,title);
+  if(opt.arg_debug) printf("dlgMyBrowser:slotTitleChanged() end\n");
 #endif
+/*
+There seems to be a bug with JavaSript.
+If web pages use plugins the stack seems to get corrupted.
+Thus we disable plugins by default.
+
+See:
+http://getsatisfaction.com/spotify/topics/_parse_error_error_in_views_boxmodel_start_page_xml_on_start_page
+
+/usr/src/packages/BUILD/icedtea-web-1.1/plugin/icedteanp/IcedTeaNPPlugin.cc:2020: thread 0x7fbc02a0f3c0: Error: Invalid plugin function table.
+*** NSPlugin Wrapper *** WARNING:(/usr/src/packages/BUILD/nspluginwrapper-1.3.0/src/npw-wrapper.c:3160):invoke_NP_Initialize: assertion failed: (rpc_method_invoke_possible(g_rpc_connection))
+*/
 }
 
 void dlgMyBrowser::slotUnsupportedContent(QNetworkReply *reply)
 {
+  if(opt.arg_debug) printf("dlgMyBrowser:slotUnsupportedContent()\n");
   if(reply == NULL) return;
 #ifdef USE_WEBKIT
   QString text = reply->url().toString();

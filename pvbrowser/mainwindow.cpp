@@ -1393,7 +1393,7 @@ char buf[MAX_PRINTF_LENGTH] = "";
     return;
   }
 
-  if(opt.arg_debug > 1) printf("dataReceived:");
+  if(opt.arg_debug > 1) printf("dataReceived:\n");
   ret = tcp_rec(&pvbtab[ind].s, buf, sizeof(buf)-1);
   if(opt.arg_debug > 1) printf("%s",buf);
   if(ret == -1)

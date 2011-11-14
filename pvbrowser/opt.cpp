@@ -250,7 +250,7 @@ int i;
   opt.maximized=0;
   opt.tabs_above_toolbar=0;
   opt.echo_table_updates=0;
-  opt.enable_webkit_plugins=1;
+  opt.enable_webkit_plugins=0;
   opt.temp[0] = '\0';
   opt.customlogo[0] = '\0';
   opt.newwindow[0] = '\0';
@@ -499,7 +499,11 @@ int i;
         fprintf(fp,"tabs_above_toolbar=0    # 0|1\n");
         fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
         fprintf(fp,"echo_table_updates=0    # 0|1\n");
+#ifdef PVUNIX
+        fprintf(fp,"enable_webkit_plugins=0 # 0|1\n"); // Linux bug in NSPlugin/Webkit/JavaScript
+#else
         fprintf(fp,"enable_webkit_plugins=1 # 0|1\n");
+#endif
         fprintf(fp,"# temporary directory\n");
 #ifdef PVUNIX
 #ifdef USE_ANDROID

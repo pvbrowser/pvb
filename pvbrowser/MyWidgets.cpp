@@ -1774,6 +1774,8 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   else
   {
     if(opt.arg_debug) printf("do not enable_webkit_plugins\n");
+    settings()->setAttribute(QWebSettings::PluginsEnabled, false);
+    settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
   }
 }
 
