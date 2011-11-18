@@ -20,6 +20,11 @@
 #include <stdio.h>
 #include <QtGui>
 #include <QSvgRenderer>
+#define USE_QT_SVG_RENDERER
+#ifndef USE_QT_SVG_RENDERER  
+#include <QWebPage>  // testing qwebframe svg renderer murx
+#include <QWebFrame> // testing qwebframe svg renderer murx
+#endif
 
 #define MAXARRAY 1024*4  // maximum array size for line(x,y,n)
 
@@ -131,6 +136,10 @@ public:
     pvSvgAnimator *svgAnimator;
     int selectorState;
     QSvgRenderer renderer;
+#ifndef USE_QT_SVG_RENDERER  
+    QWebPage  qwebpage;         // testing WebKit SVG renderer murx
+    QWebFrame *webkitrenderer;  // testing Webkit SVG renderer murx
+#endif    
     int originalCursor;
 
 protected:

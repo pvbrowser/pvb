@@ -43,6 +43,10 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
 {
   if(opt.arg_debug) printf("QDrawWidget::QDrawWidget\n");
   if(name != NULL) setObjectName(name);
+#ifndef USE_QT_SVG_RENDERER  
+  webkitrenderer = qwebpage.currentFrame();  // testing qwebframe svg renderer murx
+  //webkitrenderer = qwebpage.mainFrame();  // testing qwebframe svg renderer murx
+#endif  
   fp   = NULL;
   flog = NULL;
   s  = sock;
@@ -818,11 +822,19 @@ void QDrawWidget::playSVG(const char *filename)
   }
   fclose(fin);
 
+#ifdef USE_QT_SVG_RENDERER  
   //renderer.setViewBox( QRect(0,0,width(),height()) );
   renderer.load(stream);
   p.scale(zoomx,zoomy);
   renderer.render(&p);
   p.scale(1.0,1.0);
+#else
+  printf("testing1 QWebFrame as SVG renderer\n");
+  webkitrenderer->setContent(stream,"image/svg+xml");
+  p.scale(zoomx,zoomy);
+  webkitrenderer->render(&p);
+  p.scale(1.0,1.0);
+#endif
 }
 
 void QDrawWidget::socketPlaySVG()
@@ -852,10 +864,18 @@ void QDrawWidget::socketPlaySVG()
     stream.append(QString::fromUtf8(buf));
     if(opt.arg_debug > 2) printf("svgbuf=%s",buf);
   }
+#ifdef USE_QT_SVG_RENDERER  
   renderer.load(stream);
   p.scale(zoomx,zoomy);
   renderer.render(&p);
   p.scale(1.0,1.0);
+#else
+  printf("testing2 QWebFrame as SVG renderer\n");
+  webkitrenderer->setContent(stream,"image/svg+xml");
+  p.scale(zoomx,zoomy);
+  webkitrenderer->render(&p);
+  p.scale(1.0,1.0);
+#endif
   if(opt.arg_debug) printf("Qt4 socketPlaySVG end\n");
 }
 
@@ -1149,6 +1169,7 @@ int x,y,w,h,r,g,b,n,i;
 
 void QDrawWidget::svgUpdate(QByteArray &stream)
 {
+#ifdef USE_QT_SVG_RENDERER  
   //printf("load\n");
   renderer.load(stream);
   //printf("scale\n");
@@ -1159,6 +1180,13 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
   //printf("scale\n");
   p.scale(1.0,1.0);
   //printf("end\n");
+#else
+  printf("testing3 QWebFrame as SVG renderer\n");
+  webkitrenderer->setContent(stream,"image/svg+xml");
+  p.scale(zoomx,zoomy);
+  webkitrenderer->render(&p);
+  p.scale(1.0,1.0);
+#endif
 }
 
 void QDrawWidget::printSVG(QByteArray &stream)
@@ -1171,12 +1199,16 @@ void QDrawWidget::printSVG(QByteArray &stream)
   if(printDialog.exec() == QDialog::Accepted)
   {
     // print ...
+#ifdef USE_QT_SVG_RENDERER  
     QSvgRenderer svgrenderer;
     svgrenderer.load(stream);
     QPainter painter;
     painter.begin(&printer);
     svgrenderer.render(&painter);
     painter.end();
+#else
+    printf("testing4 QWebFrame as SVG renderer not implemented\n");
+#endif
   }
 }
 
@@ -1221,6 +1253,7 @@ void pvSvgAnimator::perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line)
   str.append(line[i++]); // =
   str.append(line[i++]); // "
 
+  //printf("perhapsFixQtBugOnPath begin:%s\n", line);
   char found = '\0';
   while(line[i] != '\0')
   {
@@ -1266,6 +1299,7 @@ void pvSvgAnimator::perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line)
 
   next_line->line = new char[str.length()+1];
   strcpy(next_line->line, str.toUtf8());
+  //printf("perhapsFixQtBugOnPath   end:%s\n", next_line->line);
 }
 
 int pvSvgAnimator::read()
@@ -1926,6 +1960,8 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx,
       name.remove('\"');
       bounds = draw->renderer.boundsOnElement(name);
       matrix = draw->renderer.matrixForElement(name);
+      // with qwebframe we will use
+      // QWebHitTestResult QWebFrame::hitTestContent ( const QPoint & pos ) const
 
       mappedBounds =  matrix.mapRect(bounds); 
       if(x >= mappedBounds.x() && x <= (mappedBounds.x()+mappedBounds.width()) &&
@@ -1967,6 +2003,8 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
       name = &svgline->line[4];
       name.remove('\"');
       bounds = draw->renderer.boundsOnElement(name);
+      // with qwebframe we will use
+      // QWebHitTestResult QWebFrame::hitTestContent ( const QPoint & pos ) const
       if(opt.arg_debug) printf("id=%s bounds(%f,%f,%f,%f)\n", (const char *) name.toUtf8(), bounds.x(), bounds.y(), bounds.width(), bounds.height());
 
       matrix = draw->renderer.matrixForElement(name);
