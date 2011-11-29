@@ -2275,6 +2275,7 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx,
   x = (int) (xmouse / zoomx);
   y = (int) (ymouse / zoomy);
 
+#if QT_VERSION >= 0x040601
   if(opt.use_webkit_for_svg)
   {
     QWebFrame        *wf     = draw->qwebpage.currentFrame();
@@ -2357,6 +2358,7 @@ MyMurx:
     QApplication::setOverrideCursor(QCursor((Qt::CursorShape) draw->originalCursor));
     return 0;
   }
+#endif
 
   iline = 0;
   svgline = first;
@@ -2397,6 +2399,7 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
   if(zoomx < 0.001f || zoomy < 0.001f) return -1;
   x = (int) (xmouse / zoomx);
   y = (int) (ymouse / zoomy);
+#if QT_VERSION >= 0x040601
   if(opt.use_webkit_for_svg)
   {
     QWebFrame        *wf     = draw->qwebpage.currentFrame();
@@ -2490,6 +2493,7 @@ MyMurx:
     }
     return 0;
   }
+#endif
 
   iline = 0;
   svgline = first;

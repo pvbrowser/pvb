@@ -22,7 +22,9 @@
 #include <QSvgRenderer>
 #include <QWebPage>    // testing qwebframe svg renderer murx
 #include <QWebFrame>   // testing qwebframe svg renderer murx
+#if QT_VERSION >= 0x040601
 #include <QWebElement> // "
+#endif
 
 #define MAXARRAY 1024*4  // maximum array size for line(x,y,n)
 
