@@ -1,5 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="19,101,112,131"/>
-<area shape="rect" id="node4" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,5,125,35"/>
-<area shape="rect" id="node6" href="$classrlMutex.html" title="rlMutex" alt="" coords="149,101,213,131"/>
+<area shape="rect" id="node2" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="18,96,112,123"/>
+<area shape="rect" id="node4" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,5,125,32"/>
+<area shape="rect" id="node6" href="$classrlMutex.html" title="rlMutex" alt="" coords="153,96,217,123"/>
 </map>

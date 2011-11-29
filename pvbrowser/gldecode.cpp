@@ -906,9 +906,8 @@ int PvGLWidget::interpret(const char *line)
         }
         else if(strncmp(line,"glEdgeFlagPointerEXT(",21) == 0)
         {
-          GLsizei stride; GLsizei count; GLboolean ptr; int iptr;
+          GLsizei stride; GLsizei count; int iptr;
           sscanf(line,"glEdgeFlagPointerEXT(%d,%d,%d)",&stride,&count,&iptr);
-          ptr = (GLboolean) iptr;
 #ifndef PVWIN32
           //glEdgeFlagPointerEXT(stride,count,&ptr);
 #endif

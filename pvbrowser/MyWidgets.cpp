@@ -81,8 +81,19 @@ extern QString l_print_header;
 
 static const char *decode(QString text)
 {
-  if(opt.codec == pvbUTF8) return text.toUtf8();
-  return text.toAscii();
+  static char buf[MAX_PRINTF_LENGTH];
+  int maxlen = MAX_PRINTF_LENGTH - 1;
+
+  if(opt.codec == pvbUTF8)
+  {
+    strncpy(buf, text.toUtf8(), maxlen);
+  }
+  else
+  {
+    strncpy(buf, text.toAscii(), maxlen);
+  }
+  buf[maxlen-1] = '\0';
+  return buf;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

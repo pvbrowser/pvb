@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlTime.html" title="rlTime" alt="" coords="5,5,64,35"/>
+<area shape="rect" id="node1" href="$classrlThread.html" title="rlThread" alt="" coords="5,5,75,32"/>
+<area shape="rect" id="node3" href="$classrlController.html" title="rlController" alt="" coords="123,5,208,32"/>
 </map>

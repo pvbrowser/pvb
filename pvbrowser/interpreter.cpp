@@ -1712,10 +1712,8 @@ void Interpreter::interpretm(const char *command)
   }
   else if(strncmp(command,"moveCursor(",11) == 0)
   {
-    char buf[MAX_PRINTF_LENGTH];
     int cur, cursor;
     sscanf(command,"moveCursor(%d,%d)",&i,&cur);
-    buf[0] = '\0';
     if(i < 0) return;
     if(i >= nmax) return;
 
@@ -2197,13 +2195,10 @@ void Interpreter::interpretr(const char *command)
     if(i >= nmax) return;
     if(all[i]->type == TQDraw)
     {
-      char buf[MAX_PRINTF_LENGTH];
       QDrawWidget *ptr = (QDrawWidget *) all[i]->w;
       if(ptr != NULL)
       {
-        QRectF rectf = ptr->renderer.boundsOnElement(text);
-        sprintf(buf,"text(%d,\"svgBoundsOnElement:%f,%f,%f,%f=%s\"\n", i, rectf.x(), rectf.y(), rectf.width(), rectf.height(), (const char *) text.toUtf8());
-        tcp_send(s,buf,strlen(buf));
+        ptr->requestSvgBoundsOnElement(text);
       }
     }
   }
@@ -2215,14 +2210,10 @@ void Interpreter::interpretr(const char *command)
     if(i >= nmax) return;
     if(all[i]->type == TQDraw)
     {
-      char buf[MAX_PRINTF_LENGTH];
       QDrawWidget *ptr = (QDrawWidget *) all[i]->w;
       if(ptr != NULL)
       {
-        QMatrix m = ptr->renderer.matrixForElement(text);
-        sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", i, 
-        m.m11(), m.m12(), m.m21(), m.m22(), m.det(), m.dx(), m.dy(), (const char *) text.toUtf8());
-        tcp_send(s,buf,strlen(buf));
+        ptr->requestSvgMatrixForElement(text);
       }
     }
   }
@@ -3440,12 +3431,12 @@ void Interpreter::interprets(const char *command)
           if(opt.arg_debug) printf("setText text='%s'\n",(const char *)text.toUtf8());
           if(strncmp(text.toUtf8(),"alloc(",6) == 0) // allocate big buffer for big text
           {
-            int len,ret;
+            int len;
             char *buf, *cptr;
             sscanf(text.toUtf8(),"alloc(%d,",&len);
             //printf("alloc(%d)\n",len);
             buf = new char[len+1];
-            ret = tcp_rec_binary(s, buf, len);
+            tcp_rec_binary(s, buf, len);
             buf[len] = '\0';
             cptr = &buf[0];
             while((cptr = strchr(cptr,27)) != NULL) *cptr = '\n'; // escape
@@ -5478,14 +5469,12 @@ void Interpreter::interpretQ(const char *command)
   }
   else if(strncmp(command,"QLineEdit(",10) == 0) // create a new QLineEdit
   {
-    MyLineEdit *ptr;
     sscanf(command,"QLineEdit(%d,%d)",&i,&p);
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
     all[i]->w = (QWidget *) new MyLineEdit(s,i,all[p]->w);
     all[i]->type = TQLineEdit;
-    ptr = (MyLineEdit *) all[i]->w;
   }
   else if(strncmp(command,"QComboBox(",10) == 0) // create a new QComboBox
   {

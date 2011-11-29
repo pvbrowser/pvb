@@ -1,7 +1,7 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="27,32,101,61"/>
-<area shape="rect" id="node3" href="$classrlModbusClient.html" title="rlModbusClient" alt="" coords="187,5,296,35"/>
-<area shape="rect" id="node5" href="$classrlPPIClient.html" title="rlPPIClient" alt="" coords="199,59,284,88"/>
-<area shape="rect" id="node7" href="$classrlSiemensTCPClient.html" title="rlSiemensTCPClient" alt="" coords="171,112,312,141"/>
-<area shape="rect" id="node8" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,85,123,115"/>
+<area shape="rect" id="node1" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="27,31,101,57"/>
+<area shape="rect" id="node3" href="$classrlModbusClient.html" title="rlModbusClient" alt="" coords="187,5,296,32"/>
+<area shape="rect" id="node5" href="$classrlPPIClient.html" title="rlPPIClient" alt="" coords="199,56,284,83"/>
+<area shape="rect" id="node7" href="$classrlSiemensTCPClient.html" title="rlSiemensTCPClient" alt="" coords="171,107,312,133"/>
+<area shape="rect" id="node8" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,81,123,108"/>
 </map>

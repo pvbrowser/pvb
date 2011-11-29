@@ -74,6 +74,7 @@
           <section title="rlSpreadsheetRow" ref="classrlSpreadsheetRow.html" />
           <section title="rlSpreadsheetTable" ref="classrlSpreadsheetTable.html" />
           <section title="rlSpreadsheetWorkbook" ref="classrlSpreadsheetWorkbook.html" />
+          <section title="rlStatemachine" ref="classrlStatemachine.html" />
           <section title="rlString" ref="classrlString.html" />
           <section title="rlSvgAnimator" ref="classrlSvgAnimator.html" />
           <section title="rlSvgCat" ref="classrlSvgCat.html" />
@@ -83,8 +84,8 @@
           <section title="rlUdpSocket" ref="classrlUdpSocket.html" />
           <section title="rlWebcam" ref="classrlWebcam.html" />
           <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
-          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
+          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -170,6 +171,7 @@
           <section title="rlSpreadsheetRow" ref="classrlSpreadsheetRow.html" />
           <section title="rlSpreadsheetTable" ref="classrlSpreadsheetTable.html" />
           <section title="rlSpreadsheetWorkbook" ref="classrlSpreadsheetWorkbook.html" />
+          <section title="rlStatemachine" ref="classrlStatemachine.html" />
           <section title="rlString" ref="classrlString.html" />
           <section title="rlSvgAnimator" ref="classrlSvgAnimator.html" />
           <section title="rlSvgCat" ref="classrlSvgCat.html" />
@@ -183,8 +185,8 @@
           </section>
           <section title="rlWebcam" ref="classrlWebcam.html" />
           <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
-          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
+          <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
           <section title="SWAP" ref="unionSWAP.html" />
           <section title="TDS" ref="structTDS.html" />
           <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -281,6 +283,8 @@
           <section title="rlspawn.h" ref="rlspawn_8h.html" />
           <section title="rlspreadsheet.cpp" ref="rlspreadsheet_8cpp.html" />
           <section title="rlspreadsheet.h" ref="rlspreadsheet_8h.html" />
+          <section title="rlstatemachine.cpp" ref="rlstatemachine_8cpp.html" />
+          <section title="rlstatemachine.h" ref="rlstatemachine_8h.html" />
           <section title="rlstring.cpp" ref="rlstring_8cpp.html" />
           <section title="rlstring.h" ref="rlstring_8h.html" />
           <section title="rlsubset.h" ref="rlsubset_8h.html" />
@@ -2020,6 +2024,24 @@
       <keyword name="setDelimitor" id="rlSpreadsheetWorkbook::setDelimitor" ref="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2" />
       <keyword name="delimitor" id="rlSpreadsheetWorkbook::delimitor" ref="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91" />
       <keyword name="firstTable" id="rlSpreadsheetWorkbook::firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
+      <keyword name="rlStatemachine" id="rlStatemachine" ref="classrlStatemachine.html" />
+      <keyword name="rlStatemachine" id="rlStatemachine::rlStatemachine" ref="classrlStatemachine.html#a9636744df02cfdb8a413c0a3082a09ca" />
+      <keyword name="~rlStatemachine" id="rlStatemachine::~rlStatemachine" ref="classrlStatemachine.html#a15d84b7df7d775e8b25bde002bfc2128" />
+      <keyword name="setPlcStateInt" id="rlStatemachine::setPlcStateInt" ref="classrlStatemachine.html#a322bfec3d8b661afb6b330641d7aa020" />
+      <keyword name="setPlcStateFloat" id="rlStatemachine::setPlcStateFloat" ref="classrlStatemachine.html#a9422190fc412b5918d66f2d7f1792970" />
+      <keyword name="setPlcStateDouble" id="rlStatemachine::setPlcStateDouble" ref="classrlStatemachine.html#a6003088f1839596902346a831280a495" />
+      <keyword name="doState" id="rlStatemachine::doState" ref="classrlStatemachine.html#a000430ee9ed5299be8a86ed2eab5f1f7" />
+      <keyword name="enterState" id="rlStatemachine::enterState" ref="classrlStatemachine.html#a29063e21a910d8c452c60b1d55e2d389" />
+      <keyword name="exitState" id="rlStatemachine::exitState" ref="classrlStatemachine.html#a9df4ea588d510ff335155d664e6fec39" />
+      <keyword name="getPlcStateInt" id="rlStatemachine::getPlcStateInt" ref="classrlStatemachine.html#aa3e84b7c4ea0939522f46108dc6dc8c0" />
+      <keyword name="getPlcStateFloat" id="rlStatemachine::getPlcStateFloat" ref="classrlStatemachine.html#a73198e12716b322d206941ad7cd102a3" />
+      <keyword name="getPlcStateDouble" id="rlStatemachine::getPlcStateDouble" ref="classrlStatemachine.html#aba1b255c4920bf04e3c12947d6e86234" />
+      <keyword name="getState" id="rlStatemachine::getState" ref="classrlStatemachine.html#af39d757300affc0a1f62d97af316a282" />
+      <keyword name="getVar" id="rlStatemachine::getVar" ref="classrlStatemachine.html#a0c997c99df28e1cb096f9a0c64242dbe" />
+      <keyword name="num_states" id="rlStatemachine::num_states" ref="classrlStatemachine.html#af0940d8732c9796924d4b757e02c8b94" />
+      <keyword name="num_process_variables" id="rlStatemachine::num_process_variables" ref="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d" />
+      <keyword name="state" id="rlStatemachine::state" ref="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641" />
+      <keyword name="var" id="rlStatemachine::var" ref="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c" />
       <keyword name="rlString" id="rlString" ref="classrlString.html" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a481402a9edec0a5ecbf4238947a8aece" />
@@ -2349,6 +2371,8 @@
       <file>rlspawn_8h_source.html</file>
       <file>rlspreadsheet_8cpp_source.html</file>
       <file>rlspreadsheet_8h_source.html</file>
+      <file>rlstatemachine_8cpp_source.html</file>
+      <file>rlstatemachine_8h_source.html</file>
       <file>rlstring_8cpp_source.html</file>
       <file>rlstring_8h_source.html</file>
       <file>rlsubset_8h_source.html</file>
@@ -2692,6 +2716,14 @@
       <file>rlspreadsheet_8h__incl.png</file>
       <file>rlspreadsheet_8h__dep__incl.png</file>
       <file>rlspreadsheet_8h__dep__incl.png</file>
+      <file>rlstatemachine_8cpp.html</file>
+      <file>rlstatemachine_8cpp__incl.png</file>
+      <file>rlstatemachine_8cpp__incl.png</file>
+      <file>rlstatemachine_8h.html</file>
+      <file>rlstatemachine_8h__incl.png</file>
+      <file>rlstatemachine_8h__incl.png</file>
+      <file>rlstatemachine_8h__dep__incl.png</file>
+      <file>rlstatemachine_8h__dep__incl.png</file>
       <file>rlstring_8cpp.html</file>
       <file>rlstring_8cpp__incl.png</file>
       <file>rlstring_8cpp__incl.png</file>
@@ -3089,6 +3121,10 @@
       <file>classrlSpreadsheetWorkbook__coll__graph.png</file>
       <file>classrlSpreadsheetWorkbook__coll__graph.png</file>
       <file>classrlSpreadsheetWorkbook-members.html</file>
+      <file>classrlStatemachine.html</file>
+      <file>classrlStatemachine__coll__graph.png</file>
+      <file>classrlStatemachine__coll__graph.png</file>
+      <file>classrlStatemachine-members.html</file>
       <file>classrlString.html</file>
       <file>classrlString-members.html</file>
       <file>classrlSvgAnimator.html</file>
@@ -3220,6 +3256,7 @@
       <file>inherit_graph_77.png</file>
       <file>inherit_graph_78.png</file>
       <file>inherit_graph_79.png</file>
+      <file>inherit_graph_80.png</file>
       <file>graph_legend.png</file>
       <file>graph_legend.html</file>
       <file>files.html</file>

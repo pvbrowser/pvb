@@ -20,15 +20,18 @@
 #include <stdio.h>
 #include <QtGui>
 #include <QSvgRenderer>
-#define USE_QT_SVG_RENDERER
-#ifndef USE_QT_SVG_RENDERER  
-#include <QWebPage>  // testing qwebframe svg renderer murx
-#include <QWebFrame> // testing qwebframe svg renderer murx
-#endif
+#include <QWebPage>    // testing qwebframe svg renderer murx
+#include <QWebFrame>   // testing qwebframe svg renderer murx
+#include <QWebElement> // "
 
 #define MAXARRAY 1024*4  // maximum array size for line(x,y,n)
 
 class QDrawWidget;
+
+typedef struct
+{
+  double a,b,c,d,e,f;
+}TRMatrix;
 
 typedef struct _SVG_LINE_
 {
@@ -52,6 +55,7 @@ class pvSvgAnimator
     int perhapsSetOverrideCursor(int x, int y, float zoomx, float zoomy, int buttons);
     int perhapsSendSvgEvent(const char *event, int *s, int id,int x, int y, float zoomx, float zoomy);
 #endif
+    int calcCTM(const char *id, TRMatrix *ctm);
     int testoutput();
   private:
     int closefile();
@@ -123,6 +127,8 @@ public:
     void socketPlaySVG();
     void svgUpdate(QByteArray &stream);
     void printSVG(QByteArray &stream);
+    int  requestSvgBoundsOnElement(QString &text);
+    int  requestSvgMatrixForElement(QString &text);
     //QString filename;
     int  hasLayout;
     void layoutResize(int w, int h);
@@ -136,10 +142,8 @@ public:
     pvSvgAnimator *svgAnimator;
     int selectorState;
     QSvgRenderer renderer;
-#ifndef USE_QT_SVG_RENDERER  
     QWebPage  qwebpage;         // testing WebKit SVG renderer murx
     QWebFrame *webkitrenderer;  // testing Webkit SVG renderer murx
-#endif    
     int originalCursor;
 
 protected:

@@ -278,9 +278,6 @@ QWidget *dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y
   }
   else if(form->wImage->isChecked())
   {
-    int width,height;
-    width  = (100/opt.xGrid)*opt.xGrid;
-    height = (30/opt.yGrid)*opt.yGrid;
     QString filename = form->lineEditImageFileName->text();
     QImageWidget *image = new QImageWidget(&nullSocket,0,parent);
     w = image;

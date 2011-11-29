@@ -14,6 +14,9 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
+#include <math.h>
+#include <QString>
+#include <QStack>
 #include "pvdefine.h"
 #include "opt.h"
 #include "qdrawwidget.h"
@@ -38,15 +41,204 @@ static int mystrncmp(const char *name1, const char *name2)
   else return strncmp(name1,name2,len1);
 }
 
+static void mulMatrix(const TRMatrix *m1, const TRMatrix *m2, TRMatrix *result)
+{
+  result->a = (m1->a * m2->a) + (m1->c * m2->b);
+  result->b = (m1->b * m2->a) + (m1->d * m2->b);
+
+  result->c = (m1->a * m2->c) + (m1->c * m2->d);
+  result->d = (m1->b * m2->c) + (m1->d * m2->d);
+
+  result->e = (m1->a * m2->e) + (m1->c * m2->f) + m1->e;
+  result->f = (m1->b * m2->e) + (m1->d * m2->f) + m1->f;
+
+  /*
+  printf("m1:\n");
+  printf("%5.1f %5.1f %5.1f\n", (float) m1->a, (float) m1->c, (float) m1->e);
+  printf("%5.1f %5.1f %5.1f\n", (float) m1->b, (float) m1->d, (float) m1->f);
+  printf("m2:\n");
+  printf("%5.1f %5.1f %5.1f\n", (float) m2->a, (float) m2->c, (float) m2->e);
+  printf("%5.1f %5.1f %5.1f\n", (float) m2->b, (float) m2->d, (float) m2->f);
+  printf("result:\n");
+  printf("%5.1f %5.1f %5.1f\n", (float) result->a, (float) result->c, (float) result->e);
+  printf("%5.1f %5.1f %5.1f\n", (float) result->b, (float) result->d, (float) result->f);
+  */
+}
+
+static const char *getCptr2(const char *cptr)
+{
+  if(cptr == NULL) return NULL;
+  while(*cptr != '(' && *cptr != '\0') cptr++;
+  if(*cptr == '\0') return NULL;
+  while(*cptr != ')' && *cptr != '\0') 
+  {
+    if(*cptr == ',') return cptr;
+    cptr++;
+  }
+  return NULL;
+}
+
+static int setMatrix(const char *text, TRMatrix *m)
+{
+  const char *cptr, *cptr2;
+  float a,b,c,d,e,f;
+  TRMatrix mbuf;
+
+  if(strncmp(text,"transform=\"",11) != 0) return -1;
+
+  cptr = &text[11];
+  int old_transf_count = 1;
+  int transf_count = 0;
+  while(*cptr != '\"' && *cptr != '\0')
+  {
+    if     (strncmp(cptr,"matrix(",7) == 0)
+    {
+      transf_count++;
+      sscanf(cptr,"matrix(%f,%f,%f,%f,%f,%f", &a, &b, &c, &d, &e, &f);
+      cptr += 7;
+    }
+    else if(strncmp(cptr,"translate(",10) == 0)
+    {
+      float tx = 0.0, ty = 0.0;
+      transf_count++;
+      sscanf(cptr,"translate(%f", &tx);
+      if((cptr2 = getCptr2(cptr)) != NULL)
+      {
+        sscanf(cptr2,",%f", &ty);
+      }
+      a = 1.0; c = 0.0; e = tx;
+      b = 0.0; d = 1.0; f = ty;
+      cptr += 10;
+    }
+    else if(strncmp(cptr,"scale(",6) == 0)
+    {
+      float sx = 1.0, sy = 1.0;
+      transf_count++;
+      sscanf(cptr,"scale(%f", &sx);
+      if((cptr2 = getCptr2(cptr)) != NULL)
+      {
+        sscanf(cptr2,",%f", &sy);
+      }
+      a = sx;  c = 0.0; e = 0.0;
+      b = 0.0; d = sy;  f = 0.0;
+      cptr += 6;
+    }
+    else if(strncmp(cptr,"rotate(",7) == 0)
+    {
+      float alpha = 0.0;
+      float cx = 0.0 , cy = 0.0;
+      int   centerSet = 0;
+      transf_count++;
+      sscanf(cptr,"rotate(%f", &alpha);
+      if((cptr2 = getCptr2(cptr)) != NULL)
+      {
+        sscanf(cptr,",%f,%f", &cx, &cy);
+        centerSet = 1;
+      }
+      a = cos(alpha); c = -sin(alpha); e = 0.0;
+      b = sin(alpha); d =  cos(alpha); f = 0.0;
+      if(centerSet)
+      {
+        TRMatrix tr1, rot, tr2, mbuf, ctm;
+        char buf[1024];
+
+        sprintf(buf,"transform=\"translate(%f,%f)\"", cx, cy);
+        setMatrix(buf, &tr1);
+        rot.a = a; rot.c = c; rot.e = e;
+        rot.b = b; rot.d = d; rot.f = f;
+        sprintf(buf,"transform=\"translate(%f,%f)\"", -cx, -cy);
+        setMatrix(buf, &tr2);
+
+        mulMatrix(&tr1,&rot,&mbuf);
+        mulMatrix(&mbuf,&tr2,&ctm);
+
+        a = ctm.a; c = ctm.c; e = ctm.e;
+        b = ctm.b; d = ctm.d; f = ctm.f;
+      }
+      cptr += 7;
+    }
+    else if(strncmp(cptr,"skewX(",6) == 0)
+    {
+      float skew = 0.0;
+      transf_count++;
+      sscanf(cptr,"skewX(%f", &skew);
+      a = 1.0; c = 0.0; e = 0.0;
+      b = 0.0; d = 1.0; f = 0.0;
+      cptr += 6;
+    }
+    else if(strncmp(cptr,"skewY(",6) == 0)
+    {
+      float skew = 0.0;
+      transf_count++;
+      sscanf(cptr,"skewY(%f", &skew);
+      a = 1.0;       c = tan(skew); e = 0.0;
+      b = tan(skew); d = 1.0;       f = 0.0;
+      cptr += 6;
+    }
+    if(transf_count > 1)
+    {
+      if(transf_count != old_transf_count)
+      {
+        old_transf_count = transf_count;
+        TRMatrix mbuf2 = mbuf;
+        mbuf.a = a; mbuf.c = c; mbuf.e = e;
+        mbuf.b = b; mbuf.d = d; mbuf.f = f;
+        mulMatrix(&mbuf2,&mbuf,m);
+        mbuf = *m;
+      }
+    }
+    else
+    {
+      old_transf_count = transf_count;
+      mbuf.a = a; mbuf.c = c; mbuf.e = e;
+      mbuf.b = b; mbuf.d = d; mbuf.f = f;
+      *m = mbuf;
+    }
+    cptr++;
+  }
+  return 0;
+}
+
+static int stackSvgTransform(const char *line, TRMatrix *ctm, QStack<TRMatrix> *stack)
+{
+  if     (line[0] == '<')
+  {
+    if(line[1] == '/')    // close
+    {
+      //printf("pop=%s\n", line);
+      stack->pop();
+      *ctm = stack->top();
+      return 0;
+    }
+    else                  // open
+    {
+      //printf("push=%s\n", line);
+      stack->push(*ctm);
+      return 1;
+    }
+  }
+  else if(line[0] == '/') // close
+  {
+    //printf("pop=%s\n", line);
+    stack->pop();
+    *ctm = stack->top();
+    return 0;
+  }
+  return -1;
+}
+
 QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *sock, int ident)
             : QWidget( parent)
 {
   if(opt.arg_debug) printf("QDrawWidget::QDrawWidget\n");
   if(name != NULL) setObjectName(name);
-#ifndef USE_QT_SVG_RENDERER  
-  webkitrenderer = qwebpage.currentFrame();  // testing qwebframe svg renderer murx
-  //webkitrenderer = qwebpage.mainFrame();  // testing qwebframe svg renderer murx
-#endif  
+  webkitrenderer = NULL;
+  if(opt.use_webkit_for_svg)
+  {
+    qwebpage.setViewportSize(QSize(640,480));
+    webkitrenderer = qwebpage.currentFrame();  // testing qwebframe svg renderer murx
+    //webkitrenderer = qwebpage.mainFrame();  // testing qwebframe svg renderer murx
+  }
   fp   = NULL;
   flog = NULL;
   s  = sock;
@@ -123,6 +315,11 @@ void QDrawWidget::resize(int w, int h)
   delete buffer;
   buffer = new QPixmap(w,h);
   buffer->fill(QColor(br,bg,bb));
+  if(opt.use_webkit_for_svg)
+  {
+    qwebpage.setViewportSize(QSize(w,h));
+    layoutResize(w,h);
+  }
 }
 
 void QDrawWidget::resizeEvent(QResizeEvent *event)
@@ -654,7 +851,7 @@ void QDrawWidget::paintEvent(QPaintEvent *e)
 
 void QDrawWidget::mouseMoveEvent(QMouseEvent *event)
 {
-  int w,h;
+  //int w,h;
   char buf[100];
 
   movedX = event->x();
@@ -666,8 +863,8 @@ void QDrawWidget::mouseMoveEvent(QMouseEvent *event)
     tcp_send(s,buf,strlen(buf));
   }  
   QWidget::mouseMoveEvent(event);
-  w = movedX - pressedX;
-  h = movedY - pressedY;
+  //w = movedX - pressedX;
+  //h = movedY - pressedY;
 #if QT_VERSION >= 0x040201
   if(svgAnimator != NULL)
   {
@@ -822,19 +1019,22 @@ void QDrawWidget::playSVG(const char *filename)
   }
   fclose(fin);
 
-#ifdef USE_QT_SVG_RENDERER  
-  //renderer.setViewBox( QRect(0,0,width(),height()) );
-  renderer.load(stream);
-  p.scale(zoomx,zoomy);
-  renderer.render(&p);
-  p.scale(1.0,1.0);
-#else
-  printf("testing1 QWebFrame as SVG renderer\n");
-  webkitrenderer->setContent(stream,"image/svg+xml");
-  p.scale(zoomx,zoomy);
-  webkitrenderer->render(&p);
-  p.scale(1.0,1.0);
-#endif
+  if(opt.use_webkit_for_svg == 0)
+  {
+    //renderer.setViewBox( QRect(0,0,width(),height()) );
+    renderer.load(stream);
+    p.scale(zoomx,zoomy);
+    renderer.render(&p);
+    p.scale(1.0,1.0);
+  }
+  else
+  {
+    printf("testing1 QWebFrame as SVG renderer\n");
+    webkitrenderer->setContent(stream,"image/svg+xml");
+    p.scale(zoomx,zoomy);
+    webkitrenderer->render(&p);
+    p.scale(1.0,1.0);
+  }
 }
 
 void QDrawWidget::socketPlaySVG()
@@ -864,18 +1064,21 @@ void QDrawWidget::socketPlaySVG()
     stream.append(QString::fromUtf8(buf));
     if(opt.arg_debug > 2) printf("svgbuf=%s",buf);
   }
-#ifdef USE_QT_SVG_RENDERER  
-  renderer.load(stream);
-  p.scale(zoomx,zoomy);
-  renderer.render(&p);
-  p.scale(1.0,1.0);
-#else
-  printf("testing2 QWebFrame as SVG renderer\n");
-  webkitrenderer->setContent(stream,"image/svg+xml");
-  p.scale(zoomx,zoomy);
-  webkitrenderer->render(&p);
-  p.scale(1.0,1.0);
-#endif
+  if(opt.use_webkit_for_svg == 0)
+  {
+    renderer.load(stream);
+    p.scale(zoomx,zoomy);
+    renderer.render(&p);
+    p.scale(1.0,1.0);
+  }
+  else
+  {
+    printf("testing2 QWebFrame as SVG renderer\n");
+    webkitrenderer->setContent(stream,"image/svg+xml");
+    p.scale(zoomx,zoomy);
+    webkitrenderer->render(&p);
+    p.scale(1.0,1.0);
+  }  
   if(opt.arg_debug) printf("Qt4 socketPlaySVG end\n");
 }
 
@@ -1169,24 +1372,22 @@ int x,y,w,h,r,g,b,n,i;
 
 void QDrawWidget::svgUpdate(QByteArray &stream)
 {
-#ifdef USE_QT_SVG_RENDERER  
-  //printf("load\n");
-  renderer.load(stream);
-  //printf("scale\n");
-  p.scale(zoomx,zoomy);
-  //printf("render\n");
-  //renderer.render(&p, QRect(QPoint(0, 0), renderer.defaultSize()));
-  renderer.render(&p);
-  //printf("scale\n");
-  p.scale(1.0,1.0);
-  //printf("end\n");
-#else
-  printf("testing3 QWebFrame as SVG renderer\n");
-  webkitrenderer->setContent(stream,"image/svg+xml");
-  p.scale(zoomx,zoomy);
-  webkitrenderer->render(&p);
-  p.scale(1.0,1.0);
-#endif
+  if(opt.use_webkit_for_svg == 0)
+  {
+    renderer.load(stream);
+    p.scale(zoomx,zoomy);
+    renderer.render(&p);
+    p.scale(1.0,1.0);
+  }
+  else
+  {
+    //printf("testing3 QWebFrame as SVG renderer\n");
+    //renderer.load(stream); // workaround: load both QSvgRenderer and QWebFrame
+    webkitrenderer->setContent(stream,"image/svg+xml");
+    p.scale(zoomx,zoomy);
+    webkitrenderer->render(&p);
+    p.scale(1.0,1.0);
+  }  
 }
 
 void QDrawWidget::printSVG(QByteArray &stream)
@@ -1199,17 +1400,134 @@ void QDrawWidget::printSVG(QByteArray &stream)
   if(printDialog.exec() == QDialog::Accepted)
   {
     // print ...
-#ifdef USE_QT_SVG_RENDERER  
-    QSvgRenderer svgrenderer;
-    svgrenderer.load(stream);
-    QPainter painter;
-    painter.begin(&printer);
-    svgrenderer.render(&painter);
-    painter.end();
-#else
-    printf("testing4 QWebFrame as SVG renderer not implemented\n");
-#endif
+    if(opt.use_webkit_for_svg == 0)
+    {
+      QSvgRenderer svgrenderer;
+      svgrenderer.load(stream);
+      QPainter painter;
+      painter.begin(&printer);
+      svgrenderer.render(&painter);
+      painter.end();
+    }
+    else
+    {
+      if(webkitrenderer == NULL) return;
+      //webkitrenderer->setContent(stream,"image/svg+xml");
+      QPainter painter;
+      painter.begin(&printer);
+      webkitrenderer->render(&painter);
+      painter.end();
+    }  
   }
+}
+
+int QDrawWidget::requestSvgBoundsOnElement(QString &text)
+{
+  char buf[MAX_PRINTF_LENGTH];
+  if(opt.use_webkit_for_svg == 0)
+  {
+    QRectF rectf = renderer.boundsOnElement(text);
+    sprintf(buf,"text(%d,\"svgBoundsOnElement:%f,%f,%f,%f=%s\"\n", id, rectf.x(), rectf.y(), rectf.width(), rectf.height(), (const char *) text.toUtf8());
+    tcp_send(s,buf,strlen(buf));
+  }
+  else
+  {
+    TRMatrix ctm;
+    svgAnimator->calcCTM(text.toUtf8(),&ctm);
+
+    sprintf(buf,"text(%d,\"TODO: implement for webkit svgBoundsOnElement:%s\"\n", id, (const char *) text.toUtf8());
+    tcp_send(s,buf,strlen(buf));
+    printf("%s", buf);
+  }
+  return 0;
+}
+
+int QDrawWidget::requestSvgMatrixForElement(QString &text)
+{
+  char buf[MAX_PRINTF_LENGTH];
+  if(opt.use_webkit_for_svg == 0)
+  {
+    QMatrix m = renderer.matrixForElement(text);
+    sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", id, 
+    m.m11(), m.m12(), m.m21(), m.m22(), m.det(), m.dx(), m.dy(), (const char *) text.toUtf8());
+    tcp_send(s,buf,strlen(buf));
+  }
+  else
+  {
+    TRMatrix ctm;
+    int ret = svgAnimator->calcCTM(text.toUtf8(), &ctm);
+    if(ret == 0)
+    {
+      double det = ctm.a * ctm.d + ctm.b * ctm.c;
+      sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", id, 
+      ctm.a, ctm.c, ctm.b, ctm.d, det, ctm.e, ctm.f, (const char *) text.toUtf8());
+      tcp_send(s,buf,strlen(buf));
+    }  
+  }
+  return 0;
+}
+
+int pvSvgAnimator::calcCTM(const char *id, TRMatrix *ctm)
+{
+  char *line;
+  SVG_LINE *current_line = first;
+  QString pattern;
+  QStack<TRMatrix> stack;
+  int id_found = 0;
+  int transf_found = 0;
+  int debug = 0;
+
+  setMatrix("transform=\"scale(1)\"", ctm); // identity
+  stack.push(*ctm);
+
+  pattern.sprintf("id=\"%s\"", id);
+  for(int i=0; i<num_lines; i++)
+  {
+    if(comment[i] == ' ' && current_line->line != NULL)
+    {
+      line = new char [strlen(current_line->line) + 4];
+      strcpy(line,current_line->line);
+      stackSvgTransform(line, ctm, &stack);
+
+      if(line[0] == '<' || line[0] == '/')
+      {
+        transf_found = 0;
+      }
+
+      if(strncmp(line,"id=",3) == 0)
+      {
+        if(strcmp(line,pattern.toUtf8()) == 0)
+        {
+          id_found = 1;
+        }  
+      }
+      else if(line[0] == '<' || line[0] == '/' || line[0] == '<')
+      {
+        if(id_found)
+        {
+          if(transf_found) stack.pop(); // do not use transformation on myself
+          *ctm = stack.top();
+          if(debug) printf("CTMidFound: transf_found=%d\n", transf_found);
+          if(debug) printf("%5.3f %5.3f %5.3f\n", (float) ctm->a, (float) ctm->c, (float) ctm->e);
+          if(debug) printf("%5.3f %5.3f %5.3f\n", (float) ctm->b, (float) ctm->d, (float) ctm->f);
+          delete [] line;
+          return 0;
+        }
+      }
+      else if(strncmp(line,"transform=",10) == 0)
+      {
+        transf_found = 1;
+        setMatrix(line, ctm);
+        if(debug) printf("CTMx:\n");
+        if(debug) printf("%5.3f %5.3f %5.3f\n", (float) ctm->a, (float) ctm->c, (float) ctm->e);
+        if(debug) printf("%5.3f %5.3f %5.3f\n", (float) ctm->b, (float) ctm->d, (float) ctm->f);
+      }
+      delete [] line;
+    }
+    current_line = current_line->next;
+    if(current_line == NULL) break;
+  }
+  return -1;
 }
 
 //#### pvSvgAnimator begin ###############################################################
@@ -1352,7 +1670,6 @@ int pvSvgAnimator::read()
 
 int pvSvgAnimator::update(int on_printer)
 {
-  //char buf[MAXARRAY+1];
   QString qbuf;
   char *buf;
   int foundw,foundh,found_open_tag;
@@ -1383,6 +1700,19 @@ int pvSvgAnimator::update(int on_printer)
       }
       if(buf[0] != '\n')
       {
+        if((buf[0] == '>') || (buf[0] == '/' && buf[1] == '>'))
+        {
+          qbuf += QString::fromUtf8(buf);
+          stream.append(qbuf.toUtf8());
+          //printf("qbuf=%s\n", (const char *) qbuf.toUtf8());
+          qbuf = "";
+        }
+        else
+        {
+          qbuf += QString::fromUtf8(buf);
+          qbuf += " ";
+        }
+/*      
         // reassemble xml lines in order to avoid qt renderer problems with text position
         if(buf[0] == '<' && buf[1] != '/')
         {
@@ -1424,12 +1754,18 @@ int pvSvgAnimator::update(int on_printer)
             if(opt.arg_debug)printf("append2: %s\n", buf);
           }
         }
+*/        
       }
       delete [] buf;
     }
     current_line = current_line->next;
     if(current_line == NULL) break;
   }
+  if(qbuf.length() > 0)
+  {
+    stream.append(qbuf.toUtf8());
+    qbuf = "";
+  }  
   //printf("svgUpdate start\n");
   if(opt.arg_debug) printf("animatorUpdate svgUpdate\n");
   if(draw != NULL)
@@ -1553,7 +1889,6 @@ int pvSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char
   char buf[MAXARRAY+40],*cptr,*cptr2;
   SVG_LINE *current_line = first;
   SVG_LINE *last_open = NULL;
-  SVG_LINE *last = NULL;
   int i,ilast;
   int len = strlen(objectname);
   if(first == NULL) return -1;
@@ -1620,7 +1955,6 @@ for(int itest=0; ; itest++)
     {
       break;
     }
-    last = current_line;
     current_line = current_line->next;
   }
   if(i >= num_lines) return -1;
@@ -1779,8 +2113,6 @@ int pvSvgAnimator::svgTextPrintf(const char *objectname, const char *text)
 {
   char buf[MAXARRAY+40];
   SVG_LINE *current_line = first;
-  SVG_LINE *last_open = NULL;
-  SVG_LINE *last = NULL;
   int i,ilast;
   int len = strlen(objectname);
   if(first == NULL) return -1;
@@ -1792,11 +2124,9 @@ int pvSvgAnimator::svgTextPrintf(const char *objectname, const char *text)
     if(current_line->line[0] == '<') 
     {
       ilast = i;
-      last_open = current_line;
     }
     if(strncmp(current_line->line,"id=",3) == 0)
     {
-      //fix if(strstr(current_line->line,objectname) != NULL)
       if(mystrncmp(&current_line->line[4],objectname) == 0)
       {
         break;
@@ -1815,12 +2145,10 @@ int pvSvgAnimator::svgTextPrintf(const char *objectname, const char *text)
     {
       break;
     }
-    last = current_line;
     current_line = current_line->next;
   }
   if(i >= num_lines) return -1;
 
-  last = current_line; // the line with '>'
   current_line = current_line->next;
 
   //perhaps <tspan
@@ -1832,7 +2160,6 @@ int pvSvgAnimator::svgTextPrintf(const char *objectname, const char *text)
       {
         break;
       }
-      last = current_line;
       current_line = current_line->next;
     }
     if(current_line != NULL) current_line = current_line->next;
@@ -1856,10 +2183,9 @@ int pvSvgAnimator::svgTextPrintf(const char *objectname, const char *text)
 
 int pvSvgAnimator::show(const char *objectname, int state)
 {
-  int i,ilast,len,open_cnt;
+  int i,ilast,open_cnt;
   SVG_LINE *current_line = first;
   SVG_LINE *last_open = NULL;
-  len = strlen(objectname);
   if(first == NULL) return -1;
 
   if(opt.arg_debug) printf("svgShow(%s,%d)\n",objectname,state);
@@ -1949,6 +2275,89 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx,
   x = (int) (xmouse / zoomx);
   y = (int) (ymouse / zoomy);
 
+  if(opt.use_webkit_for_svg)
+  {
+    QWebFrame        *wf     = draw->qwebpage.currentFrame();
+    QWebHitTestResult result = wf->hitTestContent(QPoint(x,y));
+    QWebElement       e      = result.element();
+    QRect             r      = result.boundingRect();
+    if(e.isNull() == 0)
+    {
+      QString qs;
+      for(int i=0; i<e.attributeNames().length(); i++)
+      {
+        qs = e.attributeNames().at(i); 
+        if(qs == "id")
+        {
+          QString qname = e.attribute(qs); 
+          if(qname.startsWith("PV.") || qname.startsWith("@@"))
+          {
+            QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
+            return 0;
+          }  
+        }  
+      }  
+      QWebElement     pe     = result.element().parent();
+MyMurx:      
+      if(pe.isNull() == 0)
+      {
+        for(int i=0; i<pe.attributeNames().length(); i++)
+        {
+          qs = pe.attributeNames().at(i); 
+          if(qs == "id")
+          {
+            QString qname = pe.attribute(qs); 
+            if(qname.startsWith("PV.") || qname.startsWith("@@"))
+            {
+              QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
+              return 0;
+            }  
+          }  
+        }  
+        QWebElement ppe = pe.parent();
+        if(ppe.isNull() != 0)
+        {
+          pe = ppe;
+          goto MyMurx;
+        }
+      }  
+    }
+    else if(r.x() > 0 && r.y() > 0 && r.width() > 0 && r.height() > 0) 
+    { // it may be text for which we do not get the element. Thus we look for the rectangle.
+      result = wf->hitTestContent(QPoint(x,y - r.height()/2));
+      e      = result.element();
+      if(e.isNull())
+      {
+        result = wf->hitTestContent(QPoint(x,y + r.height()/2));
+        e      = result.element();
+      }
+      r      = result.boundingRect();
+      if(e.isNull() == 0)
+      {
+        QString qs;
+        QWebElement     pe     = result.element().parent();
+        if(pe.isNull() == 0)
+        {
+          for(int i=0; i<pe.attributeNames().length(); i++)
+          {
+            qs = pe.attributeNames().at(i); 
+            if(qs == "id")
+            {
+              QString qname = pe.attribute(qs); 
+              if(qname.startsWith("PV.") || qname.startsWith("@@"))
+              {
+                QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
+                return 0;
+              }
+            }
+          }  
+        }  
+      }
+    }
+    QApplication::setOverrideCursor(QCursor((Qt::CursorShape) draw->originalCursor));
+    return 0;
+  }
+
   iline = 0;
   svgline = first;
   while(svgline != NULL)
@@ -1960,9 +2369,6 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx,
       name.remove('\"');
       bounds = draw->renderer.boundsOnElement(name);
       matrix = draw->renderer.matrixForElement(name);
-      // with qwebframe we will use
-      // QWebHitTestResult QWebFrame::hitTestContent ( const QPoint & pos ) const
-
       mappedBounds =  matrix.mapRect(bounds); 
       if(x >= mappedBounds.x() && x <= (mappedBounds.x()+mappedBounds.width()) &&
          y >= mappedBounds.y() && y <= (mappedBounds.y()+mappedBounds.height()) )
@@ -1991,6 +2397,99 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
   if(zoomx < 0.001f || zoomy < 0.001f) return -1;
   x = (int) (xmouse / zoomx);
   y = (int) (ymouse / zoomy);
+  if(opt.use_webkit_for_svg)
+  {
+    QWebFrame        *wf     = draw->qwebpage.currentFrame();
+    QWebHitTestResult result = wf->hitTestContent(QPoint(x,y));
+    QWebElement       e      = result.element();
+    QRect             r      = result.boundingRect();
+    if(e.isNull() == 0)
+    {
+      QString qs;
+      for(int i=0; i<e.attributeNames().length(); i++)
+      {
+        qs = e.attributeNames().at(i); 
+        if(qs == "id")
+        {
+          QString qname = e.attribute(qs); 
+          if(qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@@"))
+          {
+            buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) qname.toUtf8());
+            if(buf.length() < MAX_PRINTF_LENGTH)
+            {
+              tcp_send(s, buf.toUtf8(), strlen(buf.toUtf8())); // send TEXT_EVENT to pvserver
+              return 0;
+            }
+          }  
+        }  
+      }  
+      QWebElement     pe     = result.element().parent();
+MyMurx:
+      if(pe.isNull() == 0)
+      {
+        for(int i=0; i<pe.attributeNames().length(); i++)
+        {
+          qs = pe.attributeNames().at(i); 
+          if(qs == "id")
+          {
+            QString qname = pe.attribute(qs); 
+            if(qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@"))
+            {
+              buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) qname.toUtf8());
+              if(buf.length() < MAX_PRINTF_LENGTH)
+              {
+                tcp_send(s, buf.toUtf8(), strlen(buf.toUtf8())); // send TEXT_EVENT to pvserver
+                return 0;
+              }
+            }  
+          }  
+        }  
+        QWebElement ppe = pe.parent();
+        if(ppe.isNull() == 0)
+        {
+          pe = ppe;
+          goto MyMurx;
+        }
+      }  
+    }
+    else if(r.x() > 0 && r.y() > 0 && r.width() > 0 && r.height() > 0) 
+    { // it may be text for which we do not get the element. Thus we look for the rectangle.
+      result = wf->hitTestContent(QPoint(x,y - r.height()/2));
+      e      = result.element();
+      if(e.isNull())
+      {
+        result = wf->hitTestContent(QPoint(x,y + r.height()/2));
+        e      = result.element();
+      }
+      r      = result.boundingRect();
+      if(e.isNull() == 0)
+      {
+        QString qs;
+        QWebElement     pe     = result.element().parent();
+        if(pe.isNull() == 0)
+        {
+          for(int i=0; i<pe.attributeNames().length(); i++)
+          {
+            qs = pe.attributeNames().at(i); 
+            if(qs == "id")
+            {
+              QString qname = pe.attribute(qs); 
+              if(qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@"))
+              {
+                buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) qname.toUtf8());
+                if(buf.length() < MAX_PRINTF_LENGTH)
+                {
+                  tcp_send(s, buf.toUtf8(), strlen(buf.toUtf8())); // send TEXT_EVENT to pvserver
+                  return 0;
+                }
+              }  
+            }  
+          }  
+        }  
+      }
+    }
+    return 0;
+  }
 
   iline = 0;
   svgline = first;

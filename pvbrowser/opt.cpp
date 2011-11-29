@@ -250,6 +250,7 @@ int i;
   opt.maximized=0;
   opt.tabs_above_toolbar=0;
   opt.echo_table_updates=0;
+  opt.use_webkit_for_svg=0;
   opt.enable_webkit_plugins=0;
   opt.temp[0] = '\0';
   opt.customlogo[0] = '\0';
@@ -383,6 +384,14 @@ int i;
         {
           sscanf(buf,"echo_table_updates=%d",&opt.echo_table_updates);
         }
+        else if(strncmp(buf,"use_webkit_for_svg=",19) == 0)
+        {
+          sscanf(buf,"use_webkit_for_svg=%d",&opt.use_webkit_for_svg);
+        }
+        else if(strncmp(buf,"enable_webkit_plugins=",22) == 0)
+        {
+          sscanf(buf,"enable_webkit_plugins=%d",&opt.enable_webkit_plugins);
+        }
         else if(strncmp(buf,"newwindow=",10) == 0)
         {
           sscanf(buf,"newwindow=%s",buf);
@@ -499,6 +508,7 @@ int i;
         fprintf(fp,"tabs_above_toolbar=0    # 0|1\n");
         fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
         fprintf(fp,"echo_table_updates=0    # 0|1\n");
+        fprintf(fp,"use_webkit_for_svg=1    # 0|1\n");
 #ifdef PVUNIX
         fprintf(fp,"enable_webkit_plugins=0 # 0|1\n"); // Linux bug in NSPlugin/Webkit/JavaScript
 #else
