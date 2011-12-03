@@ -1029,7 +1029,7 @@ void QDrawWidget::playSVG(const char *filename)
   }
   else
   {
-    printf("testing1 QWebFrame as SVG renderer\n");
+    //printf("testing1 QWebFrame as SVG renderer\n");
     webkitrenderer->setContent(stream,"image/svg+xml");
     p.scale(zoomx,zoomy);
     webkitrenderer->render(&p);
@@ -1073,7 +1073,7 @@ void QDrawWidget::socketPlaySVG()
   }
   else
   {
-    printf("testing2 QWebFrame as SVG renderer\n");
+    //printf("testing2 QWebFrame as SVG renderer\n");
     webkitrenderer->setContent(stream,"image/svg+xml");
     p.scale(zoomx,zoomy);
     webkitrenderer->render(&p);
@@ -1672,18 +1672,17 @@ int pvSvgAnimator::update(int on_printer)
 {
   QString qbuf;
   char *buf;
-  int foundw,foundh,found_open_tag;
+  int foundw,foundh,found_open_tag,found_tspan,found_tspan_whole_open;
   QByteArray stream;
   SVG_LINE *current_line = first;
   if(first == NULL) return -1;
 
   if(opt.arg_debug) printf("animatorUpdate\n");
   if(s == NULL) return -1;
-  foundw = foundh = found_open_tag = 0;
+  foundw = foundh = found_open_tag = found_tspan = found_tspan_whole_open = 0;
   //printf("update start\n");
   for(int i=0; i<num_lines; i++)
   {
-    if(opt.arg_debug) printf("animatorUpdate line=%d text=%s\n",i,current_line->line);
     if(comment[i] == ' ' && current_line->line != NULL)
     {
       buf = new char [strlen(current_line->line) + 4];
@@ -1700,61 +1699,42 @@ int pvSvgAnimator::update(int on_printer)
       }
       if(buf[0] != '\n')
       {
-        if((buf[0] == '>') || (buf[0] == '/' && buf[1] == '>'))
+        if(found_tspan == 0) // ensure whole tspan is in one line
+        {
+          if(strncmp(buf,"<tspan",6) == 0) found_tspan = 1;
+        }  
+        if(found_tspan == 1)
+        {
+          if(strncmp(buf,"</tspan>",8) == 0)
+          {
+            found_tspan = 0;
+            found_tspan_whole_open = 0;
+          }  
+        }
+        if(found_tspan == 0 && ((buf[0] == '>') || (buf[0] == '/' && buf[1] == '>')))
         {
           qbuf += QString::fromUtf8(buf);
+          if(opt.arg_debug) printf("animatorUpdate append1 qbuf=%s\n", (const char *) qbuf.toUtf8());
           stream.append(qbuf.toUtf8());
-          //printf("qbuf=%s\n", (const char *) qbuf.toUtf8());
           qbuf = "";
+        }
+        else if(found_tspan == 1)
+        {
+          qbuf += QString::fromUtf8(buf);
+          if(buf[0] == '>' || found_tspan_whole_open == 1)
+          {
+            found_tspan_whole_open = 1;
+          }
+          else
+          {
+            qbuf += " ";
+          }
         }
         else
         {
           qbuf += QString::fromUtf8(buf);
           qbuf += " ";
         }
-/*      
-        // reassemble xml lines in order to avoid qt renderer problems with text position
-        if(buf[0] == '<' && buf[1] != '/')
-        {
-          found_open_tag = 1;
-          qbuf = QString::fromUtf8(buf);
-          if(strchr(buf,'>') != NULL)
-          {
-            found_open_tag = 0;
-            if(opt.arg_debug)printf("append0: %s\n", (const char *) qbuf.toUtf8());
-            qbuf += "\n";
-            stream.append(qbuf.toUtf8());
-          }
-          else
-          {
-            qbuf += " ";
-          }
-        }
-        else if(strchr(buf,'>') != NULL)
-        {
-          if(found_open_tag == 1) qbuf += QString::fromUtf8(buf);
-          else                    qbuf  = QString::fromUtf8(buf);
-          found_open_tag = 0;
-          //qbuf += "\n"; do not do because of wrong text position offset 
-          if(opt.arg_debug)printf("append1: %s\n", (const char *) qbuf.toUtf8());
-          stream.append(qbuf.toUtf8());
-        }
-        else
-        {
-          if(found_open_tag == 1)
-          {
-            qbuf += QString::fromUtf8(buf);
-            qbuf += " ";
-          }
-          else
-          {
-            strcat(buf,"\n");
-            stream.append(buf);
-            //stream.append(QString::fromUtf8(buf));
-            if(opt.arg_debug)printf("append2: %s\n", buf);
-          }
-        }
-*/        
       }
       delete [] buf;
     }
@@ -1763,6 +1743,7 @@ int pvSvgAnimator::update(int on_printer)
   }
   if(qbuf.length() > 0)
   {
+    if(opt.arg_debug) printf("animatorUpdate append2 qbuf=%s\n", (const char *) qbuf.toUtf8());
     stream.append(qbuf.toUtf8());
     qbuf = "";
   }  

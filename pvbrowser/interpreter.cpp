@@ -1367,7 +1367,7 @@ void Interpreter::interpretg(const char *command)
         if(p->svgAnimator != NULL) delete p->svgAnimator;
         p->svgAnimator = new pvSvgAnimator(s,p);
         p->svgAnimator->read();
-        if(opt.arg_debug > 1) p->svgAnimator->testoutput();
+        //if(opt.arg_debug > 1) p->svgAnimator->testoutput();
       }
     }
   }
