@@ -1701,18 +1701,19 @@ int pvSvgAnimator::update(int on_printer)
       {
         if(found_tspan == 0) // ensure whole tspan is in one line
         {
-          if(strncmp(buf,"<tspan",6) == 0) found_tspan = 1;
+          if(strcmp(buf,"<tspan") == 0) found_tspan = 1;
         }  
         if(found_tspan == 1)
         {
-          if(strncmp(buf,"</tspan>",8) == 0)
+          if(strcmp(buf,"</text>") == 0)
           {
             found_tspan = 0;
             found_tspan_whole_open = 0;
-          }  
+          }
         }
         if(found_tspan == 0 && ((buf[0] == '>') || (buf[0] == '/' && buf[1] == '>')))
         {
+          qbuf.resize(qbuf.length()-1);
           qbuf += QString::fromUtf8(buf);
           if(opt.arg_debug) printf("animatorUpdate append1 qbuf=%s\n", (const char *) qbuf.toUtf8());
           stream.append(qbuf.toUtf8());
@@ -1724,6 +1725,12 @@ int pvSvgAnimator::update(int on_printer)
           if(buf[0] == '>' || found_tspan_whole_open == 1)
           {
             found_tspan_whole_open = 1;
+          }
+          else if(strcmp(buf,"/>") == 0)
+          {
+            found_tspan = 0;
+            found_tspan_whole_open = 0;
+            qbuf += " ";
           }
           else
           {

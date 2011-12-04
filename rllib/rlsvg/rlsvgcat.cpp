@@ -251,10 +251,39 @@ void rlSvgCat::catline()
         fprintf(out,"</SVG>");
         return;
       }
-      fputc(line[i++],out);
-      fputc(line[i++],out);
-      i = outUntil(i,">");
-      fputc('\n',out);
+      if(strncmp(&line[i],"</tspan>",8) == 0)
+      {
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc('\n',out);
+        i--;
+      }
+      else if(strncmp(&line[i],"</TSPAN>",8) == 0)
+      {
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        fputc('\n',out);
+        i--;
+      }
+      else
+      {
+        fputc(line[i++],out);
+        fputc(line[i++],out);
+        i = outUntil(i,">");
+        fputc('\n',out);
+      }  
     }
     else if(strncmp(&line[i],"<",1) == 0)
     {
