@@ -319,7 +319,7 @@ int i;
         else if(strncmp(buf,"temp=",5) == 0)
         {
           int ret;
-          sscanf(buf,"temp=%s",buf2);
+          strcpy(buf2, &buf[5]);
 #ifdef PVUNIX
           sprintf(cmd,"mkdir -p %s", buf2);
           if(system(cmd) != 0) printf("could not create temporary directory: %s\n", cmd);
@@ -456,10 +456,15 @@ int i;
         }
         else if(strncmp(buf,"customlogo=",11) == 0)
         {
+#ifdef PVWIN32
+          strcpy(buf2, buf);
+          ExpandEnvironmentStrings(buf2,buf,sizeof(buf)-1);
+          if(strstr(buf,"%") != NULL) QMessageBox::warning(NULL,buf,"readIniFile customlogo directory unknown: adjust pvbrowser.ini temp=");
+#endif
           cptr = strchr(buf,'=');
           cptr++;
           if(*cptr == ' ') cptr++;
-          sscanf(cptr,"%s",opt.customlogo);
+          strcpy(opt.customlogo, cptr);
         }
         else if(strncmp(buf,"codec=",6) == 0)
         {
