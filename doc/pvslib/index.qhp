@@ -295,6 +295,8 @@
       <keyword name="pvSave" id="processviewserver.h::pvSave" ref="processviewserver_8h.html#ga6420dc6f7eb8a42bd410ac78ec584c9c" />
       <keyword name="pvSave" id="processviewserver.h::pvSave" ref="processviewserver_8h.html#gac2fecd439e41688c1ee7d971ff09ca1c" />
       <keyword name="pvSaveAsBmp" id="processviewserver.h::pvSaveAsBmp" ref="processviewserver_8h.html#ga6aa9ac093b1f87c87e399c293c76902d" />
+      <keyword name="pvHtmlOrSvgDump" id="processviewserver.h::pvHtmlOrSvgDump" ref="processviewserver_8h.html#gabddb77f432b6ce49eca400afe7efbe02" />
+      <keyword name="pvRenderTreeDump" id="processviewserver.h::pvRenderTreeDump" ref="processviewserver_8h.html#ga7ff8a8d3f46fc4cd3c85b26aaf6596b5" />
       <keyword name="pvSendFile" id="processviewserver.h::pvSendFile" ref="processviewserver_8h.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="processviewserver.h::pvDownloadFileAs" ref="processviewserver_8h.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="processviewserver.h::pvDownloadFile" ref="processviewserver_8h.html#gad00140754b048cb7c60fa968fec98d41" />
@@ -743,10 +745,10 @@
       <keyword name="MDY" id="DefinesAndEnums::MDY" ref="group__DefinesAndEnums.html#ggafbb7a18945a0832b5189bbe768dd0c51ab844ad84a5dd3f1418bd11ce17680d4d" />
       <keyword name="YMD" id="DefinesAndEnums::YMD" ref="group__DefinesAndEnums.html#ggafbb7a18945a0832b5189bbe768dd0c51ac87d3c49816cac45d2b7f248be904abc" />
       <keyword name="YDM" id="DefinesAndEnums::YDM" ref="group__DefinesAndEnums.html#ggafbb7a18945a0832b5189bbe768dd0c51a32427b1d4ccf44d750905cd59256593d" />
-      <keyword name="Horizontal" id="DefinesAndEnums::Horizontal" ref="group__DefinesAndEnums.html#gga871118a09520247c78a71ecd7b0abd58a7d5f78c516bedc0a066182a6fd606b8b" />
-      <keyword name="Vertical" id="DefinesAndEnums::Vertical" ref="group__DefinesAndEnums.html#gga871118a09520247c78a71ecd7b0abd58a2434cd8c1a594a4cdaa250f86639c600" />
       <keyword name="HORIZONTAL" id="DefinesAndEnums::HORIZONTAL" ref="group__DefinesAndEnums.html#ggadc460053ab2088d3fe74b8b90a7a1c4ca4dd51ad73508d6fc83a502966779e48e" />
       <keyword name="VERTICAL" id="DefinesAndEnums::VERTICAL" ref="group__DefinesAndEnums.html#ggadc460053ab2088d3fe74b8b90a7a1c4ca1a88641fcd39f2ed3e58a18526e97138" />
+      <keyword name="Horizontal" id="DefinesAndEnums::Horizontal" ref="group__DefinesAndEnums.html#gga871118a09520247c78a71ecd7b0abd58a7d5f78c516bedc0a066182a6fd606b8b" />
+      <keyword name="Vertical" id="DefinesAndEnums::Vertical" ref="group__DefinesAndEnums.html#gga871118a09520247c78a71ecd7b0abd58a2434cd8c1a594a4cdaa250f86639c600" />
       <keyword name="NoPen" id="DefinesAndEnums::NoPen" ref="group__DefinesAndEnums.html#ggab70170afb6347d18ff9dac17e05e133ea314746f3ee358e57208bfafdcb6a78ce" />
       <keyword name="SolidLine" id="DefinesAndEnums::SolidLine" ref="group__DefinesAndEnums.html#ggab70170afb6347d18ff9dac17e05e133eaa093aac47201f487076a14536d7d232e" />
       <keyword name="DashLine" id="DefinesAndEnums::DashLine" ref="group__DefinesAndEnums.html#ggab70170afb6347d18ff9dac17e05e133ea39a370f5e06732e1509246018be8e3e4" />
@@ -1146,6 +1148,8 @@
       <keyword name="pvSave" id="Misc::pvSave" ref="group__Misc.html#ga6420dc6f7eb8a42bd410ac78ec584c9c" />
       <keyword name="pvSave" id="Misc::pvSave" ref="group__Misc.html#gac2fecd439e41688c1ee7d971ff09ca1c" />
       <keyword name="pvSaveAsBmp" id="Misc::pvSaveAsBmp" ref="group__Misc.html#ga6aa9ac093b1f87c87e399c293c76902d" />
+      <keyword name="pvHtmlOrSvgDump" id="Misc::pvHtmlOrSvgDump" ref="group__Misc.html#gabddb77f432b6ce49eca400afe7efbe02" />
+      <keyword name="pvRenderTreeDump" id="Misc::pvRenderTreeDump" ref="group__Misc.html#ga7ff8a8d3f46fc4cd3c85b26aaf6596b5" />
       <keyword name="pvSendFile" id="Misc::pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="Misc::pvDownloadFileAs" ref="group__Misc.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="Misc::pvDownloadFile" ref="group__Misc.html#gad00140754b048cb7c60fa968fec98d41" />

@@ -1533,6 +1533,14 @@ def pvSaveAsBmp(*args):
   return _pv.pvSaveAsBmp(*args)
 pvSaveAsBmp = _pv.pvSaveAsBmp
 
+def pvHtmlOrSvgDump(*args):
+  return _pv.pvHtmlOrSvgDump(*args)
+pvHtmlOrSvgDump = _pv.pvHtmlOrSvgDump
+
+def pvRenderTreeDump(*args):
+  return _pv.pvRenderTreeDump(*args)
+pvRenderTreeDump = _pv.pvRenderTreeDump
+
 def pvSendFile(*args):
   return _pv.pvSendFile(*args)
 pvSendFile = _pv.pvSendFile

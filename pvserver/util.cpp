@@ -237,10 +237,11 @@ static int getLocalMilliseconds()
 
 static int pvFilePrefix(PARAM *p)
 {
-  int ret;
-  char temp[32];
+//  int ret;
+//  char temp[32];
 
   sprintf(p->file_prefix,"PVTMP%06d",p->s);
+/*
   strcpy(temp,"PVTMPXXXXXX");
 
 #ifdef PVUNIX
@@ -271,7 +272,7 @@ static int pvFilePrefix(PARAM *p)
   if(fout == NULL) return -1;
   fclose(fout);
 #endif
-
+*/
   return 0;
 }
 
@@ -3723,6 +3724,26 @@ char buf[MAX_PRINTF_LENGTH];
 
   pv_length_check(p,filename);
   sprintf(buf,"gSaveAsBmp(%d,\"%s\")\n",id,filename);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvHtmlOrSvgDump(PARAM *p, int id, const char *filename)
+{
+char buf[MAX_PRINTF_LENGTH];
+
+  pv_length_check(p,filename);
+  sprintf(buf,"htmlOrSvgDump(%d,\"%s\")\n",id,filename);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvRenderTreeDump(PARAM *p, int id, const char *filename)
+{
+char buf[MAX_PRINTF_LENGTH];
+
+  pv_length_check(p,filename);
+  sprintf(buf,"renderTreeDump(%d,\"%s\")\n",id,filename);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }

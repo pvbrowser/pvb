@@ -1478,6 +1478,29 @@ void Interpreter::interpreth(const char *command)
       mainWindow->slotUrl(text);
     }
   }
+  else if(strncmp(command,"htmlOrSvgDump(",14) == 0)
+  {
+    sscanf(command,"htmlOrSvgDump(%d,",&i);
+    get_text(command,text);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QString filename;
+      if(strstr(text.toUtf8(),"..") != NULL) filename = temp + "suspicious.dat";
+      else                                   filename = temp + text;
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL) p->htmlOrSvgDump(filename.toUtf8());
+    }
+    else if(all[i]->type == TQTextBrowser)
+    {
+      QString filename;
+      if(strstr(text.toUtf8(),"..") != NULL) filename = temp + "suspicious.dat";
+      else                                   filename = temp + text;
+      MyTextBrowser *p = (MyTextBrowser *) all[i]->w;
+      if(p != NULL) p->htmlOrSvgDump(filename.toUtf8());
+    }
+  }
 }
 
 void Interpreter::interpreti(const char *command)
@@ -2149,6 +2172,21 @@ void Interpreter::interpretr(const char *command)
     {
       MyIconView *ptr = (MyIconView *) all[i]->w;
       if(ptr != NULL) ptr->deleteIconViewItem(text);
+    }
+  }
+  else if(strncmp(command,"renderTreeDump(",15) == 0)
+  {
+    sscanf(command,"renderTreeDump(%d,",&i);
+    get_text(command,text);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QString filename;
+      if(strstr(text.toUtf8(),"..") != NULL) filename = temp + "suspicious.dat";
+      else                                   filename = temp + text;
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL) p->renderTreeDump(filename.toUtf8());
     }
   }
   else if(strncmp(command,"requestGeometry(",16) == 0)

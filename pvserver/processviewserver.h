@@ -1237,6 +1237,7 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetSelector()
 pvPrintSvgOnPrinter()
+pvRenderTreeDump()
 See Module: Graphics
 </pre> */
 int pvQDraw(PARAM *p, int id, int parent);
@@ -2604,6 +2605,16 @@ Save the widget to a file on the client computer. (bitmap file)
 Allowed widgets: all widgets
 </pre> */
 int pvSaveAsBmp(PARAM *p, int id, const char *filename);
+/*! <pre>
+Dump the HTML or SVG code on the client.
+Allowed widgets: QTextBrowser/WebKit widget for HTML and QDraw/SVG widget for SVG
+</pre> */
+int pvHtmlOrSvgDump(PARAM *p, int id, const char *filename);
+/*! <pre>
+Dump the SVG rendering data to a SVG file on the client.
+Allowed widgets: QDraw/SVG widget
+</pre> */
+int pvRenderTreeDump(PARAM *p, int id, const char *filename);
 /*! <pre>
 send file to browser
 </pre> */

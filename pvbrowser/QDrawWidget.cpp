@@ -419,6 +419,46 @@ void QDrawWidget::logToFile(const char *filename)
   }
 }
 
+void QDrawWidget::htmlOrSvgDump(const char *filename)
+{
+  if(webkitrenderer != NULL && opt.use_webkit_for_svg == 1)
+  {
+    FILE *fout = fopen(filename,"w");
+    if(fout == NULL)
+    {
+      printf("could not write %s\n", filename);
+      return;
+    }
+    QString xml = webkitrenderer->toHtml();
+    fputs(xml.toUtf8(), fout);
+    fclose(fout);
+  }
+  else
+  {
+    printf("ERROR: htmlOrSvgDump only available if use_webkit_for_svg=1\n");
+  }
+}
+
+void QDrawWidget::renderTreeDump(const char *filename)
+{
+  if(webkitrenderer != NULL && opt.use_webkit_for_svg == 1)
+  {
+    FILE *fout = fopen(filename,"w");
+    if(fout == NULL)
+    {
+      printf("could not write %s\n", filename);
+      return;
+    }
+    QString xml = webkitrenderer->renderTreeDump();
+    fputs(xml.toUtf8(), fout);
+    fclose(fout);
+  }
+  else
+  {
+    printf("ERROR: renderTreeDump only available if use_webkit_for_svg=1\n");
+  }
+}
+
 void QDrawWidget::getDimensions(const char *filename, int *width, int *height)
 {
   FILE *f;
@@ -1438,7 +1478,7 @@ int QDrawWidget::requestSvgBoundsOnElement(QString &text)
     sprintf(buf,"text(%d,\"TODO: implement for webkit svgBoundsOnElement:%s\"\n", id, (const char *) text.toUtf8());
     tcp_send(s,buf,strlen(buf));
     printf("%s", buf);
-  }
+  }  
   return 0;
 }
 

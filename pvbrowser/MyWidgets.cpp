@@ -1892,6 +1892,24 @@ void MyTextBrowser::setHTML(QString &text)
   setHtml(text);
 }
 
+void MyTextBrowser::htmlOrSvgDump(const char *filename)
+{
+  QWebPage *p = page();
+  if(p == NULL) return;
+  QWebFrame *f = p->currentFrame();
+  if(f == NULL) return;
+
+  FILE *fout = fopen(filename,"w");
+  if(fout == NULL)
+  {
+    printf("could not write %s\n", filename);
+    return;
+  }
+  QString xml = f->toHtml();
+  fputs(xml.toUtf8(), fout);
+  fclose(fout);
+}
+
 void MyTextBrowser::slotLinkClicked(const QUrl &link)
 {
   char buf[MAX_PRINTF_LENGTH];

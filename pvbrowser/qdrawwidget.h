@@ -106,6 +106,8 @@ public:
     void logToFile(const char *filename);
     void logBmpToFile(const char *filename);
     void copyToClipboard();
+    void htmlOrSvgDump(const char *filename);
+    void renderTreeDump(const char *filename);
     void moveTo(int x, int y);
     void lineTo(int x, int y);
     void text(int x, int y, int alignment, const char *text);

@@ -433,6 +433,7 @@ public:
     ~MyTextBrowser();
     void moveContent(int pos);
     void setHTML(QString &text);
+    void htmlOrSvgDump(const char *filename);
     QString home;
     int homeIsSet;
 

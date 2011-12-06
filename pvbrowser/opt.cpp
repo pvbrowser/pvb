@@ -25,6 +25,9 @@
 #include <windows.h>
 #include <direct.h>
 #endif
+#ifdef PVUNIX
+#include <unistd.h>
+#endif
 
 OPT opt;
 
