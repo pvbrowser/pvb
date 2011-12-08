@@ -1461,9 +1461,89 @@ void QDrawWidget::printSVG(QByteArray &stream)
   }
 }
 
+int QDrawWidget::interpretRenderTree(const char *xml, int object_wanted, int *xret, int *yret, int *wret, int *hret)
+{
+  if(xml == NULL) return -1;
+  int indent = 0, indent_found = 0;
+  int g_found = 0;
+  int at_found = 0;
+  int size_found = 0;
+  int m_found = 0;
+  int t_found = 0;
+  int num_g = 0, num_object = 0;
+  const char *cptr = xml;
+  int atx=0, aty=0, sizew=0, sizeh=0;
+  float m11=0, m12=0, m21=0, m22=0, tx=0, ty=0;
+  
+  while(*cptr != '\0')
+  {
+    if(*cptr == '\n')
+    {
+      if(num_g > 0) num_object++;
+      if(opt.arg_debug)
+      {
+        if(g_found) printf("{g} indent=%2d num_object=%d ", indent, num_object);
+        else        printf("    indent=%2d num_object=%d ", indent, num_object);
+        printf("at=%d,%d size=%dx%d m=(%f,%f)(%f,%f) t=(%f,%f)\n",
+                atx,aty, sizew,sizeh, m11, m12, m21, m22, tx, ty);
+      }          
+      if(num_object == object_wanted)
+      {
+        if(opt.arg_debug) printf("wanted object=%d at=%d,%d size=%dx%d\n",
+                                     num_object,   atx,aty, sizew,sizeh);
+        *xret = atx;
+        *yret = aty;
+        *wret = sizew;
+        *hret = sizeh;
+        return 1;        
+      }
+      indent = indent_found = 0;
+      g_found = at_found = size_found = m_found = t_found = 0;
+      atx = aty = sizew = sizeh = m11 = m12 = m21 = m22 = tx = ty = 0;
+    }
+    else if(*cptr == ' ' && indent_found == 0)
+    {
+      indent++;
+    }
+    else if(strncmp(cptr,"{g}",3) == 0)
+    {
+      g_found = indent_found = 1;
+      num_g++;
+    }
+    else if(strncmp(cptr,"at (",4) == 0)
+    {
+      at_found = indent_found = 1;
+      sscanf(cptr,"at (%d,%d", &atx, &aty);
+    }
+    else if(strncmp(cptr,"size ",5) == 0)
+    {
+      size_found = indent_found = 1;
+      sscanf(cptr,"size %dx%d,", &sizew, &sizeh);
+    }
+    else if(strncmp(cptr,"m=(",3) == 0)
+    {
+      m_found = indent_found = 1;
+      sscanf(cptr,"m=((%f,%f)(%f,%f,", &m11, &m12, &m21, &m22);
+    }
+    else if(strncmp(cptr,"t=(",3) == 0)
+    {
+      t_found = indent_found = 1;
+      sscanf(cptr,"t=(%f,%f", &tx, &ty);
+    }
+    else
+    {
+      indent_found = 1;
+    }
+    cptr++;
+  }
+
+  return 0;
+}
+
 int QDrawWidget::requestSvgBoundsOnElement(QString &text)
 {
   char buf[MAX_PRINTF_LENGTH];
+  if(opt.arg_debug) printf("requestSvgBoundsOnElement\n");
   if(opt.use_webkit_for_svg == 0)
   {
     QRectF rectf = renderer.boundsOnElement(text);
@@ -1472,12 +1552,21 @@ int QDrawWidget::requestSvgBoundsOnElement(QString &text)
   }
   else
   {
-    TRMatrix ctm;
-    svgAnimator->calcCTM(text.toUtf8(),&ctm);
-
-    sprintf(buf,"text(%d,\"TODO: implement for webkit svgBoundsOnElement:%s\"\n", id, (const char *) text.toUtf8());
-    tcp_send(s,buf,strlen(buf));
-    printf("%s", buf);
+    if(svgAnimator == NULL) return 0;
+    if(webkitrenderer == NULL) return 0;
+    QString pattern;
+    pattern.sprintf("id=\"%s\"", (const char *) text.toUtf8());
+    int g_wanted = svgAnimator->calcObjectWanted(pattern.toUtf8());
+    if(g_wanted > 0)
+    {
+      int x=0, y=0, w=0, h=0;
+      QString xml = webkitrenderer->renderTreeDump();
+      if(interpretRenderTree(xml.toUtf8(), g_wanted, &x, &y, &w, &h) == 1)
+      {
+        sprintf(buf,"text(%d,\"svgBoundsOnElement:%d,%d,%d,%d=%s\"\n", id, x, y, w, h, (const char *) text.toUtf8());
+        tcp_send(s,buf,strlen(buf));
+      }  
+    }
   }  
   return 0;
 }
@@ -1503,6 +1592,36 @@ int QDrawWidget::requestSvgMatrixForElement(QString &text)
       ctm.a, ctm.c, ctm.b, ctm.d, det, ctm.e, ctm.f, (const char *) text.toUtf8());
       tcp_send(s,buf,strlen(buf));
     }  
+  }
+  return 0;
+}
+
+int pvSvgAnimator::calcObjectWanted(const char *pattern)
+{
+  int object=0, start_group_found=0;
+  SVG_LINE *current_line = first;
+  int i=0;
+  while(current_line != NULL)
+  {
+    if(comment[i] == ' ' && current_line->line != NULL)
+    {
+      if     (start_group_found==0 && strcmp(current_line->line,"<g") == 0) 
+      {
+        start_group_found = 1;
+        object++;
+      }  
+      else if(start_group_found==1 && strncmp(current_line->line,"<",1)  == 0)
+      {
+        object++;
+      }
+      else if(strcmp(current_line->line,pattern) == 0)
+      {
+        if(opt.arg_debug) printf("calcObjectWanted=%d\n", object);
+        return object;
+      }  
+    }
+    current_line = current_line->next;
+    i++;
   }
   return 0;
 }

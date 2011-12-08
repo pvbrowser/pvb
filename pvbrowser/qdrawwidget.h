@@ -57,6 +57,7 @@ class pvSvgAnimator
     int perhapsSetOverrideCursor(int x, int y, float zoomx, float zoomy, int buttons);
     int perhapsSendSvgEvent(const char *event, int *s, int id,int x, int y, float zoomx, float zoomy);
 #endif
+    int calcObjectWanted(const char *pattern);
     int calcCTM(const char *id, TRMatrix *ctm);
     int testoutput();
   private:
@@ -131,6 +132,7 @@ public:
     void socketPlaySVG();
     void svgUpdate(QByteArray &stream);
     void printSVG(QByteArray &stream);
+    int  interpretRenderTree(const char *xml, int g_wanted, int *x, int *y, int *w, int *h);
     int  requestSvgBoundsOnElement(QString &text);
     int  requestSvgMatrixForElement(QString &text);
     //QString filename;
