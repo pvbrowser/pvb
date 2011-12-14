@@ -19,6 +19,7 @@
 
 #include <stdio.h>
 #include <QtGui>
+#include <QTimer>
 #include <QSvgRenderer>
 #include <QWebPage>    // testing qwebframe svg renderer murx
 #include <QWebFrame>   // testing qwebframe svg renderer murx
@@ -54,8 +55,8 @@ class pvSvgAnimator
     int svgTextPrintf(const char *objectname, const char *text);
     int show(const char *objectname, int state); // state := 0|1
 #if QT_VERSION >= 0x040201
-    int perhapsSetOverrideCursor(int x, int y, float zoomx, float zoomy, int buttons);
-    int perhapsSendSvgEvent(const char *event, int *s, int id,int x, int y, float zoomx, float zoomy);
+    int perhapsSetOverrideCursor(int x, int y, int buttons);
+    int perhapsSendSvgEvent(const char *event, int *s, int id,int x, int y);
 #endif
     int calcObjectWanted(const char *pattern);
     int calcCTM(const char *id, TRMatrix *ctm);
@@ -98,7 +99,7 @@ public:
     QDrawWidget( QWidget *parent=0, const char *name=0, int wFlags=0, int *sock=NULL, int ident=0);
     ~QDrawWidget();
 
-    void beginDraw();
+    void beginDraw(int set_request=0);
     void endDraw();
     void showFromSocket(int *s);
     void showFromFile(const char *filename);
@@ -127,6 +128,8 @@ public:
     void setLinestyle(int style);
     void setZoomX(float zx);
     void setZoomY(float zy);
+    float    zoomx,zoomy;
+    int      autoZoomX, autoZoomY;
     void setBackgroundColor(int r, int g, int b);
     void playSVG(const char *filename);
     void socketPlaySVG();
@@ -137,10 +140,10 @@ public:
     int  requestSvgMatrixForElement(QString &text);
     //QString filename;
     int  hasLayout;
-    void layoutResize(int w, int h);
+    //void layoutResize(int w, int h);
+    void renderScene();
 
     virtual void resize(int w, int h);
-    virtual void resizeEvent(QResizeEvent *event);
     virtual void setGeometry(int x, int y, int w, int h);
     virtual void setGeometry(const QRect &r);
 
@@ -151,8 +154,11 @@ public:
     QWebPage  qwebpage;         // testing WebKit SVG renderer murx
     QWebFrame *webkitrenderer;  // testing Webkit SVG renderer murx
     int originalCursor;
+    int origwidth, origheight;
+    int percentZoomMask;
 
 protected:
+    virtual void resizeEvent(QResizeEvent *event);
     virtual void paintEvent(QPaintEvent *);
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
@@ -169,7 +175,6 @@ private:
     FILE     *fp;
     FILE     *flog;
     QPainter p;
-    int      origwidth, origheight;
     QPixmap  *buffer;
     int      xold, yold;
     int      zx(int x);
@@ -178,8 +183,8 @@ private:
     float    ymin,dy,ymax;
     int      tx(float x);
     int      ty(float y);
-    float    zoomx,zoomy;
-    int      autoZoomX, autoZoomY;
+    //float    zoomx,zoomy;
+    //int      autoZoomX, autoZoomY;
     int      linestyle;
     int      boxx,boxy,boxw,boxh;
     int      br,bg,bb; // background colors
@@ -187,6 +192,12 @@ private:
     int      sr;       // symbol radius
     int      pressedX, pressedY, movedX, movedY;
     char     floatFormat[80];
+    int      svg_draw_request_by_pvb;
+    QTimer   timer;
+
+public slots:
+    void     slotWebkitSvgChanged(const QRect &dirtyRect);
+    void     slotTimeout();
 };
 
 #endif

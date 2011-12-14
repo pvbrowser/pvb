@@ -298,6 +298,7 @@ int i;
         else if(strncmp(buf,"zoom=",5) == 0)
         {
           sscanf(buf,"zoom=%d",&opt.zoom);
+          if(opt.zoom < 1) opt.zoom = 1;
         }
         else if(strncmp(buf,"fontzoom=",9) == 0)
         {

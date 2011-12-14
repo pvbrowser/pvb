@@ -1362,6 +1362,7 @@ void Interpreter::interpretg(const char *command)
     if(all[i]->type == TQDraw)
     {
       QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      p->hasLayout = mainWindow->pvbtab[mainWindow->currentTab].hasLayout;
       if(p != NULL)
       {
         if(p->svgAnimator != NULL) delete p->svgAnimator;
@@ -2678,7 +2679,6 @@ void Interpreter::interprets(const char *command)
           {
             QDrawWidget *iw = (QDrawWidget *) all[i]->w;
             if(iw != NULL) iw->setGeometry(x,y,w,h);
-            if(iw != NULL) iw->resize(w,h);
             if(zoom != 100)
             {
               float fzoom = ((float)zoom)/100.0f;
@@ -5207,6 +5207,23 @@ void Interpreter::zoomMask(int percent)
   int i,x,y,w,h;
   QFont f;
 
+  if(hasLayout == 1)
+  {
+    int r=255, g=255, b=0;
+    char text[80] = "This mask will not be zoomed because it has a layout defined.";
+    mySetBackgroundColor(mainWindow->statusBar(),-1,r,g,b);
+    mainWindow->statusBar()->showMessage(text,2000);
+    return;
+  }
+  else
+  {
+    int r=0, g=255, b=0;
+    char text[80] = "Zoom = %d percent\n";
+
+    sprintf(text,"Zoom = %d percent\n", percent);
+    mySetBackgroundColor(mainWindow->statusBar(),-1,r,g,b);
+    mainWindow->statusBar()->showMessage(text,2000);
+  }
   percentZoomMask = percent;
   for(i=0; i<nmax; i++)
   {
@@ -5226,15 +5243,12 @@ void Interpreter::zoomMask(int percent)
         }
         else if(all[i]->type == TQDraw)
         {
+          char buf[80];
           QDrawWidget *iw = (QDrawWidget *) all[i]->w;
           iw->setGeometry(x,y,w,h);
-          iw->resize(w,h);
-          if(percent != 100)
-          {
-            float fzoom = ((float)percent)/100.0f;
-            iw->setZoomX(fzoom);
-            iw->setZoomY(fzoom);
-          }
+          iw->percentZoomMask = percentZoomMask;
+          sprintf(buf,"slider(%d,%d)\n",i,percent);
+          tcp_send(s,buf,strlen(buf));
         }
         else
         {

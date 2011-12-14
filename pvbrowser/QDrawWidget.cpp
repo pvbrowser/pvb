@@ -17,6 +17,7 @@
 #include <math.h>
 #include <QString>
 #include <QStack>
+#include <QTimer>
 #include "pvdefine.h"
 #include "opt.h"
 #include "qdrawwidget.h"
@@ -233,12 +234,16 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
   if(opt.arg_debug) printf("QDrawWidget::QDrawWidget\n");
   if(name != NULL) setObjectName(name);
   webkitrenderer = NULL;
+  svg_draw_request_by_pvb = 1;
   if(opt.use_webkit_for_svg)
   {
     qwebpage.setViewportSize(QSize(640,480));
     webkitrenderer = qwebpage.currentFrame();  // testing qwebframe svg renderer murx
+    connect(&qwebpage, SIGNAL(repaintRequested(const QRect &)), this, SLOT(slotWebkitSvgChanged(const QRect &)));
     //webkitrenderer = qwebpage.mainFrame();  // testing qwebframe svg renderer murx
   }
+  timer.setSingleShot(true);
+  connect(&timer, SIGNAL(timeout()), this, SLOT(slotTimeout()));
   fp   = NULL;
   flog = NULL;
   s  = sock;
@@ -259,6 +264,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
   xold = yold = 0;
   autoZoomX = autoZoomY = 1;
   origwidth = origheight = 0;
+  percentZoomMask = 100;
   pressedX = pressedY = -1;
   svgAnimator = NULL;
   selectorState = 0;
@@ -282,64 +288,81 @@ QDrawWidget::~QDrawWidget()
   delete buffer;
 }
 
-void QDrawWidget::layoutResize(int w, int h)
+void QDrawWidget::renderScene()
 {
-  char buf[80];
-  float zxx,zyy;
-  if(hasLayout == 1 && origwidth  != 0)
-  {
-    zxx = ((float) w / (float) origwidth) * ((float) opt.zoom / 100.0f);;
-    setZoomX(zxx);
-  }
-  if(hasLayout == 1 && origheight != 0)
-  {
-    zyy = ((float) h / (float) origheight) * ((float) opt.zoom / 100.0f);
-    setZoomY(zyy);
-  }
   if(svgAnimator != NULL)
   {
-    beginDraw();
+    beginDraw(1);
     svgAnimator->update(0);
     endDraw();
-  }
-  // xlehrig
-  sprintf(buf,"resizeGL(%d,%d,%d)\n",id,w,h);
-  tcp_send(s,buf,strlen(buf));
-  repaint();
-}
-
-void QDrawWidget::resize(int w, int h)
-{
-  //QWidget::resize(w,h);
-  if(opt.arg_debug) printf("QDrawWidget::resize(%d,%d)\n",w,h);
-  delete buffer;
-  buffer = new QPixmap(w,h);
-  buffer->fill(QColor(br,bg,bb));
-  if(opt.use_webkit_for_svg)
-  {
-    qwebpage.setViewportSize(QSize(w,h));
-    layoutResize(w,h);
   }
 }
 
 void QDrawWidget::resizeEvent(QResizeEvent *event)
 {
-  if(opt.arg_debug) printf("QDrawWidget::resizeEvent\n");
-  resize(event->size().width(),event->size().height());
-  layoutResize(event->size().width(),event->size().height());
+  float zxx,zyy;
+  char buf[80];
+  QWidget::resizeEvent(event);
+  int w = event->size().width();
+  int h = event->size().height();
+  if(opt.arg_debug) 
+    printf("QDrawWidget::resizeEvent(%d,%d) svg_draw_request_by_pvb=%d\n",w,h,svg_draw_request_by_pvb);
+  delete buffer;
+  buffer = new QPixmap(w,h);
+  buffer->fill(QColor(br,bg,bb));
+  if(opt.use_webkit_for_svg)
+  {
+    int wp = w*10 + 50;
+    int hp = h*10 + 50;
+    qwebpage.setViewportSize(QSize(wp,hp));
+    //qwebpage.setViewportSize(QSize((wp*100*100)/(opt.zoom*percentZoomMask),(hp*100*100)/(opt.zoom*percentZoomMask)));
+  }
+  //else // nothing to be done
+  //{
+    //QRect rect(0,0,(w*100)/opt.zoom,(h*100)/opt.zoom);
+    //renderer.setViewBox(rect);
+  //}
+  if(origwidth  != 0)
+  {
+    zxx = ((float) w / (float) origwidth)  * (((float) opt.zoom) / 100.0f);
+    setZoomX(zxx);
+  }
+  if(origheight != 0)
+  {
+    zyy = ((float) h / (float) origheight) * (((float) opt.zoom) / 100.0f);
+    setZoomY(zyy);
+  }
+  renderScene();
+  sprintf(buf,"resizeGL(%d,%d,%d)\n",id,w,h);
+  tcp_send(s,buf,strlen(buf));
+}
+
+void QDrawWidget::resize(int w, int h)
+{
+  if(opt.arg_debug) 
+    printf("QDrawWidget::resize(%d,%d) svg_draw_request_by_pvb=%d\n",w,h,svg_draw_request_by_pvb);
+  QWidget::resize(w,h);
+  origwidth  = w;
+  origheight = h;
+  repaint();
 }
 
 void QDrawWidget::setGeometry(int x, int y, int w, int h)
 {
-  if(opt.arg_debug) printf("QDrawWidget::setGeometry(%d,%d,%d,%d)\n",x,y,w,h);
+  if(opt.arg_debug)
+    printf("QDrawWidget::setGeometry(%d,%d,%d,%d)\n",x,y,w,h);
+  QWidget::setGeometry(x,y,w,h);
   origwidth  = w;
   origheight = h;
-  QWidget::setGeometry(x,y,w,h);
 }
 
 void QDrawWidget::setGeometry(const QRect &r)
 {
+  if(opt.arg_debug)
+    printf("QDrawWidget::setGeometry2(%d,%d,%d,%d)\n",r.left(),r.top(),r.width(),r.height());
   setGeometry(r.left(),r.top(),r.width(),r.height());
+  origwidth  = r.width();
+  origheight = r.height();
 }
 
 void QDrawWidget::setBackgroundColor(int r, int g, int b)
@@ -350,9 +373,15 @@ void QDrawWidget::setBackgroundColor(int r, int g, int b)
   buffer->fill(QColor(r,g,b));
 }
 
-void QDrawWidget::beginDraw()
+void QDrawWidget::beginDraw(int set_request)
 {
-  if(opt.arg_debug) printf("QDrawWidget::beginDraw\n");
+  if(set_request)
+  {
+    svg_draw_request_by_pvb = 1;
+    timer.start(500);
+  }  
+  if(opt.arg_debug) 
+    printf("QDrawWidget::beginDraw svg_draw_request_by_pvb=%d\n", svg_draw_request_by_pvb);
   p.begin(buffer);
   buffer->fill(QColor(br,bg,bb));
   fontsize = p.fontInfo().pointSize();
@@ -361,7 +390,8 @@ void QDrawWidget::beginDraw()
 
 void QDrawWidget::endDraw()
 {
-  if(opt.arg_debug) printf("QDrawWidget::endDraw\n");
+  if(opt.arg_debug)
+    printf("QDrawWidget::endDraw svg_draw_request_by_pvb=%d\n", svg_draw_request_by_pvb);
   if(fp != NULL)
   {
     p.end();
@@ -371,13 +401,16 @@ void QDrawWidget::endDraw()
   }
   p.end();
   repaint();
+  //QApplication::processEvents(); // this damn thing whould crash Qt
+  //svg_draw_request_by_pvb = 0;   // unfortunately nobody knows when drawing is finished
+                                   // thus we use that stupid timer to reset svg_draw_request_by_pvb
 }
 
 void QDrawWidget::showFromSocket(int *sock)
 {
   if(sock == NULL) return;
   s = sock;
-  beginDraw();
+  beginDraw(1);
   while(interpretall() != -1) ;
   //*s = -1;
 }
@@ -386,7 +419,7 @@ void QDrawWidget::showFromFile(const char *filename)
 {
   fp = fopen(filename,"r");
   if(fp == NULL) return;
-  beginDraw();
+  beginDraw(1);
   while(interpretall() != -1) ;
 }
 
@@ -568,6 +601,10 @@ QString qtxt;
 
 void QDrawWidget::box(int x, int y, int w, int h)
 {
+  x = (x * percentZoomMask) / 100;
+  y = (y * percentZoomMask) / 100;
+  w = (w * percentZoomMask) / 100;
+  h = (h * percentZoomMask) / 100;
   boxx = x;
   boxy = y;
   boxw = w;
@@ -869,7 +906,9 @@ void QDrawWidget::paintEvent(QPaintEvent *e)
 {
   // if(e != NULL) bitBlt(this,0,0,&buffer);
   if(e == NULL) return;
-  //printf("QDrawWidget::paintEvent()\n");
+  if(opt.arg_debug)
+    printf("QDrawWidget::paintEvent(%d,%d,%d,%d) svg_draw_request_by_pvb=%d\n", 
+           e->rect().x(), e->rect().y(), e->rect().width(), e->rect().height(), svg_draw_request_by_pvb);
   QPainter painter;
   painter.begin(this);
   painter.drawPixmap(0,0,*buffer);
@@ -891,7 +930,6 @@ void QDrawWidget::paintEvent(QPaintEvent *e)
 
 void QDrawWidget::mouseMoveEvent(QMouseEvent *event)
 {
-  //int w,h;
   char buf[100];
 
   movedX = event->x();
@@ -903,12 +941,10 @@ void QDrawWidget::mouseMoveEvent(QMouseEvent *event)
     tcp_send(s,buf,strlen(buf));
   }  
   QWidget::mouseMoveEvent(event);
-  //w = movedX - pressedX;
-  //h = movedY - pressedY;
 #if QT_VERSION >= 0x040201
   if(svgAnimator != NULL)
   {
-    svgAnimator->perhapsSetOverrideCursor(movedX,movedY,zoomx,zoomy,buttons);
+    svgAnimator->perhapsSetOverrideCursor(movedX,movedY,buttons);
   }  
 #endif
   if(selectorState == 0) return;
@@ -926,9 +962,9 @@ void QDrawWidget::mousePressEvent(QMouseEvent *event)
   if(svgAnimator != NULL)
   {
     button = event->button();
-    if(button == Qt::LeftButton)  svgAnimator->perhapsSendSvgEvent("svgPressedLeftButton" ,s,id,pressedX,pressedY,zoomx,zoomy);
-    if(button == Qt::RightButton) svgAnimator->perhapsSendSvgEvent("svgPressedRightButton",s,id,pressedX,pressedY,zoomx,zoomy);
-    if(button == Qt::MidButton)   svgAnimator->perhapsSendSvgEvent("svgPressedMidButton"  ,s,id,pressedX,pressedY,zoomx,zoomy);
+    if(button == Qt::LeftButton)  svgAnimator->perhapsSendSvgEvent("svgPressedLeftButton" ,s,id,pressedX,pressedY);
+    if(button == Qt::RightButton) svgAnimator->perhapsSendSvgEvent("svgPressedRightButton",s,id,pressedX,pressedY);
+    if(button == Qt::MidButton)   svgAnimator->perhapsSendSvgEvent("svgPressedMidButton"  ,s,id,pressedX,pressedY);
   }
   sprintf( buf, "QPlotMousePressed(%d,%d,%d)\n",id, pressedX, pressedY);
   tcp_send(s,buf,strlen(buf));
@@ -946,9 +982,9 @@ void QDrawWidget::mouseReleaseEvent(QMouseEvent *event)
   if(svgAnimator != NULL)
   {
     button = event->button();
-    if(button == Qt::LeftButton)  svgAnimator->perhapsSendSvgEvent("svgReleasedLeftButton" ,s,id,movedX,movedY,zoomx,zoomy);
-    if(button == Qt::RightButton) svgAnimator->perhapsSendSvgEvent("svgReleasedRightButton",s,id,movedX,movedY,zoomx,zoomy);
-    if(button == Qt::MidButton)   svgAnimator->perhapsSendSvgEvent("svgReleasedMidButton"  ,s,id,movedX,movedY,zoomx,zoomy);
+    if(button == Qt::LeftButton)  svgAnimator->perhapsSendSvgEvent("svgReleasedLeftButton" ,s,id,movedX,movedY);
+    if(button == Qt::RightButton) svgAnimator->perhapsSendSvgEvent("svgReleasedRightButton",s,id,movedX,movedY);
+    if(button == Qt::MidButton)   svgAnimator->perhapsSendSvgEvent("svgReleasedMidButton"  ,s,id,movedX,movedY);
   }
   sprintf( buf, "QPlotMouseReleased(%d,%d,%d)\n",id, movedX, movedY);
   if(underMouse()) tcp_send(s,buf,strlen(buf));
@@ -1043,14 +1079,20 @@ void QDrawWidget::playSVG(const char *filename)
     if(foundw == 0 && (cptr = strstr(buf," width=")) != NULL)
     {
       if(strstr(buf,">") != NULL) foundclose = 1;
-      sprintf(buf,"width=\"%dpx\"\n",width());
+      if(opt.use_webkit_for_svg == 1)
+        sprintf(buf,"width=\"%dpx\"\n",(width()*100)/opt.zoom);
+      else  
+        sprintf(buf,"width=\"%dpx\"\n",width());
       if(foundclose) strcat(buf,">\n");
       foundw = 1;
     }
     if(foundh == 0 && (cptr = strstr(buf," height=")) != NULL)
     {
       if(strstr(buf,">") != NULL) foundclose = 1;
-      sprintf(buf,"height=\"%dpx\"\n",height());
+      if(opt.use_webkit_for_svg == 1)
+        sprintf(buf,"height=\"%dpx\"\n",(height()*100)/opt.zoom);
+      else  
+        sprintf(buf,"height=\"%dpx\"\n",height());
       if(foundclose) strcat(buf,">\n");
       foundh = 1;
     }
@@ -1059,11 +1101,12 @@ void QDrawWidget::playSVG(const char *filename)
   }
   fclose(fin);
 
+  float fac = ((float) percentZoomMask) / 100.0f;
   if(opt.use_webkit_for_svg == 0)
   {
     //renderer.setViewBox( QRect(0,0,width(),height()) );
     renderer.load(stream);
-    p.scale(zoomx,zoomy);
+    p.scale(zoomx*fac,zoomy*fac);
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
@@ -1071,7 +1114,7 @@ void QDrawWidget::playSVG(const char *filename)
   {
     //printf("testing1 QWebFrame as SVG renderer\n");
     webkitrenderer->setContent(stream,"image/svg+xml");
-    p.scale(zoomx,zoomy);
+    p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
   }
@@ -1092,22 +1135,29 @@ void QDrawWidget::socketPlaySVG()
     if(ret < 0) return;
     if(foundw == 0 && strncmp(buf,"width",5) == 0)
     {
-      sprintf(buf,"width=\"%dpx\"\n",width());
+      if(opt.use_webkit_for_svg == 1)
+        sprintf(buf,"width=\"%dpx\"\n",(width()*100)/opt.zoom);
+      else  
+        sprintf(buf,"width=\"%dpx\"\n",width());
       foundw = 1;
     }
     if(foundh == 0 && strncmp(buf,"height",6) == 0)
     {
-      sprintf(buf,"height=\"%dpx\"\n",height());
+      if(opt.use_webkit_for_svg == 1)
+        sprintf(buf,"height=\"%dpx\"\n",(height()*100)/opt.zoom);
+      else  
+        sprintf(buf,"height=\"%dpx\"\n",height());
       foundh = 1;
     }
     if(strstr(buf,"<svgend></svgend>") != NULL) break; 
     stream.append(QString::fromUtf8(buf));
     if(opt.arg_debug > 2) printf("svgbuf=%s",buf);
   }
+  float fac = ((float) percentZoomMask) / 100.0f;
   if(opt.use_webkit_for_svg == 0)
   {
     renderer.load(stream);
-    p.scale(zoomx,zoomy);
+    p.scale(zoomx*fac,zoomy*fac);
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
@@ -1115,7 +1165,7 @@ void QDrawWidget::socketPlaySVG()
   {
     //printf("testing2 QWebFrame as SVG renderer\n");
     webkitrenderer->setContent(stream,"image/svg+xml");
-    p.scale(zoomx,zoomy);
+    p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
   }  
@@ -1177,7 +1227,7 @@ int x,y,w,h,r,g,b,n,i;
       if(strncmp(linebuf,"gbeginDraw",10) == 0)
       {
         strcpy(floatFormat,"%f");
-        beginDraw();
+        beginDraw(1);
       }
       else if(strncmp(linebuf,"gbox",4) == 0)
       {
@@ -1412,19 +1462,18 @@ int x,y,w,h,r,g,b,n,i;
 
 void QDrawWidget::svgUpdate(QByteArray &stream)
 {
+  float fac = ((float) percentZoomMask) / 100.0f;
   if(opt.use_webkit_for_svg == 0)
   {
     renderer.load(stream);
-    p.scale(zoomx,zoomy);
+    p.scale(zoomx*fac,zoomy*fac);
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
   else
   {
-    //printf("testing3 QWebFrame as SVG renderer\n");
-    //renderer.load(stream); // workaround: load both QSvgRenderer and QWebFrame
     webkitrenderer->setContent(stream,"image/svg+xml");
-    p.scale(zoomx,zoomy);
+    p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
   }  
@@ -1594,6 +1643,40 @@ int QDrawWidget::requestSvgMatrixForElement(QString &text)
     }  
   }
   return 0;
+}
+
+void QDrawWidget::slotWebkitSvgChanged(const QRect &dirtyRect)
+{
+  if(opt.arg_debug)
+  {
+    printf("slotWebkitSvgChanged() svg_draw_request_by_pvb=%d xy=%d,%d wh=%dx%d\n", 
+      svg_draw_request_by_pvb, dirtyRect.x(), dirtyRect.y(), dirtyRect.width(), dirtyRect.height());
+  }       
+  if(svg_draw_request_by_pvb)
+  {
+    return;
+  }
+  if(webkitrenderer == NULL) return;
+  p.begin(buffer);
+  buffer->fill(QColor(br,bg,bb));
+  fontsize = p.fontInfo().pointSize();
+  fontsize = (zx(fontsize)+zy(fontsize)) / 2;
+  float fac = ((float) percentZoomMask) / 100.0f;
+  p.scale(zoomx*fac,zoomy*fac);
+  webkitrenderer->render(&p);
+  p.scale(1.0,1.0);
+  p.end();
+  repaint();
+}
+
+void QDrawWidget::slotTimeout()
+{
+  // unfortunately nobody knows when drawing is finished
+  // we need to know if the svg_draw_request comes from
+  // our application or from the webkit svg renderer if the svg has an animation
+  // in case the the svg_draw_request comes from the svg renderer we must not
+  // to set the svg data again
+  svg_draw_request_by_pvb = 0;
 }
 
 int pvSvgAnimator::calcObjectWanted(const char *pattern)
@@ -1784,6 +1867,12 @@ int pvSvgAnimator::read()
   SVG_LINE *current_line, *next_line;
   char line[MAXARRAY],*cptr;
 
+  if(draw->hasLayout && opt.zoom != 100)
+  {
+    printf("WARNING: SVG graphics within a layout AND opt.zoom != 100 percent will not find SVG objects correctly\n");
+    qApp->beep();
+  }
+
   closefile(); // free old file
 
   tcp_rec(s,line,sizeof(line));
@@ -1835,7 +1924,6 @@ int pvSvgAnimator::update(int on_printer)
   QByteArray stream;
   SVG_LINE *current_line = first;
   if(first == NULL) return -1;
-
   if(opt.arg_debug) printf("animatorUpdate\n");
   if(s == NULL) return -1;
   foundw = foundh = found_open_tag = found_tspan = found_tspan_whole_open = 0;
@@ -1844,16 +1932,28 @@ int pvSvgAnimator::update(int on_printer)
   {
     if(comment[i] == ' ' && current_line->line != NULL)
     {
+      int dw = draw->width();
+      int dh = draw->height();
+      int dwp = dw*10 + 50;
+      int dhp = dh*10 + 50;
       buf = new char [strlen(current_line->line) + 4];
       strcpy(buf,current_line->line);
       if(foundw == 0 && strncmp(buf,"width",5) == 0)
       {
-        sprintf(buf,"width=\"%dpx\"\n",draw->width());
+        if(opt.use_webkit_for_svg == 1)
+          //sprintf(buf,"width=\"%dpx\"\n",(dwp*100*100)/(opt.zoom*draw->percentZoomMask));
+          sprintf(buf,"width=\"%dpx\"\n",dwp);
+        else  
+          sprintf(buf,"width=\"%dpx\"\n",dw);
         foundw = 1;
       }
       if(foundh == 0 && strncmp(buf,"height",6) == 0)
       {
-        sprintf(buf,"height=\"%dpx\"\n",draw->height());
+        if(opt.use_webkit_for_svg == 1)
+          //sprintf(buf,"height=\"%dpx\"\n",(dhp*100*100)/(opt.zoom*draw->percentZoomMask));
+          sprintf(buf,"height=\"%dpx\"\n",dhp);
+        else  
+          sprintf(buf,"height=\"%dpx\"\n",dh);
         foundh = 1;
       }
       if(buf[0] != '\n')
@@ -2410,7 +2510,7 @@ int pvSvgAnimator::testoutput()
 }
 
 #if QT_VERSION >= 0x040201
-int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx, float zoomy, int buttons)
+int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, int buttons)
 {
   QString  buf, name;
   QRectF   bounds, mappedBounds;
@@ -2418,9 +2518,15 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, float zoomx,
   int      iline, x,y;
   SVG_LINE *svgline;
 
-  if(zoomx < 0.001f || zoomy < 0.001f) return -1;
-  x = (int) (xmouse / zoomx);
-  y = (int) (ymouse / zoomy);
+  if(draw->percentZoomMask < 1) return 0;
+  x = (xmouse * 100 * 100) / (opt.zoom * draw->percentZoomMask);
+  y = (ymouse * 100 * 100) / (opt.zoom * draw->percentZoomMask);
+
+  if(draw->hasLayout && draw->zoomx > 0 && draw->zoomy > 0)
+  {
+    x = x / draw->zoomx;
+    y = y / draw->zoomy;
+  }  
 
 #if QT_VERSION >= 0x040601
   if(opt.use_webkit_for_svg)
@@ -2535,7 +2641,7 @@ MyMurx:
   return 0;
 }
 
-int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xmouse, int ymouse, float zoomx, float zoomy)
+int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xmouse, int ymouse)
 {
   QString  buf, name;
   QRectF   bounds, mappedBounds;
@@ -2543,9 +2649,16 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
   int      iline, x,y;
   SVG_LINE *svgline;
 
-  if(zoomx < 0.001f || zoomy < 0.001f) return -1;
-  x = (int) (xmouse / zoomx);
-  y = (int) (ymouse / zoomy);
+  if(draw->percentZoomMask < 1) return 0;
+  x = (xmouse * 100 * 100) / (opt.zoom * draw->percentZoomMask);
+  y = (ymouse * 100 * 100) / (opt.zoom * draw->percentZoomMask);
+
+  if(draw->hasLayout && draw->zoomx > 0 && draw->zoomy > 0)
+  {
+    x = x / draw->zoomx;
+    y = y / draw->zoomy;
+  }  
+
 #if QT_VERSION >= 0x040601
   if(opt.use_webkit_for_svg)
   {
