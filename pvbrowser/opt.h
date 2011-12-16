@@ -16,7 +16,9 @@
 #ifndef OPT_H
 #define OPT_H
 
+#ifndef MAX_PRINTF_LENGTH
 #define MAX_PRINTF_LENGTH 1024+16 // must be bigger than or equal to MAX_PRINTF_LENGTH of ProcessViewServer
+#endif
 #define MAXOPT 1024
 
 enum
@@ -84,6 +86,7 @@ int wsa();
 const char *inifile();
 const char *passfile();
 const char *pvpass(const char *p);
+void setDefaultOptions();
 const char *readIniFile();
 int mysystem(const char *command);
 

@@ -24,7 +24,7 @@
 #include "dlgeditlayout.h"
 #include "interpreter.h"
 
-extern OPT opt;
+extern OPT_DEVELOP opt_develop;
 extern QStringList tablist;
 dlgeditlayout *editlayout = NULL;
 
@@ -50,10 +50,10 @@ Designer::Designer(const char *mask)
   imask = 0;
   sscanf(mask,"mask%d", &imask);
   xclick = yclick = 0;
-  if(opt.arg_debug) printf("Designer::Designer: before getWidgetsFromMask(%s)\n",mask);
-  if(opt.arg_mask_to_generate == -1) 
+  if(opt_develop.arg_debug) printf("Designer::Designer: before getWidgetsFromMask(%s)\n",mask);
+  if(opt_develop.arg_mask_to_generate == -1) 
   {
-    if(opt.script == PV_LUA) 
+    if(opt_develop.script == PV_LUA) 
     {
       filename.sprintf("mask%d.lua", imask); 
       getWidgetsFromMask(filename.toUtf8(), root);
@@ -63,7 +63,7 @@ Designer::Designer(const char *mask)
       getWidgetsFromMask(mask, root);
     }
   }  
-  if(opt.arg_debug) printf("Designer::Designer: after getWidgetsFromMask(%s)\n",mask);
+  if(opt_develop.arg_debug) printf("Designer::Designer: after getWidgetsFromMask(%s)\n",mask);
 }
 
 Designer::~Designer()
@@ -87,24 +87,24 @@ Designer::~Designer()
     { 
       generateMask(filename.toUtf8(), root); // generate C/C++
       // add additional language here
-      if(opt.script == PV_PYTHON)
+      if(opt_develop.script == PV_PYTHON)
       {
-         if(opt.arg_debug) printf("generate python imask=%d\n", imask);
+         if(opt_develop.arg_debug) printf("generate python imask=%d\n", imask);
          generatePython(imask, root);
       } 
-      if(opt.script == PV_PERL)
+      if(opt_develop.script == PV_PERL)
       {
-         if(opt.arg_debug) printf("generate perl imask=%d\n", imask);
+         if(opt_develop.arg_debug) printf("generate perl imask=%d\n", imask);
          generatePerl(imask, root);
       } 
-      if(opt.script == PV_PHP)
+      if(opt_develop.script == PV_PHP)
       {
-         if(opt.arg_debug) printf("generate php imask=%d\n", imask);
+         if(opt_develop.arg_debug) printf("generate php imask=%d\n", imask);
          generatePHP(imask, root);
       } 
-      if(opt.script == PV_TCL)
+      if(opt_develop.script == PV_TCL)
       {
-         if(opt.arg_debug) printf("generate tcl imask=%d\n", imask);
+         if(opt_develop.arg_debug) printf("generate tcl imask=%d\n", imask);
          generateTcl(imask, root);
       } 
     }
@@ -130,9 +130,9 @@ MyRootWidget::MyRootWidget(MyRootWidget *parent)
   setMouseTracking(true);
   //setFocusPolicy(Qt::NoFocus);
   grabbed = 2;
-  opt.altPressed = 0;
-  opt.ctrlPressed = 0;
-  opt.shiftPressed = 0;
+  opt_develop.altPressed = 0;
+  opt_develop.ctrlPressed = 0;
+  opt_develop.shiftPressed = 0;
   insert.myrootwidget = this;
   setCursor(Qt::ArrowCursor);
 }
@@ -180,7 +180,7 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
 {
   int x = event->x();
   int y = event->y();
-  if(opt.arg_debug > 0) printf("DoubleClickEvent\n");
+  if(opt_develop.arg_debug > 0) printf("DoubleClickEvent\n");
   //#####################################
   grabbed = 0;
   releaseMouse();
@@ -204,7 +204,7 @@ void MyRootWidget::mouseDoubleClickEvent(QMouseEvent *event)
       QPoint thisxy  = mapToGlobal(QPoint(x,y));
       xw = thisxy.x() - parent0.x();
       yw = thisxy.y() - parent0.y();
-      if(opt.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
+      if(opt_develop.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
       insert.newWidget(this,p,xw,yw);
       modified = 1;
       stackClear();
@@ -225,36 +225,36 @@ void MyRootWidget::MoveKey(int key)
   if(grabbed == 0)  return;
 
   push(child);
-  if(opt.ctrlPressed)
+  if(opt_develop.ctrlPressed)
   {
     if     (key == Qt::Key_Left)
     {
-      wNew = child->width() - opt.xGrid;
+      wNew = child->width() - opt_develop.xGrid;
       hNew = child->height();
     }
     else if(key == Qt::Key_Right)
     {
-      wNew = child->width() + opt.xGrid;
+      wNew = child->width() + opt_develop.xGrid;
       hNew = child->height();
     }
     else if(key == Qt::Key_Up)
     {
       wNew = child->width();
-      hNew = child->height() - opt.yGrid;
+      hNew = child->height() - opt_develop.yGrid;
     }
     else if(key == Qt::Key_Down)
     {
       wNew = child->width();
-      hNew = child->height() + opt.yGrid;
+      hNew = child->height() + opt_develop.yGrid;
     }
     else
     {
       return;
     }
-    wNew = (wNew/opt.xGrid)*opt.xGrid;
-    hNew = (hNew/opt.yGrid)*opt.yGrid;
-    if(wNew < opt.xGrid) wNew = opt.xGrid;
-    if(hNew < opt.yGrid) hNew = opt.yGrid;
+    wNew = (wNew/opt_develop.xGrid)*opt_develop.xGrid;
+    hNew = (hNew/opt_develop.yGrid)*opt_develop.yGrid;
+    if(wNew < opt_develop.xGrid) wNew = opt_develop.xGrid;
+    if(hNew < opt_develop.yGrid) hNew = opt_develop.yGrid;
     if(wNew>=0 && hNew>=0)
     {
       myResize(child,wNew,hNew);
@@ -265,30 +265,30 @@ void MyRootWidget::MoveKey(int key)
   {
     if     (key == Qt::Key_Left)
     {
-      xNew = child->x() - opt.xGrid;
+      xNew = child->x() - opt_develop.xGrid;
       yNew = child->y();
     }
     else if(key == Qt::Key_Right)
     {
-      xNew = child->x() + opt.xGrid;
+      xNew = child->x() + opt_develop.xGrid;
       yNew = child->y();
     }
     else if(key == Qt::Key_Up)
     {
       xNew = child->x();
-      yNew = child->y() - opt.yGrid;
+      yNew = child->y() - opt_develop.yGrid;
     }
     else if(key == Qt::Key_Down)
     {
       xNew = child->x();
-      yNew = child->y() + opt.yGrid;
+      yNew = child->y() + opt_develop.yGrid;
     }
     else
     {
       return;
     }
-    xNew = (xNew/opt.xGrid)*opt.xGrid;
-    yNew = (yNew/opt.yGrid)*opt.yGrid;
+    xNew = (xNew/opt_develop.xGrid)*opt_develop.xGrid;
+    yNew = (yNew/opt_develop.yGrid)*opt_develop.yGrid;
     if(xNew>=0 && yNew>=0 &&
        xNew<((QWidget *)child->parent())->width() && yNew<((QWidget *)child->parent())->height())
     {
@@ -305,7 +305,7 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
   int y = event->y();
   int gx = event->globalX();
   int gy = event->globalY();
-  if(opt.arg_debug > 0) printf("mouseMoveEvent x=%d y=%d\n",x,y);
+  if(opt_develop.arg_debug > 0) printf("mouseMoveEvent x=%d y=%d\n",x,y);
   //#####################################
   if(aboveDesignArea(x,y,gx,gy))
   {
@@ -326,14 +326,14 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
   QWidget *child = clickedChild;
   if(child != NULL && grabbed)
   {
-    if(opt.arg_debug > 0) printf("child->statusTip=%s\n",(const char *) child->statusTip().toUtf8());
+    if(opt_develop.arg_debug > 0) printf("child->statusTip=%s\n",(const char *) child->statusTip().toUtf8());
     if(buttonDown && inMiddle==1)
     {
       int xNew, yNew;
       xNew = xChild0 + x - xOld;
       yNew = yChild0 + y - yOld;
-      xNew = (xNew/opt.xGrid)*opt.xGrid;
-      yNew = (yNew/opt.yGrid)*opt.yGrid;
+      xNew = (xNew/opt_develop.xGrid)*opt_develop.xGrid;
+      yNew = (yNew/opt_develop.yGrid)*opt_develop.yGrid;
       if(xNew>=0 && yNew>=0 &&
          xNew<((QWidget *)child->parent())->width() && yNew<((QWidget *)child->parent())->height())
       {
@@ -354,8 +354,8 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
           child->setParent(root);
           xNew = childPos0.x() - parentPos0.x();
           yNew = childPos0.y() - parentPos0.y();
-          xNew = (xNew/opt.xGrid)*opt.xGrid + dx;
-          yNew = (yNew/opt.yGrid)*opt.yGrid + dy;
+          xNew = (xNew/opt_develop.xGrid)*opt_develop.xGrid + dx;
+          yNew = (yNew/opt_develop.yGrid)*opt_develop.yGrid + dy;
           myMove(child,xNew,yNew);
           child->show();
           reparentDone = 1;
@@ -374,10 +374,10 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
       int wNew, hNew;
       wNew = wChild0 + x - xOld;
       hNew = hChild0 + y - yOld;
-      wNew = (wNew/opt.xGrid)*opt.xGrid;
-      hNew = (hNew/opt.yGrid)*opt.yGrid;
-      if(wNew < opt.xGrid) wNew = opt.xGrid;
-      if(hNew < opt.yGrid) hNew = opt.yGrid;
+      wNew = (wNew/opt_develop.xGrid)*opt_develop.xGrid;
+      hNew = (hNew/opt_develop.yGrid)*opt_develop.yGrid;
+      if(wNew < opt_develop.xGrid) wNew = opt_develop.xGrid;
+      if(hNew < opt_develop.yGrid) hNew = opt_develop.yGrid;
       push(child);
       if(wNew>=0 && hNew>=0) myResize(child,wNew,hNew);
       modified = 1;
@@ -403,7 +403,7 @@ void MyRootWidget::mouseMoveEvent(QMouseEvent *event)
       w  = child->width();
       h  = child->height();
     }
-    if(opt.arg_debug > 0) printf("x0=%d y0=%d x=%d y=%d w=%d h=%d\n",x0,y0,x,y,w,h);
+    if(opt_develop.arg_debug > 0) printf("x0=%d y0=%d x=%d y=%d w=%d h=%d\n",x0,y0,x,y,w,h);
     if((x-x0)>(w-5) && (y-y0)>(h-5))
     {
       setCursor(Qt::SizeFDiagCursor);
@@ -497,7 +497,7 @@ void MyRootWidget::perhapsDeselectOldWidget()
 {
   if(lastChild != NULL && tabbing == 0 && copying == 0)
   {
-    if(opt.arg_debug > 0) printf("deselect old widget\n");
+    if(opt_develop.arg_debug > 0) printf("deselect old widget\n");
     if(!lastChild->statusTip().contains("TQImage:")) lastChild->setAutoFillBackground(false);
     if( lastChild->statusTip().contains("TQLabel:")) lastChild->setAutoFillBackground(true);
     if( lastChild->statusTip().contains("TQFrame:")) lastChild->setAutoFillBackground(true);
@@ -509,7 +509,7 @@ void MyRootWidget::perhapsDeselectOldWidget()
 }
 void MyRootWidget::selectWidget(QWidget *child)
 {
-  if(opt.arg_debug > 0) printf("mousePressEvent LeftButton set background2\n");
+  if(opt_develop.arg_debug > 0) printf("mousePressEvent LeftButton set background2\n");
   if(child == NULL) return;
   savedPalette = child->palette();
   savedStatusTip = child->statusTip();
@@ -529,7 +529,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
   int y = event->y();
   int gx = event->globalX();
   int gy = event->globalY();
-  if(opt.arg_debug > 0) printf("mousePressEvent x=%d y=%d\n",x,y);
+  if(opt_develop.arg_debug > 0) printf("mousePressEvent x=%d y=%d\n",x,y);
   reparentDone = 0;
   //#####################################
   if(aboveDesignArea(x,y,gx,gy))
@@ -547,7 +547,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
   }
   //#####################################
   QWidget *child = getChild(x,y);
-  if(opt.altPressed)
+  if(opt_develop.altPressed)
   {
     if(child != NULL)
     {
@@ -570,45 +570,45 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       mainWindow->grabKeyboard();
       modified = 1;
     }
-    opt.altPressed = 0;
+    opt_develop.altPressed = 0;
     return;
   }
-  if(opt.shiftPressed)
+  if(opt_develop.shiftPressed)
   {
     mouseDoubleClickEvent(event); // show insert dialog
-    opt.shiftPressed = 0;
+    opt_develop.shiftPressed = 0;
     return;
   }
   
   if(event->button() == Qt::LeftButton)
   {
-    if(opt.arg_debug > 0) printf("mousePressEvent LeftButton parentLevel=%d ctrlPressed=%d\n",parentLevel,opt.ctrlPressed);
+    if(opt_develop.arg_debug > 0) printf("mousePressEvent LeftButton parentLevel=%d ctrlPressed=%d\n",parentLevel,opt_develop.ctrlPressed);
     perhapsDeselectOldWidget();
-    if(child != NULL && opt.ctrlPressed==0 && tabbing == 0 && copying == 0) // set highlight
+    if(child != NULL && opt_develop.ctrlPressed==0 && tabbing == 0 && copying == 0) // set highlight
     {
-      if(opt.arg_debug > 0) printf("mousePressEvent LeftButton set background\n");
+      if(opt_develop.arg_debug > 0) printf("mousePressEvent LeftButton set background\n");
       if(!child->statusTip().contains("TQWidget:"))
       {
         selectWidget(child);
       }
     }
-    if(opt.arg_debug > 0) printf("mousePressEvent LeftButton murx2\n");
+    if(opt_develop.arg_debug > 0) printf("mousePressEvent LeftButton murx2\n");
     xOld = x;
     yOld = y;
     buttonDown = 1;
-    if(opt.ctrlPressed==1 && tabbing == 0 && copying == 0) // insert last selected widget
+    if(opt_develop.ctrlPressed==1 && tabbing == 0 && copying == 0) // insert last selected widget
     {
       QWidget *p = child;
       if(p == NULL && x>0 && y>0) p = this;
       if(p != NULL && parentLevel == 0)
       {
-        if(opt.arg_debug > 0) printf("mousePressEvent LeftButton newWidget\n");
+        if(opt_develop.arg_debug > 0) printf("mousePressEvent LeftButton newWidget\n");
         int xw,yw;
         QPoint parent0 = p->mapToGlobal(QPoint(0,0));
         QPoint thisxy  = mapToGlobal(QPoint(x,y));
         xw = thisxy.x() - parent0.x();
         yw = thisxy.y() - parent0.y();
-        if(opt.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
+        if(opt_develop.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
         grabbed = 0;
         releaseMouse();
         mainWindow->releaseKeyboard();
@@ -636,12 +636,12 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
       {
         QString newTab = child->objectName();
         QString tabCommand;
-        if(opt.script == PV_LUA) tabCommand = "  pv.pvTabOrder(p,";
+        if(opt_develop.script == PV_LUA) tabCommand = "  pv.pvTabOrder(p,";
         else                     tabCommand = "  pvTabOrder(p,";
         tabCommand.append(lastTab);
         tabCommand.append(",");
         tabCommand.append(newTab);
-        if(opt.script == PV_LUA) tabCommand.append(")\n");
+        if(opt_develop.script == PV_LUA) tabCommand.append(")\n");
         else                     tabCommand.append(");\n");
         tablist.append(tabCommand);
         if(lastTabChild != NULL && child != NULL) QWidget::setTabOrder(lastTabChild,child);
@@ -681,7 +681,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
     {
       copyAttributes(lastChild,child);
     }
-    if(opt.arg_debug > 0) printf("mousePressEvent LeftButton done\n");
+    if(opt_develop.arg_debug > 0) printf("mousePressEvent LeftButton done\n");
   }
   else if(event->button() == Qt::RightButton)
   {
@@ -737,7 +737,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
           releaseMouse();
           mainWindow->releaseKeyboard();
           dlg.run();
-          opt.ctrlPressed = 0;
+          opt_develop.ctrlPressed = 0;
         }
         modified = 1;
       }
@@ -767,7 +767,7 @@ void MyRootWidget::mousePressEvent(QMouseEvent *event)
             QPoint thisxy  = mapToGlobal(QPoint(x,y));
             xw = thisxy.x() - parent0.x();
             yw = thisxy.y() - parent0.y();
-            if(opt.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
+            if(opt_develop.arg_debug) printf("Insert Widget: pos(%d,%d)\n",xw,yw);
             QWidget *wnew = insert.newWidget(this,p,xw,yw);
             modified = 1;
             stackClear();
@@ -921,7 +921,7 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
   int y = event->y();
   int gx = event->globalX();
   int gy = event->globalY();
-  if(opt.arg_debug > 0) printf("mouseReleaseEvent x=%d y=%d\n",x,y);
+  if(opt_develop.arg_debug > 0) printf("mouseReleaseEvent x=%d y=%d\n",x,y);
   //#####################################
   if(aboveDesignArea(x,y,gx,gy))
   {
@@ -951,8 +951,8 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
       clickedChild->setParent(item);
       xNew = childPos0.x() - parentPos0.x();
       yNew = childPos0.y() - parentPos0.y();
-      xNew = (xNew/opt.xGrid)*opt.xGrid;
-      yNew = (yNew/opt.yGrid)*opt.yGrid;
+      xNew = (xNew/opt_develop.xGrid)*opt_develop.xGrid;
+      yNew = (yNew/opt_develop.yGrid)*opt_develop.yGrid;
       if(xNew>=0 && yNew>=0) myMove(clickedChild,xNew,yNew);
       item->show();
       modified = 1;
@@ -962,7 +962,7 @@ void MyRootWidget::mouseReleaseEvent(QMouseEvent *event)
   }
   buttonDown = 0;
   clickedChild = NULL;
-  if(opt.arg_debug > 0) printf("mouseReleaseEvent end\n");
+  if(opt_develop.arg_debug > 0) printf("mouseReleaseEvent end\n");
 }
 
 void MyRootWidget::showWidgets(QObject *item)

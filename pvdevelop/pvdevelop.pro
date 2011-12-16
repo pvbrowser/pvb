@@ -41,6 +41,7 @@ HEADERS       = mainwindow.h \
                 ui_dlgproperty.h \
                 ui_dlginsertwidget.h \
                 ui_dlgeditlayout.h \
+                ../pvbrowser/opt.h \
                 ../pvbrowser/MyWidgets.h \
                 ../pvbrowser/qwtwidgets.h \
                 ../pvbrowser/qwtplotwidget.h \

@@ -26,7 +26,7 @@
 #include <direct.h>
 #endif
 
-extern OPT opt;
+extern OPT_DEVELOP opt_develop;
 
 extern QStringList tablist;
 static int tabstopFound = 0;
@@ -75,8 +75,8 @@ int action(const char *command)
     return -1;
   }
 
-  if(opt.arg_debug) printf("action(%s)\n",command);
-  if(strncmp(command,"qmake=",6) == 0 && opt.script != PV_LUA)
+  if(opt_develop.arg_debug) printf("action(%s)\n",command);
+  if(strncmp(command,"qmake=",6) == 0 && opt_develop.script != PV_LUA)
   {
     sscanf(command,"qmake=%s",project);
     sprintf(cmd,"qmake %s.pro",project);
@@ -89,7 +89,7 @@ int action(const char *command)
   }
   else if(strncmp(command,"insertMask=",11) == 0)
   {
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       sscanf(command,"insertMask=%s",project);
       strcat(project,".pro");
@@ -134,10 +134,10 @@ int action(const char *command)
       }  
     }
   }
-  else if(strncmp(command,"make",4) == 0 && opt.script != PV_LUA)
+  else if(strncmp(command,"make",4) == 0 && opt_develop.script != PV_LUA)
   {
 #ifdef PVUNIX
-    if(opt.arg_action[0] != '\0') ret = system("make");
+    if(opt_develop.arg_action[0] != '\0') ret = system("make");
     else                          mysystem("xterm -e \"make;echo ready;read\"");
 #else
     sscanf(command,"make=%s",name);
@@ -151,7 +151,7 @@ int action(const char *command)
     if(checked == 1)
     {
 #ifdef PVUNIX
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         sprintf(cmd,"xterm -e \"su -c ./pvslua\"");
       }
@@ -159,10 +159,10 @@ int action(const char *command)
       {
         sprintf(cmd,"xterm -e \"make;su -c ./%s\"", name);
       }
-      if(opt.arg_debug) printf("cmd=%s\n",cmd);
+      if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       mysystem(cmd);
 #else
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         sprintf(cmd,"start pvslua.exe");
       }
@@ -170,14 +170,14 @@ int action(const char *command)
       {
         sprintf(cmd,"start pvb_server.bat %s", name);
       }
-      if(opt.arg_debug) printf("cmd=%s\n",cmd);
+      if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       ret = system(cmd);
 #endif
     }
     else
     {
 #ifdef PVUNIX
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         sprintf(cmd,"xterm -e \"pvslua\"");
       }
@@ -185,10 +185,10 @@ int action(const char *command)
       {
         sprintf(cmd,"xterm -e \"make;./%s\"", name);
       }
-      if(opt.arg_debug) printf("cmd=%s\n",cmd);
+      if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       mysystem(cmd);
 #else
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         sprintf(cmd,"start pvslua.exe");
       }
@@ -196,7 +196,7 @@ int action(const char *command)
       {
         sprintf(cmd,"start pvb_server.bat %s", name);
       }
-      if(opt.arg_debug) printf("cmd=%s\n",cmd);
+      if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       ret = system(cmd);
 #endif
     }
@@ -239,9 +239,9 @@ void generateInitialProject(const char *name)
   }
 
   // add additional language here
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
-    strcpy(opt.arg_project, "pvs");
+    strcpy(opt_develop.arg_project, "pvs");
 #ifdef PVWIN32
     ret = system("pvb_copy_python_template.bat");
 #else
@@ -249,9 +249,9 @@ void generateInitialProject(const char *name)
 #endif
     return;
   }
-  else if(opt.script == PV_PERL)
+  else if(opt_develop.script == PV_PERL)
   {
-    strcpy(opt.arg_project, "pvs");
+    strcpy(opt_develop.arg_project, "pvs");
 #ifdef PVWIN32
     ret = system("pvb_copy_perl_template.bat");
 #else
@@ -259,9 +259,9 @@ void generateInitialProject(const char *name)
 #endif
     return;
   }
-  else if(opt.script == PV_PHP)
+  else if(opt_develop.script == PV_PHP)
   {
-    strcpy(opt.arg_project, "pvs");
+    strcpy(opt_develop.arg_project, "pvs");
 #ifdef PVWIN32
     ret = system("pvb_copy_php_template.bat");
 #else
@@ -269,9 +269,9 @@ void generateInitialProject(const char *name)
 #endif
     return;
   }
-  else if(opt.script == PV_TCL)
+  else if(opt_develop.script == PV_TCL)
   {
-    strcpy(opt.arg_project, "pvs");
+    strcpy(opt_develop.arg_project, "pvs");
 #ifdef PVWIN32
     ret = system("pvb_copy_tcl_template.bat");
 #else
@@ -279,7 +279,7 @@ void generateInitialProject(const char *name)
 #endif
     return;
   }
-  else if(opt.script == PV_LUA)
+  else if(opt_develop.script == PV_LUA)
   {
     return lua_generateInitialProject(name);
   }
@@ -481,7 +481,7 @@ void generateInitialMask(int imask)
   char fname[80],maskname[80],time[80];
   int ret = 0;
 
-  if(opt.script == PV_LUA) return lua_generateInitialMask(imask);
+  if(opt_develop.script == PV_LUA) return lua_generateInitialMask(imask);
   strcpy(time,QDateTime::currentDateTime().toString().toUtf8());
   sprintf(maskname,"mask%d",imask);
   sprintf(fname,"mask%d.cpp",imask);
@@ -700,7 +700,7 @@ void generateInitialSlots(int imask)
   FILE *fout;
   char fname[80],maskname[80],time[80];
 
-  if(opt.script == PV_LUA) return lua_generateInitialSlots(imask);
+  if(opt_develop.script == PV_LUA) return lua_generateInitialSlots(imask);
   strcpy(time,QDateTime::currentDateTime().toString().toUtf8());
   sprintf(maskname,"mask%d",imask);
   sprintf(fname,"mask%d_slots.h",imask);
@@ -727,7 +727,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"\n");
   fprintf(fout,"typedef struct // (todo: define your data structure here)\n");
   fprintf(fout,"{\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  char this_python[32];\n");
   }
@@ -738,7 +738,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || d == NULL) return -1;\n");
   fprintf(fout,"  //memset(d,0,sizeof(DATA));\n"                                            );
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  strcpy(d->this_python, __FILE__); // __FILE__ = \"maskX_slots.h\" < 15 characters\n");
     fprintf(fout,"  pvPy_SetInstance((pvPyCleanupStruct *) p->app_data, d->this_python);\n");
@@ -756,7 +756,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotNullEvent(PARAM *p, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotNullEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(i)\", p->s);\n");
@@ -771,7 +771,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotButtonEvent(PARAM *p, int id, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotButtonEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -786,7 +786,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotButtonPressedEvent(PARAM *p, int id, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotButtonPressedEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -801,7 +801,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotButtonReleasedEvent(PARAM *p, int id, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotButtonReleasedEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -816,7 +816,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotTextEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -831,7 +831,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotSliderEvent(PARAM *p, int id, DATA *d, int val)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || val < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotSliderEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iii)\", p->s, id, val);\n");
@@ -846,7 +846,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotCheckboxEvent(PARAM *p, int id, DATA *d, const char *text)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotCheckboxEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iis)\", p->s, id, text);\n");
@@ -861,7 +861,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotRadioButtonEvent(PARAM *p, int id, DATA *d, const char *text)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotRadioButtonEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iis)\", p->s, id, text);\n");
@@ -876,7 +876,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotGlInitializeEvent(PARAM *p, int id, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotGlInitializeEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -891,7 +891,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotGlPaintEvent(PARAM *p, int id, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotGlPaintEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -906,7 +906,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotGlResizeEvent(PARAM *p, int id, DATA *d, int width, int height)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || width < 0 || height < 0) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotGlResizeEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiii)\", p->s, id, width, height);\n");
@@ -921,7 +921,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotGlIdleEvent(PARAM *p, int id, DATA *d)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotGlIdleEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(ii)\", p->s, id);\n");
@@ -936,7 +936,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotTabEvent(PARAM *p, int id, DATA *d, int val)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || val < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotTabEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iii)\", p->s, id, val);\n");
@@ -951,7 +951,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotTableTextEvent(PARAM *p, int id, DATA *d, int x, int y, const char *text)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || x < -1000 || y < -1000 || text == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotTableTextEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiiis)\", p->s, id, x, y, text);\n");
@@ -966,7 +966,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotTableClickedEvent(PARAM *p, int id, DATA *d, int x, int y, int button)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || x < -1000 || y < -1000 || button < 0) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotTableClickedEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiiii)\", p->s, id, x, y, button);\n");
@@ -981,7 +981,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotSelectionEvent(PARAM *p, int id, DATA *d, int val, const char *text)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || val < -1000 || text == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotSelectionEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiis)\", p->s, id, val, text);\n");
@@ -996,7 +996,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotClipboardEvent(PARAM *p, int id, DATA *d, int val)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || val < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotClipboardEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiis)\", p->s, id, val, p->clipboard);\n");
@@ -1012,7 +1012,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;\n");
   fprintf(fout,"  //pvPopupMenu(p,-1,\"Menu1,Menu2,,Menu3\");\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotRightMouseEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iis)\", p->s, id, text);\n");
@@ -1027,7 +1027,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotKeyboardEvent(PARAM *p, int id, DATA *d, int val, int modifier)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || val < -1000 || modifier < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotKeyboardEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiii)\", p->s, id, val, modifier);\n");
@@ -1042,7 +1042,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotMouseMovedEvent(PARAM *p, int id, DATA *d, float x, float y)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || x < -1000 || y < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotMouseMovedEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiff)\", p->s, id, x, y);\n");
@@ -1057,7 +1057,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotMousePressedEvent(PARAM *p, int id, DATA *d, float x, float y)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || x < -1000 || y < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotMousePressedEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiff)\", p->s, id, x, y);\n");
@@ -1072,7 +1072,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotMouseReleasedEvent(PARAM *p, int id, DATA *d, float x, float y)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || x < -1000 || y < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotMouseReleasedEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iiff)\", p->s, id, x, y);\n");
@@ -1087,7 +1087,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotMouseOverEvent(PARAM *p, int id, DATA *d, int enter)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || enter < -1000) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotMouseOverEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iii)\", p->s, id, enter);\n");
@@ -1102,7 +1102,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"static int slotUserEvent(PARAM *p, int id, DATA *d, const char *text)\n");
   fprintf(fout,"{\n");
   fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;\n");
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotUserEvent\");\n");
     fprintf(fout,"  PyBuildValue(\"(iis)\", p->s, id, text);\n");
@@ -1117,7 +1117,7 @@ void generateInitialSlots(int imask)
   fclose(fout);
 
   //#### Python #####################################################
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     sprintf(fname,"mask%d.py",imask);
     fout = fopen(fname,"w");
@@ -1256,10 +1256,10 @@ int loadFile(const char *name)
     return -1;
   }
 
-  if(opt.arg_debug) printf("loadFile(%s)\n",name);
+  if(opt_develop.arg_debug) printf("loadFile(%s)\n",name);
   while(fgets(line,sizeof(line)-1,fin) != NULL)
   {
-    //if(opt.arg_debug) printf("loadFile line=%s",line);
+    //if(opt_develop.arg_debug) printf("loadFile line=%s",line);
     fl->next = new FileLines;
     fl = fl->next;
     fl->line = new char [strlen(line)+1];
@@ -1277,12 +1277,12 @@ int unloadFile()
   FileLines *fl,*flold;
 
   if(file_loaded == 0) return 0;
-  if(opt.arg_debug) printf("unloadFile\n");
+  if(opt_develop.arg_debug) printf("unloadFile\n");
   fl = &file_lines;
   fl = fl->next;
   while(fl != NULL)
   {
-    //if(opt.arg_debug) printf("unloadFile fl->line=%s",fl->line);
+    //if(opt_develop.arg_debug) printf("unloadFile fl->line=%s",fl->line);
     delete [] fl->line;
     flold = fl;
     fl = fl->next;
@@ -1297,8 +1297,8 @@ void addMaskToProject(const char *name, int imask)
   FILE *fout;
   FileLines *fl;
 
-  if(opt.arg_debug) printf("addMaskToProject imask=%d name=%s\n",imask,name);
-  if(opt.script == PV_LUA) return;
+  if(opt_develop.arg_debug) printf("addMaskToProject imask=%d name=%s\n",imask,name);
+  if(opt_develop.script == PV_LUA) return;
   if(loadFile(name) == -1) return;
   fout = fopen(name,"w");
   if(fout == NULL) return;
@@ -1331,8 +1331,8 @@ void addMaskToMain(int imask)
   FileLines *fl;
   int while_found, switch_found, case_found, done;
 
-  if(opt.arg_debug) printf("addMaskToMain imask=%d\n",imask);
-  if(opt.script == PV_LUA) return lua_addMaskToMain(imask);
+  if(opt_develop.arg_debug) printf("addMaskToMain imask=%d\n",imask);
+  if(opt_develop.script == PV_LUA) return lua_addMaskToMain(imask);
   if(loadFile("main.cpp") == -1) return;
   while_found = switch_found = case_found = done = 0;
   fout = fopen("main.cpp","w");
@@ -1377,8 +1377,8 @@ void addMaskToHeader(int imask)
   FileLines *fl;
   int done;
 
-  if(opt.arg_debug) printf("addMaskToHeader imask=%d\n",imask);
-  if(opt.script == PV_LUA) return;
+  if(opt_develop.arg_debug) printf("addMaskToHeader imask=%d\n",imask);
+  if(opt_develop.script == PV_LUA) return;
   if(loadFile("pvapp.h") == -1) return;
   fout = fopen("pvapp.h","w");
   if(fout == NULL) return;
@@ -1407,7 +1407,7 @@ void uncommentRllib(const char *project)
   FILE *fout;
   FileLines *fl;
 
-  if(opt.script == PV_LUA) return;
+  if(opt_develop.script == PV_LUA) return;
   if(loadFile(project) == -1) return;
   fout = fopen(project,"w");
   if(fout == NULL) return;
@@ -1437,7 +1437,7 @@ void uncommentModbus()
   FILE *fout;
   FileLines *fl;
 
-  if(opt.script == PV_LUA) return;
+  if(opt_develop.script == PV_LUA) return;
   if(loadFile("main.cpp") == -1) return;
   fout = fopen("main.cpp","w");
   if(fout == NULL) return;
@@ -1486,7 +1486,7 @@ void uncommentSiemenstcp()
   FILE *fout;
   FileLines *fl;
 
-  if(opt.script == PV_LUA) return;
+  if(opt_develop.script == PV_LUA) return;
   if(loadFile("main.cpp") == -1) return;
   fout = fopen("main.cpp","w");
   if(fout == NULL) return;
@@ -1535,7 +1535,7 @@ void uncommentPpi()
   FILE *fout;
   FileLines *fl;
 
-  if(opt.script == PV_LUA) return;
+  if(opt_develop.script == PV_LUA) return;
   if(loadFile("main.cpp") == -1) return;
   fout = fopen("main.cpp","w");
   if(fout == NULL) return;
@@ -1715,7 +1715,7 @@ get_args:
         isText = 1;
         cptr++;
       }
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         if(*cptr == ')') break; 
       }
@@ -1726,7 +1726,7 @@ get_args:
     }
     // get args end
 
-    if(opt.arg_debug) // print args
+    if(opt_develop.arg_debug) // print args
     {
       printf("export_widgets args for: %s isConstructor=%d\n", line, isConstructor);
       for(i=0; i<20; i++) // print args
@@ -1738,7 +1738,7 @@ get_args:
     }
 
     //--- begin interpret ---------------------------------------------------------------
-    if(opt.script == PV_LUA) cptr = strstr(line, "pv.pvTabOrder(p,");
+    if(opt_develop.script == PV_LUA) cptr = strstr(line, "pv.pvTabOrder(p,");
     else                     cptr = strstr(line, "pvTabOrder(p,");
     if(cptr != NULL)
     { 
@@ -2340,7 +2340,7 @@ get_args:
     {
       cptr = strchr(line,'\n');
       if(cptr != NULL) *cptr = '\0';
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         if(strstr(line,"--- end construction of our mask ---") != NULL)
         {
@@ -2379,7 +2379,7 @@ int export_ui(int imask)
   int isTabOrTool = 0;
 
   traceback.clear();
-  if(opt.script == PV_LUA) sprintf(line, "mask%d.lua", imask);
+  if(opt_develop.script == PV_LUA) sprintf(line, "mask%d.lua", imask);
   else                     sprintf(line, "mask%d.cpp", imask);
   fin = fopen(line,"r");
   if(fin == NULL)
@@ -2403,8 +2403,8 @@ int export_ui(int imask)
   fprintf(fout, "   <rect>\n");
   fprintf(fout, "    <x>0</x>\n");
   fprintf(fout, "    <y>0</y>\n");
-  fprintf(fout, "    <width>%d</width>\n", opt.xmax);
-  fprintf(fout, "    <height>%d</height>\n", opt.ymax);
+  fprintf(fout, "    <width>%d</width>\n", opt_develop.xmax);
+  fprintf(fout, "    <height>%d</height>\n", opt_develop.ymax);
   fprintf(fout, "   </rect>\n");
   fprintf(fout, "  </property>\n");
   fprintf(fout, "  <property name=\"windowTitle\" >\n");
@@ -2464,7 +2464,7 @@ void lua_addMaskToMain(int imask)
   FileLines *fl;
   int while_found, else_found, done, dofile_found;
 
-  if(opt.arg_debug) printf("lua_addMaskToMain imask=%d\n",imask);
+  if(opt_develop.arg_debug) printf("lua_addMaskToMain imask=%d\n",imask);
   if(loadFile("main.lua") == -1) return;
   while_found = else_found = done = dofile_found = 0;
   fout = fopen("main.lua","w");

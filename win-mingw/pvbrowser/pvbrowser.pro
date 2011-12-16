@@ -2,11 +2,13 @@
 # project file for pvbrowser          #                                    
 # you can uncomment CONFIG += USE_VTK #                                    
 #######################################                                    
-#CONFIG       += USE_VTK                                                   
-#DEFINES     += NO_QWT                                                     
-DEFINES      -= UNICODE                                                    
-QT           += opengl svg webkit network                                  
-CONFIG       += uitools warn_on release                                    
+#CONFIG        += USE_VTK                                                   
+#DEFINES       += NO_QWT                                                     
+DEFINES        -= UNICODE                                                    
+QT             += opengl svg webkit network                                  
+CONFIG         += uitools warn_on release                                    
+QMAKE_CXXFLAGS += -mthreads
+QMAKE_LFLAGS   += -mthreads
 
 HEADERS       = ../../pvbrowser/mainwindow.h \                             
                 ../../pvbrowser/dlgopt.h \                                 

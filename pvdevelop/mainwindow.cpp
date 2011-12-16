@@ -29,11 +29,11 @@
 #include "widgetgenerator.h"
 #include "syntax.h"
 
-extern OPT opt;
+extern OPT_DEVELOP opt_develop;
 
 MainWindow::MainWindow()
 {
-  if(opt.arg_debug) printf("MainWindow start\n");
+  if(opt_develop.arg_debug) printf("MainWindow start\n");
 
   imask = 1;
   createActions();
@@ -51,35 +51,35 @@ MainWindow::MainWindow()
   currentMask = 1;
   setCurrentFile("");
 
-  dlgtextbrowser = new dlgTextBrowser(opt.manual);
+  dlgtextbrowser = new dlgTextBrowser(opt_develop.manual);
 
-  if(opt.arg_project[0] != '\0')
+  if(opt_develop.arg_project[0] != '\0')
   {
-    QString test = opt.arg_project;
+    QString test = opt_develop.arg_project;
     test += ".pro";
     FILE *fin = fopen(test.toUtf8(),"r");
     if(fin != NULL)
     {
       fclose(fin);
-      name = opt.arg_project;
+      name = opt_develop.arg_project;
       load(name + ".pro");
       editor->radioProject->setChecked(true);
     }
-    else if(opt.script == PV_LUA)
+    else if(opt_develop.script == PV_LUA)
     {
       test = "main.lua";
       fin = fopen(test.toUtf8(),"r");
       if(fin != NULL)
       {
         fclose(fin);
-        name = opt.arg_project;
+        name = opt_develop.arg_project;
         load("main.lua");
         editor->radioMain->setChecked(true);
       }  
     }
   }
 
-  if(opt.arg_debug) printf("MainWindow end\n");
+  if(opt_develop.arg_debug) printf("MainWindow end\n");
 }
 
 void MainWindow::closeEvent(QCloseEvent *event)
@@ -114,23 +114,23 @@ void MainWindow::newFile()
   {
     name = name.simplified();
     name = name.replace(" ","_");
-    name.truncate(sizeof(opt.arg_project) - 2);
-    strcpy(opt.arg_project,(const char *) name.toUtf8());
+    name.truncate(sizeof(opt_develop.arg_project) - 2);
+    strcpy(opt_develop.arg_project,(const char *) name.toUtf8());
     if(dlg.uidlg->lineEditDirectory->text() != "") QDir::setCurrent(dlg.uidlg->lineEditDirectory->text());
     int language = dlg.uidlg->comboBoxLanguage->currentIndex();
-    if(opt.arg_debug) printf("comboBoxLanguage->currentText=%s language=%d\n",
+    if(opt_develop.arg_debug) printf("comboBoxLanguage->currentText=%s language=%d\n",
            (const char *) dlg.uidlg->comboBoxLanguage->currentText().toUtf8(),
            language);
     // language = 0 C/C++
     // language = 1 Lua
     // language = 2 Phyton (experimental)
-    if     (language == 1) opt.script = PV_LUA;
-    else if(language == 2) opt.script = PV_PYTHON;
-    else                   opt.script = 0; // C/C++
-    if(opt.script == PV_PYTHON)
+    if     (language == 1) opt_develop.script = PV_LUA;
+    else if(language == 2) opt_develop.script = PV_PYTHON;
+    else                   opt_develop.script = 0; // C/C++
+    if(opt_develop.script == PV_PYTHON)
     {
       name = "pvs";
-      strcpy(opt.arg_project, "pvs");
+      strcpy(opt_develop.arg_project, "pvs");
 #ifdef PVWIN32
       system("pvb_copy_python_template.bat");
 #else
@@ -140,21 +140,21 @@ void MainWindow::newFile()
     }
     else
     {
-      if(opt.arg_debug) printf("calling generateInitialProject language=%d\n", language);      
+      if(opt_develop.arg_debug) printf("calling generateInitialProject language=%d\n", language);      
       generateInitialProject(name.toUtf8());
     }
-    if(opt.arg_debug) printf("script=%d\n", opt.script);
+    if(opt_develop.arg_debug) printf("script=%d\n", opt_develop.script);
     ret = readProject();
     if(ret == -1) { name.clear(); return; }
     // add additional language here
-    if     (opt.script == PV_PYTHON) editor->radioScript->show();
-    else if(opt.script == PV_PERL)   editor->radioScript->show();
-    else if(opt.script == PV_PHP)    editor->radioScript->show();
-    else if(opt.script == PV_TCL)    editor->radioScript->show();
+    if     (opt_develop.script == PV_PYTHON) editor->radioScript->show();
+    else if(opt_develop.script == PV_PERL)   editor->radioScript->show();
+    else if(opt_develop.script == PV_PHP)    editor->radioScript->show();
+    else if(opt_develop.script == PV_TCL)    editor->radioScript->show();
     else                             editor->radioScript->hide();
-    if(opt.script == PV_LUA)         editor->radioHeader->hide();
+    if(opt_develop.script == PV_LUA)         editor->radioHeader->hide();
     else                             editor->radioHeader->show();
-    if(opt.script == PV_LUA)         editor->radioProject->hide();
+    if(opt_develop.script == PV_LUA)         editor->radioProject->hide();
     else                             editor->radioProject->show();
     setCurrentFile(name + ".pro");
     project = "qmake=" + name;
@@ -167,7 +167,7 @@ int readProject()
 {
   FILE *fin;
   char line[1024],*cptr;
-  QString project = opt.arg_project;
+  QString project = opt_develop.arg_project;
   project += ".pvproject";
   fin = fopen(project.toUtf8(),"r");
   if(fin == NULL)
@@ -175,10 +175,10 @@ int readProject()
     return -1;
   }
 
-  strcpy(opt.target, "pvs");
-  opt.xmax = 1280;
-  opt.ymax = 1024;
-  opt.script = 0;
+  strcpy(opt_develop.target, "pvs");
+  opt_develop.xmax = 1280;
+  opt_develop.ymax = 1024;
+  opt_develop.script = 0;
   while(fgets(line,sizeof(line)-1,fin) != NULL)
   {
     if(strncmp(line,"target=",7) == 0)
@@ -192,40 +192,40 @@ int readProject()
         return -1;
       }
       cptr++;
-      strcpy(opt.target,cptr);
+      strcpy(opt_develop.target,cptr);
     }
     else if(strncmp(line,"xmax=",5) == 0)
     {
-      sscanf(line,"xmax=%d",&opt.xmax);
+      sscanf(line,"xmax=%d",&opt_develop.xmax);
     }
     else if(strncmp(line,"ymax=",5) == 0)
     {
-      sscanf(line,"ymax=%d",&opt.ymax);
+      sscanf(line,"ymax=%d",&opt_develop.ymax);
     }
     else if(strncmp(line,"script=Python",13) == 0)
     {
-      opt.script = PV_PYTHON;
+      opt_develop.script = PV_PYTHON;
     }
     else if(strncmp(line,"script=Perl",11) == 0)
     {
-      opt.script = PV_PERL;
+      opt_develop.script = PV_PERL;
     }
     else if(strncmp(line,"script=PHP",10) == 0)
     {
-      opt.script = PV_PHP;
+      opt_develop.script = PV_PHP;
     }
     else if(strncmp(line,"script=Tcl",10) == 0)
     {
-      opt.script = PV_TCL;
+      opt_develop.script = PV_TCL;
     }
     else if(strncmp(line,"script=Lua",10) == 0)
     {
-      opt.script = PV_LUA;
+      opt_develop.script = PV_LUA;
     }
     // add additional language here
   }
   fclose(fin);
-  if(opt.arg_debug) printf("Project: target=%s xmax=%d ymax=%d script=%d\n", opt.target, opt.xmax, opt.ymax, opt.script);
+  if(opt_develop.arg_debug) printf("Project: target=%s xmax=%d ymax=%d script=%d\n", opt_develop.target, opt_develop.xmax, opt_develop.ymax, opt_develop.script);
   return 0;
 }
 
@@ -241,34 +241,34 @@ void MainWindow::open()
       QDir dir(fileName);
       dir.cdUp();
       QString path = dir.path();
-      if(opt.arg_debug) printf("mainwindow().open().setCurrent(%s)\n",(const char *) path.toUtf8());
+      if(opt_develop.arg_debug) printf("mainwindow().open().setCurrent(%s)\n",(const char *) path.toUtf8());
       QDir::setCurrent(path);
-      if(fileName.length() < (int) sizeof(opt.arg_project)) strcpy(opt.arg_project, (const char *) fileName.toUtf8());
-      cptr = strchr(opt.arg_project, '.');
+      if(fileName.length() < (int) sizeof(opt_develop.arg_project)) strcpy(opt_develop.arg_project, (const char *) fileName.toUtf8());
+      cptr = strchr(opt_develop.arg_project, '.');
       if(cptr != NULL) *cptr = '\0';
 
       ret = readProject();
       if(ret == -1) { name.clear(); return; }
       // add additional language here
-      if     (opt.script == PV_PYTHON) editor->radioScript->show();
-      else if(opt.script == PV_PERL)   editor->radioScript->show();
-      else if(opt.script == PV_PHP)    editor->radioScript->show();
-      else if(opt.script == PV_TCL)    editor->radioScript->show();
+      if     (opt_develop.script == PV_PYTHON) editor->radioScript->show();
+      else if(opt_develop.script == PV_PERL)   editor->radioScript->show();
+      else if(opt_develop.script == PV_PHP)    editor->radioScript->show();
+      else if(opt_develop.script == PV_TCL)    editor->radioScript->show();
       else                             editor->radioScript->hide();
-      if(opt.script == PV_LUA)         editor->radioHeader->hide();
+      if(opt_develop.script == PV_LUA)         editor->radioHeader->hide();
       else                             editor->radioHeader->show();
-      if(opt.script == PV_LUA)         editor->radioProject->hide();
+      if(opt_develop.script == PV_LUA)         editor->radioProject->hide();
       else                             editor->radioProject->show();
-      name = opt.target;
+      name = opt_develop.target;
 
 #ifdef PVUNIX
       char cmd[1024];
       sprintf(cmd,"qmake %s.pro -o Makefile",(const char *) name.toUtf8());
-      if(opt.arg_debug) printf("cmd=%s\n",cmd);
+      if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       ret = system(cmd);
       if(ret < 0) printf("ERROR system(%s)\n", cmd);
 #endif
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         load("main.lua");
         if(editor != NULL) editor->radioMain->setChecked(TRUE);
@@ -287,7 +287,7 @@ bool MainWindow::save()
   if(designer != NULL)
   {
     char buf[80];
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       sprintf(buf,"mask%d.lua",imask);
     }
@@ -297,19 +297,19 @@ bool MainWindow::save()
     }
     generateMask(buf, designer->root);
     // add additional language here
-    if(opt.script == PV_PYTHON)
+    if(opt_develop.script == PV_PYTHON)
     {
       generatePython(imask, designer->root);
     }
-    if(opt.script == PV_PHP)
+    if(opt_develop.script == PV_PHP)
     {
       generatePHP(imask, designer->root);
     }
-    if(opt.script == PV_PERL)
+    if(opt_develop.script == PV_PERL)
     {
       generatePerl(imask, designer->root);
     }
-    if(opt.script == PV_TCL)
+    if(opt_develop.script == PV_TCL)
     {
       generateTcl(imask, designer->root);
     }
@@ -334,7 +334,7 @@ void MainWindow::slotBackup()
   QString message = "Now running:\n";
   QString localname = name;
   localname.remove(".pro");
-  command.sprintf("tar -zcf %s/%s.tar.gz .",opt.backupLocation,(const char *) localname.toUtf8());
+  command.sprintf("tar -zcf %s/%s.tar.gz .",opt_develop.backupLocation,(const char *) localname.toUtf8());
   message.append(command);
   QMessageBox::information(this, tr("pvdevelop"),message);
   int ret = system(command.toUtf8());
@@ -358,7 +358,7 @@ void MainWindow::documentWasModified()
 
 void MainWindow::createActions()
 {
-  if(opt.arg_debug) printf("createActions\n");;
+  if(opt_develop.arg_debug) printf("createActions\n");;
 
   optAct = new QAction(QIcon(":/images/option.png"), tr("O&ptions"), this);
   optAct->setStatusTip(tr("Edit options"));
@@ -518,9 +518,9 @@ void MainWindow::createActions()
 
 void MainWindow::connectActions()
 {
-  if(opt.arg_debug) printf("connectActions begin1\n");
+  if(opt_develop.arg_debug) printf("connectActions begin1\n");
   if(editor == NULL) return;
-  if(opt.arg_debug) printf("connectActions begin2\n");
+  if(opt_develop.arg_debug) printf("connectActions begin2\n");
   connect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
   connect(openAct, SIGNAL(triggered()), this, SLOT(open()));
   connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
@@ -544,7 +544,7 @@ void MainWindow::connectActions()
   connect(copyAct, SIGNAL(triggered()), editor->edit, SLOT(copy()));
   connect(pasteAct, SIGNAL(triggered()), editor->edit, SLOT(paste()));
 
-  if(opt.arg_debug) printf("connectActions 1\n");
+  if(opt_develop.arg_debug) printf("connectActions 1\n");
 
   newAct->setEnabled(true);
   openAct->setEnabled(true);
@@ -569,14 +569,14 @@ void MainWindow::connectActions()
   copyAct->setEnabled(true);
   pasteAct->setEnabled(true);
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     actionMakeAct->setEnabled(false);
     rllibUncommentRllibAct->setEnabled(false);
   }
   //#################################################################
 
-  if(opt.arg_debug) printf("connectActions 2\n");
+  if(opt_develop.arg_debug) printf("connectActions 2\n");
 
   connect(editor->edit, SIGNAL(copyAvailable(bool)), cutAct, SLOT(setEnabled(bool)));
   connect(editor->edit, SIGNAL(copyAvailable(bool)), copyAct, SLOT(setEnabled(bool)));
@@ -587,9 +587,9 @@ void MainWindow::connectActions()
   connect(editor->radioMain, SIGNAL(toggled(bool)), this, SLOT(slotRadioMain(bool)));
   connect(editor->radioHeader, SIGNAL(toggled(bool)), this, SLOT(slotRadioHeader(bool)));
   connect(editor->radioSlots, SIGNAL(toggled(bool)), this, SLOT(slotRadioSlots(bool)));
-  if(opt.arg_debug) printf("connectActions 3\n");
+  if(opt_develop.arg_debug) printf("connectActions 3\n");
   connect(editor->radioScript, SIGNAL(toggled(bool)), this, SLOT(slotRadioScript(bool)));
-  if(opt.arg_debug) printf("connectActions 4\n");
+  if(opt_develop.arg_debug) printf("connectActions 4\n");
   connect(editor->radioMask, SIGNAL(toggled(bool)), this, SLOT(slotRadioMask(bool)));
 
   connect(editor->spinBoxMask, SIGNAL(valueChanged(int)), this, SLOT(slotSpinBoxMask(int)));
@@ -598,12 +598,12 @@ void MainWindow::connectActions()
   connect(editor->pushButtonInsertFunction, SIGNAL(clicked()), this, SLOT(slotInsertFunction()));
 
   connect(editor->widgetname, SIGNAL(itemClicked( QListWidgetItem*)), this, SLOT(slotWidgetname(QListWidgetItem *)));
-  if(opt.arg_debug) printf("connectActions end\n");
+  if(opt_develop.arg_debug) printf("connectActions end\n");
 }
 
 void MainWindow::disconnectActions()
 {
-  if(opt.arg_debug) printf("disconnectActions begin\n");;
+  if(opt_develop.arg_debug) printf("disconnectActions begin\n");;
   disconnect(newAct, SIGNAL(triggered()), this, SLOT(newFile()));
   disconnect(openAct, SIGNAL(triggered()), this, SLOT(open()));
   disconnect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
@@ -661,9 +661,9 @@ void MainWindow::disconnectActions()
   disconnect(editor->radioMain, SIGNAL(toggled(bool)), this, SLOT(slotRadioMain(bool)));
   disconnect(editor->radioHeader, SIGNAL(toggled(bool)), this, SLOT(slotRadioHeader(bool)));
   disconnect(editor->radioSlots, SIGNAL(toggled(bool)), this, SLOT(slotRadioSlots(bool)));
-  if(opt.arg_debug) printf("disconnectActions 1\n");
+  if(opt_develop.arg_debug) printf("disconnectActions 1\n");
   disconnect(editor->radioScript, SIGNAL(toggled(bool)), this, SLOT(slotRadioScript(bool)));
-  if(opt.arg_debug) printf("disconnectActions 2\n");
+  if(opt_develop.arg_debug) printf("disconnectActions 2\n");
   disconnect(editor->radioMask, SIGNAL(toggled(bool)), this, SLOT(slotRadioMask(bool)));
 
   disconnect(editor->spinBoxMask, SIGNAL(valueChanged(int)), this, SLOT(slotSpinBoxMask(int)));
@@ -672,12 +672,12 @@ void MainWindow::disconnectActions()
   disconnect(editor->pushButtonInsertFunction, SIGNAL(clicked()), this, SLOT(slotInsertFunction()));
 
   disconnect(editor->widgetname, SIGNAL(itemClicked( QListWidgetItem*)), this, SLOT(slotWidgetname(QListWidgetItem *)));
-  if(opt.arg_debug) printf("disconnectActions end\n");;
+  if(opt_develop.arg_debug) printf("disconnectActions end\n");;
 }
 
 void MainWindow::createMenus()
 {
-  if(opt.arg_debug) printf("createMenus\n");;
+  if(opt_develop.arg_debug) printf("createMenus\n");;
 
   fileMenu = menuBar()->addMenu(tr("&File"));
   fileMenu->addAction(optAct);
@@ -736,7 +736,7 @@ void MainWindow::createMenus()
 
 void MainWindow::createToolBars()
 {
-  if(opt.arg_debug) printf("createToolBars\n");;
+  if(opt_develop.arg_debug) printf("createToolBars\n");;
 
   fileToolBar = addToolBar(tr("File"));
   fileToolBar->addAction(newAct);
@@ -755,14 +755,14 @@ void MainWindow::createToolBars()
 
 void MainWindow::createStatusBar()
 {
-  if(opt.arg_debug) printf("createStatusBar\n");;
+  if(opt_develop.arg_debug) printf("createStatusBar\n");;
 
   statusBar()->showMessage(tr("Ready"));
 }
 
 void MainWindow::readSettings()
 {
-  if(opt.arg_debug) printf("readSettings\n");;
+  if(opt_develop.arg_debug) printf("readSettings\n");;
   QSettings settings("Trolltech", "Application Example");
   QPoint pos = settings.value("pos", QPoint(200, 200)).toPoint();
   QSize size = settings.value("size", QSize(400, 400)).toSize();
@@ -772,7 +772,7 @@ void MainWindow::readSettings()
 
 void MainWindow::writeSettings()
 {
-  if(opt.arg_debug) printf("writeSettings\n");;
+  if(opt_develop.arg_debug) printf("writeSettings\n");;
   QSettings settings("Trolltech", "Application Example");
   settings.setValue("pos", pos());
   settings.setValue("size", size());
@@ -851,7 +851,7 @@ bool MainWindow::saveFile(const QString &fileName)
 void MainWindow::setCurrentFile(const QString &fileName)
 {
   if(editor == NULL) return;
-  if(opt.arg_debug) printf("setCurrentFile=%s\n", (const char *) fileName.toUtf8());
+  if(opt_develop.arg_debug) printf("setCurrentFile=%s\n", (const char *) fileName.toUtf8());
 
   curFile = fileName;
   editor->edit->document()->setModified(false);
@@ -872,7 +872,7 @@ QString MainWindow::strippedName(const QString &fullFileName)
 void MainWindow::viewEditor()
 {
   if(editor != NULL) return;
-  if(opt.arg_debug) printf("viewEditor begin\n");;
+  if(opt_develop.arg_debug) printf("viewEditor begin\n");;
 
   if(editor != NULL || designer != NULL) centralWidget()->hide();
   if(designer != NULL)
@@ -892,7 +892,7 @@ void MainWindow::viewEditor()
 
   if(!name.isEmpty())
   {
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       load("main.lua");
       editor->radioMain->setChecked(TRUE);
@@ -905,8 +905,8 @@ void MainWindow::viewEditor()
     editor->spinBoxMask->setValue(currentMask);
   }
 
-  if(opt.script == 0) editor->radioScript->hide();
-  if(opt.arg_debug) printf("viewEditor end\n");;
+  if(opt_develop.script == 0) editor->radioScript->hide();
+  if(opt_develop.arg_debug) printf("viewEditor end\n");;
 }
 
 void MainWindow::viewDesigner()
@@ -920,7 +920,7 @@ void MainWindow::viewDesigner()
     viewEditor();
     return;
   }
-  if(opt.arg_debug) printf("viewDesigner begin\n");;
+  if(opt_develop.arg_debug) printf("viewDesigner begin\n");;
 
   imask = 1;
   if(editor != NULL) imask = editor->spinBoxMask->value();
@@ -930,28 +930,28 @@ void MainWindow::viewDesigner()
   editor = NULL;
   scroll = new QScrollArea;
   sprintf(buf,"mask%d.cpp",imask);
-  if(opt.arg_debug) printf("viewDesigner before new Designer buf=%s\n", buf);
+  if(opt_develop.arg_debug) printf("viewDesigner before new Designer buf=%s\n", buf);
   designer = new Designer(buf);
-  if(opt.arg_debug) printf("viewDesigner after new Designer\n");
+  if(opt_develop.arg_debug) printf("viewDesigner after new Designer\n");
   designer->root->mainWindow = this;
-  designer->root->resize(opt.xmax,opt.ymax);
-  scroll->setMaximumSize(opt.xmax,opt.ymax);
+  designer->root->resize(opt_develop.xmax,opt_develop.ymax);
+  scroll->setMaximumSize(opt_develop.xmax,opt_develop.ymax);
   scroll->setWidget(designer->root);
   designer->root->setScroll(scroll);
   designer->root->statusBar = statusBar();
   hide();
   setCentralWidget(scroll);
-  if(opt.arg_debug) printf("viewDesigner before show\n");;
+  if(opt_develop.arg_debug) printf("viewDesigner before show\n");;
   show();
-  if(opt.arg_debug) printf("viewDesigner before centralWidget->show\n");;
+  if(opt_develop.arg_debug) printf("viewDesigner before centralWidget->show\n");;
   centralWidget()->show();
-  if(opt.arg_debug) printf("viewDesigner after centralWidget->show\n");;
+  if(opt_develop.arg_debug) printf("viewDesigner after centralWidget->show\n");;
   if (curFile.isEmpty()) shownName = "no project loaded";
   else                   shownName.sprintf("design mask%d   ClickRightMouse->PopupDialog   Alt+Click->PropertyDialog   Shift+Click->InsertDialog   Ctrl+Click->InsertLastSelectedWidget   Ctrl-Z->UndoLastMove   R->ReleaseMouse",imask);
   //setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("pvdevelop")));
   setWindowTitle(tr("%1[*]").arg(shownName));
 
-  if(opt.arg_debug) printf("viewDesigner end\n");;
+  if(opt_develop.arg_debug) printf("viewDesigner end\n");;
 }
 
 void MainWindow::slotSearch()
@@ -979,7 +979,7 @@ void MainWindow::slotExportUI()
   
   imask = 1;
   if(editor != NULL) imask = editor->spinBoxMask->value();
-  if(opt.arg_debug) printf("export ui %s imask=%d\n", (const char *) name.toUtf8(), imask);
+  if(opt_develop.arg_debug) printf("export ui %s imask=%d\n", (const char *) name.toUtf8(), imask);
  
   if(name.isEmpty())
   {
@@ -1005,7 +1005,7 @@ void MainWindow::slotExportUI()
 void MainWindow::slotImportUI()
 {
   char cmd[1024];
-  if(opt.arg_debug) printf("import ui %s imask=%d\n", (const char *) name.toUtf8(), imask);
+  if(opt_develop.arg_debug) printf("import ui %s imask=%d\n", (const char *) name.toUtf8(), imask);
 
   if(name.isEmpty())
   {
@@ -1013,7 +1013,7 @@ void MainWindow::slotImportUI()
     return;
   }
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     load("main.lua");
     editor->radioMain->setChecked(true);
@@ -1027,11 +1027,11 @@ void MainWindow::slotImportUI()
   int mymask = editor->spinBoxMask->value();
 #ifdef PVUNIX
   sprintf(cmd,"xterm -e \"pvdevelop -action=importUi:%d %s && echo hit return && read\"", mymask,  (const char *) name.toUtf8());
-  if(opt.arg_debug) printf("cmd=%s\n",cmd);
+  if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
   mysystem(cmd);
 #else
   sprintf(cmd,"start pvb_import_ui.bat %s %d", (const char *) name.toUtf8(), mymask);
-  if(opt.arg_debug) printf("cmd=%s\n",cmd);
+  if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
   int ret = system(cmd);
   if(ret < 0) printf("ERROR system(%s)\n", cmd);
 #endif
@@ -1070,7 +1070,7 @@ void MainWindow::load( const QString &fileName )
 {
   int ret;
 
-  if(opt.script == PV_LUA) editor->setSyntax(LUA_SYNTAX);
+  if(opt_develop.script == PV_LUA) editor->setSyntax(LUA_SYNTAX);
   if(name.isEmpty())
   {
     QMessageBox::information(this,"pvdevelop","No project loaded",QMessageBox::Ok);
@@ -1090,20 +1090,20 @@ void MainWindow::load( const QString &fileName )
     doChecked = true;
     return;
   }
-  if(opt.arg_debug) printf("load(%s)\n",(const char *) fileName.toUtf8());
+  if(opt_develop.arg_debug) printf("load(%s)\n",(const char *) fileName.toUtf8());
   if(curFile != fileName) filePos[curFile] = editor->edit->textCursor().position(); // remember file pos
-  if(opt.arg_debug) printf("curFile=%s pos=%d\n", (const char *) curFile.toUtf8(), filePos[curFile]);
+  if(opt_develop.arg_debug) printf("curFile=%s pos=%d\n", (const char *) curFile.toUtf8(), filePos[curFile]);
   QFile f(fileName);
   if(!f.open(QIODevice::ReadOnly))
   {
-    if(fileName.contains("_slots") && opt.script != PV_LUA)
+    if(fileName.contains("_slots") && opt_develop.script != PV_LUA)
     {
       editor->spinBoxMask->setValue(1);
       f.setFileName("mask1_slots.h");
       setCurrentFile("mask1_slots.h");
       if(!f.open(QIODevice::ReadOnly)) return;
     }
-    else if(fileName.contains("_slots") && opt.script == PV_LUA)
+    else if(fileName.contains("_slots") && opt_develop.script == PV_LUA)
     {
       editor->spinBoxMask->setValue(1);
       f.setFileName("mask1_slots.lua");
@@ -1117,14 +1117,14 @@ void MainWindow::load( const QString &fileName )
       setCurrentFile("mask1.py");
       if(!f.open(QIODevice::ReadOnly)) return;
     }
-    else if(fileName.startsWith("mask") && opt.script != PV_LUA)
+    else if(fileName.startsWith("mask") && opt_develop.script != PV_LUA)
     {
       editor->spinBoxMask->setValue(1);
       f.setFileName("mask1.cpp");
       setCurrentFile("mask1.cpp");
       if(!f.open(QIODevice::ReadOnly)) return;
     }
-    else if(fileName.startsWith("mask") && opt.script == PV_LUA)
+    else if(fileName.startsWith("mask") && opt_develop.script == PV_LUA)
     {
       editor->spinBoxMask->setValue(1);
       f.setFileName("mask1.lua");
@@ -1156,19 +1156,19 @@ void MainWindow::load( const QString &fileName )
   ret = readProject();
   if(ret == -1) { name.clear(); return; }
   // add additional language here
-  if     (opt.script == PV_PYTHON) editor->radioScript->show();
-  else if(opt.script == PV_PERL)   editor->radioScript->show();
-  else if(opt.script == PV_PHP)    editor->radioScript->show();
-  else if(opt.script == PV_TCL)    editor->radioScript->show();
+  if     (opt_develop.script == PV_PYTHON) editor->radioScript->show();
+  else if(opt_develop.script == PV_PERL)   editor->radioScript->show();
+  else if(opt_develop.script == PV_PHP)    editor->radioScript->show();
+  else if(opt_develop.script == PV_TCL)    editor->radioScript->show();
   else                             editor->radioScript->hide();
-  if(opt.script == PV_LUA)         editor->radioHeader->hide();
+  if(opt_develop.script == PV_LUA)         editor->radioHeader->hide();
   else                             editor->radioHeader->show();
-  if(opt.script == PV_LUA)         editor->radioProject->hide();
+  if(opt_develop.script == PV_LUA)         editor->radioProject->hide();
   else                             editor->radioProject->show();
   statusBar()->showMessage( tr("Loaded document %1").arg(fileName), 2000 );
 
   int file_pos = filePos[fileName]; // position cursor
-  if(opt.arg_debug) printf("set to filePos=%d\n", file_pos);
+  if(opt_develop.arg_debug) printf("set to filePos=%d\n", file_pos);
   QTextCursor cursor(editor->edit->textCursor());
   cursor.setPosition(file_pos);
   editor->edit->setTextCursor(cursor);
@@ -1182,7 +1182,7 @@ void MainWindow::slotRadioProject(bool checked)
 
 void MainWindow::slotRadioMain(bool checked)
 {
-  if     (checked & doChecked && opt.script==PV_LUA) load("main.lua");
+  if     (checked & doChecked && opt_develop.script==PV_LUA) load("main.lua");
   else if(checked & doChecked                      ) load("main.cpp");
 }
 
@@ -1196,7 +1196,7 @@ void MainWindow::slotRadioSlots(bool checked)
   if(checked & doChecked)
   {
     QString fname;
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       fname.sprintf("mask%d_slots.lua",editor->spinBoxMask->value());
     }
@@ -1223,7 +1223,7 @@ void MainWindow::slotRadioMask(bool checked)
   if(checked & doChecked)
   {
     QString fname;
-    if(opt.script == PV_LUA) 
+    if(opt_develop.script == PV_LUA) 
     {
       fname.sprintf("mask%d.lua",editor->spinBoxMask->value());
     }
@@ -1279,7 +1279,7 @@ void MainWindow::slotSpinBoxMask(int i)
     return;
   }
 
-  if(opt.script == PV_LUA) sprintf(myname,"mask%d.lua",i); // test if mask exists
+  if(opt_develop.script == PV_LUA) sprintf(myname,"mask%d.lua",i); // test if mask exists
   else                     sprintf(myname,"mask%d.cpp",i); // test if mask exists
   fin = fopen(myname,"r");
   if(fin == NULL)
@@ -1305,7 +1305,7 @@ void MainWindow::slotSpinBoxMask(int i)
     sprintf(myname,"mask%d_slots.h",i);
     load(myname);
   }
-  else if(curFile.contains("mask") && opt.script == PV_LUA)
+  else if(curFile.contains("mask") && opt_develop.script == PV_LUA)
   {
     sprintf(myname,"mask%d.lua",i);
     load(myname);
@@ -1320,7 +1320,7 @@ void MainWindow::slotSpinBoxMask(int i)
 
 void MainWindow::slotRllibUncommentRllib()
 {
-  if(opt.arg_debug) printf("slotRllibUncommentRllib()\n");
+  if(opt_develop.arg_debug) printf("slotRllibUncommentRllib()\n");
   if(beginMenu())
   {
     QString project = name + ".pro";
@@ -1331,7 +1331,7 @@ void MainWindow::slotRllibUncommentRllib()
 
 void MainWindow::slotRllibUncommentModbus()
 {
-  if(opt.arg_debug) printf("slotRllibUncommentModbus()\n");
+  if(opt_develop.arg_debug) printf("slotRllibUncommentModbus()\n");
   if(beginMenu())
   {
     uncommentModbus();
@@ -1341,7 +1341,7 @@ void MainWindow::slotRllibUncommentModbus()
 
 void MainWindow::slotRllibUncommentSiemenstcp()
 {
-  if(opt.arg_debug) printf("slotRllibUncommentSiemenstcp()\n");
+  if(opt_develop.arg_debug) printf("slotRllibUncommentSiemenstcp()\n");
   if(beginMenu())
   {
     uncommentSiemenstcp();
@@ -1351,7 +1351,7 @@ void MainWindow::slotRllibUncommentSiemenstcp()
 
 void MainWindow::slotRllibUncommentPpi()
 {
-  if(opt.arg_debug) printf("slotRllibUncommentPpi()\n");
+  if(opt_develop.arg_debug) printf("slotRllibUncommentPpi()\n");
   if(beginMenu())
   {
     uncommentPpi();
@@ -1361,7 +1361,7 @@ void MainWindow::slotRllibUncommentPpi()
 
 void MainWindow::slotDaemonModbus()
 {
-  if(opt.arg_debug) printf("slotDaemonModbus()\n");
+  if(opt_develop.arg_debug) printf("slotDaemonModbus()\n");
   if(beginMenu())
   {
     dlgDaemon dlg(MODBUS_DAEMON);
@@ -1371,7 +1371,7 @@ void MainWindow::slotDaemonModbus()
 
 void MainWindow::slotDaemonSiemenstcp()
 {
-  if(opt.arg_debug) printf("slotDaemonSiemenstcp()\n");
+  if(opt_develop.arg_debug) printf("slotDaemonSiemenstcp()\n");
   if(beginMenu())
   {
     dlgDaemon dlg(SIEMENSTCP_DAEMON);
@@ -1381,7 +1381,7 @@ void MainWindow::slotDaemonSiemenstcp()
 
 void MainWindow::slotDaemonPpi()
 {
-  if(opt.arg_debug) printf("slotDaemonPpi()\n");
+  if(opt_develop.arg_debug) printf("slotDaemonPpi()\n");
   if(beginMenu())
   {
     dlgDaemon dlg(PPI_DAEMON);
@@ -1391,7 +1391,7 @@ void MainWindow::slotDaemonPpi()
 
 void MainWindow::slotLinuxWriteStartscript()
 {
-  if(opt.arg_debug) printf("slotLinuxWriteStartscript()\n");
+  if(opt_develop.arg_debug) printf("slotLinuxWriteStartscript()\n");
   if(beginMenu())
   {
     int ret;
@@ -1412,13 +1412,13 @@ void MainWindow::slotLinuxWriteStartscript()
 
 void MainWindow::slotAboutManual()
 {
-  if(opt.arg_debug) printf("slotAboutManual()\n");
+  if(opt_develop.arg_debug) printf("slotAboutManual()\n");
   if(dlgtextbrowser != NULL) dlgtextbrowser->show();
 }
 
 void MainWindow::slotInsertFunction()
 {
-  if(opt.arg_debug) printf("slotInsertFunction()\n");
+  if(opt_develop.arg_debug) printf("slotInsertFunction()\n");
   if(name.isEmpty())
   {
     QMessageBox::information(this,"pvdevelop","No project loaded",QMessageBox::Ok);
@@ -1426,12 +1426,12 @@ void MainWindow::slotInsertFunction()
   }
   dlgInsertFunction dlg;
   QString ret = dlg.run();
-  if(opt.arg_debug) printf("ret=%s\n",(const char *) ret.toUtf8());
+  if(opt_develop.arg_debug) printf("ret=%s\n",(const char *) ret.toUtf8());
   if(ret.isEmpty()) return;
   if((ret.contains(");") || ret.contains("=") || ret.contains("BIT")) && !ret.contains("(...)"))
   {
     if(curFile.contains(".py")) ret.remove(";");
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       ret.remove(";");
       QString tmp;
@@ -1461,7 +1461,7 @@ void MainWindow::endMenu()
 {
   if(editor != NULL)
   {
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       load(name + "main.lua");
       editor->radioMain->setChecked(TRUE);
@@ -1477,7 +1477,7 @@ void MainWindow::endMenu()
 void MainWindow::getWidgetNames(const QString &filename)
 {
   if(editor == NULL) return;
-  if(opt.arg_debug) printf("getWidgetNames(%s)\n",(const char *) filename.toUtf8());
+  if(opt_develop.arg_debug) printf("getWidgetNames(%s)\n",(const char *) filename.toUtf8());
 
   char buf[1024];
   int i;
@@ -1486,7 +1486,7 @@ void MainWindow::getWidgetNames(const QString &filename)
   if(!filename.startsWith("mask")) return;
   QTextStream in;
   QString name;
-  if(opt.script == PV_LUA) name = "mask" + editor->spinBoxMask->text() + ".lua";
+  if(opt_develop.script == PV_LUA) name = "mask" + editor->spinBoxMask->text() + ".lua";
   else                     name = "mask" + editor->spinBoxMask->text() + ".cpp";
   QFile mask(name);
   if(!mask.open(QFile::ReadOnly)) return;
@@ -1527,7 +1527,7 @@ void MainWindow::getWidgetNames(const QString &filename)
 void MainWindow::slotWidgetname(QListWidgetItem *item)
 {
   QString text = item->text();
-  if(opt.arg_debug) printf("slotWidgetname %s\n", (const char *) text.toUtf8());
+  if(opt_develop.arg_debug) printf("slotWidgetname %s\n", (const char *) text.toUtf8());
 
   dlgPasteWidget dlg;
   QString ret = dlg.run(text.toUtf8(), &curFile);
@@ -1542,7 +1542,7 @@ void MainWindow::slotFileOpt()
 {
 int ret;
 
-  if(opt.arg_debug) printf("slotFileOpt\n");
+  if(opt_develop.arg_debug) printf("slotFileOpt\n");
   DlgOpt *dlg = new DlgOpt(this);
   dlg->setWindowTitle("pvdevelop options");
   dlg->setFilename(inifile());
@@ -1551,19 +1551,19 @@ int ret;
   {
     readIniFile();
     delete dlgtextbrowser;
-    dlgtextbrowser = new dlgTextBrowser(opt.manual);
+    dlgtextbrowser = new dlgTextBrowser(opt_develop.manual);
   }
   delete dlg;
 }
 
 void MainWindow::keyPressEvent(QKeyEvent * event)
 {
-  if(event->modifiers() & Qt::AltModifier)     opt.altPressed = 1;
-  else                                         opt.altPressed = 0;
-  if(event->modifiers() & Qt::ControlModifier) opt.ctrlPressed = 1;
-  else                                         opt.ctrlPressed = 0;
-  if(event->modifiers() & Qt::ShiftModifier)   opt.shiftPressed = 1;
-  else                                         opt.shiftPressed = 0;
+  if(event->modifiers() & Qt::AltModifier)     opt_develop.altPressed = 1;
+  else                                         opt_develop.altPressed = 0;
+  if(event->modifiers() & Qt::ControlModifier) opt_develop.ctrlPressed = 1;
+  else                                         opt_develop.ctrlPressed = 0;
+  if(event->modifiers() & Qt::ShiftModifier)   opt_develop.shiftPressed = 1;
+  else                                         opt_develop.shiftPressed = 0;
 
   if(designer != NULL && designer->root != NULL)
   {
@@ -1595,20 +1595,20 @@ void MainWindow::keyPressEvent(QKeyEvent * event)
     {
       designer->root->MoveKey(event->key());
     }
-    else if(event->key() == Qt::Key_Z && opt.ctrlPressed)
+    else if(event->key() == Qt::Key_Z && opt_develop.ctrlPressed)
     {
       designer->root->pop(NULL);
     }
   }
-  //printf("ctrlPressed=%d\n",opt.ctrlPressed);
+  //printf("ctrlPressed=%d\n",opt_develop.ctrlPressed);
   QWidget::keyPressEvent(event);
 }
 
 void MainWindow::keyReleaseEvent(QKeyEvent * event)
 {
-  opt.altPressed = 0;
-  opt.ctrlPressed = 0;
-  opt.shiftPressed = 0;
-  //printf("ctrlPressed=%d\n",opt.ctrlPressed);
+  opt_develop.altPressed = 0;
+  opt_develop.ctrlPressed = 0;
+  opt_develop.shiftPressed = 0;
+  //printf("ctrlPressed=%d\n",opt_develop.ctrlPressed);
   QWidget::keyPressEvent(event);
 }

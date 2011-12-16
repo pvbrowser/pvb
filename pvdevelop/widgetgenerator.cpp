@@ -31,7 +31,7 @@
 #include "pvserver.h"
 #include "designer.h"
 
-extern OPT opt;
+extern OPT_DEVELOP opt_develop;
 extern dlgeditlayout *editlayout;
 
 QStringList tablist;
@@ -212,7 +212,7 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
   int ind;
 
   theroot = root;
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  ID_MAIN_WIDGET = 0\n");
   }
@@ -231,7 +231,7 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
     widget = findChild(item.toUtf8()); // root->findChild<QWidget *>(item);
     if(widget != NULL)
     {
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         fprintf(fout,"  %s = %d\n",(const char *) widget->objectName().toUtf8(), ind);
       }
@@ -273,7 +273,7 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
             start++;
             end = strchr(start,',');
             if(end != NULL) *end = '\0';
-            if(opt.script == PV_LUA)
+            if(opt_develop.script == PV_LUA)
             {
               fprintf(fout,"  %s = %d\n",start,ind++);
             }
@@ -290,7 +290,7 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
   }
   // may be we have to include the layout END
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  ID_END_OF_WIDGETS = %d\n", ind);
     fprintf(fout,"\n");
@@ -340,7 +340,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   char buf[1024], itemname[512],parentname[512],*cptr,prefix[16],midfix[16],postfix[16];
   int x,y,w,h;
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     strcpy(prefix,"  pv.");
     strcpy(midfix,"pv.");
@@ -383,7 +383,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     strcpy(parentname,widget->parent()->objectName().toUtf8());
   // get properties end ####################################################
 
-  if(opt.arg_debug) printf("generateDefineMaskWidget(%s,%s)\n",(const char *) type.toUtf8(), (const char *) widget->objectName().toUtf8());
+  if(opt_develop.arg_debug) printf("generateDefineMaskWidget(%s,%s)\n",(const char *) type.toUtf8(), (const char *) widget->objectName().toUtf8());
 
   if     (type == "TQWidget")
   {
@@ -757,7 +757,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   {
     if(whatsthis.contains(".bmp") || whatsthis.contains(".BMP"))
     {
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         fprintf(fout,"%spvQImageScript(p,%s,%s,\"%s\")%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
       }
@@ -770,7 +770,7 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     else
     {
       fprintf(fout,"%spvDownloadFile(p,\"%s\")%s\n",prefix,(const char *) whatsthis.toUtf8(),postfix);
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         fprintf(fout,"%spvQImageScript(p,%s,%s,\"%s\")%s\n",prefix,itemname,parentname,(const char *) whatsthis.toUtf8(),postfix);
       }
@@ -1075,7 +1075,7 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
   char tabparentname[512];
 
   theroot = root;
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  pv.pvStartDefinition(p,ID_END_OF_WIDGETS)\n");
     fprintf(fout,"\n");
@@ -1110,12 +1110,12 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
     }
     if(widget->statusTip().startsWith("TQWidget:"))
     {
-      if(opt.arg_debug) printf("tabparentname0=%s\n",(const char *) widget->objectName().toUtf8());
+      if(opt_develop.arg_debug) printf("tabparentname0=%s\n",(const char *) widget->objectName().toUtf8());
       QWidget *p = (QWidget *) widget->parent();
       if(p != NULL)
       {
         strcpy(tabparentname,(const char *) p->objectName().toUtf8());
-        if(opt.arg_debug) printf("tabparentname1=%s\n",tabparentname);
+        if(opt_develop.arg_debug) printf("tabparentname1=%s\n",tabparentname);
         QWidget *gp = (QWidget *) p->parent();
         if(gp != NULL)
         {
@@ -1123,12 +1123,12 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
           if(strcmp(tabparentname,"qt_scrollarea_viewport")     == 0) what = 1;
           if(strcmp(tabparentname,"qt_tabwidget_stackedwidget") == 0) what = 2;
           strcpy(tabparentname,(const char *) gp->objectName().toUtf8());
-          if(opt.arg_debug) printf("tabparentname2=%s\n",tabparentname);
+          if(opt_develop.arg_debug) printf("tabparentname2=%s\n",tabparentname);
           QWidget *ggp = (QWidget *) gp->parent();
           if(ggp != NULL && strlen(tabparentname) == 0 && what == 1)
           {
             strcpy(tabparentname,(const char *) ggp->objectName().toUtf8());
-            if(opt.arg_debug) printf("tabparentname3=%s\n",tabparentname);
+            if(opt_develop.arg_debug) printf("tabparentname3=%s\n",tabparentname);
           }
           // if(what == 0) strcpy(tabparentname,"ERROR_PLEASE_FIX_ME");
         }  
@@ -1148,7 +1148,7 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
   generateLayoutConstuctors(fout);
   generateLayoutDefinition(fout);
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  pv.pvEndDefinition(p);\n");
   }
@@ -1164,7 +1164,7 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
     fprintf(fout,"%s",(const char *) item.toUtf8().constData());
   }
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
   }
   else
@@ -1182,7 +1182,7 @@ static int generateToolTip(FILE *fout, QWidget *root)
   QWidget *widget;
 
   theroot = root;
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  toolTip = {}\n");
     fprintf(fout,"  toolTip[0] = \"\"\n");
@@ -1201,7 +1201,7 @@ static int generateToolTip(FILE *fout, QWidget *root)
     if(widget != NULL)
     {
       qbuf = widget->toolTip();
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         fprintf(fout,"  toolTip[%d] = \"%s\"\n",i+1,quote(qbuf));
       }
@@ -1216,7 +1216,7 @@ static int generateToolTip(FILE *fout, QWidget *root)
     }
   }
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"\n");
   }
@@ -1235,7 +1235,7 @@ static int generateWhatsThis(FILE *fout, QWidget *root)
   QWidget *widget;
 
   theroot = root;
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  whatsThis = {}\n");
     fprintf(fout,"  whatsThis[0] = \"\"\n");
@@ -1254,7 +1254,7 @@ static int generateWhatsThis(FILE *fout, QWidget *root)
     if(widget != NULL)
     {
       qbuf = widget->whatsThis();
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         fprintf(fout,"  whatsThis[%d] = \"%s\"\n",i+1,quote(qbuf));
       }
@@ -1269,7 +1269,7 @@ static int generateWhatsThis(FILE *fout, QWidget *root)
     }
   }
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"\n");
   }
@@ -1288,7 +1288,7 @@ static int generateWidgetType(FILE *fout, QWidget *root)
   char    buf[1024],*cptr;
 
   theroot = root;
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  widgetType = {}\n");
     fprintf(fout,"  widgetType[0] = pv.TQWidget\n");
@@ -1310,7 +1310,7 @@ static int generateWidgetType(FILE *fout, QWidget *root)
       cptr = strstr(buf,":");
       if(cptr != NULL) *cptr = '\0';
       if(strncmp(buf,"TQ",2) != 0) strcpy(buf,"0");
-      if(opt.script == PV_LUA)
+      if(opt_develop.script == PV_LUA)
       {
         fprintf(fout,"  widgetType[%d] = pv.%s\n",i+1,buf);
       }
@@ -1325,7 +1325,7 @@ static int generateWidgetType(FILE *fout, QWidget *root)
     }
   }
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"\n");
   }
@@ -1474,7 +1474,7 @@ static int generateGeneratedArea(FILE *fout, QWidget *root)
   strlist.clear();
   iitem = 1;
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  --- begin construction of our mask -------------------------------------------------\n");
   }
@@ -1491,7 +1491,7 @@ static int generateGeneratedArea(FILE *fout, QWidget *root)
   generateWidgetType(fout,root);
   generateDefineMaskWidgets(fout, root);
 
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     fprintf(fout,"  --- end construction of our mask ---------------------------------------------------\n");
   }
@@ -1512,7 +1512,7 @@ int generateMask(const char *filename, QWidget *root)
   int found_begin, found_end, done_end, done;
 
   if(loadFile(filename) != 0) return -1;
-  if(opt.murx)
+  if(opt_develop.murx)
   {
     fout = fopen("murx.cpp","w");
   }
@@ -1526,14 +1526,14 @@ int generateMask(const char *filename, QWidget *root)
     printf("ERROR: generateMask could not write %s\n",filename);
     return -1;
   }
-  if(opt.arg_debug) printf("generateMask %s\n",filename);
+  if(opt_develop.arg_debug) printf("generateMask %s\n",filename);
 
   found_begin = found_end = done_end = done = 0;
   fl = &file_lines;
   fl = fl->next;
   while(fl != NULL)
   {
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       if(strstr(fl->line,"--- begin construction of our mask ---") != NULL) found_begin = 1;
       if(strstr(fl->line,"--- end construction of our mask ---")   != NULL) found_end = 1;
@@ -1562,14 +1562,14 @@ int generateMask(const char *filename, QWidget *root)
 
   fclose(fout);
   unloadFile();
-  if(opt.arg_debug) printf("generateMask end\n");
+  if(opt_develop.arg_debug) printf("generateMask end\n");
   return 0;
 }
 
 static int isCommand(const char *cmd)
 {
   const char *cptr;
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     cptr = strstr(line,"pv.pv");
     if(cptr == NULL) return 0;
@@ -1741,7 +1741,7 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
   if(parent[0] == '\0')
   {
     strcpy(parent,"0"); // this might be the parent
-    if(opt.arg_debug > 1) printf("isConstructor=%d parent=%s id=%s line=%s",isConstructor,parent,id,line);
+    if(opt_develop.arg_debug > 1) printf("isConstructor=%d parent=%s id=%s line=%s",isConstructor,parent,id,line);
     if(isConstructor == 1)
     {
       for(int i=0; i<(MAX_IVAL-1); i++)
@@ -1751,7 +1751,7 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
     }
   }
 
-  if(opt.arg_debug > 1) printf("getParams: id=%s parent=%s text='%s' ival=%d:%d:%d:%d cval='%s' %s",id,parent,text,ival[0],ival[1],ival[2],ival[3],cval,line);
+  if(opt_develop.arg_debug > 1) printf("getParams: id=%s parent=%s text='%s' ival=%d:%d:%d:%d cval='%s' %s",id,parent,text,ival[0],ival[1],ival[2],ival[3],cval,line);
 }
 
 static int isHorizontal(const char *cval)
@@ -1778,7 +1778,7 @@ static int getWidget(FILE *fin, QWidget *root)
   do
   {
     if(strstr(line,"pv") == NULL) return 0;
-    if(opt.arg_debug) printf("getWidget line=%s",line);
+    if(opt_develop.arg_debug) printf("getWidget line=%s",line);
     id[0] = parent[0] = text[0] = cval[0] = '\0';
     for(int i=0; i<MAX_IVAL; i++)
     {
@@ -2675,7 +2675,7 @@ static int getWidgets(FILE *fin, QWidget *root)
   while(fgets(line,sizeof(line)-1,fin) != NULL)
   {
     if(strstr(line,"pvEndDefinition(p)") != NULL) return 0;
-    if(opt.script == PV_LUA)
+    if(opt_develop.script == PV_LUA)
     {
       if(strstr(line,"pv.pv") != NULL) getWidget(fin,root);
     }
@@ -2697,7 +2697,7 @@ static int appendEnum()
   while(*cptr_end != ' ' && *cptr_end != ',' && *cptr_end != '\n' && *cptr_end != '\0') cptr_end++;
   *cptr_end = '\0';
   enumlist.append(cptr_begin);
-  if(opt.arg_debug && cptr_begin != NULL)
+  if(opt_develop.arg_debug && cptr_begin != NULL)
   {
     printf("appendEnum:");
     printf("%s\n",cptr_begin);
@@ -2722,7 +2722,7 @@ static int appendToolTip()
     else tooltiplist.append("error");
   }
   else tooltiplist.append("error");
-  if(opt.arg_debug && cptr_begin != NULL)
+  if(opt_develop.arg_debug && cptr_begin != NULL)
   {
     printf("appendToolTip:");
     printf("%s\n",cptr_begin);
@@ -2747,7 +2747,7 @@ static int appendWhatsThis()
     else whatsthislist.append("error");
   }
   else whatsthislist.append("error");
-  if(opt.arg_debug && cptr_begin != NULL)
+  if(opt_develop.arg_debug && cptr_begin != NULL)
   {
     printf("appendWhatsThis:");
     printf("%s\n",cptr_begin);
@@ -2853,7 +2853,7 @@ int getWidgetsFromMask(const char *filename, QWidget *root)
   int found_tooltip_start, found_tooltip_end;
   int found_whatsthis_start, found_whatsthis_end;
 
-  if(opt.script == PV_LUA) return lua_getWidgetsFromMask(filename, root);
+  if(opt_develop.script == PV_LUA) return lua_getWidgetsFromMask(filename, root);
 
   iitem = 1;
   enumlist.clear();
@@ -3289,7 +3289,7 @@ static int perhapsSetTabOrder(const char *uifile)
           else
           {
             currentTab = cptrbegin;
-            if(opt.script == PV_LUA)
+            if(opt_develop.script == PV_LUA)
             {
               tablist.append("  pv.pvTabOrder(p," + lastTab + "," + currentTab + ")\n");
             }
@@ -3374,7 +3374,7 @@ int importUi(const char *uifile, Designer *designer)
   strcpy(filename, uifile);
   cptr = strchr(filename, '.');
   if(cptr != NULL) *cptr = '\0';
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     strcat(filename,".lua");
   }
@@ -3392,23 +3392,23 @@ int importUi(const char *uifile, Designer *designer)
   designer->root = (MyRootWidget *) root;
   generateMask(filename, designer->root);
   // add additional language here
-  if(opt.script == PV_PYTHON)
+  if(opt_develop.script == PV_PYTHON)
   {
     generatePython(imask, designer->root);
   }
-  if(opt.script == PV_PHP)
+  if(opt_develop.script == PV_PHP)
   {
     generatePHP(imask, designer->root);
   }
-  if(opt.script == PV_PERL)
+  if(opt_develop.script == PV_PERL)
   {
     generatePerl(imask, designer->root);
   }
-  if(opt.script == PV_TCL)
+  if(opt_develop.script == PV_TCL)
   {
     generateTcl(imask, designer->root);
   }
-  if(opt.script == PV_LUA)
+  if(opt_develop.script == PV_LUA)
   {
     generateLua(imask, designer->root);
   }

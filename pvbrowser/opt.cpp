@@ -232,13 +232,8 @@ const char *pvpass(const char *p)
   return ret;
 }
 
-const char *readIniFile()
+void setDefaultOptions()
 {
-FILE *fp;
-char buf[MAXOPT],buf2[MAXOPT],cmd[MAXOPT];
-const char *cptr;
-int i;
-
   opt.port=5050;
   opt.sshport=50500;
   opt.zoom=100;
@@ -277,6 +272,16 @@ int i;
   opt.closed = 0;
   opt.cookies = 1; // YES
   strcpy(opt.manual,"index.html");
+}
+
+const char *readIniFile()
+{
+FILE *fp;
+char buf[MAXOPT],buf2[MAXOPT],cmd[MAXOPT];
+const char *cptr;
+int i;
+
+  setDefaultOptions();
 
   while(1)
   {

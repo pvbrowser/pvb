@@ -156,6 +156,7 @@ public:
     int originalCursor;
     int origwidth, origheight;
     int percentZoomMask;
+    int webkitrenderer_load_done;
 
 protected:
     virtual void resizeEvent(QResizeEvent *event);
@@ -198,6 +199,7 @@ private:
 public slots:
     void     slotWebkitSvgChanged(const QRect &dirtyRect);
     void     slotTimeout();
+    void     slotLoadFinished(bool ok);
 };
 
 #endif

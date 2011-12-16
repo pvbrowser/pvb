@@ -13,11 +13,13 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 **
 ****************************************************************************/
-#ifndef OPT_H
-#define OPT_H
+#ifndef OPT_DEVELOP_H
+#define OPT_DEVELOP_H
 
+#ifndef MAX_PRINTF_LENGTH
 #define MAX_PRINTF_LENGTH 1024
-#define MAXOPT 1024
+#endif
+#define MAXOPT_DEVELOP 1024
 
 // add additional language here
 #define PV_PYTHON 1
@@ -29,7 +31,7 @@
 typedef struct
 {
   // inifile args
-  char manual[MAXOPT];
+  char manual[MAXOPT_DEVELOP];
   int  xGrid;        // grid for graphical designer
   int  yGrid;
   int  murx;         // option for testing pvdevelop
@@ -37,20 +39,20 @@ typedef struct
   int  ctrlPressed;  // ctrl key pressed
   int  shiftPressed; // shift key pressed
   int  su;           // run pvs as root
-  char backupLocation[MAXOPT];
+  char backupLocation[MAXOPT_DEVELOP];
 
   // options from project file
-  char target[MAXOPT];
+  char target[MAXOPT_DEVELOP];
   int  xmax;
   int  ymax;
   int  script;
 
   // command line args
   int  arg_debug;
-  char arg_project[MAXOPT];
-  char arg_action[MAXOPT];
+  char arg_project[MAXOPT_DEVELOP];
+  char arg_action[MAXOPT_DEVELOP];
   int  arg_mask_to_generate;
-}OPT;
+}OPT_DEVELOP;
 
 const char *inifile();
 const char *readIniFile();

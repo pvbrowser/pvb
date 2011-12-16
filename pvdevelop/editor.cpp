@@ -19,7 +19,7 @@
 #include "editor.h"
 #include "opt.h"
 
-extern OPT opt;
+extern OPT_DEVELOP opt_develop;
 
 Editor::Editor()
 {
@@ -103,7 +103,7 @@ Editor::Editor()
 
   checkBoxSuServer = new QCheckBox("su --command=\"./pvs\"",page1);
   checkBoxSuServer->setGeometry( QRect(0,250,170,25) );
-  checkBoxSuServer->setChecked(opt.su);
+  checkBoxSuServer->setChecked(opt_develop.su);
 
   pushButtonInsertFunction = new QPushButton("Insert Function",page1);
   pushButtonInsertFunction->setGeometry( QRect(0,280,170,25) );
@@ -131,8 +131,8 @@ Editor::Editor()
 
 Editor::~Editor()
 {
-  if(checkBoxSuServer->isChecked()) opt.su = 1;
-  else                              opt.su = 0;
+  if(checkBoxSuServer->isChecked()) opt_develop.su = 1;
+  else                              opt_develop.su = 0;
   delete highlighter;
   delete root;
 }

@@ -233,7 +233,9 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
 {
   if(opt.arg_debug) printf("QDrawWidget::QDrawWidget\n");
   if(name != NULL) setObjectName(name);
+  setAutoFillBackground(false); // we draw ourself useing the buffer
   webkitrenderer = NULL;
+  webkitrenderer_load_done = 1;
   svg_draw_request_by_pvb = 1;
   if(opt.use_webkit_for_svg)
   {
@@ -241,6 +243,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
     webkitrenderer = qwebpage.currentFrame();  // testing qwebframe svg renderer murx
     connect(&qwebpage, SIGNAL(repaintRequested(const QRect &)), this, SLOT(slotWebkitSvgChanged(const QRect &)));
     //webkitrenderer = qwebpage.mainFrame();  // testing qwebframe svg renderer murx
+    connect(webkitrenderer, SIGNAL(loadFinished(bool)), this, SLOT(slotLoadFinished(bool)));
   }
   timer.setSingleShot(true);
   connect(&timer, SIGNAL(timeout()), this, SLOT(slotTimeout()));
@@ -1104,15 +1107,14 @@ void QDrawWidget::playSVG(const char *filename)
   float fac = ((float) percentZoomMask) / 100.0f;
   if(opt.use_webkit_for_svg == 0)
   {
-    //renderer.setViewBox( QRect(0,0,width(),height()) );
     renderer.load(stream);
     p.scale(zoomx*fac,zoomy*fac);
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
-  else
+  else if(webkitrenderer != NULL)
   {
-    //printf("testing1 QWebFrame as SVG renderer\n");
+    webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
@@ -1161,9 +1163,9 @@ void QDrawWidget::socketPlaySVG()
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
-  else
+  else if(webkitrenderer != NULL)
   {
-    //printf("testing2 QWebFrame as SVG renderer\n");
+    webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
@@ -1470,8 +1472,9 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
-  else
+  else if(webkitrenderer != NULL)
   {
+    webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
@@ -1498,10 +1501,9 @@ void QDrawWidget::printSVG(QByteArray &stream)
       svgrenderer.render(&painter);
       painter.end();
     }
-    else
+    else if(webkitrenderer != NULL)
     {
-      if(webkitrenderer == NULL) return;
-      //webkitrenderer->setContent(stream,"image/svg+xml");
+      webkitrenderer_load_done = 0;
       QPainter painter;
       painter.begin(&printer);
       webkitrenderer->render(&painter);
@@ -1657,6 +1659,8 @@ void QDrawWidget::slotWebkitSvgChanged(const QRect &dirtyRect)
     return;
   }
   if(webkitrenderer == NULL) return;
+
+  webkitrenderer_load_done = 0;
   p.begin(buffer);
   buffer->fill(QColor(br,bg,bb));
   fontsize = p.fontInfo().pointSize();
@@ -1677,6 +1681,14 @@ void QDrawWidget::slotTimeout()
   // in case the the svg_draw_request comes from the svg renderer we must not
   // to set the svg data again
   svg_draw_request_by_pvb = 0;
+}
+
+void QDrawWidget::slotLoadFinished(bool ok)
+{
+  if(ok)
+  {
+    webkitrenderer_load_done = 1;
+  }  
 }
 
 int pvSvgAnimator::calcObjectWanted(const char *pattern)
@@ -1916,18 +1928,56 @@ int pvSvgAnimator::read()
   return 0;
 }
 
+// the clean solution only works on unix like systems
+#ifdef PVUNIX
+#define MTHREAD_USED
+#endif
 int pvSvgAnimator::update(int on_printer)
 {
   QString qbuf;
-  char *buf;
   int foundw,foundh,found_open_tag,found_tspan,found_tspan_whole_open;
   QByteArray stream;
+  /*
+  Well useing fixed buffers is not a nice thing but the reason for this is as follows:
+
+  WebKit runs within a separate thread and will use the "new" operator.
+  This comes into conflict with our own thread when you run on Windows.
+  There the "new" operator is not thread save.
+  At least MinGW does not care for it and does not surround this critical section with a mutex.
+
+  Within our pvserver we explicitly use a mutex around malloc()/new because of this problem.
+  See for example the following function in pvb/pvserver/util.cpp:
+  int pvCreateThread(PARAM *p, int s)
+  {
+    //<snip>...
+    pvlock(p);
+    ptr = (PARAM *) malloc(sizeof(PARAM));
+    pvunlock(p);
+    //<snip> ...
+  }  
+
+  But we have no chanche to fix this correctly in Qt/WebKit.
+  The fix is necessary when you call stream.append(text) on a ByteArray and then call 
+  webkitrenderer->renderer(stream); 
+
+  This is Windows only problem !
+
+  Also setting -mthread during compile and link does not fix the problem.
+
+  PS: The clean but crashing solution is in the #ifdef MTHREAD_USED part 
+  */
+#ifdef MTHREAD_USED
+  char *buf;
+#else  
+  char buf1[64*1024]; // hopefully we have choosen big enough buffers
+  char buf[16*1024];  // this is likely because we separate each XML tag 
+                      // on a separate line with rlsvgcat
+#endif
   SVG_LINE *current_line = first;
   if(first == NULL) return -1;
   if(opt.arg_debug) printf("animatorUpdate\n");
   if(s == NULL) return -1;
   foundw = foundh = found_open_tag = found_tspan = found_tspan_whole_open = 0;
-  //printf("update start\n");
   for(int i=0; i<num_lines; i++)
   {
     if(comment[i] == ' ' && current_line->line != NULL)
@@ -1936,12 +1986,13 @@ int pvSvgAnimator::update(int on_printer)
       int dh = draw->height();
       int dwp = dw*10 + 50;
       int dhp = dh*10 + 50;
+#ifdef MTHREAD_USED
       buf = new char [strlen(current_line->line) + 4];
+#endif
       strcpy(buf,current_line->line);
       if(foundw == 0 && strncmp(buf,"width",5) == 0)
       {
         if(opt.use_webkit_for_svg == 1)
-          //sprintf(buf,"width=\"%dpx\"\n",(dwp*100*100)/(opt.zoom*draw->percentZoomMask));
           sprintf(buf,"width=\"%dpx\"\n",dwp);
         else  
           sprintf(buf,"width=\"%dpx\"\n",dw);
@@ -1950,7 +2001,6 @@ int pvSvgAnimator::update(int on_printer)
       if(foundh == 0 && strncmp(buf,"height",6) == 0)
       {
         if(opt.use_webkit_for_svg == 1)
-          //sprintf(buf,"height=\"%dpx\"\n",(dhp*100*100)/(opt.zoom*draw->percentZoomMask));
           sprintf(buf,"height=\"%dpx\"\n",dhp);
         else  
           sprintf(buf,"height=\"%dpx\"\n",dh);
@@ -1972,10 +2022,38 @@ int pvSvgAnimator::update(int on_printer)
         }
         if(found_tspan == 0 && ((buf[0] == '>') || (buf[0] == '/' && buf[1] == '>')))
         {
+#ifdef MTHREAD_USED
           qbuf.resize(qbuf.length()-1);
           qbuf += QString::fromUtf8(buf);
-          if(opt.arg_debug) printf("animatorUpdate append1 qbuf=%s\n", (const char *) qbuf.toUtf8());
           stream.append(qbuf.toUtf8());
+#else
+          ::strcpy(buf1,qbuf.toUtf8());
+          int len1 = strlen(buf1);
+          if(strncmp(buf1,"<tspan",6) == 0)
+          {
+            if(len1 > 0) buf1[len1-1] = '\0';
+            char *end_text = ::strstr(buf1,"</text>");
+            if(end_text != NULL)
+            {
+              end_text += 7;
+              *end_text = '\0';
+              end_text++;
+              stream.append(buf1);
+              ::strcat(end_text,buf);
+              stream.append(end_text);
+            }
+            else
+            {
+              printf("FATAL: SVG </text> not found line=%s\n", buf1);
+            }
+          }
+          else // this is a normal line
+          {
+            if(len1 > 0) buf1[len1-1] = '\0';
+            ::strcat(buf1,buf);
+            stream.append(buf1);
+          }
+#endif          
           qbuf = "";
         }
         else if(found_tspan == 1)
@@ -2002,7 +2080,9 @@ int pvSvgAnimator::update(int on_printer)
           qbuf += " ";
         }
       }
+#ifdef MTHREAD_USED
       delete [] buf;
+#endif
     }
     current_line = current_line->next;
     if(current_line == NULL) break;
@@ -2017,6 +2097,7 @@ int pvSvgAnimator::update(int on_printer)
   if(opt.arg_debug) printf("animatorUpdate svgUpdate\n");
   if(draw != NULL)
   {
+    if(opt.arg_debug) printf("animatorUpdate draw on_printer=%d\n", on_printer);
     if(on_printer == 0) draw->svgUpdate(stream);
     else                draw->printSVG(stream);
   }  

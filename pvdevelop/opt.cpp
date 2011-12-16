@@ -14,17 +14,19 @@
 **
 ****************************************************************************/
 #include "../pvbrowser/pvdefine.h"
+#include "../pvbrowser/opt.h"
 #include <QtCore>
 #include "opt.h"
 #ifdef PVWIN32
 #include <windows.h>
 #endif
 
-OPT opt;
+OPT         opt;
+OPT_DEVELOP opt_develop;
 
 const char *inifile()
 {
-  static char name[MAXOPT];
+  static char name[MAXOPT_DEVELOP];
 
   name[0] = '\0';
 #ifdef PVUNIX
@@ -45,7 +47,7 @@ const char *inifile()
 const char *readIniFile()
 {
 FILE *fp;
-char buf[MAXOPT];
+char buf[MAXOPT_DEVELOP];
 char *cptr;
 
   while(1)
@@ -59,32 +61,32 @@ char *cptr;
         if(cptr != NULL) *cptr = '\0';
         if(strncmp(buf,"manual=",7) == 0)
         {
-          strcpy(opt.manual,&buf[7]);
+          strcpy(opt_develop.manual,&buf[7]);
 #ifdef PVWIN32
-          ExpandEnvironmentStrings(&buf[7],opt.manual,sizeof(opt.manual)-1);
+          ExpandEnvironmentStrings(&buf[7],opt_develop.manual,sizeof(opt_develop.manual)-1);
 #endif
         }
         else if(strncmp(buf,"xGrid=",6) == 0)
         {
-          sscanf(buf,"xGrid=%d",&opt.xGrid);
-          if(opt.xGrid <= 0) opt.xGrid = 1;
+          sscanf(buf,"xGrid=%d",&opt_develop.xGrid);
+          if(opt_develop.xGrid <= 0) opt_develop.xGrid = 1;
         }
         else if(strncmp(buf,"yGrid=",6) == 0)
         {
-          sscanf(buf,"yGrid=%d",&opt.yGrid);
-          if(opt.yGrid <= 0) opt.yGrid = 1;
+          sscanf(buf,"yGrid=%d",&opt_develop.yGrid);
+          if(opt_develop.yGrid <= 0) opt_develop.yGrid = 1;
         }
         else if(strncmp(buf,"su=",3) == 0)
         {
-          sscanf(buf,"su=%d",&opt.su);
+          sscanf(buf,"su=%d",&opt_develop.su);
         }
         else if(strncmp(buf,"backupLocation=",15) == 0)
         {
-          strcpy(opt.backupLocation,&buf[15]);
+          strcpy(opt_develop.backupLocation,&buf[15]);
         }
         else if(strncmp(buf,"murx=",5) == 0)
         {
-          sscanf(buf,"murx=%d",&opt.murx);
+          sscanf(buf,"murx=%d",&opt_develop.murx);
         }
       }
       fclose(fp);
@@ -113,3 +115,47 @@ char *cptr;
     }
   }
 }
+
+void setDefaultOptions()
+{
+  opt.arg_debug = 1;
+  opt.port=5050;
+  opt.sshport=50500;
+  opt.zoom=100;
+  opt.fontzoom=100;
+  opt.autoreconnect=0;
+  opt.exitpassword=0;
+  opt.menubar=1;
+  opt.toolbar=1;
+  opt.statusbar=1;
+  opt.scrollbars=1;
+  opt.fullscreen=0;
+  opt.maximized=0;
+  opt.tabs_above_toolbar=0;
+  opt.echo_table_updates=0;
+#if QT_VERSION >= 0x040601
+  opt.use_webkit_for_svg=1;
+#else
+  opt.use_webkit_for_svg=0;
+#endif
+  opt.enable_webkit_plugins=0;
+  opt.temp[0] = '\0';
+  opt.customlogo[0] = '\0';
+  opt.newwindow[0] = '\0';
+  opt.ssh[0] = '\0';
+  opt.i_have_started_servers = 0;
+  opt.view_audio[0] = '\0';
+  opt.view_video[0] = '\0';
+  opt.view_pdf[0] = '\0';
+  opt.view_img[0] = '\0';
+  opt.view_svg[0] = '\0';
+  opt.view_txt[0] = '\0';
+  opt.view_html[0] = '\0';
+  opt.initialhost[0] = '\0';
+  opt.language[0] = '\0';
+  opt.codec = pvbUTF8; // strongly advised to use pvbUTF8
+  opt.closed = 0;
+  opt.cookies = 1; // YES
+  strcpy(opt.manual,"index.html");
+}
+

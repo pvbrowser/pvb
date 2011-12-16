@@ -19,7 +19,7 @@
 
 #include <locale.h>
 
-const char pvserver_version[] = "4.6.6";
+const char pvserver_version[] = "4.6.7";
 
 /* #include "qimage.h" */
 #include <time.h>
@@ -932,7 +932,7 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 
 static int show_usage()
 {
-  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2011       lehrig@t-online.de\n\n", pvserver_version);
+  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2012       lehrig@t-online.de\n\n", pvserver_version);
   printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6\n");
   printf("default:\n");
   printf("-port=5050\n");

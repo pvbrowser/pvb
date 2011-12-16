@@ -23,7 +23,7 @@
 #include "opt.h"
 #include <qlcdnumber.h>
 
-extern OPT opt;
+extern OPT_DEVELOP opt_develop;
 
 dlgInsertWidget::dlgInsertWidget()
 {
@@ -86,7 +86,7 @@ QWidget *dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y
   if(parent == NULL) return NULL;
   ret = 1;
 
-  if(opt.arg_debug) printf("newWidget at(%d,%d)\n",x,y);
+  if(opt_develop.arg_debug) printf("newWidget at(%d,%d)\n",x,y);
   if     (form->wTabWidget->isChecked())
   {
     bool ok;
@@ -409,12 +409,12 @@ QWidget *dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y
   if(w != NULL)
   {
     int width,height;
-    x = (x/opt.xGrid)*opt.xGrid;
-    y = (y/opt.yGrid)*opt.yGrid;
-    width  = (100/opt.xGrid)*opt.xGrid;
-    height = (30/opt.yGrid)*opt.yGrid;
-    if(width  < opt.xGrid) width  = opt.xGrid;
-    if(height < opt.yGrid) height = opt.yGrid;
+    x = (x/opt_develop.xGrid)*opt_develop.xGrid;
+    y = (y/opt_develop.yGrid)*opt_develop.yGrid;
+    width  = (100/opt_develop.xGrid)*opt_develop.xGrid;
+    height = (30/opt_develop.yGrid)*opt_develop.yGrid;
+    if(width  < opt_develop.xGrid) width  = opt_develop.xGrid;
+    if(height < opt_develop.yGrid) height = opt_develop.yGrid;
     mySetGeometry(w,x,y,width,height);
     setDefaultObjectName(root,w);
     w->show();
@@ -468,14 +468,14 @@ void mySetGeometry(QWidget *w, int x, int y, int width, int height)
     QString filename = w->whatsThis();
     if(filename.isEmpty())
     {
-      draw->beginDraw();
+      draw->beginDraw(1);
       draw->setBackgroundColor(128,128,0);
       draw->endDraw();
     }
     else
     {
-      if(opt.arg_debug) printf("draw->playSVG(%s)\n", (const char *) filename.toUtf8());
-      draw->beginDraw();
+      if(opt_develop.arg_debug) printf("draw->playSVG(%s)\n", (const char *) filename.toUtf8());
+      draw->beginDraw(1);
       draw->setBackgroundColor(255,255,255);
       draw->playSVG(filename.toUtf8());
       draw->endDraw();

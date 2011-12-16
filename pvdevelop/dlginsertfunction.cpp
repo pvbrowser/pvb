@@ -26,7 +26,7 @@
 #include <QTreeWidget>
 #include "opt.h"
 
-extern OPT opt;
+extern OPT_DEVELOP opt;
 
 dlgInsertFunction::dlgInsertFunction()
 {

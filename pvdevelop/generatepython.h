@@ -186,7 +186,7 @@ int generatePython(int imask, QWidget *root)
     printf("ERROR: generatePython could not write %s\n",filename);
     return -1;
   }
-  if(opt.arg_debug) printf("generatePython %s\n",filename);
+  if(opt_develop.arg_debug) printf("generatePython %s\n",filename);
 
   found_begin = found_end = done_end = done = 0;
   fl = &file_lines;
@@ -214,7 +214,7 @@ int generatePython(int imask, QWidget *root)
 
   fclose(fout);
   unloadFile();
-  if(opt.arg_debug) printf("generatePython end\n");
+  if(opt_develop.arg_debug) printf("generatePython end\n");
   return 0;
 }
 
