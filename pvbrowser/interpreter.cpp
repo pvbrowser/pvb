@@ -2911,7 +2911,12 @@ void Interpreter::interprets(const char *command)
         }
         break;
       case 'M':
-        if(strncmp(command,"setMinimumSize(",15) == 0) // set minimum w,h
+        if(strncmp(command,"setManualUrl(",13) == 0) // set pvserver help url
+        {
+          get_text(command,text);
+          mainWindow->pvbtab[mainWindow->currentTab].manual_url = text;
+        }
+        else if(strncmp(command,"setMinimumSize(",15) == 0) // set minimum w,h
         {
           sscanf(command,"setMinimumSize(%d,%d,%d)",&i,&w,&h);
           if(i < 0) return;

@@ -452,7 +452,9 @@ void MainWindow::slotManual()
   //tb textbrowser->form->textBrowser->setSource(QUrl::fromLocalFile("index.html"));
   //tb textbrowser->form->textBrowser->reload();
   if(textbrowser == NULL) textbrowser = new dlgTextBrowser;
-  textbrowser->form->textBrowser->load(QUrl("index.html"));
+  QString url =  pvbtab[currentTab].manual_url;
+  textbrowser->form->textBrowser->setHtml("<html><body>Loading manual ...</body></html>");
+  textbrowser->form->textBrowser->load(QUrl(url));
   textbrowser->show();
 }
 
@@ -1053,6 +1055,7 @@ void MainWindow::slotReconnect()
   }         
   if(isReconnect == 1) url = pvbtab[currentTab].url;
   else                 pvbtab[currentTab].url = url;
+  pvbtab[currentTab].manual_url = "index.html";
   ssh = 0;
   sshstring[0] = '\0';
   url.truncate(sizeof(buf) - 80);

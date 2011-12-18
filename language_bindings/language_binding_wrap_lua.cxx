@@ -6588,6 +6588,33 @@ fail:
 }
 
 
+static int _wrap_pvSetManualUrl(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetManualUrl",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetManualUrl",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSetManualUrl",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetManualUrl",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSetManualUrl(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvStartDefinition(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -26404,6 +26431,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvWhatsThisPrintf", _wrap_pvWhatsThisPrintf},
     { "pvClientCommand", _wrap_pvClientCommand},
     { "pvZoomMask", _wrap_pvZoomMask},
+    { "pvSetManualUrl", _wrap_pvSetManualUrl},
     { "pvStartDefinition", _wrap_pvStartDefinition},
     { "pvQLayoutVbox", _wrap_pvQLayoutVbox},
     { "pvQLayoutHbox", _wrap_pvQLayoutHbox},

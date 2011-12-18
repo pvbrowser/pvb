@@ -874,6 +874,14 @@ Zoom the whole mask.
 Zoom factor in percent.
 </pre> */
 int pvZoomMask(PARAM *p, int percent);
+/*! <pre>
+Set the URL which will be used for Help->Manual within pvbrowser.
+default: index.html
+You could also set the URL of a webserver which hosts your documentation.
+Example:
+pvSetManualUrl(p,"http://your.server.org");
+</pre> */
+int pvSetManualUrl(PARAM *p, const char *url);
 /** @} */ // end of group
 
 /** @defgroup Contruction Construction

@@ -8757,6 +8757,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvSetManualUrl(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvSetManualUrl",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSetManualUrl" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvSetManualUrl" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)pvSetManualUrl(arg1,(char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvStartDefinition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -36159,6 +36193,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvWhatsThisPrintf", _wrap_pvWhatsThisPrintf, METH_VARARGS, NULL},
 	 { (char *)"pvClientCommand", _wrap_pvClientCommand, METH_VARARGS, NULL},
 	 { (char *)"pvZoomMask", _wrap_pvZoomMask, METH_VARARGS, NULL},
+	 { (char *)"pvSetManualUrl", _wrap_pvSetManualUrl, METH_VARARGS, NULL},
 	 { (char *)"pvStartDefinition", _wrap_pvStartDefinition, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutVbox", _wrap_pvQLayoutVbox, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutHbox", _wrap_pvQLayoutHbox, METH_VARARGS, NULL},

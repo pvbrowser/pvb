@@ -86,6 +86,7 @@ class MainWindow : public QMainWindow
     int w,h;         // width, height
     int pvsVersion;  // version of pvserver
     QString          url;
+    QString          manual_url;
     QWidget         *rootWidget;
     Interpreter      interpreter;
     int              hasLayout;

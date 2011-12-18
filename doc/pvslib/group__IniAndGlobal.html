@@ -88,6 +88,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06">pvWhatsThisPrintf</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *format,...)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga42e02e6a01a7c010d2759ea2ca91f9f0">pvClientCommand</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *command, const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf">pvZoomMask</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int percent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d">pvSetManualUrl</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *url)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>These routines are used for initialisation. And also some global usable routines are available. </p>
@@ -734,6 +735,39 @@ Send version of pvserver to client
 If it is necessary to cleanup your application when the main worker thread terminates
 you can set an exit handler that receives the data in app_data.
 Call this function in pvMain. See also pvMain.
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga2d03855da6faa96c4ae3f561a2bc844d"></a><!-- doxytag: member="processviewserver.h::pvSetManualUrl" ref="ga2d03855da6faa96c4ae3f561a2bc844d" args="(PARAM *p, const char *url)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetManualUrl </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>url</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set the URL which will be used for Help-&gt;Manual within pvbrowser.
+default: index.html
+You could also set the URL of a webserver which hosts your documentation.
+Example:
+pvSetManualUrl(p,"http://your.server.org");
 </pre> 
 </div>
 </div>

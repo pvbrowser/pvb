@@ -2099,6 +2099,23 @@ char buf[80];
   return 0;
 }
 
+int pvSetManualUrl(PARAM *p, const char *url)
+{
+char buf[MAX_PRINTF_LENGTH+40];
+int len;
+
+  pv_length_check(p,url);
+  len = strlen(url);
+  if(len < MAX_PRINTF_LENGTH-1)
+  {
+    sprintf(buf,"setManualUrl()\n");
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"%s\n",url);
+    pvtcpsend(p, buf, strlen(buf));
+  }
+  return 0;
+}
+
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)
 {
 char text[MAX_PRINTF_LENGTH+40],*cptr;

@@ -492,6 +492,7 @@ int i;
         {
           getLanguage(buf);
         }
+        if(opt.arg_debug) printf("Option: %s\n", buf);
       }
       fclose(fp);
       return NULL;

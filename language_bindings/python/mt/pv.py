@@ -929,6 +929,10 @@ def pvZoomMask(*args):
   return _pv.pvZoomMask(*args)
 pvZoomMask = _pv.pvZoomMask
 
+def pvSetManualUrl(*args):
+  return _pv.pvSetManualUrl(*args)
+pvSetManualUrl = _pv.pvSetManualUrl
+
 def pvStartDefinition(*args):
   return _pv.pvStartDefinition(*args)
 pvStartDefinition = _pv.pvStartDefinition
