@@ -39,6 +39,7 @@ class QLabel;
 class MainWindow;
 class MyQWidget;
 #include "dlgtextbrowser.h"
+#include "dlgmybrowser_ui.h"
 
 class MainWindow;
 

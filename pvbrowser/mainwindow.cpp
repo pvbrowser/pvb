@@ -445,15 +445,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::slotManual()
 {
-  //if(textbrowser != NULL) delete textbrowser;
-  //dlgTextBrowser *dlg = textbrowser;
-  //dlg = new dlgTextBrowser;
-  //dlg->show();
-  //tb textbrowser->form->textBrowser->setSource(QUrl::fromLocalFile("index.html"));
-  //tb textbrowser->form->textBrowser->reload();
   if(textbrowser == NULL) textbrowser = new dlgTextBrowser;
   QString url =  pvbtab[currentTab].manual_url;
+  textbrowser->home = url;
+  textbrowser->homeIsSet = 1;
   textbrowser->form->textBrowser->setHtml("<html><body>Loading manual ...</body></html>");
+  textbrowser->form->textBrowser->setUrl(url);
   textbrowser->form->textBrowser->load(QUrl(url));
   textbrowser->show();
 }
