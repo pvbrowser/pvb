@@ -447,12 +447,38 @@ void MainWindow::slotManual()
 {
   if(textbrowser == NULL) textbrowser = new dlgTextBrowser;
   QString url =  pvbtab[currentTab].manual_url;
+  if(strncmp(url.toUtf8(),"http://",7)  == 0 ||
+     strncmp(url.toUtf8(),"https://",8) == 0  )
+  {
+    textbrowser->home = url;
+    textbrowser->homeIsSet = 1;
+    textbrowser->form->textBrowser->setHtml("<html><body>Loading manual ...</body></html>");
+    textbrowser->form->textBrowser->setUrl(url);
+    textbrowser->form->textBrowser->load(QUrl(url));
+    textbrowser->show();
+    return;
+  }  
+  
+#ifdef PVWIN32
+  char cmd[1024],buf[1024];
+  strcpy(buf,opt.temp);
+  strcat(buf,"\\index.html");
+  ExpandEnvironmentStrings(buf,cmd,sizeof(cmd)-1);
+  url = cmd;
+  pvbtab[currentTab].manual_url = url;
+#else
+  char buf[1024];
+  strcpy(buf,opt.temp);
+  strcat(buf,"/index.html");
+  url = buf;
+  pvbtab[currentTab].manual_url = url;
+#endif
+  url = pvbtab[currentTab].manual_url;
   textbrowser->home = url;
   textbrowser->homeIsSet = 1;
-  textbrowser->form->textBrowser->setHtml("<html><body>Loading manual ...</body></html>");
-  textbrowser->form->textBrowser->setUrl(url);
-  textbrowser->form->textBrowser->load(QUrl(url));
+  textbrowser->form->textBrowser->load(QUrl::fromLocalFile(url));
   textbrowser->show();
+  return;
 }
 
 void MainWindow::about()
