@@ -388,6 +388,12 @@ The class works with CSV files.
 <p>Definition at line <a class="el" href="rlspreadsheet_8cpp_source.html#l00596">596</a> of file <a class="el" href="rlspreadsheet_8cpp_source.html">rlspreadsheet.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a> = _delimitor;
+  <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *table = <a class="code" href="classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d">getFirstTable</a>();
+  <span class="keywordflow">while</span>(table != NULL)
+  {
+    table-&gt;<a class="code" href="classrlSpreadsheetTable.html#afc474f9165afe8d9b19ecc15d76e791a">setDelimitor</a>(<a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>);
+    table = table-&gt;<a class="code" href="classrlSpreadsheetTable.html#ab4af89c69d7540296234a453c19ca944">getNextTable</a>();
+  }
 }
 </pre></div>
 </div>

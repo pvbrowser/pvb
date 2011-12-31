@@ -435,7 +435,7 @@
 <a name="l00380"></a>00380   item = <a class="code" href="classrlSpreadsheetTable.html#ac364d28f79a265ca158d76ab90520380">firstRow</a>;
 <a name="l00381"></a>00381   <span class="keywordflow">while</span>(item != NULL)
 <a name="l00382"></a>00382   {
-<a name="l00383"></a>00383     item-&gt;<a class="code" href="classrlSpreadsheetRow.html#acf2fca359957f28a68cc5a682c05a9a5">writeRow</a>((<span class="keywordtype">void</span> *) fp);
+<a name="l00383"></a>00383     item-&gt;<a class="code" href="classrlSpreadsheetRow.html#acf2fca359957f28a68cc5a682c05a9a5">writeRow</a>((<span class="keywordtype">void</span> *) fp, <a class="code" href="classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2">delimitor</a>);
 <a name="l00384"></a>00384     item = item-&gt;<a class="code" href="classrlSpreadsheetRow.html#a9ce7083e9106309c21c7c9640b75bbf6">getNextRow</a>();
 <a name="l00385"></a>00385   }
 <a name="l00386"></a>00386 
@@ -651,9 +651,15 @@
 <a name="l00596"></a><a class="code" href="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2">00596</a> <span class="keywordtype">void</span> <a class="code" href="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2">rlSpreadsheetWorkbook::setDelimitor</a>(<span class="keywordtype">char</span> _delimitor)
 <a name="l00597"></a>00597 {
 <a name="l00598"></a>00598   <a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a> = _delimitor;
-<a name="l00599"></a>00599 }
-<a name="l00600"></a>00600 
-<a name="l00601"></a>00601 
+<a name="l00599"></a>00599   <a class="code" href="classrlSpreadsheetTable.html">rlSpreadsheetTable</a> *table = <a class="code" href="classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d">getFirstTable</a>();
+<a name="l00600"></a>00600   <span class="keywordflow">while</span>(table != NULL)
+<a name="l00601"></a>00601   {
+<a name="l00602"></a>00602     table-&gt;<a class="code" href="classrlSpreadsheetTable.html#afc474f9165afe8d9b19ecc15d76e791a">setDelimitor</a>(<a class="code" href="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91">delimitor</a>);
+<a name="l00603"></a>00603     table = table-&gt;<a class="code" href="classrlSpreadsheetTable.html#ab4af89c69d7540296234a453c19ca944">getNextTable</a>();
+<a name="l00604"></a>00604   }
+<a name="l00605"></a>00605 }
+<a name="l00606"></a>00606 
+<a name="l00607"></a>00607 
 </pre></div></div>
 </div>
 

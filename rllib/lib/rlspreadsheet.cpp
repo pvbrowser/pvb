@@ -380,7 +380,7 @@ int rlSpreadsheetTable::write(const char *filename)
   item = firstRow;
   while(item != NULL)
   {
-    item->writeRow((void *) fp);
+    item->writeRow((void *) fp, delimitor);
     item = item->getNextRow();
   }
 
@@ -596,6 +596,12 @@ rlSpreadsheetTable *rlSpreadsheetWorkbook::getFirstTable()
 void rlSpreadsheetWorkbook::setDelimitor(char _delimitor)
 {
   delimitor = _delimitor;
+  rlSpreadsheetTable *table = getFirstTable();
+  while(table != NULL)
+  {
+    table->setDelimitor(delimitor);
+    table = table->getNextTable();
+  }
 }
 
 

@@ -2786,9 +2786,13 @@ int pvCSVdump(PARAM *p, int id, const char *filename, char delimitor)
   fp = fopen(line,"r");
   if(fp == NULL) 
   {
-    printf("could not open %s\n",line);
-    delete [] line;
-    return -1;
+    fp = fopen(filename,"r");
+    if(fp == NULL)
+    {
+      printf("could not open %s nor %s\n",line,filename);
+      delete [] line;
+      return -1;
+    }  
   }
   while(fgets((char *) line,256*256,fp) != NULL)
   {
