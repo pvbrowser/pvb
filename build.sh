@@ -17,6 +17,8 @@ if [ "$OSTYPE" == "linux-gnu" ]; then
   export PVB_OSTYPE="linux"
 fi
 
+echo OSTYPE = $PVB_OSTYPE
+if [ "$PVB_OSTYPE" != "linux"  ]; then
 if [ "$2"    != "buildservice" ]; then
 if [ "$HOME" != "/root"        ]; then
 if [ "$HOME" != "/home/lehrig" ]; then
@@ -42,6 +44,7 @@ if [ "$HOME" != "/home/rainer" ]; then
   echo "# then remove the exit command below #"
   echo "######################################"
   exit
+fi  
 fi
 fi
 fi
