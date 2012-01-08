@@ -2080,6 +2080,12 @@
       <keyword name="svgSearchAndReplace" id="rlSvgAnimator::svgSearchAndReplace" ref="classrlSvgAnimator.html#a9280286d25c939757da292c9bd245c75" />
       <keyword name="svgRecursiveSearchAndReplace" id="rlSvgAnimator::svgRecursiveSearchAndReplace" ref="classrlSvgAnimator.html#a4df21806442e33be378142775953b405" />
       <keyword name="svgTextPrintf" id="rlSvgAnimator::svgTextPrintf" ref="classrlSvgAnimator.html#ae0c259d9990e8b6bfd3e074aab17a432" />
+      <keyword name="svgRemoveStyleOption" id="rlSvgAnimator::svgRemoveStyleOption" ref="classrlSvgAnimator.html#a4f978df481f7bc5a22e5dea45ffe09d8" />
+      <keyword name="svgRecursiveRemoveStyleOption" id="rlSvgAnimator::svgRecursiveRemoveStyleOption" ref="classrlSvgAnimator.html#ab36ea0f88cc2249fe8ec4ba982b33669" />
+      <keyword name="svgChangeStyleOption" id="rlSvgAnimator::svgChangeStyleOption" ref="classrlSvgAnimator.html#a8e4174d4d8c5a20504325857a9062a3a" />
+      <keyword name="svgRecursiveChangeStyleOption" id="rlSvgAnimator::svgRecursiveChangeStyleOption" ref="classrlSvgAnimator.html#a05865aa79cd6c9b0cffabe82426594f0" />
+      <keyword name="svgSetStyleOption" id="rlSvgAnimator::svgSetStyleOption" ref="classrlSvgAnimator.html#ace5da336bdeee47e39b0c20b3cd27f5e" />
+      <keyword name="svgRecursiveSetStyleOption" id="rlSvgAnimator::svgRecursiveSetStyleOption" ref="classrlSvgAnimator.html#a4702244c80daa077093399ad04aa85ed" />
       <keyword name="show" id="rlSvgAnimator::show" ref="classrlSvgAnimator.html#a12401abb76d045091e3aa4b22971ede6" />
       <keyword name="setMatrix" id="rlSvgAnimator::setMatrix" ref="classrlSvgAnimator.html#a6a95260db11ee8cdd9cf6a4b6ef2d741" />
       <keyword name="setMatrix" id="rlSvgAnimator::setMatrix" ref="classrlSvgAnimator.html#a2c6a9773f3415c59782690d2964c737f" />

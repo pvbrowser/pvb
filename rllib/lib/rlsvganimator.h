@@ -74,6 +74,18 @@ class rlSvgAnimator
     int svgRecursiveSearchAndReplace(const char *objectname, const char *tag, const char *before, const char *after);
     /*! change the text of "objectname" */
     int svgTextPrintf(const char *objectname, const char *format, ...);
+    /*! remove a style option of "objectname". option must end with ':'. Example: option="stroke:" */
+    int svgRemoveStyleOption(const char *objectname, const char *option);
+    /*! recursively remove a style option of "objectname". option must end with ':'. Example: option="stroke:"  */
+    int svgRecursiveRemoveStyleOption(const char *objectname, const char *option);
+    /*! change a style option of "objectname". option must end with ':'. Example: option="stroke:" value="#000000" */
+    int svgChangeStyleOption(const char *objectname, const char *option, const char *value);
+    /*! recursively change a style option of "objectname". option must end with ':'. Example: option="stroke:" value="#000000" */
+    int svgRecursiveChangeStyleOption(const char *objectname, const char *option, const char *value);
+    /*! set a style option of "objectname". option must end with ':'. Example: value="fill:#9d9d9d;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"  */
+    int svgSetStyleOption(const char *objectname, const char *value);
+    /*! recursively set a style option of "objectname". option must end with ':'. Example: value="fill:#9d9d9d;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:3.5;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"  */
+    int svgRecursiveSetStyleOption(const char *objectname, const char *value);
     /*! hide/show object state := 0=hide 1=show */
     int show(const char *objectname, int state); // state := 0|1
     /*! set transformation matrix of object */

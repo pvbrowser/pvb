@@ -438,6 +438,106 @@ int rlSvgAnimator::svgTextPrintf(const char *objectname, const char *format, ...
   return -1;
 }
 
+int rlSvgAnimator::svgRemoveStyleOption(const char *objectname, const char *option)
+{
+  char buf[MAXBUF+40];
+
+  isModified = 1;
+  sprintf(buf,"gsvgRemoveStyleOption(%d)\n",id);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",objectname);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n","style=");
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",option);
+  tcpsend(buf, strlen(buf));
+  return 0;
+}
+
+int rlSvgAnimator::svgRecursiveRemoveStyleOption(const char *objectname, const char *option)
+{
+  char buf[MAXBUF+40];
+
+  isModified = 1;
+  sprintf(buf,"gsvgRecursiveRemoveStyleOption(%d)\n",id);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",objectname);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n","style=");
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",option);
+  tcpsend(buf, strlen(buf));
+  return 0;
+}
+
+int rlSvgAnimator::svgChangeStyleOption(const char *objectname, const char *option, const char *value)
+{
+  char buf[MAXBUF+40];
+
+  isModified = 1;
+  sprintf(buf,"gsvgChangeStyleOption(%d)\n",id);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",objectname);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n","style=");
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",option);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",value);
+  tcpsend(buf, strlen(buf));
+  return 0;
+}
+
+int rlSvgAnimator::svgRecursiveChangeStyleOption(const char *objectname, const char *option, const char *value)
+{
+  char buf[MAXBUF+40];
+
+  isModified = 1;
+  sprintf(buf,"gsvgRecursiveChangeStyleOption(%d)\n",id);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",objectname);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n","style=");
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",option);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",value);
+  tcpsend(buf, strlen(buf));
+  return 0;
+}
+
+int rlSvgAnimator::svgSetStyleOption(const char *objectname, const char *value)
+{
+  char buf[MAXBUF+40];
+
+  isModified = 1;
+  sprintf(buf,"gsvgSetStyleOption(%d)\n",id);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",objectname);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n","style=");
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",value);
+  tcpsend(buf, strlen(buf));
+  return 0;
+}
+
+int rlSvgAnimator::svgRecursiveSetStyleOption(const char *objectname, const char *value)
+{
+  char buf[MAXBUF+40];
+
+  isModified = 1;
+  sprintf(buf,"gsvgRecursiveSetStyleOption(%d)\n",id);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",objectname);
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n","style=");
+  tcpsend(buf, strlen(buf));
+  sprintf(buf,"%s\n",value);
+  tcpsend(buf, strlen(buf));
+  return 0;
+}
+
 int rlSvgAnimator::show(const char *objectname, int state)
 {
   rlDebugPrintf("rlSvgAnimator.show state=%d objectname=%s\n",state,objectname);

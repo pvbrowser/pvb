@@ -29,6 +29,15 @@
 
 #define MAXARRAY 1024*4  // maximum array size for line(x,y,n)
 
+enum SVG_OPERATION
+{
+  SVG_PRINTF = 0,
+  SVG_SEARCH_AND_REPLACE,
+  SVG_REMOVE_STYLE_OPTION,
+  SVG_CHANGE_STYLE_OPTION,
+  SVG_SET_STYLE
+};
+
 class QDrawWidget;
 
 typedef struct
@@ -50,8 +59,8 @@ class pvSvgAnimator
     int read();
     int update(int on_printer);
     int wrapTransformation(int iline, SVG_LINE *last_open, const char *objectname, const char *tag, const char *text);
-    int svgPrintf(const char *objectname, const char *tag, const char *text, const char *after=NULL);
-    int svgRecursivePrintf(const char *objectname, const char *tag, const char *text, const char *after=NULL);
+    int svgPrintf(const char *objectname, const char *tag, const char *text, const char *after, int svg_operation);
+    int svgRecursivePrintf(const char *objectname, const char *tag, const char *text, const char *after, int svg_operation);
     int svgTextPrintf(const char *objectname, const char *text);
     int show(const char *objectname, int state); // state := 0|1
 #if QT_VERSION >= 0x040201
@@ -62,6 +71,8 @@ class pvSvgAnimator
     int calcCTM(const char *id, TRMatrix *ctm);
     int testoutput();
   private:
+    int removeStyleOption(QString *style, const char *option);
+    int changeStyleOption(QString *style, const char *option, const char *value);
     int closefile();
     void perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line);
     SVG_LINE *first;

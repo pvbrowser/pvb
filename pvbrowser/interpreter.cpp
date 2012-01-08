@@ -1194,7 +1194,7 @@ void Interpreter::interpretg(const char *command)
       }
     }
   }
-   else if(strncmp(command,"gsvgPrintf(",11) == 0)
+  else if(strncmp(command,"gsvgPrintf(",11) == 0)
   {
     sscanf(command,"gsvgPrintf(%d)",&i);
     if(i < 0) return;
@@ -1216,7 +1216,91 @@ void Interpreter::interpretg(const char *command)
         if(cptr != NULL) *cptr = '\0';
         if(p->svgAnimator != NULL)
         {
-          p->svgAnimator->svgPrintf(objectname,tag,text,NULL);
+          p->svgAnimator->svgPrintf(objectname,tag,text,NULL,SVG_PRINTF);
+        }
+      }
+    }
+  }
+  else if(strncmp(command,"gsvgRemoveStyleOption(",22) == 0)
+  {
+    sscanf(command,"gsvgRemoveStyleOption(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        char *cptr,objectname[MAX_PRINTF_LENGTH],tag[MAX_PRINTF_LENGTH],text[MAX_PRINTF_LENGTH];
+        tcp_rec(s,objectname,sizeof(objectname));
+        tcp_rec(s,tag,sizeof(tag));
+        tcp_rec(s,text,sizeof(text));
+        cptr = strchr(objectname,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(tag,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(text,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->svgPrintf(objectname,tag,text,NULL,SVG_REMOVE_STYLE_OPTION);
+        }
+      }
+    }
+  }
+  else if(strncmp(command,"gsvgChangeStyleOption(",22) == 0)
+  {
+    sscanf(command,"gsvgChangeStyleOption(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        char *cptr,objectname[MAX_PRINTF_LENGTH],tag[MAX_PRINTF_LENGTH],text[MAX_PRINTF_LENGTH],after[MAX_PRINTF_LENGTH];
+        tcp_rec(s,objectname,sizeof(objectname));
+        tcp_rec(s,tag,sizeof(tag));
+        tcp_rec(s,text,sizeof(text));
+        tcp_rec(s,after,sizeof(after));
+        cptr = strchr(objectname,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(tag,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(text,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(after,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->svgPrintf(objectname,tag,text,after,SVG_CHANGE_STYLE_OPTION);
+        }
+      }
+    }
+  }
+  else if(strncmp(command,"gsvgSetStyleOption(",19) == 0)
+  {
+    sscanf(command,"gsvgSetStyleOption(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        char *cptr,objectname[MAX_PRINTF_LENGTH],tag[MAX_PRINTF_LENGTH],text[MAX_PRINTF_LENGTH];
+        tcp_rec(s,objectname,sizeof(objectname));
+        tcp_rec(s,tag,sizeof(tag));
+        tcp_rec(s,text,sizeof(text));
+        cptr = strchr(objectname,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(tag,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(text,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->svgPrintf(objectname,tag,text,NULL,SVG_SET_STYLE);
         }
       }
     }
@@ -1243,7 +1327,7 @@ void Interpreter::interpretg(const char *command)
         if(cptr != NULL) *cptr = '\0';
         if(p->svgAnimator != NULL)
         {
-          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,NULL);
+          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,NULL,SVG_PRINTF);
         }
       }
     }
@@ -1273,7 +1357,91 @@ void Interpreter::interpretg(const char *command)
         if(cptr != NULL) *cptr = '\0';
         if(p->svgAnimator != NULL)
         {
-          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,after);
+          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,after,SVG_SEARCH_AND_REPLACE);
+        }
+      }
+    }
+  }
+  else if(strncmp(command,"gsvgRecursiveRemoveStyleOption(",31) == 0)
+  {
+    sscanf(command,"gsvgRecursiveRemoveStyleOption(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        char *cptr,objectname[MAX_PRINTF_LENGTH],tag[MAX_PRINTF_LENGTH],text[MAX_PRINTF_LENGTH];
+        tcp_rec(s,objectname,sizeof(objectname));
+        tcp_rec(s,tag,sizeof(tag));
+        tcp_rec(s,text,sizeof(text));
+        cptr = strchr(objectname,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(tag,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(text,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,NULL,SVG_REMOVE_STYLE_OPTION);
+        }
+      }
+    }
+  }
+  else if(strncmp(command,"gsvgRecursiveChangeStyleOption(",31) == 0)
+  {
+    sscanf(command,"gsvgRecursiveChangeStyleOption(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        char *cptr,objectname[MAX_PRINTF_LENGTH],tag[MAX_PRINTF_LENGTH],text[MAX_PRINTF_LENGTH],after[MAX_PRINTF_LENGTH];
+        tcp_rec(s,objectname,sizeof(objectname));
+        tcp_rec(s,tag,sizeof(tag));
+        tcp_rec(s,text,sizeof(text));
+        tcp_rec(s,after,sizeof(after));
+        cptr = strchr(objectname,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(tag,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(text,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(after,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,after,SVG_CHANGE_STYLE_OPTION);
+        }
+      }
+    }
+  }
+  else if(strncmp(command,"gsvgRecursiveSetStyleOption(",28) == 0)
+  {
+    sscanf(command,"gsvgRecursiveSetStyleOption(%d)",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *p = (QDrawWidget *) all[i]->w;
+      if(p != NULL)
+      {
+        char *cptr,objectname[MAX_PRINTF_LENGTH],tag[MAX_PRINTF_LENGTH],text[MAX_PRINTF_LENGTH];
+        tcp_rec(s,objectname,sizeof(objectname));
+        tcp_rec(s,tag,sizeof(tag));
+        tcp_rec(s,text,sizeof(text));
+        cptr = strchr(objectname,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(tag,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        cptr = strchr(text,'\n');
+        if(cptr != NULL) *cptr = '\0';
+        if(p->svgAnimator != NULL)
+        {
+          p->svgAnimator->svgRecursivePrintf(objectname,tag,text,NULL,SVG_SET_STYLE);
         }
       }
     }
@@ -1303,7 +1471,7 @@ void Interpreter::interpretg(const char *command)
         if(cptr != NULL) *cptr = '\0';
         if(p->svgAnimator != NULL)
         {
-          p->svgAnimator->svgPrintf(objectname,tag,text,after);
+          p->svgAnimator->svgPrintf(objectname,tag,text,after,SVG_SEARCH_AND_REPLACE);
         }
       }
     }

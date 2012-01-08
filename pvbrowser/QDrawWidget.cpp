@@ -1105,9 +1105,11 @@ void QDrawWidget::playSVG(const char *filename)
   fclose(fin);
 
   float fac = ((float) percentZoomMask) / 100.0f;
+
   if(opt.use_webkit_for_svg == 0)
   {
     renderer.load(stream);
+    if(p.isActive() == false) return;
     p.scale(zoomx*fac,zoomy*fac);
     renderer.render(&p);
     p.scale(1.0,1.0);
@@ -1116,6 +1118,7 @@ void QDrawWidget::playSVG(const char *filename)
   {
     webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
+    if(p.isActive() == false) return;
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
@@ -1159,6 +1162,7 @@ void QDrawWidget::socketPlaySVG()
   if(opt.use_webkit_for_svg == 0)
   {
     renderer.load(stream);
+    if(p.isActive() == false) return;
     p.scale(zoomx*fac,zoomy*fac);
     renderer.render(&p);
     p.scale(1.0,1.0);
@@ -1167,6 +1171,7 @@ void QDrawWidget::socketPlaySVG()
   {
     webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
+    if(p.isActive() == false) return;
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
@@ -2212,7 +2217,60 @@ int pvSvgAnimator::wrapTransformation(int iline, SVG_LINE *last_open, const char
   return -1;
 }
 
-int pvSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char *text, const char *after)
+int pvSvgAnimator::removeStyleOption(QString *style, const char *option)
+{
+  QString s;
+  QStringList list = style->split(';');
+  *style = "";
+  for(int i=0; i<list.size(); i++)
+  {
+    s = list.at(i);
+    if(s.startsWith(option))
+    {
+    }
+    else
+    {
+      style->append(s);
+      style->append(";");
+    }
+  }
+  return 0;
+}
+
+int pvSvgAnimator::changeStyleOption(QString *style, const char *option, const char *value)
+{
+  int found = 0;
+  QString s, s2;
+  QStringList list = style->split(';');
+  *style = "";
+  for(int i=0; i<list.size(); i++)
+  {
+    s = list.at(i);
+    if(s.startsWith(option))
+    {
+      found = 1;
+      s2 = option;
+      s2.append(value);
+      s2.append(";");
+      style->append(s2);
+    }
+    else if(s.length() > 0)
+    {
+      style->append(s);
+      style->append(";");
+    }
+  }  
+  if(found == 0)
+  {
+    s2 = option;
+    s2.append(value);
+    s2.append(";");
+    style->append(s2);
+  }
+  return 0;
+}
+
+int pvSvgAnimator::svgPrintf(const char *objectname, const char *tag, const char *text, const char *after, int svg_operation)
 {
   char buf[MAXARRAY+40],*cptr,*cptr2;
   SVG_LINE *current_line = first;
@@ -2287,7 +2345,8 @@ for(int itest=0; ; itest++)
   }
   if(i >= num_lines) return -1;
 
-  if(after == NULL) // svg printf
+  //if(after == NULL) // svg printf
+  if(svg_operation == SVG_PRINTF)
   {
     sprintf(buf,"%s\"",tag);
     strcat(buf,text);
@@ -2298,7 +2357,8 @@ for(int itest=0; ; itest++)
     strcpy(current_line->line,buf);
     //printf("svgPrintf(%s,%s,%s) new_line=%s\n",objectname,tag,text,current_line->line);
   }
-  else // search and replace
+  //else // search and replace
+  else if(svg_operation == SVG_SEARCH_AND_REPLACE)
   {
     sprintf(buf,"%s\"",tag);
     cptr = strchr(current_line->line,'=');
@@ -2318,10 +2378,47 @@ for(int itest=0; ; itest++)
     strcpy(current_line->line,buf);
     //printf("svgPrintf(%s,%s,%s) new_line=%s\n",objectname,tag,text,current_line->line);
   }
+  else if(svg_operation == SVG_REMOVE_STYLE_OPTION)
+  {
+    cptr = strchr(current_line->line,'=');
+    if(cptr == NULL) return -1;
+    cptr++; cptr++;
+    cptr2 = strrchr(cptr,'\"');
+    if(cptr2 == NULL) return -1;
+    *cptr2 = '\0';
+    QString qbuf(cptr);
+    removeStyleOption(&qbuf, text);
+    sprintf(buf,"style=\"%s\"", (const char *) qbuf.toUtf8());
+    delete [] current_line->line;
+    current_line->line = new char[strlen(buf) + 1];
+    strcpy(current_line->line,buf);
+  }
+  else if(svg_operation == SVG_CHANGE_STYLE_OPTION)
+  {
+    cptr = strchr(current_line->line,'=');
+    if(cptr == NULL) return -1;
+    cptr++; cptr++;
+    cptr2 = strrchr(cptr,'\"');
+    if(cptr2 == NULL) return -1;
+    *cptr2 = '\0';
+    QString qbuf(cptr);
+    changeStyleOption(&qbuf, text, after);
+    sprintf(buf,"style=\"%s\"", (const char *) qbuf.toUtf8());
+    delete [] current_line->line;
+    current_line->line = new char[strlen(buf) + 1];
+    strcpy(current_line->line,buf);
+  }
+  else if(svg_operation == SVG_SET_STYLE)
+  {
+    sprintf(buf,"style=\"%s\"", text);
+    delete [] current_line->line;
+    current_line->line = new char[strlen(buf) + 1];
+    strcpy(current_line->line,buf);
+  }
   return len;
 }
 
-int pvSvgAnimator::svgRecursivePrintf(const char *objectname, const char *tag, const char *text, const char *after)
+int pvSvgAnimator::svgRecursivePrintf(const char *objectname, const char *tag, const char *text, const char *after, int svg_operation)
 {
   char buf[MAXARRAY+40],*cptr,*cptr2;
   SVG_LINE *current_line = first;
@@ -2399,7 +2496,8 @@ for(int itest=0; ; itest++)
     }
     else if(strncmp(current_line->line,tag,len) == 0)
     {
-      if(after == NULL) // svg printf
+      //if(after == NULL) // svg printf
+      if(svg_operation == SVG_PRINTF)
       {
         sprintf(buf,"%s\"",tag);
         strcat(buf,text);
@@ -2410,7 +2508,8 @@ for(int itest=0; ; itest++)
         strcpy(current_line->line,buf);
         //printf("svgRecursivePrintf(%s,%s,%s) new_line=%s\n",objectname,tag,text,current_line->line);
       }
-      else // search and replace
+      //else // search and replace
+      else if(svg_operation == SVG_SEARCH_AND_REPLACE)
       {
         sprintf(buf,"%s\"",tag);
         cptr = strchr(current_line->line,'=');
@@ -2429,6 +2528,43 @@ for(int itest=0; ; itest++)
         current_line->line = new char[strlen(buf) + 1];
         strcpy(current_line->line,buf);
         //printf("svgPrintf(%s,%s,%s) new_line=%s\n",objectname,tag,text,current_line->line);
+      }
+      else if(svg_operation == SVG_REMOVE_STYLE_OPTION)
+      {
+        cptr = strchr(current_line->line,'=');
+        if(cptr == NULL) return -1;
+        cptr++; cptr++;
+        cptr2 = strrchr(cptr,'\"');
+        if(cptr2 == NULL) return -1;
+        *cptr2 = '\0';
+        QString qbuf(cptr);
+        removeStyleOption(&qbuf, text);
+        sprintf(buf,"style=\"%s\"", (const char *) qbuf.toUtf8());
+        delete [] current_line->line;
+        current_line->line = new char[strlen(buf) + 1];
+        strcpy(current_line->line,buf);
+      }
+      else if(svg_operation == SVG_CHANGE_STYLE_OPTION)
+      {
+        cptr = strchr(current_line->line,'=');
+        if(cptr == NULL) return -1;
+        cptr++; cptr++;
+        cptr2 = strrchr(cptr,'\"');
+        if(cptr2 == NULL) return -1;
+        *cptr2 = '\0';
+        QString qbuf(cptr);
+        changeStyleOption(&qbuf, text, after);
+        sprintf(buf,"style=\"%s\"", (const char *) qbuf.toUtf8());
+        delete [] current_line->line;
+        current_line->line = new char[strlen(buf) + 1];
+        strcpy(current_line->line,buf);
+      }
+      else if(svg_operation == SVG_SET_STYLE)
+      {
+        sprintf(buf,"style=\"%s\"", text);
+        delete [] current_line->line;
+        current_line->line = new char[strlen(buf) + 1];
+        strcpy(current_line->line,buf);
       }
     }
     current_line = current_line->next;
