@@ -5,7 +5,7 @@
 Before you can use the pvbrowser development environment on OS-X:
 install http://developer.apple.com/tools/xcode/                 +
 install the "X11User.pkg" package                               +
-install the dmg-file from http://trolltech.com/downloads/opensource/appdev/mac-os-cpp
+install the Qt libraries for Mac http://qt.nokia.com/downloads/downloads#qt-lib
 
 Download:
 http://pvbrowser.org/pvbrowser/tar/pvb.tar.gz

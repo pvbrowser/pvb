@@ -427,7 +427,7 @@ rlTime rlTime::operator-(rlTime &time)
     }
     t.day += maxmonth; 
   }
-  if(t.month < 0) { t.year--; t.month += 12; }
+  if(t.month <= 0) { t.year--; t.month += 12; }
 
   return t;
 }

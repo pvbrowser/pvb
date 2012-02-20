@@ -6,16 +6,13 @@
     email                : lehrig@t-online.de
  ***************************************************************************/
 
-/*********************************************************************************
- *                                                                               *
- * - The ProcessViewServer library is OpenSource software.                       *
- *   It can be used free for non commercial or education purposes.               *
- *   You can also evaluate the software as long as you desire.                   *
- *   If you want to use them in a commercial context you have to get a license.  *
- *   If you want to get a license please contact lehrig@t-online.de              *
- *   (C) Lehrig Software Engineering                                             *
- *                                                                               *
- ********************************************************************************/
+/***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as        *
+ *   published by the Free Software Foundation                             *
+ *                                                                         *
+ ***************************************************************************/
 
 #include "BMP.h"
 
