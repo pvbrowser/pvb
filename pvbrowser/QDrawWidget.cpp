@@ -1481,6 +1481,7 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
   {
     webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
+    if(p.isActive() == false) return; //rlfeb2012 line added to avoid thread problem with webkit
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
