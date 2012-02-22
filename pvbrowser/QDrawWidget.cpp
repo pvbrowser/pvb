@@ -1936,7 +1936,7 @@ int pvSvgAnimator::read()
 
 // the clean solution only works on unix like systems
 #ifdef PVUNIX
-#define MTHREAD_USED
+//xxx feb 2012 for testing #define MTHREAD_USED
 #endif
 int pvSvgAnimator::update(int on_printer)
 {
