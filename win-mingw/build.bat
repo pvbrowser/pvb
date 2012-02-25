@@ -84,6 +84,11 @@ cd setupregistry
 g++ SetupRegistry.cpp -o SetupRegistry.exe                                 
 cd ..                                                                      
 
+cd pvmore                                                              
+%QTDIR%\bin\qmake pvmore.pro -o Makefile                           
+mingw32-make.exe                                                                
+cd ..                                                                      
+
 %mingwdir%\bin\gcc.exe nodave.c -o nodave_mingw.o -c -D_WIN32 -DBCCWIN -I%mingwdir%\include
                                                                            
 copy pvbrowser\release\pvbrowser.exe                             bin\pvbrowser.exe                               

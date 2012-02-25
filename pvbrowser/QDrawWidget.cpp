@@ -1936,7 +1936,8 @@ int pvSvgAnimator::read()
 
 // the clean solution only works on unix like systems
 #ifdef PVUNIX
-//xxx feb 2012 for testing #define MTHREAD_USED
+// inserted again 25 feb 2012 after fixing bug report from e. murnleitner see: xmurx in interpreter.cpp
+#define MTHREAD_USED
 #endif
 int pvSvgAnimator::update(int on_printer)
 {

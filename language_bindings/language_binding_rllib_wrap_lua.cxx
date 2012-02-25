@@ -23425,6 +23425,192 @@ fail:
 }
 
 
+static int _wrap_rlSvgAnimator_svgRemoveStyleOption(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSvgAnimator::svgRemoveStyleOption",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSvgAnimator::svgRemoveStyleOption",1,"rlSvgAnimator *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSvgAnimator::svgRemoveStyleOption",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("rlSvgAnimator::svgRemoveStyleOption",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSvgAnimator,0))){
+    SWIG_fail_ptr("rlSvgAnimator_svgRemoveStyleOption",1,SWIGTYPE_p_rlSvgAnimator);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->svgRemoveStyleOption((char const *)arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSvgAnimator_svgRecursiveRemoveStyleOption(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSvgAnimator::svgRecursiveRemoveStyleOption",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveRemoveStyleOption",1,"rlSvgAnimator *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveRemoveStyleOption",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveRemoveStyleOption",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSvgAnimator,0))){
+    SWIG_fail_ptr("rlSvgAnimator_svgRecursiveRemoveStyleOption",1,SWIGTYPE_p_rlSvgAnimator);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->svgRecursiveRemoveStyleOption((char const *)arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSvgAnimator_svgChangeStyleOption(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSvgAnimator::svgChangeStyleOption",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSvgAnimator::svgChangeStyleOption",1,"rlSvgAnimator *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSvgAnimator::svgChangeStyleOption",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("rlSvgAnimator::svgChangeStyleOption",3,"char const *");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("rlSvgAnimator::svgChangeStyleOption",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSvgAnimator,0))){
+    SWIG_fail_ptr("rlSvgAnimator_svgChangeStyleOption",1,SWIGTYPE_p_rlSvgAnimator);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)(arg1)->svgChangeStyleOption((char const *)arg2,(char const *)arg3,(char const *)arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSvgAnimator_svgRecursiveChangeStyleOption(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSvgAnimator::svgRecursiveChangeStyleOption",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveChangeStyleOption",1,"rlSvgAnimator *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveChangeStyleOption",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveChangeStyleOption",3,"char const *");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveChangeStyleOption",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSvgAnimator,0))){
+    SWIG_fail_ptr("rlSvgAnimator_svgRecursiveChangeStyleOption",1,SWIGTYPE_p_rlSvgAnimator);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)(arg1)->svgRecursiveChangeStyleOption((char const *)arg2,(char const *)arg3,(char const *)arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSvgAnimator_svgSetStyleOption(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSvgAnimator::svgSetStyleOption",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSvgAnimator::svgSetStyleOption",1,"rlSvgAnimator *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSvgAnimator::svgSetStyleOption",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("rlSvgAnimator::svgSetStyleOption",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSvgAnimator,0))){
+    SWIG_fail_ptr("rlSvgAnimator_svgSetStyleOption",1,SWIGTYPE_p_rlSvgAnimator);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->svgSetStyleOption((char const *)arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSvgAnimator_svgRecursiveSetStyleOption(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSvgAnimator::svgRecursiveSetStyleOption",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveSetStyleOption",1,"rlSvgAnimator *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveSetStyleOption",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("rlSvgAnimator::svgRecursiveSetStyleOption",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSvgAnimator,0))){
+    SWIG_fail_ptr("rlSvgAnimator_svgRecursiveSetStyleOption",1,SWIGTYPE_p_rlSvgAnimator);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->svgRecursiveSetStyleOption((char const *)arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlSvgAnimator_show(lua_State* L) {
   int SWIG_arg = 0;
   rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
@@ -24211,6 +24397,12 @@ static swig_lua_method swig_rlSvgAnimator_methods[] = {
     {"svgSearchAndReplace", _wrap_rlSvgAnimator_svgSearchAndReplace}, 
     {"svgRecursiveSearchAndReplace", _wrap_rlSvgAnimator_svgRecursiveSearchAndReplace}, 
     {"svgTextPrintf", _wrap_rlSvgAnimator_svgTextPrintf}, 
+    {"svgRemoveStyleOption", _wrap_rlSvgAnimator_svgRemoveStyleOption}, 
+    {"svgRecursiveRemoveStyleOption", _wrap_rlSvgAnimator_svgRecursiveRemoveStyleOption}, 
+    {"svgChangeStyleOption", _wrap_rlSvgAnimator_svgChangeStyleOption}, 
+    {"svgRecursiveChangeStyleOption", _wrap_rlSvgAnimator_svgRecursiveChangeStyleOption}, 
+    {"svgSetStyleOption", _wrap_rlSvgAnimator_svgSetStyleOption}, 
+    {"svgRecursiveSetStyleOption", _wrap_rlSvgAnimator_svgRecursiveSetStyleOption}, 
     {"show", _wrap_rlSvgAnimator_show}, 
     {"setMatrix", _wrap_rlSvgAnimator_setMatrix}, 
     {"setMainObject", _wrap_rlSvgAnimator_setMainObject}, 

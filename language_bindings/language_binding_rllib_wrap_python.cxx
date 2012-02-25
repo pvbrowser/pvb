@@ -29162,6 +29162,306 @@ SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgTextPrintf(PyObject *SWIGUNUSEDPARM(
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgRemoveStyleOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSvgAnimator_svgRemoveStyleOption",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_svgRemoveStyleOption" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSvgAnimator_svgRemoveStyleOption" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSvgAnimator_svgRemoveStyleOption" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)(arg1)->svgRemoveStyleOption((char const *)arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgRecursiveRemoveStyleOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSvgAnimator_svgRecursiveRemoveStyleOption",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_svgRecursiveRemoveStyleOption" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSvgAnimator_svgRecursiveRemoveStyleOption" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSvgAnimator_svgRecursiveRemoveStyleOption" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)(arg1)->svgRecursiveRemoveStyleOption((char const *)arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgChangeStyleOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:rlSvgAnimator_svgChangeStyleOption",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_svgChangeStyleOption" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSvgAnimator_svgChangeStyleOption" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSvgAnimator_svgChangeStyleOption" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "rlSvgAnimator_svgChangeStyleOption" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)(arg1)->svgChangeStyleOption((char const *)arg2,(char const *)arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgRecursiveChangeStyleOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:rlSvgAnimator_svgRecursiveChangeStyleOption",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_svgRecursiveChangeStyleOption" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSvgAnimator_svgRecursiveChangeStyleOption" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSvgAnimator_svgRecursiveChangeStyleOption" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "rlSvgAnimator_svgRecursiveChangeStyleOption" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)(arg1)->svgRecursiveChangeStyleOption((char const *)arg2,(char const *)arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgSetStyleOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSvgAnimator_svgSetStyleOption",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_svgSetStyleOption" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSvgAnimator_svgSetStyleOption" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSvgAnimator_svgSetStyleOption" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)(arg1)->svgSetStyleOption((char const *)arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSvgAnimator_svgRecursiveSetStyleOption(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSvgAnimator_svgRecursiveSetStyleOption",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSvgAnimator, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSvgAnimator_svgRecursiveSetStyleOption" "', argument " "1"" of type '" "rlSvgAnimator *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSvgAnimator * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSvgAnimator_svgRecursiveSetStyleOption" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "rlSvgAnimator_svgRecursiveSetStyleOption" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)(arg1)->svgRecursiveSetStyleOption((char const *)arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlSvgAnimator_show(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlSvgAnimator *arg1 = (rlSvgAnimator *) 0 ;
@@ -32945,6 +33245,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSvgAnimator_svgSearchAndReplace", _wrap_rlSvgAnimator_svgSearchAndReplace, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_svgRecursiveSearchAndReplace", _wrap_rlSvgAnimator_svgRecursiveSearchAndReplace, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_svgTextPrintf", _wrap_rlSvgAnimator_svgTextPrintf, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_svgRemoveStyleOption", _wrap_rlSvgAnimator_svgRemoveStyleOption, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_svgRecursiveRemoveStyleOption", _wrap_rlSvgAnimator_svgRecursiveRemoveStyleOption, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_svgChangeStyleOption", _wrap_rlSvgAnimator_svgChangeStyleOption, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_svgRecursiveChangeStyleOption", _wrap_rlSvgAnimator_svgRecursiveChangeStyleOption, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_svgSetStyleOption", _wrap_rlSvgAnimator_svgSetStyleOption, METH_VARARGS, NULL},
+	 { (char *)"rlSvgAnimator_svgRecursiveSetStyleOption", _wrap_rlSvgAnimator_svgRecursiveSetStyleOption, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_show", _wrap_rlSvgAnimator_show, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_setMatrix", _wrap_rlSvgAnimator_setMatrix, METH_VARARGS, NULL},
 	 { (char *)"rlSvgAnimator_setMainObject", _wrap_rlSvgAnimator_setMainObject, METH_VARARGS, NULL},

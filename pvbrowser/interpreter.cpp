@@ -3406,16 +3406,25 @@ void Interpreter::interprets(const char *command)
           if(i == -5) // ID_HELP
           {
             if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
-            mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
-#ifdef USE_ANDROID
+//xmurx -------------------------------------------------------------------------------------------
+//xmurx beginning with Qt 4.8.0 it is no longer allowed to load(QUrl(filename)); from a local disk
+//xmurx this results in a crash in webkit
+//xmurx this has been first observed in android 
+//xmurx since we updated the windows version of Qt to 4.8.0 the windows pvbrowser also crashed
+//xmurx since the linux version still used 4.7.4 this was not detected
+//xmurx thanks to e. murnleitner for reporting the bug
+//xmurx -------------------------------------------------------------------------------------------
+//xmurx            mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
+//xmurx#ifdef USE_ANDROID
             // android permission problems
             // google does not allow Qt to access local storage
             // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
             //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
             if(strstr(text.toUtf8(),"://") == NULL)
             {
+              QString fname = temp + text;
               struct stat sb;
-              if(stat(text.toUtf8(), &sb) < 0) return;
+              if(stat(fname.toUtf8(), &sb) < 0) return;
               char buf[sb.st_size+1];
               FILE *fin = fopen(text.toUtf8(),"r");
               if(fin == NULL) return;
@@ -3427,9 +3436,9 @@ void Interpreter::interprets(const char *command)
             {
               mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
             }
-#else
-            mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
-#endif
+//xmurx#else
+//xmurx            mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
+//xmurx#endif
             return;
           }
           if(i < 0) return;
@@ -3439,15 +3448,16 @@ void Interpreter::interprets(const char *command)
             MyTextBrowser *t = (MyTextBrowser *) all[i]->w;
             if(t != NULL) 
             {
-#ifdef USE_ANDROID
+//xmurx#ifdef USE_ANDROID
               // android permission problems
               // google does not allow Qt to access local storage
               // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
               //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
               if(strstr(text.toUtf8(),"://") == NULL)
               {
+                  QString fname = temp + text;
                   struct stat sb;
-                  if(stat(text.toUtf8(), &sb) < 0) return;
+                  if(stat(fname.toUtf8(), &sb) < 0) return;
                   char buf[sb.st_size+1];
                   FILE *fin = fopen(text.toUtf8(),"r");
                   if(fin == NULL) return;
@@ -3459,9 +3469,9 @@ void Interpreter::interprets(const char *command)
               {
                 t->load(QUrl(text));
               }
-#else
-              t->load(QUrl(text));
-#endif
+//xmurx#else
+//xmurx              t->load(QUrl(text));
+//xmurx#endif
               if(t->homeIsSet == 0)
               {
                 t->home      = text;
