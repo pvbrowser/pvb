@@ -3426,7 +3426,7 @@ void Interpreter::interprets(const char *command)
               struct stat sb;
               if(stat(fname.toUtf8(), &sb) < 0) return;
               char buf[sb.st_size+1];
-              FILE *fin = fopen(text.toUtf8(),"r");
+              FILE *fin = fopen(fname.toUtf8(),"r");
               if(fin == NULL) return;
               fread(buf,1,sb.st_size,fin);
               fclose(fin);
@@ -3459,7 +3459,7 @@ void Interpreter::interprets(const char *command)
                   struct stat sb;
                   if(stat(fname.toUtf8(), &sb) < 0) return;
                   char buf[sb.st_size+1];
-                  FILE *fin = fopen(text.toUtf8(),"r");
+                  FILE *fin = fopen(fname.toUtf8(),"r");
                   if(fin == NULL) return;
                   fread(buf,1,sb.st_size,fin);
                   fclose(fin);
