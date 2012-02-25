@@ -3422,15 +3422,16 @@ void Interpreter::interprets(const char *command)
             //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
             if(strstr(text.toUtf8(),"://") == NULL)
             {
-              QString fname = temp + text;
               struct stat sb;
-              if(stat(fname.toUtf8(), &sb) < 0) return;
+              if(stat(text.toUtf8(), &sb) < 0) return;
               char buf[sb.st_size+1];
-              FILE *fin = fopen(fname.toUtf8(),"r");
+              FILE *fin = fopen(text.toUtf8(),"r");
               if(fin == NULL) return;
               fread(buf,1,sb.st_size,fin);
+              buf[sb.st_size] = '\0';
               fclose(fin);
-              mainWindow->textbrowser->form->textBrowser->setHtml(buf);
+              QUrl url = QUrl::fromLocalFile(temp); 
+              mainWindow->textbrowser->form->textBrowser->setHtml(buf,url);
             }
             else
             {
@@ -3455,15 +3456,16 @@ void Interpreter::interprets(const char *command)
               //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
               if(strstr(text.toUtf8(),"://") == NULL)
               {
-                  QString fname = temp + text;
                   struct stat sb;
-                  if(stat(fname.toUtf8(), &sb) < 0) return;
+                  if(stat(text.toUtf8(), &sb) < 0) return;
                   char buf[sb.st_size+1];
-                  FILE *fin = fopen(fname.toUtf8(),"r");
+                  FILE *fin = fopen(text.toUtf8(),"r");
                   if(fin == NULL) return;
                   fread(buf,1,sb.st_size,fin);
+                  buf[sb.st_size] = '\0';
                   fclose(fin);
-                  t->setHtml(buf);
+                  QUrl url = QUrl::fromLocalFile(temp); 
+                  t->setHtml(buf,url);
               }
               else
               {
