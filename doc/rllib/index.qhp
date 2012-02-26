@@ -2292,6 +2292,13 @@
       <file>closed.png</file>
       <file>open.png</file>
       <file>doxygen.css</file>
+      <file>/search/mag_sel.png</file>
+      <file>/search/search_l.png</file>
+      <file>/search/search_m.png</file>
+      <file>/search/search_r.png</file>
+      <file>/search/close.png</file>
+      <file>search/search.css</file>
+      <file>search/search.js</file>
       <file>index.html</file>
       <file>rl3964r_8cpp_source.html</file>
       <file>rl3964r_8h_source.html</file>
