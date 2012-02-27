@@ -1446,7 +1446,7 @@ void MyTable::saveTextfile(const char *filename)
     else if(verticalHeaderItem(y) == NULL)   cell = "";
     else                                     cell = verticalHeaderItem(y)->text();
     if(cell.isEmpty())                       cell = "";
-    else                                     fprintf(fp,"%s",(const char *) cell.toUtf8());
+    else                                     fprintf(fp,"%s\t",(const char *) cell.toUtf8());
     for(x=0; x<columnCount(); x++)
     {
       if(y == -1)
@@ -1457,7 +1457,8 @@ void MyTable::saveTextfile(const char *filename)
       else if(item(y,x) == NULL) cell = "";
       else                       cell = item(y,x)->text();
       if(cell.isEmpty())         cell = "";
-      fprintf(fp,"\t%s",(const char *) cell.toUtf8());
+      if(x == 0) fprintf(fp,"%s"  ,(const char *) cell.toUtf8());
+      else       fprintf(fp,"\t%s",(const char *) cell.toUtf8());
     }
     fprintf(fp,"\n");
   }

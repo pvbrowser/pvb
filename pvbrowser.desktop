@@ -1,3 +1,4 @@
+#!/usr/bin/env xdg-open
 [Desktop Entry]
 Comment=ProcessViewBrowser HMI/SCADA
 Encoding=UTF-8
