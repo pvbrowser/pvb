@@ -136,6 +136,8 @@ int             pvSocklen;  // socklen  of last client. can be used for authoriz
 #endif
 int num_threads = 0;
 int exit_after_last_client_terminates = 0; // can be set from command line
+int start_gui = 0;                         // can be set from command line
+const char *url_trailer = NULL;            // can be set from command line
 int pv_cache = 0;                          // can be set from command line
 static int rl_ipversion = 4;               // default: use IPV4
 
@@ -685,6 +687,11 @@ int option = 1;
 
   if(rl_ipversion == 4)
   {
+    if(start_gui > 1)
+    {
+      printf("Info: We will ignore any further clients\n");
+      while(1) pvSleep(10*1000);
+    }
     if(first == 1)
     {
       wsa(); /* windows stuff */
@@ -720,6 +727,21 @@ bind:
       signal(SIGINT ,sighandler);
       signal(SIGTERM,sighandler);
       printf("Info: going to accept on port %d\n",p->port);
+      if(start_gui > 0)
+      {
+        int len = 100;
+        if(url_trailer != NULL) len += strlen(url_trailer);
+        char *buf = (char *) malloc(len);
+        start_gui++;
+        if(url_trailer == NULL) sprintf(buf,"pvbrowser \"pv://localhost:%d\"",   p->port);
+        else                    sprintf(buf,"pvbrowser \"pv://localhost:%d%s\"", p->port, url_trailer);
+        printf("Info, starting gui with: %s\n", buf);
+#ifdef  PVUNIX
+        strcat(buf, " &");
+#endif
+        pvsystem(buf);
+        free(buf);
+      }
     }
     pvSocklen = sizeof(struct sockaddr);
     p->s = accept(p->os, &pvSockaddr, &pvSocklen);
@@ -939,13 +961,30 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 
 static int show_usage()
 {
+  printf("###################################################################################\n");
   printf("pvserver %s (C) by Lehrig Software Engineering 2000-2012       lehrig@t-online.de\n\n", pvserver_version);
-  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6\n");
+  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
   printf("-sleep=500 milliseconds\n");
   printf("do NOT exit_after_last_client_terminates\n\n");
   printf("-cd=/working/directory\n");
+  printf("-gui # will start pvbrowser pv://localhost:port\n");
+  printf("<url_trailer> example1: /?test1=1&test2=2\n");
+  printf("<url_trailer> example2: /mask1?test1=1&test2=2\n");
+  printf("###################################################################################\n");
+  printf("Examples:\n");
+  printf("\n");
+  printf("pvserver                                       (wait on port 5050)\n");
+  printf("pvserver -port=5051                            (wait on port 5051)\n");
+  printf("pvserver -port=5051 -cd=/my/working/directory  (first chdir /my/working/directory)\n");
+  printf("pvserver -ipv6                                 (use ipv6 instead of ipv4)\n");
+  printf("pvserver -sleep=100                            (NULL_EVENTS every 100 milliseconds)\n");
+  printf("pvserver -gui                                  (starts pvbrowser pv://localhost)\n");
+  printf("pvserver -port=60000 -gui \"/mask1\"           (the url_trailer behind pv://localhost)\n");   
+  printf("pvserver -port=60000 -gui \"/mask1/test?test1=1&test2=2\"\n");
+  printf("pvserver -port=60000 -gui \"/mask1/test?test1=1&test2=2#anchor\"\n");
+  printf("###################################################################################\n");
   return 0;
 }
 
@@ -1036,7 +1075,17 @@ int i,ret;
       printf("useing IPV6 adresses\n");
       rl_ipversion = 6;
     }
+    else if(strcmp(av[i],"-gui")                               == 0) start_gui = 1;
+    else if(strncmp(av[i],"/",1)                               == 0) url_trailer = av[i];
+    else if(strncmp(av[i],"?",1)                               == 0) url_trailer = av[i];
     else if(strncmp(av[i],"-",1)                               == 0) printf("unknown option %s\n", av[i]);
+  }
+
+  if(start_gui > 0)
+  {
+    p->exit_on_bind_error = 1;
+    exit_after_last_client_terminates = 1;
+    rl_ipversion = 4;
   }
   return ret;
 }
