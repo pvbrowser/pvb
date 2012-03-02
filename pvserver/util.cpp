@@ -704,18 +704,46 @@ int option = 1;
       setsockopt(p->os,SOL_SOCKET,SO_REUSEADDR,&option,sizeof(option));
 #endif
       /* Bind our server to the agreed upon port number.      */
-      memset(&localAddr,0,sizeof(localAddr));
-      localAddr.sin_port = htons(p->port);
-      localAddr.sin_family = AF_INET;
-bind:
-      ret = bind(p->os, (struct sockaddr *) &localAddr, sizeof(localAddr));
-      if(ret != 0)
+      if(start_gui == 0)
       {
-        sprintf(buf,"could not bind to port %d",p->port);
-        pvWarning(p,buf);
-        if(p->exit_on_bind_error == 1) pvMainFatal(p,"exit");
-        pvSleep(10*1000);
-        goto bind;
+        memset(&localAddr,0,sizeof(localAddr));
+        localAddr.sin_port = htons(p->port);
+        localAddr.sin_family = AF_INET;
+bind:
+        ret = bind(p->os, (struct sockaddr *) &localAddr, sizeof(localAddr));
+        if(ret != 0)
+        {
+          sprintf(buf,"could not bind to port %d",p->port);
+          pvWarning(p,buf);
+          if(p->exit_on_bind_error == 1) pvMainFatal(p,"exit");
+          pvSleep(10*1000);
+          goto bind;
+        }
+      }
+      else // scan for an unused port and use this port for our gui
+      { 
+        while(1)
+        {
+          printf("Info: try to bind gui pserver to port=%d\n", p->port);
+          memset(&localAddr,0,sizeof(localAddr));
+          localAddr.sin_port = htons(p->port);
+          localAddr.sin_family = AF_INET;
+          ret = bind(p->os, (struct sockaddr *) &localAddr, sizeof(localAddr));
+          if(ret != 0)
+          {
+            if(p->port >= 256*256)
+            {
+              pvMainFatal(p,"could not find an unused port -> exit");
+              p->port = 5049;
+              pvSleep(10*1000);
+            }
+            p->port++;
+          }
+          else
+          {
+            break;
+          }
+        }  
       }
       /* Prepare to accept client connections.  Allow up to 5 pending  */
       /* connections.                                                  */
