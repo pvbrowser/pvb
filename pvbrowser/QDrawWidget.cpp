@@ -278,7 +278,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
 
   //qt3 setBackgroundMode(Qt::NoBackground);
   //setAutoFillBackground(false);
-  strcpy(floatFormat,"%f");
+  strcpy(floatFormat,"%.2f");
   buffer = new QPixmap;
   buffer->fill(QColor(br,bg,bb));
   if(wFlags == -1000) return; //trollmurx
@@ -626,69 +626,15 @@ void QDrawWidget::rect(int x, int y, int w, int h)
 
 static int beautyval(char *text)
 {
-  int i,val;
-
-  i = strlen(text);
-  if(i>0)
+  char *cptr = strchr(text,'.');
+  if(cptr != NULL)
   {
-    if(text[i-1] == '9' && i>2 && text[i-2] == '9' && strchr(text,'.') != NULL ) // round up
+    char *end = cptr + strlen(text) - 1;
+    while(end != cptr) // eliminate trailing 0
     {
-      i--;
-
-      while(i>0)
-      {
-        if     (text[i] == '9') text[i] = '\0';
-        else if(text[i] == '.')
-        {
-          sscanf(text,"%d",&val);
-          val += 1;
-          sprintf(&text[i-1],"%d",val);
-          return 0;
-        }
-        else
-        {
-          sscanf(&text[i],"%d",&val);
-          val += 1;
-          sprintf(&text[i],"%d",val);
-
-
-
-          return 0;
-        }
-      }
-      return 0;
-    }
-    else if(text[i-1] == '1' && i>2 && text[i-2] == '0' && strchr(text,'.') != NULL ) // round down
-    {
-      i--;
-      text[i] = '\0';
-      i--;
-      while(i>0)
-      {
-        if     (text[i] == '0') text[i] = '\0';
-        else if(text[i] == '.')
-        {
-          text[i] = '\0';
-          return 0;
-        }
-        else
-        {
-          return 0;
-        }
-      }
-      return 0;
-    }
-    
-    while(i>0)
-    {
-      i--;
-      if(text[i] == '0') text[i] = '\0';
-      else if(text[i] == '.')
-      {
-        text[i] = '\0';
-        return 0;
-      }
-      else return 0;
+      if     (*end == '0') { *end = '\0'; }
+      else if(*end == '.') { *end = '\0'; break; }
+      end--;
     }
   }
   return 0;
@@ -737,7 +683,7 @@ void QDrawWidget::xAxis(float start, float delta, float end, int draw)
     moveTo(tx(x),y);
     lineTo(tx(x),y+4);
     sprintf(txt,floatFormat,x);
-    if(floatFormat[1] == 'f') beautyval(txt);
+    beautyval(txt);
     text(tx(x),y+8,ALIGN_CENTER,txt);
     x += delta;
   }
@@ -768,7 +714,7 @@ char  txt[80];
     moveTo(x,ty(y));
     lineTo(x-4,ty(y));
     sprintf(txt,floatFormat,y);
-    if(floatFormat[1] == 'f') beautyval(txt);
+    beautyval(txt);
     text(x-8,ty(y),ALIGN_RIGHT,txt);
     y += delta;
   }
@@ -802,7 +748,7 @@ char  txt[80];
     //p.moveTo(x,ty(y));
     //p.lineTo(x+4,ty(y));
     sprintf(txt,floatFormat,y);
-    if(floatFormat[1] == 'f') beautyval(txt);
+    beautyval(txt);
     text(x+8,ty(y),ALIGN_LEFT,txt);
     y += delta;
   }
@@ -1233,7 +1179,7 @@ int x,y,w,h,r,g,b,n,i;
     case 'b':
       if(strncmp(linebuf,"gbeginDraw",10) == 0)
       {
-        strcpy(floatFormat,"%f");
+        strcpy(floatFormat,"%.2f");
         beginDraw(1);
       }
       else if(strncmp(linebuf,"gbox",4) == 0)
@@ -1275,7 +1221,7 @@ int x,y,w,h,r,g,b,n,i;
     case 'e':
       if(strncmp(linebuf,"gendDraw",8) == 0)
       {
-        strcpy(floatFormat,"%f");
+        strcpy(floatFormat,"%.2f");
         endDraw();
         return -1;
       }

@@ -763,7 +763,7 @@ bind:
         start_gui++;
         if(url_trailer == NULL) sprintf(buf,"pvbrowser \"pv://localhost:%d\"",   p->port);
         else                    sprintf(buf,"pvbrowser \"pv://localhost:%d%s\"", p->port, url_trailer);
-        printf("Info, starting gui with: %s\n", buf);
+        printf("Info: starting gui with: %s\n", buf);
 #ifdef  PVUNIX
         strcat(buf, " &");
 #endif
