@@ -629,13 +629,15 @@ static int beautyval(char *text)
   char *cptr = strchr(text,'.');
   if(cptr != NULL)
   {
-    char *end = cptr + strlen(text) - 1;
+    char *end = cptr + strlen(cptr) - 1;
     while(end != cptr) // eliminate trailing 0
     {
       if     (*end == '0') { *end = '\0'; }
       else if(*end == '.') { *end = '\0'; break; }
+      else                 { break; }
       end--;
     }
+    if(cptr == end) *cptr = '\0';
   }
   return 0;
 }
