@@ -1132,9 +1132,9 @@ void Interpreter::interpretf(const char *command)
     QString result;
     int id_return,type;
     sscanf(command,"fileDialog(%d,%d",&id_return,&type);
-    if     (type==0) result = QFileDialog::getOpenFileName();
-    else if(type==1) result = QFileDialog::getSaveFileName();
-    else if(type==2) result = QFileDialog::getExistingDirectory();
+    if     (type==0) result = QFileDialog::getOpenFileName(NULL, QString::null, opt.temp);
+    else if(type==1) result = QFileDialog::getSaveFileName(NULL, QString::null, opt.temp);
+    else if(type==2) result = QFileDialog::getExistingDirectory(NULL, QString::null, opt.temp);
     text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
     tcp_send(s,text.toUtf8(),strlen(text.toUtf8()));
   }

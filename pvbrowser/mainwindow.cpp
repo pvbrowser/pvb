@@ -1399,7 +1399,7 @@ void MainWindow::slotStorebmp()
   if(opt.arg_debug) printf("slotStorebmp\n");
   QPixmap pm;
   snapshot(pm);
-  QString fn = QFileDialog::getSaveFileName(0,tr("Save as bitmap file"), ".", tr("Images (*.png *.xpm *.jpg *.bmp)"));
+  QString fn = QFileDialog::getSaveFileName(0,tr("Save as bitmap file"), opt.temp, tr("Images (*.png *.xpm *.jpg *.bmp)"));
   if(!fn.isEmpty())
   {
     pm.save(fn);

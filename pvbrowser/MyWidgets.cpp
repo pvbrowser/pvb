@@ -1417,7 +1417,7 @@ void MyTable::saveTextfile(const char *filename)
 
   if(filename == NULL)
   {
-    name = dlg.getSaveFileName(NULL,QString::null,QString::null,"*.csv");
+    name = dlg.getSaveFileName(NULL,QString::null,opt.temp,"*.csv");
   }
   else
   {
