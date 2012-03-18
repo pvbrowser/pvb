@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlCanOpenTypes.html" title="class to handle CANopen types" alt="" coords="5,5,125,32"/>
+<area shape="rect" id="node1" href="$classrlCanOpenDaemon.html" title="canopen tcp/ip interface for concurrent device&#45;access of multiple clientprocesses" alt="" coords="5,5,139,32"/>
 </map>

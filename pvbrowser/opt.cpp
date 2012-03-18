@@ -271,6 +271,7 @@ void setDefaultOptions()
   opt.codec = pvbUTF8; // strongly advised to use pvbUTF8
   opt.closed = 0;
   opt.cookies = 1; // YES
+  opt.generate_cookie[0] = '\0';
   strcpy(opt.manual,"index.html");
 }
 
@@ -320,6 +321,10 @@ int i;
         else if(strncmp(buf,"cookies=",8) == 0)
         {
           sscanf(buf,"cookies=%d",&opt.cookies);
+        }
+        else if(strncmp(buf,"generate_cookie=",16) == 0)
+        {
+          strcpy(opt.generate_cookie,&buf[16]);
         }
         else if(strncmp(buf,"enable_webkit_plugins=",22) == 0)
         {
@@ -603,6 +608,7 @@ int i;
         fprintf(fp,"view.audio=vlc\n");
         fprintf(fp,"view.video=vlc\n");
 #endif
+        fprintf(fp,"generate_cookie=pvb_generate_cookie\n");
 
         fprintf(fp,"##################################################################\n");
         fprintf(fp,"#\n");

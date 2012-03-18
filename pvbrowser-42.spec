@@ -408,6 +408,7 @@ License:     GPL
 /opt/pvb/rllib/lib/rlcommandlineinterface.h
 /opt/pvb/rllib/lib/rlreport.h
 /opt/pvb/rllib/lib/rlstatemachine.h
+/opt/pvb/rllib/lib/rldf1.h
 /opt/pvb/language_bindings/lua/pvslua/pvslua
 /opt/pvb/language_bindings/lua/pvapplua/pvapplua
 /opt/pvb/language_bindings/python/id/pv.py

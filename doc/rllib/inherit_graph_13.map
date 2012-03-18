@@ -1,4 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlCanOpenClient.html" title="Class performs API rlcanopen functions remotely through tcp sockets." alt="" coords="6,5,125,32"/>
-<area shape="rect" id="node3" href="$classrlCanClient.html" title="rlCanClient" alt="" coords="174,5,261,32"/>
+<area shape="rect" id="node1" href="$classrlCanOpen.html" title="main class which provides canopen API functions and manages all nodes." alt="" coords="6,5,90,32"/>
 </map>

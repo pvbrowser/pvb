@@ -1,3 +1,3 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlCanOpen.html" title="main class which provides canopen API functions and manages all nodes." alt="" coords="6,5,90,32"/>
+<area shape="rect" id="node1" href="$classrlCanNode.html" title="class to manage one node of a CanOpenMaster board in a CanOpen network" alt="" coords="6,5,90,32"/>
 </map>

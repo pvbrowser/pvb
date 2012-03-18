@@ -1218,7 +1218,14 @@ void MainWindow::slotReconnect()
   cptr = strstr(host,"/"); // send initial mask
   if(cptr == NULL)
   {
-    sprintf(buf,"initial(0,\"\") version=%s\n",VERSION);
+    sprintf(buf,"initial(0,\"\") version=%s",VERSION);
+#ifdef PVWIN32  
+    strcat(buf, " Windows");
+#endif
+#ifdef PVUNIX
+    strcat(buf, " Unix");
+#endif
+    strcat(buf, "\n");
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
   }
   else

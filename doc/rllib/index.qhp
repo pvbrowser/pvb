@@ -14,6 +14,7 @@
           <section title="rlIniFile::_rlSection_" ref="structrlIniFile_1_1__rlSection__.html" />
           <section title="rlIniFile::_rlSectionName_" ref="structrlIniFile_1_1__rlSectionName__.html" />
           <section title="ADD" ref="structADD.html" />
+          <section title="df1Buffer" ref="classdf1Buffer.html" />
           <section title="rlEIBnetIP::EIB_TEL" ref="structrlEIBnetIP_1_1EIB__TEL.html" />
           <section title="rlSiemensTCP::FA" ref="structrlSiemensTCP_1_1FA.html" />
           <section title="rlSiemensTCP::FH" ref="structrlSiemensTCP_1_1FH.html" />
@@ -41,6 +42,7 @@
           <section title="rlDataProvider" ref="classrlDataProvider.html" />
           <section title="rlDataProviderClient" ref="classrlDataProviderClient.html" />
           <section title="rlDataProviderThreads" ref="classrlDataProviderThreads.html" />
+          <section title="rlDF1" ref="classrlDF1.html" />
           <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
           <section title="rlEventLogServer" ref="classrlEventLogServer.html" />
           <section title="rlEventLogServerThreads" ref="classrlEventLogServerThreads.html" />
@@ -106,6 +108,7 @@
           <section title="rlIniFile::_rlSection_" ref="structrlIniFile_1_1__rlSection__.html" />
           <section title="rlIniFile::_rlSectionName_" ref="structrlIniFile_1_1__rlSectionName__.html" />
           <section title="ADD" ref="structADD.html" />
+          <section title="df1Buffer" ref="classdf1Buffer.html" />
           <section title="rlEIBnetIP::EIB_TEL" ref="structrlEIBnetIP_1_1EIB__TEL.html" />
           <section title="rlSiemensTCP::FA" ref="structrlSiemensTCP_1_1FA.html" />
           <section title="rlSiemensTCP::FH" ref="structrlSiemensTCP_1_1FH.html" />
@@ -133,6 +136,7 @@
           <section title="rlDataProvider" ref="classrlDataProvider.html" />
           <section title="rlDataProviderClient" ref="classrlDataProviderClient.html" />
           <section title="rlDataProviderThreads" ref="classrlDataProviderThreads.html" />
+          <section title="rlDF1" ref="classrlDF1.html" />
           <section title="rlEventLogServer" ref="classrlEventLogServer.html" />
           <section title="rlEventLogServerThreads" ref="classrlEventLogServerThreads.html" />
           <section title="rlFifo" ref="classrlFifo.html" />
@@ -231,6 +235,8 @@
           <section title="rldataprovider.cpp" ref="rldataprovider_8cpp.html" />
           <section title="rldataprovider.h" ref="rldataprovider_8h.html" />
           <section title="rldefine.h" ref="rldefine_8h.html" />
+          <section title="rldf1.cpp" ref="rldf1_8cpp.html" />
+          <section title="rldf1.h" ref="rldf1_8h.html" />
           <section title="rleibnetip.cpp" ref="rleibnetip_8cpp.html" />
           <section title="rleibnetip.h" ref="rleibnetip_8h.html" />
           <section title="rlevent.cpp" ref="rlevent_8cpp.html" />
@@ -502,6 +508,9 @@
       <keyword name="BIT29" id="rldefine.h::BIT29" ref="rldefine_8h.html#adb368e517e545da53d8aace5923649e1" />
       <keyword name="BIT30" id="rldefine.h::BIT30" ref="rldefine_8h.html#a70105c4a8c864754c8ba9e9b0e5da52a" />
       <keyword name="BIT31" id="rldefine.h::BIT31" ref="rldefine_8h.html#adfb09898dca36071e32cb1fbeec479e5" />
+      <keyword name="DBGPRINTF" id="rldf1.cpp::DBGPRINTF" ref="rldf1_8cpp.html#a8b496503e1abc92d2d6885f9cf508a8e" />
+      <keyword name="calcCRC" id="rldf1.cpp::calcCRC" ref="rldf1_8cpp.html#a609a9fa36c803467e5a5e0bfac686d60" />
+      <keyword name="computeCRC" id="rldf1.cpp::computeCRC" ref="rldf1_8cpp.html#a8799d9698b5aa9d0452fcda45a0282e7" />
       <keyword name="EIB_HEADERSIZE" id="rleibnetip.cpp::EIB_HEADERSIZE" ref="rleibnetip_8cpp.html#a7c85b6e0a76a49acb0a0d35b315c4dec" />
       <keyword name="EIB_VERSION" id="rleibnetip.cpp::EIB_VERSION" ref="rleibnetip_8cpp.html#a3c54cd8bec91059a581c9815c6de846b" />
       <keyword name="EIB_ADRSIZE" id="rleibnetip.cpp::EIB_ADRSIZE" ref="rleibnetip_8cpp.html#aedffab6bcd5c3ad2e5cc0745c126a5bd" />
@@ -673,6 +682,19 @@
       <keyword name="ADD" id="ADD" ref="structADD.html" />
       <keyword name="start" id="ADD::start" ref="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46" />
       <keyword name="end" id="ADD::end" ref="structADD.html#a8e4f0632b80bddc4db0022978c797179" />
+      <keyword name="df1Buffer" id="df1Buffer" ref="classdf1Buffer.html" />
+      <keyword name="df1Buffer" id="df1Buffer::df1Buffer" ref="classdf1Buffer.html#af156b2f9481242768ab5f8a50cc4de52" />
+      <keyword name="~df1Buffer" id="df1Buffer::~df1Buffer" ref="classdf1Buffer.html#a0bcb59b260cbd23e58e0f2a01ace2146" />
+      <keyword name="length" id="df1Buffer::length" ref="classdf1Buffer.html#a7f033b8ad10067d5859a1f1b09b8287d" />
+      <keyword name="data" id="df1Buffer::data" ref="classdf1Buffer.html#ac79414a185aa912fcb48f4bdb76f4c09" />
+      <keyword name="write" id="df1Buffer::write" ref="classdf1Buffer.html#a942a1125143a7b5f493bf8b021b50ac1" />
+      <keyword name="writeDLE" id="df1Buffer::writeDLE" ref="classdf1Buffer.html#a10230cb5c5e192da4870e979451db956" />
+      <keyword name="operator[]" id="df1Buffer::operator[]" ref="classdf1Buffer.html#a96a5496aada8c0a921c8e58a38bdf3fd" />
+      <keyword name="reset" id="df1Buffer::reset" ref="classdf1Buffer.html#a69e0cd9a12443b90e01e90ca293386bd" />
+      <keyword name="print" id="df1Buffer::print" ref="classdf1Buffer.html#aaa9712358d005569dcec858f9d4af6b8" />
+      <keyword name="maxsize" id="df1Buffer::maxsize" ref="classdf1Buffer.html#ad6b7ae0e9d0018232f6b3396ab169b55" />
+      <keyword name="len" id="df1Buffer::len" ref="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03" />
+      <keyword name="dat" id="df1Buffer::dat" ref="classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2" />
       <keyword name="IOSB" id="IOSB" ref="structIOSB.html" />
       <keyword name="iostat" id="IOSB::iostat" ref="structIOSB.html#ac6bbee6c7cfecd24613d0ae265511ba5" />
       <keyword name="msg_len" id="IOSB::msg_len" ref="structIOSB.html#afd668a90ba20e977779c6794ed728448" />
@@ -1251,6 +1273,62 @@
       <keyword name="provider" id="rlDataProviderThreads::provider" ref="classrlDataProviderThreads.html#a9bdf5e95361ec40d44a23a9a63ac5706" />
       <keyword name="thread" id="rlDataProviderThreads::thread" ref="classrlDataProviderThreads.html#ac682caa49d18cc83b8a925313404f687" />
       <keyword name="port" id="rlDataProviderThreads::port" ref="classrlDataProviderThreads.html#a938cfbf1427497c498e9e095e06b06d6" />
+      <keyword name="rlDF1" id="rlDF1" ref="classrlDF1.html" />
+      <keyword name="rlDF1" id="rlDF1::rlDF1" ref="classrlDF1.html#abe30a12e6671c3632e5fdcd6585e6ff5" />
+      <keyword name="~rlDF1" id="rlDF1::~rlDF1" ref="classrlDF1.html#a5d84bc19ef0fd30d6d036d142d6092e2" />
+      <keyword name="registerSerial" id="rlDF1::registerSerial" ref="classrlDF1.html#a01cc02c1febdba08bbc4d35cb6b00b42" />
+      <keyword name="cmdSetCPUMode" id="rlDF1::cmdSetCPUMode" ref="classrlDF1.html#a9305393792fcdb687f04ec8968306349" />
+      <keyword name="cmdDiagnosticStatus" id="rlDF1::cmdDiagnosticStatus" ref="classrlDF1.html#afcd7d73519e7f8996522337a54e32a2b" />
+      <keyword name="cmdLogicalRead" id="rlDF1::cmdLogicalRead" ref="classrlDF1.html#a0c87ec47aba4a21fd41d954d74182626" />
+      <keyword name="cmdLogicalWrite" id="rlDF1::cmdLogicalWrite" ref="classrlDF1.html#a69a3f8589dcf7a85ed50a7b2017b0840" />
+      <keyword name="requests" id="rlDF1::requests" ref="classrlDF1.html#a335d1bbd7fc0c855c69c185fe233a4dc" />
+      <keyword name="responses" id="rlDF1::responses" ref="classrlDF1.html#ab2038add4057938115391443bfdaa039" />
+      <keyword name="clearStats" id="rlDF1::clearStats" ref="classrlDF1.html#a27ada79c35d80bb61dc947a613128af1" />
+      <keyword name="sendCommand" id="rlDF1::sendCommand" ref="classrlDF1.html#ac45bcf8cc82933f44bb800ef84a29a55" />
+      <keyword name="receiveAnswer" id="rlDF1::receiveAnswer" ref="classrlDF1.html#ababb35d96ef2e044baf809146998b76f" />
+      <keyword name="writeBuffer" id="rlDF1::writeBuffer" ref="classrlDF1.html#ae8e38f11dbdfa7adebb87c7fa69a42d0" />
+      <keyword name="writeBuffer" id="rlDF1::writeBuffer" ref="classrlDF1.html#a7f2dea54284be132cfb75ea3ae5f8bb8" />
+      <keyword name="getSymbol" id="rlDF1::getSymbol" ref="classrlDF1.html#a7ccf85b5e9d8b8da6e6ca0b7515a71ef" />
+      <keyword name="get" id="rlDF1::get" ref="classrlDF1.html#ae2cceed47397610c53f44a7e9f7da6d8" />
+      <keyword name="sendENQ" id="rlDF1::sendENQ" ref="classrlDF1.html#a15670acb0c11956379cb8e6ba982b737" />
+      <keyword name="sendACK" id="rlDF1::sendACK" ref="classrlDF1.html#a8d3b4661c3ac54e469d54fdce6a75dde" />
+      <keyword name="sendNAC" id="rlDF1::sendNAC" ref="classrlDF1.html#a6e4386d1ae2cfc2139008826ea487169" />
+      <keyword name="tty" id="rlDF1::tty" ref="classrlDF1.html#aa21e48f17c93107d3f16abb9164d6121" />
+      <keyword name="active" id="rlDF1::active" ref="classrlDF1.html#afc0edba2f87b1729dd16d1d13adbecf5" />
+      <keyword name="tns" id="rlDF1::tns" ref="classrlDF1.html#acc1def396785a0c3a14f2675aa28f3ae" />
+      <keyword name="nRequests" id="rlDF1::nRequests" ref="classrlDF1.html#aadd4f439284ef93659fec07fb501b646" />
+      <keyword name="nResponses" id="rlDF1::nResponses" ref="classrlDF1.html#a16f52726367ea80746ab352801134ce6" />
+      <keyword name="source" id="rlDF1::source" ref="classrlDF1.html#a798488389b0abc52671f8562e71f3e5b" />
+      <keyword name="timeout" id="rlDF1::timeout" ref="classrlDF1.html#ae9f07a35883c3d23e53c03ed5549881c" />
+      <keyword name="PROGRAM" id="rlDF1::PROGRAM" ref="classrlDF1.html#af5d6308326260b892a7d947eed2ff809a3fd60f4b8e0b4b471914bd661efbb39a" />
+      <keyword name="TEST" id="rlDF1::TEST" ref="classrlDF1.html#af5d6308326260b892a7d947eed2ff809a7df0c9c86fe3bd0e09a2402d6692f2df" />
+      <keyword name="RUN" id="rlDF1::RUN" ref="classrlDF1.html#af5d6308326260b892a7d947eed2ff809ab3e2ac0254553ad49301664408cad49d" />
+      <keyword name="NOCHANGE" id="rlDF1::NOCHANGE" ref="classrlDF1.html#af5d6308326260b892a7d947eed2ff809a5fe045d5b575f4e29e34b41b88c1694f" />
+      <keyword name="POS_DST" id="rlDF1::POS_DST" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604aca3b99433c607df460fc5778343407e1a9" />
+      <keyword name="POS_SRC" id="rlDF1::POS_SRC" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604aca6411c77fcd42d935d7a979b950d9348c" />
+      <keyword name="POS_CMD" id="rlDF1::POS_CMD" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604aca7b4b7c4566e7e9ff08d071df389601ac" />
+      <keyword name="POS_STS" id="rlDF1::POS_STS" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604acaa2579ccc679244301b919fcceca7fbd0" />
+      <keyword name="POS_TNSL" id="rlDF1::POS_TNSL" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604aca5fefde663d17349ef281e84f43fa40ca" />
+      <keyword name="POS_TNSH" id="rlDF1::POS_TNSH" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604aca2359c6910596c45a5949ec3f3d20395b" />
+      <keyword name="POS_DATA" id="rlDF1::POS_DATA" ref="classrlDF1.html#a66f56130f005eebd2595ed27aaf604acabbfaa7f45109acf7b756f3a9b6c5ecfb" />
+      <keyword name="SOH" id="rlDF1::SOH" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8daf476ca5139108d673ed79987cccddae5" />
+      <keyword name="STX" id="rlDF1::STX" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8dad1d1c2d26fed29c6d59cd1215fff7b8f" />
+      <keyword name="ETX" id="rlDF1::ETX" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8daa94e426d62659b8be5b5d5362f5e7b30" />
+      <keyword name="EOT" id="rlDF1::EOT" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8da218e8b95879e3e6ff5a5410dcdfac0d0" />
+      <keyword name="ENQ" id="rlDF1::ENQ" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8daec3c8d5d64aa8bd16118c002888a8848" />
+      <keyword name="ACK" id="rlDF1::ACK" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8da6b072f9e4803cd46ca370c5e890bc1a1" />
+      <keyword name="DLE" id="rlDF1::DLE" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8da2a44d7f020987ade4c4b8a88de2f0945" />
+      <keyword name="NAC" id="rlDF1::NAC" ref="classrlDF1.html#a51478093eee334a6a05e9ca12f151e8da8b1ca5c0b7740fccb79d4cdd603fa34d" />
+      <keyword name="FLAG_TIMEOUT" id="rlDF1::FLAG_TIMEOUT" ref="classrlDF1.html#ae4c7260c3058e996698df7015a144148afc81538ddca65426c9790e221939c75b" />
+      <keyword name="FLAG_DATA" id="rlDF1::FLAG_DATA" ref="classrlDF1.html#ae4c7260c3058e996698df7015a144148a1ce5f760d885f2a6e2746ba55e40dd78" />
+      <keyword name="FLAG_CONTROL" id="rlDF1::FLAG_CONTROL" ref="classrlDF1.html#ae4c7260c3058e996698df7015a144148abcefd777ea05154ee2ef07f011429383" />
+      <keyword name="ERROR_TNS" id="rlDF1::ERROR_TNS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a1d9f96aee6fc9feb8b7b041e00f3c1a1" />
+      <keyword name="ERROR_STS" id="rlDF1::ERROR_STS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a1b921d05a84bdc4c50250f07f4235ddc" />
+      <keyword name="ERROR_CRC" id="rlDF1::ERROR_CRC" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987ad680d83221b0f750134ea7bacab9dbab" />
+      <keyword name="ERROR_NAC" id="rlDF1::ERROR_NAC" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a44e2b832d87b82e9de25f38e115c714f" />
+      <keyword name="ERROR" id="rlDF1::ERROR" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987ac648e2d3aad6b191a44722053e7ec319" />
+      <keyword name="NORESPONSE" id="rlDF1::NORESPONSE" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a72faead4fcb1e561e944566ccfdb5db0" />
+      <keyword name="SUCCESS" id="rlDF1::SUCCESS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a94ffbb9ddd2a648696708508e70d6cdf" />
       <keyword name="rlEIBnetIP" id="rlEIBnetIP" ref="classrlEIBnetIP.html" />
       <keyword name="rlEIBnetIP" id="rlEIBnetIP::rlEIBnetIP" ref="classrlEIBnetIP.html#a3ef986d39bcac3b584e1ad26d5708e45" />
       <keyword name="~rlEIBnetIP" id="rlEIBnetIP::~rlEIBnetIP" ref="classrlEIBnetIP.html#adefa98e40d5ce178bc966176e5b16638" />
@@ -2332,6 +2410,8 @@
       <file>rldataprovider_8cpp_source.html</file>
       <file>rldataprovider_8h_source.html</file>
       <file>rldefine_8h_source.html</file>
+      <file>rldf1_8cpp_source.html</file>
+      <file>rldf1_8h_source.html</file>
       <file>rleibnetip_8cpp_source.html</file>
       <file>rleibnetip_8h_source.html</file>
       <file>rlevent_8cpp_source.html</file>
@@ -2525,6 +2605,14 @@
       <file>rldefine_8h__incl.png</file>
       <file>rldefine_8h__dep__incl.png</file>
       <file>rldefine_8h__dep__incl.png</file>
+      <file>rldf1_8cpp.html</file>
+      <file>rldf1_8cpp__incl.png</file>
+      <file>rldf1_8cpp__incl.png</file>
+      <file>rldf1_8h.html</file>
+      <file>rldf1_8h__incl.png</file>
+      <file>rldf1_8h__incl.png</file>
+      <file>rldf1_8h__dep__incl.png</file>
+      <file>rldf1_8h__dep__incl.png</file>
       <file>rleibnetip_8cpp.html</file>
       <file>rleibnetip_8cpp__incl.png</file>
       <file>rleibnetip_8cpp__incl.png</file>
@@ -2902,6 +2990,8 @@
       <file>struct__rlHistoryReaderLine__-members.html</file>
       <file>structADD.html</file>
       <file>structADD-members.html</file>
+      <file>classdf1Buffer.html</file>
+      <file>classdf1Buffer-members.html</file>
       <file>structIOSB.html</file>
       <file>structIOSB-members.html</file>
       <file>structIPCMSGSTRUCT.html</file>
@@ -2982,6 +3072,10 @@
       <file>classrlDataProviderThreads__coll__graph.png</file>
       <file>classrlDataProviderThreads__coll__graph.png</file>
       <file>classrlDataProviderThreads-members.html</file>
+      <file>classrlDF1.html</file>
+      <file>classrlDF1__coll__graph.png</file>
+      <file>classrlDF1__coll__graph.png</file>
+      <file>classrlDF1-members.html</file>
       <file>classrlEIBnetIP.html</file>
       <file>classrlEIBnetIP__inherit__graph.png</file>
       <file>classrlEIBnetIP__inherit__graph.png</file>
@@ -3270,6 +3364,8 @@
       <file>inherit_graph_78.png</file>
       <file>inherit_graph_79.png</file>
       <file>inherit_graph_80.png</file>
+      <file>inherit_graph_81.png</file>
+      <file>inherit_graph_82.png</file>
       <file>graph_legend.png</file>
       <file>graph_legend.html</file>
       <file>files.html</file>

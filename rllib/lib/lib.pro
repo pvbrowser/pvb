@@ -52,7 +52,8 @@ HEADERS  = rllib.h                     \
            rlwebcam.h                  \
            rlcommandlineinterface.h    \
            rlreport.h                  \
-           rlstatemachine.h
+           rlstatemachine.h            \
+           rldf1.h
 
 SOURCES  = rlspawn.cpp                   \
            rlwthread.cpp                 \
@@ -95,6 +96,7 @@ SOURCES  = rlspawn.cpp                   \
            rlcommandlineinterface.cpp    \
            rlreport.cpp                  \
            rlstatemachine.cpp            \
+           rldf1.cpp                     \
            nodave.c                      \
            setport.c
 

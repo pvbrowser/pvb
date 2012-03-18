@@ -1,4 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlUdpSocket.html" title="rlUdpSocket" alt="" coords="6,5,101,32"/>
-<area shape="rect" id="node3" href="$classrlEIBnetIP.html" title="rlEIBnetIP" alt="" coords="149,5,232,32"/>
+<area shape="rect" id="node1" href="$classrlThread.html" title="rlThread" alt="" coords="5,5,75,32"/>
+<area shape="rect" id="node3" href="$classrlController.html" title="rlController" alt="" coords="123,5,208,32"/>
 </map>

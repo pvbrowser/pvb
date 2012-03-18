@@ -1172,7 +1172,16 @@ int pvGetInitialMask(PARAM *p)
     {
       sscanf(cptr,"version=%s",p->version);
     }
-    printf("version of pvbrowser client = %s\n",p->version);
+    cptr = strchr(cptr, ' ');
+    if(cptr != NULL)
+    {
+      cptr++;
+      printf("version of pvbrowser client = %s %s\n",p->version, cptr);
+    }
+    else
+    {  
+      printf("version of pvbrowser client = %s Unknown OS\n",p->version);
+    }  
     pvGetText(event, text);
     text[MAX_PRINTF_LENGTH-1] = '\0';
     strcpy(p->initial_mask,text);
