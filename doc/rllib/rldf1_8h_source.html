@@ -194,6 +194,103 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <a name="l00206"></a>00206 
 <a name="l00207"></a>00207 
 <a name="l00208"></a>00208 <span class="preprocessor">#endif // _RL_DF1_H_</span>
+<a name="l00209"></a>00209 <span class="preprocessor"></span>
+<a name="l00210"></a>00210 <span class="comment">/*</span>
+<a name="l00211"></a>00211 <span class="comment">// test program for rlDF1</span>
+<a name="l00212"></a>00212 <span class="comment">#include &lt;rldf1.h&gt;</span>
+<a name="l00213"></a>00213 <span class="comment"></span>
+<a name="l00214"></a>00214 <span class="comment">// Remote ID</span>
+<a name="l00215"></a>00215 <span class="comment">const unsigned char id=1;</span>
+<a name="l00216"></a>00216 <span class="comment"></span>
+<a name="l00217"></a>00217 <span class="comment">rlSerial ser;</span>
+<a name="l00218"></a>00218 <span class="comment">rlDF1 myplc;</span>
+<a name="l00219"></a>00219 <span class="comment"></span>
+<a name="l00220"></a>00220 <span class="comment"></span>
+<a name="l00221"></a>00221 <span class="comment">int main(int argc, char *argv[])</span>
+<a name="l00222"></a>00222 <span class="comment">{</span>
+<a name="l00223"></a>00223 <span class="comment">    int ret;</span>
+<a name="l00224"></a>00224 <span class="comment">    if ( ser.openDevice( &quot;/dev/ttyS0&quot;, B19200, 0, 0 )!= 0 ) exit(-1);</span>
+<a name="l00225"></a>00225 <span class="comment">    printf(&quot;\nDevice OK&quot;);</span>
+<a name="l00226"></a>00226 <span class="comment">    myplc.registerSerial( &amp;ser );               /// Register Serial Port</span>
+<a name="l00227"></a>00227 <span class="comment"></span>
+<a name="l00228"></a>00228 <span class="comment"></span>
+<a name="l00229"></a>00229 <span class="comment">    printf(&quot;\n1.TEST CONNECTIVITY&quot;);</span>
+<a name="l00230"></a>00230 <span class="comment">    ret = myplc.cmdSetCPUMode( id, rlDF1::NOCHANGE );     /// For Connectivity Test</span>
+<a name="l00231"></a>00231 <span class="comment">    if (ret&lt;0) {</span>
+<a name="l00232"></a>00232 <span class="comment">        printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00233"></a>00233 <span class="comment">        exit(-1);</span>
+<a name="l00234"></a>00234 <span class="comment">    }</span>
+<a name="l00235"></a>00235 <span class="comment">    rlsleep(3000);</span>
+<a name="l00236"></a>00236 <span class="comment"></span>
+<a name="l00237"></a>00237 <span class="comment"></span>
+<a name="l00238"></a>00238 <span class="comment">    printf(&quot;\n2.SET PLC IN PROGRAM MODE&quot;);</span>
+<a name="l00239"></a>00239 <span class="comment">    ret = myplc.cmdSetCPUMode( id, rlDF1::PROGRAM );     /// PROGRAM MODE</span>
+<a name="l00240"></a>00240 <span class="comment">    if (ret&lt;0) {</span>
+<a name="l00241"></a>00241 <span class="comment">        printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00242"></a>00242 <span class="comment">        exit(-1);</span>
+<a name="l00243"></a>00243 <span class="comment">    }</span>
+<a name="l00244"></a>00244 <span class="comment">    rlsleep(3000);</span>
+<a name="l00245"></a>00245 <span class="comment"></span>
+<a name="l00246"></a>00246 <span class="comment"></span>
+<a name="l00247"></a>00247 <span class="comment">    printf(&quot;\n3.SET PLC IN RUN MODE&quot;);</span>
+<a name="l00248"></a>00248 <span class="comment">    ret = myplc.cmdSetCPUMode( id, rlDF1::RUN );     /// RUN MODE</span>
+<a name="l00249"></a>00249 <span class="comment">    if (ret&lt;0) {</span>
+<a name="l00250"></a>00250 <span class="comment">        printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00251"></a>00251 <span class="comment">        exit(-1);</span>
+<a name="l00252"></a>00252 <span class="comment">    }</span>
+<a name="l00253"></a>00253 <span class="comment">    rlsleep(3000);</span>
+<a name="l00254"></a>00254 <span class="comment"></span>
+<a name="l00255"></a>00255 <span class="comment"></span>
+<a name="l00256"></a>00256 <span class="comment">    printf(&quot;\n4.GET PLC STATUS BYTES (Read Manual for details)&quot;);</span>
+<a name="l00257"></a>00257 <span class="comment">    unsigned char rbytes[256];</span>
+<a name="l00258"></a>00258 <span class="comment">    ret = myplc.cmdDiagnosticStatus( id, rbytes );</span>
+<a name="l00259"></a>00259 <span class="comment">    if (ret&lt;0) {</span>
+<a name="l00260"></a>00260 <span class="comment">        printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00261"></a>00261 <span class="comment">        exit(-1);</span>
+<a name="l00262"></a>00262 <span class="comment">    }</span>
+<a name="l00263"></a>00263 <span class="comment">    for(int i=0;i&lt;ret;i++) printf(&quot;\n%d -&gt; \t%d \t%02X&quot;, i, rbytes[i], rbytes[i]);</span>
+<a name="l00264"></a>00264 <span class="comment">    printf(&quot;\n&quot;);</span>
+<a name="l00265"></a>00265 <span class="comment">    rlsleep(3000);</span>
+<a name="l00266"></a>00266 <span class="comment"></span>
+<a name="l00267"></a>00267 <span class="comment"></span>
+<a name="l00268"></a>00268 <span class="comment">    printf(&quot;\n5.LOGICAL READ - Read 2 bytes from Inputs - I1:0&quot;);</span>
+<a name="l00269"></a>00269 <span class="comment">    ret = myplc.cmdLogicalRead( id, 2, 0x8C, 1, 0, 0, rbytes );  /// 0x8C:Read Inputs by Slot: 2 bytes from Data File I1, starting at Address 0 [ I1:0 ]</span>
+<a name="l00270"></a>00270 <span class="comment">    if (ret&lt;0) {</span>
+<a name="l00271"></a>00271 <span class="comment">        printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00272"></a>00272 <span class="comment">        exit(-1);</span>
+<a name="l00273"></a>00273 <span class="comment">    }</span>
+<a name="l00274"></a>00274 <span class="comment">    for(int i=0;i&lt;ret;i++) printf(&quot;\n%d -&gt; \t%d \t%02X&quot;, i, rbytes[i], rbytes[i]);</span>
+<a name="l00275"></a>00275 <span class="comment">    printf(&quot;\n&quot;);</span>
+<a name="l00276"></a>00276 <span class="comment">    rlsleep(3000);</span>
+<a name="l00277"></a>00277 <span class="comment"></span>
+<a name="l00278"></a>00278 <span class="comment"></span>
+<a name="l00279"></a>00279 <span class="comment">    printf(&quot;\n6.LOGICAL WRITE - Write 2 bytes to Outputs - Q0:0 &gt; CYCLE FROM 0.0 to 0.7, RESET 0.8-0.15\n&quot;);</span>
+<a name="l00280"></a>00280 <span class="comment">    for(int i=0;i&lt;8;i++) {</span>
+<a name="l00281"></a>00281 <span class="comment">        printf(&quot;SET Q0:0.%d&quot;,i);</span>
+<a name="l00282"></a>00282 <span class="comment">        rbytes[0]=0x01&lt;&lt;i;</span>
+<a name="l00283"></a>00283 <span class="comment">        rbytes[1]=0;</span>
+<a name="l00284"></a>00284 <span class="comment">        ret = myplc.cmdLogicalWrite( id, 2, 0x8B, 0, 0, 0, rbytes );  /// 0x8B:Write Outputs by Slot: 2 bytes to Data File Q0, starting at Address 0 [ Q0:0 ]</span>
+<a name="l00285"></a>00285 <span class="comment">        if (ret&lt;0) {</span>
+<a name="l00286"></a>00286 <span class="comment">            printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00287"></a>00287 <span class="comment">            exit(-1);</span>
+<a name="l00288"></a>00288 <span class="comment">        }</span>
+<a name="l00289"></a>00289 <span class="comment">        printf(&quot;\n&quot;);</span>
+<a name="l00290"></a>00290 <span class="comment">        rlsleep(1000);</span>
+<a name="l00291"></a>00291 <span class="comment">    }</span>
+<a name="l00292"></a>00292 <span class="comment">    printf(&quot;\n7.LOGICAL WRITE - Write 2 bytes to Outputs - Q0:0 &gt; RESET 0.0-0.15&quot;);</span>
+<a name="l00293"></a>00293 <span class="comment">    rbytes[0]=0;    /// Reset Outputs 0-15</span>
+<a name="l00294"></a>00294 <span class="comment">    rbytes[1]=0;</span>
+<a name="l00295"></a>00295 <span class="comment">    ret = myplc.cmdLogicalWrite( id, 2, 0x8B, 0, 0, 0, rbytes );  /// 0x8B:Write Outputs by Slot: 2 bytes to Data File Q0, starting at Address 0 [ Q0:0 ]</span>
+<a name="l00296"></a>00296 <span class="comment">    if (ret&lt;0) {</span>
+<a name="l00297"></a>00297 <span class="comment">        printf(&quot;\nDevice Error %d\n&quot;,ret);</span>
+<a name="l00298"></a>00298 <span class="comment">        exit(-1);</span>
+<a name="l00299"></a>00299 <span class="comment">    }</span>
+<a name="l00300"></a>00300 <span class="comment">    printf(&quot;\nDuring execution of this program, we had %d Requests and %d Responses to/from PLC\n&quot;, myplc.requests(), myplc.responses());</span>
+<a name="l00301"></a>00301 <span class="comment"></span>
+<a name="l00302"></a>00302 <span class="comment"></span>
+<a name="l00303"></a>00303 <span class="comment">    ser.closeDevice();</span>
+<a name="l00304"></a>00304 <span class="comment">}</span>
+<a name="l00305"></a>00305 <span class="comment">*/</span>
 </pre></div></div>
 </div>
 <!-- window showing the filter options -->

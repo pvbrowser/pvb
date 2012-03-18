@@ -206,3 +206,100 @@ private:
 
 
 #endif // _RL_DF1_H_
+
+/*
+// test program for rlDF1
+#include <rldf1.h>
+
+// Remote ID
+const unsigned char id=1;
+
+rlSerial ser;
+rlDF1 myplc;
+
+
+int main(int argc, char *argv[])
+{
+    int ret;
+    if ( ser.openDevice( "/dev/ttyS0", B19200, 0, 0 )!= 0 ) exit(-1);
+    printf("\nDevice OK");
+    myplc.registerSerial( &ser );               /// Register Serial Port
+
+
+    printf("\n1.TEST CONNECTIVITY");
+    ret = myplc.cmdSetCPUMode( id, rlDF1::NOCHANGE );     /// For Connectivity Test
+    if (ret<0) {
+        printf("\nDevice Error %d\n",ret);
+        exit(-1);
+    }
+    rlsleep(3000);
+
+
+    printf("\n2.SET PLC IN PROGRAM MODE");
+    ret = myplc.cmdSetCPUMode( id, rlDF1::PROGRAM );     /// PROGRAM MODE
+    if (ret<0) {
+        printf("\nDevice Error %d\n",ret);
+        exit(-1);
+    }
+    rlsleep(3000);
+
+
+    printf("\n3.SET PLC IN RUN MODE");
+    ret = myplc.cmdSetCPUMode( id, rlDF1::RUN );     /// RUN MODE
+    if (ret<0) {
+        printf("\nDevice Error %d\n",ret);
+        exit(-1);
+    }
+    rlsleep(3000);
+
+
+    printf("\n4.GET PLC STATUS BYTES (Read Manual for details)");
+    unsigned char rbytes[256];
+    ret = myplc.cmdDiagnosticStatus( id, rbytes );
+    if (ret<0) {
+        printf("\nDevice Error %d\n",ret);
+        exit(-1);
+    }
+    for(int i=0;i<ret;i++) printf("\n%d -> \t%d \t%02X", i, rbytes[i], rbytes[i]);
+    printf("\n");
+    rlsleep(3000);
+
+
+    printf("\n5.LOGICAL READ - Read 2 bytes from Inputs - I1:0");
+    ret = myplc.cmdLogicalRead( id, 2, 0x8C, 1, 0, 0, rbytes );  /// 0x8C:Read Inputs by Slot: 2 bytes from Data File I1, starting at Address 0 [ I1:0 ]
+    if (ret<0) {
+        printf("\nDevice Error %d\n",ret);
+        exit(-1);
+    }
+    for(int i=0;i<ret;i++) printf("\n%d -> \t%d \t%02X", i, rbytes[i], rbytes[i]);
+    printf("\n");
+    rlsleep(3000);
+
+
+    printf("\n6.LOGICAL WRITE - Write 2 bytes to Outputs - Q0:0 > CYCLE FROM 0.0 to 0.7, RESET 0.8-0.15\n");
+    for(int i=0;i<8;i++) {
+        printf("SET Q0:0.%d",i);
+        rbytes[0]=0x01<<i;
+        rbytes[1]=0;
+        ret = myplc.cmdLogicalWrite( id, 2, 0x8B, 0, 0, 0, rbytes );  /// 0x8B:Write Outputs by Slot: 2 bytes to Data File Q0, starting at Address 0 [ Q0:0 ]
+        if (ret<0) {
+            printf("\nDevice Error %d\n",ret);
+            exit(-1);
+        }
+        printf("\n");
+        rlsleep(1000);
+    }
+    printf("\n7.LOGICAL WRITE - Write 2 bytes to Outputs - Q0:0 > RESET 0.0-0.15");
+    rbytes[0]=0;    /// Reset Outputs 0-15
+    rbytes[1]=0;
+    ret = myplc.cmdLogicalWrite( id, 2, 0x8B, 0, 0, 0, rbytes );  /// 0x8B:Write Outputs by Slot: 2 bytes to Data File Q0, starting at Address 0 [ Q0:0 ]
+    if (ret<0) {
+        printf("\nDevice Error %d\n",ret);
+        exit(-1);
+    }
+    printf("\nDuring execution of this program, we had %d Requests and %d Responses to/from PLC\n", myplc.requests(), myplc.responses());
+
+
+    ser.closeDevice();
+}
+*/

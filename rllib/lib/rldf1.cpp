@@ -474,5 +474,3 @@ int rlDF1::receiveAnswer( unsigned char &destination, unsigned char &cmd, unsign
     }
     return ret;
 }
-
-
