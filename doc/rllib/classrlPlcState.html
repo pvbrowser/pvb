@@ -86,13 +86,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <!-- doxytag: class="rlPlcState" -->
 <p><code>#include &lt;<a class="el" href="rlplc_8h_source.html">rlplc.h</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for rlPlcState:</div>
+<div class="dyncontent">
+<div class="center"><img src="classrlPlcState__coll__graph.png" border="0" usemap="#rlPlcState_coll__map" alt="Collaboration graph"/></div>
+<map name="rlPlcState_coll__map" id="rlPlcState_coll__map">
+<area shape="rect" id="node2" href="classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="4,5,120,32"/></map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classrlPlcState-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a42ec2bce167d82d4a497a0c9f096ae45">rlPlcState</a> (int numInt=100, int numFloat=100, int numDouble=0)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a74de6f6fe3d2a3e8a91d7e1ef53313b2">rlPlcState</a> (int numInt=100, int numFloat=100, int numDouble=0, const char *shared_memory=NULL)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#aa71c73940c64f2d134c93df4ff3d1ebc">~rlPlcState</a> ()</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a2a0cec98a7ac6b03d67654dec2d0bef8">clear</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a77b1b983c8ba28de88b433def0bf124b">rememberState</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a0bc12088c0406bf3611a8334820c18b6">intChanged</a> (int index)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a80dae83a757a84d414648395656f2484">floatChanged</a> (int index)</td></tr>
@@ -123,6 +131,7 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrlSharedMemory.html">rlSharedMemory</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">shm</a></td></tr>
 <tr><td colspan="2"><h2><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a></td></tr>
@@ -131,9 +140,9 @@ Private Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00021">21</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00022">22</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a42ec2bce167d82d4a497a0c9f096ae45"></a><!-- doxytag: member="rlPlcState::rlPlcState" ref="a42ec2bce167d82d4a497a0c9f096ae45" args="(int numInt=100, int numFloat=100, int numDouble=0)" -->
+<a class="anchor" id="a74de6f6fe3d2a3e8a91d7e1ef53313b2"></a><!-- doxytag: member="rlPlcState::rlPlcState" ref="a74de6f6fe3d2a3e8a91d7e1ef53313b2" args="(int numInt=100, int numFloat=100, int numDouble=0, const char *shared_memory=NULL)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -153,7 +162,13 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>numDouble</em> = <code>0</code>&#160;</td>
+          <td class="paramname"><em>numDouble</em> = <code>0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>shared_memory</em> = <code>NULL</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -172,18 +187,39 @@ Private Attributes</h2></td></tr>
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a> &lt;= 0) <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a> = 1;
   <a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a> = numDouble;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a> &lt;= 0) <a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a> = 1;
-  <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>     = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>];
-  <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>];
-  <a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>     = <span class="keyword">new</span> <span class="keywordtype">float</span>[<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>];
-  <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a> = <span class="keyword">new</span> <span class="keywordtype">float</span>[<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>];
-  <a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>     = <span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>];
-  <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>];
-  memset(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
-  memset(<a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
-  memset(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
-  memset(<a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
-  memset(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>);
-  memset(<a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>);
+  <span class="keywordflow">if</span>(shared_memory == NULL)
+  { <span class="comment">// use local memory</span>
+    <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>     = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>];
+    <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a> = <span class="keyword">new</span> <span class="keywordtype">int</span>[<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>];
+    <a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>     = <span class="keyword">new</span> <span class="keywordtype">float</span>[<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>];
+    <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a> = <span class="keyword">new</span> <span class="keywordtype">float</span>[<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>];
+    <a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>     = <span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>];
+    <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a> = <span class="keyword">new</span> <span class="keywordtype">double</span>[<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>];
+    memset(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
+    memset(<a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
+    memset(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
+    memset(<a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
+    memset(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>);
+    memset(<a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>);
+  }
+  <span class="keywordflow">else</span>
+  { <span class="comment">// map memory to shared memory</span>
+    <a class="code" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">shm</a> = <span class="keyword">new</span> <a class="code" href="classrlSharedMemory.html">rlSharedMemory</a>(shared_memory, <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>*2 + <span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>*2 + <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>*2 );
+    <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">shm</a>-&gt;<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> == <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a>)
+    {
+      <span class="keywordtype">void</span> *ptr = <a class="code" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">shm</a>-&gt;<a class="code" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">getUserAdr</a>();
+      <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>     = (<span class="keywordtype">int</span> *)    ptr;
+      <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a> = (<span class="keywordtype">int</span> *)    ptr + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>;
+      <a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>     = (<span class="keywordtype">float</span> *)  ptr + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>*2;
+      <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a> = (<span class="keywordtype">float</span> *)  ptr + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>*2 + <span class="keyword">sizeof</span>(float)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>;
+      <a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>     = (<span class="keywordtype">double</span> *) ptr + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>*2 + <span class="keyword">sizeof</span>(float)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>*2;
+      <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a> = (<span class="keywordtype">double</span> *) ptr + <span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>*2 + <span class="keyword">sizeof</span>(float)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>*2 + <span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>;
+    }
+    <span class="keywordflow">else</span>
+    {
+      printf(<span class="stringliteral">&quot;ERROR: rlPlcState sharedMemoryStatus(%s) is not OK\n&quot;</span>, shared_memory);
+    }
+  }
 }
 </pre></div>
 </div>
@@ -202,19 +238,52 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00041">41</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00062">62</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>;
-  <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>;
-  <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>;
-  <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>;
-  <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>;
-  <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>;
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">shm</a> == NULL)
+  {
+    <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>;
+    <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>;
+    <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>;
+    <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>;
+    <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>;
+    <span class="keyword">delete</span> [] <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>;
+  }
+  <span class="keywordflow">else</span>
+  {
+    <span class="keyword">delete</span> <a class="code" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">shm</a>;
+  }
 }
 </pre></div>
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a2a0cec98a7ac6b03d67654dec2d0bef8"></a><!-- doxytag: member="rlPlcState::clear" ref="a2a0cec98a7ac6b03d67654dec2d0bef8" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlPlcState::clear </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00079">79</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>     != NULL) memset(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a> != NULL) memset(<a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>     != NULL) memset(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a> != NULL) memset(<a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>     != NULL) memset(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>    ,0,<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>);
+  <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a> != NULL) memset(<a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>,0,<span class="keyword">sizeof</span>(<span class="keywordtype">double</span>)*<a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>);
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="a51a613421cd285607a57c2d294f874cc"></a><!-- doxytag: member="rlPlcState::clear" ref="a51a613421cd285607a57c2d294f874cc" args="(int index, int bit)" -->
 <div class="memitem">
 <div class="memproto">
@@ -240,7 +309,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00145">145</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00183">183</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span>;
   <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] = <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &amp; ~bit;
@@ -263,7 +332,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00133">133</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00171">171</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">return</span> <a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>[index] - <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>[index];
@@ -286,7 +355,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00127">127</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00165">165</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">return</span> <a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>[index] - <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>[index];
@@ -309,7 +378,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00121">121</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00159">159</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">return</span> <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] - <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>[index];
@@ -332,7 +401,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00072">72</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00110">110</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>[index] == <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>[index])       <span class="keywordflow">return</span> 0;
@@ -356,7 +425,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00114">114</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00152">152</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>[index] &lt; <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>[index])        <span class="keywordflow">return</span> 1;
@@ -380,7 +449,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00093">93</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00131">131</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189">max_double</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451">d</a>[index] &gt; <a class="code" href="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c">d_old</a>[index])        <span class="keywordflow">return</span> 1;
@@ -404,7 +473,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00065">65</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00103">103</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>[index] == <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>[index])      <span class="keywordflow">return</span> 0;
@@ -428,7 +497,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00107">107</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00145">145</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>[index] &lt; <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>[index])       <span class="keywordflow">return</span> 1;
@@ -452,7 +521,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00086">86</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00124">124</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>[index] &gt; <a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>[index])       <span class="keywordflow">return</span> 1;
@@ -486,7 +555,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00176">176</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00214">214</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>((<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &amp; bit) == 0) <span class="comment">// is bit clear ?</span>
@@ -524,7 +593,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00165">165</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00203">203</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &amp; bit) <span class="comment">// is bit set ?</span>
@@ -552,7 +621,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00058">58</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00096">96</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] == <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>[index])    <span class="keywordflow">return</span> 0;
@@ -576,7 +645,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00100">100</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00138">138</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &lt; <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>[index])     <span class="keywordflow">return</span> 1;
@@ -600,7 +669,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00079">79</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00117">117</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &gt; <a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>[index])     <span class="keywordflow">return</span> 1;
@@ -634,7 +703,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00158">158</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00196">196</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &amp; bit) <span class="keywordflow">return</span> 0;
@@ -668,7 +737,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00151">151</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00189">189</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] &amp; bit) <span class="keywordflow">return</span> 1;
@@ -691,7 +760,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00197">197</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00235">235</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a> - 1;
 }
@@ -712,7 +781,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00192">192</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00230">230</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a> - 1;
 }
@@ -733,7 +802,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00187">187</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00225">225</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a> - 1;
 }
@@ -754,7 +823,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00051">51</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00089">89</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   memcpy(<a class="code" href="classrlPlcState.html#a271718467b6807d370caa581db69daea">i_old</a>,<a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>,<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>)*<a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>);
   memcpy(<a class="code" href="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9">f_old</a>,<a class="code" href="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce">f</a>,<span class="keyword">sizeof</span>(<span class="keywordtype">float</span>)*<a class="code" href="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4">max_float</a>);
@@ -788,7 +857,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00139">139</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8cpp_source.html#l00177">177</a> of file <a class="el" href="rlplc_8cpp_source.html">rlplc.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index&lt;0 || index &gt;= <a class="code" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">max_int</a>) <span class="keywordflow">return</span>;
   <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] = <a class="code" href="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f">i</a>[index] | bit;
@@ -808,7 +877,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00028">28</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00029">29</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -823,7 +892,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00028">28</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00029">29</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -838,7 +907,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00027">27</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00028">28</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -853,7 +922,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00027">27</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00028">28</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -868,7 +937,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00026">26</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00027">27</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -883,7 +952,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00026">26</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00027">27</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -898,7 +967,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00053">53</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00056">56</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -913,7 +982,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00053">53</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00056">56</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
 
 </div>
 </div>
@@ -923,6 +992,21 @@ Private Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">int <a class="el" href="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be">rlPlcState::max_int</a><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlplc_8h_source.html#l00056">56</a> of file <a class="el" href="rlplc_8h_source.html">rlplc.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a7028cc02c20482bebb5697dfbefa5515"></a><!-- doxytag: member="rlPlcState::shm" ref="a7028cc02c20482bebb5697dfbefa5515" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classrlSharedMemory.html">rlSharedMemory</a>* <a class="el" href="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515">rlPlcState::shm</a></td>
         </tr>
       </table>
 </div>

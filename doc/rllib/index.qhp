@@ -1739,8 +1739,9 @@
       <keyword name="d" id="rlPlcMem::d" ref="classrlPlcMem.html#a8945fd8969f4ef445fe370be0bb48e16" />
       <keyword name="d_old" id="rlPlcMem::d_old" ref="classrlPlcMem.html#a3729e4ea5bf0d75e8ff48ef0ff8ad8b6" />
       <keyword name="rlPlcState" id="rlPlcState" ref="classrlPlcState.html" />
-      <keyword name="rlPlcState" id="rlPlcState::rlPlcState" ref="classrlPlcState.html#a42ec2bce167d82d4a497a0c9f096ae45" />
+      <keyword name="rlPlcState" id="rlPlcState::rlPlcState" ref="classrlPlcState.html#a74de6f6fe3d2a3e8a91d7e1ef53313b2" />
       <keyword name="~rlPlcState" id="rlPlcState::~rlPlcState" ref="classrlPlcState.html#aa71c73940c64f2d134c93df4ff3d1ebc" />
+      <keyword name="clear" id="rlPlcState::clear" ref="classrlPlcState.html#a2a0cec98a7ac6b03d67654dec2d0bef8" />
       <keyword name="rememberState" id="rlPlcState::rememberState" ref="classrlPlcState.html#a77b1b983c8ba28de88b433def0bf124b" />
       <keyword name="intChanged" id="rlPlcState::intChanged" ref="classrlPlcState.html#a0bc12088c0406bf3611a8334820c18b6" />
       <keyword name="floatChanged" id="rlPlcState::floatChanged" ref="classrlPlcState.html#a80dae83a757a84d414648395656f2484" />
@@ -1769,6 +1770,7 @@
       <keyword name="f_old" id="rlPlcState::f_old" ref="classrlPlcState.html#aebe88b37bd73f0e52e130f5e20f79bf9" />
       <keyword name="d" id="rlPlcState::d" ref="classrlPlcState.html#a60b9b1d9ac7708d727bc0d2bad327451" />
       <keyword name="d_old" id="rlPlcState::d_old" ref="classrlPlcState.html#ad94e7ceb90754bed4339d74825313b0c" />
+      <keyword name="shm" id="rlPlcState::shm" ref="classrlPlcState.html#a7028cc02c20482bebb5697dfbefa5515" />
       <keyword name="max_int" id="rlPlcState::max_int" ref="classrlPlcState.html#af45ea27fbe25776f9c4375fc6e0bf0be" />
       <keyword name="max_float" id="rlPlcState::max_float" ref="classrlPlcState.html#ac8f47c00a8578faf365d5860882bd7e4" />
       <keyword name="max_double" id="rlPlcState::max_double" ref="classrlPlcState.html#a67c04147fc04876a112df02a3edd2189" />
@@ -2103,7 +2105,7 @@
       <keyword name="delimitor" id="rlSpreadsheetWorkbook::delimitor" ref="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91" />
       <keyword name="firstTable" id="rlSpreadsheetWorkbook::firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
       <keyword name="rlStatemachine" id="rlStatemachine" ref="classrlStatemachine.html" />
-      <keyword name="rlStatemachine" id="rlStatemachine::rlStatemachine" ref="classrlStatemachine.html#a9636744df02cfdb8a413c0a3082a09ca" />
+      <keyword name="rlStatemachine" id="rlStatemachine::rlStatemachine" ref="classrlStatemachine.html#a0a5dcbe2a73dec06a75d12bfc5d8bf65" />
       <keyword name="~rlStatemachine" id="rlStatemachine::~rlStatemachine" ref="classrlStatemachine.html#a15d84b7df7d775e8b25bde002bfc2128" />
       <keyword name="setPlcStateInt" id="rlStatemachine::setPlcStateInt" ref="classrlStatemachine.html#a322bfec3d8b661afb6b330641d7aa020" />
       <keyword name="setPlcStateFloat" id="rlStatemachine::setPlcStateFloat" ref="classrlStatemachine.html#a9422190fc412b5918d66f2d7f1792970" />
@@ -2119,6 +2121,7 @@
       <keyword name="num_states" id="rlStatemachine::num_states" ref="classrlStatemachine.html#af0940d8732c9796924d4b757e02c8b94" />
       <keyword name="num_process_variables" id="rlStatemachine::num_process_variables" ref="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d" />
       <keyword name="state" id="rlStatemachine::state" ref="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641" />
+      <keyword name="haveto_free_state" id="rlStatemachine::haveto_free_state" ref="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2" />
       <keyword name="var" id="rlStatemachine::var" ref="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c" />
       <keyword name="rlString" id="rlString" ref="classrlString.html" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
@@ -3163,6 +3166,8 @@
       <file>classrlPlcMem.html</file>
       <file>classrlPlcMem-members.html</file>
       <file>classrlPlcState.html</file>
+      <file>classrlPlcState__coll__graph.png</file>
+      <file>classrlPlcState__coll__graph.png</file>
       <file>classrlPlcState-members.html</file>
       <file>classrlPPIClient.html</file>
       <file>classrlPPIClient__inherit__graph.png</file>

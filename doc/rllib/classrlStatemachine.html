@@ -90,14 +90,14 @@ Collaboration diagram for rlStatemachine:</div>
 <div class="dyncontent">
 <div class="center"><img src="classrlStatemachine__coll__graph.png" border="0" usemap="#rlStatemachine_coll__map" alt="Collaboration graph"/></div>
 <map name="rlStatemachine_coll__map" id="rlStatemachine_coll__map">
-<area shape="rect" id="node2" href="classrlPlcState.html" title="rlPlcState" alt="" coords="21,5,99,32"/></map>
+<area shape="rect" id="node2" href="classrlPlcState.html" title="rlPlcState" alt="" coords="23,96,101,123"/><area shape="rect" id="node4" href="classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="4,5,120,32"/></map>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 
 <p><a href="classrlStatemachine-members.html">List of all members.</a></p>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a9636744df02cfdb8a413c0a3082a09ca">rlStatemachine</a> (int numStates, int numProcessVariables)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a0a5dcbe2a73dec06a75d12bfc5d8bf65">rlStatemachine</a> (int numStates, int numProcessVariables, <a class="el" href="classrlPlcState.html">rlPlcState</a> *<a class="el" href="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641">state</a>=NULL)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a15d84b7df7d775e8b25bde002bfc2128">~rlStatemachine</a> ()</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a322bfec3d8b661afb6b330641d7aa020">setPlcStateInt</a> (int index, int val)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a9422190fc412b5918d66f2d7f1792970">setPlcStateFloat</a> (int index, float val)</td></tr>
@@ -115,6 +115,7 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#af0940d8732c9796924d4b757e02c8b94">num_states</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641">state</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2">haveto_free_state</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrlPlcState.html">rlPlcState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
@@ -159,7 +160,7 @@ in case of slotNullEvent update GUI
 </pre> 
 <p>Definition at line <a class="el" href="rlstatemachine_8h_source.html#l00063">63</a> of file <a class="el" href="rlstatemachine_8h_source.html">rlstatemachine.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a9636744df02cfdb8a413c0a3082a09ca"></a><!-- doxytag: member="rlStatemachine::rlStatemachine" ref="a9636744df02cfdb8a413c0a3082a09ca" args="(int numStates, int numProcessVariables)" -->
+<a class="anchor" id="a0a5dcbe2a73dec06a75d12bfc5d8bf65"></a><!-- doxytag: member="rlStatemachine::rlStatemachine" ref="a0a5dcbe2a73dec06a75d12bfc5d8bf65" args="(int numStates, int numProcessVariables, rlPlcState *state=NULL)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -173,7 +174,13 @@ in case of slotNullEvent update GUI
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>numProcessVariables</em>&#160;</td>
+          <td class="paramname"><em>numProcessVariables</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classrlPlcState.html">rlPlcState</a> *&#160;</td>
+          <td class="paramname"><em>state</em> = <code>NULL</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -186,13 +193,22 @@ in case of slotNullEvent update GUI
 
 <p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00010">10</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <a class="code" href="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641">state</a> = 0;
+  state = 0;
   <a class="code" href="classrlStatemachine.html#af0940d8732c9796924d4b757e02c8b94">num_states</a> = 0;
   <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a> = NULL;
   <a class="code" href="classrlStatemachine.html#af0940d8732c9796924d4b757e02c8b94">num_states</a> = numStates;
   <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a> = numProcessVariables;
   <span class="keywordflow">if</span>(numProcessVariables &lt;= 0) <span class="keywordflow">return</span>;
-  <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a> = <span class="keyword">new</span> <a class="code" href="classrlPlcState.html">rlPlcState</a>(numProcessVariables, numProcessVariables, numProcessVariables);
+  <span class="keywordflow">if</span>(state == NULL)
+  {
+    <a class="code" href="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2">haveto_free_state</a> = 1;
+    <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a> = <span class="keyword">new</span> <a class="code" href="classrlPlcState.html">rlPlcState</a>(numProcessVariables, numProcessVariables, numProcessVariables);
+  }
+  <span class="keywordflow">else</span>
+  {
+    <a class="code" href="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2">haveto_free_state</a> = 0;
+    <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a> = <a class="code" href="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641">state</a>;
+  }
 }
 </pre></div>
 </div>
@@ -211,9 +227,9 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00021">21</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00030">30</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <span class="keywordflow">if</span>(<a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a> != NULL) <span class="keyword">delete</span> <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a>;
+  <span class="keywordflow">if</span>(<a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a> != NULL &amp;&amp; <a class="code" href="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2">haveto_free_state</a>) <span class="keyword">delete</span> <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a>;
 }
 </pre></div>
 </div>
@@ -233,7 +249,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00056">56</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00065">65</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">// implement in subclass</span>
 }
@@ -265,7 +281,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00061">61</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00070">70</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">// implement in subclass and call rlStatemachine::enterState(newState,whichEntry);</span>
   <span class="keywordflow">if</span>(newState &lt; 0) <span class="keywordflow">return</span>;
@@ -291,7 +307,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00070">70</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00079">79</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">// implement in subclass</span>
   <span class="keywordflow">if</span>(whichExit){}
@@ -314,7 +330,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00092">92</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00101">101</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a>) <span class="keywordflow">return</span> 0;
@@ -339,7 +355,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00084">84</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00093">93</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a>) <span class="keywordflow">return</span> 0;
@@ -364,7 +380,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00076">76</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00085">85</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a>) <span class="keywordflow">return</span> 0;
@@ -388,7 +404,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00100">100</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00109">109</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641">state</a>;
 }
@@ -409,7 +425,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00105">105</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00114">114</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c">var</a>;
 }
@@ -441,7 +457,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00046">46</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00055">55</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a>) <span class="keywordflow">return</span> 0;
@@ -478,7 +494,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00036">36</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00045">45</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a>) <span class="keywordflow">return</span> 0;
@@ -515,7 +531,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00026">26</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8cpp_source.html#l00035">35</a> of file <a class="el" href="rlstatemachine_8cpp_source.html">rlstatemachine.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(index &gt;= <a class="code" href="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d">num_process_variables</a>) <span class="keywordflow">return</span> 0;
@@ -528,6 +544,21 @@ in case of slotNullEvent update GUI
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="afa900fb7711a5d3393d4c6a3ecb38ee2"></a><!-- doxytag: member="rlStatemachine::haveto_free_state" ref="afa900fb7711a5d3393d4c6a3ecb38ee2" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2">rlStatemachine::haveto_free_state</a><code> [protected]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlstatemachine_8h_source.html#l00082">82</a> of file <a class="el" href="rlstatemachine_8h_source.html">rlstatemachine.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a2cdd1991390e9af64ea1d85875b5b13d"></a><!-- doxytag: member="rlStatemachine::num_process_variables" ref="a2cdd1991390e9af64ea1d85875b5b13d" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -584,7 +615,7 @@ in case of slotNullEvent update GUI
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstatemachine_8h_source.html#l00082">82</a> of file <a class="el" href="rlstatemachine_8h_source.html">rlstatemachine.h</a>.</p>
+<p>Definition at line <a class="el" href="rlstatemachine_8h_source.html#l00083">83</a> of file <a class="el" href="rlstatemachine_8h_source.html">rlstatemachine.h</a>.</p>
 
 </div>
 </div>

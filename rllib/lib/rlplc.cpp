@@ -16,7 +16,7 @@
 #include <string.h>
 #include "rlplc.h"
 
-rlPlcState::rlPlcState(int numInt, int numFloat, int numDouble)
+rlPlcState::rlPlcState(int numInt, int numFloat, int numDouble, const char *shared_memory)
 {
   max_int = numInt;
   if(max_int <= 0) max_int = 1;
@@ -24,28 +24,66 @@ rlPlcState::rlPlcState(int numInt, int numFloat, int numDouble)
   if(max_float <= 0) max_float = 1;
   max_double = numDouble;
   if(max_double <= 0) max_double = 1;
-  i     = new int[max_int];
-  i_old = new int[max_int];
-  f     = new float[max_float];
-  f_old = new float[max_float];
-  d     = new double[max_double];
-  d_old = new double[max_double];
-  memset(i    ,0,sizeof(int)*max_int);
-  memset(i_old,0,sizeof(int)*max_int);
-  memset(f    ,0,sizeof(float)*max_float);
-  memset(f_old,0,sizeof(float)*max_float);
-  memset(d    ,0,sizeof(double)*max_double);
-  memset(d_old,0,sizeof(double)*max_double);
+  if(shared_memory == NULL)
+  { // use local memory
+    i     = new int[max_int];
+    i_old = new int[max_int];
+    f     = new float[max_float];
+    f_old = new float[max_float];
+    d     = new double[max_double];
+    d_old = new double[max_double];
+    memset(i    ,0,sizeof(int)*max_int);
+    memset(i_old,0,sizeof(int)*max_int);
+    memset(f    ,0,sizeof(float)*max_float);
+    memset(f_old,0,sizeof(float)*max_float);
+    memset(d    ,0,sizeof(double)*max_double);
+    memset(d_old,0,sizeof(double)*max_double);
+  }
+  else
+  { // map memory to shared memory
+    shm = new rlSharedMemory(shared_memory, sizeof(int)*max_int*2 + sizeof(float)*max_float*2 + sizeof(double)*max_double*2 );
+    if(shm->status == rlSharedMemory::OK)
+    {
+      void *ptr = shm->getUserAdr();
+      i     = (int *)    ptr;
+      i_old = (int *)    ptr + sizeof(int)*max_int;
+      f     = (float *)  ptr + sizeof(int)*max_int*2;
+      f_old = (float *)  ptr + sizeof(int)*max_int*2 + sizeof(float)*max_float;
+      d     = (double *) ptr + sizeof(int)*max_int*2 + sizeof(float)*max_float*2;
+      d_old = (double *) ptr + sizeof(int)*max_int*2 + sizeof(float)*max_float*2 + sizeof(double)*max_double;
+    }
+    else
+    {
+      printf("ERROR: rlPlcState sharedMemoryStatus(%s) is not OK\n", shared_memory);
+    }
+  }
 }
 
 rlPlcState::~rlPlcState()
 {
-  delete [] i;
-  delete [] i_old;
-  delete [] f;
-  delete [] f_old;
-  delete [] d;
-  delete [] d_old;
+  if(shm == NULL)
+  {
+    delete [] i;
+    delete [] i_old;
+    delete [] f;
+    delete [] f_old;
+    delete [] d;
+    delete [] d_old;
+  }
+  else
+  {
+    delete shm;
+  }
+}
+
+void rlPlcState::clear()
+{
+  if(i     != NULL) memset(i    ,0,sizeof(int)*max_int);
+  if(i_old != NULL) memset(i_old,0,sizeof(int)*max_int);
+  if(f     != NULL) memset(f    ,0,sizeof(float)*max_float);
+  if(f_old != NULL) memset(f_old,0,sizeof(float)*max_float);
+  if(d     != NULL) memset(d    ,0,sizeof(double)*max_double);
+  if(d_old != NULL) memset(d_old,0,sizeof(double)*max_double);
 }
 
 void rlPlcState::rememberState()

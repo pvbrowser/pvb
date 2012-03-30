@@ -7,7 +7,7 @@
 ***************************************************************************/
 #include "rlstatemachine.h"
 
-rlStatemachine::rlStatemachine(int numStates, int numProcessVariables)
+rlStatemachine::rlStatemachine(int numStates, int numProcessVariables, rlPlcState *state)
 {
   state = 0;
   num_states = 0;
@@ -15,12 +15,21 @@ rlStatemachine::rlStatemachine(int numStates, int numProcessVariables)
   num_states = numStates;
   num_process_variables = numProcessVariables;
   if(numProcessVariables <= 0) return;
-  var = new rlPlcState(numProcessVariables, numProcessVariables, numProcessVariables);
+  if(state == NULL)
+  {
+    haveto_free_state = 1;
+    var = new rlPlcState(numProcessVariables, numProcessVariables, numProcessVariables);
+  }
+  else
+  {
+    haveto_free_state = 0;
+    var = state;
+  }
 }
 
 rlStatemachine::~rlStatemachine()
 {
-  if(var != NULL) delete var;
+  if(var != NULL && haveto_free_state) delete var;
 }
 
 int rlStatemachine::setPlcStateInt(int index, int val)

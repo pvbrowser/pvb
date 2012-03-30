@@ -1,3 +1,4 @@
 <map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlPlcState.html" title="rlPlcState" alt="" coords="21,5,99,32"/>
+<area shape="rect" id="node2" href="$classrlPlcState.html" title="rlPlcState" alt="" coords="23,96,101,123"/>
+<area shape="rect" id="node4" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="4,5,120,32"/>
 </map>

@@ -63,7 +63,7 @@ while(1) // forever do the statemachines
 class rlStatemachine
 {
   public:
-    rlStatemachine(int numStates, int numProcessVariables);
+    rlStatemachine(int numStates, int numProcessVariables, rlPlcState *state=NULL);
     virtual ~rlStatemachine();
     int    setPlcStateInt(int index, int val);
     float  setPlcStateFloat(int index, float val);
@@ -79,6 +79,7 @@ class rlStatemachine
   protected:  
     int num_states, num_process_variables;
     int state;
+    int haveto_free_state;
     rlPlcState *var;
 };
 

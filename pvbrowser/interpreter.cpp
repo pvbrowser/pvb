@@ -3718,31 +3718,20 @@ void Interpreter::interprets(const char *command)
                 }
                 if(doit)
                 {
+                  f = fopen(cbuf,"w");
+                  if(f == NULL)
+                  {
+                    printf("could not write Cookie %s\n", (const char *) text.toUtf8());
+                  }
+                  else
+                  {
+                    fprintf(f,"%s\n", (const char *) text.toUtf8());
+                    fclose(f);
+                  }
                   if(text.startsWith("generate_cookie=") && opt.generate_cookie[0] != '\0')
                   { // you may generate a cookie that gives you permission to login to the pvserver
                     sprintf(buf,"%s %s", opt.generate_cookie, cbuf);
-                    QStringList sl = text.split("=");
-                    for(int i=0; i<sl.size(); i++)
-                    {
-                      strcat(buf," ");
-                      QString t = sl.at(i);
-                      if(strlen(buf) + t.length() + 2 > sizeof(buf)) return;
-                      strcat(buf, t.toUtf8());
-                    }          
                     mysystem(buf);
-                  }  
-                  else
-                  {
-                    f = fopen(cbuf,"w");
-                    if(f == NULL)
-                    {
-                      printf("could not write Cookie %s\n", (const char *) text.toUtf8());
-                    }
-                    else
-                    {
-                      fprintf(f,"%s\n", (const char *) text.toUtf8());
-                      fclose(f);
-                    }
                   }  
                 }
               }

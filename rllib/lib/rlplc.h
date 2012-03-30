@@ -17,15 +17,17 @@
 #define _RL_PLC_H_
 
 #include "rldefine.h"
+#include "rlsharedmemory.h"
 
 class rlPlcState
 {
   public:
-    rlPlcState(int numInt=100, int numFloat=100, int numDouble=0);
+    rlPlcState(int numInt=100, int numFloat=100, int numDouble=0, const char *shared_memory=NULL);
     virtual ~rlPlcState();
     int    *i, *i_old;
     float  *f, *f_old;
     double *d, *d_old;
+    void   clear();
     void   rememberState();
     int    intChanged(int index);
     int    floatChanged(int index);
@@ -48,6 +50,7 @@ class rlPlcState
     int    maxInt();
     int    maxFloat();
     int    maxDouble();
+    rlSharedMemory *shm;
 
   private:
     int max_int, max_float, max_double;
