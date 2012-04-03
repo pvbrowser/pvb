@@ -33,7 +33,29 @@
 #define MSG_NOSIGNAL 0
 #endif
 
+// functions from plugin
+typedef int (*pvb_com_con_func)(const char *adr, int port);
+pvb_com_con_func pvb_com_con = NULL;
+
+typedef int (*pvb_com_rec_func)(int ind, int s, char *msg, int len, int *use);
+pvb_com_rec_func pvb_com_rec = NULL;
+
+typedef int (*pvb_com_rec_binary_func)(int ind, int s, char *msg, int len, int *use);
+pvb_com_rec_binary_func pvb_com_rec_binary = NULL;
+
+typedef int (*pvb_com_send_func)(int ind, int s, const char *msg, int len, int *use);
+pvb_com_send_func pvb_com_send = NULL;
+
+typedef int (*pvb_com_close_func)(int ind, int s, int *use);
+pvb_com_close_func pvb_com_close = NULL;
+
+typedef int (*pvb_com_plugin_on_func)(int ind, const char *cmd);
+pvb_com_plugin_on_func pvb_com_plugin_on = NULL;
+
 #ifndef PVWIN32
+#include <dlfcn.h>
+#define RL_RTLD_LAZY RTLD_LAZY
+void *handle;
 #include <unistd.h>
 #include <sys/socket.h>
 #include <sys/time.h>
@@ -44,6 +66,9 @@
 #endif
 
 #ifdef PVWIN32
+#include <windows.h>
+#define RL_RTLD_LAZY 0
+HMODULE handle;
 #ifdef IS_OLD_MSVCPP
 #include "winsock.h"
 #else
@@ -73,10 +98,85 @@ static int rl_ipversion = 4; // only necessary because of MSVSCPP 6.0
 #endif
 
 extern OPT opt;
+#include "mainwindow.h"
+int socket_array[MAX_TABS+2];
+int use_pvb_com_plugin[MAX_TABS+2];
+
+int tcp_init()
+{
+  if(opt.arg_debug) printf("tcp_init(%s)\n", opt.pvb_com_plugin);
+  // int socket_array and use of pvb_com_plugin
+  for(int i=0; i<MAX_TABS+2; i++)
+  {
+    socket_array[i] = -1;
+    use_pvb_com_plugin[i] = 0;
+  }  
+
+  // load pvb_com plugin
+  pvb_com_con = NULL;
+  pvb_com_rec = NULL;
+  pvb_com_rec_binary = NULL;
+  pvb_com_send = NULL;
+  pvb_com_close = NULL;
+  pvb_com_plugin_on = NULL;
+  if(strlen(opt.pvb_com_plugin) > 0)
+  {
+    if(opt.arg_debug) printf("Load communication plugin: tcp_init(%s)\n", opt.pvb_com_plugin);
+#ifdef PVWIN32
+    ::SetLastError(0);
+    handle = ::LoadLibraryA(opt.pvb_com_plugin);
+    ::SetLastError(0);
+    if(handle != NULL)
+    {
+      pvb_com_con        = (pvb_com_con_func)        ::GetProcAddress(handle, "pvb_com_con");
+      pvb_com_rec        = (pvb_com_rec_func)        ::GetProcAddress(handle, "pvb_com_rec");
+      pvb_com_rec_binary = (pvb_com_rec_binary_func) ::GetProcAddress(handle, "pvb_com_rec_binary");
+      pvb_com_send       = (pvb_com_send_func)       ::GetProcAddress(handle, "pvb_com_send");
+      pvb_com_close      = (pvb_com_close_func)      ::GetProcAddress(handle, "pvb_com_close");
+      pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::GetProcAddress(handle, "pvb_com_plugin_on");
+    }  
+#else
+    handle = ::dlopen(opt.pvb_com_plugin, RL_RTLD_LAZY);
+    if(handle != NULL)
+    {
+      pvb_com_con        = (pvb_com_con_func)        ::dlsym(handle, "pvb_com_con");
+      pvb_com_rec        = (pvb_com_rec_func)        ::dlsym(handle, "pvb_com_rec");
+      pvb_com_rec_binary = (pvb_com_rec_binary_func) ::dlsym(handle, "pvb_com_rec_binary");
+      pvb_com_send       = (pvb_com_send_func)       ::dlsym(handle, "pvb_com_send");
+      pvb_com_close      = (pvb_com_close_func)      ::dlsym(handle, "pvb_com_close");
+      pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::dlsym(handle, "pvb_com_plugin_on");
+    }  
+#endif
+    if(opt.arg_debug)
+    {
+      printf("handle = %ld\n", (long) handle);
+      printf("pvb_com_con        = %ld\n", (long) pvb_com_con);
+      printf("pvb_com_rec        = %ld\n", (long) pvb_com_rec);
+      printf("pvb_com_rec_binary = %ld\n", (long) pvb_com_rec_binary);
+      printf("pvb_com_send       = %ld\n", (long) pvb_com_send);
+      printf("pvb_com_close      = %ld\n", (long) pvb_com_close);
+      printf("pvb_com_plugin_on  = %ld\n", (long) pvb_com_plugin_on);
+    }  
+  }  
+  return 0;
+}
+
+int tcp_free()
+{
+  if(handle != NULL)
+  {
+#ifdef PVWIN32
+    ::FreeLibrary(handle);
+#else
+    ::dlclose(handle);
+#endif
+  }
+  return 0;
+}
 
 int tcp_con(const char *adr, int port)
 {
-  static int                s;
+  static int                s, ind;
   static struct sockaddr_in remoteAddr;
   static struct hostent     *host;
   static struct in_addr     RemoteIpAddress;
@@ -88,6 +188,23 @@ int tcp_con(const char *adr, int port)
 #endif
 
   if(opt.arg_log) printf("conn=%s port=%d\n", adr, port);
+  if(pvb_com_con != NULL)
+  {
+    s = (pvb_com_con)(adr,port);
+    if(s > 0)
+    {
+      for(ind=1; ind<=MAX_TABS; ind++)
+      {
+        if(socket_array[ind] == -1)
+        {
+          socket_array[ind] = s;
+          use_pvb_com_plugin[ind] = 1;
+          break;
+        }
+      }
+      return ind;
+    }  
+  }
   if(rl_ipversion == 4)
   {
     s = socket(AF_INET,SOCK_STREAM,0);
@@ -155,16 +272,35 @@ int tcp_con(const char *adr, int port)
   {
     printf("tcp_con 4: ipversion=%d is not supported\n", rl_ipversion);
   }
-  return s;
+  for(ind=1; ind<=MAX_TABS; ind++)
+  {
+    if(socket_array[ind] == -1)
+    {
+      socket_array[ind] = s;
+      use_pvb_com_plugin[ind] = 0;
+      break;
+    }
+  }
+  return ind;
 }
 
-int tcp_rec(int *s, char *msg, int len)
+int tcp_rec(int *s_ind, char *msg, int len)
 {
   int ret,i;
 
-  if(s == NULL) { msg[0] = '\n'; msg[1] = '\0'; return -1; }
-  if(*s == -1)  { msg[0] = '\n'; msg[1] = '\0'; return -1; }
-
+  if(s_ind == NULL) { msg[0] = '\n'; msg[1] = '\0'; return -1; }
+  if(*s_ind == -1)  { msg[0] = '\n'; msg[1] = '\0'; return -1; }
+  int s = socket_array[*s_ind];
+  if(use_pvb_com_plugin[*s_ind])
+  {
+    ret = (pvb_com_rec)(*s_ind,s,msg,len,use_pvb_com_plugin);
+    if(ret < 0)
+    {
+      socket_array[*s_ind] = -1;
+      *s_ind = -1;
+    }
+    return ret;
+  }  
   /*
       struct timeval timout;
       fd_set rset;
@@ -187,7 +323,7 @@ int tcp_rec(int *s, char *msg, int len)
 #ifdef PVWIN32
 tryagain:
 #endif
-    ret = recv(*s,&msg[i],1,0);
+    ret = recv(s,&msg[i],1,0);
     if(ret <= 0)
     {
 #ifdef PVWIN32
@@ -199,14 +335,15 @@ tryagain:
           return -2;
         }  
         qApp->processEvents();
-        if(*s != -1)
+        if(s != -1)
         {
           goto tryagain;
         }  
       }
 #endif
-      if(*s != -1) closesocket(*s);
-      *s = -1;
+      if(s != -1) closesocket(s);
+      socket_array[*s_ind] = -1;
+      *s_ind = -1;
       msg[0] = '\n';
       msg[1] = '\0';
       if(opt.arg_log) printf("close connection\n");;
@@ -217,6 +354,14 @@ tryagain:
       i++;
       msg[i] = '\0';
       if(opt.arg_log) printf("recv=%s", msg);
+      if(msg[0] == '@')
+      {
+        if(strncmp(msg,"@plugin(", 8) == 0 && pvb_com_plugin_on != NULL)
+        {
+          use_pvb_com_plugin[*s_ind] = 1;
+          (pvb_com_plugin_on)(*s_ind,msg);
+        }
+      }
       return i;
     }
     i++;
@@ -226,32 +371,44 @@ tryagain:
   return i;
 }
 
-int tcp_rec_binary(int *s, char *msg, int len)
+int tcp_rec_binary(int *s_ind, char *msg, int len)
 {
   int ret,i;
 
-  if(s == NULL) return -1;
-  if(*s == -1) return -1;
+  if(s_ind == NULL) return -1;
+  if(*s_ind == -1) return -1;
+  int s = socket_array[*s_ind];
+  if(use_pvb_com_plugin[*s_ind])
+  {
+    ret = (pvb_com_rec_binary)(*s_ind,s,msg,len,use_pvb_com_plugin);
+    if(ret == -1)
+    {
+      socket_array[*s_ind] = -1;
+      *s_ind = -1;
+    }
+    return ret;
+  }  
   i = 0;
   while(i < len)
   {
 #ifdef PVWIN32
 tryagain:
 #endif
-    ret = recv(*s,&msg[i],len-i,0);
+    ret = recv(s,&msg[i],len-i,0);
     if(ret <= 0)
     {
 #ifdef PVWIN32
       if(WSAEWOULDBLOCK == WSAGetLastError())
       {
-        if(*s != -1)
+        if(s != -1)
         {
           goto tryagain;
         }  
       }
 #endif
-      if(*s != -1) closesocket(*s);
-      *s = -1;
+      if(s != -1) closesocket(s);
+      socket_array[*s_ind] = -1;
+      *s_ind = -1;
       return -1;
     }
     i += ret;
@@ -260,20 +417,37 @@ tryagain:
   return i;
 }
 
-int tcp_send(int *s, const char *msg, int len)
+int tcp_send(int *s_ind, const char *msg, int len)
 {
   int ret,bytes_left,first_byte;
 
   ret = 0;
-  if(s == NULL) return -1;
-  if(*s == -1) return -1;
+  if(s_ind == NULL) return -1;
+  if(*s_ind == -1) return -1;
+  int s = socket_array[*s_ind];
+  if(use_pvb_com_plugin[*s_ind])
+  {
+    ret = (pvb_com_send)(*s_ind,s,msg,len,use_pvb_com_plugin);
+    if(ret == -1)
+    {
+      socket_array[*s_ind] = -1;
+      *s_ind = -1;
+    }
+    return ret;
+  }  
   bytes_left = len;
   first_byte = 0;
 
   while(bytes_left > 0)
   {
-    ret = send(*s,&msg[first_byte],bytes_left,MSG_NOSIGNAL);
-    if(ret <= 0) { closesocket(*s); *s = -1; return -1; }
+    ret = send(s,&msg[first_byte],bytes_left,MSG_NOSIGNAL);
+    if(ret <= 0) 
+    { 
+      closesocket(s); 
+      socket_array[*s_ind] = -1;
+      *s_ind = -1; 
+      return -1; 
+    }
     bytes_left -= ret;
     first_byte += ret;
   }
@@ -283,11 +457,18 @@ int tcp_send(int *s, const char *msg, int len)
 
 int tcp_close(int *s)
 {
-  int stemp = *s;
   if(s == NULL) return -1;
+  int stemp = socket_array[ *s ];
   if(stemp == -1) return -1;
   tcp_send(s,"shutup\n",7);
-  *s = -1;
+  socket_array[ *s ] = -1;
+  if(pvb_com_close != NULL)
+  {
+    int ret = (pvb_com_close)(*s, stemp,use_pvb_com_plugin);
+    use_pvb_com_plugin[ *s ] = 0;
+    if(ret == 1) return 0;
+  }
+  use_pvb_com_plugin[ *s ] = 0;
   if(stemp != -1) closesocket(stemp);
   if(opt.arg_log) printf("close connection\n");;
   return 0;

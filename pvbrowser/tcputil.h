@@ -14,6 +14,8 @@
 **
 ****************************************************************************/
 //extern "C" {
+int tcp_init();
+int tcp_free();
 int tcp_con(const char *adr, int port);
 int tcp_rec(int *s, char *msg, int len);
 int tcp_rec_binary(int *s, char *msg, int len);

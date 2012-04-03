@@ -13,6 +13,7 @@ android-g++ {
 }  
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
+unix:LIBS    += -ldl
 QT           += xml opengl svg webkit network
 #mobile devices without opengl
 #QT           += xml svg webkit network

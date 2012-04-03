@@ -1099,8 +1099,8 @@ class rlPlcState(_object):
     __swig_getmethods__ = {}
     __getattr__ = lambda self, name: _swig_getattr(self, rlPlcState, name)
     __repr__ = _swig_repr
-    def __init__(self, numInt = 100, numFloat = 100, numDouble = 0): 
-        this = _rllib.new_rlPlcState(numInt, numFloat, numDouble)
+    def __init__(self, numInt = 100, numFloat = 100, numDouble = 0, shared_memory = None): 
+        this = _rllib.new_rlPlcState(numInt, numFloat, numDouble, shared_memory)
         try: self.this.append(this)
         except: self.this = this
     __swig_destroy__ = _rllib.delete_rlPlcState
@@ -1145,6 +1145,9 @@ class rlPlcState(_object):
     def maxInt(self): return _rllib.rlPlcState_maxInt(self)
     def maxFloat(self): return _rllib.rlPlcState_maxFloat(self)
     def maxDouble(self): return _rllib.rlPlcState_maxDouble(self)
+    __swig_setmethods__["shm"] = _rllib.rlPlcState_shm_set
+    __swig_getmethods__["shm"] = _rllib.rlPlcState_shm_get
+    if _newclass:shm = _swig_property(_rllib.rlPlcState_shm_get, _rllib.rlPlcState_shm_set)
 rlPlcState_swigregister = _rllib.rlPlcState_swigregister
 rlPlcState_swigregister(rlPlcState)
 

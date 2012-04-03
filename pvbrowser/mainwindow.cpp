@@ -25,6 +25,7 @@
 #include <QPrinter>
 
 extern OPT opt;
+extern int socket_array[];
 
 extern QString l_file;
 extern QString l_options;
@@ -155,7 +156,7 @@ void MyThread::run()
 {
   struct timeval timout;
   fd_set rset;
-  int    ret,maxfd,i,s,num_tabs,emit_count;
+  int    ret,maxfd,i,s,ind,num_tabs,emit_count;
 
   if(pv == NULL) exit();
   setlocale(LC_NUMERIC,"C");
@@ -178,7 +179,9 @@ void MyThread::run()
       maxfd = -1;
       for(i=0; i<num_tabs; i++)
       {
-        s = pv->pvbtab[i].s;
+        ind = pv->pvbtab[i].s;
+        if(ind < 0) s = -1;
+        else s = socket_array[ind];
         if(s != -1) FD_SET (s,&rset);
         if(s > maxfd) maxfd = s;
       }
@@ -204,7 +207,9 @@ void MyThread::run()
       { // data available
         for(i=0; i<num_tabs; i++)
         {
-          s = pv->pvbtab[i].s;
+          ind = pv->pvbtab[i].s;
+          if(ind < 0) s = -1;
+          else        s = socket_array[ ind ];
           if(s != -1)
           {
             if(FD_ISSET(s,&rset))
@@ -276,6 +281,7 @@ MainWindow::MainWindow()
   if(opt.menubar   == 0) menuBar()->hide();
   if(opt.toolbar   == 0) fileToolBar->hide();
   if(opt.statusbar == 0) statusBar()->hide();
+  tcp_init();
 
   setCurrentFile("");
   readHosts();
@@ -353,6 +359,7 @@ MainWindow::~MainWindow()
     mythread.terminate();
     mythread.wait();
   }
+  tcp_free();
 }
 
 void MainWindow::slotExit()

@@ -14860,6 +14860,35 @@ static int _wrap_new_rlPlcState__SWIG_0(lua_State* L) {
   int arg1 ;
   int arg2 ;
   int arg3 ;
+  char *arg4 = (char *) 0 ;
+  rlPlcState *result = 0 ;
+  
+  SWIG_check_num_args("rlPlcState::rlPlcState",4,4)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlPlcState::rlPlcState",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::rlPlcState",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlPlcState::rlPlcState",3,"int");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("rlPlcState::rlPlcState",4,"char const *");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (rlPlcState *)new rlPlcState(arg1,arg2,arg3,(char const *)arg4);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlPlcState,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlPlcState__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
   rlPlcState *result = 0 ;
   
   SWIG_check_num_args("rlPlcState::rlPlcState",3,3)
@@ -14881,7 +14910,7 @@ fail:
 }
 
 
-static int _wrap_new_rlPlcState__SWIG_1(lua_State* L) {
+static int _wrap_new_rlPlcState__SWIG_2(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
   int arg2 ;
@@ -14904,7 +14933,7 @@ fail:
 }
 
 
-static int _wrap_new_rlPlcState__SWIG_2(lua_State* L) {
+static int _wrap_new_rlPlcState__SWIG_3(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
   rlPlcState *result = 0 ;
@@ -14924,7 +14953,7 @@ fail:
 }
 
 
-static int _wrap_new_rlPlcState__SWIG_3(lua_State* L) {
+static int _wrap_new_rlPlcState__SWIG_4(lua_State* L) {
   int SWIG_arg = 0;
   rlPlcState *result = 0 ;
   
@@ -14943,13 +14972,13 @@ fail:
 
 static int _wrap_new_rlPlcState(lua_State* L) {
   int argc;
-  int argv[4]={
-    1,2,3,4
+  int argv[5]={
+    1,2,3,4,5
   };
   
   argc = lua_gettop(L);
   if (argc == 0) {
-    return _wrap_new_rlPlcState__SWIG_3(L);
+    return _wrap_new_rlPlcState__SWIG_4(L);
   }
   if (argc == 1) {
     int _v;
@@ -14957,7 +14986,7 @@ static int _wrap_new_rlPlcState(lua_State* L) {
       _v = lua_isnumber(L,argv[0]);
     }
     if (_v) {
-      return _wrap_new_rlPlcState__SWIG_2(L);
+      return _wrap_new_rlPlcState__SWIG_3(L);
     }
   }
   if (argc == 2) {
@@ -14970,7 +14999,7 @@ static int _wrap_new_rlPlcState(lua_State* L) {
         _v = lua_isnumber(L,argv[1]);
       }
       if (_v) {
-        return _wrap_new_rlPlcState__SWIG_1(L);
+        return _wrap_new_rlPlcState__SWIG_2(L);
       }
     }
   }
@@ -14988,7 +15017,31 @@ static int _wrap_new_rlPlcState(lua_State* L) {
           _v = lua_isnumber(L,argv[2]);
         }
         if (_v) {
-          return _wrap_new_rlPlcState__SWIG_0(L);
+          return _wrap_new_rlPlcState__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = SWIG_lua_isnilstring(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_new_rlPlcState__SWIG_0(L);
+          }
         }
       }
     }
@@ -14996,6 +15049,7 @@ static int _wrap_new_rlPlcState(lua_State* L) {
   
   lua_pushstring(L,"Wrong arguments for overloaded function 'new_rlPlcState'\n"
     "  Possible C/C++ prototypes are:\n"
+    "    rlPlcState::rlPlcState(int,int,int,char const *)\n"
     "    rlPlcState::rlPlcState(int,int,int)\n"
     "    rlPlcState::rlPlcState(int,int)\n"
     "    rlPlcState::rlPlcState(int)\n"
@@ -15318,6 +15372,29 @@ static int _wrap_rlPlcState_d_old_get(lua_State* L) {
   
   result = (double *) ((arg1)->d_old);
   SWIG_NewPointerObj(L,result,SWIGTYPE_p_double,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_clear__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  
+  SWIG_check_num_args("rlPlcState::clear",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::clear",1,"rlPlcState *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_clear",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  (arg1)->clear();
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -15704,7 +15781,7 @@ fail:
 }
 
 
-static int _wrap_rlPlcState_clear(lua_State* L) {
+static int _wrap_rlPlcState_clear__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
   rlPlcState *arg1 = (rlPlcState *) 0 ;
   int arg2 ;
@@ -15730,6 +15807,60 @@ static int _wrap_rlPlcState_clear(lua_State* L) {
 fail:
   lua_error(L);
   return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_clear(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlPlcState, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_rlPlcState_clear__SWIG_0(L);
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlPlcState, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlPlcState_clear__SWIG_1(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlPlcState_clear'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlPlcState::clear()\n"
+    "    rlPlcState::clear(int,int)\n");
+  lua_error(L);return 0;
 }
 
 
@@ -15925,6 +16056,60 @@ fail:
 }
 
 
+static int _wrap_rlPlcState_shm_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  rlSharedMemory *arg2 = (rlSharedMemory *) 0 ;
+  
+  SWIG_check_num_args("rlPlcState::shm",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::shm",1,"rlPlcState *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlPlcState::shm",2,"rlSharedMemory *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_shm_set",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlSharedMemory,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("rlPlcState_shm_set",2,SWIGTYPE_p_rlSharedMemory);
+  }
+  
+  if (arg1) (arg1)->shm = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_shm_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  rlSharedMemory *result = 0 ;
+  
+  SWIG_check_num_args("rlPlcState::shm",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::shm",1,"rlPlcState *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_shm_get",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  result = (rlSharedMemory *) ((arg1)->shm);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlSharedMemory,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlPlcState(void *obj) {
 rlPlcState *arg1 = (rlPlcState *) obj;
 delete arg1;
@@ -15961,6 +16146,7 @@ static swig_lua_attribute swig_rlPlcState_attributes[] = {
     { "f_old", _wrap_rlPlcState_f_old_get, _wrap_rlPlcState_f_old_set},
     { "d", _wrap_rlPlcState_d_get, _wrap_rlPlcState_d_set},
     { "d_old", _wrap_rlPlcState_d_old_get, _wrap_rlPlcState_d_old_set},
+    { "shm", _wrap_rlPlcState_shm_get, _wrap_rlPlcState_shm_set},
     {0,0,0}
 };
 static swig_lua_class *swig_rlPlcState_bases[] = {0};

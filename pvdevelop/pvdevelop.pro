@@ -9,6 +9,7 @@ DEFINES      += PVDEVELOP
 #DEFINES     += NO_QWT
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
+unix:LIBS    += -ldl
 
 HEADERS       = mainwindow.h \
                 opt.h \

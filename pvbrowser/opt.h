@@ -67,6 +67,7 @@ typedef struct
   char view_csv[MAXOPT];    // ooffice
   char view_html[MAXOPT];   // firefox
   char generate_cookie[MAXOPT]; // generate a cookie to give you permission to login to the pvserver
+  char pvb_com_plugin[MAXOPT];  // pvb communication plugin
 
   // command line args
   int  arg_debug;
