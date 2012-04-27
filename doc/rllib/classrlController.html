@@ -135,6 +135,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#abe8af0725f4d4bbbf81092f73aa17b2e">setPI_SUM</a> (double _T, double _Kp, double _Tn)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a1f67e4363d75fdb170da6754c3ef6958">setPD_T1_SUM</a> (double _T, double _Kp, double _Tv, double _Td)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#aea7b7577fad00e1159827c0cb675eb6f">setPID_T1_SUM</a> (double _T, double _Kp, double _Tn, double _Tv, double _Td)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a4934dfecb1ed860021eb61074e28bd15">setLimits</a> (double _yk_min, double _yk_max)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a69bc9d1dc7b58ef158b36032b6b72e16">resetLimits</a> ()</td></tr>
 <tr><td colspan="2"><h2><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a5567368162d86ee84559f2573b073a75">Kp</a></td></tr>
@@ -172,6 +174,9 @@ Public Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a0097511f56814a3daa58b677e7237e4e">writeOutput</a> )(double output)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a155171495dfa7e99c12c95a80de20aed">sleepLocally</a></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">measurement</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a681a20b2e11f3cdb01dde8903b645bdd">yk_min</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a603230647dc45c90fbafc8f581862f7a">yk_max</a></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlController.html#a43983410385111ed15103ea18fc3427b">limited</a></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><pre>
@@ -255,7 +260,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00070">70</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00079">79</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">             :<a class="code" href="classrlThread.html#a25bfd19bd7b382d71ecb12b554a31b3f">rlThread</a>()
 {
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = -1;
@@ -272,6 +277,9 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
   <a class="code" href="classrlController.html#a07c5e171c009fcdd2cfb0c82616b9b55">ek_2</a>  = 0.0f;
   <a class="code" href="classrlController.html#a1e5ae487392c46aa7b4351a9a8d40dfe">ek_1</a>  = 0.0f;
   <a class="code" href="classrlController.html#a4723fb3a6808c7809438e03523534728">ek</a>    = 0.0f;
+  <a class="code" href="classrlController.html#a43983410385111ed15103ea18fc3427b">limited</a> = 0;
+  <a class="code" href="classrlController.html#a681a20b2e11f3cdb01dde8903b645bdd">yk_min</a> = -999999;
+  <a class="code" href="classrlController.html#a603230647dc45c90fbafc8f581862f7a">yk_max</a> =  999999;
   <a class="code" href="classrlController.html#ad857f1f8b338e6f5d046beddf2c81e9a">reference</a> = <a class="code" href="classrlController.html#ae3513748d88e939322a808cc3a590bdf">measurement</a> = 0.0;
   <a class="code" href="classrlController.html#a155171495dfa7e99c12c95a80de20aed">sleepLocally</a> = 1;
 }
@@ -292,7 +300,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00091">91</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00103">103</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlController.html#a9320b12b8bf9a13f2123a5eae3b46643">stop</a>();
 }
@@ -300,6 +308,33 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 </div>
 <hr/><h2>Member Function Documentation</h2>
+<a class="anchor" id="a69bc9d1dc7b58ef158b36032b6b72e16"></a><!-- doxytag: member="rlController::resetLimits" ref="a69bc9d1dc7b58ef158b36032b6b72e16" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlController::resetLimits </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+  Reset limits for the controller output
+  </pre> 
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00271">271</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
+  <a class="code" href="classrlController.html#a681a20b2e11f3cdb01dde8903b645bdd">yk_min</a> = -999999;
+  <a class="code" href="classrlController.html#a603230647dc45c90fbafc8f581862f7a">yk_max</a> =  999999;
+  <a class="code" href="classrlController.html#a43983410385111ed15103ea18fc3427b">limited</a> = 0;
+  <a class="code" href="classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3">rlThread::unlock</a>();
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="afc028113e1f7d164b3c6c3d2effa0aee"></a><!-- doxytag: member="rlController::setD_T1" ref="afc028113e1f7d164b3c6c3d2effa0aee" args="(double _T, double _TD, double _Td)" -->
 <div class="memitem">
 <div class="memproto">
@@ -336,7 +371,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                              1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00147">147</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00159">159</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea82d0e8d628e6a4eb667aac4c586af636">D_T1</a>;
@@ -382,7 +417,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                              T1 * s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00134">134</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00146">146</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea4f4d35caf37b1e892be4680e1f70cc2c">I</a>;
@@ -392,6 +427,44 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
   <a class="code" href="classrlController.html#ab49009b0eac9d7c42da00966965a75fc">d0</a> = <a class="code" href="classrlController.html#a159cdc56143fda2056218566d53df09a">T</a>/(2.0*<a class="code" href="classrlController.html#a9976979bc9e90f49a9d2a043e602e2b7">T1</a>);
   <a class="code" href="classrlController.html#a8c23fbff9c690e2c5df7bc05189ec9fd">d1</a> = <a class="code" href="classrlController.html#a159cdc56143fda2056218566d53df09a">T</a>/(2.0*<a class="code" href="classrlController.html#a9976979bc9e90f49a9d2a043e602e2b7">T1</a>);
   <a class="code" href="classrlController.html#a83c982f1bc850544ba1b19f6cf713f72">c1</a> = 1.0;
+  <a class="code" href="classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3">rlThread::unlock</a>();
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a4934dfecb1ed860021eb61074e28bd15"></a><!-- doxytag: member="rlController::setLimits" ref="a4934dfecb1ed860021eb61074e28bd15" args="(double _yk_min, double _yk_max)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlController::setLimits </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_yk_min</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>_yk_max</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+  Set limits for the controller output
+  </pre> 
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00262">262</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
+  <a class="code" href="classrlController.html#a681a20b2e11f3cdb01dde8903b645bdd">yk_min</a> = _yk_min;
+  <a class="code" href="classrlController.html#a603230647dc45c90fbafc8f581862f7a">yk_max</a> = _yk_max;
+  <a class="code" href="classrlController.html#a43983410385111ed15103ea18fc3427b">limited</a> = 1;
   <a class="code" href="classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3">rlThread::unlock</a>();
 }
 </pre></div>
@@ -424,7 +497,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   Transfer function: Gr(s) = Kp
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00135">135</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea37dc7235da93209ae9a1a14edb9da809">P</a>;
@@ -479,7 +552,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                   1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00175">175</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00187">187</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396eaefffaf708db8055b16bd2ca85083e19f">PD_T1</a>;
@@ -538,7 +611,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                         1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00220">220</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00232">232</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396eaca0a3ac006d0b17220e0ad613c8e342b">PD_T1_SUM</a>;
@@ -590,7 +663,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                    Tn*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00161">161</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00173">173</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea07fb498708b0c8063b1caf5391eb4405">PI</a>;
@@ -642,7 +715,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                         Tn*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00208">208</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00220">220</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396eaf256d9429ac8b8cd2c63ab18f643275f">PI_SUM</a>;
@@ -704,7 +777,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                      TnP*s     1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00190">190</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00202">202</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea0ebfc0405d3d09ee9718788d04517a7f">PID_T1</a>;
@@ -772,7 +845,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
                                         Tn*s   1 + Td*s
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00234">234</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00246">246</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">rlThread::lock</a>();
   <a class="code" href="classrlController.html#ac8167273ac8a412d83c557ffc4b2b84d">type</a> = <a class="code" href="classrlController.html#a111d33ec0f2e4c5601008421269b396ea8239d215cefcf8cddc1489f15d4be4de">PID_T1_SUM</a>;
@@ -807,7 +880,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   Set the reference value for the controller
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00118">118</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00130">130</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlController.html#ad857f1f8b338e6f5d046beddf2c81e9a">reference</a> = _reference;
 }
@@ -828,7 +901,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00096">96</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00108">108</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a> = 1;
   <a class="code" href="classrlController.html#a85898bc18cf5d29abbdeb8a85beed41c">ydk_1</a> = 0.0f;
@@ -860,7 +933,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00112">112</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8cpp_source.html#l00124">124</a> of file <a class="el" href="rlcontroller_8cpp_source.html">rlcontroller.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(<a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a>) <a class="code" href="classrlThread.html#a942c994869562d19a57919afa7d5d80a">rlThread::cancel</a>();
   <a class="code" href="classrlController.html#a74ca7e98649ac725faf7497844b6af64">running</a> = 0;
@@ -880,7 +953,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00119">119</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00127">127</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -895,7 +968,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00119">119</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00127">127</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -910,7 +983,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00119">119</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00127">127</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -925,7 +998,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00118">118</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00126">126</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -940,7 +1013,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00118">118</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00126">126</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -955,7 +1028,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00118">118</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00126">126</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -970,7 +1043,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00118">118</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00126">126</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -985,7 +1058,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00131">131</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +1073,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00121">121</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00129">129</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1015,7 +1088,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00121">121</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00129">129</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1030,7 +1103,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00121">121</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00129">129</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1047,7 +1120,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   You have to supply this function for getting the measurement
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00128">128</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00136">136</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1066,7 +1139,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
   Use the set methods, because they will also set the coefficients
   Controller parameters are for reading only
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1081,7 +1154,22 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a43983410385111ed15103ea18fc3427b"></a><!-- doxytag: member="rlController::limited" ref="a43983410385111ed15103ea18fc3427b" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int <a class="el" href="classrlController.html#a43983410385111ed15103ea18fc3427b">rlController::limited</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00160">160</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1186,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   last measurement 
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00146">146</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00154">154</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1113,7 +1201,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1128,7 +1216,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00117">117</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00125">125</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1238,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
   double (*_getMeasurement)();
   T = cycle time in seconds
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00142">142</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00150">150</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1165,7 +1253,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1180,7 +1268,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1283,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1210,7 +1298,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1225,7 +1313,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1240,7 +1328,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1255,7 +1343,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1270,7 +1358,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00115">115</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00123">123</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1285,7 +1373,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00116">116</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00124">124</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1302,7 +1390,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 <pre>
   You have to supply this function for writing the output
   </pre> 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00132">132</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00140">140</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1317,7 +1405,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00122">122</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00130">130</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1332,7 +1420,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00122">122</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00130">130</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1347,7 +1435,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00122">122</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00130">130</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1362,7 +1450,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00122">122</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00130">130</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1377,7 +1465,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00120">120</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00128">128</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1392,7 +1480,7 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00120">120</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00128">128</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>
@@ -1407,7 +1495,39 @@ Page 436-437, Regelalgorithmen mit der Trapezregel
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00120">120</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00128">128</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a603230647dc45c90fbafc8f581862f7a"></a><!-- doxytag: member="rlController::yk_max" ref="a603230647dc45c90fbafc8f581862f7a" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classrlController.html#a603230647dc45c90fbafc8f581862f7a">rlController::yk_max</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00159">159</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a681a20b2e11f3cdb01dde8903b645bdd"></a><!-- doxytag: member="rlController::yk_min" ref="a681a20b2e11f3cdb01dde8903b645bdd" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classrlController.html#a681a20b2e11f3cdb01dde8903b645bdd">rlController::yk_min</a></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+  limits 
+  </pre> 
+<p>Definition at line <a class="el" href="rlcontroller_8h_source.html#l00158">158</a> of file <a class="el" href="rlcontroller_8h_source.html">rlcontroller.h</a>.</p>
 
 </div>
 </div>

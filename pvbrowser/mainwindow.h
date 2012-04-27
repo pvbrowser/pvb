@@ -111,6 +111,8 @@ public:
   PVBTAB pvbtab[MAX_TABS];
   QComboBox *urlComboBox;
   MyThread mythread;
+  QMap <QString,QLibrary *> libs; // custom widget plugin libs
+  QMap <QString,QWidget *(*)(const char * , int *, int , QWidget *, const char * )> newCustomWidget;
 
 public slots:
   void slotUrl(const QString &url);

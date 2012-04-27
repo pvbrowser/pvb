@@ -61,6 +61,15 @@ static void *control(void *arg)
       default:
         break;
     }
+    if(c->limited)
+    {
+      if(c->yk  > c->yk_max) c->yk  = c->yk_max;
+      if(c->yk  < c->yk_min) c->yk  = c->yk_min;
+      if(c->y1k > c->yk_max) c->y1k = c->yk_max;
+      if(c->y1k < c->yk_min) c->y1k = c->yk_min;
+      if(c->ydk > c->yk_max) c->ydk = c->yk_max;
+      if(c->ydk < c->yk_min) c->ydk = c->yk_min;
+    }
     c->unlock();
     c->writeOutput(c->yk);
   }
@@ -84,6 +93,9 @@ rlController::rlController(double (*_getMeasurement)() ,void (_writeOutput)(doub
   ek_2  = 0.0f;
   ek_1  = 0.0f;
   ek    = 0.0f;
+  limited = 0;
+  yk_min = -999999;
+  yk_max =  999999;
   reference = measurement = 0.0;
   sleepLocally = 1;
 }
@@ -244,6 +256,24 @@ void rlController::setPID_T1_SUM(double _T, double _Kp, double _Tn, double _Tv, 
   d1 = Kp*T/(2.0*Tn);
   dD = Kp * (Tv/(Td+T/2.0));
   cD = (Td-T/2.0)/(Td+T/2.0);
+  rlThread::unlock();
+}
+
+void rlController::setLimits(double _yk_min, double _yk_max)
+{
+  rlThread::lock();
+  yk_min = _yk_min;
+  yk_max = _yk_max;
+  limited = 1;
+  rlThread::unlock();
+}
+
+void rlController::resetLimits()
+{
+  rlThread::lock();
+  yk_min = -999999;
+  yk_max =  999999;
+  limited = 0;
   rlThread::unlock();
 }
 

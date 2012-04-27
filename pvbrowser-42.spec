@@ -144,6 +144,7 @@ cd ..
 %__mkdir_p  %{buildroot}/opt/pvb/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/pvserver
 %__mkdir_p  %{buildroot}/opt/pvb/pvbrowser
+%__mkdir_p  %{buildroot}/opt/pvb/pvbrowser/widget_plugins
 %__mkdir_p  %{buildroot}/opt/pvb/pvdevelop
 %__mkdir_p  %{buildroot}/opt/pvb/start_pvbapp
 %__mkdir_p  %{buildroot}/opt/pvb/designer/plugins

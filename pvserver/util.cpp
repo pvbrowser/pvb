@@ -2029,6 +2029,38 @@ char buf[80];
   return 0;
 }
 
+//cf custom widget
+int pvQCustomWidget(PARAM *p, int id, int parent, const char *name, const char *arg)
+{
+  char buf[MAX_PRINTF_LENGTH];
+
+  pv_length_check(p,name); // check for the maximum allowed string length
+  sprintf(buf,"QCustomWidget(%d,%d,\"%s\")\n",id,parent,name);
+  pvtcpsend(p, buf, strlen(buf));
+  if(arg == NULL)
+  {
+    pvtcpsend(p, "\n", strlen("\n"));
+  }  
+  else
+  {
+    pvtcpsend(p, arg, strlen(arg));
+    pvtcpsend(p, "\n", strlen("\n"));
+  }  
+  return 0;
+}
+
+int pvSetWidgetProperty(PARAM *p, int id, const char *name, const char *value)
+{
+  char buf[MAX_PRINTF_LENGTH];
+
+  pv_length_check(p,name); // check for the maximum allowed string length
+  sprintf(buf,"setProperty(%d,\"%s\")\n",id,name);
+  pvtcpsend(p, buf, strlen(buf));
+  pvtcpsend(p, value, strlen(value));
+  pvtcpsend(p, "\n", strlen("\n"));
+  return 0;
+}
+
 int pvEndDefinition(PARAM *p)
 {
 char buf[80];

@@ -122,6 +122,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gaa6974e380667ffbb04d0a00712e9bc93">pvQDateEdit</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int parent)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#ga5072eaa9d7753e2d49dfd6a124bcbfbb">pvQTimeEdit</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int parent)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#ga92ea45f2f6a9ff88665c9182a5b1f3a6">pvQDateTimeEdit</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int parent)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#ga17efd3d67c69a858b6ad28ded75d4561">pvQCustomWidget</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int parent, const char *name, const char *arg=NULL)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gad993c7805768c6c344e9eff5b4e7b149">pvEndDefinition</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gaae68956a66407b1224fcbf30aacd823c">pvAddWidgetOrLayout</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int item, int row, int col)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Contruction.html#gacc51ebf27bb0813be09eab20abec0111">pvAddStretch</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int param)</td></tr>
@@ -460,6 +461,76 @@ Creates a new QComboBox. See also <a class="el" href="group__Contruction.html#ga
 <a class="el" href="group__Output.html#gada7645ed843776a692b2a9462adb2a3d">pvRemoveItemByName()</a>
 <a class="el" href="group__State.html#ga832d1da6ae2a39356428e34eee97a47e">pvSetCurrentItem()</a>
 <a class="el" href="group__State.html#ga5d8d92745b72ea32a39262d7b081a8b1">pvSetEditable()</a>
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga17efd3d67c69a858b6ad28ded75d4561"></a><!-- doxytag: member="processviewserver.h::pvQCustomWidget" ref="ga17efd3d67c69a858b6ad28ded75d4561" args="(PARAM *p, int id, int parent, const char *name, const char *arg=NULL)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvQCustomWidget </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>parent</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>arg</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+create a QCustomWidget provided by a plugin.
+name := "/library/widgettype&lt;:arg&gt;" defined by the whats_this property in the designer.
+        library is the name without the platform dependend extension (.so, .dll, .dylib).
+        The library_filename will be PVB_WIDGET_PLUGINDIR/library.platform_extension.
+        PVB_WIDGET_PLUGINDIR is defined in the pvbrowser ini file.
+arg  := argument for the widget constructor defined by the whats_this property in the designer.</pre><pre>Functions that apply to this widget:
+<a class="el" href="group__IniAndGlobal.html#ga4cf6c6a3745f02a74c7b4648d8511a12">pvSetWhatsThis()</a>
+<a class="el" href="group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06">pvWhatsThisPrintf()</a>
+<a class="el" href="group__Output.html#gab56da8f94cbd4d5b374071bf38a81596">pvToolTip()</a>
+<a class="el" href="group__State.html#gaf4b2950e75c28de7614fe0539655fcef">pvSetGeometry()</a>
+<a class="el" href="group__State.html#gaa85df66b6dc6c82d9978240ee49e527d">pvSetMinSize()</a>
+<a class="el" href="group__State.html#gaaf4954a12d891341b0221533cc1d8dcc">pvSetMaxSize()</a>
+<a class="el" href="group__State.html#gafe2cb412a4a628304050939a0ac2e440">pvMove()</a>;
+<a class="el" href="group__State.html#ga5987ac476d6a99a5a0a92a986ead7dc1">pvResize()</a>;
+<a class="el" href="group__State.html#ga930612bf6b683ce50222746f4ef76be6">pvHide()</a>;
+<a class="el" href="group__State.html#gacfd5107035ddf45efd456b435f6b850a">pvShow()</a>;
+<a class="el" href="group__Output.html#ga16e65a199250ef499023173605851cbc">pvSetPaletteBackgroundColor()</a>
+<a class="el" href="group__Output.html#gab4e775b45daebb1dbd2a79869cedcb66">pvSetPaletteForegroundColor()</a>
+<a class="el" href="group__Output.html#ga2430f74771689aeb74166622b2699152">pvSetFontColor()</a>
+<a class="el" href="group__Output.html#ga256b836700ea2d2b610173001720b8a4">pvSetFont()</a>
+<a class="el" href="group__State.html#ga197a4b3fa478959884194c14f7c2513d">pvSetEnabled()</a>
+<a class="el" href="group__Misc.html#gab86a2b3994d8697ea4401e9165fba5e5">pvCopyToClipboard()</a>
+<a class="el" href="group__Misc.html#ga6aa9ac093b1f87c87e399c293c76902d">pvSaveAsBmp()</a>
+<a class="el" href="group__Output.html#ga80f7897b34d3d4459555dcdd6f180519">pvSetWidgetProperty()</a>
 </pre> 
 </div>
 </div>

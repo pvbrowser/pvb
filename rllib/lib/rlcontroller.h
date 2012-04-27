@@ -108,6 +108,14 @@ public:
   </pre> */
   void setPID_T1_SUM (double _T, double _Kp, double _Tn, double _Tv, double _Td);
   /*! <pre>
+  Set limits for the controller output
+  </pre> */
+  void setLimits(double _yk_min, double _yk_max);
+  /*! <pre>
+  Reset limits for the controller output
+  </pre> */
+  void resetLimits();
+  /*! <pre>
   Don't set the controller parameters directly
   Use the set methods, because they will also set the coefficients
   Controller parameters are for reading only
@@ -144,6 +152,12 @@ public:
   last measurement 
   </pre> */
   double measurement;
+  /*! <pre>
+  limits 
+  </pre> */
+  double yk_min;
+  double yk_max;
+  int limited;
 };
 
 #endif

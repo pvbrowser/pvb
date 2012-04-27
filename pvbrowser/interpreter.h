@@ -76,7 +76,8 @@ TQToolBox,
 TQVbox,
 TQHbox,
 TQGrid,
-TQDock_Widget
+TQDock_Widget,
+TQCustomWidget
 };
 
 typedef struct

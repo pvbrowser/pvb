@@ -1088,6 +1088,8 @@
       <keyword name="setPI_SUM" id="rlController::setPI_SUM" ref="classrlController.html#abe8af0725f4d4bbbf81092f73aa17b2e" />
       <keyword name="setPD_T1_SUM" id="rlController::setPD_T1_SUM" ref="classrlController.html#a1f67e4363d75fdb170da6754c3ef6958" />
       <keyword name="setPID_T1_SUM" id="rlController::setPID_T1_SUM" ref="classrlController.html#aea7b7577fad00e1159827c0cb675eb6f" />
+      <keyword name="setLimits" id="rlController::setLimits" ref="classrlController.html#a4934dfecb1ed860021eb61074e28bd15" />
+      <keyword name="resetLimits" id="rlController::resetLimits" ref="classrlController.html#a69bc9d1dc7b58ef158b36032b6b72e16" />
       <keyword name="Kp" id="rlController::Kp" ref="classrlController.html#a5567368162d86ee84559f2573b073a75" />
       <keyword name="Kpp" id="rlController::Kpp" ref="classrlController.html#a716c2b90d01cbb825534fbc61c7ce96d" />
       <keyword name="T" id="rlController::T" ref="classrlController.html#a159cdc56143fda2056218566d53df09a" />
@@ -1123,6 +1125,9 @@
       <keyword name="writeOutput" id="rlController::writeOutput" ref="classrlController.html#a0097511f56814a3daa58b677e7237e4e" />
       <keyword name="sleepLocally" id="rlController::sleepLocally" ref="classrlController.html#a155171495dfa7e99c12c95a80de20aed" />
       <keyword name="measurement" id="rlController::measurement" ref="classrlController.html#ae3513748d88e939322a808cc3a590bdf" />
+      <keyword name="yk_min" id="rlController::yk_min" ref="classrlController.html#a681a20b2e11f3cdb01dde8903b645bdd" />
+      <keyword name="yk_max" id="rlController::yk_max" ref="classrlController.html#a603230647dc45c90fbafc8f581862f7a" />
+      <keyword name="limited" id="rlController::limited" ref="classrlController.html#a43983410385111ed15103ea18fc3427b" />
       <keyword name="P" id="rlController::P" ref="classrlController.html#a111d33ec0f2e4c5601008421269b396ea37dc7235da93209ae9a1a14edb9da809" />
       <keyword name="I" id="rlController::I" ref="classrlController.html#a111d33ec0f2e4c5601008421269b396ea4f4d35caf37b1e892be4680e1f70cc2c" />
       <keyword name="D_T1" id="rlController::D_T1" ref="classrlController.html#a111d33ec0f2e4c5601008421269b396ea82d0e8d628e6a4eb667aac4c586af636" />

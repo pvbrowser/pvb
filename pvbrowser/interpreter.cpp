@@ -3323,6 +3323,21 @@ void Interpreter::interprets(const char *command)
           if(i >= nmax) return;
           if(all[i]->w != NULL) mySetForegroundColor(all[i]->w,all[i]->type,r,g,b);
         }
+        //cf set property
+        else if(strncmp(command,"setProperty(",12) == 0)
+        {
+          QString sname;
+          char text2[MAX_PRINTF_LENGTH];
+          sscanf(command,"setProperty(%d,",&i);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          get_text(command,sname);          //get first string
+          tcp_rec(s,text2,sizeof(text2)-1); //get second string
+          if(all[i]->w != NULL)
+          {  
+            all[i]->w->setProperty(sname.toUtf8(),text2);//set property
+          }  
+        }
         break;
       case 'Q':
         break;
@@ -6247,7 +6262,67 @@ void Interpreter::interpretQ(const char *command)
     }
     hasLayout = 1;
   }
+ //cf custom widget
+  else if(strncmp(command,"QCustomWidget(",14) == 0)
+  {
+    //in libname we expect full file name whithout path: "lib<name>.so"
+    QString lib_path(opt.pvb_widget_plugindir);
+    QString lib_widget; //contains "/libname.so/classname"
+    QString libname;    //library
+    QString classname;  //classname
+    char    arg[MAX_PRINTF_LENGTH];
 
+    //to avoid unnecesary calls to QLibrary.resolve
+    //we can store pointer to the functions for each library used
+    sscanf(command,"QCustomWidget(%d,%d",&i,&p);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(p >= nmax) return;
+    get_text(command,lib_widget); // get second string
+    tcp_rec(s,arg,sizeof(arg)-1); // get second string
+
+    QStringList param=lib_widget.split('/',QString::SkipEmptyParts);
+    if(param.size()>2) return;
+
+    libname=param[0];
+    classname=param[1];
+
+    if(!mainWindow->libs.contains(libname))
+    {
+      //add to cache map once
+      mainWindow->libs.insert(libname,new QLibrary(lib_path.append(libname)));
+      mainWindow->libs[libname]->load();
+      if(mainWindow->libs[libname]->isLoaded())
+      {
+        void (*setTcpSend)(int (*)(int *, const char *, int ));
+        mainWindow->newCustomWidget.insert(libname,(QWidget *(*)(const char * , int *, int , QWidget *, const char * ))mainWindow->libs[libname]->resolve("new_pvbCustomWidget"));
+        //pointer to setTcpSend
+        setTcpSend=(void (*)(int (*)(int *, const char *, int )))mainWindow->libs[libname]->resolve("setTcpSend");
+        if(setTcpSend)
+        {
+          setTcpSend(tcp_send);//set tcp send
+        }    
+        else
+        {
+          qDebug() << mainWindow->libs[libname]->errorString();
+          qDebug() << mainWindow->libs[libname]->fileName();
+          return;
+        }
+      }
+      else
+      {
+        qDebug() << mainWindow->libs[libname]->errorString();
+        qDebug() << mainWindow->libs[libname]->fileName();
+        return;
+      }
+    }
+    //if in cache
+    if(mainWindow->libs.contains(libname) && mainWindow->libs[libname]->isLoaded())
+    {
+      all[i]->w = mainWindow->newCustomWidget[libname](classname.toUtf8(), s, i, all[p]->w, arg);
+      all[i]->type = TQCustomWidget;
+    }
+  }
   if(opt.arg_fillbackground == 1 && i>0 && i<nmax) // murnleitner special
   {
     if(all[i]->type != TQVbox && all[i]->type != TQHbox && all[i]->type != TQGrid)

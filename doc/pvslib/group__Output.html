@@ -144,6 +144,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2">pvScrollToAnchor</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *anchor)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga6bcc86eac33d40828635dfb2a53f15f8">pvSetZoomFactor</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, float factor)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gab7381258e26336e219415df232945c89">pvPrintHtmlOnPrinter</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga80f7897b34d3d4459555dcdd6f180519">pvSetWidgetProperty</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *name, const char *value)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>These are the output routines </p>
@@ -2651,6 +2652,49 @@ allowed widgets: QTimeEdit, QDateTimeEdit
 Set the value of a widget.
 Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar, QTabWidget, QToolBox
 For QMultiLineEdit set maxlines = value
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga80f7897b34d3d4459555dcdd6f180519"></a><!-- doxytag: member="processviewserver.h::pvSetWidgetProperty" ref="ga80f7897b34d3d4459555dcdd6f180519" args="(PARAM *p, int id, const char *name, const char *value)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetWidgetProperty </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Set a property of a custom widget.
+See the documentation of the custom widget plugin.
+allowed widgets: QCustomWidget
 </pre> 
 </div>
 </div>

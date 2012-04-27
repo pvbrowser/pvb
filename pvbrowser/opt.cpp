@@ -273,6 +273,7 @@ void setDefaultOptions()
   opt.cookies = 1; // YES
   opt.generate_cookie[0] = '\0';
   opt.pvb_com_plugin[0] = '\0';
+  opt.pvb_widget_plugindir[0] = '\0';
   strcpy(opt.manual,"index.html");
 }
 
@@ -330,6 +331,15 @@ int i;
         else if(strncmp(buf,"pvb_com_plugin=",15) == 0)
         {
           strcpy(opt.pvb_com_plugin,&buf[15]);
+        }
+        else if(strncmp(buf,"pvb_widget_plugindir=",21) == 0)
+        {
+          strcpy(opt.pvb_widget_plugindir,&buf[21]);
+#ifdef PVWIN32
+          strcat(opt.pvb_widget_plugindir,"\\");
+#else
+          strcat(opt.pvb_widget_plugindir,"/");
+#endif
         }
         else if(strncmp(buf,"enable_webkit_plugins=",22) == 0)
         {
@@ -595,6 +605,7 @@ int i;
         fprintf(fp,"view.audio=\"c:\\path\\to\\vlc\"\n");
         fprintf(fp,"view.video=\"c:\\path\\to\\vlc\"\n");
         fprintf(fp,"#pvb_com_plugin=c:\\path\\to\\pvb_com_plugin.dll\n");
+        fprintf(fp,"pvb_widget_plugindir=%%PVBDIR%%\\pvb\\pvbrowser\\widget_plugins\n");
 #elif   defined(PVMAC)
         fprintf(fp,"view.pdf=okular\n");
         fprintf(fp,"view.img=gimp\n");
@@ -605,6 +616,7 @@ int i;
         fprintf(fp,"view.audio=vlc\n");
         fprintf(fp,"view.video=vlc\n");
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.dylib\n");
+        fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser/widget_plugins\n");
 #elif   defined(PVUNIX)
         fprintf(fp,"view.pdf=okular\n");
         fprintf(fp,"view.img=gimp\n");
@@ -615,6 +627,7 @@ int i;
         fprintf(fp,"view.audio=vlc\n");
         fprintf(fp,"view.video=vlc\n");
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
+        fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser/widget_plugins\n");
 #endif
         fprintf(fp,"generate_cookie=pvb_generate_cookie\n");
 

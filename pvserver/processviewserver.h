@@ -1848,6 +1848,35 @@ pvSetDateOrder()
 </pre> */
 int pvQDateTimeEdit(PARAM *p, int id, int parent);
 /*! <pre>
+create a QCustomWidget provided by a plugin.
+name := "/library/widgettype<:arg>" defined by the whats_this property in the designer.
+        library is the name without the platform dependend extension (.so, .dll, .dylib).
+        The library_filename will be PVB_WIDGET_PLUGINDIR/library.platform_extension.
+        PVB_WIDGET_PLUGINDIR is defined in the pvbrowser ini file.
+arg  := argument for the widget constructor defined by the whats_this property in the designer. 
+
+Functions that apply to this widget:
+pvSetWhatsThis()
+pvWhatsThisPrintf()
+pvToolTip()
+pvSetGeometry()
+pvSetMinSize()
+pvSetMaxSize()
+pvMove();
+pvResize();
+pvHide();
+pvShow();
+pvSetPaletteBackgroundColor()
+pvSetPaletteForegroundColor()
+pvSetFontColor()
+pvSetFont()
+pvSetEnabled()
+pvCopyToClipboard()
+pvSaveAsBmp()
+pvSetWidgetProperty()
+</pre> */
+int pvQCustomWidget(PARAM *p, int id, int parent, const char *name, const char *arg=NULL);
+/*! <pre>
 Call this function when you are finished with the definition of your mask.
 </pre> */
 int pvEndDefinition(PARAM *p);
@@ -2268,6 +2297,12 @@ Print the HTML page on a printer
 allowed widgets: QTextBrowser
 </pre> */
 int pvPrintHtmlOnPrinter(PARAM *p, int id);
+/*! <pre>
+Set a property of a custom widget.
+See the documentation of the custom widget plugin.
+allowed widgets: QCustomWidget
+</pre> */
+int pvSetWidgetProperty(PARAM *p, int id, const char *name, const char *value);
 /** @} */ // end of group
 
 /** @defgroup Input Input
