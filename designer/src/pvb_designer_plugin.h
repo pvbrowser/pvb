@@ -123,6 +123,16 @@ public:
     virtual QWidget *createWidget(QWidget *parent);
 };
 
+class PvbCustomWidgetDumInterface: public CustomWidgetInterface 
+{
+    Q_OBJECT
+    Q_INTERFACES(QDesignerCustomWidgetInterface)
+
+public:
+    PvbCustomWidgetDumInterface(QObject *parent);
+    virtual QWidget *createWidget(QWidget *parent);
+};
+
 class TaskMenuFactory: public QExtensionFactory
 {
     Q_OBJECT

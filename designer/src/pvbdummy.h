@@ -58,4 +58,12 @@ class PvbVtk : public QLabel
     ~PvbVtk();
 };
 
+class PvbCustomWidget : public QLabel
+{
+  Q_OBJECT
+  public:
+    PvbCustomWidget(QWidget * parent=0);
+    ~PvbCustomWidget();
+};
+
 #endif

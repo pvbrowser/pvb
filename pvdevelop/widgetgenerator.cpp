@@ -696,8 +696,8 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   else if(type == "TQProgressBar")
   {
     MyProgressBar *obj = (MyProgressBar *) widget;
-    QString orientation = "Horizontal";
-    if(obj->orientation() == Qt::Vertical ) orientation = "Vertical";
+    QString orientation = "Vertical";
+    if(obj->orientation() == Qt::Horizontal ) orientation = "Horizontal";
     fprintf(fout,"%spvQProgressBar(p,%s,%s,%d,%s%s)%s\n",prefix,itemname,parentname,obj->maximum(),midfix,(const char *) orientation.toUtf8(),postfix);
     fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
@@ -965,6 +965,21 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   else if(type == "TQDateTimeEdit")
   {
     fprintf(fout,"%spvQDateTimeEdit(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
+    fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+    iitem++;
+  }
+  else if(type == "TQCustomWidget")
+  {
+    if(whatsthis.length() < (int) (sizeof(buf) - 1))
+    strcpy(buf,whatsthis.toUtf8());
+    cptr = strchr(buf,':');
+    if(cptr != NULL)
+    {
+      *cptr = '\0';
+      cptr++;
+    }
+    if(cptr != NULL) fprintf(fout,"%spvQCustomWidget(p,%s,%s,\"%s\",\"%s\")%s\n",prefix,itemname,parentname,buf,cptr,postfix);
+    else             fprintf(fout,"%spvQCustomWidget(p,%s,%s,\"%s\")%s\n",prefix,itemname,parentname,buf,postfix);
     fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     iitem++;
   }
@@ -1456,6 +1471,9 @@ static int generateWidgetType(FILE *fout, QWidget *root)
   {
   }
   else if(type == "TQToolBox")
+  {
+  }
+  else if(type == "TQCustomWidget")
   {
   }
   else if(type == "TQVbox")
@@ -2113,7 +2131,7 @@ static int getWidget(FILE *fin, QWidget *root)
       if(ori == -1)
       {
         if(isHorizontal(cval)) ori = Qt::Horizontal;
-        else                   ori = Qt::Horizontal;
+        else                   ori = Qt::Vertical;
       }
       item = (QWidget *) new MyProgressBar(&s, 0, ival[0], (Qt::Orientation) ori, pw);
       item->setObjectName(id);
@@ -2275,6 +2293,31 @@ static int getWidget(FILE *fin, QWidget *root)
       itemtype = TQDateTimeEdit;
       item->setStatusTip("TQDateTimeEdit:");
       iitem++;
+    }
+    else if(isCommand("pvQCustomWidget(") == 1)
+    {
+      int shape = QFrame::Panel;
+      int shadow = QFrame::Raised;
+      int line_width = 5;
+      int margin = 1; // not used in Qt4
+      item = new MyFrame(&s,0,(QFrame::Shape) shape, (QFrame::Shadow) shadow,line_width,margin,pw);
+      item->setObjectName(id);
+      itemtype = TQCustomWidget;
+      item->setStatusTip("TQCustomWidget:");
+      iitem++;
+      QLabel *xitem = new QLabel(item);
+      xitem->setGeometry(5,2,4096,50);
+      char *cptr = strchr(line,'\"');
+      if(cptr != NULL)
+      {
+        char *cptr2 = strrchr(cptr,'\"');
+        if(cptr2 != NULL)
+        {
+          cptr2++;
+          *cptr2 = '\0';
+          xitem->setText(cptr);
+        }
+      }
     }
     else
     {
@@ -2586,6 +2629,11 @@ static int getWidget(FILE *fin, QWidget *root)
       qtext.replace("\n","\\n");
       item->setToolTip(qtext);
     }
+    //else if(isCommand("pvWhatsThis(") == 1) //rlmurx customwidget
+    //{
+    //  qtext.replace("\n","\\n");
+    //  item->setWhatsThis(qtext);
+    //}
     else if(isCommand("pvAddTab(") == 1)
     {
       QWidget *w1 = (QWidget *) findChild(id); //root->findChild<QWidget *>(id);
@@ -2891,7 +2939,7 @@ int getWidgetsFromMask(const char *filename, QWidget *root)
         else appendEnum();
       }
 
-      if(strstr(line,"toolTip") != NULL) found_tooltip_start = 1;
+      if(strstr(line,"toolTip[]") != NULL) found_tooltip_start = 1;
       if(found_tooltip_start==1 && found_tooltip_end==0)
       {
         if(strstr(line,"};") != NULL) found_tooltip_end = 1;
@@ -2899,14 +2947,13 @@ int getWidgetsFromMask(const char *filename, QWidget *root)
         else appendToolTip();
       }
 
-      if(strstr(line,"whatsThis") != NULL) found_whatsthis_start = 1;
+      if(strstr(line,"whatsThis[]") != NULL) found_whatsthis_start = 1;
       if(found_whatsthis_start==1 && found_whatsthis_end==0)
       {
         if(strstr(line,"};") != NULL) found_whatsthis_end = 1;
         else if(strstr(line,"whatsThis") != NULL) ;
         else appendWhatsThis();
       }
-
       if(strstr(line,"pvStartDefinition(p,ID_END_OF_WIDGETS);") != NULL)
       {
         found_start = 1;
@@ -3047,6 +3094,10 @@ static int setWidgetTree(QWidget *root, const char *uifile)
         //printf(": %s\n", (const char *) widget->objectName().toUtf8());
         sprintf(buf,"qtobj%d", iobj++);
         widget->setObjectName(buf);
+      }
+      else if(widget->inherits("PvbCustomWidget"))
+      {
+        widget->setStatusTip("TQCustomWidget:");
       }
       else if(widget->inherits("QPushButton"))
       {

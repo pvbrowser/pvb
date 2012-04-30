@@ -6287,40 +6287,71 @@ void Interpreter::interpretQ(const char *command)
     libname=param[0];
     classname=param[1];
 
+    if(opt.arg_debug) printf("libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
     if(!mainWindow->libs.contains(libname))
     {
+      if(opt.arg_debug) printf("Try to load library for custom widgets\n");    
       //add to cache map once
-      mainWindow->libs.insert(libname,new QLibrary(lib_path.append(libname)));
-      mainWindow->libs[libname]->load();
-      if(mainWindow->libs[libname]->isLoaded())
+      QLibrary *ql = new QLibrary(lib_path.append(libname));
+      if(ql != NULL)
       {
-        void (*setTcpSend)(int (*)(int *, const char *, int ));
-        mainWindow->newCustomWidget.insert(libname,(QWidget *(*)(const char * , int *, int , QWidget *, const char * ))mainWindow->libs[libname]->resolve("new_pvbCustomWidget"));
-        //pointer to setTcpSend
-        setTcpSend=(void (*)(int (*)(int *, const char *, int )))mainWindow->libs[libname]->resolve("setTcpSend");
-        if(setTcpSend)
+        mainWindow->libs.insert(libname,ql);
+        mainWindow->libs[libname]->load();
+        if(mainWindow->libs[libname]->isLoaded())
         {
-          setTcpSend(tcp_send);//set tcp send
-        }    
+          void (*setTcpSend)(int (*)(int *, const char *, int ));
+          mainWindow->newCustomWidget.insert(libname,(QWidget *(*)(const char * , int *, int , QWidget *, const char * ))mainWindow->libs[libname]->resolve("new_pvbCustomWidget"));
+          //pointer to setTcpSend
+          setTcpSend=(void (*)(int (*)(int *, const char *, int )))mainWindow->libs[libname]->resolve("setTcpSend");
+          if(setTcpSend)
+          {
+            setTcpSend(tcp_send);//set tcp send
+          }    
+          else
+          {
+            printf("ERROR1: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+            qDebug() << mainWindow->libs[libname]->errorString();
+            qDebug() << mainWindow->libs[libname]->fileName();
+            all[i]->w = new QWidget(all[p]->w);
+            all[i]->type = TQWidget;
+            return;
+          }
+        }
         else
         {
+          printf("ERROR2: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
           qDebug() << mainWindow->libs[libname]->errorString();
           qDebug() << mainWindow->libs[libname]->fileName();
+          all[i]->w = new QWidget(all[p]->w);
+          all[i]->type = TQWidget;
           return;
         }
       }
       else
       {
-        qDebug() << mainWindow->libs[libname]->errorString();
-        qDebug() << mainWindow->libs[libname]->fileName();
-        return;
+        printf("ERROR3: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        all[i]->w = new QWidget(all[p]->w);
+        all[i]->type = TQWidget;
       }
     }
+    if(opt.arg_debug) printf("construct CustomWidget\n");    
     //if in cache
     if(mainWindow->libs.contains(libname) && mainWindow->libs[libname]->isLoaded())
     {
       all[i]->w = mainWindow->newCustomWidget[libname](classname.toUtf8(), s, i, all[p]->w, arg);
       all[i]->type = TQCustomWidget;
+      if(all[i]->w == NULL)
+      {
+        printf("ERROR5: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        all[i]->w = new QWidget(all[p]->w);
+        all[i]->type = TQWidget;
+      }
+    }
+    else
+    {
+      printf("ERROR6: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+      all[i]->w = new QWidget(all[p]->w);
+      all[i]->type = TQWidget;
     }
   }
   if(opt.arg_fillbackground == 1 && i>0 && i<nmax) // murnleitner special

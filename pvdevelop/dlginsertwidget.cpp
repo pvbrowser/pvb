@@ -401,6 +401,20 @@ QWidget *dlgInsertWidget::newWidget(QWidget *root, QWidget *parent, int x, int y
     w = new MyQwtAnalogClock(&nullSocket,0,parent);
     w->setStatusTip("TQwtAnalogClock:");
   }
+  else if(form->wCustomWidget->isChecked())
+  {
+    int shape = QFrame::Panel;
+    int shadow = QFrame::Raised;
+    int line_width = 5;
+    int margin = 1; // not used in Qt4
+    w = new MyFrame(&nullSocket,0,(QFrame::Shape) shape, (QFrame::Shadow) shadow,line_width,margin,parent);
+    w->setToolTip("Set whatsThis='/library/widgettype:arguments'");
+    w->setWhatsThis(form->lineEditCustomWidget->text());
+    w->setStatusTip("TQCustomWidget:");
+    QLabel *xitem = new QLabel(w);
+    xitem->setGeometry(5,2,4096,50);
+    xitem->setText(form->lineEditCustomWidget->text());
+  }
   else
   {
     printf("newWidget: no radio checked !\n");

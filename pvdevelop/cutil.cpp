@@ -1851,8 +1851,9 @@ get_args:
         fprintf(fout,"%s  <number>%s</number>\n", space, p[5]);
         fprintf(fout,"%s </property>\n", space);
         fprintf(fout,"%s <property name=\"orientation\" >\n",       space); // orientation
-        if(strncmp("v" ,p[6], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
-        else                           fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
+        if     (strncmp("v" ,p[6], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        else if(strncmp("V" ,p[6], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        else                                fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
         fprintf(fout,"%s </property>\n",                            space);
       }
       else if(strstr(line,"pvQTable(") != NULL)
@@ -1936,8 +1937,9 @@ get_args:
         fprintf(fout,"%s  <number>%s</number>\n", space, p[2]);
         fprintf(fout,"%s </property>\n", space);
         fprintf(fout,"%s <property name=\"orientation\" >\n",       space); // orientation
-        if(strncmp("V" ,p[3], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
-        else                           fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
+        if     (strncmp("v" ,p[3], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        else if(strncmp("V" ,p[3], 1) == 0) fprintf(fout,"%s  <enum>Qt::Vertical</enum>\n", space);
+        else                                fprintf(fout,"%s  <enum>Qt::Horizontal</enum>\n", space);
         fprintf(fout,"%s </property>\n",                            space);
       }
       else if(strstr(line,"pvQTextBrowser(") != NULL)
@@ -2024,6 +2026,13 @@ get_args:
       else if(strstr(line,"pvQGL(") != NULL)
       {
         fprintf(fout,"%s<widget class=\"PvbOpengl\" name=\"%s\" >\n", space, p[0]);
+      }
+      else if(strstr(line,"pvQCustomWidget(") != NULL)
+      {
+        fprintf(fout,"%s<widget class=\"PvbCustomWidget\" name=\"%s\" >\n", space, p[0]);
+        fprintf(fout,"%s <property name=\"whatsThis\" >\n", space);
+        fprintf(fout,"%s  <string>%s</string>\n", space, p[2]);
+        fprintf(fout,"%s </property>\n", space);
       }
 
       // Qwt widgets

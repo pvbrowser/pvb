@@ -69,3 +69,14 @@ PvbVtk::~PvbVtk()
 {
 }
 
+PvbCustomWidget::PvbCustomWidget(QWidget *parent) : QLabel(parent)
+{
+  setFrameShape(QFrame::Box);
+  setPixmap(QPixmap(":/pixmaps/pvbcustomwidget.png"));
+}
+
+PvbCustomWidget::~PvbCustomWidget()
+{
+}
+
+

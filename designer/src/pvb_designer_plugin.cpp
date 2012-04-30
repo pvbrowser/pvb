@@ -223,6 +223,30 @@ QWidget *IconviewInterface::createWidget(QWidget *parent)
     return new PvbIconview(parent);
 }
 
+PvbCustomWidgetDumInterface::PvbCustomWidgetDumInterface(QObject *parent): 
+    CustomWidgetInterface(parent)
+{
+    d_name = "PvbCustomWidget";
+    d_include = "pvbdummy.h";
+    d_icon = QPixmap(":/pixmaps/pvbiconview.png");
+    d_domXml = 
+        "<widget class=\"PvbCustomWidget\" name=\"pvbCustomWidget\">\n"
+        " <property name=\"geometry\">\n"
+        "  <rect>\n"
+        "   <x>0</x>\n"
+        "   <y>0</y>\n"
+        "   <width>200</width>\n"
+        "   <height>100</height>\n"
+        "  </rect>\n"
+        " </property>\n"
+        "</widget>\n";
+}
+
+QWidget *PvbCustomWidgetDumInterface::createWidget(QWidget *parent)
+{
+    return new PvbCustomWidget(parent);
+}
+
 CustomWidgetCollectionInterface::CustomWidgetCollectionInterface(   
         QObject *parent): 
     QObject(parent)
@@ -232,6 +256,7 @@ CustomWidgetCollectionInterface::CustomWidgetCollectionInterface(
     d_plugins.append(new ImageInterface(this));
     d_plugins.append(new VtkInterface(this));
     d_plugins.append(new OpenglInterface(this));
+    d_plugins.append(new PvbCustomWidgetDumInterface(this));
 }
 
 QList<QDesignerCustomWidgetInterface*> 

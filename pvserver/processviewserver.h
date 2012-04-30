@@ -161,7 +161,8 @@ TQDateTimeEdit,
 TQToolBox,
 TQVbox,
 TQHbox,
-TQGrid
+TQGrid,
+TQCustomWidget
 };
 
 /* these are the linestyles used in line(x,y,n) */
