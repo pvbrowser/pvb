@@ -2351,6 +2351,24 @@ int pvSetCaption(PARAM *p, const char *text)
   return 0;
 }
 
+int pvSetMinValue(PARAM *p, int id, int value)
+{
+char buf[80];
+
+  sprintf(buf,"setMinValue(%d,%d)\n",id,value);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvSetMaxValue(PARAM *p, int id, int value)
+{
+char buf[80];
+
+  sprintf(buf,"setMaxValue(%d,%d)\n",id,value);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSetValue(PARAM *p, int id, int value)
 {
 char buf[80];

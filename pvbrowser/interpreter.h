@@ -91,6 +91,20 @@ typedef struct
 class MainWindow;
 
 /**
+  Events send to custom widgets
+  */
+const QEvent::Type pvbEventNumber = (QEvent::Type) (QEvent::User + 1);
+
+class PvbEvent : public QEvent
+{
+public:
+  PvbEvent(const char *_command, QString _param, QEvent::Type _event=pvbEventNumber);
+  virtual ~PvbEvent();
+  const char *command;
+  QString  param;
+};
+
+/**
   * This Class is the interpreter.
   */
 class Interpreter

@@ -69,6 +69,18 @@
 extern OPT opt;
 extern QString l_print_header;
 
+// send this event to the custom widget to call methods within custom widget
+PvbEvent::PvbEvent(const char *_command, QString _param, QEvent::Type _event)
+         : QEvent(_event)
+{
+  command = _command;
+  param = _param;
+}
+
+PvbEvent::~PvbEvent()
+{
+}
+
 Interpreter::Interpreter()
 {
   mainWindow = NULL;
@@ -743,6 +755,15 @@ void Interpreter::interpreta(const char *command)
       MyQToolBox *ptr = (MyQToolBox *) all[i]->w;
       if(ptr != NULL) ptr->addItem(all[child]->w, text);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"addColumn(",10) == 0)
   {
@@ -755,6 +776,15 @@ void Interpreter::interpreta(const char *command)
     {
       MyListView *ptr = (MyListView *) all[i]->w;
       if(ptr != NULL) ptr->addColumn(text, size);
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"addStretch(",11) == 0)
@@ -858,6 +888,15 @@ void Interpreter::interpretc(const char *command)
       MyComboBox *ptr = (MyComboBox *) all[i]->w;
       if(ptr != NULL) ptr->clear();
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+         PvbEvent event(command, text);
+         QCoreApplication::sendEvent(w, &event);
+       }
+    }
   }
   else if(strncmp(command,"changeItem(",11) == 0)
   {
@@ -889,6 +928,15 @@ void Interpreter::interpretc(const char *command)
           if(data != NULL) delete [] data;
           if(temp != NULL) delete temp;
         }
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
     else
@@ -963,6 +1011,15 @@ void Interpreter::interpretd(const char *command)
       QLCDNumber *ptr = (QLCDNumber *) all[i]->w;
       if(ptr != NULL) ptr->display(n);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+          PvbEvent event(command, text);
+          QCoreApplication::sendEvent(w, &event);
+       }
+    }
   }
   else if(strncmp(command,"displayFloat(",13) == 0)
   {
@@ -976,6 +1033,15 @@ void Interpreter::interpretd(const char *command)
       QLCDNumber *ptr = (QLCDNumber *) all[i]->w;
       if(ptr != NULL) ptr->display((double) val);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+          PvbEvent event(command, text);
+          QCoreApplication::sendEvent(w, &event);
+       }
+    }
   }
   else if(strncmp(command,"displayStr(",11) == 0)
   {
@@ -988,6 +1054,15 @@ void Interpreter::interpretd(const char *command)
     {
       QLCDNumber *ptr = (QLCDNumber *) all[i]->w;
       if(ptr != NULL) ptr->display(text);
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+          PvbEvent event(command, text);
+          QCoreApplication::sendEvent(w, &event);
+       }
     }
   }
   else if(strncmp(command,"downloadFile(",13) == 0)
@@ -1009,6 +1084,15 @@ void Interpreter::interprete(const char *command)
     {
       MyQTabWidget *p = (MyQTabWidget *) all[i]->w;
       p->enableTabBar(state);
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"endDefinition",13) == 0) // endDefinition of new MainWidget
@@ -1073,6 +1157,15 @@ void Interpreter::interprete(const char *command)
       //p->ensureCellVisible(row,col);
       if(p != NULL) p->scrollToItem(p->item(row,col));
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"ensureListVisible(",18) == 0)
   {
@@ -1084,6 +1177,15 @@ void Interpreter::interprete(const char *command)
       get_text(command,text);
       MyListView *l = (MyListView *) all[i]->w;
       if(l != NULL) l->ensureVisible(text.toUtf8(), (MyListViewItem *) l->firstChild(NULL));
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
 }
@@ -1191,6 +1293,15 @@ void Interpreter::interpretg(const char *command)
         {
           p->svgAnimator->update(1);
         }
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
   }
@@ -1669,6 +1780,15 @@ void Interpreter::interpreth(const char *command)
       MyTextBrowser *p = (MyTextBrowser *) all[i]->w;
       if(p != NULL) p->htmlOrSvgDump(filename.toUtf8());
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
 }
 
@@ -1688,6 +1808,15 @@ void Interpreter::interpreti(const char *command)
       if(ptr != NULL) 
       {
         for(int icount=0; icount<count; icount++) ptr->insertColumn(col+icount);
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
   }
@@ -1764,6 +1893,15 @@ void Interpreter::interpreti(const char *command)
         }
       }
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+         PvbEvent event(command, text);
+         QCoreApplication::sendEvent(w, &event);
+       }
+    }
     else
     {
       if(pixmap==0) ;
@@ -1794,6 +1932,15 @@ void Interpreter::interpreti(const char *command)
       if(ptr != NULL)
       {
         for(int icount=0; icount<count; icount++) ptr->insertRow(row+icount);
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
   }
@@ -1901,6 +2048,15 @@ void Interpreter::interpretm(const char *command)
       MyTextBrowser *ptr = (MyTextBrowser *) all[i]->w;
       if(ptr != NULL) ptr->moveContent(pos);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"moveCursor(",11) == 0)
   {
@@ -1960,6 +2116,15 @@ void Interpreter::interpretm(const char *command)
     {
       MyMultiLineEdit *w = (MyMultiLineEdit *) all[i]->w;
       w->moveCursor((QTextCursor::MoveOperation) cursor);
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"modalInit(",10) == 0) // init modalDialog
@@ -2028,6 +2193,15 @@ void Interpreter::interpretm(const char *command)
         default:
           break;  
       }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+         PvbEvent event(command, text);
+         QCoreApplication::sendEvent(w, &event);
+       }
     }
   }
 }
@@ -2098,6 +2272,15 @@ void Interpreter::interpretp(const char *command)
         {
           ptr->print(&printer);
         }
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
   }
@@ -2185,6 +2368,15 @@ void Interpreter::interpretr(const char *command)
       MyListView *ptr = (MyListView *) all[i]->w;
       if(ptr != NULL) ptr->removeAllColumns();
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"removeCol(",10) == 0)
   {
@@ -2197,6 +2389,15 @@ void Interpreter::interpretr(const char *command)
       MyTable *ptr = (MyTable *) all[i]->w;
       if(ptr != NULL) ptr->removeColumn(col);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"removeRow(",10) == 0)
   {
@@ -2208,6 +2409,15 @@ void Interpreter::interpretr(const char *command)
     {
       MyTable *ptr = (MyTable *) all[i]->w;
       if(ptr != NULL) ptr->removeRow(row);
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"resize(",7) == 0) // resize the widget
@@ -2301,6 +2511,15 @@ void Interpreter::interpretr(const char *command)
       MyComboBox *ptr = (MyComboBox *) all[i]->w;
       if(ptr != NULL) ptr->removeItem(index);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+         PvbEvent event(command, text);
+         QCoreApplication::sendEvent(w, &event);
+       }
+    }
   }
   else if(strncmp(command,"removeItemByName(",17) == 0)
   {
@@ -2318,6 +2537,15 @@ void Interpreter::interpretr(const char *command)
       MyComboBox *ptr = (MyComboBox *) all[i]->w;
       if(ptr != NULL) ptr->removeItemByName(text);
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+       QWidget *w = all[i]->w;
+       if(w != NULL) 
+       {
+         PvbEvent event(command, text);
+         QCoreApplication::sendEvent(w, &event);
+       }
+    }
   }
   else if(strncmp(command,"removeListViewItem(",19) == 0)
   {
@@ -2330,6 +2558,15 @@ void Interpreter::interpretr(const char *command)
       MyListView *ptr = (MyListView *) all[i]->w;
       if(ptr != NULL) ptr->deleteListViewItem(text.toUtf8(), (MyListViewItem *) ptr->firstChild(NULL));
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"removeIconViewItem(",19) == 0)
   {
@@ -2341,6 +2578,15 @@ void Interpreter::interpretr(const char *command)
     {
       MyIconView *ptr = (MyIconView *) all[i]->w;
       if(ptr != NULL) ptr->deleteIconViewItem(text);
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"renderTreeDump(",15) == 0)
@@ -2356,6 +2602,15 @@ void Interpreter::interpretr(const char *command)
       else                                   filename = temp + text;
       QDrawWidget *p = (QDrawWidget *) all[i]->w;
       if(p != NULL) p->renderTreeDump(filename.toUtf8());
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"requestGeometry(",16) == 0)
@@ -2461,6 +2716,15 @@ void Interpreter::interprets(const char *command)
             QLineEdit *ptr = (QLineEdit *) all[i]->w;
             if(ptr != NULL) ptr->setAlignment((Qt::Alignment) qtalignment);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'B':
@@ -2495,6 +2759,15 @@ void Interpreter::interprets(const char *command)
             MyListBox *lb = (MyListBox *) all[i]->w;
             if(lb != NULL) lb->item(index)->setSelected(mode);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'C':
@@ -2522,6 +2795,15 @@ void Interpreter::interprets(const char *command)
               else           but->setChecked(false);
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setCurrentItem(",15) == 0) // set current item for comboBox
         {
@@ -2533,6 +2815,15 @@ void Interpreter::interprets(const char *command)
           {
             MyComboBox *t = (MyComboBox *) all[i]->w;
             if(t != NULL) t->setCurrentIndex(index);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setColumnWidth(",15) == 0) // set column with of the table
@@ -2580,6 +2871,15 @@ void Interpreter::interprets(const char *command)
               }
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'D':
@@ -2598,6 +2898,15 @@ void Interpreter::interprets(const char *command)
           {
             QDateTimeEdit *e = (QDateTimeEdit *) all[i]->w;
             if(e != NULL) e->setDate(QDate(year,month,day));
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setDateOrder(",13) == 0) // set date order
@@ -2646,6 +2955,15 @@ void Interpreter::interprets(const char *command)
                 break;
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'E':
@@ -2663,6 +2981,15 @@ void Interpreter::interprets(const char *command)
               if     (mode == 0) le->setEchoMode(QLineEdit::NoEcho);
               else if(mode == 2) le->setEchoMode(QLineEdit::Password);
               else               le->setEchoMode(QLineEdit::Normal);
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
             }
           }
         }
@@ -2706,6 +3033,15 @@ void Interpreter::interprets(const char *command)
             {
               if     (mode == 0) cb->setEditable(false);
               else if(mode == 1) cb->setEditable(true);
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
             }
           }
         }
@@ -2947,6 +3283,15 @@ void Interpreter::interprets(const char *command)
             if(hidden) ptr->hideColumn(col);
             else       ptr->showColumn(col);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }  
         break;
       case 'I':
@@ -2983,6 +3328,15 @@ void Interpreter::interprets(const char *command)
               if(opt.arg_debug) printf("setIconViewItem 3\n");
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
           else
           {
             if(w==0 && h==0) ;
@@ -3009,6 +3363,15 @@ void Interpreter::interprets(const char *command)
             {
               iw->setImage(filename.toUtf8());
             }  
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         break;
@@ -3048,6 +3411,15 @@ void Interpreter::interprets(const char *command)
               if(temp != NULL) delete temp;
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
           else
           {
             if(w==0 && h==0) ;
@@ -3076,6 +3448,15 @@ void Interpreter::interprets(const char *command)
             MyListView *lv = (MyListView*) all[i]->w;
             if(lv != NULL) lv->setListViewText(path.toUtf8(),column,text);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'M':
@@ -3083,6 +3464,78 @@ void Interpreter::interprets(const char *command)
         {
           get_text(command,text);
           mainWindow->pvbtab[mainWindow->currentTab].manual_url = text;
+        }
+        else if(strncmp(command,"setMaxValue(",12) == 0) // set maximum value
+        {
+          int value;
+          sscanf(command,"setMaxValue(%d,%d",&i,&value);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->type == TQSpinBox)
+          {
+            MySpinBox *b = (MySpinBox*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQDial)
+          {
+            MyDial *b = (MyDial*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQProgressBar)
+          {
+            MyProgressBar *b = (MyProgressBar*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQSlider)
+          {
+            MySlider *b = (MySlider*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
+        }
+        else if(strncmp(command,"setMinValue(",12) == 0) // set minimum value
+        {
+          int value;
+          sscanf(command,"setMinValue(%d,%d",&i,&value);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->type == TQSpinBox)
+          {
+            MySpinBox *b = (MySpinBox*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQDial)
+          {
+            MyDial *b = (MyDial*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQProgressBar)
+          {
+            MyProgressBar *b = (MyProgressBar*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQSlider)
+          {
+            MySlider *b = (MySlider*) all[i]->w;
+            if(b != NULL) b->setValue(value);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setMinimumSize(",15) == 0) // set minimum w,h
         {
@@ -3130,6 +3583,15 @@ void Interpreter::interprets(const char *command)
               else                lb->setSelectionMode(QAbstractItemView::SingleSelection);
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setMinDate(",11) == 0) // set min date
         {
@@ -3146,6 +3608,15 @@ void Interpreter::interprets(const char *command)
           {
             QDateTimeEdit *e = (QDateTimeEdit *) all[i]->w;
             if(e != NULL) e->setMinimumDate(QDate(year,month,day));
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setMaxDate(",11) == 0) // set max date
@@ -3164,6 +3635,15 @@ void Interpreter::interprets(const char *command)
             QDateTimeEdit *e = (QDateTimeEdit *) all[i]->w;
             if(e != NULL) e->setMaximumDate(QDate(year,month,day));
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setMinTime(",11) == 0) // set min time
         {
@@ -3180,6 +3660,15 @@ void Interpreter::interprets(const char *command)
           {
             QDateTimeEdit *e = (QDateTimeEdit *) all[i]->w;
             if(e != NULL) e->setMinimumTime(QTime(hour,minute,second,msec));
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setMaxTime(",11) == 0) // set max time
@@ -3198,6 +3687,15 @@ void Interpreter::interprets(const char *command)
             QDateTimeEdit *e = (QDateTimeEdit *) all[i]->w;
             if(e != NULL) e->setMaximumTime(QTime(hour,minute,second,msec));
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'N':
@@ -3213,6 +3711,15 @@ void Interpreter::interprets(const char *command)
             //t->setNumRows(num);
             if(t != NULL) t->setRowCount(num);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setNumCols(",11) == 0) // set table num cols
         {
@@ -3225,6 +3732,15 @@ void Interpreter::interprets(const char *command)
             MyTable *t = (MyTable *) all[i]->w;
             //t->setNumCols(num);
             if(t != NULL) t->setColumnCount(num);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         break;
@@ -3240,6 +3756,15 @@ void Interpreter::interprets(const char *command)
             get_text(command,text);
             MyListView *l = (MyListView *) all[i]->w;
             if(l != NULL) l->setItemOpen(text.toUtf8(),open, (MyListViewItem *) l->firstChild(NULL));
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         break;
@@ -3296,6 +3821,15 @@ void Interpreter::interprets(const char *command)
               if(b != NULL) b->setIcon(pm);
               if(data != NULL) delete [] data;
               if(temp != NULL) delete temp;
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
             }
           }
           else
@@ -3378,6 +3912,15 @@ void Interpreter::interprets(const char *command)
               }
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'S':
@@ -3396,6 +3939,15 @@ void Interpreter::interprets(const char *command)
             if(lv != NULL) lv->setSelected(mode,text.toUtf8());
             if(opt.arg_debug > 0) printf("setSelected 2\n");
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setSelector(",12) == 0) // set selector in QDraw
         {
@@ -3411,6 +3963,15 @@ void Interpreter::interprets(const char *command)
             {
               if(state == 0) lv->selectorState = 0;
               else           lv->selectorState = 1;
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
             }
           }
         }
@@ -3499,6 +4060,15 @@ void Interpreter::interprets(const char *command)
               //tb t->reload();
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setSorting(",11) == 0) // set sorting of ListView
         {
@@ -3511,6 +4081,15 @@ void Interpreter::interprets(const char *command)
             MyListView *lv = (MyListView *) all[i]->w;
             if(lv != NULL) lv->setSorting(col,mode);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setStandardPopup(",17) == 0) // set popup menu
         {
@@ -3522,6 +4101,15 @@ void Interpreter::interprets(const char *command)
           {
             MyListView *lv = (MyListView *) all[i]->w;
             if(lv != NULL) lv->hasStandardPopupMenu = menu;
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setStyle(",9) == 0) // set style of QLabel QFrame
@@ -3657,6 +4245,15 @@ void Interpreter::interprets(const char *command)
             //trollmurx if(shadow     != -1) ptr->setFrameShadow((QFrame::Shadow) shadow);
             //trollmurx if(line_width != -1) ptr->setLineWidth(line_width);
             //trollmurx if(margin     != -1) ptr->setMargin(margin);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         break;
@@ -3831,6 +4428,15 @@ void Interpreter::interprets(const char *command)
               //tb c->horizontalScrollBar()->setValue(hPos);
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
           if(opt.arg_debug) printf("setText end\n");
         }
         else if(strncmp(command,"setTableButton(",15) == 0) // set button in table
@@ -3843,6 +4449,15 @@ void Interpreter::interprets(const char *command)
           {
             MyTable *t = (MyTable *) all[i]->w;
             if(t != NULL) t->setTableButton(x,y,text);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setTableText(",13) == 0) // set text in table
@@ -3936,6 +4551,15 @@ void Interpreter::interprets(const char *command)
               else t->setVerticalHeaderItem(x,new QTableWidgetItem(text));
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setTableTextAlignment(",22) == 0) // set text alignment in table
         {
@@ -3956,6 +4580,15 @@ void Interpreter::interprets(const char *command)
                 else if(alignment == PV::AlignHCenter) item->setTextAlignment(Qt::AlignHCenter);
                 else if(alignment == PV::AlignJustify) item->setTextAlignment(Qt::AlignJustify);
               }
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
             }
           }
         }
@@ -4012,6 +4645,15 @@ void Interpreter::interprets(const char *command)
               if(temp != NULL) delete temp;
             }
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
           else
           {
             tcp_rec(s,text2,sizeof(text2));
@@ -4037,6 +4679,15 @@ void Interpreter::interprets(const char *command)
             MyTable *t = (MyTable *) all[i]->w;
             if(t != NULL) t->setTableCheckBox(x,y,state,text);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setTableComboBox(",17) == 0) // set combobox in table
         {
@@ -4050,6 +4701,15 @@ void Interpreter::interprets(const char *command)
             MyTable *t = (MyTable *) all[i]->w;
             if(t != NULL) t->setTableComboBox(x,y,editable,text.toUtf8());
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         else if(strncmp(command,"setTableLabel(",14) == 0) // set label in table
         {
@@ -4061,6 +4721,15 @@ void Interpreter::interprets(const char *command)
           {
             MyTable *t = (MyTable *) all[i]->w;
             if(t != NULL) t->setTableLabel(x,y,text);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setTabPosition(",15) == 0) // set tab position Top|Bottom
@@ -4078,6 +4747,15 @@ void Interpreter::interprets(const char *command)
               else if(pos == 2) tab->setTabPosition(QTabWidget::West);
               else if(pos == 3) tab->setTabPosition(QTabWidget::East);
               else              tab->setTabPosition(QTabWidget::North);
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
             }
           }
         }
@@ -4101,6 +4779,15 @@ void Interpreter::interprets(const char *command)
           {
             MyQwtAnalogClock *e = (MyQwtAnalogClock *) all[i]->w;
             if(e != NULL) e->setTime(QTime(hour,minute,second));
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         else if(strncmp(command,"setTimeEditDisplay(",19) == 0) // set time edit display
@@ -4127,6 +4814,15 @@ void Interpreter::interprets(const char *command)
             if(second == 1) mask |= QDateTimeEdit::SecondSection;
             if(ampm   == 1) mask |= QDateTimeEdit::AmPmSection;
             if(e != NULL) e->setCurrentSection((QDateTimeEdit::Section) mask);
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
           }
         }
         break;
@@ -4174,6 +4870,15 @@ void Interpreter::interprets(const char *command)
             MyQToolBox *b = (MyQToolBox*) all[i]->w;
             if(b != NULL) b->setCurrentIndex(value);
           }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
         }
         break;
       case 'W':
@@ -4205,6 +4910,15 @@ void Interpreter::interprets(const char *command)
           if(b != NULL) b->setZoomFactor(factor);
 #endif          
         }
+        else if(all[i]->type == TQCustomWidget)
+        {
+          QWidget *w = all[i]->w;
+          if(w != NULL) 
+          {
+            PvbEvent event(command, text);
+            QCoreApplication::sendEvent(w, &event);
+          }
+        }
         break;
       default:
         break;
@@ -4229,6 +4943,15 @@ void Interpreter::interprets(const char *command)
         }
       }  
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
 #endif    
   }
   else if(strncmp(command,"selection(",10) == 0) // request selection in QListView
@@ -4245,6 +4968,15 @@ void Interpreter::interprets(const char *command)
     {
       MyListBox *lb = (MyListBox *) all[i]->w;
       if(lb != NULL) lb->slotSendSelected();
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"show(",5) == 0) // show the widget
@@ -4348,6 +5080,15 @@ void Interpreter::interprets(const char *command)
     {
       MyTable *table = (MyTable *) all[i]->w;
       if(table != NULL) table->saveTextfile();
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
     }
   }
   else if(strncmp(command,"screenHint(",11) == 0) // adjust zoom factor
@@ -4486,6 +5227,15 @@ void Interpreter::interprett(const char *command)
       MyMultiLineEdit *w = (MyMultiLineEdit *) all[i]->w;
       if(w != NULL)w->slotSendToClipboard();
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"tableSetEnabled(",16) == 0)
   {
@@ -4511,6 +5261,15 @@ void Interpreter::interprett(const char *command)
           if(enabled) item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
           else        item->setFlags(0);
         }
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
   }
@@ -4540,6 +5299,15 @@ void Interpreter::interprett(const char *command)
         }
       }
     }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"tableWrap(",10) == 0)
   {
@@ -4563,6 +5331,15 @@ void Interpreter::interprett(const char *command)
            t->setWordWrap(false);
         }
 #endif
+      }
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
       }
     }
   }

@@ -1117,6 +1117,8 @@ pvSetFont()
 pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
+pvSetMinValue()
+pvSetMaxValue()
 pvSetValue()
 </pre> */
 int pvQSlider(PARAM *p, int id, int parent, int minValue, int maxValue, int pageStep, int value, int orientation);
@@ -1494,6 +1496,8 @@ pvSetFont()
 pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
+pvSetMinValue()
+pvSetMaxValue()
 pvSetValue()
 </pre> */
 int pvQSpinBox(PARAM *p, int id, int parent, int min, int max, int step);
@@ -1518,6 +1522,8 @@ pvSetFont()
 pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
+pvSetMinValue()
+pvSetMaxValue()
 pvSetValue()
 </pre> */
 int pvQDial(PARAM *p, int id, int parent, int min, int max, int page_step, int value);
@@ -1542,6 +1548,8 @@ pvSetFont()
 pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
+pvSetMinValue()
+pvSetMaxValue()
 pvSetValue()
 pvSetStyle()
 </pre> */
@@ -1935,6 +1943,16 @@ The functions works like printf()
 Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser, QGroupBox
 </pre> */
 int pvPrintf(PARAM *p, int id, const char *format, ...);
+/*! <pre>
+Set the minimum value of a widget.
+Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar
+</pre> */
+int pvSetMinValue(PARAM *p, int id, int value);
+/*! <pre>
+Set the maximum value of a widget.
+Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar
+</pre> */
+int pvSetMaxValue(PARAM *p, int id, int value);
 /*! <pre>
 Set the value of a widget.
 Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar, QTabWidget, QToolBox
