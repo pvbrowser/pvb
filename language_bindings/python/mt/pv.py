@@ -150,6 +150,7 @@ TQToolBox = _pv.TQToolBox
 TQVbox = _pv.TQVbox
 TQHbox = _pv.TQHbox
 TQGrid = _pv.TQGrid
+TQCustomWidget = _pv.TQCustomWidget
 LINESTYLE_NONE = _pv.LINESTYLE_NONE
 LINESTYLE_CIRCLE = _pv.LINESTYLE_CIRCLE
 LINESTYLE_CROSS = _pv.LINESTYLE_CROSS
@@ -1149,6 +1150,14 @@ def pvPrintf(*args):
   return _pv.pvPrintf(*args)
 pvPrintf = _pv.pvPrintf
 
+def pvSetMinValue(*args):
+  return _pv.pvSetMinValue(*args)
+pvSetMinValue = _pv.pvSetMinValue
+
+def pvSetMaxValue(*args):
+  return _pv.pvSetMaxValue(*args)
+pvSetMaxValue = _pv.pvSetMaxValue
+
 def pvSetValue(*args):
   return _pv.pvSetValue(*args)
 pvSetValue = _pv.pvSetValue
@@ -1320,6 +1329,10 @@ pvSetZoomFactor = _pv.pvSetZoomFactor
 def pvPrintHtmlOnPrinter(*args):
   return _pv.pvPrintHtmlOnPrinter(*args)
 pvPrintHtmlOnPrinter = _pv.pvPrintHtmlOnPrinter
+
+def pvSetWidgetProperty(*args):
+  return _pv.pvSetWidgetProperty(*args)
+pvSetWidgetProperty = _pv.pvSetWidgetProperty
 
 def pvText(*args):
   return _pv.pvText(*args)
@@ -1630,6 +1643,10 @@ pvQImage = _pv.pvQImage
 def pvQProgressBar(*args):
   return _pv.pvQProgressBar(*args)
 pvQProgressBar = _pv.pvQProgressBar
+
+def pvQCustomWidget(*args):
+  return _pv.pvQCustomWidget(*args)
+pvQCustomWidget = _pv.pvQCustomWidget
 
 def pvChangeItem(*args):
   return _pv.pvChangeItem(*args)

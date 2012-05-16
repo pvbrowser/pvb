@@ -5,7 +5,7 @@
 TEMPLATE = lib
 CONFIG   = warn_on release
 !macx {
-unix:QMAKE_LFLAGS_SHLIB += -lpthread
+unix:QMAKE_LFLAGS_SHLIB += -lpthread -ldl
 # this is set as default on debian/ubuntu and causes an unresolved pvMain()
 # unix:QMAKE_LFLAGS =  -Wl,--no-undefined
 # we override this default setting, so that this will work correctly

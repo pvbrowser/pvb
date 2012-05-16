@@ -30,12 +30,15 @@
 #endif
 #ifdef unix
 #define PVUNIX
+#include <dlfcn.h>
+#define RL_RTLD_LAZY RTLD_LAZY
 #endif
 
 // define WIN
 #ifdef _WIN32
 #define PVWIN32
 #include <windows.h>
+#define RL_RTLD_LAZY 0
 #endif
 //*********************************************
 
@@ -504,7 +507,17 @@ typedef struct _PARAM_
                                          /* ID_END_OF_WIDGETS                  */
   int   mouse_x,  mouse_y;               /* last mouse pos when pressed        */
   char  *mytext;                         /* buffer for internal use only       */
+  const char *communication_plugin;      /* pointer to commandline arg or NULL */ 
+  int   use_communication_plugin;        /* can also be set at runtime         */
 }PARAM;
+
+#ifndef __VMS
+typedef int (*plugin_pvAccept)(PARAM *p);
+typedef int (*plugin_pvtcpsend_binary)(PARAM *p, const char *buf, int len);
+typedef int (*plugin_pvtcpreceive)(PARAM *p, char *buf, int maxlen);
+typedef int (*plugin_pvtcpreceive_binary)(PARAM *p, char *buf, int maxlen);
+typedef int (*plugin_closesocket)(int s);
+#endif
 
 #define DEFAULT_LANGUAGE 0
 

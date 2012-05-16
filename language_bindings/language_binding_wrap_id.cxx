@@ -11375,6 +11375,196 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvQCustomWidget__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  char *arg5 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  int res5 ;
+  char *buf5 = 0 ;
+  int alloc5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:pvQCustomWidget",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQCustomWidget" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQCustomWidget" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQCustomWidget" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvQCustomWidget" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  res5 = SWIG_AsCharPtrAndSize(obj4, &buf5, NULL, &alloc5);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "pvQCustomWidget" "', argument " "5"" of type '" "char const *""'");
+  }
+  arg5 = reinterpret_cast< char * >(buf5);
+  result = (int)pvQCustomWidget(arg1,arg2,arg3,(char const *)arg4,(char const *)arg5);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  if (alloc5 == SWIG_NEWOBJ) delete[] buf5;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  if (alloc5 == SWIG_NEWOBJ) delete[] buf5;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvQCustomWidget__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:pvQCustomWidget",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQCustomWidget" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQCustomWidget" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQCustomWidget" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvQCustomWidget" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)pvQCustomWidget(arg1,arg2,arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvQCustomWidget(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[6];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 5) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p__PARAM_, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            return _wrap_pvQCustomWidget__SWIG_1(self, args);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p__PARAM_, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          int res = SWIG_AsCharPtrAndSize(argv[3], 0, NULL, 0);
+          _v = SWIG_CheckState(res);
+          if (_v) {
+            int res = SWIG_AsCharPtrAndSize(argv[4], 0, NULL, 0);
+            _v = SWIG_CheckState(res);
+            if (_v) {
+              return _wrap_pvQCustomWidget__SWIG_0(self, args);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'pvQCustomWidget'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvQCustomWidget(PARAM *,int,int,char const *,char const *)\n"
+    "    pvQCustomWidget(PARAM *,int,int,char const *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvEndDefinition(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -11873,6 +12063,86 @@ SWIGINTERN PyObject *_wrap_pvPrintf(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   Py_XDECREF(newargs);
   Py_XDECREF(varargs);
   return resultobj;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSetMinValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:pvSetMinValue",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSetMinValue" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvSetMinValue" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvSetMinValue" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)pvSetMinValue(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSetMaxValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:pvSetMaxValue",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSetMaxValue" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvSetMaxValue" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvSetMaxValue" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)pvSetMaxValue(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
 }
 
 
@@ -16670,6 +16940,61 @@ SWIGINTERN PyObject *_wrap_pvPrintHtmlOnPrinter(PyObject *SWIGUNUSEDPARM(self), 
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSetWidgetProperty(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  int res4 ;
+  char *buf4 = 0 ;
+  int alloc4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:pvSetWidgetProperty",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSetWidgetProperty" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvSetWidgetProperty" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "pvSetWidgetProperty" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  res4 = SWIG_AsCharPtrAndSize(obj3, &buf4, NULL, &alloc4);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "pvSetWidgetProperty" "', argument " "4"" of type '" "char const *""'");
+  }
+  arg4 = reinterpret_cast< char * >(buf4);
+  result = (int)pvSetWidgetProperty(arg1,arg2,(char const *)arg3,(char const *)arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
+  return resultobj;
+fail:
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
   return NULL;
 }
 
@@ -36238,6 +36563,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvQDateEdit", _wrap_pvQDateEdit, METH_VARARGS, NULL},
 	 { (char *)"pvQTimeEdit", _wrap_pvQTimeEdit, METH_VARARGS, NULL},
 	 { (char *)"pvQDateTimeEdit", _wrap_pvQDateTimeEdit, METH_VARARGS, NULL},
+	 { (char *)"pvQCustomWidget", _wrap_pvQCustomWidget, METH_VARARGS, NULL},
 	 { (char *)"pvEndDefinition", _wrap_pvEndDefinition, METH_VARARGS, NULL},
 	 { (char *)"pvAddWidgetOrLayout", _wrap_pvAddWidgetOrLayout, METH_VARARGS, NULL},
 	 { (char *)"pvAddStretch", _wrap_pvAddStretch, METH_VARARGS, NULL},
@@ -36250,6 +36576,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvToolTip", _wrap_pvToolTip, METH_VARARGS, NULL},
 	 { (char *)"pvSetText", _wrap_pvSetText, METH_VARARGS, NULL},
 	 { (char *)"pvPrintf", _wrap_pvPrintf, METH_VARARGS, NULL},
+	 { (char *)"pvSetMinValue", _wrap_pvSetMinValue, METH_VARARGS, NULL},
+	 { (char *)"pvSetMaxValue", _wrap_pvSetMaxValue, METH_VARARGS, NULL},
 	 { (char *)"pvSetValue", _wrap_pvSetValue, METH_VARARGS, NULL},
 	 { (char *)"pvClear", _wrap_pvClear, METH_VARARGS, NULL},
 	 { (char *)"pvChangeItem", _wrap_pvChangeItem, METH_VARARGS, NULL},
@@ -36305,6 +36633,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvScrollToAnchor", _wrap_pvScrollToAnchor, METH_VARARGS, NULL},
 	 { (char *)"pvSetZoomFactor", _wrap_pvSetZoomFactor, METH_VARARGS, NULL},
 	 { (char *)"pvPrintHtmlOnPrinter", _wrap_pvPrintHtmlOnPrinter, METH_VARARGS, NULL},
+	 { (char *)"pvSetWidgetProperty", _wrap_pvSetWidgetProperty, METH_VARARGS, NULL},
 	 { (char *)"pvText", _wrap_pvText, METH_VARARGS, NULL},
 	 { (char *)"pvRequestGeometry", _wrap_pvRequestGeometry, METH_VARARGS, NULL},
 	 { (char *)"pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId, METH_VARARGS, NULL},
@@ -37495,6 +37824,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "TQVbox",SWIG_From_int(static_cast< int >(TQVbox)));
   SWIG_Python_SetConstant(d, "TQHbox",SWIG_From_int(static_cast< int >(TQHbox)));
   SWIG_Python_SetConstant(d, "TQGrid",SWIG_From_int(static_cast< int >(TQGrid)));
+  SWIG_Python_SetConstant(d, "TQCustomWidget",SWIG_From_int(static_cast< int >(TQCustomWidget)));
   SWIG_Python_SetConstant(d, "LINESTYLE_NONE",SWIG_From_int(static_cast< int >(LINESTYLE_NONE)));
   SWIG_Python_SetConstant(d, "LINESTYLE_CIRCLE",SWIG_From_int(static_cast< int >(LINESTYLE_CIRCLE)));
   SWIG_Python_SetConstant(d, "LINESTYLE_CROSS",SWIG_From_int(static_cast< int >(LINESTYLE_CROSS)));

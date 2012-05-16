@@ -8490,6 +8490,154 @@ fail:
 }
 
 
+static int _wrap_pvQCustomWidget__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  char *arg5 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvQCustomWidget",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvQCustomWidget",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvQCustomWidget",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvQCustomWidget",3,"int");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("pvQCustomWidget",4,"char const *");
+  if(!SWIG_lua_isnilstring(L,5)) SWIG_fail_arg("pvQCustomWidget",5,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvQCustomWidget",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  arg5 = (char *)lua_tostring(L, 5);
+  result = (int)pvQCustomWidget(arg1,arg2,arg3,(char const *)arg4,(char const *)arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvQCustomWidget__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvQCustomWidget",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvQCustomWidget",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvQCustomWidget",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvQCustomWidget",3,"int");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("pvQCustomWidget",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvQCustomWidget",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)pvQCustomWidget(arg1,arg2,arg3,(char const *)arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvQCustomWidget(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = SWIG_lua_isnilstring(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_pvQCustomWidget__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = SWIG_lua_isnilstring(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = SWIG_lua_isnilstring(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_pvQCustomWidget__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'pvQCustomWidget'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvQCustomWidget(PARAM *,int,int,char const *,char const *)\n"
+    "    pvQCustomWidget(PARAM *,int,int,char const *)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_pvEndDefinition(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -8832,6 +8980,66 @@ static int _wrap_pvPrintf(lua_State* L) {
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (char *)lua_tostring(L, 3);
   result = (int)pvPrintf(arg1,arg2,(char const *)arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetMinValue(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetMinValue",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetMinValue",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetMinValue",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvSetMinValue",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetMinValue",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)pvSetMinValue(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetMaxValue(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetMaxValue",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetMaxValue",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetMaxValue",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvSetMaxValue",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetMaxValue",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)pvSetMaxValue(arg1,arg2,arg3);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -12266,6 +12474,39 @@ static int _wrap_pvPrintHtmlOnPrinter(lua_State* L) {
   
   arg2 = (int)lua_tonumber(L, 2);
   result = (int)pvPrintHtmlOnPrinter(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetWidgetProperty(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetWidgetProperty",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetWidgetProperty",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetWidgetProperty",2,"int");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("pvSetWidgetProperty",3,"char const *");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("pvSetWidgetProperty",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetWidgetProperty",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)pvSetWidgetProperty(arg1,arg2,(char const *)arg3,(char const *)arg4);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -26476,6 +26717,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvQDateEdit", _wrap_pvQDateEdit},
     { "pvQTimeEdit", _wrap_pvQTimeEdit},
     { "pvQDateTimeEdit", _wrap_pvQDateTimeEdit},
+    { "pvQCustomWidget",_wrap_pvQCustomWidget},
     { "pvEndDefinition", _wrap_pvEndDefinition},
     { "pvAddWidgetOrLayout", _wrap_pvAddWidgetOrLayout},
     { "pvAddStretch", _wrap_pvAddStretch},
@@ -26488,6 +26730,8 @@ static const struct luaL_reg swig_commands[] = {
     { "pvToolTip", _wrap_pvToolTip},
     { "pvSetText", _wrap_pvSetText},
     { "pvPrintf", _wrap_pvPrintf},
+    { "pvSetMinValue", _wrap_pvSetMinValue},
+    { "pvSetMaxValue", _wrap_pvSetMaxValue},
     { "pvSetValue", _wrap_pvSetValue},
     { "pvClear", _wrap_pvClear},
     { "pvChangeItem",_wrap_pvChangeItem},
@@ -26543,6 +26787,7 @@ static const struct luaL_reg swig_commands[] = {
     { "pvScrollToAnchor", _wrap_pvScrollToAnchor},
     { "pvSetZoomFactor", _wrap_pvSetZoomFactor},
     { "pvPrintHtmlOnPrinter", _wrap_pvPrintHtmlOnPrinter},
+    { "pvSetWidgetProperty", _wrap_pvSetWidgetProperty},
     { "pvText", _wrap_pvText},
     { "pvRequestGeometry", _wrap_pvRequestGeometry},
     { "pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId},
@@ -26905,6 +27150,7 @@ static swig_lua_const_info swig_constants[] = {
 { SWIG_LUA_INT,     (char *)"TQVbox", (long) TQVbox, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"TQHbox", (long) TQHbox, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"TQGrid", (long) TQGrid, 0, 0, 0},
+{ SWIG_LUA_INT,     (char *)"TQCustomWidget", (long) TQCustomWidget, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"LINESTYLE_NONE", (long) LINESTYLE_NONE, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"LINESTYLE_CIRCLE", (long) LINESTYLE_CIRCLE, 0, 0, 0},
 { SWIG_LUA_INT,     (char *)"LINESTYLE_CROSS", (long) LINESTYLE_CROSS, 0, 0, 0},

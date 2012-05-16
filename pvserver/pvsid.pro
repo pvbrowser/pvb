@@ -4,6 +4,10 @@
 
 TEMPLATE = lib
 CONFIG   = warn_on release
+!macx {
+unix:QMAKE_LFLAGS_SHLIB += -ldl
+unix:QMAKE_LFLAGS =  -Wl
+}
 
 DEFINES += USE_INETD
 macx:DEFINES += unix

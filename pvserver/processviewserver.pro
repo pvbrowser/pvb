@@ -20,4 +20,4 @@ SOURCES += main.cpp     \
            pvbImage.cpp \
            util.cpp     \
            wthread.cpp
-LIBS    += -lpthread
+LIBS    += -lpthread -ldl

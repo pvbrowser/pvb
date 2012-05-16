@@ -120,6 +120,13 @@ typedef struct
 TDS;
 #endif
 
+// communication_plugin
+static plugin_pvAccept            plug_pvAccept = NULL;
+static plugin_pvtcpsend_binary    plug_pvtcpsend_binary = NULL;
+static plugin_pvtcpreceive        plug_pvtcpreceive = NULL;
+static plugin_pvtcpreceive_binary plug_pvtcpreceive_binary = NULL;
+static plugin_closesocket         plug_closesocket = NULL;
+
 #ifndef MSG_NOSIGNAL
 #define MSG_NOSIGNAL 0
 #endif
@@ -457,9 +464,29 @@ int pvMainFatal(PARAM *p, const char *text)
   //printf("MainFatal2: %s s=%d\n",text,p->s);
   for(i=0; i<MAX_CLIENTS; i++)
   {
-    if(clientsocket[i] != -1) closesocket(clientsocket[i]);
+    if(clientsocket[i] != -1) 
+    {
+      if(p->use_communication_plugin)
+      {
+        plug_closesocket(clientsocket[i]);
+      }
+      else
+      {
+        closesocket(clientsocket[i]);
+      }
+    }
   }
-  if(serversocket != -1) closesocket(serversocket);
+  if(serversocket != -1)
+  {
+    if(p->use_communication_plugin)
+    {
+      plug_closesocket(serversocket);
+    }
+    else
+    {
+      closesocket(serversocket);
+    }  
+  }  
   if(p->free == 1 && p->exit_on_bind_error == 0) free(p);
   pvunlock(p);
   exit(0);
@@ -499,7 +526,14 @@ int pvThreadFatal(PARAM *p, const char *text)
     }
   }
   //printf("Thread finished3: %s s=%d\n",text,p->s);
-  closesocket(p->s);
+  if(p->use_communication_plugin)
+  {
+    plug_closesocket(p->s);
+  }
+  else
+  {
+    closesocket(p->s);
+  }  
   //printf("Thread finished4: %s s=%d free=%d\n",text,p->s,p->free);
   // if(p->free == 1) free(p); // valgrind: "Invalid write of size 4"
   //printf("Thread finished5: %s\n",text);
@@ -569,7 +603,10 @@ static void sighandler(int sig)
   {
     s = clientsocket[i];
     clientsocket[i] = -1;
-    if(s != -1) closesocket(s);
+    if(s != -1) 
+    {
+      closesocket(s);
+    }  
   }
   if(serversocket != -1) closesocket(serversocket);
   exit(0);
@@ -684,6 +721,12 @@ int option = 1;
   int n;
   char portstr[32];
 #endif
+
+  if(p->use_communication_plugin)
+  {
+    ret = plug_pvAccept(p);
+    if(ret > 0) return ret;
+  }
 
   if(rl_ipversion == 4)
   {
@@ -867,7 +910,14 @@ bindv6:
   pvunlock(p);
   if(i >= MAX_CLIENTS)
   {
-    closesocket(p->s);
+    if(p->use_communication_plugin)
+    {
+      plug_closesocket(p->s);
+    }
+    else
+    {
+      closesocket(p->s);
+    }
     sprintf(buf,"MAX_CLIENTS=%d exceeded",MAX_CLIENTS);
     pvWarning(p,buf);
     return -1;
@@ -908,6 +958,12 @@ int pvtcpsend_binary(PARAM *p, const char *buf, int len)
     fputs(buf,p->fp);
     return 0;
   }
+  
+  if(p->use_communication_plugin)
+  {
+    return plug_pvtcpsend_binary(p, buf, len);
+  }
+
   if(p->s == -1 && p->os != -2) pvThreadFatal(p,"exit");;
   bytes_left = len;
   first_byte = 0;
@@ -949,6 +1005,11 @@ int pvtcpreceive(PARAM *p, char *buf, int maxlen)
 {
   int i,ret;
 
+  if(p->use_communication_plugin)
+  {
+    return plug_pvtcpreceive(p, buf, maxlen);
+  }
+
   i = 0;
   while(i < maxlen-1)
   {
@@ -972,6 +1033,11 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 {
   int i,ret;
 
+  if(p->use_communication_plugin)
+  {
+    return plug_pvtcpreceive_binary(p, buf, maxlen);
+  }
+
   i = 0;
   while(i < maxlen)
   {
@@ -991,7 +1057,7 @@ static int show_usage()
 {
   printf("###################################################################################\n");
   printf("pvserver %s (C) by Lehrig Software Engineering 2000-2012       lehrig@t-online.de\n\n", pvserver_version);
-  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -gui <url_trailer>\n");
+  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
   printf("-sleep=500 milliseconds\n");
@@ -1069,6 +1135,8 @@ int i;
   p->mouse_x  = p->mouse_y = -1;
   p->mytext = new char[2];
   p->mytext[0] = '\0';
+  p->communication_plugin = NULL;
+  p->use_communication_plugin = 0;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
   pvthread_mutex_init(&param_mutex, NULL);
@@ -1078,6 +1146,48 @@ int i;
 #endif  
 
   return 0;
+}
+
+#ifdef PVWIN32
+  static HMODULE com_handle;
+#else
+  static void *com_handle;
+#endif    
+
+static void *pv_dlopen(const char *libname)
+{
+#ifdef PVWIN32
+  ::SetLastError(0);
+  com_handle = ::LoadLibraryA(libname);
+#endif
+#ifdef PVUNIX
+  com_handle = ::dlopen(libname, RL_RTLD_LAZY);
+#endif
+#ifdef __VMS
+  com_handle = NULL;
+#endif
+  return com_handle;
+}
+
+static void *pv_dlsym(const char *symbol)
+{
+  void *ret;
+#ifdef PVWIN32
+  ::SetLastError(0);
+  ret = (void *) ::GetProcAddress(com_handle, symbol);
+#endif
+#ifdef PVUNIX
+  ret = ::dlsym(com_handle, symbol);
+#endif
+#ifdef __VMS
+  ret = NULL;
+#endif
+  if(ret == NULL)
+  {
+    printf("ERROR: could not resolve symbol %s from communication_plugin\n", symbol);
+    exit(0);
+  }
+  return ret;
 }
 
 int pvInit(int ac, char **av, PARAM *p)
@@ -1104,6 +1214,12 @@ int i,ret;
       rl_ipversion = 6;
     }
     else if(strcmp(av[i],"-gui")                               == 0) start_gui = 1;
+    else if(strncmp(av[i],"-communication_plugin=",22)         == 0)
+    {
+      const char *arg = av[i];
+      p->communication_plugin = &arg[22];
+    }
+    else if(strcmp(av[i],"-use_communication_plugin")          == 0) p->use_communication_plugin = 1;
     else if(strncmp(av[i],"/",1)                               == 0) url_trailer = av[i];
     else if(strncmp(av[i],"?",1)                               == 0) url_trailer = av[i];
     else if(strncmp(av[i],"-",1)                               == 0) printf("unknown option %s\n", av[i]);
@@ -1114,6 +1230,20 @@ int i,ret;
     p->exit_on_bind_error = 1;
     exit_after_last_client_terminates = 1;
     rl_ipversion = 4;
+  }
+  if(p->communication_plugin != NULL)
+  {
+    void *ptr = pv_dlopen(p->communication_plugin);
+    if(ptr == NULL)
+    {
+      printf("ERROR: could not open communication_plugin %s\n", p->communication_plugin);
+      exit(0);
+    }
+    plug_pvAccept            = (plugin_pvAccept)            pv_dlsym("plug_pvAccept");
+    plug_pvtcpsend_binary    = (plugin_pvtcpsend_binary)    pv_dlsym("plug_pvtcpsend_binary");
+    plug_pvtcpreceive        = (plugin_pvtcpreceive)        pv_dlsym("plug_pvtcpreceive");
+    plug_pvtcpreceive_binary = (plugin_pvtcpreceive_binary) pv_dlsym("plug_pvtcpreceive_binary");
+    plug_closesocket         = (plugin_closesocket)         pv_dlsym("plug_closesocket");
   }
   return ret;
 }
