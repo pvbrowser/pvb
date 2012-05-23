@@ -16,5 +16,12 @@
 #define PVWIN32
 #endif
 
+// Symbian
+#ifdef USE_SYMBIAN
+#ifndef PVUNIX
+#define PVUNIX
+#endif
+#endif
+
 #endif
 

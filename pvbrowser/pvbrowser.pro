@@ -11,6 +11,14 @@ android-g++ {
   DEFINES    += USE_ANDROID
   DEFINES    += USE_MAEMO
 }  
+symbian:CONFIG += USE_SYMBIAN
+USE_SYMBIAN {
+  DEFINES    += USE_SYMBIAN
+  DEFINES    += USE_MAEMO
+  LIBS    += -lqwt.lib
+  #LIBS    += F:\QtSDK\Symbian\SDKs\Symbian1Qt473\epoc32\release\armv5\urel\qwt.lib
+}
+
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
 unix:LIBS    += -ldl
@@ -56,7 +64,11 @@ SOURCES       = main.cpp \
 
 #INCLUDEPATH  += ../qwt/include
 INCLUDEPATH  += ../qwt/src
+symbian {
+}
+else {
 LIBS         += ../qwt/lib/libqwt.a
+}
 
 ### begin USE_VTK #############################################
 USE_VTK {

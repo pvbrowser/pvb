@@ -428,6 +428,7 @@ void QDrawWidget::showFromFile(const char *filename)
 
 void QDrawWidget::print()
 {
+#ifndef USE_SYMBIAN
   QPrinter printer;
   //qt3 if(printer.setup(this))
   QPrintDialog printDialog(&printer);
@@ -438,6 +439,7 @@ void QDrawWidget::print()
     painter.drawPixmap(0,0,*buffer);
     painter.end();
   };
+#endif
 }
 
 void QDrawWidget::logBmpToFile(const char *filename)
@@ -1438,6 +1440,8 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
 
 void QDrawWidget::printSVG(QByteArray &stream)
 {
+#ifndef USE_SYMBIAN
+
   if(opt.arg_debug) printf("printSVG\n");
   QPrinter printer;
   //printer.setOrientation(QPrinter::Landscape);
@@ -1464,6 +1468,7 @@ void QDrawWidget::printSVG(QByteArray &stream)
       painter.end();
     }  
   }
+#endif
 }
 
 int QDrawWidget::interpretRenderTree(const char *xml, int object_wanted, int *xret, int *yret, int *wret, int *hret)

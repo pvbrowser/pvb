@@ -17,7 +17,9 @@
 #include "opt.h"
 
 #ifndef IS_OLD_MSVCPP
+#ifndef USE_SYMBIAN
 #define AF_INET6_IS_AVAILABLE
+#endif
 #endif
 
 #define _QTSOCK_

@@ -185,6 +185,15 @@ const char *inifile()
   if(strcmp(name,"%USERPROFILE%") == 0) strcpy(name,"C:");
   strcat(name,"\\pvbrowser.ini");
 #endif
+#ifdef USE_SYMBIAN
+  //SECUREID (magic number!)  0xE537072d
+  //in symbian the normal dir is under \\Private\\<secureid>
+  //but we prefer a pvb dir...
+  if(!mkdir("\\pvb",S_IWUSR)){
+    qDebug()<<"Error creating pvb dir";
+  }
+  strcpy(name,"\\pvb\\pvbrowser.ini");
+#endif
   return name;
 }
 
@@ -338,7 +347,11 @@ int i;
 #ifdef PVWIN32
           strcat(opt.pvb_widget_plugindir,"\\");
 #else
+#ifdef USE_SYMBIAN
+          strcat(opt.pvb_widget_plugindir,"\\");
+#else
           strcat(opt.pvb_widget_plugindir,"/");
+#endif
 #endif
         }
         else if(strncmp(buf,"enable_webkit_plugins=",22) == 0)
@@ -350,8 +363,15 @@ int i;
           int ret;
           strcpy(buf2, &buf[5]);
 #ifdef PVUNIX
+#ifdef USE_SYMBIAN
+           if(!mkdir(buf2,S_IWUSR))
+           {
+             qDebug()<<"Error creating temp dir";
+           }
+#else
           sprintf(cmd,"mkdir -p %s", buf2);
           if(system(cmd) != 0) printf("could not create temporary directory: %s\n", cmd);
+#endif
 #endif
 #ifdef PVWIN32
           ExpandEnvironmentStrings(buf2,buf,sizeof(buf)-1);
@@ -373,7 +393,11 @@ int i;
             return "Error chdir";
           }
 #ifdef PVUNIX
+#ifdef USE_SYMBIAN
+          strcat(buf2,"\\");
+#else
           strcat(buf2,"/");
+#endif
 #endif
 #ifdef PVWIN32
           strcat(buf2,"\\");
@@ -523,6 +547,9 @@ int i;
       mkdir("/sdcard/pvbrowser", 0x0fff); // android
       mkdir("/sdcard/pvbrowser/temp", 0x0fff); // android             
 #endif
+#ifdef USE_SYMBIAN
+      mkdir("\\pvb",S_IWUSR);
+#endif
       fp = fopen(inifile(),"w");
       if(fp != NULL)
       {
@@ -562,9 +589,17 @@ int i;
 #ifdef USE_ANDROID
         fprintf(fp,"temp=/sdcard/pvbrowser/temp\n");
 #else
+#ifdef USE_SYMBIAN
+        if(!mkdir("\\pvb\\temp",S_IWUSR))
+        {
+           qDebug()<<"Error creating temp dir";
+        }
+        fprintf(fp,"temp=\\pvb\\temp\n");
+#else        
         sprintf(buf,"mkdir -p /tmp/pvb-%s", getenv("USER"));
         if(system(buf) != 0) printf("could not create temporary directory: %s\n", buf);
         fprintf(fp,"temp=/tmp/pvb-%s\n", getenv("USER"));
+#endif
 #endif
 #endif
 #ifdef PVWIN32
@@ -626,8 +661,13 @@ int i;
         fprintf(fp,"view.html=firefox\n");
         fprintf(fp,"view.audio=vlc\n");
         fprintf(fp,"view.video=vlc\n");
+#ifdef USE_SYMBIAN
+        fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
+        fprintf(fp,"pvb_widget_plugindir=\\sys\\bin\n");
+#else
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
         fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser/widget_plugins\n");
+#endif
 #endif
         fprintf(fp,"generate_cookie=pvb_generate_cookie\n");
 

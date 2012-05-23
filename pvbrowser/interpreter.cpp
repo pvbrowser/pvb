@@ -353,6 +353,9 @@ void Interpreter::setPath(const char *p)
 #ifdef PVWIN32
   cptr = strrchr(path,'\\');
 #endif
+#ifdef USE_SYMBIAN
+  cptr = strrchr(path,'\\');
+#endif
   if(cptr != NULL)
   {
     cptr++;
@@ -2210,6 +2213,9 @@ void Interpreter::interpretp(const char *command)
 {
   if(strncmp(command,"print(",6) == 0) // print the widget
   {
+#ifdef USE_SYMBIAN
+    // not implemented
+#else
     sscanf(command,"print(%d)",&i);
     if(i < 0) return;
     if(i >= nmax) return;
@@ -2252,9 +2258,13 @@ void Interpreter::interpretp(const char *command)
         }
       }
     }
+#endif    
   }
   else if(strncmp(command,"printHTML(",10) == 0) // print QWebView
   {
+#ifdef USE_SYMBIAN
+    // not implemented
+#else
     sscanf(command,"printHTML(%d)",&i);
     if(i < 0) return;
     if(i >= nmax) return;
@@ -2283,6 +2293,7 @@ void Interpreter::interpretp(const char *command)
         QCoreApplication::sendEvent(w, &event);
       }
     }
+#endif    
   }
 #ifdef USE_OPEN_GL
   else if(strncmp(command,"pvGlUpdate(",11) == 0) // update OpenGL widget
@@ -2332,6 +2343,9 @@ void Interpreter::interpretp(const char *command)
 #ifdef USE_ANDROID
     qApp->beep();
 #else
+#ifdef USE_SYMBIAN
+    qApp->beep();
+#else
     if(QSound::isAvailable())
     {
       QSound::play(text);
@@ -2345,6 +2359,7 @@ void Interpreter::interpretp(const char *command)
       printf("On Qt/Embedded, a built-in mixing sound server is used, which accesses /dev/dsp directly. Only the WAVE format is supported.\n");
       qApp->beep();
     }
+#endif
 #endif    
   }
   else if(strncmp(command,"popupMenu(",10) == 0) // open a popupMenu()

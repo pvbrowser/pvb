@@ -146,7 +146,15 @@ int pvbinit()
 int main(int argc, char *argv[])
 {
   Q_INIT_RESOURCE(pvbrowser);
-
+#ifdef USE_SYMBIAN
+    //display args in debug console
+    //printf are not visible with default settings
+    int i;
+    qDebug()<<"v: 0.5";//to see if really the app havebeen replaced on debug device
+    for(i=0;i<argc;i++){
+        qDebug()<<"ARG["<<i<<"]: "<<argv[i];
+    }
+#endif
   wsa(); // init windows sockets
   QApplication app(argc, argv);
   QPixmap pm(splash);
