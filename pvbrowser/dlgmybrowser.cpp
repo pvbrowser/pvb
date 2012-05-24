@@ -78,13 +78,11 @@ QWebView *pvQWebView::createWindow(QWebPage::WebWindowType type)
     cmd += "\"";
 #ifdef PVUNIX
     cmd += " &";
+    qDebug()<<"pvQWebView::createWindow system('"<<cmd<<"')";
     int ret = system(cmd.toUtf8());
 #endif
 #ifdef PVWIN32
     int ret = mysystem(cmd.toUtf8());
-#endif
-#ifdef USE_SYMBIAN
-    int ret = -1;
 #endif
 
     if(ret < 0) printf("ERROR system(%s)\n", (const char *) cmd.toUtf8());

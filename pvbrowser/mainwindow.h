@@ -25,11 +25,13 @@
 #include <QThread>
 #include <QSemaphore>
 #include <QTabBar>
+
 #ifdef USE_SYMBIAN
-    #define  MAX_TABS 1
+    #define  MAX_TABS 5
     #define  MAX_TAB_TEXT_LENGTH 20
-    #define  MAX_DOCK_WIDGETS   10
+    #define  MAX_DOCK_WIDGETS   32
 #else
+
     #define  MAX_TABS 32
     #define  MAX_TAB_TEXT_LENGTH 20
     #define  MAX_DOCK_WIDGETS   32

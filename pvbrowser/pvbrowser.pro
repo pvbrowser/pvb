@@ -4,28 +4,32 @@
 #######################################
 #CONFIG      += USE_VTK
 #DEFINES     += NO_QWT
+QT           += xml opengl svg webkit network
+#mobile devices without opengl
+#QT           += xml svg webkit network
+
 linux-g++-gles2 {
   DEFINES    += USE_MAEMO
+  QT         -= opengl
 }  
 android-g++ {
   DEFINES    += USE_ANDROID
   DEFINES    += USE_MAEMO
+  QT         -= opengl
 }  
 symbian:CONFIG += USE_SYMBIAN
 USE_SYMBIAN {
   DEFINES    += USE_SYMBIAN
   DEFINES    += USE_MAEMO
-  LIBS    += -lqwt.lib
-  #LIBS    += F:\QtSDK\Symbian\SDKs\Symbian1Qt473\epoc32\release\armv5\urel\qwt.lib
+  DEFINES    += NO_PRINTER
+  LIBS       += -lqwt.lib
+  QT         -= opengl
 }
 
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
-unix:LIBS    += -ldl
-QT           += xml opengl svg webkit network
-#mobile devices without opengl
-#QT           += xml svg webkit network
-QMAKE_LFLAGS += -static-libgcc
+unix:!symbian:LIBS    += -ldl
+!symbian:QMAKE_LFLAGS += -static-libgcc
 
 HEADERS       = mainwindow.h \
                 dlgopt.h \
@@ -65,6 +69,7 @@ SOURCES       = main.cpp \
 #INCLUDEPATH  += ../qwt/include
 INCLUDEPATH  += ../qwt/src
 symbian {
+
 }
 else {
 LIBS         += ../qwt/lib/libqwt.a

@@ -21,9 +21,11 @@
 #include "dlgtextbrowser.h"
 #include "tcputil.h"
 #include "mainwindow.h"
+
+#ifndef NO_QPRINTER
 #include <QPrintDialog>
 #include <QPrinter>
-
+#endif
 extern OPT opt;
 extern int socket_array[];
 
@@ -722,7 +724,9 @@ void MainWindow::createToolBars()
   fileToolBar->addAction(logbmpAct);
   fileToolBar->addAction(logpvmAct);
 #endif
+#ifndef NO_PRINTER
   fileToolBar->addAction(printAct);
+#endif
 #ifndef USE_MAEMO
   fileToolBar->addAction(newtabActToolBar);
   fileToolBar->addSeparator();
@@ -1481,6 +1485,7 @@ void MainWindow::slotLogpvm()
 
 void MainWindow::slotPrint()
 {
+#ifndef NO_PRINTER
   if(opt.arg_debug) printf("slotPrint\n");
   QWidget *w = centralWidget();
   if(w == NULL)
@@ -1512,6 +1517,7 @@ void MainWindow::slotPrint()
     painter.drawPixmap(LEFT_PRINT_MARGIN,UPPER_PRINT_MARGIN,pmprint);
     painter.end();
   }
+#endif
 }
 
 void MainWindow::slotCopy()

@@ -172,6 +172,14 @@ const char *inifile()
 #ifdef PVUNIX
 #ifdef USE_ANDROID
   strcpy(name,"/sdcard/pvbrowser/pvbrowser.ini"); // android
+#elif defined(USE_SYMBIAN)
+  //SECUREID (magic number!)  0xE537072d
+  //in symbian the normal dir is under \\Private\\<secureid>
+  //but we prefer a pvb dir...
+  if(!mkdir("\\pvb",S_IWUSR)){
+    qDebug()<<"Error creating pvb dir";
+  }
+  strcpy(name,"\\pvb\\pvbrowser.ini");
 #else
   strcpy(name,getenv("HOME"));
   strcat(name,"/.pvbrowser.ini");
@@ -184,15 +192,6 @@ const char *inifile()
   ExpandEnvironmentStrings("%USERPROFILE%",name,sizeof(name)-1);
   if(strcmp(name,"%USERPROFILE%") == 0) strcpy(name,"C:");
   strcat(name,"\\pvbrowser.ini");
-#endif
-#ifdef USE_SYMBIAN
-  //SECUREID (magic number!)  0xE537072d
-  //in symbian the normal dir is under \\Private\\<secureid>
-  //but we prefer a pvb dir...
-  if(!mkdir("\\pvb",S_IWUSR)){
-    qDebug()<<"Error creating pvb dir";
-  }
-  strcpy(name,"\\pvb\\pvbrowser.ini");
 #endif
   return name;
 }
@@ -209,6 +208,8 @@ const char *passfile()
 #ifdef PVUNIX
 #ifdef USE_ANDROID
   strcpy(name,"/sdcard/pvbrowser/pvbrowserpass.ini"); // android
+#elif defined(USE_SYMBIAN)
+  strcpy(name,"\\pvb\\pvbrowserpass.ini");
 #else
   strcpy(name,getenv("HOME"));
   strcat(name,"/.pvbrowserpass.ini");

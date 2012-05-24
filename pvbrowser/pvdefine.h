@@ -18,6 +18,9 @@
 
 // Symbian
 #ifdef USE_SYMBIAN
+#include <stdapis/sys/select.h>
+#include <stdapis/locale.h>
+#include <stdapis/arpa/inet.h>
 #ifndef PVUNIX
 #define PVUNIX
 #endif
