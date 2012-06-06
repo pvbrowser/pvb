@@ -552,6 +552,12 @@ class PARAM(_object):
     __swig_setmethods__["mytext"] = _pv.PARAM_mytext_set
     __swig_getmethods__["mytext"] = _pv.PARAM_mytext_get
     if _newclass:mytext = _swig_property(_pv.PARAM_mytext_get, _pv.PARAM_mytext_set)
+    __swig_setmethods__["communication_plugin"] = _pv.PARAM_communication_plugin_set
+    __swig_getmethods__["communication_plugin"] = _pv.PARAM_communication_plugin_get
+    if _newclass:communication_plugin = _swig_property(_pv.PARAM_communication_plugin_get, _pv.PARAM_communication_plugin_set)
+    __swig_setmethods__["use_communication_plugin"] = _pv.PARAM_use_communication_plugin_set
+    __swig_getmethods__["use_communication_plugin"] = _pv.PARAM_use_communication_plugin_get
+    if _newclass:use_communication_plugin = _swig_property(_pv.PARAM_use_communication_plugin_get, _pv.PARAM_use_communication_plugin_set)
     def __init__(self): 
         this = _pv.new_PARAM()
         try: self.this.append(this)

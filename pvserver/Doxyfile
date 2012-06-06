@@ -192,6 +192,10 @@ INLINE_INFO            = YES
 # alphabetically by member name. If set to NO the members will appear in 
 # declaration order.
 
+#SORT_BRIEF_DOCS        = YES
+#SORT_GROUP_NAMES       = YES
+#SORT_BY_SCOPE_NAME     = YES
+#SORT_MEMBERS_CTORS_1ST = YES
 SORT_MEMBER_DOCS       = YES
 
 # If member grouping is used in the documentation and the DISTRIBUTE_GROUP_DOC 

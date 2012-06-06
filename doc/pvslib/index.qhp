@@ -92,6 +92,11 @@
       <keyword name="readDataCast" id="processviewserver.h::readDataCast" ref="processviewserver_8h.html#gac79a1cf60865451ae7c5f0bf416f3b02" />
       <keyword name="showDataCast" id="processviewserver.h::showDataCast" ref="processviewserver_8h.html#gaedcf7c3294755292eb0d96d9b3a1c614" />
       <keyword name="PARAM" id="processviewserver.h::PARAM" ref="processviewserver_8h.html#ga18296754012515ac673ee13d34243180" />
+      <keyword name="plugin_pvAccept" id="processviewserver.h::plugin_pvAccept" ref="processviewserver_8h.html#ga7605800ecf1607f58b6244968cba7643" />
+      <keyword name="plugin_pvtcpsend_binary" id="processviewserver.h::plugin_pvtcpsend_binary" ref="processviewserver_8h.html#ga9f58ea91de72f5ee31e76ef815814f3a" />
+      <keyword name="plugin_pvtcpreceive" id="processviewserver.h::plugin_pvtcpreceive" ref="processviewserver_8h.html#gabc024b6efe3a1ee2aaee44860c53888c" />
+      <keyword name="plugin_pvtcpreceive_binary" id="processviewserver.h::plugin_pvtcpreceive_binary" ref="processviewserver_8h.html#gad034ed6b874ec6a8eba176cb08e2639e" />
+      <keyword name="plugin_closesocket" id="processviewserver.h::plugin_closesocket" ref="processviewserver_8h.html#ga0309bf95e65f2f4c791bd9096069e76a" />
       <keyword name="glencode_set_param" id="processviewserver.h::glencode_set_param" ref="processviewserver_8h.html#ga3d29ab442a67496386705bcf66180160" />
       <keyword name="pvlock" id="processviewserver.h::pvlock" ref="processviewserver_8h.html#ga1b0519bc72b1168bec8dd173e6ce1e47" />
       <keyword name="pvunlock" id="processviewserver.h::pvunlock" ref="processviewserver_8h.html#ga4ed35d24f18f4a747092558ead32dda8" />
@@ -559,6 +564,11 @@
       <keyword name="INITIALIZE_GL" id="DefinesAndEnums::INITIALIZE_GL" ref="group__DefinesAndEnums.html#gaa8b54f6a7ddf0729e9d3380f0e458abb" />
       <keyword name="RESIZE_GL" id="DefinesAndEnums::RESIZE_GL" ref="group__DefinesAndEnums.html#ga9e5c0f43e9974124ba5cfdaca4eeab0b" />
       <keyword name="PARAM" id="DefinesAndEnums::PARAM" ref="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180" />
+      <keyword name="plugin_pvAccept" id="DefinesAndEnums::plugin_pvAccept" ref="group__DefinesAndEnums.html#ga7605800ecf1607f58b6244968cba7643" />
+      <keyword name="plugin_pvtcpsend_binary" id="DefinesAndEnums::plugin_pvtcpsend_binary" ref="group__DefinesAndEnums.html#ga9f58ea91de72f5ee31e76ef815814f3a" />
+      <keyword name="plugin_pvtcpreceive" id="DefinesAndEnums::plugin_pvtcpreceive" ref="group__DefinesAndEnums.html#gabc024b6efe3a1ee2aaee44860c53888c" />
+      <keyword name="plugin_pvtcpreceive_binary" id="DefinesAndEnums::plugin_pvtcpreceive_binary" ref="group__DefinesAndEnums.html#gad034ed6b874ec6a8eba176cb08e2639e" />
+      <keyword name="plugin_closesocket" id="DefinesAndEnums::plugin_closesocket" ref="group__DefinesAndEnums.html#ga0309bf95e65f2f4c791bd9096069e76a" />
       <keyword name="null_string" id="DefinesAndEnums::null_string" ref="group__DefinesAndEnums.html#gac11bf696f7287842ed6c53430fb6e884" />
       <keyword name="TQWidget" id="DefinesAndEnums::TQWidget" ref="group__DefinesAndEnums.html#gga06fc87d81c62e9abb8790b6e5713c55ba21858b4a34d0e45cc27041401b405d58" />
       <keyword name="TQPushButton" id="DefinesAndEnums::TQPushButton" ref="group__DefinesAndEnums.html#gga06fc87d81c62e9abb8790b6e5713c55ba6fcd7cbe8bf6faca8907a6ae7146fb37" />
@@ -1424,6 +1434,8 @@
       <keyword name="mouse_x" id="_PARAM_::mouse_x" ref="struct__PARAM__.html#a8f93fb42caf43af768e600c6ec4bbd37" />
       <keyword name="mouse_y" id="_PARAM_::mouse_y" ref="struct__PARAM__.html#a37b52b494242bd9e67dddbc672e104ea" />
       <keyword name="mytext" id="_PARAM_::mytext" ref="struct__PARAM__.html#a254d4d062e9ae86938cfb09543379256" />
+      <keyword name="communication_plugin" id="_PARAM_::communication_plugin" ref="struct__PARAM__.html#a3e6734c23de0caa6bfbece144cfaa5ff" />
+      <keyword name="use_communication_plugin" id="_PARAM_::use_communication_plugin" ref="struct__PARAM__.html#ab9368bf1baa92a254f1465ad7c355a68" />
       <keyword name="FloatArray" id="FloatArray" ref="structFloatArray.html" />
       <keyword name="f" id="FloatArray::f" ref="structFloatArray.html#a3a34be14db332114037ffda5816201fb" />
       <keyword name="f0" id="FloatArray::f0" ref="structFloatArray.html#a52bc2acb9748f97fa23a1b1729981b31" />

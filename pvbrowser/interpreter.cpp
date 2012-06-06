@@ -2344,7 +2344,14 @@ void Interpreter::interpretp(const char *command)
     qApp->beep();
 #else
 #ifdef USE_SYMBIAN
-    qApp->beep();
+    if(QSound::isAvailable())
+    {
+      QSound::play(text);
+    }
+    else
+    {
+      qApp->beep();
+    }  
 #else
     if(QSound::isAvailable())
     {

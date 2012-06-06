@@ -275,6 +275,15 @@ MainWindow::MainWindow()
     printf("readIniFile ERROR=%s\n",cptr);
     exit(-1);
   }
+  if(opt.appfontsize > 0) // intoduced june 2012 for android application font setting
+  {
+    //QFont f = qApp->font();
+    //f.setPointSize(opt.appfontsize);
+    //qApp->setFont(f);
+    QFont f = QApplication::font();
+    f.setPointSize(opt.appfontsize);
+    QApplication::setFont(f);
+  }
 
   createActions();
   createToolBars();

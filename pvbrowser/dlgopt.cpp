@@ -18,6 +18,9 @@
 #include <qfile.h>
 #include <stdio.h>
 #include "dlgopt.h"
+#include "opt.h"
+
+extern OPT opt;
 
 DlgOpt::DlgOpt(QWidget *parent) : QDialog(parent)
 {
@@ -58,7 +61,9 @@ void  DlgOpt::initDialog()
   edit1->setMinimumSize(0,0);
   edit1->setMaximumSize(1280,1024);
   edit1->setPlainText("");
-  QFont font("Courier", 12);
+  int fsize = 12;
+  if(opt.appfontsize > 0) fsize = opt.appfontsize;
+  QFont font("Courier", fsize);        
   edit1->setFont(font);
 
   QPushButton_ok= new QPushButton(this);

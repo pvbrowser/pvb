@@ -35,6 +35,7 @@ typedef struct
   int sshport;              //=50500  # local port for ssh connections
   int zoom;                 //=100    # zoom factor in %
   int fontzoom;             //=100    # zoom factor for fonts in %
+  int appfontsize;          //=0      # size of the application font. If appfontsize == 0 then use default font.
   int autoreconnect;        //=0      # 0|1
   int exitpassword;         //=0      # 0|1
   int menubar;              //=1      # 0|1

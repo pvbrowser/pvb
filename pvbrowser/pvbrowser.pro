@@ -2,6 +2,7 @@
 # project file for pvbrowser          #
 # you can uncomment CONFIG += USE_VTK #
 #######################################
+CONFIG       += warn_on release
 #CONFIG      += USE_VTK
 #DEFINES     += NO_QWT
 QT           += xml opengl svg webkit network

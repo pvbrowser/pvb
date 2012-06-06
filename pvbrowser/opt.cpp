@@ -248,6 +248,7 @@ void setDefaultOptions()
   opt.sshport=50500;
   opt.zoom=100;
   opt.fontzoom=100;
+  opt.appfontsize=0;
   opt.autoreconnect=0;
   opt.exitpassword=0;
   opt.menubar=1;
@@ -321,6 +322,10 @@ int i;
         else if(strncmp(buf,"fontzoom=",9) == 0)
         {
           sscanf(buf,"fontzoom=%d",&opt.fontzoom);
+        }
+        else if(strncmp(buf,"appfontsize=",12) == 0)
+        {
+          sscanf(buf,"appfontsize=%d",&opt.appfontsize);
         }
         else if(strncmp(buf,"autoreconnect=",14) == 0)
         {
@@ -561,7 +566,8 @@ int i;
         fprintf(fp,"port=5050               # default port\n");
         fprintf(fp,"sshport=50500           # local port for ssh connections\n");
         fprintf(fp,"zoom=100                # zoom factor in percent\n");
-        fprintf(fp,"fontzoom=100            # zoom factor for fonts in percent\n");
+        fprintf(fp,"fontzoom=100            # zoom factor for fonts in percent.\n");
+        fprintf(fp,"appfontsize=0           # size of the application font. If appfontsize == 0 then use default font.\n");
         fprintf(fp,"fillbackground=0        # 0|1 transparency in dialog boxes\n");
         fprintf(fp,"codec=utf8              # utf8 | None where None uses latin charset\n");
         fprintf(fp,"autoreconnect=0         # 0|1\n");

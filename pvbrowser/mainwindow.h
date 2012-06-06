@@ -16,7 +16,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define VERSION "4.6.8"
+#define VERSION "4.6.9"
 
 #include "interpreter.h"
 
