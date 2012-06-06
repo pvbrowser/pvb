@@ -2390,6 +2390,11 @@ void Interpreter::interpretr(const char *command)
       MyListView *ptr = (MyListView *) all[i]->w;
       if(ptr != NULL) ptr->removeAllColumns();
     }
+    else if(all[i]->type == TQTable)
+    {
+      MyTable *t = (MyTable *) all[i]->w;
+      if(t != NULL) t->setColumnCount(0);
+    }
     else if(all[i]->type == TQCustomWidget)
     {
       QWidget *w = all[i]->w;
