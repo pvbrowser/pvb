@@ -7267,6 +7267,11 @@ void Interpreter::showMyBrowser(const char *url)
         mainWindow->scroll->setWidgetResizable(false);
         if(all[0]->w != NULL) all[0]->w->resize(1280,1024); // resize to default screen dimension
       }  
+#if QT_VERSION >= 0x040800
+      all[0]->w->grabGesture(Qt::PanGesture);
+      all[0]->w->grabGesture(Qt::PinchGesture);
+      all[0]->w->grabGesture(Qt::SwipeGesture);
+#endif      
       mainWindow->scroll->setWidget(all[0]->w);
       // workaround for qt
       QApplication::postEvent(mainWindow, new QResizeEvent(QSize(w-1,h-1),QSize(w,h))); // force qt to update sliders

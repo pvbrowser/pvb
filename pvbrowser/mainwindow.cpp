@@ -639,15 +639,15 @@ void MainWindow::createMenus()
   if(opt.arg_debug) printf("createMenus\n");
 
   fileMenu = menuBar()->addMenu(l_file);
-#ifndef USE_MAEMO
   if(opt.arg_disable == 0)
   {
     fileMenu->addAction(optionAct);
+#ifndef USE_MAEMO
     fileMenu->addSeparator();
     fileMenu->addAction(windowAct);
     fileMenu->addAction(newtabAct);
-  }
 #endif
+  }
   fileMenu->addAction(reconnectAct);
   fileMenu->addSeparator();
 #ifndef USE_MAEMO
@@ -1561,10 +1561,24 @@ void MainWindow::slotUrl(const QString &urlin)
 void MainWindow::keyPressEvent(QKeyEvent *e)
 {
   int modifier,key;
+  
+  /*
+  if(opt.appfontsize < 0)
+  { // mobile devices debug
+    char buf[1024];
+    sprintf(buf,"press key=%x modifiers=%x nm=%x nscan=%x nkey=%x", (int) e->key(), (int) e->modifiers(), e->nativeModifiers(), e->nativeScanCode(), e->nativeVirtualKey());
+    QMessageBox::information(this, "got key HEX values", buf);
+  } 
+  */
 
   key = e->key();
   modifier = 0;
-  if     (e->modifiers() == Qt::ShiftModifier)
+  if     (key == Qt::Key_Menu && e->modifiers() == Qt::NoModifier)
+  {
+    slotToolbar();
+    return;
+  }
+  else if(e->modifiers() == Qt::ShiftModifier)
   {
     modifier = 4;
   }
@@ -1605,6 +1619,15 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
 void MainWindow::keyReleaseEvent(QKeyEvent *e)
 {
   int modifier,key;
+
+  /*
+  if(opt.appfontsize < 0)
+  { // mobile devices debug
+    char buf[1024];
+    sprintf(buf,"release key=%x modifiers=%x nm=%x nscan=%x nkey=%x", (int) e->key(), (int) e->modifiers(), e->nativeModifiers(), e->nativeScanCode(), e->nativeVirtualKey());
+    QMessageBox::information(this, "got key HEX values", buf);
+  } 
+  */
 
   key = e->key();
   modifier = 0;

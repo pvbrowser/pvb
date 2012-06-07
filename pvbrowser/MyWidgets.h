@@ -81,6 +81,7 @@ protected:
     //virtual void mousePressEvent(QMouseEvent *e);
 
 private:
+    virtual bool event(QEvent *event);
 
     int *s,id;
 };
