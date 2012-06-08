@@ -19,7 +19,6 @@
 #include <ctype.h>
 #include "opt.h"
 #include "mainwindow.h"
-#include "MyWidgets.h"
 #include "interpreter.h"
 
 #include "qtabbar.h"
@@ -155,7 +154,7 @@ MyQWidget::~MyQWidget()
 
 bool MyQWidget::event(QEvent *event)
 {
-#if QT_VERSION >= 0x040800
+#if QT_VERSION >= 0x040603
   if(event->type() == QEvent::Gesture)
   {
     char buf[1024];
@@ -234,7 +233,9 @@ bool MyQWidget::event(QEvent *event)
           percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask - 5;
           if(percent < 10) percent = 10;
         }
+#ifndef PVDEVELOP        
         if(percent != 0) mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);
+#endif        
       }  
     }  
     //*

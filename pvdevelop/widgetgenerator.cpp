@@ -26,7 +26,6 @@
 #include "dlgeditlayout.h"
 #include "widgetgenerator.h"
 #include "cutil.h"
-#include "MyWidgets.h"
 #include "interpreter.h"
 #include "pvserver.h"
 #include "designer.h"
