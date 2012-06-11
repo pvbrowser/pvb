@@ -239,11 +239,11 @@ bool MyQWidget::event(QEvent *event)
       }  
     }  
     //*
-    //if(opt.appfontsize < 0)
+    if(opt.appfontsize < 0)
     { // mobile devices debug
       QMessageBox::information(this, "got gesture", buf);
     } 
-    //*/
+    // */
     return true;
   }
 #endif  
