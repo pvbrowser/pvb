@@ -42,6 +42,7 @@ SOURCES      = pvpluginmain.cpp \
 # FORMS       += ../pvbrowser/dlgtextbrowser.ui
 
 LIBS        += ../qwt/lib/libqwt.a
+LIBS        += -ldl
 
 RESOURCES    = pvbrowser.qrc
 

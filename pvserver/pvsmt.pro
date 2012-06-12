@@ -10,7 +10,8 @@ unix:QMAKE_LFLAGS_SHLIB += -lpthread -ldl
 # unix:QMAKE_LFLAGS =  -Wl,--no-undefined
 # we override this default setting, so that this will work correctly
 # on debian/ubuntu also
-unix:QMAKE_LFLAGS =  -Wl
+# unix:QMAKE_LFLAGS =  -Wl
+unix:QMAKE_LFLAGS = -Wl,--undefined
 }
 macx:DEFINES += unix
 macx:DEFINES += PVMAC
@@ -26,4 +27,5 @@ SOURCES += glencode.cpp      \
            util.cpp          \
            wthread.cpp
 
+LIBS    += -ldl -lpthread
 

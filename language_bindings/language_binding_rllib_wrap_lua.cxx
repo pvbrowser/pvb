@@ -11930,7 +11930,7 @@ fail:
 }
 
 
-static int _wrap_rlIniFile_i18n(lua_State* L) {
+static int _wrap_rlIniFile_i18n__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   rlIniFile *arg1 = (rlIniFile *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -11957,6 +11957,92 @@ static int _wrap_rlIniFile_i18n(lua_State* L) {
 fail:
   lua_error(L);
   return SWIG_arg;
+}
+
+
+static int _wrap_rlIniFile_i18n__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlIniFile *arg1 = (rlIniFile *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlIniFile::i18n",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlIniFile::i18n",1,"rlIniFile *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlIniFile::i18n",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlIniFile,0))){
+    SWIG_fail_ptr("rlIniFile_i18n",1,SWIGTYPE_p_rlIniFile);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (char *)(arg1)->i18n((char const *)arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlIniFile_i18n(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlIniFile, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rlIniFile_i18n__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlIniFile, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = SWIG_lua_isnilstring(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlIniFile_i18n__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlIniFile_i18n'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlIniFile::i18n(char const *,char const *)\n"
+    "    rlIniFile::i18n(char const *)\n");
+  lua_error(L);return 0;
 }
 
 

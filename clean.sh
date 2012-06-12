@@ -7,6 +7,7 @@ find . -name "lib*.o.*"          -exec rm "{}" ";"
 find . -name "moc_*"             -exec rm "{}" ";"
 find . -name "qrc_*"             -exec rm "{}" ";"
 find . -name "ui_*"              -exec rm "{}" ";"
+find . -name "installdox"        -exec rm "{}" ";"
 
 if [ -d win-mingw ]; then
   cd win-mingw

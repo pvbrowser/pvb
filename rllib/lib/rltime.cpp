@@ -427,7 +427,20 @@ rlTime rlTime::operator-(rlTime &time)
     }
     t.day += maxmonth; 
   }
-  if(t.month <= 0) { t.year--; t.month += 12; }
+
+  if(y >= 0)
+  {
+    //printf("after christ was born. thus everything is ok.\n");                           
+  }
+  else
+  {
+    //printf("before christ was born. now also ok\n");
+                      { t.month++;  t.day         -= 30;   }
+    if(t.day    < 30) { t.day++;    t.hour        -= 24;   }
+    if(t.hour   < 0 ) { t.hour++;   t.minute      -= 60;   }
+    if(t.minute < 0 ) { t.minute++; t.second      -= 60;   } 
+    if(t.second < 0 ) { t.second++; t.millisecond -= 1000; }
+  }
 
   return t;
 }

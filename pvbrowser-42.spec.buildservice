@@ -469,4 +469,18 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/browserplugin/libpvbrowser.so
 /opt/pvb/browserplugin/pvbrowserplugin-example.html
 /opt/pvb/browserplugin/README.txt
+%if 0%{?fedora_version}
+/opt/pvb/language_bindings/python/id/pv.pyc
+/opt/pvb/language_bindings/python/id/pv.pyo
+/opt/pvb/language_bindings/python/id/rllib.pyc
+/opt/pvb/language_bindings/python/id/rllib.pyo
+/opt/pvb/language_bindings/python/mt/pv.pyc
+/opt/pvb/language_bindings/python/mt/pv.pyo
+/opt/pvb/language_bindings/python/mt/rllib.pyc
+/opt/pvb/language_bindings/python/mt/rllib.pyo
+/opt/pvb/language_bindings/python/template/mask1.pyc
+/opt/pvb/language_bindings/python/template/mask1.pyo
+/opt/pvb/language_bindings/python/template/pvs_init.pyc
+/opt/pvb/language_bindings/python/template/pvs_init.pyo
+%endif
 

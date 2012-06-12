@@ -583,7 +583,20 @@ class for handling time.
     }
     t.<a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a> += maxmonth; 
   }
-  <span class="keywordflow">if</span>(t.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a> &lt;= 0) { t.<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>--; t.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a> += 12; }
+
+  <span class="keywordflow">if</span>(y &gt;= 0)
+  {
+    <span class="comment">//printf(&quot;after christ was born. thus everything is ok.\n&quot;);                           </span>
+  }
+  <span class="keywordflow">else</span>
+  {
+    <span class="comment">//printf(&quot;before christ was born. now also ok\n&quot;);</span>
+                      { t.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>++;  t.<a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>         -= 30;   }
+    <span class="keywordflow">if</span>(t.<a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>    &lt; 30) { t.<a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>++;    t.<a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">hour</a>        -= 24;   }
+    <span class="keywordflow">if</span>(t.<a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">hour</a>   &lt; 0 ) { t.<a class="code" href="classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b">hour</a>++;   t.<a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">minute</a>      -= 60;   }
+    <span class="keywordflow">if</span>(t.<a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">minute</a> &lt; 0 ) { t.<a class="code" href="classrlTime.html#ae583de83501e3480cfd4fed1c92c33f1">minute</a>++; t.<a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">second</a>      -= 60;   } 
+    <span class="keywordflow">if</span>(t.<a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">second</a> &lt; 0 ) { t.<a class="code" href="classrlTime.html#ac1eaa68b719eff17648d5f291b3433de">second</a>++; t.<a class="code" href="classrlTime.html#a348ab72053e91b194f84e35004793575">millisecond</a> -= 1000; }
+  }
 
   <span class="keywordflow">return</span> t;
 }
@@ -630,7 +643,7 @@ class for handling time.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00448">448</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00461">461</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlTime.html">rlTime</a> diff,t1;
 
@@ -672,7 +685,7 @@ class for handling time.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00473">473</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00486">486</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>((*<span class="keyword">this</span>) == time) <span class="keywordflow">return</span> 1;
   <span class="keywordflow">if</span>((*<span class="keyword">this</span>) &lt;  time) <span class="keywordflow">return</span> 1;
@@ -696,7 +709,7 @@ class for handling time.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00435">435</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00448">448</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>        != time.<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>)        <span class="keywordflow">return</span> 0;
   <span class="keywordflow">if</span>(<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>       != time.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>)       <span class="keywordflow">return</span> 0;
@@ -726,7 +739,7 @@ class for handling time.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00480">480</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00493">493</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlTime.html">rlTime</a> diff,t1;
 
@@ -768,7 +781,7 @@ class for handling time.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00505">505</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00518">518</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>((*<span class="keyword">this</span>) == time) <span class="keywordflow">return</span> 1;
   <span class="keywordflow">if</span>((*<span class="keyword">this</span>) &gt;  time) <span class="keywordflow">return</span> 1;
@@ -791,7 +804,7 @@ class for handling time.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00512">512</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00525">525</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keyword">struct </span>tm begin;
   <span class="keyword">struct </span>tm test;

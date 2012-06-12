@@ -120,7 +120,7 @@ Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#ae55d28f3e1658e1e64af33eb953373f3">nextName</a> (const char *section)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a5ae4c069708c7b441d343b4a3ab3a17a">setDefaultSection</a> (const char *section)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a70ed67c5a33a4d3b00b836c6c68f135c">defaultSection</a> ()</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a5e1de3dbd04f3580fe37b7b9415bc143">i18n</a> (const char *tag, const char *default_text)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#aaca881704690345b4c7e0569059f3239">i18n</a> (const char *tag, const char *default_text=&quot;&quot;)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlIniFile.html#a2f69e87bf36bbe38b679f163ce71de6d">tr</a> (const char *txt)</td></tr>
 <tr><td colspan="2"><h2><a name="pri-types"></a>
 Private Types</h2></td></tr>
@@ -489,7 +489,7 @@ class for INI files as known from Windows.
 </pre></div>
 </div>
 </div>
-<a class="anchor" id="a5e1de3dbd04f3580fe37b7b9415bc143"></a><!-- doxytag: member="rlIniFile::i18n" ref="a5e1de3dbd04f3580fe37b7b9415bc143" args="(const char *tag, const char *default_text)" -->
+<a class="anchor" id="aaca881704690345b4c7e0569059f3239"></a><!-- doxytag: member="rlIniFile::i18n" ref="aaca881704690345b4c7e0569059f3239" args="(const char *tag, const char *default_text=&quot;&quot;)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -503,7 +503,7 @@ class for INI files as known from Windows.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>default_text</em>&#160;</td>
+          <td class="paramname"><em>default_text</em> = <code>&quot;&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1088,7 +1088,7 @@ class for INI files as known from Windows.
   <span class="keywordtype">char</span> default_text[1024];
   <span class="keywordflow">if</span>(strlen(txt) &lt; (<span class="keyword">sizeof</span>(default_text) - 40)) sprintf(default_text,<span class="stringliteral">&quot;tr_error:%s&quot;</span>, txt);
   <span class="keywordflow">else</span>                                          strcpy(default_text,<span class="stringliteral">&quot;tr_error:text too long&quot;</span>);
-  <span class="keywordflow">return</span> <a class="code" href="classrlIniFile.html#a5e1de3dbd04f3580fe37b7b9415bc143">i18n</a>(txt,default_text);
+  <span class="keywordflow">return</span> <a class="code" href="classrlIniFile.html#aaca881704690345b4c7e0569059f3239">i18n</a>(txt,default_text);
 }
 </pre></div>
 </div>

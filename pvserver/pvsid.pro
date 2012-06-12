@@ -6,7 +6,7 @@ TEMPLATE = lib
 CONFIG   = warn_on release
 !macx {
 unix:QMAKE_LFLAGS_SHLIB += -ldl
-unix:QMAKE_LFLAGS =  -Wl
+# unix:QMAKE_LFLAGS =  -Wl
 }
 
 DEFINES += USE_INETD
@@ -22,4 +22,5 @@ SOURCES += glencode.cpp      \
            pvbImage.cpp      \
            util.cpp
 
+LIBS    += -ldl -lpthread
 
