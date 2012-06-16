@@ -30,6 +30,7 @@ mail:arkalis.e@gmail.com
  ***************************************************************************/
 
 #include "rldf1.h"
+#include <time.h>
 
 //#define DF1_DEBUG
 
@@ -48,6 +49,12 @@ class df1Buffer
     public:
         df1Buffer(unsigned int maxsize=256);
         virtual ~df1Buffer();
+    protected:
+    private:
+        unsigned int maxsize;
+        unsigned int len;
+        unsigned char *dat;
+    public:    
         const unsigned int length() const {return len;}
         const unsigned char *data() const {return dat;}
         unsigned int write( unsigned char c);
@@ -55,11 +62,6 @@ class df1Buffer
         unsigned char& operator [] (unsigned int pos);
         void reset() {len=0;}
         void print();
-    protected:
-    private:
-        unsigned int maxsize;
-        unsigned int len;
-        unsigned char *dat;
 };
 df1Buffer::df1Buffer( unsigned int _maxsize)
 {
@@ -242,7 +244,7 @@ int rlDF1::cmdSetCPUMode(unsigned char destination, unsigned char mode)
     cdat[0]=0x3A;
     cdat[1]=mode;
     int ret = sendCommand( destination, 0x0F, 0x00, cdat, 2);
-    if (ret==SUCCESS) {
+    if (ret==retSUCCESS) {
         unsigned char dest,cmd,sts,len;
         ret = receiveAnswer( dest, cmd, sts, cdat, len);
         if (sts!=0) {
@@ -257,10 +259,10 @@ int rlDF1::cmdDiagnosticStatus( unsigned char destination, unsigned char *buffer
     unsigned char cdat[256];
     cdat[0]=0x03;
     int ret = sendCommand( destination, 0x06, 0x00, cdat, 1);
-    if (ret==SUCCESS) {
+    if (ret==retSUCCESS) {
         unsigned char dest,cmd,sts,len;
         ret = receiveAnswer( dest, cmd, sts, cdat, len);
-        if ( ret == SUCCESS ) {
+        if ( ret == retSUCCESS ) {
             for (int i=0;i<len;i++) buffer[i]=cdat[i];
             ret = len;
         }
@@ -278,14 +280,14 @@ int  rlDF1::cmdLogicalRead( unsigned char destination, unsigned char nsize, unsi
     cdat[4]=adr;
     cdat[5]=sadr;
     int ret = sendCommand( destination , 0x0F, 0x00, cdat, 6);
-    if (ret==SUCCESS) {
+    if (ret==retSUCCESS) {
         unsigned char dest,cmd,sts,len;
         ret = receiveAnswer( dest, cmd, sts, cdat, len);
-        if ( ret == SUCCESS ) {
+        if ( ret == retSUCCESS ) {
             for (int i=0;i<len;i++) buffer[i]=cdat[i];
             ret = len;
         }
-        if (sts!=0) ret = ERROR_STS;
+        if (sts!=0) ret = retERROR_STS;
     }
     return ret;
 }
@@ -300,14 +302,14 @@ int  rlDF1::cmdLogicalWrite( unsigned char destination, unsigned char nsize, uns
     cdat[5]=sadr;
     for (int i=0;i<nsize;i++) cdat[6+i] = buffer[i];
     int ret = sendCommand( destination, 0x0F, 0x00, cdat, 6+nsize);
-    if (ret==SUCCESS) {
+    if (ret==retSUCCESS) {
         unsigned char dest,cmd,sts,len;
         ret = receiveAnswer( dest, cmd, sts, cdat, len);
-        if ( ret == SUCCESS ) {
+        if ( ret == retSUCCESS ) {
             for ( int i=0;i<len;i++) buffer[i] = cdat[i];
             ret = len;
         }
-        if (sts!=0) ret = ERROR_STS;
+        if (sts!=0) ret = retERROR_STS;
     }
     return ret;
 }
@@ -328,7 +330,7 @@ int rlDF1::sendCommand( unsigned char destination, unsigned char cmd, unsigned c
     DBGPRINTF(" STS:%02X", sts);
     DBGPRINTF(" TNS:%04X", tns);
     DBGPRINTF(" DATA [%d]: ",len);
-    for (int i=0; i<len; i++) DBGPRINTF("[%02X] ",cdata[i]);
+    for (int i=0; i<len; i++) { DBGPRINTF("[%02X] ",cdata[i]); }
     msg.write( destination );
     msg.write( source ); /// SOURCE
     msg.write( cmd );
@@ -358,13 +360,13 @@ int rlDF1::sendCommand( unsigned char destination, unsigned char cmd, unsigned c
         flag = getSymbol(&rxc);
         if (( flag==FLAG_CONTROL )&&( rxc == ACK )) {
             DBGPRINTF(" -> ACK RECEIVED");
-            ret = SUCCESS;
+            ret = retSUCCESS;
             break;
         } else if (( flag==FLAG_CONTROL )&&( rxc == NAC )) {
             naks++;
             DBGPRINTF(" -> NAK RECEIVED:%d",naks);
             if (naks>=3) {
-                ret = ERROR_NAC;
+                ret = retERROR_NAC;
                 break;
             }
             writeBuffer( fullmsg );
@@ -372,7 +374,7 @@ int rlDF1::sendCommand( unsigned char destination, unsigned char cmd, unsigned c
             enq++;
             DBGPRINTF(" -> TIMEOUT ENQ:%d",enq);
             if (enq>=3) {
-                ret = NORESPONSE;
+                ret = retNORESPONSE;
                 break;
             }
             sendENQ();
@@ -394,7 +396,7 @@ int rlDF1::receiveAnswer( unsigned char &destination, unsigned char &cmd, unsign
         flag = getSymbol(&rxc);
         if ( flag == FLAG_TIMEOUT ) {
             DBGPRINTF("\nreceiveAnswer() Timeout....");
-            ret = NORESPONSE;
+            ret = retNORESPONSE;
             break;
 
         } else  if ( ( flag==FLAG_CONTROL) && ( rxc == STX) ) {
@@ -441,7 +443,7 @@ int rlDF1::receiveAnswer( unsigned char &destination, unsigned char &cmd, unsign
                 DBGPRINTF(" [TNS ERROR] ");
                 sendACK();
                 response = ACK;
-                ret = ERROR_TNS;
+                ret = retERROR_TNS;
                 break;
             }
             /* STS is a software error. Handle it in upper layer!
@@ -449,7 +451,7 @@ int rlDF1::receiveAnswer( unsigned char &destination, unsigned char &cmd, unsign
                 DBGPRINTF(" [STS=%02X != 0] ",msg[POS_STS]);
                 sendACK();
                 response = ACK;
-                ret = ERROR_STS;
+                ret = retERROR_STS;
                 break;
             }
             */
@@ -461,11 +463,11 @@ int rlDF1::receiveAnswer( unsigned char &destination, unsigned char &cmd, unsign
             sendACK();
             nResponses++;
             response = ACK;
-            ret = SUCCESS;
+            ret = retSUCCESS;
             break;
         } else if ( ( flag==FLAG_CONTROL) && ( rxc == ENQ) ) {
             if (response==ACK) sendACK(); else sendNAC();
-            ret = ERROR;
+            ret = retERROR;
             break;
         } else {
             response = NAC;

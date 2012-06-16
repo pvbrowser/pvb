@@ -1327,13 +1327,13 @@
       <keyword name="FLAG_TIMEOUT" id="rlDF1::FLAG_TIMEOUT" ref="classrlDF1.html#ae4c7260c3058e996698df7015a144148afc81538ddca65426c9790e221939c75b" />
       <keyword name="FLAG_DATA" id="rlDF1::FLAG_DATA" ref="classrlDF1.html#ae4c7260c3058e996698df7015a144148a1ce5f760d885f2a6e2746ba55e40dd78" />
       <keyword name="FLAG_CONTROL" id="rlDF1::FLAG_CONTROL" ref="classrlDF1.html#ae4c7260c3058e996698df7015a144148abcefd777ea05154ee2ef07f011429383" />
-      <keyword name="ERROR_TNS" id="rlDF1::ERROR_TNS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a1d9f96aee6fc9feb8b7b041e00f3c1a1" />
-      <keyword name="ERROR_STS" id="rlDF1::ERROR_STS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a1b921d05a84bdc4c50250f07f4235ddc" />
-      <keyword name="ERROR_CRC" id="rlDF1::ERROR_CRC" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987ad680d83221b0f750134ea7bacab9dbab" />
-      <keyword name="ERROR_NAC" id="rlDF1::ERROR_NAC" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a44e2b832d87b82e9de25f38e115c714f" />
-      <keyword name="ERROR" id="rlDF1::ERROR" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987ac648e2d3aad6b191a44722053e7ec319" />
-      <keyword name="NORESPONSE" id="rlDF1::NORESPONSE" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a72faead4fcb1e561e944566ccfdb5db0" />
-      <keyword name="SUCCESS" id="rlDF1::SUCCESS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a94ffbb9ddd2a648696708508e70d6cdf" />
+      <keyword name="retERROR_TNS" id="rlDF1::retERROR_TNS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a79ed9f49866bd4d6ee25f320ad994b0c" />
+      <keyword name="retERROR_STS" id="rlDF1::retERROR_STS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a0902c09ad792e1262785571cc6bec150" />
+      <keyword name="retERROR_CRC" id="rlDF1::retERROR_CRC" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a9df459ce3610d3dcebd9e03dbd3ad52f" />
+      <keyword name="retERROR_NAC" id="rlDF1::retERROR_NAC" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a3deea3d8c5585c0ec671f74547020730" />
+      <keyword name="retERROR" id="rlDF1::retERROR" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a3c050fa865293a272413d4d368af38a9" />
+      <keyword name="retNORESPONSE" id="rlDF1::retNORESPONSE" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a990431e7df27ed839e556be1faf094c8" />
+      <keyword name="retSUCCESS" id="rlDF1::retSUCCESS" ref="classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987af90d86589eeff773ed65f8589a922605" />
       <keyword name="rlEIBnetIP" id="rlEIBnetIP" ref="classrlEIBnetIP.html" />
       <keyword name="rlEIBnetIP" id="rlEIBnetIP::rlEIBnetIP" ref="classrlEIBnetIP.html#a3ef986d39bcac3b584e1ad26d5708e45" />
       <keyword name="~rlEIBnetIP" id="rlEIBnetIP::~rlEIBnetIP" ref="classrlEIBnetIP.html#adefa98e40d5ce178bc966176e5b16638" />

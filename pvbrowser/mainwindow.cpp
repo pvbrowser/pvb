@@ -510,7 +510,8 @@ void MainWindow::about()
                "\nhttp://www.lehrig.de"
                "\n"
                "\ndeveloped under Linux for:"
-               "\nLinux/Unix/Windows/OS-X/Maemo/Android"
+               "\nLinux/Unix/Windows/OS-X"
+               "\n+pvbrowser clients for Maemo/Android/Symbian"
                "\n+pvserver under OpenVMS"
              ));
 }

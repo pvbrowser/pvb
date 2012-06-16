@@ -49,7 +49,10 @@ HEADERS  = ../../rllib/lib/rlwthread.h                \
            ../../rllib/lib/rlstring.h                 \
            ../../rllib/lib/rlplc.h                    \
            ../../rllib/lib/rlwebcam.h                 \
-           ../../rllib/lib/rlcommandlineinterface.h
+           ../../rllib/lib/rlcommandlineinterface.h   \
+           ../../rllib/lib/rlreport.h                 \
+           ../../rllib/lib/rlstatemachine.h           \
+           ../../rllib/lib/rldf1.h
 
 SOURCES  = ../../rllib/lib/rlwthread.cpp                \
            ../../rllib/lib/rlspawn.cpp                  \
@@ -89,7 +92,10 @@ SOURCES  = ../../rllib/lib/rlwthread.cpp                \
            ../../rllib/lib/rlstring.cpp                 \
            ../../rllib/lib/rlplc.cpp                    \
            ../../rllib/lib/rlwebcam.cpp                 \
-           ../../rllib/lib/rlcommandlineinterface.cpp
+           ../../rllib/lib/rlcommandlineinterface.cpp   \
+           ../../rllib/lib/rlreport.cpp                 \
+           ../../rllib/lib/rlstatemachine.cpp           \
+           ../../rllib/lib/rldf1.cpp 
 
 
 Hilscher {

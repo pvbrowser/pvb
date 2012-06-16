@@ -105,7 +105,7 @@ Private Attributes</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock">
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00046">46</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00047">47</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="af156b2f9481242768ab5f8a50cc4de52"></a><!-- doxytag: member="df1Buffer::df1Buffer" ref="af156b2f9481242768ab5f8a50cc4de52" args="(unsigned int maxsize=256)" -->
 <div class="memitem">
@@ -122,7 +122,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00064">64</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00066">66</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <a class="code" href="classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2">dat</a> = <span class="keyword">new</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>[_maxsize];
     <a class="code" href="classdf1Buffer.html#ad6b7ae0e9d0018232f6b3396ab169b55">maxsize</a> = _maxsize;
@@ -145,7 +145,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00071">71</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00073">73</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <span class="keyword">delete</span> [] <a class="code" href="classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2">dat</a>;
 }
@@ -167,7 +167,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00052">52</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00059">59</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> <a class="code" href="classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2">dat</a>;}
 </pre></div>
 </div>
@@ -186,7 +186,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00051">51</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00058">58</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{<span class="keywordflow">return</span> <a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>;}
 </pre></div>
 </div>
@@ -206,7 +206,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00098">98</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00100">100</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <span class="keywordflow">if</span> ( pos&gt;=<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a> ) {
         printf(<span class="stringliteral">&quot;*** rlBuffer read error! Pos:%u Len:%u\n&quot;</span>, pos,<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>);
@@ -230,7 +230,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00106">106</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00108">108</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     printf(<span class="stringliteral">&quot;Buffer [%d]:&quot;</span>,<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>);
     <span class="keywordflow">if</span>(<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>&gt;0) {
@@ -255,7 +255,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00056">56</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00063">63</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>=0;}
 </pre></div>
 </div>
@@ -275,7 +275,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00076">76</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00078">78</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <span class="keywordflow">if</span> (<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>+1&lt;<a class="code" href="classdf1Buffer.html#ad6b7ae0e9d0018232f6b3396ab169b55">maxsize</a>) {
         <a class="code" href="classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2">dat</a>[<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>] = c;
@@ -301,7 +301,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00085">85</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00087">87</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
     <span class="keywordflow">if</span> (<a class="code" href="classdf1Buffer.html#aed06ab5e612b3632fc67244c05205b03">len</a>+1&lt;<a class="code" href="classdf1Buffer.html#ad6b7ae0e9d0018232f6b3396ab169b55">maxsize</a>) {
         <span class="keywordflow">if</span> (c==0x10) {
@@ -328,7 +328,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00062">62</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00056">56</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 
 </div>
 </div>
@@ -343,7 +343,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00061">61</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00055">55</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 
 </div>
 </div>
@@ -358,7 +358,7 @@ Private Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00060">60</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rldf1_8cpp_source.html#l00054">54</a> of file <a class="el" href="rldf1_8cpp_source.html">rldf1.cpp</a>.</p>
 
 </div>
 </div>

@@ -32,23 +32,12 @@ mail:arkalis.e@gmail.com
 #ifndef _RL_DF1_H_
 #define _RL_DF1_H_
 
-#include <rlserial.h>
+#include "rlserial.h"
 class df1Buffer;
 
 class rlDF1
 {
 public:
-
-    enum DF1ret {
-        ERROR_TNS      = -6,
-        ERROR_STS      = -5,
-        ERROR_CRC      = -4,
-        ERROR_NAC      = -3,
-        ERROR          = -2,
-        NORESPONSE     = -1,
-        SUCCESS        = 0
-    };
-
 
 /*! <pre>
     Initialize class
@@ -58,6 +47,17 @@ public:
     rlDF1(unsigned char src=0, int timeout=1000);
     virtual ~rlDF1();
     void registerSerial(rlSerial *serial);
+
+    enum DF1ret {
+        retERROR_TNS      = -6,
+        retERROR_STS      = -5,
+        retERROR_CRC      = -4,
+        retERROR_NAC      = -3,
+        retERROR          = -2,
+        retNORESPONSE     = -1,
+        retSUCCESS        = 0
+    };
+
 
 /*! <pre>
       Command: Set CPU mode ( See page 7-26 )
@@ -134,12 +134,6 @@ public:
         returns Error Code
 </pre> */
     int  cmdLogicalWrite( unsigned char destination, unsigned char nsize, unsigned char filetype, unsigned char filenum, unsigned char adr, unsigned char sadr, unsigned char *buffer);
-/*! <pre>
-    Some statistics...
-</pre> */
-    int  requests() {return nRequests;};
-    int  responses() {return nResponses;};
-    void clearStats() { nRequests=0; nResponses=0;};
 private:
 /*! <pre>
       Functions for Application Layer.
@@ -202,6 +196,14 @@ private:
     int              nResponses;
     unsigned char   source;
     int              timeout;
+
+public:
+/*! <pre>
+    Some statistics...
+</pre> */
+    int  requests() {return nRequests;};
+    int  responses() {return nResponses;};
+    void clearStats() { nRequests=0; nResponses=0;};
 };
 
 

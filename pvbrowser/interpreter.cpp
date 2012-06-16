@@ -4034,7 +4034,7 @@ void Interpreter::interprets(const char *command)
               buf[sb.st_size] = '\0';
               fclose(fin);
               QUrl url = QUrl::fromLocalFile(temp); 
-              mainWindow->textbrowser->form->textBrowser->setHtml(buf,url);
+              mainWindow->textbrowser->form->textBrowser->setHtml(QString::fromUtf8(buf),url);
             }
             else
             {
@@ -4068,7 +4068,7 @@ void Interpreter::interprets(const char *command)
                   buf[sb.st_size] = '\0';
                   fclose(fin);
                   QUrl url = QUrl::fromLocalFile(temp); 
-                  t->setHtml(buf,url);
+                  t->setHtml(QString::fromUtf8(buf),url);
               }
               else
               {
