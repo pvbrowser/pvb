@@ -310,7 +310,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"######################################################################\n");
   fprintf(fout,"\n");
   fprintf(fout,"TEMPLATE = app\n");
-  fprintf(fout,"CONFIG   = warn_on release\n");
+  fprintf(fout,"CONFIG   = warn_on release console\n");
   fprintf(fout,"CONFIG  -= qt\n");
   //the following line cost me a lot of headaches. it causes the apps crash on openSUSE 32 Bit :-(
   //fprintf(fout,"unix:QMAKE_LFLAGS += -static-libgcc\n");

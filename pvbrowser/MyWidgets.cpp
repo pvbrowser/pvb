@@ -1814,15 +1814,14 @@ void MyMultiLineEdit::setText(const QString &text)
 void MyMultiLineEdit::slotSendToClipboard()
 {
   char buf[80];
-  const char *cptr;
-  int len;
 
-  cptr = document()->toPlainText().toUtf8().constData();
-  len = 0;
-  while(cptr[len] != '\0') len++;
+  QString txt = document()->toPlainText();
+  int len = strlen(txt.toUtf8());
+  char text[len+1];
+  strcpy(text,txt.toUtf8());
   sprintf(buf,"@clipboard(%d,%d)\n", id,len);
   tcp_send(s,buf,strlen(buf));
-  tcp_send(s,cptr,len);
+  tcp_send(s,text,len);
 }
 
 void MyMultiLineEdit::mousePressEvent(QMouseEvent *event)

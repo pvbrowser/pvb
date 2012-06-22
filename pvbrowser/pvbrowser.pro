@@ -23,6 +23,7 @@ USE_SYMBIAN {
   DEFINES    += USE_SYMBIAN
   DEFINES    += USE_MAEMO
   DEFINES    += NO_PRINTER
+  TARGET.CAPABILITY = "NetworkServices ReadUserData WriteUserData"
   LIBS       += -lqwt.lib
   QT         -= opengl
 }

@@ -3,6 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
+CONFIG   = warn_on release console 
 CONFIG  -= qt
 QMAKE_LFLAGS += -static-libgcc
 INCLUDEPATH += .
