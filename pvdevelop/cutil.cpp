@@ -61,6 +61,44 @@ int mysystem(const char *command)
 #endif
 }
 
+static int actionDumpTranslations()
+{
+  char line[4096], *cptr, *end;
+
+  system("grep \"pvtr(\\\"\" *.h   >  translate.dump.temp");
+  system("grep \"pvtr(\\\"\" *.cpp >> translate.dump.temp");
+  FILE *fin = fopen("translate.dump.temp","r");
+  if(fin == NULL)
+  {
+    printf("could not wite translate.dump\n");
+  }
+
+  printf("[aLANGUAGE]\n");
+  while(fgets(line,sizeof(line)-1,fin) != NULL)
+  {
+    cptr = &line[0];
+    while((cptr = strstr(cptr,"pvtr(\"")) != NULL)
+    {
+      cptr += 6;
+      end = strstr(cptr,"\")");
+      if(end != NULL)
+      {
+        *end = '\0';
+        end++;
+        printf("%s=\n", cptr);
+        if(*end != '\0') end++;
+        cptr = end;
+      }  
+    }
+  }
+
+  fclose(fin);  
+#ifdef PVUNIX  
+  unlink("translate.dump.temp");
+#endif  
+  return 0;
+}
+
 int action(const char *command)
 {
   FILE *fin;
@@ -68,6 +106,7 @@ int action(const char *command)
   int imask, ret;
   int checked = 0;
 
+  ret = 0;
   if(strlen(command) > 1024-80)
   {
     printf("You silly stupid DAU. Why use such a long name ???\n");
@@ -223,6 +262,11 @@ int action(const char *command)
   {
     mysystem("pvbrowser");
   }
+  else if(strcmp(command,"dumpTranslations") == 0)
+  {
+    actionDumpTranslations();
+  }  
+  if(ret != 0) return 0;
   return 0;
 }
 

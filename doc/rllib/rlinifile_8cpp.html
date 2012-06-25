@@ -75,6 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 <div class="header">
   <div class="summary">
+<a href="#func-members">Functions</a> &#124;
 <a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">rlinifile.cpp File Reference</div>  </div>
@@ -98,10 +99,176 @@ Include dependency graph for rlinifile.cpp:</div>
 </div>
 <p><a href="rlinifile_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr><td colspan="2"><h2><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc">rlSetTranslator</a> (const char *language, const char *inifile)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#a0d1e7af83cb39c053e8926521ae0a4a0">unquote</a> (const char *text)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#af5850da5d3eb4e909883f0fdd54581e0">rltranslate</a> (const char *txt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#aa65e27885bdc4672571d39ce25b7d5f9">rltranslate2</a> (const char *section, const char *txt)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#ac11bf696f7287842ed6c53430fb6e884">null_string</a> [] = &quot;&quot;</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classrlIniFile.html">rlIniFile</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> = NULL</td></tr>
 </table>
+<hr/><h2>Function Documentation</h2>
+<a class="anchor" id="a39213397e1d8dae3a8b1495d672224bc"></a><!-- doxytag: member="rlinifile.cpp::rlSetTranslator" ref="a39213397e1d8dae3a8b1495d672224bc" args="(const char *language, const char *inifile)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSetTranslator </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>language</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>inifile</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00508">508</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordflow">if</span>(inifile != NULL)
+  {
+    <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> = <span class="keyword">new</span> <a class="code" href="classrlIniFile.html">rlIniFile</a>();
+    <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#a2d308c9697478c1c0965c2ed7e6581cc">read</a>(inifile) &lt; 0) <span class="keywordflow">return</span> -1;
+  }
+  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#a5ae4c069708c7b441d343b4a3ab3a17a">setDefaultSection</a>(language);
+  <span class="keywordflow">return</span> 0;
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="af5850da5d3eb4e909883f0fdd54581e0"></a><!-- doxytag: member="rlinifile.cpp::rltranslate" ref="af5850da5d3eb4e909883f0fdd54581e0" args="(const char *txt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* rltranslate </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>txt</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00561">561</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> txt;                 <span class="comment">// use original language because translator is not initalized</span>
+  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#aaca881704690345b4c7e0569059f3239">i18n</a>(txt,<span class="stringliteral">&quot;@&quot;</span>);     <span class="comment">// translate</span>
+  <span class="keywordflow">if</span>(strcmp(text,<span class="stringliteral">&quot;@&quot;</span>) == 0) <span class="keywordflow">return</span> txt;             <span class="comment">// use original language because there is no tranlation available</span>
+  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0d1e7af83cb39c053e8926521ae0a4a0">unquote</a>(text);                             <span class="comment">// return the translated text</span>
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="aa65e27885bdc4672571d39ce25b7d5f9"></a><!-- doxytag: member="rlinifile.cpp::rltranslate2" ref="aa65e27885bdc4672571d39ce25b7d5f9" args="(const char *section, const char *txt)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char* rltranslate2 </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>section</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>txt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00569">569</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> txt;                 <span class="comment">// use original language because translator is not initalized</span>
+  <span class="keywordflow">if</span>(*section == <span class="charliteral">&#39;\0&#39;</span>)  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#af5850da5d3eb4e909883f0fdd54581e0">rltranslate</a>(txt);    <span class="comment">// user did not call pvSelectLanguage()</span>
+  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(section,txt); <span class="comment">// translate</span>
+  <span class="keywordflow">if</span>(text[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> txt;                   <span class="comment">// use original language because there is no tranlation available</span>
+  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0d1e7af83cb39c053e8926521ae0a4a0">unquote</a>(text);                             <span class="comment">// return the translated text</span>
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a0d1e7af83cb39c053e8926521ae0a4a0"></a><!-- doxytag: member="rlinifile.cpp::unquote" ref="a0d1e7af83cb39c053e8926521ae0a4a0" args="(const char *text)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">static const char* unquote </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td><code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00519">519</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keyword">static</span> <span class="keywordtype">char</span> temp[1024];
+  <span class="keywordtype">int</span> len = strlen(text);
+  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
+
+  <span class="keywordflow">if</span>(len &gt;= (<span class="keywordtype">int</span>) <span class="keyword">sizeof</span>(temp) - 1) <span class="keywordflow">return</span> text;
+
+  <span class="keywordflow">if</span>(strchr(text,<span class="charliteral">&#39;\\&#39;</span>) != NULL)
+  { <span class="comment">// remove quotes</span>
+    <span class="keywordtype">int</span> i = 0;
+    cptr = text;
+    <span class="keywordflow">while</span>(*cptr != <span class="charliteral">&#39;\0&#39;</span>)
+    {
+      temp[i+1] = <span class="charliteral">&#39;\0&#39;</span>;
+      <span class="keywordflow">if</span>     (strncmp(cptr,<span class="stringliteral">&quot;\\=&quot;</span>,2) == 0)
+      {
+        temp[i++] = <span class="charliteral">&#39;=&#39;</span>;
+        cptr++;
+      }
+      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strncmp(cptr,<span class="stringliteral">&quot;\\n&quot;</span>,2) == 0)
+      {
+        temp[i++] = <span class="charliteral">&#39;\n&#39;</span>;
+        cptr++;
+      }
+      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strncmp(cptr,<span class="stringliteral">&quot;\\t&quot;</span>,2) == 0)
+      {
+        temp[i++] = <span class="charliteral">&#39;\t&#39;</span>;
+        cptr++;
+      }
+      <span class="keywordflow">else</span>
+      {
+        temp[i++] = *cptr;
+      }  
+      cptr++;
+    }
+    temp[i] = <span class="charliteral">&#39;\0&#39;</span>;
+    <span class="keywordflow">return</span> temp;
+  }
+  <span class="keywordflow">return</span> text;
+}
+</pre></div>
+</div>
+</div>
 <hr/><h2>Variable Documentation</h2>
 <a class="anchor" id="ac11bf696f7287842ed6c53430fb6e884"></a><!-- doxytag: member="rlinifile.cpp::null_string" ref="ac11bf696f7287842ed6c53430fb6e884" args="[]" -->
 <div class="memitem">
@@ -115,6 +282,21 @@ Variables</h2></td></tr>
 <div class="memdoc">
 
 <p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00027">27</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a6293f5533889dcb27ffebc900f349d35"></a><!-- doxytag: member="rlinifile.cpp::trIniFile" ref="a6293f5533889dcb27ffebc900f349d35" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classrlIniFile.html">rlIniFile</a>* <a class="el" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> = NULL<code> [static]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00506">506</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 
 </div>
 </div>

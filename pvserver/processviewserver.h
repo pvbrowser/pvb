@@ -509,6 +509,7 @@ typedef struct _PARAM_
   char  *mytext;                         /* buffer for internal use only       */
   const char *communication_plugin;      /* pointer to commandline arg or NULL */ 
   int   use_communication_plugin;        /* can also be set at runtime         */
+  char  lang_section[32];                /* use pvSelectLanguage()             */
 }PARAM;
 
 #ifndef __VMS
@@ -520,6 +521,10 @@ typedef int (*plugin_closesocket)(int s);
 #endif
 
 #define DEFAULT_LANGUAGE 0
+
+#ifndef pvtr
+#define pvtr(txt) txt
+#endif
 
 enum UNIT_CONVERSION
 {
@@ -878,10 +883,10 @@ Allowed Widgets: all Widgets
 int pvWhatsThisPrintf(PARAM *p, int id, const char *format, ...);
 /*! <pre>
 Run command on client.
-command := pdf | img | svg | txt | csv | html | audio | video
+command := pdf | img | svg | txt | csv | html | audio | video | save_as
 See view.pdf, view.img, view.svg ... within pvbrowser options.
 </pre> */
-int pvClientCommand(PARAM *p, const char *command, const char *filename);
+int pvClientCommand(PARAM *p, const char *command, const char *filename, int downloadFile=0);
 /*! <pre>
 Zoom the whole mask.
 Zoom factor in percent.
@@ -895,6 +900,53 @@ Example:
 pvSetManualUrl(p,"http://your.server.org");
 </pre> */
 int pvSetManualUrl(PARAM *p, const char *url);
+/*! <pre>
+Select the section for language translations with the pvtr() macro.
+
+processviewserver.h defines the macro
+#define pvtr(txt) txt
+
+If you use something like pvSetText(p,id,pvtr("Hello World"));
+the above macro will return the original untranslated text.
+
+If you #include "rlinifile.h" the macro pvtr will be redefined to
+#define pvtr(txt) rltranslate2(p->lang_section,txt)
+Thus the subroutine rltranslate2() will be called.
+This routine will also return the untranslated text until you call
+
+rlSetTranslator("GERMAN","translation.ini");
+
+within your main() program.
+The above call to rlSetTranslator() will read the ini file "translation.ini" and
+set the default section to "GERMAN".
+This will be the default language within your pvserver.
+
+If your translation.ini looks like
+[GERMAN]
+Hello World=Hallo Welt
+
+the call to pvtr("Hello World") will return "Hallo Welt".
+If there is no translation for a phrase then the original untranslated text will be returned.
+
+Now you might want that each client can choose his own language.
+This can be done by calling
+
+pvSelectLanguage(p,"YOUR_LANGUAGE");
+
+within pvMain() or one of your masks.
+Hint: after changing the language you should return from the mask
+with a return value that will call the mask again and will show the mask in the new language.
+
+If the strings within the ini file include "=" characters you must quote them as "\=".
+Also tabs and newline characters must be quoted as "\t" and "\n".
+Within the graphical designer of pvdevelop you must use 2 quotes instead of one "\\=", "\\t" and "\\n".
+
+Background:
+We use an INI file for language translation.
+The section names the language.
+The original text is used to select the translation.
+</pre> */
+int pvSelectLanguage(PARAM *p, const char *section);
 /** @} */ // end of group
 
 /** @defgroup Contruction Construction

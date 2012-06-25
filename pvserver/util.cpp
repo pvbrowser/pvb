@@ -1144,6 +1144,7 @@ int i;
 #ifdef USE_INETD  
   pvFilePrefix(p);
 #endif  
+  p->lang_section[0] = '\0';
 
   return 0;
 }
@@ -2328,12 +2329,16 @@ char buf[MAX_PRINTF_LENGTH];
   return 0;
 }
 
-int pvClientCommand(PARAM *p, const char *command, const char *filename)
+int pvClientCommand(PARAM *p, const char *command, const char *filename, int downloadFile)
 {
 char buf[MAX_PRINTF_LENGTH];
 
   pv_length_check(p,command);
   pv_length_check(p,filename);
+  if(downloadFile)
+  {
+    pvDownloadFile(p,filename);
+  }
   strcpy(buf,"view.");
   strcat(buf, command);
   buf[16] = '\0';
@@ -2369,6 +2374,18 @@ int len;
     pvtcpsend(p, buf, strlen(buf));
   }
   return 0;
+}
+
+int pvSelectLanguage(PARAM *p, const char *section)
+{
+  if(section == NULL) return -1;
+  int len = strlen(section); 
+  if(len < ((int) sizeof(p->lang_section) - 1)) 
+  {
+    strcpy(p->lang_section,section);
+    return 0;
+  }  
+  return -1;
 }
 
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)

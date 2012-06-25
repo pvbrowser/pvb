@@ -113,6 +113,7 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga42e02e6a01a7c010d2759ea2ca91f9f0">pvClientCommand</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *command, const char *filename)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf">pvZoomMask</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int percent)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d">pvSetManualUrl</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *url)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b">pvSelectLanguage</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *section)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>These routines are used for initialisation. And also some global usable routines are available. </p>
@@ -262,7 +263,7 @@ see pvInit
 <div class="memdoc">
 <pre>
 Run command on client.
-command := pdf | img | svg | txt | csv | html | audio | video
+command := pdf | img | svg | txt | csv | html | audio | video | save_as
 See view.pdf, view.img, view.svg ... within pvbrowser options.
 </pre> 
 </div>
@@ -703,6 +704,54 @@ You can specify a different wait time on the commandline (-sleep=1000)</pre><pre
 <pre>
 Output a screenHint for calculating the zoom factor
 Optimal screen width=w height=h .
+</pre> 
+</div>
+</div>
+<a class="anchor" id="gacf49bec64bf2e889ba67e2e15663805b"></a><!-- doxytag: member="processviewserver.h::pvSelectLanguage" ref="gacf49bec64bf2e889ba67e2e15663805b" args="(PARAM *p, const char *section)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSelectLanguage </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>section</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+<pre>
+Select the section for language translations with the <a class="el" href="group__DefinesAndEnums.html#ga704f803879cee1bbeafe4ad995eadb7b">pvtr()</a> macro.</pre><pre><a class="el" href="processviewserver_8h.html">processviewserver.h</a> defines the macro
+#define <a class="el" href="group__DefinesAndEnums.html#ga704f803879cee1bbeafe4ad995eadb7b">pvtr(txt)</a> txt</pre><pre>If you use something like pvSetText(p,id,pvtr("Hello World"));
+the above macro will return the original untranslated text.</pre><pre>If you #include "rlinifile.h" the macro pvtr will be redefined to
+#define <a class="el" href="group__DefinesAndEnums.html#ga704f803879cee1bbeafe4ad995eadb7b">pvtr(txt)</a> rltranslate2(p-&gt;lang_section,txt)
+Thus the subroutine rltranslate2() will be called.
+This routine will also return the untranslated text until you call</pre><pre>rlSetTranslator("GERMAN","translation.ini");</pre><pre>within your main() program.
+The above call to rlSetTranslator() will read the ini file "translation.ini" and
+set the default section to "GERMAN".
+This will be the default language within your pvserver.</pre><pre>If your translation.ini looks like
+[GERMAN]
+Hello World=Hallo Welt</pre><pre>the call to pvtr("Hello World") will return "Hallo Welt".
+If there is no translation for a phrase then the original untranslated text will be returned.</pre><pre>Now you might want that each client can choose his own language.
+This can be done by calling</pre><pre>pvSelectLanguage(p,"YOUR_LANGUAGE");</pre><pre>within <a class="el" href="group__IniAndGlobal.html#ga156b9eba01c7aa7ceef9326ecc8ea8e6">pvMain()</a> or one of your masks.
+Hint: after changing the language you should return from the mask
+with a return value that will call the mask again and will show the mask in the new language.</pre><pre>If the strings within the ini file include "=" characters you must quote them as "\=".
+Also tabs and newline characters must be quoted as "\t" and "\n".
+Within the graphical designer of pvdevelop you must use 2 quotes instead of one "\\=", "\\t" and "\\n".</pre><pre>Background:
+We use an INI file for language translation.
+The section names the language.
+The original text is used to select the translation.
 </pre> 
 </div>
 </div>

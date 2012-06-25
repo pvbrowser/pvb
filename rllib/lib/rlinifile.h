@@ -111,4 +111,13 @@ private:
   rlString default_section;
 };
 
+int rlSetTranslator(const char *language, const char *inifile=NULL);
+const char *rltranslate(const char *txt);
+const char *rltranslate2(const char *section, const char *txt);
+#define rltr(txt) rltranslate(txt)
+
+#ifdef  pvtr
+#undef  pvtr
+#endif
+#define pvtr(txt) rltranslate2(p->lang_section,txt)
 #endif

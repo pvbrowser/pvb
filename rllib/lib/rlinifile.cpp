@@ -84,7 +84,7 @@ void rlIniFile::copyName(char *buf, const char *line)
   int i = 0;
   buf[0] = '\0';
   //while(line[i] > ' ' && line[i] != '=')
-  while(line[i] != '\0' && line[i] != '=')
+  while(line[i] != '\0' && (line[i] != '=' || (line[i] == '=' && line[i-1] == '\\')))
   {
     *buf++ = line[i++];
   }
@@ -98,11 +98,15 @@ void rlIniFile::copyName(char *buf, const char *line)
 
 void rlIniFile::copyParam(char *buf, const char *line)
 {
-  const char *cptr;
+  const char *cptr = line;
   buf[0] = '\0';
-  cptr = strchr(line,'=');
-  if(cptr == NULL) return;
-  cptr++;
+  while(1)
+  {
+    cptr = strchr(cptr,'=');
+    if(cptr == NULL) return;
+    cptr++;
+    if(cptr[-2] != '\\') break;
+  } 
   while((*cptr == ' ' || *cptr == '\t') && *cptr != '\0') cptr++;
   if(*cptr == '\0') return;
   while(*cptr != '\0' && *cptr != '\n') *buf++ = *cptr++;
@@ -462,7 +466,7 @@ const char *rlIniFile::nextName(const char *section)
       while(n != NULL)
       {
         if(i == currentName) return n->name;
-	i++;
+        i++;
         n = n->nextName;
       }
       return NULL;
@@ -497,3 +501,78 @@ const char *rlIniFile::tr(const char *txt)
   else                                          strcpy(default_text,"tr_error:text too long");
   return i18n(txt,default_text);
 }
+
+// Translator
+static rlIniFile *trIniFile = NULL;
+
+int rlSetTranslator(const char *language, const char *inifile)
+{
+  if(inifile != NULL)
+  {
+    if(trIniFile == NULL) trIniFile = new rlIniFile();
+    if(trIniFile->read(inifile) < 0) return -1;
+  }
+  trIniFile->setDefaultSection(language);
+  return 0;
+}
+
+static const char *unquote(const char *text)
+{
+  static char temp[1024];
+  int len = strlen(text);
+  const char *cptr;
+
+  if(len >= (int) sizeof(temp) - 1) return text;
+
+  if(strchr(text,'\\') != NULL)
+  { // remove quotes
+    int i = 0;
+    cptr = text;
+    while(*cptr != '\0')
+    {
+      temp[i+1] = '\0';
+      if     (strncmp(cptr,"\\=",2) == 0)
+      {
+        temp[i++] = '=';
+        cptr++;
+      }
+      else if(strncmp(cptr,"\\n",2) == 0)
+      {
+        temp[i++] = '\n';
+        cptr++;
+      }
+      else if(strncmp(cptr,"\\t",2) == 0)
+      {
+        temp[i++] = '\t';
+        cptr++;
+      }
+      else
+      {
+        temp[i++] = *cptr;
+      }  
+      cptr++;
+    }
+    temp[i] = '\0';
+    return temp;
+  }
+  return text;
+}
+
+const char *rltranslate(const char *txt)
+{
+  if(trIniFile == NULL) return txt;                 // use original language because translator is not initalized
+  const char *text =  trIniFile->i18n(txt,"@");     // translate
+  if(strcmp(text,"@") == 0) return txt;             // use original language because there is no tranlation available
+  return unquote(text);                             // return the translated text
+}
+
+const char *rltranslate2(const char *section, const char *txt)
+{
+  if(trIniFile == NULL) return txt;                 // use original language because translator is not initalized
+  if(*section == '\0')  return rltranslate(txt);    // user did not call pvSelectLanguage()
+  const char *text =  trIniFile->text(section,txt); // translate
+  if(text[0] == '\0') return txt;                   // use original language because there is no tranlation available
+  return unquote(text);                             // return the translated text
+}
+
+

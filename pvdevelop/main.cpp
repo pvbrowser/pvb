@@ -51,6 +51,7 @@ void usage()
   printf("-action=writeStartscript\n");
   printf("-action=writeDimension:<xmax>:<ymax>\n");
   printf("-action=importUi:<masknumber>\n");
+  printf("-action=dumpTranslations\n");
   printf("-programming_language=<Lua|Python>\n");
   exit(0);
 }
@@ -253,6 +254,10 @@ void  perhapsDoAction()
 #endif
     }
     else printf("error: arg_mask_to_generate <= 0\n");
+  }
+  else if(strcmp(opt_develop.arg_action,"dumpTranslations") == 0)
+  {
+    action("dumpTranslations");
   }
   else
   {

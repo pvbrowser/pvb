@@ -5546,6 +5546,25 @@ void Interpreter::interpretv(const char *command)
       if(strlen(opt.view_html) >= 3) mysystem(buf);
     }  
   }
+  else if(strncmp(command,"view.save_as", 12) == 0)
+  {
+    char *cptr, buf[1024];
+    if(strlen(command) <= (sizeof(buf) - 128))
+    {
+      strcpy(buf, &command[13]);
+      cptr = strstr(buf,"\n");
+      if(cptr != NULL) *cptr = '\0';
+      QString info;
+      info.sprintf("Save %s", buf);
+      QString fname = QFileDialog::getSaveFileName(0,info,buf);
+      if(fname.isEmpty() == false)
+      {
+        if(opt.arg_debug) printf("QFile::copy(%s,%s)",buf, (const char *) fname.toUtf8());
+        QFile::remove(fname);
+        QFile::copy(buf,fname);
+      }
+    }  
+  }
 }
 
 void Interpreter::interpretq(const char *command)

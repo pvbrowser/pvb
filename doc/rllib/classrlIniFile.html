@@ -301,7 +301,7 @@ class for INI files as known from Windows.
   <span class="keywordtype">int</span> i = 0;
   buf[0] = <span class="charliteral">&#39;\0&#39;</span>;
   <span class="comment">//while(line[i] &gt; &#39; &#39; &amp;&amp; line[i] != &#39;=&#39;)</span>
-  <span class="keywordflow">while</span>(line[i] != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; line[i] != <span class="charliteral">&#39;=&#39;</span>)
+  <span class="keywordflow">while</span>(line[i] != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; (line[i] != <span class="charliteral">&#39;=&#39;</span> || (line[i] == <span class="charliteral">&#39;=&#39;</span> &amp;&amp; line[i-1] == <span class="charliteral">&#39;\\&#39;</span>)))
   {
     *buf++ = line[i++];
   }
@@ -342,11 +342,15 @@ class for INI files as known from Windows.
 
 <p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00099">99</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
+  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr = line;
   buf[0] = <span class="charliteral">&#39;\0&#39;</span>;
-  cptr = strchr(line,<span class="charliteral">&#39;=&#39;</span>);
-  <span class="keywordflow">if</span>(cptr == NULL) <span class="keywordflow">return</span>;
-  cptr++;
+  <span class="keywordflow">while</span>(1)
+  {
+    cptr = strchr(cptr,<span class="charliteral">&#39;=&#39;</span>);
+    <span class="keywordflow">if</span>(cptr == NULL) <span class="keywordflow">return</span>;
+    cptr++;
+    <span class="keywordflow">if</span>(cptr[-2] != <span class="charliteral">&#39;\\&#39;</span>) <span class="keywordflow">break</span>;
+  } 
   <span class="keywordflow">while</span>((*cptr == <span class="charliteral">&#39; &#39;</span> || *cptr == <span class="charliteral">&#39;\t&#39;</span>) &amp;&amp; *cptr != <span class="charliteral">&#39;\0&#39;</span>) cptr++;
   <span class="keywordflow">if</span>(*cptr == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span>;
   <span class="keywordflow">while</span>(*cptr != <span class="charliteral">&#39;\0&#39;</span> &amp;&amp; *cptr != <span class="charliteral">&#39;\n&#39;</span>) *buf++ = *cptr++;
@@ -369,7 +373,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00480">480</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00484">484</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">default_section</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>();
 }
@@ -424,7 +428,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00199">199</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00203">203</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">return</span> <a class="code" href="classrlIniFile.html#a2347d7b297e781b7f60a5c3b4d26addf">fname</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>();
 }
@@ -446,7 +450,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00428">428</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00432">432</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s;
   <a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a> *n;
@@ -481,7 +485,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00403">403</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00407">407</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#ade58732520eaec75532e2f434878dd7e">currentSection</a> = 0;
   <span class="keywordflow">return</span> <a class="code" href="classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442">_firstSection</a>-&gt;<a class="code" href="structrlIniFile_1_1__rlSection__.html#a1bbce7cbb87648b9b32c20791f8b8e46">name</a>;
@@ -518,7 +522,7 @@ class for INI files as known from Windows.
   ini-&gt;setDefaultSection("german");
   printf("german_text=%s\n", ini-&gt;i18n("text1","This is text1") );
   </pre> 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00485">485</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00489">489</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr = <a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(<a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">default_section</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>(), tag);
   <span class="keywordflow">if</span>(strcmp(cptr,<a class="code" href="rlinifile_8cpp.html#ac11bf696f7287842ed6c53430fb6e884">null_string</a>) == 0) <span class="keywordflow">return</span> default_text;
@@ -542,7 +546,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00447">447</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00451">451</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s;
   <a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a> *n;
@@ -560,7 +564,7 @@ class for INI files as known from Windows.
       <span class="keywordflow">while</span>(n != NULL)
       {
         <span class="keywordflow">if</span>(i == <a class="code" href="classrlIniFile.html#a929998cb2bc909c42529dd4762b29647">currentName</a>) <span class="keywordflow">return</span> n-&gt;<a class="code" href="structrlIniFile_1_1__rlSectionName__.html#aa3ac4619428903af881fc4fe6dff8b9f">name</a>;
-  i++;
+        i++;
         n = n-&gt;nextName;
       }
       <span class="keywordflow">return</span> NULL;
@@ -586,7 +590,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00409">409</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00413">413</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{  
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s;
   <span class="keywordtype">int</span> i;
@@ -644,7 +648,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00339">339</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00343">343</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> ret;
   <span class="keywordtype">char</span> buf[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span>
@@ -674,7 +678,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00112">112</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00116">116</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   FILE *fp;
   <span class="keywordtype">char</span> line[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>],
@@ -747,7 +751,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00352">352</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00356">356</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s, *last;
 
@@ -794,7 +798,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00372">372</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00376">376</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s;
   <a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a> *n, *last;
@@ -842,7 +846,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00475">475</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00479">479</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f">default_section</a>.<a class="code" href="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c">setText</a>(section);
 }
@@ -880,7 +884,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00230">230</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00234">234</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s, *last_section;
   <a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a> *n, *last_name;
@@ -1016,7 +1020,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00204">204</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00208">208</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s;
   <a class="code" href="classrlIniFile.html#a4cf2ae84a684e8da6b55af3cb137ec72">rlSectionName</a> *n;
@@ -1082,7 +1086,7 @@ class for INI files as known from Windows.
   world=World
   umlaute=german_umlaute=äöüß
   </pre> 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00492">492</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00496">496</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(txt == NULL) <span class="keywordflow">return</span> <span class="stringliteral">&quot;ERROR:txt=NULL&quot;</span>;
   <span class="keywordtype">char</span> default_text[1024];
@@ -1108,7 +1112,7 @@ class for INI files as known from Windows.
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00168">168</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00172">172</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   FILE *fp;
   <a class="code" href="classrlIniFile.html#aa18703d92fd698283d11f292220f6bea">rlSection</a> *s;

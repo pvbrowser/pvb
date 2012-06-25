@@ -85,6 +85,7 @@
       <keyword name="DARK_YELLOW" id="processviewserver.h::DARK_YELLOW" ref="processviewserver_8h.html#ga41ade3ead7132da6a21102a09d260e91" />
       <keyword name="DARK_BLUE" id="processviewserver.h::DARK_BLUE" ref="processviewserver_8h.html#gab17de36a1b487f9ad9ef7dabd63531ab" />
       <keyword name="DEFAULT_LANGUAGE" id="processviewserver.h::DEFAULT_LANGUAGE" ref="processviewserver_8h.html#ga2a112ca1c7c7dc54fe43375469738dc4" />
+      <keyword name="pvtr" id="processviewserver.h::pvtr" ref="processviewserver_8h.html#ga704f803879cee1bbeafe4ad995eadb7b" />
       <keyword name="PARAM_P" id="processviewserver.h::PARAM_P" ref="processviewserver_8h.html#gaea898f3f86c8f7e6aa937c04b1e7f093" />
       <keyword name="INITIALIZE_GL" id="processviewserver.h::INITIALIZE_GL" ref="processviewserver_8h.html#gaa8b54f6a7ddf0729e9d3380f0e458abb" />
       <keyword name="RESIZE_GL" id="processviewserver.h::RESIZE_GL" ref="processviewserver_8h.html#ga9e5c0f43e9974124ba5cfdaca4eeab0b" />
@@ -132,6 +133,7 @@
       <keyword name="pvClientCommand" id="processviewserver.h::pvClientCommand" ref="processviewserver_8h.html#ga42e02e6a01a7c010d2759ea2ca91f9f0" />
       <keyword name="pvZoomMask" id="processviewserver.h::pvZoomMask" ref="processviewserver_8h.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="processviewserver.h::pvSetManualUrl" ref="processviewserver_8h.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
+      <keyword name="pvSelectLanguage" id="processviewserver.h::pvSelectLanguage" ref="processviewserver_8h.html#gacf49bec64bf2e889ba67e2e15663805b" />
       <keyword name="pvStartDefinition" id="processviewserver.h::pvStartDefinition" ref="processviewserver_8h.html#ga1616438aedd778acc2681be15f9cd908" />
       <keyword name="pvQLayoutVbox" id="processviewserver.h::pvQLayoutVbox" ref="processviewserver_8h.html#ga02c905c2e920efb7016f5453b6522d1d" />
       <keyword name="pvQLayoutHbox" id="processviewserver.h::pvQLayoutHbox" ref="processviewserver_8h.html#gadc8ed44c25ff2ae52636fa0609c2ebd7" />
@@ -560,6 +562,7 @@
       <keyword name="DARK_YELLOW" id="DefinesAndEnums::DARK_YELLOW" ref="group__DefinesAndEnums.html#ga41ade3ead7132da6a21102a09d260e91" />
       <keyword name="DARK_BLUE" id="DefinesAndEnums::DARK_BLUE" ref="group__DefinesAndEnums.html#gab17de36a1b487f9ad9ef7dabd63531ab" />
       <keyword name="DEFAULT_LANGUAGE" id="DefinesAndEnums::DEFAULT_LANGUAGE" ref="group__DefinesAndEnums.html#ga2a112ca1c7c7dc54fe43375469738dc4" />
+      <keyword name="pvtr" id="DefinesAndEnums::pvtr" ref="group__DefinesAndEnums.html#ga704f803879cee1bbeafe4ad995eadb7b" />
       <keyword name="PARAM_P" id="DefinesAndEnums::PARAM_P" ref="group__DefinesAndEnums.html#gaea898f3f86c8f7e6aa937c04b1e7f093" />
       <keyword name="INITIALIZE_GL" id="DefinesAndEnums::INITIALIZE_GL" ref="group__DefinesAndEnums.html#gaa8b54f6a7ddf0729e9d3380f0e458abb" />
       <keyword name="RESIZE_GL" id="DefinesAndEnums::RESIZE_GL" ref="group__DefinesAndEnums.html#ga9e5c0f43e9974124ba5cfdaca4eeab0b" />
@@ -988,6 +991,7 @@
       <keyword name="pvClientCommand" id="IniAndGlobal::pvClientCommand" ref="group__IniAndGlobal.html#ga42e02e6a01a7c010d2759ea2ca91f9f0" />
       <keyword name="pvZoomMask" id="IniAndGlobal::pvZoomMask" ref="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="IniAndGlobal::pvSetManualUrl" ref="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
+      <keyword name="pvSelectLanguage" id="IniAndGlobal::pvSelectLanguage" ref="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b" />
       <keyword name="Construction" id="Construction" ref="group__Contruction.html" />
       <keyword name="pvStartDefinition" id="Contruction::pvStartDefinition" ref="group__Contruction.html#ga1616438aedd778acc2681be15f9cd908" />
       <keyword name="pvQLayoutVbox" id="Contruction::pvQLayoutVbox" ref="group__Contruction.html#ga02c905c2e920efb7016f5453b6522d1d" />
@@ -1436,6 +1440,7 @@
       <keyword name="mytext" id="_PARAM_::mytext" ref="struct__PARAM__.html#a254d4d062e9ae86938cfb09543379256" />
       <keyword name="communication_plugin" id="_PARAM_::communication_plugin" ref="struct__PARAM__.html#a3e6734c23de0caa6bfbece144cfaa5ff" />
       <keyword name="use_communication_plugin" id="_PARAM_::use_communication_plugin" ref="struct__PARAM__.html#ab9368bf1baa92a254f1465ad7c355a68" />
+      <keyword name="lang_section" id="_PARAM_::lang_section" ref="struct__PARAM__.html#ab0475d873e22c60c5c3c193379cd071f" />
       <keyword name="FloatArray" id="FloatArray" ref="structFloatArray.html" />
       <keyword name="f" id="FloatArray::f" ref="structFloatArray.html#a3a34be14db332114037ffda5816201fb" />
       <keyword name="f0" id="FloatArray::f0" ref="structFloatArray.html#a52bc2acb9748f97fa23a1b1729981b31" />
