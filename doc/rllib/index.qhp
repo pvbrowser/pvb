@@ -570,6 +570,7 @@
       <keyword name="MAXBUF" id="rlhistoryreader.cpp::MAXBUF" ref="rlhistoryreader_8cpp.html#ad7871643c05865c80f5d8050aead2b57" />
       <keyword name="rlHistoryReaderLine" id="rlhistoryreader.h::rlHistoryReaderLine" ref="rlhistoryreader_8h.html#a63db0baa39ad9785a357792d01e29bc0" />
       <keyword name="rlSetTranslator" id="rlinifile.cpp::rlSetTranslator" ref="rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc" />
+      <keyword name="fixquote" id="rlinifile.cpp::fixquote" ref="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df" />
       <keyword name="unquote" id="rlinifile.cpp::unquote" ref="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96" />
       <keyword name="rltranslate" id="rlinifile.cpp::rltranslate" ref="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64" />
       <keyword name="rltranslate2" id="rlinifile.cpp::rltranslate2" ref="rlinifile_8cpp.html#aafe6303bb03add537bfb81530f368e71" />

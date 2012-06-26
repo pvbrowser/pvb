@@ -252,14 +252,14 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00573">573</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00594">594</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">//printf(&quot;rltranslate2(%s,%s) mytext=%s\n&quot;, section, txt, *mytext);</span>
-  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> txt;                     <span class="comment">// use original language because translator is not initalized</span>
-  <span class="keywordflow">if</span>(*section == <span class="charliteral">&#39;\0&#39;</span>)  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a>(txt,mytext); <span class="comment">// user did not call pvSelectLanguage()</span>
-  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(section,txt);     <span class="comment">// translate</span>
-  <span class="keywordflow">if</span>(text[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> txt;                       <span class="comment">// use original language because there is no tranlation available</span>
-  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96">unquote</a>(text,mytext);                          <span class="comment">// return the translated text</span>
+  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(txt,mytext);     <span class="comment">// use original language because translator is not initalized</span>
+  <span class="keywordflow">if</span>(*section == <span class="charliteral">&#39;\0&#39;</span>)  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a>(txt,mytext);  <span class="comment">// user did not call pvSelectLanguage()</span>
+  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(section,txt);      <span class="comment">// translate</span>
+  <span class="keywordflow">if</span>(text[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(txt,mytext);       <span class="comment">// use original language because there is no tranlation available</span>
+  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96">unquote</a>(text,mytext);                           <span class="comment">// return the translated text</span>
 }
 </pre></div>
 </div>
