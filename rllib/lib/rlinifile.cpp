@@ -537,58 +537,12 @@ static const char *fixquote(const char *text, char **mytext)
   return temp;
 }
 
-static const char *unquote(const char *text, char **mytext)
-{
-  const char *cptr;
-  
-  if(strchr(text,'\\') == NULL) return text;
-  if(mytext == NULL)            return text;
-  //printf("unquote(%s) mytext=%s\n", text, *mytext);
-  int len = strlen(text);
-  if(*mytext != NULL) delete [] *mytext;
-  *mytext = new char[len+1];
-  char *temp = *mytext;
-
-  if(strchr(text,'\\') != NULL)
-  { // remove quotes
-    int i = 0;
-    cptr = text;
-    while(*cptr != '\0')
-    {
-      temp[i+1] = '\0';
-      if     (strncmp(cptr,"\\=",2) == 0)
-      {
-        temp[i++] = '=';
-        cptr++;
-      }
-      else if(strncmp(cptr,"\\n",2) == 0)
-      {
-        temp[i++] = '\n';
-        cptr++;
-      }
-      else if(strncmp(cptr,"\\t",2) == 0)
-      {
-        temp[i++] = '\t';
-        cptr++;
-      }
-      else
-      {
-        temp[i++] = *cptr;
-      }  
-      cptr++;
-    }
-    temp[i] = '\0';
-    return temp;
-  }
-  return text;
-}
-
 const char *rltranslate(const char *txt, char **mytext)
 {
   if(trIniFile == NULL) return fixquote(txt,mytext);     // use original language because translator is not initalized
   const char *text =  trIniFile->i18n(txt,"@");          // translate
   if(strcmp(text,"@") == 0) return fixquote(txt,mytext); // use original language because there is no tranlation available
-  return unquote(text,mytext);                           // return the translated text
+  return fixquote(text,mytext);                          // return the translated text
 }
 
 const char *rltranslate2(const char *section, const char *txt, char **mytext)
@@ -598,7 +552,7 @@ const char *rltranslate2(const char *section, const char *txt, char **mytext)
   if(*section == '\0')  return rltranslate(txt,mytext);  // user did not call pvSelectLanguage()
   const char *text =  trIniFile->text(section,txt);      // translate
   if(text[0] == '\0') return fixquote(txt,mytext);       // use original language because there is no tranlation available
-  return unquote(text,mytext);                           // return the translated text
+  return fixquote(text,mytext);                          // return the translated text
 }
 
 

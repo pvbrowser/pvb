@@ -103,7 +103,6 @@ Include dependency graph for rlinifile.cpp:</div>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc">rlSetTranslator</a> (const char *language, const char *inifile)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a> (const char *text, char **mytext)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">static const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96">unquote</a> (const char *text, char **mytext)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a> (const char *txt, char **mytext)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8cpp.html#aafe6303bb03add537bfb81530f368e71">rltranslate2</a> (const char *section, const char *txt, char **mytext)</td></tr>
 <tr><td colspan="2"><h2><a name="var-members"></a>
@@ -223,12 +222,12 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00586">586</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00540">540</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(txt,mytext);     <span class="comment">// use original language because translator is not initalized</span>
   <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#aaca881704690345b4c7e0569059f3239">i18n</a>(txt,<span class="stringliteral">&quot;@&quot;</span>);          <span class="comment">// translate</span>
   <span class="keywordflow">if</span>(strcmp(text,<span class="stringliteral">&quot;@&quot;</span>) == 0) <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(txt,mytext); <span class="comment">// use original language because there is no tranlation available</span>
-  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96">unquote</a>(text,mytext);                           <span class="comment">// return the translated text</span>
+  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(text,mytext);                          <span class="comment">// return the translated text</span>
 }
 </pre></div>
 </div>
@@ -264,87 +263,14 @@ Variables</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00594">594</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00548">548</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">//printf(&quot;rltranslate2(%s,%s) mytext=%s\n&quot;, section, txt, *mytext);</span>
   <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(txt,mytext);     <span class="comment">// use original language because translator is not initalized</span>
   <span class="keywordflow">if</span>(*section == <span class="charliteral">&#39;\0&#39;</span>)  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a>(txt,mytext);  <span class="comment">// user did not call pvSelectLanguage()</span>
   <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(section,txt);      <span class="comment">// translate</span>
   <span class="keywordflow">if</span>(text[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(txt,mytext);       <span class="comment">// use original language because there is no tranlation available</span>
-  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96">unquote</a>(text,mytext);                           <span class="comment">// return the translated text</span>
-}
-</pre></div>
-</div>
-</div>
-<a class="anchor" id="a4898827dace06c33a0ffcd6eb31f8c96"></a><!-- doxytag: member="rlinifile.cpp::unquote" ref="a4898827dace06c33a0ffcd6eb31f8c96" args="(const char *text, char **mytext)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">static const char* unquote </td>
-          <td>(</td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>text</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">char **&#160;</td>
-          <td class="paramname"><em>mytext</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td><code> [static]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00540">540</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
-<div class="fragment"><pre class="fragment">{
-  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;
-  
-  <span class="keywordflow">if</span>(strchr(text,<span class="charliteral">&#39;\\&#39;</span>) == NULL) <span class="keywordflow">return</span> text;
-  <span class="keywordflow">if</span>(mytext == NULL)            <span class="keywordflow">return</span> text;
-  <span class="comment">//printf(&quot;unquote(%s) mytext=%s\n&quot;, text, *mytext);</span>
-  <span class="keywordtype">int</span> len = strlen(text);
-  <span class="keywordflow">if</span>(*mytext != NULL) <span class="keyword">delete</span> [] *mytext;
-  *mytext = <span class="keyword">new</span> <span class="keywordtype">char</span>[len+1];
-  <span class="keywordtype">char</span> *temp = *mytext;
-
-  <span class="keywordflow">if</span>(strchr(text,<span class="charliteral">&#39;\\&#39;</span>) != NULL)
-  { <span class="comment">// remove quotes</span>
-    <span class="keywordtype">int</span> i = 0;
-    cptr = text;
-    <span class="keywordflow">while</span>(*cptr != <span class="charliteral">&#39;\0&#39;</span>)
-    {
-      temp[i+1] = <span class="charliteral">&#39;\0&#39;</span>;
-      <span class="keywordflow">if</span>     (strncmp(cptr,<span class="stringliteral">&quot;\\=&quot;</span>,2) == 0)
-      {
-        temp[i++] = <span class="charliteral">&#39;=&#39;</span>;
-        cptr++;
-      }
-      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strncmp(cptr,<span class="stringliteral">&quot;\\n&quot;</span>,2) == 0)
-      {
-        temp[i++] = <span class="charliteral">&#39;\n&#39;</span>;
-        cptr++;
-      }
-      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strncmp(cptr,<span class="stringliteral">&quot;\\t&quot;</span>,2) == 0)
-      {
-        temp[i++] = <span class="charliteral">&#39;\t&#39;</span>;
-        cptr++;
-      }
-      <span class="keywordflow">else</span>
-      {
-        temp[i++] = *cptr;
-      }  
-      cptr++;
-    }
-    temp[i] = <span class="charliteral">&#39;\0&#39;</span>;
-    <span class="keywordflow">return</span> temp;
-  }
-  <span class="keywordflow">return</span> text;
+  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df">fixquote</a>(text,mytext);                          <span class="comment">// return the translated text</span>
 }
 </pre></div>
 </div>
