@@ -460,6 +460,7 @@ int pvMainFatal(PARAM *p, const char *text)
   p->clipboard        = NULL;
   p->clipboard_length = 0;
   delete [] p->mytext;
+  delete [] p->mytext2;
   if(p->cleanup != NULL) p->cleanup(p->app_data);
   //printf("MainFatal2: %s s=%d\n",text,p->s);
   for(i=0; i<MAX_CLIENTS; i++)
@@ -1135,6 +1136,8 @@ int i;
   p->mouse_x  = p->mouse_y = -1;
   p->mytext = new char[2];
   p->mytext[0] = '\0';
+  p->mytext2 = new char[2];
+  p->mytext2[0] = '\0';
   p->communication_plugin = NULL;
   p->use_communication_plugin = 0;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
@@ -1738,6 +1741,8 @@ int pvCreateThread(PARAM *p, int s)
   ptr->s = s;
   ptr->mytext = new char[2];
   ptr->mytext[0] = '\0';
+  ptr->mytext2 = new char[2];
+  ptr->mytext2[0] = '\0';
 #ifndef USE_INETD
   printf("pvCreateThread s=%d\n",ptr->s);
   pvthread_create(&tid, NULL, send_thread, (void *) ptr);

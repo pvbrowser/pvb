@@ -516,13 +516,17 @@ int rlSetTranslator(const char *language, const char *inifile)
   return 0;
 }
 
-static const char *unquote(const char *text)
+static const char *unquote(const char *text, char **mytext)
 {
-  static char temp[1024];
-  int len = strlen(text);
   const char *cptr;
-
-  if(len >= (int) sizeof(temp) - 1) return text;
+  
+  if(strchr(text,'\\') == NULL) return text;
+  if(mytext == NULL)            return text;
+  //printf("unquote(%s) mytext=%s\n", text, *mytext);
+  int len = strlen(text);
+  if(*mytext != NULL) delete [] *mytext;
+  *mytext = new char[len+1];
+  char *temp = *mytext;
 
   if(strchr(text,'\\') != NULL)
   { // remove quotes
@@ -558,21 +562,22 @@ static const char *unquote(const char *text)
   return text;
 }
 
-const char *rltranslate(const char *txt)
+const char *rltranslate(const char *txt, char **mytext)
 {
-  if(trIniFile == NULL) return txt;                 // use original language because translator is not initalized
-  const char *text =  trIniFile->i18n(txt,"@");     // translate
-  if(strcmp(text,"@") == 0) return txt;             // use original language because there is no tranlation available
-  return unquote(text);                             // return the translated text
+  if(trIniFile == NULL) return txt;                     // use original language because translator is not initalized
+  const char *text =  trIniFile->i18n(txt,"@");         // translate
+  if(strcmp(text,"@") == 0) return txt;                 // use original language because there is no tranlation available
+  return unquote(text,mytext);                          // return the translated text
 }
 
-const char *rltranslate2(const char *section, const char *txt)
+const char *rltranslate2(const char *section, const char *txt, char **mytext)
 {
-  if(trIniFile == NULL) return txt;                 // use original language because translator is not initalized
-  if(*section == '\0')  return rltranslate(txt);    // user did not call pvSelectLanguage()
-  const char *text =  trIniFile->text(section,txt); // translate
-  if(text[0] == '\0') return txt;                   // use original language because there is no tranlation available
-  return unquote(text);                             // return the translated text
+  //printf("rltranslate2(%s,%s) mytext=%s\n", section, txt, *mytext);
+  if(trIniFile == NULL) return txt;                     // use original language because translator is not initalized
+  if(*section == '\0')  return rltranslate(txt,mytext); // user did not call pvSelectLanguage()
+  const char *text =  trIniFile->text(section,txt);     // translate
+  if(text[0] == '\0') return txt;                       // use original language because there is no tranlation available
+  return unquote(text,mytext);                          // return the translated text
 }
 
 

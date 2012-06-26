@@ -112,12 +112,12 @@ private:
 };
 
 int rlSetTranslator(const char *language, const char *inifile=NULL);
-const char *rltranslate(const char *txt);
-const char *rltranslate2(const char *section, const char *txt);
+const char *rltranslate(const char *txt, const char **mytext=NULL);
+const char *rltranslate2(const char *section, const char *txt, char **mytext=NULL);
 #define rltr(txt) rltranslate(txt)
 
 #ifdef  pvtr
 #undef  pvtr
 #endif
-#define pvtr(txt) rltranslate2(p->lang_section,txt)
+#define pvtr(txt) rltranslate2(p->lang_section,txt,&p->mytext2)
 #endif

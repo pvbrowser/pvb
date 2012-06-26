@@ -510,6 +510,7 @@ typedef struct _PARAM_
   const char *communication_plugin;      /* pointer to commandline arg or NULL */ 
   int   use_communication_plugin;        /* can also be set at runtime         */
   char  lang_section[32];                /* use pvSelectLanguage()             */
+  char  *mytext2;                        /* temp used in language translation  */
 }PARAM;
 
 #ifndef __VMS

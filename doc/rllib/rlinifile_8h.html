@@ -109,12 +109,12 @@ Classes</h2></td></tr>
 <tr><td colspan="2"><h2><a name="define-members"></a>
 Defines</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#a28ec05f6825cf46c78a89fd062acfd75">rltr</a>(txt)&#160;&#160;&#160;rltranslate(txt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#a704f803879cee1bbeafe4ad995eadb7b">pvtr</a>(txt)&#160;&#160;&#160;rltranslate2(p-&gt;lang_section,txt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#a704f803879cee1bbeafe4ad995eadb7b">pvtr</a>(txt)&#160;&#160;&#160;rltranslate2(p-&gt;lang_section,txt,&amp;p-&gt;mytext2)</td></tr>
 <tr><td colspan="2"><h2><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#afa64593c1bb1029802d5caa5fd0acdd2">rlSetTranslator</a> (const char *language, const char *inifile=NULL)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#af5850da5d3eb4e909883f0fdd54581e0">rltranslate</a> (const char *txt)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#aa65e27885bdc4672571d39ce25b7d5f9">rltranslate2</a> (const char *section, const char *txt)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#a6d2f744e457a151cda8641d03538b16c">rltranslate</a> (const char *txt, const char **mytext=NULL)</td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlinifile_8h.html#abaf1fefb3674d2f1c8126911f6567445">rltranslate2</a> (const char *section, const char *txt, char **mytext=NULL)</td></tr>
 </table>
 <hr/><h2>Define Documentation</h2>
 <a class="anchor" id="a704f803879cee1bbeafe4ad995eadb7b"></a><!-- doxytag: member="rlinifile.h::pvtr" ref="a704f803879cee1bbeafe4ad995eadb7b" args="(txt)" -->
@@ -126,7 +126,7 @@ Functions</h2></td></tr>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">txt</td><td>)</td>
-          <td>&#160;&#160;&#160;rltranslate2(p-&gt;lang_section,txt)</td>
+          <td>&#160;&#160;&#160;rltranslate2(p-&gt;lang_section,txt,&amp;p-&gt;mytext2)</td>
         </tr>
       </table>
 </div>
@@ -194,7 +194,7 @@ Functions</h2></td></tr>
 </pre></div>
 </div>
 </div>
-<a class="anchor" id="af5850da5d3eb4e909883f0fdd54581e0"></a><!-- doxytag: member="rlinifile.h::rltranslate" ref="af5850da5d3eb4e909883f0fdd54581e0" args="(const char *txt)" -->
+<a class="anchor" id="a6d2f744e457a151cda8641d03538b16c"></a><!-- doxytag: member="rlinifile.h::rltranslate" ref="a6d2f744e457a151cda8641d03538b16c" args="(const char *txt, const char **mytext=NULL)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -202,24 +202,26 @@ Functions</h2></td></tr>
           <td class="memname">const char* rltranslate </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>txt</em></td><td>)</td>
+          <td class="paramname"><em>txt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const char **&#160;</td>
+          <td class="paramname"><em>mytext</em> = <code>NULL</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00561">561</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
-<div class="fragment"><pre class="fragment">{
-  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> txt;                 <span class="comment">// use original language because translator is not initalized</span>
-  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#aaca881704690345b4c7e0569059f3239">i18n</a>(txt,<span class="stringliteral">&quot;@&quot;</span>);     <span class="comment">// translate</span>
-  <span class="keywordflow">if</span>(strcmp(text,<span class="stringliteral">&quot;@&quot;</span>) == 0) <span class="keywordflow">return</span> txt;             <span class="comment">// use original language because there is no tranlation available</span>
-  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0d1e7af83cb39c053e8926521ae0a4a0">unquote</a>(text);                             <span class="comment">// return the translated text</span>
-}
-</pre></div>
 </div>
 </div>
-<a class="anchor" id="aa65e27885bdc4672571d39ce25b7d5f9"></a><!-- doxytag: member="rlinifile.h::rltranslate2" ref="aa65e27885bdc4672571d39ce25b7d5f9" args="(const char *section, const char *txt)" -->
+<a class="anchor" id="abaf1fefb3674d2f1c8126911f6567445"></a><!-- doxytag: member="rlinifile.h::rltranslate2" ref="abaf1fefb3674d2f1c8126911f6567445" args="(const char *section, const char *txt, char **mytext=NULL)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -233,7 +235,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>txt</em>&#160;</td>
+          <td class="paramname"><em>txt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>mytext</em> = <code>NULL</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -244,13 +252,14 @@ Functions</h2></td></tr>
 </div>
 <div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00569">569</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlinifile_8cpp_source.html#l00573">573</a> of file <a class="el" href="rlinifile_8cpp_source.html">rlinifile.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> txt;                 <span class="comment">// use original language because translator is not initalized</span>
-  <span class="keywordflow">if</span>(*section == <span class="charliteral">&#39;\0&#39;</span>)  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#af5850da5d3eb4e909883f0fdd54581e0">rltranslate</a>(txt);    <span class="comment">// user did not call pvSelectLanguage()</span>
-  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(section,txt); <span class="comment">// translate</span>
-  <span class="keywordflow">if</span>(text[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> txt;                   <span class="comment">// use original language because there is no tranlation available</span>
-  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a0d1e7af83cb39c053e8926521ae0a4a0">unquote</a>(text);                             <span class="comment">// return the translated text</span>
+  <span class="comment">//printf(&quot;rltranslate2(%s,%s) mytext=%s\n&quot;, section, txt, *mytext);</span>
+  <span class="keywordflow">if</span>(<a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a> == NULL) <span class="keywordflow">return</span> txt;                     <span class="comment">// use original language because translator is not initalized</span>
+  <span class="keywordflow">if</span>(*section == <span class="charliteral">&#39;\0&#39;</span>)  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a>(txt,mytext); <span class="comment">// user did not call pvSelectLanguage()</span>
+  <span class="keyword">const</span> <span class="keywordtype">char</span> *text =  <a class="code" href="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35">trIniFile</a>-&gt;<a class="code" href="classrlIniFile.html#abd6617813df57f3cdcc2f7829a742f32">text</a>(section,txt);     <span class="comment">// translate</span>
+  <span class="keywordflow">if</span>(text[0] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> txt;                       <span class="comment">// use original language because there is no tranlation available</span>
+  <span class="keywordflow">return</span> <a class="code" href="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96">unquote</a>(text,mytext);                          <span class="comment">// return the translated text</span>
 }
 </pre></div>
 </div>

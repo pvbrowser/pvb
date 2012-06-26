@@ -570,16 +570,16 @@
       <keyword name="MAXBUF" id="rlhistoryreader.cpp::MAXBUF" ref="rlhistoryreader_8cpp.html#ad7871643c05865c80f5d8050aead2b57" />
       <keyword name="rlHistoryReaderLine" id="rlhistoryreader.h::rlHistoryReaderLine" ref="rlhistoryreader_8h.html#a63db0baa39ad9785a357792d01e29bc0" />
       <keyword name="rlSetTranslator" id="rlinifile.cpp::rlSetTranslator" ref="rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc" />
-      <keyword name="unquote" id="rlinifile.cpp::unquote" ref="rlinifile_8cpp.html#a0d1e7af83cb39c053e8926521ae0a4a0" />
-      <keyword name="rltranslate" id="rlinifile.cpp::rltranslate" ref="rlinifile_8cpp.html#af5850da5d3eb4e909883f0fdd54581e0" />
-      <keyword name="rltranslate2" id="rlinifile.cpp::rltranslate2" ref="rlinifile_8cpp.html#aa65e27885bdc4672571d39ce25b7d5f9" />
+      <keyword name="unquote" id="rlinifile.cpp::unquote" ref="rlinifile_8cpp.html#a4898827dace06c33a0ffcd6eb31f8c96" />
+      <keyword name="rltranslate" id="rlinifile.cpp::rltranslate" ref="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64" />
+      <keyword name="rltranslate2" id="rlinifile.cpp::rltranslate2" ref="rlinifile_8cpp.html#aafe6303bb03add537bfb81530f368e71" />
       <keyword name="null_string" id="rlinifile.cpp::null_string" ref="rlinifile_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
       <keyword name="trIniFile" id="rlinifile.cpp::trIniFile" ref="rlinifile_8cpp.html#a6293f5533889dcb27ffebc900f349d35" />
       <keyword name="rltr" id="rlinifile.h::rltr" ref="rlinifile_8h.html#a28ec05f6825cf46c78a89fd062acfd75" />
       <keyword name="pvtr" id="rlinifile.h::pvtr" ref="rlinifile_8h.html#a704f803879cee1bbeafe4ad995eadb7b" />
       <keyword name="rlSetTranslator" id="rlinifile.h::rlSetTranslator" ref="rlinifile_8h.html#afa64593c1bb1029802d5caa5fd0acdd2" />
-      <keyword name="rltranslate" id="rlinifile.h::rltranslate" ref="rlinifile_8h.html#af5850da5d3eb4e909883f0fdd54581e0" />
-      <keyword name="rltranslate2" id="rlinifile.h::rltranslate2" ref="rlinifile_8h.html#aa65e27885bdc4672571d39ce25b7d5f9" />
+      <keyword name="rltranslate" id="rlinifile.h::rltranslate" ref="rlinifile_8h.html#a6d2f744e457a151cda8641d03538b16c" />
+      <keyword name="rltranslate2" id="rlinifile.h::rltranslate2" ref="rlinifile_8h.html#abaf1fefb3674d2f1c8126911f6567445" />
       <keyword name="main" id="rllib.cpp::main" ref="rllib_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" />
       <keyword name="array_crc_low" id="rlmodbus.cpp::array_crc_low" ref="rlmodbus_8cpp.html#ade00722f9e0faaec45529dcf5e795fdc" />
       <keyword name="array_crc_high" id="rlmodbus.cpp::array_crc_high" ref="rlmodbus_8cpp.html#af590facd18479d1f5bc83501861e84ba" />
