@@ -11,6 +11,12 @@
 
 int trace = 0;
 
+const char *rltranslate(char const *txt, char const **def) // dummy
+{
+  if(def == NULL) return txt;
+  return txt;
+}
+
 // Include the Lua API header files
 #ifdef __cplusplus
 extern "C" {

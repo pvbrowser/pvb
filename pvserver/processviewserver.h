@@ -948,6 +948,14 @@ The section names the language.
 The original text is used to select the translation.
 </pre> */
 int pvSelectLanguage(PARAM *p, const char *section);
+
+/*! <pre>
+This function is intended for script languages.
+It will translate text to different languages.
+See pvSelectLanguage()
+C/C++ pvservers may use the pvtr(txt) macro instead.
+</pre> */
+//const char *pvTr(PARAM *p, const char *text);
 /** @} */ // end of group
 
 /** @defgroup Contruction Construction

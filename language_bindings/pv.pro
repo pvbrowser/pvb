@@ -3,6 +3,7 @@ CONFIG      = qt console warn_on release dll
 QT          += sql
 INCLUDEPATH += $(PYDIR)/include
 INCLUDEPATH += ../pvserver
+DEFINES     += COMPILE_FOR_SCRIPT_LANGUAGE
 
 # Input
 HEADERS += sql/qtdatabase.h

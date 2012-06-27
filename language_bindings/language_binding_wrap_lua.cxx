@@ -3847,6 +3847,121 @@ fail:
 }
 
 
+static int _wrap_PARAM_lang_section_set(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 ;
+  
+  SWIG_check_num_args("_PARAM_::lang_section",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("_PARAM_::lang_section",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("_PARAM_::lang_section",2,"char [32]");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_lang_section_set",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  {
+    if(arg2) {
+      strncpy((char*)arg1->lang_section, (const char *)arg2, 32-1);
+      arg1->lang_section[32-1] = 0;
+    } else {
+      arg1->lang_section[0] = 0;
+    }
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PARAM_lang_section_get(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("_PARAM_::lang_section",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("_PARAM_::lang_section",1,"PARAM *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_lang_section_get",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  result = (char *)(char *) ((arg1)->lang_section);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PARAM_mytext2_set(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  SWIG_check_num_args("_PARAM_::mytext2",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("_PARAM_::mytext2",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("_PARAM_::mytext2",2,"char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_mytext2_set",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  {
+    if (arg1->mytext2) delete [] arg1->mytext2;
+    if (arg2) {
+      arg1->mytext2 = (char *) (new char[strlen((const char *)arg2)+1]);
+      strcpy((char *)arg1->mytext2, (const char *)arg2);
+    } else {
+      arg1->mytext2 = 0;
+    }
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PARAM_mytext2_get(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("_PARAM_::mytext2",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("_PARAM_::mytext2",1,"PARAM *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_mytext2_get",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  result = (char *) ((arg1)->mytext2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_PARAM(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *result = 0 ;
@@ -3912,6 +4027,8 @@ static swig_lua_attribute swig_PARAM_attributes[] = {
     { "mytext", _wrap_PARAM_mytext_get, _wrap_PARAM_mytext_set},
     { "communication_plugin", _wrap_PARAM_communication_plugin_get, _wrap_PARAM_communication_plugin_set},
     { "use_communication_plugin", _wrap_PARAM_use_communication_plugin_get, _wrap_PARAM_use_communication_plugin_set},
+    { "lang_section", _wrap_PARAM_lang_section_get, _wrap_PARAM_lang_section_set},
+    { "mytext2", _wrap_PARAM_mytext2_get, _wrap_PARAM_mytext2_set},
     {0,0,0}
 };
 static swig_lua_class *swig_PARAM_bases[] = {0};
@@ -6640,7 +6757,40 @@ fail:
 }
 
 
-static int _wrap_pvClientCommand(lua_State* L) {
+static int _wrap_pvClientCommand__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("pvClientCommand",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvClientCommand",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvClientCommand",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("pvClientCommand",3,"char const *");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvClientCommand",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvClientCommand",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)pvClientCommand(arg1,(char const *)arg2,(char const *)arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvClientCommand__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
   char *arg2 = (char *) 0 ;
@@ -6667,6 +6817,75 @@ static int _wrap_pvClientCommand(lua_State* L) {
 fail:
   lua_error(L);
   return SWIG_arg;
+}
+
+
+static int _wrap_pvClientCommand(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = SWIG_lua_isnilstring(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_pvClientCommand__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = SWIG_lua_isnilstring(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_pvClientCommand__SWIG_0(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'pvClientCommand'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvClientCommand(PARAM *,char const *,char const *,int)\n"
+    "    pvClientCommand(PARAM *,char const *,char const *)\n");
+  lua_error(L);return 0;
 }
 
 
@@ -6713,6 +6932,33 @@ static int _wrap_pvSetManualUrl(lua_State* L) {
   
   arg2 = (char *)lua_tostring(L, 2);
   result = (int)pvSetManualUrl(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSelectLanguage(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSelectLanguage",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSelectLanguage",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSelectLanguage",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSelectLanguage",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSelectLanguage(arg1,(char const *)arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -26779,9 +27025,10 @@ static const struct luaL_reg swig_commands[] = {
     { "pvSetMouseShape", _wrap_pvSetMouseShape},
     { "pvSetWhatsThis", _wrap_pvSetWhatsThis},
     { "pvWhatsThisPrintf", _wrap_pvWhatsThisPrintf},
-    { "pvClientCommand", _wrap_pvClientCommand},
+    { "pvClientCommand",_wrap_pvClientCommand},
     { "pvZoomMask", _wrap_pvZoomMask},
     { "pvSetManualUrl", _wrap_pvSetManualUrl},
+    { "pvSelectLanguage", _wrap_pvSelectLanguage},
     { "pvStartDefinition", _wrap_pvStartDefinition},
     { "pvQLayoutVbox", _wrap_pvQLayoutVbox},
     { "pvQLayoutHbox", _wrap_pvQLayoutHbox},

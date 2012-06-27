@@ -130,10 +130,11 @@
       <keyword name="pvSetMouseShape" id="processviewserver.h::pvSetMouseShape" ref="processviewserver_8h.html#ga3e6f444c72839e3549dacff16472ca08" />
       <keyword name="pvSetWhatsThis" id="processviewserver.h::pvSetWhatsThis" ref="processviewserver_8h.html#ga4cf6c6a3745f02a74c7b4648d8511a12" />
       <keyword name="pvWhatsThisPrintf" id="processviewserver.h::pvWhatsThisPrintf" ref="processviewserver_8h.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
-      <keyword name="pvClientCommand" id="processviewserver.h::pvClientCommand" ref="processviewserver_8h.html#ga42e02e6a01a7c010d2759ea2ca91f9f0" />
+      <keyword name="pvClientCommand" id="processviewserver.h::pvClientCommand" ref="processviewserver_8h.html#gafeaa81af3cfb8c490d8883aae1f199b1" />
       <keyword name="pvZoomMask" id="processviewserver.h::pvZoomMask" ref="processviewserver_8h.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="processviewserver.h::pvSetManualUrl" ref="processviewserver_8h.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="processviewserver.h::pvSelectLanguage" ref="processviewserver_8h.html#gacf49bec64bf2e889ba67e2e15663805b" />
+      <keyword name="pvTr" id="processviewserver.h::pvTr" ref="processviewserver_8h.html#ga89f43020662b19ff58e9dc591a0f5bd4" />
       <keyword name="pvStartDefinition" id="processviewserver.h::pvStartDefinition" ref="processviewserver_8h.html#ga1616438aedd778acc2681be15f9cd908" />
       <keyword name="pvQLayoutVbox" id="processviewserver.h::pvQLayoutVbox" ref="processviewserver_8h.html#ga02c905c2e920efb7016f5453b6522d1d" />
       <keyword name="pvQLayoutHbox" id="processviewserver.h::pvQLayoutHbox" ref="processviewserver_8h.html#gadc8ed44c25ff2ae52636fa0609c2ebd7" />
@@ -988,10 +989,11 @@
       <keyword name="pvSetMouseShape" id="IniAndGlobal::pvSetMouseShape" ref="group__IniAndGlobal.html#ga3e6f444c72839e3549dacff16472ca08" />
       <keyword name="pvSetWhatsThis" id="IniAndGlobal::pvSetWhatsThis" ref="group__IniAndGlobal.html#ga4cf6c6a3745f02a74c7b4648d8511a12" />
       <keyword name="pvWhatsThisPrintf" id="IniAndGlobal::pvWhatsThisPrintf" ref="group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
-      <keyword name="pvClientCommand" id="IniAndGlobal::pvClientCommand" ref="group__IniAndGlobal.html#ga42e02e6a01a7c010d2759ea2ca91f9f0" />
+      <keyword name="pvClientCommand" id="IniAndGlobal::pvClientCommand" ref="group__IniAndGlobal.html#gafeaa81af3cfb8c490d8883aae1f199b1" />
       <keyword name="pvZoomMask" id="IniAndGlobal::pvZoomMask" ref="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="IniAndGlobal::pvSetManualUrl" ref="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="IniAndGlobal::pvSelectLanguage" ref="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b" />
+      <keyword name="pvTr" id="IniAndGlobal::pvTr" ref="group__IniAndGlobal.html#ga89f43020662b19ff58e9dc591a0f5bd4" />
       <keyword name="Construction" id="Construction" ref="group__Contruction.html" />
       <keyword name="pvStartDefinition" id="Contruction::pvStartDefinition" ref="group__Contruction.html#ga1616438aedd778acc2681be15f9cd908" />
       <keyword name="pvQLayoutVbox" id="Contruction::pvQLayoutVbox" ref="group__Contruction.html#ga02c905c2e920efb7016f5453b6522d1d" />
@@ -1441,6 +1443,7 @@
       <keyword name="communication_plugin" id="_PARAM_::communication_plugin" ref="struct__PARAM__.html#a3e6734c23de0caa6bfbece144cfaa5ff" />
       <keyword name="use_communication_plugin" id="_PARAM_::use_communication_plugin" ref="struct__PARAM__.html#ab9368bf1baa92a254f1465ad7c355a68" />
       <keyword name="lang_section" id="_PARAM_::lang_section" ref="struct__PARAM__.html#ab0475d873e22c60c5c3c193379cd071f" />
+      <keyword name="mytext2" id="_PARAM_::mytext2" ref="struct__PARAM__.html#ac7d1f0bf04060535b7d508c6249ce85f" />
       <keyword name="FloatArray" id="FloatArray" ref="structFloatArray.html" />
       <keyword name="f" id="FloatArray::f" ref="structFloatArray.html#a3a34be14db332114037ffda5816201fb" />
       <keyword name="f0" id="FloatArray::f0" ref="structFloatArray.html#a52bc2acb9748f97fa23a1b1729981b31" />

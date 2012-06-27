@@ -526,10 +526,11 @@ static const char *fixquote(const char *text, char **mytext)
   int i2 = 0;
   for(int i=0; i<len; i++)
   {
-    if     (text[i] == '\\' && text[i+1] == '=') { temp[i2] = '=';  i++; }
-    else if(text[i] == '\\' && text[i+1] == 'n') { temp[i2] = '\n'; i++; }
-    else if(text[i] == '\\' && text[i+1] == 't') { temp[i2] = '\t'; i++; }
-    else                                         { temp[i2] = text[i];  }
+    if     (text[i] == '\\' && text[i+1] == '=')  { temp[i2] = '=';  i++; }
+    else if(text[i] == '\\' && text[i+1] == 'n')  { temp[i2] = '\n'; i++; }
+    else if(text[i] == '\\' && text[i+1] == 't')  { temp[i2] = '\t'; i++; }
+    else if(text[i] == '\\' && text[i+1] == '\\') { temp[i2] = '\\'; i++; }
+    else                                          { temp[i2] = text[i];  }
     i2++;
   }
   temp[i2] = '\0';

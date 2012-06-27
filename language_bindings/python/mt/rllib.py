@@ -930,6 +930,18 @@ class rlInterpreter(_object):
 rlInterpreter_swigregister = _rllib.rlInterpreter_swigregister
 rlInterpreter_swigregister(rlInterpreter)
 
+def rlSetTranslator(*args):
+  return _rllib.rlSetTranslator(*args)
+rlSetTranslator = _rllib.rlSetTranslator
+
+def rltranslate(*args):
+  return _rllib.rltranslate(*args)
+rltranslate = _rllib.rltranslate
+
+def rltranslate2(*args):
+  return _rllib.rltranslate2(*args)
+rltranslate2 = _rllib.rltranslate2
+
 class rlMailbox(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlMailbox, name, value)

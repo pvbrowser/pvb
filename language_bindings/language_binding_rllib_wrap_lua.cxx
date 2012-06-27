@@ -12102,6 +12102,286 @@ static swig_lua_class *swig_rlIniFile_bases[] = {0};
 static const char *swig_rlIniFile_base_names[] = {0};
 static swig_lua_class _wrap_class_rlIniFile = { "rlIniFile", &SWIGTYPE_p_rlIniFile,_wrap_new_rlIniFile, swig_delete_rlIniFile, swig_rlIniFile_methods, swig_rlIniFile_attributes, swig_rlIniFile_bases, swig_rlIniFile_base_names };
 
+static int _wrap_rlSetTranslator__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSetTranslator",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlSetTranslator",1,"char const *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlSetTranslator",2,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)rlSetTranslator((char const *)arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSetTranslator__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSetTranslator",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlSetTranslator",1,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  result = (int)rlSetTranslator((char const *)arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSetTranslator(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      return _wrap_rlSetTranslator__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rlSetTranslator__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlSetTranslator'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlSetTranslator(char const *,char const *)\n"
+    "    rlSetTranslator(char const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rltranslate__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char **arg2 = (char **) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rltranslate",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rltranslate",1,"char const *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rltranslate",2,"char const **");
+  arg1 = (char *)lua_tostring(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_p_char,0))){
+    SWIG_fail_ptr("rltranslate",2,SWIGTYPE_p_p_char);
+  }
+  
+  result = (char *)rltranslate((char const *)arg1,(char const **)arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rltranslate__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rltranslate",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rltranslate",1,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  result = (char *)rltranslate((char const *)arg1);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rltranslate(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      return _wrap_rltranslate__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_p_char, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_rltranslate__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rltranslate'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rltranslate(char const *,char const **)\n"
+    "    rltranslate(char const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rltranslate2__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char **arg3 = (char **) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rltranslate2",3,3)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rltranslate2",1,"char const *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rltranslate2",2,"char const *");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("rltranslate2",3,"char **");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_p_char,0))){
+    SWIG_fail_ptr("rltranslate2",3,SWIGTYPE_p_p_char);
+  }
+  
+  result = (char *)rltranslate2((char const *)arg1,(char const *)arg2,arg3);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rltranslate2__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rltranslate2",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rltranslate2",1,"char const *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rltranslate2",2,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (char *)rltranslate2((char const *)arg1,(char const *)arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rltranslate2(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rltranslate2__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (SWIG_isptrtype(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_p_char, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_rltranslate2__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rltranslate2'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rltranslate2(char const *,char const *,char **)\n"
+    "    rltranslate2(char const *,char const *)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_new_rlInterpreter__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
@@ -26638,6 +26918,9 @@ static const struct luaL_reg swig_commands[] = {
     { "rlEventInit", _wrap_rlEventInit},
     { "rlSetEventLocation", _wrap_rlSetEventLocation},
     { "rlEventPrintf", _wrap_rlEventPrintf},
+    { "rlSetTranslator",_wrap_rlSetTranslator},
+    { "rltranslate",_wrap_rltranslate},
+    { "rltranslate2",_wrap_rltranslate2},
     { "rlsleep", _wrap_rlsleep},
     {0,0}
 };

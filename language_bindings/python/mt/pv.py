@@ -558,6 +558,12 @@ class PARAM(_object):
     __swig_setmethods__["use_communication_plugin"] = _pv.PARAM_use_communication_plugin_set
     __swig_getmethods__["use_communication_plugin"] = _pv.PARAM_use_communication_plugin_get
     if _newclass:use_communication_plugin = _swig_property(_pv.PARAM_use_communication_plugin_get, _pv.PARAM_use_communication_plugin_set)
+    __swig_setmethods__["lang_section"] = _pv.PARAM_lang_section_set
+    __swig_getmethods__["lang_section"] = _pv.PARAM_lang_section_get
+    if _newclass:lang_section = _swig_property(_pv.PARAM_lang_section_get, _pv.PARAM_lang_section_set)
+    __swig_setmethods__["mytext2"] = _pv.PARAM_mytext2_set
+    __swig_getmethods__["mytext2"] = _pv.PARAM_mytext2_get
+    if _newclass:mytext2 = _swig_property(_pv.PARAM_mytext2_get, _pv.PARAM_mytext2_set)
     def __init__(self): 
         this = _pv.new_PARAM()
         try: self.this.append(this)
@@ -928,10 +934,6 @@ def pvWhatsThisPrintf(*args):
   return _pv.pvWhatsThisPrintf(*args)
 pvWhatsThisPrintf = _pv.pvWhatsThisPrintf
 
-def pvClientCommand(*args):
-  return _pv.pvClientCommand(*args)
-pvClientCommand = _pv.pvClientCommand
-
 def pvZoomMask(*args):
   return _pv.pvZoomMask(*args)
 pvZoomMask = _pv.pvZoomMask
@@ -939,6 +941,10 @@ pvZoomMask = _pv.pvZoomMask
 def pvSetManualUrl(*args):
   return _pv.pvSetManualUrl(*args)
 pvSetManualUrl = _pv.pvSetManualUrl
+
+def pvSelectLanguage(*args):
+  return _pv.pvSelectLanguage(*args)
+pvSelectLanguage = _pv.pvSelectLanguage
 
 def pvStartDefinition(*args):
   return _pv.pvStartDefinition(*args)
@@ -1641,6 +1647,10 @@ class glFont(_object):
     def setFontSize(self, *args): return _pv.glFont_setFontSize(self, *args)
 glFont_swigregister = _pv.glFont_swigregister
 glFont_swigregister(glFont)
+
+def pvClientCommand(*args):
+  return _pv.pvClientCommand(*args)
+pvClientCommand = _pv.pvClientCommand
 
 def pvQImage(*args):
   return _pv.pvQImage(*args)
