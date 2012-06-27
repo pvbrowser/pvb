@@ -2,7 +2,7 @@
                           rlplc.cpp -  description
                              -------------------
     begin                : Tue Dec 11 2008
-    copyright            : (C) 2008 by Rainer Lehrig
+    copyright            : (C) 2008 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

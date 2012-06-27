@@ -2,7 +2,7 @@
                           glencode.cpp  -  description
                              -------------------
     begin                : Sat Dec 9 2000
-    copyright            : (C) 2000 by Rainer Lehrig
+    copyright            : (C) 2000 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 
@@ -22,7 +22,7 @@
  *                                                                         *
  ***************************************************************************/
 /*****************************************************************************
-OpenGL encoder for use with Process View Browser    (C) Rainer Lehrig 2000
+OpenGL encoder for use with Process View Browser    (C) R. Lehrig 2000
                                                     lehrig@t-online.de
 *****************************************************************************/
 #ifndef _GL_ENCODER_

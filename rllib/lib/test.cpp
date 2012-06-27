@@ -1,5 +1,5 @@
 //
-// SiemensTCP test                                (C) Rainer Lehrig 2005
+// SiemensTCP test                                (C) R. Lehrig 2005
 //
 
 #include <stdio.h>

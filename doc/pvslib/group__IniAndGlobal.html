@@ -114,7 +114,6 @@ Functions</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf">pvZoomMask</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int percent)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d">pvSetManualUrl</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *url)</td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b">pvSelectLanguage</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *section)</td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga89f43020662b19ff58e9dc591a0f5bd4">pvTr</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *text)</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <p>These routines are used for initialisation. And also some global usable routines are available. </p>
@@ -1022,38 +1021,6 @@ Same as system(command); but portable
 <div class="memdoc">
 <pre>
 Output a fatal message and terminate the worker thread.
-</pre> 
-</div>
-</div>
-<a class="anchor" id="ga89f43020662b19ff58e9dc591a0f5bd4"></a><!-- doxytag: member="processviewserver.h::pvTr" ref="ga89f43020662b19ff58e9dc591a0f5bd4" args="(PARAM *p, const char *text)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char* pvTr </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
-          <td class="paramname"><em>p</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>text</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-<pre>
-This function is intended for script languages.
-It will translate text to different languages.
-See <a class="el" href="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b">pvSelectLanguage()</a>
-C/C++ pvservers may use the <a class="el" href="group__DefinesAndEnums.html#ga704f803879cee1bbeafe4ad995eadb7b">pvtr(txt)</a> macro instead.
 </pre> 
 </div>
 </div>

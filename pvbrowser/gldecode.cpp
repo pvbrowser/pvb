@@ -4,7 +4,7 @@
                           gldecode.cpp  -  description
                              -------------------
     begin                : Sun Dec 10 2000
-    copyright            : (C) 2000 by Rainer Lehrig
+    copyright            : (C) 2000 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 
@@ -20,7 +20,7 @@
  *                                                                         *
  ***************************************************************************/
 /*****************************************************************************
-OpenGL decoder for use with Process View Browser    (C) Rainer Lehrig 2000
+OpenGL decoder for use with Process View Browser    (C) R. Lehrig 2000
                                                     lehrig@t-online.de
 *****************************************************************************/
 

@@ -1,7 +1,7 @@
 // You may use this header if you use C++ string's
 // avoid casts with .c_str()
 // Warning: This file is NOT maintained on a regular basis, so some functions may be missing
-//          If you observe this please contact: Rainer Lehrig lehrig@t-online.de
+//          If you observe this please contact: R. Lehrig lehrig@t-online.de
 #ifndef _PROCESS_VIEW_SERVER_STRING_H_
 #define _PROCESS_VIEW_SERVER_STRING_H_
 #include "processviewserver.h"

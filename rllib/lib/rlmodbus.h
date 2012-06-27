@@ -2,7 +2,7 @@
                           rlmodbus.h  -  description
                              -------------------
     begin                : Tue Mar 13 2003
-    copyright            : (C) 2003 by Rainer Lehrig
+    copyright            : (C) 2003 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

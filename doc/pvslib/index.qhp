@@ -134,7 +134,6 @@
       <keyword name="pvZoomMask" id="processviewserver.h::pvZoomMask" ref="processviewserver_8h.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="processviewserver.h::pvSetManualUrl" ref="processviewserver_8h.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="processviewserver.h::pvSelectLanguage" ref="processviewserver_8h.html#gacf49bec64bf2e889ba67e2e15663805b" />
-      <keyword name="pvTr" id="processviewserver.h::pvTr" ref="processviewserver_8h.html#ga89f43020662b19ff58e9dc591a0f5bd4" />
       <keyword name="pvStartDefinition" id="processviewserver.h::pvStartDefinition" ref="processviewserver_8h.html#ga1616438aedd778acc2681be15f9cd908" />
       <keyword name="pvQLayoutVbox" id="processviewserver.h::pvQLayoutVbox" ref="processviewserver_8h.html#ga02c905c2e920efb7016f5453b6522d1d" />
       <keyword name="pvQLayoutHbox" id="processviewserver.h::pvQLayoutHbox" ref="processviewserver_8h.html#gadc8ed44c25ff2ae52636fa0609c2ebd7" />
@@ -993,7 +992,6 @@
       <keyword name="pvZoomMask" id="IniAndGlobal::pvZoomMask" ref="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="IniAndGlobal::pvSetManualUrl" ref="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="IniAndGlobal::pvSelectLanguage" ref="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b" />
-      <keyword name="pvTr" id="IniAndGlobal::pvTr" ref="group__IniAndGlobal.html#ga89f43020662b19ff58e9dc591a0f5bd4" />
       <keyword name="Construction" id="Construction" ref="group__Contruction.html" />
       <keyword name="pvStartDefinition" id="Contruction::pvStartDefinition" ref="group__Contruction.html#ga1616438aedd778acc2681be15f9cd908" />
       <keyword name="pvQLayoutVbox" id="Contruction::pvQLayoutVbox" ref="group__Contruction.html#ga02c905c2e920efb7016f5453b6522d1d" />

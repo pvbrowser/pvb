@@ -2,7 +2,7 @@
                           wthread.h  -  description
                              -------------------
     begin                : Sun Jan 02 2000
-    copyright            : (C) 2001 by Rainer Lehrig
+    copyright            : (C) 2001 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 
@@ -17,7 +17,7 @@
 
 Wrapper for posix threads (UNIX,VMS,windows)
 
-(C) Rainer Lehrig 2001                                       lehrig@t-online.de
+(C) R. Lehrig 2001                                       lehrig@t-online.de
 
 ***********************************************************************************/
 

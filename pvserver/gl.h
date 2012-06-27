@@ -1,4 +1,4 @@
-/* modified by Rainer Lehrig for ProcessViewServer under Windows */
+/* modified by R. Lehrig for ProcessViewServer under Windows */
 /* $Id: gl.h,v 1.1.1.1 2003/07/24 08:16:24 lehrig Exp $ */
 
 /*

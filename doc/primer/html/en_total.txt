@@ -68,7 +68,7 @@ Currently the pvserver is started in foreground. Howto start pvserver in backgro
 
 pre=begin
 lehrig@nb3lehrig:/opt/pvb/pvserver> ./processview -h
-ProcessViewServer 2.9 (C) by Rainer Lehrig 2000-2005       lehrig@t-online.de
+ProcessViewServer 2.9 (C) by R. Lehrig 2000-2005       lehrig@t-online.de
 
 usage: ProcessViewServer -port=5050 -sleep=500 -cd=/working/directory
 default:

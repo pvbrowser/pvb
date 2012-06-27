@@ -2,7 +2,7 @@
                           rldefine.h  -  description
                              -------------------
     begin                : Wed Dec 04 2002
-    copyright            : (C) 2001 by Rainer Lehrig
+    copyright            : (C) 2001 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

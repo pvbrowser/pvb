@@ -2,7 +2,7 @@
                         rl3964r.cpp  -  description
                              -------------------
     begin                : Wed Jan 14 2004
-    copyright            : (C) 2004 by Rainer Lehrig
+    copyright            : (C) 2004 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

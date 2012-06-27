@@ -2,7 +2,7 @@
                           main.cpp  -  description
                              -------------------
     begin                : Son Nov 12 09:43:38 CET 2000
-    copyright            : (C) 2000 by Rainer Lehrig
+    copyright            : (C) 2000 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

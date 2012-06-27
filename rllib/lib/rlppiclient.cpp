@@ -2,7 +2,7 @@
                    rlppiclient.cpp  -  description
                              -------------------
     begin                : Mon Jul 12 2004
-    copyright            : (C) 2004 by Rainer Lehrig
+    copyright            : (C) 2004 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

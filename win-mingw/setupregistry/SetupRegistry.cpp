@@ -2,7 +2,7 @@
                      SetupRegistry.cpp  -  description
                              -------------------
     begin                : Sun Oct 06 2002
-    copyright            : (C) 2000-2002 by Rainer Lehrig
+    copyright            : (C) 2000-2002 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

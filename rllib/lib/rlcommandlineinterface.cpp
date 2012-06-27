@@ -2,7 +2,7 @@
                           rlcommandlineinterface.cpp  -  description
                              -------------------
     begin                : Sat Mar 27 2010
-    copyright            : (C) 2010 by Rainer Lehrig
+    copyright            : (C) 2010 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

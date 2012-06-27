@@ -2,7 +2,7 @@
                           rlwebcam.cpp  -  description
                              -------------------
     begin                : Mo Aug 24 2009
-    copyright            : (C) 2009 by Rainer Lehrig
+    copyright            : (C) 2009 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

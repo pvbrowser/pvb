@@ -2,7 +2,7 @@
                        rlhistoryreader.cpp  -  description
                              -------------------
     begin                : Wed Dec 06 2006
-    copyright            : (C) 2006 by Rainer Lehrig
+    copyright            : (C) 2006 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

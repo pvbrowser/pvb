@@ -2,7 +2,7 @@
                           rlinterpreter.cpp  -  description
                              -------------------
     begin                : Tue Jan 02 2001
-    copyright            : (C) 2001 by Rainer Lehrig
+    copyright            : (C) 2001 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

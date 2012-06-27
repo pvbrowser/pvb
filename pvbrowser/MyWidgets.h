@@ -2,8 +2,8 @@
                           MyWidgets.h  -  description
                              -------------------
     begin                : Mon Dec 11 2000
-    copyright            : (C) 2000 by Rainer Lehrig
-                         : Martin Bangieff
+    copyright            : (C) 2000 by R. Lehrig
+                         : M. Bangieff
     email                : lehrig@t-online.de
  ***************************************************************************/
 

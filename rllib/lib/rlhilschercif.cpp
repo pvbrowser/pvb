@@ -2,7 +2,7 @@
                       rlhilschercif.cpp  -  description
                              -------------------
     begin                : Tue Feb 13 2007
-    copyright            : (C) 2007 by Rainer Lehrig
+    copyright            : (C) 2007 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

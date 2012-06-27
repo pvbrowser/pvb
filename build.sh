@@ -22,7 +22,6 @@ if [ "$PVB_OSTYPE" != "linux"  ]; then
 if [ "$2"    != "buildservice" ]; then
 if [ "$HOME" != "/root"        ]; then
 if [ "$HOME" != "/home/lehrig" ]; then
-if [ "$HOME" != "/home/rainer" ]; then
   echo "############################################################################"
   echo "We are not at home. Please edit this file.                                  "
   echo "You have to define QTDIR, QMAKESPEC and perhaps TCLLIBPATH (if you want VTK)"
@@ -44,7 +43,6 @@ if [ "$HOME" != "/home/rainer" ]; then
   echo "# then remove the exit command below #"
   echo "######################################"
   exit
-fi  
 fi
 fi
 fi

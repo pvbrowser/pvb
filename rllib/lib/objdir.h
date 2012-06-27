@@ -2,7 +2,7 @@
                           rlcanopen.cpp  -  description
                              -------------------
     begin     : Tue March 03 2004
-    copyright : (C) 2004 by Marc Bräutigam, Christian Wilmes, Rainer Lehrig
+    copyright : (C) 2004 by Marc Bräutigam, Christian Wilmes, R. Lehrig
     email     : lehrig@t-online.de
  ***************************************************************************/
 

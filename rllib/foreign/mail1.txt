@@ -9,7 +9,7 @@ Received: from Spooler by hilscher.com (Mercury/32 v3.32) ID MO002DA2;
   10 Mar 05 15:05:06 +0100
 Received: from spooler by hilscher.com (Mercury/32 v3.32); 10 Mar 05 15:04:12 +0100
 From: "David Tsaava" <dtsaava@hilscher.com>
-To: Rainer Lehrig <lehrig@t-online.de>
+To: R. Lehrig <lehrig@t-online.de>
 Date: Thu, 10 Mar 2005 15:11:17 +0100
 X-Total-Enclosures: 1
 X-Enclosure-Info: DOS,"CifPCMCIA.inf",,,,Unbekannt

@@ -2,7 +2,7 @@
                           rldataprovider.cpp  -  description
                              -------------------
     begin                : Fri Dec 20 2002
-    copyright            : (C) 2002 by Rainer Lehrig
+    copyright            : (C) 2002 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

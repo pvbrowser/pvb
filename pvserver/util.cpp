@@ -2,9 +2,9 @@
                           util.cpp  -  description
                              -------------------
     begin                : Sun Nov 12 2000
-    copyright            : (C) 2000 by Rainer Lehrig
-                         : Angel Maza
-                         : Martin Bangieff
+    copyright            : (C) 2000 by R. Lehrig
+                         : A. Maza
+                         : M. Bangieff
     email                : lehrig@t-online.de
  ***************************************************************************/
 

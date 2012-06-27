@@ -2,7 +2,7 @@
                           pvtcl.h  -  description
                              -------------------
     begin                : Mon Jun 10 2002
-    copyright            : (C) 2002 by Rainer Lehrig
+    copyright            : (C) 2002 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 
@@ -34,7 +34,7 @@
 #include "tcl.h"
 
 /**
-  *@author Rainer Lehrig
+  *@author R. Lehrig
   */
 
 class pvVtkTclWidget : public QVTKWidget

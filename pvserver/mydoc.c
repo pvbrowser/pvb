@@ -8,7 +8,7 @@ int html,literal,proto,descr,topic;
   fputs("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 3.2 Final//EN\">\n",fout);
   fputs("<html>\n",fout);
   fputs("<head>\n",fout);
-  fputs(" <META NAME=\"GENERATOR\" CONTENT=\"mydoc Rainer Lehrig\">\n",fout);
+  fputs(" <META NAME=\"GENERATOR\" CONTENT=\"mydoc R. Lehrig\">\n",fout);
   //fputs(" <TITLE>ProcessViewServer Programming Reference</TITLE>\n",fout);
   fputs("</head>\n",fout);
   fputs("<body>\n",fout);

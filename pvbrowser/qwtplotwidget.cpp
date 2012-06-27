@@ -2,7 +2,7 @@
                           qwtplotwidget.cpp  -  description
                              -------------------
     begin                : Mon Mai 26 2003
-    copyright            : (C) 2003 by Rainer Lehrig
+    copyright            : (C) 2003 by R. Lehrig
                          : Angel Maza
     email                : lehrig@t-online.de
  ***************************************************************************/

@@ -2,7 +2,7 @@
                           pvglwidget.cpp  -  description
                              -------------------
     begin                : Wed Nov 29 2000
-    copyright            : (C) 2000 by Rainer Lehrig
+    copyright            : (C) 2000 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

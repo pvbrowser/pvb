@@ -2,7 +2,7 @@
                     rlmodbusclient.h  -  description
                              -------------------
     begin                : Wed Jan 07 2004
-    copyright            : (C) 2004 by Rainer Lehrig
+    copyright            : (C) 2004 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

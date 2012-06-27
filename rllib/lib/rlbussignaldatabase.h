@@ -2,7 +2,7 @@
                           rlbussignaldatabase.h  -  description
                              -------------------
     begin                : Mon Aug 02 2002
-    copyright            : (C) 2002 by Rainer Lehrig
+    copyright            : (C) 2002 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

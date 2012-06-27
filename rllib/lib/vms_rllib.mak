@@ -1,5 +1,5 @@
 ######### makefile for the module #############################################
-# history: rainer lehrig                                             25.09.1996
+# history: r. lehrig                                                 25.09.1996
 #
 # for general settings see MAKE_DEFAULTS (logical name)
 #

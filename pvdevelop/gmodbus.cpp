@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Rainer Lehrig                                   *
+ *   Copyright (C) 2005 by R. Lehrig                                       *
  *   lehrig@t-online.de                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 //
-// mkmodbus name.mkmodbus  (C) Rainer Lehrig 2003-2004
+// mkmodbus name.mkmodbus  (C) R. Lehrig 2003-2004
 //
 
 #include "../pvbrowser/pvdefine.h"
@@ -221,7 +221,7 @@ static void generate(const char *name)
   }
 
   fprintf(fout,"//\n");
-  fprintf(fout,"// Modbus daemon template                                 (C) Rainer Lehrig 2003\n");
+  fprintf(fout,"// Modbus daemon template                                 (C) R. Lehrig 2003\n");
   fprintf(fout,"//\n");
   fprintf(fout,"//\n");
   fprintf(fout,"// Attention: this program must be run as super user\n");

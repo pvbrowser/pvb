@@ -1,5 +1,5 @@
 /***************************************************************************
- *   Copyright (C) 2005 by Rainer Lehrig                                   *
+ *   Copyright (C) 2005 by R. Lehrig                                       *
  *   lehrig@t-online.de                                                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
@@ -18,7 +18,7 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 //
-// mkppi name.mkppi  (C) Rainer Lehrig 2004
+// mkppi name.mkppi  (C) R. Lehrig 2004
 //
 
 #include "../pvbrowser/pvdefine.h"
@@ -180,7 +180,7 @@ static void generate(const char *name)
   }
 
   fprintf(fout,"%s","//\n");
-  fprintf(fout,"%s","// PPI daemon template                                 (C) Rainer Lehrig 2004\n");
+  fprintf(fout,"%s","// PPI daemon template                                 (C) R. Lehrig 2004\n");
   fprintf(fout,"%s","//\n");
   fprintf(fout,"%s","//\n");
   fprintf(fout,"%s","// Attention: this program must be run as super user\n");

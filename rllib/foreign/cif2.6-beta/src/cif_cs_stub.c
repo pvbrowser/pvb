@@ -3,13 +3,13 @@
     A Hilscher CIF driver for fieldbus cards
 
     This driver supports the Hilscher PCMCIA CIF60 Card.
-    Written by Rainer Lehrig, lehrig@t-online.de
+    Written by R. Lehrig, lehrig@t-online.de
 
     Written 2005.
 
     This code is based on pcnet_cs.c from David Hinds.
     
-    V1.0.0 March 2005 - Rainer Lehrig lehrig@t-online.de
+    V1.0.0 March 2005 - R. Lehrig lehrig@t-online.de
 
     This code now only contains code required for the Card Services.
     All we do here is set the card up enough so that the real cif_main.c
@@ -21,7 +21,7 @@
 
     CHANGES
 
-    v1.0.0 March 2005 Rainer Lehrig (lehrig@t-online.de)
+    v1.0.0 March 2005 R. Lehrig (lehrig@t-online.de)
     First version and testing of driver using http://pvbrowser.org
     
 ======================================================================*/

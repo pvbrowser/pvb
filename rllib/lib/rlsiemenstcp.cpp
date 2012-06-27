@@ -2,7 +2,7 @@
                           rlsiemenstcp.cpp  -  description
                              -------------------
     begin                : Mon Mar 08 2004
-    copyright            : (C) 2004 by Rainer Lehrig
+    copyright            : (C) 2004 by R. Lehrig
     email                : lehrig@t-online.de
 
     S7_200 update        : Wed Mar 21 2007

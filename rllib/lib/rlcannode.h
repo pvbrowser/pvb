@@ -2,7 +2,7 @@
                           cannode.h  -  description
                              -------------------
     begin                : Tue March 03 2004
-    copyright            : (C) 2004 by Rainer Lehrig
+    copyright            : (C) 2004 by R. Lehrig
     email                : lehrig@t-online.de
     authors              : Marc Br�tigam, Christian Wilmes
  ***************************************************************************/

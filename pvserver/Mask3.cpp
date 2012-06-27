@@ -2,7 +2,7 @@
                           Mask3.cpp  -  description
                              -------------------
     begin                : Mon Nov 13 2000
-    copyright            : (C) 2000 by Rainer Lehrig
+    copyright            : (C) 2000 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 

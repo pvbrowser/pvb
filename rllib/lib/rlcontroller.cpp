@@ -2,7 +2,7 @@
                           rlcontroller.cpp  -  description
                              -------------------
     begin                : Wed Jun 16 2004
-    copyright            : (C) 2004 by Rainer Lehrig
+    copyright            : (C) 2004 by R. Lehrig
     email                : lehrig@t-online.de
  ***************************************************************************/
 
