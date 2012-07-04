@@ -82,53 +82,43 @@ MyScrollArea::MyScrollArea(QWidget *parent)
   mw = (MainWindow *) parent;
   //grabGesture(Qt::TapGesture,        Qt::DontStartGestureOnChildren);
   //grabGesture(Qt::TapAndHoldGesture, Qt::DontStartGestureOnChildren);
-  //grabGesture(Qt::PanGesture,        Qt::DontStartGestureOnChildren);
-  //grabGesture(Qt::PinchGesture,      Qt::DontStartGestureOnChildren);
-  //grabGesture(Qt::SwipeGesture,      Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::PanGesture);
+  grabGesture(Qt::PinchGesture);
+  //grabGesture(Qt::SwipeGesture);
 }
 
 MyScrollArea::~MyScrollArea()
 {
 }
 
-/*
 bool MyScrollArea::event(QEvent *event)
 {
+  //for some reason the panning gesture is handled in qscrollarea
+  //we add pinch gesture:
   if(event->type() == QEvent::Gesture)
   {
-    char buf[MAX_PRINTF_LENGTH];
     QGestureEvent *ge = static_cast<QGestureEvent*>(event);
-    if     (ge->gesture(Qt::TapGesture))
+    if(QGesture *ge_pinch = ge->gesture(Qt::PinchGesture))
     {
-      sprintf(buf,"text(0,\"Gesture=TapGesture\")\n");
+      QPinchGesture *pinch=static_cast<QPinchGesture *>(ge_pinch);
+      if(pinch->state() == Qt::GestureFinished) 
+      {
+        int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
+        percent *= pinch->totalScaleFactor();
+        if(percent<10)       percent=10;
+        else if(percent>250) percent=250;
+        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);      // will set ...interpreter.percentZoomMask
+        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;   // these lines
+        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;   // should
+        mw->pvbtab[mw->currentTab].rootWidget->resize(width, height);  // resize
+        QEvent event(QEvent::Resize);                                  // scrollbars
+        QApplication::sendEvent(mw, &event);                           // correctly
+      }
+      return true;
     }
-    else if(ge->gesture(Qt::TapAndHoldGesture))
-    {
-      sprintf(buf,"text(0,\"Gesture=TapAndHoldGesture\")\n");
-    }
-    else if(ge->gesture(Qt::PanGesture))
-    {
-      sprintf(buf,"text(0,\"Gesture=PanGesture\")\n");
-    }
-    else if(ge->gesture(Qt::PinchGesture))
-    {
-      sprintf(buf,"text(0,\"Gesture=PinchGesture\")\n");
-    }
-    else if(ge->gesture(Qt::SwipeGesture))
-    {
-      sprintf(buf,"text(0,\"Gesture=SwipeGesture\")\n");
-    }
-    else
-    {
-      sprintf(buf,"text(0,\"Gesture=unknown\")\n");
-    }
-    //int *s = mw->pvbtab[mw->currentTab].interpreter.s;
-    //tcp_send(s,buf,strlen(buf));
-    return true;
   }             
-  return QWidget::event(event);
+  return QScrollArea::event(event);
 }
-*/
 
 void MyScrollArea::wheelEvent(QWheelEvent *event)
 {
@@ -146,6 +136,12 @@ void MyScrollArea::wheelEvent(QWheelEvent *event)
       if(percent < 10) percent = 10;
     }  
     mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);
+    int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;      // start
+    int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;      //
+    if(mw->pvbtab[mw->currentTab].rootWidget != NULL)                 // adjust scrollbars to new size
+       mw->pvbtab[mw->currentTab].rootWidget->resize(width, height);  // adjust scrollbars to new size
+    QEvent resize_event(QEvent::Resize);                              //
+    QApplication::sendEvent(mw, &resize_event);                       // end
     event->accept();
   }
   else
@@ -1651,6 +1647,16 @@ void MainWindow::keyReleaseEvent(QKeyEvent *e)
       modifier = -1;
     }
   }
+  /*
+  //for android back button
+  else if ( key == e->KEYCODE_BACK )
+  {
+    //we need to exit...
+    qDebug()<<"Back";
+    slotExit();//Ugly, we need to emit the exit signal...
+    return;
+  }
+  */
   if(modifier != 0)
   {
     char buf[80];

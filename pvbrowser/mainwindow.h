@@ -58,8 +58,8 @@ class MyScrollArea : public QScrollArea
     MyScrollArea(QWidget *parent=0);
     ~MyScrollArea();
     void wheelEvent(QWheelEvent *event);
-//  protected:
-//    bool event(QEvent *event);
+  protected:
+    bool event(QEvent *event);
   private:
     MainWindow *mw;
 };            

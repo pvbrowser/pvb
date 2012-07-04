@@ -89,7 +89,7 @@ BuildRoot: %{_tmppath}/build-%{name}-%{version}
  pvbrowser and how interaction is done.
  Your task will be to implement your pvserver.
  This is done by creating your pvserver with pvdevelop.
- pvprowser is a registrated Trademark of Sebastian Lehrig 
+ pvprowser is a registrated Trademark of S. Lehrig 
 
  Commands:
    pvbrowser
@@ -278,7 +278,7 @@ License:     GPL
  pvbrowser and how interaction is done.
  Your task will be to implement your pvserver.
  This is done by creating your pvserver with pvdevelop.
- pvprowser is a registrated Trademark of Sebastian Lehrig 
+ pvprowser is a registrated Trademark of S. Lehrig 
 
  Commands:
    pvbrowser

@@ -7286,7 +7286,8 @@ void Interpreter::showMyBrowser(const char *url)
         mainWindow->scroll->setWidgetResizable(false);
         if(all[0]->w != NULL) all[0]->w->resize(1280,1024); // resize to default screen dimension
       }  
-#if QT_VERSION >= 0x040603
+#if QT_VERSION < 0x00
+//#if QT_VERSION >= 0x040603
       all[0]->w->grabGesture(Qt::PanGesture);
       all[0]->w->grabGesture(Qt::PinchGesture);
       all[0]->w->grabGesture(Qt::SwipeGesture);
