@@ -107,12 +107,13 @@ bool MyScrollArea::event(QEvent *event)
         percent *= pinch->totalScaleFactor();
         if(percent<10)       percent=10;
         else if(percent>250) percent=250;
-        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);      // will set ...interpreter.percentZoomMask
-        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;   // these lines
-        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;   // should
-        mw->pvbtab[mw->currentTab].rootWidget->resize(width, height);  // resize
-        QEvent event(QEvent::Resize);                                  // scrollbars
-        QApplication::sendEvent(mw, &event);                           // correctly
+        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
+        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
+        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;    // should
+        if(mw->pvbtab[mw->currentTab].rootWidget != NULL)               //
+          mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
+        QEvent resize_event(QEvent::Resize);                            // scrollbars
+        QApplication::sendEvent(mw, &resize_event);                     // correctly
       }
       return true;
     }
@@ -345,6 +346,7 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
   if(opt.arg_debug) printf("MainWindow::~MainWindow()\n");
+/*  
   if(textbrowser != NULL) delete textbrowser;
   for(int i=0; i<MAX_TABS; i++)
   {
@@ -367,10 +369,14 @@ MainWindow::~MainWindow()
     mythread.wait();
   }
   tcp_free();
+*/
+  slotExit();
 }
 
 void MainWindow::slotExit()
 {
+  if(opt.arg_debug) printf("MainWindow::slotExit()\n");
+/*
   int i;
   if(opt.arg_debug) printf("MainWindow::slotExit()\n");
   for(i=0; i<MAX_TABS; i++)
@@ -381,6 +387,33 @@ void MainWindow::slotExit()
       pvbtab[i].s = -1;
     }  
   }
+*/  
+  if(textbrowser != NULL) delete textbrowser;
+  textbrowser = NULL;
+  for(int i=0; i<MAX_TABS; i++)
+  {
+    if(pvbtab[i].s != -1) 
+    {
+      tcp_close(&pvbtab[i].s);
+      pvbtab[i].s = -1;
+      for(int ii=0; ii<MAX_DOCK_WIDGETS; ii++) 
+      {
+        if(pvbtab[i].dock[ii] != NULL) 
+        {
+          delete pvbtab[i].dock[ii];
+          pvbtab[i].dock[ii] = NULL;
+        }
+      }  
+    }
+  }
+  opt.closed = 1;
+  if(mythread.isRunning())
+  {
+    mythread.terminate();
+    mythread.wait();
+  }
+  tcp_free();
+
   close();
 }
 
@@ -439,6 +472,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
   else
   {
     opt.closed = 1;
+    slotExit();
+    /*
     for(i=0; i<MAX_TABS; i++)
     {
       if(pvbtab[i].s != -1) 
@@ -453,6 +488,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
     if(opt.arg_debug) printf("MainWindow::closeEvent(): thread.wait\n");
     mythread.wait();
     if(opt.arg_debug) printf("MainWindow::closeEvent(): event->accept\n");
+    */
     event->accept();
   }
 }
