@@ -371,6 +371,7 @@ void MainWindow::slotExit()
     }
   }
   opt.closed = 1;
+  semaphore.release();
   if(mythread.isRunning())
   {
     mythread.terminate();
@@ -383,7 +384,6 @@ void MainWindow::slotExit()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-  int i;
   if(opt.arg_debug) printf("MainWindow::closeEvent()\n");
   if(opt.exitpassword == 1)
   {
@@ -402,6 +402,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
           fprintf(fp,"%s\n",pvpass(pass.toUtf8()));
           fclose(fp);
         }
+        opt.exitpassword = 0;
         slotExit();
         event->accept();
       }
