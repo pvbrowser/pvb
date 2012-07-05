@@ -346,48 +346,12 @@ MainWindow::MainWindow()
 MainWindow::~MainWindow()
 {
   if(opt.arg_debug) printf("MainWindow::~MainWindow()\n");
-/*  
-  if(textbrowser != NULL) delete textbrowser;
-  for(int i=0; i<MAX_TABS; i++)
-  {
-    if(pvbtab[i].s != -1) 
-    {
-      tcp_close(&pvbtab[i].s);
-      pvbtab[i].s = -1;
-      for(int ii=0; ii<MAX_DOCK_WIDGETS; ii++) 
-      {
-        if(pvbtab[i].dock[ii] != NULL) 
-        {
-          delete pvbtab[i].dock[ii];
-        }
-      }  
-    }
-  }
-  if(mythread.isRunning())
-  {
-    mythread.terminate();
-    mythread.wait();
-  }
-  tcp_free();
-*/
   slotExit();
 }
 
 void MainWindow::slotExit()
 {
   if(opt.arg_debug) printf("MainWindow::slotExit()\n");
-/*
-  int i;
-  if(opt.arg_debug) printf("MainWindow::slotExit()\n");
-  for(i=0; i<MAX_TABS; i++)
-  {
-    if(pvbtab[i].s != -1) 
-    {
-      tcp_close(&pvbtab[i].s);
-      pvbtab[i].s = -1;
-    }  
-  }
-*/  
   if(textbrowser != NULL) delete textbrowser;
   textbrowser = NULL;
   for(int i=0; i<MAX_TABS; i++)
@@ -438,17 +402,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
           fprintf(fp,"%s\n",pvpass(pass.toUtf8()));
           fclose(fp);
         }
-        opt.closed = 1;
-        for(i=0; i<MAX_TABS; i++)
-        {
-          if(pvbtab[i].s != -1) 
-          {
-            tcp_close(&pvbtab[i].s);
-            pvbtab[i].s = -1;
-          }  
-        }
-        semaphore.release();
-        mythread.wait();
+        slotExit();
         event->accept();
       }
       else
@@ -462,6 +416,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
           QMessageBox::information(this,"pvbrowser","Wrong Password",1);
           event->ignore();
         }
+        else
+        { 
+          slotExit();
+          event->accept();
+        }  
       }
     }
     else
@@ -471,24 +430,7 @@ void MainWindow::closeEvent(QCloseEvent *event)
   }
   else
   {
-    opt.closed = 1;
     slotExit();
-    /*
-    for(i=0; i<MAX_TABS; i++)
-    {
-      if(pvbtab[i].s != -1) 
-      {
-        tcp_close(&pvbtab[i].s);
-        pvbtab[i].s = -1;
-      }  
-    }
-    if(opt.arg_debug) printf("MainWindow::closeEvent(): thread.terminate\n");
-    if(opt.arg_debug) printf("MainWindow::closeEvent(): thread.release\n");
-    semaphore.release();
-    if(opt.arg_debug) printf("MainWindow::closeEvent(): thread.wait\n");
-    mythread.wait();
-    if(opt.arg_debug) printf("MainWindow::closeEvent(): event->accept\n");
-    */
     event->accept();
   }
 }
