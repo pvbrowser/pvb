@@ -1022,6 +1022,7 @@ void QDrawWidget::playSVG(const char *filename)
   FILE *fin;
   int foundw,foundh,foundclose;
 
+  svg_draw_request_by_pvb = 0;
   if(opt.arg_debug) printf("Qt4 playSVG(%s)\n",filename);
   fin = fopen(filename,"r");
   if(fin == NULL) return;
@@ -1049,7 +1050,8 @@ void QDrawWidget::playSVG(const char *filename)
       if(foundclose) strcat(buf,">\n");
       foundh = 1;
     }
-    stream.append(QString::fromUtf8(buf));
+    //stream.append(QString::fromUtf8(buf));
+    stream.append(buf);
     if(opt.arg_debug > 2) printf("svgbuf=%s",buf);
   }
   fclose(fin);
@@ -1630,6 +1632,7 @@ void QDrawWidget::slotWebkitSvgChanged(const QRect &dirtyRect)
   p.scale(1.0,1.0);
   p.end();
   repaint();
+  svg_draw_request_by_pvb = 1;
 }
 
 void QDrawWidget::slotTimeout()

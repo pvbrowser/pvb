@@ -2386,7 +2386,8 @@ static int getWidget(FILE *fin, QWidget *root)
       }
       else if(itemtype == TQDraw)
       {
-        ((QDrawWidget *)item)->setGeometry(ival[0],ival[1],ival[2],ival[3]);
+        QDrawWidget *dw = (QDrawWidget *) item;
+        dw->setGeometry(ival[0],ival[1],ival[2],ival[3]);
       }
       else
       {
