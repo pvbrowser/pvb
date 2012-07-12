@@ -64,6 +64,8 @@ void *handle;
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <fcntl.h>
+#include <errno.h>
 #define closesocket close
 #endif
 
@@ -103,6 +105,58 @@ extern OPT opt;
 #include "mainwindow.h"
 int socket_array[MAX_TABS+2];
 int use_pvb_com_plugin[MAX_TABS+2];
+
+static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
+{
+  int ret;
+  struct timeval timeout;
+  int debug = opt.arg_debug;;
+
+  if(debug) printf("start connect_timed\n");
+#ifdef PVWIN32
+  u_long mode = 1;
+  if(ioctlsocket(sockfd, FIONBIO, &mode) != NO_ERROR) return -1;    // set socket non blocking
+#else
+  int opt;
+  if((opt = fcntl(sockfd, F_GETFL, NULL)) < 0) return -1;           // get current options
+  if(fcntl(sockfd, F_SETFL, opt | O_NONBLOCK) < 0) return -1;       // set socket non blocking
+#endif  
+  if(debug) printf("try connect\n");
+  if((ret = ::connect(sockfd, addr, addrlen)) < 0)                  // try to connect
+  {
+    if(debug) printf("test in progress\n");
+#ifdef PVWIN32
+    if(1)
+#else
+    if(errno == EINPROGRESS)                                        // if connect is in progress 
+#endif  
+    {                                                               // then
+      if(debug) printf("wait 3 seconds\n");
+      timeout.tv_sec  = 3;                                          // wait 3 seconds
+      timeout.tv_usec = 0;                                          // for completion
+      fd_set wait_set;
+      FD_ZERO(&wait_set);
+      FD_SET(sockfd, &wait_set);
+      ret = ::select(sockfd + 1, NULL, &wait_set, NULL, &timeout);
+    }
+    if(debug) printf("after wait\n");
+  } 
+  else                                                              // if connect
+  {                                                                 //
+    if(debug) printf("directly connected\n");
+    ret = 1;                                                        // directly connected
+  }
+#ifdef PVWIN32
+  mode = 0;
+  if(ioctlsocket(sockfd, FIONBIO, &mode) != NO_ERROR) return -1;    // set socket blocking
+#else
+  if(fcntl(sockfd, F_SETFL, opt) < 0) return -1;                    // restore socket options
+#endif
+  if(debug) printf("end ret=%d\n", ret);
+  if(ret == 1) return 0;                                            // return success
+  printf("connect_timed::ERROR could not connect within 3 seconds (tcputil.cpp)\n");
+  return -1;
+}
 
 int tcp_init()
 {
@@ -231,7 +285,7 @@ int tcp_con(const char *adr, int port)
     remoteAddr.sin_port = htons(port);
     remoteAddr.sin_addr = RemoteIpAddress;
 
-    ret = connect(s, (struct sockaddr *) &remoteAddr, sizeof(remoteAddr));
+    ret = connect_timed(s, (struct sockaddr *) &remoteAddr, sizeof(remoteAddr));
     //if(ret == -1)
     if(ret < 0)
     {
@@ -258,8 +312,8 @@ int tcp_con(const char *adr, int port)
     do
     {
       s = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
-      if(s < 0)                                            continue; // ignore this one
-      if(::connect(s, res->ai_addr, res->ai_addrlen) == 0) break;    // success
+      if(s < 0)                                                  continue; // ignore this one
+      if(::connect_timed(s, res->ai_addr, res->ai_addrlen) == 0) break;    // success
       closesocket(s);
       s = -1;
     }
