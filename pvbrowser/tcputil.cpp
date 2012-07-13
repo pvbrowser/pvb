@@ -106,14 +106,14 @@ extern OPT opt;
 int socket_array[MAX_TABS+2];
 int use_pvb_com_plugin[MAX_TABS+2];
 
-static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addrlen)
+static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addrlen, int is_localhost)
 {
   int ret;
   struct timeval timeout;
   int debug = opt.arg_debug;
   int connect_timeout = opt.connect_timeout;
 
-  if(connect_timeout <= 0) return ::connect(sockfd, addr, addrlen); // use standard timeout
+  if(connect_timeout <= 0 || is_localhost) return ::connect(sockfd, addr, addrlen); // use standard timeout
 
   if(debug) printf("start connect_timed\n");
 
@@ -246,8 +246,12 @@ int tcp_con(const char *adr, int port)
   int                       n;
   char                      portstr[32];
 #endif
+  int is_localhost = 0;
 
   if(opt.arg_log) printf("conn=%s port=%d\n", adr, port);
+  if(strcmp(adr,"localhost") == 0) is_localhost = 1;
+  if(strcmp(adr,"127.0.0.1") == 0) is_localhost = 1;
+  if(strcmp(adr,"::1")       == 0) is_localhost = 1;
   if(pvb_com_con != NULL)
   {
     s = (pvb_com_con)(adr,port);
@@ -289,7 +293,7 @@ int tcp_con(const char *adr, int port)
     remoteAddr.sin_port = htons(port);
     remoteAddr.sin_addr = RemoteIpAddress;
 
-    ret = connect_timed(s, (struct sockaddr *) &remoteAddr, sizeof(remoteAddr));
+    ret = connect_timed(s, (struct sockaddr *) &remoteAddr, sizeof(remoteAddr), is_localhost);
     //if(ret == -1)
     if(ret < 0)
     {
@@ -316,8 +320,8 @@ int tcp_con(const char *adr, int port)
     do
     {
       s = socket(res->ai_family, res->ai_socktype, res->ai_protocol);
-      if(s < 0)                                                  continue; // ignore this one
-      if(::connect_timed(s, res->ai_addr, res->ai_addrlen) == 0) break;    // success
+      if(s < 0)                                                                continue; // ignore this one
+      if(::connect_timed(s, res->ai_addr, res->ai_addrlen, is_localhost) == 0) break;    // success
       closesocket(s);
       s = -1;
     }
