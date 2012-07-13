@@ -286,6 +286,7 @@ void setDefaultOptions()
   opt.pvb_com_plugin[0] = '\0';
   opt.pvb_widget_plugindir[0] = '\0';
   strcpy(opt.manual,"index.html");
+  opt.connect_timeout = 3;
 }
 
 const char *readIniFile()
@@ -542,6 +543,10 @@ int i;
         {
           getLanguage(buf);
         }
+        else if(strncmp(buf,"connect_timeout=",16) == 0)
+        {
+          sscanf(buf,"connect_timeout=%d",&opt.connect_timeout);
+        }
         if(opt.arg_debug) printf("Option: %s\n", buf);
       }
       fclose(fp);
@@ -636,6 +641,7 @@ int i;
 #else
         fprintf(fp,"initialhost=pv://localhost\n");
 #endif
+        fprintf(fp,"connect_timeout=3       # in seconds (if 0 then use standard timeout)\n");
         fprintf(fp,"# define the programs that handle the following file formats\n");
 #ifdef  PVWIN32
         fprintf(fp,"view.pdf=\"c:\\path\\to\\acroread\"\n");

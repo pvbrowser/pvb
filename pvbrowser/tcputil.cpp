@@ -110,9 +110,13 @@ static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addr
 {
   int ret;
   struct timeval timeout;
-  int debug = opt.arg_debug;;
+  int debug = opt.arg_debug;
+  int connect_timeout = opt.connect_timeout;
+
+  if(connect_timeout <= 0) return ::connect(sockfd, addr, addrlen); // use standard timeout
 
   if(debug) printf("start connect_timed\n");
+
 #ifdef PVWIN32
   u_long mode = 1;
   if(ioctlsocket(sockfd, FIONBIO, &mode) != NO_ERROR) return -1;    // set socket non blocking
@@ -132,7 +136,7 @@ static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addr
 #endif  
     {                                                               // then
       if(debug) printf("wait 3 seconds\n");
-      timeout.tv_sec  = 3;                                          // wait 3 seconds
+      timeout.tv_sec  = connect_timeout;                            // wait N seconds
       timeout.tv_usec = 0;                                          // for completion
       fd_set wait_set;
       FD_ZERO(&wait_set);

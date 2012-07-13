@@ -70,6 +70,7 @@ typedef struct
   char generate_cookie[MAXOPT]; // generate a cookie to give you permission to login to the pvserver
   char pvb_com_plugin[MAXOPT];  // pvb communication plugin
   char pvb_widget_plugindir[MAXOPT]; // directory for custom widget plugins
+  int  connect_timeout;     // connect() timeout in seconds if 0 then standard timeout
 
   // command line args
   int  arg_debug;
