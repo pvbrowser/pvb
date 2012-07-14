@@ -100,6 +100,7 @@ bool MyScrollArea::event(QEvent *event)
     QGestureEvent *ge = static_cast<QGestureEvent*>(event);
     if(QGesture *ge_pinch = ge->gesture(Qt::PinchGesture))
     {
+      /*
       QPinchGesture *pinch=static_cast<QPinchGesture *>(ge_pinch);
       if(pinch->state() == Qt::GestureFinished) 
       {
@@ -115,6 +116,22 @@ bool MyScrollArea::event(QEvent *event)
         QEvent resize_event(QEvent::Resize);                            // scrollbars
         QApplication::sendEvent(mw, &resize_event);                     // correctly
       }
+      return true;
+      */
+      QPinchGesture *pinch=static_cast<QPinchGesture *>(ge_pinch);
+      int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
+      if(pinch->lastScaleFactor() > pinch->scaleFactor()) percent -= 5;
+      if(pinch->lastScaleFactor() < pinch->scaleFactor()) percent += 5;
+      if(percent<10)       percent=10;
+      else if(percent>250) percent=250;
+      mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
+      int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
+      int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;    // should
+      if(mw->pvbtab[mw->currentTab].rootWidget != NULL)               //
+        mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
+      QEvent resize_event(QEvent::Resize);                            // scrollbars
+      QApplication::sendEvent(mw, &resize_event);                     // correctly
+      ge->accept();
       return true;
     }
   }             

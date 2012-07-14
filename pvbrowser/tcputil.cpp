@@ -135,7 +135,7 @@ static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addr
     if(errno == EINPROGRESS)                                        // if connect is in progress 
 #endif  
     {                                                               // then
-      if(debug) printf("wait 3 seconds\n");
+      if(debug) printf("wait %d seconds\n", connect_timeout);
       timeout.tv_sec  = connect_timeout;                            // wait N seconds
       timeout.tv_usec = 0;                                          // for completion
       fd_set wait_set;
@@ -158,7 +158,7 @@ static int connect_timed(int sockfd, const struct sockaddr *addr, socklen_t addr
 #endif
   if(debug) printf("end ret=%d\n", ret);
   if(ret == 1) return 0;                                            // return success
-  printf("connect_timed::ERROR could not connect within 3 seconds (tcputil.cpp)\n");
+  printf("connect_timed::ERROR could not connect within %d seconds (tcputil.cpp)\n", connect_timeout);
   return -1;
 }
 
