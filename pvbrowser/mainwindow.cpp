@@ -95,29 +95,12 @@ bool MyScrollArea::event(QEvent *event)
 {
   //for some reason the panning gesture is handled in qscrollarea
   //we add pinch gesture:
-  if(event->type() == QEvent::Gesture)
+  static int ignore_gesture = 0;
+  if(event->type() == QEvent::Gesture && ignore_gesture == 0)
   {
     QGestureEvent *ge = static_cast<QGestureEvent*>(event);
     if(QGesture *ge_pinch = ge->gesture(Qt::PinchGesture))
     {
-      /*
-      QPinchGesture *pinch=static_cast<QPinchGesture *>(ge_pinch);
-      if(pinch->state() == Qt::GestureFinished) 
-      {
-        int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
-        percent *= pinch->totalScaleFactor();
-        if(percent<10)       percent=10;
-        else if(percent>250) percent=250;
-        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
-        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
-        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;    // should
-        if(mw->pvbtab[mw->currentTab].rootWidget != NULL)               //
-          mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
-        QEvent resize_event(QEvent::Resize);                            // scrollbars
-        QApplication::sendEvent(mw, &resize_event);                     // correctly
-      }
-      return true;
-      */
       static int mod = 0; // only respond to every 5'th pinch gesture
       QPinchGesture *pinch=static_cast<QPinchGesture *>(ge_pinch);
       int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
@@ -140,6 +123,9 @@ bool MyScrollArea::event(QEvent *event)
           mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
         QEvent resize_event(QEvent::Resize);                            // scrollbars
         QApplication::sendEvent(mw, &resize_event);                     // correctly
+        ignore_gesture = 1;
+        qApp->processEvents();
+        ignore_gesture = 0;
       }
       ge->accept();
       return true;
