@@ -113,8 +113,9 @@ bool MyScrollArea::event(QEvent *event)
       //sprintf(buf,"percent=%d old_percent=%d scaleFactor=%f", percent, old_percent, pinch->scaleFactor());
       //mw->statusBar()->showMessage(buf);
       mod++;
-      if(percent != old_percent && (mod % 5) == 0)
+      if(percent != old_percent && (mod % 5) == 0 && ignore_gesture == 0)
       {
+        ignore_gesture = 1;
         mod = 0;
         mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
         int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
@@ -123,7 +124,6 @@ bool MyScrollArea::event(QEvent *event)
           mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
         QEvent resize_event(QEvent::Resize);                            // scrollbars
         QApplication::sendEvent(mw, &resize_event);                     // correctly
-        ignore_gesture = 1;
         qApp->processEvents();
         ignore_gesture = 0;
       }
