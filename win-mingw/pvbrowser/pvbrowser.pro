@@ -102,6 +102,16 @@ LIBS += $(VTKDIR)\bin\vtkWidgets.lib
 LIBS += $(VTKDIR)\bin\vtkWidgetsTCL.lib                                    
 LIBS += $(VTKDIR)\bin\vtkzlib.lib                                          
 LIBS += $(TCLDIR)\lib\tcl84.lib                                            
+
+# TODO: verify if we really need the following LIBS for vtk-5.10
+LIBS += $(VTKDIR)\bin\vtksqlite.lib
+LIBS += $(VTKDIR)\bin\vtkNetCDF_cxx.lib
+LIBS += $(VTKDIR)\bin\vtkNetCDF.lib
+LIBS += $(VTKDIR)\bin\vtkhdf5.lib
+LIBS += $(VTKDIR)\bin\vtkhdf5_hl.lib
+LIBS += $(VTKDIR)\bin\vtkverdict.lib
+LIBS += $(VTKDIR)\bin\vtkmetaio.lib
+LIBS += $(VTKDIR)\bin\LSDyna.lib
                                                                            
 }                                                                          
 ### end USE_VTK ###############################################            

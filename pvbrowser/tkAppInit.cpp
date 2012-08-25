@@ -37,7 +37,7 @@ int
 xmain(int argc, char **argv)
 {
   ios::sync_with_stdio();
-#ifdef VTK_USE_RENDERING
+#ifdef xxxVTK_USE_RENDERING
   Tk_Main(argc, argv, Tcl_AppInit);
 #else
   Tcl_Main(argc, argv, Tcl_AppInit);
@@ -101,7 +101,7 @@ int Tcl_AppInit(Tcl_Interp *interp)
   if (Tcl_Init(interp) == TCL_ERROR) {
   return TCL_ERROR;
   }
-#ifdef VTK_USE_RENDERING
+#ifdef xxxVTK_USE_RENDERING
   if (Tk_Init(interp) == TCL_ERROR) {
   return TCL_ERROR;
   }

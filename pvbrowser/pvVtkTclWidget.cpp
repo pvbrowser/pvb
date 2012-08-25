@@ -17,6 +17,7 @@
 
 #include "pvdefine.h"
 #include "pvVtkTclWidget.h"
+#include <QMouseEvent>
 #include <vtkActor.h>
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
