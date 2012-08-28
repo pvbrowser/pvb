@@ -1859,6 +1859,7 @@ int pvSvgAnimator::read()
   while(*s != -1)
   {
     tcp_rec(s,line,sizeof(line));
+    if(opt.arg_debug > 1) printf("svg_read=%s", line);
     if(strstr(line,"<svgend></svgend>") != NULL) break;
     if(strncmp(line,"viewBox=",8) != 0)
     {
@@ -2021,8 +2022,7 @@ int pvSvgAnimator::update(int on_printer)
         }
         else if(found_tspan == 1)
         {
-          qbuf += QString::fromUtf8(buf);
-          if(buf[0] == '>' || found_tspan_whole_open == 1)
+          if(buf[0] == '>')
           {
             found_tspan_whole_open = 1;
           }
@@ -2030,12 +2030,22 @@ int pvSvgAnimator::update(int on_printer)
           {
             found_tspan = 0;
             found_tspan_whole_open = 0;
-            qbuf += " ";
+          }
+          else if(strcmp(buf,"</tspan>") == 0)
+          {
+            found_tspan = 0;
+            found_tspan_whole_open = 0;
+          }
+          else if(found_tspan_whole_open == 1)
+          {
+            found_tspan_whole_open = 2;
           }
           else
           {
             qbuf += " ";
           }
+          qbuf += QString::fromUtf8(buf);
+          if(opt.arg_debug > 1) printf("tspan=%s\n", (const char *) qbuf.toUtf8());
         }
         else
         {
