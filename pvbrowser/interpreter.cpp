@@ -2359,18 +2359,21 @@ void Interpreter::interpretp(const char *command)
     }
     else
     {
+      int ret = -1;
 #ifdef PVUNIX
       if(opt.arg_debug) printf("We try to use aplay for the sound\n");
       QString cmd = "aplay " + text + " &";;
-      system(cmd.toUtf8());
-#else
-      printf("sound not available on this platform\n");
-      printf("On Microsoft Windows the underlying multimedia system is used; only WAVE format sound files are supported.\n");
-      printf("On X11 the Network Audio System is used if available, otherwise all operations work silently. NAS supports WAVE and AU files.\n");
-      printf("On Macintosh, ironically, we use QT (QuickTime) for sound, this means all QuickTime formats are supported by Qt/Mac.\n");
-      printf("On Qt/Embedded, a built-in mixing sound server is used, which accesses /dev/dsp directly. Only the WAVE format is supported.\n");
-      qApp->beep();
-#endif      
+      ret = system(cmd.toUtf8());
+#endif
+      if(ret < 0)
+      {
+        printf("sound not available on this platform\n");
+        printf("On Microsoft Windows the underlying multimedia system is used; only WAVE format sound files are supported.\n");
+        printf("On X11 the Network Audio System is used if available, otherwise all operations work silently. NAS supports WAVE and AU files.\n");
+        printf("On Macintosh, ironically, we use QT (QuickTime) for sound, this means all QuickTime formats are supported by Qt/Mac.\n");
+        printf("On Qt/Embedded, a built-in mixing sound server is used, which accesses /dev/dsp directly. Only the WAVE format is supported.\n");
+        qApp->beep();
+      }      
     }
 #endif
 #endif    
