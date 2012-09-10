@@ -80,11 +80,13 @@ MyScrollArea::MyScrollArea(QWidget *parent)
              :QScrollArea(parent)
 {
   mw = (MainWindow *) parent;
+#if QT_VERSION >= 0x040600
   //grabGesture(Qt::TapGesture,        Qt::DontStartGestureOnChildren);
   //grabGesture(Qt::TapAndHoldGesture, Qt::DontStartGestureOnChildren);
   //grabGesture(Qt::PanGesture);
   grabGesture(Qt::PinchGesture);
   //grabGesture(Qt::SwipeGesture);
+#endif
 }
 
 MyScrollArea::~MyScrollArea()
@@ -93,6 +95,7 @@ MyScrollArea::~MyScrollArea()
 
 bool MyScrollArea::event(QEvent *event)
 {
+#if QT_VERSION >= 0x040600
   //for some reason the panning gesture is handled in qscrollarea
   //we add pinch gesture:
   static int ignore_gesture = 0;
@@ -131,6 +134,7 @@ bool MyScrollArea::event(QEvent *event)
       return true;
     }
   }
+#endif  
   return QScrollArea::event(event);
 }
 
