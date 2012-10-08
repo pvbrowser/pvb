@@ -1783,6 +1783,12 @@ MyTextBrowser::~MyTextBrowser()
 {
 }
 
+bool MyTextBrowser::event(QEvent *e)
+{
+  if(e->type() == QEvent::Gesture) return false;
+  return QWebView::event(e);
+}
+
 void MyTextBrowser::keyPressEvent(QKeyEvent *event)
 {
   if(event->matches(QKeySequence::ZoomIn))

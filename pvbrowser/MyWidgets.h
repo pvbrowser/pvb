@@ -430,6 +430,7 @@ class MyTextBrowser : public QWebView
 public:
     MyTextBrowser(int *sock, int ident, QWidget * parent=0, const char * name=0);
     ~MyTextBrowser();
+    virtual bool event(QEvent *e);
     void moveContent(int pos);
     void setHTML(QString &text);
     void htmlOrSvgDump(const char *filename);

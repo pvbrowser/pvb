@@ -44,6 +44,12 @@ pvQWebView::~pvQWebView()
 {
 }
 
+bool pvQWebView::event(QEvent *e)
+{
+  if(e->type() == QEvent::Gesture) return false;
+  return QWebView::event(e);
+}
+
 void pvQWebView::keyPressEvent(QKeyEvent *event)
 {
   if(event->matches(QKeySequence::ZoomIn))

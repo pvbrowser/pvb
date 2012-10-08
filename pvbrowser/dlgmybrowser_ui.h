@@ -26,6 +26,7 @@ class pvQWebView : public QWebView
 public:
   pvQWebView(QWidget *parent);
   ~pvQWebView();
+  virtual bool event(QEvent *e);
 protected:
   virtual QWebView *createWindow(QWebPage::WebWindowType type);
 private:
