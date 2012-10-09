@@ -38,6 +38,10 @@ pvQWebView::pvQWebView(QWidget *parent)
            :QWebView(parent)
 {
   factor = 1.0f;
+  QString    txt("data:text/css;charset=utf-8;base64,");
+  QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
+  txt += css.toBase64();
+  settings()->setUserStyleSheetUrl(QUrl(txt));
 }
 
 pvQWebView::~pvQWebView()
@@ -46,7 +50,11 @@ pvQWebView::~pvQWebView()
 
 bool pvQWebView::event(QEvent *e)
 {
-  if(e->type() == QEvent::Gesture) return false;
+  if(e->type() == QEvent::Gesture)
+  {
+    QGestureEvent *ge = static_cast<QGestureEvent*>(e);
+    if(ge->gesture(Qt::PinchGesture)) return false;
+  }
   return QWebView::event(e);
 }
 

@@ -99,7 +99,7 @@ bool MyScrollArea::event(QEvent *event)
   //for some reason the panning gesture is handled in qscrollarea
   //we add pinch gesture:
   static int ignore_gesture = 0;
-  if(event->type() == QEvent::Gesture && ignore_gesture == 0)
+  if(event->type() == QEvent::Gesture && ignore_gesture == 0 && mw->pvbtab[mw->currentTab].s != -1)
   {
     QGestureEvent *ge = static_cast<QGestureEvent*>(event);
     if(QGesture *ge_pinch = ge->gesture(Qt::PinchGesture))
@@ -130,6 +130,11 @@ bool MyScrollArea::event(QEvent *event)
         qApp->processEvents();
         ignore_gesture = 0;
       }
+      ge->accept();
+      return true;
+    }
+    else if(ignore_gesture == 1)
+    {
       ge->accept();
       return true;
     }
@@ -741,8 +746,9 @@ void MainWindow::createToolBars()
   urlComboBox->setMinimumWidth(400);
   urlComboBox->setMaximumWidth(500);
   urlComboBox->setEditable(true);
+  urlComboBox->setCompleter(0);
   urlComboBox->setDuplicatesEnabled(false);
-  //urlComboBox->setAutoCompletion(false);
+  urlComboBox->setAutoCompletion(false);
   urlComboBox->setToolTip(tr("Connect to host:\n"
                              "pv://host<:port></mask>\n"
                              "pvssh://user@host<<:remote_host>:port></mask>\n"

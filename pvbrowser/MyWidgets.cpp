@@ -347,6 +347,7 @@ MyComboBox::MyComboBox(int *sock, int ident, QWidget * parent, const char * name
   s = sock;
   id = ident;
   row = col = -1;
+  setCompleter(0);
   if(name != NULL) setObjectName(name);
   connect(this, SIGNAL(activated(const QString &)), SLOT(slotActivated(const QString &)));
 }
@@ -1777,6 +1778,10 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
     settings()->setAttribute(QWebSettings::PluginsEnabled, false);
     settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
   }
+  QString    txt("data:text/css;charset=utf-8;base64,");
+  QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
+  txt += css.toBase64();
+  settings()->setUserStyleSheetUrl(QUrl(txt));
 }
 
 MyTextBrowser::~MyTextBrowser()
@@ -1785,7 +1790,11 @@ MyTextBrowser::~MyTextBrowser()
 
 bool MyTextBrowser::event(QEvent *e)
 {
-  if(e->type() == QEvent::Gesture) return false;
+  if(e->type() == QEvent::Gesture)
+  {
+    QGestureEvent *ge = static_cast<QGestureEvent*>(e);
+    if(ge->gesture(Qt::PinchGesture)) return false;
+  }
   return QWebView::event(e);
 }
 
