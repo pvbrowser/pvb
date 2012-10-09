@@ -746,9 +746,9 @@ void MainWindow::createToolBars()
   urlComboBox->setMinimumWidth(400);
   urlComboBox->setMaximumWidth(500);
   urlComboBox->setEditable(true);
-  urlComboBox->setCompleter(0);
+  //urlComboBox->setCompleter(0);
   urlComboBox->setDuplicatesEnabled(false);
-  urlComboBox->setAutoCompletion(false);
+  //urlComboBox->setAutoCompletion(false);
   urlComboBox->setToolTip(tr("Connect to host:\n"
                              "pv://host<:port></mask>\n"
                              "pvssh://user@host<<:remote_host>:port></mask>\n"

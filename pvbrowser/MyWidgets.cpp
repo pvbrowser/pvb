@@ -347,7 +347,7 @@ MyComboBox::MyComboBox(int *sock, int ident, QWidget * parent, const char * name
   s = sock;
   id = ident;
   row = col = -1;
-  setCompleter(0);
+  //setCompleter(0);
   if(name != NULL) setObjectName(name);
   connect(this, SIGNAL(activated(const QString &)), SLOT(slotActivated(const QString &)));
 }
