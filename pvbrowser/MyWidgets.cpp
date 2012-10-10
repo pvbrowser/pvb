@@ -1790,11 +1790,13 @@ MyTextBrowser::~MyTextBrowser()
 
 bool MyTextBrowser::event(QEvent *e)
 {
+#if QT_VERSION >= 0x040600
   if(e->type() == QEvent::Gesture)
   {
     QGestureEvent *ge = static_cast<QGestureEvent*>(e);
     if(ge->gesture(Qt::PinchGesture)) return false;
   }
+#endif
   return QWebView::event(e);
 }
 
