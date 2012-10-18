@@ -4292,6 +4292,31 @@ void Interpreter::interprets(const char *command)
             }
           }
         }
+        else if(strncmp(command,"setStyleSheet(",14) == 0) // set widget style sheet
+        {
+          sscanf(command,"setStyleSheet(%d,",&i);
+          if(i >= nmax && i > 0) return;
+          get_text(command,text);
+          if(opt.arg_debug) printf("setStyleSheet text='%s'\n",(const char *)text.toUtf8());
+          if(strncmp(text.toUtf8(),"alloc(",6) == 0) // allocate big buffer for big text
+          {
+            int len;
+            char *buf, *cptr;
+            sscanf(text.toUtf8(),"alloc(%d,",&len);
+            //printf("alloc(%d)\n",len);
+            buf = new char[len+1];
+            tcp_rec_binary(s, buf, len);
+            buf[len] = '\0';
+            cptr = &buf[0];
+            while((cptr = strchr(cptr,27)) != NULL) *cptr = '\n'; // escape
+            //text = buf; // this didn't support unicode, fixed in next line
+            text = QString::fromUtf8(buf);
+            buf[len] = '\0';
+            delete [] buf;
+          }
+          if(all[i]->w != NULL) all[i]->w->setStyleSheet(text);
+          if(opt.arg_debug) printf("setStyleSheet end\n");
+        }
         break;
       case 'T':
         if(strncmp(command,"setText(",8) == 0) // set widget text

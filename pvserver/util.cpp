@@ -2452,6 +2452,36 @@ int pvSetText(PARAM *p, int id, const char *text)
   return 0;
 }
 
+int pvSetStyleSheet(PARAM *p, int id, const char *text)
+{
+  char buf[MAX_PRINTF_LENGTH+40],*cptr;
+  int  len;
+  mytext(p,text);
+  while(1)
+  {
+    cptr = strchr(p->mytext,'\n');
+    if(cptr != NULL) *cptr = 27; // Escape
+    else break;
+  }
+  len = strlen(p->mytext);
+  if(len < MAX_PRINTF_LENGTH-4)
+  {
+    sprintf(buf,"setStyleSheet(%d)\n",id);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"%s\n",p->mytext);
+    pvtcpsend(p, buf, strlen(buf));
+  }
+  else
+  {
+    sprintf(buf,"setStyleSheet(%d)\n",id);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"alloc(%d)\n",len);
+    pvtcpsend(p, buf, strlen(buf));
+    pvtcpsend_binary(p, p->mytext, len);
+  }
+  return 0;
+}
+
 int pvSetWhatsThis(PARAM *p, int id, const char *_text)
 {
 char buf[MAX_PRINTF_LENGTH+40],text[MAX_PRINTF_LENGTH+40],*cptr;
@@ -3599,6 +3629,27 @@ int pvPrintf(PARAM *p, int id, const char *format, ...)
   va_end(ap);
 
   pvSetText(p,id,text);
+  return 0;
+}
+
+int pvPrintfStyleSheet(PARAM *p, int id, const char *format, ...)
+{
+  char text[MAX_PRINTF_LENGTH+40];
+
+  va_list ap;
+  va_start(ap,format);
+#ifdef PVWIN32
+  _vsnprintf(text, MAX_PRINTF_LENGTH - 1, format, ap);
+#endif
+#ifdef __VMS
+  vsprintf(text, format, ap);
+#endif
+#ifdef PVUNIX
+  vsnprintf(text, MAX_PRINTF_LENGTH - 1, format, ap);
+#endif
+  va_end(ap);
+
+  pvSetStyleSheet(p,id,text);
   return 0;
 }
 

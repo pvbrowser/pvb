@@ -1039,6 +1039,8 @@ pvSaveAsBmp()
 pvSetAlignment()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetBackgroundColor()
 pvText()
 pvSetStyle()
@@ -1074,6 +1076,8 @@ pvSaveAsBmp()
 pvSetAlignment()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvClear()
 pvInsertItem()
 pvRemoveItem()
@@ -1106,6 +1110,8 @@ pvSaveAsBmp()
 pvSetAlignment()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvText()
 pvSetEditable()
 pvSetStyle()
@@ -1135,6 +1141,8 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPixmap()
 pvText()
 </pre> */
@@ -1243,6 +1251,8 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetChecked()
 </pre> */
 int pvQRadioButton(PARAM *p, int id, int parent);
@@ -1269,6 +1279,8 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetChecked()
 </pre> */
 int pvQCheckBox(PARAM *p, int id, int parent);
@@ -1655,6 +1667,8 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvClear()
 pvText()
 pvSetEditable()
@@ -1687,6 +1701,8 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetSource()
 pvMoveContent()
 pvMoveCursor()
@@ -2017,6 +2033,17 @@ The functions works like printf()
 Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser, QGroupBox
 </pre> */
 int pvPrintf(PARAM *p, int id, const char *format, ...);
+/*! <pre>
+Set the style sheet of a widget. (See Qt documentation for style sheets)
+Allowed widgets: all widgets
+</pre> */
+int pvSetStyleSheet(PARAM *p, int id, const char *text);
+/*! <pre>
+Printf the style sheet of a widget. (See Qt documentation for style sheets)
+The functions works like printf()
+Allowed widgets: all widgets
+</pre> */
+int pvPrintfStyleSheet(PARAM *p, int id, const char *format, ...);
 /*! <pre>
 Set the minimum value of a widget.
 Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar
