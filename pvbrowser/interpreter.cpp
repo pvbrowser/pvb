@@ -4334,6 +4334,15 @@ void Interpreter::interprets(const char *command)
           {
             mainWindow->setStyleSheet(text);
           }
+          else // perhaps it is a dock widget
+          {
+            int id_dock = i - DOCK_WIDGETS_BASE;
+            if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
+            {
+              MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock];
+              if(dock != NULL) dock->setStyleSheet(text);
+            }
+          }
           if(opt.arg_debug) printf("setStyleSheet end\n");
         }
         break;

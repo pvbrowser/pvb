@@ -2036,14 +2036,14 @@ int pvPrintf(PARAM *p, int id, const char *format, ...);
 /*! <pre>
 Set the style sheet of a widget. (See Qt documentation for style sheets)
 Allowed widgets: all widgets
-id := id_of_widget or ID_ROOTWIDGET, ID_EDITBAR, ID_TOOLBAR, ID_STATUSBAR, ID_MAINWINDOW
+id := id_of_widget or ID_ROOTWIDGET, ID_EDITBAR, ID_TOOLBAR, ID_STATUSBAR, ID_MAINWINDOW or id_of_dock_widget
 </pre> */
 int pvSetStyleSheet(PARAM *p, int id, const char *text);
 /*! <pre>
 Printf the style sheet of a widget. (See Qt documentation for style sheets)
 The functions works like printf()
 Allowed widgets: all widgets
-id := id_of_widget or ID_ROOTWIDGET, ID_EDITBAR, ID_TOOLBAR, ID_STATUSBAR, ID_MAINWINDOW
+id := id_of_widget or ID_ROOTWIDGET, ID_EDITBAR, ID_TOOLBAR, ID_STATUSBAR, ID_MAINWINDOW or  id_of_dock_widget
 </pre> */
 int pvPrintfStyleSheet(PARAM *p, int id, const char *format, ...);
 /*! <pre>
