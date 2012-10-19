@@ -47,6 +47,7 @@ private slots:
   void slotBackup();
   void viewEditor();
   void viewDesigner();
+  void slotQtDesigner();
   void slotExportUI();
   void slotImportUI();
   void slotInsertMask();
@@ -128,6 +129,7 @@ private:
   QAction *viewDesignerAct;
   QAction *actionEditorAct;
   QAction *actionDesignerAct;
+  QAction *actionQtDesignerAct;
   QAction *actionExportUIAct;
   QAction *actionImportUIAct;
   QAction *actionInsertMaskAct;

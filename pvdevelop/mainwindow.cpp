@@ -437,6 +437,9 @@ void MainWindow::createActions()
   actionDesignerAct->setStatusTip(tr("Show the Designer"));
   connect(actionDesignerAct, SIGNAL(triggered()), this, SLOT(viewDesigner()));
 
+  actionQtDesignerAct = new QAction(QIcon(":/images/importui.png"), tr("Design UI-&File with Qt Designer"), this);
+  actionQtDesignerAct->setStatusTip(tr("qtdesigner UI-File"));
+
   actionExportUIAct = new QAction(QIcon(":/images/importui.png"), tr("Export UI-&File"), this);
   //actionExportUIAct->setShortcut(tr("Ctrl+U"));
   actionExportUIAct->setStatusTip(tr("Export UI-File"));
@@ -526,6 +529,7 @@ void MainWindow::connectActions()
   connect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
   connect(searchAct, SIGNAL(triggered()), this, SLOT(slotSearch()));
   connect(replaceAct, SIGNAL(triggered()), this, SLOT(slotReplace()));
+  connect(actionQtDesignerAct, SIGNAL(triggered()), this, SLOT(slotQtDesigner()));
   connect(actionExportUIAct, SIGNAL(triggered()), this, SLOT(slotExportUI()));
   connect(actionImportUIAct, SIGNAL(triggered()), this, SLOT(slotImportUI()));
   connect(actionInsertMaskAct, SIGNAL(triggered()), this, SLOT(slotInsertMask()));
@@ -551,6 +555,7 @@ void MainWindow::connectActions()
   exitAct->setEnabled(true);
   searchAct->setEnabled(true);
   replaceAct->setEnabled(true);
+  actionQtDesignerAct->setEnabled(true);
   actionExportUIAct->setEnabled(true);
   actionImportUIAct->setEnabled(true);
   actionInsertMaskAct->setEnabled(true);
@@ -609,6 +614,7 @@ void MainWindow::disconnectActions()
   disconnect(exitAct, SIGNAL(triggered()), this, SLOT(close()));
   disconnect(searchAct, SIGNAL(triggered()), this, SLOT(slotSearch()));
   disconnect(replaceAct, SIGNAL(triggered()), this, SLOT(slotReplace()));
+  disconnect(actionQtDesignerAct, SIGNAL(triggered()), this, SLOT(slotQtDesigner()));
   disconnect(actionExportUIAct, SIGNAL(triggered()), this, SLOT(slotExportUI()));
   disconnect(actionImportUIAct, SIGNAL(triggered()), this, SLOT(slotImportUI()));
   disconnect(actionInsertMaskAct, SIGNAL(triggered()), this, SLOT(slotInsertMask()));
@@ -632,6 +638,7 @@ void MainWindow::disconnectActions()
   exitAct->setEnabled(false);
   searchAct->setEnabled(false);
   replaceAct->setEnabled(false);
+  actionQtDesignerAct->setEnabled(false);
   actionExportUIAct->setEnabled(false);
   actionImportUIAct->setEnabled(false);
   actionInsertMaskAct->setEnabled(false);
@@ -703,6 +710,7 @@ void MainWindow::createMenus()
   actionMenu = menuBar()->addMenu(tr("&Action"));
   actionMenu->addAction(actionEditorAct);
   actionMenu->addAction(actionDesignerAct);
+  actionMenu->addAction(actionQtDesignerAct);
   actionMenu->addAction(actionExportUIAct);
   actionMenu->addAction(actionImportUIAct);
   actionMenu->addAction(actionInsertMaskAct);
@@ -970,6 +978,41 @@ void MainWindow::slotMake()
 
   sprintf(act,"make=%s", (const char *) name.toUtf8());
   if(maybeSave()) action(act);
+}
+
+void MainWindow::slotQtDesigner()
+{
+  char cmd[1024];
+  if(opt_develop.arg_debug) printf("qtdesigner ui %s imask=%d\n", (const char *) name.toUtf8(), imask);
+
+  if(name.isEmpty())
+  {
+    QMessageBox::information(this,"pvdevelop","No project loaded",QMessageBox::Ok);
+    return;
+  }
+
+  if(opt_develop.script == PV_LUA)
+  {
+    load("main.lua");
+    editor->radioMain->setChecked(true);
+  }
+  else
+  {
+    load(name + ".pro");
+    editor->radioProject->setChecked(true);
+  }
+
+  int mymask = editor->spinBoxMask->value();
+#ifdef PVUNIX
+  sprintf(cmd,"pvdevelop -action=designerUi:%d %s", mymask,  (const char *) name.toUtf8());
+  if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
+  mysystem(cmd);
+#else
+  sprintf(cmd,"pvb_designer_ui.bat %s %d", (const char *) name.toUtf8(), mymask);
+  if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
+  int ret = system(cmd);
+  if(ret < 0) printf("ERROR system(%s)\n", cmd);
+#endif
 }
 
 void MainWindow::slotExportUI()

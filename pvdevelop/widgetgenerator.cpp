@@ -22,6 +22,7 @@
 #include <QRegExp>
 #include <QFile>
 #include <QtUiTools>
+#include <QFontInfo>
 #include "dlginsertwidget.h"
 #include "dlgeditlayout.h"
 #include "widgetgenerator.h"
@@ -1067,6 +1068,20 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     {
     }
     else
+    {
+      fprintf(fout,"%spvSetFont(p,%s,\"%s\",%d,%d,%d,%d,%d)%s\n",prefix,
+        itemname,(const char *) f.family().toUtf8(),
+        f.pointSize(),f.bold(),f.italic(),f.underline(),f.strikeOut(),postfix);
+    }
+  }
+  else
+  { 
+    if(f.family()    != "Sans Serif" ||
+       f.pointSize() != 10           ||
+       f.bold()      == true         ||
+       f.italic()    == true         ||
+       f.underline() == true         ||
+       f.strikeOut() == true         )
     {
       fprintf(fout,"%spvSetFont(p,%s,\"%s\",%d,%d,%d,%d,%d)%s\n",prefix,
         itemname,(const char *) f.family().toUtf8(),

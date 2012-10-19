@@ -1742,22 +1742,27 @@ get_args:
         if(cptr != NULL)
         {
           *cptr = '\0';
-          cptr ++;
+          cptr++;
         }  
       }  
       else if(isText == 1)
       {
-        cptr =                  strstr(cptrtemp, "\",");
-        if(cptr == NULL) cptr = strstr(cptrtemp, "\")");
-        if(cptr != NULL)
+        cptr = strrchr(cptrtemp,'\"');
+        if(cptr != NULL) 
         {
           *cptr = '\0';
-          cptr++; cptr++;
-        }
+          cptr++;
+          if(*cptr == ',') cptr++;
+        }  
         isText = 0;
       }  
       if(cptr == NULL) break;
-      if(*cptr == '\"') 
+      if(strncmp(cptr,"pvtr(\"",6) == 0)
+      {
+        isText = 1;
+        cptr++; cptr++; cptr++; cptr++; cptr++; cptr++;
+      }
+      else if(*cptr == '\"') 
       {
         isText = 1;
         cptr++;
@@ -2420,6 +2425,21 @@ get_args:
       else if(strstr(line,"pv")                  != NULL) break;             // information found
       else if(strstr(line,"qpw")                 != NULL) break;             // information found
       else if(strstr(line,"qwt")                 != NULL) break;             // information found
+      else if(strstr(line,"pvSetFont(")          != NULL)
+      {
+        // pvSetFont(p,welcomeLabel,"Sans Serif",18,1,1,0,0);
+        fprintf(fout,"%s <property name=\"font\" >\n", space);
+        fprintf(fout,"%s  <font>\n", space);
+        fprintf(fout,"%s   <family>%s</family>\n",        space, p[1]);
+        fprintf(fout,"%s    <pointsize>%s</pointsize>\n", space, p[2]);
+        fprintf(fout,"%s    <weight>%s</weight>\n",       space, p[3]);
+        fprintf(fout,"%s    <italic>%s</italic>\n",       space, p[4]);
+        fprintf(fout,"%s    <bold>%s</bold>\n",           space, p[5]);
+        fprintf(fout,"%s    <underline>%s</underline>\n", space, p[6]);
+        fprintf(fout,"%s    <strikeout>%s</strikeout>\n", space, p[7]);
+        fprintf(fout,"%s  </font>\n", space);
+        fprintf(fout,"%s </property>\n", space);
+      }  
       else                                             isConstructor = 1; // empty line found
     }
     if(fret == NULL) return -1;

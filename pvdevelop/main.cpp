@@ -51,6 +51,8 @@ void usage()
   printf("-action=writeStartscript\n");
   printf("-action=writeDimension:<xmax>:<ymax>\n");
   printf("-action=importUi:<masknumber>\n");
+  printf("-action=exportUi:<masknumber>\n");
+  printf("-action=designerUi:<masknumber>\n");
   printf("-action=dumpTranslations\n");
   printf("-programming_language=<Lua|Python>\n");
   exit(0);
@@ -240,13 +242,68 @@ void  perhapsDoAction()
   }
   else if(strncmp(opt_develop.arg_action,"importUi:",9) == 0)
   {
-    sscanf(opt_develop.arg_action,"importUi:%d", &opt_develop.arg_mask_to_generate);
+    if(strncmp(opt_develop.arg_action,"importUi:mask",13) == 0)
+    {
+      sscanf(opt_develop.arg_action,"importUi:mask%d", &opt_develop.arg_mask_to_generate);
+    }
+    else
+    {
+      sscanf(opt_develop.arg_action,"importUi:%d", &opt_develop.arg_mask_to_generate);
+    }  
     if(opt_develop.arg_mask_to_generate > 0)
     {
       char maskname[80];
       sprintf(maskname,"mask%d", opt_develop.arg_mask_to_generate);
       Designer *designer = new Designer(maskname);
       sprintf(maskname,"mask%d.ui", opt_develop.arg_mask_to_generate);
+      importUi(maskname, designer);
+      delete designer;
+#ifdef PVUNIX
+      action("make");
+#endif
+    }
+    else printf("error: arg_mask_to_generate <= 0\n");
+  }
+  else if(strncmp(opt_develop.arg_action,"exportUi:",9) == 0)
+  {
+    if(strncmp(opt_develop.arg_action,"exportUi:mask",13) == 0)
+    {
+      sscanf(opt_develop.arg_action,"exportUi:mask%d", &opt_develop.arg_mask_to_generate);
+    }
+    else
+    {
+      sscanf(opt_develop.arg_action,"exportUi:%d", &opt_develop.arg_mask_to_generate);
+    }  
+    if(opt_develop.arg_mask_to_generate > 0)
+    {
+      export_ui(opt_develop.arg_mask_to_generate);
+    }
+    else printf("error: arg_mask_to_generate <= 0\n");
+  }
+  else if(strncmp(opt_develop.arg_action,"designerUi:",11) == 0)
+  {
+    if(strncmp(opt_develop.arg_action,"designerUi:mask",15) == 0)
+    {
+      sscanf(opt_develop.arg_action,"designerUi:mask%d", &opt_develop.arg_mask_to_generate);
+    }
+    else
+    {
+      sscanf(opt_develop.arg_action,"designerUi:%d", &opt_develop.arg_mask_to_generate);
+    }  
+    if(opt_develop.arg_mask_to_generate > 0)
+    {
+      char maskname[80];
+      sprintf(maskname,"mask%d", opt_develop.arg_mask_to_generate);
+      Designer *designer = new Designer(maskname);
+      sprintf(maskname,"mask%d.ui", opt_develop.arg_mask_to_generate);
+      export_ui(opt_develop.arg_mask_to_generate);
+      char cmd[1024];
+#ifdef PVWIN32      
+      sprintf(cmd,"%%QTDIR%%\\bin\\designer %s", maskname);
+#else      
+      sprintf(cmd,"designer %s", maskname);
+#endif      
+      system(cmd);
       importUi(maskname, designer);
       delete designer;
 #ifdef PVUNIX
