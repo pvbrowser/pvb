@@ -248,7 +248,19 @@ void  perhapsDoAction()
     }
     else
     {
-      sscanf(opt_develop.arg_action,"importUi:%d", &opt_develop.arg_mask_to_generate);
+      const char *cptr = &opt_develop.arg_action[9];
+      if(isdigit(*cptr))
+      {
+        sscanf(cptr,"%d",&opt_develop.arg_mask_to_generate);
+      }
+      else
+      {
+        cptr = strstr(cptr,"mask");
+        if(cptr != NULL)
+        {
+          sscanf(cptr,"mask%d",&opt_develop.arg_mask_to_generate);
+        }
+      }
     }  
     if(opt_develop.arg_mask_to_generate > 0)
     {
@@ -272,7 +284,19 @@ void  perhapsDoAction()
     }
     else
     {
-      sscanf(opt_develop.arg_action,"exportUi:%d", &opt_develop.arg_mask_to_generate);
+      const char *cptr = &opt_develop.arg_action[9];
+      if(isdigit(*cptr))
+      {
+        sscanf(cptr,"%d",&opt_develop.arg_mask_to_generate);
+      }
+      else
+      {
+        cptr = strstr(cptr,"mask");
+        if(cptr != NULL)
+        {
+          sscanf(cptr,"mask%d",&opt_develop.arg_mask_to_generate);
+        }
+      }
     }  
     if(opt_develop.arg_mask_to_generate > 0)
     {
@@ -288,7 +312,19 @@ void  perhapsDoAction()
     }
     else
     {
-      sscanf(opt_develop.arg_action,"designerUi:%d", &opt_develop.arg_mask_to_generate);
+      const char *cptr = &opt_develop.arg_action[11];
+      if(isdigit(*cptr))
+      {
+        sscanf(cptr,"%d",&opt_develop.arg_mask_to_generate);
+      }
+      else
+      {
+        cptr = strstr(cptr,"mask");
+        if(cptr != NULL)
+        {
+          sscanf(cptr,"mask%d",&opt_develop.arg_mask_to_generate);
+        }
+      }
     }  
     if(opt_develop.arg_mask_to_generate > 0)
     {
