@@ -4314,7 +4314,26 @@ void Interpreter::interprets(const char *command)
             buf[len] = '\0';
             delete [] buf;
           }
-          if(all[i]->w != NULL) all[i]->w->setStyleSheet(text);
+          if(i >= 0)
+          {
+            if(all[i]->w != NULL) all[i]->w->setStyleSheet(text);
+          }
+          else if(i == -1) //ID_EDITBAR:  
+          {
+            mainWindow->menuBar()->setStyleSheet(text);
+          }
+          else if(i == -2) //ID_TOOLBAR:  
+          {
+            mainWindow->fileToolBar->setStyleSheet(text);
+          }
+          else if(i == -3) //ID_STATUSBAR:  
+          {
+            mainWindow->statusBar()->setStyleSheet(text);
+          }
+          else if(i == -4) //ID_MAINWINDOW:
+          {
+            mainWindow->setStyleSheet(text);
+          }
           if(opt.arg_debug) printf("setStyleSheet end\n");
         }
         break;
