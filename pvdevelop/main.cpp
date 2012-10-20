@@ -335,11 +335,12 @@ void  perhapsDoAction()
       export_ui(opt_develop.arg_mask_to_generate);
       char cmd[1024];
 #ifdef PVWIN32      
-      sprintf(cmd,"%%QTDIR%%\\bin\\designer %s", maskname);
+      sprintf(cmd,"start/wait \"%%QTDIR%%\\bin\\designer.exe\" %s", maskname);
+      mysystem(cmd);
 #else      
       sprintf(cmd,"designer %s", maskname);
-#endif      
       system(cmd);
+#endif      
       importUi(maskname, designer);
       delete designer;
 #ifdef PVUNIX

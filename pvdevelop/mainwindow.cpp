@@ -710,7 +710,9 @@ void MainWindow::createMenus()
   actionMenu = menuBar()->addMenu(tr("&Action"));
   actionMenu->addAction(actionEditorAct);
   actionMenu->addAction(actionDesignerAct);
+//#ifndef PVWIN32  
   actionMenu->addAction(actionQtDesignerAct);
+//#endif  
   actionMenu->addAction(actionExportUIAct);
   actionMenu->addAction(actionImportUIAct);
   actionMenu->addAction(actionInsertMaskAct);
@@ -1003,16 +1005,18 @@ void MainWindow::slotQtDesigner()
   }
 
   int mymask = editor->spinBoxMask->value();
-#ifdef PVUNIX
+  hide();
+#ifdef PVWIN32  
+  sprintf(cmd,"start/wait pvdevelop -action=designerUi:%d %s", mymask, (const char *) name.toUtf8());
+  if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
+  int ret = mysystem(cmd);
+  if(ret < 0) printf("ERROR system(%s)\n", cmd);
+#else
   sprintf(cmd,"pvdevelop -action=designerUi:%d %s", mymask,  (const char *) name.toUtf8());
   if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
-  mysystem(cmd);
-#else
-  sprintf(cmd,"pvb_designer_ui.bat %s %d", (const char *) name.toUtf8(), mymask);
-  if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
-  int ret = system(cmd);
-  if(ret < 0) printf("ERROR system(%s)\n", cmd);
+  system(cmd);
 #endif
+  show();
 }
 
 void MainWindow::slotExportUI()
