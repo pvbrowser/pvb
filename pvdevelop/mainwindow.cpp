@@ -1007,7 +1007,7 @@ void MainWindow::slotQtDesigner()
   int mymask = editor->spinBoxMask->value();
   hide();
 #ifdef PVWIN32  
-  sprintf(cmd,"start/wait pvdevelop -action=designerUi:%d %s", mymask, (const char *) name.toUtf8());
+  sprintf(cmd,"wait pvdevelop -action=designerUi:%d %s", mymask, (const char *) name.toUtf8());
   if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
   int ret = mysystem(cmd);
   if(ret < 0) printf("ERROR system(%s)\n", cmd);

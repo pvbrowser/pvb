@@ -47,6 +47,29 @@ int mysystem(const char *command)
     ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
     ret  = system(cmd);
   }
+  else if(strncmp(command,"wait ",5) == 0)
+  {
+    ExpandEnvironmentStrings(&command[5],cmd,sizeof(cmd)-1);
+    ret = (int) CreateProcess( NULL, cmd
+                             , NULL, NULL
+                             , FALSE, CREATE_NO_WINDOW
+                             , NULL, NULL
+                             , &si, &pi);
+    int pid = (int) pi.hProcess;
+    long status;
+    while(1)
+    {
+      if(GetExitCodeProcess((HANDLE) pid, (unsigned long *) &status) != 0) // success
+      {
+        if(status != STILL_ACTIVE) break;
+      }
+      else 
+      {
+        break;
+      }  
+      Sleep(500);
+    }
+  }
   else
   {
     ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
