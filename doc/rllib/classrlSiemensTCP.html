@@ -1195,7 +1195,9 @@ class for communication with Siemens PLC's via TCP
 <div class="line"> </div>
 <div class="line">  <span class="comment">// speedup siemens communication as suggested by Vincent Segui Pascual</span></div>
 <div class="line">  <span class="comment">// do only 1 write</span></div>
-<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> total_buf[<span class="keyword">sizeof</span>(IH) + len];</div>
+<div class="line">  <span class="comment">// unsigned char total_buf[sizeof(IH) + len];</span></div>
+<div class="line">  <span class="comment">// in theory dynamic size arrays are not a feature of C++</span></div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *total_buf = <span class="keyword">new</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> [<span class="keyword">sizeof</span>(IH) + len];</div>
 <div class="line">  IH *<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a> = (IH *) &amp;total_buf[0];</div>
 <div class="line">  ih-&gt;<a class="code" href="structrlSiemensTCP_1_1IH.html#a0ef01603aef1afc62a81197155c048ac">version</a>  = 3;</div>
 <div class="line">  ih-&gt;reserved = 0;</div>
@@ -1203,6 +1205,7 @@ class for communication with Siemens PLC's via TCP
 <div class="line">  ih-&gt;length_low  = (len+4) &amp; 0x0ff;</div>
 <div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;len; i++) total_buf[<span class="keyword">sizeof</span>(IH) + i] = buf[i];</div>
 <div class="line">  ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(total_buf,<span class="keyword">sizeof</span>(IH) + len);</div>
+<div class="line">  <span class="keyword">delete</span> [] total_buf;</div>
 <div class="line">  <span class="keywordflow">if</span>(ret &lt; 0)</div>
 <div class="line">  { </div>
 <div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;write_iso:failure to write buf -&gt; disconnecting\n&quot;</span>);</div>

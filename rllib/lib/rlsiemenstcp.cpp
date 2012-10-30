@@ -528,7 +528,9 @@ int rlSiemensTCP::write_iso(unsigned char *buf, int len)
  
   // speedup siemens communication as suggested by Vincent Segui Pascual
   // do only 1 write
-  unsigned char total_buf[sizeof(IH) + len];
+  // unsigned char total_buf[sizeof(IH) + len];
+  // in theory dynamic size arrays are not a feature of C++
+  unsigned char *total_buf = new unsigned char [sizeof(IH) + len];
   IH *ih = (IH *) &total_buf[0];
   ih->version  = 3;
   ih->reserved = 0;
@@ -536,6 +538,7 @@ int rlSiemensTCP::write_iso(unsigned char *buf, int len)
   ih->length_low  = (len+4) & 0x0ff;
   for(int i=0; i<len; i++) total_buf[sizeof(IH) + i] = buf[i];
   ret = rlSocket::write(total_buf,sizeof(IH) + len);
+  delete [] total_buf;
   if(ret < 0)
   { 
     rlDebugPrintf("write_iso:failure to write buf -> disconnecting\n");
