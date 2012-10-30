@@ -525,6 +525,24 @@ int rlSiemensTCP::write_iso(unsigned char *buf, int len)
 
   if(rlSocket::isConnected() == 0) doConnect();
   if(rlSocket::isConnected() == 0) return -1;
+ 
+  // speedup siemens communication as suggested by Vincent Segui Pascual
+  // do only 1 write
+  unsigned char total_buf[sizeof(IH) + len];
+  IH *ih = (IH *) &total_buf[0];
+  ih->version  = 3;
+  ih->reserved = 0;
+  ih->length_high = (len+4) / 256;
+  ih->length_low  = (len+4) & 0x0ff;
+  for(int i=0; i<len; i++) total_buf[sizeof(IH) + i] = buf[i];
+  ret = rlSocket::write(total_buf,sizeof(IH) + len);
+  if(ret < 0)
+  { 
+    rlDebugPrintf("write_iso:failure to write buf -> disconnecting\n");
+    rlSocket::disconnect(); 
+    return ret; 
+  }
+/*  
   ih.version  = 3;
   ih.reserved = 0;
   ih.length_high = (len+4) / 256;
@@ -543,6 +561,7 @@ int rlSiemensTCP::write_iso(unsigned char *buf, int len)
     rlSocket::disconnect(); 
     return ret; 
   }
+*/
   if(rlDebugPrintfState != 0)
   {
     ::printf("write_iso() len=%d\n", len);
