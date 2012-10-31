@@ -543,7 +543,7 @@ class for communication with Siemens PLC's via TCP
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00357">357</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00367">367</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len_byte,length;</div>
 <div class="line"></div>
@@ -578,12 +578,20 @@ class for communication with Siemens PLC's via TCP
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>.<a class="code" href="structrlSiemensTCP_1_1FH.html#afb9abc00413b3510928d5ebfd1f76a34">len</a>[1]          = (<span class="keywordtype">unsigned</span> char) len &amp; 0x0ff;;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>.<a class="code" href="structrlSiemensTCP_1_1FH.html#a2e151c693a5eadb8458da88c780cfe46">spare1</a>          = 0x0ff;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>.<a class="code" href="structrlSiemensTCP_1_1FH.html#ae8f3922e1fe74e8908a361fd313f298c">spare1_len</a>      = 2;</div>
-<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(&amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>));</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> total_buf[<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>)];</div>
+<div class="line">    memcpy(total_buf,             &amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>));</div>
+<div class="line">    memcpy(total_buf+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>),  &amp;<a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>));</div>
+<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(total_buf,   <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>));</div>
 <div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;fetch write ih ret=%d\n&quot;</span>,ret);</div>
 <div class="line">    <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;  </div>
-<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(&amp;<a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a1c3e448ac95a1d1bc5e58b86bec78a0f">fh</a>));</div>
-<div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;fetch write fh ret=%d\n&quot;</span>,ret);</div>
-<div class="line">    <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">    ret = rlSocket::write(&amp;ih,sizeof(ih));</span></div>
+<div class="line"><span class="comment">    rlDebugPrintf(&quot;fetch write ih ret=%d\n&quot;,ret);</span></div>
+<div class="line"><span class="comment">    if(ret &lt; 0) return ret;  </span></div>
+<div class="line"><span class="comment">    ret = rlSocket::write(&amp;fh,sizeof(fh));</span></div>
+<div class="line"><span class="comment">    rlDebugPrintf(&quot;fetch write fh ret=%d\n&quot;,ret);</span></div>
+<div class="line"><span class="comment">    if(ret &lt; 0) return ret;</span></div>
+<div class="line"><span class="comment">    */</span></div>
 <div class="line">    ret = <a class="code" href="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4">rlSocket::read</a>(&amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>),<a class="code" href="rlsiemenstcp_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>);</div>
 <div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;fetch read ih ret=%d\n&quot;</span>,ret);</div>
 <div class="line">    <span class="keywordflow">if</span>(ret &lt;= 0) <span class="keywordflow">return</span> ret;</div>
@@ -727,7 +735,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00476">476</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00494">494</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len;</div>
 <div class="line"></div>
@@ -831,6 +839,7 @@ class for communication with Siemens PLC's via TCP
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <span class="keywordflow">return</span> -1;</div>
 <div class="line"></div>
 <div class="line">  len_byte = len;</div>
+<div class="line">  <span class="keywordflow">if</span>(len_byte &gt; (<span class="keywordtype">int</span>) <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>)) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  <span class="comment">//if(org == ORG_DB) len_byte *= 2;</span></div>
 <div class="line">  <span class="comment">//if(org == ORG_Z)  len_byte *= 2;</span></div>
 <div class="line">  <span class="comment">//if(org == ORG_T)  len_byte *= 2;</span></div>
@@ -839,6 +848,7 @@ class for communication with Siemens PLC's via TCP
 <div class="line">  {</div>
 <div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;using fetch_write\n&quot;</span>);</div>
 <div class="line">    length = <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>) + <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>) + len_byte;</div>
+<div class="line">    <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> total_buf[<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>) + <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>) + <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>)];</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#a0ef01603aef1afc62a81197155c048ac">version</a>  = 3;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#ac3ee6cf3a2b1fac94ce779f733fad1bd">reserved</a> = 0;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#a11c52375cec2755397b37b765ea512ce">length_high</a> = length / 256;</div>
@@ -859,15 +869,23 @@ class for communication with Siemens PLC's via TCP
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>.<a class="code" href="structrlSiemensTCP_1_1WH.html#a65b1be4039ae286c1ceb6ef136277d4b">len</a>[1]          = (<span class="keywordtype">unsigned</span> char) len &amp; 0x0ff;;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>.<a class="code" href="structrlSiemensTCP_1_1WH.html#a1df0a57df720d1952f56025405c79078">spare1</a>          = 0x0ff;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>.<a class="code" href="structrlSiemensTCP_1_1WH.html#adef5dae8c59d883ad9358c3d09510a33">spare1_len</a>      = 2;</div>
-<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(&amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>));</div>
-<div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;write ih ret=%d\n&quot;</span>,ret);</div>
+<div class="line">    memcpy(total_buf,                       &amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>));</div>
+<div class="line">    memcpy(total_buf+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>),            &amp;<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>));</div>
+<div class="line">    memcpy(total_buf+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>), buf, len_byte);</div>
+<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(total_buf, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>)+len_byte);</div>
+<div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;write total_buf ret=%d\n&quot;</span>,ret);</div>
 <div class="line">    <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
-<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(&amp;<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a76b27a6e530e4f5f139e84065d286527">wh</a>));</div>
-<div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;write wh ret=%d\n&quot;</span>,ret);</div>
-<div class="line">    <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
-<div class="line">    ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(buf,len_byte);</div>
-<div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;write buf ret=%d\n&quot;</span>,ret);</div>
-<div class="line">    <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
+<div class="line">    <span class="comment">/*</span></div>
+<div class="line"><span class="comment">    ret = rlSocket::write(&amp;ih,sizeof(ih));</span></div>
+<div class="line"><span class="comment">    rlDebugPrintf(&quot;write ih ret=%d\n&quot;,ret);</span></div>
+<div class="line"><span class="comment">    if(ret &lt; 0) return ret;</span></div>
+<div class="line"><span class="comment">    ret = rlSocket::write(&amp;wh,sizeof(wh));</span></div>
+<div class="line"><span class="comment">    rlDebugPrintf(&quot;write wh ret=%d\n&quot;,ret);</span></div>
+<div class="line"><span class="comment">    if(ret &lt; 0) return ret;</span></div>
+<div class="line"><span class="comment">    ret = rlSocket::write(buf,len_byte);</span></div>
+<div class="line"><span class="comment">    rlDebugPrintf(&quot;write buf ret=%d\n&quot;,ret);</span></div>
+<div class="line"><span class="comment">    if(ret &lt; 0) return ret;</span></div>
+<div class="line"><span class="comment">    */</span></div>
 <div class="line">    ret = <a class="code" href="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4">rlSocket::read</a>(&amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>),<a class="code" href="rlsiemenstcp_8cpp.html#a45ba202b05caf39795aeca91b0ae547e">TIMEOUT</a>);</div>
 <div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;read ih ret=%d\n&quot;</span>,ret);</div>
 <div class="line">    <span class="keywordflow">if</span>(ret &lt;= 0) <span class="keywordflow">return</span> ret;</div>
@@ -1027,7 +1045,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00290">290</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00300">300</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 14 + 12 * (len - 1);</div>
@@ -1121,7 +1139,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00326">326</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00336">336</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0e;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1186,26 +1204,24 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00522">522</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00540">540</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret;</div>
 <div class="line"></div>
+<div class="line">  <span class="keywordflow">if</span>(len &gt; (<span class="keywordtype">int</span>) <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>)) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <span class="keywordflow">return</span> -1;</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// speedup siemens communication as suggested by Vincent Segui Pascual</span></div>
 <div class="line">  <span class="comment">// do only 1 write</span></div>
-<div class="line">  <span class="comment">// unsigned char total_buf[sizeof(IH) + len];</span></div>
-<div class="line">  <span class="comment">// in theory dynamic size arrays are not a feature of C++</span></div>
-<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *total_buf = <span class="keyword">new</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> [<span class="keyword">sizeof</span>(IH) + len];</div>
-<div class="line">  IH *<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a> = (IH *) &amp;total_buf[0];</div>
-<div class="line">  ih-&gt;<a class="code" href="structrlSiemensTCP_1_1IH.html#a0ef01603aef1afc62a81197155c048ac">version</a>  = 3;</div>
-<div class="line">  ih-&gt;reserved = 0;</div>
-<div class="line">  ih-&gt;length_high = (len+4) / 256;</div>
-<div class="line">  ih-&gt;length_low  = (len+4) &amp; 0x0ff;</div>
-<div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;len; i++) total_buf[<span class="keyword">sizeof</span>(IH) + i] = buf[i];</div>
-<div class="line">  ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(total_buf,<span class="keyword">sizeof</span>(IH) + len);</div>
-<div class="line">  <span class="keyword">delete</span> [] total_buf;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> total_buf[<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>)];</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#a0ef01603aef1afc62a81197155c048ac">version</a>  = 3;</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#ac3ee6cf3a2b1fac94ce779f733fad1bd">reserved</a> = 0;</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#a11c52375cec2755397b37b765ea512ce">length_high</a> = (len+4) / 256;</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>.<a class="code" href="structrlSiemensTCP_1_1IH.html#a7d0908e499010381051e7702b6af6f68">length_low</a>  = (len+4) &amp; 0x0ff;</div>
+<div class="line">  memcpy(total_buf,              &amp;<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>));</div>
+<div class="line">  memcpy(total_buf + <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>), buf, <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+len);</div>
+<div class="line">  ret = <a class="code" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">rlSocket::write</a>(total_buf,    <span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#aca1ced3eb2073cfc271c67e7b31907c1">ih</a>)+len);</div>
 <div class="line">  <span class="keywordflow">if</span>(ret &lt; 0)</div>
 <div class="line">  { </div>
 <div class="line">    <a class="code" href="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b">rlDebugPrintf</a>(<span class="stringliteral">&quot;write_iso:failure to write buf -&gt; disconnecting\n&quot;</span>);</div>

@@ -149,6 +149,7 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
   if(rlSocket::isConnected() == 0) return -1;
 
   len_byte = len;
+  if(len_byte > (int) sizeof(pdu)) return -1;
   //if(org == ORG_DB) len_byte *= 2;
   //if(org == ORG_Z)  len_byte *= 2;
   //if(org == ORG_T)  len_byte *= 2;
@@ -157,6 +158,7 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
   {
     rlDebugPrintf("using fetch_write\n");
     length = sizeof(ih) + sizeof(wh) + len_byte;
+    unsigned char total_buf[sizeof(ih) + sizeof(wh) + sizeof(pdu)];
     ih.version  = 3;
     ih.reserved = 0;
     ih.length_high = length / 256;
@@ -177,6 +179,13 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
     wh.len[1]          = (unsigned char) len & 0x0ff;;
     wh.spare1          = 0x0ff;
     wh.spare1_len      = 2;
+    memcpy(total_buf,                       &ih, sizeof(ih));
+    memcpy(total_buf+sizeof(ih),            &wh, sizeof(wh));
+    memcpy(total_buf+sizeof(ih)+sizeof(wh), buf, len_byte);
+    ret = rlSocket::write(total_buf, sizeof(ih)+sizeof(wh)+len_byte);
+    rlDebugPrintf("write total_buf ret=%d\n",ret);
+    if(ret < 0) return ret;
+    /*
     ret = rlSocket::write(&ih,sizeof(ih));
     rlDebugPrintf("write ih ret=%d\n",ret);
     if(ret < 0) return ret;
@@ -186,6 +195,7 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
     ret = rlSocket::write(buf,len_byte);
     rlDebugPrintf("write buf ret=%d\n",ret);
     if(ret < 0) return ret;
+    */
     ret = rlSocket::read(&ih,sizeof(ih),TIMEOUT);
     rlDebugPrintf("read ih ret=%d\n",ret);
     if(ret <= 0) return ret;
@@ -389,12 +399,20 @@ int rlSiemensTCP::fetch(int org, int dbnr, int start_adr, int len, unsigned char
     fh.len[1]          = (unsigned char) len & 0x0ff;;
     fh.spare1          = 0x0ff;
     fh.spare1_len      = 2;
+    unsigned char total_buf[sizeof(ih)+sizeof(fh)];
+    memcpy(total_buf,             &ih, sizeof(ih));
+    memcpy(total_buf+sizeof(ih),  &fh, sizeof(fh));
+    ret = rlSocket::write(total_buf,   sizeof(ih)+sizeof(fh));
+    rlDebugPrintf("fetch write ih ret=%d\n",ret);
+    if(ret < 0) return ret;  
+    /*
     ret = rlSocket::write(&ih,sizeof(ih));
     rlDebugPrintf("fetch write ih ret=%d\n",ret);
     if(ret < 0) return ret;  
     ret = rlSocket::write(&fh,sizeof(fh));
     rlDebugPrintf("fetch write fh ret=%d\n",ret);
     if(ret < 0) return ret;
+    */
     ret = rlSocket::read(&ih,sizeof(ih),TIMEOUT);
     rlDebugPrintf("fetch read ih ret=%d\n",ret);
     if(ret <= 0) return ret;
@@ -523,22 +541,20 @@ int rlSiemensTCP::write_iso(unsigned char *buf, int len)
 {
   int i,ret;
 
+  if(len > (int) sizeof(pdu)) return -1;
   if(rlSocket::isConnected() == 0) doConnect();
   if(rlSocket::isConnected() == 0) return -1;
  
   // speedup siemens communication as suggested by Vincent Segui Pascual
   // do only 1 write
-  // unsigned char total_buf[sizeof(IH) + len];
-  // in theory dynamic size arrays are not a feature of C++
-  unsigned char *total_buf = new unsigned char [sizeof(IH) + len];
-  IH *ih = (IH *) &total_buf[0];
-  ih->version  = 3;
-  ih->reserved = 0;
-  ih->length_high = (len+4) / 256;
-  ih->length_low  = (len+4) & 0x0ff;
-  for(int i=0; i<len; i++) total_buf[sizeof(IH) + i] = buf[i];
-  ret = rlSocket::write(total_buf,sizeof(IH) + len);
-  delete [] total_buf;
+  unsigned char total_buf[sizeof(ih)+sizeof(pdu)];
+  ih.version  = 3;
+  ih.reserved = 0;
+  ih.length_high = (len+4) / 256;
+  ih.length_low  = (len+4) & 0x0ff;
+  memcpy(total_buf,              &ih, sizeof(ih));
+  memcpy(total_buf + sizeof(ih), buf, sizeof(ih)+len);
+  ret = rlSocket::write(total_buf,    sizeof(ih)+len);
   if(ret < 0)
   { 
     rlDebugPrintf("write_iso:failure to write buf -> disconnecting\n");
