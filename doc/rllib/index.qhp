@@ -3671,6 +3671,8 @@
               <section title="freeaddrinfo" ref="rlsocket_8cpp.html" />
               <section title="getaddrinfo" ref="rlsocket_8cpp.html" />
               <section title="getnameinfo" ref="rlsocket_8cpp.html" />
+              <section title="rlGetsockopt" ref="rlsocket_8cpp.html" />
+              <section title="rlSetsockopt" ref="rlsocket_8cpp.html" />
               <section title="rlwsa" ref="rlsocket_8cpp.html" />
             </section>
             <section title="rlsocket.h" ref="rlsocket_8h.html">
@@ -3705,6 +3707,8 @@
                 <section title="sockaddr" ref="classrlSocket.html" />
               </section>
               <section title="wsa" ref="rlsocket_8h.html" />
+              <section title="rlGetsockopt" ref="rlsocket_8h.html" />
+              <section title="rlSetsockopt" ref="rlsocket_8h.html" />
               <section title="rlwsa" ref="rlsocket_8h.html" />
             </section>
             <section title="rlspawn.cpp" ref="rlspawn_8cpp.html" />
@@ -4517,8 +4521,12 @@
       <keyword name="freeaddrinfo" id="rlsocket.cpp::freeaddrinfo" ref="rlsocket_8cpp.html#a01bb3f9d1bc8c8e071f29e0d162cf138" />
       <keyword name="getaddrinfo" id="rlsocket.cpp::getaddrinfo" ref="rlsocket_8cpp.html#aadf91875b0d8c3b5301f678b815b4f44" />
       <keyword name="getnameinfo" id="rlsocket.cpp::getnameinfo" ref="rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458" />
+      <keyword name="rlGetsockopt" id="rlsocket.cpp::rlGetsockopt" ref="rlsocket_8cpp.html#a423730f58617a96d554e9771df5c9c51" />
+      <keyword name="rlSetsockopt" id="rlsocket.cpp::rlSetsockopt" ref="rlsocket_8cpp.html#a06ce098cab84e24409aa04030307055c" />
       <keyword name="rlwsa" id="rlsocket.cpp::rlwsa" ref="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="wsa" id="rlsocket.h::wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
+      <keyword name="rlGetsockopt" id="rlsocket.h::rlGetsockopt" ref="rlsocket_8h.html#a423730f58617a96d554e9771df5c9c51" />
+      <keyword name="rlSetsockopt" id="rlsocket.h::rlSetsockopt" ref="rlsocket_8h.html#a06ce098cab84e24409aa04030307055c" />
       <keyword name="rlwsa" id="rlsocket.h::rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="null_string" id="rlspreadsheet.cpp::null_string" ref="rlspreadsheet_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />

@@ -17,6 +17,30 @@
 #define _RL_SOCKET_H_
 
 #include "rldefine.h"
+#ifdef RLWIN32
+#include <windows.h>
+#ifdef IS_OLD_MSVCPP
+#include <winsock.h>
+#else
+#include <winsock2.h>
+#endif
+#include <io.h>
+#include <direct.h>
+#else
+#include <sys/time.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <netdb.h>
+#include "unistd.h"
+#endif
+
+/*! <pre>
+portable versions of getsockopt and setsockopt
+defines are included from the above header files
+</pre> */
+int rlGetsockopt(int sockfd, int level, int optname, void *optval,       int *optlen);
+int rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen);
 
 /*! <pre>
 you have to call this function before you use any sockets

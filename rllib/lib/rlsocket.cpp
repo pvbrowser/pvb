@@ -63,6 +63,32 @@ int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWOR
 #include "rlwthread.h"
 #include "rlcutil.h"
 
+int rlGetsockopt(int sockfd, int level, int optname, void *optval, int *optlen)
+{
+#ifdef RLWIN32
+  return getsockopt(sockfd, level, optname, (char *) optval, optlen);
+#elif defined(__VMS)
+  size_t len = *optlen;
+  int ret = getsockopt(sockfd, level, optname, optval, &len);
+  *optlen = len;
+  return ret;
+#else  
+  socklen_t len = *optlen;
+  int ret = getsockopt(sockfd, level, optname, optval, &len);
+  *optlen = len;
+  return ret;
+#endif
+}
+
+int rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen)
+{
+#ifdef RLWIN32
+  return setsockopt(sockfd, level, optname, (const char *) optval, optlen);
+#else
+  return setsockopt(sockfd, level, optname, optval, optlen);
+#endif
+}
+
 /* windows stuff */
 int rlwsa()
 {
