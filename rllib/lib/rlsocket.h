@@ -36,13 +36,6 @@
 #endif
 
 /*! <pre>
-portable versions of getsockopt and setsockopt
-defines are included from the above header files
-</pre> */
-int rlGetsockopt(int sockfd, int level, int optname, void *optval,       int *optlen);
-int rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen);
-
-/*! <pre>
 you have to call this function before you use any sockets
 (at least under windows)
 </pre> */
