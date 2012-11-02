@@ -1238,6 +1238,10 @@
               <section title="printf" ref="classrlSocket.html" />
               <section title="read" ref="classrlSocket.html" />
               <section title="readStr" ref="classrlSocket.html" />
+              <section title="rlGetsockopt" ref="classrlSocket.html" />
+              <section title="rlGetsockopt" ref="classrlSocket.html" />
+              <section title="rlSetsockopt" ref="classrlSocket.html" />
+              <section title="rlSetsockopt" ref="classrlSocket.html" />
               <section title="select" ref="classrlSocket.html" />
               <section title="sendProcessViewBrowserButtonEvent" ref="classrlSocket.html" />
               <section title="setActive" ref="classrlSocket.html" />
@@ -3671,8 +3675,6 @@
               <section title="freeaddrinfo" ref="rlsocket_8cpp.html" />
               <section title="getaddrinfo" ref="rlsocket_8cpp.html" />
               <section title="getnameinfo" ref="rlsocket_8cpp.html" />
-              <section title="rlGetsockopt" ref="rlsocket_8cpp.html" />
-              <section title="rlSetsockopt" ref="rlsocket_8cpp.html" />
               <section title="rlwsa" ref="rlsocket_8cpp.html" />
             </section>
             <section title="rlsocket.h" ref="rlsocket_8h.html">
@@ -3689,6 +3691,10 @@
                 <section title="printf" ref="classrlSocket.html" />
                 <section title="read" ref="classrlSocket.html" />
                 <section title="readStr" ref="classrlSocket.html" />
+                <section title="rlGetsockopt" ref="classrlSocket.html" />
+                <section title="rlGetsockopt" ref="classrlSocket.html" />
+                <section title="rlSetsockopt" ref="classrlSocket.html" />
+                <section title="rlSetsockopt" ref="classrlSocket.html" />
                 <section title="select" ref="classrlSocket.html" />
                 <section title="sendProcessViewBrowserButtonEvent" ref="classrlSocket.html" />
                 <section title="setActive" ref="classrlSocket.html" />
@@ -4521,8 +4527,6 @@
       <keyword name="freeaddrinfo" id="rlsocket.cpp::freeaddrinfo" ref="rlsocket_8cpp.html#a01bb3f9d1bc8c8e071f29e0d162cf138" />
       <keyword name="getaddrinfo" id="rlsocket.cpp::getaddrinfo" ref="rlsocket_8cpp.html#aadf91875b0d8c3b5301f678b815b4f44" />
       <keyword name="getnameinfo" id="rlsocket.cpp::getnameinfo" ref="rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458" />
-      <keyword name="rlGetsockopt" id="rlsocket.cpp::rlGetsockopt" ref="rlsocket_8cpp.html#a423730f58617a96d554e9771df5c9c51" />
-      <keyword name="rlSetsockopt" id="rlsocket.cpp::rlSetsockopt" ref="rlsocket_8cpp.html#a06ce098cab84e24409aa04030307055c" />
       <keyword name="rlwsa" id="rlsocket.cpp::rlwsa" ref="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="wsa" id="rlsocket.h::wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
       <keyword name="rlGetsockopt" id="rlsocket.h::rlGetsockopt" ref="rlsocket_8h.html#a423730f58617a96d554e9771df5c9c51" />
@@ -5905,6 +5909,8 @@
       <keyword name="setIPVersion" id="rlSocket::setIPVersion" ref="classrlSocket.html#a88324ba29cb6b5d0e6496bf2451e2b09" />
       <keyword name="getIPVersion" id="rlSocket::getIPVersion" ref="classrlSocket.html#aac40e84e8616e2ab74302f1979eaafd0" />
       <keyword name="sendProcessViewBrowserButtonEvent" id="rlSocket::sendProcessViewBrowserButtonEvent" ref="classrlSocket.html#ab9444f22e76c22ab46df0a278aeb1e82" />
+      <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#af97bc6ec8c70798f0f8af1d84c1415de" />
+      <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a770535c111fb3efb0de39027c1e866d7" />
       <keyword name="doConnect" id="rlSiemensTCP::doConnect" ref="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc" />
       <keyword name="read_iso" id="rlSiemensTCP::read_iso" ref="classrlSiemensTCP.html#aa43942074ce5a2e879994a783a784fe2" />
       <keyword name="write_iso" id="rlSiemensTCP::write_iso" ref="classrlSiemensTCP.html#a5f09e6c3ef726892e398b96a292c733a" />
@@ -5921,6 +5927,8 @@
       <keyword name="plc_type" id="rlSiemensTCP::plc_type" ref="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf" />
       <keyword name="fetch_write" id="rlSiemensTCP::fetch_write" ref="classrlSiemensTCP.html#a5c6939ebececeef287681d94f08d5d2f" />
       <keyword name="pdu" id="rlSiemensTCP::pdu" ref="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46" />
+      <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
+      <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a10cd80de25e59f4c989d09854dd60853" />
       <keyword name="s" id="rlSocket::s" ref="classrlSocket.html#a3f70186af86837a39592e4bf18076d24" />
       <keyword name="sockaddr" id="rlSocket::sockaddr" ref="classrlSocket.html#a882f357e0d34547baeacf1b173c75855" />
       <keyword name="ORG_DB" id="rlSiemensTCP::ORG_DB" ref="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a1b1d79ae437883ab2416c52692c9a30f" />
@@ -6065,6 +6073,10 @@
       <keyword name="setIPVersion" id="rlSocket::setIPVersion" ref="classrlSocket.html#a88324ba29cb6b5d0e6496bf2451e2b09" />
       <keyword name="getIPVersion" id="rlSocket::getIPVersion" ref="classrlSocket.html#aac40e84e8616e2ab74302f1979eaafd0" />
       <keyword name="sendProcessViewBrowserButtonEvent" id="rlSocket::sendProcessViewBrowserButtonEvent" ref="classrlSocket.html#ab9444f22e76c22ab46df0a278aeb1e82" />
+      <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#af97bc6ec8c70798f0f8af1d84c1415de" />
+      <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a770535c111fb3efb0de39027c1e866d7" />
+      <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
+      <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a10cd80de25e59f4c989d09854dd60853" />
       <keyword name="s" id="rlSocket::s" ref="classrlSocket.html#a3f70186af86837a39592e4bf18076d24" />
       <keyword name="sockaddr" id="rlSocket::sockaddr" ref="classrlSocket.html#a882f357e0d34547baeacf1b173c75855" />
       <keyword name="adr" id="rlSocket::adr" ref="classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82" />

@@ -191,23 +191,6 @@ you have to call this function before you use any sockets
 portable versions of getsockopt and setsockopt
 defines are included from the above header files
 </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00066">66</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> getsockopt(sockfd, level, optname, (<span class="keywordtype">char</span> *) optval, optlen);</div>
-<div class="line"><span class="preprocessor">#elif defined(__VMS)</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordtype">size_t</span> len = *optlen;</div>
-<div class="line">  <span class="keywordtype">int</span> ret = getsockopt(sockfd, level, optname, optval, &amp;len);</div>
-<div class="line">  *optlen = len;</div>
-<div class="line">  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><span class="preprocessor">#else  </span></div>
-<div class="line"><span class="preprocessor"></span>  socklen_t len = *optlen;</div>
-<div class="line">  <span class="keywordtype">int</span> ret = getsockopt(sockfd, level, optname, optval, &amp;len);</div>
-<div class="line">  *optlen = len;</div>
-<div class="line">  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="preprocessor"></span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a06ce098cab84e24409aa04030307055c"></a>
@@ -252,15 +235,6 @@ defines are included from the above header files
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00083">83</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> setsockopt(sockfd, level, optname, (<span class="keyword">const</span> <span class="keywordtype">char</span> *) optval, optlen);</div>
-<div class="line"><span class="preprocessor">#else</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> setsockopt(sockfd, level, optname, optval, optlen);</div>
-<div class="line"><span class="preprocessor">#endif</span></div>
-<div class="line"><span class="preprocessor"></span>}</div>
-</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a0a9b8ddbe56e24b68eacf127767f3024"></a>
@@ -276,7 +250,7 @@ defines are included from the above header files
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00093">93</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00067">67</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">static</span> <span class="keywordtype">int</span> first = 1;</div>

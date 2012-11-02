@@ -200,6 +200,26 @@ public:
   int  s;
 
   /*! <pre>
+      portable version of getsockopt
+  </pre> */
+  static int rlGetsockopt(int sockfd, int level, int optname, void *optval, int *optlen);
+  
+  /*! <pre>
+      portable version of setsockopt
+  </pre> */
+  static int rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen);
+
+  /*! <pre>
+      get an option from this->s
+  </pre> */
+  int rlGetsockopt(int level, int optname);
+
+  /*! <pre>
+      set an option on this->s
+  </pre> */
+  int rlSetsockopt(int level, int optname);
+
+  /*! <pre>
       this array can be casted to (struct sockaddr *) &sockaddr[0];
       in case of active==0 it will store sockaddr of the last client
       (48 bytes spare)

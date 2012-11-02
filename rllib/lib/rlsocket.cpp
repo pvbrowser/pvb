@@ -63,32 +63,6 @@ int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWOR
 #include "rlwthread.h"
 #include "rlcutil.h"
 
-int rlGetsockopt(int sockfd, int level, int optname, void *optval, int *optlen)
-{
-#ifdef RLWIN32
-  return getsockopt(sockfd, level, optname, (char *) optval, optlen);
-#elif defined(__VMS)
-  size_t len = *optlen;
-  int ret = getsockopt(sockfd, level, optname, optval, &len);
-  *optlen = len;
-  return ret;
-#else  
-  socklen_t len = *optlen;
-  int ret = getsockopt(sockfd, level, optname, optval, &len);
-  *optlen = len;
-  return ret;
-#endif
-}
-
-int rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen)
-{
-#ifdef RLWIN32
-  return setsockopt(sockfd, level, optname, (const char *) optval, optlen);
-#else
-  return setsockopt(sockfd, level, optname, optval, optlen);
-#endif
-}
-
 /* windows stuff */
 int rlwsa()
 {
@@ -557,4 +531,44 @@ int rlSocket::getIPVersion()
 {
   return rl_ipversion;
 }
+
+int rlSocket::rlGetsockopt(int sockfd, int level, int optname, void *optval, int *optlen)
+{
+#ifdef RLWIN32
+  return getsockopt(sockfd, level, optname, (char *) optval, optlen);
+#elif defined(__VMS)
+  size_t len = *optlen;
+  int ret = getsockopt(sockfd, level, optname, optval, &len);
+  *optlen = len;
+  return ret;
+#else  
+  socklen_t len = *optlen;
+  int ret = getsockopt(sockfd, level, optname, optval, &len);
+  *optlen = len;
+  return ret;
+#endif
+}
+
+int rlSocket::rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen)
+{
+#ifdef RLWIN32
+  return setsockopt(sockfd, level, optname, (const char *) optval, optlen);
+#else
+  return setsockopt(sockfd, level, optname, optval, optlen);
+#endif
+}
+
+int rlSocket::rlGetsockopt(int level, int optname)
+{
+  int option = 1;
+  int len = sizeof(option);
+  return rlGetsockopt(s,level,optname,&option,&len);
+}
+
+int rlSocket::rlSetsockopt(int level, int optname)
+{
+  int option = 1;
+  return rlSetsockopt(s,level,optname,&option,sizeof(option));
+}
+
 
