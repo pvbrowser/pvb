@@ -993,6 +993,7 @@ void MainWindow::slotMake()
 
 void MainWindow::slotQtDesigner()
 {
+  int ret;
   char cmd[1024];
   if(opt_develop.arg_debug) printf("qtdesigner ui %s imask=%d\n", (const char *) name.toUtf8(), imask);
 
@@ -1002,7 +1003,7 @@ void MainWindow::slotQtDesigner()
     return;
   }
   
-  int ret = QMessageBox::warning(this, tr("pvdevelop"),
+  ret = QMessageBox::warning(this, tr("pvdevelop"),
                      tr(exportWarning),
                      QMessageBox::Yes ,
                      QMessageBox::No  | QMessageBox::Default);
@@ -1024,7 +1025,7 @@ void MainWindow::slotQtDesigner()
 #ifdef PVWIN32  
   sprintf(cmd,"wait pvdevelop -action=designerUi:%d %s", mymask, (const char *) name.toUtf8());
   if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
-  int ret = mysystem(cmd);
+  ret = mysystem(cmd);
   if(ret < 0) printf("ERROR system(%s)\n", cmd);
 #else
   sprintf(cmd,"pvdevelop -action=designerUi:%d %s", mymask,  (const char *) name.toUtf8());

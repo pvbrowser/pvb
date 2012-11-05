@@ -5284,6 +5284,287 @@ fail:
 }
 
 
+static int _wrap_rlSocket_rlGetsockopt__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  void *arg4 = (void *) 0 ;
+  int *arg5 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::rlGetsockopt",5,5)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlSocket::rlGetsockopt",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlSocket::rlGetsockopt",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlSocket::rlGetsockopt",3,"int");
+  if(!SWIG_isptrtype(L,4)) SWIG_fail_arg("rlSocket::rlGetsockopt",4,"void *");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlSocket::rlGetsockopt",5,"int *");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4=(void *)SWIG_MustGetPtr(L,4,0,0,4,"rlSocket_rlGetsockopt");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlSocket_rlGetsockopt",5,SWIGTYPE_p_int);
+  }
+  
+  result = (int)rlSocket::rlGetsockopt(arg1,arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSocket_rlSetsockopt__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  void *arg4 = (void *) 0 ;
+  int arg5 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::rlSetsockopt",5,5)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlSocket::rlSetsockopt",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlSocket::rlSetsockopt",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlSocket::rlSetsockopt",3,"int");
+  if(!SWIG_isptrtype(L,4)) SWIG_fail_arg("rlSocket::rlSetsockopt",4,"void const *");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rlSocket::rlSetsockopt",5,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4=(void *)SWIG_MustGetPtr(L,4,0,0,4,"rlSocket_rlSetsockopt");
+  arg5 = (int)lua_tonumber(L, 5);
+  result = (int)rlSocket::rlSetsockopt(arg1,arg2,arg3,(void const *)arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSocket_rlGetsockopt__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::rlGetsockopt",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSocket::rlGetsockopt",1,"rlSocket *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlSocket::rlGetsockopt",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlSocket::rlGetsockopt",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSocket,0))){
+    SWIG_fail_ptr("rlSocket_rlGetsockopt",1,SWIGTYPE_p_rlSocket);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->rlGetsockopt(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSocket_rlGetsockopt(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlSocket, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlSocket_rlGetsockopt__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (SWIG_isptrtype(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, 0, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlSocket_rlGetsockopt__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlSocket_rlGetsockopt'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlSocket::rlGetsockopt(int,int,int,void *,int *)\n"
+    "    rlSocket::rlGetsockopt(int,int)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlSocket_rlSetsockopt__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::rlSetsockopt",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSocket::rlSetsockopt",1,"rlSocket *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlSocket::rlSetsockopt",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlSocket::rlSetsockopt",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSocket,0))){
+    SWIG_fail_ptr("rlSocket_rlSetsockopt",1,SWIGTYPE_p_rlSocket);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->rlSetsockopt(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSocket_rlSetsockopt(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlSocket, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlSocket_rlSetsockopt__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            void *ptr;
+            if (SWIG_isptrtype(L,argv[3])==0 || SWIG_ConvertPtr(L,argv[3], (void **) &ptr, 0, 0)) {
+              _v = 0;
+            } else {
+              _v = 1;
+            }
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_rlSocket_rlSetsockopt__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlSocket_rlSetsockopt'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlSocket::rlSetsockopt(int,int,int,void const *,int)\n"
+    "    rlSocket::rlSetsockopt(int,int)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_rlSocket_sockaddr_set(lua_State* L) {
   int SWIG_arg = 0;
   rlSocket *arg1 = (rlSocket *) 0 ;
@@ -5362,6 +5643,8 @@ static swig_lua_method swig_rlSocket_methods[] = {
     {"setIPVersion", _wrap_rlSocket_setIPVersion}, 
     {"getIPVersion", _wrap_rlSocket_getIPVersion}, 
     {"sendProcessViewBrowserButtonEvent", _wrap_rlSocket_sendProcessViewBrowserButtonEvent}, 
+    {"rlGetsockopt", _wrap_rlSocket_rlGetsockopt}, 
+    {"rlSetsockopt", _wrap_rlSocket_rlSetsockopt}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlSocket_attributes[] = {

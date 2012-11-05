@@ -333,6 +333,8 @@ class rlSocket(_object):
     __swig_setmethods__["s"] = _rllib.rlSocket_s_set
     __swig_getmethods__["s"] = _rllib.rlSocket_s_get
     if _newclass:s = _swig_property(_rllib.rlSocket_s_get, _rllib.rlSocket_s_set)
+    def rlGetsockopt(self, *args): return _rllib.rlSocket_rlGetsockopt(self, *args)
+    def rlSetsockopt(self, *args): return _rllib.rlSocket_rlSetsockopt(self, *args)
     __swig_setmethods__["sockaddr"] = _rllib.rlSocket_sockaddr_set
     __swig_getmethods__["sockaddr"] = _rllib.rlSocket_sockaddr_get
     if _newclass:sockaddr = _swig_property(_rllib.rlSocket_sockaddr_get, _rllib.rlSocket_sockaddr_set)
