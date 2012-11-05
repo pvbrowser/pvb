@@ -17,5 +17,6 @@
     <file>images/back.png</file>
     <file>images/gohome.png</file>
     <file>images/find.png</file>
+    <file>images/example_layout.png</file>
 </qresource>
 </RCC>
