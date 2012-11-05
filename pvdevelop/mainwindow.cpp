@@ -31,6 +31,15 @@
 
 extern OPT_DEVELOP opt_develop;
 
+static const char exportWarning[] = "You are not allowed to define the layout management within Qt Designer.\n"
+                                    "You will have to define a possible layout management within pvdevelop.\n"
+                                    "This is done within the graphical designer of pvdevelop.\n"
+                                    "There right click the mouse and choose \"Edit layout\" from the context menu.\n"
+                                    "\n"
+                                    "If you define a layout management within Qt Designer the geometry of your widgets will get lost after importing again to pvdevelop!!!\n"
+                                    "\n"
+                                    "Do you want to continue ?\n";
+
 MainWindow::MainWindow()
 {
   if(opt_develop.arg_debug) printf("MainWindow start\n");
@@ -992,6 +1001,12 @@ void MainWindow::slotQtDesigner()
     QMessageBox::information(this,"pvdevelop","No project loaded",QMessageBox::Ok);
     return;
   }
+  
+  int ret = QMessageBox::warning(this, tr("pvdevelop"),
+                     tr(exportWarning),
+                     QMessageBox::Yes ,
+                     QMessageBox::No  | QMessageBox::Default);
+  if(ret == QMessageBox::No) return;
 
   if(opt_develop.script == PV_LUA)
   {
@@ -1046,6 +1061,11 @@ void MainWindow::slotExportUI()
                      QMessageBox::No);
     if(ret == QMessageBox::No) return;
   }
+  int ret = QMessageBox::warning(this, tr("pvdevelop"),
+                     tr(exportWarning),
+                     QMessageBox::Yes ,
+                     QMessageBox::No  | QMessageBox::Default);
+  if(ret == QMessageBox::No) return;
   export_ui(imask);
 }
 

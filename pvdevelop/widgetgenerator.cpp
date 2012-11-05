@@ -3456,6 +3456,7 @@ int importUi(const char *uifile, Designer *designer)
   char filename[80], *cptr;
   int imask;
   QWidget *root;
+  char buf[MAXOPT_DEVELOP];
 
   printf("importUi(%s)\n", uifile);
   if(strlen(uifile) > 70)
@@ -3463,6 +3464,24 @@ int importUi(const char *uifile, Designer *designer)
     printf("filename too long %s\n", uifile);
     return -1;
   }
+
+  FILE *fin = fopen(uifile,"r");
+  if(fin != NULL)
+  {
+    while(fgets(buf,sizeof(buf),fin) != NULL)
+    {
+      if(strstr(buf,"<layout") != NULL)
+      {
+        printf("ATTENTION: You are not allowed to define a layout management in Qt Designer and import the ui file to pvdevelop\n");
+        printf("           You must define a possible layout management within pvdevelop instead.\n");
+        printf("           IMPORT ABORTED\n");
+        fclose(fin);
+        return -1;
+      }
+    }  
+  }
+  fclose(fin);
+
   perhapsSetTabOrder(uifile);
   QFile ui(uifile);
   bool ret = ui.open(QIODevice::ReadOnly);

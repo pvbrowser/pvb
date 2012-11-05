@@ -300,6 +300,8 @@ void  perhapsDoAction()
     }  
     if(opt_develop.arg_mask_to_generate > 0)
     {
+      printf("ATTENTION: You are not allowed to export an ui file, define a layout management in Qt Designer and import the ui file again to pvdevelop\n");
+      printf("           You must define a possible layout management within pvdevelop instead.\n");
       export_ui(opt_develop.arg_mask_to_generate);
     }
     else printf("error: arg_mask_to_generate <= 0\n");
@@ -332,6 +334,8 @@ void  perhapsDoAction()
       sprintf(maskname,"mask%d", opt_develop.arg_mask_to_generate);
       Designer *designer = new Designer(maskname);
       sprintf(maskname,"mask%d.ui", opt_develop.arg_mask_to_generate);
+      printf("ATTENTION: You are not allowed to export an ui file, define a layout management in Qt Designer and import the ui file again to pvdevelop\n");
+      printf("           You must define a possible layout management within pvdevelop instead.\n");
       export_ui(opt_develop.arg_mask_to_generate);
       char cmd[1024];
 #ifdef PVWIN32      
@@ -346,6 +350,8 @@ void  perhapsDoAction()
 #ifdef PVUNIX
       action("make");
 #endif
+      printf("ATTENTION: You are not allowed to export an ui file, define a layout management in Qt Designer and import the ui file again to pvdevelop\n");
+      printf("           You must define a possible layout management within pvdevelop instead.\n");
     }
     else printf("error: arg_mask_to_generate <= 0\n");
   }
