@@ -1559,10 +1559,10 @@
       <keyword name="pvSetManualUrl" id="processviewserver.h::pvSetManualUrl" ref="processviewserver_8h.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="processviewserver.h::pvSelectLanguage" ref="processviewserver_8h.html#gacf49bec64bf2e889ba67e2e15663805b" />
       <keyword name="pvStartDefinition" id="processviewserver.h::pvStartDefinition" ref="processviewserver_8h.html#ga1616438aedd778acc2681be15f9cd908" />
+      <keyword name="pvQWidget" id="processviewserver.h::pvQWidget" ref="processviewserver_8h.html#gaad166c1027941a58ba6f083ca05787f5" />
       <keyword name="pvQLayoutVbox" id="processviewserver.h::pvQLayoutVbox" ref="processviewserver_8h.html#ga02c905c2e920efb7016f5453b6522d1d" />
       <keyword name="pvQLayoutHbox" id="processviewserver.h::pvQLayoutHbox" ref="processviewserver_8h.html#gadc8ed44c25ff2ae52636fa0609c2ebd7" />
       <keyword name="pvQLayoutGrid" id="processviewserver.h::pvQLayoutGrid" ref="processviewserver_8h.html#ga244e4d57dc982b296a2f37766242ad31" />
-      <keyword name="pvQWidget" id="processviewserver.h::pvQWidget" ref="processviewserver_8h.html#gaad166c1027941a58ba6f083ca05787f5" />
       <keyword name="pvQLabel" id="processviewserver.h::pvQLabel" ref="processviewserver_8h.html#ga8ac7f67d84d12e336f9aee2e1bbf86c2" />
       <keyword name="pvQComboBox" id="processviewserver.h::pvQComboBox" ref="processviewserver_8h.html#ga5c0d0f0dd560e26415b30af6be2b73a7" />
       <keyword name="pvQLineEdit" id="processviewserver.h::pvQLineEdit" ref="processviewserver_8h.html#ga1c4ae80cf5e6a4ad7374170665fb55f2" />
@@ -2420,10 +2420,10 @@
       <keyword name="pvSelectLanguage" id="IniAndGlobal::pvSelectLanguage" ref="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b" />
       <keyword name="Construction" id="Construction" ref="group__Contruction.html" />
       <keyword name="pvStartDefinition" id="Contruction::pvStartDefinition" ref="group__Contruction.html#ga1616438aedd778acc2681be15f9cd908" />
+      <keyword name="pvQWidget" id="Contruction::pvQWidget" ref="group__Contruction.html#gaad166c1027941a58ba6f083ca05787f5" />
       <keyword name="pvQLayoutVbox" id="Contruction::pvQLayoutVbox" ref="group__Contruction.html#ga02c905c2e920efb7016f5453b6522d1d" />
       <keyword name="pvQLayoutHbox" id="Contruction::pvQLayoutHbox" ref="group__Contruction.html#gadc8ed44c25ff2ae52636fa0609c2ebd7" />
       <keyword name="pvQLayoutGrid" id="Contruction::pvQLayoutGrid" ref="group__Contruction.html#ga244e4d57dc982b296a2f37766242ad31" />
-      <keyword name="pvQWidget" id="Contruction::pvQWidget" ref="group__Contruction.html#gaad166c1027941a58ba6f083ca05787f5" />
       <keyword name="pvQLabel" id="Contruction::pvQLabel" ref="group__Contruction.html#ga8ac7f67d84d12e336f9aee2e1bbf86c2" />
       <keyword name="pvQComboBox" id="Contruction::pvQComboBox" ref="group__Contruction.html#ga5c0d0f0dd560e26415b30af6be2b73a7" />
       <keyword name="pvQLineEdit" id="Contruction::pvQLineEdit" ref="group__Contruction.html#ga1c4ae80cf5e6a4ad7374170665fb55f2" />

@@ -990,6 +990,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -998,6 +1000,7 @@ pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
 </pre> */
+int pvQWidget(PARAM *p, int id, int parent);
 
 /*! <pre>
 Layout Vbox
@@ -1014,7 +1017,6 @@ Layout Grid
 </pre> */
 int pvQLayoutGrid(PARAM *p, int id, int parent);
 
-int pvQWidget(PARAM *p, int id, int parent);
 /*! <pre>
 Creates a new QLabel. See also pvQWidget().
 
@@ -1029,6 +1031,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1039,8 +1043,6 @@ pvSaveAsBmp()
 pvSetAlignment()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvSetBackgroundColor()
 pvText()
 pvSetStyle()
@@ -1066,6 +1068,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1076,8 +1080,6 @@ pvSaveAsBmp()
 pvSetAlignment()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvClear()
 pvInsertItem()
 pvRemoveItem()
@@ -1100,6 +1102,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1110,8 +1114,6 @@ pvSaveAsBmp()
 pvSetAlignment()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvText()
 pvSetEditable()
 pvSetStyle()
@@ -1132,6 +1134,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1141,8 +1145,6 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvSetPixmap()
 pvText()
 </pre> */
@@ -1164,6 +1166,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1192,6 +1196,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1219,6 +1225,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1242,6 +1250,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1251,8 +1261,6 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvSetChecked()
 </pre> */
 int pvQRadioButton(PARAM *p, int id, int parent);
@@ -1270,6 +1278,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1279,8 +1289,6 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvSetChecked()
 </pre> */
 int pvQCheckBox(PARAM *p, int id, int parent);
@@ -1299,6 +1307,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1324,6 +1334,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1371,6 +1383,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1395,6 +1409,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1419,6 +1435,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1445,6 +1463,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1471,6 +1491,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1495,6 +1517,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1526,6 +1550,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1575,6 +1601,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1601,6 +1629,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1627,6 +1657,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1658,6 +1690,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1667,8 +1701,6 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvClear()
 pvText()
 pvSetEditable()
@@ -1692,6 +1724,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1701,8 +1735,6 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetText()
 pvPrintf()
-pvSetStyleSheet()
-pvPrintfStyleSheet();
 pvSetSource()
 pvMoveContent()
 pvMoveCursor()
@@ -1725,6 +1757,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1762,6 +1796,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1876,6 +1912,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1903,6 +1941,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1930,6 +1970,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
@@ -1965,6 +2007,8 @@ pvMove();
 pvResize();
 pvHide();
 pvShow();
+pvSetStyleSheet()
+pvPrintfStyleSheet();
 pvSetPaletteBackgroundColor()
 pvSetPaletteForegroundColor()
 pvSetFontColor()
