@@ -363,6 +363,11 @@ MainWindow::MainWindow()
 #ifdef BROWSERPLUGIN
   QApplication::setActiveWindow(this); // now we will get keyboard events
 #endif
+  busyWidget = new QPushButton(this);
+  busyWidget->setIcon(QIcon(":images/app.png"));
+  busyWidgetTimer = new QTimer(this);
+  busyWidgetTimer->setSingleShot(true);
+  connect(busyWidgetTimer,SIGNAL(timeout()),this,SLOT(slotBusyWidgetTimeout()));
 }
 
 MainWindow::~MainWindow()
@@ -1243,6 +1248,15 @@ void MainWindow::slotReconnect()
 #endif
 #ifdef PVUNIX
     strcat(buf, " Unix");
+#ifdef PVMAC
+    strcat(buf, " OS-X");
+#elif defined(USE_ANDROID)
+    strcat(buf, " Android");
+#elif defined(USE_MAEMO)
+    strcat(buf, " Maemo");
+#elif defined(USE_SYMBIAN)
+    strcat(buf, " Symbian");
+#endif
 #endif
     strcat(buf, "\n");
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
@@ -1667,5 +1681,28 @@ void MainWindow::keyReleaseEvent(QKeyEvent *e)
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
   }
   QMainWindow::keyReleaseEvent(e);
+}
+
+void MainWindow::showBusyWidget(int milliseconds, const char *text)
+{
+  busyWidgetText = text;
+  busyWidgetTimer->start(milliseconds);
+}
+
+void MainWindow::slotBusyWidgetTimeout()
+{
+  busyWidget->setText(busyWidgetText);
+  busyWidget->resize(busyWidget->sizeHint().width(),busyWidget->sizeHint().height());
+  QPoint p((width()  - busyWidget->width())/2, 
+           (height() - busyWidget->height())/2);
+  busyWidget->move(p);
+  busyWidget->show();
+  busyWidget->raise();
+}
+
+void MainWindow::hideBusyWidget()
+{
+  busyWidgetTimer->stop();
+  busyWidget->hide();
 }
 

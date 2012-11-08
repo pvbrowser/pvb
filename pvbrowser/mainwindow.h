@@ -121,6 +121,10 @@ public:
   MyThread mythread;
   QMap <QString,QLibrary *> libs; // custom widget plugin libs
   QMap <QString,QWidget *(*)(const char * , int *, int , QWidget *, const char * )> newCustomWidget;
+  QPushButton *busyWidget;
+  QString busyWidgetText;
+  void showBusyWidget(int milliseconds, const char *text);
+  void hideBusyWidget();
 
 public slots:
   void slotUrl(const QString &url);
@@ -154,6 +158,7 @@ private slots:
   void slotTabChanged(int index);
   void slotNewTab();
   void slotDeleteTab();
+  void slotBusyWidgetTimeout();
 
 private:
   void createActions();
@@ -206,6 +211,7 @@ private:
   QString url;
   QLabel *logoLabel;
   QTimer *timer;
+  QTimer *busyWidgetTimer;
 };
 
 #endif

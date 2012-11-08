@@ -1100,6 +1100,7 @@ void Interpreter::interprete(const char *command)
   }
   else if(strncmp(command,"endDefinition",13) == 0) // endDefinition of new MainWidget
   {
+    mainWindow->hideBusyWidget();
     if(allBase == NULL)
     {
       if(opt.arg_debug) printf("endDefinition begin\n");
@@ -5107,6 +5108,7 @@ void Interpreter::interprets(const char *command)
     mainLayout = NULL;
     hasLayout = 0;
     percentZoomMask = 100;
+    mainWindow->showBusyWidget(0,"Constructing widget tree...");
     if(opt.arg_debug) printf("startDefinition command=%s",command);
     sscanf(command,"startDefinition(%d)",&n);
     if(allBase == NULL)
