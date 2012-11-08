@@ -45,7 +45,8 @@ public:
     S7_300    = 2,
     S7_400    = 3,
     S5        = 4,
-    RACK_SLOT = 5
+    RACK_SLOT = 5,
+    S7_1200   = 6   // patch from user slammera from our forum (8 Nov 2012)
   };
   enum SiemensFunctionCodes
   {

@@ -16,7 +16,7 @@ var searchData=
   ['t_5fulonglong',['t_ulonglong',['../classrlCanOpenTypes.html#a4ea8747f519cf72c7a00cdb10e921a97',1,'rlCanOpenTypes']]],
   ['t_5fushort',['t_ushort',['../classrlCanOpenTypes.html#af96f5ca99e9cf7a4120c48d1f90fe40e',1,'rlCanOpenTypes']]],
   ['tablename',['tableName',['../classrlBussignalDatabase.html#a557c98380e580cac0e96438ec64cfe31',1,'rlBussignalDatabase']]],
-  ['td',['TD',['../classrlController.html#ab60628ed852721e3966f86820a017fb2',1,'rlController::TD()'],['../classrlController.html#a9d3f360b1e915629f33d10715361c7b0',1,'rlController::Td()']]],
+  ['td',['Td',['../classrlController.html#a9d3f360b1e915629f33d10715361c7b0',1,'rlController::Td()'],['../classrlController.html#ab60628ed852721e3966f86820a017fb2',1,'rlController::TD()']]],
   ['tel',['tel',['../classrlModbus.html#a8b8d2c8ccd15c70b3313b914b9252c09',1,'rlModbus']]],
   ['tel_5freceive',['tel_receive',['../classrl3964R.html#af69530cded2a4d610ad51a3287fdbc46',1,'rl3964R']]],
   ['tel_5freceive_5flength',['tel_receive_length',['../classrl3964R.html#a4f970d6ccb6d30678dfb214f7335f641',1,'rl3964R']]],

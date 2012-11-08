@@ -58,6 +58,8 @@ void rlSiemensTCP::doConnect()
     {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,2  ,0xC0,1,9};
   static const unsigned char s7_400_connect_block[] =
     {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,3  ,0xC0,1,9};
+  static const unsigned char s7_1200_connect_block[] =
+    {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,0  ,0xC0,1,9};
   static const unsigned char other_connect_block[] =
     {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};
   unsigned char connect_block[22];
@@ -66,10 +68,11 @@ void rlSiemensTCP::doConnect()
     {0x03,0x00,0x00,0x19,0x02,0xF0,0x80,0x32,0x01,0x00,0x00,0xCC,0xC1,0x00,0x08,0x00,0x00,0xF0,0x00,0x00,0x01,0x00,0x01,0x03,0xC0};  
   unsigned char buf[512];
 
-  if     (plc_type == S7_200) memcpy(connect_block,s7_200_connect_block,sizeof(connect_block));
-  else if(plc_type == S7_300) memcpy(connect_block,s7_300_connect_block,sizeof(connect_block));
-  else if(plc_type == S7_400) memcpy(connect_block,s7_400_connect_block,sizeof(connect_block));
-  else                        memcpy(connect_block,other_connect_block,sizeof(connect_block));
+  if     (plc_type == S7_200)  memcpy(connect_block,s7_200_connect_block,sizeof(connect_block));
+  else if(plc_type == S7_300)  memcpy(connect_block,s7_300_connect_block,sizeof(connect_block));
+  else if(plc_type == S7_400)  memcpy(connect_block,s7_400_connect_block,sizeof(connect_block));
+  else if(plc_type == S7_1200) memcpy(connect_block,s7_1200_connect_block,sizeof(connect_block));
+  else                         memcpy(connect_block,other_connect_block,sizeof(connect_block));
 
   // according to an unproofen theory siemens chooses the TSAP as follows
   // connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)

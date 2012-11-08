@@ -57,7 +57,7 @@ var searchData=
   ['requests',['requests',['../classrlDF1.html#a335d1bbd7fc0c855c69c185fe233a4dc',1,'rlDF1']]],
   ['reserved',['reserved',['../structrlSiemensTCP_1_1IH.html#ac3ee6cf3a2b1fac94ce779f733fad1bd',1,'rlSiemensTCP::IH']]],
   ['reserved1_5ft',['RESERVED1_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398a1a7900b925dc0b85305337a1aefd081a',1,'rlCanOpenTypes']]],
-  ['reset',['RESET',['../classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd',1,'rlSerial::RESET()'],['../classdf1Buffer.html#a69e0cd9a12443b90e01e90ca293386bd',1,'df1Buffer::reset()']]],
+  ['reset',['reset',['../classdf1Buffer.html#a69e0cd9a12443b90e01e90ca293386bd',1,'df1Buffer::reset()'],['../classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd',1,'rlSerial::RESET()']]],
   ['resetlimits',['resetLimits',['../classrlController.html#a69bc9d1dc7b58ef158b36032b6b72e16',1,'rlController']]],
   ['response',['response',['../classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1',1,'rlModbus']]],
   ['response_5fcode_5fget_5fconfiguration',['RESPONSE_CODE_GET_CONFIGURATION',['../rlcanopenstructs_8h.html#a786531d89ce666d3c6f40e6b3a39c504',1,'rlcanopenstructs.h']]],
