@@ -331,7 +331,7 @@ MainWindow::MainWindow()
   // setup watchdog
   timer = new QTimer();
   QObject::connect(timer, SIGNAL(timeout()), this, SLOT(slotTimeOut()));
-  timer->start(1000*10);
+  // moved timer start to end of this method  because show may need longer on mobile devices  timer->start(1000*10);
 
   if(opt.arg_host[0] != '\0') url = opt.arg_host;
   else                        url = opt.initialhost;
@@ -368,6 +368,7 @@ MainWindow::MainWindow()
   busyWidgetTimer = new QTimer(this);
   busyWidgetTimer->setSingleShot(true);
   connect(busyWidgetTimer,SIGNAL(timeout()),this,SLOT(slotBusyWidgetTimeout()));
+  timer->start(1000*10);
 }
 
 MainWindow::~MainWindow()

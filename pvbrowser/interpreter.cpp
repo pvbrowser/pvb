@@ -5108,7 +5108,7 @@ void Interpreter::interprets(const char *command)
     mainLayout = NULL;
     hasLayout = 0;
     percentZoomMask = 100;
-    mainWindow->showBusyWidget(0,"Constructing widget tree...");
+    mainWindow->showBusyWidget(2000,"Constructing widget tree...");
     if(opt.arg_debug) printf("startDefinition command=%s",command);
     sscanf(command,"startDefinition(%d)",&n);
     if(allBase == NULL)

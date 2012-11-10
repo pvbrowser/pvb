@@ -169,10 +169,12 @@ int main(int argc, char *argv[])
   splash->finish(&mainWin);
   delete splash;
   mainWin.show();
+  mainWin.showBusyWidget(2000,"Starting...");
   app.processEvents();
   mainWin.slotReconnect();
   mainWin.slotTimeOut();
   mainWin.mythread.start(QThread::HighestPriority);
+  mainWin.hideBusyWidget();
   return app.exec();
 }
 #endif

@@ -31,11 +31,23 @@ DlgOpt::DlgOpt(QWidget *parent) : QDialog(parent)
   QObject::connect(QPushButton_ok,    SIGNAL(clicked()),this,SLOT(okClicked()));
   QObject::connect(QPushButton_cancel,SIGNAL(clicked()),this,SLOT(reject()));
   edit1->setLineWrapMode(QTextEdit::NoWrap);
+  edit1->setTextInteractionFlags(Qt::TextEditorInteraction);
 
   /* add layout begin */
   QVBoxLayout *vlayout = new QVBoxLayout(this);
   QHBoxLayout *hlayout = new QHBoxLayout();
 
+#ifdef USE_MAEMO
+  vlayout->addLayout(hlayout);
+  vlayout->addWidget(edit1);
+  hlayout->addSpacing(10);
+  hlayout->addSpacing(200);
+  hlayout->addWidget(QPushButton_cancel);
+  hlayout->addSpacing(10);
+  hlayout->addWidget(QPushButton_ok);
+  hlayout->addSpacing(200);
+  vlayout->activate();
+#else
   vlayout->addWidget(edit1);
   vlayout->addLayout(hlayout);
   hlayout->addSpacing(10);
@@ -45,6 +57,7 @@ DlgOpt::DlgOpt(QWidget *parent) : QDialog(parent)
   hlayout->addWidget(QPushButton_ok);
   hlayout->addSpacing(200);
   vlayout->activate();
+#endif  
   /* add layout end */
 }
 
@@ -54,12 +67,19 @@ DlgOpt::~DlgOpt()
 
 void  DlgOpt::initDialog()
 {
+#ifdef USE_MAEMO
+  edit1= new QTextEdit(this);
+  //edit1->setGeometry(10,10,380,241);
+  //edit1->setMinimumSize(0,0);
+  //edit1->setMaximumSize(1280,1024);
+#else
   this->resize(400,300);
   this->setMinimumSize(0,0);
   edit1= new QTextEdit(this);
   edit1->setGeometry(10,10,380,241);
   edit1->setMinimumSize(0,0);
   edit1->setMaximumSize(1280,1024);
+#endif  
   edit1->setPlainText("");
   int fsize = 12;
   if(opt.appfontsize > 0) fsize = opt.appfontsize;
@@ -75,6 +95,10 @@ void  DlgOpt::initDialog()
   QPushButton_cancel->setGeometry(110,260,100,30);
   QPushButton_cancel->setMinimumSize(0,0);
   QPushButton_cancel->setText(tr("Cancel"));
+
+#ifdef USE_MAEMO
+  showFullScreen();
+#endif
 }
 
 void DlgOpt::setFilename(const char *file)
