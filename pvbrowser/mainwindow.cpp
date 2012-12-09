@@ -986,6 +986,16 @@ void MainWindow::setCurrentFile(const QString &fileName)
   setTabText(shownName.toUtf8());
 }
 
+void MainWindow::slotEditToolStatus(int edit, int tool, int status)
+{
+  if(edit)   menuBar()->show();
+  else       menuBar()->hide();
+  if(tool)   fileToolBar->show();
+  else       fileToolBar->hide();
+  if(status) statusBar()->show();
+  else       statusBar()->hide();
+}
+
 void MainWindow::slotEditmenu()
 {
   if(opt.arg_debug) printf("slotEditmenu\n");

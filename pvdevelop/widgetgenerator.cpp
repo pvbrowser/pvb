@@ -1583,6 +1583,7 @@ int generateMask(const char *filename, QWidget *root)
   FileLines *fl;
   int found_begin, found_end, done_end, done;
 
+  setlocale(LC_NUMERIC, "C");
   if(loadFile(filename) != 0) return -1;
   if(opt_develop.murx)
   {
@@ -2390,6 +2391,7 @@ static int getWidget(FILE *fin, QWidget *root)
     else
     {
       isConstructor = 1;
+      setlocale(LC_NUMERIC, "C");
     }
     // end constructors
     // begin attributes

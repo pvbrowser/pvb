@@ -127,6 +127,7 @@ public:
   void hideBusyWidget();
 
 public slots:
+  void slotEditToolStatus(int edit, int tool, int status);
   void slotUrl(const QString &url);
   void dataReceived(int ind);
   void slotReconnect();
@@ -137,7 +138,7 @@ protected:
   void keyReleaseEvent(QKeyEvent *e);
   void closeEvent(QCloseEvent *event);
 
-private slots:
+public slots:
   void slotWhatsThis();
   void slotFileOpt();
   void slotWindow();
