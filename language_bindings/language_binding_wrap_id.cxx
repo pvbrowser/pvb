@@ -9215,6 +9215,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvQWidget(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:pvQWidget",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQWidget" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQWidget" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQWidget" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)pvQWidget(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvQLayoutVbox(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -9328,46 +9368,6 @@ SWIGINTERN PyObject *_wrap_pvQLayoutGrid(PyObject *SWIGUNUSEDPARM(self), PyObjec
   } 
   arg3 = static_cast< int >(val3);
   result = (int)pvQLayoutGrid(arg1,arg2,arg3);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_pvQWidget(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  PARAM *arg1 = (PARAM *) 0 ;
-  int arg2 ;
-  int arg3 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  int val3 ;
-  int ecode3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOO:pvQWidget",&obj0,&obj1,&obj2)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvQWidget" "', argument " "1"" of type '" "PARAM *""'"); 
-  }
-  arg1 = reinterpret_cast< PARAM * >(argp1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvQWidget" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  ecode3 = SWIG_AsVal_int(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvQWidget" "', argument " "3"" of type '" "int""'");
-  } 
-  arg3 = static_cast< int >(val3);
-  result = (int)pvQWidget(arg1,arg2,arg3);
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -37023,10 +37023,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSetManualUrl", _wrap_pvSetManualUrl, METH_VARARGS, NULL},
 	 { (char *)"pvSelectLanguage", _wrap_pvSelectLanguage, METH_VARARGS, NULL},
 	 { (char *)"pvStartDefinition", _wrap_pvStartDefinition, METH_VARARGS, NULL},
+	 { (char *)"pvQWidget", _wrap_pvQWidget, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutVbox", _wrap_pvQLayoutVbox, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutHbox", _wrap_pvQLayoutHbox, METH_VARARGS, NULL},
 	 { (char *)"pvQLayoutGrid", _wrap_pvQLayoutGrid, METH_VARARGS, NULL},
-	 { (char *)"pvQWidget", _wrap_pvQWidget, METH_VARARGS, NULL},
 	 { (char *)"pvQLabel", _wrap_pvQLabel, METH_VARARGS, NULL},
 	 { (char *)"pvQComboBox", _wrap_pvQComboBox, METH_VARARGS, NULL},
 	 { (char *)"pvQLineEdit", _wrap_pvQLineEdit, METH_VARARGS, NULL},

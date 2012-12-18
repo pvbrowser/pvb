@@ -35465,6 +35465,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "rlSiemensTCP_S7_400",SWIG_From_int(static_cast< int >(rlSiemensTCP::S7_400)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_S5",SWIG_From_int(static_cast< int >(rlSiemensTCP::S5)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_RACK_SLOT",SWIG_From_int(static_cast< int >(rlSiemensTCP::RACK_SLOT)));
+  SWIG_Python_SetConstant(d, "rlSiemensTCP_S7_1200",SWIG_From_int(static_cast< int >(rlSiemensTCP::S7_1200)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_WriteBit",SWIG_From_int(static_cast< int >(rlSiemensTCP::WriteBit)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_WriteByte",SWIG_From_int(static_cast< int >(rlSiemensTCP::WriteByte)));
 #if PY_VERSION_HEX >= 0x03000000

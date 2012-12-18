@@ -1376,6 +1376,7 @@ class rlSiemensTCP(rlSocket):
     S7_400 = _rllib.rlSiemensTCP_S7_400
     S5 = _rllib.rlSiemensTCP_S5
     RACK_SLOT = _rllib.rlSiemensTCP_RACK_SLOT
+    S7_1200 = _rllib.rlSiemensTCP_S7_1200
     WriteBit = _rllib.rlSiemensTCP_WriteBit
     WriteByte = _rllib.rlSiemensTCP_WriteByte
     def __init__(self, *args): 

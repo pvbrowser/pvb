@@ -954,6 +954,10 @@ def pvStartDefinition(*args):
   return _pv.pvStartDefinition(*args)
 pvStartDefinition = _pv.pvStartDefinition
 
+def pvQWidget(*args):
+  return _pv.pvQWidget(*args)
+pvQWidget = _pv.pvQWidget
+
 def pvQLayoutVbox(*args):
   return _pv.pvQLayoutVbox(*args)
 pvQLayoutVbox = _pv.pvQLayoutVbox
@@ -965,10 +969,6 @@ pvQLayoutHbox = _pv.pvQLayoutHbox
 def pvQLayoutGrid(*args):
   return _pv.pvQLayoutGrid(*args)
 pvQLayoutGrid = _pv.pvQLayoutGrid
-
-def pvQWidget(*args):
-  return _pv.pvQWidget(*args)
-pvQWidget = _pv.pvQWidget
 
 def pvQLabel(*args):
   return _pv.pvQLabel(*args)

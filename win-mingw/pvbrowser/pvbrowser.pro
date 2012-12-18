@@ -2,7 +2,7 @@
 # project file for pvbrowser          #                                    
 # you can uncomment CONFIG += USE_VTK #                                    
 #######################################                                    
-#CONFIG        += USE_VTK                                                   
+CONFIG        += USE_VTK                                                   
 #DEFINES       += NO_QWT                                                     
 DEFINES        -= UNICODE                                                    
 QT             += opengl svg webkit network                                  
@@ -56,63 +56,70 @@ USE_VTK {
                                                                            
 DEFINES      += USE_VTK                                                    
                                                                            
-HEADERS      += ../../pvbrowser/pvVtkTclWidget.h \                         
+HEADERS      += ../../pvbrowser/pvVtkTclWidget.h \                        
                 ../../pvbrowser/QVTKWidget.h                               
                                                                            
-SOURCES      += ../../pvbrowser/pvVtkTclWidget.cpp \                       
+SOURCES      += ../../pvbrowser/pvVtkTclWidget.cpp \                     
                 ../../pvbrowser/QVTKWidget.cpp                             
+
+QMAKE_LFLAGS   += --enable-auto-import
                                                                            
-INCLUDEPATH  += $(HOME)\vtk5\VTK\Rendering                                 
-INCLUDEPATH  += $(HOME)\vtk5\VTK\Common                                    
-INCLUDEPATH  += $(HOME)\vtk5\VTK\Filtering                                 
-INCLUDEPATH  += $(HOME)\vtk5\VTK\Graphics                                  
+# the following paths have been used for testing.
+# you might need to modify these paths.
+# for testing vtk was build with "../bin" outside of the VTK source directory
+INCLUDEPATH  += $(VTKDIR)/Rendering                                 
+INCLUDEPATH  += $(VTKDIR)/Common                                    
+INCLUDEPATH  += $(VTKDIR)/Filtering                                 
+INCLUDEPATH  += $(VTKDIR)/Graphics                                  
 INCLUDEPATH  += $(VTKDIR)                                                  
+INCLUDEPATH  += $(VTKDIR)/../bin                                                  
+INCLUDEPATH  += $(VTKDIR)/../bin/Rendering                                 
+INCLUDEPATH  += $(VTKDIR)/GUISupport/Qt
 INCLUDEPATH  += $(TCLDIR)/include                                          
                                                                            
-LIBS += $(VTKDIR)\bin\vtkCommon.lib                                        
-LIBS += $(VTKDIR)\bin\vtkCommonTCL.lib                                     
-LIBS += $(VTKDIR)\bin\vtkDICOMParser.lib                                   
-LIBS += $(VTKDIR)\bin\vtkexoIIc.lib                                        
-LIBS += $(VTKDIR)\bin\vtkexpat.lib                                         
-LIBS += $(VTKDIR)\bin\vtkFiltering.lib                                     
-LIBS += $(VTKDIR)\bin\vtkFilteringTCL.lib                                  
-LIBS += $(VTKDIR)\bin\vtkfreetype.lib                                      
-LIBS += $(VTKDIR)\bin\vtkftgl.lib                                          
-LIBS += $(VTKDIR)\bin\vtkGenericFiltering.lib                              
-LIBS += $(VTKDIR)\bin\vtkGenericFilteringTCL.lib                           
-LIBS += $(VTKDIR)\bin\vtkGraphics.lib                                      
-LIBS += $(VTKDIR)\bin\vtkGraphicsTCL.lib                                   
-LIBS += $(VTKDIR)\bin\vtkHybrid.lib                                        
-LIBS += $(VTKDIR)\bin\vtkHybridTCL.lib                                     
-LIBS += $(VTKDIR)\bin\vtkImaging.lib                                       
-LIBS += $(VTKDIR)\bin\vtkImagingTCL.lib                                    
-LIBS += $(VTKDIR)\bin\vtkIO.lib                                            
-LIBS += $(VTKDIR)\bin\vtkIOTCL.lib                                         
-LIBS += $(VTKDIR)\bin\vtkjpeg.lib                                          
-LIBS += $(VTKDIR)\bin\vtkMPEG2Encode.lib                                   
-LIBS += $(VTKDIR)\bin\vtkNetCDF.lib                                        
-LIBS += $(VTKDIR)\bin\vtkpng.lib                                           
-LIBS += $(VTKDIR)\bin\vtkRendering.lib                                     
-LIBS += $(VTKDIR)\bin\vtkRenderingTCL.lib                                  
-LIBS += $(VTKDIR)\bin\vtksys.lib                                           
-LIBS += $(VTKDIR)\bin\vtktiff.lib                                          
-LIBS += $(VTKDIR)\bin\vtkVolumeRendering.lib                               
-LIBS += $(VTKDIR)\bin\vtkVolumeRenderingTCL.lib                            
-LIBS += $(VTKDIR)\bin\vtkWidgets.lib                                       
-LIBS += $(VTKDIR)\bin\vtkWidgetsTCL.lib                                    
-LIBS += $(VTKDIR)\bin\vtkzlib.lib                                          
-LIBS += $(TCLDIR)\lib\tcl84.lib                                            
-
-# TODO: verify if we really need the following LIBS for vtk-5.10
-LIBS += $(VTKDIR)\bin\vtksqlite.lib
-LIBS += $(VTKDIR)\bin\vtkNetCDF_cxx.lib
-LIBS += $(VTKDIR)\bin\vtkNetCDF.lib
-LIBS += $(VTKDIR)\bin\vtkhdf5.lib
-LIBS += $(VTKDIR)\bin\vtkhdf5_hl.lib
-LIBS += $(VTKDIR)\bin\vtkverdict.lib
-LIBS += $(VTKDIR)\bin\vtkmetaio.lib
-LIBS += $(VTKDIR)\bin\LSDyna.lib
-                                                                           
+LIBS += $(VTKDIR)\..\bin\bin\libvtkCommon.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkCommonTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libLSDyna.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libMapReduceMPI.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libmpistubs.dll.a
+#LIBS += $(VTKDIR)\..\bin\bin\libQVTK.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libQVTKWidgetPlugin.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkalglib.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkDICOMParser.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkexoIIc.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkexpat.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkFiltering.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkFilteringTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkfreetype.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkftgl.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkGenericFiltering.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkGenericFilteringTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkGraphics.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkGraphicsTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkHybrid.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkHybridTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkImaging.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkImagingTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkIO.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkIOTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkjpeg.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtklibxml2.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkmetaio.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkNetCDF_cxx.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkNetCDF.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkpng.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkproj4.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkRendering.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkRenderingTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtksys.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtktiff.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkverdict.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkVolumeRendering.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkVolumeRenderingTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkWidgets.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkWidgetsTCL.dll.a
+LIBS += $(VTKDIR)\..\bin\bin\libvtkzlib.dll.a
+LIBS += $(TCLDIR)\lib\tcl85.lib                                                                    
 }                                                                          
 ### end USE_VTK ###############################################            
                                                                            

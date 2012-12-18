@@ -27509,6 +27509,7 @@ static swig_lua_const_info swig_constants[] = {
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S7_400", rlSiemensTCP::S7_400)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S5", rlSiemensTCP::S5)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_RACK_SLOT", rlSiemensTCP::RACK_SLOT)},
+    {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S7_1200", rlSiemensTCP::S7_1200)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_WriteBit", rlSiemensTCP::WriteBit)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_WriteByte", rlSiemensTCP::WriteByte)},
     {0,0,0,0,0,0}

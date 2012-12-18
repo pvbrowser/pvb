@@ -17,6 +17,7 @@
 
 #include "pvdefine.h"
 #include "pvVtkTclWidget.h"
+#include "opt.h"
 #include <QMouseEvent>
 #include <vtkActor.h>
 #include <vtkRenderer.h>
@@ -24,6 +25,8 @@
 #include <vtkPolyDataMapper.h>
 #include "tcputil.h"
 #include <stdarg.h>
+
+extern OPT opt;
 
 static int rlvsnprintf(char *text, int len, const char *format, va_list ap)
 {
@@ -73,12 +76,14 @@ pvVtkTclWidget::pvVtkTclWidget(QWidget *parent, const char *name, int Id, int *s
 #ifdef PVUNIX
   tclcommand = vtkTclCommand::New();
 #endif
-#ifdef _Win32
-  tclcommand = vtkTclCommand::New();
-  //tclcommand = new vtkTclCommand;
+#ifdef PVWIN32
+  tclcommand = newVtkTclCommand();
+  //tclcommand = vtkTclCommand::New();
+  //tclcommand = new vtkTclCommand();
 #endif
   if(tclcommand == NULL)
   {
+    printf("ERROR: pvVtkTclWidget::tclcommand == NULL\n");
     Tcl_DeleteInterp(interp);
     return;
   }
@@ -114,6 +119,7 @@ pvVtkTclWidget::pvVtkTclWidget(QWidget *parent, const char *name, int Id, int *s
   temp0 = (vtkRenderWindow *)(vtkTclGetPointerFromObject("renWin",(char *) "vtkRenderWindow",interp,error));
   if(!error && temp0 != NULL)
   {
+    if(opt.arg_debug) printf("Setting Tcl interp\n");
     SetRenderWindow(temp0);
     Tcl_ResetResult(interp);
   }

@@ -19,7 +19,7 @@ VS_VERSION_INFO VERSIONINFO
 	BEGIN
 		BLOCK "StringFileInfo"
 		BEGIN
-			BLOCK "040904B0"
+			BLOCK "040904b0"
 			BEGIN
 				VALUE "CompanyName", "\0"
 				VALUE "FileDescription", "\0"
@@ -28,6 +28,10 @@ VS_VERSION_INFO VERSIONINFO
 				VALUE "OriginalFilename", "qwt_designer_plugin5.dll\0"
 				VALUE "ProductName", "qwt_designer_plugin\0"
 			END
+		END
+		BLOCK "VarFileInfo"
+		BEGIN
+			VALUE "Translation", 0x0409, 1200
 		END
 		BLOCK "VarFileInfo"
 		BEGIN
