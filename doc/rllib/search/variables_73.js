@@ -36,6 +36,7 @@ var searchData=
   ['state',['state',['../classrl3964R.html#a3aea9acd62a94ce34117c1bee0c3af0e',1,'rl3964R::state()'],['../classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641',1,'rlStatemachine::state()']]],
   ['statestr',['statestr',['../rl3964r_8cpp.html#a9dad132ed0b39c633ebbd3aca529e954',1,'rl3964r.cpp']]],
   ['status',['status',['../classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945',1,'rlMailbox::status()'],['../classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90',1,'rlSharedMemory::status()']]],
+  ['stepcounter',['stepCounter',['../rlstate_8h.html#a58b9fe0d8bdc4ddc63eb62dcd3413b10',1,'rlstate.h']]],
   ['strings',['strings',['../classrlDataProvider.html#a97e5506e5195112a92fc60b44af2de57',1,'rlDataProvider']]],
   ['subindex',['subindex',['../structIPCMSGSTRUCT.html#a84008b9e507ab525216cf0b0af900eed',1,'IPCMSGSTRUCT']]],
   ['svgmousex0',['svgMouseX0',['../classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70',1,'rlSvgAnimator']]],

@@ -635,7 +635,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;  {</div>
 <div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;    <span class="keywordtype">char</span> buf[<a class="code" href="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471">MAXLINE</a>];</div>
 <div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;    sprintf(buf,<span class="stringliteral">&quot;gsvgShow(%d,%d)\n&quot;</span>,<span class="keywordtype">id</span>,state);</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    printf(<span class="stringliteral">&quot;buf=%s&quot;</span>,buf);</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="comment">//printf(&quot;buf=%s&quot;,buf);</span></div>
 <div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a8ee5e96362139b7858aae2716cb8cf6c">tcpsend</a>(buf, strlen(buf));</div>
 <div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    sprintf(buf,<span class="stringliteral">&quot;%s\n&quot;</span>,objectname);</div>
 <div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a8ee5e96362139b7858aae2716cb8cf6c">tcpsend</a>(buf, strlen(buf));</div>

@@ -546,7 +546,7 @@ int rlSvgAnimator::show(const char *objectname, int state)
   {
     char buf[MAXLINE];
     sprintf(buf,"gsvgShow(%d,%d)\n",id,state);
-    printf("buf=%s",buf);
+    //printf("buf=%s",buf);
     tcpsend(buf, strlen(buf));
     sprintf(buf,"%s\n",objectname);
     tcpsend(buf, strlen(buf));

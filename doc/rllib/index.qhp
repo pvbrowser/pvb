@@ -3801,6 +3801,17 @@
                 <section title="firstTable" ref="classrlSpreadsheetWorkbook.html" />
               </section>
             </section>
+            <section title="rlstate.h" ref="rlstate_8h.html">
+              <section title="gotoState" ref="rlstate_8h.html" />
+              <section title="readIO" ref="rlstate_8h.html" />
+              <section title="runSteps" ref="rlstate_8h.html" />
+              <section title="writeIO" ref="rlstate_8h.html" />
+              <section title="lastState" ref="rlstate_8h.html" />
+              <section title="MAX_STEP" ref="rlstate_8h.html" />
+              <section title="nextStep" ref="rlstate_8h.html" />
+              <section title="running" ref="rlstate_8h.html" />
+              <section title="stepCounter" ref="rlstate_8h.html" />
+            </section>
             <section title="rlstatemachine.cpp" ref="rlstatemachine_8cpp.html" />
             <section title="rlstatemachine.h" ref="rlstatemachine_8h.html">
               <section title="rlStatemachine" ref="classrlStatemachine.html">
@@ -4529,6 +4540,15 @@
       <keyword name="wsa" id="rlsocket.h::wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
       <keyword name="rlwsa" id="rlsocket.h::rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="null_string" id="rlspreadsheet.cpp::null_string" ref="rlspreadsheet_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
+      <keyword name="readIO" id="rlstate.h::readIO" ref="rlstate_8h.html#a3bf5bb3360ded6b2bd3fc78045a1cc17" />
+      <keyword name="runSteps" id="rlstate.h::runSteps" ref="rlstate_8h.html#aa74d0ed778edec970f58ef6aca5cf6da" />
+      <keyword name="writeIO" id="rlstate.h::writeIO" ref="rlstate_8h.html#aac284dec9818128e9bb4d937ff8122ac" />
+      <keyword name="gotoState" id="rlstate.h::gotoState" ref="rlstate_8h.html#a076cf829739c5ad08023887e6c6608d6" />
+      <keyword name="nextStep" id="rlstate.h::nextStep" ref="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54" />
+      <keyword name="lastState" id="rlstate.h::lastState" ref="rlstate_8h.html#affbfc4ba76ad891f17f30e8a37ea03f9" />
+      <keyword name="stepCounter" id="rlstate.h::stepCounter" ref="rlstate_8h.html#a58b9fe0d8bdc4ddc63eb62dcd3413b10" />
+      <keyword name="running" id="rlstate.h::running" ref="rlstate_8h.html#a2f45113638a0b749a8a205d2cd7fb42b" />
+      <keyword name="MAX_STEP" id="rlstate.h::MAX_STEP" ref="rlstate_8h.html#a89d587dc32de6bddda7685473377a84a" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MAXLINE" id="rlsvganimator.cpp::MAXLINE" ref="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471" />
@@ -6542,6 +6562,7 @@
       <file>rlspawn_8h_source.html</file>
       <file>rlspreadsheet_8cpp_source.html</file>
       <file>rlspreadsheet_8h_source.html</file>
+      <file>rlstate_8h_source.html</file>
       <file>rlstatemachine_8cpp_source.html</file>
       <file>rlstatemachine_8h_source.html</file>
       <file>rlstring_8cpp_source.html</file>
@@ -6771,6 +6792,8 @@
       <file>rlspreadsheet_8h.html</file>
       <file>rlspreadsheet_8h__incl.png</file>
       <file>rlspreadsheet_8h__dep__incl.png</file>
+      <file>rlstate_8h.html</file>
+      <file>rlstate_8h__incl.png</file>
       <file>rlstatemachine_8cpp.html</file>
       <file>rlstatemachine_8cpp__incl.png</file>
       <file>rlstatemachine_8h.html</file>

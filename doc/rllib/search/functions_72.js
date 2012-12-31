@@ -12,6 +12,7 @@ var searchData=
   ['readerrorcount',['readErrorCount',['../classrlDataAcquisition.html#a3f91544a3db35cd18fdee3268025f6dd',1,'rlDataAcquisition::readErrorCount()'],['../classrlDataAcquisitionProvider.html#a2ccf52e2b2dd605da6946b3ae8e94581',1,'rlDataAcquisitionProvider::readErrorCount()'],['../classrlOpcXmlDa.html#a1a07dbbd528c53255c957f41c6925c22',1,'rlOpcXmlDa::readErrorCount()']]],
   ['readfloat',['readFloat',['../classrlSharedMemory.html#abc92a7f0855afc4ae6c84559a73f7853',1,'rlSharedMemory']]],
   ['readint',['readInt',['../classrlSharedMemory.html#a7655f93ceb541ca363ad745620a65426',1,'rlSharedMemory']]],
+  ['readio',['readIO',['../rlstate_8h.html#a3bf5bb3360ded6b2bd3fc78045a1cc17',1,'rlstate.h']]],
   ['readitemlist',['readItemList',['../classrlDataAcquisitionProvider.html#a53e5d6a8478d2228b487ab0c24f56e1a',1,'rlDataAcquisitionProvider']]],
   ['readline',['readLine',['../classrlCommandlineInterface.html#a1eab66abaf5aa4d0761b81fd4b6c3620',1,'rlCommandlineInterface::readLine()'],['../classrlSerial.html#a21f34172f382a823108912ad8a2a0d3b',1,'rlSerial::readLine()'],['../classrlSpawn.html#af7ae73acac4185d73d7dd8379dede7d4',1,'rlSpawn::readLine()']]],
   ['readrequest',['readRequest',['../classrlModbus.html#af128e63b30e6ed165fb3667893c94418',1,'rlModbus']]],
@@ -161,5 +162,6 @@ var searchData=
   ['rlwthread_5fmutex_5funlock',['rlwthread_mutex_unlock',['../rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef',1,'rlwthread_mutex_unlock(pthread_mutex_t *mptr):&#160;rlwthread.cpp'],['../rlwthread_8h.html#acda0e664c904c14a8f5ed74bf1d2ddef',1,'rlwthread_mutex_unlock(pthread_mutex_t *mptr):&#160;rlwthread.cpp']]],
   ['rlwthread_5fsleep',['rlwthread_sleep',['../rlwthread_8cpp.html#a80fedc11e30831f16025ad3dc1593724',1,'rlwthread_sleep(long msec):&#160;rlwthread.cpp'],['../rlwthread_8h.html#a80fedc11e30831f16025ad3dc1593724',1,'rlwthread_sleep(long msec):&#160;rlwthread.cpp']]],
   ['rotate',['rotate',['../classrlSvgPosition.html#a5ff465fdab3957ca045e94ee0d013377',1,'rlSvgPosition']]],
-  ['run',['run',['../classrlCorbaServer.html#af9b18fa485f47fdb95fa550f96837825',1,'rlCorbaServer::run()'],['../classrlDataProvider.html#a017bcbd3fc970a26ca741c58123e6769',1,'rlDataProvider::run()']]]
+  ['run',['run',['../classrlCorbaServer.html#af9b18fa485f47fdb95fa550f96837825',1,'rlCorbaServer::run()'],['../classrlDataProvider.html#a017bcbd3fc970a26ca741c58123e6769',1,'rlDataProvider::run()']]],
+  ['runsteps',['runSteps',['../rlstate_8h.html#aa74d0ed778edec970f58ef6aca5cf6da',1,'rlstate.h']]]
 ];

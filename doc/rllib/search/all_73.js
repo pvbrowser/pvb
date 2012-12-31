@@ -171,6 +171,7 @@ var searchData=
   ['state',['state',['../classrl3964R.html#a3aea9acd62a94ce34117c1bee0c3af0e',1,'rl3964R::state()'],['../classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641',1,'rlStatemachine::state()'],['../rl3964r_8cpp.html#a5d74787dedbc4e11c1ab15bf487e61f8',1,'State():&#160;rl3964r.cpp']]],
   ['statestr',['statestr',['../rl3964r_8cpp.html#a9dad132ed0b39c633ebbd3aca529e954',1,'rl3964r.cpp']]],
   ['status',['status',['../classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945',1,'rlMailbox::status()'],['../classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90',1,'rlSharedMemory::status()']]],
+  ['stepcounter',['stepCounter',['../rlstate_8h.html#a58b9fe0d8bdc4ddc63eb62dcd3413b10',1,'rlstate.h']]],
   ['stop',['stop',['../classrlController.html#a9320b12b8bf9a13f2123a5eae3b46643',1,'rlController']]],
   ['stopreading',['stopReading',['../classrlEIBnetIP.html#a34d1b3ec6bdc75d2ff1820d91d74a6e1',1,'rlEIBnetIP']]],
   ['storebuffer',['storeBuffer',['../classrlEIBnetIP.html#a000d2c2b57bb4d3b0667d09d4861d1bf',1,'rlEIBnetIP']]],

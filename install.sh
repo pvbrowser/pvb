@@ -1,16 +1,24 @@
 #!/bin/bash
 
 # detect real OS on different linux distries
-export PVB_OSTYPE="unknown"
-if [ "$OSTYPE" == "linux" ]; then
+ostest=$(echo $OSTYPE | grep -i linux)
+if [ "unknown${ostest}" == "unknown" ]; then
+  export PVB_OSTYPE="unknown"
+else
   export PVB_OSTYPE="linux"
 fi
-if [ "$OSTYPE" == "gnu-linux" ]; then
-  export PVB_OSTYPE="linux"
-fi
-if [ "$OSTYPE" == "linux-gnu" ]; then
-  export PVB_OSTYPE="linux"
-fi
+echo OSTYPE $PVB_OSTYPE
+
+#export PVB_OSTYPE="unknown"
+#if [ "$OSTYPE" == "linux" ]; then
+#  export PVB_OSTYPE="linux"
+#fi
+#if [ "$OSTYPE" == "gnu-linux" ]; then
+#  export PVB_OSTYPE="linux"
+#fi
+#if [ "$OSTYPE" == "linux-gnu" ]; then
+#  export PVB_OSTYPE="linux"
+#fi
 
 if [ "$PVB_OSTYPE" == "linux" ]; then
   echo testing if you have root privileges ...

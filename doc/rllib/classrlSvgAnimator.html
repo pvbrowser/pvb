@@ -1127,7 +1127,7 @@ Then you may modify the SVG within the pvbrowser client.
 <div class="line">  {</div>
 <div class="line">    <span class="keywordtype">char</span> buf[<a class="code" href="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471">MAXLINE</a>];</div>
 <div class="line">    sprintf(buf,<span class="stringliteral">&quot;gsvgShow(%d,%d)\n&quot;</span>,<span class="keywordtype">id</span>,state);</div>
-<div class="line">    printf(<span class="stringliteral">&quot;buf=%s&quot;</span>,buf);</div>
+<div class="line">    <span class="comment">//printf(&quot;buf=%s&quot;,buf);</span></div>
 <div class="line">    <a class="code" href="classrlSvgAnimator.html#a8ee5e96362139b7858aae2716cb8cf6c">tcpsend</a>(buf, strlen(buf));</div>
 <div class="line">    sprintf(buf,<span class="stringliteral">&quot;%s\n&quot;</span>,objectname);</div>
 <div class="line">    <a class="code" href="classrlSvgAnimator.html#a8ee5e96362139b7858aae2716cb8cf6c">tcpsend</a>(buf, strlen(buf));</div>
