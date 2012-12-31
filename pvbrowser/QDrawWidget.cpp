@@ -1781,6 +1781,13 @@ int pvSvgAnimator::closefile()
 
 void pvSvgAnimator::perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line)
 {
+  if(opt.use_webkit_for_svg == 1)
+  {
+    next_line->line = new char[strlen(line) + 1];
+    strcpy(next_line->line, line);
+    return;
+  }
+
   QString str;
   int i = 0;
   str.append(line[i++]); // d
@@ -1795,7 +1802,7 @@ void pvSvgAnimator::perhapsFixQtBugOnPath(SVG_LINE *next_line, const char *line)
     else if(line[i] == 'M')   found = 'M';
     else if(isalpha(line[i])) found = '\0';
 
-    if(found != '\0')
+    if(0 && found != '\0')
     { 
       // copy first coordinate pair
       while(line[i] != ',' && line[i] != '\0') str.append(line[i++]);
