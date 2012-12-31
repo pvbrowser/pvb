@@ -2153,8 +2153,8 @@ int pvSvgAnimator::wrapTransformation(int iline, SVG_LINE *last_open, const char
     if     (strncmp(svgptr->line,"</g>",4) == 0  ) iopen--;
     else if(strncmp(svgptr->line,"/>"  ,2) == 0  ) iopen--;
     else if(strncmp(svgptr->line,"</"  ,2) == 0  ) iopen--;
+    else if(strncmp(svgptr->line,"<!"  ,2) == 0  ) ;
     else if(strncmp(svgptr->line,"<"   ,1) == 0  ) iopen++;
-    //printf("iopen=%d svgptr->line=%s\n",iopen,svgptr->line);
     if(iopen <= 0)
     {
       mycomment[iline+5] = commentChar;
