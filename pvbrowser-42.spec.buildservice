@@ -251,6 +251,8 @@ cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/b
 
 %__mkdir_p %{buildroot}/usr/lib
 %__mkdir_p %{buildroot}%{_bindir}
+%__mkdir_p %{buildroot}/usr/share/applications
+%__mkdir_p %{buildroot}/usr/%{_lib}/browser-plugins
 
 %__ln_s /opt/pvb/pvserver/libpvsid.a        %{buildroot}/usr/lib/libpvsid.a
 %__ln_s /opt/pvb/pvserver/libpvsid.so       %{buildroot}/usr/lib/libpvsid.so
@@ -276,6 +278,9 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/start_pvbapp/start_pvbapp  %{buildroot}%{_bindir}/start_pvbapp
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat       %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory  %{buildroot}%{_bindir}/rlhistory
+
+cp /opt/pvb/*.desktop                          %{buildroot}%/usr/share/applications/
+%__ln_s /opt/pvb/browserplugin/libpvbrowser.so %{buildroot}%/usr/%{_lib}/browser-plugins/libpvbrowser.so
 
 %__mkdir_p %{buildroot}/srv/automation/shm
 %__mkdir_p %{buildroot}/srv/automation/mbx
@@ -347,6 +352,8 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/gamsleiten.png
 /opt/pvb/pvbrowser.desktop
 /opt/pvb/pvdevelop.desktop
+/usr/share/applications/pvbrowser.desktop
+/usr/share/applications/pvdevelop.desktop
 /opt/pvb/doc
 /opt/pvb/pvsexample
 /opt/pvb/start_pvbapp/start_pvbapp
@@ -468,6 +475,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/designer/plugins/libqwt_designer_plugin.so
 /opt/pvb/designer/README.txt
 /opt/pvb/browserplugin/libpvbrowser.so
+/usr/%{_lib}/browser-plugins/libpvbrowser.so
 /opt/pvb/browserplugin/pvbrowserplugin-example.html
 /opt/pvb/browserplugin/README.txt
 %if 0%{?fedora_version}

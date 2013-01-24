@@ -1,6 +1,6 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Comment=ProcessViewBrowser HMI/SCADA
+Comment=pvbrowser HMI/SCADA client
 Encoding=UTF-8
 Exec=pvbrowser
 GenericName=pvbrowser
@@ -11,4 +11,4 @@ Path=
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Application;SCADA;
+Categories=Netork;WebBrowser;SCADA;

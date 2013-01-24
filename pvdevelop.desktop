@@ -1,6 +1,6 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Comment=ProcessViewDevelop
+Comment=pvserver development for pvbrowser HMI/SCADA
 Encoding=UTF-8
 Exec=pvdevelop
 GenericName=pvdevelop
@@ -12,3 +12,4 @@ StartupNotify=true
 Terminal=false
 TerminalOptions=
 Type=Application
+Categories=Development;
