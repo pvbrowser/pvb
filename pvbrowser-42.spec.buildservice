@@ -279,7 +279,8 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat       %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory  %{buildroot}%{_bindir}/rlhistory
 
-cp /opt/pvb/*.desktop                          %{buildroot}%/usr/share/applications/
+cp /opt/pvb/pvbrowser.desktop               %{buildroot}%/usr/share/applications/
+cp /opt/pvb/pvdevelop.desktop               %{buildroot}%/usr/share/applications/
 %__ln_s /opt/pvb/browserplugin/libpvbrowser.so %{buildroot}%/usr/%{_lib}/browser-plugins/libpvbrowser.so
 
 %__mkdir_p %{buildroot}/srv/automation/shm
