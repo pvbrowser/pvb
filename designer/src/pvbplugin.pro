@@ -5,7 +5,12 @@ TEMPLATE         = lib
 INCLUDEPATH     += ../pvbrowser 
 TARGET           = pvb_designer_plugin
 DESTDIR          = ../plugins
-CONFIG          += designer plugin release
+lessThan(QT_MAJOR_VERSION, 5) {
+  CONFIG        += designer plugin release
+}else{
+  QT            += designer
+  CONFIG        += plugin release
+}
 target.path      = $$[QT_INSTALL_PLUGINS]/designer
 INSTALLS        += target
 unix:LIBS       += libpvbdummy.a
