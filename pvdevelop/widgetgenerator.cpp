@@ -642,7 +642,11 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
   {
     QLCDNumber *obj = (QLCDNumber *) widget;
     int numdigits;
+#if QT_VERSION < 0x050000    
     numdigits = obj->numDigits();
+#else
+    numdigits = obj->digitCount();
+#endif
     QString style = "Outline";
     if(obj->segmentStyle() == QLCDNumber::Filled) style = "Filled";
     if(obj->segmentStyle() == QLCDNumber::Flat)   style = "Flat";
@@ -2000,7 +2004,11 @@ static int getWidget(FILE *fin, QWidget *root)
       item = (QWidget *) new QLCDNumber(pw);
       QLCDNumber *lcditem = (QLCDNumber *) item;
       item->setObjectName(id);
+#if QT_VERSION < 0x050000      
       lcditem->setNumDigits(ival[0]);
+#else
+      lcditem->setDigitCount(ival[0]);
+#endif
       if(strstr(line,",Hex") != NULL) lcditem->setMode(QLCDNumber::Hex);
       if(strstr(line,",Dec") != NULL) lcditem->setMode(QLCDNumber::Dec);
       if(strstr(line,",Oct") != NULL) lcditem->setMode(QLCDNumber::Oct);

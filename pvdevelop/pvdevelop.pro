@@ -1,5 +1,10 @@
-QT           += opengl svg webkit
-CONFIG       += uitools warn_on release
+lessThan(QT_MAJOR_VERSION, 5) {
+  QT         += opengl svg webkit
+  CONFIG     += uitools warn_on release
+}else{
+  QT         += uitools webkitwidgets widgets opengl svg webkit
+  CONFIG     += warn_on release
+}    
 QMAKE_LFLAGS += -static-libgcc
 INCLUDEPATH  += ../pvbrowser
 #INCLUDEPATH  += ../qwt/include

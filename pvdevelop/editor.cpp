@@ -49,7 +49,7 @@ Editor::Editor()
 
   radioMask = new QRadioButton("Masks",buttonGroup1);
   radioMask->setGeometry( QRect(10,110,130,25) );
-  radioMask->setChecked( FALSE );
+  radioMask->setChecked( false );
 
   radioSlots = new QRadioButton("Slots",buttonGroup1);
   radioSlots->setGeometry( QRect(10,140,70,25) ); //130

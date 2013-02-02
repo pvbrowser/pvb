@@ -11,16 +11,16 @@
 #define UI_DLGTEXTBROWSER_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QDialog>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QPushButton>
-#include <QtGui/QLineEdit>
-#include <QtGui/QSpacerItem>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QDialog>
+#include <QHBoxLayout>
+#include <QPushButton>
+#include <QLineEdit>
+#include <QSpacerItem>
 #include <QWebView>
-#include <QtGui/QVBoxLayout>
+#include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 

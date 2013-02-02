@@ -170,7 +170,11 @@ void QImageWidget::setImage(const char *filename)
 
   if(strstr(filename,".bmp") != NULL || strstr(filename,".BMP") != NULL)
   { // it may be a bmp with transparent background
+#if QT_VERSION < 0x050000
     int n = image.numColors();
+#else
+    int n = image.colorCount();
+#endif
     for(int icol=0; icol<n; icol++)
     {
       QRgb qcol = image.color(icol);

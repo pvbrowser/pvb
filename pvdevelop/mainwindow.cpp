@@ -280,12 +280,12 @@ void MainWindow::open()
       if(opt_develop.script == PV_LUA)
       {
         load("main.lua");
-        if(editor != NULL) editor->radioMain->setChecked(TRUE);
+        if(editor != NULL) editor->radioMain->setChecked(true);
       }
       else
       {
         load(name + ".pro");
-        if(editor != NULL) editor->radioProject->setChecked(TRUE);
+        if(editor != NULL) editor->radioProject->setChecked(true);
       }
     }
   }
@@ -914,12 +914,12 @@ void MainWindow::viewEditor()
     if(opt_develop.script == PV_LUA)
     {
       load("main.lua");
-      editor->radioMain->setChecked(TRUE);
+      editor->radioMain->setChecked(true);
     }
     else
     {
       load(name + ".pro");
-      editor->radioProject->setChecked(TRUE);
+      editor->radioProject->setChecked(true);
     }
     editor->spinBoxMask->setValue(currentMask);
   }
@@ -1212,7 +1212,7 @@ void MainWindow::load( const QString &fileName )
   if(fileName.contains(".lua")) editor->setSyntax(LUA_SYNTAX);
 
   editor->edit->setPlainText( ts.readAll() );
-  editor->edit->document()->setModified( FALSE );
+  editor->edit->document()->setModified( false );
   setCurrentFile(fileName);
   f.close();
   getWidgetNames(fileName);
@@ -1532,12 +1532,12 @@ void MainWindow::endMenu()
     if(opt_develop.script == PV_LUA)
     {
       load(name + "main.lua");
-      editor->radioMain->setChecked(TRUE);
+      editor->radioMain->setChecked(true);
     }  
     else
     {
       load(name + ".pro");
-      editor->radioProject->setChecked(TRUE);
+      editor->radioProject->setChecked(true);
     }  
   }
 }

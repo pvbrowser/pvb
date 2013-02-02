@@ -11,15 +11,15 @@
 #define DLGMYBROWSER_UI_H
 
 #include <QtCore/QVariant>
-#include <QtGui/QAction>
-#include <QtGui/QApplication>
-#include <QtGui/QButtonGroup>
-#include <QtGui/QGroupBox>
-#include <QtGui/QHBoxLayout>
-#include <QtGui/QLabel>
-#include <QtGui/QPushButton>
-#include <QtGui/QVBoxLayout>
-#include <QtGui/QWidget>
+#include <QAction>
+#include <QApplication>
+#include <QButtonGroup>
+#include <QGroupBox>
+#include <QHBoxLayout>
+#include <QLabel>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QWidget>
 
 class pvQWebView : public QWebView
 {

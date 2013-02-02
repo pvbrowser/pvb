@@ -209,7 +209,7 @@ void dlgDaemon::load(QString name)
         break;
     }
   }
-  form->textEdit->document()->setModified(FALSE);
+  form->textEdit->document()->setModified(false);
 }
 
 void dlgDaemon::save()
@@ -220,7 +220,7 @@ void dlgDaemon::save()
   QTextStream t( &f );
   t << text;
   f.close();
-  form->textEdit->document()->setModified(FALSE);
+  form->textEdit->document()->setModified(false);
 }
 
 int gppi(const char *name);

@@ -90,7 +90,9 @@ static const char *decode(QString text)
   }
   else
   {
+#if QT_VERSION < 0x050000 
     strncpy(buf, text.toAscii(), maxlen);
+#endif    
   }
   buf[maxlen-1] = '\0';
   return buf;

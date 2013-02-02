@@ -60,7 +60,7 @@ class MyDialog : public QDialog
 {
     Q_OBJECT
 public:
-    MyDialog(Interpreter *interpreter, int *sock, int ident, QWidget * parent=0, const char *name=0, bool modal=TRUE);
+    MyDialog(Interpreter *interpreter, int *sock, int ident, QWidget * parent=0, const char *name=0, bool modal=true);
     ~MyDialog();
 private:
     int *s,id;
