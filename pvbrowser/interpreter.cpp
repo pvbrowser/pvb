@@ -28,7 +28,9 @@
 #include <qevent.h>
 #include <qsizepolicy.h> 
 #include <qlayout.h>
+#if QT_VERSION < 0x050000
 #include <qsound.h>
+#endif
 #include <QKeyEvent>
 #include <QLabel>
 #include <QMenu>
@@ -38,6 +40,8 @@
 #include <QPixmap>
 #include <QDesktopWidget>
 #include <QWebFrame>
+#include <QPrinter>
+#include <QPrintDialog>
 #ifdef PVWIN32
 #include <io.h>
 #include <direct.h>
@@ -102,7 +106,7 @@ Interpreter::Interpreter()
   s    = NULL;
   all  = NULL;
   nmax = 0;
-  setPath(qApp->argv()[0]);
+  setPath(opt.arg_av0);
 }
 
 Interpreter::~Interpreter()
@@ -2339,6 +2343,7 @@ void Interpreter::interpretp(const char *command)
   }
   else if(strncmp(command,"playSound(",10) == 0) // play a (WAV) sound
   {
+#if QT_VERSION < 0x050000
     get_text(command,text);
     printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
 #ifdef USE_ANDROID
@@ -2377,7 +2382,12 @@ void Interpreter::interpretp(const char *command)
       }      
     }
 #endif
-#endif    
+#endif
+
+#else
+  printf("WARNING: sound not ported to Qt5 yet\n");
+  qApp->beep();
+#endif
   }
   else if(strncmp(command,"popupMenu(",10) == 0) // open a popupMenu()
   {

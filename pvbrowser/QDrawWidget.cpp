@@ -18,6 +18,8 @@
 #include <QString>
 #include <QStack>
 #include <QTimer>
+#include <QPrinter>
+#include <QPrintDialog>
 #include "pvdefine.h"
 #include "opt.h"
 #include "qdrawwidget.h"
@@ -481,6 +483,7 @@ void QDrawWidget::renderTreeDump(const char *filename)
 {
   if(webkitrenderer != NULL && opt.use_webkit_for_svg == 1)
   {
+#if QT_VERSION < 0x050000  
     FILE *fout = fopen(filename,"w");
     if(fout == NULL)
     {
@@ -490,6 +493,9 @@ void QDrawWidget::renderTreeDump(const char *filename)
     QString xml = webkitrenderer->renderTreeDump();
     fputs(xml.toUtf8(), fout);
     fclose(fout);
+#else
+#warning ("Warning : renderTreeDump is not available on Qt5 ")
+#endif    
   }
   else
   {

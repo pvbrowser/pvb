@@ -72,10 +72,10 @@ class QVTK_EXPORT QVTKWidget : public QWidget
   public:
 #if QT_VERSION < 0x040000
     //! constructor for Qt 3
-    QVTKWidget(QWidget* parent = NULL, const char* name = NULL, Qt::WFlags f = 0);
+    QVTKWidget(QWidget* parent = NULL, const char* name = NULL);
 #else
     //! constructor for Qt 4
-    QVTKWidget(QWidget* parent = NULL, Qt::WFlags f = 0);
+    QVTKWidget(QWidget* parent = NULL);
 #endif
     //! destructor
     virtual ~QVTKWidget();
@@ -129,7 +129,7 @@ class QVTK_EXPORT QVTKWidget : public QWidget
 #if QT_VERSION < 0x040000
     // Description:
     // Handle reparenting of this widget in Qt 3.x
-    virtual void reparent(QWidget* parent, Qt::WFlags f, const QPoint& p, bool showit);
+    virtual void reparent(QWidget* parent, const QPoint& p, bool showit);
 #endif
     
     // Description:

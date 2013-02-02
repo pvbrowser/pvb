@@ -42,7 +42,7 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
 
   if(manual == NULL)
   {
-    setWindowTitle(QApplication::translate("DialogTextBrowser", "pvbrowser Manual"));
+    setWindowTitle(tr("pvbrowser Manual"));
   }
   else
   {

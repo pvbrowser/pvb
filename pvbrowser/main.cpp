@@ -30,6 +30,7 @@ extern OPT opt;
 void init(int ac, char **av)
 {
   setlocale(LC_NUMERIC, "C");
+  opt.arg_av0             = av[0];
   opt.arg_debug           = 0;     // default command line args
   opt.arg_localini        = 0;
   opt.arg_ini[0]          = '\0';

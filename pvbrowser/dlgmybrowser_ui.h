@@ -115,18 +115,18 @@ public:
 
     void retranslateUi(QWidget *MyBrowser)
     {
-    MyBrowser->setWindowTitle(QApplication::translate("MyBrowser", "Form", 0, QApplication::UnicodeUTF8));
-    groupBoxNavigation->setTitle(QApplication::translate("MyBrowser", "", 0, QApplication::UnicodeUTF8));
-    pushButtonBack->setToolTip(QApplication::translate("MyBrowser", "Back", 0, QApplication::UnicodeUTF8));
-    pushButtonBack->setText(QApplication::translate("MyBrowser", "Back", 0, QApplication::UnicodeUTF8));
-    pushButtonHome->setToolTip(QApplication::translate("MyBrowser", "Home", 0, QApplication::UnicodeUTF8));
-    pushButtonHome->setText(QApplication::translate("MyBrowser", "Home", 0, QApplication::UnicodeUTF8));
-    pushButtonForward->setToolTip(QApplication::translate("MyBrowser", "Forward", 0, QApplication::UnicodeUTF8));
-    pushButtonForward->setText(QApplication::translate("MyBrowser", "Forward", 0, QApplication::UnicodeUTF8));
-    pushButtonReload->setText(QApplication::translate("MyBrowser", "Reload", 0, QApplication::UnicodeUTF8));
-    pushButtonFind->setText(QApplication::translate("MyBrowser", "Find", 0, QApplication::UnicodeUTF8));
+    MyBrowser->setWindowTitle(QObject::tr("Form"));
+    groupBoxNavigation->setTitle(QObject::tr(""));
+    pushButtonBack->setToolTip(QObject::tr("Back"));
+    pushButtonBack->setText(QObject::tr("Back"));
+    pushButtonHome->setToolTip(QObject::tr("Home"));
+    pushButtonHome->setText(QObject::tr("Home"));
+    pushButtonForward->setToolTip(QObject::tr("Forward"));
+    pushButtonForward->setText(QObject::tr("Forward"));
+    pushButtonReload->setText(QObject::tr("Reload"));
+    pushButtonFind->setText(QObject::tr("Find"));
 #ifndef USE_WEBKIT
-    browser->setText(QApplication::translate("MyBrowser", "KHTML/WebKit is only available on<br>QT_VERSION >= 4.4.0", 0, QApplication::UnicodeUTF8));
+    browser->setText(QObject::tr("KHTML/WebKit is only available on<br>QT_VERSION >= 4.4.0"));
 #endif
     Q_UNUSED(MyBrowser);
     } // retranslateUi

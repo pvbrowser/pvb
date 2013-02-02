@@ -233,7 +233,7 @@ class MyFrame : public QFrame
     Q_OBJECT
 public:
     MyFrame(int *sock, int ident, int shape, int shadow, int line_width, int margin,
-            QWidget * parent=0, const char * name=0, Qt::WFlags f=0);
+            QWidget * parent=0, const char * name=0);
     ~MyFrame();
 
 private:
@@ -248,7 +248,7 @@ class MyQTabWidget : public QTabWidget
 {
     Q_OBJECT
 public:
-    MyQTabWidget(int *sock, int ident, QWidget * parent=0, const char *name=0, Qt::WFlags f=0);
+    MyQTabWidget(int *sock, int ident, QWidget * parent=0, const char *name=0);
     ~MyQTabWidget();
 
 public slots:
@@ -267,7 +267,7 @@ class MyQToolBox : public QToolBox
 {
     Q_OBJECT
 public:
-    MyQToolBox(int *sock, int ident, QWidget * parent=0, const char * name=0, Qt::WFlags f=0);
+    MyQToolBox(int *sock, int ident, QWidget * parent=0, const char * name=0);
     ~MyQToolBox();
 
 public slots:

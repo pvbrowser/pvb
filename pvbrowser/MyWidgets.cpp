@@ -679,8 +679,8 @@ void MyButtonGroup::leaveEvent(QEvent *event)
 
 ////////////////////////////////////////////////////////////////////////////////
 MyFrame::MyFrame(int *sock, int ident, int shape, int shadow, int line_width, int margin,
-                 QWidget * parent, const char * name, Qt::WFlags f)
-        :QFrame(parent, f)
+                 QWidget * parent, const char * name)
+        :QFrame(parent)
 {
   s = sock;
   id = ident;
@@ -742,14 +742,13 @@ void MyFrame::leaveEvent(QEvent *event)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-MyQTabWidget::MyQTabWidget(int *sock, int ident, QWidget *parent, const char *name, Qt::WFlags f)
+MyQTabWidget::MyQTabWidget(int *sock, int ident, QWidget *parent, const char *name)
              :QTabWidget(parent)
 {
   id = ident;
   s  = sock;
   if(name != NULL) setObjectName(name);
   connect(this, SIGNAL(currentChanged(int)), SLOT(slotCurrentChanged(int)));
-  if(f==0) return;
 }
 
 MyQTabWidget::~MyQTabWidget()
@@ -817,8 +816,8 @@ void MyQTabWidget::leaveEvent(QEvent *event)
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-MyQToolBox::MyQToolBox(int *sock, int ident, QWidget *parent, const char *name, Qt::WFlags f)
-             :QToolBox(parent,f)
+MyQToolBox::MyQToolBox(int *sock, int ident, QWidget *parent, const char *name)
+             :QToolBox(parent)
 {
   id = ident;
   s  = sock;

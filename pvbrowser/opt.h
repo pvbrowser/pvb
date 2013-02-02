@@ -85,6 +85,7 @@ typedef struct
   int  arg_h;
   int  arg_log;
   int  arg_fillbackground;  // murnleitner special
+  const char *arg_av0;
 }OPT;
 
 int wsa();

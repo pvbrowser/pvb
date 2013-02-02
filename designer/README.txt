@@ -5,6 +5,8 @@
 # Please copy the files within "plugins" to your Qt Designer plugins directory #
 # On openSUSE this directory is:                                               #
 # /usr/lib/qt4/plugins/designer   or   /usr/lib64/qt4/plugins/designer         #
+# Or try to find the directory with the following command                      #
+# find /usr -name designer | grep plugins | grep qt                            #
 ################################################################################
 
 ### List of Qt Designer widgets supported by pvbrowser #########################

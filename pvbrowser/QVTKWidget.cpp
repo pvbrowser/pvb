@@ -67,12 +67,15 @@ static void dirty_cache(vtkObject *, unsigned long, void *, void *);
 
 #if QT_VERSION < 0x040000
 /*! constructor */
-QVTKWidget::QVTKWidget(QWidget* parent, const char* name, Qt::WFlags f)
+QVTKWidget::QVTKWidget(QWidget* parent, const char* name)
+/* port qt4 to qt5
 #if QT_VERSION < 0x030000
     : QWidget(parent, name, f | 0x10000000)  // WWinOwnDC
 #else
     : QWidget(parent, name, f | Qt::WWinOwnDC )
 #endif
+*/
+    : QWidget(parent, name)
      , mRenWin(NULL), 
      cachedImageCleanFlag(false),
      automaticImageCache(false), maxImageCacheRenderRate(1.0)
@@ -99,7 +102,7 @@ QVTKWidget::QVTKWidget(QWidget* parent, const char* name, Qt::WFlags f)
 
 #if QT_VERSION >= 0x040000
 /*! constructor */
-QVTKWidget::QVTKWidget(QWidget* parent, Qt::WFlags f)
+QVTKWidget::QVTKWidget(QWidget* parent)
     : QWidget(parent, f | Qt::MSWindowsOwnDC), mRenWin(NULL),
           cachedImageCleanFlag(false),
           automaticImageCache(false), maxImageCacheRenderRate(1.0)
@@ -850,7 +853,7 @@ void QVTKWidget::dropEvent(QDropEvent* event)
 /*! handle reparenting of widgets
  */
 #if QT_VERSION < 0x040000
-void QVTKWidget::reparent(QWidget* parent, Qt::WFlags f, const QPoint& p, bool showit)
+void QVTKWidget::reparent(QWidget* parent, const QPoint& p, bool showit)
 {
   this->markCachedImageAsDirty();
 
@@ -863,7 +866,7 @@ void QVTKWidget::reparent(QWidget* parent, Qt::WFlags f, const QPoint& p, bool s
       this->mRenWin->Finalize();
 
     // have QWidget reparent as normal, but don't show
-    QWidget::reparent(parent, f, p, false);
+    QWidget::reparent(parent, p, false);
 
     x11_setup_window();
  

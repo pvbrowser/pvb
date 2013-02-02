@@ -98,11 +98,11 @@ public:
 
     void retranslateUi(QDialog *DialogTextBrowser)
     {
-    DialogTextBrowser->setWindowTitle(QApplication::translate("DialogTextBrowser", "pvdevelop Manual", 0, QApplication::UnicodeUTF8));
-    pushButtonBack->setText(QApplication::translate("DialogTextBrowser", "&Back", 0, QApplication::UnicodeUTF8));
-    pushButtonHome->setText(QApplication::translate("DialogTextBrowser", "&Home", 0, QApplication::UnicodeUTF8));
-    pushButtonFind->setText(QApplication::translate("DialogTextBrowser", "&Find", 0, QApplication::UnicodeUTF8));
-    pushButtonClose->setText(QApplication::translate("DialogTextBrowser", "&Close", 0, QApplication::UnicodeUTF8));
+    DialogTextBrowser->setWindowTitle(QObject::tr("pvdevelop Manual"));
+    pushButtonBack->setText(QObject::tr("&Back"));
+    pushButtonHome->setText(QObject::tr("&Home"));
+    pushButtonFind->setText(QObject::tr("&Find"));
+    pushButtonClose->setText(QObject::tr("&Close"));
     Q_UNUSED(DialogTextBrowser);
     } // retranslateUi
 

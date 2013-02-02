@@ -5,9 +5,13 @@
 CONFIG       += warn_on release
 #CONFIG      += USE_VTK
 #DEFINES     += NO_QWT
-QT           += xml opengl svg webkit network
 #mobile devices without opengl
-#QT           += xml svg webkit network
+QT           += opengl
+lessThan(QT_VER_MAJ, 5) {
+  QT         += xml svg webkit network
+}else{
+  QT         += webkitwidgets widgets xml svg webkit network
+}    
 
 linux-g++-gles2 {
   DEFINES    += USE_MAEMO
