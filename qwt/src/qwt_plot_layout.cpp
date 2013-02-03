@@ -1076,8 +1076,11 @@ void QwtPlotLayout::activate(const QwtPlot *plot,
         // subtract d_data->legendRect from rect
 
         const QRegion region(rect);
+#if QT_VERSION < 0x050000
         rect = region.subtract(d_data->legendRect).boundingRect(); 
-
+#else
+        rect = region.subtracted(d_data->legendRect).boundingRect(); 
+#endif
         if ( d_data->layoutData.legend.frameWidth && 
             !(options & IgnoreFrames ) )
         {

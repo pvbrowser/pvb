@@ -216,7 +216,11 @@ QImage *Interpreter::readBmpFromSocket(int w, int h, char **d)
     temp = new QImage();
     temp->load("temp.bmp");
     QRgb col;
+#if QT_VERSION < 0x050000
     for(icol=0; icol < temp->numColors(); icol++)
+#else
+    for(icol=0; icol < temp->colorCount(); icol++)
+#endif
     {
       col = temp->color(icol);
       if(qRed(col) == 1 && qGreen(col) == 1 && qBlue(col) == 1)
@@ -2899,6 +2903,7 @@ void Interpreter::interprets(const char *command)
                 {
                   t->verticalHeader()->hide();
                 }
+#if QT_VERSION < 0x050000
                 else if(width > 0) // set fixed width
                 {
                   t->verticalHeader()->setResizeMode(QHeaderView::Fixed);
@@ -2915,6 +2920,24 @@ void Interpreter::interprets(const char *command)
                   t->verticalHeader()->resizeSection(0,width);
                   t->verticalHeader()->setResizeMode(QHeaderView::Fixed);
                 }
+#else
+                else if(width > 0) // set fixed width
+                {
+                  t->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+                  t->verticalHeader()->setFixedWidth(width);
+                  t->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+                  t->verticalHeader()->resizeSection(0,width);
+                  t->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+                }
+                else               // resize to contents
+                {
+                  t->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+                  t->verticalHeader()->setMinimumWidth(0);
+                  t->verticalHeader()->setMaximumWidth(99999);
+                  t->verticalHeader()->resizeSection(0,width);
+                  t->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+                }
+#endif
               }
             }
           }
@@ -5386,6 +5409,7 @@ void Interpreter::interprett(const char *command)
       t = (QTableWidget *) all[i]->w;
       if(t != NULL)
       {
+#if QT_VERSION < 0x050000
         if(horizontal == 1)
         {
           //t->horizontalHeader()->setResizeEnabled(enabled,section);
@@ -5398,6 +5422,20 @@ void Interpreter::interprett(const char *command)
           if(enabled) t->verticalHeader()->setResizeMode(section,QHeaderView::Interactive);
           else        t->verticalHeader()->setResizeMode(section,QHeaderView::Custom);
         }
+#else
+        if(horizontal == 1)
+        {
+          //t->horizontalHeader()->setResizeEnabled(enabled,section);
+          if(enabled) t->horizontalHeader()->setSectionResizeMode(section,QHeaderView::Interactive);
+          else        t->horizontalHeader()->setSectionResizeMode(section,QHeaderView::Custom);
+        }
+        else
+        {
+          //t->verticalHeader()->setResizeEnabled(enabled,section);
+          if(enabled) t->verticalHeader()->setSectionResizeMode(section,QHeaderView::Interactive);
+          else        t->verticalHeader()->setSectionResizeMode(section,QHeaderView::Custom);
+        }
+#endif
       }
     }
     else if(all[i]->type == TQCustomWidget)

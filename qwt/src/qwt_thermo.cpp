@@ -469,11 +469,13 @@ QwtThermo::ScalePos QwtThermo::scalePosition() const
 }
 
 //! Notify a font change.
+#if QT_VERSION < 0x050000
 void QwtThermo::fontChange(const QFont &f)
 {
     QWidget::fontChange( f );
     layoutThermo();
 }
+#endif
 
 //! Notify a scale change.
 void QwtThermo::scaleChange()

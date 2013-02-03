@@ -13,6 +13,11 @@
 #include "qwt_legend_item.h"
 #include "qwt_plot_item.h"
 
+static int qRound(int i)
+{
+	return i;
+}
+
 class QwtPlotItem::PrivateData
 {
 public:

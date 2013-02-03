@@ -521,11 +521,13 @@ void QwtKnob::scaleChange()
     Recalculates the layout
     \sa layoutKnob()
 */
+#if QT_VERSION < 0x050000
 void QwtKnob::fontChange(const QFont &f)
 {
     QwtAbstractSlider::fontChange( f );
     layoutKnob();
 }
+#endif    
 
 /*!
   \return minimumSizeHint()

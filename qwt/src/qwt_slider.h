@@ -121,7 +121,9 @@ protected:
     virtual void valueChange();
     virtual void rangeChange();
     virtual void scaleChange();
+#if QT_VERSION < 0x050000
     virtual void fontChange(const QFont &oldFont);
+#endif
 
     void layoutSlider( bool update = true );
     int xyPosition(double v) const;

@@ -367,11 +367,13 @@ void QwtSlider::scaleChange()
 
 
 //! Notify change in font
+#if QT_VERSION < 0x050000
 void QwtSlider::fontChange(const QFont &f)
 {
     QwtAbstractSlider::fontChange( f );
     layoutSlider();
 }
+#endif
 
 /*! 
    Draw the slider into the specified rectangle.

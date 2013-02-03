@@ -558,8 +558,13 @@ void QwtPlotCurve::draw(int from, int to) const
     }
 #endif
 
+#if QT_VERSION < 0x050000
+    // lehrig
     if ( !canvas->testAttribute(Qt::WA_WState_InPaintEvent) &&
         !canvas->testAttribute(Qt::WA_PaintOutsidePaintEvent) )
+#else
+    if ( !canvas->testAttribute(Qt::WA_WState_InPaintEvent) )
+#endif	    
     {
         /*
           We save curve and range in helper and call repaint.

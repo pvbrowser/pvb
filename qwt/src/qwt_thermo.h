@@ -164,7 +164,9 @@ protected:
     void drawThermo(QPainter *p);
     void layoutThermo( bool update = true );
     virtual void scaleChange();
+#if QT_VERSION < 0x050000
     virtual void fontChange(const QFont &oldFont);
+#endif
 
     virtual void paintEvent(QPaintEvent *e);
     virtual void resizeEvent(QResizeEvent *e);

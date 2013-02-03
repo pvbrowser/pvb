@@ -494,7 +494,7 @@ void QDrawWidget::renderTreeDump(const char *filename)
     fputs(xml.toUtf8(), fout);
     fclose(fout);
 #else
-#warning ("Warning : renderTreeDump is not available on Qt5 ")
+    printf("Warning : renderTreeDump is not available on Qt5. filename=%s But this function was intended for debugging only, so we don't care.\n", filename);
 #endif    
   }
   else
@@ -1577,6 +1577,7 @@ int QDrawWidget::requestSvgBoundsOnElement(QString &text)
     int g_wanted = svgAnimator->calcObjectWanted(pattern.toUtf8());
     if(g_wanted > 0)
     {
+#if QT_VERSION < 0x050000  
       int x=0, y=0, w=0, h=0;
       QString xml = webkitrenderer->renderTreeDump();
       if(interpretRenderTree(xml.toUtf8(), g_wanted, &x, &y, &w, &h) == 1)
@@ -1584,6 +1585,9 @@ int QDrawWidget::requestSvgBoundsOnElement(QString &text)
         sprintf(buf,"text(%d,\"svgBoundsOnElement:%d,%d,%d,%d=%s\"\n", id, x, y, w, h, (const char *) text.toUtf8());
         tcp_send(s,buf,strlen(buf));
       }  
+#else
+#warning ("Warning : renderTreeDump is not available on Qt5, thus we could not implement requestSvgBoundsOnElement yet.")
+#endif    
     }
   }  
   return 0;
@@ -1595,8 +1599,13 @@ int QDrawWidget::requestSvgMatrixForElement(QString &text)
   if(opt.use_webkit_for_svg == 0)
   {
     QMatrix m = renderer.matrixForElement(text);
+#if QT_VERSION < 0x050000  
     sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", id, 
     m.m11(), m.m12(), m.m21(), m.m22(), m.det(), m.dx(), m.dy(), (const char *) text.toUtf8());
+#else
+    sprintf(buf,"text(%d,\"svgMatrixForElement:%f,%f,%f,%f,%f,%f,%f=%s\"\n", id, 
+    m.m11(), m.m12(), m.m21(), m.m22(), m.determinant(), m.dx(), m.dy(), (const char *) text.toUtf8());
+#endif    
     tcp_send(s,buf,strlen(buf));
   }
   else

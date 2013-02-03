@@ -214,16 +214,23 @@ void QwtDoubleRange::setStep(double vstep)
     
     double newStep;
     if (vstep == 0.0)
+    {
        newStep = intv * DefaultRelStep;
+    }   
     else
     {
-        if ((intv > 0) && (vstep < 0) || (intv < 0) && (vstep > 0))
+        if (((intv > 0) && (vstep < 0)) || ((intv < 0) && (vstep > 0)))
+	{
            newStep = -vstep;
+	}
         else
-           newStep = vstep;
-        
+	{
+	   newStep = vstep;
+	}
         if ( fabs(newStep) < fabs(MinRelStep * intv) )
+	{
            newStep = MinRelStep * intv;
+	}   
     }
     
     if (newStep != d_step)
