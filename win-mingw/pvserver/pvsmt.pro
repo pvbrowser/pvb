@@ -4,6 +4,7 @@
 
 TEMPLATE = lib
 CONFIG  += warn_on release staticlib
+CONFIG  -= qt
 DEFINES -= UNICODE
 DEFINES += BCCWIN
 

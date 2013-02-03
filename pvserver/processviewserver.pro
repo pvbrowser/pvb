@@ -4,6 +4,7 @@
 
 TEMPLATE = app
 CONFIG  += warn_on release console 
+CONFIG  -= qt
 
 # Input
 HEADERS += pvapp.h

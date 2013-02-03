@@ -5,6 +5,7 @@
 TEMPLATE = lib
 unix:CONFIG   += warn_on release staticlib
 win32:CONFIG  += warn_on release dll
+CONFIG        -= qt
 TARGET         = lua
 DEPENDPATH    += .
 INCLUDEPATH   += .
