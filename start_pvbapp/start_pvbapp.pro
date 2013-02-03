@@ -2,7 +2,7 @@
 # project file for start_pvbapp       #
 #######################################
 SOURCES              = main.cpp
-CONFIG               = warn_on release
+CONFIG              += warn_on release
 CONFIG              -= qt
 
 

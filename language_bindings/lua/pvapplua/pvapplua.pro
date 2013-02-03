@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG   = warn_on release qt
+CONFIG  += warn_on release qt
 QT      += sql
 DEFINES += LUA
 

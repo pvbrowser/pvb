@@ -1,5 +1,5 @@
 TEMPLATE = lib
-CONFIG   = console warn_on release dll
+CONFIG  += console warn_on release dll
 INCLUDEPATH += $(PYDIR)/include
 
 # Input

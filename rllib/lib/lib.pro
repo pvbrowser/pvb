@@ -1,7 +1,7 @@
 TEMPLATE = lib
-#CONFIG   = warn_on release Hilscher qt
-#CONFIG   = warn_on release staticlib
-CONFIG   = warn_on release
+#CONFIG  += warn_on release Hilscher qt
+#CONFIG  += warn_on release staticlib
+CONFIG  += warn_on release
 CFLAGS   = -pipe -Wall -W -O0 -march=i586 -mcpu=i686 -fmessage-length=0 -DNO_DEBUG -fPIC
 # LITTLEENDIAN and LINUX is only for libnodave to work
 DEFINES           += LITTLEENDIAN

@@ -42,6 +42,7 @@ private slots:
   void slotFileOpt();
   void newFile();
   void open();
+  void perhapsFixCONFIG();
   bool save();
   bool saveAs();
   void slotBackup();

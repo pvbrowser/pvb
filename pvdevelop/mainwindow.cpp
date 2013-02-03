@@ -73,6 +73,7 @@ MainWindow::MainWindow()
       name = opt_develop.arg_project;
       load(name + ".pro");
       editor->radioProject->setChecked(true);
+      perhapsFixCONFIG();
     }
     else if(opt_develop.script == PV_LUA)
     {
@@ -286,8 +287,28 @@ void MainWindow::open()
       {
         load(name + ".pro");
         if(editor != NULL) editor->radioProject->setChecked(true);
+        perhapsFixCONFIG();
       }
     }
+  }
+}
+
+void MainWindow::perhapsFixCONFIG()
+{
+  if(editor != NULL)
+  {
+    QTextCursor cursor = editor->edit->document()->find("CONFIG");
+    if(cursor.isNull() == false)
+    {
+      cursor.clearSelection();
+      cursor.movePosition(QTextCursor::NextWord);
+      cursor.select(QTextCursor::WordUnderCursor);
+      QString txt = cursor.selectedText();
+      if(txt == "=")
+      {
+        cursor.insertText("+=");
+      }
+    }  
   }
 }
 
@@ -920,6 +941,7 @@ void MainWindow::viewEditor()
     {
       load(name + ".pro");
       editor->radioProject->setChecked(true);
+      perhapsFixCONFIG();
     }
     editor->spinBoxMask->setValue(currentMask);
   }
@@ -1018,6 +1040,7 @@ void MainWindow::slotQtDesigner()
   {
     load(name + ".pro");
     editor->radioProject->setChecked(true);
+    perhapsFixCONFIG();
   }
 
   int mymask = editor->spinBoxMask->value();
@@ -1090,6 +1113,7 @@ void MainWindow::slotImportUI()
   {
     load(name + ".pro");
     editor->radioProject->setChecked(true);
+    perhapsFixCONFIG();
   }
 
   int mymask = editor->spinBoxMask->value();
@@ -1538,6 +1562,7 @@ void MainWindow::endMenu()
     {
       load(name + ".pro");
       editor->radioProject->setChecked(true);
+      perhapsFixCONFIG();
     }  
   }
 }

@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = lib
-CONFIG   = warn_on release staticlib
+CONFIG  += warn_on release staticlib
 DEFINES -= UNICODE
 DEFINES += BCCWIN
 

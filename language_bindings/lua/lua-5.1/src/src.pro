@@ -3,8 +3,8 @@
 ######################################################################
 
 TEMPLATE = lib
-unix:CONFIG    = warn_on release staticlib
-win32:CONFIG   = warn_on release dll
+unix:CONFIG   += warn_on release staticlib
+win32:CONFIG  += warn_on release dll
 TARGET         = lua
 DEPENDPATH    += .
 INCLUDEPATH   += .

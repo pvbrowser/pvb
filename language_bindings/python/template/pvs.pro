@@ -4,7 +4,7 @@
 ########################################################################
 
 TEMPLATE = app
-CONFIG   = warn_on release
+CONFIG  += warn_on release
 CONFIG  -= qt
 unix:QMAKE_LFLAGS += -static-libgcc
 

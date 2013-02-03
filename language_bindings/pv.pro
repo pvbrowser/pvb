@@ -1,5 +1,5 @@
 TEMPLATE    = lib
-CONFIG      = qt console warn_on release dll
+CONFIG      += qt console warn_on release dll
 QT          += sql
 INCLUDEPATH += $(PYDIR)/include
 INCLUDEPATH += ../pvserver

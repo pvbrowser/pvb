@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG   = warn_on release console 
+CONFIG  += warn_on release console 
 
 # Input
 HEADERS += pvapp.h

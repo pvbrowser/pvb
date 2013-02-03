@@ -1,7 +1,7 @@
 TEMPLATE  = lib
-#CONFIG   = warn_on release Hilscher qt
-CONFIG    = warn_on release staticlib
-#CONFIG   = warn_on release
+#CONFIG  += warn_on release Hilscher qt
+CONFIG   += warn_on release staticlib
+#CONFIG  += warn_on release
 DEFINES  -= UNICODE
 
 win32-g++ {
