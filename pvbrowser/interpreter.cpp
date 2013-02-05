@@ -7254,19 +7254,25 @@ void Interpreter::interpretQ(const char *command)
         }
         else
         {
-          printf("ERROR2: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+          QString msg;
+          msg.sprintf("ERROR2: loading CustomWidget libname=%s classname=%s library is not loaded", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+          printf("%s\n", (const char *) msg.toUtf8());
           qDebug() << mainWindow->libs[libname]->errorString();
           qDebug() << mainWindow->libs[libname]->fileName();
           all[i]->w = new QWidget(all[p]->w);
           all[i]->type = TQWidget;
+          QMessageBox::warning(mainWindow,"pvbrowser",msg);
           return;
         }
       }
       else
       {
-        printf("ERROR3: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        QString msg;
+        msg.sprintf("ERROR3: loading CustomWidget libname=%s classname=%s new QLibrary failed", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        printf("%s\n",(const char *) msg.toUtf8());
         all[i]->w = new QWidget(all[p]->w);
         all[i]->type = TQWidget;
+        QMessageBox::warning(mainWindow,"pvbrowser",msg);
       }
     }
     if(opt.arg_debug) printf("construct CustomWidget\n");    
@@ -7277,16 +7283,22 @@ void Interpreter::interpretQ(const char *command)
       all[i]->type = TQCustomWidget;
       if(all[i]->w == NULL)
       {
-        printf("ERROR5: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        QString msg;
+        msg.sprintf("ERROR5: loading CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        printf("%s\n",(const char *) msg.toUtf8());
         all[i]->w = new QWidget(all[p]->w);
         all[i]->type = TQWidget;
+        QMessageBox::warning(mainWindow,"pvbrowser",msg);
       }
     }
     else
     {
-      printf("ERROR6: CustomWidget libname=%s classname=%s\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+      QString msg;
+      msg.sprintf("ERROR6: CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+      printf("%s\n",(const char *) msg.toUtf8());
       all[i]->w = new QWidget(all[p]->w);
       all[i]->type = TQWidget;
+      QMessageBox::warning(mainWindow,"pvbrowser",msg);
     }
   }
   if(opt.arg_fillbackground == 1 && i>0 && i<nmax) // murnleitner special
