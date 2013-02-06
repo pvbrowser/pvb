@@ -653,7 +653,7 @@ int i;
         fprintf(fp,"view.audio=\"c:\\path\\to\\vlc\"\n");
         fprintf(fp,"view.video=\"c:\\path\\to\\vlc\"\n");
         fprintf(fp,"#pvb_com_plugin=c:\\path\\to\\pvb_com_plugin.dll\n");
-        fprintf(fp,"pvb_widget_plugindir=%%PVBDIR%%\\pvb\\pvbrowser\\widget_plugins\n");
+        fprintf(fp,"pvb_widget_plugindir=%%PVBDIR%%\\pvb\\pvbrowser\n");
 #elif   defined(PVMAC)
         fprintf(fp,"view.pdf=okular\n");
         fprintf(fp,"view.img=gimp\n");
@@ -664,7 +664,7 @@ int i;
         fprintf(fp,"view.audio=vlc\n");
         fprintf(fp,"view.video=vlc\n");
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.dylib\n");
-        fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser/widget_plugins\n");
+        fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser\n");
 #elif   defined(PVUNIX)
         fprintf(fp,"view.pdf=okular\n");
         fprintf(fp,"view.img=gimp\n");
@@ -677,9 +677,12 @@ int i;
 #ifdef USE_SYMBIAN
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
         fprintf(fp,"pvb_widget_plugindir=\\sys\\bin\n");
+#elif  defined(USE_ANDROID)        
+        fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
+        fprintf(fp,"pvb_widget_plugindir=/sdcard/pvbrowser\n");
 #else
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
-        fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser/widget_plugins\n");
+        fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser\n");
 #endif
 #endif
         fprintf(fp,"generate_cookie=pvb_generate_cookie\n");

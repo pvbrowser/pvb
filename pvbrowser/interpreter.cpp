@@ -7255,13 +7255,22 @@ void Interpreter::interpretQ(const char *command)
         else
         {
           QString msg;
-          msg.sprintf("ERROR2: loading CustomWidget libname=%s classname=%s library is not loaded", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+          msg.sprintf("ERROR2: loading CustomWidget plugindir=%s libname=%s classname=%s library is not loaded errorString=%s", opt.pvb_widget_plugindir, (const char *) libname.toUtf8(), (const char *) classname.toUtf8(), (const char *) ql->errorString().toUtf8());
           printf("%s\n", (const char *) msg.toUtf8());
           qDebug() << mainWindow->libs[libname]->errorString();
           qDebug() << mainWindow->libs[libname]->fileName();
           all[i]->w = new QWidget(all[p]->w);
           all[i]->type = TQWidget;
           QMessageBox::warning(mainWindow,"pvbrowser",msg);
+          msg.sprintf("The problem might be a missing custom widget plugin \"%s\".\n" 
+                      "Or pvb_widget_plugindir=%s in pvbrowser options must be adjusted.\n"
+                      "If the plugin \"%s\" is missing you might download it from\n"
+                      "http://pvbrowser.org download section.\n"
+                      "If you can't find the plugin there please ask your system administrator.",
+                      (const char *) libname.toUtf8(), 
+                      opt.pvb_widget_plugindir, 
+                      (const char *) libname.toUtf8());
+          QMessageBox::information(mainWindow,"pvbrowser",msg);
           return;
         }
       }
@@ -7272,7 +7281,7 @@ void Interpreter::interpretQ(const char *command)
         printf("%s\n",(const char *) msg.toUtf8());
         all[i]->w = new QWidget(all[p]->w);
         all[i]->type = TQWidget;
-        QMessageBox::warning(mainWindow,"pvbrowser",msg);
+        //QMessageBox::warning(mainWindow,"pvbrowser",msg);
       }
     }
     if(opt.arg_debug) printf("construct CustomWidget\n");    

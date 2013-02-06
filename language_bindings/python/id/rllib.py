@@ -913,14 +913,6 @@ rlIniFile_swigregister(rlIniFile)
 def rlSetTranslator(*args):
   return _rllib.rlSetTranslator(*args)
 rlSetTranslator = _rllib.rlSetTranslator
-
-def rltranslate(*args):
-  return _rllib.rltranslate(*args)
-rltranslate = _rllib.rltranslate
-
-def rltranslate2(*args):
-  return _rllib.rltranslate2(*args)
-rltranslate2 = _rllib.rltranslate2
 class rlInterpreter(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlInterpreter, name, value)
