@@ -3,7 +3,9 @@ TEMPLATE = lib
 #CONFIG  += warn_on release staticlib
 CONFIG  += warn_on release
 CONFIG  -= qt
-CFLAGS   = -pipe -Wall -W -O0 -march=i586 -mcpu=i686 -fmessage-length=0 -DNO_DEBUG -fPIC
+CXXFLAGS = -fPIC
+CFLAGS   = -fPIC
+#CFLAGS   = -pipe -Wall -W -O0 -march=i586 -fmessage-length=0 -DNO_DEBUG -fPIC
 # LITTLEENDIAN and LINUX is only for libnodave to work
 DEFINES           += LITTLEENDIAN
 unix:DEFINES      += LINUX

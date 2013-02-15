@@ -132,14 +132,20 @@ cd language_bindings
 ./build_python_interface.sh
 cd ..
 fi
-echo '################################################################'
-echo '# finished !!!                                                 #'
-echo '# verify that no errors occured by running me again            #'
-echo '# now run:                                                     #'
-echo '#   su                                                         #'
-echo '#   ./install.sh                                               #'
-echo '#   exit                                                       #'
-echo '# if you want to use Qt Designer for designing your masks,     #'
-echo '#   copy the plugins to Qt Designer (read designer/README.txt) #'
-echo '# Have a lot of fun (Yours pvbrowser community)                #'
-echo '################################################################'
+echo "################################################################"
+echo "# finished compiling !!!                                       #"
+echo "#              _                                               #"
+echo "#   _ ____   _| |__  _ __ _____      _____  ___ _ __           #"      
+echo "#  | '_ \ \ / / '_ \| '__/ _ \ \ /\ / / __|/ _ \ '__|          #"
+echo "#  | |_) \ V /| |_) | | | (_) \ V  V /\__ \  __/ |             #"     
+echo "#  | .__/ \_/ |_.__/|_|  \___/ \_/\_/ |___/\___|_|             #"      
+echo "#  |_|                                                         #"
+echo "# verify that no errors occured by running me again            #"
+echo "# now run:                                                     #"
+echo "#   su                                                         #"
+echo "#   ./install.sh                                               #"
+echo "#   exit                                                       #"
+echo "# if you want to use Qt Designer for designing your masks,     #"
+echo "#   copy the plugins to Qt Designer (read designer/README.txt) #"
+echo "# Have a lot of fun (Yours pvbrowser community)                #"
+echo "################################################################"

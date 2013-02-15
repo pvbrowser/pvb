@@ -389,7 +389,8 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     int pos,pos2;
     sscanf(command,"setCurveYAxis(%d,%d",&pos,&pos2);
     if(pos<0 || pos>=nCurves) return -1;
-    //xx setCurveYAxis(curves[pos],pos2);
+    //xx setCurveYAxis(curves[pos],pos2); rl2013
+    if(curves[pos] != NULL) curves[pos]->setYAxis(pos2);
   }
   else if(isCommand("insertMarker("))
   {

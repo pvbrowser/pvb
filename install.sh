@@ -217,27 +217,33 @@ if [ -d /usr/lib/qt4/plugins ]; then
 fi  
 fi
 
-echo '################################################################'
-echo '# pvbrowser is now installed !!!                               #'
-echo '# Have a lot of fun                                            #'
-echo '# commands:                                                    #'
-echo '#   pvbrowserdemo         - a small demo                       #'
-echo '#   pvbrowser             - pvbrowser client                   #'
-echo '#   pvdevelop             - integrated development environment #'
-echo '#   pvslua                - the lua pvserver                   #'
-echo '#   Hint: copy the following shortcuts to your desktop         #'
-echo '#   /opt/pvb/pvbrowser.desktop /opt/pvb/pvdevelop.desktop      #'
-echo '#                                                              #'
-echo '# Example pvserver:                                            #'
-echo '#   cd /opt/pvb/pvsexample                                     #'
-echo '#   qmake pvsexample.pro                                       #'
-echo '#   make clean                                                 #'
-echo '#   make                                                       #'
-echo '#   ./pvsexample -sleep=100                                    #'
-echo '#   pvbrowser # in other terminal                              #'
-echo '#                                                              #'
-echo '# if you want to use Qt Designer for designing your masks,     #'
-echo '#   copy the plugins to Qt Designer (read designer/README.txt) #'
-echo '# Now type:                                                    #'
-echo '#   exit                                                       #'
-echo '################################################################'
+echo "################################################################"
+echo "#             _                                                #"                   
+echo "#  _ ____   _| |__  _ __ _____      _____  ___ _ __            #"     
+echo "# | '_ \ \ / / '_ \| '__/ _ \ \ /\ / / __|/ _ \ '__|           #"
+echo "# | |_) \ V /| |_) | | | (_) \ V  V /\__ \  __/ |              #"    
+echo "# | .__/ \_/ |_.__/|_|  \___/ \_/\_/ |___/\___|_|              #"     
+echo "# |_|                                                          #"
+echo "#                                         is now installed !!! #"
+echo "# Have a lot of fun                                            #"
+echo "# commands:                                                    #"
+echo "#   pvbrowserdemo         - a small demo                       #"
+echo "#   pvbrowser             - pvbrowser client                   #"
+echo "#   pvdevelop             - integrated development environment #"
+echo "#   pvslua                - the lua pvserver                   #"
+echo "#   Hint: copy the following shortcuts to your desktop         #"
+echo "#   /opt/pvb/pvbrowser.desktop /opt/pvb/pvdevelop.desktop      #"
+echo "#                                                              #"
+echo "# Example pvserver:                                            #"
+echo "#   cd /opt/pvb/pvsexample                                     #"
+echo "#   qmake pvsexample.pro                                       #"
+echo "#   make clean                                                 #"
+echo "#   make                                                       #"
+echo "#   ./pvsexample -sleep=100                                    #"
+echo "#   pvbrowser # in other terminal                              #"
+echo "#                                                              #"
+echo "# if you want to use Qt Designer for designing your masks,     #"
+echo "#   copy the plugins to Qt Designer (read designer/README.txt) #"
+echo "# Now type:                                                    #"
+echo "#   exit                                                       #"
+echo "################################################################"

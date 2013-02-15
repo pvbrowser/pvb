@@ -356,6 +356,7 @@ rlTime rlTime::operator-(rlTime &time)
   int maxmonth,y,m;
   rlTime t;
 
+  y = 0;
   t.year        = year        - time.year;
   t.month       = month       - time.month;
   t.day         = day         - time.day;
