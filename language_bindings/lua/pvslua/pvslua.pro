@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG  += warn_on release qt
+CONFIG  += warn_on release qt console
 QT      += sql
 DEFINES += LUA
 
@@ -18,7 +18,8 @@ SOURCES      += main.cpp                                   \
 INCLUDEPATH +=  ../..
 INCLUDEPATH +=  ../lua-5.1/src/
 
-LIBS               += ../lua-5.1/src/liblua.a
+unix:LIBS               += ../lua-5.1/src/liblua.a
+win32:LIBS              += ../lua-5.1/src/release/liblua.a
 
 !macx {
 unix:LIBS          += ../../../pvserver/libpvsmt.so -lpthread

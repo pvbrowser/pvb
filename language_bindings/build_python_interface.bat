@@ -9,11 +9,11 @@ copy language_binding_rllib_wrap.cxx  language_binding_rllib_wrap_python.cxx
 
 %qtdir%\bin\qmake pv.pro
 mingw32-make.exe
-copy lib_pv.a    ..\win-mingw\bin\
+copy release\_pv.dll    ..\win-mingw\bin\
 mingw32-make.exe clean
 
 %qtdir%\bin\qmake rllib.pro
 mingw32-make.exe
-copy lib_rllib.a ..\win-mingw\bin\
+copy release\_rllib.dll ..\win-mingw\bin\
 mingw32-make.exe clean
 

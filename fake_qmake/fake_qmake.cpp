@@ -428,9 +428,10 @@ static void printDependInHeader(int i)
   char *cptr;
   if(f.load(row_headers.text(i)) < 0)
   {
-    printf("WARNING: could not open %s for testing dependencies\n", row_headers.text(i));
+    printf("WARNING: could not open %s for testing dependencies 2\n", row_headers.text(i));
     return;
   }
+
   const char *ccptr = f.firstLine();
   while(ccptr != NULL)
   {
@@ -446,9 +447,9 @@ static void printDependInHeader(int i)
         {
           int iin = i;
           *cptr = '\0';
-          for(int i=1; i<=n_headers; i++)
+          for(int j=1; j<=n_headers; j++)
           {
-            if(strcmp(name.text(), strip(row_headers.text(i))) == 0)
+            if(strcmp(name.text(), strip(row_headers.text(j))) == 0)
             {
               int already = 0;
               for(int d=1; d<=n_already_depend; d++)
@@ -460,8 +461,8 @@ static void printDependInHeader(int i)
                 if(i != iin) 
                 {
                   row_already_depend.setText(n_already_depend++,name.text());
-                  fprintf(fout," %s", row_headers.text(i));
-                  printDependInHeader(i);
+                  fprintf(fout," %s", row_headers.text(j));
+                  printDependInHeader(j);
                 } 
               }  
               break;
@@ -500,9 +501,9 @@ static void printDepend(int i)
         if(cptr != NULL)
         {
           *cptr = '\0';
-          for(int i=1; i<=n_headers; i++)
+          for(int j=1; j<=n_headers; j++)
           {
-            if(strcmp(name.text(), strip(row_headers.text(i))) == 0)
+            if(strcmp(name.text(), strip(row_headers.text(j))) == 0)
             {
               int already = 0;
               for(int d=1; d<=n_already_depend; d++)
@@ -512,7 +513,7 @@ static void printDepend(int i)
               if(already == 0)
               {
                 row_already_depend.setText(n_already_depend++,name.text());
-                fprintf(fout," %s", row_headers.text(i));
+                fprintf(fout," %s", row_headers.text(j));
                 printDependInHeader(i);
               }  
               break;
@@ -558,11 +559,14 @@ fprintf(fout,"CC            = gcc\n");
 fprintf(fout,"CXX           = g++\n");
 if(strcmp(str_template.text(),"app") == 0)
 {
-  fprintf(fout,"DEFINES       = -DUNICODE -DQT_LARGEFILE_SUPPORT");
+  fprintf(fout,"DEFINES       = -DQT_LARGEFILE_SUPPORT");
   for(i=1; i<=n_defines; i++) 
   {
-    if(strlen(row_defines.text(i)) > 0)
-      fprintf(fout," -D%s", row_defines.text(i));
+    if(strcmp(row_defines.text(i),"UNICODE") != 0) 
+    {
+      if(strlen(row_defines.text(i)) > 0)
+        fprintf(fout," -D%s", row_defines.text(i));
+    }    
   }  
 }
 else

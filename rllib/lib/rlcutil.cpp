@@ -292,19 +292,19 @@ const char *rlFindFile(const char *pattern, int *context)
 #endif
 
 #ifdef RLWIN32
-  static WIN32_FIND_DATA wfd;
+  static WIN32_FIND_DATAA wfd;
   static HANDLE hFindFile;
 
   if(*context == 0) // find first
   {
     *context = 1;
-    hFindFile = FindFirstFile(pattern,&wfd);
+    hFindFile = FindFirstFileA(pattern,&wfd);
     if(hFindFile == INVALID_HANDLE_VALUE)    return NULL;
     else                                     strcpy(freturn,(const char *) &wfd.cFileName);
   }
   else // subsequent find
   {
-    if(FindNextFile(hFindFile,&wfd) == TRUE) strcpy(freturn,(const char *) &wfd.cFileName);
+    if(FindNextFileA(hFindFile,&wfd) == TRUE) strcpy(freturn,(const char *) &wfd.cFileName);
     else                                   { FindClose(hFindFile); return NULL; }
   }
   return freturn;
@@ -324,7 +324,7 @@ const char *rlGetInifile(const char *name)
   strcpy(buf,"sys$login:");
 #endif
 #ifdef RLWIN32
-  ExpandEnvironmentStrings("%USERPROFILE%",buf,sizeof(buf)-1);
+  ExpandEnvironmentStringsA("%USERPROFILE%",buf,sizeof(buf)-1);
   if(strcmp(buf,"%USERPROFILE%") == 0) strcpy(buf,"C:");
   strcat(buf,"\\");;
 #endif
@@ -413,7 +413,7 @@ static int get_iexplore(char *buf)
 
   buf[0] = '\0';
 
-  ret = RegOpenKey(
+  ret = RegOpenKeyA(
     HKEY_CLASSES_ROOT,        // handle to open key
     "Applications",           // address of name of subkey to open
     &applications             // address of handle to open key
@@ -423,7 +423,7 @@ static int get_iexplore(char *buf)
     return -1;
   }
 
-  ret = RegOpenKey(
+  ret = RegOpenKeyA(
     applications,             // handle to open key
     "iexplore.exe",           // address of name of subkey to open
     &iexplore                 // address of handle to open key
@@ -434,7 +434,7 @@ static int get_iexplore(char *buf)
     return -1;
   }
 
-  ret = RegOpenKey(
+  ret = RegOpenKeyA(
     iexplore,                 // handle to open key
     "shell",                  // address of name of subkey to open
     &shell                    // address of handle to open key
@@ -446,7 +446,7 @@ static int get_iexplore(char *buf)
     return -1;
   }
 
-  ret = RegOpenKey(
+  ret = RegOpenKeyA(
     shell,                    // handle to open key
     "open",                   // address of name of subkey to open
     &open                     // address of handle to open key
@@ -459,7 +459,7 @@ static int get_iexplore(char *buf)
     return -1;
   }
 
-  ret = RegOpenKey(
+  ret = RegOpenKeyA(
     open,                     // handle to open key
     "command",                // address of name of subkey to open
     &command                  // address of handle to open key
@@ -473,7 +473,7 @@ static int get_iexplore(char *buf)
     return -1;
   }
 
-  ret = RegQueryValueEx(
+  ret = RegQueryValueExA(
     command,               // handle to key to query
     "",                    // address of name of value to query
     NULL,                  // reserved
@@ -499,13 +499,13 @@ static int get_iexplore(char *buf)
 static int mysystem(const char *command)
 {
   int ret;
-  STARTUPINFO         si = { sizeof(si)};
+  STARTUPINFOA        si = { sizeof(si)};
   PROCESS_INFORMATION pi;
   char cmd[4096];
 
   //strcpy(cmd,command);
-  ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
-  ret = (int) CreateProcess( NULL, cmd
+  ExpandEnvironmentStringsA(command,cmd,sizeof(cmd)-1);
+  ret = (int) CreateProcessA( NULL, cmd
                            , NULL, NULL
                            , FALSE, CREATE_NO_WINDOW
                            , NULL, NULL

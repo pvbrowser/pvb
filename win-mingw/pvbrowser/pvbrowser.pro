@@ -7,7 +7,6 @@
 DEFINES        -= UNICODE                                                    
 QT             += opengl svg webkit network                                  
 CONFIG         += uitools warn_on release                                    
-CONFIG         -= qt
 QMAKE_CXXFLAGS += -mthreads
 QMAKE_LFLAGS   += -mthreads
 

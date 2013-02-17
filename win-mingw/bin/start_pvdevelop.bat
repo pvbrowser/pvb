@@ -16,28 +16,29 @@
  if    [%MINGWDIR%] == [] goto environment_not_set                                 
  goto  start_pvdevelop                                                               
  :environment_not_set                                                                
- echo  ############################################################################# 
+ rem   ############################################################################# 
  rem
- echo  Please adjust environment variables within %PVBDIR%\win-mingw\bin\start_pvdevelop.bat                                  
+ rem   Please adjust environment variables within %PVBDIR%\win-mingw\bin\start_pvdevelop.bat                                  
  set   QTDIR=c:\Qt\4.8.2
  set   MINGWDIR=c:\mingw
  set   PYDIR=c:\Python25
  rem
- echo  ############################################################################# 
+ rem   ############################################################################# 
  rem   instead of setting QTDIR and MINGWDIR here you could also set them            
  rem   within the registry using the system control                                  
  :start_pvdevelop                                                                    
  set   PATH=%PVBDIR%\win-mingw\bin;%QTDIR%\bin;%MINGWDIR%\bin;c:\windows;
  set   PYTHONPATH=%PVBDIR%\win-mingw\bin;%PYTHONPATH%
- echo  PVBDIR     = %PVBDIR%                                                       
- echo  QTDIR      = %QTDIR%                                                        
- echo  MINGWDIR   = %MINGWDIR%                                                     
- echo  PYDIR      = %PYDIR%                                                        
- echo  PATH       = %PATH%                                                         
- echo  PYTHONPATH = %PYTHONPATH%                                                   
- echo  starting pvdevelop                                                            
+ echo  PVBDIR     = %PVBDIR%
+ echo  QTDIR      = %QTDIR%
+ echo  MINGWDIR   = %MINGWDIR%
+ echo  PYDIR      = %PYDIR%
+ echo  PATH       = %PATH%
+ echo  PYTHONPATH = %PYTHONPATH%
+ echo  starting pvdevelop
  echo  Please verify if the above environment variables are correct on your system.
- echo  If not please adjust by editing file $(PVBDIR)\win-mingw\bin\start_pvdevelop.bat
+ echo  If not please adjust by editing file 
+ echo    %PVBDIR%\win-mingw\bin\start_pvdevelop.bat
  start pvdevelop                                                                     
  :end                                                                                
  pause                                                                               

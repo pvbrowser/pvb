@@ -6,7 +6,8 @@ TEMPLATE = app
 CONFIG  += console warn_on release                                         
 CONFIG  -= qt                                                              
 INCLUDEPATH += ../../rllib/rlhistory                                       
-                                                                           
+DEFINES -= UNICODE
+
 # Input                                                                    
 # HEADERS +=                                                               
 SOURCES     += ../../rllib/rlhistory/rlhistory.cpp                         

@@ -56,7 +56,7 @@ cd rllib
 %QTDIR%\bin\qmake lib.pro -o Makefile                                    
 mingw32-make.exe                                                                
 cd ..                                                                      
-copy rllib\librllib.a bin\librllib.a                                       
+copy rllib\release\librllib.a bin\librllib.a                                       
 rem pause                                                                  
                                                                            
 cd rlsvg                                                                   
@@ -71,19 +71,18 @@ mingw32-make.exe
 cd ..                                                                      
 rem pause                                                                  
                                                                            
+cd fake_qmake                                                               
+%QTDIR%\bin\qmake fake_qmake.pro -o Makefile                              
+mingw32-make.exe                                                                
+cd ..                                                                      
+rem pause                                                                  
+                                                                           
 cd ..\start_pvbapp                                                         
 %QTDIR%\bin\qmake start_pvbapp.pro -o Makefile                           
 mingw32-make.exe                                                                
 cd ..\win-mingw                                                            
 rem pause                                                                  
                                                                            
-cd fake_qmake                                                              
-g++ fake_qmake.cpp rlcutil.cpp rlspreadsheet.cpp -o fake_qmake.exe         
-cd ..                                                                      
-cd setupregistry                                                           
-g++ SetupRegistry.cpp -o SetupRegistry.exe                                 
-cd ..                                                                      
-
 cd pvmore                                                              
 %QTDIR%\bin\qmake pvmore.pro -o Makefile                           
 mingw32-make.exe                                                                
@@ -94,12 +93,11 @@ cd ..
 copy pvbrowser\release\pvbrowser.exe                             bin\pvbrowser.exe                               
 copy browserplugin\release\nppvbrowser.dll                       bin\nppvbrowser.dll                             
 copy pvdevelop\release\pvdevelop.exe                             bin\pvdevelop.exe                               
-copy pvserver\libserverlib.a                                     bin\libserverlib.a                              
+copy pvserver\release\libserverlib.a                             bin\libserverlib.a                              
 copy rlsvg\release\rlsvgcat.exe                                  bin\rlsvgcat.exe                                
 copy rlhistory\release\rlhistory.exe                             bin\rlhistory.exe                               
-copy ..\start_pvbapp\start_pvbapp.exe                            bin\start_pvbapp.exe                            
-copy fake_qmake\fake_qmake.exe                                   bin\fake_qmake.exe                              
-copy setupregistry\SetupRegistry.exe                             bin\SetupRegistry.exe                           
+copy ..\start_pvbapp\release\\start_pvbapp.exe                   bin\start_pvbapp.exe                            
+copy fake_qmake\release\fake_qmake.exe                           bin\fake_qmake.exe                              
 xcopy /e /y "%QTDIR%\plugins\imageformats"                       bin\imageformats                                
 copy ..\qwt\designer\plugins\designer\qwt_designer_plugin5.dll   bin\plugins\designer\qwt_designer_plugin5.dll   
 copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\designer\libqwt_designer_plugin5.a  
