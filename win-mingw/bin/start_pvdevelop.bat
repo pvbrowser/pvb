@@ -1,32 +1,29 @@
  @echo off                                                                            
  rem #########################################################################################                                                 
- rem # This is the file start_pvdevelop.bat                                                  #                                                 
- rem # You must install the Qt4 SDK including MinGW.                                         #
- rem # During installation of Qt you are asked if you want to install MinGW also.            #
- rem # You will have to define the environment variables %QTDIR% and %MINGWDIR% to point     #
- rem # to the installation directories where the executables from Qt and MinGW can be found  #
- rem # (qmake.exe, mingw32-make.exe and the C++ compiler).                                   #
- rem # The qmake tool from Qt will be used to create a Makefile for your projects.           #
- rem # The installation procedure of pvbrowser already defined the environment variable      #
- rem # %PVBDIR% and added %PVBDIR%\win-mingw\bin to your %PATH% environment variable.        #
- rem # Since it did not know where the Qt SDK is located this must be defined manually       #
- rem # either in this file or within your system control center.                             #            
+ rem # This is the file start_pvdevelop.bat                                                  #
+ rem #                                                                                       #
+ rem # If you only want to develop in Lua you do not need to set any environment variables   #
+ rem # If you want to develop in C/C++ you must install MinGW and set %MINGWDIR%             #
+ rem #   If you use the standard path from the MinGW installer c:\mingw should be ok         #
+ rem #   The MinGW installation must include mingw32-make.exe                                #
+ rem # Optionally you might install the Qt development package and set %QTDIR%               #
+ rem #   If the Qt development package is installed we use qmake.exe to generate Makefile    #
+ rem #   Otherwise we fall back to our simple fake_qmake.exe tool                            #
+ rem # Otionally you can set %PYDIR% if you want to use Python                               #
+ rem #                                                                                       #
  rem #########################################################################################                                                 
  if    [%QTDIR%]    == [] goto environment_not_set                                 
  if    [%MINGWDIR%] == [] goto environment_not_set                                 
  goto  start_pvdevelop                                                               
  :environment_not_set                                                                
  echo  ############################################################################# 
+ rem
  echo  Please adjust environment variables within %PVBDIR%\win-mingw\bin\start_pvdevelop.bat                                  
- set   QTDIR=c:\Qt\4.7.4
+ set   QTDIR=c:\Qt\4.8.2
  set   MINGWDIR=c:\mingw
- rem   if you want to use python
  set   PYDIR=c:\Python25
- start notepad "%PVBDIR%\win-mingw\bin\start_pvdevelop.bat"                        
- pause
- exit                                                                                
+ rem
  echo  ############################################################################# 
- rem   remove start notepad, pause and exit above                                    
  rem   instead of setting QTDIR and MINGWDIR here you could also set them            
  rem   within the registry using the system control                                  
  :start_pvdevelop                                                                    
@@ -39,8 +36,8 @@
  echo  PATH       = %PATH%                                                         
  echo  PYTHONPATH = %PYTHONPATH%                                                   
  echo  starting pvdevelop                                                            
- echo  you can set the above environment variables also within the system control    
- echo  and start pvdevelop.exe directly                                              
+ echo  Please verify if the above environment variables are correct on your system.
+ echo  If not please adjust by editing file $(PVBDIR)\win-mingw\bin\start_pvdevelop.bat
  start pvdevelop                                                                     
  :end                                                                                
  pause                                                                               

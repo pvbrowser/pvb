@@ -126,6 +126,10 @@ cd ..
 cd pvsexample
 ../qmake.sh pvsexample.pro
 cd ..
+cd fake_qmake
+../qmake.sh fake_qmake.pro
+make
+cd ..
 if [ "$PVB_OSTYPE" == "linux" ]; then
 cd language_bindings
 ./build_lua_interface.sh

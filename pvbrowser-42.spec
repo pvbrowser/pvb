@@ -151,6 +151,7 @@ cd ..
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/lib
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlsvg
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhistory
+%__mkdir_p  %{buildroot}/opt/pvb/fake_qmake
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvslua
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvapplua
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
@@ -185,6 +186,7 @@ cp    start_pvbapp/example.ini.linux                      %{buildroot}/opt/pvb/s
 cp    start_pvbapp/start_if_not_already_running.sh        %{buildroot}/opt/pvb/start_pvbapp/
 cp    rllib/rlsvg/rlsvgcat                                %{buildroot}/opt/pvb/rllib/rlsvg/
 cp    rllib/rlhistory/rlhistory                           %{buildroot}/opt/pvb/rllib/rlhistory/
+cp    fake_qmake/fake_qmake                               %{buildroot}/opt/pvb/fake_qmake/
 cp    rllib/lib/librllib.a                                %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/librllib.so                               %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/*.h                                       %{buildroot}/opt/pvb/rllib/lib/
@@ -239,6 +241,7 @@ cp pvdevelop/pvdevelop.sh                        %{buildroot}%{_bindir}/pvdevelo
 %__ln_s /opt/pvb/start_pvbapp/start_pvbapp       %{buildroot}%{_bindir}/start_pvbapp
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat            %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory       %{buildroot}%{_bindir}/rlhistory
+%__ln_s /opt/pvb/fake_qmake/fake_qmake           %{buildroot}%{_bindir}/fake_qmake
 
 %__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.a
 %__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.so
@@ -301,6 +304,7 @@ License:     GPL
 %{_bindir}/pvdevelop
 %{_bindir}/rlsvgcat
 %{_bindir}/rlhistory
+%{_bindir}/fake_qmake
 %{_bindir}/start_pvbapp
 /usr/lib/librllib.so
 /usr/lib/librllib.so.1
@@ -335,6 +339,7 @@ License:     GPL
 /opt/pvb/pvdevelop/pvdevelop.sh
 /opt/pvb/rllib/rlsvg/rlsvgcat
 /opt/pvb/rllib/rlhistory/rlhistory
+/opt/pvb/fake_qmake/fake_qmake
 /opt/pvb/pvserver/wthread.h
 /opt/pvb/pvserver/BMP.h
 /opt/pvb/pvserver/vmsglext.h

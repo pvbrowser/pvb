@@ -53,6 +53,7 @@ mkdir -p  /opt/pvb/designer/plugins
 mkdir -p  /opt/pvb/rllib/lib
 mkdir -p  /opt/pvb/rllib/rlsvg
 mkdir -p  /opt/pvb/rllib/rlhistory
+mkdir -p  /opt/pvb/fake_qmake
 mkdir -p  /opt/pvb/language_bindings/lua/pvslua
 mkdir -p  /opt/pvb/language_bindings/lua/pvapplua
 mkdir -p  /opt/pvb/language_bindings/python/id
@@ -86,6 +87,7 @@ cp    start_pvbapp/example.ini.linux                      /opt/pvb/start_pvbapp/
 cp    start_pvbapp/start_if_not_already_running.sh        /opt/pvb/start_pvbapp/
 cp    rllib/rlsvg/rlsvgcat                                /opt/pvb/rllib/rlsvg/
 cp    rllib/rlhistory/rlhistory                           /opt/pvb/rllib/rlhistory/
+cp    fake_qmake/fake_qmake                               /opt/pvb/fake_qmake/
 cp    rllib/lib/*.h                                       /opt/pvb/rllib/lib/
 cp    rllib/lib/nodave.o                                  /opt/pvb/rllib/lib/
 cp    rllib/lib/setport.o                                 /opt/pvb/rllib/lib/
@@ -138,6 +140,7 @@ ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp               /usr/bin/start_pvbapp
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory               /usr/bin/rlhistory
+ln -sf /opt/pvb/fake_qmake/fake_qmake                   /usr/bin/fake_qmake
 ln -sf /opt/pvb/update_pvbrowser.sh                     /usr/bin/update_pvbrowser
 ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua     /usr/bin/pvslua
 ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua /usr/bin/pvapplua
@@ -166,6 +169,7 @@ ln -sf /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop                
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp            /usr/bin/start_pvbapp
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat                     /usr/bin/rlsvgcat
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory.app/Contents/MacOS/rlhistory               /usr/bin/rlhistory
+ln -sf /opt/pvb/fake_qmake/fake_qmake.app/Contents/MacOS/fake_qmake                  /usr/bin/fake_qmake
 ln -sf /opt/pvb/update_pvbrowser.sh                                                  /usr/bin/update_pvbrowser
 ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua.app/Contents/MacOS/pvslua        /usr/bin/pvslua
 ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua.app/Contents/MacOS/pvapplua  /usr/bin/pvapplua
