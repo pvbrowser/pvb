@@ -7574,6 +7574,88 @@ fail:
 }
 
 
+static int _wrap_rlMkdir__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("rlMkdir",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlMkdir",1,"char const *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlMkdir",2,"int");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)rlMkdir((char const *)arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlMkdir__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlMkdir",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlMkdir",1,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  result = (int)rlMkdir((char const *)arg1);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlMkdir(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      return _wrap_rlMkdir__SWIG_1(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rlMkdir__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlMkdir'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlMkdir(char const *,int)\n"
+    "    rlMkdir(char const *)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_new_rlDataAcquisition__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -27335,6 +27417,7 @@ static const struct luaL_Reg swig_commands[] = {
     { "rlupper", _wrap_rlupper},
     { "rllower", _wrap_rllower},
     { "rlStartsWith", _wrap_rlStartsWith},
+    { "rlMkdir",_wrap_rlMkdir},
     { "rlEventInit", _wrap_rlEventInit},
     { "rlSetEventLocation", _wrap_rlSetEventLocation},
     { "rlEventPrintf", _wrap_rlEventPrintf},

@@ -518,6 +518,7 @@ class for handling time.
 <div class="line">  <span class="keywordtype">int</span> maxmonth,y,m;</div>
 <div class="line">  <a class="code" href="classrlTime.html">rlTime</a> t;</div>
 <div class="line"></div>
+<div class="line">  y = 0;</div>
 <div class="line">  t.<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>        = <a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>        - time.<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>;</div>
 <div class="line">  t.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>       = <a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>       - time.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>;</div>
 <div class="line">  t.<a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>         = <a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>         - time.<a class="code" href="classrlTime.html#aded2beb30be33157cbcc9a6d59858f08">day</a>;</div>
@@ -647,7 +648,7 @@ class for handling time.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00461">461</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00462">462</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlTime.html">rlTime</a> diff,t1;</div>
 <div class="line"></div>
@@ -688,7 +689,7 @@ class for handling time.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00486">486</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00487">487</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>((*<span class="keyword">this</span>) == time) <span class="keywordflow">return</span> 1;</div>
 <div class="line">  <span class="keywordflow">if</span>((*<span class="keyword">this</span>) &lt;  time) <span class="keywordflow">return</span> 1;</div>
@@ -711,7 +712,7 @@ class for handling time.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00448">448</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00449">449</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>        != time.<a class="code" href="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f">year</a>)        <span class="keywordflow">return</span> 0;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>       != time.<a class="code" href="classrlTime.html#a2ac38a99d462b5e01ec9fbb9339163d6">month</a>)       <span class="keywordflow">return</span> 0;</div>
@@ -740,7 +741,7 @@ class for handling time.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00493">493</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00494">494</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlTime.html">rlTime</a> diff,t1;</div>
 <div class="line"></div>
@@ -781,7 +782,7 @@ class for handling time.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00518">518</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00519">519</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>((*<span class="keyword">this</span>) == time) <span class="keywordflow">return</span> 1;</div>
 <div class="line">  <span class="keywordflow">if</span>((*<span class="keyword">this</span>) &gt;  time) <span class="keywordflow">return</span> 1;</div>
@@ -803,7 +804,7 @@ class for handling time.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00525">525</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rltime_8cpp_source.html#l00526">526</a> of file <a class="el" href="rltime_8cpp_source.html">rltime.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">struct </span>tm begin;</div>
 <div class="line">  <span class="keyword">struct </span>tm test;</div>

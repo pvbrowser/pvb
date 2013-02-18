@@ -19,6 +19,7 @@
 #include "rlfileload.h"
 #include "rlspreadsheet.h"
 #include "rlstring.h"
+#include "rlcutil.h"
 
 extern FILE *fout;
 extern rlFileLoad fpro;
@@ -47,6 +48,10 @@ extern rlString str_target;
 extern rlString str_template;
 
 extern rlString line;
+extern rlString cmdline;
+
+extern const char *builddir;;
+extern char destination[];
 
 int interpretProFile();
 int getItemsFromLine(int iitem); // items := sources | includes | libs | includepath | defines

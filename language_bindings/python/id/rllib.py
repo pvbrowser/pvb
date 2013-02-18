@@ -519,6 +519,10 @@ rllower = _rllib.rllower
 def rlStartsWith(*args):
   return _rllib.rlStartsWith(*args)
 rlStartsWith = _rllib.rlStartsWith
+
+def rlMkdir(*args):
+  return _rllib.rlMkdir(*args)
+rlMkdir = _rllib.rlMkdir
 class rlDataAcquisition(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition, name, value)

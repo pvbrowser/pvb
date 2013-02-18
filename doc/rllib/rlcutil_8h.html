@@ -91,13 +91,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><code>#include &lt;stdarg.h&gt;</code><br/>
 <code>#include &lt;ctype.h&gt;</code><br/>
+<code>#include &lt;sys/types.h&gt;</code><br/>
+<code>#include &lt;sys/stat.h&gt;</code><br/>
 <code>#include &quot;<a class="el" href="rldefine_8h_source.html">rldefine.h</a>&quot;</code><br/>
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for rlcutil.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="rlcutil_8h__incl.png" border="0" usemap="#rlcutil_8h" alt=""/></div>
 <map name="rlcutil_8h" id="rlcutil_8h">
-<area shape="rect" id="node7" href="rldefine_8h.html" title="rldefine.h" alt="" coords="187,83,261,112"/></map>
+<area shape="rect" id="node11" href="rldefine_8h.html" title="rldefine.h" alt="" coords="423,80,504,107"/></map>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
@@ -142,6 +144,8 @@ Functions</h2></td></tr>
 <tr class="memitem:a9022208debc1e487f2d2ed7cb9fd21fd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#a9022208debc1e487f2d2ed7cb9fd21fd">rlupper</a> (char *str)</td></tr>
 <tr class="memitem:a3147ee004857d9f8934271ca491fd169"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#a3147ee004857d9f8934271ca491fd169">rllower</a> (char *str)</td></tr>
 <tr class="memitem:a176ada621127ae48c966556c474f20a4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#a176ada621127ae48c966556c474f20a4">rlStartsWith</a> (const char *str, const char *startstr)</td></tr>
+<tr class="memitem:ad9d36f7c9e98daa66c0cb737e12533df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df">rlStat</a> (const char *filepath, struct stat *buf)</td></tr>
+<tr class="memitem:a38506e038a433fce775f3fcdc340cace"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#a38506e038a433fce775f3fcdc340cace">rlMkdir</a> (const char *dir, int mode=0744)</td></tr>
 </table>
 <hr/><h2>Function Documentation</h2>
 <a class="anchor" id="a1b004e1bff89020f85198c8be8f4236b"></a>
@@ -511,19 +515,19 @@ Send command to a bus system
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keyword">static</span> WIN32_FIND_DATA wfd;</div>
+<div class="line"><span class="preprocessor"></span>  <span class="keyword">static</span> WIN32_FIND_DATAA wfd;</div>
 <div class="line">  <span class="keyword">static</span> HANDLE hFindFile;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span>(*context == 0) <span class="comment">// find first</span></div>
 <div class="line">  {</div>
 <div class="line">    *context = 1;</div>
-<div class="line">    hFindFile = FindFirstFile(pattern,&amp;wfd);</div>
+<div class="line">    hFindFile = FindFirstFileA(pattern,&amp;wfd);</div>
 <div class="line">    <span class="keywordflow">if</span>(hFindFile == INVALID_HANDLE_VALUE)    <span class="keywordflow">return</span> NULL;</div>
 <div class="line">    <span class="keywordflow">else</span>                                     strcpy(freturn,(<span class="keyword">const</span> <span class="keywordtype">char</span> *) &amp;wfd.cFileName);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">else</span> <span class="comment">// subsequent find</span></div>
 <div class="line">  {</div>
-<div class="line">    <span class="keywordflow">if</span>(FindNextFile(hFindFile,&amp;wfd) == TRUE) strcpy(freturn,(<span class="keyword">const</span> <span class="keywordtype">char</span> *) &amp;wfd.cFileName);</div>
+<div class="line">    <span class="keywordflow">if</span>(FindNextFileA(hFindFile,&amp;wfd) == TRUE) strcpy(freturn,(<span class="keyword">const</span> <span class="keywordtype">char</span> *) &amp;wfd.cFileName);</div>
 <div class="line">    <span class="keywordflow">else</span>                                   { FindClose(hFindFile); <span class="keywordflow">return</span> NULL; }</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> freturn;</div>
@@ -612,7 +616,7 @@ USERPROFILE%\name    on Windows
 <div class="line"><span class="preprocessor"></span>  strcpy(buf,<span class="stringliteral">&quot;sys$login:&quot;</span>);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  ExpandEnvironmentStrings(<span class="stringliteral">&quot;%USERPROFILE%&quot;</span>,buf,<span class="keyword">sizeof</span>(buf)-1);</div>
+<div class="line"><span class="preprocessor"></span>  ExpandEnvironmentStringsA(<span class="stringliteral">&quot;%USERPROFILE%&quot;</span>,buf,<span class="keyword">sizeof</span>(buf)-1);</div>
 <div class="line">  <span class="keywordflow">if</span>(strcmp(buf,<span class="stringliteral">&quot;%USERPROFILE%&quot;</span>) == 0) strcpy(buf,<span class="stringliteral">&quot;C:&quot;</span>);</div>
 <div class="line">  strcat(buf,<span class="stringliteral">&quot;\\&quot;</span>);;</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
@@ -791,6 +795,45 @@ convert str to lower case
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a38506e038a433fce775f3fcdc340cace"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlMkdir </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>dir</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mode</em> = <code>0744</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+same as mkdir
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00722">722</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordtype">int</span> ret = CreateDirectoryA(dir,NULL);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret) <span class="keywordflow">return</span> 0;</div>
+<div class="line">  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> mkdir(dir, mode);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"><span class="preprocessor"></span>}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1072,6 +1115,39 @@ test if str starts with startstr
 <div class="line">  ret = strncmp(str,startstr,strlen(startstr));</div>
 <div class="line">  <span class="keywordflow">if</span>(ret == 0) <span class="keywordflow">return</span> 1;</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ad9d36f7c9e98daa66c0cb737e12533df"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlStat </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filepath</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct stat *&#160;</td>
+          <td class="paramname"><em>buf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+same as stat
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00717">717</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">return</span> stat(filepath, buf);</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>

@@ -2412,6 +2412,7 @@
               <section title="rlLon1" ref="rlcutil_8cpp.html" />
               <section title="rlLon2" ref="rlcutil_8cpp.html" />
               <section title="rllower" ref="rlcutil_8cpp.html" />
+              <section title="rlMkdir" ref="rlcutil_8cpp.html" />
               <section title="rlOption" ref="rlcutil_8cpp.html" />
               <section title="rlpass" ref="rlcutil_8cpp.html" />
               <section title="rlProfibus1" ref="rlcutil_8cpp.html" />
@@ -2421,6 +2422,7 @@
               <section title="rlSigtermHandler" ref="rlcutil_8cpp.html" />
               <section title="rlsnprintf" ref="rlcutil_8cpp.html" />
               <section title="rlStartsWith" ref="rlcutil_8cpp.html" />
+              <section title="rlStat" ref="rlcutil_8cpp.html" />
               <section title="rlstrncpy" ref="rlcutil_8cpp.html" />
               <section title="rlSubmitPvserver" ref="rlcutil_8cpp.html" />
               <section title="rlSwapShort" ref="rlcutil_8cpp.html" />
@@ -2449,6 +2451,7 @@
               <section title="rlLon1" ref="rlcutil_8h.html" />
               <section title="rlLon2" ref="rlcutil_8h.html" />
               <section title="rllower" ref="rlcutil_8h.html" />
+              <section title="rlMkdir" ref="rlcutil_8h.html" />
               <section title="rlOption" ref="rlcutil_8h.html" />
               <section title="rlpass" ref="rlcutil_8h.html" />
               <section title="rlProfibus1" ref="rlcutil_8h.html" />
@@ -2457,6 +2460,7 @@
               <section title="rlSetSigtermHandler" ref="rlcutil_8h.html" />
               <section title="rlsnprintf" ref="rlcutil_8h.html" />
               <section title="rlStartsWith" ref="rlcutil_8h.html" />
+              <section title="rlStat" ref="rlcutil_8h.html" />
               <section title="rlstrncpy" ref="rlcutil_8h.html" />
               <section title="rlSubmitPvserver" ref="rlcutil_8h.html" />
               <section title="rlSwapShort" ref="rlcutil_8h.html" />
@@ -4343,6 +4347,8 @@
       <keyword name="rlupper" id="rlcutil.cpp::rlupper" ref="rlcutil_8cpp.html#a9022208debc1e487f2d2ed7cb9fd21fd" />
       <keyword name="rllower" id="rlcutil.cpp::rllower" ref="rlcutil_8cpp.html#a3147ee004857d9f8934271ca491fd169" />
       <keyword name="rlStartsWith" id="rlcutil.cpp::rlStartsWith" ref="rlcutil_8cpp.html#a176ada621127ae48c966556c474f20a4" />
+      <keyword name="rlStat" id="rlcutil.cpp::rlStat" ref="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df" />
+      <keyword name="rlMkdir" id="rlcutil.cpp::rlMkdir" ref="rlcutil_8cpp.html#aaee9aa5351f9ae48a3f33184d484962e" />
       <keyword name="rlDebugPrintfState" id="rlcutil.cpp::rlDebugPrintfState" ref="rlcutil_8cpp.html#a73703e6f6e03079d517b69762d7424da" />
       <keyword name="rlsigtermarg" id="rlcutil.cpp::rlsigtermarg" ref="rlcutil_8cpp.html#aa602ca87edb43ec9626731cad82e62bc" />
       <keyword name="rlUserSigtermHandler" id="rlcutil.cpp::rlUserSigtermHandler" ref="rlcutil_8cpp.html#a95ba5f2760cd6ed5c62315bf1df4234c" />
@@ -4377,6 +4383,8 @@
       <keyword name="rlupper" id="rlcutil.h::rlupper" ref="rlcutil_8h.html#a9022208debc1e487f2d2ed7cb9fd21fd" />
       <keyword name="rllower" id="rlcutil.h::rllower" ref="rlcutil_8h.html#a3147ee004857d9f8934271ca491fd169" />
       <keyword name="rlStartsWith" id="rlcutil.h::rlStartsWith" ref="rlcutil_8h.html#a176ada621127ae48c966556c474f20a4" />
+      <keyword name="rlStat" id="rlcutil.h::rlStat" ref="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df" />
+      <keyword name="rlMkdir" id="rlcutil.h::rlMkdir" ref="rlcutil_8h.html#a38506e038a433fce775f3fcdc340cace" />
       <keyword name="CLIENT_TIMEOUT" id="rldataprovider.cpp::CLIENT_TIMEOUT" ref="rldataprovider_8cpp.html#acbb5358766b3fd26fcb09271b5f8b1e3" />
       <keyword name="workerThread" id="rldataprovider.cpp::workerThread" ref="rldataprovider_8cpp.html#ae2a3a761e4cf9d98caf2c4779a581e43" />
       <keyword name="rlDataProviderAccept" id="rldataprovider.cpp::rlDataProviderAccept" ref="rldataprovider_8cpp.html#a65646dec4ef9d5e87f7f50ba17f17cc9" />

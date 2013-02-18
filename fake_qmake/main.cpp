@@ -43,8 +43,17 @@ rlString str_target;
 rlString str_template;
 
 rlString line;
+rlString cmdline;
 rlString fname("pvs.pro");
 rlString fmake("Makefile.win");
+
+#ifdef RLWIN32
+const char *builddir = "release";
+char destination[64] = "release\\";
+#else
+const char *builddir = "";
+char destination[64] = "";
+#endif
 
 static void perhapsRunQmake(int ac, char **av)
 {
@@ -99,6 +108,7 @@ static void perhapsRunQmake(int ac, char **av)
 int main(int ac, char **av)
 {
   int fake = 0;
+  for(int i=0; i<ac; i++) { cmdline.cat(av[i]); cmdline.cat(" "); }
   for(int i=1; i<ac; i++)
   {
     const char *arg = av[i];
@@ -106,6 +116,15 @@ int main(int ac, char **av)
     {
       i++;
       fmake = av[i];
+    }
+    else if(strcmp(av[i],"-builddir") == 0)
+    {
+      i++;
+      builddir = av[i];
+      if(strlen(builddir) + 4 < sizeof(destination))
+      {
+        strcpy(destination, builddir); strcat(destination,"/");
+      }
     }
     else if(*arg != '-')
     {
@@ -120,7 +139,12 @@ int main(int ac, char **av)
       printf("fake_qmake is a fake of qmake from qt with a very reduced set of features.\n");
       printf("but sufficient to build a pvserver or other simple commandline tools with MinGW.\n");
       printf("if you need all the qmake functions install the qt development package.\n");
-      printf("usage: fake_qmake <-fake> <name.pro> <-o makefile>\n");
+      printf("usage:   fake_qmake <-fake> <name.pro> <-o makefile>   <-builddir directory>\n");
+#ifdef RLWIN32
+      printf("default: fake_qmake          name.pro   -o Makefile.win -builddir release\n");
+#else
+      printf("default: fake_qmake          name.pro   -o Makefile\n");
+#endif
       return -1;
     }
   }

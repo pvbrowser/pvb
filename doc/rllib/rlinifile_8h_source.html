@@ -155,15 +155,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
 <div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
 <div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc">rlSetTranslator</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *language, <span class="keyword">const</span> <span class="keywordtype">char</span> *inifile=NULL);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *txt, <span class="keyword">const</span> <span class="keywordtype">char</span> **mytext=NULL);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="rlinifile_8cpp.html#aafe6303bb03add537bfb81530f368e71">rltranslate2</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *section, <span class="keyword">const</span> <span class="keywordtype">char</span> *txt, <span class="keywordtype">char</span> **mytext=NULL);</div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="code" href="rlinifile_8h.html#a28ec05f6825cf46c78a89fd062acfd75">  117</a></span>&#160;<span class="preprocessor">#define rltr(txt) rltranslate(txt)</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor">#ifdef  pvtr</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#undef  pvtr</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="rlinifile_8h.html#a704f803879cee1bbeafe4ad995eadb7b">  122</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define pvtr(txt) rltranslate2(p-&gt;lang_section,txt,&amp;p-&gt;mytext2)</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor">#ifndef SWIGPYTHON</span></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor"></span><span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64">rltranslate</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *txt, <span class="keyword">const</span> <span class="keywordtype">char</span> **mytext=NULL);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="rlinifile_8cpp.html#aafe6303bb03add537bfb81530f368e71">rltranslate2</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *section, <span class="keyword">const</span> <span class="keywordtype">char</span> *txt, <span class="keywordtype">char</span> **mytext=NULL);</div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="rlinifile_8h.html#a28ec05f6825cf46c78a89fd062acfd75">  118</a></span>&#160;<span class="preprocessor">#define rltr(txt) rltranslate(txt)</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifdef  pvtr</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#undef  pvtr</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="rlinifile_8h.html#a704f803879cee1bbeafe4ad995eadb7b">  123</a></span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define pvtr(txt) rltranslate2(p-&gt;lang_section,txt,&amp;p-&gt;mytext2)</span></div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -137,7 +137,7 @@ int rlSiemensTCP::getOrg(int org)
     case ORG_M:    ret = 0x83;  break;    //[10] Merker
     case ORG_E:    ret = 0x81;  break;    //[10] Eingang
     case ORG_A:    ret = 0x82;  break;    //[10] Ausgang
-    case ORG_PEPA: ret = 0x84;  break;    //[10] not tested
+    case ORG_PEPA: ret = 0x80;  break;    //[10] Peripheral Area R/W [tested by VSA]
     case ORG_Z:    ret = 0x84;  break;    //[10] not tested
     case ORG_T:    ret = 29;    break;    //[10] Timer
     default:       return 0x83; break;

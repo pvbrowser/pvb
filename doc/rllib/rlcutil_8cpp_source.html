@@ -381,19 +381,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor"></span>  <span class="keyword">static</span> WIN32_FIND_DATA wfd;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="preprocessor"></span>  <span class="keyword">static</span> WIN32_FIND_DATAA wfd;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <span class="keyword">static</span> HANDLE hFindFile;</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordflow">if</span>(*context == 0) <span class="comment">// find first</span></div>
 <div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  {</div>
 <div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    *context = 1;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    hFindFile = FindFirstFile(pattern,&amp;wfd);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    hFindFile = FindFirstFileA(pattern,&amp;wfd);</div>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">if</span>(hFindFile == INVALID_HANDLE_VALUE)    <span class="keywordflow">return</span> NULL;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    <span class="keywordflow">else</span>                                     strcpy(freturn,(<span class="keyword">const</span> <span class="keywordtype">char</span> *) &amp;wfd.cFileName);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  }</div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  <span class="keywordflow">else</span> <span class="comment">// subsequent find</span></div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  {</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">if</span>(FindNextFile(hFindFile,&amp;wfd) == TRUE) strcpy(freturn,(<span class="keyword">const</span> <span class="keywordtype">char</span> *) &amp;wfd.cFileName);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;    <span class="keywordflow">if</span>(FindNextFileA(hFindFile,&amp;wfd) == TRUE) strcpy(freturn,(<span class="keyword">const</span> <span class="keywordtype">char</span> *) &amp;wfd.cFileName);</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    <span class="keywordflow">else</span>                                   { FindClose(hFindFile); <span class="keywordflow">return</span> NULL; }</div>
 <div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  }</div>
 <div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordflow">return</span> freturn;</div>
@@ -413,7 +413,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor"></span>  strcpy(buf,<span class="stringliteral">&quot;sys$login:&quot;</span>);</div>
 <div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor"></span>  ExpandEnvironmentStrings(<span class="stringliteral">&quot;%USERPROFILE%&quot;</span>,buf,<span class="keyword">sizeof</span>(buf)-1);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor"></span>  ExpandEnvironmentStringsA(<span class="stringliteral">&quot;%USERPROFILE%&quot;</span>,buf,<span class="keyword">sizeof</span>(buf)-1);</div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keywordflow">if</span>(strcmp(buf,<span class="stringliteral">&quot;%USERPROFILE%&quot;</span>) == 0) strcpy(buf,<span class="stringliteral">&quot;C:&quot;</span>);</div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  strcat(buf,<span class="stringliteral">&quot;\\&quot;</span>);;</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif</span></div>
@@ -502,7 +502,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  buf[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  ret = RegOpenKey(</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  ret = RegOpenKeyA(</div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    HKEY_CLASSES_ROOT,        <span class="comment">// handle to open key</span></div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;    <span class="stringliteral">&quot;Applications&quot;</span>,           <span class="comment">// address of name of subkey to open</span></div>
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    &amp;applications             <span class="comment">// address of handle to open key</span></div>
@@ -512,7 +512,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  }</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  ret = RegOpenKey(</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  ret = RegOpenKeyA(</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;    applications,             <span class="comment">// handle to open key</span></div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="stringliteral">&quot;iexplore.exe&quot;</span>,           <span class="comment">// address of name of subkey to open</span></div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    &amp;iexplore                 <span class="comment">// address of handle to open key</span></div>
@@ -523,7 +523,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  }</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  ret = RegOpenKey(</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  ret = RegOpenKeyA(</div>
 <div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;    iexplore,                 <span class="comment">// handle to open key</span></div>
 <div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;    <span class="stringliteral">&quot;shell&quot;</span>,                  <span class="comment">// address of name of subkey to open</span></div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;    &amp;shell                    <span class="comment">// address of handle to open key</span></div>
@@ -535,7 +535,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  }</div>
 <div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  ret = RegOpenKey(</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  ret = RegOpenKeyA(</div>
 <div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    shell,                    <span class="comment">// handle to open key</span></div>
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;    <span class="stringliteral">&quot;open&quot;</span>,                   <span class="comment">// address of name of subkey to open</span></div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;    &amp;open                     <span class="comment">// address of handle to open key</span></div>
@@ -548,7 +548,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;  }</div>
 <div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;  ret = RegOpenKey(</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;  ret = RegOpenKeyA(</div>
 <div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;    open,                     <span class="comment">// handle to open key</span></div>
 <div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    <span class="stringliteral">&quot;command&quot;</span>,                <span class="comment">// address of name of subkey to open</span></div>
 <div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;    &amp;command                  <span class="comment">// address of handle to open key</span></div>
@@ -562,7 +562,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;  }</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  ret = RegQueryValueEx(</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  ret = RegQueryValueExA(</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;    command,               <span class="comment">// handle to key to query</span></div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    <span class="stringliteral">&quot;&quot;</span>,                    <span class="comment">// address of name of value to query</span></div>
 <div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;    NULL,                  <span class="comment">// reserved</span></div>
@@ -588,13 +588,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00499"></a><span class="lineno"><a class="code" href="rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9">  499</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9">mysystem</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *command)</div>
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;{</div>
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  STARTUPINFO         si = { <span class="keyword">sizeof</span>(si)};</div>
+<div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  STARTUPINFOA        si = { <span class="keyword">sizeof</span>(si)};</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  PROCESS_INFORMATION pi;</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;  <span class="keywordtype">char</span> cmd[4096];</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  <span class="comment">//strcpy(cmd,command);</span></div>
-<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  ExpandEnvironmentStrings(command,cmd,<span class="keyword">sizeof</span>(cmd)-1);</div>
-<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;  ret = (int) CreateProcess( NULL, cmd</div>
+<div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;  ExpandEnvironmentStringsA(command,cmd,<span class="keyword">sizeof</span>(cmd)-1);</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;  ret = (int) CreateProcessA( NULL, cmd</div>
 <div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;                           , NULL, NULL</div>
 <div class="line"><a name="l00510"></a><span class="lineno">  510</span>&#160;                           , FALSE, CREATE_NO_WINDOW</div>
 <div class="line"><a name="l00511"></a><span class="lineno">  511</span>&#160;                           , NULL, NULL</div>
@@ -802,6 +802,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;  <span class="keywordflow">if</span>(ret == 0) <span class="keywordflow">return</span> 1;</div>
 <div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;}</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;</div>
+<div class="line"><a name="l00717"></a><span class="lineno"><a class="code" href="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df">  717</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df">rlStat</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filepath, <span class="keyword">struct</span> stat *buf)</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;{</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  <span class="keywordflow">return</span> stat(filepath, buf);</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;}</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
+<div class="line"><a name="l00722"></a><span class="lineno"><a class="code" href="rlcutil_8h.html#a38506e038a433fce775f3fcdc340cace">  722</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#aaee9aa5351f9ae48a3f33184d484962e">rlMkdir</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *dir, <span class="keywordtype">int</span> mode)</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;{</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> ret = CreateDirectoryA(dir,NULL);</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keywordflow">if</span>(ret) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> mkdir(dir, mode);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

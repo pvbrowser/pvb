@@ -21,6 +21,8 @@ Some C functions.
 
 #include <stdarg.h>
 #include <ctype.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 #include "rldefine.h"
 
 /*! <pre>
@@ -158,5 +160,17 @@ int rllower(char *str);
 test if str starts with startstr
 </pre> */
 int rlStartsWith(const char *str, const char *startstr);
+
+/** <pre>
+same as stat
+</pre> */
+#ifndef SWIG
+int rlStat(const char *filepath, struct stat *buf);
+#endif
+
+/** <pre>
+same as mkdir
+</pre> */
+int rlMkdir(const char *dir, int mode=0744);
 
 #endif

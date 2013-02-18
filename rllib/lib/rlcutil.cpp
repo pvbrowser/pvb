@@ -713,3 +713,20 @@ int rlStartsWith(const char *str, const char *startstr)
   if(ret == 0) return 1;
   return 0;
 }
+
+int rlStat(const char *filepath, struct stat *buf)
+{
+  return stat(filepath, buf);
+}
+
+int rlMkdir(const char *dir, int mode)
+{
+#ifdef RLWIN32
+  int ret = CreateDirectoryA(dir,NULL);
+  if(ret) return 0;
+  return -1;
+#else
+  return mkdir(dir, mode);
+#endif
+}
+

@@ -1,8 +1,8 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$rlhistorylogger_8h.html" title="rlhistorylogger.h" alt="" coords="63,83,177,112"/>
-<area shape="rect" id="node30" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="307,83,371,112"/>
-<area shape="rect" id="node5" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="101,315,176,344"/>
-<area shape="rect" id="node13" href="$rltime_8h.html" title="rltime.h" alt="" coords="107,237,171,267"/>
-<area shape="rect" id="node16" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="157,160,232,189"/>
-<area shape="rect" id="node19" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="307,237,392,267"/>
+<area shape="rect" id="node3" href="$rlhistorylogger_8h.html" title="rlhistorylogger.h" alt="" coords="390,80,513,107"/>
+<area shape="rect" id="node30" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="671,80,739,107"/>
+<area shape="rect" id="node5" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="413,304,493,331"/>
+<area shape="rect" id="node13" href="$rltime_8h.html" title="rltime.h" alt="" coords="373,229,443,256"/>
+<area shape="rect" id="node16" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="293,155,376,181"/>
+<area shape="rect" id="node19" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="196,229,289,256"/>
 </map>
