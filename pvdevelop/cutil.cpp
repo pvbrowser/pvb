@@ -144,10 +144,12 @@ int action(const char *command)
   if(strncmp(command,"qmake=",6) == 0 && opt_develop.script != PV_LUA)
   {
     sscanf(command,"qmake=%s",project);
-    sprintf(cmd,"qmake %s.pro",project);
 #ifdef PVUNIX
+    sprintf(cmd,"fake_qmake %s %s.pro",opt_develop.fake_qmake, project);
+    printf("mysystem(%s)\n", cmd);
     mysystem(cmd);
 #else
+    sprintf(cmd,"qmake %s.pro",project);
     sprintf(cmd,"start pvb_qmake.bat %s", project);
     //system(cmd);
 #endif
@@ -202,8 +204,20 @@ int action(const char *command)
   else if(strncmp(command,"make",4) == 0 && opt_develop.script != PV_LUA)
   {
 #ifdef PVUNIX
-    if(opt_develop.arg_action[0] != '\0') ret = system("make");
-    else                          mysystem("xterm -e \"make;echo ready;read\"");
+    sscanf(command,"make=%s",project);
+    if(opt_develop.arg_action[0] != '\0') 
+    {
+      sprintf(cmd,"fake_qmake %s %s.pro;make", opt_develop.fake_qmake, project);
+      if(opt_develop.arg_debug) printf("cmd1=%s\n",cmd);
+      ret = system(cmd);
+    }  
+    else
+    {
+      sprintf(cmd,"xterm -e \"fake_qmake %s %s.pro;make;echo ready;read\"", opt_develop.fake_qmake, project);
+      if(opt_develop.arg_debug) printf("cmd2=%s\n",cmd);
+      mysystem(cmd);
+      //mysystem("xterm -e \"make;echo ready;read\"");
+    }  
 #else
     sscanf(command,"make=%s",name);
     sprintf(cmd,"start pvb_make.bat %s", name);

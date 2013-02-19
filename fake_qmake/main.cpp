@@ -45,7 +45,11 @@ rlString str_template;
 rlString line;
 rlString cmdline;
 rlString fname("pvs.pro");
+#ifdef RLWIN32
 rlString fmake("Makefile.win");
+#else
+rlString fmake("Makefile");
+#endif
 
 #ifdef RLWIN32
 const char *builddir = "release";

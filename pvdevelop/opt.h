@@ -40,6 +40,7 @@ typedef struct
   int  shiftPressed; // shift key pressed
   int  su;           // run pvs as root
   char backupLocation[MAXOPT_DEVELOP];
+  char fake_qmake[16]; // -fake option
 
   // options from project file
   char target[MAXOPT_DEVELOP];

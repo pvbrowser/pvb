@@ -273,7 +273,7 @@ void MainWindow::open()
 
 #ifdef PVUNIX
       char cmd[1024];
-      sprintf(cmd,"qmake %s.pro -o Makefile",(const char *) name.toUtf8());
+      sprintf(cmd,"fake_qmake %s %s.pro -o Makefile", opt_develop.fake_qmake, (const char *) name.toUtf8());
       if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       ret = system(cmd);
       if(ret < 0) printf("ERROR system(%s)\n", cmd);

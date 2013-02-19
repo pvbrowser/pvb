@@ -35,7 +35,7 @@ void usage()
   printf("####################################################\n");
   printf("# Develop pvserver for pvbrowser                   #\n");
   printf("####################################################\n");
-  printf("usage: pvdevelop <-action=<action>> <-programming_language=language> <-h> project\n");
+  printf("usage: pvdevelop <-action=<action>> <-programming_language=language> <-fake_qmake> <-h> project\n");
   printf("example: pvdevelop pvs\n");
   printf("example: pvdevelop -action=writeInitialProject pvs\n");
   printf("-action=writeInitialProject\n");
@@ -78,6 +78,7 @@ void getargs(int ac, char **av)
   opt_develop.arg_mask_to_generate = -1;
   strcpy(opt_develop.arg_project, "pvs");
   strcpy(opt_develop.manual,"/opt/pvb/doc/index.html");
+  strcpy(opt_develop.fake_qmake, "");
   for(i=1; i<ac; i++)
   {
     arg = av[i];
@@ -102,6 +103,10 @@ void getargs(int ac, char **av)
       {
         printf("programming_language=%s not supported\n", buf);
       }
+    }
+    else if(strncmp(arg,"-fake",5) == 0)
+    {
+      strcpy(opt_develop.fake_qmake,"-fake");
     }
     else if(arg[0] != '-')
     {
