@@ -43,6 +43,9 @@ rlSiemensTCP::rlSiemensTCP(const char *a, int _plc_type, int _fetch_write, int _
   rack_slot = _rack_slot;
   //doConnect();
   use_cb = 0;
+  unsigned char connect_block[22];
+  getDefaultConnectBlock(connect_block);
+  memcpy(cb,connect_block,sizeof(cb));
 }
 
 rlSiemensTCP::~rlSiemensTCP()

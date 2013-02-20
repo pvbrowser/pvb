@@ -114,7 +114,7 @@ var searchData=
   ['rlsetsockopt',['rlSetsockopt',['../classrlSocket.html#a10cd80de25e59f4c989d09854dd60853',1,'rlSocket::rlSetsockopt(int sockfd, int level, int optname, const void *optval, int optlen)'],['../classrlSocket.html#a770535c111fb3efb0de39027c1e866d7',1,'rlSocket::rlSetsockopt(int level, int optname)']]],
   ['rlsettranslator',['rlSetTranslator',['../rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc',1,'rlSetTranslator(const char *language, const char *inifile):&#160;rlinifile.cpp'],['../rlinifile_8h.html#afa64593c1bb1029802d5caa5fd0acdd2',1,'rlSetTranslator(const char *language, const char *inifile=NULL):&#160;rlinifile.cpp']]],
   ['rlsharedmemory',['rlSharedMemory',['../classrlSharedMemory.html#a3e70ce386b12e4b08800578380605d59',1,'rlSharedMemory']]],
-  ['rlsiemenstcp',['rlSiemensTCP',['../classrlSiemensTCP.html#a7b286076a29e35a5a5402a436e716a91',1,'rlSiemensTCP']]],
+  ['rlsiemenstcp',['rlSiemensTCP',['../classrlSiemensTCP.html#aed49bf6600c970cc4979a306b1afd49c',1,'rlSiemensTCP']]],
   ['rlsiemenstcpclient',['rlSiemensTCPClient',['../classrlSiemensTCPClient.html#a82ac247c9c138c8e5b97e231f8421a8c',1,'rlSiemensTCPClient']]],
   ['rlsigtermhandler',['rlSigtermHandler',['../rlcutil_8cpp.html#a71fb82c9c37dc21189ff705558203a46',1,'rlcutil.cpp']]],
   ['rlsleep',['rlsleep',['../rlwthread_8cpp.html#a604b0dba29427e3514cd37136458e0c5',1,'rlsleep(long msec):&#160;rlwthread.cpp'],['../rlwthread_8h.html#a604b0dba29427e3514cd37136458e0c5',1,'rlsleep(long msec):&#160;rlwthread.cpp']]],

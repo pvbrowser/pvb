@@ -105,7 +105,7 @@ public:
     WriteBit   = 1,
     WriteByte  = 2
   };
-  rlSiemensTCP(const char *adr, int _plc_type, int _fetch_write = 1, int function = -1, int rack_slot = -1);
+  rlSiemensTCP(const char *adr, int _plc_type=rlSiemensTCP::ANY_SIEMENS_COMPATIBLE_PLC, int _fetch_write = 1, int function = -1, int rack_slot = -1);
   virtual ~rlSiemensTCP();
   /*! <pre>
   </pre> */

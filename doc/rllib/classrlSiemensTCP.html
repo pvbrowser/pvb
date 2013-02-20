@@ -160,7 +160,7 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a7b286076a29e35a5a5402a436e716a91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a7b286076a29e35a5a5402a436e716a91">rlSiemensTCP</a> (const char *<a class="el" href="classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82">adr</a>, int _plc_type, int _fetch_write=1, int <a class="el" href="classrlSiemensTCP.html#a389c6c5000f216564b407ba329863a34">function</a>=-1, int <a class="el" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a>=-1)</td></tr>
+<tr class="memitem:aed49bf6600c970cc4979a306b1afd49c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#aed49bf6600c970cc4979a306b1afd49c">rlSiemensTCP</a> (const char *<a class="el" href="classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82">adr</a>, int _plc_type=<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">rlSiemensTCP::ANY_SIEMENS_COMPATIBLE_PLC</a>, int _fetch_write=1, int <a class="el" href="classrlSiemensTCP.html#a389c6c5000f216564b407ba329863a34">function</a>=-1, int <a class="el" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a>=-1)</td></tr>
 <tr class="memitem:abc7f07fa73e9944671126ad0bfbc15f5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#abc7f07fa73e9944671126ad0bfbc15f5">~rlSiemensTCP</a> ()</td></tr>
 <tr class="memitem:a75fd002eeee4882f810fc755e76119c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a75fd002eeee4882f810fc755e76119c2">getDefaultConnectBlock</a> (unsigned char *connect_block)</td></tr>
 <tr class="memitem:adad508997d5d90a470ec12b3b0c0ab3f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#adad508997d5d90a470ec12b3b0c0ab3f">setConnectBlock</a> (const unsigned char *connect_block)</td></tr>
@@ -370,7 +370,7 @@ Send us your results.
 </div>
 </div>
 <hr/><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a7b286076a29e35a5a5402a436e716a91"></a>
+<a class="anchor" id="aed49bf6600c970cc4979a306b1afd49c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -384,7 +384,7 @@ Send us your results.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>_plc_type</em>, </td>
+          <td class="paramname"><em>_plc_type</em> = <code><a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">rlSiemensTCP::ANY_SIEMENS_COMPATIBLE_PLC</a></code>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -421,6 +421,9 @@ Send us your results.
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a> = _rack_slot;</div>
 <div class="line">  <span class="comment">//doConnect();</span></div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a> = 0;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> connect_block[22];</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#a75fd002eeee4882f810fc755e76119c2">getDefaultConnectBlock</a>(connect_block);</div>
+<div class="line">  memcpy(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,connect_block,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -446,7 +449,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00048">48</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00051">51</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a112affb864caf6ef57b5f226c1894446">rlSocket::disconnect</a>();</div>
 <div class="line">}</div>
@@ -475,7 +478,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00074">74</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00077">77</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,i2,ret,length;</div>
 <div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> s7_200_connect_block[] =</div>
@@ -605,7 +608,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00399">399</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00402">402</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len_byte,length;</div>
 <div class="line"></div>
@@ -748,7 +751,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00068">68</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00071">71</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  memcpy(connect_block,<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
@@ -771,7 +774,7 @@ Send us your results.
 </div><div class="memdoc">
 <pre>
   </pre> 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00053">53</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00056">56</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> default_connect_block[] =</div>
 <div class="line">    {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};</div>
@@ -803,7 +806,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00160">160</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00163">163</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">switch</span>(org)</div>
@@ -844,7 +847,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00526">526</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00529">529</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len;</div>
 <div class="line"></div>
@@ -906,7 +909,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00061">61</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00064">64</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  memcpy(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,connect_block,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a> = 1;</div>
@@ -963,7 +966,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00177">177</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00180">180</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ibuf,ret,len_byte,length;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
@@ -1176,7 +1179,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00332">332</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00335">335</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 14 + 12 * (len - 1);</div>
@@ -1270,7 +1273,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00368">368</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00371">371</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0e;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1335,7 +1338,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00572">572</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00575">575</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret;</div>
 <div class="line"></div>
