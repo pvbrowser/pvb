@@ -41,12 +41,34 @@ rlSiemensTCP::rlSiemensTCP(const char *a, int _plc_type, int _fetch_write, int _
   fetch_write = _fetch_write;
   function = _function;
   rack_slot = _rack_slot;
-  doConnect();
+  //doConnect();
+  use_cb = 0;
 }
 
 rlSiemensTCP::~rlSiemensTCP()
 {
   rlSocket::disconnect();
+}
+
+int rlSiemensTCP::getDefaultConnectBlock(unsigned char *connect_block)
+{
+  static const unsigned char default_connect_block[] =
+    {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};
+  memcpy(connect_block,default_connect_block,sizeof(default_connect_block));
+  return 22;
+}
+
+int rlSiemensTCP::setConnectBlock(const unsigned char *connect_block)
+{
+  memcpy(cb,connect_block,sizeof(connect_block));
+  use_cb = 1;
+  return 0;
+}
+
+int rlSiemensTCP::getConnectBlock(unsigned char *connect_block)
+{
+  memcpy(connect_block,cb,sizeof(cb));
+  return 0;
 }
 
 void rlSiemensTCP::doConnect()
@@ -68,19 +90,26 @@ void rlSiemensTCP::doConnect()
     {0x03,0x00,0x00,0x19,0x02,0xF0,0x80,0x32,0x01,0x00,0x00,0xCC,0xC1,0x00,0x08,0x00,0x00,0xF0,0x00,0x00,0x01,0x00,0x01,0x03,0xC0};  
   unsigned char buf[512];
 
-  if     (plc_type == S7_200)  memcpy(connect_block,s7_200_connect_block,sizeof(connect_block));
-  else if(plc_type == S7_300)  memcpy(connect_block,s7_300_connect_block,sizeof(connect_block));
-  else if(plc_type == S7_400)  memcpy(connect_block,s7_400_connect_block,sizeof(connect_block));
-  else if(plc_type == S7_1200) memcpy(connect_block,s7_1200_connect_block,sizeof(connect_block));
-  else                         memcpy(connect_block,other_connect_block,sizeof(connect_block));
+  if(use_cb)
+  {
+    memcpy(connect_block,cb,sizeof(cb));
+  }
+  else
+  {
+    if     (plc_type == S7_200)  memcpy(connect_block,s7_200_connect_block,sizeof(connect_block));
+    else if(plc_type == S7_300)  memcpy(connect_block,s7_300_connect_block,sizeof(connect_block));
+    else if(plc_type == S7_400)  memcpy(connect_block,s7_400_connect_block,sizeof(connect_block));
+    else if(plc_type == S7_1200) memcpy(connect_block,s7_1200_connect_block,sizeof(connect_block));
+    else                         memcpy(connect_block,other_connect_block,sizeof(connect_block));
 
-  // according to an unproofen theory siemens chooses the TSAP as follows
-  // connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)
-  // connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot
-  // Hint: use tcpdump to figure it out (host = ip_adr of your PLC)
-  // tcpdump -A -i eth0 -t -q -s 0 "host 192.168.1.14 && port 102"
-  if(function  != -1) connect_block[17] = function;
-  if(rack_slot != -1) connect_block[18] = rack_slot;
+    // according to an unproofen theory siemens chooses the TSAP as follows
+    // connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)
+    // connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot
+    // Hint: use tcpdump to figure it out (host = ip_adr of your PLC)
+    // tcpdump -A -i eth0 -t -q -s 0 "host 192.168.1.14 && port 102"
+    if(function  != -1) connect_block[17] = function;
+    if(rack_slot != -1) connect_block[18] = rack_slot;
+  }
 
   for(i=0; i<3; i++)
   {
@@ -226,7 +255,7 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
     // But only the else part has been tested with S7_300 and S7_400 up to now
     //if(plc_type == S7_200)
     // Hi Ken, currently only S7_200 was tested with this. But try if this also works with S7_400
-    if(plc_type == S7_200 || plc_type == S7_300 || plc_type == S7_400)
+    if(plc_type >0) // works for all known plc_type == S7_200 || plc_type == S7_300 || plc_type == S7_400)
     {
       ret = 0;
       switch(function)
@@ -236,7 +265,7 @@ int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigne
       }
       if(ret < 0) return ret;
     }
-    else
+    else           // will only work for WriteByte with len_byte = 4
     {
       pdu[i++] = 0x0E;
       pdu[i++] = 0x00;
@@ -314,11 +343,11 @@ int rlSiemensTCP::write_bit(int& i, int org, int dbnr, int start_adr, int len, c
     pdu[i++] = 0x0a;
     pdu[i++] = 0x10;
     pdu[i++] = 0x01;
-    pdu[i++] = len / 256;        //6 0x00;
-    pdu[i++] = 0x01;             //7 number of bytes in group
-    pdu[i++] = dbnr / 256;       //8 0x00;
-    pdu[i++] = dbnr & 0x0ff;     //9 0x00;
-    pdu[i++] = getOrg(org);      //10 
+    pdu[i++] = len / 256;                           //6 0x00;
+    pdu[i++] = 0x01;                                //7 number of bytes in group
+    pdu[i++] = dbnr / 256;                          //8 0x00;
+    pdu[i++] = dbnr & 0x0ff;                        //9 0x00;
+    pdu[i++] = getOrg(org);                         //10 
     pdu[i++] = ((start_adr / 8)/0x010000)  & 0x0ff;
     pdu[i++] =  (start_adr / 0x0100)       & 0x0ff; //0x00;  // [12] start adr/bits
     pdu[i++] =  (start_adr + j)            & 0x0ff; //0x00;  // [13] start adr/bits     
@@ -347,14 +376,14 @@ int rlSiemensTCP::write_byte(int& i, int org, int dbnr, int start_adr, int len, 
   pdu[i++] = 0x0a;
   pdu[i++] = 0x10;
   pdu[i++] = 0x02;
-  pdu[i++] = len / 256;   //6 0x00;
-  pdu[i++] = len;         //7 number of bytes
-  pdu[i++] = dbnr / 256;       //8 0x00;
-  pdu[i++] = dbnr & 0x0ff;     //9 0x00;
-  pdu[i++] = getOrg(org);      //10 
-  pdu[i++] =     start_adr/0x10000  & 0x0ff;
-  pdu[i++] = ((start_adr*8)/0x0100) & 0x0ff; //0x00;  // [12] start adr/bits
-  pdu[i++] =  (start_adr*8)         & 0x0ff; //0x00;  // [13] start adr/bits     
+  pdu[i++] = len / 256;                       //6 0x00;
+  pdu[i++] = len & 0x0ff;                     //7 number of bytes
+  pdu[i++] = dbnr / 256;                      //8 0x00;
+  pdu[i++] = dbnr & 0x0ff;                    //9 0x00;
+  pdu[i++] = getOrg(org);                     //10 
+  pdu[i++] =   start_adr   /0x10000  & 0x0ff;
+  pdu[i++] = ((start_adr*8)/0x0100)  & 0x0ff; //0x00;  // [12] start adr/bits
+  pdu[i++] =  (start_adr*8)          & 0x0ff; //0x00;  // [13] start adr/bits     
   pdu[i++] = 0x00;
   pdu[i++] = 0x04;
   pdu[i++] = (len * 8) / 256;

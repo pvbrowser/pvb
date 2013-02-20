@@ -32,6 +32,8 @@ var searchData=
   ['getboardcount',['getBoardCount',['../classrlCanOpen.html#ad17ae29368457cd075e57d82140de997',1,'rlCanOpen']]],
   ['getboardid',['getBoardID',['../classrlCanNode.html#aa951ce33330c9912015f2b9347d4e5af',1,'rlCanNode']]],
   ['getchar',['getchar',['../classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4',1,'rlSpawn']]],
+  ['getconnectblock',['getConnectBlock',['../classrlSiemensTCP.html#a1a3fc4b96239fda88793441d2e5a2a84',1,'rlSiemensTCP']]],
+  ['getdefaultconnectblock',['getDefaultConnectBlock',['../classrlSiemensTCP.html#a75fd002eeee4882f810fc755e76119c2',1,'rlSiemensTCP']]],
   ['getdescription',['getDescription',['../classrlEIBnetIP.html#ac486d287decdeec37981f706d9ab7a3c',1,'rlEIBnetIP']]],
   ['geteds',['getEDS',['../classrlCanNode.html#a57c89c3cefaeee177887fcdc18eabc73',1,'rlCanNode']]],
   ['getevent',['getEvent',['../classrlEventLogServer.html#ab51d4e25dcbaa47d42936f1615d6a818',1,'rlEventLogServer']]],

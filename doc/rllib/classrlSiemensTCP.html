@@ -132,12 +132,13 @@ Public Types</h2></td></tr>
 <br/>
  }</td></tr>
 <tr class="memitem:af98b1992a2efa144476aa6af339b2058"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058">PLC_TYPE</a> { <br/>
-&#160;&#160;<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a> =  1, 
+&#160;&#160;<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> =  0, 
+<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a> =  1, 
 <a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a> =  2, 
 <a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a> =  3, 
-<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058af1615c8aa67368f7301ffdb86f0cb41d">S5</a> =  4, 
 <br/>
-&#160;&#160;<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a6d6e6bee8efe79cc6cf65d97344c8391">RACK_SLOT</a> =  5, 
+&#160;&#160;<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058af1615c8aa67368f7301ffdb86f0cb41d">S5</a> =  4, 
+<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a6d6e6bee8efe79cc6cf65d97344c8391">RACK_SLOT</a> =  5, 
 <a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a4912a32076947a6c1e2b7a12ad318747">S7_1200</a> =  6
 <br/>
  }</td></tr>
@@ -161,6 +162,9 @@ Public Types</h2></td></tr>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a7b286076a29e35a5a5402a436e716a91"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a7b286076a29e35a5a5402a436e716a91">rlSiemensTCP</a> (const char *<a class="el" href="classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82">adr</a>, int _plc_type, int _fetch_write=1, int <a class="el" href="classrlSiemensTCP.html#a389c6c5000f216564b407ba329863a34">function</a>=-1, int <a class="el" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a>=-1)</td></tr>
 <tr class="memitem:abc7f07fa73e9944671126ad0bfbc15f5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#abc7f07fa73e9944671126ad0bfbc15f5">~rlSiemensTCP</a> ()</td></tr>
+<tr class="memitem:a75fd002eeee4882f810fc755e76119c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a75fd002eeee4882f810fc755e76119c2">getDefaultConnectBlock</a> (unsigned char *connect_block)</td></tr>
+<tr class="memitem:adad508997d5d90a470ec12b3b0c0ab3f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#adad508997d5d90a470ec12b3b0c0ab3f">setConnectBlock</a> (const unsigned char *connect_block)</td></tr>
+<tr class="memitem:a1a3fc4b96239fda88793441d2e5a2a84"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a1a3fc4b96239fda88793441d2e5a2a84">getConnectBlock</a> (unsigned char *connect_block)</td></tr>
 <tr class="memitem:a4cd5a73e37416715f6048fb0b73cf366"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366">write</a> (int org, int dbnr, int start_adr, int length, const unsigned char *buf, int <a class="el" href="classrlSiemensTCP.html#a389c6c5000f216564b407ba329863a34">function</a>=<a class="el" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3aea0b8490b29fed3d6fe05953d7988330">WriteByte</a>)</td></tr>
 <tr class="memitem:abf3a1a8387f8c16ac743db47a6d04053"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#abf3a1a8387f8c16ac743db47a6d04053">fetch</a> (int org, int dbnr, int start_adr, int length, unsigned char *buf)</td></tr>
 <tr class="inherit_header pub_methods_classrlSocket"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classrlSocket')"><img src="closed.png" alt="-"/>&nbsp;Public Member Functions inherited from <a class="el" href="classrlSocket.html">rlSocket</a></td></tr>
@@ -206,6 +210,8 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a08759c487eece69acfe38a69730ec8bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a></td></tr>
 <tr class="memitem:a5c6939ebececeef287681d94f08d5d2f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a5c6939ebececeef287681d94f08d5d2f">fetch_write</a></td></tr>
 <tr class="memitem:ab2f6033c67d07acee7a85ba2b084cc46"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a> [2048]</td></tr>
+<tr class="memitem:a61f4ce60174416040e03769d23e3c7a2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a></td></tr>
+<tr class="memitem:a35898746ebe0459ccbd5aa602018c460"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a> [22]</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -218,9 +224,42 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><pre>
-class for communication with Siemens PLC's via TCP
+class for communication with Siemens PLC's via TCP</pre><pre>There are problems with reverse engineering.
+But meanwhile it is getting much clearer.</pre><pre>There is the old Fetch/Write protocol from the old S5 PLC (fetch_write=1) (done).
+And there is the current Siemens PLC protocol introduced with the S7 series of PLC (fetch_write=0).</pre><pre>The only thing that seems to be different between the individual PLC types is the setup of the connection.
+The communication itself seems to be the same across all PLC types.</pre><pre>The setup of the communication includes the exchange of the TSAPs.
+Siemens seems to choose different combinations there.</pre><pre>You may use <a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> with the individual plc_type for conveniance.
+But you can set the whole connect_block and use ANY_SIEMENS_COMPATIBLE_PLC.</pre><pre>unsigned char cb[22];
+<a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> *plc = new rlSiemensTCP(adr,ANY_SIEMENS_COMPATIBLE_PLC);
+plc-&gt;getDefaultConnectBlock(cb);
+cb[16] = 2;
+cb[17] = 1;
+cb[18] = 0;
+plc-&gt;setConnectBlock(cb);
+Now you can read/write the PLC.</pre><pre>The following matrix shows our knowledge up to now.
+------------------------------------------------------------------------------
+        | CB16         CB17         CB18
+------------------------------------------------------------------------------
+S7_200  |  2           'M'          'W'
+------------------------------------------------------------------------------
+S7_300  |  2            1            2
+------------------------------------------------------------------------------
+S7_400  |  2            1            3
+------------------------------------------------------------------------------
+S7_1200 |  2            1            0
+------------------------------------------------------------------------------
+LOGO    | function     rack+1       slot (LOGO 0BA7, 
+        |                                 client TSAP 01.00.
+        |                                 server TSAP 20.00 
+        |                                 according to mhe_fr from our forum)
+------------------------------------------------------------------------------</pre><pre># according to an unproofen theory siemens chooses the TSAP as follows
+# connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)
+# connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot
+#   if(function != -1) connect_block[17] = function;
+#   if(rack_slot != -1) connect_block[18] = rack_slot;</pre><pre>Please use Wireshark or tcpdump if the settings of the above matrix do not work for you.
+Send us your results. 
 </pre> 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00029">29</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00080">80</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 </div><hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="acd18816d5c2156e0b585c6bebe30ad75"></a>
 <div class="memitem">
@@ -250,7 +289,7 @@ class for communication with Siemens PLC's via TCP
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00032">32</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00083">83</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a1b1d79ae437883ab2416c52692c9a30f">ORG_DB</a>   = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a46691156e20846f2342e7f1c7498a2fa">ORG_M</a>    = 2,</div>
@@ -273,6 +312,8 @@ class for communication with Siemens PLC's via TCP
       </table>
 </div><div class="memdoc">
 <dl><dt><b>Enumerator: </b></dt><dd><table border="0" cellspacing="2" cellpadding="0">
+<tr><td valign="top"><em><a class="anchor" id="af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce"></a>ANY_SIEMENS_COMPATIBLE_PLC</em>&nbsp;</td><td>
+</td></tr>
 <tr><td valign="top"><em><a class="anchor" id="af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea"></a>S7_200</em>&nbsp;</td><td>
 </td></tr>
 <tr><td valign="top"><em><a class="anchor" id="af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19"></a>S7_300</em>&nbsp;</td><td>
@@ -289,8 +330,9 @@ class for communication with Siemens PLC's via TCP
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00042">42</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00093">93</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 0,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>    = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a>    = 2,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a>    = 3,</div>
@@ -319,7 +361,7 @@ class for communication with Siemens PLC's via TCP
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00051">51</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00103">103</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3a1e8c88e61251f4ef7d75f123a0f20c45">WriteBit</a>   = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3aea0b8490b29fed3d6fe05953d7988330">WriteByte</a>  = 2</div>
@@ -377,7 +419,8 @@ class for communication with Siemens PLC's via TCP
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#a5c6939ebececeef287681d94f08d5d2f">fetch_write</a> = _fetch_write;</div>
 <div class="line">  <span class="keyword">function</span> = _function;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a> = _rack_slot;</div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
+<div class="line">  <span class="comment">//doConnect();</span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a> = 0;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -403,7 +446,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00047">47</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00048">48</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a112affb864caf6ef57b5f226c1894446">rlSocket::disconnect</a>();</div>
 <div class="line">}</div>
@@ -432,7 +475,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00052">52</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00074">74</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,i2,ret,length;</div>
 <div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> s7_200_connect_block[] =</div>
@@ -451,19 +494,26 @@ class for communication with Siemens PLC's via TCP
 <div class="line">    {0x03,0x00,0x00,0x19,0x02,0xF0,0x80,0x32,0x01,0x00,0x00,0xCC,0xC1,0x00,0x08,0x00,0x00,0xF0,0x00,0x00,0x01,0x00,0x01,0x03,0xC0};  </div>
 <div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[512];</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">if</span>     (<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>)  memcpy(connect_block,s7_200_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
-<div class="line">  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a>)  memcpy(connect_block,s7_300_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
-<div class="line">  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a>)  memcpy(connect_block,s7_400_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
-<div class="line">  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a4912a32076947a6c1e2b7a12ad318747">S7_1200</a>) memcpy(connect_block,s7_1200_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
-<div class="line">  <span class="keywordflow">else</span>                         memcpy(connect_block,other_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a>)</div>
+<div class="line">  {</div>
+<div class="line">    memcpy(connect_block,<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordflow">else</span></div>
+<div class="line">  {</div>
+<div class="line">    <span class="keywordflow">if</span>     (<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>)  memcpy(connect_block,s7_200_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a>)  memcpy(connect_block,s7_300_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a>)  memcpy(connect_block,s7_400_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line">    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a4912a32076947a6c1e2b7a12ad318747">S7_1200</a>) memcpy(connect_block,s7_1200_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line">    <span class="keywordflow">else</span>                         memcpy(connect_block,other_connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
 <div class="line"></div>
-<div class="line">  <span class="comment">// according to an unproofen theory siemens chooses the TSAP as follows</span></div>
-<div class="line">  <span class="comment">// connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)</span></div>
-<div class="line">  <span class="comment">// connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot</span></div>
-<div class="line">  <span class="comment">// Hint: use tcpdump to figure it out (host = ip_adr of your PLC)</span></div>
-<div class="line">  <span class="comment">// tcpdump -A -i eth0 -t -q -s 0 &quot;host 192.168.1.14 &amp;&amp; port 102&quot;</span></div>
-<div class="line">  <span class="keywordflow">if</span>(<span class="keyword">function</span>  != -1) connect_block[17] = <span class="keyword">function</span>;</div>
-<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a> != -1) connect_block[18] = <a class="code" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a>;</div>
+<div class="line">    <span class="comment">// according to an unproofen theory siemens chooses the TSAP as follows</span></div>
+<div class="line">    <span class="comment">// connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)</span></div>
+<div class="line">    <span class="comment">// connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot</span></div>
+<div class="line">    <span class="comment">// Hint: use tcpdump to figure it out (host = ip_adr of your PLC)</span></div>
+<div class="line">    <span class="comment">// tcpdump -A -i eth0 -t -q -s 0 &quot;host 192.168.1.14 &amp;&amp; port 102&quot;</span></div>
+<div class="line">    <span class="keywordflow">if</span>(<span class="keyword">function</span>  != -1) connect_block[17] = <span class="keyword">function</span>;</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a> != -1) connect_block[18] = <a class="code" href="classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f">rack_slot</a>;</div>
+<div class="line">  }</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">for</span>(i=0; i&lt;3; i++)</div>
 <div class="line">  {</div>
@@ -555,7 +605,7 @@ class for communication with Siemens PLC's via TCP
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00370">370</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00399">399</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len_byte,length;</div>
 <div class="line"></div>
@@ -684,6 +734,53 @@ class for communication with Siemens PLC's via TCP
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a1a3fc4b96239fda88793441d2e5a2a84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSiemensTCP::getConnectBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>connect_block</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00068">68</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  memcpy(connect_block,<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a75fd002eeee4882f810fc755e76119c2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSiemensTCP::getDefaultConnectBlock </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>connect_block</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+  </pre> 
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00053">53</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> default_connect_block[] =</div>
+<div class="line">    {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};</div>
+<div class="line">  memcpy(connect_block,default_connect_block,<span class="keyword">sizeof</span>(default_connect_block));</div>
+<div class="line">  <span class="keywordflow">return</span> 22;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a36295ca7c669b5acba84a244cc33787e"></a>
 <div class="memitem">
 <div class="memproto">
@@ -706,7 +803,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00131">131</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00160">160</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">switch</span>(org)</div>
@@ -747,7 +844,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00497">497</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00526">526</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len;</div>
 <div class="line"></div>
@@ -791,6 +888,29 @@ class for communication with Siemens PLC's via TCP
 <div class="line">    <a class="code" href="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3">::printf</a>(<span class="stringliteral">&quot;\n&quot;</span>);</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> len;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="adad508997d5d90a470ec12b3b0c0ab3f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSiemensTCP::setConnectBlock </td>
+          <td>(</td>
+          <td class="paramtype">const unsigned char *&#160;</td>
+          <td class="paramname"><em>connect_block</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00061">61</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  memcpy(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a> = 1;</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -842,9 +962,8 @@ class for communication with Siemens PLC's via TCP
         </tr>
       </table>
 </div><div class="memdoc">
-<pre>
-  </pre> 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00148">148</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00177">177</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ibuf,ret,len_byte,length;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
@@ -925,7 +1044,7 @@ class for communication with Siemens PLC's via TCP
 <div class="line">    <span class="comment">// But only the else part has been tested with S7_300 and S7_400 up to now</span></div>
 <div class="line">    <span class="comment">//if(plc_type == S7_200)</span></div>
 <div class="line">    <span class="comment">// Hi Ken, currently only S7_200 was tested with this. But try if this also works with S7_400</span></div>
-<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a> || <a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a> || <a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> == <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a>)</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> &gt;0) <span class="comment">// works for all known plc_type == S7_200 || plc_type == S7_300 || plc_type == S7_400)</span></div>
 <div class="line">    {</div>
 <div class="line">      ret = 0;</div>
 <div class="line">      <span class="keywordflow">switch</span>(<span class="keyword">function</span>)</div>
@@ -935,7 +1054,7 @@ class for communication with Siemens PLC's via TCP
 <div class="line">      }</div>
 <div class="line">      <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
 <div class="line">    }</div>
-<div class="line">    <span class="keywordflow">else</span></div>
+<div class="line">    <span class="keywordflow">else</span>           <span class="comment">// will only work for WriteByte with len_byte = 4</span></div>
 <div class="line">    {</div>
 <div class="line">      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0E;</div>
 <div class="line">      <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1057,7 +1176,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00303">303</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00332">332</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 14 + 12 * (len - 1);</div>
@@ -1071,11 +1190,11 @@ class for communication with Siemens PLC's via TCP
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0a;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x10;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x01;</div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = len / 256;        <span class="comment">//6 0x00;</span></div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x01;             <span class="comment">//7 number of bytes in group</span></div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span></div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span></div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span></div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = len / 256;                           <span class="comment">//6 0x00;</span></div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x01;                                <span class="comment">//7 number of bytes in group</span></div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;                          <span class="comment">//8 0x00;</span></div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;                        <span class="comment">//9 0x00;</span></div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);                         <span class="comment">//10 </span></div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr / 8)/0x010000)  &amp; 0x0ff;</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr / 0x0100)       &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span></div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr + j)            &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span></div>
@@ -1151,7 +1270,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00339">339</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00368">368</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0e;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1162,14 +1281,14 @@ class for communication with Siemens PLC's via TCP
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0a;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x10;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x02;</div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = len / 256;   <span class="comment">//6 0x00;</span></div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = len;         <span class="comment">//7 number of bytes</span></div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;       <span class="comment">//8 0x00;</span></div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;     <span class="comment">//9 0x00;</span></div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);      <span class="comment">//10 </span></div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =     start_adr/0x10000  &amp; 0x0ff;</div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100) &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span></div>
-<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)         &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = len / 256;                       <span class="comment">//6 0x00;</span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = len &amp; 0x0ff;                     <span class="comment">//7 number of bytes</span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr / 256;                      <span class="comment">//8 0x00;</span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = dbnr &amp; 0x0ff;                    <span class="comment">//9 0x00;</span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = <a class="code" href="classrlSiemensTCP.html#a36295ca7c669b5acba84a244cc33787e">getOrg</a>(org);                     <span class="comment">//10 </span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =   start_adr   /0x10000  &amp; 0x0ff;</div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = ((start_adr*8)/0x0100)  &amp; 0x0ff; <span class="comment">//0x00;  // [12] start adr/bits</span></div>
+<div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] =  (start_adr*8)          &amp; 0x0ff; <span class="comment">//0x00;  // [13] start adr/bits     </span></div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x04;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = (len * 8) / 256;</div>
@@ -1216,7 +1335,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00543">543</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00572">572</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret;</div>
 <div class="line"></div>
@@ -1272,6 +1391,28 @@ class for communication with Siemens PLC's via TCP
 </div>
 </div>
 <hr/><h2>Member Data Documentation</h2>
+<a class="anchor" id="a35898746ebe0459ccbd5aa602018c460"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned char rlSiemensTCP::cb[22]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00201">201</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a19738a840be443609dc28e83b3d85b02"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1290,7 +1431,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00139">139</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00194">194</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1312,7 +1453,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00143">143</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00198">198</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1334,7 +1475,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00138">138</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00193">193</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1356,7 +1497,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00141">141</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00196">196</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1378,7 +1519,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00140">140</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00195">195</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1400,7 +1541,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00144">144</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00199">199</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1422,7 +1563,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00142">142</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00197">197</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1444,7 +1585,29 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00141">141</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00196">196</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a61f4ce60174416040e03769d23e3c7a2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSiemensTCP::use_cb</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00200">200</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1466,7 +1629,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00137">137</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00192">192</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1488,7 +1651,7 @@ class for communication with Siemens PLC's via TCP
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00136">136</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00191">191</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>

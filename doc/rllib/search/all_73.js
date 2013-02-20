@@ -61,6 +61,7 @@ var searchData=
   ['setallowaddvalues',['setAllowAddValues',['../classrlDataAcquisitionProvider.html#a41913c939a1382dce709d7ef05606fe3',1,'rlDataAcquisitionProvider']]],
   ['setboardactive',['setBoardActive',['../classrlCanOpen.html#a75581c22eb7264ed2926e535835f1f61',1,'rlCanOpen']]],
   ['setclient',['setClient',['../classrlEIBnetIP.html#a587f79578fe17da547b53c4754f157d7',1,'rlEIBnetIP']]],
+  ['setconnectblock',['setConnectBlock',['../classrlSiemensTCP.html#adad508997d5d90a470ec12b3b0c0ab3f',1,'rlSiemensTCP']]],
   ['setd_5ft1',['setD_T1',['../classrlController.html#afc028113e1f7d164b3c6c3d2effa0aee',1,'rlController']]],
   ['setdebug',['setDebug',['../classrlFileLoad.html#a4d66f0286d92784572375f02fdfa2e60',1,'rlFileLoad']]],
   ['setdefaultsection',['setDefaultSection',['../classrlIniFile.html#a5ae4c069708c7b441d343b4a3ab3a17a',1,'rlIniFile']]],

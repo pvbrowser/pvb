@@ -1187,12 +1187,16 @@
               <section title="~rlSiemensTCP" ref="classrlSiemensTCP.html" />
               <section title="doConnect" ref="classrlSiemensTCP.html" />
               <section title="fetch" ref="classrlSiemensTCP.html" />
+              <section title="getConnectBlock" ref="classrlSiemensTCP.html" />
+              <section title="getDefaultConnectBlock" ref="classrlSiemensTCP.html" />
               <section title="getOrg" ref="classrlSiemensTCP.html" />
               <section title="read_iso" ref="classrlSiemensTCP.html" />
+              <section title="setConnectBlock" ref="classrlSiemensTCP.html" />
               <section title="write" ref="classrlSiemensTCP.html" />
               <section title="write_bit" ref="classrlSiemensTCP.html" />
               <section title="write_byte" ref="classrlSiemensTCP.html" />
               <section title="write_iso" ref="classrlSiemensTCP.html" />
+              <section title="cb" ref="classrlSiemensTCP.html" />
               <section title="fa" ref="classrlSiemensTCP.html" />
               <section title="fetch_write" ref="classrlSiemensTCP.html" />
               <section title="fh" ref="classrlSiemensTCP.html" />
@@ -1201,6 +1205,7 @@
               <section title="pdu" ref="classrlSiemensTCP.html" />
               <section title="plc_type" ref="classrlSiemensTCP.html" />
               <section title="rack_slot" ref="classrlSiemensTCP.html" />
+              <section title="use_cb" ref="classrlSiemensTCP.html" />
               <section title="wa" ref="classrlSiemensTCP.html" />
               <section title="wh" ref="classrlSiemensTCP.html" />
             </section>
@@ -3559,12 +3564,16 @@
                 <section title="~rlSiemensTCP" ref="classrlSiemensTCP.html" />
                 <section title="doConnect" ref="classrlSiemensTCP.html" />
                 <section title="fetch" ref="classrlSiemensTCP.html" />
+                <section title="getConnectBlock" ref="classrlSiemensTCP.html" />
+                <section title="getDefaultConnectBlock" ref="classrlSiemensTCP.html" />
                 <section title="getOrg" ref="classrlSiemensTCP.html" />
                 <section title="read_iso" ref="classrlSiemensTCP.html" />
+                <section title="setConnectBlock" ref="classrlSiemensTCP.html" />
                 <section title="write" ref="classrlSiemensTCP.html" />
                 <section title="write_bit" ref="classrlSiemensTCP.html" />
                 <section title="write_byte" ref="classrlSiemensTCP.html" />
                 <section title="write_iso" ref="classrlSiemensTCP.html" />
+                <section title="cb" ref="classrlSiemensTCP.html" />
                 <section title="fa" ref="classrlSiemensTCP.html" />
                 <section title="fetch_write" ref="classrlSiemensTCP.html" />
                 <section title="fh" ref="classrlSiemensTCP.html" />
@@ -3573,6 +3582,7 @@
                 <section title="pdu" ref="classrlSiemensTCP.html" />
                 <section title="plc_type" ref="classrlSiemensTCP.html" />
                 <section title="rack_slot" ref="classrlSiemensTCP.html" />
+                <section title="use_cb" ref="classrlSiemensTCP.html" />
                 <section title="wa" ref="classrlSiemensTCP.html" />
                 <section title="wh" ref="classrlSiemensTCP.html" />
               </section>
@@ -5913,6 +5923,9 @@
       <keyword name="rlSiemensTCP" id="rlSiemensTCP" ref="classrlSiemensTCP.html" />
       <keyword name="rlSiemensTCP" id="rlSiemensTCP::rlSiemensTCP" ref="classrlSiemensTCP.html#a7b286076a29e35a5a5402a436e716a91" />
       <keyword name="~rlSiemensTCP" id="rlSiemensTCP::~rlSiemensTCP" ref="classrlSiemensTCP.html#abc7f07fa73e9944671126ad0bfbc15f5" />
+      <keyword name="getDefaultConnectBlock" id="rlSiemensTCP::getDefaultConnectBlock" ref="classrlSiemensTCP.html#a75fd002eeee4882f810fc755e76119c2" />
+      <keyword name="setConnectBlock" id="rlSiemensTCP::setConnectBlock" ref="classrlSiemensTCP.html#adad508997d5d90a470ec12b3b0c0ab3f" />
+      <keyword name="getConnectBlock" id="rlSiemensTCP::getConnectBlock" ref="classrlSiemensTCP.html#a1a3fc4b96239fda88793441d2e5a2a84" />
       <keyword name="write" id="rlSiemensTCP::write" ref="classrlSiemensTCP.html#a4cd5a73e37416715f6048fb0b73cf366" />
       <keyword name="fetch" id="rlSiemensTCP::fetch" ref="classrlSiemensTCP.html#abf3a1a8387f8c16ac743db47a6d04053" />
       <keyword name="rlSocket" id="rlSocket::rlSocket" ref="classrlSocket.html#ac9a1c14b040120559674218fa19062be" />
@@ -5951,6 +5964,8 @@
       <keyword name="plc_type" id="rlSiemensTCP::plc_type" ref="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf" />
       <keyword name="fetch_write" id="rlSiemensTCP::fetch_write" ref="classrlSiemensTCP.html#a5c6939ebececeef287681d94f08d5d2f" />
       <keyword name="pdu" id="rlSiemensTCP::pdu" ref="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46" />
+      <keyword name="use_cb" id="rlSiemensTCP::use_cb" ref="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2" />
+      <keyword name="cb" id="rlSiemensTCP::cb" ref="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460" />
       <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
       <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a10cd80de25e59f4c989d09854dd60853" />
       <keyword name="s" id="rlSocket::s" ref="classrlSocket.html#a3f70186af86837a39592e4bf18076d24" />
@@ -5962,6 +5977,7 @@
       <keyword name="ORG_PEPA" id="rlSiemensTCP::ORG_PEPA" ref="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75adbebe427936ccb73115354b4f226375c" />
       <keyword name="ORG_Z" id="rlSiemensTCP::ORG_Z" ref="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a3c250638ed45cea0aa4ce8c356ccfa74" />
       <keyword name="ORG_T" id="rlSiemensTCP::ORG_T" ref="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a2f5de5a95642f3dbeddc5473bde050b8" />
+      <keyword name="ANY_SIEMENS_COMPATIBLE_PLC" id="rlSiemensTCP::ANY_SIEMENS_COMPATIBLE_PLC" ref="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce" />
       <keyword name="S7_200" id="rlSiemensTCP::S7_200" ref="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea" />
       <keyword name="S7_300" id="rlSiemensTCP::S7_300" ref="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19" />
       <keyword name="S7_400" id="rlSiemensTCP::S7_400" ref="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a" />

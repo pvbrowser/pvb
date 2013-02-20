@@ -430,7 +430,7 @@ static void printDependInHeader(int i)
   char *cptr;
   if(f.load(row_headers.text(i)) < 0)
   {
-    printf("WARNING: could not open %s for testing dependencies 2\n", row_headers.text(i));
+    printf("WARNING: could not open %s for testing dependencies\n", row_headers.text(i));
     return;
   }
 
