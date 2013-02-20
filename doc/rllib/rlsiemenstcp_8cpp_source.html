@@ -149,7 +149,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
 <div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="classrlSiemensTCP.html#adad508997d5d90a470ec12b3b0c0ab3f">   61</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSiemensTCP.html#adad508997d5d90a470ec12b3b0c0ab3f">rlSiemensTCP::setConnectBlock</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *connect_block)</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  memcpy(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,connect_block,<span class="keyword">sizeof</span>(connect_block));</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  memcpy(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,connect_block,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a> = 1;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>

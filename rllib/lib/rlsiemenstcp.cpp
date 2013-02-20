@@ -60,7 +60,7 @@ int rlSiemensTCP::getDefaultConnectBlock(unsigned char *connect_block)
 
 int rlSiemensTCP::setConnectBlock(const unsigned char *connect_block)
 {
-  memcpy(cb,connect_block,sizeof(connect_block));
+  memcpy(cb,connect_block,sizeof(cb));
   use_cb = 1;
   return 0;
 }
