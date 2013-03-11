@@ -36,7 +36,7 @@
 #endif
 
 // functions from plugin
-typedef int (*pvb_com_con_func)(const char *adr, int port);
+typedef int (*pvb_com_con_func)(const char *adr, int port, int *use);
 pvb_com_con_func pvb_com_con = NULL;
 
 typedef int (*pvb_com_rec_func)(int ind, int s, char *msg, int len, int *use);
@@ -172,6 +172,25 @@ int tcp_init()
     use_pvb_com_plugin[i] = 0;
   }  
 
+  char buf[MAXOPT] = "";
+  if(strchr(opt.pvb_com_plugin,'/') != NULL || strchr(opt.pvb_com_plugin,'\\') != NULL)
+  { // absolute path given
+    if(strlen(opt.pvb_com_plugin) < MAXOPT) strcpy(buf, opt.pvb_com_plugin);
+  }
+  else
+  { // relative path to PWD given
+    if(strlen(opt.pvb_com_plugin) + strlen(opt.initial_dir) + 4 < MAXOPT)
+    {
+      strcpy(buf, opt.initial_dir);
+#ifdef PVWIN32
+      strcat(buf,"\\");
+#else
+      strcat(buf,"/");
+#endif
+      strcat(buf, opt.pvb_com_plugin);
+    }
+  }
+
   // load pvb_com plugin
   pvb_com_con = NULL;
   pvb_com_rec = NULL;
@@ -179,12 +198,12 @@ int tcp_init()
   pvb_com_send = NULL;
   pvb_com_close = NULL;
   pvb_com_plugin_on = NULL;
-  if(strlen(opt.pvb_com_plugin) > 0)
+  if(strlen(buf) > 0)
   {
-    if(opt.arg_debug) printf("Load communication plugin: tcp_init(%s)\n", opt.pvb_com_plugin);
+    if(opt.arg_debug) printf("Load communication plugin: tcp_init(%s)\n", buf);
 #ifdef PVWIN32
     ::SetLastError(0);
-    handle = ::LoadLibraryA(opt.pvb_com_plugin);
+    handle = ::LoadLibraryA(buf);
     ::SetLastError(0);
     if(handle != NULL)
     {
@@ -196,7 +215,7 @@ int tcp_init()
       pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::GetProcAddress(handle, "pvb_com_plugin_on");
     }  
 #else
-    handle = ::dlopen(opt.pvb_com_plugin, RL_RTLD_LAZY);
+    handle = ::dlopen(buf, RL_RTLD_LAZY);
     if(handle != NULL)
     {
       pvb_com_con        = (pvb_com_con_func)        ::dlsym(handle, "pvb_com_con");
@@ -217,7 +236,11 @@ int tcp_init()
       printf("pvb_com_close      = %ld\n", (long) pvb_com_close);
       printf("pvb_com_plugin_on  = %ld\n", (long) pvb_com_plugin_on);
     }  
-  }  
+  }
+  else
+  {
+    printf("could not load pvb_com_plugin=%s\n", buf);
+  }
   return 0;
 }
 
@@ -254,7 +277,9 @@ int tcp_con(const char *adr, int port)
   if(strcmp(adr,"::1")       == 0) is_localhost = 1;
   if(pvb_com_con != NULL)
   {
-    s = (pvb_com_con)(adr,port);
+    int use_plugin = 0;
+    s = (pvb_com_con)(adr,port,&use_plugin);
+    if(opt.arg_debug) printf("plugin returned use_plugin=%d\n", use_plugin);
     if(s > 0)
     {
       for(ind=1; ind<=MAX_TABS; ind++)
@@ -262,7 +287,8 @@ int tcp_con(const char *adr, int port)
         if(socket_array[ind] == -1)
         {
           socket_array[ind] = s;
-          use_pvb_com_plugin[ind] = 1;
+          use_pvb_com_plugin[ind] = use_plugin;
+          if(opt.arg_debug) printf("use_pvb_con_plugin[%d]=%d\n", ind, s);
           break;
         }
       }

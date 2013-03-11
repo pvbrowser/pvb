@@ -18,12 +18,6 @@
  *                                                                         *
  ***************************************************************************/
 
-//
-// S7_200 tested
-// S7_300 not tested
-// S7_400 not tested
-// S5     not tested
-//
 #include "rlsiemenstcp.h"
 #include "rlwthread.h"
 #include "rlcutil.h"

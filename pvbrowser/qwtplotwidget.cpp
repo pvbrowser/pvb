@@ -22,6 +22,9 @@
 #include "qwt_symbol.h"
 #include "qwt_legend.h"
 #include "qwt_legend_item.h"
+#include "qwt_plot_canvas.h"
+#include "qwt_plot_layout.h"
+#include "qwt_scale_widget.h"
 #include <QMouseEvent>
 #include "tcputil.h"
 #include "pvserver.h"
@@ -514,9 +517,9 @@ void QwtPlotWidget::slotMouseMoved( const QMouseEvent &e)
   double x,y;
   char buf[100];
 
-  x = this->invTransform(QwtPlot::xBottom, e.pos().x());
-  y = this->invTransform(QwtPlot::yLeft, e.pos().y());
-  sprintf( buf, "QPlotMouseMoved(%d,%f,%f)\n",id, x, y );
+  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - axisWidget(QwtPlot::yLeft)->width());
+  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - axisWidget(QwtPlot::xTop)->height());
+  sprintf( buf, "QPlotMouseMoved(%d,%f,%f)\n",id, x, y);
   tcp_send(s,buf,strlen(buf));
 }
 
@@ -525,8 +528,8 @@ void QwtPlotWidget::slotMousePressed( const QMouseEvent &e)
   double x,y;
   char buf[100];
 
-  x = this->invTransform(QwtPlot::xBottom, e.pos().x());
-  y = this->invTransform(QwtPlot::yLeft, e.pos().y());
+  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - axisWidget(QwtPlot::yLeft)->width());
+  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - axisWidget(QwtPlot::xTop)->height());
   sprintf( buf, "QPlotMousePressed(%d,%f,%f)\n",id, x, y );
   tcp_send(s,buf,strlen(buf));
 }
@@ -536,8 +539,8 @@ void QwtPlotWidget::slotMouseReleased( const QMouseEvent &e)
   double x,y;
   char buf[100];
 
-  x = this->invTransform(QwtPlot::xBottom, e.pos().x());
-  y = this->invTransform(QwtPlot::yLeft, e.pos().y());
+  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - axisWidget(QwtPlot::yLeft)->width());
+  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - axisWidget(QwtPlot::xTop)->height());
   sprintf( buf, "QPlotMouseReleased(%d,%f,%f)\n",id, x, y );
   tcp_send(s,buf,strlen(buf));
 }

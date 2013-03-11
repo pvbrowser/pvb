@@ -301,6 +301,7 @@ var searchData=
   ['rlstring_2ecpp',['rlstring.cpp',['../rlstring_8cpp.html',1,'']]],
   ['rlstring_2eh',['rlstring.h',['../rlstring_8h.html',1,'']]],
   ['rlstrlen',['rlstrlen',['../classrlPcontrol.html#a037dbe717858fd5f52ef1d6cab53dff1',1,'rlPcontrol']]],
+  ['rlstrmatch',['rlStrMatch',['../rlcutil_8cpp.html#a83f99e7afc1b87e6a2c263a5d5f66485',1,'rlStrMatch(const char *str, const char *wild):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a83f99e7afc1b87e6a2c263a5d5f66485',1,'rlStrMatch(const char *str, const char *wild):&#160;rlcutil.cpp']]],
   ['rlstrncpy',['rlstrncpy',['../rlcutil_8cpp.html#a9a639b36f6ac0c0281ef3b03f821a406',1,'rlstrncpy(char *dest, const char *source, int n):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a9a639b36f6ac0c0281ef3b03f821a406',1,'rlstrncpy(char *dest, const char *source, int n):&#160;rlcutil.cpp']]],
   ['rlsubmitpvserver',['rlSubmitPvserver',['../rlcutil_8cpp.html#a74829fd3ab7103ab01e918259a2f1184',1,'rlSubmitPvserver(const char *env, const char *path, const char *pvs, const char *options):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a7feef3a75e2e6433789cfe03af5b3ce6',1,'rlSubmitPvserver(const char *env, const char *path, const char *pvs, const char *options=NULL):&#160;rlcutil.cpp']]],
   ['rlsubset_2eh',['rlsubset.h',['../rlsubset_8h.html',1,'']]],

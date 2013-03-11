@@ -287,6 +287,7 @@ void setDefaultOptions()
   opt.pvb_widget_plugindir[0] = '\0';
   strcpy(opt.manual,"index.html");
   opt.connect_timeout = 3;
+  getcwd(opt.initial_dir, sizeof(opt.initial_dir) - 1);
 }
 
 const char *readIniFile()

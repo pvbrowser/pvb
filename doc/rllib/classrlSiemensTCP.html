@@ -224,42 +224,81 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><pre>
-class for communication with Siemens PLC's via TCP</pre><pre>There are problems with reverse engineering.
-But meanwhile it is getting much clearer.</pre><pre>There is the old Fetch/Write protocol from the old S5 PLC (fetch_write=1) (done).
-And there is the current Siemens PLC protocol introduced with the S7 series of PLC (fetch_write=0).</pre><pre>The only thing that seems to be different between the individual PLC types is the setup of the connection.
-The communication itself seems to be the same across all PLC types.</pre><pre>The setup of the communication includes the exchange of the TSAPs.
-Siemens seems to choose different combinations there.</pre><pre>You may use <a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> with the individual plc_type for conveniance.
-But you can set the whole connect_block and use ANY_SIEMENS_COMPATIBLE_PLC.</pre><pre>unsigned char cb[22];
-<a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> *plc = new rlSiemensTCP(adr,ANY_SIEMENS_COMPATIBLE_PLC);
+class for communication with Siemens PLC's via TCP</pre><pre>(1) There is the old Fetch/Write protocol from the old S5 PLC (fetch_write=1).</pre><pre>(2) And there is the current Siemens PLC protocol introduced with the S7 series of PLC (fetch_write=0).</pre><pre>According to
+<a href="http://www.ietf.org/rfc/rfc0905.txt">http://www.ietf.org/rfc/rfc0905.txt</a>
+the client will send a connection request to the PLC after it has establisched a TCP connection().</pre><pre>Here is a example connect_block for a Siemens S7 PLC (CBxx in hex):
+CB00= 3, ISO_HEADER_VERSION
+CB01= 0, ISO_HEADER_RESERVED
+CB02= 0, ISO_HEADER_LENGHT_HIGH
+CB03=16, ISO_HEADER_LENGHT_LOW = 22 Byte (hex 16)
+CB04=11, Length Indicator Field = 17 dec = 22 byte_total_length - 1 byte_length_indicator - 4 byte_ISO_HEADER
+CB05=E0, Connection Request Code (Bits 8-5) 1110=E, Initial Credit Allocation (Bits 4-1) Class 0
+CB06= 0, DESTINATION-REF-HIGH
+CB07= 0, DESTINATION-REF-LOW
+CB08= 0, SOURCE-REF-HIGH
+CB09= 1, SOURCE-REF-LOW
+CB10= 0, Class and Option
+CB11=C1, Identifier: Calling TSAP will follow
+CB12= 2, Parameter Length, 2 byte will follow
+CB13= 1, Remote TSAP, free to choose on client side       (1=PG,2=OP,3=Step7Basic) suggested
+CB14= 0, Remote TSAP, free to choose on client side       (upper_3_bit_is_rack / lower_5_bit_is_slot) suggested
+CB15=C2, Identifier: Called TSAP will follow
+CB16= 2, Parameter Length, 2 byte will follow
+CB17= 1, Local TSAP,  set within Step7 = 1                (1=PG,2=OP,3=Step7Basic)
+CB18= 0, Local TSAP,  set within Step7 = 0...connectionN  (upper_3_bit_is_rack / lower_5_bit_is_slot)
+CB19=C0, Identifier: Maximum TPDU size will follow
+CB20= 1, Parameter Length, 1 byte will follow 
+CB21= 9, max 512 octets</pre><pre>For the different PLC types the connect_block looks as follows:
+s7_200  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,'M','W',0xC2,2,'M','W',0xC0,1,9} 
+s7_300  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,2  ,0xC0,1,9} on S7_300 slot of cpu is always 2
+s7_400  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,3  ,0xC0,1,9} on S7_400 slot of cpu is always 3
+s7_1200 = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,0  ,0xC0,1,9} slot may be 0 || 1 and TSAP 03.01 || 10.00
+For S7_200 and S7_1200 read: (only symbolic access to DB1) 
+<a href="http://support.automation.siemens.com/WW/llisapi.dll?func=cslib.csinfo&lang=en&objid=21601611&caller=view">http://support.automation.siemens.com/WW/llisapi.dll?func=cslib.csinfo&amp;lang=en&amp;objid=21601611&amp;caller=view</a></pre><pre>According to the Remote TSAP Siemens makes the following statement:
+######################################################################################
+Remote TSAP (Remote Transport Service Access Point, entfernter Dienstzugangspunkt)
+The representation is the same as with the Local TSAP, 
+but the second byte has another meaning:</p>
+<ul>
+<li>first Byte: contains a device id (allowed 02 or 03)
+02 OS (Operating Station Bedienen und Beobachten)
+03 other
+suggested: 02</li>
+<li>second Byte: contains the adressing within the SIMATIC S7-CPU,
+divided in:
+Bit 7 ... 5 Rack (Subsystem) of the S7-CPU
+Bit 4 ... 0 Slot of the S7-CPU
+Hint: It is suggested to choose the same settings for Byte 1 in Remote and Local TSAP
+######################################################################################</li>
+</ul>
+</pre><pre>When you use our <a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> class you can do it as follows:</pre><pre>unsigned char cb[22];
+<a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> *plc = new rlSiemensTCP(adr);
 plc-&gt;getDefaultConnectBlock(cb);
-cb[16] = 2;
-cb[17] = 1;
-cb[18] = 0;
-plc-&gt;setConnectBlock(cb);
-Now you can read/write the PLC.</pre><pre>The following matrix shows our knowledge up to now.
-------------------------------------------------------------------------------
-        | CB16         CB17         CB18
-------------------------------------------------------------------------------
-S7_200  |  2           'M'          'W'
-------------------------------------------------------------------------------
-S7_300  |  2            1            2
-------------------------------------------------------------------------------
-S7_400  |  2            1            3
-------------------------------------------------------------------------------
-S7_1200 |  2            1            0
-------------------------------------------------------------------------------
-LOGO    | function     rack+1       slot (LOGO 0BA7, 
-        |                                 client TSAP 01.00.
-        |                                 server TSAP 20.00 
-        |                                 according to mhe_fr from our forum)
-------------------------------------------------------------------------------</pre><pre># according to an unproofen theory siemens chooses the TSAP as follows
-# connect_block[17] = 2; Function (1=PG,2=OP,3=Step7Basic)
-# connect_block[18] = upper_3_bit_is_rack / lower_5_bit_is_slot
-#   if(function != -1) connect_block[17] = function;
-#   if(rack_slot != -1) connect_block[18] = rack_slot;</pre><pre>Please use Wireshark or tcpdump if the settings of the above matrix do not work for you.
-Send us your results. 
+cb[13] = 1; // set 1 Byte of Remote TSAP
+cb[17] = 1; // set Local TSAP of the PLC to the
+cb[18] = 0; // configuration done within Step 7 
+plc-&gt;setConnectBlock(cb);</pre><pre>Now you can read/write the PLC.</pre><pre>The following matrix shows some combinations:
+--------------------------------------
+        | CB13    CB14    CB17   CB18
+--------------------------------------
+S7_200  | 'M'     'W'      'M'    'W'
+--------------------------------------
+S7_300  |  1       0        1      2
+--------------------------------------
+S7_400  |  1       0        1      3
+--------------------------------------
+S7_1200 |  1       0        1      0
+--------------------------------------</pre><pre>CB17 = (1=PG,2=OP,3=Step7Basic)
+CB18 = (upper_3_bit_is_rack / lower_5_bit_is_slot)
+Thus the above would be:
+A TSAP within Step 7 of 10.00 results in: cb[17] = PG; cb[18] = 0; // rack=0 slot=0 
+A TSAP within Step 7 of 10.01 results in: cb[17] = PG; cb[18] = 1; // rack=0 slot=1
+A TSAP within Step 7 of 10.02 results in: cb[17] = PG; cb[18] = 2; // rack=0 slot=2
+A TSAP within Step 7 of 10.03 results in: cb[17] = PG; cb[18] = 3; // rack=0 slot=3</pre><pre>You may use <a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> with the individual plc_type for conveniance.
+But you can set the whole connect_block and use ANY_SIEMENS_COMPATIBLE_PLC.</pre><pre>Please use Wireshark or tcpdump if the settings of the above matrix do not work for you.
+Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </pre> 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00080">80</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00126">126</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 </div><hr/><h2>Member Enumeration Documentation</h2>
 <a class="anchor" id="acd18816d5c2156e0b585c6bebe30ad75"></a>
 <div class="memitem">
@@ -289,7 +328,7 @@ Send us your results.
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00083">83</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00129">129</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a1b1d79ae437883ab2416c52692c9a30f">ORG_DB</a>   = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a46691156e20846f2342e7f1c7498a2fa">ORG_M</a>    = 2,</div>
@@ -330,7 +369,7 @@ Send us your results.
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00093">93</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00139">139</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 0,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>    = 1,</div>
@@ -361,7 +400,7 @@ Send us your results.
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00103">103</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00149">149</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3a1e8c88e61251f4ef7d75f123a0f20c45">WriteBit</a>   = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3aea0b8490b29fed3d6fe05953d7988330">WriteByte</a>  = 2</div>
@@ -412,7 +451,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00037">37</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00031">31</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">             :<a class="code" href="classrlSocket.html#ac9a1c14b040120559674218fa19062be">rlSocket</a>(a,<a class="code" href="rlsiemenstcp_8cpp.html#ae225137011f41c60873bb13862741f6b">ISO_PORT</a>,1)</div>
 <div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a> = _plc_type;</div>
@@ -449,7 +488,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00051">51</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00045">45</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a112affb864caf6ef57b5f226c1894446">rlSocket::disconnect</a>();</div>
 <div class="line">}</div>
@@ -478,7 +517,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00077">77</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00071">71</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,i2,ret,length;</div>
 <div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> s7_200_connect_block[] =</div>
@@ -608,7 +647,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00402">402</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00396">396</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len_byte,length;</div>
 <div class="line"></div>
@@ -751,7 +790,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00071">71</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00065">65</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  memcpy(connect_block,<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
 <div class="line">  <span class="keywordflow">return</span> 0;</div>
@@ -774,7 +813,7 @@ Send us your results.
 </div><div class="memdoc">
 <pre>
   </pre> 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00056">56</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00050">50</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> default_connect_block[] =</div>
 <div class="line">    {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};</div>
@@ -806,7 +845,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00163">163</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00157">157</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">switch</span>(org)</div>
@@ -847,7 +886,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00529">529</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00523">523</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len;</div>
 <div class="line"></div>
@@ -909,7 +948,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00064">64</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00058">58</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  memcpy(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>,connect_block,<span class="keyword">sizeof</span>(<a class="code" href="classrlSiemensTCP.html#a35898746ebe0459ccbd5aa602018c460">cb</a>));</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2">use_cb</a> = 1;</div>
@@ -966,7 +1005,7 @@ Send us your results.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00180">180</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00174">174</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ibuf,ret,len_byte,length;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
@@ -1179,7 +1218,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00335">335</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00329">329</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 14 + 12 * (len - 1);</div>
@@ -1273,7 +1312,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00371">371</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00365">365</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0e;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1338,7 +1377,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00575">575</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00569">569</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret;</div>
 <div class="line"></div>
@@ -1412,7 +1451,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00201">201</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00247">247</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1434,7 +1473,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00194">194</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00240">240</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1456,7 +1495,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00198">198</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00244">244</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1478,7 +1517,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00193">193</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00239">239</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1500,7 +1539,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00196">196</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00242">242</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1522,7 +1561,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00195">195</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00241">241</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1544,7 +1583,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00199">199</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00245">245</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1566,7 +1605,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00197">197</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00243">243</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1588,7 +1627,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00196">196</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00242">242</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1610,7 +1649,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00200">200</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00246">246</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1632,7 +1671,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00192">192</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00238">238</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1654,7 +1693,7 @@ Send us your results.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00191">191</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00237">237</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>

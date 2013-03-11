@@ -257,6 +257,11 @@ const char *rlFindFile(const char *pattern, int *context)
       strcpy(freturn,dp->d_name);
       return freturn;
     }
+    else if(rlStrMatch(dp->d_name, pattern))
+    {
+      strcpy(freturn,dp->d_name);
+      return freturn;
+    }
   }
   closedir(dirp);
   return NULL;
@@ -712,6 +717,41 @@ int rlStartsWith(const char *str, const char *startstr)
   ret = strncmp(str,startstr,strlen(startstr));
   if(ret == 0) return 1;
   return 0;
+}
+
+int rlStrMatch(const char *str, const char *wild)
+{
+  if(strstr(str,wild) != NULL) return 1;
+  int i,w;
+
+  w = 0;
+  for(i=0; str[i] != '\0'; i++)
+  {
+    if(wild[w] == '*')
+    {
+      while(wild[w] == '*') w++;
+      if(wild[w] == '\0') return 1;
+try_next:      
+      if(wild[w]    == '\0') return 0;
+      while(str[i] != wild[w] && str[i] != '\0') i++;
+      if(str[i]     == '\0') return 0;
+      while(str[i] != '\0')
+      {
+        if(str[i] != wild[w]) goto try_next;
+        i++;
+        w++;
+        if(str[i] == '\0' && wild[w] == '\0') return 1;
+      }
+      if(wild[w] != '\0') return 0;
+      return 1;
+    }
+    else
+    {
+      if(str[i] != wild[w]) return 0;
+    }
+    w++;
+  }
+  return 1;
 }
 
 int rlStat(const char *filepath, struct stat *buf)
