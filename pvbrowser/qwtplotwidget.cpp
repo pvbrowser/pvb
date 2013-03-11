@@ -517,8 +517,14 @@ void QwtPlotWidget::slotMouseMoved( const QMouseEvent &e)
   double x,y;
   char buf[100];
 
-  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - axisWidget(QwtPlot::yLeft)->width());
-  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - axisWidget(QwtPlot::xTop)->height());
+  int dx = 0;
+  int dy = 0;
+  QwtScaleWidget *awx = axisWidget(QwtPlot::yLeft);
+  if(awx != NULL) dx = awx->width();
+  QwtScaleWidget *awy = axisWidget(QwtPlot::xTop);
+  if(awy != NULL) dy = awy->height();
+  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - dx);
+  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - dy);
   sprintf( buf, "QPlotMouseMoved(%d,%f,%f)\n",id, x, y);
   tcp_send(s,buf,strlen(buf));
 }
@@ -528,8 +534,14 @@ void QwtPlotWidget::slotMousePressed( const QMouseEvent &e)
   double x,y;
   char buf[100];
 
-  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - axisWidget(QwtPlot::yLeft)->width());
-  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - axisWidget(QwtPlot::xTop)->height());
+  int dx = 0;
+  int dy = 0;
+  QwtScaleWidget *awx = axisWidget(QwtPlot::yLeft);
+  if(awx != NULL) dx = awx->width();
+  QwtScaleWidget *awy = axisWidget(QwtPlot::xTop);
+  if(awy != NULL) dy = awy->height();
+  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - dx);
+  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - dy);
   sprintf( buf, "QPlotMousePressed(%d,%f,%f)\n",id, x, y );
   tcp_send(s,buf,strlen(buf));
 }
@@ -539,8 +551,14 @@ void QwtPlotWidget::slotMouseReleased( const QMouseEvent &e)
   double x,y;
   char buf[100];
 
-  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - axisWidget(QwtPlot::yLeft)->width());
-  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - axisWidget(QwtPlot::xTop)->height());
+  int dx = 0;
+  int dy = 0;
+  QwtScaleWidget *awx = axisWidget(QwtPlot::yLeft);
+  if(awx != NULL) dx = awx->width();
+  QwtScaleWidget *awy = axisWidget(QwtPlot::xTop);
+  if(awy != NULL) dy = awy->height();
+  x = this->invTransform(QwtPlot::xBottom, e.pos().x() - dx);
+  y = this->invTransform(QwtPlot::yLeft,   e.pos().y() - dy);
   sprintf( buf, "QPlotMouseReleased(%d,%f,%f)\n",id, x, y );
   tcp_send(s,buf,strlen(buf));
 }
