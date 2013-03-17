@@ -23,7 +23,7 @@
 #include <stdarg.h>
 
 static rlSocket toEventLogServer("localhost",-1,1); // standard localhost disabled
-static rlTime   time;
+static rlTime   mytime;
 static char rlmodule[32];
 static char rllocation[rlMAX_EVENT];
 static char rlmessage[rlMAX_EVENT];
@@ -87,11 +87,11 @@ void rlEventPrintf(int event_type, const char *format, ...)
 
   if(event_type < 0            ) event_type = rlError;
   if(event_type >= rlEVENT_SIZE) event_type = rlError;
-  time.getLocalTime();
+  mytime.getLocalTime();
 #ifdef RLUNIX
   snprintf(rlfinal,sizeof(rlfinal)-1,"%s %s %s %s%s\n",
            rlevent_name[event_type],
-           time.getTimeString(),
+           mytime.getTimeString(),
            rlmessage,
            rlmodule,
            rllocation
@@ -100,7 +100,7 @@ void rlEventPrintf(int event_type, const char *format, ...)
 #ifdef __VMS
   sprintf(rlfinal,"%s %s %s %s%s\n",
            rlevent_name[event_type],
-           time.getTimeString(),
+           mytime.getTimeString(),
            rlmessage,
            rlmodule,
            rllocation
@@ -110,7 +110,7 @@ void rlEventPrintf(int event_type, const char *format, ...)
 #ifdef RLWIN32
   _snprintf(rlfinal,sizeof(rlfinal)-1,"%s %s %s %s%s\n",
            rlevent_name[event_type],
-           time.getTimeString(),
+           mytime.getTimeString(),
            rlmessage,
            rlmodule,
            rllocation

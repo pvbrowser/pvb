@@ -37,7 +37,7 @@ var searchData=
   ['threadexit',['threadExit',['../classrlThread.html#a9d19b5a10762022d6ff60cb6d7444bb2',1,'rlThread']]],
   ['threadtransfer',['THREADTRANSFER',['../structTHREADTRANSFER.html',1,'']]],
   ['tid',['tid',['../classrlThread.html#a545ed987da8497eb5beb9e6458de0538',1,'rlThread']]],
-  ['time',['time',['../classrlHistoryLogger.html#ab619bb825be729069f0129981cbba1c1',1,'rlHistoryLogger::time()'],['../classrlHistoryReader.html#aa1e72755174c0cf1e3acceee1bf14e6e',1,'rlHistoryReader::time()'],['../rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c',1,'time():&#160;rlevent.cpp']]],
+  ['time',['time',['../classrlHistoryLogger.html#ab619bb825be729069f0129981cbba1c1',1,'rlHistoryLogger::time()'],['../classrlHistoryReader.html#aa1e72755174c0cf1e3acceee1bf14e6e',1,'rlHistoryReader::time()']]],
   ['time_5fdiff',['time_diff',['../classrlHistoryLogger.html#af8cbb6e00ccbc4a85f6948febc3114dc',1,'rlHistoryLogger']]],
   ['time_5fdifferenc',['TIME_DIFFERENC',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398adb57a11f8c5d7762753e48432189f067',1,'rlCanOpenTypes']]],
   ['time_5fof_5fday_5ft',['TIME_OF_DAY_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398af5d05a514e2383d1171b594ceda7c2ca',1,'rlCanOpenTypes']]],

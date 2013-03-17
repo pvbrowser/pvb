@@ -7574,6 +7574,29 @@ fail:
 }
 
 
+static int _wrap_rlStrMatch(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlStrMatch",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlStrMatch",1,"char const *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlStrMatch",2,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)rlStrMatch((char const *)arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlMkdir__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -20425,6 +20448,26 @@ fail:
 }
 
 
+static int _wrap_new_rlSiemensTCP__SWIG_4(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  rlSiemensTCP *result = 0 ;
+  
+  SWIG_check_num_args("rlSiemensTCP::rlSiemensTCP",1,1)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlSiemensTCP::rlSiemensTCP",1,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  result = (rlSiemensTCP *)new rlSiemensTCP((char const *)arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlSiemensTCP,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_rlSiemensTCP(lua_State* L) {
   int argc;
   int argv[6]={
@@ -20432,6 +20475,15 @@ static int _wrap_new_rlSiemensTCP(lua_State* L) {
   };
   
   argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      _v = SWIG_lua_isnilstring(L,argv[0]);
+    }
+    if (_v) {
+      return _wrap_new_rlSiemensTCP__SWIG_4(L);
+    }
+  }
   if (argc == 2) {
     int _v;
     {
@@ -20524,8 +20576,102 @@ static int _wrap_new_rlSiemensTCP(lua_State* L) {
     "    rlSiemensTCP::rlSiemensTCP(char const *,int,int,int,int)\n"
     "    rlSiemensTCP::rlSiemensTCP(char const *,int,int,int)\n"
     "    rlSiemensTCP::rlSiemensTCP(char const *,int,int)\n"
-    "    rlSiemensTCP::rlSiemensTCP(char const *,int)\n");
+    "    rlSiemensTCP::rlSiemensTCP(char const *,int)\n"
+    "    rlSiemensTCP::rlSiemensTCP(char const *)\n");
   lua_error(L);return 0;
+}
+
+
+static int _wrap_rlSiemensTCP_getDefaultConnectBlock(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSiemensTCP *arg1 = (rlSiemensTCP *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSiemensTCP::getDefaultConnectBlock",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSiemensTCP::getDefaultConnectBlock",1,"rlSiemensTCP *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlSiemensTCP::getDefaultConnectBlock",2,"unsigned char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSiemensTCP,0))){
+    SWIG_fail_ptr("rlSiemensTCP_getDefaultConnectBlock",1,SWIGTYPE_p_rlSiemensTCP);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlSiemensTCP_getDefaultConnectBlock",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)(arg1)->getDefaultConnectBlock(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSiemensTCP_setConnectBlock(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSiemensTCP *arg1 = (rlSiemensTCP *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSiemensTCP::setConnectBlock",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSiemensTCP::setConnectBlock",1,"rlSiemensTCP *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlSiemensTCP::setConnectBlock",2,"unsigned char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSiemensTCP,0))){
+    SWIG_fail_ptr("rlSiemensTCP_setConnectBlock",1,SWIGTYPE_p_rlSiemensTCP);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlSiemensTCP_setConnectBlock",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)(arg1)->setConnectBlock((unsigned char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSiemensTCP_getConnectBlock(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSiemensTCP *arg1 = (rlSiemensTCP *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSiemensTCP::getConnectBlock",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSiemensTCP::getConnectBlock",1,"rlSiemensTCP *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlSiemensTCP::getConnectBlock",2,"unsigned char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSiemensTCP,0))){
+    SWIG_fail_ptr("rlSiemensTCP_getConnectBlock",1,SWIGTYPE_p_rlSiemensTCP);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlSiemensTCP_getConnectBlock",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)(arg1)->getConnectBlock(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
 }
 
 
@@ -20775,6 +20921,9 @@ rlSiemensTCP *arg1 = (rlSiemensTCP *) obj;
 delete arg1;
 }
 static swig_lua_method swig_rlSiemensTCP_methods[] = {
+    {"getDefaultConnectBlock", _wrap_rlSiemensTCP_getDefaultConnectBlock}, 
+    {"setConnectBlock", _wrap_rlSiemensTCP_setConnectBlock}, 
+    {"getConnectBlock", _wrap_rlSiemensTCP_getConnectBlock}, 
     {"write", _wrap_rlSiemensTCP_write}, 
     {"fetch", _wrap_rlSiemensTCP_fetch}, 
     {0,0}
@@ -27417,6 +27566,7 @@ static const struct luaL_Reg swig_commands[] = {
     { "rlupper", _wrap_rlupper},
     { "rllower", _wrap_rllower},
     { "rlStartsWith", _wrap_rlStartsWith},
+    { "rlStrMatch", _wrap_rlStrMatch},
     { "rlMkdir",_wrap_rlMkdir},
     { "rlEventInit", _wrap_rlEventInit},
     { "rlSetEventLocation", _wrap_rlSetEventLocation},
@@ -27587,6 +27737,7 @@ static swig_lua_const_info swig_constants[] = {
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_ORG_PEPA", rlSiemensTCP::ORG_PEPA)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_ORG_Z", rlSiemensTCP::ORG_Z)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_ORG_T", rlSiemensTCP::ORG_T)},
+    {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_ANY_SIEMENS_COMPATIBLE_PLC", rlSiemensTCP::ANY_SIEMENS_COMPATIBLE_PLC)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S7_200", rlSiemensTCP::S7_200)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S7_300", rlSiemensTCP::S7_300)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S7_400", rlSiemensTCP::S7_400)},

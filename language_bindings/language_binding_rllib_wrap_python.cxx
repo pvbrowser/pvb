@@ -10172,6 +10172,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlStrMatch(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlStrMatch",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlStrMatch" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlStrMatch" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)rlStrMatch((char const *)arg1,(char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlMkdir__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -25048,6 +25085,31 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_new_rlSiemensTCP__SWIG_4(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  rlSiemensTCP *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_rlSiemensTCP",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_rlSiemensTCP" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  result = (rlSiemensTCP *)new rlSiemensTCP((char const *)arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_rlSiemensTCP, SWIG_POINTER_NEW |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_rlSiemensTCP(PyObject *self, PyObject *args) {
   int argc;
   PyObject *argv[6];
@@ -25057,6 +25119,14 @@ SWIGINTERN PyObject *_wrap_new_rlSiemensTCP(PyObject *self, PyObject *args) {
   argc = args ? (int)PyObject_Length(args) : 0;
   for (ii = 0; (ii < 5) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_rlSiemensTCP__SWIG_4(self, args);
+    }
   }
   if (argc == 2) {
     int _v;
@@ -25157,7 +25227,8 @@ fail:
     "    rlSiemensTCP::rlSiemensTCP(char const *,int,int,int,int)\n"
     "    rlSiemensTCP::rlSiemensTCP(char const *,int,int,int)\n"
     "    rlSiemensTCP::rlSiemensTCP(char const *,int,int)\n"
-    "    rlSiemensTCP::rlSiemensTCP(char const *,int)\n");
+    "    rlSiemensTCP::rlSiemensTCP(char const *,int)\n"
+    "    rlSiemensTCP::rlSiemensTCP(char const *)\n");
   return 0;
 }
 
@@ -25177,6 +25248,99 @@ SWIGINTERN PyObject *_wrap_delete_rlSiemensTCP(PyObject *SWIGUNUSEDPARM(self), P
   arg1 = reinterpret_cast< rlSiemensTCP * >(argp1);
   delete arg1;
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSiemensTCP_getDefaultConnectBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSiemensTCP *arg1 = (rlSiemensTCP *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSiemensTCP_getDefaultConnectBlock",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSiemensTCP, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSiemensTCP_getDefaultConnectBlock" "', argument " "1"" of type '" "rlSiemensTCP *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSiemensTCP * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSiemensTCP_getDefaultConnectBlock" "', argument " "2"" of type '" "unsigned char *""'"); 
+  }
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  result = (int)(arg1)->getDefaultConnectBlock(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSiemensTCP_setConnectBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSiemensTCP *arg1 = (rlSiemensTCP *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSiemensTCP_setConnectBlock",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSiemensTCP, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSiemensTCP_setConnectBlock" "', argument " "1"" of type '" "rlSiemensTCP *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSiemensTCP * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSiemensTCP_setConnectBlock" "', argument " "2"" of type '" "unsigned char const *""'"); 
+  }
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  result = (int)(arg1)->setConnectBlock((unsigned char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSiemensTCP_getConnectBlock(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSiemensTCP *arg1 = (rlSiemensTCP *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSiemensTCP_getConnectBlock",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSiemensTCP, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSiemensTCP_getConnectBlock" "', argument " "1"" of type '" "rlSiemensTCP *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSiemensTCP * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSiemensTCP_getConnectBlock" "', argument " "2"" of type '" "unsigned char *""'"); 
+  }
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  result = (int)(arg1)->getConnectBlock(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -33597,6 +33761,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlupper", _wrap_rlupper, METH_VARARGS, NULL},
 	 { (char *)"rllower", _wrap_rllower, METH_VARARGS, NULL},
 	 { (char *)"rlStartsWith", _wrap_rlStartsWith, METH_VARARGS, NULL},
+	 { (char *)"rlStrMatch", _wrap_rlStrMatch, METH_VARARGS, NULL},
 	 { (char *)"rlMkdir", _wrap_rlMkdir, METH_VARARGS, NULL},
 	 { (char *)"new_rlDataAcquisition", _wrap_new_rlDataAcquisition, METH_VARARGS, NULL},
 	 { (char *)"delete_rlDataAcquisition", _wrap_delete_rlDataAcquisition, METH_VARARGS, NULL},
@@ -33965,6 +34130,9 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSiemensTCPClient_swigregister", rlSiemensTCPClient_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlSiemensTCP", _wrap_new_rlSiemensTCP, METH_VARARGS, NULL},
 	 { (char *)"delete_rlSiemensTCP", _wrap_delete_rlSiemensTCP, METH_VARARGS, NULL},
+	 { (char *)"rlSiemensTCP_getDefaultConnectBlock", _wrap_rlSiemensTCP_getDefaultConnectBlock, METH_VARARGS, NULL},
+	 { (char *)"rlSiemensTCP_setConnectBlock", _wrap_rlSiemensTCP_setConnectBlock, METH_VARARGS, NULL},
+	 { (char *)"rlSiemensTCP_getConnectBlock", _wrap_rlSiemensTCP_getConnectBlock, METH_VARARGS, NULL},
 	 { (char *)"rlSiemensTCP_write", _wrap_rlSiemensTCP_write, METH_VARARGS, NULL},
 	 { (char *)"rlSiemensTCP_fetch", _wrap_rlSiemensTCP_fetch, METH_VARARGS, NULL},
 	 { (char *)"rlSiemensTCP_swigregister", rlSiemensTCP_swigregister, METH_VARARGS, NULL},
@@ -35328,6 +35496,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "rlSiemensTCP_ORG_PEPA",SWIG_From_int(static_cast< int >(rlSiemensTCP::ORG_PEPA)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_ORG_Z",SWIG_From_int(static_cast< int >(rlSiemensTCP::ORG_Z)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_ORG_T",SWIG_From_int(static_cast< int >(rlSiemensTCP::ORG_T)));
+  SWIG_Python_SetConstant(d, "rlSiemensTCP_ANY_SIEMENS_COMPATIBLE_PLC",SWIG_From_int(static_cast< int >(rlSiemensTCP::ANY_SIEMENS_COMPATIBLE_PLC)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_S7_200",SWIG_From_int(static_cast< int >(rlSiemensTCP::S7_200)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_S7_300",SWIG_From_int(static_cast< int >(rlSiemensTCP::S7_300)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_S7_400",SWIG_From_int(static_cast< int >(rlSiemensTCP::S7_400)));

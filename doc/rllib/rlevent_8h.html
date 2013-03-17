@@ -307,11 +307,11 @@ output the message
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span>(event_type &lt; 0            ) event_type = <a class="code" href="rlevent_8h.html#a914d2da0ec9f0e22cd5e400bc1f968b8a8bcd5d0e3d56b7d5154b58939a041b64">rlError</a>;</div>
 <div class="line">  <span class="keywordflow">if</span>(event_type &gt;= <a class="code" href="rlevent_8h.html#a914d2da0ec9f0e22cd5e400bc1f968b8ac79ee9e484b2acd58aec1d72c2c80407">rlEVENT_SIZE</a>) event_type = <a class="code" href="rlevent_8h.html#a914d2da0ec9f0e22cd5e400bc1f968b8a8bcd5d0e3d56b7d5154b58939a041b64">rlError</a>;</div>
-<div class="line">  <a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a>.<a class="code" href="classrlTime.html#a58e753a2b74eea66ef8df028f266f7e2">getLocalTime</a>();</div>
+<div class="line">  <a class="code" href="rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307">mytime</a>.<a class="code" href="classrlTime.html#a58e753a2b74eea66ef8df028f266f7e2">getLocalTime</a>();</div>
 <div class="line"><span class="preprocessor">#ifdef RLUNIX</span></div>
 <div class="line"><span class="preprocessor"></span>  snprintf(<a class="code" href="rlevent_8cpp.html#aa4c9b96dd56f60d8f405db1e867ce8ce">rlfinal</a>,<span class="keyword">sizeof</span>(<a class="code" href="rlevent_8cpp.html#aa4c9b96dd56f60d8f405db1e867ce8ce">rlfinal</a>)-1,<span class="stringliteral">&quot;%s %s %s %s%s\n&quot;</span>,</div>
 <div class="line">           <a class="code" href="rlevent_8h.html#ab343ef64ed57de354c2899776ee063be">rlevent_name</a>[event_type],</div>
-<div class="line">           <a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a>.<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>(),</div>
+<div class="line">           <a class="code" href="rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307">mytime</a>.<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>(),</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#ae7e31dd541fc827192705fe3cd6ca3c3">rlmessage</a>,</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#aace38fae1e4bf2721b7e3ed08aa193f7">rlmodule</a>,</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#ac5b3c9b96951cc4de9866fe4e2c653e7">rllocation</a></div>
@@ -320,7 +320,7 @@ output the message
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#ifdef __VMS</span></div>
 <div class="line"><span class="preprocessor"></span>  sprintf(<a class="code" href="rlevent_8cpp.html#aa4c9b96dd56f60d8f405db1e867ce8ce">rlfinal</a>,<span class="stringliteral">&quot;%s %s %s %s%s\n&quot;</span>,</div>
 <div class="line">           <a class="code" href="rlevent_8h.html#ab343ef64ed57de354c2899776ee063be">rlevent_name</a>[event_type],</div>
-<div class="line">           <a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a>.<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>(),</div>
+<div class="line">           <a class="code" href="rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307">mytime</a>.<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>(),</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#ae7e31dd541fc827192705fe3cd6ca3c3">rlmessage</a>,</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#aace38fae1e4bf2721b7e3ed08aa193f7">rlmodule</a>,</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#ac5b3c9b96951cc4de9866fe4e2c653e7">rllocation</a></div>
@@ -330,7 +330,7 @@ output the message
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  _snprintf(rlfinal,<span class="keyword">sizeof</span>(rlfinal)-1,<span class="stringliteral">&quot;%s %s %s %s%s\n&quot;</span>,</div>
 <div class="line">           <a class="code" href="rlevent_8h.html#ab343ef64ed57de354c2899776ee063be">rlevent_name</a>[event_type],</div>
-<div class="line">           <a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a>.<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>(),</div>
+<div class="line">           <a class="code" href="rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307">mytime</a>.<a class="code" href="classrlTime.html#a8496f80861d25f8206461c9b0afe81e3">getTimeString</a>(),</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#ae7e31dd541fc827192705fe3cd6ca3c3">rlmessage</a>,</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#aace38fae1e4bf2721b7e3ed08aa193f7">rlmodule</a>,</div>
 <div class="line">           <a class="code" href="rlevent_8cpp.html#ac5b3c9b96951cc4de9866fe4e2c653e7">rllocation</a></div>

@@ -885,7 +885,7 @@ Private Attributes</h2></td></tr>
 <div class="line"></div>
 <div class="line">  time_t rawtime;</div>
 <div class="line">  <span class="keyword">struct </span>tm * timeinfo;</div>
-<div class="line">  <a class="code" href="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c">time</a> ( &amp;rawtime );</div>
+<div class="line">  time ( &amp;rawtime );</div>
 <div class="line">  timeinfo = localtime ( &amp;rawtime );</div>
 <div class="line"></div>
 <div class="line">  sprintf(<a class="code" href="classrlCanOpen.html#a64a5fceff2c1c9d97a319eab86b07431" title="this string buffer is usually written with sprintf before sent to stdout">err_out_buf</a>, <span class="stringliteral">&quot;\nnew session startet: %s\n&quot;</span>, asctime(timeinfo));</div>

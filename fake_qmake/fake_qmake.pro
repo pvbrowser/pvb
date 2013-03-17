@@ -17,4 +17,7 @@ SOURCES += main.cpp       \
 
 INCLUDEPATH   += ../rllib/lib
 
+macx:DEFINES += RLMAC
+macx:DEFINES += RLUNIX
+
 TARGET = fake_qmake

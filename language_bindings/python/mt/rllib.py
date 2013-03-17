@@ -520,6 +520,10 @@ def rlStartsWith(*args):
   return _rllib.rlStartsWith(*args)
 rlStartsWith = _rllib.rlStartsWith
 
+def rlStrMatch(*args):
+  return _rllib.rlStrMatch(*args)
+rlStrMatch = _rllib.rlStrMatch
+
 def rlMkdir(*args):
   return _rllib.rlMkdir(*args)
 rlMkdir = _rllib.rlMkdir
@@ -1367,6 +1371,7 @@ class rlSiemensTCP(rlSocket):
     ORG_PEPA = _rllib.rlSiemensTCP_ORG_PEPA
     ORG_Z = _rllib.rlSiemensTCP_ORG_Z
     ORG_T = _rllib.rlSiemensTCP_ORG_T
+    ANY_SIEMENS_COMPATIBLE_PLC = _rllib.rlSiemensTCP_ANY_SIEMENS_COMPATIBLE_PLC
     S7_200 = _rllib.rlSiemensTCP_S7_200
     S7_300 = _rllib.rlSiemensTCP_S7_300
     S7_400 = _rllib.rlSiemensTCP_S7_400
@@ -1381,6 +1386,9 @@ class rlSiemensTCP(rlSocket):
         except: self.this = this
     __swig_destroy__ = _rllib.delete_rlSiemensTCP
     __del__ = lambda self : None;
+    def getDefaultConnectBlock(self, *args): return _rllib.rlSiemensTCP_getDefaultConnectBlock(self, *args)
+    def setConnectBlock(self, *args): return _rllib.rlSiemensTCP_setConnectBlock(self, *args)
+    def getConnectBlock(self, *args): return _rllib.rlSiemensTCP_getConnectBlock(self, *args)
     def write(self, *args): return _rllib.rlSiemensTCP_write(self, *args)
     def fetch(self, *args): return _rllib.rlSiemensTCP_fetch(self, *args)
 rlSiemensTCP_swigregister = _rllib.rlSiemensTCP_swigregister

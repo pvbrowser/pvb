@@ -2847,11 +2847,11 @@
               <section title="rlEventInit" ref="rlevent_8cpp.html" />
               <section title="rlEventPrintf" ref="rlevent_8cpp.html" />
               <section title="rlSetEventLocation" ref="rlevent_8cpp.html" />
+              <section title="mytime" ref="rlevent_8cpp.html" />
               <section title="rlfinal" ref="rlevent_8cpp.html" />
               <section title="rllocation" ref="rlevent_8cpp.html" />
               <section title="rlmessage" ref="rlevent_8cpp.html" />
               <section title="rlmodule" ref="rlevent_8cpp.html" />
-              <section title="time" ref="rlevent_8cpp.html" />
               <section title="toEventLogServer" ref="rlevent_8cpp.html" />
             </section>
             <section title="rlevent.h" ref="rlevent_8h.html">
@@ -4474,7 +4474,7 @@
       <keyword name="rlSetEventLocation" id="rlevent.cpp::rlSetEventLocation" ref="rlevent_8cpp.html#a1deb1c206adfc434cd3c5f5936b8b97d" />
       <keyword name="rlEventPrintf" id="rlevent.cpp::rlEventPrintf" ref="rlevent_8cpp.html#a839ed8b5c3053117a1d559a05fad20fe" />
       <keyword name="toEventLogServer" id="rlevent.cpp::toEventLogServer" ref="rlevent_8cpp.html#ad6f1cc799ae663d7af6c30f33fb78208" />
-      <keyword name="time" id="rlevent.cpp::time" ref="rlevent_8cpp.html#acf6c371f558a71d8a8bbc899e4429e0c" />
+      <keyword name="mytime" id="rlevent.cpp::mytime" ref="rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307" />
       <keyword name="rlmodule" id="rlevent.cpp::rlmodule" ref="rlevent_8cpp.html#aace38fae1e4bf2721b7e3ed08aa193f7" />
       <keyword name="rllocation" id="rlevent.cpp::rllocation" ref="rlevent_8cpp.html#ac5b3c9b96951cc4de9866fe4e2c653e7" />
       <keyword name="rlmessage" id="rlevent.cpp::rlmessage" ref="rlevent_8cpp.html#ae7e31dd541fc827192705fe3cd6ca3c3" />

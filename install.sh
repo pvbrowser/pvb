@@ -121,6 +121,8 @@ cp    designer/plugins/libpvb_designer_plugin.so          /opt/pvb/designer/plug
 cp    designer/plugins/libqwt_designer_plugin.so          /opt/pvb/designer/plugins/
 cp    pvserver/libpvsid.so                                /opt/pvb/pvserver/
 cp    pvserver/libpvsmt.so                                /opt/pvb/pvserver/
+cp    pvserver/libpvsid.a                                 /opt/pvb/pvserver/
+cp    pvserver/libpvsmt.a                                 /opt/pvb/pvserver/
 cp    rllib/lib/librllib.so                               /opt/pvb/rllib/lib/
 else
 echo 'copy shared objects on OS-X ...'
@@ -128,6 +130,8 @@ cp    designer/plugins/libpvb_designer_plugin.dylib       /opt/pvb/designer/plug
 cp    designer/plugins/libqwt_designer_plugin.dylib       /opt/pvb/designer/plugins/
 cp    pvserver/libpvsid.dylib                             /opt/pvb/pvserver/
 cp    pvserver/libpvsmt.dylib                             /opt/pvb/pvserver/
+cp    pvserver/libpvsid.a                                 /opt/pvb/pvserver/
+cp    pvserver/libpvsmt.a                                /opt/pvb/pvserver/
 cp    rllib/lib/librllib.dylib                            /opt/pvb/rllib/lib/
 fi
 
@@ -175,19 +179,19 @@ ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua.app/Contents/MacOS/pvslua   
 ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua.app/Contents/MacOS/pvapplua  /usr/bin/pvapplua
 
 ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib
-ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib.1
-ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib.1.0
-ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib.1.0.0
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.1.dylib
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.1.0.dylib
+ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.1.0.0.dylib
 
 ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib
-ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib.1
-ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib.1.0
-ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.dylib.1.0.0
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.1.dylib
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.1.0.dylib
+ln -sf /opt/pvb/pvb/pvserver/libpvsid.dylib /usr/lib/libpvsid.1.0.0.dylib
 
 ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib
-ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1
-ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1.0
-ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.dylib.1.0.0
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.1.dylib
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.1.0.dylib
+ln -sf /opt/pvb/pvb/pvserver/libpvsmt.dylib /usr/lib/libpvsmt.1.0.0.dylib
 fi
 
 echo 'makeing /opt/pvb/pvsexample writeable...'

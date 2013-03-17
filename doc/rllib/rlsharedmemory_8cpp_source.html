@@ -384,192 +384,197 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  mutex     = (<a class="code" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
 <div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>  = <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordflow">if</span>(file_existed == 0) <a class="code" href="rlwthread_8cpp.html#aa4890400a2f2a2590e5092ca2eb43055">rlwthread_mutex_init</a>(mutex,NULL);</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(rwmode == 0) <span class="keywordflow">return</span>; <span class="comment">// no warning of unused parameter</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;}</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5">  302</a></span>&#160;<a class="code" href="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5">rlSharedMemory::~rlSharedMemory</a>()</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;{</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="keyword">delete</span> [] <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  CloseHandle((HANDLE) <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  CloseHandle((HANDLE) <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>);</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a0bf250d26a9c57dd3c73d22e5ca98f09">  312</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a0bf250d26a9c57dd3c73d22e5ca98f09">rlSharedMemory::deleteSharedMemory</a>()</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;{</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor"></span>  <span class="keyword">struct </span>shmid_ds buf;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  shmctl(<span class="keywordtype">id</span>, IPC_RMID, &amp;buf);</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a> = 0;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <a class="code" href="structADD.html">ADD</a> add_in,add_ret;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keyword">struct </span>dsc$descriptor_s section_name;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="comment">// Fill descriptor for section name</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  section_name.dsc$w_length  = strlen(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  section_name.dsc$a_pointer = <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  section_name.dsc$b_dtype   = DSC$K_DTYPE_T;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  section_name.dsc$b_class   = DSC$K_CLASS_S;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="comment">// Delete the section</span></div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  ret = sys$dgblsc(0,&amp;section_name,0);</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <span class="comment">// Fill the input address</span></div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  add_in.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  add_in.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a>   = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  <span class="comment">// Free the memory</span></div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  ret = sys$deltva(&amp;add_in,&amp;add_ret,0);</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="comment">// Test the section addresses</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keywordflow">if</span>(add_in.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> != add_ret.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> || add_in.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a> != add_ret.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  UnmapViewOfFile(<a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>);</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  CloseHandle((HANDLE) <span class="keywordtype">id</span>);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  CloseHandle((HANDLE) <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> = ~<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">  360</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">rlSharedMemory::write</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;{</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="keywordtype">void</span> *ptr;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)          <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  ptr = <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a> + offset;</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);   <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1);</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor"></span>  memcpy(ptr,buf,len);</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>); <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349">myunlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;}</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
-<div class="line"><a name="l00381"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">  381</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">rlSharedMemory::read</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;{</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  <span class="keywordtype">void</span> *ptr;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)          <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  ptr = <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a> + offset;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);   <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor"></span>  memcpy(buf,ptr,len);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>); <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349">myunlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;}</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;</div>
-<div class="line"><a name="l00402"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a7655f93ceb541ca363ad745620a65426">  402</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a7655f93ceb541ca363ad745620a65426">rlSharedMemory::readInt</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;{</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="keywordtype">int</span> val;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="keywordflow">return</span> val;</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;}</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
-<div class="line"><a name="l00410"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#aea36a14febba55dbf92e2050aa9c18d7">  410</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#aea36a14febba55dbf92e2050aa9c18d7">rlSharedMemory::readShort</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;{</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> val;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="keywordflow">return</span> val;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;</div>
-<div class="line"><a name="l00418"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716">  418</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716">rlSharedMemory::readByte</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;{</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordtype">char</span> val;</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  <span class="keywordflow">return</span> val;</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;}</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
-<div class="line"><a name="l00426"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#abc92a7f0855afc4ae6c84559a73f7853">  426</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSharedMemory.html#abc92a7f0855afc4ae6c84559a73f7853">rlSharedMemory::readFloat</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;{</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  <span class="keywordtype">float</span> val;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  <span class="keywordflow">return</span> val;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;}</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;</div>
-<div class="line"><a name="l00434"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277">  434</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277">rlSharedMemory::writeInt</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> val)</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;{</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;}</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;</div>
-<div class="line"><a name="l00442"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a4eea136f746fe2181687c151ac05e048">  442</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a4eea136f746fe2181687c151ac05e048">rlSharedMemory::writeShort</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> val)</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;{</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> val2;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  {</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;    WaitForSingleObject(mutex, 3000); <span class="comment">// timeout in milliseconds != INFINITE</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;    ReleaseMutex(mutex);              <span class="comment">// avoid deadlock</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  }</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(rwmode == 0) <span class="keywordflow">return</span>; <span class="comment">// no warning of unused parameter</span></div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5">  307</a></span>&#160;<a class="code" href="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5">rlSharedMemory::~rlSharedMemory</a>()</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;{</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="keyword">delete</span> [] <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  CloseHandle((HANDLE) <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  CloseHandle((HANDLE) <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>);</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a0bf250d26a9c57dd3c73d22e5ca98f09">  317</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a0bf250d26a9c57dd3c73d22e5ca98f09">rlSharedMemory::deleteSharedMemory</a>()</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;{</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor"></span>  <span class="keyword">struct </span>shmid_ds buf;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  shmctl(<span class="keywordtype">id</span>, IPC_RMID, &amp;buf);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a> = 0;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <a class="code" href="structADD.html">ADD</a> add_in,add_ret;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keyword">struct </span>dsc$descriptor_s section_name;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="comment">// Fill descriptor for section name</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  section_name.dsc$w_length  = strlen(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>);</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  section_name.dsc$a_pointer = <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  section_name.dsc$b_dtype   = DSC$K_DTYPE_T;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  section_name.dsc$b_class   = DSC$K_CLASS_S;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="comment">// Delete the section</span></div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  ret = sys$dgblsc(0,&amp;section_name,0);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <span class="comment">// Fill the input address</span></div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  add_in.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  add_in.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a>   = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="comment">// Free the memory</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  ret = sys$deltva(&amp;add_in,&amp;add_ret,0);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="comment">// Test the section addresses</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  <span class="keywordflow">if</span>(add_in.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> != add_ret.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> || add_in.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a> != add_ret.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  UnmapViewOfFile(<a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  CloseHandle((HANDLE) <span class="keywordtype">id</span>);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  CloseHandle((HANDLE) <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> = ~<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00365"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">  365</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">rlSharedMemory::write</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keyword">const</span> <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;{</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordtype">void</span> *ptr;</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)          <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  ptr = <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a> + offset;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);   <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1);</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;<span class="preprocessor"></span>  memcpy(ptr,buf,len);</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>); <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349">myunlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;}</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
+<div class="line"><a name="l00386"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">  386</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">rlSharedMemory::read</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;{</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <span class="keywordtype">void</span> *ptr;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)          <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  ptr = <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a> + offset;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);   <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1);</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor"></span>  memcpy(buf,ptr,len);</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>); <span class="comment">// Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;<span class="preprocessor"></span>  <a class="code" href="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349">myunlock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;}</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
+<div class="line"><a name="l00407"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a7655f93ceb541ca363ad745620a65426">  407</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a7655f93ceb541ca363ad745620a65426">rlSharedMemory::readInt</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;{</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="keywordtype">int</span> val;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordflow">return</span> val;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;}</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#aea36a14febba55dbf92e2050aa9c18d7">  415</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#aea36a14febba55dbf92e2050aa9c18d7">rlSharedMemory::readShort</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;{</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> val;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">return</span> val;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;}</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
+<div class="line"><a name="l00423"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716">  423</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716">rlSharedMemory::readByte</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;{</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <span class="keywordtype">char</span> val;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  <span class="keywordflow">return</span> val;</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#abc92a7f0855afc4ae6c84559a73f7853">  431</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSharedMemory.html#abc92a7f0855afc4ae6c84559a73f7853">rlSharedMemory::readFloat</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index)</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;{</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;  <span class="keywordtype">float</span> val;</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  <a class="code" href="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f">read</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  <span class="keywordflow">return</span> val;</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;}</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;</div>
+<div class="line"><a name="l00439"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277">  439</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277">rlSharedMemory::writeInt</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> val)</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;{</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;}</div>
 <div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;  val2 = (<span class="keywordtype">short</span> int) val;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val2),&amp;val2,<span class="keyword">sizeof</span>(val2));</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;}</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
-<div class="line"><a name="l00453"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02">  453</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02">rlSharedMemory::writeByte</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> val)</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;{</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;</div>
-<div class="line"><a name="l00461"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa">  461</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa">rlSharedMemory::writeFloat</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">float</span> val)</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;{</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;}</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;</div>
-<div class="line"><a name="l00469"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">  469</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">rlSharedMemory::getUserAdr</a>()</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;{</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *) <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>;</div>
+<div class="line"><a name="l00447"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a4eea136f746fe2181687c151ac05e048">  447</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a4eea136f746fe2181687c151ac05e048">rlSharedMemory::writeShort</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">int</span> val)</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;{</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;  <span class="keywordtype">short</span> <span class="keywordtype">int</span> val2;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  val2 = (<span class="keywordtype">short</span> int) val;</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val2),&amp;val2,<span class="keyword">sizeof</span>(val2));</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;}</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;</div>
+<div class="line"><a name="l00458"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02">  458</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02">rlSharedMemory::writeByte</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> val)</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;{</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;}</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;</div>
+<div class="line"><a name="l00466"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa">  466</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa">rlSharedMemory::writeFloat</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> offset, <span class="keywordtype">int</span> index, <span class="keywordtype">float</span> val)</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;{</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  ret = <a class="code" href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">write</a>(offset+index*<span class="keyword">sizeof</span>(val),&amp;val,<span class="keyword">sizeof</span>(val));</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;}</div>
 <div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
-<div class="line"><a name="l00474"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d">  474</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d">rlSharedMemory::shmKey</a>()</div>
+<div class="line"><a name="l00474"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">  474</a></span>&#160;<span class="keywordtype">void</span> *<a class="code" href="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12">rlSharedMemory::getUserAdr</a>()</div>
 <div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;{</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *) <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>;</div>
 <div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;}</div>
 <div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;</div>
-<div class="line"><a name="l00479"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">  479</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">rlSharedMemory::shmId</a>()</div>
+<div class="line"><a name="l00479"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d">  479</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d">rlSharedMemory::shmKey</a>()</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;{</div>
-<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;}</div>
 <div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;</div>
+<div class="line"><a name="l00484"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">  484</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">rlSharedMemory::shmId</a>()</div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;{</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;}</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

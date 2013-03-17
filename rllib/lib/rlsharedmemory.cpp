@@ -295,6 +295,11 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
   if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);
+  else
+  {
+    WaitForSingleObject(mutex, 3000); // timeout in milliseconds != INFINITE
+    ReleaseMutex(mutex);              // avoid deadlock
+  }
 #endif
   if(rwmode == 0) return; // no warning of unused parameter
 }
