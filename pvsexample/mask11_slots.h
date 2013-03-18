@@ -80,14 +80,13 @@ static int paintGL(PARAM *p, DATA *d)
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   glFrustum(-d->gl.frustSize, d->gl.frustSize, -d->gl.frustSize, d->gl.frustSize, d->gl.frustNear, d->gl.frustFar);
-  glTranslatef( 0.0, 0.0, -3.0f );
+  glTranslatef( 0.0, 0.0, -3.5f );
   double aspect =  (double) d->gl.width / (double) d->gl.height;
   glScalef( d->gl.scale, d->gl.scale*aspect, d->gl.scale );
   glTranslatef( d->gl.posAll, d->gl.posVertAll, 0.0 );
   for(int i=1; i< d->gl.num_listarray; i++) glCallList(d->gl.listarray[i]);
   glTranslatef( d->gl.pos, 0.0, 0.0 );
   glCallList(d->gl.listarray[0]);
-
   pvGlEnd(p);
   pvGlUpdate(p,OpenGL1);
   return 0;
