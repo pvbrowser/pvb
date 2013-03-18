@@ -80,7 +80,7 @@ static void perhapsRunQmake(int ac, char **av)
   rlString cmd("qmake");
   for(int i=1; i<ac; i++) { cmd.cat(" "); cmd.cat(av[i]); }
   printf("running real: %s\n", cmd.text());
-  ret = system(cmd.text());
+  int ret = system(cmd.text());
   exit(ret);
 #elif defined(RLUNIX)
   struct stat buf;

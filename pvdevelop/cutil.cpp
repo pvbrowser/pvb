@@ -236,7 +236,11 @@ int action(const char *command)
       }
       else
       {
+#ifdef PVMAC
+        sprintf(cmd,"xterm -e \"make;su -c ./%s.app/Contents/MacOS/%s\"", name, name);
+#else
         sprintf(cmd,"xterm -e \"make;su -c ./%s\"", name);
+#endif
       }
       if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       mysystem(cmd);
@@ -262,7 +266,11 @@ int action(const char *command)
       }
       else
       {
+#ifdef PVMAC
+        sprintf(cmd,"xterm -e \"make;./%s.app/Contents/MacOS/%s\"", name, name);
+#else
         sprintf(cmd,"xterm -e \"make;./%s\"", name);
+#endif
       }
       if(opt_develop.arg_debug) printf("cmd=%s\n",cmd);
       mysystem(cmd);
@@ -284,6 +292,16 @@ int action(const char *command)
   {
     sscanf(command,"startserver=%d:%s",&checked,name);
 #ifdef PVUNIX
+#ifdef PVMAC
+    if(checked == 0)
+    {
+      sprintf(cmd,"xterm -e \"make;./%s.app/Contents/MacOS/%s;read\"", name, name);
+    }
+    else
+    {
+      sprintf(cmd,"xterm -e \"make;sudo ./%s.app/Contents/MacOS/%s\"", name, name);
+    }
+#else
     if(checked == 0)
     {
       sprintf(cmd,"xterm -e \"make;./%s\"", name);
@@ -292,6 +310,7 @@ int action(const char *command)
     {
       sprintf(cmd,"xterm -e \"make;su -c ./%s\"", name);
     }
+#endif    
     mysystem(cmd);
 #else
     sprintf(cmd,"start pvb_startserver.bat %s", name);

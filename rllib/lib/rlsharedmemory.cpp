@@ -294,12 +294,8 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   shmkey = (int) hFile;
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
-  if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);
-  else
-  {
-    WaitForSingleObject(mutex, 3000); // timeout in milliseconds != INFINITE
-    ReleaseMutex(mutex);              // avoid deadlock
-  }
+  //if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);
+  if(file_existed == 0) myinit(mutex);
 #endif
   if(rwmode == 0) return; // no warning of unused parameter
 }
@@ -369,17 +365,17 @@ int rlSharedMemory::write(unsigned long offset, const void *buf, int len)
   if(len <= 0)          return -1;
   if(offset+len > size) return -1;
   ptr = user_adr + offset;
-#ifdef RLWIN32
-  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
-#else
+//#ifdef RLWIN32
+//  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
+//#else
   mylock(mutex,1);
-#endif
+//#endif
   memcpy(ptr,buf,len);
-#ifdef RLWIN32
-  rlwthread_mutex_unlock(mutex); // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
-#else
+//#ifdef RLWIN32
+//  rlwthread_mutex_unlock(mutex); // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
+//#else
   myunlock(mutex);
-#endif
+//#endif
   return len;
 }
 
@@ -390,17 +386,17 @@ int rlSharedMemory::read(unsigned long offset, void *buf, int len)
   if(len <= 0)          return -1;
   if(offset+len > size) return -1;
   ptr = user_adr + offset;
-#ifdef RLWIN32
-  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
-#else
+//#ifdef RLWIN32
+//  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
+//#else
   mylock(mutex,1);
-#endif
+//#endif
   memcpy(buf,ptr,len);
-#ifdef RLWIN32
-  rlwthread_mutex_unlock(mutex); // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
-#else
+//#ifdef RLWIN32
+//  rlwthread_mutex_unlock(mutex); // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
+//#else
   myunlock(mutex);
-#endif
+//#endif
   return len;
 }
 
