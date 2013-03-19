@@ -437,7 +437,8 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line">  mutex     = (<a class="code" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
 <div class="line">  <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>  = <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line">  <span class="comment">//if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);</span></div>
-<div class="line">  <span class="keywordflow">if</span>(file_existed == 0) <a class="code" href="rlsharedmemory_8cpp.html#ac4cb5d1d75a13b7e8a6322a76179dbcd">myinit</a>(mutex);</div>
+<div class="line">  <span class="keywordflow">if</span>(file_existed == 0) <a class="code" href="rlsharedmemory_8cpp.html#ac4cb5d1d75a13b7e8a6322a76179dbcd">myinit</a>(mutex);   <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
+<div class="line">  <span class="keywordflow">else</span>                  <a class="code" href="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349">myunlock</a>(mutex);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(rwmode == 0) <span class="keywordflow">return</span>; <span class="comment">// no warning of unused parameter</span></div>
 <div class="line">}</div>
@@ -465,7 +466,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00303">303</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00304">304</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">delete</span> [] <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>;</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
@@ -491,7 +492,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00313">313</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00314">314</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLUNIX</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">struct </span>shmid_ds buf;</div>
@@ -554,7 +555,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00470">470</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00471">471</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *) <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>;</div>
 <div class="line">}</div>
@@ -591,7 +592,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00382">382</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00383">383</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">void</span> *ptr;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
@@ -601,7 +602,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line"><span class="comment">//#ifdef RLWIN32</span></div>
 <div class="line"><span class="comment">//  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
 <div class="line"><span class="comment">//#else</span></div>
-<div class="line">  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1);</div>
+<div class="line">  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><span class="comment">//#endif</span></div>
 <div class="line">  memcpy(buf,ptr,len);</div>
 <div class="line"><span class="comment">//#ifdef RLWIN32</span></div>
@@ -638,7 +639,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00419">419</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00420">420</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">char</span> val;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -672,7 +673,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00427">427</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00428">428</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">float</span> val;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -706,7 +707,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00403">403</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00404">404</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> val;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -740,7 +741,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00411">411</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00412">412</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">short</span> <span class="keywordtype">int</span> val;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -763,7 +764,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00480">480</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00481">481</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;</div>
 <div class="line">}</div>
@@ -783,7 +784,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00475">475</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00476">476</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;</div>
 <div class="line">}</div>
@@ -820,7 +821,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00361">361</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00362">362</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">void</span> *ptr;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
@@ -830,7 +831,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line"><span class="comment">//#ifdef RLWIN32</span></div>
 <div class="line"><span class="comment">//  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don&#39;t support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)</span></div>
 <div class="line"><span class="comment">//#else</span></div>
-<div class="line">  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1);</div>
+<div class="line">  <a class="code" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a>(<a class="code" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a>,1); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><span class="comment">//#endif</span></div>
 <div class="line">  memcpy(ptr,buf,len);</div>
 <div class="line"><span class="comment">//#ifdef RLWIN32</span></div>
@@ -873,7 +874,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00454">454</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00455">455</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -913,7 +914,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00462">462</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00463">463</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -953,7 +954,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00435">435</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00436">436</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">if</span>(index &lt; 0) <span class="keywordflow">return</span> -1;</div>
@@ -993,7 +994,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00443">443</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00444">444</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordtype">short</span> <span class="keywordtype">int</span> val2;</div>

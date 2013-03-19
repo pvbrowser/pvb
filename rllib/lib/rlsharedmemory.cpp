@@ -295,7 +295,8 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
   //if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);
-  if(file_existed == 0) myinit(mutex);
+  if(file_existed == 0) myinit(mutex);   // Changed by FMakkinga 18-03-2013
+  else                  myunlock(mutex);
 #endif
   if(rwmode == 0) return; // no warning of unused parameter
 }
@@ -368,7 +369,7 @@ int rlSharedMemory::write(unsigned long offset, const void *buf, int len)
 //#ifdef RLWIN32
 //  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
 //#else
-  mylock(mutex,1);
+  mylock(mutex,1); // Changed by FMakkinga 18-03-2013
 //#endif
   memcpy(ptr,buf,len);
 //#ifdef RLWIN32
@@ -389,7 +390,7 @@ int rlSharedMemory::read(unsigned long offset, void *buf, int len)
 //#ifdef RLWIN32
 //  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
 //#else
-  mylock(mutex,1);
+  mylock(mutex,1); // Changed by FMakkinga 18-03-2013
 //#endif
   memcpy(buf,ptr,len);
 //#ifdef RLWIN32
