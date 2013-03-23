@@ -187,7 +187,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>    = Size + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">// create file</span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  fdlock = open(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, O_RDWR | O_CREAT, 0777 );</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  fdlock = open(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, O_RDWR | O_CREAT, rwmode );</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">if</span>(fdlock &lt; 0)     </div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  {</div>
 <div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="keywordtype">int</span> ret; </div>

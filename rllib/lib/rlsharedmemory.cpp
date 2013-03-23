@@ -98,7 +98,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   size    = Size + sizeof(*mutex);
 
   // create file
-  fdlock = open(name, O_RDWR | O_CREAT, 0777 );
+  fdlock = open(name, O_RDWR | O_CREAT, rwmode );
   if(fdlock < 0)     
   {
     int ret; 

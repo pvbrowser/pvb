@@ -262,7 +262,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line">  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>    = Size + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line"></div>
 <div class="line">  <span class="comment">// create file</span></div>
-<div class="line">  fdlock = open(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, O_RDWR | O_CREAT, 0777 );</div>
+<div class="line">  fdlock = open(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, O_RDWR | O_CREAT, rwmode );</div>
 <div class="line">  <span class="keywordflow">if</span>(fdlock &lt; 0)     </div>
 <div class="line">  {</div>
 <div class="line">    <span class="keywordtype">int</span> ret; </div>
