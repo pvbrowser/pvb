@@ -24,6 +24,7 @@
 #ifdef RLUNIX
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#include <sys/file.h>
 #endif
 
 #ifdef __VMS
@@ -50,6 +51,8 @@ ADD;
 //#include <sddl.h>
 #endif
 
+#ifndef RLWIN32
+#ifndef RLUNIX
 static void myinit(pthread_mutex_t *mutex)
 {
   int *cnt = (int *) mutex;
@@ -81,13 +84,13 @@ static void myunlock(pthread_mutex_t *mutex)
   int *cnt = (int *) mutex;
   if(*cnt > 0) (*cnt)--;
 }
+#endif
+#endif
 
 rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmode)
 {
 #ifdef RLUNIX
   struct shmid_ds buf;
-  FILE *fp;
-  int file_existed;
 
   status  = OK;
   name = new char[strlen(shmname)+1];
@@ -95,27 +98,20 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   size    = Size + sizeof(*mutex);
 
   // create file
-  file_existed = 1;
-  fp = fopen(name,"r");
-  if(fp == NULL)
+  fdlock = open(name, O_RDWR | O_CREAT, 0777 );
+  if(fdlock < 0)     
   {
-    file_existed = 0;
-    fp = fopen(name,"w");
-    if(fp == NULL)     
-    {
-      int ret; 
-      char buf[1024];
-      sprintf(buf,"could not write shm=%s\n",shmname);
-      ret = ::write(1,buf,strlen(buf));
-      if(ret < 0) exit(-1);
-      sprintf(buf,"you have to run this program as root !!!\n");
-      ret = ::write(1,buf,strlen(buf));
-      if(ret < 0) exit(-1);
-      status=ERROR_FILE;
-      exit(-1);
-    }
+    int ret; 
+    char buf[1024];
+    sprintf(buf,"could not write shm=%s\n",shmname);
+    ret = ::write(1,buf,strlen(buf));
+    if(ret < 0) exit(-1);
+    sprintf(buf,"you have to run this program as root !!!\n");
+    ret = ::write(1,buf,strlen(buf));
+    if(ret < 0) exit(-1);
+    status=ERROR_FILE;
+    exit(-1);
   }
-  fclose(fp);
 
   // old stuff, without suggestions from Stefan Lievens 
   //shmkey  = ftok(name,0);
@@ -136,8 +132,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
 
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
-  //if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);
-  if(file_existed == 0) myinit(mutex);
+  flock(fdlock,LOCK_UN);
 #endif
 
 #ifdef __VMS
@@ -285,20 +280,6 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
     else if(global_name[i] == '.')  global_name[i] = '_';
     else if(global_name[i] == ' ')  global_name[i] = '_';
   }
-  /*
-  http://www.codeproject.com/Questions/127011/DLL-Shared-Memory-in-Windows-7
-  TCHAR *szSD = TEXT("D:")                // Discretionary ACL 
-                TEXT("(D;OICI;GA;;;BG)")  // Deny access to built-in guests                 
-                TEXT("(A;OICI;GA;;;BA)")  // Allow SDDL_GENERIC_ALL (GA) to administrators (BA) 
-                TEXT("(A;OICI;FA;;;BU)"); // Allow FILE_ALL_ACCESS (FA) to built-in Users (BU)
-  SECURITY_ATTRIBUTES sa;
-  sa.nLength = sizeof(SECURITY_ATTRIBUTES);
-  sa.bInheritHandle = FALSE;
-  ConvertStringSecurityDescriptorToSecurityDescriptor( szSD, 
-                                                       SDDL_REVISION_1, 
-                                                       &(sa.lpSecurityDescriptor), 
-                                                       NULL);
-  */                                                     
   hShmem = CreateFileMapping(
     hSharedFile,
     NULL,                // no security attributes
@@ -319,10 +300,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   shmkey = (int) hSharedFile;
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
-  //if(file_existed == 0) rlwthread_mutex_init(mutex,NULL);
-  memset(&overlapped, 0, sizeof(overlapped)); // Changed by FMakkinga 22-03-2013
-  // Unlock the file in case a thread was ended or crash during filelocked
-  // is not needed, this is done by the OS, F.Makkinga 22-03-2013
+  memset(&overlapped, 0, sizeof(overlapped));      // Changed by FMakkinga 22-03-2013
   UnlockFileEx(hSharedFile,0,size,0,&overlapped);
 #endif
   if(rwmode == 0) return; // no warning of unused parameter
@@ -331,10 +309,13 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
 rlSharedMemory::~rlSharedMemory()
 {
   delete [] name;
+  printf("We are within the destructor\n");
 #ifdef RLWIN32
   if(status != OK) return;
   CloseHandle((HANDLE) id);
   CloseHandle((HANDLE) shmkey);
+#elif defined(RLUNIX)
+  if(fdlock >= 0) close(fdlock);
 #endif
 }
 
@@ -343,7 +324,8 @@ int rlSharedMemory::deleteSharedMemory()
 #ifdef RLUNIX
   struct shmid_ds buf;
   if(status != OK) return -1;
-  rlwthread_mutex_destroy(mutex);
+  //rlwthread_mutex_destroy(mutex);
+  flock(fdlock,LOCK_UN);
   shmctl(id, IPC_RMID, &buf);
   size = 0;
   return 0;
@@ -382,7 +364,7 @@ int rlSharedMemory::deleteSharedMemory()
   CloseHandle((HANDLE) id);
   CloseHandle((HANDLE) shmkey);
   UnlockFile(hSharedFile,0,0,size,0); // Changed by FMakkinga 18-03-2013
-  CloseHandle(hSharedFile); // Changed by FMakkinga 18-03-2013
+  CloseHandle(hSharedFile);           // Changed by FMakkinga 18-03-2013
   status = ~OK;
   return 0;
 #endif
@@ -395,16 +377,18 @@ int rlSharedMemory::write(unsigned long offset, const void *buf, int len)
   if(len <= 0)          return -1;
   if(offset+len > size) return -1;
   ptr = user_adr + offset;
-  #ifdef RLWIN32
-  //  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
+#ifdef RLWIN32
   LockFileEx(hSharedFile,LOCKFILE_EXCLUSIVE_LOCK,0,size,0,&overlapped); // Changed by FMakkinga 18-03-2013
+#elif defined(RLUNIX)
+  flock(fdlock,LOCK_EX);
 #else
   mylock(mutex,1);
 #endif
   memcpy(ptr,buf,len);
 #ifdef RLWIN32
-  //  rlwthread_mutex_unlock(mutex); // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
-  UnlockFileEx(hSharedFile,0,size,0,&overlapped); // Changed by FMakkinga 18-03-2013
+  UnlockFileEx(hSharedFile,0,size,0,&overlapped);                       // Changed by FMakkinga 18-03-2013
+#elif defined(RLUNIX)
+  flock(fdlock,LOCK_UN);
 #else
   myunlock(mutex);
 #endif
@@ -419,15 +403,17 @@ int rlSharedMemory::read(unsigned long offset, void *buf, int len)
   if(offset+len > size) return -1;
   ptr = user_adr + offset;
 #ifdef RLWIN32
-  //  rlwthread_mutex_lock(mutex);   // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
   LockFileEx(hSharedFile,LOCKFILE_EXCLUSIVE_LOCK,0,size,0,&overlapped); // Changed by FMakkinga 18-03-2013
+#elif defined(RLUNIX)
+  flock(fdlock,LOCK_EX);
 #else
-  mylock(mutex,1); // Changed by FMakkinga 18-03-2013
+  mylock(mutex,1);
 #endif
   memcpy(buf,ptr,len);
 #ifdef RLWIN32
-  //  rlwthread_mutex_unlock(mutex); // Linux and OpenVMS don't support PTHREAD_PROCESS_SHARED (windows does not support pthread at all)
-  UnlockFileEx(hSharedFile,0,size,0,&overlapped); // Changed by FMakkinga 18-03-2013
+  UnlockFileEx(hSharedFile,0,size,0,&overlapped);                       // Changed by FMakkinga 18-03-2013
+#elif defined(RLUNIX)
+  flock(fdlock,LOCK_UN);
 #else
   myunlock(mutex);
 #endif

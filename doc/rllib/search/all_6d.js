@@ -84,12 +84,9 @@ var searchData=
   ['msgtype',['msgtype',['../structIPCMSGSTRUCT.html#a4c97b4f1dbf03de0358f3bc45ba527a0',1,'IPCMSGSTRUCT']]],
   ['mtext',['mtext',['../structIPCMSGSTRUCT.html#a85d3f9a8ebeece22a414750acb5906d6',1,'IPCMSGSTRUCT']]],
   ['mutex',['mutex',['../classrlDataProvider.html#a73566a6f00c68cbb3d164417894f6ce5',1,'rlDataProvider::mutex()'],['../classrlEventLogServer.html#aa48e4e5ddd13f300b542dfb0e81706da',1,'rlEventLogServer::mutex()'],['../classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050',1,'rlFifo::mutex()'],['../classrlHilscherCIF.html#a5e4cf16917e314e99867a5e16e84ca13',1,'rlHilscherCIF::mutex()'],['../classrlHistoryLogger.html#ae627c7eafb04fd23d479051d4b13097a',1,'rlHistoryLogger::mutex()'],['../classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a',1,'rlSharedMemory::mutex()'],['../classrlThread.html#ad21b3d777f7805a7cdb5774356b5abeb',1,'rlThread::mutex()'],['../classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c',1,'rlMutex::mutex()']]],
-  ['myinit',['myinit',['../rlsharedmemory_8cpp.html#ac4cb5d1d75a13b7e8a6322a76179dbcd',1,'rlsharedmemory.cpp']]],
-  ['mylock',['mylock',['../rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163',1,'rlsharedmemory.cpp']]],
   ['myquery',['myquery',['../classrlBussignalDatabase.html#af0ee4e5881f614eea25f9d2b76a4da8c',1,'rlBussignalDatabase']]],
   ['mysql',['mysql',['../rlbussignaldatabase_8cpp.html#a79ca285a0c0e720422fa6fb6a4bba330',1,'rlbussignaldatabase.cpp']]],
   ['mysql_5fis_5finitialized',['mysql_is_initialized',['../rlbussignaldatabase_8cpp.html#a5cdc797620a22323ea8a5e8e32523bf6',1,'rlbussignaldatabase.cpp']]],
   ['mysystem',['mysystem',['../rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9',1,'rlcutil.cpp']]],
-  ['mytime',['mytime',['../rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307',1,'rlevent.cpp']]],
-  ['myunlock',['myunlock',['../rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349',1,'rlsharedmemory.cpp']]]
+  ['mytime',['mytime',['../rlevent_8cpp.html#a11e2eb330e4c4fcc2b52215d83526307',1,'rlevent.cpp']]]
 ];

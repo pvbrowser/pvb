@@ -148,10 +148,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">   69</a></span>&#160;<span class="preprocessor"></span>  HANDLE <a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>;</div>
 <div class="line"><a name="l00070"></a><span class="lineno"><a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">   70</a></span>&#160;  OVERLAPPED <a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span>};</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#elif defined(RLUNIX)</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> fdlock;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor"></span>};</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

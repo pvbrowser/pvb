@@ -13,9 +13,6 @@ var searchData=
   ['move',['move',['../classrlSvgPosition.html#af519a34184fc50fe7109f21445d36f67',1,'rlSvgPosition']]],
   ['movemainobject',['moveMainObject',['../classrlSvgAnimator.html#af6c86a9453f738a71dab04bb91ae496f',1,'rlSvgAnimator']]],
   ['moverelative',['moveRelative',['../classrlSvgPosition.html#a8a2265ea97ad54b5122185baa97f658c',1,'rlSvgPosition']]],
-  ['myinit',['myinit',['../rlsharedmemory_8cpp.html#ac4cb5d1d75a13b7e8a6322a76179dbcd',1,'rlsharedmemory.cpp']]],
-  ['mylock',['mylock',['../rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163',1,'rlsharedmemory.cpp']]],
   ['myquery',['myquery',['../classrlBussignalDatabase.html#af0ee4e5881f614eea25f9d2b76a4da8c',1,'rlBussignalDatabase']]],
-  ['mysystem',['mysystem',['../rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9',1,'rlcutil.cpp']]],
-  ['myunlock',['myunlock',['../rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349',1,'rlsharedmemory.cpp']]]
+  ['mysystem',['mysystem',['../rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9',1,'rlcutil.cpp']]]
 ];

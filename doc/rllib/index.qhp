@@ -4,7 +4,7 @@
   <filterSection>
     <filterAttribute>doxygen</filterAttribute>
     <toc>
-      <section title="rllib 1" ref="ðË">
+      <section title="rllib 1" ref="@Óe">
         <section title="Classes">
           <section title="Class List" ref="annotated.html">
             <section title="__sched_param" ref="struct____sched__param.html">
@@ -3784,9 +3784,6 @@
                 <section title="end" ref="structADD.html" />
                 <section title="start" ref="structADD.html" />
               </section>
-              <section title="myinit" ref="rlsharedmemory_8cpp.html" />
-              <section title="mylock" ref="rlsharedmemory_8cpp.html" />
-              <section title="myunlock" ref="rlsharedmemory_8cpp.html" />
             </section>
             <section title="rlsharedmemory.h" ref="rlsharedmemory_8h.html">
               <section title="rlSharedMemory" ref="classrlSharedMemory.html">
@@ -4916,9 +4913,6 @@
       <keyword name="B3000000" id="rlserial.h::B3000000" ref="rlserial_8h.html#acb80c15451346a6ae479344124cea120" />
       <keyword name="B3500000" id="rlserial.h::B3500000" ref="rlserial_8h.html#a0db8961ca1fb43dbb690b6d2ee7217f8" />
       <keyword name="B4000000" id="rlserial.h::B4000000" ref="rlserial_8h.html#a0078dd80905a2b3dbccff97e5bea8054" />
-      <keyword name="myinit" id="rlsharedmemory.cpp::myinit" ref="rlsharedmemory_8cpp.html#ac4cb5d1d75a13b7e8a6322a76179dbcd" />
-      <keyword name="mylock" id="rlsharedmemory.cpp::mylock" ref="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163" />
-      <keyword name="myunlock" id="rlsharedmemory.cpp::myunlock" ref="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349" />
       <keyword name="TIMEOUT" id="rlsiemenstcp.cpp::TIMEOUT" ref="rlsiemenstcp_8cpp.html#a45ba202b05caf39795aeca91b0ae547e" />
       <keyword name="ISO_PORT" id="rlsiemenstcp.cpp::ISO_PORT" ref="rlsiemenstcp_8cpp.html#ae225137011f41c60873bb13862741f6b" />
       <keyword name="rlDebugPrintfState" id="rlsiemenstcp.cpp::rlDebugPrintfState" ref="rlsiemenstcp_8cpp.html#a73703e6f6e03079d517b69762d7424da" />

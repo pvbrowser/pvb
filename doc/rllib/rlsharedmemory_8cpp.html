@@ -84,8 +84,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a> &#124;
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a>  </div>
   <div class="headertitle">
 <div class="title">rlsharedmemory.cpp File Reference</div>  </div>
 </div><!--header-->
@@ -96,6 +95,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <code>#include &lt;string.h&gt;</code><br/>
 <code>#include &lt;sys/ipc.h&gt;</code><br/>
 <code>#include &lt;sys/shm.h&gt;</code><br/>
+<code>#include &lt;sys/file.h&gt;</code><br/>
 <code>#include &lt;starlet.h&gt;</code><br/>
 <code>#include &lt;lib$routines.h&gt;</code><br/>
 <code>#include &lt;descrip.h&gt;</code><br/>
@@ -121,131 +121,7 @@ Include dependency graph for rlsharedmemory.cpp:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structADD.html">ADD</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:ac4cb5d1d75a13b7e8a6322a76179dbcd"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsharedmemory_8cpp.html#ac4cb5d1d75a13b7e8a6322a76179dbcd">myinit</a> (<a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *mutex)</td></tr>
-<tr class="separator:ac4cb5d1d75a13b7e8a6322a76179dbcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2173f47401219ca0f0c1be317e0b2163"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsharedmemory_8cpp.html#a2173f47401219ca0f0c1be317e0b2163">mylock</a> (<a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *mutex, int increment)</td></tr>
-<tr class="separator:a2173f47401219ca0f0c1be317e0b2163"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cd4cc2d4794c81f2d3416d5064e0349"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsharedmemory_8cpp.html#a1cd4cc2d4794c81f2d3416d5064e0349">myunlock</a> (<a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *mutex)</td></tr>
-<tr class="separator:a1cd4cc2d4794c81f2d3416d5064e0349"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ac4cb5d1d75a13b7e8a6322a76179dbcd"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void myinit </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *&#160;</td>
-          <td class="paramname"><em>mutex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00053">53</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  <span class="keywordtype">int</span> *cnt = (<span class="keywordtype">int</span> *) mutex;</div>
-<div class="line">  *cnt = 0;</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a2173f47401219ca0f0c1be317e0b2163"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void mylock </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *&#160;</td>
-          <td class="paramname"><em>mutex</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>increment</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00059">59</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  <span class="keyword">volatile</span> <span class="keywordtype">int</span> *cnt = (<span class="keywordtype">int</span> *) mutex;</div>
-<div class="line">  <span class="keywordflow">while</span>(1)</div>
-<div class="line">  {</div>
-<div class="line">retry:</div>
-<div class="line">    <span class="keywordflow">if</span>(*cnt == 0)</div>
-<div class="line">    { <span class="comment">// try to lock the counter</span></div>
-<div class="line">      (*cnt) += increment;</div>
-<div class="line">      <span class="keywordflow">if</span>(*cnt &gt; 1)</div>
-<div class="line">      {</div>
-<div class="line">        (*cnt) -= increment;</div>
-<div class="line">        <span class="keywordflow">goto</span> retry; <span class="comment">// another process also wanted to lock the counter</span></div>
-<div class="line">      }</div>
-<div class="line">      <span class="keywordflow">return</span>;       <span class="comment">// now we can do it</span></div>
-<div class="line">    }</div>
-<div class="line">    <a class="code" href="rlwthread_8cpp.html#a80fedc11e30831f16025ad3dc1593724">rlwthread_sleep</a>(1);</div>
-<div class="line">  }</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="a1cd4cc2d4794c81f2d3416d5064e0349"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void myunlock </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *&#160;</td>
-          <td class="paramname"><em>mutex</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00079">79</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
-<div class="fragment"><div class="line">{</div>
-<div class="line">  <span class="keywordtype">int</span> *cnt = (<span class="keywordtype">int</span> *) mutex;</div>
-<div class="line">  <span class="keywordflow">if</span>(*cnt &gt; 0) (*cnt)--;</div>
-<div class="line">}</div>
-</div><!-- fragment -->
-</div>
-</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

@@ -68,6 +68,8 @@ private:
 #ifdef RLWIN32
   HANDLE hSharedFile;
   OVERLAPPED overlapped;
+#elif defined(RLUNIX)
+  int fdlock;
 #endif
 };
 
