@@ -65,6 +65,10 @@ private:
   char *user_adr;
   unsigned long size;
   pthread_mutex_t *mutex;
+#ifdef RLWIN32
+  HANDLE hSharedFile;
+  OVERLAPPED overlapped;
+#endif
 };
 
 #endif

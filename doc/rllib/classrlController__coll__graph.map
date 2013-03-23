@@ -1,7 +1,7 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlThread.html" title="rlThread" alt="" coords="89,187,159,213"/>
-<area shape="rect" id="node4" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="129,277,263,304"/>
-<area shape="rect" id="node7" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,96,125,123"/>
-<area shape="rect" id="node9" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="150,96,252,123"/>
-<area shape="rect" id="node11" href="$struct____sched__param.html" title="__sched_param" alt="" coords="144,5,259,32"/>
+<map id="rlController" name="rlController">
+<area shape="rect" id="node2" href="$classrlThread.html" title="rlThread" alt="" coords="85,187,159,213"/>
+<area shape="rect" id="node4" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="131,277,260,304"/>
+<area shape="rect" id="node7" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,96,121,123"/>
+<area shape="rect" id="node9" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="147,96,249,123"/>
+<area shape="rect" id="node11" href="$struct____sched__param.html" title="__sched_param" alt="" coords="139,5,257,32"/>
 </map>

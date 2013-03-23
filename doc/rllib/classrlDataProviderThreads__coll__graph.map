@@ -1,10 +1,10 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlThread.html" title="rlThread" alt="" coords="220,187,289,213"/>
-<area shape="rect" id="node4" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="245,277,379,304"/>
-<area shape="rect" id="node7" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="129,5,249,32"/>
-<area shape="rect" id="node15" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="94,96,188,123"/>
-<area shape="rect" id="node9" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="331,96,433,123"/>
-<area shape="rect" id="node11" href="$struct____sched__param.html" title="__sched_param" alt="" coords="325,5,440,32"/>
-<area shape="rect" id="node13" href="$classrlDataProvider.html" title="rlDataProvider" alt="" coords="49,187,153,213"/>
+<map id="rlDataProviderThreads" name="rlDataProviderThreads">
+<area shape="rect" id="node2" href="$classrlThread.html" title="rlThread" alt="" coords="221,187,295,213"/>
+<area shape="rect" id="node4" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="251,277,380,304"/>
+<area shape="rect" id="node7" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="135,5,251,32"/>
+<area shape="rect" id="node15" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="95,96,193,123"/>
+<area shape="rect" id="node9" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="339,96,441,123"/>
+<area shape="rect" id="node11" href="$struct____sched__param.html" title="__sched_param" alt="" coords="331,5,449,32"/>
+<area shape="rect" id="node13" href="$classrlDataProvider.html" title="rlDataProvider" alt="" coords="47,187,156,213"/>
 <area shape="rect" id="node18" href="$classrlMutex.html" title="rlMutex" alt="" coords="5,96,69,123"/>
 </map>

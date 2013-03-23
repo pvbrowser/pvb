@@ -41,5 +41,6 @@ var searchData=
   ['os',['os',['../classrlSocket.html#a2e8969ca0c32cb51e93bbaae10cb42d9',1,'rlSocket']]],
   ['outuntil',['outUntil',['../classrlSvgCat.html#ab08c348db7c4b1db20256e24a6fc03c3',1,'rlSvgCat']]],
   ['outuntilend',['outUntilEnd',['../classrlSvgCat.html#ac7b370480ba1b183bc1e9f3fd9c4542f',1,'rlSvgCat']]],
-  ['outvalue',['outValue',['../classrlSvgCat.html#a963fdf0c77f9d313638f137152307890',1,'rlSvgCat']]]
+  ['outvalue',['outValue',['../classrlSvgCat.html#a963fdf0c77f9d313638f137152307890',1,'rlSvgCat']]],
+  ['overlapped',['overlapped',['../classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c',1,'rlSharedMemory']]]
 ];

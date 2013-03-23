@@ -282,9 +282,9 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory  %{buildroot}%{_bindir}/rlhistory
 %__ln_s /opt/pvb/fake_qmake/fake_qmake      %{buildroot}%{_bindir}/fake_qmake
 
-cp /opt/pvb/pvbrowser.desktop               %{buildroot}%/usr/share/applications/
-cp /opt/pvb/pvdevelop.desktop               %{buildroot}%/usr/share/applications/
-%__ln_s /opt/pvb/browserplugin/libpvbrowser.so %{buildroot}%/usr/%{_lib}/browser-plugins/libpvbrowser.so
+%__ln_s /opt/pvb/pvbrowser.desktop          %{buildroot}/usr/share/applications/pvbrowser.desktop
+%__ln_s /opt/pvb/pvdevelop.desktop          %{buildroot}/usr/share/applications/pvdevelop.desktop
+%__ln_s /opt/pvb/browserplugin/libpvbrowser.so %{buildroot}/usr/%{_lib}/browser-plugins/libpvbrowser.so
 
 %__mkdir_p %{buildroot}/srv/automation/shm
 %__mkdir_p %{buildroot}/srv/automation/mbx

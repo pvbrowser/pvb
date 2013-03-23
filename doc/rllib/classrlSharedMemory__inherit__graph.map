@@ -1,5 +1,5 @@
-<map id="G" name="G">
+<map id="rlSharedMemory" name="rlSharedMemory">
 <area shape="rect" id="node3" href="$classrlModbusClient.html" title="rlModbusClient" alt="" coords="5,80,115,107"/>
-<area shape="rect" id="node5" href="$classrlPPIClient.html" title="rlPPIClient" alt="" coords="139,80,224,107"/>
-<area shape="rect" id="node7" href="$classrlSiemensTCPClient.html" title="rlSiemensTCPClient" alt="" coords="248,80,388,107"/>
+<area shape="rect" id="node5" href="$classrlPPIClient.html" title="rlPPIClient" alt="" coords="139,80,223,107"/>
+<area shape="rect" id="node7" href="$classrlSiemensTCPClient.html" title="rlSiemensTCPClient" alt="" coords="247,80,392,107"/>
 </map>

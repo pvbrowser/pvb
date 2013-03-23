@@ -1,6 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlSpreadsheetTable.html" title="rlSpreadsheetTable" alt="" coords="70,187,204,213"/>
-<area shape="rect" id="node4" href="$classrlSpreadsheetRow.html" title="rlSpreadsheetRow" alt="" coords="70,96,199,123"/>
-<area shape="rect" id="node7" href="$classrlSpreadsheetCell.html" title="rlSpreadsheetCell" alt="" coords="5,5,131,32"/>
-<area shape="rect" id="node11" href="$classrlString.html" title="rlString" alt="" coords="314,187,376,213"/>
+<map id="rlSvgAnimator" name="rlSvgAnimator">
+<area shape="rect" id="node2" href="$classrlSpreadsheetTable.html" title="rlSpreadsheetTable" alt="" coords="71,187,213,213"/>
+<area shape="rect" id="node4" href="$classrlSpreadsheetRow.html" title="rlSpreadsheetRow" alt="" coords="72,96,205,123"/>
+<area shape="rect" id="node7" href="$classrlSpreadsheetCell.html" title="rlSpreadsheetCell" alt="" coords="5,5,135,32"/>
+<area shape="rect" id="node11" href="$classrlString.html" title="rlString" alt="" coords="327,187,389,213"/>
 </map>

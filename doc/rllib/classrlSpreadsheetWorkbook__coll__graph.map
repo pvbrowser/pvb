@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlSpreadsheetTable.html" title="rlSpreadsheetTable" alt="" coords="18,187,152,213"/>
-<area shape="rect" id="node4" href="$classrlSpreadsheetRow.html" title="rlSpreadsheetRow" alt="" coords="21,96,149,123"/>
-<area shape="rect" id="node7" href="$classrlSpreadsheetCell.html" title="rlSpreadsheetCell" alt="" coords="23,5,148,32"/>
+<map id="rlSpreadsheetWorkbook" name="rlSpreadsheetWorkbook">
+<area shape="rect" id="node2" href="$classrlSpreadsheetTable.html" title="rlSpreadsheetTable" alt="" coords="18,187,160,213"/>
+<area shape="rect" id="node4" href="$classrlSpreadsheetRow.html" title="rlSpreadsheetRow" alt="" coords="23,96,156,123"/>
+<area shape="rect" id="node7" href="$classrlSpreadsheetCell.html" title="rlSpreadsheetCell" alt="" coords="24,5,153,32"/>
 </map>

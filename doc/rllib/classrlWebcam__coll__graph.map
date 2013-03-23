@@ -1,4 +1,4 @@
-<map id="G" name="G">
+<map id="rlWebcam" name="rlWebcam">
 <area shape="rect" id="node2" href="$classrlSocket.html" title="rlSocket" alt="" coords="5,5,75,32"/>
 <area shape="rect" id="node4" href="$classrlString.html" title="rlString" alt="" coords="99,5,161,32"/>
 </map>

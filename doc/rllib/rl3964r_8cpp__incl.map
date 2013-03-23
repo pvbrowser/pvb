@@ -1,8 +1,8 @@
-<map id="G" name="G">
-<area shape="rect" id="node9" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="363,80,431,107"/>
-<area shape="rect" id="node24" href="$rl3964r_8h.html" title="rl3964r.h" alt="" coords="129,80,207,107"/>
-<area shape="rect" id="node18" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="187,379,268,405"/>
-<area shape="rect" id="node27" href="$rlserial_8h.html" title="rlserial.h" alt="" coords="94,155,169,181"/>
-<area shape="rect" id="node29" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="201,229,284,256"/>
-<area shape="rect" id="node32" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="397,304,491,331"/>
+<map id="rl3964r.cpp" name="rl3964r.cpp">
+<area shape="rect" id="node9" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="357,80,419,107"/>
+<area shape="rect" id="node24" href="$rl3964r_8h.html" title="rl3964r.h" alt="" coords="130,80,200,107"/>
+<area shape="rect" id="node18" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="183,379,259,405"/>
+<area shape="rect" id="node27" href="$rlserial_8h.html" title="rlserial.h" alt="" coords="93,155,165,181"/>
+<area shape="rect" id="node29" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="195,229,271,256"/>
+<area shape="rect" id="node32" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="389,304,475,331"/>
 </map>

@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlTime.html" title="rlTime" alt="" coords="5,5,63,32"/>
-<area shape="rect" id="node4" href="$struct__rlHistoryReaderLine__.html" title="_rlHistoryReaderLine_" alt="" coords="89,5,239,32"/>
+<map id="rlHistoryReader" name="rlHistoryReader">
+<area shape="rect" id="node2" href="$classrlTime.html" title="rlTime" alt="" coords="5,5,67,32"/>
+<area shape="rect" id="node4" href="$struct__rlHistoryReaderLine__.html" title="_rlHistoryReaderLine_" alt="" coords="91,5,244,32"/>
 </map>

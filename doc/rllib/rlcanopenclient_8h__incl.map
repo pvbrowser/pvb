@@ -1,10 +1,10 @@
-<map id="G" name="G">
-<area shape="rect" id="node11" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="212,229,296,256"/>
-<area shape="rect" id="node27" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="343,155,426,181"/>
-<area shape="rect" id="node30" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="402,229,496,256"/>
-<area shape="rect" id="node39" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="587,80,654,107"/>
-<area shape="rect" id="node50" href="$rlcanopentypes_8h.html" title="rlcanopentypes.h" alt="" coords="968,80,1100,107"/>
-<area shape="rect" id="node13" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="695,304,776,331"/>
-<area shape="rect" id="node54" href="$rlinifile_8h.html" title="rlinifile.h" alt="" coords="922,155,996,181"/>
-<area shape="rect" id="node57" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="775,229,853,256"/>
+<map id="rlcanopenclient.h" name="rlcanopenclient.h">
+<area shape="rect" id="node11" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="206,229,284,256"/>
+<area shape="rect" id="node27" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="333,155,409,181"/>
+<area shape="rect" id="node30" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="387,229,473,256"/>
+<area shape="rect" id="node39" href="$rlcutil_8h.html" title="rlcutil.h" alt="" coords="567,80,629,107"/>
+<area shape="rect" id="node50" href="$rlcanopentypes_8h.html" title="rlcanopentypes.h" alt="" coords="933,80,1056,107"/>
+<area shape="rect" id="node13" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="674,304,749,331"/>
+<area shape="rect" id="node54" href="$rlinifile_8h.html" title="rlinifile.h" alt="" coords="888,155,957,181"/>
+<area shape="rect" id="node57" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="752,229,822,256"/>
 </map>

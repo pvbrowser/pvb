@@ -1,6 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="92,304,165,331"/>
-<area shape="rect" id="node11" href="$rlplc_8h.html" title="rlplc.h" alt="" coords="121,80,177,107"/>
-<area shape="rect" id="node14" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="171,155,297,181"/>
-<area shape="rect" id="node17" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="230,229,316,256"/>
+<map id="rlstatemachine.h" name="rlstatemachine.h">
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="90,304,165,331"/>
+<area shape="rect" id="node11" href="$rlplc_8h.html" title="rlplc.h" alt="" coords="119,80,173,107"/>
+<area shape="rect" id="node14" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="169,155,299,181"/>
+<area shape="rect" id="node17" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="229,229,315,256"/>
 </map>

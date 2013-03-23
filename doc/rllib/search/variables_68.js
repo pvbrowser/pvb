@@ -8,5 +8,6 @@ var searchData=
   ['headersize',['headersize',['../structrlEIBnetIP_1_1PDU.html#a034fa5f0b9414958178c2becd669a9a5',1,'rlEIBnetIP::PDU']]],
   ['hour',['hour',['../structTDS.html#a28b7c08476394f266f43cfafc71ba946',1,'TDS::hour()'],['../classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b',1,'rlTime::hour()']]],
   ['hsemaphore',['hSemaphore',['../structWSEMAPHORE.html#abc9a31daacc7ef2097d38c9356cca7b6',1,'WSEMAPHORE']]],
+  ['hsharedfile',['hSharedFile',['../classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194',1,'rlSharedMemory']]],
   ['hth',['hth',['../structTDS.html#aba39f6ccfbaf511208fbbeb9e942b93e',1,'TDS']]]
 ];

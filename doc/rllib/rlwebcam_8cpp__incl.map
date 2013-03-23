@@ -1,6 +1,6 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$rlwebcam_8h.html" title="rlwebcam.h" alt="" coords="346,80,440,107"/>
-<area shape="rect" id="node5" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="395,229,476,256"/>
-<area shape="rect" id="node13" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="259,155,343,181"/>
-<area shape="rect" id="node24" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="431,155,509,181"/>
+<map id="rlwebcam.cpp" name="rlwebcam.cpp">
+<area shape="rect" id="node3" href="$rlwebcam_8h.html" title="rlwebcam.h" alt="" coords="336,80,427,107"/>
+<area shape="rect" id="node5" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="383,229,459,256"/>
+<area shape="rect" id="node13" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="254,155,332,181"/>
+<area shape="rect" id="node24" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="419,155,489,181"/>
 </map>

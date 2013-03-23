@@ -1,4 +1,4 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$classrlThread.html" title="rlThread" alt="" coords="5,5,75,32"/>
-<area shape="rect" id="node3" href="$classrlController.html" title="rlController" alt="" coords="123,5,208,32"/>
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classrlThread.html" title="rlThread" alt="" coords="5,5,80,32"/>
+<area shape="rect" id="node3" href="$classrlController.html" title="rlController" alt="" coords="129,5,215,32"/>
 </map>

@@ -1,5 +1,5 @@
-<map id="G" name="G">
-<area shape="rect" id="node2" href="$classrlSerial.html" title="rlSerial" alt="" coords="5,5,67,32"/>
-<area shape="rect" id="node4" href="$classrlSpawn.html" title="rlSpawn" alt="" coords="92,5,161,32"/>
-<area shape="rect" id="node6" href="$classrlSocket.html" title="rlSocket" alt="" coords="186,5,256,32"/>
+<map id="rlCommandlineInterface" name="rlCommandlineInterface">
+<area shape="rect" id="node2" href="$classrlSerial.html" title="rlSerial" alt="" coords="5,5,69,32"/>
+<area shape="rect" id="node4" href="$classrlSpawn.html" title="rlSpawn" alt="" coords="94,5,164,32"/>
+<area shape="rect" id="node6" href="$classrlSocket.html" title="rlSocket" alt="" coords="189,5,259,32"/>
 </map>

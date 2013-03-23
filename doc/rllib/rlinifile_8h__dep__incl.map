@@ -1,19 +1,19 @@
-<map id="G" name="G">
-<area shape="rect" id="node3" href="$rlcanopentypes_8h.html" title="rlcanopentypes.h" alt="" coords="277,80,397,107"/>
-<area shape="rect" id="node5" href="$rlcannode_8h.html" title="rlcannode.h" alt="" coords="131,155,220,181"/>
-<area shape="rect" id="node24" href="$rlinifile_8cpp.html" title="rlinifile.cpp" alt="" coords="459,80,543,107"/>
-<area shape="rect" id="node26" href="$rllib_8h.html" title="rllib.h" alt="" coords="549,155,603,181"/>
-<area shape="rect" id="node28" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="629,80,739,107"/>
-<area shape="rect" id="node31" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="777,155,855,181"/>
-<area shape="rect" id="node35" href="$rlreport_8h.html" title="rlreport.h" alt="" coords="879,80,952,107"/>
-<area shape="rect" id="node17" href="$rlcanopenclient_8h.html" title="rlcanopenclient.h" alt="" coords="245,155,365,181"/>
-<area shape="rect" id="node21" href="$rlcanopentypes_8cpp.html" title="rlcanopentypes.cpp" alt="" coords="390,155,524,181"/>
-<area shape="rect" id="node7" href="$rlcannode_8cpp.html" title="rlcannode.cpp" alt="" coords="5,229,107,256"/>
-<area shape="rect" id="node9" href="$rlcanopen_8h.html" title="rlcanopen.h" alt="" coords="131,229,220,256"/>
-<area shape="rect" id="node11" href="$rlcanopen_8cpp.html" title="rlcanopen.cpp" alt="" coords="54,304,156,331"/>
-<area shape="rect" id="node13" href="$rlcanopendaemon_8h.html" title="rlcanopendaemon.h" alt="" coords="181,304,315,331"/>
-<area shape="rect" id="node15" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="173,379,321,405"/>
-<area shape="rect" id="node19" href="$rlcanopenclient_8cpp.html" title="rlcanopenclient.cpp" alt="" coords="245,229,379,256"/>
-<area shape="rect" id="node33" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="627,155,752,181"/>
-<area shape="rect" id="node37" href="$rlreport_8cpp.html" title="rlreport.cpp" alt="" coords="879,155,965,181"/>
+<map id="rlinifile.h" name="rlinifile.h">
+<area shape="rect" id="node3" href="$rlcanopentypes_8h.html" title="rlcanopentypes.h" alt="" coords="285,80,408,107"/>
+<area shape="rect" id="node5" href="$rlcannode_8h.html" title="rlcannode.h" alt="" coords="135,155,227,181"/>
+<area shape="rect" id="node24" href="$rlinifile_8cpp.html" title="rlinifile.cpp" alt="" coords="471,80,552,107"/>
+<area shape="rect" id="node26" href="$rllib_8h.html" title="rllib.h" alt="" coords="561,155,612,181"/>
+<area shape="rect" id="node28" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="638,80,751,107"/>
+<area shape="rect" id="node31" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="787,155,865,181"/>
+<area shape="rect" id="node35" href="$rlreport_8h.html" title="rlreport.h" alt="" coords="889,80,961,107"/>
+<area shape="rect" id="node17" href="$rlcanopenclient_8h.html" title="rlcanopenclient.h" alt="" coords="252,155,375,181"/>
+<area shape="rect" id="node21" href="$rlcanopentypes_8cpp.html" title="rlcanopentypes.cpp" alt="" coords="399,155,536,181"/>
+<area shape="rect" id="node7" href="$rlcannode_8cpp.html" title="rlcannode.cpp" alt="" coords="5,229,112,256"/>
+<area shape="rect" id="node9" href="$rlcanopen_8h.html" title="rlcanopen.h" alt="" coords="136,229,227,256"/>
+<area shape="rect" id="node11" href="$rlcanopen_8cpp.html" title="rlcanopen.cpp" alt="" coords="55,304,160,331"/>
+<area shape="rect" id="node13" href="$rlcanopendaemon_8h.html" title="rlcanopendaemon.h" alt="" coords="184,304,324,331"/>
+<area shape="rect" id="node15" href="$rlcanopendaemon_8cpp.html" title="rlcanopendaemon.cpp" alt="" coords="177,379,331,405"/>
+<area shape="rect" id="node19" href="$rlcanopenclient_8cpp.html" title="rlcanopenclient.cpp" alt="" coords="251,229,385,256"/>
+<area shape="rect" id="node33" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="637,155,763,181"/>
+<area shape="rect" id="node37" href="$rlreport_8cpp.html" title="rlreport.cpp" alt="" coords="890,155,976,181"/>
 </map>
