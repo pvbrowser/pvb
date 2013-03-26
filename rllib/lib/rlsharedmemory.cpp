@@ -271,23 +271,24 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
                        );
   }
   if(hSharedFile == INVALID_HANDLE_VALUE) { status=ERROR_FILE; return; }
-  char *global_name = new char[strlen(name)+40];
-  strcpy(global_name,"Global\\"); strcat(global_name, name);
-  for(int i=7; i<strlen(global_name); i++)
-  {
-    if     (global_name[i] == ':')  global_name[i] = '_';
-    else if(global_name[i] == '\\') global_name[i] = '_';
-    else if(global_name[i] == '.')  global_name[i] = '_';
-    else if(global_name[i] == ' ')  global_name[i] = '_';
-  }
+  //char *global_name = new char[strlen(name)+40];
+  //strcpy(global_name,"Global\\"); strcat(global_name, name);
+  //for(int i=7; i<strlen(global_name); i++)
+  //{
+  //  if     (global_name[i] == ':')  global_name[i] = '_';
+  //  else if(global_name[i] == '\\') global_name[i] = '_';
+  //  else if(global_name[i] == '.')  global_name[i] = '_';
+  //  else if(global_name[i] == ' ')  global_name[i] = '_';
+  //}
   hShmem = CreateFileMapping(
     hSharedFile,
     NULL,                // no security attributes
     PAGE_READWRITE,      // read/write access
     0,                   // size: high 32-bits
     size,                // size: low 32-bits
-    global_name);        // name of map object
-  delete [] global_name;  
+    0);                  // name of map object // changed by FMakkinga 25-03-2013 global_name); 
+  //  global_name);      // name of map object
+  //delete [] global_name;  
   if(hShmem == NULL) { status=ERROR_FILE; return; }
   base_adr = (char *) MapViewOfFile(
     hShmem,              // object to map view of

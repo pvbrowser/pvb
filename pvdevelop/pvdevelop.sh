@@ -5,7 +5,12 @@ if [ "x${PYTHON_INCLUDE}" = "x" ]; then
   echo "python support was not found"
 fi
 
-export PYTHON_LIB=$(find /usr/lib64 -name "libpython2.*.so")
+if [ -d /usr/lib64 ]
+then
+  echo find
+  export PYTHON_LIB=$(find /usr/lib64 -name "libpython2.*.so")
+fi
+
 if [ "x${PYTHON_LIB}" = "x" ]; then
   export PYTHON_LIB=$(find /usr/lib -name "libpython2.*.so")
   if [ "x${PYTHON_LIB}" = "x" ]; then
