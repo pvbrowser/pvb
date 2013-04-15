@@ -4,6 +4,7 @@ QT          += sql
 INCLUDEPATH += $(PYDIR)/include
 INCLUDEPATH += ../pvserver
 DEFINES     += COMPILE_FOR_SCRIPT_LANGUAGE
+DEFINES     += "WINVER=0x0501"
 
 # Input
 HEADERS += sql/qtdatabase.h

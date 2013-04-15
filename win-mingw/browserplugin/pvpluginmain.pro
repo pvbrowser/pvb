@@ -14,7 +14,8 @@ DEFINES      += BROWSERPLUGIN
 DEFINES      -= UNICODE                                                    
 QT           += opengl svg webkit network                                  
 CONFIG       += uitools warn_on release                                    
-                                                                           
+DEFINES      += "WINVER=0x0501"
+
 HEADERS       = ../../pvbrowser/mainwindow.h \                             
                 ../../pvbrowser/dlgopt.h \                                 
                 ../../pvbrowser/opt.h \                                    

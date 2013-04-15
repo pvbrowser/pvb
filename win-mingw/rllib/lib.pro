@@ -4,6 +4,7 @@ CONFIG   += warn_on release staticlib
 #CONFIG  += warn_on release
 CONFIG   -= qt
 DEFINES  -= UNICODE
+DEFINES  += "WINVER=0x0501"
 
 win32-g++ {
 }

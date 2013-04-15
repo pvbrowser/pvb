@@ -5,6 +5,7 @@
 #CONFIG        += USE_VTK                                                   
 #DEFINES       += NO_QWT                                                     
 DEFINES        -= UNICODE                                                    
+DEFINES        += "WINVER=0x0501"
 QT             += opengl svg webkit network                                  
 CONFIG         += uitools warn_on release                                    
 QMAKE_CXXFLAGS += -mthreads

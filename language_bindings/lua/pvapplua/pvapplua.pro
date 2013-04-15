@@ -6,6 +6,7 @@ TEMPLATE = app
 CONFIG  += warn_on release qt console
 QT      += sql
 DEFINES += LUA
+DEFINES += "WINVER=0x0501"
 
 # Input
 SOURCES     += main.cpp                                   \

@@ -2,6 +2,7 @@ TEMPLATE = lib
 CONFIG  += console warn_on release dll
 CONFIG  -= qt
 INCLUDEPATH += $(PYDIR)/include
+DEFINES += "WINVER=0x0501"
 
 # Input
 # HEADERS += 

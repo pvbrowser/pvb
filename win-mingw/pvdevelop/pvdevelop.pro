@@ -3,7 +3,8 @@ DEFINES      += PVDEVELOP
 #DEFINES     += NO_QWT                                                     
 DEFINES      -= UNICODE                                                    
 QT           += opengl svg webkit                                          
-                                                                           
+DEFINES      += "WINVER=0x0501"
+
 HEADERS       = ../../pvbrowser/webkit_ui_dlgtextbrowser.h \               
                 ../../pvbrowser/MyWidgets.h \                              
                 ../../pvbrowser/qwtwidgets.h \                             

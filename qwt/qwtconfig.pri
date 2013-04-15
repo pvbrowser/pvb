@@ -26,6 +26,7 @@ doc.path       = $$INSTALLBASE/doc
 CONFIG           += qt     # Also for Qtopia Core!
 CONFIG           += warn_on
 CONFIG           += thread
+!symbian:CONFIG  += QwtDesigner
 
 ######################################################################
 # release/debug mode

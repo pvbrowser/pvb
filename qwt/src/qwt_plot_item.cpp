@@ -18,6 +18,14 @@ static int qRound(int i)
 	return i;
 }
 
+//@christian: really need the following on symbian ?
+#if defined(Q_OS_SYMBIAN)
+static int qRound(double i)
+{
+  return qRound((qreal)i);
+}
+#endif
+
 class QwtPlotItem::PrivateData
 {
 public:
