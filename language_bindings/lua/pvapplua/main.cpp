@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
+#include "processviewserver.h"
 
 int trace = 0;
 
@@ -24,6 +25,7 @@ extern "C" {
 //#include <lua.hpp>
 #include <lualib.h>
 #include <lauxlib.h>
+extern int luaopen_pv(lua_State* L);    // declare the wrapped module
 extern int luaopen_rllib(lua_State* L); // declare the wrapped module
 #ifdef __cplusplus
 }
@@ -31,7 +33,7 @@ extern int luaopen_rllib(lua_State* L); // declare the wrapped module
 
 char pvarg0[1024];
 
-int pvMain(void *dummy)
+int pvMain(PARAM *dummy)
 {
   if(dummy == NULL) return -1;
   return 0;
@@ -48,6 +50,8 @@ int luaMain()
   luaL_openlibs(L);
 
   // load our custom libs
+  ret = luaopen_pv(L);
+  if(trace) printf("luaopen_pv ret=%d\n", ret);
   ret = luaopen_rllib(L);
   if(trace) printf("luaopen_rllib ret=%d\n", ret);
 
