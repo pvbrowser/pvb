@@ -147,6 +147,40 @@ const char *qtDatabase::recordFieldValue(PARAM *p, int x)
   }
 }
 
+const char *qtDatabase::dbQuery(const char *sqlcommand)
+{
+  if(db == NULL) return "ERROR: database is NULL";
+  QString qsqlcommand = QString::fromUtf8(sqlcommand);
+  *result = db->exec(qsqlcommand);
+  *error = db->lastError();
+  if(error->isValid())
+  {
+    QString e = error->databaseText();
+    printf("qtDatabase::query ERROR: %s\n", (const char *) e.toUtf8());
+    return "ERROR: qtDatabase::query()";
+  }
+  return "ERROR: result is not valid";
+}
+
+const char *qtDatabase::dbRecordFieldValue(int x)
+{
+  QSqlRecord record = result->record();
+  if(record.isEmpty())
+  {
+    return "ERROR: qtDatabase::recordFieldValue record is empty";
+  }
+  QSqlField f = record.field(x);
+  if(f.isValid())
+  {
+    QVariant v = f.value();
+    return v.toString().toUtf8();
+  }
+  else
+  {
+    return "ERROR: qtDatabase::recordFieldValue field is invalid";
+  }
+}
+
 int qtDatabase::nextRecord()
 {
   result->next();

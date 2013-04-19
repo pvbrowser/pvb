@@ -41,9 +41,14 @@ class qtDatabase
     ~qtDatabase();
     int open(const char *dbtype, const char *hostname, const char *dbname, const char *user, const char *pass);
     int close();
+    // used from within a pvserver
     int query(PARAM *p, const char *sqlcommand);
     int populateTable(PARAM *p, int id);
     const char *recordFieldValue(PARAM *p, int x);
+    // also usable outside a pvserver
+    const char *dbQuery(const char *sqlcommand);
+    const char *dbRecordFieldValue(int x);
+
     int nextRecord();
 
     QSqlDatabase *db;

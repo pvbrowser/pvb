@@ -2543,6 +2543,8 @@ class qtDatabase(_object):
     def query(self, *args): return _pv.qtDatabase_query(self, *args)
     def populateTable(self, *args): return _pv.qtDatabase_populateTable(self, *args)
     def recordFieldValue(self, *args): return _pv.qtDatabase_recordFieldValue(self, *args)
+    def dbQuery(self, *args): return _pv.qtDatabase_dbQuery(self, *args)
+    def dbRecordFieldValue(self, *args): return _pv.qtDatabase_dbRecordFieldValue(self, *args)
     def nextRecord(self): return _pv.qtDatabase_nextRecord(self)
     __swig_setmethods__["db"] = _pv.qtDatabase_db_set
     __swig_getmethods__["db"] = _pv.qtDatabase_db_get

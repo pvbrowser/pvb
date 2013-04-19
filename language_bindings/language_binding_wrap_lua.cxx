@@ -26856,6 +26856,60 @@ fail:
 }
 
 
+static int _wrap_qtDatabase_dbQuery(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::dbQuery",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::dbQuery",1,"qtDatabase *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("qtDatabase::dbQuery",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_dbQuery",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (char *)(arg1)->dbQuery((char const *)arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_dbRecordFieldValue(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::dbRecordFieldValue",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::dbRecordFieldValue",1,"qtDatabase *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("qtDatabase::dbRecordFieldValue",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_dbRecordFieldValue",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (char *)(arg1)->dbRecordFieldValue(arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_qtDatabase_nextRecord(lua_State* L) {
   int SWIG_arg = 0;
   qtDatabase *arg1 = (qtDatabase *) 0 ;
@@ -27052,6 +27106,8 @@ static swig_lua_method swig_qtDatabase_methods[] = {
     {"query", _wrap_qtDatabase_query}, 
     {"populateTable", _wrap_qtDatabase_populateTable}, 
     {"recordFieldValue", _wrap_qtDatabase_recordFieldValue}, 
+    {"dbQuery", _wrap_qtDatabase_dbQuery}, 
+    {"dbRecordFieldValue", _wrap_qtDatabase_dbRecordFieldValue}, 
     {"nextRecord", _wrap_qtDatabase_nextRecord}, 
     {0,0}
 };

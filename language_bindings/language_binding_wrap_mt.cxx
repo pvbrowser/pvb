@@ -36495,6 +36495,71 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_qtDatabase_dbQuery(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:qtDatabase_dbQuery",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_dbQuery" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_dbQuery" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (char *)(arg1)->dbQuery((char const *)arg2);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_dbRecordFieldValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:qtDatabase_dbRecordFieldValue",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_dbRecordFieldValue" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "qtDatabase_dbRecordFieldValue" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (char *)(arg1)->dbRecordFieldValue(arg2);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_qtDatabase_nextRecord(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   qtDatabase *arg1 = (qtDatabase *) 0 ;
@@ -37448,6 +37513,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"qtDatabase_query", _wrap_qtDatabase_query, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_populateTable", _wrap_qtDatabase_populateTable, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_recordFieldValue", _wrap_qtDatabase_recordFieldValue, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_dbQuery", _wrap_qtDatabase_dbQuery, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_dbRecordFieldValue", _wrap_qtDatabase_dbRecordFieldValue, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_nextRecord", _wrap_qtDatabase_nextRecord, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_db_set", _wrap_qtDatabase_db_set, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_db_get", _wrap_qtDatabase_db_get, METH_VARARGS, NULL},
