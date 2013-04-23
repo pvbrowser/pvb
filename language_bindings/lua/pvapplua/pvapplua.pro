@@ -36,6 +36,7 @@ QMAKE_LFLAGS       += -static-libgcc
 win32:LIBS         += ../../../win-mingw/bin/librllib.a
 win32:LIBS         += ../../../win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
 win32:INCLUDEPATH  += ../../../rllib/lib
+win32:INCLUDEPATH  += ../../../pvserver
 }
 
 #DEFINES += USE_INETD
