@@ -419,7 +419,7 @@ bindv6:
       //::printf("debug: connect ret=%d\n",ret);
       if(ret == -1) 
       {
-        s = -1;
+        disconnect(); // close s = os
         return CONNECT_ERR;
       }
     }

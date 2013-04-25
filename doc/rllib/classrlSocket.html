@@ -556,7 +556,7 @@ class for encapsulating TCP/IP socket calls
 <div class="line">      <span class="comment">//::printf(&quot;debug: connect ret=%d\n&quot;,ret);</span></div>
 <div class="line">      <span class="keywordflow">if</span>(ret == -1) </div>
 <div class="line">      {</div>
-<div class="line">        <a class="code" href="classrlSocket.html#a3f70186af86837a39592e4bf18076d24">s</a> = -1;</div>
+<div class="line">        <a class="code" href="classrlSocket.html#a112affb864caf6ef57b5f226c1894446">disconnect</a>(); <span class="comment">// close s = os</span></div>
 <div class="line">        <span class="keywordflow">return</span> <a class="code" href="classrlSocket.html#a3b70eecec7f08e38ee0c7d9ee6baf632a887c2201731d9c4f4ae8c971f0e09d75">CONNECT_ERR</a>;</div>
 <div class="line">      }</div>
 <div class="line">    }</div>

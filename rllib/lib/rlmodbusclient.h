@@ -25,7 +25,7 @@
 This class is for data aqusition over a modbus daemon as created by pvdevelop.
 It communicates over a shared memory and a mailbox according to the pvbrowser principle.
 </pre> */
-class rlModbusClient : public rlMailbox, rlSharedMemory
+class rlModbusClient : public rlMailbox, public rlSharedMemory
 {
   public:
     rlModbusClient(const char *mbxname, const char *shmname, int shmsize);
