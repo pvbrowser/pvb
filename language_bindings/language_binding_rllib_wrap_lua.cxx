@@ -13819,8 +13819,8 @@ static swig_lua_method swig_rlModbusClient_methods[] = {
 static swig_lua_attribute swig_rlModbusClient_attributes[] = {
     {0,0,0}
 };
-static swig_lua_class *swig_rlModbusClient_bases[] = {0,0};
-static const char *swig_rlModbusClient_base_names[] = {"rlMailbox *",0};
+static swig_lua_class *swig_rlModbusClient_bases[] = {0,0,0};
+static const char *swig_rlModbusClient_base_names[] = {"rlMailbox *","rlSharedMemory *",0};
 static swig_lua_class _wrap_class_rlModbusClient = { "rlModbusClient", &SWIGTYPE_p_rlModbusClient,_wrap_new_rlModbusClient, swig_delete_rlModbusClient, swig_rlModbusClient_methods, swig_rlModbusClient_attributes, swig_rlModbusClient_bases, swig_rlModbusClient_base_names };
 
 static int _wrap_new_rlModbus__SWIG_0(lua_State* L) {

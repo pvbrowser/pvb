@@ -976,12 +976,12 @@ class rlMailbox(_object):
 rlMailbox_swigregister = _rllib.rlMailbox_swigregister
 rlMailbox_swigregister(rlMailbox)
 
-class rlModbusClient(rlMailbox):
+class rlModbusClient(rlMailbox,rlSharedMemory):
     __swig_setmethods__ = {}
-    for _s in [rlMailbox]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
+    for _s in [rlMailbox,rlSharedMemory]: __swig_setmethods__.update(getattr(_s,'__swig_setmethods__',{}))
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlModbusClient, name, value)
     __swig_getmethods__ = {}
-    for _s in [rlMailbox]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
+    for _s in [rlMailbox,rlSharedMemory]: __swig_getmethods__.update(getattr(_s,'__swig_getmethods__',{}))
     __getattr__ = lambda self, name: _swig_getattr(self, rlModbusClient, name)
     __repr__ = _swig_repr
     def __init__(self, *args): 
