@@ -15,6 +15,7 @@
  ***************************************************************************/
 #include "rlsvgcat.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 
@@ -198,7 +199,7 @@ int rlSvgCat::outValue(int i)
     }
     else if(line[i] == '\\' && line[i+1]=='\n') //may2013 handle ...
     {
-      fgets(line,sizeof(line)-1,(FILE *) fin);
+      if(fgets(line,sizeof(line)-1,(FILE *) fin) == 0) exit(0);
       i = 0; // ... line spanning over more than 1 line
     }
     else
