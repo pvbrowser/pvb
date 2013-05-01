@@ -196,6 +196,11 @@ int rlSvgCat::outValue(int i)
       fputc('\n',out);
       i++;
     }
+    else if(line[i] == '\\' && line[i+1]=='\n') //may2013 handle ...
+    {
+      fgets(line,sizeof(line)-1,(FILE *) fin);
+      i = 0; // ... line spanning over more than 1 line
+    }
     else
     {
       fputc(line[i++],out);
