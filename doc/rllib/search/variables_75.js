@@ -6,7 +6,7 @@ var searchData=
   ['usboardnumber',['usBoardNumber',['../classrlHilscherCIF.html#a315b891dc33df437756651b255b094c2',1,'rlHilscherCIF']]],
   ['usdevstate',['usDevState',['../classrlHilscherCIF.html#a033e4300024c2d7e31d7d3a9bead8f77',1,'rlHilscherCIF']]],
   ['use_5fcb',['use_cb',['../classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2',1,'rlSiemensTCP']]],
-  ['user',['user',['../structTHREAD__PARAM.html#abb08567308ed25b8bd3329ae84279b3d',1,'THREAD_PARAM']]],
+  ['user',['user',['../classrlState.html#afcdaaea34be6204c1ca66a0cb2d484b2',1,'rlState::user()'],['../structTHREAD__PARAM.html#abb08567308ed25b8bd3329ae84279b3d',1,'THREAD_PARAM::user()']]],
   ['user_5fadr',['user_adr',['../classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d',1,'rlSharedMemory']]],
   ['ushoststate',['usHostState',['../classrlHilscherCIF.html#ad254e59f20dec0f77bf975162ecf405e',1,'rlHilscherCIF']]],
   ['usidentnumber',['usIdentNumber',['../classrlCanNode.html#afbb27837807b89aa56da9b16d91f461f',1,'rlCanNode']]],

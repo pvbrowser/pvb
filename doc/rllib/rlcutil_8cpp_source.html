@@ -859,6 +859,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;</div>
+<div class="line"><a name="l00773"></a><span class="lineno"><a class="code" href="rlcutil_8h.html#a1faf9a09d5d0bb7a6ba24c9050697774">  773</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#a1faf9a09d5d0bb7a6ba24c9050697774">rlBitSet</a>(<span class="keywordtype">int</span> bitnumber, <span class="keywordtype">int</span> *value)</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;{</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;  *value = *value | bit;</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;  <span class="keywordflow">return</span> *value;</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;}</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;</div>
+<div class="line"><a name="l00780"></a><span class="lineno"><a class="code" href="rlcutil_8h.html#afa69b413f110f689e6093e24f5e21178">  780</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#afa69b413f110f689e6093e24f5e21178">rlBitClear</a>(<span class="keywordtype">int</span> bitnumber, <span class="keywordtype">int</span> *value)</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;{</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;  bit = ~bit;</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;  *value = *value &amp; bit;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;  <span class="keywordflow">return</span> *value;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;}</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;</div>
+<div class="line"><a name="l00788"></a><span class="lineno"><a class="code" href="rlcutil_8h.html#a0baa5683b22ec178b24473b86cf0e641">  788</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#a0baa5683b22ec178b24473b86cf0e641">rlBitChange</a>(<span class="keywordtype">int</span> bitnumber, <span class="keywordtype">int</span> *value)</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;{</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;  *value = *value ^ bit;</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;  <span class="keywordflow">return</span> *value;</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;}</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;</div>
+<div class="line"><a name="l00795"></a><span class="lineno"><a class="code" href="rlcutil_8h.html#a3da5cd694c56cd94598c12dee25a28de">  795</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="rlcutil_8cpp.html#a3da5cd694c56cd94598c12dee25a28de">rlBitTest</a>(<span class="keywordtype">int</span> bitnumber, <span class="keywordtype">int</span> *value)</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;{</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  <span class="keywordflow">if</span>(*value &amp; bit) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;}</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

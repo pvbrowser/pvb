@@ -25,7 +25,6 @@ var searchData=
   ['writefloatvalue',['writeFloatValue',['../classrlDataAcquisition.html#a755a42b4937326bdad8c5b7a2245bcc4',1,'rlDataAcquisition::writeFloatValue()'],['../classrlOpcXmlDa.html#abb257a373d600aaca7ca1a488c666ebb',1,'rlOpcXmlDa::writeFloatValue()']]],
   ['writeint',['writeInt',['../classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277',1,'rlSharedMemory']]],
   ['writeintvalue',['writeIntValue',['../classrlDataAcquisition.html#ab9772675aa4efe737c0dfa531f3bed18',1,'rlDataAcquisition::writeIntValue()'],['../classrlOpcXmlDa.html#a568bd87900f1d14c0c4b60adc1e0eedf',1,'rlOpcXmlDa::writeIntValue()']]],
-  ['writeio',['writeIO',['../rlstate_8h.html#aac284dec9818128e9bb4d937ff8122ac',1,'rlstate.h']]],
   ['writemultiplecoils',['writeMultipleCoils',['../classrlModbusClient.html#a4e7f34600028d713ea8110da40125863',1,'rlModbusClient']]],
   ['writepresetmultipleregisters',['writePresetMultipleRegisters',['../classrlModbusClient.html#a2f4c3380fd6833e29c9c2e81cd1c068a',1,'rlModbusClient']]],
   ['writepresetsingleregister',['writePresetSingleRegister',['../classrlModbusClient.html#a533b111824571b08cf73de73ef099075',1,'rlModbusClient']]],

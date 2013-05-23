@@ -53,7 +53,7 @@ var searchData=
   ['rlspreadsheetrow',['rlSpreadsheetRow',['../classrlSpreadsheetRow.html',1,'']]],
   ['rlspreadsheettable',['rlSpreadsheetTable',['../classrlSpreadsheetTable.html',1,'']]],
   ['rlspreadsheetworkbook',['rlSpreadsheetWorkbook',['../classrlSpreadsheetWorkbook.html',1,'']]],
-  ['rlstatemachine',['rlStatemachine',['../classrlStatemachine.html',1,'']]],
+  ['rlstate',['rlState',['../classrlState.html',1,'']]],
   ['rlstring',['rlString',['../classrlString.html',1,'']]],
   ['rlsvganimator',['rlSvgAnimator',['../classrlSvgAnimator.html',1,'']]],
   ['rlsvgcat',['rlSvgCat',['../classrlSvgCat.html',1,'']]],

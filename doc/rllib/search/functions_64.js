@@ -24,7 +24,6 @@ var searchData=
   ['df1buffer',['df1Buffer',['../classdf1Buffer.html#af156b2f9481242768ab5f8a50cc4de52',1,'df1Buffer']]],
   ['disconnect',['disconnect',['../classrlCanOpenClient.html#a8445f2519a92779b62d83338450e06e4',1,'rlCanOpenClient::disconnect()'],['../classrlEIBnetIP.html#abd21da0f50f1e13df7b33a25baddfd20',1,'rlEIBnetIP::disconnect()'],['../classrlSocket.html#a112affb864caf6ef57b5f226c1894446',1,'rlSocket::disconnect()'],['../classrlWebcam.html#ab7f8f81531d5053982de7bfb340f0055',1,'rlWebcam::disconnect()']]],
   ['doconnect',['doConnect',['../classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc',1,'rlSiemensTCP']]],
-  ['dostate',['doState',['../classrlStatemachine.html#a000430ee9ed5299be8a86ed2eab5f1f7',1,'rlStatemachine']]],
   ['doublechanged',['doubleChanged',['../classrlPlcState.html#af543691e9af180b9f73602667b0de1b7',1,'rlPlcState::doubleChanged()'],['../classrlPlcMem.html#a5b357a7b21b9745780398a32e70d1473',1,'rlPlcMem::doubleChanged()']]],
   ['doublehasdecreased',['doubleHasDecreased',['../classrlPlcState.html#aa7b15c6df80a28e3520ceb60e8c028b0',1,'rlPlcState::doubleHasDecreased()'],['../classrlPlcMem.html#a72d9299612fe1b5efb11efb25d503dcd',1,'rlPlcMem::doubleHasDecreased()']]],
   ['doublehasincreased',['doubleHasIncreased',['../classrlPlcState.html#afb70f5554603032eda34625497b1921f',1,'rlPlcState::doubleHasIncreased()'],['../classrlPlcMem.html#a4a97f4abfdb56c627cdd9a83f77695cb',1,'rlPlcMem::doubleHasIncreased()']]],

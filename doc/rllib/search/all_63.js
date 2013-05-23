@@ -81,5 +81,6 @@ var searchData=
   ['currentname',['currentName',['../classrlIniFile.html#a929998cb2bc909c42529dd4762b29647',1,'rlIniFile']]],
   ['currentsection',['currentSection',['../classrlIniFile.html#ade58732520eaec75532e2f434878dd7e',1,'rlIniFile']]],
   ['cx',['cx',['../classrlSvgPosition.html#aca4039d7629103f0167f3a99f069da7e',1,'rlSvgPosition']]],
-  ['cy',['cy',['../classrlSvgPosition.html#a70bbee91797e5384eebd4188dfe69468',1,'rlSvgPosition']]]
+  ['cy',['cy',['../classrlSvgPosition.html#a70bbee91797e5384eebd4188dfe69468',1,'rlSvgPosition']]],
+  ['cycletime',['cycletime',['../classrlState.html#a8bf908eee39e963fde45ee3be64bfa20',1,'rlState']]]
 ];

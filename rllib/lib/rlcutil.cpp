@@ -770,3 +770,32 @@ int rlMkdir(const char *dir, int mode)
 #endif
 }
 
+int rlBitSet(int bitnumber, int *value)
+{
+  int bit = 1 << bitnumber;
+  *value = *value | bit;
+  return *value;
+}
+
+int rlBitClear(int bitnumber, int *value)
+{
+  int bit = 1 << bitnumber;
+  bit = ~bit;
+  *value = *value & bit;
+  return *value;
+}
+
+int rlBitChange(int bitnumber, int *value)
+{
+  int bit = 1 << bitnumber;
+  *value = *value ^ bit;
+  return *value;
+}
+
+int rlBitTest(int bitnumber, int *value)
+{
+  int bit = 1 << bitnumber;
+  if(*value & bit) return 1;
+  return 0;
+}
+

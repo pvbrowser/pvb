@@ -74,7 +74,6 @@ var searchData=
   ['dle',['DLE',['../classrlDF1.html#a51478093eee334a6a05e9ca12f151e8da2a44d7f020987ade4c4b8a88de2f0945',1,'rlDF1::DLE()'],['../rl3964r_8cpp.html#add7018db64fb17dd1e4664b4494be0ee',1,'DLE():&#160;rl3964r.cpp']]],
   ['doconnect',['doConnect',['../classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc',1,'rlSiemensTCP']]],
   ['domain_5ft',['DOMAIN_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398a9071965d2b8be743a7c953880c59f77f',1,'rlCanOpenTypes']]],
-  ['dostate',['doState',['../classrlStatemachine.html#a000430ee9ed5299be8a86ed2eab5f1f7',1,'rlStatemachine']]],
   ['doublechanged',['doubleChanged',['../classrlPlcState.html#af543691e9af180b9f73602667b0de1b7',1,'rlPlcState::doubleChanged()'],['../classrlPlcMem.html#a5b357a7b21b9745780398a32e70d1473',1,'rlPlcMem::doubleChanged()']]],
   ['doublehasdecreased',['doubleHasDecreased',['../classrlPlcState.html#aa7b15c6df80a28e3520ceb60e8c028b0',1,'rlPlcState::doubleHasDecreased()'],['../classrlPlcMem.html#a72d9299612fe1b5efb11efb25d503dcd',1,'rlPlcMem::doubleHasDecreased()']]],
   ['doublehasincreased',['doubleHasIncreased',['../classrlPlcState.html#afb70f5554603032eda34625497b1921f',1,'rlPlcState::doubleHasIncreased()'],['../classrlPlcMem.html#a4a97f4abfdb56c627cdd9a83f77695cb',1,'rlPlcMem::doubleHasIncreased()']]],

@@ -46,6 +46,12 @@ public:
   rlString& operator+=(const char *s2);
   rlString& operator+=(rlString &s2);
 
+  int       operator==(const char *s2);
+  int       operator==(rlString &s2);
+
+  int       operator!=(const char *s2);
+  int       operator!=(rlString &s2);
+
   /*! <pre>
   get the text
   </pre> */

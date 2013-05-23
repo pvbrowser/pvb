@@ -183,8 +183,11 @@ const char *qtDatabase::dbRecordFieldValue(int x)
 
 int qtDatabase::nextRecord()
 {
-  result->next();
+  bool res;             // may 2013 evaluate res due to report by user mhe_fr from our forum
+  res = result->next(); // may 2013 evaluate res  due to report by user mhe_fr from our forum
+  if(!res) return -1;   // may 2013 evaluate res due to report by user mhe_fr from our forum
   QSqlRecord record = result->record();
+  if(record.isEmpty())
   if(record.isEmpty()) return -1;
   return 0;
 }

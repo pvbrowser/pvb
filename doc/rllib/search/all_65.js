@@ -21,7 +21,6 @@ var searchData=
   ['end',['end',['../structADD.html#a8e4f0632b80bddc4db0022978c797179',1,'ADD']]],
   ['enddocument',['endDocument',['../classrlReport.html#af9e90549853cb72a9fd168caa7ffbac9',1,'rlReport']]],
   ['enq',['ENQ',['../classrlDF1.html#a51478093eee334a6a05e9ca12f151e8daec3c8d5d64aa8bd16118c002888a8848',1,'rlDF1::ENQ()'],['../rl3964r_8cpp.html#a4b4f88510ea966777e25224010c0a994',1,'ENQ():&#160;rl3964r.cpp']]],
-  ['enterstate',['enterState',['../classrlStatemachine.html#a29063e21a910d8c452c60b1d55e2d389',1,'rlStatemachine']]],
   ['eot',['EOT',['../classrlDF1.html#a51478093eee334a6a05e9ca12f151e8da218e8b95879e3e6ff5a5410dcdfac0d0',1,'rlDF1::EOT()'],['../rl3964r_8cpp.html#aa3210a5256085e136fed7897ae93a756',1,'EOT():&#160;rl3964r.cpp']]],
   ['err00',['err00',['../rlcanopen_8h.html#a239f4929c5e0e6f7ce2de58dfe4ea1d2',1,'rlcanopen.h']]],
   ['err03',['err03',['../rlcanopen_8h.html#a14306391caecc45b42baea2dbd6b0645',1,'rlcanopen.h']]],
@@ -48,6 +47,5 @@ var searchData=
   ['even',['EVEN',['../classrlSerial.html#ae705e4dac522e9af64f656dc89495b05a972046b38ab66fa2f58fe844f16dca2b',1,'rlSerial']]],
   ['event_5flog_5fserver',['event_log_server',['../classrlEventLogServerThreads.html#ab5ac48ea7d64edfe7483c0c4d2240f1e',1,'rlEventLogServerThreads']]],
   ['eventtypes',['EventTypes',['../rlevent_8h.html#a914d2da0ec9f0e22cd5e400bc1f968b8',1,'rlevent.h']]],
-  ['exists',['exists',['../classrlSpreadsheetCell.html#ac2c67e9b417581e9793eddd06df93c8c',1,'rlSpreadsheetCell::exists()'],['../classrlSpreadsheetRow.html#af26dea2b7a89a8866769ab08271ab44e',1,'rlSpreadsheetRow::exists()'],['../classrlSpreadsheetTable.html#a8c2a44121f59ff35d1962d03e8a76198',1,'rlSpreadsheetTable::exists()'],['../classrlSpreadsheetWorkbook.html#ad593666d18053526091d7c0a7756212b',1,'rlSpreadsheetWorkbook::exists()']]],
-  ['exitstate',['exitState',['../classrlStatemachine.html#a9df4ea588d510ff335155d664e6fec39',1,'rlStatemachine']]]
+  ['exists',['exists',['../classrlSpreadsheetCell.html#ac2c67e9b417581e9793eddd06df93c8c',1,'rlSpreadsheetCell::exists()'],['../classrlSpreadsheetRow.html#af26dea2b7a89a8866769ab08271ab44e',1,'rlSpreadsheetRow::exists()'],['../classrlSpreadsheetTable.html#a8c2a44121f59ff35d1962d03e8a76198',1,'rlSpreadsheetTable::exists()'],['../classrlSpreadsheetWorkbook.html#ad593666d18053526091d7c0a7756212b',1,'rlSpreadsheetWorkbook::exists()']]]
 ];

@@ -69,13 +69,9 @@ var searchData=
   ['getpath',['getPath',['../classrlWebcam.html#ac787534e44cfc71895de923e52c8435b',1,'rlWebcam']]],
   ['getpdocount',['getPdoCount',['../classrlCanNode.html#aba7eccbb35588c9cca97277925355665',1,'rlCanNode']]],
   ['getpdoid',['getPdoID',['../classrlCanOpen.html#a07a517a30bff32985a1e54a4787e1006',1,'rlCanOpen']]],
-  ['getplcstatedouble',['getPlcStateDouble',['../classrlStatemachine.html#aba1b255c4920bf04e3c12947d6e86234',1,'rlStatemachine']]],
-  ['getplcstatefloat',['getPlcStateFloat',['../classrlStatemachine.html#a73198e12716b322d206941ad7cd102a3',1,'rlStatemachine']]],
-  ['getplcstateint',['getPlcStateInt',['../classrlStatemachine.html#aa3e84b7c4ea0939522f46108dc6dc8c0',1,'rlStatemachine']]],
   ['getport',['getPort',['../classrlCanOpenDaemon.html#a2700fe9d6dbf7950319ef744b391a527',1,'rlCanOpenDaemon::getPort()'],['../classrlEventLogServerThreads.html#a8019908c2dc78176f96365c360ef00f4',1,'rlEventLogServerThreads::getPort()'],['../classrlSocket.html#ac62c47d1bda3f11656cab24a31cbab4a',1,'rlSocket::getPort()'],['../classrlWebcam.html#af1ca212cee5c645a30827ed585cc0658',1,'rlWebcam::getPort()']]],
   ['getreceivepdocount',['getReceivePdoCount',['../classrlCanNode.html#a8bd6fc184deb9bb224e111c241e023f1',1,'rlCanNode']]],
   ['getsnapshot',['getSnapshot',['../classrlWebcam.html#ad657b425ab0b8fa93382c289b69ec2b4',1,'rlWebcam']]],
-  ['getstate',['getState',['../classrlStatemachine.html#af39d757300affc0a1f62d97af316a282',1,'rlStatemachine']]],
   ['getstring',['getString',['../classrlDataProvider.html#a0e77a0cca88c1b980bab476a178769f8',1,'rlDataProvider::getString()'],['../classrlDataProviderClient.html#a0c261d35ba9b26fbe2a285c6770d7718',1,'rlDataProviderClient::getString()']]],
   ['getsymbol',['getSymbol',['../classrlDF1.html#a7ccf85b5e9d8b8da6e6ca0b7515a71ef',1,'rlDF1']]],
   ['gettext',['getText',['../classrlEIBnetIP.html#a3954bf5bb0dded688e1771402b138a17',1,'rlEIBnetIP']]],
@@ -83,6 +79,5 @@ var searchData=
   ['gettransmitpdocount',['getTransmitPdoCount',['../classrlCanNode.html#aea9d5684167070b85f0dfd7e63bcd424',1,'rlCanNode']]],
   ['geturl',['getUrl',['../classrlWebcam.html#adb6b0bd39878c28aa046bf045ba99ceb',1,'rlWebcam']]],
   ['getuseradr',['getUserAdr',['../classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12',1,'rlSharedMemory']]],
-  ['getvar',['getVar',['../classrlStatemachine.html#a0c997c99df28e1cb096f9a0c64242dbe',1,'rlStatemachine']]],
-  ['gotostate',['gotoState',['../rlstate_8h.html#a076cf829739c5ad08023887e6c6608d6',1,'rlstate.h']]]
+  ['gotostate',['gotoState',['../classrlState.html#ac69a491cc0d9395061772be2f2c4e333',1,'rlState']]]
 ];

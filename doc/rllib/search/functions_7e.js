@@ -50,7 +50,7 @@ var searchData=
   ['_7erlspreadsheetrow',['~rlSpreadsheetRow',['../classrlSpreadsheetRow.html#ae5306c79741395dd2f2536cd40d11518',1,'rlSpreadsheetRow']]],
   ['_7erlspreadsheettable',['~rlSpreadsheetTable',['../classrlSpreadsheetTable.html#a013b666222c9a8dbdd3f1263aa14464c',1,'rlSpreadsheetTable']]],
   ['_7erlspreadsheetworkbook',['~rlSpreadsheetWorkbook',['../classrlSpreadsheetWorkbook.html#a08d4d99dc8e69dcc66ef14e61e5f8d08',1,'rlSpreadsheetWorkbook']]],
-  ['_7erlstatemachine',['~rlStatemachine',['../classrlStatemachine.html#a15d84b7df7d775e8b25bde002bfc2128',1,'rlStatemachine']]],
+  ['_7erlstate',['~rlState',['../classrlState.html#a475a08e2c43485c6de32032d2cdac684',1,'rlState']]],
   ['_7erlstring',['~rlString',['../classrlString.html#a88514d75e0bcdf7dfd3f91b407405d04',1,'rlString']]],
   ['_7erlsvganimator',['~rlSvgAnimator',['../classrlSvgAnimator.html#a29096f6dc11b6f06f5a30be02ddb957c',1,'rlSvgAnimator']]],
   ['_7erlsvgcat',['~rlSvgCat',['../classrlSvgCat.html#a35d5cffc740c5ea3af7657d9cedb3588',1,'rlSvgCat']]],

@@ -114,6 +114,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a79a7474fcb62ae26086df5e5bcafc9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa686c0bb48889af87ee83de400a49974"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classrlString.html">rlString</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#aa686c0bb48889af87ee83de400a49974">operator+=</a> (<a class="el" href="classrlString.html">rlString</a> &amp;s2)</td></tr>
 <tr class="separator:aa686c0bb48889af87ee83de400a49974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a091f7099eda4b8f802daab77c2075acc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#a091f7099eda4b8f802daab77c2075acc">operator==</a> (const char *s2)</td></tr>
+<tr class="separator:a091f7099eda4b8f802daab77c2075acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adacf72fe2ee820cbcd42a4c1048c67ff"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff">operator==</a> (<a class="el" href="classrlString.html">rlString</a> &amp;s2)</td></tr>
+<tr class="separator:adacf72fe2ee820cbcd42a4c1048c67ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9984e47340753b76d23b61701cb98ad6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#a9984e47340753b76d23b61701cb98ad6">operator!=</a> (const char *s2)</td></tr>
+<tr class="separator:a9984e47340753b76d23b61701cb98ad6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1b1a068453c606222a72a58ec31af4d1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#a1b1a068453c606222a72a58ec31af4d1">operator!=</a> (<a class="el" href="classrlString.html">rlString</a> &amp;s2)</td></tr>
+<tr class="separator:a1b1a068453c606222a72a58ec31af4d1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a41b7a0eaaf1e6309c5b1f218baf4c985"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a> ()</td></tr>
 <tr class="separator:a41b7a0eaaf1e6309c5b1f218baf4c985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36f0b76c8c6f9938433f862906f2d44c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c">setText</a> (const char *<a class="el" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>)</td></tr>
@@ -269,7 +277,7 @@ class for a simple ANSI-C like string.
 <pre>
  append text
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00120">120</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00144">144</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">char</span> *cptr = <a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>;</div>
 <div class="line">  <span class="keywordtype">int</span>  len = strlen(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>) + strlen(<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>);</div>
@@ -297,9 +305,53 @@ class for a simple ANSI-C like string.
 <pre>
  converst string to upper case
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00142">142</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00166">166</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="rlcutil_8cpp.html#a3147ee004857d9f8934271ca491fd169">return ::rllower</a>(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>);</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a9984e47340753b76d23b61701cb98ad6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlString::operator!= </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00092">92</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,s2) != 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1b1a068453c606222a72a58ec31af4d1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlString::operator!= </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrlString.html">rlString</a> &amp;&#160;</td>
+          <td class="paramname"><em>s2</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00098">98</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,s2.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>()) != 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -436,6 +488,50 @@ class for a simple ANSI-C like string.
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a091f7099eda4b8f802daab77c2075acc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlString::operator== </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s2</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00080">80</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,s2) == 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="adacf72fe2ee820cbcd42a4c1048c67ff"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlString::operator== </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classrlString.html">rlString</a> &amp;&#160;</td>
+          <td class="paramname"><em>s2</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00086">86</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(strcmp(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,s2.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>()) == 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a9c303363e2405a11fb3062fbc4f29bbb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -462,7 +558,7 @@ class for a simple ANSI-C like string.
 <pre>
  printf the text
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00094">94</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00118">118</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordtype">char</span> mystring[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span></div>
@@ -497,7 +593,7 @@ class for a simple ANSI-C like string.
  Remove quotas around a string.
  This might be usefull together with CSV files.
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00182">182</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00206">206</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">char</span> c;</div>
 <div class="line">  <span class="keywordtype">int</span>  state=0, inquotas=0, j=0;</div>
@@ -553,7 +649,7 @@ class for a simple ANSI-C like string.
 <pre>
  set the text
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00085">85</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00109">109</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret = strlen(<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>);</div>
 <div class="line">  <span class="keyword">delete</span> [] <a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>;</div>
@@ -580,7 +676,7 @@ class for a simple ANSI-C like string.
 <pre>
  test if string starts with startstr
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00147">147</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00171">171</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="rlcutil_8cpp.html#a176ada621127ae48c966556c474f20a4">return ::rlStartsWith</a>(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,startstr);</div>
 <div class="line">}</div>
@@ -603,7 +699,7 @@ class for a simple ANSI-C like string.
 <pre>
  <a class="el" href="classrlString.html#abcdf9c1322753b2dd7bae1dbc43b3a38">strchr()</a>
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00172">172</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00196">196</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  return ::strchr(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,c);</div>
 <div class="line">}</div>
@@ -626,7 +722,7 @@ class for a simple ANSI-C like string.
 <pre>
  copy text
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00110">110</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00134">134</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">char</span> *cptr = <a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>;</div>
 <div class="line">  <span class="keywordtype">int</span>  len = strlen(<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>);</div>
@@ -664,7 +760,7 @@ class for a simple ANSI-C like string.
 <pre>
  case insensitive string compare starting n characters
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00162">162</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00186">186</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlString.html">rlString</a> my,o;</div>
 <div class="line">  my.<a class="code" href="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c">setText</a>(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>);</div>
@@ -692,7 +788,7 @@ class for a simple ANSI-C like string.
 <pre>
  case insensitive string compare
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00152">152</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00176">176</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlString.html">rlString</a> my,o;</div>
 <div class="line">  my.<a class="code" href="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c">setText</a>(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>);</div>
@@ -720,7 +816,7 @@ class for a simple ANSI-C like string.
 <pre>
  <a class="el" href="classrlString.html#abcdf9c1322753b2dd7bae1dbc43b3a38">strchr()</a>
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00177">177</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00201">201</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  return ::strrchr(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,c);</div>
 <div class="line">}</div>
@@ -743,7 +839,7 @@ class for a simple ANSI-C like string.
 <pre>
  <a class="el" href="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d">strstr()</a>
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00131">131</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00155">155</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(substring == NULL) <span class="keywordflow">return</span> NULL;</div>
 <div class="line">  return ::strstr(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>,substring);</div>
@@ -766,7 +862,7 @@ class for a simple ANSI-C like string.
 <pre>
  get the text
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00080">80</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00104">104</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>;</div>
 <div class="line">}</div>
@@ -788,7 +884,7 @@ class for a simple ANSI-C like string.
 <pre>
  converst string to upper case
  </pre> 
-<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00137">137</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8cpp_source.html#l00161">161</a> of file <a class="el" href="rlstring_8cpp_source.html">rlstring.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="rlcutil_8cpp.html#a9022208debc1e487f2d2ed7cb9fd21fd">return ::rlupper</a>(<a class="code" href="classrlString.html#aecf572fe5eff4cb556de83402a725008">txt</a>);</div>
 <div class="line">}</div>
@@ -814,7 +910,7 @@ class for a simple ANSI-C like string.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlstring_8h_source.html#l00121">121</a> of file <a class="el" href="rlstring_8h_source.html">rlstring.h</a>.</p>
+<p>Definition at line <a class="el" href="rlstring_8h_source.html#l00127">127</a> of file <a class="el" href="rlstring_8h_source.html">rlstring.h</a>.</p>
 
 </div>
 </div>

@@ -178,4 +178,28 @@ same as mkdir
 </pre> */
 int rlMkdir(const char *dir, int mode=0744);
 
+/** <pre>
+Set bit bitnumber in value
+Return value
+</pre> */
+int rlBitSet(int bitnumber, int *value);
+
+/** <pre>
+Clear bit bitnumber in value
+Return value
+</pre> */
+int rlBitClear(int bitnumber, int *value);
+
+/** <pre>
+XOR bit bitnumber in value
+Return value
+</pre> */
+int rlBitChange(int bitnumber, int *value);
+
+/** <pre>
+Test bit bitnumber in value
+Return 0 | 1
+</pre> */
+int rlBitTest(int bitnumber, int *value);
+
 #endif

@@ -200,6 +200,14 @@ Functions</h2></td></tr>
 <tr class="separator:ad9d36f7c9e98daa66c0cb737e12533df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee9aa5351f9ae48a3f33184d484962e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#aaee9aa5351f9ae48a3f33184d484962e">rlMkdir</a> (const char *dir, int mode)</td></tr>
 <tr class="separator:aaee9aa5351f9ae48a3f33184d484962e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1faf9a09d5d0bb7a6ba24c9050697774"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a1faf9a09d5d0bb7a6ba24c9050697774">rlBitSet</a> (int bitnumber, int *value)</td></tr>
+<tr class="separator:a1faf9a09d5d0bb7a6ba24c9050697774"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa69b413f110f689e6093e24f5e21178"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#afa69b413f110f689e6093e24f5e21178">rlBitClear</a> (int bitnumber, int *value)</td></tr>
+<tr class="separator:afa69b413f110f689e6093e24f5e21178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0baa5683b22ec178b24473b86cf0e641"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a0baa5683b22ec178b24473b86cf0e641">rlBitChange</a> (int bitnumber, int *value)</td></tr>
+<tr class="separator:a0baa5683b22ec178b24473b86cf0e641"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3da5cd694c56cd94598c12dee25a28de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a3da5cd694c56cd94598c12dee25a28de">rlBitTest</a> (int bitnumber, int *value)</td></tr>
+<tr class="separator:a3da5cd694c56cd94598c12dee25a28de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -364,6 +372,147 @@ Variables</h2></td></tr>
 <div class="line">                           , NULL, NULL</div>
 <div class="line">                           , &amp;si, &amp;pi);</div>
 <div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a0baa5683b22ec178b24473b86cf0e641"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlBitChange </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bitnumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> XOR bit bitnumber in value Return value  </p>
+
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00788">788</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line">  *value = *value ^ bit;</div>
+<div class="line">  <span class="keywordflow">return</span> *value;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afa69b413f110f689e6093e24f5e21178"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlBitClear </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bitnumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Clear bit bitnumber in value Return value  </p>
+
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00780">780</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line">  bit = ~bit;</div>
+<div class="line">  *value = *value &amp; bit;</div>
+<div class="line">  <span class="keywordflow">return</span> *value;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a1faf9a09d5d0bb7a6ba24c9050697774"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlBitSet </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bitnumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Set bit bitnumber in value Return value  </p>
+
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00773">773</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line">  *value = *value | bit;</div>
+<div class="line">  <span class="keywordflow">return</span> *value;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a3da5cd694c56cd94598c12dee25a28de"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlBitTest </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>bitnumber</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Test bit bitnumber in value Return 0 | 1  </p>
+
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00795">795</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line">  <span class="keywordflow">if</span>(*value &amp; bit) <span class="keywordflow">return</span> 1;</div>
+<div class="line">  <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>

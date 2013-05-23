@@ -1954,6 +1954,7 @@ int pvSvgAnimator::update(int on_printer)
   */
 #ifdef MTHREAD_USED
   char *buf;
+  //int  trace_svg = 0;
 #else  
   char buf1[64*1024]; // hopefully we have choosen big enough buffers
   char buf[16*1024];  // this is likely because we separate each XML tag 
@@ -1976,6 +1977,7 @@ int pvSvgAnimator::update(int on_printer)
       buf = new char [strlen(current_line->line) + 4];
 #endif
       strcpy(buf,current_line->line);
+printf("%s\n",current_line->line);          
       if(foundw == 0 && strncmp(buf,"width",5) == 0)
       {
         if(opt.use_webkit_for_svg == 1)
@@ -2011,6 +2013,7 @@ int pvSvgAnimator::update(int on_printer)
 #ifdef MTHREAD_USED
           qbuf.resize(qbuf.length()-1);
           qbuf += QString::fromUtf8(buf);
+//if(trace_svg) printf("%s\n",(const char *)qbuf.toUtf8());          
           stream.append(qbuf.toUtf8());
 #else
           ::strcpy(buf1,qbuf.toUtf8());
@@ -2084,6 +2087,7 @@ int pvSvgAnimator::update(int on_printer)
   }
   if(qbuf.length() > 0)
   {
+//if(trace_svg) printf("%s\n",(const char *)qbuf.toUtf8());          
     if(opt.arg_debug) printf("animatorUpdate append2 qbuf=%s\n", (const char *) qbuf.toUtf8());
     stream.append(qbuf.toUtf8());
     qbuf = "";

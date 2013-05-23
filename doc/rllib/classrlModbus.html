@@ -164,6 +164,22 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a3d80c0194c6836bc9419395da0daabdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6251a9bdb6cf258219bd324c7c8e0bb5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#a6251a9bdb6cf258219bd324c7c8e0bb5">intsize</a> ()</td></tr>
 <tr class="separator:a6251a9bdb6cf258219bd324c7c8e0bb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3650d910bd0435f31f46b30142c3cffa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#a3650d910bd0435f31f46b30142c3cffa">readCoilStatus</a> (int slave, int start_adr, int number_of_coils, unsigned char *status, int timeout=1000)</td></tr>
+<tr class="separator:a3650d910bd0435f31f46b30142c3cffa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afbecaf38fc73f8d3082d95be141eeb37"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#afbecaf38fc73f8d3082d95be141eeb37">readInputStatus</a> (int slave, int start_adr, int number_of_inputs, unsigned char *status, int timeout=1000)</td></tr>
+<tr class="separator:afbecaf38fc73f8d3082d95be141eeb37"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab490c9a04a756f524ae7cc5f138e41f7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#ab490c9a04a756f524ae7cc5f138e41f7">readHoldingRegisters</a> (int slave, int start_adr, int number_of_registers, int *registers, int timeout=1000)</td></tr>
+<tr class="separator:ab490c9a04a756f524ae7cc5f138e41f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60f684a14a1f9c25301ecdecc565538b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#a60f684a14a1f9c25301ecdecc565538b">readInputRegisters</a> (int slave, int start_adr, int number_of_registers, int *registers, int timeout=1000)</td></tr>
+<tr class="separator:a60f684a14a1f9c25301ecdecc565538b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60656255e0053bcaa84c39086b09cf6c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#a60656255e0053bcaa84c39086b09cf6c">forceSingleCoil</a> (int slave, int coil_adr, int value, int timeout=1000)</td></tr>
+<tr class="separator:a60656255e0053bcaa84c39086b09cf6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c251adb0b9a2029d41f2074566ba5af"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#a0c251adb0b9a2029d41f2074566ba5af">presetSingleRegister</a> (int slave, int register_adr, int value, int timeout=1000)</td></tr>
+<tr class="separator:a0c251adb0b9a2029d41f2074566ba5af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abed878560af9610d84bfe2c3d1e54f43"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#abed878560af9610d84bfe2c3d1e54f43">forceMultipleCoils</a> (int slave, int coil_adr, int number_of_coils, unsigned char *coils, int timeout=1000)</td></tr>
+<tr class="separator:abed878560af9610d84bfe2c3d1e54f43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f822ef6a539266b8a2afdc80150b747"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlModbus.html#a7f822ef6a539266b8a2afdc80150b747">presetMultipleRegisters</a> (int slave, int start_adr, int number_of_registers, int *registers, int timeout=1000)</td></tr>
+<tr class="separator:a7f822ef6a539266b8a2afdc80150b747"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -208,9 +224,128 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><pre>
 This class implements the modbus protocol.
 You can use serial interfaces or TCP/IP.
-Modbus RTU and ASCII are available.
-</pre> 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00028">28</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+Modbus RTU and ASCII are available.</pre><pre>All Modbus requests include "slave" and "function".
+Then some bytes follow, which are specific to a given function.
+The request is then terminated by a checksum.</pre><pre>This table shows the bytes that are specific to a given function.
+</pre><table  cellspacing="0" cols="4" border="0">
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP"><b>Function</b> </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><b>Query</b> </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><b>Response</b> </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><b><br/>
+</b>  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="62" align="LEFT" valign="TOP">01 Read Coil Status </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Start adr high<br/>
+Start adr low<br/>
+Number of points high<br/>
+Number of points low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Data Byte Count<br/>
+Data1<br/>
+Data2 … </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">8 points per byte  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="62" align="LEFT" valign="TOP">02 Read Input Status </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Start adr high<br/>
+Start adr low<br/>
+Number of points high<br/>
+Number of points low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Data Byte Count<br/>
+Data1 <br/>
+Data2 … </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">8 points per byte  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="77" align="LEFT" valign="TOP">03 Read Holding Registers </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Start adr high<br/>
+Start adr low<br/>
+Number of points high<br/>
+Number of points low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Data Byte Count<br/>
+Data1 high<br/>
+Data1 low<br/>
+Data2 high<br/>
+Data2 low… </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">1 point needs 2 bytes  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="77" align="LEFT" valign="TOP">04 Read Input Registers </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Start adr high<br/>
+Start adr low<br/>
+Number of points high<br/>
+Number of points low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Data Byte Count<br/>
+Data1 high<br/>
+Data1 low<br/>
+Data2 high<br/>
+Data2 low… </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">1 point needs 2 bytes  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="62" align="LEFT" valign="TOP">05 Force Single Coil </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Coil adr high<br/>
+Coil adr low<br/>
+Force data high<br/>
+Force data low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Coil adr high<br/>
+Coil adr low<br/>
+Force data high<br/>
+Force data low  </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Force data ON = 0x0ff00<br/>
+Force data OFF = 0  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="62" align="LEFT" valign="TOP">06 Preset Single Register </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Register adr high<br/>
+Register adr low<br/>
+Preset data high<br/>
+Preset data low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Register adr high<br/>
+Register adr low<br/>
+Preset data high<br/>
+Preset data low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">07 Read Exception Status </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Coil data </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">8 exception status coils returned  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="62" align="LEFT" valign="TOP">11 Fetch Comm Event Counter </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Status high<br/>
+Status low<br/>
+Event Count high<br/>
+Event Count low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">12 Fetch Comm Event Log </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="136" align="LEFT" valign="TOP">15 Force Multiple Coils </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Coil adr high<br/>
+Coil adr low<br/>
+Number of coils high<br/>
+Number of coils low<br/>
+Force data byte count<br/>
+Force data1<br/>
+Force data2 ... </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Coil adr high<br/>
+Coil adr low<br/>
+Number of coils high<br/>
+Number of coils low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">8 coils per byte  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="136" align="LEFT" valign="TOP">16 Preset Multiple Registers </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Start adr high<br/>
+Start adr low<br/>
+Number of registers high<br/>
+Number of registers low<br/>
+Data byte count<br/>
+Data1 high<br/>
+Data1 low<br/>
+Data2 high<br/>
+Data2 low … </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Start adr high<br/>
+Start adr low<br/>
+Number of registers high<br/>
+Number of registers low </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">17 Report Slave ID </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">Data Byte count ~ device specific </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">20 Read General Reference </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">21 Write General Reference </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">22 Mask Write 4X Register </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">23 Read/Write 4X Registers </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+<tr>
+<td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" height="17" align="LEFT" valign="TOP">24 Read FIFO Queue </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP"><br/>
+ </td><td style="border-top: 1px solid #000000; border-bottom: 1px solid #000000; border-left: 1px solid #000000; border-right: 1px solid #000000" align="LEFT" valign="TOP">See: PI_MODBUS_300.pdf  </td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00148">148</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="a359c129c50db845b9f57181ea1132989"></a>
 <div class="memitem">
@@ -236,7 +371,7 @@ Modbus RTU and ASCII are available.
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00031">31</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00151">151</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 <div class="fragment"><div class="line">    {</div>
 <div class="line">      <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989a7e0314efdf6912fcc42895797b03f6fa">MODBUS_CHECKSUM_ERROR</a> = -2,</div>
 <div class="line">      <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>          = -1,</div>
@@ -295,7 +430,7 @@ Modbus RTU and ASCII are available.
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00040">40</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00160">160</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 <div class="fragment"><div class="line">    {</div>
 <div class="line">      <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88">ReadCoilStatus</a>         = 1,</div>
 <div class="line">      <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657af76896036e7b31809af71efc96e02c68">ReadInputStatus</a>        = 2,</div>
@@ -513,6 +648,140 @@ Modbus RTU and ASCII are available.
 <p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00037">37</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> (data[0]*256)+data[1];</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="abed878560af9610d84bfe2c3d1e54f43"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::forceMultipleCoils </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>coil_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_coils</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>coils</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00920">920</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (coil_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = coil_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (number_of_coils / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = number_of_coils &amp; 0x0ff;</div>
+<div class="line">  data[4] = (number_of_coils / 8) + 1;</div>
+<div class="line">  <span class="keywordtype">int</span> i;</div>
+<div class="line">  <span class="keywordflow">for</span>(i=0; i&lt;data[4]; i++) data[5+i] = coils[i];</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a21384c6826ad985c85bbda6e22d93043">ForceMultipleCoils</a>, data, 5+i);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, data, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a21384c6826ad985c85bbda6e22d93043">ForceMultipleCoils</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a21384c6826ad985c85bbda6e22d93043">ForceMultipleCoils</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a60656255e0053bcaa84c39086b09cf6c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::forceSingleCoil </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>coil_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00871">871</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (coil_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = coil_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = 0;</div>
+<div class="line">  data[3] = 0;</div>
+<div class="line">  <span class="keywordflow">if</span>(value) data[2] = 0x0ff;</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a885ab1a9d24d8e05107d3558ebd3e3fe">ForceSingleCoil</a>, data, 4);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, data, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a885ab1a9d24d8e05107d3558ebd3e3fe">ForceSingleCoil</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a885ab1a9d24d8e05107d3558ebd3e3fe">ForceSingleCoil</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -780,6 +1049,425 @@ Modbus RTU and ASCII are available.
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">if</span>(lrc == 0) <span class="keywordflow">return</span> 0; <span class="comment">// lrc ok</span></div>
 <div class="line">  <span class="keywordflow">return</span> 1;              <span class="comment">// lrc error</span></div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a7f822ef6a539266b8a2afdc80150b747"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::presetMultipleRegisters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00947">947</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (start_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = start_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (number_of_registers / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = number_of_registers &amp; 0x0ff;</div>
+<div class="line">  data[4] = (number_of_registers * 2) &amp; 0x0ff;</div>
+<div class="line">  <span class="keywordtype">int</span> j=5;</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;number_of_registers; i++)</div>
+<div class="line">  {</div>
+<div class="line">    data[j++] = (registers[i] / 256) &amp; 0x0ff;</div>
+<div class="line">    data[j++] = registers[i] &amp; 0x0ff;</div>
+<div class="line">  }</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a485fed5b1927d6bf0db7311e76136fb0">PresetMultipleRegs</a>, data, j);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, data, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a485fed5b1927d6bf0db7311e76136fb0">PresetMultipleRegs</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a485fed5b1927d6bf0db7311e76136fb0">PresetMultipleRegs</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a0c251adb0b9a2029d41f2074566ba5af"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::presetSingleRegister </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>register_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00896">896</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (register_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = register_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (value / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = value &amp; 0x0ff;</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a4af03846c50ff298649fefee8087e8ed">PresetSingleRegister</a>, data, 4);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, data, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a4af03846c50ff298649fefee8087e8ed">PresetSingleRegister</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a4af03846c50ff298649fefee8087e8ed">PresetSingleRegister</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a3650d910bd0435f31f46b30142c3cffa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::readCoilStatus </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_coils</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00765">765</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (start_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = start_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (number_of_coils / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = number_of_coils &amp; 0x0ff;</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88">ReadCoilStatus</a>, data, 4);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, status, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88">ReadCoilStatus</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88">ReadCoilStatus</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ab490c9a04a756f524ae7cc5f138e41f7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::readHoldingRegisters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00813">813</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (start_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = start_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (number_of_registers / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = number_of_registers &amp; 0x0ff;</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657afbc16bd1a560babc7abcecd6c17a792d">ReadHoldingRegisters</a>, data, 4);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, data, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657afbc16bd1a560babc7abcecd6c17a792d">ReadHoldingRegisters</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657afbc16bd1a560babc7abcecd6c17a792d">ReadHoldingRegisters</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line">  <span class="keywordtype">int</span> j = 0;</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;ret; i+=2) </div>
+<div class="line">  {</div>
+<div class="line">    registers[j++] = ((data[i] * 256) &amp; 0x0ff) + (data[i+1] &amp; 0x0ff);</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a60f684a14a1f9c25301ecdecc565538b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::readInputRegisters </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>registers</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00842">842</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (start_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = start_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (number_of_registers / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = number_of_registers &amp; 0x0ff;</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a4264060e1f2bed5ce560206edad22d6c">ReadInputRegisters</a>, data, 4);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, data, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a4264060e1f2bed5ce560206edad22d6c">ReadInputRegisters</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657a4264060e1f2bed5ce560206edad22d6c">ReadInputRegisters</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line">  <span class="keywordtype">int</span> j=0;</div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;ret; i+=2) </div>
+<div class="line">  {</div>
+<div class="line">    registers[j++] = ((data[i] * 256) &amp; 0x0ff) + (data[i+1] &amp; 0x0ff);</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="afbecaf38fc73f8d3082d95be141eeb37"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlModbus::readInputStatus </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>slave</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>start_adr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_inputs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>status</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>timeout</em> = <code>1000</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmodbus_8cpp_source.html#l00789">789</a> of file <a class="el" href="rlmodbus_8cpp_source.html">rlmodbus.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordtype">int</span> ret;</div>
+<div class="line">  <span class="keywordtype">int</span> ret_slave, ret_function;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> data[256];</div>
+<div class="line"></div>
+<div class="line">  data[0] = (start_adr / 256) &amp; 0x0ff;</div>
+<div class="line">  data[1] = start_adr &amp; 0x0ff;</div>
+<div class="line">  data[2] = (number_of_inputs / 256) &amp; 0x0ff;</div>
+<div class="line">  data[3] = number_of_inputs &amp; 0x0ff;</div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#a7efc504fc4759fc04add6b33d64bf28c">write</a>(slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657af76896036e7b31809af71efc96e02c68">ReadInputStatus</a>, data, 4);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line"></div>
+<div class="line">  ret = <a class="code" href="classrlModbus.html#ad4b7dd434f85952ed1cc7ade9a606fa1">response</a>(&amp;ret_slave, &amp;ret_function, status, timeout);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0 || ret_slave != slave || ret_function != <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657af76896036e7b31809af71efc96e02c68">ReadInputStatus</a>) </div>
+<div class="line">  {</div>
+<div class="line">    printf(<span class="stringliteral">&quot;rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n&quot;</span>, </div>
+<div class="line">                                     ret, slave, ret_slave, <a class="code" href="classrlModbus.html#af220cecff330a69323f040b1c239c657af76896036e7b31809af71efc96e02c68">ReadInputStatus</a>, ret_function, timeout);</div>
+<div class="line">    <span class="keywordflow">return</span> <a class="code" href="classrlModbus.html#a359c129c50db845b9f57181ea1132989ab45e13188681f45972781de86f9fe60a">MODBUS_ERROR</a>;</div>
+<div class="line">  }  </div>
+<div class="line"></div>
+<div class="line">  <span class="keywordflow">return</span> ret;</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -1534,7 +2222,7 @@ Modbus RTU and ASCII are available.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00072">72</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00192">192</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>
@@ -1556,7 +2244,7 @@ Modbus RTU and ASCII are available.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00088">88</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00216">216</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>
@@ -1578,7 +2266,7 @@ Modbus RTU and ASCII are available.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00086">86</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00214">214</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>
@@ -1600,7 +2288,7 @@ Modbus RTU and ASCII are available.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00087">87</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00215">215</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>
@@ -1622,7 +2310,7 @@ Modbus RTU and ASCII are available.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00083">83</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00211">211</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>
@@ -1644,7 +2332,7 @@ Modbus RTU and ASCII are available.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00085">85</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00213">213</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>
@@ -1666,7 +2354,7 @@ Modbus RTU and ASCII are available.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00084">84</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmodbus_8h_source.html#l00212">212</a> of file <a class="el" href="rlmodbus_8h_source.html">rlmodbus.h</a>.</p>
 
 </div>
 </div>

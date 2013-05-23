@@ -111,110 +111,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;ctype.h&gt;</span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="rlthread_8h.html">rlthread.h</a>&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// frame functions</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span>  <a class="code" href="rlstate_8h.html#a3bf5bb3360ded6b2bd3fc78045a1cc17">readIO</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span>  <a class="code" href="rlstate_8h.html#aa74d0ed778edec970f58ef6aca5cf6da">runSteps</a>(<span class="keywordtype">int</span> cycletime);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span>  <a class="code" href="rlstate_8h.html#aac284dec9818128e9bb4d937ff8122ac">writeIO</a>();</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="rlstate_8h.html#a076cf829739c5ad08023887e6c6608d6">gotoState</a>( <span class="keywordtype">void</span> (*funcPtr)() );</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// our static variables</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54">   32</a></span>&#160;<span class="keyword">static</span> void (*<a class="code" href="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54">nextStep</a>)() = NULL;</div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="code" href="rlstate_8h.html#affbfc4ba76ad891f17f30e8a37ea03f9">   33</a></span>&#160;<span class="keyword">static</span> void (*<a class="code" href="rlstate_8h.html#affbfc4ba76ad891f17f30e8a37ea03f9">lastState</a>)() = NULL;</div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="code" href="rlstate_8h.html#a58b9fe0d8bdc4ddc63eb62dcd3413b10">   34</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="rlstate_8h.html#a58b9fe0d8bdc4ddc63eb62dcd3413b10">stepCounter</a> = 0;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="rlstate_8h.html#a2f45113638a0b749a8a205d2cd7fb42b">   35</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="rlstate_8h.html#a2f45113638a0b749a8a205d2cd7fb42b">running</a> = 0;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">// our constants</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="code" href="rlstate_8h.html#a89d587dc32de6bddda7685473377a84a">   38</a></span>&#160;<span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">long</span> <a class="code" href="rlstate_8h.html#a89d587dc32de6bddda7685473377a84a">MAX_STEP</a>=1000*1000*1000;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="code" href="rlstate_8h.html#a076cf829739c5ad08023887e6c6608d6">   40</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="rlstate_8h.html#a076cf829739c5ad08023887e6c6608d6">gotoState</a>( <span class="keywordtype">void</span> (*funcPtr)() ) </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  stepCounter = -1;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <a class="code" href="rlstate_8h.html#affbfc4ba76ad891f17f30e8a37ea03f9">lastState</a> = <a class="code" href="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54">nextStep</a>;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54">nextStep</a> = funcPtr;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="rlstate_8h.html#aa74d0ed778edec970f58ef6aca5cf6da">   47</a></span>&#160;<span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="rlstate_8h.html#aa74d0ed778edec970f58ef6aca5cf6da">runSteps</a>(<span class="keywordtype">int</span> cycletime)</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  <a class="code" href="rlstate_8h.html#affbfc4ba76ad891f17f30e8a37ea03f9">lastState</a> = NULL;;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  stepCounter = 0;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  running = 1;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordflow">while</span>(running &amp;&amp; <a class="code" href="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54">nextStep</a> != NULL)</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="rlstate_8h.html#a3bf5bb3360ded6b2bd3fc78045a1cc17">readIO</a>() &gt;= 0)</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;      (*nextStep)();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;      <span class="keywordflow">if</span>(<a class="code" href="rlstate_8h.html#aac284dec9818128e9bb4d937ff8122ac">writeIO</a>() &lt; 0)</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;      {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        printf(<span class="stringliteral">&quot;ERROR: runSteps could not writeIO()\n&quot;</span>);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;      }  </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;      printf(<span class="stringliteral">&quot;ERROR: runSteps could not readIO()\n&quot;</span>);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="rlwthread_8cpp.html#a604b0dba29427e3514cd37136458e0c5">rlsleep</a>(cycletime);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    stepCounter++;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span>(stepCounter &gt; MAX_STEP) stepCounter = 1;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  running = 0;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/*** Example usage ****************************************************</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="comment">#include &quot;rlstate.h&quot;</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment">//TODO: define the global variables that will be readIO() and writeIO()</span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment">//TODO: define our states</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment">static void stStart();</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment">static void stProcess();</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment">static void stFinish();</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="comment">//TODO: implement our states</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="comment">static void stStart()</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="comment">  printf(&quot;stStart stepCounter=%d\n&quot;, stepCounter);</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment">  if(lastState == stStart) printf(&quot;stStart:   lastState=stStart\n&quot;);</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="comment">  else                     printf(&quot;stStart:   lastState!=stStart\n&quot;);</span></div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">  if(stepCounter &gt; 5) gotoState(stProcess);</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment">static void stProcess()</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="comment">  printf(&quot;stProcess stepCounter=%d\n&quot;, stepCounter);</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="comment">  if(lastState == stStart) printf(&quot;stProcess: lastState=stStart\n&quot;);</span></div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="comment">  else                     printf(&quot;stProcess: lastState!=stStart\n&quot;);</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment">  if(stepCounter &gt; 3) gotoState(stFinish);</span></div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">static void stFinish()</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="comment">  printf(&quot;stFinish stepCounter=%d\n&quot;, stepCounter);</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment">  if(lastState == stStart) printf(&quot;stFinish:  lastState=stStart\n&quot;);</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="comment">  else                     printf(&quot;stFinish:  lastState!=stStart\n&quot;);</span></div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">  gotoState(NULL);</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="comment">static int readIO() // read all IO values to global variables</span></div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="comment">  return 0; //TODO: implement reading</span></div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="comment">static int writeIO() // write all IO values from global variables</span></div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="comment">  return 0; //TODO: implement writing</span></div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="comment">int main() // how to start</span></div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="comment">{</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="comment">  gotoState(stStart); // goto nextState</span></div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="comment">  runSteps(1000);     // run while nextState != NULL</span></div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="comment">  return 0;</span></div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="comment">}</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;<span class="comment">**********************************************************************/</span></div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="code" href="classrlState.html">  256</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrlState.html">rlState</a></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;{</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="classrlState.html#a1b8f80b72c657d463c6fd1da9bc96b0d">rlState</a>();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <a class="code" href="classrlState.html#a475a08e2c43485c6de32032d2cdac684">~rlState</a>();</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="classrlState.html#aabe2c0f67f325c4c6a309823cc626b05">startSteps</a>(<span class="keywordtype">int</span> <a class="code" href="classrlState.html#a8bf908eee39e963fde45ee3be64bfa20">cycletime</a>);</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="classrlState.html#a26b1a3130c654fc9fe3c5ce05871432a">runSteps</a>(<span class="keywordtype">int</span> cycletime);</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classrlState.html#ac69a491cc0d9395061772be2f2c4e333">gotoState</a>(<span class="keywordtype">void</span> (*funcPtr)(<a class="code" href="classrlState.html">rlState</a> *sm));</div>
+<div class="line"><a name="l00264"></a><span class="lineno"><a class="code" href="classrlState.html#afcdaaea34be6204c1ca66a0cb2d484b2">  264</a></span>&#160;    <span class="keywordtype">void</span> *<a class="code" href="classrlState.html#afcdaaea34be6204c1ca66a0cb2d484b2">user</a>;</div>
+<div class="line"><a name="l00265"></a><span class="lineno"><a class="code" href="classrlState.html#a773939729eede6d342d0e1ad22596719">  265</a></span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="classrlState.html#a773939729eede6d342d0e1ad22596719">stepCounter</a>;</div>
+<div class="line"><a name="l00266"></a><span class="lineno"><a class="code" href="classrlState.html#a8bf908eee39e963fde45ee3be64bfa20">  266</a></span>&#160;    <span class="keywordtype">int</span>  <a class="code" href="classrlState.html#a8bf908eee39e963fde45ee3be64bfa20">cycletime</a>;</div>
+<div class="line"><a name="l00267"></a><span class="lineno"><a class="code" href="classrlState.html#ac49e2bf81051189d673577835cd952ef">  267</a></span>&#160;    <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">long</span> <a class="code" href="classrlState.html#ac49e2bf81051189d673577835cd952ef">MAX_STEP</a> = 1000*1000*1000;</div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="code" href="classrlState.html#a93d90e7dcce35725ab1137d175bddfb3">  268</a></span>&#160;    void (*<a class="code" href="classrlState.html#a93d90e7dcce35725ab1137d175bddfb3">nextStep</a>)(<a class="code" href="classrlState.html">rlState</a> *sm);</div>
+<div class="line"><a name="l00269"></a><span class="lineno"><a class="code" href="classrlState.html#ae087879a388fc234eab6e4dc2f303e24">  269</a></span>&#160;    void (*<a class="code" href="classrlState.html#ae087879a388fc234eab6e4dc2f303e24">lastState</a>)(<a class="code" href="classrlState.html">rlState</a> *sm);</div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="code" href="classrlState.html#a138b9b3bd514a954b4da373d7e0a9cc5">  270</a></span>&#160;    <a class="code" href="classrlThread.html">rlThread</a> <a class="code" href="classrlState.html#a138b9b3bd514a954b4da373d7e0a9cc5">thread</a>;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;};</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;<span class="preprocessor"></span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

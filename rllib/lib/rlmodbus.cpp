@@ -761,3 +761,218 @@ int rlModbus::CRCerror(int len)
   if(crc_high != tel[len-1]) return 1;
   return 0;
 }
+
+int rlModbus::readCoilStatus(int slave, int start_adr, int number_of_coils, unsigned char *status, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (start_adr / 256) & 0x0ff;
+  data[1] = start_adr & 0x0ff;
+  data[2] = (number_of_coils / 256) & 0x0ff;
+  data[3] = number_of_coils & 0x0ff;
+  ret = write(slave, ReadCoilStatus, data, 4);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, status, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != ReadCoilStatus) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, ReadCoilStatus, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+
+  return ret;
+}
+
+int rlModbus::readInputStatus(int slave, int start_adr, int number_of_inputs, unsigned char *status, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (start_adr / 256) & 0x0ff;
+  data[1] = start_adr & 0x0ff;
+  data[2] = (number_of_inputs / 256) & 0x0ff;
+  data[3] = number_of_inputs & 0x0ff;
+  ret = write(slave, ReadInputStatus, data, 4);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, status, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != ReadInputStatus) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, ReadInputStatus, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+
+  return ret;
+}
+
+int rlModbus::readHoldingRegisters(int slave, int start_adr, int number_of_registers, int *registers, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (start_adr / 256) & 0x0ff;
+  data[1] = start_adr & 0x0ff;
+  data[2] = (number_of_registers / 256) & 0x0ff;
+  data[3] = number_of_registers & 0x0ff;
+  ret = write(slave, ReadHoldingRegisters, data, 4);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, data, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != ReadHoldingRegisters) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, ReadHoldingRegisters, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+  int j = 0;
+  for(int i=0; i<ret; i+=2) 
+  {
+    registers[j++] = ((data[i] * 256) & 0x0ff) + (data[i+1] & 0x0ff);
+  }  
+
+  return ret;
+}
+
+int rlModbus::readInputRegisters(int slave, int start_adr, int number_of_registers, int *registers, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (start_adr / 256) & 0x0ff;
+  data[1] = start_adr & 0x0ff;
+  data[2] = (number_of_registers / 256) & 0x0ff;
+  data[3] = number_of_registers & 0x0ff;
+  ret = write(slave, ReadInputRegisters, data, 4);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, data, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != ReadInputRegisters) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, ReadInputRegisters, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+  int j=0;
+  for(int i=0; i<ret; i+=2) 
+  {
+    registers[j++] = ((data[i] * 256) & 0x0ff) + (data[i+1] & 0x0ff);
+  }  
+
+  return ret;
+}
+
+int rlModbus::forceSingleCoil(int slave, int coil_adr, int value, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (coil_adr / 256) & 0x0ff;
+  data[1] = coil_adr & 0x0ff;
+  data[2] = 0;
+  data[3] = 0;
+  if(value) data[2] = 0x0ff;
+  ret = write(slave, ForceSingleCoil, data, 4);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, data, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != ForceSingleCoil) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, ForceSingleCoil, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+
+  return ret;
+}
+
+int rlModbus::presetSingleRegister(int slave, int register_adr, int value, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (register_adr / 256) & 0x0ff;
+  data[1] = register_adr & 0x0ff;
+  data[2] = (value / 256) & 0x0ff;
+  data[3] = value & 0x0ff;
+  ret = write(slave, PresetSingleRegister, data, 4);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, data, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != PresetSingleRegister) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, PresetSingleRegister, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+
+  return ret;
+}
+
+int rlModbus::forceMultipleCoils(int slave, int coil_adr, int number_of_coils, unsigned char *coils, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (coil_adr / 256) & 0x0ff;
+  data[1] = coil_adr & 0x0ff;
+  data[2] = (number_of_coils / 256) & 0x0ff;
+  data[3] = number_of_coils & 0x0ff;
+  data[4] = (number_of_coils / 8) + 1;
+  int i;
+  for(i=0; i<data[4]; i++) data[5+i] = coils[i];
+  ret = write(slave, ForceMultipleCoils, data, 5+i);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, data, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != ForceMultipleCoils) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, ForceMultipleCoils, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+
+  return ret;
+}
+
+int rlModbus::presetMultipleRegisters(int slave, int start_adr, int number_of_registers, int *registers, int timeout)
+{
+  int ret;
+  int ret_slave, ret_function;
+  unsigned char data[256];
+
+  data[0] = (start_adr / 256) & 0x0ff;
+  data[1] = start_adr & 0x0ff;
+  data[2] = (number_of_registers / 256) & 0x0ff;
+  data[3] = number_of_registers & 0x0ff;
+  data[4] = (number_of_registers * 2) & 0x0ff;
+  int j=5;
+  for(int i=0; i<number_of_registers; i++)
+  {
+    data[j++] = (registers[i] / 256) & 0x0ff;
+    data[j++] = registers[i] & 0x0ff;
+  }
+  ret = write(slave, PresetMultipleRegs, data, j);
+  if(ret < 0) return MODBUS_ERROR;
+
+  ret = response(&ret_slave, &ret_function, data, timeout);
+  if(ret < 0 || ret_slave != slave || ret_function != PresetMultipleRegs) 
+  {
+    printf("rlMOdbus::ERROR response ret=%d slave=%d ret_slave=%d function=%d ret_function=%d timeout=%d\n", 
+                                     ret, slave, ret_slave, PresetMultipleRegs, ret_function, timeout);
+    return MODBUS_ERROR;
+  }  
+
+  return ret;
+}
+
+

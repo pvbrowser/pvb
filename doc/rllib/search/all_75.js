@@ -20,7 +20,7 @@ var searchData=
   ['usdevstate',['usDevState',['../classrlHilscherCIF.html#a033e4300024c2d7e31d7d3a9bead8f77',1,'rlHilscherCIF']]],
   ['use_5fcb',['use_cb',['../classrlSiemensTCP.html#a61f4ce60174416040e03769d23e3c7a2',1,'rlSiemensTCP']]],
   ['use_5fold_5fjoin',['USE_OLD_JOIN',['../rlwthread_8cpp.html#a9c9cacdce530ec82b54bcd580e374db6',1,'rlwthread.cpp']]],
-  ['user',['user',['../structTHREAD__PARAM.html#abb08567308ed25b8bd3329ae84279b3d',1,'THREAD_PARAM']]],
+  ['user',['user',['../classrlState.html#afcdaaea34be6204c1ca66a0cb2d484b2',1,'rlState::user()'],['../structTHREAD__PARAM.html#abb08567308ed25b8bd3329ae84279b3d',1,'THREAD_PARAM::user()']]],
   ['user_5fadr',['user_adr',['../classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d',1,'rlSharedMemory']]],
   ['user_5fat_5fhost',['USER_AT_HOST',['../rlcanopenstructs_8h.html#aeb8b209027ad2e076b2e12f39beede1a',1,'rlcanopenstructs.h']]],
   ['ushort',['UShort',['../classrlPPIClient.html#aee5a7cd37510dd539e0f553e9c24a8d5',1,'rlPPIClient::UShort()'],['../classrlSiemensTCPClient.html#a00fa1030125ecc478c542a66d8851e47',1,'rlSiemensTCPClient::UShort()']]],

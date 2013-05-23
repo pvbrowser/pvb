@@ -4,7 +4,7 @@
   <filterSection>
     <filterAttribute>doxygen</filterAttribute>
     <toc>
-      <section title="rllib 1" ref="àx/">
+      <section title="rllib 1" ref="°ªÐ">
         <section title="Classes">
           <section title="Class List" ref="annotated.html">
             <section title="__sched_param" ref="struct____sched__param.html">
@@ -1012,6 +1012,8 @@
               <section title="buf2int_rtu" ref="classrlModbus.html" />
               <section title="CRCerror" ref="classrlModbus.html" />
               <section title="data2int" ref="classrlModbus.html" />
+              <section title="forceMultipleCoils" ref="classrlModbus.html" />
+              <section title="forceSingleCoil" ref="classrlModbus.html" />
               <section title="insertCRC" ref="classrlModbus.html" />
               <section title="insertLRC" ref="classrlModbus.html" />
               <section title="int2buf_ascii" ref="classrlModbus.html" />
@@ -1019,6 +1021,12 @@
               <section title="int2data" ref="classrlModbus.html" />
               <section title="intsize" ref="classrlModbus.html" />
               <section title="LRCerror" ref="classrlModbus.html" />
+              <section title="presetMultipleRegisters" ref="classrlModbus.html" />
+              <section title="presetSingleRegister" ref="classrlModbus.html" />
+              <section title="readCoilStatus" ref="classrlModbus.html" />
+              <section title="readHoldingRegisters" ref="classrlModbus.html" />
+              <section title="readInputRegisters" ref="classrlModbus.html" />
+              <section title="readInputStatus" ref="classrlModbus.html" />
               <section title="readRequest" ref="classrlModbus.html" />
               <section title="registerSerial" ref="classrlModbus.html" />
               <section title="registerSocket" ref="classrlModbus.html" />
@@ -1558,25 +1566,19 @@
               <section title="delimitor" ref="classrlSpreadsheetWorkbook.html" />
               <section title="firstTable" ref="classrlSpreadsheetWorkbook.html" />
             </section>
-            <section title="rlStatemachine" ref="classrlStatemachine.html">
-              <section title="rlStatemachine" ref="classrlStatemachine.html" />
-              <section title="~rlStatemachine" ref="classrlStatemachine.html" />
-              <section title="doState" ref="classrlStatemachine.html" />
-              <section title="enterState" ref="classrlStatemachine.html" />
-              <section title="exitState" ref="classrlStatemachine.html" />
-              <section title="getPlcStateDouble" ref="classrlStatemachine.html" />
-              <section title="getPlcStateFloat" ref="classrlStatemachine.html" />
-              <section title="getPlcStateInt" ref="classrlStatemachine.html" />
-              <section title="getState" ref="classrlStatemachine.html" />
-              <section title="getVar" ref="classrlStatemachine.html" />
-              <section title="setPlcStateDouble" ref="classrlStatemachine.html" />
-              <section title="setPlcStateFloat" ref="classrlStatemachine.html" />
-              <section title="setPlcStateInt" ref="classrlStatemachine.html" />
-              <section title="haveto_free_state" ref="classrlStatemachine.html" />
-              <section title="num_process_variables" ref="classrlStatemachine.html" />
-              <section title="num_states" ref="classrlStatemachine.html" />
-              <section title="state" ref="classrlStatemachine.html" />
-              <section title="var" ref="classrlStatemachine.html" />
+            <section title="rlState" ref="classrlState.html">
+              <section title="rlState" ref="classrlState.html" />
+              <section title="~rlState" ref="classrlState.html" />
+              <section title="gotoState" ref="classrlState.html" />
+              <section title="runSteps" ref="classrlState.html" />
+              <section title="startSteps" ref="classrlState.html" />
+              <section title="cycletime" ref="classrlState.html" />
+              <section title="lastState" ref="classrlState.html" />
+              <section title="MAX_STEP" ref="classrlState.html" />
+              <section title="nextStep" ref="classrlState.html" />
+              <section title="stepCounter" ref="classrlState.html" />
+              <section title="thread" ref="classrlState.html" />
+              <section title="user" ref="classrlState.html" />
             </section>
             <section title="rlString" ref="classrlString.html">
               <section title="rlString" ref="classrlString.html" />
@@ -1585,12 +1587,16 @@
               <section title="~rlString" ref="classrlString.html" />
               <section title="cat" ref="classrlString.html" />
               <section title="lower" ref="classrlString.html" />
+              <section title="operator!=" ref="classrlString.html" />
+              <section title="operator!=" ref="classrlString.html" />
               <section title="operator+" ref="classrlString.html" />
               <section title="operator+" ref="classrlString.html" />
               <section title="operator+=" ref="classrlString.html" />
               <section title="operator+=" ref="classrlString.html" />
               <section title="operator=" ref="classrlString.html" />
               <section title="operator=" ref="classrlString.html" />
+              <section title="operator==" ref="classrlString.html" />
+              <section title="operator==" ref="classrlString.html" />
               <section title="printf" ref="classrlString.html" />
               <section title="removeQuotas" ref="classrlString.html" />
               <section title="setText" ref="classrlString.html" />
@@ -1908,7 +1914,7 @@
             <section title="rlSpreadsheetRow" ref="classrlSpreadsheetRow.html" />
             <section title="rlSpreadsheetTable" ref="classrlSpreadsheetTable.html" />
             <section title="rlSpreadsheetWorkbook" ref="classrlSpreadsheetWorkbook.html" />
-            <section title="rlStatemachine" ref="classrlStatemachine.html" />
+            <section title="rlState" ref="classrlState.html" />
             <section title="rlString" ref="classrlString.html" />
             <section title="rlSvgAnimator" ref="classrlSvgAnimator.html" />
             <section title="rlSvgCat" ref="classrlSvgCat.html" />
@@ -2604,6 +2610,10 @@
             <section title="rlcutil.cpp" ref="rlcutil_8cpp.html">
               <section title="get_iexplore" ref="rlcutil_8cpp.html" />
               <section title="mysystem" ref="rlcutil_8cpp.html" />
+              <section title="rlBitChange" ref="rlcutil_8cpp.html" />
+              <section title="rlBitClear" ref="rlcutil_8cpp.html" />
+              <section title="rlBitSet" ref="rlcutil_8cpp.html" />
+              <section title="rlBitTest" ref="rlcutil_8cpp.html" />
               <section title="rlBrowser" ref="rlcutil_8cpp.html" />
               <section title="rlCan1" ref="rlcutil_8cpp.html" />
               <section title="rlCan2" ref="rlcutil_8cpp.html" />
@@ -2644,6 +2654,10 @@
               <section title="rlUserSigtermHandler" ref="rlcutil_8cpp.html" />
             </section>
             <section title="rlcutil.h" ref="rlcutil_8h.html">
+              <section title="rlBitChange" ref="rlcutil_8h.html" />
+              <section title="rlBitClear" ref="rlcutil_8h.html" />
+              <section title="rlBitSet" ref="rlcutil_8h.html" />
+              <section title="rlBitTest" ref="rlcutil_8h.html" />
               <section title="rlBrowser" ref="rlcutil_8h.html" />
               <section title="rlCan1" ref="rlcutil_8h.html" />
               <section title="rlCan2" ref="rlcutil_8h.html" />
@@ -3462,6 +3476,8 @@
                 <section title="buf2int_rtu" ref="classrlModbus.html" />
                 <section title="CRCerror" ref="classrlModbus.html" />
                 <section title="data2int" ref="classrlModbus.html" />
+                <section title="forceMultipleCoils" ref="classrlModbus.html" />
+                <section title="forceSingleCoil" ref="classrlModbus.html" />
                 <section title="insertCRC" ref="classrlModbus.html" />
                 <section title="insertLRC" ref="classrlModbus.html" />
                 <section title="int2buf_ascii" ref="classrlModbus.html" />
@@ -3469,6 +3485,12 @@
                 <section title="int2data" ref="classrlModbus.html" />
                 <section title="intsize" ref="classrlModbus.html" />
                 <section title="LRCerror" ref="classrlModbus.html" />
+                <section title="presetMultipleRegisters" ref="classrlModbus.html" />
+                <section title="presetSingleRegister" ref="classrlModbus.html" />
+                <section title="readCoilStatus" ref="classrlModbus.html" />
+                <section title="readHoldingRegisters" ref="classrlModbus.html" />
+                <section title="readInputRegisters" ref="classrlModbus.html" />
+                <section title="readInputStatus" ref="classrlModbus.html" />
                 <section title="readRequest" ref="classrlModbus.html" />
                 <section title="registerSerial" ref="classrlModbus.html" />
                 <section title="registerSocket" ref="classrlModbus.html" />
@@ -4184,38 +4206,23 @@
                 <section title="firstTable" ref="classrlSpreadsheetWorkbook.html" />
               </section>
             </section>
-            <section title="rlstate.h" ref="rlstate_8h.html">
-              <section title="gotoState" ref="rlstate_8h.html" />
-              <section title="readIO" ref="rlstate_8h.html" />
-              <section title="runSteps" ref="rlstate_8h.html" />
-              <section title="writeIO" ref="rlstate_8h.html" />
-              <section title="lastState" ref="rlstate_8h.html" />
-              <section title="MAX_STEP" ref="rlstate_8h.html" />
-              <section title="nextStep" ref="rlstate_8h.html" />
-              <section title="running" ref="rlstate_8h.html" />
-              <section title="stepCounter" ref="rlstate_8h.html" />
+            <section title="rlstate.cpp" ref="rlstate_8cpp.html">
+              <section title="stepsThread" ref="rlstate_8cpp.html" />
             </section>
-            <section title="rlstatemachine.cpp" ref="rlstatemachine_8cpp.html" />
-            <section title="rlstatemachine.h" ref="rlstatemachine_8h.html">
-              <section title="rlStatemachine" ref="classrlStatemachine.html">
-                <section title="rlStatemachine" ref="classrlStatemachine.html" />
-                <section title="~rlStatemachine" ref="classrlStatemachine.html" />
-                <section title="doState" ref="classrlStatemachine.html" />
-                <section title="enterState" ref="classrlStatemachine.html" />
-                <section title="exitState" ref="classrlStatemachine.html" />
-                <section title="getPlcStateDouble" ref="classrlStatemachine.html" />
-                <section title="getPlcStateFloat" ref="classrlStatemachine.html" />
-                <section title="getPlcStateInt" ref="classrlStatemachine.html" />
-                <section title="getState" ref="classrlStatemachine.html" />
-                <section title="getVar" ref="classrlStatemachine.html" />
-                <section title="setPlcStateDouble" ref="classrlStatemachine.html" />
-                <section title="setPlcStateFloat" ref="classrlStatemachine.html" />
-                <section title="setPlcStateInt" ref="classrlStatemachine.html" />
-                <section title="haveto_free_state" ref="classrlStatemachine.html" />
-                <section title="num_process_variables" ref="classrlStatemachine.html" />
-                <section title="num_states" ref="classrlStatemachine.html" />
-                <section title="state" ref="classrlStatemachine.html" />
-                <section title="var" ref="classrlStatemachine.html" />
+            <section title="rlstate.h" ref="rlstate_8h.html">
+              <section title="rlState" ref="classrlState.html">
+                <section title="rlState" ref="classrlState.html" />
+                <section title="~rlState" ref="classrlState.html" />
+                <section title="gotoState" ref="classrlState.html" />
+                <section title="runSteps" ref="classrlState.html" />
+                <section title="startSteps" ref="classrlState.html" />
+                <section title="cycletime" ref="classrlState.html" />
+                <section title="lastState" ref="classrlState.html" />
+                <section title="MAX_STEP" ref="classrlState.html" />
+                <section title="nextStep" ref="classrlState.html" />
+                <section title="stepCounter" ref="classrlState.html" />
+                <section title="thread" ref="classrlState.html" />
+                <section title="user" ref="classrlState.html" />
               </section>
             </section>
             <section title="rlstring.cpp" ref="rlstring_8cpp.html" />
@@ -4227,12 +4234,16 @@
                 <section title="~rlString" ref="classrlString.html" />
                 <section title="cat" ref="classrlString.html" />
                 <section title="lower" ref="classrlString.html" />
+                <section title="operator!=" ref="classrlString.html" />
+                <section title="operator!=" ref="classrlString.html" />
                 <section title="operator+" ref="classrlString.html" />
                 <section title="operator+" ref="classrlString.html" />
                 <section title="operator+=" ref="classrlString.html" />
                 <section title="operator+=" ref="classrlString.html" />
                 <section title="operator=" ref="classrlString.html" />
                 <section title="operator=" ref="classrlString.html" />
+                <section title="operator==" ref="classrlString.html" />
+                <section title="operator==" ref="classrlString.html" />
                 <section title="printf" ref="classrlString.html" />
                 <section title="removeQuotas" ref="classrlString.html" />
                 <section title="setText" ref="classrlString.html" />
@@ -4729,6 +4740,10 @@
       <keyword name="rlStrMatch" id="rlcutil.cpp::rlStrMatch" ref="rlcutil_8cpp.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
       <keyword name="rlStat" id="rlcutil.cpp::rlStat" ref="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df" />
       <keyword name="rlMkdir" id="rlcutil.cpp::rlMkdir" ref="rlcutil_8cpp.html#aaee9aa5351f9ae48a3f33184d484962e" />
+      <keyword name="rlBitSet" id="rlcutil.cpp::rlBitSet" ref="rlcutil_8cpp.html#a1faf9a09d5d0bb7a6ba24c9050697774" />
+      <keyword name="rlBitClear" id="rlcutil.cpp::rlBitClear" ref="rlcutil_8cpp.html#afa69b413f110f689e6093e24f5e21178" />
+      <keyword name="rlBitChange" id="rlcutil.cpp::rlBitChange" ref="rlcutil_8cpp.html#a0baa5683b22ec178b24473b86cf0e641" />
+      <keyword name="rlBitTest" id="rlcutil.cpp::rlBitTest" ref="rlcutil_8cpp.html#a3da5cd694c56cd94598c12dee25a28de" />
       <keyword name="rlDebugPrintfState" id="rlcutil.cpp::rlDebugPrintfState" ref="rlcutil_8cpp.html#a73703e6f6e03079d517b69762d7424da" />
       <keyword name="rlsigtermarg" id="rlcutil.cpp::rlsigtermarg" ref="rlcutil_8cpp.html#aa602ca87edb43ec9626731cad82e62bc" />
       <keyword name="rlUserSigtermHandler" id="rlcutil.cpp::rlUserSigtermHandler" ref="rlcutil_8cpp.html#a95ba5f2760cd6ed5c62315bf1df4234c" />
@@ -4766,6 +4781,10 @@
       <keyword name="rlStrMatch" id="rlcutil.h::rlStrMatch" ref="rlcutil_8h.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
       <keyword name="rlStat" id="rlcutil.h::rlStat" ref="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df" />
       <keyword name="rlMkdir" id="rlcutil.h::rlMkdir" ref="rlcutil_8h.html#a38506e038a433fce775f3fcdc340cace" />
+      <keyword name="rlBitSet" id="rlcutil.h::rlBitSet" ref="rlcutil_8h.html#a1faf9a09d5d0bb7a6ba24c9050697774" />
+      <keyword name="rlBitClear" id="rlcutil.h::rlBitClear" ref="rlcutil_8h.html#afa69b413f110f689e6093e24f5e21178" />
+      <keyword name="rlBitChange" id="rlcutil.h::rlBitChange" ref="rlcutil_8h.html#a0baa5683b22ec178b24473b86cf0e641" />
+      <keyword name="rlBitTest" id="rlcutil.h::rlBitTest" ref="rlcutil_8h.html#a3da5cd694c56cd94598c12dee25a28de" />
       <keyword name="CLIENT_TIMEOUT" id="rldataprovider.cpp::CLIENT_TIMEOUT" ref="rldataprovider_8cpp.html#acbb5358766b3fd26fcb09271b5f8b1e3" />
       <keyword name="workerThread" id="rldataprovider.cpp::workerThread" ref="rldataprovider_8cpp.html#ae2a3a761e4cf9d98caf2c4779a581e43" />
       <keyword name="rlDataProviderAccept" id="rldataprovider.cpp::rlDataProviderAccept" ref="rldataprovider_8cpp.html#a65646dec4ef9d5e87f7f50ba17f17cc9" />
@@ -4926,15 +4945,7 @@
       <keyword name="wsa" id="rlsocket.h::wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
       <keyword name="rlwsa" id="rlsocket.h::rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="null_string" id="rlspreadsheet.cpp::null_string" ref="rlspreadsheet_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
-      <keyword name="readIO" id="rlstate.h::readIO" ref="rlstate_8h.html#a3bf5bb3360ded6b2bd3fc78045a1cc17" />
-      <keyword name="runSteps" id="rlstate.h::runSteps" ref="rlstate_8h.html#aa74d0ed778edec970f58ef6aca5cf6da" />
-      <keyword name="writeIO" id="rlstate.h::writeIO" ref="rlstate_8h.html#aac284dec9818128e9bb4d937ff8122ac" />
-      <keyword name="gotoState" id="rlstate.h::gotoState" ref="rlstate_8h.html#a076cf829739c5ad08023887e6c6608d6" />
-      <keyword name="nextStep" id="rlstate.h::nextStep" ref="rlstate_8h.html#a4e4e8faf3304cda6ad72eebbdfad3f54" />
-      <keyword name="lastState" id="rlstate.h::lastState" ref="rlstate_8h.html#affbfc4ba76ad891f17f30e8a37ea03f9" />
-      <keyword name="stepCounter" id="rlstate.h::stepCounter" ref="rlstate_8h.html#a58b9fe0d8bdc4ddc63eb62dcd3413b10" />
-      <keyword name="running" id="rlstate.h::running" ref="rlstate_8h.html#a2f45113638a0b749a8a205d2cd7fb42b" />
-      <keyword name="MAX_STEP" id="rlstate.h::MAX_STEP" ref="rlstate_8h.html#a89d587dc32de6bddda7685473377a84a" />
+      <keyword name="stepsThread" id="rlstate.cpp::stepsThread" ref="rlstate_8cpp.html#ab4c9f4bf55f0b58929dc3fa7b3d7fb4b" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MAXLINE" id="rlsvganimator.cpp::MAXLINE" ref="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471" />
@@ -5959,6 +5970,14 @@
       <keyword name="data2int" id="rlModbus::data2int" ref="classrlModbus.html#a02da348cb1bef2021a253189f55aeb11" />
       <keyword name="int2data" id="rlModbus::int2data" ref="classrlModbus.html#a3d80c0194c6836bc9419395da0daabdc" />
       <keyword name="intsize" id="rlModbus::intsize" ref="classrlModbus.html#a6251a9bdb6cf258219bd324c7c8e0bb5" />
+      <keyword name="readCoilStatus" id="rlModbus::readCoilStatus" ref="classrlModbus.html#a3650d910bd0435f31f46b30142c3cffa" />
+      <keyword name="readInputStatus" id="rlModbus::readInputStatus" ref="classrlModbus.html#afbecaf38fc73f8d3082d95be141eeb37" />
+      <keyword name="readHoldingRegisters" id="rlModbus::readHoldingRegisters" ref="classrlModbus.html#ab490c9a04a756f524ae7cc5f138e41f7" />
+      <keyword name="readInputRegisters" id="rlModbus::readInputRegisters" ref="classrlModbus.html#a60f684a14a1f9c25301ecdecc565538b" />
+      <keyword name="forceSingleCoil" id="rlModbus::forceSingleCoil" ref="classrlModbus.html#a60656255e0053bcaa84c39086b09cf6c" />
+      <keyword name="presetSingleRegister" id="rlModbus::presetSingleRegister" ref="classrlModbus.html#a0c251adb0b9a2029d41f2074566ba5af" />
+      <keyword name="forceMultipleCoils" id="rlModbus::forceMultipleCoils" ref="classrlModbus.html#abed878560af9610d84bfe2c3d1e54f43" />
+      <keyword name="presetMultipleRegisters" id="rlModbus::presetMultipleRegisters" ref="classrlModbus.html#a7f822ef6a539266b8a2afdc80150b747" />
       <keyword name="autoreconnectSocket" id="rlModbus::autoreconnectSocket" ref="classrlModbus.html#a5d323c81b0dac5fd991fd28e9fb3ac80" />
       <keyword name="buf2int_rtu" id="rlModbus::buf2int_rtu" ref="classrlModbus.html#a4ce50e07415541dc3ce44ef6d5eb20fc" />
       <keyword name="int2buf_rtu" id="rlModbus::int2buf_rtu" ref="classrlModbus.html#ab8548df29f72a5400bfca2a2576e171e" />
@@ -6580,25 +6599,19 @@
       <keyword name="setDelimitor" id="rlSpreadsheetWorkbook::setDelimitor" ref="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2" />
       <keyword name="delimitor" id="rlSpreadsheetWorkbook::delimitor" ref="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91" />
       <keyword name="firstTable" id="rlSpreadsheetWorkbook::firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
-      <keyword name="rlStatemachine" id="rlStatemachine" ref="classrlStatemachine.html" />
-      <keyword name="rlStatemachine" id="rlStatemachine::rlStatemachine" ref="classrlStatemachine.html#a0a5dcbe2a73dec06a75d12bfc5d8bf65" />
-      <keyword name="~rlStatemachine" id="rlStatemachine::~rlStatemachine" ref="classrlStatemachine.html#a15d84b7df7d775e8b25bde002bfc2128" />
-      <keyword name="setPlcStateInt" id="rlStatemachine::setPlcStateInt" ref="classrlStatemachine.html#a322bfec3d8b661afb6b330641d7aa020" />
-      <keyword name="setPlcStateFloat" id="rlStatemachine::setPlcStateFloat" ref="classrlStatemachine.html#a9422190fc412b5918d66f2d7f1792970" />
-      <keyword name="setPlcStateDouble" id="rlStatemachine::setPlcStateDouble" ref="classrlStatemachine.html#a6003088f1839596902346a831280a495" />
-      <keyword name="doState" id="rlStatemachine::doState" ref="classrlStatemachine.html#a000430ee9ed5299be8a86ed2eab5f1f7" />
-      <keyword name="enterState" id="rlStatemachine::enterState" ref="classrlStatemachine.html#a29063e21a910d8c452c60b1d55e2d389" />
-      <keyword name="exitState" id="rlStatemachine::exitState" ref="classrlStatemachine.html#a9df4ea588d510ff335155d664e6fec39" />
-      <keyword name="getPlcStateInt" id="rlStatemachine::getPlcStateInt" ref="classrlStatemachine.html#aa3e84b7c4ea0939522f46108dc6dc8c0" />
-      <keyword name="getPlcStateFloat" id="rlStatemachine::getPlcStateFloat" ref="classrlStatemachine.html#a73198e12716b322d206941ad7cd102a3" />
-      <keyword name="getPlcStateDouble" id="rlStatemachine::getPlcStateDouble" ref="classrlStatemachine.html#aba1b255c4920bf04e3c12947d6e86234" />
-      <keyword name="getState" id="rlStatemachine::getState" ref="classrlStatemachine.html#af39d757300affc0a1f62d97af316a282" />
-      <keyword name="getVar" id="rlStatemachine::getVar" ref="classrlStatemachine.html#a0c997c99df28e1cb096f9a0c64242dbe" />
-      <keyword name="num_states" id="rlStatemachine::num_states" ref="classrlStatemachine.html#af0940d8732c9796924d4b757e02c8b94" />
-      <keyword name="num_process_variables" id="rlStatemachine::num_process_variables" ref="classrlStatemachine.html#a2cdd1991390e9af64ea1d85875b5b13d" />
-      <keyword name="state" id="rlStatemachine::state" ref="classrlStatemachine.html#a49b709c3a0ff6ecc07323c9c7d0de641" />
-      <keyword name="haveto_free_state" id="rlStatemachine::haveto_free_state" ref="classrlStatemachine.html#afa900fb7711a5d3393d4c6a3ecb38ee2" />
-      <keyword name="var" id="rlStatemachine::var" ref="classrlStatemachine.html#a43572527b24f7fa6b3cce1115a135c0c" />
+      <keyword name="rlState" id="rlState" ref="classrlState.html" />
+      <keyword name="rlState" id="rlState::rlState" ref="classrlState.html#a1b8f80b72c657d463c6fd1da9bc96b0d" />
+      <keyword name="~rlState" id="rlState::~rlState" ref="classrlState.html#a475a08e2c43485c6de32032d2cdac684" />
+      <keyword name="startSteps" id="rlState::startSteps" ref="classrlState.html#aabe2c0f67f325c4c6a309823cc626b05" />
+      <keyword name="runSteps" id="rlState::runSteps" ref="classrlState.html#a26b1a3130c654fc9fe3c5ce05871432a" />
+      <keyword name="gotoState" id="rlState::gotoState" ref="classrlState.html#ac69a491cc0d9395061772be2f2c4e333" />
+      <keyword name="user" id="rlState::user" ref="classrlState.html#afcdaaea34be6204c1ca66a0cb2d484b2" />
+      <keyword name="stepCounter" id="rlState::stepCounter" ref="classrlState.html#a773939729eede6d342d0e1ad22596719" />
+      <keyword name="cycletime" id="rlState::cycletime" ref="classrlState.html#a8bf908eee39e963fde45ee3be64bfa20" />
+      <keyword name="nextStep" id="rlState::nextStep" ref="classrlState.html#a93d90e7dcce35725ab1137d175bddfb3" />
+      <keyword name="lastState" id="rlState::lastState" ref="classrlState.html#ae087879a388fc234eab6e4dc2f303e24" />
+      <keyword name="thread" id="rlState::thread" ref="classrlState.html#a138b9b3bd514a954b4da373d7e0a9cc5" />
+      <keyword name="MAX_STEP" id="rlState::MAX_STEP" ref="classrlState.html#ac49e2bf81051189d673577835cd952ef" />
       <keyword name="rlString" id="rlString" ref="classrlString.html" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a481402a9edec0a5ecbf4238947a8aece" />
@@ -6610,6 +6623,10 @@
       <keyword name="operator+" id="rlString::operator+" ref="classrlString.html#a1d46501477f48315d4f2f69a4f172fd8" />
       <keyword name="operator+=" id="rlString::operator+=" ref="classrlString.html#a79a7474fcb62ae26086df5e5bcafc9de" />
       <keyword name="operator+=" id="rlString::operator+=" ref="classrlString.html#aa686c0bb48889af87ee83de400a49974" />
+      <keyword name="operator==" id="rlString::operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
+      <keyword name="operator==" id="rlString::operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
+      <keyword name="operator!=" id="rlString::operator!=" ref="classrlString.html#a9984e47340753b76d23b61701cb98ad6" />
+      <keyword name="operator!=" id="rlString::operator!=" ref="classrlString.html#a1b1a068453c606222a72a58ec31af4d1" />
       <keyword name="text" id="rlString::text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
       <keyword name="setText" id="rlString::setText" ref="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c" />
       <keyword name="printf" id="rlString::printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
@@ -6961,9 +6978,8 @@
       <file>rlspawn_8h_source.html</file>
       <file>rlspreadsheet_8cpp_source.html</file>
       <file>rlspreadsheet_8h_source.html</file>
+      <file>rlstate_8cpp_source.html</file>
       <file>rlstate_8h_source.html</file>
-      <file>rlstatemachine_8cpp_source.html</file>
-      <file>rlstatemachine_8h_source.html</file>
       <file>rlstring_8cpp_source.html</file>
       <file>rlstring_8h_source.html</file>
       <file>rlsubset_8h_source.html</file>
@@ -7191,13 +7207,11 @@
       <file>rlspreadsheet_8h.html</file>
       <file>rlspreadsheet_8h__incl.png</file>
       <file>rlspreadsheet_8h__dep__incl.png</file>
+      <file>rlstate_8cpp.html</file>
+      <file>rlstate_8cpp__incl.png</file>
       <file>rlstate_8h.html</file>
       <file>rlstate_8h__incl.png</file>
-      <file>rlstatemachine_8cpp.html</file>
-      <file>rlstatemachine_8cpp__incl.png</file>
-      <file>rlstatemachine_8h.html</file>
-      <file>rlstatemachine_8h__incl.png</file>
-      <file>rlstatemachine_8h__dep__incl.png</file>
+      <file>rlstate_8h__dep__incl.png</file>
       <file>rlstring_8cpp.html</file>
       <file>rlstring_8cpp__incl.png</file>
       <file>rlstring_8h.html</file>
@@ -7442,9 +7456,9 @@
       <file>classrlSpreadsheetWorkbook.html</file>
       <file>classrlSpreadsheetWorkbook__coll__graph.png</file>
       <file>classrlSpreadsheetWorkbook-members.html</file>
-      <file>classrlStatemachine.html</file>
-      <file>classrlStatemachine__coll__graph.png</file>
-      <file>classrlStatemachine-members.html</file>
+      <file>classrlState.html</file>
+      <file>classrlState__coll__graph.png</file>
+      <file>classrlState-members.html</file>
       <file>classrlString.html</file>
       <file>classrlString-members.html</file>
       <file>classrlSvgAnimator.html</file>
