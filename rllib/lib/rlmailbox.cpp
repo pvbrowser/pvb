@@ -59,6 +59,8 @@ FILE  *fp;
 key_t key;
 
   status = OK;
+  buffer = NULL;
+  buffer_size = 0;
   name = new char[strlen(mbxname)+1];
   strcpy(name,mbxname);
   // create file
@@ -132,6 +134,7 @@ key_t key;
 rlMailbox::~rlMailbox()
 {
   delete [] name;
+  if(buffer != NULL) delete [] buffer;
   if(chanid < 0) return;
 
 #ifdef __VMS
@@ -350,3 +353,30 @@ int rlMailbox::printf(const char *format, ...)
   if(ret < 0) return ret;
   return write(message,strlen(message));
 }
+
+int rlMailbox::setReadBufferSize(int size)
+{
+  if(buffer != NULL) delete [] buffer;
+  buffer_size = size;
+  buffer = new char[size];
+  return size;
+}
+
+const char *rlMailbox::read(int wait)
+{
+  if(buffer == NULL)
+  {
+    buffer_size = 4096;
+    buffer = new char[buffer_size];
+  }
+  int ret = read(buffer,buffer_size,wait);
+  if(ret < 0) buffer[0] = '\0';
+  return buffer;
+}
+
+int rlMailbox::write(const char *message)
+{
+  return write(message,strlen(message)+1);
+}
+
+

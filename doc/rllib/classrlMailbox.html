@@ -131,6 +131,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a248f342fca5464191b38c5446ccd895a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7ee62a6465a5e15ac5f912ff488e13c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c">read</a> (void *buf, int maxlen, int wait=<a class="el" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaeb9ee2f2655f5f8a3ea2b51c2c7a6cb8">WAIT</a>)</td></tr>
 <tr class="separator:af7ee62a6465a5e15ac5f912ff488e13c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abad375b04f72021d0102817272a99db6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#abad375b04f72021d0102817272a99db6">setReadBufferSize</a> (int size)</td></tr>
+<tr class="separator:abad375b04f72021d0102817272a99db6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb26388e87f0eff7ff481b902fd5adc0"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#adb26388e87f0eff7ff481b902fd5adc0">read</a> (int wait=<a class="el" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaeb9ee2f2655f5f8a3ea2b51c2c7a6cb8">WAIT</a>)</td></tr>
+<tr class="separator:adb26388e87f0eff7ff481b902fd5adc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50146e483b907914627b2e6ac225f2ad"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#a50146e483b907914627b2e6ac225f2ad">write</a> (const char *message)</td></tr>
+<tr class="separator:a50146e483b907914627b2e6ac225f2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e7174ec8a8843184c25327947d8add1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1">clear</a> ()</td></tr>
 <tr class="separator:a4e7174ec8a8843184c25327947d8add1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -145,6 +151,10 @@ Public Attributes</h2></td></tr>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ab98d40d0eacc9da292b2ad70848969cc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc">chanid</a></td></tr>
 <tr class="separator:ab98d40d0eacc9da292b2ad70848969cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3070ae872294b9fa8ab298d70c47d391"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a></td></tr>
+<tr class="separator:a3070ae872294b9fa8ab298d70c47d391"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cd3e227d8da69a053e2837f0e7baa0e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a></td></tr>
+<tr class="separator:a2cd3e227d8da69a053e2837f0e7baa0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><pre>
@@ -230,6 +240,8 @@ Only 1 reader is allowed.
 <div class="line">key_t key;</div>
 <div class="line"></div>
 <div class="line">  <a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">status</a> = <a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa3d11cefc566b82077d6337492f8937aa" title="status:">OK</a>;</div>
+<div class="line">  <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a> = NULL;</div>
+<div class="line">  <a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a> = 0;</div>
 <div class="line">  <a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">name</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[strlen(mbxname)+1];</div>
 <div class="line">  strcpy(<a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">name</a>,mbxname);</div>
 <div class="line">  <span class="comment">// create file</span></div>
@@ -325,9 +337,10 @@ Only 1 reader is allowed.
 <pre>
  destruct the mailbox
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00132">132</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00134">134</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">delete</span> [] <a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">name</a>;</div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a> != NULL) <span class="keyword">delete</span> [] <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a>;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc">chanid</a> &lt; 0) <span class="keywordflow">return</span>;</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor">#ifdef __VMS</span></div>
@@ -357,7 +370,7 @@ Only 1 reader is allowed.
 <pre>
  read all messages from mailbox, clear them
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00334">334</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00337">337</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">char</span> *buf = <span class="keyword">new</span> <span class="keywordtype">char</span>[<a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa62c848b2724300beedf21ec5eeb84554" title="maximum mailbox length">MAX_MAILBOX</a>];</div>
 <div class="line">  <span class="keywordflow">while</span>(<a class="code" href="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c">read</a>(buf,<a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa62c848b2724300beedf21ec5eeb84554" title="maximum mailbox length">MAX_MAILBOX</a>,<a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaf642b101d6e99446818bc6086a1ba6a1">NOWAIT</a>) &gt; 0);</div>
@@ -395,7 +408,7 @@ Only 1 reader is allowed.
          MAILBOX_ERROR
          MAILBOX_FULL
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00341">341</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00344">344</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordtype">char</span> message[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span></div>
@@ -445,7 +458,7 @@ Only 1 reader is allowed.
  wait = 0 no wait
  wait = 1 wait for message
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00221">221</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00224">224</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">char</span> *cbuf;</div>
 <div class="line">  <a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">status</a> = <a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa3d11cefc566b82077d6337492f8937aa" title="status:">OK</a>;</div>
@@ -560,6 +573,65 @@ Only 1 reader is allowed.
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="adb26388e87f0eff7ff481b902fd5adc0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char * rlMailbox::read </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>wait</em> = <code><a class="el" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaeb9ee2f2655f5f8a3ea2b51c2c7a6cb8">WAIT</a></code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+ read buffer from mailbox
+ return: buffer | NULL
+ wait = 0 no wait
+ wait = 1 wait for message
+ </pre> 
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00365">365</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a> == NULL)</div>
+<div class="line">  {</div>
+<div class="line">    <a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a> = 4096;</div>
+<div class="line">    <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[<a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a>];</div>
+<div class="line">  }</div>
+<div class="line">  <span class="keywordtype">int</span> ret = <a class="code" href="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c">read</a>(<a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a>,<a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a>,wait);</div>
+<div class="line">  <span class="keywordflow">if</span>(ret &lt; 0) <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a>;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="abad375b04f72021d0102817272a99db6"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlMailbox::setReadBufferSize </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+ set the size of buffer for "const char *read(int wait)"
+ </pre> 
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00357">357</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a> != NULL) <span class="keyword">delete</span> [] <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a>;</div>
+<div class="line">  <a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a> = size;</div>
+<div class="line">  <a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[size];</div>
+<div class="line">  <span class="keywordflow">return</span> size;</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a85f5a7129838abdb0f2c92c6b3c2a303"></a>
 <div class="memitem">
 <div class="memproto">
@@ -589,7 +661,7 @@ Only 1 reader is allowed.
          MAILBOX_ERROR
          MAILBOX_FULL
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00146">146</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00149">149</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">status</a> = <a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa3d11cefc566b82077d6337492f8937aa" title="status:">OK</a>;</div>
 <div class="line"></div>
@@ -666,7 +738,77 @@ Only 1 reader is allowed.
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a50146e483b907914627b2e6ac225f2ad"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlMailbox::write </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>message</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+ write message to mailbox
+ return: bytes written
+         MAILBOX_ERROR
+         MAILBOX_FULL
+ </pre> 
+<p>Definition at line <a class="el" href="rlmailbox_8cpp_source.html#l00377">377</a> of file <a class="el" href="rlmailbox_8cpp_source.html">rlmailbox.cpp</a>.</p>
+<div class="fragment"><div class="line">{</div>
+<div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlMailbox.html#a85f5a7129838abdb0f2c92c6b3c2a303">write</a>(message,strlen(message)+1);</div>
+<div class="line">}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a2cd3e227d8da69a053e2837f0e7baa0e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* rlMailbox::buffer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00124">124</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a3070ae872294b9fa8ab298d70c47d391"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlMailbox::buffer_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00123">123</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="ab98d40d0eacc9da292b2ad70848969cc"></a>
 <div class="memitem">
 <div class="memproto">
@@ -685,7 +827,7 @@ Only 1 reader is allowed.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00101">101</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00122">122</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
 
 </div>
 </div>
@@ -701,7 +843,7 @@ Only 1 reader is allowed.
 <pre>
  Name of mailbox
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00098">98</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00119">119</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
 
 </div>
 </div>
@@ -719,7 +861,7 @@ Only 1 reader is allowed.
  can be:    COULD_NOT_CREATE_MAILBOX
             COULD_NOT_GET_CHAN_ID
  </pre> 
-<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00093">93</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
+<p>Definition at line <a class="el" href="rlmailbox_8h_source.html#l00114">114</a> of file <a class="el" href="rlmailbox_8h_source.html">rlmailbox.h</a>.</p>
 
 </div>
 </div>

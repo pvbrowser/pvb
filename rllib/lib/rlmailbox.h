@@ -81,6 +81,27 @@ public:
   int read(void *buf, int maxlen, int wait=WAIT);
 
   /*! <pre>
+  set the size of buffer for "const char *read(int wait)"
+  </pre> */
+  int setReadBufferSize(int size);
+
+  /*! <pre>
+  read buffer from mailbox
+  return: buffer | NULL
+  wait = 0 no wait
+  wait = 1 wait for message
+  </pre> */
+  const char *read(int wait=WAIT);
+
+  /*! <pre>
+  write message to mailbox
+  return: bytes written
+          MAILBOX_ERROR
+          MAILBOX_FULL
+  </pre> */
+  int write(const char *message);
+
+  /*! <pre>
   read all messages from mailbox, clear them
   </pre> */
   void clear();
@@ -99,6 +120,8 @@ public:
 
 private:
   int chanid;
+  int buffer_size;
+  char *buffer;
 };
 
 #endif

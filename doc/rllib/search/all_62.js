@@ -89,5 +89,7 @@ var searchData=
   ['buf2int_5fascii',['buf2int_ascii',['../classrlModbus.html#a7f0fa2807658c4fd4b7fe0a582f8c386',1,'rlModbus']]],
   ['buf2int_5frtu',['buf2int_rtu',['../classrlModbus.html#a4ce50e07415541dc3ce44ef6d5eb20fc',1,'rlModbus']]],
   ['buf2pdobuf',['buf2pdobuf',['../classrlCanOpenTypes.html#a479e8118a82dd132df3fa6d87bafa033',1,'rlCanOpenTypes']]],
+  ['buffer',['buffer',['../classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e',1,'rlMailbox']]],
+  ['buffer_5fsize',['buffer_size',['../classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391',1,'rlMailbox']]],
   ['bufsize',['BUFSIZE',['../rlppiclient_8cpp.html#aeca034f67218340ecb2261a22c2f3dcd',1,'BUFSIZE():&#160;rlppiclient.cpp'],['../rlsiemenstcpclient_8cpp.html#aeca034f67218340ecb2261a22c2f3dcd',1,'BUFSIZE():&#160;rlsiemenstcpclient.cpp']]]
 ];

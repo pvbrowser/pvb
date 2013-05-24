@@ -4,7 +4,7 @@
   <filterSection>
     <filterAttribute>doxygen</filterAttribute>
     <toc>
-      <section title="rllib 1" ref="°ªÐ">
+      <section title="rllib 1" ref="@vN">
         <section title="Classes">
           <section title="Class List" ref="annotated.html">
             <section title="__sched_param" ref="struct____sched__param.html">
@@ -974,7 +974,12 @@
               <section title="clear" ref="classrlMailbox.html" />
               <section title="printf" ref="classrlMailbox.html" />
               <section title="read" ref="classrlMailbox.html" />
+              <section title="read" ref="classrlMailbox.html" />
+              <section title="setReadBufferSize" ref="classrlMailbox.html" />
               <section title="write" ref="classrlMailbox.html" />
+              <section title="write" ref="classrlMailbox.html" />
+              <section title="buffer" ref="classrlMailbox.html" />
+              <section title="buffer_size" ref="classrlMailbox.html" />
               <section title="chanid" ref="classrlMailbox.html" />
               <section title="name" ref="classrlMailbox.html" />
               <section title="status" ref="classrlMailbox.html" />
@@ -3432,7 +3437,12 @@
                 <section title="clear" ref="classrlMailbox.html" />
                 <section title="printf" ref="classrlMailbox.html" />
                 <section title="read" ref="classrlMailbox.html" />
+                <section title="read" ref="classrlMailbox.html" />
+                <section title="setReadBufferSize" ref="classrlMailbox.html" />
                 <section title="write" ref="classrlMailbox.html" />
+                <section title="write" ref="classrlMailbox.html" />
+                <section title="buffer" ref="classrlMailbox.html" />
+                <section title="buffer_size" ref="classrlMailbox.html" />
                 <section title="chanid" ref="classrlMailbox.html" />
                 <section title="name" ref="classrlMailbox.html" />
                 <section title="status" ref="classrlMailbox.html" />
@@ -5945,10 +5955,15 @@
       <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a85f5a7129838abdb0f2c92c6b3c2a303" />
       <keyword name="printf" id="rlMailbox::printf" ref="classrlMailbox.html#a248f342fca5464191b38c5446ccd895a" />
       <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c" />
+      <keyword name="setReadBufferSize" id="rlMailbox::setReadBufferSize" ref="classrlMailbox.html#abad375b04f72021d0102817272a99db6" />
+      <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#adb26388e87f0eff7ff481b902fd5adc0" />
+      <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a50146e483b907914627b2e6ac225f2ad" />
       <keyword name="clear" id="rlMailbox::clear" ref="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1" />
       <keyword name="status" id="rlMailbox::status" ref="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945" />
       <keyword name="name" id="rlMailbox::name" ref="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147" />
       <keyword name="chanid" id="rlMailbox::chanid" ref="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc" />
+      <keyword name="buffer_size" id="rlMailbox::buffer_size" ref="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391" />
+      <keyword name="buffer" id="rlMailbox::buffer" ref="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e" />
       <keyword name="MAILBOX_ERROR" id="rlMailbox::MAILBOX_ERROR" ref="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa56566ca8baa25529589e069064d96761" />
       <keyword name="MAILBOX_FULL" id="rlMailbox::MAILBOX_FULL" ref="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa1d791173dfd19425f877ac5b2e30ddae" />
       <keyword name="WAIT" id="rlMailbox::WAIT" ref="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaeb9ee2f2655f5f8a3ea2b51c2c7a6cb8" />
@@ -6031,6 +6046,9 @@
       <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a85f5a7129838abdb0f2c92c6b3c2a303" />
       <keyword name="printf" id="rlMailbox::printf" ref="classrlMailbox.html#a248f342fca5464191b38c5446ccd895a" />
       <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c" />
+      <keyword name="setReadBufferSize" id="rlMailbox::setReadBufferSize" ref="classrlMailbox.html#abad375b04f72021d0102817272a99db6" />
+      <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#adb26388e87f0eff7ff481b902fd5adc0" />
+      <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a50146e483b907914627b2e6ac225f2ad" />
       <keyword name="clear" id="rlMailbox::clear" ref="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1" />
       <keyword name="rlSharedMemory" id="rlSharedMemory::rlSharedMemory" ref="classrlSharedMemory.html#a3e70ce386b12e4b08800578380605d59" />
       <keyword name="~rlSharedMemory" id="rlSharedMemory::~rlSharedMemory" ref="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5" />
@@ -6200,6 +6218,9 @@
       <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a85f5a7129838abdb0f2c92c6b3c2a303" />
       <keyword name="printf" id="rlMailbox::printf" ref="classrlMailbox.html#a248f342fca5464191b38c5446ccd895a" />
       <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c" />
+      <keyword name="setReadBufferSize" id="rlMailbox::setReadBufferSize" ref="classrlMailbox.html#abad375b04f72021d0102817272a99db6" />
+      <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#adb26388e87f0eff7ff481b902fd5adc0" />
+      <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a50146e483b907914627b2e6ac225f2ad" />
       <keyword name="clear" id="rlMailbox::clear" ref="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1" />
       <keyword name="buf" id="rlPPIClient::buf" ref="classrlPPIClient.html#afe8c5270de8d328c00cdbf8a2575a920" />
       <keyword name="status" id="rlMailbox::status" ref="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945" />
@@ -6457,6 +6478,9 @@
       <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a85f5a7129838abdb0f2c92c6b3c2a303" />
       <keyword name="printf" id="rlMailbox::printf" ref="classrlMailbox.html#a248f342fca5464191b38c5446ccd895a" />
       <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c" />
+      <keyword name="setReadBufferSize" id="rlMailbox::setReadBufferSize" ref="classrlMailbox.html#abad375b04f72021d0102817272a99db6" />
+      <keyword name="read" id="rlMailbox::read" ref="classrlMailbox.html#adb26388e87f0eff7ff481b902fd5adc0" />
+      <keyword name="write" id="rlMailbox::write" ref="classrlMailbox.html#a50146e483b907914627b2e6ac225f2ad" />
       <keyword name="clear" id="rlMailbox::clear" ref="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1" />
       <keyword name="buf" id="rlSiemensTCPClient::buf" ref="classrlSiemensTCPClient.html#a1a21541291393febe1ffb55ec6ece6f6" />
       <keyword name="status" id="rlMailbox::status" ref="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945" />

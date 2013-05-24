@@ -133,17 +133,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c">read</a>(<span class="keywordtype">void</span> *buf, <span class="keywordtype">int</span> maxlen, <span class="keywordtype">int</span> wait=<a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaeb9ee2f2655f5f8a3ea2b51c2c7a6cb8" title="wait parameter for read()">WAIT</a>);</div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1">clear</a>();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#abad375b04f72021d0102817272a99db6">setReadBufferSize</a>(<span class="keywordtype">int</span> size);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">   93</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">status</a>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">   98</a></span>&#160;  <span class="keywordtype">char</span> *<a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">name</a>;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc">  101</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc">chanid</a>;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;};</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c">read</a>(<span class="keywordtype">int</span> wait=<a class="code" href="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aaeb9ee2f2655f5f8a3ea2b51c2c7a6cb8" title="wait parameter for read()">WAIT</a>);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#a85f5a7129838abdb0f2c92c6b3c2a303">write</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *message);</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classrlMailbox.html#a4e7174ec8a8843184c25327947d8add1">clear</a>();</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">  114</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945">status</a>;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00119"></a><span class="lineno"><a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">  119</a></span>&#160;  <span class="keywordtype">char</span> *<a class="code" href="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147">name</a>;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="code" href="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc">  122</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#ab98d40d0eacc9da292b2ad70848969cc">chanid</a>;</div>
+<div class="line"><a name="l00123"></a><span class="lineno"><a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">  123</a></span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391">buffer_size</a>;</div>
+<div class="line"><a name="l00124"></a><span class="lineno"><a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">  124</a></span>&#160;  <span class="keywordtype">char</span> *<a class="code" href="classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e">buffer</a>;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;};</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

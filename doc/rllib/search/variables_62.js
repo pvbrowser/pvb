@@ -18,5 +18,7 @@ var searchData=
   ['bpdosize',['bPDOSize',['../structrlCanPDO.html#a9fb13edc3a4fc2341bf7bb907ab60106',1,'rlCanPDO']]],
   ['bprmfault',['bPrmFault',['../classrlCanOpenTypes.html#a2ee0f26e5c0cdfd0777feb20d9f3aebf',1,'rlCanOpenTypes']]],
   ['bsettings',['bSettings',['../classrlCanNode.html#abd96f746905b1de22f3a7209f75de00c',1,'rlCanNode']]],
-  ['buf',['buf',['../classrlBussignalDatabase.html#a2cd690e307de9fe861b71e9672e4f03a',1,'rlBussignalDatabase::buf()'],['../classrlPPIClient.html#afe8c5270de8d328c00cdbf8a2575a920',1,'rlPPIClient::buf()'],['../classrlSiemensTCPClient.html#a1a21541291393febe1ffb55ec6ece6f6',1,'rlSiemensTCPClient::buf()']]]
+  ['buf',['buf',['../classrlBussignalDatabase.html#a2cd690e307de9fe861b71e9672e4f03a',1,'rlBussignalDatabase::buf()'],['../classrlPPIClient.html#afe8c5270de8d328c00cdbf8a2575a920',1,'rlPPIClient::buf()'],['../classrlSiemensTCPClient.html#a1a21541291393febe1ffb55ec6ece6f6',1,'rlSiemensTCPClient::buf()']]],
+  ['buffer',['buffer',['../classrlMailbox.html#a2cd3e227d8da69a053e2837f0e7baa0e',1,'rlMailbox']]],
+  ['buffer_5fsize',['buffer_size',['../classrlMailbox.html#a3070ae872294b9fa8ab298d70c47d391',1,'rlMailbox']]]
 ];

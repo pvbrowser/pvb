@@ -81,6 +81,7 @@ var searchData=
   ['setpid_5ft1_5fsum',['setPID_T1_SUM',['../classrlController.html#aea7b7577fad00e1159827c0cb675eb6f',1,'rlController']]],
   ['setport',['setPort',['../classrlCanOpenClient.html#a570748e591fb7586c90668f40c782ef0',1,'rlCanOpenClient::setPort()'],['../classrlSocket.html#ac0b1f20c95c1135f9ae988640703a903',1,'rlSocket::setPort()']]],
   ['setpriority',['setPriority',['../classrlPcontrol.html#af48491051e00071767deb1dc9dfecc28',1,'rlPcontrol']]],
+  ['setreadbuffersize',['setReadBufferSize',['../classrlMailbox.html#abad375b04f72021d0102817272a99db6',1,'rlMailbox']]],
   ['setreadcallback',['setReadCallback',['../classrl3964R.html#aada2bc895ed6294527216a67832a4317',1,'rl3964R']]],
   ['setreaderrorcount',['setReadErrorCount',['../classrlDataAcquisitionProvider.html#a95c89ca080d659c8533f2a2a12e568cd',1,'rlDataAcquisitionProvider']]],
   ['setreference',['setReference',['../classrlController.html#aab32fe506e0a3fdc7354a504b3706d5e',1,'rlController']]],
