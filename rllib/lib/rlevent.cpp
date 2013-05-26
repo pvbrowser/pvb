@@ -52,14 +52,16 @@ void rlSetEventLocation(const char *file, int line)
 #ifdef RLWIN32
   const char *cptr;
 
-  cptr = strrchr(file,'\\');
+  if(strchr(file,'\\') == NULL) cptr = NULL
+  else                          cptr = strrchr(file,'\\');
   if(cptr != NULL) cptr++;
   else             cptr = file;
 #endif
 #ifdef __VMS
   const char *cptr;
 
-  cptr = strrchr(file,']');
+  if(strchr(file,']') == NULL) cptr = NULL
+  else                         cptr = strrchr(file,']');
   if(cptr != NULL) cptr++;
   else             cptr = file;
 #endif

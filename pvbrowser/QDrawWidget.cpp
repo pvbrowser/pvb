@@ -1977,7 +1977,7 @@ int pvSvgAnimator::update(int on_printer)
       buf = new char [strlen(current_line->line) + 4];
 #endif
       strcpy(buf,current_line->line);
-printf("%s\n",current_line->line);          
+//printf("%s\n",current_line->line);          
       if(foundw == 0 && strncmp(buf,"width",5) == 0)
       {
         if(opt.use_webkit_for_svg == 1)
@@ -2357,6 +2357,7 @@ for(int itest=0; ; itest++)
     sprintf(buf,"%s\"",tag);
     cptr = strchr(current_line->line,'=');
     if(cptr == NULL) return -1;
+    if(strchr(cptr,'\"') == NULL) return -1;;
     cptr++; cptr++;
     cptr2 = strrchr(cptr,'\"');
     if(cptr2 == NULL) return -1;
@@ -2376,6 +2377,7 @@ for(int itest=0; ; itest++)
   {
     cptr = strchr(current_line->line,'=');
     if(cptr == NULL) return -1;
+    if(strchr(cptr,'\"') == NULL) return -1;;
     cptr++; cptr++;
     cptr2 = strrchr(cptr,'\"');
     if(cptr2 == NULL) return -1;
@@ -2391,6 +2393,7 @@ for(int itest=0; ; itest++)
   {
     cptr = strchr(current_line->line,'=');
     if(cptr == NULL) return -1;
+    if(strchr(cptr,'\"') == NULL) return -1;;
     cptr++; cptr++;
     cptr2 = strrchr(cptr,'\"');
     if(cptr2 == NULL) return -1;
@@ -2508,6 +2511,7 @@ for(int itest=0; ; itest++)
         sprintf(buf,"%s\"",tag);
         cptr = strchr(current_line->line,'=');
         if(cptr == NULL) return -1;
+        if(strchr(cptr,'\"') == NULL) return -1;;
         cptr++; cptr++;
         cptr2 = strrchr(cptr,'\"');
         if(cptr2 == NULL) return -1;
@@ -2527,6 +2531,7 @@ for(int itest=0; ; itest++)
       {
         cptr = strchr(current_line->line,'=');
         if(cptr == NULL) return -1;
+        if(strchr(cptr,'\"') == NULL) return -1;;
         cptr++; cptr++;
         cptr2 = strrchr(cptr,'\"');
         if(cptr2 == NULL) return -1;
@@ -2542,6 +2547,7 @@ for(int itest=0; ; itest++)
       {
         cptr = strchr(current_line->line,'=');
         if(cptr == NULL) return -1;
+        if(strchr(cptr,'\"') == NULL) return -1;;
         cptr++; cptr++;
         cptr2 = strrchr(cptr,'\"');
         if(cptr2 == NULL) return -1;

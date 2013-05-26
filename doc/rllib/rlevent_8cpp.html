@@ -216,7 +216,7 @@ parameters:
 <pre>
 output the message
 </pre> 
-<p>Definition at line <a class="el" href="rlevent_8cpp_source.html#l00080">80</a> of file <a class="el" href="rlevent_8cpp_source.html">rlevent.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlevent_8cpp_source.html#l00082">82</a> of file <a class="el" href="rlevent_8cpp_source.html">rlevent.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="rlevent_8cpp.html#ad6f1cc799ae663d7af6c30f33fb78208">toEventLogServer</a>.<a class="code" href="classrlSocket.html#ac62c47d1bda3f11656cab24a31cbab4a">getPort</a>() &lt;= 0) <span class="keywordflow">return</span>;</div>
 <div class="line">  va_list ap;</div>
@@ -302,14 +302,16 @@ set the location where rlEvent is called
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line"></div>
-<div class="line">  cptr = strrchr(file,<span class="charliteral">&#39;\\&#39;</span>);</div>
+<div class="line">  <span class="keywordflow">if</span>(strchr(file,<span class="charliteral">&#39;\\&#39;</span>) == NULL) cptr = NULL</div>
+<div class="line">  <span class="keywordflow">else</span>                          cptr = strrchr(file,<span class="charliteral">&#39;\\&#39;</span>);</div>
 <div class="line">  <span class="keywordflow">if</span>(cptr != NULL) cptr++;</div>
 <div class="line">  <span class="keywordflow">else</span>             cptr = file;</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#ifdef __VMS</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line"></div>
-<div class="line">  cptr = strrchr(file,<span class="charliteral">&#39;]&#39;</span>);</div>
+<div class="line">  <span class="keywordflow">if</span>(strchr(file,<span class="charliteral">&#39;]&#39;</span>) == NULL) cptr = NULL</div>
+<div class="line">  <span class="keywordflow">else</span>                         cptr = strrchr(file,<span class="charliteral">&#39;]&#39;</span>);</div>
 <div class="line">  <span class="keywordflow">if</span>(cptr != NULL) cptr++;</div>
 <div class="line">  <span class="keywordflow">else</span>             cptr = file;</div>
 <div class="line"><span class="preprocessor">#endif</span></div>

@@ -241,13 +241,16 @@ QImage *Interpreter::readBmpFromSocket(int w, int h, char **d)
     if(cptr != NULL) *cptr = '\0';
     // cut off path begin
 #ifdef PVUNIX
-    cptr = strrchr(text,'/');
+    if(strchr(text,'/') == NULL)  cptr = NULL;
+    else                          cptr = strrchr(text,'/');
 #endif
 #ifdef __VMS
-    cptr = strrchr(text,']');
+    if(strchr(text,']') == NULL)  cptr = NULL;
+    else                          cptr = strrchr(text,']');
 #endif
 #ifdef PVWIN32
-    cptr = strrchr(text,'\\');
+    if(strchr(text,'\\') == NULL) cptr = NULL;
+    else                          cptr = strrchr(text,'\\');
 #endif
     if(cptr == NULL) cptr = &text[0];
     else             cptr++;
@@ -356,15 +359,19 @@ void Interpreter::setPath(const char *p)
 
   strcpy(path,p);
 #ifdef PVUNIX
+  if(strchr(p,'/') == NULL) return;
   cptr = strrchr(path,'/');
 #endif
 #ifdef __VMS
+  if(strchr(p,']') == NULL) return;
   cptr = strrchr(path,']');
 #endif
 #ifdef PVWIN32
+  if(strchr(p,'\\') == NULL) return;
   cptr = strrchr(path,'\\');
 #endif
 #ifdef USE_SYMBIAN
+  if(strchr(p,'\\') == NULL) return;
   cptr = strrchr(path,'\\');
 #endif
   if(cptr != NULL)

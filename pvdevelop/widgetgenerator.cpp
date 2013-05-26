@@ -1781,7 +1781,8 @@ static void getParams(char *id, char *parent, int *ival, char *text, char *cval)
       }
       else if(*cstart == '\"') // it might be the text
       {
-        cptr = strrchr(line,'\"');
+        if(strchr(line,'\"') == NULL) cptr = NULL;
+        else                          cptr = strrchr(line,'\"');
         if(cptr != NULL)
         {
           cptr++;
@@ -2028,7 +2029,7 @@ static int getWidget(FILE *fin, QWidget *root)
         if(isHorizontal(cval)) ori = Qt::Horizontal;
         else                   ori = Qt::Vertical;
       }
-      item = (QWidget *) new MySlider(&s, 0, ival[0], ival[1], ival[2], ival[3], (Qt::Orientation) ori, pw, id);;
+      item = (QWidget *) new MySlider(&s, 0, ival[0], ival[1], ival[2], ival[3], (Qt::Orientation) ori, pw, id);
       itemtype = TQSlider;
       item->setStatusTip("TQSlider:");
       iitem++;
@@ -2299,7 +2300,7 @@ static int getWidget(FILE *fin, QWidget *root)
       item->setObjectName(id);
       itemtype = TQwtWheel;
       item->setStatusTip("TQwtWheel:");
-      iitem++;;
+      iitem++;
     }
     else if(isCommand("pvQwtSlider(") == 1)
     {
@@ -2373,7 +2374,9 @@ static int getWidget(FILE *fin, QWidget *root)
       char *cptr = strchr(line,'\"');
       if(cptr != NULL)
       {
-        char *cptr2 = strrchr(cptr,'\"');
+        char *cptr2;
+        if(strchr(cptr,'\"') == NULL) cptr2 = NULL;
+        else                          cptr2 = strrchr(cptr,'\"');
         if(cptr2 != NULL)
         {
           cptr2++;
@@ -2823,7 +2826,8 @@ static int appendToolTip()
   char *cptr_begin, *cptr_end;
 
   cptr_begin = strchr(line,'\"');
-  cptr_end   = strrchr(line,'\"');
+  if(cptr_begin == NULL) cptr_end = NULL;
+  else                   cptr_end = strrchr(line,'\"');
   if(cptr_begin != NULL)
   {
     cptr_begin++;
@@ -2848,7 +2852,8 @@ static int appendWhatsThis()
   char *cptr_begin, *cptr_end;
 
   cptr_begin = strchr(line,'\"');
-  cptr_end   = strrchr(line,'\"');
+  if(cptr_begin == NULL) cptr_end = NULL;
+  else                   cptr_end = strrchr(line,'\"');
   if(cptr_begin != NULL)
   {
     cptr_begin++;

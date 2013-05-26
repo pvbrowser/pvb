@@ -296,9 +296,9 @@ static const char *pvFilename(const char *path)
 {
   const char *cptr;
 
-  if((cptr = strrchr(path,'/'))  != NULL) { cptr++; return cptr; }
-  if((cptr = strrchr(path,'\\')) != NULL) { cptr++; return cptr; }
-  if((cptr = strrchr(path,']'))  != NULL) { cptr++; return cptr; }
+  if(strchr(path,'/')  != NULL) { if((cptr = strrchr(path,'/'))  != NULL) { cptr++; return cptr; } }
+  if(strchr(path,'\\') != NULL) { if((cptr = strrchr(path,'\\')) != NULL) { cptr++; return cptr; } }
+  if(strchr(path,']')  != NULL) { if((cptr = strrchr(path,']'))  != NULL) { cptr++; return cptr; } }
   return path;
 }
 
@@ -4833,7 +4833,8 @@ glFont *font = NULL;
         else if(strncmp(line,"drawText(",9) == 0)
         {
           sscanf(line,"drawText(%f,%f", &x, &y);
-          cptr = strrchr(line,'\"');
+          if(strchr(line,'\"') == NULL) cptr = NULL;
+          else                          cptr = strrchr(line,'\"');
           if(cptr != NULL) *cptr = '\0';    // text termination
           cptr = strchr(line,'\"');
           if(cptr != NULL) cptr++;          // text begin

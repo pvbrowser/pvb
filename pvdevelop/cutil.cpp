@@ -1802,7 +1802,8 @@ get_args:
       }  
       else if(isText == 1)
       {
-        cptr = strrchr(cptrtemp,'\"');
+        if(strchr(cptrtemp,'\"') == NULL) cptr = NULL;
+        else                              cptr = strrchr(cptrtemp,'\"');
         if(cptr != NULL) 
         {
           *cptr = '\0';
