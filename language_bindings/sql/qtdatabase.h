@@ -50,7 +50,9 @@ class qtDatabase
     const char *dbRecordFieldValue(int x);
 
     int nextRecord();
-
+//    QString connectionName;
+//    char cN[50];
+    char connectionName[50];
     QSqlDatabase *db;
     QSqlQuery    *result;
     QSqlError    *error;
