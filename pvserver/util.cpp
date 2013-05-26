@@ -1203,6 +1203,10 @@ int i,ret;
   printf("pvserver_version %s\n", pvserver_version);
   ret = 0;
   pvInitInternal(p);
+  delete [] p->mytext;
+  p->mytext = NULL;
+  delete [] p->mytext2;
+  p->mytext2 = NULL;
   for(i=1; i<ac; i++)
   {
     if     (strncmp(av[i],"--h",3)                             == 0) { show_usage(); exit(0); }
