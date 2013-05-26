@@ -507,6 +507,7 @@ int pvThreadFatal(PARAM *p, const char *text)
   p->clipboard        = NULL;
   p->clipboard_length = 0;
   delete [] p->mytext;
+  delete [] p->mytext2;
   pvUnlink(p);
   if(p->cleanup != NULL) p->cleanup(p->app_data);
   //printf("Thread finished2: %s s=%d\n",text,p->s);
@@ -817,6 +818,7 @@ bind:
     }
     pvSocklen = sizeof(struct sockaddr);
     p->s = accept(p->os, &pvSockaddr, &pvSocklen);
+    printf("p->s = %d\n", p->s);
   }
 #ifdef AF_INET6_IS_AVAILABLE
   else if(rl_ipversion == 6)
