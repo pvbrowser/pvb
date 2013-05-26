@@ -349,6 +349,9 @@ QString dir;
 
 void Interpreter::setPath(const char *p)
 {
+#ifdef BROWSERPLUGIN
+  if(p == NULL) return;
+#else
   char *cptr;
 
   strcpy(path,p);
@@ -374,6 +377,7 @@ void Interpreter::setPath(const char *p)
     cptr = &path[0];
     while(*cptr != '\0') *cptr++ = '\0';
   }
+#endif  
 }
 
 void Interpreter::downloadFile(const char *file)

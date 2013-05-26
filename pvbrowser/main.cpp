@@ -30,7 +30,11 @@ extern OPT opt;
 void init(int ac, char **av)
 {
   setlocale(LC_NUMERIC, "C");
+#ifdef BROWSERPLUGIN
+  opt.arg_av0             = '\0';
+#else
   opt.arg_av0             = av[0];
+#endif
   opt.arg_debug           = 0;     // default command line args
   opt.arg_localini        = 0;
   opt.arg_ini[0]          = '\0';

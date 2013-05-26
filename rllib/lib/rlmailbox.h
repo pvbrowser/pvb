@@ -87,7 +87,7 @@ public:
 
   /*! <pre>
   read buffer from mailbox
-  return: buffer | NULL
+  return: buffer | ""
   wait = 0 no wait
   wait = 1 wait for message
   </pre> */
