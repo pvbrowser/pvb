@@ -9,6 +9,7 @@
 
 qtDatabase::qtDatabase()
 {
+  sprintf(connectionName,"%p",this); 
   db = NULL;
   result = new QSqlQuery();
   error  = new QSqlError();
@@ -16,12 +17,16 @@ qtDatabase::qtDatabase()
 
 qtDatabase::~qtDatabase()
 {
+  delete result;
+  delete error;
   if(db != NULL)
   {
     close();
   }
-  delete result;
-  delete error;
+  if(QSqlDatabase::contains(QString::fromAscii(connectionName))) 
+  {
+    QSqlDatabase::removeDatabase(QString::fromAscii(connectionName));
+  }
 }
 
 int qtDatabase::open(const char *dbtype, const char *hostname, const char *dbname, const char *user, const char *pass)
@@ -29,7 +34,7 @@ int qtDatabase::open(const char *dbtype, const char *hostname, const char *dbnam
   if(db != NULL) return -1;
   db = new QSqlDatabase;
 
-  *db = QSqlDatabase::addDatabase(dbtype);
+  *db = QSqlDatabase::addDatabase(dbtype, QString::fromAscii(connectionName));
   db->setHostName(hostname);
   db->setDatabaseName(dbname);
   db->setUserName(user);

@@ -50,6 +50,8 @@ class qtDatabase
     const char *dbRecordFieldValue(int x);
 
     int nextRecord();
+    
+    char connectionName[50]; 
 
     QSqlDatabase *db;
     QSqlQuery    *result;
