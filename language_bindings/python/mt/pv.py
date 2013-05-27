@@ -2546,6 +2546,9 @@ class qtDatabase(_object):
     def dbQuery(self, *args): return _pv.qtDatabase_dbQuery(self, *args)
     def dbRecordFieldValue(self, *args): return _pv.qtDatabase_dbRecordFieldValue(self, *args)
     def nextRecord(self): return _pv.qtDatabase_nextRecord(self)
+    __swig_setmethods__["connectionName"] = _pv.qtDatabase_connectionName_set
+    __swig_getmethods__["connectionName"] = _pv.qtDatabase_connectionName_get
+    if _newclass:connectionName = _swig_property(_pv.qtDatabase_connectionName_get, _pv.qtDatabase_connectionName_set)
     __swig_setmethods__["db"] = _pv.qtDatabase_db_set
     __swig_getmethods__["db"] = _pv.qtDatabase_db_get
     if _newclass:db = _swig_property(_pv.qtDatabase_db_get, _pv.qtDatabase_db_set)

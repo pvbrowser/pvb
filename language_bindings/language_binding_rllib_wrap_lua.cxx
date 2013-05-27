@@ -7679,6 +7679,114 @@ static int _wrap_rlMkdir(lua_State* L) {
 }
 
 
+static int _wrap_rlBitSet(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int *arg2 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlBitSet",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlBitSet",1,"int");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlBitSet",2,"int *");
+  arg1 = (int)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlBitSet",2,SWIGTYPE_p_int);
+  }
+  
+  result = (int)rlBitSet(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlBitClear(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int *arg2 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlBitClear",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlBitClear",1,"int");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlBitClear",2,"int *");
+  arg1 = (int)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlBitClear",2,SWIGTYPE_p_int);
+  }
+  
+  result = (int)rlBitClear(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlBitChange(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int *arg2 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlBitChange",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlBitChange",1,"int");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlBitChange",2,"int *");
+  arg1 = (int)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlBitChange",2,SWIGTYPE_p_int);
+  }
+  
+  result = (int)rlBitChange(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlBitTest(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int *arg2 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlBitTest",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlBitTest",1,"int");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlBitTest",2,"int *");
+  arg1 = (int)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlBitTest",2,SWIGTYPE_p_int);
+  }
+  
+  result = (int)rlBitTest(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_rlDataAcquisition__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -13148,7 +13256,7 @@ fail:
 }
 
 
-static int _wrap_rlMailbox_write(lua_State* L) {
+static int _wrap_rlMailbox_write__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   rlMailbox *arg1 = (rlMailbox *) 0 ;
   void *arg2 = (void *) 0 ;
@@ -13269,6 +13377,84 @@ fail:
 }
 
 
+static int _wrap_rlMailbox_setReadBufferSize(lua_State* L) {
+  int SWIG_arg = 0;
+  rlMailbox *arg1 = (rlMailbox *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("rlMailbox::setReadBufferSize",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlMailbox::setReadBufferSize",1,"rlMailbox *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlMailbox::setReadBufferSize",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlMailbox,0))){
+    SWIG_fail_ptr("rlMailbox_setReadBufferSize",1,SWIGTYPE_p_rlMailbox);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)(arg1)->setReadBufferSize(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlMailbox_read__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  rlMailbox *arg1 = (rlMailbox *) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlMailbox::read",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlMailbox::read",1,"rlMailbox *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlMailbox::read",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlMailbox,0))){
+    SWIG_fail_ptr("rlMailbox_read",1,SWIGTYPE_p_rlMailbox);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (char *)(arg1)->read(arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlMailbox_read__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  rlMailbox *arg1 = (rlMailbox *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlMailbox::read",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlMailbox::read",1,"rlMailbox *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlMailbox,0))){
+    SWIG_fail_ptr("rlMailbox_read",1,SWIGTYPE_p_rlMailbox);
+  }
+  
+  result = (char *)(arg1)->read();
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlMailbox_read(lua_State* L) {
   int argc;
   int argv[5]={
@@ -13276,6 +13462,39 @@ static int _wrap_rlMailbox_read(lua_State* L) {
   };
   
   argc = lua_gettop(L);
+  if (argc == 1) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlMailbox, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      return _wrap_rlMailbox_read__SWIG_3(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlMailbox, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rlMailbox_read__SWIG_2(L);
+      }
+    }
+  }
   if (argc == 3) {
     int _v;
     {
@@ -13343,7 +13562,100 @@ static int _wrap_rlMailbox_read(lua_State* L) {
   lua_pushstring(L,"Wrong arguments for overloaded function 'rlMailbox_read'\n"
     "  Possible C/C++ prototypes are:\n"
     "    rlMailbox::read(void *,int,int)\n"
-    "    rlMailbox::read(void *,int)\n");
+    "    rlMailbox::read(void *,int)\n"
+    "    rlMailbox::read(int)\n"
+    "    rlMailbox::read()\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlMailbox_write__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlMailbox *arg1 = (rlMailbox *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlMailbox::write",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlMailbox::write",1,"rlMailbox *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlMailbox::write",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlMailbox,0))){
+    SWIG_fail_ptr("rlMailbox_write",1,SWIGTYPE_p_rlMailbox);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->write((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlMailbox_write(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlMailbox, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rlMailbox_write__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlMailbox, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, 0, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlMailbox_write__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlMailbox_write'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlMailbox::write(void const *,int)\n"
+    "    rlMailbox::write(char const *)\n");
   lua_error(L);return 0;
 }
 
@@ -13484,9 +13796,10 @@ rlMailbox *arg1 = (rlMailbox *) obj;
 delete arg1;
 }
 static swig_lua_method swig_rlMailbox_methods[] = {
-    {"write", _wrap_rlMailbox_write}, 
     {"printf", _wrap_rlMailbox_printf}, 
+    {"setReadBufferSize", _wrap_rlMailbox_setReadBufferSize}, 
     {"read", _wrap_rlMailbox_read}, 
+    {"write", _wrap_rlMailbox_write}, 
     {"clear", _wrap_rlMailbox_clear}, 
     {0,0}
 };
@@ -14917,6 +15230,1394 @@ fail:
 }
 
 
+static int _wrap_rlModbus_readCoilStatus__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readCoilStatus",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readCoilStatus",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readCoilStatus",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readCoilStatus",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readCoilStatus",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readCoilStatus",5,"unsigned char *");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlModbus::readCoilStatus",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readCoilStatus",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlModbus_readCoilStatus",5,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)(arg1)->readCoilStatus(arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readCoilStatus__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readCoilStatus",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readCoilStatus",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readCoilStatus",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readCoilStatus",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readCoilStatus",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readCoilStatus",5,"unsigned char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readCoilStatus",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlModbus_readCoilStatus",5,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)(arg1)->readCoilStatus(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readCoilStatus(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlModbus_readCoilStatus__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_rlModbus_readCoilStatus__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_readCoilStatus'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::readCoilStatus(int,int,int,unsigned char *,int)\n"
+    "    rlModbus::readCoilStatus(int,int,int,unsigned char *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_readInputStatus__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readInputStatus",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readInputStatus",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readInputStatus",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readInputStatus",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readInputStatus",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readInputStatus",5,"unsigned char *");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlModbus::readInputStatus",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readInputStatus",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlModbus_readInputStatus",5,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)(arg1)->readInputStatus(arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readInputStatus__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readInputStatus",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readInputStatus",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readInputStatus",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readInputStatus",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readInputStatus",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readInputStatus",5,"unsigned char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readInputStatus",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlModbus_readInputStatus",5,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)(arg1)->readInputStatus(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readInputStatus(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlModbus_readInputStatus__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_rlModbus_readInputStatus__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_readInputStatus'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::readInputStatus(int,int,int,unsigned char *,int)\n"
+    "    rlModbus::readInputStatus(int,int,int,unsigned char *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_readHoldingRegisters__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readHoldingRegisters",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readHoldingRegisters",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readHoldingRegisters",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readHoldingRegisters",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readHoldingRegisters",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readHoldingRegisters",5,"int *");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlModbus::readHoldingRegisters",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readHoldingRegisters",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlModbus_readHoldingRegisters",5,SWIGTYPE_p_int);
+  }
+  
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)(arg1)->readHoldingRegisters(arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readHoldingRegisters__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readHoldingRegisters",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readHoldingRegisters",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readHoldingRegisters",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readHoldingRegisters",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readHoldingRegisters",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readHoldingRegisters",5,"int *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readHoldingRegisters",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlModbus_readHoldingRegisters",5,SWIGTYPE_p_int);
+  }
+  
+  result = (int)(arg1)->readHoldingRegisters(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readHoldingRegisters(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlModbus_readHoldingRegisters__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_rlModbus_readHoldingRegisters__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_readHoldingRegisters'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::readHoldingRegisters(int,int,int,int *,int)\n"
+    "    rlModbus::readHoldingRegisters(int,int,int,int *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_readInputRegisters__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readInputRegisters",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readInputRegisters",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readInputRegisters",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readInputRegisters",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readInputRegisters",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readInputRegisters",5,"int *");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlModbus::readInputRegisters",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readInputRegisters",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlModbus_readInputRegisters",5,SWIGTYPE_p_int);
+  }
+  
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)(arg1)->readInputRegisters(arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readInputRegisters__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::readInputRegisters",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::readInputRegisters",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::readInputRegisters",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::readInputRegisters",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::readInputRegisters",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::readInputRegisters",5,"int *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_readInputRegisters",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlModbus_readInputRegisters",5,SWIGTYPE_p_int);
+  }
+  
+  result = (int)(arg1)->readInputRegisters(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_readInputRegisters(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlModbus_readInputRegisters__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_rlModbus_readInputRegisters__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_readInputRegisters'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::readInputRegisters(int,int,int,int *,int)\n"
+    "    rlModbus::readInputRegisters(int,int,int,int *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_forceSingleCoil__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::forceSingleCoil",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::forceSingleCoil",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::forceSingleCoil",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::forceSingleCoil",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::forceSingleCoil",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rlModbus::forceSingleCoil",5,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_forceSingleCoil",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  result = (int)(arg1)->forceSingleCoil(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_forceSingleCoil__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::forceSingleCoil",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::forceSingleCoil",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::forceSingleCoil",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::forceSingleCoil",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::forceSingleCoil",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_forceSingleCoil",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)(arg1)->forceSingleCoil(arg2,arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_forceSingleCoil(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_rlModbus_forceSingleCoil__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_rlModbus_forceSingleCoil__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_forceSingleCoil'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::forceSingleCoil(int,int,int,int)\n"
+    "    rlModbus::forceSingleCoil(int,int,int)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_presetSingleRegister__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::presetSingleRegister",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::presetSingleRegister",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::presetSingleRegister",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::presetSingleRegister",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::presetSingleRegister",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rlModbus::presetSingleRegister",5,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_presetSingleRegister",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  result = (int)(arg1)->presetSingleRegister(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_presetSingleRegister__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::presetSingleRegister",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::presetSingleRegister",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::presetSingleRegister",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::presetSingleRegister",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::presetSingleRegister",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_presetSingleRegister",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)(arg1)->presetSingleRegister(arg2,arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_presetSingleRegister(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_rlModbus_presetSingleRegister__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_rlModbus_presetSingleRegister__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_presetSingleRegister'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::presetSingleRegister(int,int,int,int)\n"
+    "    rlModbus::presetSingleRegister(int,int,int)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_forceMultipleCoils__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::forceMultipleCoils",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::forceMultipleCoils",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::forceMultipleCoils",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::forceMultipleCoils",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::forceMultipleCoils",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::forceMultipleCoils",5,"unsigned char *");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlModbus::forceMultipleCoils",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_forceMultipleCoils",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlModbus_forceMultipleCoils",5,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)(arg1)->forceMultipleCoils(arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_forceMultipleCoils__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::forceMultipleCoils",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::forceMultipleCoils",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::forceMultipleCoils",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::forceMultipleCoils",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::forceMultipleCoils",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::forceMultipleCoils",5,"unsigned char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_forceMultipleCoils",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlModbus_forceMultipleCoils",5,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)(arg1)->forceMultipleCoils(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_forceMultipleCoils(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlModbus_forceMultipleCoils__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_rlModbus_forceMultipleCoils__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_forceMultipleCoils'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::forceMultipleCoils(int,int,int,unsigned char *,int)\n"
+    "    rlModbus::forceMultipleCoils(int,int,int,unsigned char *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlModbus_presetMultipleRegisters__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::presetMultipleRegisters",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",5,"int *");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_presetMultipleRegisters",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlModbus_presetMultipleRegisters",5,SWIGTYPE_p_int);
+  }
+  
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)(arg1)->presetMultipleRegisters(arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_presetMultipleRegisters__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlModbus *arg1 = (rlModbus *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int *arg5 = (int *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlModbus::presetMultipleRegisters",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",1,"rlModbus *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",4,"int");
+  if(!SWIG_isptrtype(L,5)) SWIG_fail_arg("rlModbus::presetMultipleRegisters",5,"int *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlModbus,0))){
+    SWIG_fail_ptr("rlModbus_presetMultipleRegisters",1,SWIGTYPE_p_rlModbus);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,5,(void**)&arg5,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlModbus_presetMultipleRegisters",5,SWIGTYPE_p_int);
+  }
+  
+  result = (int)(arg1)->presetMultipleRegisters(arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlModbus_presetMultipleRegisters(lua_State* L) {
+  int argc;
+  int argv[7]={
+    1,2,3,4,5,6,7
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              return _wrap_rlModbus_presetMultipleRegisters__SWIG_1(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlModbus, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              void *ptr;
+              if (SWIG_isptrtype(L,argv[4])==0 || SWIG_ConvertPtr(L,argv[4], (void **) &ptr, SWIGTYPE_p_int, 0)) {
+                _v = 0;
+              } else {
+                _v = 1;
+              }
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_rlModbus_presetMultipleRegisters__SWIG_0(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlModbus_presetMultipleRegisters'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlModbus::presetMultipleRegisters(int,int,int,int *,int)\n"
+    "    rlModbus::presetMultipleRegisters(int,int,int,int *)\n");
+  lua_error(L);return 0;
+}
+
+
 static void swig_delete_rlModbus(void *obj) {
 rlModbus *arg1 = (rlModbus *) obj;
 delete arg1;
@@ -14931,6 +16632,14 @@ static swig_lua_method swig_rlModbus_methods[] = {
     {"data2int", _wrap_rlModbus_data2int}, 
     {"int2data", _wrap_rlModbus_int2data}, 
     {"intsize", _wrap_rlModbus_intsize}, 
+    {"readCoilStatus", _wrap_rlModbus_readCoilStatus}, 
+    {"readInputStatus", _wrap_rlModbus_readInputStatus}, 
+    {"readHoldingRegisters", _wrap_rlModbus_readHoldingRegisters}, 
+    {"readInputRegisters", _wrap_rlModbus_readInputRegisters}, 
+    {"forceSingleCoil", _wrap_rlModbus_forceSingleCoil}, 
+    {"presetSingleRegister", _wrap_rlModbus_presetSingleRegister}, 
+    {"forceMultipleCoils", _wrap_rlModbus_forceMultipleCoils}, 
+    {"presetMultipleRegisters", _wrap_rlModbus_presetMultipleRegisters}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlModbus_attributes[] = {
@@ -23095,6 +24804,123 @@ static int _wrap_rlString___add(lua_State* L) {
 }
 
 
+static int _wrap_rlString___eq__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlString::operator ==",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlString::operator ==",1,"rlString *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlString::operator ==",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString___eq",1,SWIGTYPE_p_rlString);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->operator ==((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlString___eq__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  rlString *arg2 = 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlString::operator ==",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlString::operator ==",1,"rlString *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlString::operator ==",2,"rlString &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString___eq",1,SWIGTYPE_p_rlString);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString___eq",2,SWIGTYPE_p_rlString);
+  }
+  
+  result = (int)(arg1)->operator ==(*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlString___eq(lua_State* L) {
+  int argc;
+  int argv[3]={
+    1,2,3
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlString, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (lua_isuserdata(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_rlString, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_rlString___eq__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlString, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_rlString___eq__SWIG_0(L);
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlString___eq'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlString::operator ==(char const *)\n"
+    "    rlString::operator ==(rlString &)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_rlString_text(lua_State* L) {
   int SWIG_arg = 0;
   rlString *arg1 = (rlString *) 0 ;
@@ -23547,6 +25373,7 @@ delete arg1;
 }
 static swig_lua_method swig_rlString_methods[] = {
     {"__add", _wrap_rlString___add}, 
+    {"__eq", _wrap_rlString___eq}, 
     {"text", _wrap_rlString_text}, 
     {"setText", _wrap_rlString_setText}, 
     {"printf", _wrap_rlString_printf}, 
@@ -27568,6 +29395,10 @@ static const struct luaL_Reg swig_commands[] = {
     { "rlStartsWith", _wrap_rlStartsWith},
     { "rlStrMatch", _wrap_rlStrMatch},
     { "rlMkdir",_wrap_rlMkdir},
+    { "rlBitSet", _wrap_rlBitSet},
+    { "rlBitClear", _wrap_rlBitClear},
+    { "rlBitChange", _wrap_rlBitChange},
+    { "rlBitTest", _wrap_rlBitTest},
     { "rlEventInit", _wrap_rlEventInit},
     { "rlSetEventLocation", _wrap_rlSetEventLocation},
     { "rlEventPrintf", _wrap_rlEventPrintf},

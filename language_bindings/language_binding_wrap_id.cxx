@@ -36582,6 +36582,65 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_qtDatabase_connectionName_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  char temp2[50] ;
+  int res2 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:qtDatabase_connectionName_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_connectionName_set" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  res2 = SWIG_AsCharArray(obj1, temp2, 50);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "qtDatabase_connectionName_set" "', argument " "2"" of type '" "char [50]""'");
+  }
+  arg2 = reinterpret_cast< char * >(temp2);
+  if (arg2) memcpy(arg1->connectionName,arg2,50*sizeof(char));
+  else memset(arg1->connectionName,0,50*sizeof(char));
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_qtDatabase_connectionName_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:qtDatabase_connectionName_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_qtDatabase, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "qtDatabase_connectionName_get" "', argument " "1"" of type '" "qtDatabase *""'"); 
+  }
+  arg1 = reinterpret_cast< qtDatabase * >(argp1);
+  result = (char *)(char *) ((arg1)->connectionName);
+  {
+    size_t size = 50;
+    
+    while (size && (result[size - 1] == '\0')) --size;
+    
+    resultobj = SWIG_FromCharPtrAndSize(result, size);
+  }
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_qtDatabase_db_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   qtDatabase *arg1 = (qtDatabase *) 0 ;
@@ -37516,6 +37575,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"qtDatabase_dbQuery", _wrap_qtDatabase_dbQuery, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_dbRecordFieldValue", _wrap_qtDatabase_dbRecordFieldValue, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_nextRecord", _wrap_qtDatabase_nextRecord, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_connectionName_set", _wrap_qtDatabase_connectionName_set, METH_VARARGS, NULL},
+	 { (char *)"qtDatabase_connectionName_get", _wrap_qtDatabase_connectionName_get, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_db_set", _wrap_qtDatabase_db_set, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_db_get", _wrap_qtDatabase_db_get, METH_VARARGS, NULL},
 	 { (char *)"qtDatabase_result_set", _wrap_qtDatabase_result_set, METH_VARARGS, NULL},

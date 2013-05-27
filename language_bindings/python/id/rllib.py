@@ -527,6 +527,22 @@ rlStrMatch = _rllib.rlStrMatch
 def rlMkdir(*args):
   return _rllib.rlMkdir(*args)
 rlMkdir = _rllib.rlMkdir
+
+def rlBitSet(*args):
+  return _rllib.rlBitSet(*args)
+rlBitSet = _rllib.rlBitSet
+
+def rlBitClear(*args):
+  return _rllib.rlBitClear(*args)
+rlBitClear = _rllib.rlBitClear
+
+def rlBitChange(*args):
+  return _rllib.rlBitChange(*args)
+rlBitChange = _rllib.rlBitChange
+
+def rlBitTest(*args):
+  return _rllib.rlBitTest(*args)
+rlBitTest = _rllib.rlBitTest
 class rlDataAcquisition(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition, name, value)
@@ -963,9 +979,10 @@ class rlMailbox(_object):
         except: self.this = this
     __swig_destroy__ = _rllib.delete_rlMailbox
     __del__ = lambda self : None;
-    def write(self, *args): return _rllib.rlMailbox_write(self, *args)
     def printf(self, *args): return _rllib.rlMailbox_printf(self, *args)
+    def setReadBufferSize(self, *args): return _rllib.rlMailbox_setReadBufferSize(self, *args)
     def read(self, *args): return _rllib.rlMailbox_read(self, *args)
+    def write(self, *args): return _rllib.rlMailbox_write(self, *args)
     def clear(self): return _rllib.rlMailbox_clear(self)
     __swig_setmethods__["status"] = _rllib.rlMailbox_status_set
     __swig_getmethods__["status"] = _rllib.rlMailbox_status_get
@@ -1047,6 +1064,14 @@ class rlModbus(_object):
     __swig_setmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_set
     __swig_getmethods__["autoreconnectSocket"] = _rllib.rlModbus_autoreconnectSocket_get
     if _newclass:autoreconnectSocket = _swig_property(_rllib.rlModbus_autoreconnectSocket_get, _rllib.rlModbus_autoreconnectSocket_set)
+    def readCoilStatus(self, *args): return _rllib.rlModbus_readCoilStatus(self, *args)
+    def readInputStatus(self, *args): return _rllib.rlModbus_readInputStatus(self, *args)
+    def readHoldingRegisters(self, *args): return _rllib.rlModbus_readHoldingRegisters(self, *args)
+    def readInputRegisters(self, *args): return _rllib.rlModbus_readInputRegisters(self, *args)
+    def forceSingleCoil(self, *args): return _rllib.rlModbus_forceSingleCoil(self, *args)
+    def presetSingleRegister(self, *args): return _rllib.rlModbus_presetSingleRegister(self, *args)
+    def forceMultipleCoils(self, *args): return _rllib.rlModbus_forceMultipleCoils(self, *args)
+    def presetMultipleRegisters(self, *args): return _rllib.rlModbus_presetMultipleRegisters(self, *args)
 rlModbus_swigregister = _rllib.rlModbus_swigregister
 rlModbus_swigregister(rlModbus)
 
@@ -1531,6 +1556,8 @@ class rlString(_object):
     __del__ = lambda self : None;
     def __add__(self, *args): return _rllib.rlString___add__(self, *args)
     def __iadd__(self, *args): return _rllib.rlString___iadd__(self, *args)
+    def __eq__(self, *args): return _rllib.rlString___eq__(self, *args)
+    def __ne__(self, *args): return _rllib.rlString___ne__(self, *args)
     def text(self): return _rllib.rlString_text(self)
     def setText(self, *args): return _rllib.rlString_setText(self, *args)
     def printf(self, *args): return _rllib.rlString_printf(self, *args)

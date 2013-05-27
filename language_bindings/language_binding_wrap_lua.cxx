@@ -26934,6 +26934,63 @@ fail:
 }
 
 
+static int _wrap_qtDatabase_connectionName_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 ;
+  
+  SWIG_check_num_args("qtDatabase::connectionName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::connectionName",1,"qtDatabase *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("qtDatabase::connectionName",2,"char [50]");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_connectionName_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  {
+    if(arg2) {
+      strncpy((char*)arg1->connectionName, (const char *)arg2, 50-1);
+      arg1->connectionName[50-1] = 0;
+    } else {
+      arg1->connectionName[0] = 0;
+    }
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_connectionName_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::connectionName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::connectionName",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_connectionName_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (char *)(char *) ((arg1)->connectionName);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_qtDatabase_db_set(lua_State* L) {
   int SWIG_arg = 0;
   qtDatabase *arg1 = (qtDatabase *) 0 ;
@@ -27112,6 +27169,7 @@ static swig_lua_method swig_qtDatabase_methods[] = {
     {0,0}
 };
 static swig_lua_attribute swig_qtDatabase_attributes[] = {
+    { "connectionName", _wrap_qtDatabase_connectionName_get, _wrap_qtDatabase_connectionName_set},
     { "db", _wrap_qtDatabase_db_get, _wrap_qtDatabase_db_set},
     { "result", _wrap_qtDatabase_result_get, _wrap_qtDatabase_result_set},
     { "error", _wrap_qtDatabase_error_get, _wrap_qtDatabase_error_set},
