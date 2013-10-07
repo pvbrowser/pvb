@@ -44,7 +44,6 @@ const char pvserver_version[] = "4.7.5";
 
 #include <stdlib.h>
 #ifdef _WIN32
-#include <windows.h>
 #ifdef IS_OLD_MSVCPP
 #include <winsock.h>
 #else
@@ -52,9 +51,13 @@ const char pvserver_version[] = "4.7.5";
 //#warning  mingw does not have helpers modify mingw header in ws2tcpip.h
 #include <winsock2.h>
 #include <ws2tcpip.h>
+#include <windows.h>
+#include <iostream>
+#ifndef _GLIBCXX_GCC_GTHR_POSIX_H
 void WSAAPI freeaddrinfo(struct addrinfo*);
 int  WSAAPI getaddrinfo(const char*,const char*,const struct addrinfo*, struct addrinfo**);
 int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWORD,int);
+#endif
 //#undef AF_INET6_IS_AVAILABLE
 //#endif
 #endif

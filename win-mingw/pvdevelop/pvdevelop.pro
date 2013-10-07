@@ -1,8 +1,23 @@
-CONFIG       += uitools warn_on release                                    
+lessThan(QT_MAJOR_VERSION, 5) {
+  QT         += opengl svg webkit
+  CONFIG     += uitools warn_on release
+  LIBS       += $(MINGWDIR)/lib/libws2_32.a                                
+  LIBS       += $(MINGWDIR)/lib/libimm32.a                                 
+  LIBS       += $(MINGWDIR)/lib/libopengl32.a                              
+  LIBS       += $(MINGWDIR)/lib/libglu32.a                                 
+  LIBS       += $(MINGWDIR)/lib/libadvapi32.a                              
+}else{
+  QT         += uitools webkitwidgets widgets opengl svg webkit
+  CONFIG     += warn_on release
+  LIBS       += -lws2_32                                
+  LIBS       += -limm32                                
+  LIBS       += -lopengl32                              
+  LIBS       += -lglu32                                 
+  LIBS       += -ladvapi32                              
+}    
 DEFINES      += PVDEVELOP                                                  
 #DEFINES     += NO_QWT                                                     
 DEFINES      -= UNICODE                                                    
-QT           += opengl svg webkit                                          
 DEFINES      += "WINVER=0x0501"
 
 HEADERS       = ../../pvbrowser/webkit_ui_dlgtextbrowser.h \               
@@ -87,11 +102,6 @@ INCLUDEPATH  += ../../pvbrowser
 INCLUDEPATH  += ../../pvdevelop                                            
                                                                            
 LIBS         += ../../qwt/lib/libqwt.a                                     
-LIBS         += $(MINGWDIR)/lib/libws2_32.a                                
-LIBS         += $(MINGWDIR)/lib/libimm32.a                                 
-LIBS         += $(MINGWDIR)/lib/libopengl32.a                              
-LIBS         += $(MINGWDIR)/lib/libglu32.a                                 
-LIBS         += $(MINGWDIR)/lib/libadvapi32.a                              
                                                                            
 RESOURCES     = ../../pvdevelop/pvdevelop.qrc                              
 TARGET = pvdevelop                                                         

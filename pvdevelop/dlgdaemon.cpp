@@ -167,7 +167,7 @@ void dlgDaemon::load(QString name)
         form->textEdit->append("################################################");
         form->textEdit->append("shared_memory=/srv/automation/shm/siemens.shm");
         form->textEdit->append("mailbox=/srv/automation/mbx/siemens.mbx");
-        form->textEdit->append("# type := S7_200 | S7_300 | S7_400 | S5");
+        form->textEdit->append("# type := S7_200 | S7_300 | S7_400 | S5 | S7_1200 | LOGO");
         form->textEdit->append("slave=0 adr=192.168.1.101 type=S7_200 fetch_write=1 function=-1 rack_slot=-1");
         form->textEdit->append("slave=1 adr=192.168.1.102 type=S7_200 fetch_write=0 function=-1 rack_slot=-1");
         form->textEdit->append("idletime=50 milliseconds");

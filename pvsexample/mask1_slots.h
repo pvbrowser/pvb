@@ -21,6 +21,14 @@ static int slotInit(PARAM *p, DATA *d)
 {
   if(p == NULL || d == NULL) return -1;
   //memset(d,0,sizeof(DATA));
+  if(0)
+  {
+    pvHide(p,buttonRestroom); // switch on/off restroom support
+  }
+  else
+  {
+    pvSetPixmap(p,buttonRestroom,"restroom.png");
+  }
   pvPrintf(p,ID_TAB,"Welcome");
   pvSetIconViewItem(p,iconView1,"xchat.png","Chat");
   pvSetIconViewItem(p,iconView1,"kmplot.png","Plot");
@@ -43,6 +51,10 @@ static int slotNullEvent(PARAM *p, DATA *d)
 static int slotButtonEvent(PARAM *p, int id, DATA *d)
 {
   if(p == NULL || id == 0 || d == NULL) return -1;
+  if(id == buttonRestroom)
+  {
+    pvHyperlink(p,"pv://localhost:5051");
+  }
   return 0;
 }
 

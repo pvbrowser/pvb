@@ -38,7 +38,8 @@
 
 #include <QtCore/QVariant>
 #include <QtCore/QMutexLocker>
-#include <QtGui/QWidget>
+#include <QWidget>
+//#include <QtGui/QWidget>
 
 #ifdef Q_WS_X11
 #   include <X11/Xlib.h>

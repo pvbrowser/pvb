@@ -15,7 +15,12 @@ macx::LIBS          += ../rllib/lib/librllib.dylib
 macx::INCLUDEPATH   += ../rllib/lib
 
 win32-g++ {
-win32:LIBS        += $(PVBDIR)/win-mingw/bin/librllib.a $(MINGWDIR)/lib/libwsock32.a
+win32:LIBS        += $(PVBDIR)/win-mingw/bin/librllib.a 
+lessThan(QT_MAJOR_VERSION, 5) {
+  win32:LIBS        += $(MINGWDIR)/lib/libwsock32.a
+}else{
+  win32:LIBS        += -lws2_32
+}    
 win32:INCLUDEPATH += $(PVBDIR)/rllib/lib
 }
 else {

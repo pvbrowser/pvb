@@ -30,6 +30,7 @@ Provides:  librllib.so.1.0
 Requires:  libqt4
 Requires:  Mesa
 Requires:  libpng
+Requires:  libqwt5
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk

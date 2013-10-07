@@ -2362,7 +2362,14 @@ void Interpreter::interpretp(const char *command)
     get_text(command,text);
     printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
 #ifdef USE_ANDROID
-    qApp->beep();
+    if(QSound::isAvailable())
+    {
+      QSound::play(text);
+    }
+    else
+    {
+      qApp->beep();
+    }  
 #else
 #ifdef USE_SYMBIAN
     if(QSound::isAvailable())

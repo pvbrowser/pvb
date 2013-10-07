@@ -390,7 +390,7 @@ set the location where rlEvent is called
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">if</span>(strchr(file,<span class="charliteral">&#39;\\&#39;</span>) == NULL) cptr = NULL</div>
+<div class="line">  <span class="keywordflow">if</span>(strchr(file,<span class="charliteral">&#39;\\&#39;</span>) == NULL) cptr = NULL;</div>
 <div class="line">  <span class="keywordflow">else</span>                          cptr = strrchr(file,<span class="charliteral">&#39;\\&#39;</span>);</div>
 <div class="line">  <span class="keywordflow">if</span>(cptr != NULL) cptr++;</div>
 <div class="line">  <span class="keywordflow">else</span>             cptr = file;</div>
@@ -398,7 +398,7 @@ set the location where rlEvent is called
 <div class="line"><span class="preprocessor"></span><span class="preprocessor">#ifdef __VMS</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line"></div>
-<div class="line">  <span class="keywordflow">if</span>(strchr(file,<span class="charliteral">&#39;]&#39;</span>) == NULL) cptr = NULL</div>
+<div class="line">  <span class="keywordflow">if</span>(strchr(file,<span class="charliteral">&#39;]&#39;</span>) == NULL) cptr = NULL;</div>
 <div class="line">  <span class="keywordflow">else</span>                         cptr = strrchr(file,<span class="charliteral">&#39;]&#39;</span>);</div>
 <div class="line">  <span class="keywordflow">if</span>(cptr != NULL) cptr++;</div>
 <div class="line">  <span class="keywordflow">else</span>             cptr = file;</div>

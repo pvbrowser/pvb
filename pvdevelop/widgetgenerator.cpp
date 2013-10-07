@@ -52,8 +52,12 @@ QWidget *findChild(const char *item) // Yes I know: It's a dirty hack           
   //printf("findChild(%s)\n",item);
   QWidget *ret;
 #ifdef PVWIN32
+#if QT_VERSION < 0x050000    
   QString txt = item;
   ret = qFindChild<QWidget *>(theroot, txt);
+#else
+  ret = theroot->findChild<QWidget *>(item);
+#endif
 #else
   ret = theroot->findChild<QWidget *>(item);
 #endif

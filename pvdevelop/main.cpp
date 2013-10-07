@@ -160,7 +160,7 @@ void  perhapsDoAction()
   {
     gmodbus("modbusdaemon.mkmodbus");
 #ifdef PVUNIX
-    ret = system("g++ -c modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -pthread; g++ modbusdaemon.o /usr/lib/librllib.so -lpthread -o modbusdaemon");
+    ret = system("g++ -c modbusdaemon.cpp -o modbusdaemon.o -I/opt/pvb/rllib/lib  ; g++ modbusdaemon.o /usr/lib/librllib.so -lpthread -o modbusdaemon");
 #else
     ret = system("start pvb_make_modbusdaemon.bat");
 #endif
@@ -169,7 +169,7 @@ void  perhapsDoAction()
   {
     gsiemens("siemensdaemon.mksiemens");
 #ifdef PVUNIX
-    ret = system("g++ -c siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -pthread; g++ siemensdaemon.o /usr/lib/librllib.so -lpthread -o siemensdaemon");
+    ret = system("g++ -c siemensdaemon.cpp -o siemensdaemon.o -I/opt/pvb/rllib/lib  ; g++ siemensdaemon.o /usr/lib/librllib.so -lpthread -o siemensdaemon");
 #else
     ret = system("start pvb_make_siemensdaemon.bat");
 #endif
@@ -178,7 +178,7 @@ void  perhapsDoAction()
   {
     gppi("ppidaemon.mkppi");
 #ifdef PVUNIX
-    ret = system("g++ -c ppidaemon.cpp -o ppidaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -pthread; g++ ppidaemon.o /opt/pvb/rllib/lib/nodave.o /opt/pvb/rllib/lib/setport.o /usr/lib/librllib.so -lpthread -o ppidaemon");
+    ret = system("g++ -c ppidaemon.cpp -o ppidaemon.o -I/opt/pvb/rllib/lib  ; g++ ppidaemon.o /opt/pvb/rllib/lib/nodave.o /opt/pvb/rllib/lib/setport.o /usr/lib/librllib.so -lpthread -o ppidaemon");
 #else
     ret = system("start pvb_make_ppidaemon.bat");
 #endif

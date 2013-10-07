@@ -3500,7 +3500,9 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
   static QStyle *style = NULL;
   if(first)
   {
+#if QT_VERSION < 0x050000 
     style = new QWindowsStyle;
+#endif    
     first = 0;
   }  
 #endif

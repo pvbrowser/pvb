@@ -12,8 +12,13 @@ INCLUDEPATH  += ../../pvbrowser
 INCLUDEPATH  += ../../qwt/src                                              
 DEFINES      += BROWSERPLUGIN                                              
 DEFINES      -= UNICODE                                                    
-QT           += opengl svg webkit network                                  
-CONFIG       += uitools warn_on release                                    
+lessThan(QT_MAJOR_VERSION, 5) {
+  QT         += opengl svg webkit network
+  CONFIG     += uitools warn_on release                                    
+}else{
+  QT         += uitools webkitwidgets widgets opengl svg webkit network
+  CONFIG     += warn_on release                                    
+}    
 DEFINES      += "WINVER=0x0501"
 
 HEADERS       = ../../pvbrowser/mainwindow.h \                             

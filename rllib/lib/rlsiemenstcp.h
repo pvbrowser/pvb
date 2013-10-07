@@ -144,7 +144,8 @@ public:
     S7_400    = 3,
     S5        = 4,
     RACK_SLOT = 5,
-    S7_1200   = 6   // patch from user slammera from our forum (8 Nov 2012)
+    S7_1200   = 6,  // patch from user slammera from our forum (8 Nov 2012)
+    LOGO      = 7   // according to jjmg_engenharia from our forum (3 Sep 2013)
   };
   enum SiemensFunctionCodes
   {

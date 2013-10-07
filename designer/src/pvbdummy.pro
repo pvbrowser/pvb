@@ -4,6 +4,7 @@
 TEMPLATE        = lib
 TARGET          = pvbdummy 
 CONFIG         += release staticlib
+QT             += widgets
 
 HEADERS        += pvbdummy.h
 SOURCES        += pvbdummy.cpp

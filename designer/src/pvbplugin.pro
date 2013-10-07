@@ -8,7 +8,7 @@ DESTDIR          = ../plugins
 lessThan(QT_MAJOR_VERSION, 5) {
   CONFIG        += designer plugin release
 }else{
-  QT            += designer
+  QT            += designer widgets webkitwidgets
   CONFIG        += plugin release
 }
 target.path      = $$[QT_INSTALL_PLUGINS]/designer

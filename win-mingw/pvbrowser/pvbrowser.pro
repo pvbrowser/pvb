@@ -6,8 +6,15 @@
 #DEFINES       += NO_QWT                                                     
 DEFINES        -= UNICODE                                                    
 DEFINES        += "WINVER=0x0501"
-QT             += opengl svg webkit network                                  
-CONFIG         += uitools warn_on release                                    
+QT             += opengl                                  
+lessThan(QT_MAJOR_VERSION, 5) {
+  QT           += xml svg webkit network
+  CONFIG       += uitools warn_on release                                    
+}else{
+  QT           += uitools webkitwidgets widgets xml svg webkit network
+  CONFIG       += warn_on release                                    
+  LIBS         += -lws2_32
+}    
 QMAKE_CXXFLAGS += -mthreads
 QMAKE_LFLAGS   += -mthreads
 
@@ -46,11 +53,18 @@ SOURCES       = ../../pvbrowser/main.cpp \
 #INCLUDEPATH  += ../../qwt/include                                         
 INCLUDEPATH  += ../../qwt/src                                              
 LIBS         += ../../qwt/lib/libqwt.a                                     
+lessThan(QT_MAJOR_VERSION, 5) {
 LIBS         += $(MINGWDIR)/lib/libws2_32.a                                
 LIBS         += $(MINGWDIR)/lib/libimm32.a                                 
 LIBS         += $(MINGWDIR)/lib/libopengl32.a                              
 LIBS         += $(MINGWDIR)/lib/libglu32.a                                 
 LIBS         += $(MINGWDIR)/lib/libadvapi32.a                              
+}else{
+LIBS         += $(MINGWDIR)/lib/libbfd.a
+LIBS         += $(MINGWDIR)/lib/libiberty.a
+LIBS         += $(MINGWDIR)/lib/libmangle.a
+LIBS         += $(MINGWDIR)/lib/libopcodes.a
+}    
                                                                            
 ### begin USE_VTK #############################################            
 USE_VTK {                                                                  

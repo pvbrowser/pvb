@@ -67,7 +67,9 @@ int pvthread_create(pthread_t *tid, const pthread_attr_t *attr,
   HANDLE handle;
   unsigned long ThreadId;
   int dwStackSize = 0;
+#ifndef _GLIBCXX_GCC_GTHR_POSIX_H
   if(attr != NULL) dwStackSize = attr->__stacksize;
+#endif  
   handle = CreateThread( NULL,                    /* pointer to thread security attributes */
                          dwStackSize,             /* initial thread stack size, in bytes   */
  (LPTHREAD_START_ROUTINE)func,                    /* pointer to thread function            */

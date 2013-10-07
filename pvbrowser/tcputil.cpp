@@ -13,6 +13,10 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 **
 ****************************************************************************/
+#ifdef _WIN32
+#include "winsock2.h"
+#endif
+
 #include "pvdefine.h"
 #include "opt.h"
 
@@ -70,20 +74,23 @@ void *handle;
 #endif
 
 #ifdef PVWIN32
-#include <windows.h>
 #define RL_RTLD_LAZY 0
 HMODULE handle;
 #ifdef IS_OLD_MSVCPP
 #include "winsock.h"
+#include <windows.h>
 #else
 #if (_WIN32_WINNT < 0x0501)
 #warning mingw does not have ipv6 helpers modify mingw header in ws2tcpip.h
 #endif
 #include "winsock2.h"
+#include <windows.h>
 #include <ws2tcpip.h>
+#if QT_VERSION < 0x050000
 void WSAAPI freeaddrinfo(struct addrinfo*);
 int  WSAAPI getaddrinfo(const char*,const char*,const struct addrinfo*, struct addrinfo**);
 int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWORD,int);
+#endif
 //#undef AF_INET6_IS_AVAILABLE
 //#endif
 #endif

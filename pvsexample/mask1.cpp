@@ -13,10 +13,12 @@ enum {
   iconView1,
   welcomeLabel,
   helpLabel,
+  buttonRestroom,
   ID_END_OF_WIDGETS
 };
 
   static const char *toolTip[] = {
+  "",
   "",
   "",
   "",
@@ -28,7 +30,16 @@ enum {
   "",
   "",
   "",
+  "",
   ""};
+
+  static const int widgetType[ID_END_OF_WIDGETS+1] = {
+  0,
+  TQIconView,
+  TQLabel,
+  TQLabel,
+  TQPushButton,
+  -1 };
 
 static int generated_defineMask(PARAM *p)
 {
@@ -36,6 +47,7 @@ static int generated_defineMask(PARAM *p)
 
   if(p == NULL) return 1;
   w = h = depth = strcmp(toolTip[0],whatsThis[0]);
+  if(widgetType[0] == -1) return 1;
   if(w==h) depth=0; // fool the compiler
   pvStartDefinition(p,ID_END_OF_WIDGETS);
 
@@ -44,16 +56,23 @@ static int generated_defineMask(PARAM *p)
 
   pvQLabel(p,welcomeLabel,0);
   pvSetGeometry(p,welcomeLabel,20,10,500,25);
-  pvSetText(p,welcomeLabel,"Welcome to pvbrowser pvsexample");
+  pvSetText(p,welcomeLabel,pvtr("Welcome to pvbrowser pvsexample"));
   pvSetFont(p,welcomeLabel,"Sans Serif",18,1,1,0,0);
 
   pvQLabel(p,helpLabel,0);
   pvSetGeometry(p,helpLabel,20,40,265,30);
-  pvSetText(p,helpLabel,"Click on icon to see further masks ...");
+  pvSetText(p,helpLabel,pvtr("Click on icon to see further masks ..."));
+
+  pvQPushButton(p,buttonRestroom,0);
+  pvSetGeometry(p,buttonRestroom,545,15,130,40);
+  pvSetText(p,buttonRestroom,pvtr("Goto restroom"));
+  pvSetFont(p,buttonRestroom,"Sans Serif",10,0,0,0,0);
+  pvSetMinSize(p,buttonRestroom,0,40);
 
   pvQLayoutVbox(p,ID_MAIN_WIDGET,-1);
 
   pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,welcomeLabel,-1,-1);
+  pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,buttonRestroom,-1,-1);
   pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,helpLabel,-1,-1);
   pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,iconView1,-1,-1);
 
