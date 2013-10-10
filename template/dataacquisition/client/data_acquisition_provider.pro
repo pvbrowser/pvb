@@ -19,7 +19,7 @@ unix:INCLUDEPATH  += /opt/pvb/rllib/lib
 macx:LIBS         += /usr/lib/librllib.dylib
 macx:INCLUDEPATH  += /opt/pvb/rllib/lib
 
-win32:LIBS        += wsock32.lib imm32.lib advapi32.lib
+win32:LIBS        += -lws2_32 -limm32 -ladvapi32
 win32:LIBS        += $(PVBDIR)\win\bin\rllib.lib
 win32:INCLUDEPATH += $(PVBDIR)\rllib\lib
 

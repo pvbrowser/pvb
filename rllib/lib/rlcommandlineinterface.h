@@ -17,9 +17,9 @@
 #define _RL_COMMANDLINE_INTERFACE_H_
 
 #include "rldefine.h"
+#include "rlsocket.h"
 #include "rlserial.h"
 #include "rlspawn.h"
-#include "rlsocket.h"
 
 /*! <pre>
 Commandline interface that allows applications to communicate over pipe || socket || serial line || stdio .

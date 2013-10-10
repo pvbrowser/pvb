@@ -30,6 +30,8 @@
 #include <qlayout.h>
 #if QT_VERSION < 0x050000
 #include <qsound.h>
+#else
+#include <QSound>
 #endif
 #include <QKeyEvent>
 #include <QLabel>
@@ -2358,10 +2360,10 @@ void Interpreter::interpretp(const char *command)
   }
   else if(strncmp(command,"playSound(",10) == 0) // play a (WAV) sound
   {
-#if QT_VERSION < 0x050000
     get_text(command,text);
     printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
-#ifdef USE_ANDROID
+#if defined USE_ANDROID
+#define SOUND_HANDLED 1
     if(QSound::isAvailable())
     {
       QSound::play(text);
@@ -2370,8 +2372,8 @@ void Interpreter::interpretp(const char *command)
     {
       qApp->beep();
     }  
-#else
-#ifdef USE_SYMBIAN
+#elif defined  USE_SYMBIAN
+#define SOUND_HANDLED 1
     if(QSound::isAvailable())
     {
       QSound::play(text);
@@ -2379,8 +2381,11 @@ void Interpreter::interpretp(const char *command)
     else
     {
       qApp->beep();
-    }  
-#else
+    }
+#endif
+
+#ifndef SOUND_HANDLED
+#if QT_VERSION < 0x050000
     if(QSound::isAvailable())
     {
       QSound::play(text);
@@ -2403,12 +2408,9 @@ void Interpreter::interpretp(const char *command)
         qApp->beep();
       }      
     }
+#else    
+    QSound::play(text);
 #endif
-#endif
-
-#else
-  printf("WARNING: sound not ported to Qt5 yet\n");
-  qApp->beep();
 #endif
   }
   else if(strncmp(command,"popupMenu(",10) == 0) // open a popupMenu()

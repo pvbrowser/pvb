@@ -16,7 +16,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#define VERSION "4.7.5"
+#define VERSION "4.7.5 - Qt5.1.0"
 
 #include "interpreter.h"
 

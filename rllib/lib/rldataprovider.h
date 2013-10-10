@@ -17,8 +17,8 @@
 #define _RL_DATA_PROVIDER_H_
 
 #include "rldefine.h"
-#include "rlthread.h"
 #include "rlsocket.h"
+#include "rlthread.h"
 #include "rlinterpreter.h"
 
 /*! <pre>

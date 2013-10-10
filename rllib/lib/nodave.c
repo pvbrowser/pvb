@@ -22,6 +22,9 @@
  along with Libnodave; see the file COPYING.  If not, write to
  the Free Software Foundation, 675 Mass Ave, Cambridge, MA 02139, USA.  
 */
+#ifdef _WIN32
+#include <winsock2.h>
+#endif
 #include "nodave.h"
 #include <stdio.h>
 #include "log.h"

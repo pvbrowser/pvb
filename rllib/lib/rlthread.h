@@ -118,7 +118,8 @@ Mutex functions based on POSIX threads.
 class rlMutex
 {
 public:
-  rlMutex(const pthread_mutexattr_t *attr = NULL);
+  //rlMutex(const pthread_mutexattr_t *attr = NULL);
+  rlMutex(const void *attr = NULL);
   virtual ~rlMutex();
 
   /*! <pre>

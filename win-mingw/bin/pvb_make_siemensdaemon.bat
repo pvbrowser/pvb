@@ -1,3 +1,3 @@
-g++ siemensdaemon.cpp "%PVBDIR%\win-mingw\bin\librllib.a" "%MINGWDIR%\lib\libws2_32.a" "-I%PVBDIR%\rllib\lib" "%MINGWDIR%\lib\libadvapi32.a"  -static-libgcc -o siemensdaemon.exe 
+g++ siemensdaemon.cpp "%PVBDIR%\win-mingw\bin\librllib.a" -lws2_32 "-I%PVBDIR%\rllib\lib" -ladvapi32  -static-libgcc -o siemensdaemon.exe 
 pause                                                                                                                                                                  
 exit                                                                                                                                                                   

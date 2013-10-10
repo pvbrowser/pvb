@@ -247,9 +247,10 @@ int rlSerial::openDevice(const char *devicename, int speed, int block, int rtsct
   ret = SetCommConfig(hdl,&cc,sizeof(cc));
   if(ret == 0)
   {
-    printf("SetCommConfig ret=%d devicename=%s LastError=%d\n",ret,devicename,GetLastError());
+    printf("SetCommConfig ret=%d devicename=%s LastError=%ld\n",ret,devicename,GetLastError());
     return -1;
   }
+  if(block) return 0;
 #endif
 
 #ifdef RM3
@@ -421,17 +422,16 @@ int rlSerial::readChar()
 #endif
 
 #ifdef RLWIN32
-  BOOL ret;
   unsigned char buf[2];
   unsigned long len;
 
-  ret = ReadFile(
+  ReadFile(
                  hdl,  // handle of file to read
                  buf,  // pointer to buffer that receives data
                  1,    // number of bytes to read
                  &len, // pointer to number of bytes read
                  NULL  // pointer to structure for data
-                );
+          );
   if(len > 0)
   {
     if(trace == 1) printf("readChar %d\n",(int) buf[0]);
@@ -534,20 +534,19 @@ int rlSerial::readBlock(unsigned char *buf, int len, int timeout)
 #endif
 
 #ifdef RLWIN32
-  BOOL ret;
   unsigned long retlen;
 
   if(timeout >= 0) select(timeout);
-  ret = ReadFile(
+  ReadFile(
                  hdl,     // handle of file to read
                  buf,     // pointer to buffer that receives data
                  len,     // number of bytes to read
                  &retlen, // pointer to number of bytes read
                  NULL     // pointer to structure for data
-                );
+           );
   if(retlen > 0)
   {
-    if(trace == 1) printf("readBlock retlen=%d\n",retlen);
+    if(trace == 1) printf("readBlock retlen=%ld\n",retlen);
     return (int) retlen;
   }
   return -1;

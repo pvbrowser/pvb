@@ -8,17 +8,17 @@ copy language_binding_wrap.cxx        language_binding_wrap_lua.cxx
 copy language_binding_rllib_wrap.cxx  language_binding_rllib_wrap_lua.cxx
 
 cd lua\lua-5.1\src
-%qtdir%\bin\qmake src.pro
+qmake src.pro
 mingw32-make.exe
 cd ..\..\..
 
 cd lua\pvslua
-%qtdir%\bin\qmake pvslua.pro
+qmake pvslua.pro
 mingw32-make.exe
 mingw32-make.exe clean
 
 cd ..\pvapplua
-%qtdir%\bin\qmake pvapplua.pro
+qmake pvapplua.pro
 mingw32-make.exe
 mingw32-make.exe clean
 

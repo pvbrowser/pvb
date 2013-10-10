@@ -45,6 +45,7 @@ rlSpawn::~rlSpawn()
 int rlSpawn::spawn(const char *command)
 {
 #ifdef RLWIN32 
+  if(command) return -1;
   return -1;
 #else  
   int to_child[2],from_child[2],ret;
@@ -117,6 +118,8 @@ int rlSpawn::getchar()
 int rlSpawn::write(const char *buf, int len)
 {
 #ifdef RLWIN32
+  if(buf) return -1;
+  if(len) return -1;
   return -1;
 #else  
   if(toChild == NULL) return -1;
@@ -152,6 +155,7 @@ void rlSpawn::printAll()
 int rlSpawn::select(int timeout)
 {
 #ifdef RLWIN32
+  if(timeout) return -1;
   return -1;
 #else
   struct timeval timout;

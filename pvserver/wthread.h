@@ -24,20 +24,21 @@ Wrapper for posix threads (UNIX,VMS,windows)
 #ifndef _WTHREAD_H_
 #define _WTHREAD_H_
 
-#ifdef PVWIN32
-#include <iostream>
-#endif
-
 #include "processviewserver.h"
 
 #ifdef PVWIN32
-
+#define WTREAD_GNUC1 ( __GNUC__ * 1000 ) + __GNUC_MINOR__
+#if WTREAD_GNUC1 < 4008
+#define PVWIN32THREAD
+#endif
 #include <windows.h>
 #include <winbase.h>
+#endif
+
 #include <stddef.h>
 #include <string.h>
 
-#ifndef _GLIBCXX_GCC_GTHR_POSIX_H
+#ifdef PVWIN32THREAD
 #ifndef _WRAPTHREAD_
 #ifndef _RL_WTHREAD_H_
 typedef unsigned long int pthread_t;
@@ -66,17 +67,18 @@ typedef HANDLE pthread_mutex_t;
 typedef long             pthread_mutexattr_t;
 #endif
 #endif
-#endif
 
-#else  /* VMS or UNIX */
+#else  /* VMS or UNIX or new GCC on Windows*/
+#ifndef WIN_PTHREADS_H
 #include <pthread.h>
+#endif
 #endif /* end of MSWINDOWS */
 
 #ifndef _WRAPTHREAD_
 #ifndef _RL_WTHREAD_H_
 typedef struct
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   int    cmax;
   HANDLE hSemaphore;
 #else

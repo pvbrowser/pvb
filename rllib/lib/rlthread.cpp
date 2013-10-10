@@ -82,9 +82,14 @@ int rlThread::cancel()
 }
 
 //------------ class rlMutex ----------------------------------------------
-rlMutex::rlMutex(const pthread_mutexattr_t *attr)
+//rlMutex::rlMutex(const pthread_mutexattr_t *attr)
+//{
+//  rlwthread_mutex_init(&mutex, attr);
+//}
+
+rlMutex::rlMutex(const void *attr)
 {
-  rlwthread_mutex_init(&mutex, attr);
+  rlwthread_mutex_init(&mutex, (const pthread_mutexattr_t *) attr);
 }
 
 rlMutex::~rlMutex()

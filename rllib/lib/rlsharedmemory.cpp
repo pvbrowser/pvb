@@ -242,14 +242,14 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
 
 #ifdef RLWIN32
   HANDLE hShmem;
-  int file_existed;
+  //int file_existed;
 
   status  = OK;
   name = new char[strlen(shmname)+1];
   strcpy(name,shmname);
   size    = Size + sizeof(HANDLE); // sizeof(*mutex);
 
-  file_existed = 1;
+  //file_existed = 1;
   hSharedFile = CreateFile(name,
                      GENERIC_READ | GENERIC_WRITE,
                      FILE_SHARE_READ | FILE_SHARE_WRITE,
@@ -260,7 +260,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
                      );
   if(hSharedFile ==  INVALID_HANDLE_VALUE)
   {
-    file_existed = 0;
+    //file_existed = 0;
     hSharedFile = CreateFile(name,
                        GENERIC_READ | GENERIC_WRITE,
                        FILE_SHARE_READ | FILE_SHARE_WRITE,

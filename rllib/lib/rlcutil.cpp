@@ -504,7 +504,8 @@ static int get_iexplore(char *buf)
 static int mysystem(const char *command)
 {
   int ret;
-  STARTUPINFOA        si = { sizeof(si)};
+  STARTUPINFOA        si; //  = { sizeof(si)};
+  si.cb = sizeof(si);
   PROCESS_INFORMATION pi;
   char cmd[4096];
 
@@ -764,6 +765,7 @@ int rlMkdir(const char *dir, int mode)
 #ifdef RLWIN32
   int ret = CreateDirectoryA(dir,NULL);
   if(ret) return 0;
+  if(mode) return -1;
   return -1;
 #else
   return mkdir(dir, mode);

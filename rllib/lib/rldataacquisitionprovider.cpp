@@ -83,7 +83,7 @@ int rlDataAcquisitionProvider::readItemList(const char *filename)
   ilong = sharedMemorySize - sizeof(SHM_HEADER);
   if(ilong < numItems*delta_index)
   {
-    printf("rlDataAcquisitionProvider::shared memmory is too small sharedMemorySize=%ld sizeNeeded=%ld\n", sharedMemorySize, numItems*delta_index + sizeof(SHM_HEADER));
+    printf("rlDataAcquisitionProvider::shared memmory is too small sharedMemorySize=%ld sizeNeeded=%d\n", sharedMemorySize, (int) (numItems*delta_index + sizeof(SHM_HEADER)));
     return DAQ_PROVIDER_ERROR;
   }
   i = 0;

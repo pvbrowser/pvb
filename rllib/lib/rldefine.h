@@ -19,6 +19,16 @@ The header that is included in every file of rllib.
 #ifndef _RL_DEFINE_H_
 #define _RL_DEFINE_H_
 
+// define WIN
+#ifdef _WIN32
+#define RLWIN32
+#include <winsock2.h>
+#include <windows.h>
+#define WTHREAD_GNUC0 ( __GNUC__ * 1000 ) + __GNUC_MINOR__
+#if WTHREAD_GNUC0 >= 4008
+#endif
+#endif
+
 // we always use this and are very lazy
 #include <stdio.h>
 #include <stdlib.h>
@@ -32,11 +42,6 @@ The header that is included in every file of rllib.
 #endif
 #ifdef unix
 #define RLUNIX
-#endif
-
-// define WIN
-#ifdef _WIN32
-#define RLWIN32
 #endif
 
 #define rl_PRINTF_LENGTH             4096

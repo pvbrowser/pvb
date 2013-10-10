@@ -322,12 +322,13 @@ int rlEIBnetIP::printTelegram(EIB_TEL *tel)
 int rlEIBnetIP::storeInProvider(EIB_TEL *tel)
 {
   if(provider == NULL || tel == NULL) return -1;
-  int s1,s2,s3,d1,d2,d3,val,length;
+  //int s1,s2,s3;
+  int d1,d2,d3,val,length;
   char name[128], value[128];
 
-  s1 = tel->saddr/(8*256);
-  s2 = (tel->saddr/256) & 0x0ff;
-  s3 = tel->saddr & 0x0ff;
+  //s1 = tel->saddr/(8*256);
+  //s2 = (tel->saddr/256) & 0x0ff;
+  //s3 = tel->saddr & 0x0ff;
   d1 = tel->daddr/(8*256);
   d2 = (tel->daddr/256) & 0x0ff;
   d3 = tel->daddr & 0x0ff;
@@ -476,7 +477,6 @@ int rlEIBnetIP::connect()
   if(debug) ::printf("rlEIBnetIP()::connect()\n");
   PDU pdu,response;
   unsigned char cricrd[EIB_CRICRDSIZE];
-  int ret = 0;
 
   if(is_connected == 1)
   {
@@ -500,7 +500,7 @@ int rlEIBnetIP::connect()
   is_connected = 0;
 
   rlUdpSocket::sendto(&pdu, ntohs(pdu.totalsize), server);
-  ret = recv(&response, sizeof(PDU));
+  recv(&response, sizeof(PDU));
 
   if(ntohs(response.servicetype) == CONNECT_RESPONSE)
   {
@@ -745,7 +745,7 @@ unsigned int rlEIBnetIP::valueUnsigned(const char *name)
 int rlEIBnetIP::getText(const char *name, char *text, int maxlen)
 {
   if(name == NULL || text == NULL || maxlen <= 0) return rlEIBnetIP::EIBERROR;
-  unsigned int a1,a2,a3,length;
+  unsigned int a1,a2,a3; //,length;
   int j;
   const char *cptr;
   char buf[16];
@@ -772,7 +772,7 @@ int rlEIBnetIP::getText(const char *name, char *text, int maxlen)
     if(memptr[i].daddr == tel.daddr)
     {
       thread.lock();
-      length = memptr[i].apci_length;
+      //length = memptr[i].apci_length;
       for(j=0; j<14; j++) buf[j] = memptr[i].val[j];
       buf[14] = '\0';
       j = 0;

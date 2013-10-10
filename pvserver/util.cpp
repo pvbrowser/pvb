@@ -53,7 +53,8 @@ const char pvserver_version[] = "4.7.5";
 #include <ws2tcpip.h>
 #include <windows.h>
 #include <iostream>
-#ifndef _GLIBCXX_GCC_GTHR_POSIX_H
+#define WTREAD_GNUC3 ( __GNUC__ * 1000 ) + __GNUC_MINOR__
+#if WTREAD_GNUC3 < 4008
 void WSAAPI freeaddrinfo(struct addrinfo*);
 int  WSAAPI getaddrinfo(const char*,const char*,const struct addrinfo*, struct addrinfo**);
 int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWORD,int);
@@ -172,6 +173,8 @@ static int pvinet_ntop(int af,const unsigned char *p, char *adr, socklen_t len)
   //InetNtop (AF_INET6,p,adr,len);
   sprintf(adr,"%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x",
   p[0],p[1],p[2],p[3],p[4],p[5],p[6],p[7],p[8],p[9],p[10],p[11],p[12],p[13],p[14],p[15]);
+  if(af) return 0;
+  if(len) return 0;
 #else
   inet_ntop(af,p,adr,len);
 #endif
@@ -1204,6 +1207,9 @@ int pvInit(int ac, char **av, PARAM *p)
 int i,ret;
 
   printf("pvserver_version %s\n", pvserver_version);
+#ifdef PVWIN32  
+  printf("serverlib.a was build with MinGW 4.8.2\n");
+#endif  
   ret = 0;
   pvInitInternal(p);
   delete [] p->mytext;
@@ -6997,7 +7003,8 @@ int pvsystem(const char *command)
 {
 #ifdef PVWIN32
   int ret;
-  STARTUPINFO         si = { sizeof(si)};
+  STARTUPINFO         si; // = { sizeof(si)};
+  si.cb = sizeof(si);
   PROCESS_INFORMATION pi;
   char cmd[4096];
 

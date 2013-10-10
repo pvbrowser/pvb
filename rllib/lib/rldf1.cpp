@@ -55,8 +55,8 @@ class df1Buffer
         unsigned int len;
         unsigned char *dat;
     public:    
-        const unsigned int length() const {return len;}
-        const unsigned char *data() const {return dat;}
+        unsigned int length() {return len;}
+        unsigned char *data() {return dat;}
         unsigned int write( unsigned char c);
         unsigned int writeDLE( unsigned char c);
         unsigned char& operator [] (unsigned int pos);

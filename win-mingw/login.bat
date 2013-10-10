@@ -8,16 +8,11 @@ rem set directories for needed tools
 rem directories where qt and mingw are installed
 
 rem ### for qt4.8.2 ###
-rem SET QTDIR=C:\Qt\4.8.2
-rem SET QTBIN=C:\Qt\4.8.2\bin
+rem SET    QTDIR=C:\Qt\4.8.2
 rem SET MINGWDIR=C:\mingw
-rem SET MINGWBIN=C:\mingw\bin
-rem ### for qt5 ###
-SET    QTDIR=C:\Qt\5.1.0
-SET  QTMINGW=C:\Qt\5.1.0\5.1.0\mingw48_32
-SET    QTBIN=C:\Qt\5.1.0\5.1.0\mingw48_32\bin
+rem ### for qt5.1.0 ###
+SET    QTDIR=C:\Qt\5.1.0\5.1.0\mingw48_32
 SET MINGWDIR=C:\Qt\5.1.0\Tools\mingw48_32
-SET MINGWBIN=C:\Qt\5.1.0\Tools\mingw48_32\bin
 
 rem tools necessary for language bindings
 SET SWIGDIR=Z:\win\swigwin-1.3.33
@@ -31,8 +26,7 @@ z:
 cd  %PVBDIR%\win-mingw
 
 rem setup path variables
-rem SET PATH=%PVBDIR%\win-mingw\bin;%MINGWDIR%\bin;%QTDIR%\bin;%PATH%
-SET PATH=%PVBDIR%\win-mingw\bin;%MINGWBIN%;%QTBIN%;c:\windows;c:\windows\system32
+SET PATH=%PVBDIR%\win-mingw\bin;%MINGWDIR%\bin;%QTDIR%\bin;c:\windows;c:\windows\system32
 SET PYTHONPATH=%PVBDIR%\win-mingw\bin;%PYTHONPATH%
 
 echo The following has been set:

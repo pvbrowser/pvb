@@ -44,7 +44,7 @@ Wrapper for posix threads (UNIX,VMS,windows)
 /***************************************/
 int pvthread_attr_init(pthread_attr_t *attr)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   memset(attr,0,sizeof(pthread_attr_t));
   return 0;
 #else
@@ -63,13 +63,11 @@ int pvthread_attr_init(pthread_attr_t *attr)
 int pvthread_create(pthread_t *tid, const pthread_attr_t *attr,
                       void *(*func)(void*), void *arg)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   HANDLE handle;
   unsigned long ThreadId;
   int dwStackSize = 0;
-#ifndef _GLIBCXX_GCC_GTHR_POSIX_H
   if(attr != NULL) dwStackSize = attr->__stacksize;
-#endif  
   handle = CreateThread( NULL,                    /* pointer to thread security attributes */
                          dwStackSize,             /* initial thread stack size, in bytes   */
  (LPTHREAD_START_ROUTINE)func,                    /* pointer to thread function            */
@@ -87,7 +85,7 @@ int pvthread_create(pthread_t *tid, const pthread_attr_t *attr,
 
 void pvthread_close_handle(pthread_t *tid)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   CloseHandle((HANDLE) *tid);
 #else
   if(tid == NULL) tid = NULL;
@@ -102,7 +100,7 @@ void pvthread_close_handle(pthread_t *tid)
 /**************************************************************/
 void pvthread_exit(void *status)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   DWORD *ptr;
   ptr = (DWORD *) status;
   if(status == NULL) ExitThread((DWORD) 0);
@@ -120,7 +118,7 @@ void pvthread_exit(void *status)
 /************************************/
 int pvthread_join(pthread_t tid, void **status)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   DWORD exitcode;
   while(1)
   {
@@ -141,7 +139,7 @@ int pvthread_join(pthread_t tid, void **status)
 int pvthread_mutex_init(pthread_mutex_t *mptr,
                           const pthread_mutexattr_t *attr)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   HANDLE handle = CreateMutex(NULL, FALSE, NULL);
   if(handle)
     *mptr = handle;
@@ -162,7 +160,7 @@ int pvthread_mutex_init(pthread_mutex_t *mptr,
 /**************************/
 int pvthread_mutex_destroy(pthread_mutex_t *mptr)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   CloseHandle(*mptr);
   //old DeleteCriticalSection(mptr);
   return 0;
@@ -177,7 +175,7 @@ int pvthread_mutex_destroy(pthread_mutex_t *mptr)
 /**************************/
 int pvthread_mutex_lock(pthread_mutex_t *mptr)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   if(WaitForSingleObject(*mptr, INFINITE) == WAIT_OBJECT_0)
     return 0;
   else
@@ -196,7 +194,7 @@ int pvthread_mutex_lock(pthread_mutex_t *mptr)
 /* return !0 if lock sucessfull */
 /********************************/
 
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
 WINBASEAPI
 BOOL
 WINAPI
@@ -207,7 +205,7 @@ TryEnterCriticalSection(
 
 int pvthread_mutex_trylock(pthread_mutex_t *mptr)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   DWORD ret;
 
   ret = WaitForSingleObject(*mptr, 0);
@@ -233,7 +231,7 @@ int pvthread_mutex_trylock(pthread_mutex_t *mptr)
 /**************************/
 int pvthread_mutex_unlock(pthread_mutex_t *mptr)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   ReleaseMutex(*mptr);
   //old LeaveCriticalSection(mptr);
   return 0;
@@ -248,7 +246,7 @@ int pvthread_mutex_unlock(pthread_mutex_t *mptr)
 /**************************/
 int pvthread_cancel(pthread_t tid)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
   return (int) CloseHandle((HANDLE) tid);
 #else
   return pthread_cancel(tid);
@@ -264,7 +262,7 @@ int pvthread_cancel(pthread_t tid)
 int pvinit_semaphore(WSEMAPHORE *s, int cmax)
 {
 /* Create a semaphore with initial count=0 max. counts of cmax. */
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
 
   s->cmax = cmax;
   s->hSemaphore = CreateSemaphore( 
@@ -295,7 +293,7 @@ int pvinit_semaphore(WSEMAPHORE *s, int cmax)
 int pvincrement_semaphore(WSEMAPHORE *s)
 {
 /* Increment the count of the semaphore. */
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
 
   if(!ReleaseSemaphore( 
         s->hSemaphore,  /* handle of semaphore */
@@ -325,7 +323,7 @@ int pvincrement_semaphore(WSEMAPHORE *s)
 /*********************************************************************************/
 int pvwait_semaphore(WSEMAPHORE *s)
 {
-#ifdef PVWIN32
+#ifdef PVWIN32THREAD
 
   int ret;
   ret = WaitForSingleObject( 

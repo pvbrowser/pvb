@@ -29,6 +29,15 @@ Wrapper for posix threads (UNIX,VMS,windows)
 #include "rldefine.h"
 
 #ifdef RLWIN32
+#define WTREAD_GNUC10 ( __GNUC__ * 1000 ) + __GNUC_MINOR__
+#if WTREAD_GNUC5 < 4008
+#define RLWIN32THREAD
+#else
+#include <pthread.h>
+#endif
+#endif
+
+#ifdef RLWIN32THREAD
 
 #include <windows.h>
 #include <winbase.h>
@@ -64,15 +73,17 @@ typedef long             pthread_mutexattr_t;
 #endif
 #endif
 
-#else  /* VMS or UNIX */
+#else  /* VMS or UNIX or new GCC on Windows*/
+#ifndef WIN_PTHREADS_H
 #include <pthread.h>
+#endif
 #endif /* end of MSWINDOWS */
 
 #ifndef _WRAPTHREAD_
 #ifndef _WTHREAD_H_
 typedef struct
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   int    cmax;
   HANDLE hSemaphore;
 #else

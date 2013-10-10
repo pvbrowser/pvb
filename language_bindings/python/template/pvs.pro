@@ -30,7 +30,11 @@ macx:LIBS          += /usr/lib/librllib.dylib
 macx:INCLUDEPATH   += /opt/pvb/rllib/lib
 
 win32-g++ {
+lessThan(QT_MAJOR_VERSION, 5) {
 win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(PYDIR)/libs/libpython25.a
+}else{
+win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a -lws2_32 $(PYDIR)/libs/libpython25.a
+}    
 win32:INCLUDEPATH  += $(PVBDIR)/pvserver
 win32:INCLUDEPATH  += $(PYDIR)/include
 win32:LIBS         += $(PVBDIR)/win-mingw/bin/lib_pv.a 

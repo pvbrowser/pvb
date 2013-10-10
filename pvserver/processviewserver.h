@@ -21,6 +21,14 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
+// define WIN
+#ifdef _WIN32
+#define PVWIN32
+#include <winsock2.h>
+#include <windows.h>
+#define RL_RTLD_LAZY 0
+#endif
+
 //*** define platform *************************
 // define unix if not already defined
 #ifdef __unix__
@@ -32,13 +40,6 @@
 #define PVUNIX
 #include <dlfcn.h>
 #define RL_RTLD_LAZY RTLD_LAZY
-#endif
-
-// define WIN
-#ifdef _WIN32
-#define PVWIN32
-#include <windows.h>
-#define RL_RTLD_LAZY 0
 #endif
 //*********************************************
 

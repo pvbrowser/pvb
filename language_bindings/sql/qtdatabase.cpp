@@ -23,10 +23,17 @@ qtDatabase::~qtDatabase()
   {
     close();
   }
+#if QT_VERSION < 0x050000
   if(QSqlDatabase::contains(QString::fromAscii(connectionName))) 
   {
     QSqlDatabase::removeDatabase(QString::fromAscii(connectionName));
   }
+#else
+  if(QSqlDatabase::contains(QString::fromLatin1(connectionName))) 
+  {
+    QSqlDatabase::removeDatabase(QString::fromLatin1(connectionName));
+  }
+#endif  
 }
 
 int qtDatabase::open(const char *dbtype, const char *hostname, const char *dbname, const char *user, const char *pass)
@@ -34,7 +41,11 @@ int qtDatabase::open(const char *dbtype, const char *hostname, const char *dbnam
   if(db != NULL) return -1;
   db = new QSqlDatabase;
 
+#if QT_VERSION < 0x050000
   *db = QSqlDatabase::addDatabase(dbtype, QString::fromAscii(connectionName));
+#else
+  *db = QSqlDatabase::addDatabase(dbtype, QString::fromLatin1(connectionName));
+#endif
   db->setHostName(hostname);
   db->setDatabaseName(dbname);
   db->setUserName(user);

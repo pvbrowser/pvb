@@ -573,7 +573,8 @@ int rlSvgAnimator::setMatrix(const char *objectname, float sx, float alpha, floa
   // a21 a22 a23
   // a31 a32 a33
 
-  float a11, a12, a13, a21, a22, a23, a31, a32, a33, cx, cy;
+  float a11, a12, a13, a21, a22, a23; // a31, a32, a33;
+  float cx, cy;
 
   isModified = 1;
   cx = cx_in + x0;
@@ -585,9 +586,9 @@ int rlSvgAnimator::setMatrix(const char *objectname, float sx, float alpha, floa
   a21 = sx*((float) sin(alpha));
   a22 = sx*((float) cos(alpha));
   a23 = (x0 - cx)*((float) sin(alpha)) + (y0 - cy)*((float) cos(alpha)) + cy;
-  a31 = 0.0f;
-  a32 = 0.0f;
-  a33 = 1.0f;
+  //a31 = 0.0f;
+  //a32 = 0.0f;
+  //a33 = 1.0f;
 
   return svgPrintf(objectname,"transform=","matrix(%f,%f,%f,%f,%f,%f)",a11,a21,a12,a22,a13,a23);
 

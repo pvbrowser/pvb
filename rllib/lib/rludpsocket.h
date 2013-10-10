@@ -20,8 +20,8 @@
 #include "rlsocket.h"
 
 #ifdef RLWIN32
+#include <winsock2.h>
 #include <windows.h>
-#include <winsock.h>
 #include <io.h>
 #include <direct.h>
 #define  MSG_NOSIGNAL 0

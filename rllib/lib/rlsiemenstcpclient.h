@@ -21,9 +21,9 @@
 #define _RL_SIEMENS_TCP_CLIENT_H_
 
 #include "rldefine.h"
+#include "rlsiemenstcp.h"
 #include "rlmailbox.h"
 #include "rlsharedmemory.h"
-#include "rlsiemenstcp.h"
 
 /*! <pre>
 This class is for data acquisition within pvserver according to the pvbrowser principle.

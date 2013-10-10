@@ -1661,61 +1661,60 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 #define SWIGTYPE_p_p_void swig_types[14]
 #define SWIGTYPE_p_pthread_attr_t swig_types[15]
 #define SWIGTYPE_p_pthread_mutex_t swig_types[16]
-#define SWIGTYPE_p_pthread_mutexattr_t swig_types[17]
-#define SWIGTYPE_p_pthread_t swig_types[18]
-#define SWIGTYPE_p_rl3964R swig_types[19]
-#define SWIGTYPE_p_rlCommandlineInterface swig_types[20]
-#define SWIGTYPE_p_rlDataAcquisition swig_types[21]
-#define SWIGTYPE_p_rlDataAcquisitionProvider swig_types[22]
-#define SWIGTYPE_p_rlDataProvider swig_types[23]
-#define SWIGTYPE_p_rlDataProviderClient swig_types[24]
-#define SWIGTYPE_p_rlDataProviderThreads swig_types[25]
-#define SWIGTYPE_p_rlEventLogServer swig_types[26]
-#define SWIGTYPE_p_rlEventLogServerThreads swig_types[27]
-#define SWIGTYPE_p_rlFifo swig_types[28]
-#define SWIGTYPE_p_rlFileLoad swig_types[29]
-#define SWIGTYPE_p_rlHistoryLogger swig_types[30]
-#define SWIGTYPE_p_rlHistoryReader swig_types[31]
-#define SWIGTYPE_p_rlIniFile swig_types[32]
-#define SWIGTYPE_p_rlInterpreter swig_types[33]
-#define SWIGTYPE_p_rlIpAdr swig_types[34]
-#define SWIGTYPE_p_rlMailbox swig_types[35]
-#define SWIGTYPE_p_rlModbus swig_types[36]
-#define SWIGTYPE_p_rlModbusClient swig_types[37]
-#define SWIGTYPE_p_rlMutex swig_types[38]
-#define SWIGTYPE_p_rlOpcXmlDa swig_types[39]
-#define SWIGTYPE_p_rlPPIClient swig_types[40]
-#define SWIGTYPE_p_rlPcontrol swig_types[41]
-#define SWIGTYPE_p_rlPlcMem swig_types[42]
-#define SWIGTYPE_p_rlPlcState swig_types[43]
-#define SWIGTYPE_p_rlSemaphore swig_types[44]
-#define SWIGTYPE_p_rlSerial swig_types[45]
-#define SWIGTYPE_p_rlSharedMemory swig_types[46]
-#define SWIGTYPE_p_rlSiemensTCP swig_types[47]
-#define SWIGTYPE_p_rlSiemensTCPClient swig_types[48]
-#define SWIGTYPE_p_rlSocket swig_types[49]
-#define SWIGTYPE_p_rlSpawn swig_types[50]
-#define SWIGTYPE_p_rlSpreadsheetCell swig_types[51]
-#define SWIGTYPE_p_rlSpreadsheetRow swig_types[52]
-#define SWIGTYPE_p_rlSpreadsheetTable swig_types[53]
-#define SWIGTYPE_p_rlSpreadsheetWorkbook swig_types[54]
-#define SWIGTYPE_p_rlString swig_types[55]
-#define SWIGTYPE_p_rlSvgAnimator swig_types[56]
-#define SWIGTYPE_p_rlSvgCat swig_types[57]
-#define SWIGTYPE_p_rlSvgPosition swig_types[58]
-#define SWIGTYPE_p_rlSvgPosition__rlPositionInit swig_types[59]
-#define SWIGTYPE_p_rlThread swig_types[60]
-#define SWIGTYPE_p_rlTime swig_types[61]
-#define SWIGTYPE_p_rlUdpSocket swig_types[62]
-#define SWIGTYPE_p_rlWebcam swig_types[63]
-#define SWIGTYPE_p_short swig_types[64]
-#define SWIGTYPE_p_sockaddr_in swig_types[65]
-#define SWIGTYPE_p_unsigned_char swig_types[66]
-#define SWIGTYPE_p_unsigned_int swig_types[67]
-#define SWIGTYPE_p_unsigned_short swig_types[68]
-#define SWIGTYPE_p_void swig_types[69]
-static swig_type_info *swig_types[71];
-static swig_module_info swig_module = {swig_types, 70, 0, 0, 0, 0};
+#define SWIGTYPE_p_pthread_t swig_types[17]
+#define SWIGTYPE_p_rl3964R swig_types[18]
+#define SWIGTYPE_p_rlCommandlineInterface swig_types[19]
+#define SWIGTYPE_p_rlDataAcquisition swig_types[20]
+#define SWIGTYPE_p_rlDataAcquisitionProvider swig_types[21]
+#define SWIGTYPE_p_rlDataProvider swig_types[22]
+#define SWIGTYPE_p_rlDataProviderClient swig_types[23]
+#define SWIGTYPE_p_rlDataProviderThreads swig_types[24]
+#define SWIGTYPE_p_rlEventLogServer swig_types[25]
+#define SWIGTYPE_p_rlEventLogServerThreads swig_types[26]
+#define SWIGTYPE_p_rlFifo swig_types[27]
+#define SWIGTYPE_p_rlFileLoad swig_types[28]
+#define SWIGTYPE_p_rlHistoryLogger swig_types[29]
+#define SWIGTYPE_p_rlHistoryReader swig_types[30]
+#define SWIGTYPE_p_rlIniFile swig_types[31]
+#define SWIGTYPE_p_rlInterpreter swig_types[32]
+#define SWIGTYPE_p_rlIpAdr swig_types[33]
+#define SWIGTYPE_p_rlMailbox swig_types[34]
+#define SWIGTYPE_p_rlModbus swig_types[35]
+#define SWIGTYPE_p_rlModbusClient swig_types[36]
+#define SWIGTYPE_p_rlMutex swig_types[37]
+#define SWIGTYPE_p_rlOpcXmlDa swig_types[38]
+#define SWIGTYPE_p_rlPPIClient swig_types[39]
+#define SWIGTYPE_p_rlPcontrol swig_types[40]
+#define SWIGTYPE_p_rlPlcMem swig_types[41]
+#define SWIGTYPE_p_rlPlcState swig_types[42]
+#define SWIGTYPE_p_rlSemaphore swig_types[43]
+#define SWIGTYPE_p_rlSerial swig_types[44]
+#define SWIGTYPE_p_rlSharedMemory swig_types[45]
+#define SWIGTYPE_p_rlSiemensTCP swig_types[46]
+#define SWIGTYPE_p_rlSiemensTCPClient swig_types[47]
+#define SWIGTYPE_p_rlSocket swig_types[48]
+#define SWIGTYPE_p_rlSpawn swig_types[49]
+#define SWIGTYPE_p_rlSpreadsheetCell swig_types[50]
+#define SWIGTYPE_p_rlSpreadsheetRow swig_types[51]
+#define SWIGTYPE_p_rlSpreadsheetTable swig_types[52]
+#define SWIGTYPE_p_rlSpreadsheetWorkbook swig_types[53]
+#define SWIGTYPE_p_rlString swig_types[54]
+#define SWIGTYPE_p_rlSvgAnimator swig_types[55]
+#define SWIGTYPE_p_rlSvgCat swig_types[56]
+#define SWIGTYPE_p_rlSvgPosition swig_types[57]
+#define SWIGTYPE_p_rlSvgPosition__rlPositionInit swig_types[58]
+#define SWIGTYPE_p_rlThread swig_types[59]
+#define SWIGTYPE_p_rlTime swig_types[60]
+#define SWIGTYPE_p_rlUdpSocket swig_types[61]
+#define SWIGTYPE_p_rlWebcam swig_types[62]
+#define SWIGTYPE_p_short swig_types[63]
+#define SWIGTYPE_p_sockaddr_in swig_types[64]
+#define SWIGTYPE_p_unsigned_char swig_types[65]
+#define SWIGTYPE_p_unsigned_int swig_types[66]
+#define SWIGTYPE_p_unsigned_short swig_types[67]
+#define SWIGTYPE_p_void swig_types[68]
+static swig_type_info *swig_types[70];
+static swig_module_info swig_module = {swig_types, 69, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2539,17 +2538,13 @@ static swig_lua_class _wrap_class_rlThread = { "rlThread", &SWIGTYPE_p_rlThread,
 
 static int _wrap_new_rlMutex__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
-  pthread_mutexattr_t *arg1 = (pthread_mutexattr_t *) 0 ;
+  void *arg1 = (void *) 0 ;
   rlMutex *result = 0 ;
   
   SWIG_check_num_args("rlMutex::rlMutex",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlMutex::rlMutex",1,"pthread_mutexattr_t const *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_pthread_mutexattr_t,0))){
-    SWIG_fail_ptr("new_rlMutex",1,SWIGTYPE_p_pthread_mutexattr_t);
-  }
-  
-  result = (rlMutex *)new rlMutex((pthread_mutexattr_t const *)arg1);
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlMutex::rlMutex",1,"void const *");
+  arg1=(void *)SWIG_MustGetPtr(L,1,0,0,1,"new_rlMutex");
+  result = (rlMutex *)new rlMutex((void const *)arg1);
   SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlMutex,1); SWIG_arg++; 
   return SWIG_arg;
   
@@ -2592,7 +2587,7 @@ static int _wrap_new_rlMutex(lua_State* L) {
     int _v;
     {
       void *ptr;
-      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_pthread_mutexattr_t, 0)) {
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, 0, 0)) {
         _v = 0;
       } else {
         _v = 1;
@@ -2605,7 +2600,7 @@ static int _wrap_new_rlMutex(lua_State* L) {
   
   lua_pushstring(L,"Wrong arguments for overloaded function 'new_rlMutex'\n"
     "  Possible C/C++ prototypes are:\n"
-    "    rlMutex::rlMutex(pthread_mutexattr_t const *)\n"
+    "    rlMutex::rlMutex(void const *)\n"
     "    rlMutex::rlMutex()\n");
   lua_error(L);return 0;
 }
@@ -29575,6 +29570,7 @@ static swig_lua_const_info swig_constants[] = {
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S5", rlSiemensTCP::S5)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_RACK_SLOT", rlSiemensTCP::RACK_SLOT)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_S7_1200", rlSiemensTCP::S7_1200)},
+    {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_LOGO", rlSiemensTCP::LOGO)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_WriteBit", rlSiemensTCP::WriteBit)},
     {SWIG_LUA_CONSTTAB_INT("rlSiemensTCP_WriteByte", rlSiemensTCP::WriteByte)},
     {0,0,0,0,0,0}
@@ -29620,7 +29616,6 @@ static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0
 static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_attr_t = {"_p_pthread_attr_t", "pthread_attr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_mutex_t = {"_p_pthread_mutex_t", "pthread_mutex_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_pthread_mutexattr_t = {"_p_pthread_mutexattr_t", "pthread_mutexattr_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_pthread_t = {"_p_pthread_t", "pthread_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rl3964R = {"_p_rl3964R", "rl3964R *", 0, 0, (void*)&_wrap_class_rl3964R, 0};
 static swig_type_info _swigt__p_rlCommandlineInterface = {"_p_rlCommandlineInterface", "rlCommandlineInterface *", 0, 0, (void*)&_wrap_class_rlCommandlineInterface, 0};
@@ -29692,7 +29687,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_p_void,
   &_swigt__p_pthread_attr_t,
   &_swigt__p_pthread_mutex_t,
-  &_swigt__p_pthread_mutexattr_t,
   &_swigt__p_pthread_t,
   &_swigt__p_rl3964R,
   &_swigt__p_rlCommandlineInterface,
@@ -29764,7 +29758,6 @@ static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0
 static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_attr_t[] = {  {&_swigt__p_pthread_attr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_mutex_t[] = {  {&_swigt__p_pthread_mutex_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_pthread_mutexattr_t[] = {  {&_swigt__p_pthread_mutexattr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pthread_t[] = {  {&_swigt__p_pthread_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rl3964R[] = {  {&_swigt__p_rl3964R, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_rlCommandlineInterface[] = {  {&_swigt__p_rlCommandlineInterface, 0, 0, 0},{0, 0, 0, 0}};
@@ -29836,7 +29829,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_p_void,
   _swigc__p_pthread_attr_t,
   _swigc__p_pthread_mutex_t,
-  _swigc__p_pthread_mutexattr_t,
   _swigc__p_pthread_t,
   _swigc__p_rl3964R,
   _swigc__p_rlCommandlineInterface,

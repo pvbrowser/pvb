@@ -206,7 +206,8 @@ int rlPcontrol::start()
 #endif
 
 #ifdef RLWIN32
-  STARTUPINFO         si = {sizeof(si)};
+  STARTUPINFO        si; //  = { sizeof(si)};
+  si.cb = sizeof(si);
   PROCESS_INFORMATION pi;
   DWORD dwCreationFlags;
 

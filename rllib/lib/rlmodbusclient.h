@@ -17,9 +17,9 @@
 #define _RL_MODBUS_CLIENT_H_
 
 #include "rldefine.h"
+#include "rlmodbus.h"
 #include "rlmailbox.h"
 #include "rlsharedmemory.h"
-#include "rlmodbus.h"
 
 /*! <pre>
 This class is for data aqusition over a modbus daemon as created by pvdevelop.

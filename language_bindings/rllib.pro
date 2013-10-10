@@ -11,8 +11,8 @@ SOURCES += ../rllib/lib/CIFUSER_DUMMY.cpp
 
 LIBS += $(PYDIR)/libs/libpython25.a
 LIBS += ../win-mingw/bin/librllib.a
-LIBS += $(MINGWDIR)/lib/libws2_32.a 
-LIBS += $(MINGWDIR)/lib/libadvapi32.a
-LIBS += $(MINGWDIR)/lib/libuser32.a
+LIBS += -lws2_32 
+LIBS += -ladvapi32
+LIBS += -luser32
 
 TARGET = _rllib 

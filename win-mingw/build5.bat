@@ -99,7 +99,11 @@ copy rlsvg\release\rlsvgcat.exe                                  bin\rlsvgcat.ex
 copy rlhistory\release\rlhistory.exe                             bin\rlhistory.exe                               
 copy ..\start_pvbapp\release\\start_pvbapp.exe                   bin\start_pvbapp.exe                            
 copy fake_qmake\release\fake_qmake.exe                           bin\fake_qmake.exe                              
-xcopy /e /y "%QTMINGW%\plugins\imageformats"                       bin\imageformats                                
+xcopy /e /y "%QTMINGW%\plugins\imageformats"                     bin\imageformats                                
+xcopy /e /y "%QTMINGW%\plugins\playlistformats"                  bin\playlistformats                                
+xcopy /e /y "%QTMINGW%\plugins\mediaservice"                     bin\mediaservice                                
+xcopy /e /y "%QTMINGW%\plugins\printsupport"                     bin\printsupport                               
+xcopy /e /y "%QTMINGW%\plugins\sqldrivers"                       bin\sqldrivers                                
 copy ..\qwt\designer\plugins\designer\qwt_designer_plugin5.dll   bin\plugins\designer\qwt_designer_plugin5.dll   
 copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\designer\libqwt_designer_plugin5.a  
 copy ..\designer\plugins\pvb_designer_plugin.dll                 bin\plugins\designer\pvb_designer_plugin.dll    

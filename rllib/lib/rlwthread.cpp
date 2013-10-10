@@ -35,7 +35,7 @@ Wrapper for posix threads (UNIX,VMS,windows)
 /***************************************/
 int rlwthread_attr_init(pthread_attr_t *attr)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   memset(attr,0,sizeof(pthread_attr_t));
   return 0;
 #else
@@ -54,7 +54,7 @@ int rlwthread_attr_init(pthread_attr_t *attr)
 int rlwthread_create(pthread_t *tid, const pthread_attr_t *attr,
                       void *(*func)(void*), void *arg)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   HANDLE handle;
   int ThreadId;
   int dwStackSize = 0;
@@ -78,7 +78,7 @@ int rlwthread_create(pthread_t *tid, const pthread_attr_t *attr,
 
 void rlwthread_close_handle(pthread_t *tid)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   CloseHandle((HANDLE) *tid);
 #else
   if(tid == NULL) return;
@@ -93,7 +93,7 @@ void rlwthread_close_handle(pthread_t *tid)
 /**************************************************************/
 void rlwthread_exit(void *status)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   DWORD *ptr;
   ptr = (DWORD *) status;
   if(status == NULL) ExitThread((DWORD) 0);
@@ -112,7 +112,7 @@ void rlwthread_exit(void *status)
 #define USE_OLD_JOIN
 int rlwthread_join(pthread_t tid, void **status)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
 
 #ifdef USE_OLD_JOIN
   DWORD exitcode;
@@ -122,6 +122,7 @@ int rlwthread_join(pthread_t tid, void **status)
     if(exitcode != STILL_ACTIVE) return exitcode;
     Sleep(10); /* sleep 10 msec */
   }
+  if(status == NULL) return 0;
 #else
   int result = 1;
   DWORD exitcode;
@@ -142,6 +143,7 @@ int rlwthread_join(pthread_t tid, void **status)
   {
     result = GetLastError();
   }
+  if(status) return result;
   return result;
 #endif
 
@@ -158,10 +160,11 @@ int rlwthread_join(pthread_t tid, void **status)
 int rlwthread_mutex_init(pthread_mutex_t *mptr,
                           const pthread_mutexattr_t *attr)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   HANDLE handle = CreateMutex(NULL, FALSE, NULL);
   if(handle) *mptr = handle;
   //old InitializeCriticalSection(mptr);
+  if(attr) return 0;
   return 0;
 #else
   return pthread_mutex_init(mptr,attr);
@@ -174,7 +177,7 @@ int rlwthread_mutex_init(pthread_mutex_t *mptr,
 /**************************/
 int rlwthread_mutex_destroy(pthread_mutex_t *mptr)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   CloseHandle(*mptr);
   //old DeleteCriticalSection(mptr);
   return 0;
@@ -189,7 +192,7 @@ int rlwthread_mutex_destroy(pthread_mutex_t *mptr)
 /**************************/
 int rlwthread_mutex_lock(pthread_mutex_t *mptr)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   if(WaitForSingleObject(*mptr, INFINITE) == WAIT_OBJECT_0) return 0;
   //old EnterCriticalSection(mptr); // pointer to critical section object
   return 0;
@@ -205,13 +208,13 @@ int rlwthread_mutex_lock(pthread_mutex_t *mptr)
 /* return !0 if lock sucessfull */
 /********************************/
 
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
 WINBASEAPI BOOL WINAPI TryEnterCriticalSection( LPCRITICAL_SECTION lpCriticalSection);
 #endif
 
 int rlwthread_mutex_trylock(pthread_mutex_t *mptr)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   DWORD ret;
 
   ret = WaitForSingleObject(*mptr, 0);
@@ -234,7 +237,7 @@ int rlwthread_mutex_trylock(pthread_mutex_t *mptr)
 /**************************/
 int rlwthread_mutex_unlock(pthread_mutex_t *mptr)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   ReleaseMutex(*mptr);
   //old LeaveCriticalSection(mptr);
   return 0;
@@ -249,7 +252,7 @@ int rlwthread_mutex_unlock(pthread_mutex_t *mptr)
 /**************************/
 int rlwthread_cancel(pthread_t tid)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   return (int) CloseHandle((HANDLE) tid);
 #else
   return pthread_cancel(tid);
@@ -265,7 +268,7 @@ int rlwthread_cancel(pthread_t tid)
 int rlwrapinit_semaphore(WSEMAPHORE *s, int cmax)
 {
 /* Create a semaphore with initial count=0 max. counts of cmax. */
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
 
   s->cmax = cmax;
   s->hSemaphore = CreateSemaphore(
@@ -290,7 +293,7 @@ int rlwrapinit_semaphore(WSEMAPHORE *s, int cmax)
 
 int rlwrapdestroy_semaphore(WSEMAPHORE *s)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
   CloseHandle(s->hSemaphore);
 #else
   rlwthread_mutex_destroy(&s->mutex);
@@ -307,7 +310,7 @@ int rlwrapdestroy_semaphore(WSEMAPHORE *s)
 int rlwrapincrement_semaphore(WSEMAPHORE *s)
 {
 /* Increment the count of the semaphore. */
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
 
   if(!ReleaseSemaphore(
         s->hSemaphore,  /* handle of semaphore */
@@ -337,7 +340,7 @@ int rlwrapincrement_semaphore(WSEMAPHORE *s)
 /*********************************************************************************/
 int rlwrapwait_semaphore(WSEMAPHORE *s)
 {
-#ifdef RLWIN32
+#ifdef RLWIN32THREAD
 
   int ret;
   ret = WaitForSingleObject(

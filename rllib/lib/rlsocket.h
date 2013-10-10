@@ -18,12 +18,8 @@
 
 #include "rldefine.h"
 #ifdef RLWIN32
-#include <windows.h>
-#ifdef IS_OLD_MSVCPP
-#include <winsock.h>
-#else
 #include <winsock2.h>
-#endif
+#include <windows.h>
 #include <io.h>
 #include <direct.h>
 #else

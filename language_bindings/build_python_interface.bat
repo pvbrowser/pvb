@@ -7,12 +7,12 @@ copy language_binding_wrap.cxx        language_binding_wrap_python.cxx
 %swigdir%\swig -c++ -python -DRLWIN32 -D_WIN32 -DSWIG_SESSIOM language_binding_rllib.i
 copy language_binding_rllib_wrap.cxx  language_binding_rllib_wrap_python.cxx
 
-%qtdir%\bin\qmake pv.pro
+qmake pv.pro
 mingw32-make.exe
 copy release\_pv.dll    ..\win-mingw\bin\
 mingw32-make.exe clean
 
-%qtdir%\bin\qmake rllib.pro
+qmake rllib.pro
 mingw32-make.exe
 copy release\_rllib.dll ..\win-mingw\bin\
 mingw32-make.exe clean

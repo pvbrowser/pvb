@@ -48,22 +48,16 @@ macx:INCLUDEPATH  += /opt/pvb/rllib/lib
 
 #
 # Attention:
-# Because we now also use the IPV6 library wsock32 has been replaced by ws2_32 for MinGW
-# You will have to adjust existing project files
+# starting with mingw 4.8 we use mingw pthread and not our own mapping to windows threads
+# you will have to adjust existing pro files
 #
 win32-g++ {
 QMAKE_LFLAGS      += -static-libgcc
+win32:LIBS        += $(PVBDIR)/win-mingw/bin/libserverlib.a 
 win32:LIBS        += $(PVBDIR)/win-mingw/bin/librllib.a
-#win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
-win32:LIBS         += $(PVBDIR)/win-mingw/bin/libserverlib.a $(MINGWDIR)/lib/libws2_32.a $(MINGWDIR)/lib/libadvapi32.a
-win32:INCLUDEPATH  += $(PVBDIR)/pvserver
+win32:LIBS        += -lws2_32 -ladvapi32 -lpthread
+win32:INCLUDEPATH += $(PVBDIR)/pvserver
 win32:INCLUDEPATH += $(PVBDIR)/rllib/lib
-}
-else {
-win32:LIBS         += $(PVBDIR)\win\bin\serverlib.lib wsock32.lib advapi32.lib
-win32:INCLUDEPATH  += $(PVBDIR)\pvserver
-win32:LIBS        += $(PVBDIR)\win\bin\rllib.lib
-win32:INCLUDEPATH += $(PVBDIR)\rllib\lib
 }
 
 #DEFINES += USE_INETD
