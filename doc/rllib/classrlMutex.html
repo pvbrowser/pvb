@@ -94,8 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a95a6aced5cd61febb4c2fca412082c4e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMutex.html#a95a6aced5cd61febb4c2fca412082c4e">rlMutex</a> (const <a class="el" href="rlwthread_8h.html#a1e558e3e4f6d94c1d647b41fd7316e4e">pthread_mutexattr_t</a> *attr=NULL)</td></tr>
-<tr class="separator:a95a6aced5cd61febb4c2fca412082c4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21e938502f89d432534df898980c10c4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMutex.html#a21e938502f89d432534df898980c10c4">rlMutex</a> (const void *attr=NULL)</td></tr>
+<tr class="separator:a21e938502f89d432534df898980c10c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9e41295fb09b428d5f42046dfb8f2fb7"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMutex.html#a9e41295fb09b428d5f42046dfb8f2fb7">~rlMutex</a> ()</td></tr>
 <tr class="separator:a9e41295fb09b428d5f42046dfb8f2fb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac70795f772eab5a164582ba5289f926f"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlMutex.html#ac70795f772eab5a164582ba5289f926f">trylock</a> ()</td></tr>
@@ -116,23 +116,23 @@ Mutex functions based on POSIX threads.
 </pre> 
 <p>Definition at line <a class="el" href="rlthread_8h_source.html#l00118">118</a> of file <a class="el" href="rlthread_8h_source.html">rlthread.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a95a6aced5cd61febb4c2fca412082c4e"></a>
+<a class="anchor" id="a21e938502f89d432534df898980c10c4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">rlMutex::rlMutex </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="rlwthread_8h.html#a1e558e3e4f6d94c1d647b41fd7316e4e">pthread_mutexattr_t</a> *&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>attr</em> = <code>NULL</code></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00085">85</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00090">90</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
-<div class="line">  <a class="code" href="rlwthread_8cpp.html#aa4890400a2f2a2590e5092ca2eb43055">rlwthread_mutex_init</a>(&amp;<a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>, attr);</div>
+<div class="line">  <a class="code" href="rlwthread_8cpp.html#aa4890400a2f2a2590e5092ca2eb43055">rlwthread_mutex_init</a>(&amp;<a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>, (<span class="keyword">const</span> <a class="code" href="rlwthread_8h.html#a1e558e3e4f6d94c1d647b41fd7316e4e">pthread_mutexattr_t</a> *) attr);</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -158,7 +158,7 @@ Mutex functions based on POSIX threads.
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00090">90</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00095">95</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a>(&amp;<a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>);</div>
 <div class="line">}</div>
@@ -181,7 +181,7 @@ Mutex functions based on POSIX threads.
 <pre>
  Lock the mutex.
  </pre> 
-<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00100">100</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00105">105</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(&amp;<a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>);</div>
 <div class="line">}</div>
@@ -205,7 +205,7 @@ Mutex functions based on POSIX threads.
  return 0 if already locked
  return !0 if lock sucessfull
  </pre> 
-<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00095">95</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00100">100</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="rlwthread_8cpp.html#a28ea7f693e1ea6c63ec9aef05499d727">rlwthread_mutex_trylock</a>(&amp;<a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>);</div>
 <div class="line">}</div>
@@ -227,7 +227,7 @@ Mutex functions based on POSIX threads.
 <pre>
  Unlock the mutex.
  </pre> 
-<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00105">105</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlthread_8cpp_source.html#l00110">110</a> of file <a class="el" href="rlthread_8cpp_source.html">rlthread.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(&amp;<a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>);</div>
 <div class="line">}</div>
@@ -245,7 +245,7 @@ Mutex functions based on POSIX threads.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlthread_8h_source.html#l00141">141</a> of file <a class="el" href="rlthread_8h_source.html">rlthread.h</a>.</p>
+<p>Definition at line <a class="el" href="rlthread_8h_source.html#l00142">142</a> of file <a class="el" href="rlthread_8h_source.html">rlthread.h</a>.</p>
 
 </div>
 </div>

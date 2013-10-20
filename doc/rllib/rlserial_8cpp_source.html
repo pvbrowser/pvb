@@ -336,191 +336,191 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  ret = SetCommConfig(<a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,&amp;cc,<span class="keyword">sizeof</span>(cc));</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keywordflow">if</span>(ret == 0)</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  {</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    printf(<span class="stringliteral">&quot;SetCommConfig ret=%d devicename=%s LastError=%d\n&quot;</span>,ret,devicename,GetLastError());</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;    printf(<span class="stringliteral">&quot;SetCommConfig ret=%d devicename=%s LastError=%ld\n&quot;</span>,ret,devicename,GetLastError());</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;    <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  }</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor"></span>  RmEntryStruct    CatEntry;        <span class="comment">/* Struktur der Deiviceinformationen              */</span></div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="keywordtype">int</span>              iStatus;         <span class="comment">/* Rckgabewert                                    */</span></div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  RmIOStatusStruct DrvSts;          <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion   */</span></div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  RmBytParmStruct  PBlock;          <span class="comment">/* Parameterstruktur fr RmIO - Funktion           */</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keyword">static</span> UCD_BYT_PORT Ucd_byt_drv;  <span class="comment">/* Struktur zum Setzen der UCD - Werte            */</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  ushort           uTimeBd;         <span class="comment">/* Timing - Wert der �ertragungsgeschwindigkeit   */</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  uint             uMode;           <span class="comment">/* Portsteuerungsparameter                        */</span></div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>    cByte;           <span class="comment">/* Byte - Parameter                               */</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                                    <span class="comment">/* Timing = 748800 / Baudrate;                    */</span></div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                    <span class="comment">/**************************************************/</span></div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keywordtype">char</span> byt_com[32];</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                                    </div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  <span class="comment">/* COM1=0x3F8 COM2=0x2F8 - Port Adresse           */</span></div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <span class="keywordflow">if</span>     (strcmp(devicename,<span class="stringliteral">&quot;COM1&quot;</span>) == 0)</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    strcpy(byt_com,<span class="stringliteral">&quot;BYT_COM1&quot;</span>);</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    com = 0x3f8;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  }</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(devicename,<span class="stringliteral">&quot;COM2&quot;</span>) == 0)</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  {</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    strcpy(byt_com,<span class="stringliteral">&quot;BYT_COM2&quot;</span>);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    com = 0x2f8;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordflow">else</span> </div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;    printf(<span class="stringliteral">&quot;Error: devicename=%s unknown\n&quot;</span>,devicename);</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  }  </div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="comment">//printf(&quot;Open COM port - inside\n&quot;);</span></div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;<span class="comment">  * Device und Unit - Id auslesen</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordflow">if</span>( RmGetEntry( RM_WAIT, byt_com, &amp;CatEntry ) != RM_OK ) <span class="comment">/* RM_CONTINUE */</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  {</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    printf( <span class="stringliteral">&quot;Error: %s device not found\n&quot;</span>, byt_com);</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  }</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  device = (int) ((ushort) CatEntry.ide);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  unit   = (int) CatEntry.id;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="comment">  * Ger� reservieren</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="keywordflow">if</span>( RmIO( BYT_RESERVE, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock ) &lt; 0 )</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  {</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;    printf( <span class="stringliteral">&quot;Error: Unable to reserve %s device\n&quot;</span>, byt_com);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  }</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;<span class="comment">  * Baudrate ausrechnen</span></div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  baudrate = 9600;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ab4b3af8b2e252133f4c439e937c0f7cc">B50</a>     ) baudrate = 50;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a6c7fd334abc19a56421e4cabaeb9fe0f">B75</a>     ) baudrate = 75;</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ac80dbb0a432ec6bcb0eaaf9ff9d6d8e2">B110</a>    ) baudrate = 110;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a7f8ae5839a52e46c4d004ccda5184f43">B134</a>    ) baudrate = 134;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a7b3492c3ee457b7f2ad6a25b68a94c83">B150</a>    ) baudrate = 150;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a9c03105c34cd5fa8dd83c6e3abc7f699">B200</a>    ) baudrate = 200;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a573c6a21141c17da9298fa7ca56d6c33">B300</a>    ) baudrate = 300;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a4a0fb8730fc62c93222bdcfead0685e7">B600</a>    ) baudrate = 600;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a36fdf3b468aa37c932c5feb0f3a9d7d7">B1200</a>   ) baudrate = 1200;</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0471795ca9c160facfbd0e45f58dee42">B1800</a>   ) baudrate = 1800;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#af5bd4045b436cba08feb96e15994c04b">B2400</a>   ) baudrate = 2400;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a3b0ce0abd5ad4af8d485c843c9bab66c">B4800</a>   ) baudrate = 4800;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ad0539916b8412eb7ddfb9ae02aff0853">B9600</a>   ) baudrate = 9600;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ae9baab0dacc8d414681e1cb5c354a058">B19200</a>  ) baudrate = 19200;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ab282ae5b7fb59155ee42d1b6c9a80683">B38400</a>  ) baudrate = 38400;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a4bde6a10c31adfe1959fb9724e13029a">B57600</a>  ) baudrate = 57600;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#aef3a1340ea0fba1573691a9e74a43d11">B115200</a> ) baudrate = 115200;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#aa0a8a3b09c593c7be5bfbbeb09f14d76">B230400</a> ) baudrate = 230400;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a644a0912fa1e82fd24c0516b4723ee59">B460800</a> ) baudrate = 460800;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a6269f12a17dbd41042e0d4c897a89b96">B500000</a> ) baudrate = 500000;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a227c117ac1c7d60d2728f5d68aaf79a0">B576000</a> ) baudrate = 576000;</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ae2d3cdb046f933a4a6ccd5497516c2a5">B921600</a> ) baudrate = 921600;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a32dc4578657dac59f79f0bc7ffc9416f">B1000000</a>) baudrate = 1000000;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a7dc1d184634d970682e5b138686c5a20">B1152000</a>) baudrate = 1152000;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a9ea600f5048d4b2b1dfa1249521701bd">B1500000</a>) baudrate = 1500000;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ac8f494082416f4d63fde6c6289c4968d">B2000000</a>) baudrate = 2000000;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0df33f40257015142d65eb544176dda5">B2500000</a>) baudrate = 2500000;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#acb80c15451346a6ae479344124cea120">B3000000</a>) baudrate = 3000000;</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0db8961ca1fb43dbb690b6d2ee7217f8">B3500000</a>) baudrate = 3500000;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0078dd80905a2b3dbccff97e5bea8054">B4000000</a>) baudrate = 4000000;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  uTimeBd = 748800 / baudrate;</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;<span class="comment">  * Portsteuerungsparameter setzen</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  uMode = 0x1000 | DATA_8 | STOP_1 | NOPARITY;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="comment">  * UCD des seriellen Ports auslesen</span></div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">  */</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  PBlock.string = 0;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  PBlock.strlen = 0;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  PBlock.buffer = (<span class="keywordtype">char</span> *)&amp;Ucd_byt_drv;</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  PBlock.timlen = <span class="keyword">sizeof</span>(UCD_BYT_PORT);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  PBlock.status = 0;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  iStatus = RmIO( BYT_CREATE_NEW, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;<span class="comment">   * Modus �dern</span></div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  Ucd_byt_drv.mobyte[5] |= (ushort) (uMode &amp; 0xFFu);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="comment">   * Timeout setzen</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  Ucd_byt_drv.header.timout = timeout;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;<span class="comment">   * Werte zuweisen</span></div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  PBlock.string = (<span class="keywordtype">char</span>*) &amp;Ucd_byt_drv;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  PBlock.strlen = <span class="keyword">sizeof</span>(UCD_BYT_PORT);</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  PBlock.buffer = 0;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  PBlock.timlen = 0;</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  PBlock.status = 0;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  iStatus = RmIO( BYT_CREATE_NEW, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="comment">   * Register 0 und 1 zum Schreiben freigeben</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  cByte = inbyte( com + 0x03 );</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  outbyte( com + 0x03, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(cByte | 0x80) );</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="comment">   * Baudrate setzen</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  outbyte( com + 0x00, (ushort) LOW  (uTimeBd) );</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  outbyte( com + 0x01, (ushort) HIGH (uTimeBd) );</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="comment">   * Register 0 und 1 sperren</span></div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  outbyte( com + 0x03, cByte );</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keywordflow">if</span>( iStatus ) printf( <span class="stringliteral">&quot;BYT_CREATE_NEW (set ucb): Error status = %X\n&quot;</span>, iStatus );</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor"></span>  </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;}</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;</div>
-<div class="line"><a name="l00403"></a><span class="lineno"><a class="code" href="classrlSerial.html#a05de122779086e7f943f182829344fc4">  403</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#a05de122779086e7f943f182829344fc4">rlSerial::readChar</a>()</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;{</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span>  ret;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  ret = read(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,buf,1);</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  <span class="keywordflow">if</span>(ret == 1) <span class="keywordflow">return</span> buf[0];</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordflow">if</span>(ret == 0) <span class="keywordflow">return</span> -2;</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a4bd5a244a78c06b17976f13ef93aaf54">readBlock</a>(buf, 1) &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">return</span> buf[0];</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor"></span>  BOOL ret;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordflow">if</span>(block) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="preprocessor"></span>  RmEntryStruct    CatEntry;        <span class="comment">/* Struktur der Deiviceinformationen              */</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="keywordtype">int</span>              iStatus;         <span class="comment">/* Rckgabewert                                    */</span></div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  RmIOStatusStruct DrvSts;          <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion   */</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  RmBytParmStruct  PBlock;          <span class="comment">/* Parameterstruktur fr RmIO - Funktion           */</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keyword">static</span> UCD_BYT_PORT Ucd_byt_drv;  <span class="comment">/* Struktur zum Setzen der UCD - Werte            */</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  ushort           uTimeBd;         <span class="comment">/* Timing - Wert der �ertragungsgeschwindigkeit   */</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  uint             uMode;           <span class="comment">/* Portsteuerungsparameter                        */</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>    cByte;           <span class="comment">/* Byte - Parameter                               */</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                                    <span class="comment">/* Timing = 748800 / Baudrate;                    */</span></div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                                    <span class="comment">/**************************************************/</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordtype">char</span> byt_com[32];</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                                    </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <span class="comment">/* COM1=0x3F8 COM2=0x2F8 - Port Adresse           */</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">if</span>     (strcmp(devicename,<span class="stringliteral">&quot;COM1&quot;</span>) == 0)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  {</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    strcpy(byt_com,<span class="stringliteral">&quot;BYT_COM1&quot;</span>);</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    com = 0x3f8;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  }</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strcmp(devicename,<span class="stringliteral">&quot;COM2&quot;</span>) == 0)</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  {</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    strcpy(byt_com,<span class="stringliteral">&quot;BYT_COM2&quot;</span>);</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    com = 0x2f8;</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  }</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  <span class="keywordflow">else</span> </div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  {</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    printf(<span class="stringliteral">&quot;Error: devicename=%s unknown\n&quot;</span>,devicename);</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  }  </div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  <span class="comment">//printf(&quot;Open COM port - inside\n&quot;);</span></div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;<span class="comment">  * Device und Unit - Id auslesen</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordflow">if</span>( RmGetEntry( RM_WAIT, byt_com, &amp;CatEntry ) != RM_OK ) <span class="comment">/* RM_CONTINUE */</span></div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  {</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    printf( <span class="stringliteral">&quot;Error: %s device not found\n&quot;</span>, byt_com);</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  device = (int) ((ushort) CatEntry.ide);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  unit   = (int) CatEntry.id;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="comment">  * Ger� reservieren</span></div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keywordflow">if</span>( RmIO( BYT_RESERVE, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock ) &lt; 0 )</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;    printf( <span class="stringliteral">&quot;Error: Unable to reserve %s device\n&quot;</span>, byt_com);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  }</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;<span class="comment">  * Baudrate ausrechnen</span></div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  baudrate = 9600;</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ab4b3af8b2e252133f4c439e937c0f7cc">B50</a>     ) baudrate = 50;</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a6c7fd334abc19a56421e4cabaeb9fe0f">B75</a>     ) baudrate = 75;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ac80dbb0a432ec6bcb0eaaf9ff9d6d8e2">B110</a>    ) baudrate = 110;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a7f8ae5839a52e46c4d004ccda5184f43">B134</a>    ) baudrate = 134;</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a7b3492c3ee457b7f2ad6a25b68a94c83">B150</a>    ) baudrate = 150;</div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a9c03105c34cd5fa8dd83c6e3abc7f699">B200</a>    ) baudrate = 200;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a573c6a21141c17da9298fa7ca56d6c33">B300</a>    ) baudrate = 300;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a4a0fb8730fc62c93222bdcfead0685e7">B600</a>    ) baudrate = 600;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a36fdf3b468aa37c932c5feb0f3a9d7d7">B1200</a>   ) baudrate = 1200;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0471795ca9c160facfbd0e45f58dee42">B1800</a>   ) baudrate = 1800;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#af5bd4045b436cba08feb96e15994c04b">B2400</a>   ) baudrate = 2400;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a3b0ce0abd5ad4af8d485c843c9bab66c">B4800</a>   ) baudrate = 4800;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ad0539916b8412eb7ddfb9ae02aff0853">B9600</a>   ) baudrate = 9600;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ae9baab0dacc8d414681e1cb5c354a058">B19200</a>  ) baudrate = 19200;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ab282ae5b7fb59155ee42d1b6c9a80683">B38400</a>  ) baudrate = 38400;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a4bde6a10c31adfe1959fb9724e13029a">B57600</a>  ) baudrate = 57600;</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#aef3a1340ea0fba1573691a9e74a43d11">B115200</a> ) baudrate = 115200;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#aa0a8a3b09c593c7be5bfbbeb09f14d76">B230400</a> ) baudrate = 230400;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a644a0912fa1e82fd24c0516b4723ee59">B460800</a> ) baudrate = 460800;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a6269f12a17dbd41042e0d4c897a89b96">B500000</a> ) baudrate = 500000;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a227c117ac1c7d60d2728f5d68aaf79a0">B576000</a> ) baudrate = 576000;</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ae2d3cdb046f933a4a6ccd5497516c2a5">B921600</a> ) baudrate = 921600;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a32dc4578657dac59f79f0bc7ffc9416f">B1000000</a>) baudrate = 1000000;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a7dc1d184634d970682e5b138686c5a20">B1152000</a>) baudrate = 1152000;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a9ea600f5048d4b2b1dfa1249521701bd">B1500000</a>) baudrate = 1500000;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#ac8f494082416f4d63fde6c6289c4968d">B2000000</a>) baudrate = 2000000;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0df33f40257015142d65eb544176dda5">B2500000</a>) baudrate = 2500000;</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#acb80c15451346a6ae479344124cea120">B3000000</a>) baudrate = 3000000;</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0db8961ca1fb43dbb690b6d2ee7217f8">B3500000</a>) baudrate = 3500000;</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  <span class="keywordflow">if</span>(speed == <a class="code" href="rlserial_8h.html#a0078dd80905a2b3dbccff97e5bea8054">B4000000</a>) baudrate = 4000000;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  uTimeBd = 748800 / baudrate;</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;<span class="comment">  * Portsteuerungsparameter setzen</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  uMode = 0x1000 | DATA_8 | STOP_1 | NOPARITY;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="comment">  * UCD des seriellen Ports auslesen</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="comment">  */</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  PBlock.string = 0;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  PBlock.strlen = 0;</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  PBlock.buffer = (<span class="keywordtype">char</span> *)&amp;Ucd_byt_drv;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  PBlock.timlen = <span class="keyword">sizeof</span>(UCD_BYT_PORT);</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  PBlock.status = 0;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  iStatus = RmIO( BYT_CREATE_NEW, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;<span class="comment">   * Modus �dern</span></div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  Ucd_byt_drv.mobyte[5] |= (ushort) (uMode &amp; 0xFFu);</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;<span class="comment">   * Timeout setzen</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  Ucd_byt_drv.header.timout = timeout;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="comment">   * Werte zuweisen</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  PBlock.string = (<span class="keywordtype">char</span>*) &amp;Ucd_byt_drv;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  PBlock.strlen = <span class="keyword">sizeof</span>(UCD_BYT_PORT);</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  PBlock.buffer = 0;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  PBlock.timlen = 0;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  PBlock.status = 0;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  iStatus = RmIO( BYT_CREATE_NEW, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="comment">   * Register 0 und 1 zum Schreiben freigeben</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  cByte = inbyte( com + 0x03 );</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  outbyte( com + 0x03, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(cByte | 0x80) );</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="comment">   * Baudrate setzen</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  outbyte( com + 0x00, (ushort) LOW  (uTimeBd) );</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  outbyte( com + 0x01, (ushort) HIGH (uTimeBd) );</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;<span class="comment">   * Register 0 und 1 sperren</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  outbyte( com + 0x03, cByte );</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;  <span class="keywordflow">if</span>( iStatus ) printf( <span class="stringliteral">&quot;BYT_CREATE_NEW (set ucb): Error status = %X\n&quot;</span>, iStatus );</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;<span class="preprocessor"></span>  </div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;}</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno"><a class="code" href="classrlSerial.html#a05de122779086e7f943f182829344fc4">  404</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#a05de122779086e7f943f182829344fc4">rlSerial::readChar</a>()</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;{</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span>  ret;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;  ret = read(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,buf,1);</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  <span class="keywordflow">if</span>(ret == 1) <span class="keywordflow">return</span> buf[0];</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;  <span class="keywordflow">if</span>(ret == 0) <span class="keywordflow">return</span> -2;</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a4bd5a244a78c06b17976f13ef93aaf54">readBlock</a>(buf, 1) &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <span class="keywordflow">return</span> buf[0];</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> len;</div>
 <div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  ret = ReadFile(</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  ReadFile(</div>
 <div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;                 <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,  <span class="comment">// handle of file to read</span></div>
 <div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;                 buf,  <span class="comment">// pointer to buffer that receives data</span></div>
 <div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;                 1,    <span class="comment">// number of bytes to read</span></div>
 <div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;                 &amp;len, <span class="comment">// pointer to number of bytes read</span></div>
 <div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;                 NULL  <span class="comment">// pointer to structure for data</span></div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                );</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;          );</div>
 <div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;  <span class="keywordflow">if</span>(len &gt; 0)</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  {</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1) printf(<span class="stringliteral">&quot;readChar %d\n&quot;</span>,(<span class="keywordtype">int</span>) buf[0]);</div>
@@ -623,266 +623,265 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00534"></a><span class="lineno">  534</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00535"></a><span class="lineno">  535</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00536"></a><span class="lineno">  536</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="preprocessor"></span>  BOOL ret;</div>
-<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> retlen;</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;</div>
-<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;  <span class="keywordflow">if</span>(timeout &gt;= 0) <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">select</a>(timeout);</div>
-<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;  ret = ReadFile(</div>
-<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                 <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,     <span class="comment">// handle of file to read</span></div>
-<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                 buf,     <span class="comment">// pointer to buffer that receives data</span></div>
-<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                 len,     <span class="comment">// number of bytes to read</span></div>
-<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                 &amp;retlen, <span class="comment">// pointer to number of bytes read</span></div>
-<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;                 NULL     <span class="comment">// pointer to structure for data</span></div>
-<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;                );</div>
-<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;  <span class="keywordflow">if</span>(retlen &gt; 0)</div>
-<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;  {</div>
-<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1) printf(<span class="stringliteral">&quot;readBlock retlen=%d\n&quot;</span>,retlen);</div>
-<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) retlen;</div>
-<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  }</div>
-<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;<span class="preprocessor"></span>  RmBytParmStruct  PBlock;    <span class="comment">/* Parameterstruktur fr RmIO - Funktion          */</span></div>
-<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;  RmIOStatusStruct DrvSts;    <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion */</span></div>
-<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;  <span class="keywordtype">int</span>              iStatus;   <span class="comment">/* Rckgabewert                                   */</span></div>
-<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;  <span class="keywordtype">int</span>              i;         <span class="comment">/* Schleifenz�ler                                */</span></div>
-<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;                              <span class="comment">/**************************************************/</span></div>
-<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;</div>
-<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">   * Schreibparameter setzen</span></div>
-<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  PBlock.string = 0;</div>
-<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  PBlock.strlen = 0;</div>
-<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  PBlock.buffer = (<span class="keywordtype">char</span>*)buf;</div>
-<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  PBlock.timlen = len;</div>
-<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;  PBlock.status = 0;</div>
-<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;</div>
-<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;<span class="comment">   * Lesevorgang einleiten</span></div>
-<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;  iStatus = RmIO( BYT_POLL_XBUF_WAIT, (<span class="keywordtype">unsigned</span>)device, (<span class="keywordtype">unsigned</span>)unit, 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  <span class="keywordflow">if</span>( iStatus ) printf( <span class="stringliteral">&quot;BYT_POLL_XBUF_WAIT (set ucb): Error status = %X\n&quot;</span>, iStatus );</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  <span class="keywordflow">if</span>( !iStatus ) <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;</div>
-<div class="line"><a name="l00584"></a><span class="lineno"><a class="code" href="classrlSerial.html#ac2bb1e98663afb459719ee0b4a2233a0">  584</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#ac2bb1e98663afb459719ee0b4a2233a0">rlSerial::writeBlock</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len)</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;{</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1)</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;  {</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    printf(<span class="stringliteral">&quot;writeBlock:&quot;</span>);</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;len; i++) printf(<span class="stringliteral">&quot; %d&quot;</span>,(<span class="keywordtype">int</span>) buf[i]);</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  }</div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  ret = write(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,buf,len);</div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;  <span class="comment">//tcflush(fd, TCIOFLUSH);</span></div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span>  status;</div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;  <a class="code" href="structIOSB.html">IOSB</a> iosb;</div>
+<div class="line"><a name="l00537"></a><span class="lineno">  537</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> retlen;</div>
+<div class="line"><a name="l00538"></a><span class="lineno">  538</span>&#160;</div>
+<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160;  <span class="keywordflow">if</span>(timeout &gt;= 0) <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">select</a>(timeout);</div>
+<div class="line"><a name="l00540"></a><span class="lineno">  540</span>&#160;  ReadFile(</div>
+<div class="line"><a name="l00541"></a><span class="lineno">  541</span>&#160;                 <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,     <span class="comment">// handle of file to read</span></div>
+<div class="line"><a name="l00542"></a><span class="lineno">  542</span>&#160;                 buf,     <span class="comment">// pointer to buffer that receives data</span></div>
+<div class="line"><a name="l00543"></a><span class="lineno">  543</span>&#160;                 len,     <span class="comment">// number of bytes to read</span></div>
+<div class="line"><a name="l00544"></a><span class="lineno">  544</span>&#160;                 &amp;retlen, <span class="comment">// pointer to number of bytes read</span></div>
+<div class="line"><a name="l00545"></a><span class="lineno">  545</span>&#160;                 NULL     <span class="comment">// pointer to structure for data</span></div>
+<div class="line"><a name="l00546"></a><span class="lineno">  546</span>&#160;           );</div>
+<div class="line"><a name="l00547"></a><span class="lineno">  547</span>&#160;  <span class="keywordflow">if</span>(retlen &gt; 0)</div>
+<div class="line"><a name="l00548"></a><span class="lineno">  548</span>&#160;  {</div>
+<div class="line"><a name="l00549"></a><span class="lineno">  549</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1) printf(<span class="stringliteral">&quot;readBlock retlen=%ld\n&quot;</span>,retlen);</div>
+<div class="line"><a name="l00550"></a><span class="lineno">  550</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) retlen;</div>
+<div class="line"><a name="l00551"></a><span class="lineno">  551</span>&#160;  }</div>
+<div class="line"><a name="l00552"></a><span class="lineno">  552</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00553"></a><span class="lineno">  553</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00554"></a><span class="lineno">  554</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
+<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160;<span class="preprocessor"></span>  RmBytParmStruct  PBlock;    <span class="comment">/* Parameterstruktur fr RmIO - Funktion          */</span></div>
+<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;  RmIOStatusStruct DrvSts;    <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion */</span></div>
+<div class="line"><a name="l00558"></a><span class="lineno">  558</span>&#160;  <span class="keywordtype">int</span>              iStatus;   <span class="comment">/* Rckgabewert                                   */</span></div>
+<div class="line"><a name="l00559"></a><span class="lineno">  559</span>&#160;  <span class="keywordtype">int</span>              i;         <span class="comment">/* Schleifenz�ler                                */</span></div>
+<div class="line"><a name="l00560"></a><span class="lineno">  560</span>&#160;                              <span class="comment">/**************************************************/</span></div>
+<div class="line"><a name="l00561"></a><span class="lineno">  561</span>&#160;</div>
+<div class="line"><a name="l00562"></a><span class="lineno">  562</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00563"></a><span class="lineno">  563</span>&#160;<span class="comment">   * Schreibparameter setzen</span></div>
+<div class="line"><a name="l00564"></a><span class="lineno">  564</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00565"></a><span class="lineno">  565</span>&#160;  PBlock.string = 0;</div>
+<div class="line"><a name="l00566"></a><span class="lineno">  566</span>&#160;  PBlock.strlen = 0;</div>
+<div class="line"><a name="l00567"></a><span class="lineno">  567</span>&#160;  PBlock.buffer = (<span class="keywordtype">char</span>*)buf;</div>
+<div class="line"><a name="l00568"></a><span class="lineno">  568</span>&#160;  PBlock.timlen = len;</div>
+<div class="line"><a name="l00569"></a><span class="lineno">  569</span>&#160;  PBlock.status = 0;</div>
+<div class="line"><a name="l00570"></a><span class="lineno">  570</span>&#160;</div>
+<div class="line"><a name="l00571"></a><span class="lineno">  571</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00572"></a><span class="lineno">  572</span>&#160;<span class="comment">   * Lesevorgang einleiten</span></div>
+<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  iStatus = RmIO( BYT_POLL_XBUF_WAIT, (<span class="keywordtype">unsigned</span>)device, (<span class="keywordtype">unsigned</span>)unit, 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
+<div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  <span class="keywordflow">if</span>( iStatus ) printf( <span class="stringliteral">&quot;BYT_POLL_XBUF_WAIT (set ucb): Error status = %X\n&quot;</span>, iStatus );</div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  <span class="keywordflow">if</span>( !iStatus ) <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;</div>
+<div class="line"><a name="l00583"></a><span class="lineno"><a class="code" href="classrlSerial.html#ac2bb1e98663afb459719ee0b4a2233a0">  583</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#ac2bb1e98663afb459719ee0b4a2233a0">rlSerial::writeBlock</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> len)</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;{</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1)</div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  {</div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;    printf(<span class="stringliteral">&quot;writeBlock:&quot;</span>);</div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;len; i++) printf(<span class="stringliteral">&quot; %d&quot;</span>,(<span class="keywordtype">int</span>) buf[i]);</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;  }</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;  ret = write(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,buf,len);</div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;  <span class="comment">//tcflush(fd, TCIOFLUSH);</span></div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="preprocessor"></span>  <span class="keywordtype">int</span>  status;</div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;  <a class="code" href="structIOSB.html">IOSB</a> iosb;</div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;</div>
 <div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;</div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;</div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;  status = SYS$QIOW(0,<a class="code" href="classrlSerial.html#a060216d45b73292bf244112b1de1db23">vms_channel</a>,IO$_WRITEVBLK | IO$M_CANCTRLO | IO$M_NOFORMAT,</div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;                    &amp;iosb,0,0,buf,len,0,0,0,0);</div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;  <span class="keywordflow">if</span>(status != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;  <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="preprocessor"></span>  BOOL ret;</div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> retlen;</div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;</div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1)</div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;  {</div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    printf(<span class="stringliteral">&quot;writeBlock:&quot;</span>);</div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;len; i++) printf(<span class="stringliteral">&quot; %d&quot;</span>,(<span class="keywordtype">int</span>) buf[i]);</div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;  }</div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  retlen = len;</div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;  ret = WriteFile(</div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                  <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,     <span class="comment">// handle to file to write to</span></div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                  buf,     <span class="comment">// pointer to data to write to file</span></div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                  len,     <span class="comment">// number of bytes to write</span></div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                  &amp;retlen, <span class="comment">// pointer to number of bytes written</span></div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                  NULL     <span class="comment">// pointer to structure for overlapped I/O</span></div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;                 );</div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;</div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  <span class="keywordflow">if</span>(ret) <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) retlen;</div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;<span class="preprocessor"></span>  RmBytParmStruct  PBlock;    <span class="comment">/* Parameterstruktur fr RmIO - Funktion          */</span></div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;  RmIOStatusStruct DrvSts;    <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion  */</span></div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>    cByte;     <span class="comment">/* Rckgabewert von ibyte - Funktion              */</span></div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="keywordtype">int</span>              iStatus;   <span class="comment">/* Rckgabewert                                   */</span></div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;  <span class="keywordtype">int</span>              i;         <span class="comment">/* Schleifenz�ler                                */</span></div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;                              <span class="comment">/**************************************************/</span></div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;<span class="comment">   * Schreibparameter setzen</span></div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  PBlock.string = (<span class="keywordtype">char</span>*)buf;</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  PBlock.strlen = len;</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  PBlock.buffer = 0;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  PBlock.timlen = 0;</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  PBlock.status = 0;</div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;</div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;  <span class="comment">/******************************************************</span></div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;<span class="comment">   *                                                    *</span></div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;<span class="comment">   * Toggle mode wird emuliert indem an dieser Stelle   *</span></div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="comment">   * RTS-Signal gesetzt und sp�er wieder gel�cht wird   *</span></div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="comment">   *                                                    *</span></div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;<span class="comment">   ******************************************************/</span></div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  cByte = inbyte( com + 0x04u );</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;  outbyte( com + 0x04, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(cByte | 0x02u) );</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="comment">   * Schreibvorgang einleiten</span></div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;  iStatus = RmIO( BYT_WRITE_WAIT, (<span class="keywordtype">unsigned</span>)device, (<span class="keywordtype">unsigned</span>)unit, 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  <span class="comment">/******************************************************************</span></div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment">   *                                                                *</span></div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment">   * 8ms warten.Bei der Aenderung der Uebertragungsgeschwindigkeit, *</span></div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment">   * sollte dieser Wert angepasst werden. Hier fuer 9600            *</span></div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment">   *                                                                *</span></div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;<span class="comment">   ******************************************************************/</span></div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;  RmPauseTask((RTS_TIME_WAIT*9600)/baudrate);</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;  <span class="comment">/*</span></div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;<span class="comment">   * RTS-Signal l�chen</span></div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;<span class="comment">   */</span></div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  outbyte( com + 0x04, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(cByte &amp; 0xFDu) );</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="keywordflow">if</span>( iStatus ) printf( <span class="stringliteral">&quot;BYT_WRITE_WAIT (write block): Error status = %X\n&quot;</span>, iStatus );</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;  <span class="keywordflow">if</span>( !iStatus ) <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;</div>
-<div class="line"><a name="l00687"></a><span class="lineno"><a class="code" href="classrlSerial.html#a21f34172f382a823108912ad8a2a0d3b">  687</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#a21f34172f382a823108912ad8a2a0d3b">rlSerial::readLine</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> maxlen, <span class="keywordtype">int</span> timeout)</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;{</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;  <span class="keywordtype">int</span> i,c,ret;</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;  <span class="keywordflow">if</span>(maxlen &lt;= 1) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;  ret = 0;</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;  buf[maxlen-1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;  <span class="keywordflow">for</span>(i=0; i&lt;maxlen-2; i++)</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  {</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    ret = i;</div>
-<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    <span class="keywordflow">if</span>(timeout &gt; 0)</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;    {</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;      <span class="keywordtype">int</span> t = <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">select</a>(timeout);</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;      <span class="keywordflow">if</span>(t == 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    }</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    c = <a class="code" href="classrlSerial.html#a05de122779086e7f943f182829344fc4">readChar</a>();</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    <span class="keywordflow">if</span>(c &lt; 0)</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;    {</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;      buf[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;      ret = c;</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    }</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    buf[i] = (<span class="keywordtype">unsigned</span> char) c;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    <span class="keywordflow">if</span>(c &lt; <span class="charliteral">&#39; &#39;</span> &amp;&amp; c != <span class="charliteral">&#39;\t&#39;</span>)</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;    {</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;      buf[i+1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;      <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;    }</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  }</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;}</div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;</div>
-<div class="line"><a name="l00719"></a><span class="lineno"><a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">  719</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">rlSerial::select</a>(<span class="keywordtype">int</span> timeout)</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;{</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
-<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;<span class="preprocessor"></span>  <span class="keyword">struct </span>timeval timout;</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  fd_set wset,rset,eset;</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  <span class="keywordtype">int</span>    ret,maxfdp1;</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="keywordflow">if</span>(timeout &lt;= 0) <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  <span class="comment">/* setup sockets to read */</span></div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  maxfdp1 = <a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>+1;</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  FD_ZERO(&amp;rset);</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  FD_SET (<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,&amp;rset);</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  FD_ZERO(&amp;wset);</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  FD_ZERO(&amp;eset);</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  timout.tv_sec  =  timeout / 1000;</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;  timout.tv_usec = (timeout % 1000) * 1000;</div>
-<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  ret = <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">::select</a>(maxfdp1,&amp;rset,&amp;wset,&amp;eset,&amp;timout);</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  <span class="keywordflow">if</span>(ret == 0) <span class="keywordflow">return</span> 0; <span class="comment">/* timeout */</span></div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;<span class="preprocessor"></span>  COMMTIMEOUTS ctimeout;</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  ctimeout.ReadIntervalTimeout          = timeout; </div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  ctimeout.ReadTotalTimeoutMultiplier   = 1; </div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  ctimeout.ReadTotalTimeoutConstant     = timeout; </div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  ctimeout.WriteTotalTimeoutMultiplier  = 1; </div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;  ctimeout.WriteTotalTimeoutConstant    = timeout; </div>
-<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  SetCommTimeouts(<a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>, &amp;ctimeout);</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;</div>
-<div class="line"><a name="l00763"></a><span class="lineno"><a class="code" href="classrlSerial.html#a39d0286085b2e01a54a5b8c79789825e">  763</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#a39d0286085b2e01a54a5b8c79789825e">rlSerial::closeDevice</a>()</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;{</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;  <span class="comment">//if(::tcsetattr(fd,TCSAFLUSH,&amp;save_termios) &lt; 0) return -1;</span></div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;  <span class="keywordflow">if</span>(::tcsetattr(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,TCSANOW,&amp;<a class="code" href="classrlSerial.html#a7f311c2650a7c0d7e16485c09472d95c">save_termios</a>) &lt; 0) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;  ::close(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>);</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  <a class="code" href="classrlSerial.html#a7565f3f0978b1ae94d23c4bc2ab0fc8e">ttystate</a> = <a class="code" href="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd">RESET</a>;</div>
-<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;  <a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> = -1;</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
-<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;<span class="preprocessor"></span>  sys$dassgn(<a class="code" href="classrlSerial.html#a060216d45b73292bf244112b1de1db23">vms_channel</a>);</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;<span class="preprocessor"></span>  CloseHandle(<a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>);</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;<span class="preprocessor"></span>  RmBytParmStruct  PBlock;    <span class="comment">/* Parameterstruktur fr RmIO - Funktion          */</span></div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;  RmIOStatusStruct DrvSts;    <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion */</span></div>
-<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;                              <span class="comment">/**************************************************/</span></div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  <span class="keywordflow">if</span>( RmIO( BYT_RELEASE, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock ) &lt; 0 )</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  {</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    printf( <span class="stringliteral">&quot;Error: Unable to release device. device: %i, unit: %i\n&quot;</span>,device, unit );</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;  }</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;  status = SYS$QIOW(0,<a class="code" href="classrlSerial.html#a060216d45b73292bf244112b1de1db23">vms_channel</a>,IO$_WRITEVBLK | IO$M_CANCTRLO | IO$M_NOFORMAT,</div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;                    &amp;iosb,0,0,buf,len,0,0,0,0);</div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;  <span class="keywordflow">if</span>(status != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;  <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="preprocessor"></span>  BOOL ret;</div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> retlen;</div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;</div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1)</div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;  {</div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;    printf(<span class="stringliteral">&quot;writeBlock:&quot;</span>);</div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;    <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=0; i&lt;len; i++) printf(<span class="stringliteral">&quot; %d&quot;</span>,(<span class="keywordtype">int</span>) buf[i]);</div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;    printf(<span class="stringliteral">&quot;\n&quot;</span>);</div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;  }</div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;  retlen = len;</div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;  ret = WriteFile(</div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;                  <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,     <span class="comment">// handle to file to write to</span></div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;                  buf,     <span class="comment">// pointer to data to write to file</span></div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;                  len,     <span class="comment">// number of bytes to write</span></div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;                  &amp;retlen, <span class="comment">// pointer to number of bytes written</span></div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;                  NULL     <span class="comment">// pointer to structure for overlapped I/O</span></div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;                 );</div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;</div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;  <span class="keywordflow">if</span>(ret) <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) retlen;</div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="preprocessor"></span>  RmBytParmStruct  PBlock;    <span class="comment">/* Parameterstruktur fr RmIO - Funktion          */</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;  RmIOStatusStruct DrvSts;    <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion  */</span></div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>    cByte;     <span class="comment">/* Rckgabewert von ibyte - Funktion              */</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;  <span class="keywordtype">int</span>              iStatus;   <span class="comment">/* Rckgabewert                                   */</span></div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;  <span class="keywordtype">int</span>              i;         <span class="comment">/* Schleifenz�ler                                */</span></div>
+<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;                              <span class="comment">/**************************************************/</span></div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;<span class="comment">   * Schreibparameter setzen</span></div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  PBlock.string = (<span class="keywordtype">char</span>*)buf;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  PBlock.strlen = len;</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  PBlock.buffer = 0;</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  PBlock.timlen = 0;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  PBlock.status = 0;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  <span class="comment">/******************************************************</span></div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;<span class="comment">   *                                                    *</span></div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;<span class="comment">   * Toggle mode wird emuliert indem an dieser Stelle   *</span></div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;<span class="comment">   * RTS-Signal gesetzt und sp�er wieder gel�cht wird   *</span></div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;<span class="comment">   *                                                    *</span></div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;<span class="comment">   ******************************************************/</span></div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;  cByte = inbyte( com + 0x04u );</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;  outbyte( com + 0x04, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(cByte | 0x02u) );</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;<span class="comment">   * Schreibvorgang einleiten</span></div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;  iStatus = RmIO( BYT_WRITE_WAIT, (<span class="keywordtype">unsigned</span>)device, (<span class="keywordtype">unsigned</span>)unit, 0u, 0u, &amp;DrvSts, &amp;PBlock );</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;  <span class="comment">/******************************************************************</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;<span class="comment">   *                                                                *</span></div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;<span class="comment">   * 8ms warten.Bei der Aenderung der Uebertragungsgeschwindigkeit, *</span></div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;<span class="comment">   * sollte dieser Wert angepasst werden. Hier fuer 9600            *</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;<span class="comment">   *                                                                *</span></div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;<span class="comment">   ******************************************************************/</span></div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  RmPauseTask((RTS_TIME_WAIT*9600)/baudrate);</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;<span class="comment">   * RTS-Signal l�chen</span></div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;<span class="comment">   */</span></div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;  outbyte( com + 0x04, (<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>)(cByte &amp; 0xFDu) );</div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  <span class="keywordflow">if</span>( iStatus ) printf( <span class="stringliteral">&quot;BYT_WRITE_WAIT (write block): Error status = %X\n&quot;</span>, iStatus );</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;</div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  <span class="keywordflow">if</span>( !iStatus ) <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;</div>
+<div class="line"><a name="l00686"></a><span class="lineno"><a class="code" href="classrlSerial.html#a21f34172f382a823108912ad8a2a0d3b">  686</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#a21f34172f382a823108912ad8a2a0d3b">rlSerial::readLine</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> *buf, <span class="keywordtype">int</span> maxlen, <span class="keywordtype">int</span> timeout)</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;{</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;  <span class="keywordtype">int</span> i,c,ret;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;  <span class="keywordflow">if</span>(maxlen &lt;= 1) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;  ret = 0;</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;  buf[maxlen-1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;  <span class="keywordflow">for</span>(i=0; i&lt;maxlen-2; i++)</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;  {</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;    ret = i;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;    <span class="keywordflow">if</span>(timeout &gt; 0)</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;    {</div>
+<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;      <span class="keywordtype">int</span> t = <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">select</a>(timeout);</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;      <span class="keywordflow">if</span>(t == 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;    }</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;    c = <a class="code" href="classrlSerial.html#a05de122779086e7f943f182829344fc4">readChar</a>();</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;    <span class="keywordflow">if</span>(c &lt; 0)</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;    {</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;      buf[i] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;      ret = c;</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    }</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;    buf[i] = (<span class="keywordtype">unsigned</span> char) c;</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;    <span class="keywordflow">if</span>(c &lt; <span class="charliteral">&#39; &#39;</span> &amp;&amp; c != <span class="charliteral">&#39;\t&#39;</span>)</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;    {</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;      buf[i+1] = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;      <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;    }</div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;  }</div>
+<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;}</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;</div>
+<div class="line"><a name="l00718"></a><span class="lineno"><a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">  718</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">rlSerial::select</a>(<span class="keywordtype">int</span> timeout)</div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;{</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;<span class="preprocessor"></span>  <span class="keyword">struct </span>timeval timout;</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;  fd_set wset,rset,eset;</div>
+<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;  <span class="keywordtype">int</span>    ret,maxfdp1;</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  <span class="keywordflow">if</span>(timeout &lt;= 0) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;  <span class="comment">/* setup sockets to read */</span></div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;  maxfdp1 = <a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>+1;</div>
+<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;  FD_ZERO(&amp;rset);</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  FD_SET (<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,&amp;rset);</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  FD_ZERO(&amp;wset);</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  FD_ZERO(&amp;eset);</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  timout.tv_sec  =  timeout / 1000;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  timout.tv_usec = (timeout % 1000) * 1000;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;  ret = <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">::select</a>(maxfdp1,&amp;rset,&amp;wset,&amp;eset,&amp;timout);</div>
+<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;  <span class="keywordflow">if</span>(ret == 0) <span class="keywordflow">return</span> 0; <span class="comment">/* timeout */</span></div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
+<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;<span class="preprocessor"></span>  COMMTIMEOUTS ctimeout;</div>
+<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;  ctimeout.ReadIntervalTimeout          = timeout; </div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  ctimeout.ReadTotalTimeoutMultiplier   = 1; </div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  ctimeout.ReadTotalTimeoutConstant     = timeout; </div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  ctimeout.WriteTotalTimeoutMultiplier  = 1; </div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  ctimeout.WriteTotalTimeoutConstant    = timeout; </div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;  SetCommTimeouts(<a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>, &amp;ctimeout);</div>
+<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;<span class="preprocessor"></span>}</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;</div>
+<div class="line"><a name="l00762"></a><span class="lineno"><a class="code" href="classrlSerial.html#a39d0286085b2e01a54a5b8c79789825e">  762</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSerial.html#a39d0286085b2e01a54a5b8c79789825e">rlSerial::closeDevice</a>()</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;{</div>
+<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;<span class="preprocessor">#ifdef RLUNIX</span></div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;  <span class="comment">//if(::tcsetattr(fd,TCSAFLUSH,&amp;save_termios) &lt; 0) return -1;</span></div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;  <span class="keywordflow">if</span>(::tcsetattr(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>,TCSANOW,&amp;<a class="code" href="classrlSerial.html#a7f311c2650a7c0d7e16485c09472d95c">save_termios</a>) &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;  ::close(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a>);</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;  <a class="code" href="classrlSerial.html#a7565f3f0978b1ae94d23c4bc2ab0fc8e">ttystate</a> = <a class="code" href="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd">RESET</a>;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;  <a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> = -1;</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;<span class="preprocessor">#ifdef __VMS</span></div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;<span class="preprocessor"></span>  sys$dassgn(<a class="code" href="classrlSerial.html#a060216d45b73292bf244112b1de1db23">vms_channel</a>);</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;<span class="preprocessor"></span>  CloseHandle(<a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>);</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;<span class="preprocessor">#ifdef RM3</span></div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;<span class="preprocessor"></span>  RmBytParmStruct  PBlock;    <span class="comment">/* Parameterstruktur fr RmIO - Funktion          */</span></div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;  RmIOStatusStruct DrvSts;    <span class="comment">/* Struktur der Rckgabewerte fr RmIO - Funktion */</span></div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;                              <span class="comment">/**************************************************/</span></div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;  <span class="keywordflow">if</span>( RmIO( BYT_RELEASE, (<span class="keywordtype">unsigned</span>)(device), (<span class="keywordtype">unsigned</span>)(unit), 0u, 0u, &amp;DrvSts, &amp;PBlock ) &lt; 0 )</div>
+<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;  {</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;    printf( <span class="stringliteral">&quot;Error: Unable to release device. device: %i, unit: %i\n&quot;</span>,device, unit );</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;  }</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;<span class="preprocessor"></span>}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

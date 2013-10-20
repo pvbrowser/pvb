@@ -411,161 +411,161 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00322"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#ac7db059cc876c3274146630b113641a4">  322</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#ac7db059cc876c3274146630b113641a4">rlEIBnetIP::storeInProvider</a>(<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *tel)</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;{</div>
 <div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#a4a7149e5b86bf2537f41daccc1c86387">provider</a> == NULL || tel == NULL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="keywordtype">int</span> s1,s2,s3,d1,d2,d3,val,length;</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordtype">char</span> name[128], <a class="code" href="classrlEIBnetIP.html#aebb119219a1a25c9ad0e930542137786">value</a>[128];</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  s1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a>/(8*256);</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  s2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a>/256) &amp; 0x0ff;</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  s3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a> &amp; 0x0ff;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  d1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/(8*256);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  d2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/256) &amp; 0x0ff;</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  d3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a> &amp; 0x0ff;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  length = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3488da859b03dcc6668ce5131aa41348">apci_length</a>;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  val = 0;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordflow">if</span>(length == 1)</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  {</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    val = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  }</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 2)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1]);</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;  }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 3)</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  {</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2];</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  }</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 4)</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  {</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    val = ((((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*(tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2]*256) * tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[3]);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  }</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="comment">//::printf(&quot;/%d/%d/%d\t/%d/%d/%d\t0x%x\t%d\n&quot;,s1,s2,s3,d1,d2,d3,val,length);</span></div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  sprintf(name,<span class="stringliteral">&quot;/%d/%d/%03d&quot;</span>,d1,d2,d3);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  sprintf(value,<span class="stringliteral">&quot;%d&quot;</span>,val);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;storeInProvicer: name=%s value=%s&quot;</span>, name, value);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a4a7149e5b86bf2537f41daccc1c86387">provider</a>-&gt;<a class="code" href="classrlDataAcquisitionProvider.html#a570658cbca250bd9441206e1ece2e694">setStringValue</a>(name, value);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;}</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#aaa0d9fe5684e3a709cdef4262cf3d64e">  363</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#aaa0d9fe5684e3a709cdef4262cf3d64e">rlEIBnetIP::dump</a>(FILE *fout)</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <span class="keywordflow">if</span>(fout == NULL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP::dump()\n&quot;</span>);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordtype">int</span> s1,s2,s3,d1,d2,d3,val,length;</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="keywordtype">int</span> i = 0;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *tel;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *memptr = (<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *) <a class="code" href="classrlEIBnetIP.html#a4abe062ed8afeaf8173894a7b3f174d8">mem</a>;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  val = 0;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a7a4dc97aaf46c32960afbf2285206390">thread</a>.<a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">lock</a>();</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="keywordflow">while</span>(1)</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  {</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;    tel = &amp;memptr[i];</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    <span class="keywordflow">if</span>(tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3b746e1595c29f7cd41e14945a200b38">mc</a> == 0)   <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">if</span>(i &gt;= <a class="code" href="classrlEIBnetIP.html#a4ffe4396c7230d8c779ba27208c1f80a">maxvalues</a>) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    s1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a>/(8*256);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    s2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a>/256) &amp; 0x0ff;</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    s3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a> &amp; 0x0ff;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    d1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/(8*256);</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    d2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/256) &amp; 0x0ff;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    d3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a> &amp; 0x0ff;</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    length = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3488da859b03dcc6668ce5131aa41348">apci_length</a>;</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    <span class="keywordflow">if</span>(length == 1)</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    {</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      val = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 2)</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    {</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1]);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 3)</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;      <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2];</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    }</div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 4)</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    {</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;      <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      val = ((((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*(tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2]*256) * tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[3]);</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;    }</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    fprintf(fout,<span class="stringliteral">&quot;/%d/%d/%d\t/%d/%d/%d\t0x%x\t%d\n&quot;</span>,s1,s2,s3,d1,d2,d3,val,length);</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    i++;</div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;  }</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a7a4dc97aaf46c32960afbf2285206390">thread</a>.<a class="code" href="classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3">unlock</a>();</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <span class="keywordflow">return</span> i;</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;}</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
-<div class="line"><a name="l00412"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#a000059512aafffe1c76eb2e86088b32b">  412</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#a000059512aafffe1c76eb2e86088b32b">rlEIBnetIP::setValuesFromCSV</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename)</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;{</div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  FILE *fin;</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <span class="keywordtype">char</span> line[1024], *cptr;</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <span class="keywordtype">int</span>  s1,s2,s3,d1,d2,d3,i,val,len;</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> uval;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  <span class="keywordflow">if</span>(filename == NULL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  fin = fopen(filename,<span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <span class="keywordflow">if</span>(fin == NULL)</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  {</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;    <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP::setValuesFromCSV(%s) could not open file\n&quot;</span>,filename);</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  }</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  <span class="keywordflow">while</span>(fgets(line,<span class="keyword">sizeof</span>(line)-1,fin) != NULL)</div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  {</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;    d1 = d2 = d3 = 0;</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    cptr = strchr(line,<span class="charliteral">&#39;/&#39;</span>);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    <span class="keywordflow">if</span>(cptr == NULL) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    sscanf(cptr,<span class="stringliteral">&quot;/%d/%d/%d&quot;</span>,&amp;s1,&amp;s2,&amp;s3);</div>
-<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    i = 0;</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    <span class="keywordflow">while</span>(line[i] != <span class="charliteral">&#39;\0&#39;</span>)</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    {</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;      <span class="keywordflow">if</span>(line[i] == <span class="charliteral">&#39; &#39;</span> || line[i] == <span class="charliteral">&#39;\t&#39;</span>)</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;      {</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;        <span class="keywordflow">while</span>(line[i] == <span class="charliteral">&#39; &#39;</span> || line[i] == <span class="charliteral">&#39;\t&#39;</span>) i++;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">if</span>(line[i] == <span class="charliteral">&#39;/&#39;</span>)</div>
-<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        {</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;          cptr = strstr(&amp;line[i],<span class="stringliteral">&quot;0x&quot;</span>);</div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;          <span class="keywordflow">if</span>(cptr == NULL)</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;          {</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;            sscanf(&amp;line[i],<span class="stringliteral">&quot;/%d/%d/%d %d %d&quot;</span>,&amp;d1,&amp;d2,&amp;d3,&amp;val,&amp;len);</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;          }</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;          <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;          {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;            sscanf(&amp;line[i],<span class="stringliteral">&quot;/%d/%d/%d %x %d&quot;</span>,&amp;d1,&amp;d2,&amp;d3,&amp;val,&amp;len);</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;          }</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;        }</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;      }</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;      i++;</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;    }</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">if</span>(line[i] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    cptr = strchr(line,<span class="charliteral">&#39;/&#39;</span>);</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    <span class="keywordflow">if</span>(cptr != NULL)</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    {</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;      sprintf(line,<span class="stringliteral">&quot;/%d/%d/%d&quot;</span>,d1,d2,d3);</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;      <span class="keywordflow">for</span>(i=0; i&lt;100; i++) <span class="comment">// try setting even if hardware responds very slowly</span></div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      {</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;        memcpy(&amp;uval,&amp;val,<span class="keyword">sizeof</span>(uval));</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        uval = <a class="code" href="classrlEIBnetIP.html#a8ac8fe6b1de6e7f510209c7d4033c8ac">setValueUnsigned</a>(line,uval,len);</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        <span class="keywordflow">if</span>(uval != <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>) <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;      }</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    }</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;  }</div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  fclose(fin);</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;}</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div>
-<div class="line"><a name="l00473"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#a9e88f3f47ed27092ccea75182b3a1c0a">  473</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#a9e88f3f47ed27092ccea75182b3a1c0a">rlEIBnetIP::connect</a>()</div>
-<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;{</div>
-<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#a43ac581a040823ef0f5fcb6cc24477c7">server</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
-<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP()::connect()\n&quot;</span>);</div>
-<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;  <a class="code" href="structrlEIBnetIP_1_1PDU.html">PDU</a> pdu,response;</div>
-<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> cricrd[<a class="code" href="rleibnetip_8cpp.html#a05ded4864d98bfeea191e49e048f39a8">EIB_CRICRDSIZE</a>];</div>
-<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;  <span class="keywordtype">int</span> ret = 0;</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  <span class="comment">//int s1,s2,s3;</span></div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;  <span class="keywordtype">int</span> d1,d2,d3,val,length;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordtype">char</span> name[128], <a class="code" href="classrlEIBnetIP.html#aebb119219a1a25c9ad0e930542137786">value</a>[128];</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <span class="comment">//s1 = tel-&gt;saddr/(8*256);</span></div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="comment">//s2 = (tel-&gt;saddr/256) &amp; 0x0ff;</span></div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <span class="comment">//s3 = tel-&gt;saddr &amp; 0x0ff;</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  d1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/(8*256);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  d2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/256) &amp; 0x0ff;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  d3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a> &amp; 0x0ff;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  length = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3488da859b03dcc6668ce5131aa41348">apci_length</a>;</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  val = 0;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">if</span>(length == 1)</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    val = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  }</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 2)</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  {</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1]);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 3)</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2];</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  }</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 4)</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    val = ((((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*(tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2]*256) * tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[3]);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="comment">//::printf(&quot;/%d/%d/%d\t/%d/%d/%d\t0x%x\t%d\n&quot;,s1,s2,s3,d1,d2,d3,val,length);</span></div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  sprintf(name,<span class="stringliteral">&quot;/%d/%d/%03d&quot;</span>,d1,d2,d3);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  sprintf(value,<span class="stringliteral">&quot;%d&quot;</span>,val);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;storeInProvicer: name=%s value=%s&quot;</span>, name, value);</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a4a7149e5b86bf2537f41daccc1c86387">provider</a>-&gt;<a class="code" href="classrlDataAcquisitionProvider.html#a570658cbca250bd9441206e1ece2e694">setStringValue</a>(name, value);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;}</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#aaa0d9fe5684e3a709cdef4262cf3d64e">  364</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#aaa0d9fe5684e3a709cdef4262cf3d64e">rlEIBnetIP::dump</a>(FILE *fout)</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;{</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordflow">if</span>(fout == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP::dump()\n&quot;</span>);</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  <span class="keywordtype">int</span> s1,s2,s3,d1,d2,d3,val,length;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <span class="keywordtype">int</span> i = 0;</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *tel;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  <a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *memptr = (<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html">EIB_TEL</a> *) <a class="code" href="classrlEIBnetIP.html#a4abe062ed8afeaf8173894a7b3f174d8">mem</a>;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  val = 0;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a7a4dc97aaf46c32960afbf2285206390">thread</a>.<a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">lock</a>();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  <span class="keywordflow">while</span>(1)</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    tel = &amp;memptr[i];</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">if</span>(tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3b746e1595c29f7cd41e14945a200b38">mc</a> == 0)   <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">if</span>(i &gt;= <a class="code" href="classrlEIBnetIP.html#a4ffe4396c7230d8c779ba27208c1f80a">maxvalues</a>) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    s1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a>/(8*256);</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    s2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a>/256) &amp; 0x0ff;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;    s3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#affbb6d5e4edcaf6d45d623c25d9e14d5">saddr</a> &amp; 0x0ff;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    d1 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/(8*256);</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    d2 = (tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>/256) &amp; 0x0ff;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;    d3 = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a> &amp; 0x0ff;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;    length = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3488da859b03dcc6668ce5131aa41348">apci_length</a>;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordflow">if</span>(length == 1)</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    {</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;      val = tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 2)</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    {</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;      val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1]);</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 3)</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;    {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;      val = (((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2];</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    }</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;    <span class="keywordflow">else</span> <span class="keywordflow">if</span>(length == 4)</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;    {</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      <span class="keywordtype">char</span> *cptr = (<span class="keywordtype">char</span> *) &amp;tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[0];</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;      val = ((((*cptr)*256)+tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[1])*(tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[2]*256) * tel-&gt;<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a835ca3b266201dc3bc7695ff98e5383a">val</a>[3]);</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;    }</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;    fprintf(fout,<span class="stringliteral">&quot;/%d/%d/%d\t/%d/%d/%d\t0x%x\t%d\n&quot;</span>,s1,s2,s3,d1,d2,d3,val,length);</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;    i++;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  }</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a7a4dc97aaf46c32960afbf2285206390">thread</a>.<a class="code" href="classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3">unlock</a>();</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;  <span class="keywordflow">return</span> i;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;}</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#a000059512aafffe1c76eb2e86088b32b">  413</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#a000059512aafffe1c76eb2e86088b32b">rlEIBnetIP::setValuesFromCSV</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *filename)</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;{</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  FILE *fin;</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <span class="keywordtype">char</span> line[1024], *cptr;</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;  <span class="keywordtype">int</span>  s1,s2,s3,d1,d2,d3,i,val,len;</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> uval;</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <span class="keywordflow">if</span>(filename == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  fin = fopen(filename,<span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <span class="keywordflow">if</span>(fin == NULL)</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  {</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP::setValuesFromCSV(%s) could not open file\n&quot;</span>,filename);</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  }</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  <span class="keywordflow">while</span>(fgets(line,<span class="keyword">sizeof</span>(line)-1,fin) != NULL)</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  {</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;    d1 = d2 = d3 = 0;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;    cptr = strchr(line,<span class="charliteral">&#39;/&#39;</span>);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;    <span class="keywordflow">if</span>(cptr == NULL) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;    sscanf(cptr,<span class="stringliteral">&quot;/%d/%d/%d&quot;</span>,&amp;s1,&amp;s2,&amp;s3);</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;    i = 0;</div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;    <span class="keywordflow">while</span>(line[i] != <span class="charliteral">&#39;\0&#39;</span>)</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;    {</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;      <span class="keywordflow">if</span>(line[i] == <span class="charliteral">&#39; &#39;</span> || line[i] == <span class="charliteral">&#39;\t&#39;</span>)</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;      {</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;        <span class="keywordflow">while</span>(line[i] == <span class="charliteral">&#39; &#39;</span> || line[i] == <span class="charliteral">&#39;\t&#39;</span>) i++;</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;        <span class="keywordflow">if</span>(line[i] == <span class="charliteral">&#39;/&#39;</span>)</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;        {</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;          cptr = strstr(&amp;line[i],<span class="stringliteral">&quot;0x&quot;</span>);</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;          <span class="keywordflow">if</span>(cptr == NULL)</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;          {</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;            sscanf(&amp;line[i],<span class="stringliteral">&quot;/%d/%d/%d %d %d&quot;</span>,&amp;d1,&amp;d2,&amp;d3,&amp;val,&amp;len);</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;          }</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;          <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;          {</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;            sscanf(&amp;line[i],<span class="stringliteral">&quot;/%d/%d/%d %x %d&quot;</span>,&amp;d1,&amp;d2,&amp;d3,&amp;val,&amp;len);</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;          }</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;        }</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;      }</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;      i++;</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    }</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;    <span class="keywordflow">if</span>(line[i] == <span class="charliteral">&#39;\0&#39;</span>) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;    cptr = strchr(line,<span class="charliteral">&#39;/&#39;</span>);</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;    <span class="keywordflow">if</span>(cptr != NULL)</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;    {</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;      sprintf(line,<span class="stringliteral">&quot;/%d/%d/%d&quot;</span>,d1,d2,d3);</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      <span class="keywordflow">for</span>(i=0; i&lt;100; i++) <span class="comment">// try setting even if hardware responds very slowly</span></div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;      {</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;        memcpy(&amp;uval,&amp;val,<span class="keyword">sizeof</span>(uval));</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;        uval = <a class="code" href="classrlEIBnetIP.html#a8ac8fe6b1de6e7f510209c7d4033c8ac">setValueUnsigned</a>(line,uval,len);</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;        <span class="keywordflow">if</span>(uval != <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>) <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;      }</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;    }</div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;  }</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;  fclose(fin);</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;}</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;</div>
+<div class="line"><a name="l00474"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#a9e88f3f47ed27092ccea75182b3a1c0a">  474</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#a9e88f3f47ed27092ccea75182b3a1c0a">rlEIBnetIP::connect</a>()</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;{</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#a43ac581a040823ef0f5fcb6cc24477c7">server</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP()::connect()\n&quot;</span>);</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;  <a class="code" href="structrlEIBnetIP_1_1PDU.html">PDU</a> pdu,response;</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> cricrd[<a class="code" href="rleibnetip_8cpp.html#a05ded4864d98bfeea191e49e048f39a8">EIB_CRICRDSIZE</a>];</div>
 <div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;</div>
 <div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#aa81a42af4a52ab839a943bcb929de6cd">is_connected</a> == 1)</div>
 <div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;  {</div>
@@ -589,7 +589,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160;  <a class="code" href="classrlEIBnetIP.html#aa81a42af4a52ab839a943bcb929de6cd">is_connected</a> = 0;</div>
 <div class="line"><a name="l00501"></a><span class="lineno">  501</span>&#160;</div>
 <div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;  <a class="code" href="classrlUdpSocket.html#aea90e8b8afef698f7be7cacba733fde8">rlUdpSocket::sendto</a>(&amp;pdu, ntohs(pdu.<a class="code" href="structrlEIBnetIP_1_1PDU.html#a603010b71c886b6b4a60a2c44e557dd9">totalsize</a>), <a class="code" href="classrlEIBnetIP.html#a43ac581a040823ef0f5fcb6cc24477c7">server</a>);</div>
-<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  ret = <a class="code" href="classrlEIBnetIP.html#a4c6ae6b1e81c5b590e2321c052752421">recv</a>(&amp;response, <span class="keyword">sizeof</span>(<a class="code" href="structrlEIBnetIP_1_1PDU.html">PDU</a>));</div>
+<div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  <a class="code" href="classrlEIBnetIP.html#a4c6ae6b1e81c5b590e2321c052752421">recv</a>(&amp;response, <span class="keyword">sizeof</span>(<a class="code" href="structrlEIBnetIP_1_1PDU.html">PDU</a>));</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;</div>
 <div class="line"><a name="l00505"></a><span class="lineno">  505</span>&#160;  <span class="keywordflow">if</span>(ntohs(response.<a class="code" href="structrlEIBnetIP_1_1PDU.html#a794739deb080fc9f37bee4aa3cb57e1a">servicetype</a>) == <a class="code" href="rleibnetip_8cpp.html#a258ffd3a2330563bc310b4dd520832caaccde12c9d8e1855b05df75476c243858">CONNECT_RESPONSE</a>)</div>
 <div class="line"><a name="l00506"></a><span class="lineno">  506</span>&#160;  {</div>
@@ -834,7 +834,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00745"></a><span class="lineno"><a class="code" href="classrlEIBnetIP.html#a3954bf5bb0dded688e1771402b138a17">  745</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlEIBnetIP.html#a3954bf5bb0dded688e1771402b138a17">rlEIBnetIP::getText</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *name, <span class="keywordtype">char</span> *text, <span class="keywordtype">int</span> maxlen)</div>
 <div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;{</div>
 <div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;  <span class="keywordflow">if</span>(name == NULL || text == NULL || maxlen &lt;= 0) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> a1,a2,a3,length;</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> a1,a2,a3; <span class="comment">//,length;</span></div>
 <div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  <span class="keywordtype">int</span> j;</div>
 <div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  <span class="keywordtype">char</span> buf[16];</div>
@@ -861,7 +861,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;    <span class="keywordflow">if</span>(memptr[i].daddr == tel.<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f">daddr</a>)</div>
 <div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;    {</div>
 <div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;      <a class="code" href="classrlEIBnetIP.html#a7a4dc97aaf46c32960afbf2285206390">thread</a>.<a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">lock</a>();</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;      length = memptr[i].<a class="code" href="structrlEIBnetIP_1_1EIB__TEL.html#a3488da859b03dcc6668ce5131aa41348">apci_length</a>;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;      <span class="comment">//length = memptr[i].apci_length;</span></div>
 <div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;      <span class="keywordflow">for</span>(j=0; j&lt;14; j++) buf[j] = memptr[i].val[j];</div>
 <div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;      buf[14] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;      j = 0;</div>

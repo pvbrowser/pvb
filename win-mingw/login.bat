@@ -9,7 +9,7 @@ rem directories where qt and mingw are installed
 
 rem ### for qt4.8.2 ###
 rem SET    QTDIR=C:\Qt\4.8.2
-rem SET MINGWDIR=C:\mingw
+rem SET MINGWDIR=C:\mingw-old
 rem ### for qt5.1.0 ###
 SET    QTDIR=C:\Qt\5.1.0\5.1.0\mingw48_32
 SET MINGWDIR=C:\Qt\5.1.0\Tools\mingw48_32

@@ -266,7 +266,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    add and return a new <a class="el" href="classrlPcontrol.html">rlPcontrol</a> object
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00346">346</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00347">347</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlPcontrol.html">rlPcontrol</a> *item;</div>
 <div class="line"></div>
@@ -293,7 +293,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    get next object in list
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00341">341</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00342">342</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlPcontrol.html#a0260db0ba89db4bef1b3ff1321f3cbf1">next</a>;</div>
 <div class="line">}</div>
@@ -315,7 +315,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    test if process is alive
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00300">300</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00301">301</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef __VMS</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordtype">long</span>  ret,code,mypid;</div>
@@ -403,7 +403,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    get priority
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00392">392</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00393">393</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlPcontrol.html#a744e7acda9f71c531031f303439fa02a">prio</a>;</div>
 <div class="line">}</div>
@@ -500,7 +500,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    set error filename or logical
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00371">371</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00372">372</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#ac1f1b5a2cf348e43735acdcd4e9b0d7f">m_error</a> != NULL) <span class="keyword">delete</span> [] <a class="code" href="classrlPcontrol.html#ac1f1b5a2cf348e43735acdcd4e9b0d7f">m_error</a>;</div>
 <div class="line">  <a class="code" href="classrlPcontrol.html#ac1f1b5a2cf348e43735acdcd4e9b0d7f">m_error</a> = <span class="keyword">new</span> <span class="keywordtype">char</span> [strlen(error)+1];</div>
@@ -525,7 +525,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    set input filename or logical
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00357">357</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00358">358</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#a2e72c2e1e569da582415b84d3fc3623a">m_input</a> != NULL) <span class="keyword">delete</span> [] <a class="code" href="classrlPcontrol.html#a2e72c2e1e569da582415b84d3fc3623a">m_input</a>;</div>
 <div class="line">  <a class="code" href="classrlPcontrol.html#a2e72c2e1e569da582415b84d3fc3623a">m_input</a> = <span class="keyword">new</span> <span class="keywordtype">char</span> [strlen(input)+1];</div>
@@ -550,7 +550,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    set output filename or logical
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00364">364</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00365">365</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#aef6b11e8d8e58d32c7c54c0a82ed3ab7">m_output</a> != NULL) <span class="keyword">delete</span> [] <a class="code" href="classrlPcontrol.html#aef6b11e8d8e58d32c7c54c0a82ed3ab7">m_output</a>;</div>
 <div class="line">  <a class="code" href="classrlPcontrol.html#aef6b11e8d8e58d32c7c54c0a82ed3ab7">m_output</a> = <span class="keyword">new</span> <span class="keywordtype">char</span> [strlen(output)+1];</div>
@@ -609,7 +609,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    set priority default=8
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00379">379</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00380">380</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef __VMS</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(pri &lt;  0) pri = 0;</div>
@@ -678,7 +678,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    stop the process with SIGKILL
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00276">276</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00277">277</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#a36f445252073031b4708312987c3fef0">m_pid</a> == -1) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#a36f445252073031b4708312987c3fef0">m_pid</a> ==  0) <span class="keywordflow">return</span> -1;</div>
@@ -719,7 +719,7 @@ A class for starting/stoping/monitoring other processes.
 <pre>
    stop the process with SIGTERM
    </pre> 
-<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00231">231</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlpcontrol_8cpp_source.html#l00232">232</a> of file <a class="el" href="rlpcontrol_8cpp_source.html">rlpcontrol.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#a36f445252073031b4708312987c3fef0">m_pid</a> == -1) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlPcontrol.html#a36f445252073031b4708312987c3fef0">m_pid</a> ==  0) <span class="keywordflow">return</span> -1;</div>
@@ -851,7 +851,8 @@ A class for starting/stoping/monitoring other processes.
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  STARTUPINFO         si = {<span class="keyword">sizeof</span>(si)};</div>
+<div class="line"><span class="preprocessor"></span>  STARTUPINFO        si; <span class="comment">//  = { sizeof(si)};</span></div>
+<div class="line">  si.cb = <span class="keyword">sizeof</span>(si);</div>
 <div class="line">  PROCESS_INFORMATION pi;</div>
 <div class="line">  DWORD dwCreationFlags;</div>
 <div class="line"></div>

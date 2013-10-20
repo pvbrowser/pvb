@@ -99,11 +99,11 @@ copy rlsvg\release\rlsvgcat.exe                                  bin\rlsvgcat.ex
 copy rlhistory\release\rlhistory.exe                             bin\rlhistory.exe                               
 copy ..\start_pvbapp\release\\start_pvbapp.exe                   bin\start_pvbapp.exe                            
 copy fake_qmake\release\fake_qmake.exe                           bin\fake_qmake.exe                              
-xcopy /e /y "%QTMINGW%\plugins\imageformats"                     bin\imageformats                                
-xcopy /e /y "%QTMINGW%\plugins\playlistformats"                  bin\playlistformats                                
-xcopy /e /y "%QTMINGW%\plugins\mediaservice"                     bin\mediaservice                                
-xcopy /e /y "%QTMINGW%\plugins\printsupport"                     bin\printsupport                               
-xcopy /e /y "%QTMINGW%\plugins\sqldrivers"                       bin\sqldrivers                                
+xcopy /e /y "%QTDIR%\plugins\imageformats"                       bin\imageformats                                
+xcopy /e /y "%QTDIR%\plugins\playlistformats"                    bin\playlistformats                                
+xcopy /e /y "%QTDIR%\plugins\mediaservice"                       bin\mediaservice                                
+xcopy /e /y "%QTDIR%\plugins\printsupport"                       bin\printsupport                               
+xcopy /e /y "%QTDIR%\plugins\sqldrivers"                         bin\sqldrivers                                
 copy ..\qwt\designer\plugins\designer\qwt_designer_plugin5.dll   bin\plugins\designer\qwt_designer_plugin5.dll   
 copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\designer\libqwt_designer_plugin5.a  
 copy ..\designer\plugins\pvb_designer_plugin.dll                 bin\plugins\designer\pvb_designer_plugin.dll    
@@ -111,43 +111,43 @@ copy ..\designer\plugins\libpvb_designer_plugin.a                bin\plugins\des
 rem copy bin\plugins\designer\*designer_plugin*                      %QTDIR%\plugins\designer\                     
 
 cd bin
-copy %QTBIN%\icudt51.dll
-copy %QTBIN%\icuin51.dll
-copy %QTBIN%\icuuc51.dll
-copy %QTBIN%\libgcc_s_dw2-1.dll
-rem copy %QTBIN%\libstdc++-6.dll
-copy %QTBIN%\libwinpthread-1.dll
-copy %QTBIN%\Qt5CLucene.dll
-copy %QTBIN%\Qt5Concurrent.dll
-copy %QTBIN%\Qt5Core.dll
-copy %QTBIN%\Qt5Declarative.dll
-copy %QTBIN%\Qt5Designer.dll
-copy %QTBIN%\Qt5DesignerComponents.dll
-copy %QTBIN%\Qt5Gui.dll
-copy %QTBIN%\Qt5Help.dll
-copy %QTBIN%\Qt5Multimedia.dll
-copy %QTBIN%\Qt5MultimediaQuick_p.dll
-copy %QTBIN%\Qt5MultimediaWidgets.dll
-copy %QTBIN%\Qt5Network.dll
-copy %QTBIN%\Qt5OpenGL.dll
-copy %QTBIN%\Qt5PrintSupport.dll
-copy %QTBIN%\Qt5Qml.dll
-copy %QTBIN%\Qt5Quick.dll
-copy %QTBIN%\Qt5QuickParticles.dll
-copy %QTBIN%\Qt5QuickTest.dll
-copy %QTBIN%\Qt5Script.dll
-copy %QTBIN%\Qt5ScriptTools.dll
-copy %QTBIN%\Qt5Sensors.dll
-copy %QTBIN%\Qt5SerialPort.dll
-copy %QTBIN%\Qt5Sql.dll
-copy %QTBIN%\Qt5Svg.dll
-copy %QTBIN%\Qt5Test.dll
-copy %QTBIN%\Qt5V8.dll
-copy %QTBIN%\Qt5WebKit.dll
-copy %QTBIN%\Qt5WebKitWidgets.dll
-copy %QTBIN%\Qt5Widgets.dll
-copy %QTBIN%\Qt5Xml.dll
-copy %QTBIN%\Qt5XmlPatterns.dll
+copy %QTDIR%\bin\icudt51.dll
+copy %QTDIR%\bin\icuin51.dll
+copy %QTDIR%\bin\icuuc51.dll
+copy %QTDIR%\bin\libgcc_s_dw2-1.dll
+rem copy %QTDIR%\bin\libstdc++-6.dll
+copy %QTDIR%\bin\libwinpthread-1.dll
+copy %QTDIR%\bin\Qt5CLucene.dll
+copy %QTDIR%\bin\Qt5Concurrent.dll
+copy %QTDIR%\bin\Qt5Core.dll
+copy %QTDIR%\bin\Qt5Declarative.dll
+copy %QTDIR%\bin\Qt5Designer.dll
+copy %QTDIR%\bin\Qt5DesignerComponents.dll
+copy %QTDIR%\bin\Qt5Gui.dll
+copy %QTDIR%\bin\Qt5Help.dll
+copy %QTDIR%\bin\Qt5Multimedia.dll
+copy %QTDIR%\bin\Qt5MultimediaQuick_p.dll
+copy %QTDIR%\bin\Qt5MultimediaWidgets.dll
+copy %QTDIR%\bin\Qt5Network.dll
+copy %QTDIR%\bin\Qt5OpenGL.dll
+copy %QTDIR%\bin\Qt5PrintSupport.dll
+copy %QTDIR%\bin\Qt5Qml.dll
+copy %QTDIR%\bin\Qt5Quick.dll
+copy %QTDIR%\bin\Qt5QuickParticles.dll
+copy %QTDIR%\bin\Qt5QuickTest.dll
+copy %QTDIR%\bin\Qt5Script.dll
+copy %QTDIR%\bin\Qt5ScriptTools.dll
+copy %QTDIR%\bin\Qt5Sensors.dll
+copy %QTDIR%\bin\Qt5SerialPort.dll
+copy %QTDIR%\bin\Qt5Sql.dll
+copy %QTDIR%\bin\Qt5Svg.dll
+copy %QTDIR%\bin\Qt5Test.dll
+copy %QTDIR%\bin\Qt5V8.dll
+copy %QTDIR%\bin\Qt5WebKit.dll
+copy %QTDIR%\bin\Qt5WebKitWidgets.dll
+copy %QTDIR%\bin\Qt5Widgets.dll
+copy %QTDIR%\bin\Qt5Xml.dll
+copy %QTDIR%\bin\Qt5XmlPatterns.dll
 
 copy %MINGWDIR%\bin\*.dll
 cd ..

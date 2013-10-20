@@ -152,32 +152,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00118"></a><span class="lineno"><a class="code" href="classrlMutex.html">  118</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrlMutex.html">rlMutex</a></div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <a class="code" href="classrlMutex.html#a95a6aced5cd61febb4c2fca412082c4e">rlMutex</a>(<span class="keyword">const</span> <a class="code" href="rlwthread_8h.html#a1e558e3e4f6d94c1d647b41fd7316e4e">pthread_mutexattr_t</a> *attr = NULL);</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classrlMutex.html#a9e41295fb09b428d5f42046dfb8f2fb7">~rlMutex</a>();</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMutex.html#ac70795f772eab5a164582ba5289f926f">trylock</a>();</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMutex.html#ad9d3b571205672f8c85ce51731944ff4">lock</a>();</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMutex.html#ac2b2977e51dfa6ea6213e83974bbe085">unlock</a>();</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno"><a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">  141</a></span>&#160;  <a class="code" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> <a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;};</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="code" href="classrlSemaphore.html">  147</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrlSemaphore.html">rlSemaphore</a></div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;{</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="classrlSemaphore.html#ae3ee24f3b59ab16d4e6916014b4b7276">rlSemaphore</a>(<span class="keywordtype">int</span> max_semaphore = 1000);</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classrlSemaphore.html#a0fa29c5ce8eebd8d6360991d635244ee">~rlSemaphore</a>();</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlSemaphore.html#a89f7ed81665dc220ad0fd40df4a57832">waitSemaphore</a>();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlSemaphore.html#aaa04f4f1d75a185b2dda705f27bc4968">incrementSemaphore</a>();</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="classrlSemaphore.html#a59be3923f9431f8c85e44ce44dd4f3cf">  163</a></span>&#160;  <a class="code" href="structWSEMAPHORE.html">WSEMAPHORE</a>      <a class="code" href="classrlSemaphore.html#a59be3923f9431f8c85e44ce44dd4f3cf">semaphore</a>;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;};</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">//rlMutex(const pthread_mutexattr_t *attr = NULL);</span></div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="classrlMutex.html#a21e938502f89d432534df898980c10c4">rlMutex</a>(<span class="keyword">const</span> <span class="keywordtype">void</span> *attr = NULL);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classrlMutex.html#a9e41295fb09b428d5f42046dfb8f2fb7">~rlMutex</a>();</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMutex.html#ac70795f772eab5a164582ba5289f926f">trylock</a>();</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMutex.html#ad9d3b571205672f8c85ce51731944ff4">lock</a>();</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlMutex.html#ac2b2977e51dfa6ea6213e83974bbe085">unlock</a>();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
+<div class="line"><a name="l00142"></a><span class="lineno"><a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">  142</a></span>&#160;  <a class="code" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> <a class="code" href="classrlMutex.html#af8b565f7bfdd5c507c7187691138e83c">mutex</a>;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;};</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="code" href="classrlSemaphore.html">  148</a></span>&#160;<span class="keyword">class </span><a class="code" href="classrlSemaphore.html">rlSemaphore</a></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="classrlSemaphore.html#ae3ee24f3b59ab16d4e6916014b4b7276">rlSemaphore</a>(<span class="keywordtype">int</span> max_semaphore = 1000);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classrlSemaphore.html#a0fa29c5ce8eebd8d6360991d635244ee">~rlSemaphore</a>();</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlSemaphore.html#a89f7ed81665dc220ad0fd40df4a57832">waitSemaphore</a>();</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classrlSemaphore.html#aaa04f4f1d75a185b2dda705f27bc4968">incrementSemaphore</a>();</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno"><a class="code" href="classrlSemaphore.html#a59be3923f9431f8c85e44ce44dd4f3cf">  164</a></span>&#160;  <a class="code" href="structWSEMAPHORE.html">WSEMAPHORE</a>      <a class="code" href="classrlSemaphore.html#a59be3923f9431f8c85e44ce44dd4f3cf">semaphore</a>;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;};</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

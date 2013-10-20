@@ -205,7 +205,7 @@ Attention: This class is only available on unix like systems.
  Read a char from the spawned command.
  When the command terminates EOF is returned.
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00111">111</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00112">112</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f">fromChild</a> == NULL) <span class="keywordflow">return</span> EOF;</div>
 <div class="line">  return ::fgetc((FILE*) <a class="code" href="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f">fromChild</a>);</div>
@@ -228,7 +228,7 @@ Attention: This class is only available on unix like systems.
 <pre>
  Print all outputs from spawned command to &lt;stdout&gt;
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00146">146</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00149">149</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line">  <span class="keywordflow">while</span>((cptr=<a class="code" href="classrlSpawn.html#af7ae73acac4185d73d7dd8379dede7d4">readLine</a>()) != NULL) <a class="code" href="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6">::printf</a>(<span class="stringliteral">&quot;%s&quot;</span>,cptr);</div>
@@ -264,7 +264,7 @@ Attention: This class is only available on unix like systems.
  Return: number of bytes written
          -1 error
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00127">127</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00130">130</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordtype">char</span> message[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span></div>
@@ -295,7 +295,7 @@ Attention: This class is only available on unix like systems.
  Read a line from the spawned command.
  When the command terminates NULL is returned.
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00093">93</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00094">94</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f">fromChild</a> == NULL) <span class="keywordflow">return</span> NULL;</div>
 <div class="line">  <span class="keywordflow">if</span>(::fgets(<a class="code" href="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4">line</a>,<span class="keyword">sizeof</span>(<a class="code" href="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4">line</a>)-1,(FILE*) <a class="code" href="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f">fromChild</a>) == NULL)</div>
@@ -333,10 +333,11 @@ Attention: This class is only available on unix like systems.
  return = 0 // timeout
  return = 1 // characters available
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00152">152</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00155">155</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(timeout) <span class="keywordflow">return</span> -1;</div>
+<div class="line">  <span class="keywordflow">return</span> -1;</div>
 <div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">struct </span>timeval timout;</div>
 <div class="line">  fd_set wset,rset,eset;</div>
@@ -383,7 +384,8 @@ Attention: This class is only available on unix like systems.
 <p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00045">45</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32 </span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(command) <span class="keywordflow">return</span> -1;</div>
+<div class="line">  <span class="keywordflow">return</span> -1;</div>
 <div class="line"><span class="preprocessor">#else  </span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordtype">int</span> to_child[2],from_child[2],ret;</div>
 <div class="line"></div>
@@ -458,10 +460,12 @@ Attention: This class is only available on unix like systems.
  Return: number of bytes written
          -1 error
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00117">117</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00118">118</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(buf) <span class="keywordflow">return</span> -1;</div>
+<div class="line">  <span class="keywordflow">if</span>(len) <span class="keywordflow">return</span> -1;</div>
+<div class="line">  <span class="keywordflow">return</span> -1;</div>
 <div class="line"><span class="preprocessor">#else  </span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f">toChild</a> == NULL) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  return ::write(fileno((FILE*)<a class="code" href="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f">toChild</a>),buf,len);</div>
@@ -489,7 +493,7 @@ Attention: This class is only available on unix like systems.
  Return: number of bytes written
          -1 error
  </pre> 
-<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00140">140</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00143">143</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f">toChild</a> == NULL) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  <span class="keywordflow">return</span> fprintf((FILE*)<a class="code" href="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f">toChild</a>,<span class="stringliteral">&quot;%s&quot;</span>,buf);</div>

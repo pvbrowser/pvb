@@ -1208,7 +1208,7 @@ int i,ret;
 
   printf("pvserver_version %s\n", pvserver_version);
 #ifdef PVWIN32  
-  printf("serverlib.a was build with MinGW 4.8.2\n");
+  printf("serverlib.a was build with MinGW %d.%d.%d\n", __GNUC__ , __GNUC_MINOR__ , __GNUC_PATCHLEVEL__ );
 #endif  
   ret = 0;
   pvInitInternal(p);

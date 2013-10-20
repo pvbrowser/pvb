@@ -13,5 +13,6 @@ var searchData=
   ['rlmico',['rlMICO',['../rlcorba_8h.html#a6d8f8b8df130d75d0bdf2ec2428d3062',1,'rlcorba.h']]],
   ['rltr',['rltr',['../rlinifile_8h.html#a28ec05f6825cf46c78a89fd062acfd75',1,'rlinifile.h']]],
   ['rlunix',['RLUNIX',['../rldefine_8h.html#a1a06dee5673cf0e2912f52cb1c5dcb49',1,'rldefine.h']]],
-  ['rlwin32',['RLWIN32',['../rldefine_8h.html#aa69fd2b1358365a7eabefb22433241a0',1,'rldefine.h']]]
+  ['rlwin32',['RLWIN32',['../rldefine_8h.html#aa69fd2b1358365a7eabefb22433241a0',1,'rldefine.h']]],
+  ['rlwin32thread',['RLWIN32THREAD',['../rlwthread_8h.html#abef7cf22828e690ea84098a59fe693b5',1,'rlwthread.h']]]
 ];

@@ -403,13 +403,12 @@ class for EIBnet/IP access
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00473">473</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00474">474</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#a43ac581a040823ef0f5fcb6cc24477c7">server</a> == NULL) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP()::connect()\n&quot;</span>);</div>
 <div class="line">  PDU pdu,response;</div>
 <div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> cricrd[<a class="code" href="rleibnetip_8cpp.html#a05ded4864d98bfeea191e49e048f39a8">EIB_CRICRDSIZE</a>];</div>
-<div class="line">  <span class="keywordtype">int</span> ret = 0;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#aa81a42af4a52ab839a943bcb929de6cd">is_connected</a> == 1)</div>
 <div class="line">  {</div>
@@ -433,7 +432,7 @@ class for EIBnet/IP access
 <div class="line">  <a class="code" href="classrlEIBnetIP.html#aa81a42af4a52ab839a943bcb929de6cd">is_connected</a> = 0;</div>
 <div class="line"></div>
 <div class="line">  <a class="code" href="classrlUdpSocket.html#aea90e8b8afef698f7be7cacba733fde8">rlUdpSocket::sendto</a>(&amp;pdu, ntohs(pdu.totalsize), <a class="code" href="classrlEIBnetIP.html#a43ac581a040823ef0f5fcb6cc24477c7">server</a>);</div>
-<div class="line">  ret = <a class="code" href="classrlEIBnetIP.html#a4c6ae6b1e81c5b590e2321c052752421">recv</a>(&amp;response, <span class="keyword">sizeof</span>(PDU));</div>
+<div class="line">  <a class="code" href="classrlEIBnetIP.html#a4c6ae6b1e81c5b590e2321c052752421">recv</a>(&amp;response, <span class="keyword">sizeof</span>(PDU));</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span>(ntohs(response.servicetype) == <a class="code" href="rleibnetip_8cpp.html#a258ffd3a2330563bc310b4dd520832caaccde12c9d8e1855b05df75476c243858">CONNECT_RESPONSE</a>)</div>
 <div class="line">  {</div>
@@ -514,7 +513,7 @@ class for EIBnet/IP access
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00363">363</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00364">364</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(fout == NULL) <span class="keywordflow">return</span> -1;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82">debug</a>) <a class="code" href="classrlUdpSocket.html#a3e8c67d198ee9e4e18266537c82ff7b2">::printf</a>(<span class="stringliteral">&quot;rlEIBnetIP::dump()\n&quot;</span>);</div>
@@ -644,7 +643,7 @@ class for EIBnet/IP access
 <p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00745">745</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(name == NULL || text == NULL || maxlen &lt;= 0) <span class="keywordflow">return</span> <a class="code" href="classrlEIBnetIP.html#a4e31fc57027bed89bd3f7f6cce9a4fc6adb4a63209dc931f03f60dba94c5efb64">rlEIBnetIP::EIBERROR</a>;</div>
-<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> a1,a2,a3,length;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> a1,a2,a3; <span class="comment">//,length;</span></div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> *cptr;</div>
 <div class="line">  <span class="keywordtype">char</span> buf[16];</div>
@@ -671,7 +670,7 @@ class for EIBnet/IP access
 <div class="line">    <span class="keywordflow">if</span>(memptr[i].daddr == tel.daddr)</div>
 <div class="line">    {</div>
 <div class="line">      <a class="code" href="classrlEIBnetIP.html#a7a4dc97aaf46c32960afbf2285206390">thread</a>.<a class="code" href="classrlThread.html#a543d60a27fdd4362af6a859049e19f52">lock</a>();</div>
-<div class="line">      length = memptr[i].apci_length;</div>
+<div class="line">      <span class="comment">//length = memptr[i].apci_length;</span></div>
 <div class="line">      <span class="keywordflow">for</span>(j=0; j&lt;14; j++) buf[j] = memptr[i].val[j];</div>
 <div class="line">      buf[14] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line">      j = 0;</div>
@@ -1226,7 +1225,7 @@ class for EIBnet/IP access
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00412">412</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00413">413</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  FILE *fin;</div>
 <div class="line">  <span class="keywordtype">char</span> line[1024], *cptr;</div>
@@ -1687,12 +1686,13 @@ class for EIBnet/IP access
 <p>Definition at line <a class="el" href="rleibnetip_8cpp_source.html#l00322">322</a> of file <a class="el" href="rleibnetip_8cpp_source.html">rleibnetip.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlEIBnetIP.html#a4a7149e5b86bf2537f41daccc1c86387">provider</a> == NULL || tel == NULL) <span class="keywordflow">return</span> -1;</div>
-<div class="line">  <span class="keywordtype">int</span> s1,s2,s3,d1,d2,d3,val,length;</div>
+<div class="line">  <span class="comment">//int s1,s2,s3;</span></div>
+<div class="line">  <span class="keywordtype">int</span> d1,d2,d3,val,length;</div>
 <div class="line">  <span class="keywordtype">char</span> name[128], <a class="code" href="classrlEIBnetIP.html#aebb119219a1a25c9ad0e930542137786">value</a>[128];</div>
 <div class="line"></div>
-<div class="line">  s1 = tel-&gt;saddr/(8*256);</div>
-<div class="line">  s2 = (tel-&gt;saddr/256) &amp; 0x0ff;</div>
-<div class="line">  s3 = tel-&gt;saddr &amp; 0x0ff;</div>
+<div class="line">  <span class="comment">//s1 = tel-&gt;saddr/(8*256);</span></div>
+<div class="line">  <span class="comment">//s2 = (tel-&gt;saddr/256) &amp; 0x0ff;</span></div>
+<div class="line">  <span class="comment">//s3 = tel-&gt;saddr &amp; 0x0ff;</span></div>
 <div class="line">  d1 = tel-&gt;daddr/(8*256);</div>
 <div class="line">  d2 = (tel-&gt;daddr/256) &amp; 0x0ff;</div>
 <div class="line">  d3 = tel-&gt;daddr &amp; 0x0ff;</div>

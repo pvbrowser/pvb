@@ -23,8 +23,6 @@
  REM   set   MINGWDIR=c:\mingw
  set   QTDIR=c:\Qt\5.1.0\5.1.0\mingw48_32
  set   MINGWDIR=c:\Qt\5.1.0\Tools\mingw48_32
- set   QTDIR=c:\Qt\4.8.2
- set   MINGWDIR=c:\mingw
  set   PYDIR=c:\Python25
  rem
  rem   ############################################################################# 

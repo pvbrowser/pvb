@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../classdf1Buffer.html#ac79414a185aa912fcb48f4bdb76f4c09',1,'df1Buffer']]],
+  ['data',['data',['../classdf1Buffer.html#a53021e47a0f7f88a3847ea586cf954a6',1,'df1Buffer']]],
   ['data2int',['data2int',['../classrlModbus.html#a02da348cb1bef2021a253189f55aeb11',1,'rlModbus']]],
   ['deamontype2canopentype',['deamonType2CanOpenType',['../classrlCanOpenTypes.html#a4fc7ebe82418e204726a72cd30311c9a',1,'rlCanOpenTypes']]],
   ['defaultsection',['defaultSection',['../classrlIniFile.html#a70ed67c5a33a4d3b00b836c6c68f135c',1,'rlIniFile']]],

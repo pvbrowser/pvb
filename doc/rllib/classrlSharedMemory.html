@@ -406,14 +406,14 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  HANDLE hShmem;</div>
-<div class="line">  <span class="keywordtype">int</span> file_existed;</div>
+<div class="line">  <span class="comment">//int file_existed;</span></div>
 <div class="line"></div>
 <div class="line">  status  = <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
 <div class="line">  <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[strlen(shmname)+1];</div>
 <div class="line">  strcpy(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,shmname);</div>
 <div class="line">  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>    = Size + <span class="keyword">sizeof</span>(HANDLE); <span class="comment">// sizeof(*mutex);</span></div>
 <div class="line"></div>
-<div class="line">  file_existed = 1;</div>
+<div class="line">  <span class="comment">//file_existed = 1;</span></div>
 <div class="line">  <a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a> = CreateFile(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,</div>
 <div class="line">                     GENERIC_READ | GENERIC_WRITE,</div>
 <div class="line">                     FILE_SHARE_READ | FILE_SHARE_WRITE,</div>
@@ -422,10 +422,10 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line">                     FILE_ATTRIBUTE_NORMAL,</div>
 <div class="line">                     NULL</div>
 <div class="line">                     );</div>
-<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a> ==  INVALID_HANDLE_VALUE)</div>
+<div class="line">  <span class="keywordflow">if</span>(hSharedFile ==  INVALID_HANDLE_VALUE)</div>
 <div class="line">  {</div>
-<div class="line">    file_existed = 0;</div>
-<div class="line">    <a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a> = CreateFile(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,</div>
+<div class="line">    <span class="comment">//file_existed = 0;</span></div>
+<div class="line">    hSharedFile = CreateFile(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,</div>
 <div class="line">                       GENERIC_READ | GENERIC_WRITE,</div>
 <div class="line">                       FILE_SHARE_READ | FILE_SHARE_WRITE,</div>
 <div class="line">                       NULL,</div>
@@ -434,7 +434,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line">                       NULL</div>
 <div class="line">                       );</div>
 <div class="line">  }</div>
-<div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a> == INVALID_HANDLE_VALUE) { status=<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d">ERROR_FILE</a>; <span class="keywordflow">return</span>; }</div>
+<div class="line">  <span class="keywordflow">if</span>(hSharedFile == INVALID_HANDLE_VALUE) { status=<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d">ERROR_FILE</a>; <span class="keywordflow">return</span>; }</div>
 <div class="line">  <span class="comment">//char *global_name = new char[strlen(name)+40];</span></div>
 <div class="line">  <span class="comment">//strcpy(global_name,&quot;Global\\&quot;); strcat(global_name, name);</span></div>
 <div class="line">  <span class="comment">//for(int i=7; i&lt;strlen(global_name); i++)</span></div>
@@ -445,7 +445,7 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line">  <span class="comment">//  else if(global_name[i] == &#39; &#39;)  global_name[i] = &#39;_&#39;;</span></div>
 <div class="line">  <span class="comment">//}</span></div>
 <div class="line">  hShmem = CreateFileMapping(</div>
-<div class="line">    <a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,</div>
+<div class="line">    hSharedFile,</div>
 <div class="line">    NULL,                <span class="comment">// no security attributes</span></div>
 <div class="line">    PAGE_READWRITE,      <span class="comment">// read/write access</span></div>
 <div class="line">    0,                   <span class="comment">// size: high 32-bits</span></div>
@@ -462,11 +462,11 @@ If you want direct access, you may use <a class="el" href="classrlSharedMemory.h
 <div class="line">    0);                  <span class="comment">// default: map entire file</span></div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> == NULL) { status=<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d">ERROR_FILE</a>; <span class="keywordflow">return</span>; }</div>
 <div class="line">  <span class="keywordtype">id</span>     = (int) hShmem;</div>
-<div class="line">  <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a> = (int) <a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>;</div>
+<div class="line">  <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a> = (int) hSharedFile;</div>
 <div class="line">  mutex     = (<a class="code" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
 <div class="line">  <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>  = <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line">  memset(&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>, 0, <span class="keyword">sizeof</span>(<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>));      <span class="comment">// Changed by FMakkinga 22-03-2013</span></div>
-<div class="line">  UnlockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);</div>
+<div class="line">  UnlockFileEx(hSharedFile,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(rwmode == 0) <span class="keywordflow">return</span>; <span class="comment">// no warning of unused parameter</span></div>
 <div class="line">}</div>

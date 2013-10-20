@@ -287,7 +287,7 @@ With this class you can communicate over a serial line.
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00763">763</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00762">762</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLUNIX</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd">fd</a> == -1) <span class="keywordflow">return</span> -1;</div>
@@ -547,9 +547,10 @@ return == 0  success, return &lt; 0 error
 <div class="line">  ret = SetCommConfig(<a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,&amp;cc,<span class="keyword">sizeof</span>(cc));</div>
 <div class="line">  <span class="keywordflow">if</span>(ret == 0)</div>
 <div class="line">  {</div>
-<div class="line">    printf(<span class="stringliteral">&quot;SetCommConfig ret=%d devicename=%s LastError=%d\n&quot;</span>,ret,devicename,GetLastError());</div>
+<div class="line">    printf(<span class="stringliteral">&quot;SetCommConfig ret=%d devicename=%s LastError=%ld\n&quot;</span>,ret,devicename,GetLastError());</div>
 <div class="line">    <span class="keywordflow">return</span> -1;</div>
 <div class="line">  }</div>
+<div class="line">  <span class="keywordflow">if</span>(block) <span class="keywordflow">return</span> 0;</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#ifdef RM3</span></div>
@@ -772,20 +773,19 @@ return == 0  success, return &lt; 0 error
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  BOOL ret;</div>
-<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> retlen;</div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> retlen;</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordflow">if</span>(timeout &gt;= 0) <a class="code" href="classrlSerial.html#ad501686172ab403de1585a7a7e0bf5cd">select</a>(timeout);</div>
-<div class="line">  ret = ReadFile(</div>
+<div class="line">  ReadFile(</div>
 <div class="line">                 <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,     <span class="comment">// handle of file to read</span></div>
 <div class="line">                 buf,     <span class="comment">// pointer to buffer that receives data</span></div>
 <div class="line">                 len,     <span class="comment">// number of bytes to read</span></div>
 <div class="line">                 &amp;retlen, <span class="comment">// pointer to number of bytes read</span></div>
 <div class="line">                 NULL     <span class="comment">// pointer to structure for data</span></div>
-<div class="line">                );</div>
+<div class="line">           );</div>
 <div class="line">  <span class="keywordflow">if</span>(retlen &gt; 0)</div>
 <div class="line">  {</div>
-<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1) printf(<span class="stringliteral">&quot;readBlock retlen=%d\n&quot;</span>,retlen);</div>
+<div class="line">    <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1) printf(<span class="stringliteral">&quot;readBlock retlen=%ld\n&quot;</span>,retlen);</div>
 <div class="line">    <span class="keywordflow">return</span> (<span class="keywordtype">int</span>) retlen;</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> -1;</div>
@@ -834,7 +834,7 @@ return == 0  success, return &lt; 0 error
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00403">403</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00404">404</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLUNIX</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordtype">int</span>  ret;</div>
@@ -855,17 +855,16 @@ return == 0  success, return &lt; 0 error
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><span class="preprocessor"></span>  BOOL ret;</div>
-<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
+<div class="line"><span class="preprocessor"></span>  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> buf[2];</div>
 <div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">long</span> len;</div>
 <div class="line"></div>
-<div class="line">  ret = ReadFile(</div>
+<div class="line">  ReadFile(</div>
 <div class="line">                 <a class="code" href="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f">hdl</a>,  <span class="comment">// handle of file to read</span></div>
 <div class="line">                 buf,  <span class="comment">// pointer to buffer that receives data</span></div>
 <div class="line">                 1,    <span class="comment">// number of bytes to read</span></div>
 <div class="line">                 &amp;len, <span class="comment">// pointer to number of bytes read</span></div>
 <div class="line">                 NULL  <span class="comment">// pointer to structure for data</span></div>
-<div class="line">                );</div>
+<div class="line">          );</div>
 <div class="line">  <span class="keywordflow">if</span>(len &gt; 0)</div>
 <div class="line">  {</div>
 <div class="line">    <span class="keywordflow">if</span>(<a class="code" href="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56">trace</a> == 1) printf(<span class="stringliteral">&quot;readChar %d\n&quot;</span>,(<span class="keywordtype">int</span>) buf[0]);</div>
@@ -916,7 +915,7 @@ return == 0  success, return &lt; 0 error
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00687">687</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00686">686</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,c,ret;</div>
 <div class="line"></div>
@@ -964,7 +963,7 @@ return == 0  success, return &lt; 0 error
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00719">719</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00718">718</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLUNIX</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keyword">struct </span>timeval timout;</div>
@@ -1058,7 +1057,7 @@ return == 0  success, return &lt; 0 error
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00584">584</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlserial_8cpp_source.html#l00583">583</a> of file <a class="el" href="rlserial_8cpp_source.html">rlserial.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLUNIX</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordtype">int</span> ret;</div>

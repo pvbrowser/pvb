@@ -195,7 +195,7 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><pre>
 class for encapsulating TCP/IP socket calls
 </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00048">48</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00044">44</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="a3b70eecec7f08e38ee0c7d9ee6baf632"></a>
 <div class="memitem">
@@ -225,7 +225,7 @@ class for encapsulating TCP/IP socket calls
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00052">52</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00048">48</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSocket.html#a3b70eecec7f08e38ee0c7d9ee6baf632a7bb98f91ff6eb8d36e3ab3935f1d4674">SOCKET_ERR</a>     = -1,</div>
 <div class="line">    <a class="code" href="classrlSocket.html#a3b70eecec7f08e38ee0c7d9ee6baf632ac9ac605ff1067315da83912e6a4861df">SETSOCKOPT_ERR</a> = -2,</div>
@@ -276,7 +276,7 @@ class for encapsulating TCP/IP socket calls
      active = 1 open the connection with <a class="el" href="classrlSocket.html#ad30990162e716dce512116d9336de89e">connect()</a>
      active = 2 neither accept() nor <a class="el" href="classrlSocket.html#ad30990162e716dce512116d9336de89e">connect()</a>
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00094">94</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00095">95</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024">rlwsa</a>(); <span class="comment">// init sockets on windows</span></div>
 <div class="line">  <a class="code" href="classrlSocket.html#a1dcb6f03c2e9c9af5f00ef68509e4b9b">setAdr</a>(a);</div>
@@ -308,7 +308,7 @@ class for encapsulating TCP/IP socket calls
      construct a new <a class="el" href="classrlSocket.html">rlSocket</a>
      use connection on open socket
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00107">107</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00108">108</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82">adr</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a905a1a72c76c79122f1a0b6f752905c8">port</a>   = -1;</div>
@@ -346,7 +346,7 @@ class for encapsulating TCP/IP socket calls
      destruct the socket
      attention if active = 0 the socket will still be bound to port
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00119">119</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00120">120</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a112affb864caf6ef57b5f226c1894446">disconnect</a>();</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a2e8969ca0c32cb51e93bbaae10cb42d9">os</a> != -1 &amp;&amp; <a class="code" href="classrlSocket.html#a3196d25600c773781b50e9045f500f52">active</a> == 0)</div>
@@ -379,7 +379,7 @@ class for encapsulating TCP/IP socket calls
      return &gt;= 0 socket used
      return &lt; 0  error (see: enum SocketEnum)
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00245">245</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00246">246</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> option;</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
@@ -616,7 +616,7 @@ class for encapsulating TCP/IP socket calls
      disconnect
      return = 0
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00464">464</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00465">465</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a3f70186af86837a39592e4bf18076d24">s</a> != -1)</div>
 <div class="line">  {</div>
@@ -648,7 +648,7 @@ class for encapsulating TCP/IP socket calls
      return == 4 IPV4
      return == 6 IPV6
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00530">530</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00531">531</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlSocket.html#aabfbfa722c5c9813c8f204626d71aa8c">rl_ipversion</a>;</div>
 <div class="line">}</div>
@@ -670,7 +670,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      get port
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00145">145</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00146">146</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlSocket.html#a905a1a72c76c79122f1a0b6f752905c8">port</a>;</div>
 <div class="line">}</div>
@@ -693,7 +693,7 @@ class for encapsulating TCP/IP socket calls
      return == 1 socket is connected
      return == 0 socket is not connected
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00478">478</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00479">479</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a3f70186af86837a39592e4bf18076d24">s</a> == -1) <span class="keywordflow">return</span> 0;</div>
 <div class="line">  <span class="keywordflow">return</span> 1;</div>
@@ -729,7 +729,7 @@ class for encapsulating TCP/IP socket calls
      return &gt; 0 length of data written
      return &lt; 0 error
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00505">505</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00506">506</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordtype">char</span> message[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span></div>
@@ -782,7 +782,7 @@ class for encapsulating TCP/IP socket calls
      return == 0 timeout
      return &lt; 0 error
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00155">155</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00156">156</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span>  i,ret;</div>
 <div class="line">  <span class="keywordtype">char</span> *cbuf;</div>
@@ -851,7 +851,7 @@ class for encapsulating TCP/IP socket calls
      return == 0 timeout
      return &lt; 0 error
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00183">183</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00184">184</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret,i;</div>
 <div class="line"></div>
@@ -942,7 +942,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      portable version of getsockopt
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00535">535</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00536">536</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> getsockopt(sockfd, level, optname, (<span class="keywordtype">char</span> *) optval, optlen);</div>
@@ -987,7 +987,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      get an option from this-&gt;s
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00561">561</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00562">562</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> option = 1;</div>
 <div class="line">  <span class="keywordtype">int</span> len = <span class="keyword">sizeof</span>(option);</div>
@@ -1048,7 +1048,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      portable version of setsockopt
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00552">552</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00553">553</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line"><span class="preprocessor">#ifdef RLWIN32</span></div>
 <div class="line"><span class="preprocessor"></span>  <span class="keywordflow">return</span> setsockopt(sockfd, level, optname, (<span class="keyword">const</span> <span class="keywordtype">char</span> *) optval, optlen);</div>
@@ -1085,7 +1085,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      set an option on this-&gt;s
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00568">568</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00569">569</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> option = 1;</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlSocket.html#a10cd80de25e59f4c989d09854dd60853">rlSetsockopt</a>(<a class="code" href="classrlSocket.html#a3f70186af86837a39592e4bf18076d24">s</a>,level,optname,&amp;option,<span class="keyword">sizeof</span>(option));</div>
@@ -1113,7 +1113,7 @@ class for encapsulating TCP/IP socket calls
      return = 1 DATA_AVAILABLE
      return = 0 TIMEOUT
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00484">484</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00485">485</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keyword">struct </span>timeval timout;</div>
 <div class="line">  fd_set wset,rset,eset;</div>
@@ -1152,7 +1152,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      This method is intendet for data providers implemented as ProcessViewServer
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00518">518</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00519">519</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> <a class="code" href="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3">printf</a>(<span class="stringliteral">&quot;QPushButton(%d)\n&quot;</span>,<span class="keywordtype">id</span>);</div>
 <div class="line">}</div>
@@ -1175,7 +1175,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      set port active = 0|1
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00150">150</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00151">151</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a3196d25600c773781b50e9045f500f52">active</a> = act;</div>
 <div class="line">}</div>
@@ -1198,7 +1198,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      set adr to a different adr than in the constructor
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00132">132</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00133">133</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82">adr</a>[0] = <span class="charliteral">&#39;\0&#39;</span>;</div>
 <div class="line">  <span class="keywordflow">if</span>(a == NULL) <span class="keywordflow">return</span>;</div>
@@ -1226,7 +1226,7 @@ class for encapsulating TCP/IP socket calls
      if(ip==6) prefer IPV6
      else      prefer IPV4
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00523">523</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00524">524</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">if</span>(version == 6) <a class="code" href="classrlSocket.html#aabfbfa722c5c9813c8f204626d71aa8c">rl_ipversion</a> = 6;</div>
 <div class="line">  <span class="keywordflow">else</span>             <a class="code" href="classrlSocket.html#aabfbfa722c5c9813c8f204626d71aa8c">rl_ipversion</a> = 4;</div>
@@ -1251,7 +1251,7 @@ class for encapsulating TCP/IP socket calls
 <pre>
      set port to a different port than in the constructor
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00140">140</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00141">141</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSocket.html#a905a1a72c76c79122f1a0b6f752905c8">port</a> = p;</div>
 <div class="line">}</div>
@@ -1286,7 +1286,7 @@ class for encapsulating TCP/IP socket calls
      return &gt; 0 length of data written
      return &lt; 0 error
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00220">220</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00221">221</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret,bytes_left,first_byte;</div>
 <div class="line">  <span class="keyword">const</span> <span class="keywordtype">char</span> *cbuf;</div>
@@ -1332,7 +1332,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00253">253</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00249">249</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1354,7 +1354,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00251">251</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00247">247</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1376,7 +1376,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00255">255</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00251">251</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1398,7 +1398,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00254">254</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00250">250</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1420,7 +1420,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00252">252</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00248">248</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1442,7 +1442,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00256">256</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00252">252</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1464,7 +1464,7 @@ class for encapsulating TCP/IP socket calls
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00257">257</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00253">253</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1482,7 +1482,7 @@ class for encapsulating TCP/IP socket calls
      s &gt;= 0  connected
      s == -1 disconnected
  </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00193">193</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00189">189</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>
@@ -1522,7 +1522,7 @@ class for encapsulating TCP/IP socket calls
           unsigned char   s6_addr[16];   // load with inet_pton()
       };
   </pre> 
-<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00248">248</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsocket_8h_source.html#l00244">244</a> of file <a class="el" href="rlsocket_8h_source.html">rlsocket.h</a>.</p>
 
 </div>
 </div>

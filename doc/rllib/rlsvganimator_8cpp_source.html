@@ -662,298 +662,299 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160;  <span class="comment">// a21 a22 a23</span></div>
 <div class="line"><a name="l00574"></a><span class="lineno">  574</span>&#160;  <span class="comment">// a31 a32 a33</span></div>
 <div class="line"><a name="l00575"></a><span class="lineno">  575</span>&#160;</div>
-<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  <span class="keywordtype">float</span> a11, a12, a13, a21, a22, a23, a31, a32, a33, cx, cy;</div>
-<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;</div>
-<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  cx = cx_in + <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>;</div>
-<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  cy = cy_in + <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>;</div>
-<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;</div>
-<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;  a11 = sx*((float) cos(alpha));</div>
-<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;  a12 = -sx*((float) sin(alpha));</div>
-<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;  a13 = (x0 - cx)*((<span class="keywordtype">float</span>) cos(alpha)) - (y0 - cy)*((float) sin(alpha)) + cx;</div>
-<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;  a21 = sx*((float) sin(alpha));</div>
-<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;  a22 = sx*((float) cos(alpha));</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;  a23 = (x0 - cx)*((<span class="keywordtype">float</span>) sin(alpha)) + (y0 - cy)*((float) cos(alpha)) + cy;</div>
-<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  a31 = 0.0f;</div>
-<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  a32 = 0.0f;</div>
-<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  a33 = 1.0f;</div>
-<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;</div>
-<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a96442a1738053756d3b071b666dd6736">svgPrintf</a>(objectname,<span class="stringliteral">&quot;transform=&quot;</span>,<span class="stringliteral">&quot;matrix(%f,%f,%f,%f,%f,%f)&quot;</span>,a11,a21,a12,a22,a13,a23);</div>
-<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;</div>
-<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;<span class="comment">/*********************************************************************************************</span></div>
-<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;<span class="comment">Definition</span></div>
-<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;<span class="comment">CTM := CurrentTransformationMatrix</span></div>
-<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="comment">t   := translate</span></div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="comment">r   := rotate</span></div>
-<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="comment">s   := scale</span></div>
-<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="comment">Equotiation</span></div>
-<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;<span class="comment">CTM = t(cx,cy)*r(a)*t(-cx,-cy)*t(x0,y0)*s(sx)</span></div>
-<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;<span class="comment">      |1 0 cx| |cos(a) -sin(a) 0| |1 0 -cx| |1 0 x0| |sx 0  0|</span></div>
-<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;<span class="comment">CTM = |0 1 cy|*|sin(a)  cos(a) 0|*|0 1 -cy|*|0 1 y0|*|0  sx 0|                            # OK</span></div>
-<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="comment">      |0 0 1 | |  0       0    1| |0 0  1 | |0 0 1 | |0  0  1|</span></div>
-<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="comment">      |1 0 cx| |cos(a) -sin(a) 0| |1 0 -cx| |sx 0  x0|</span></div>
-<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="comment">CTM = |0 1 cy|*|sin(a)  cos(a) 0|*|0 1 -cy|*|0  sx y0|                                    # OK</span></div>
-<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="comment">      |0 0 1 | |  0       0    1| |0 0  1 | |0  0  1 |</span></div>
-<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="comment">      |1 0 cx| |cos(a) -sin(a) 0| |sx 0  x0-cx|</span></div>
-<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="comment">CTM = |0 1 cy|*|sin(a)  cos(a) 0|*|0  sx y0-cy|                                           # OK</span></div>
-<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="comment">      |0 0 1 | |  0       0    1| |0  0  1    |</span></div>
-<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;<span class="comment">      |1 0 cx| |sx*cos(a) -sx*sin(a) (x0-cx)*cos(a)-(y0-cy)*sin(a)|</span></div>
-<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;<span class="comment">CTM = |0 1 cy|*|sx*sin(a)  sx*cos(a) (x0-cx)*sin(a)+(y0-cy)*cos(a)|                       # OK</span></div>
-<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="comment">      |0 0 1 | |  0          0                        1           |</span></div>
-<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="comment">      |sx*cos(a) -sx*sin(a) (x0-cx)*cos(a)-(y0-cy)*sin(a)+cx|</span></div>
-<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;<span class="comment">CTM = |sx*sin(a)  sx*cos(a) (x0-cx)*sin(a)+(y0-cy)*cos(a)+cy|                             # OK</span></div>
-<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;<span class="comment">      |  0          0                     1                 |</span></div>
-<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;<span class="comment">Check</span></div>
-<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;<span class="comment">with sx = 1 and a,x0,y0,cx,cy = 0</span></div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;<span class="comment">      |1 0 0|</span></div>
-<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;<span class="comment">CTM = |0 1 0|                                                                             # OK</span></div>
-<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="comment">      |0 0 1|</span></div>
-<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;<span class="comment">|x&#39;|         |x|   |sx*cos(a)*x-sx*sin(a)*y+(x0-cx)*cos(a)-(y0-cy)*sin(a)+cx|   |1*x-0*y|</span></div>
-<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;<span class="comment">|y&#39;| = CTM * |y| = |sx*sin(a)*x+sx*cos(a)*y+(x0-cx)*sin(a)+(y0-cy)*cos(a)+cy| = |0*x+1*y| # OK</span></div>
-<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="comment">|0 |         |0|   |                       0                                |   |   0   |</span></div>
-<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;<span class="comment">**********************************************************************************************/</span></div>
-<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;}</div>
-<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;</div>
-<div class="line"><a name="l00639"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ab86458036f92667471e903326382c61a">  639</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#ab86458036f92667471e903326382c61a">rlSvgAnimator::fillIniFile</a>(<a class="code" href="classrlIniFile.html">rlIniFile</a> *inifile, <span class="keyword">const</span> <span class="keywordtype">char</span> *line)</div>
-<div class="line"><a name="l00640"></a><span class="lineno">  640</span>&#160;{</div>
-<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;  <span class="keywordtype">char</span> myline[<a class="code" href="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471">MAXLINE</a>],*cptr, *cptr2;</div>
-<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSvgAnimator.html#a5f936e4f23a2ae9a5db695c5574dc9f8">id</a>;</div>
-<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;</div>
-<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;  strcpy(myline,line);</div>
-<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  cptr = strchr(myline,<span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  <span class="keywordflow">if</span>(cptr != NULL) *cptr = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;</div>
-<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;  <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;&gt;&#39;</span> || strncmp(myline,<span class="stringliteral">&quot;/&gt;&quot;</span>,2) == 0)</div>
-<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  { <span class="comment">// end of data -&gt; fill inifile</span></div>
-<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classrlSvgAnimator.html#a0db23466983530c4a4b9a90c75672cc3">inifileState</a> == 1) <span class="comment">// if id was found</span></div>
-<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    {</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;      <span class="keywordflow">for</span>(i=0; i&lt;<a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>; i++)</div>
-<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;      {</div>
-<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;        <span class="keywordtype">id</span> = <a class="code" href="classrlSvgAnimator.html#a807046ca3e37dcfba7af6f57fda9d2f8">inifileID</a>.<a class="code" href="classrlSpreadsheetCell.html#ace0fc695ce08a7d7716c7790a43b36e4">text</a>();</div>
-<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;        inifile-&gt;<a class="code" href="classrlIniFile.html#a7f62e6010be14a96ed7a35eeeea9738e">setText</a>(<span class="keywordtype">id</span>, <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#aef6c97367218966d1e1c38f13254a952">text</a>(1,i+1), <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#aef6c97367218966d1e1c38f13254a952">text</a>(2,i+1));</div>
-<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;      }</div>
-<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;    }</div>
-<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a0db23466983530c4a4b9a90c75672cc3">inifileState</a> = 0;</div>
-<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a> = 0;</div>
-<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a807046ca3e37dcfba7af6f57fda9d2f8">inifileID</a>.<a class="code" href="classrlSpreadsheetCell.html#a3d754e0cf9a503aae678c88946ca61b2">clear</a>();</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#ac7bfa7233db9a8c373a8ea26fb0f390a">clear</a>();</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;  }</div>
-<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;&lt;&#39;</span>)</div>
-<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;  { <span class="comment">// ignore this</span></div>
-<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;  }</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strncmp(myline,<span class="stringliteral">&quot;id=&quot;</span>,3) == 0)</div>
-<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;  { <span class="comment">// remenber id</span></div>
-<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;    cptr = strchr(myline,<span class="charliteral">&#39;=&#39;</span>);</div>
-<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    <span class="keywordflow">if</span>(cptr != NULL)</div>
-<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    {</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;      cptr++; cptr++;</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;      cptr2 = strchr(cptr,<span class="charliteral">&#39;\&quot;&#39;</span>);</div>
-<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;      <span class="keywordflow">if</span>(cptr2 != NULL) *cptr2 = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;      <a class="code" href="classrlSvgAnimator.html#a807046ca3e37dcfba7af6f57fda9d2f8">inifileID</a>.<a class="code" href="classrlSpreadsheetCell.html#a9a7079f4173abe7ac65a2fef6ee4b963">setText</a>(cptr);</div>
-<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;      <a class="code" href="classrlSvgAnimator.html#a0db23466983530c4a4b9a90c75672cc3">inifileState</a> = 1; <span class="comment">// id was found</span></div>
-<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;    }</div>
-<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;  }</div>
-<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  { <span class="comment">// fill this in table</span></div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;    cptr = strchr(myline,<span class="charliteral">&#39;=&#39;</span>);</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    <span class="keywordflow">if</span>(cptr != NULL)</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    {</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;      *cptr = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;      cptr++; cptr++;</div>
-<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;      cptr2 = strrchr(cptr,<span class="charliteral">&#39;\&quot;&#39;</span>);</div>
-<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;      <span class="keywordflow">if</span>(cptr2 != NULL) *cptr2 = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;      <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#a890f13ff6fb4f4d0b7513d5b39b42457">setText</a>(1,<a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>+1,myline);</div>
-<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;      <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#a890f13ff6fb4f4d0b7513d5b39b42457">setText</a>(2,<a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>+1,cptr);</div>
-<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;      <a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>++;</div>
-<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;    }</div>
-<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;  }</div>
-<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;</div>
-<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;}</div>
-<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;</div>
-<div class="line"><a name="l00697"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a8dd77cb729029f8f45bf8350b95c2add">  697</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a8dd77cb729029f8f45bf8350b95c2add">rlSvgAnimator::fileFillIniFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *infile, <a class="code" href="classrlIniFile.html">rlIniFile</a> *inifile)</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160;{</div>
-<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;  <span class="keywordtype">char</span> line[<a class="code" href="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471">MAXLINE</a>];</div>
-<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;  FILE *fin;</div>
-<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;</div>
-<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;  fin = fopen(infile,<span class="stringliteral">&quot;r&quot;</span>);</div>
-<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;  <span class="keywordflow">if</span>(fin == NULL) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;  <span class="keywordflow">while</span>(fgets(line,<span class="keyword">sizeof</span>(line)-1,fin) != NULL)</div>
-<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  {</div>
-<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;    <a class="code" href="classrlSvgAnimator.html#ab86458036f92667471e903326382c61a">fillIniFile</a>(inifile, line);</div>
-<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;  }</div>
-<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;  fclose(fin);</div>
-<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;}</div>
-<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;<span class="comment">// zoomer methods follows</span></div>
-<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;</div>
-<div class="line"><a name="l00714"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aa55d584c5f761aa52a807cba7d8be778">  714</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#aa55d584c5f761aa52a807cba7d8be778">rlSvgAnimator::setMainObject</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *main_object)</div>
-<div class="line"><a name="l00715"></a><span class="lineno">  715</span>&#160;{</div>
-<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  <span class="keywordflow">if</span>(main_object == NULL) <span class="keywordflow">return</span> -1; </div>
-<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a1c7eb48d9f97664467a750d510f4acd2">main_object_name</a>.<a class="code" href="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c">setText</a>(main_object);</div>
-<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;}</div>
-<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;</div>
-<div class="line"><a name="l00722"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a8a5d772edcca3b2ca054b8d24a3c7bed">  722</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSvgAnimator.html#a8a5d772edcca3b2ca054b8d24a3c7bed">rlSvgAnimator::mainObject</a>()</div>
-<div class="line"><a name="l00723"></a><span class="lineno">  723</span>&#160;{</div>
-<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a1c7eb48d9f97664467a750d510f4acd2">main_object_name</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>();</div>
-<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;}</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;</div>
-<div class="line"><a name="l00727"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a32acbaadeab1fd1d68db65d9cba1a5e5">  727</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a32acbaadeab1fd1d68db65d9cba1a5e5">rlSvgAnimator::setXY0</a>(<span class="keywordtype">float</span> x0, <span class="keywordtype">float</span> y0)</div>
-<div class="line"><a name="l00728"></a><span class="lineno">  728</span>&#160;{</div>
-<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> = <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>;</div>
-<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> = <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>;</div>
-<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;}</div>
-<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;</div>
-<div class="line"><a name="l00735"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">  735</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">rlSvgAnimator::x0</a>()</div>
-<div class="line"><a name="l00736"></a><span class="lineno">  736</span>&#160;{</div>
-<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a>;</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;}</div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;</div>
-<div class="line"><a name="l00740"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">  740</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">rlSvgAnimator::y0</a>()</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;{</div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a>;</div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;}</div>
-<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;</div>
-<div class="line"><a name="l00745"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a6eeff29540cccedab399dea981f476d4">  745</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a6eeff29540cccedab399dea981f476d4">rlSvgAnimator::setMouseXY0</a>(<span class="keywordtype">float</span> x0, <span class="keywordtype">float</span> y0)</div>
-<div class="line"><a name="l00746"></a><span class="lineno">  746</span>&#160;{</div>
-<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70">svgMouseX0</a> = <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>;</div>
-<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  <a class="code" href="classrlSvgAnimator.html#afdf28428bbcf410cf79ad8c816fe7928">svgMouseY0</a> = <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>;</div>
-<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;}</div>
-<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;</div>
-<div class="line"><a name="l00753"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ab258ce671ce79fd6fe4e134973449fe9">  753</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#ab258ce671ce79fd6fe4e134973449fe9">rlSvgAnimator::mouseX0</a>()</div>
-<div class="line"><a name="l00754"></a><span class="lineno">  754</span>&#160;{</div>
-<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70">svgMouseX0</a>;</div>
-<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;}</div>
-<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;</div>
-<div class="line"><a name="l00758"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aa3256f050c1fa0f3eb1962624173501a">  758</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#aa3256f050c1fa0f3eb1962624173501a">rlSvgAnimator::mouseY0</a>()</div>
-<div class="line"><a name="l00759"></a><span class="lineno">  759</span>&#160;{</div>
-<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#afdf28428bbcf410cf79ad8c816fe7928">svgMouseY0</a>;</div>
-<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;}</div>
-<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;</div>
-<div class="line"><a name="l00763"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a96071893061dfc26951f04f32b73d587">  763</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a96071893061dfc26951f04f32b73d587">rlSvgAnimator::setMouseXY1</a>(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1)</div>
-<div class="line"><a name="l00764"></a><span class="lineno">  764</span>&#160;{</div>
-<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ad078d62f54d78d0d58203219ad656c9c">svgMouseX1</a> = x1;</div>
-<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a751d3e4d6a0b50db38025195e14e5026">svgMouseY1</a> = y1;</div>
-<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;}</div>
-<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;</div>
-<div class="line"><a name="l00771"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ac70276c52f0997889b672d1bbd848203">  771</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#ac70276c52f0997889b672d1bbd848203">rlSvgAnimator::mouseX1</a>()</div>
-<div class="line"><a name="l00772"></a><span class="lineno">  772</span>&#160;{</div>
-<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#ad078d62f54d78d0d58203219ad656c9c">svgMouseX1</a>;</div>
-<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;}</div>
-<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;</div>
-<div class="line"><a name="l00776"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a057913bbaee222e63477c082de948b67">  776</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a057913bbaee222e63477c082de948b67">rlSvgAnimator::mouseY1</a>()</div>
-<div class="line"><a name="l00777"></a><span class="lineno">  777</span>&#160;{</div>
-<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a751d3e4d6a0b50db38025195e14e5026">svgMouseY1</a>;</div>
-<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;}</div>
-<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;</div>
-<div class="line"><a name="l00781"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aeb552825bb92e6c538ab4e7288d01abc">  781</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#aeb552825bb92e6c538ab4e7288d01abc">rlSvgAnimator::setScale</a>(<span class="keywordtype">float</span> scale)</div>
-<div class="line"><a name="l00782"></a><span class="lineno">  782</span>&#160;{</div>
-<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a> = <a class="code" href="classrlSvgAnimator.html#aead083138dcfd5b0bb70041495605c63">scale</a>;</div>
-<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;}</div>
-<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;</div>
-<div class="line"><a name="l00788"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aead083138dcfd5b0bb70041495605c63">  788</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#aead083138dcfd5b0bb70041495605c63">rlSvgAnimator::scale</a>()</div>
-<div class="line"><a name="l00789"></a><span class="lineno">  789</span>&#160;{</div>
-<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
-<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;}</div>
-<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;</div>
-<div class="line"><a name="l00793"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a03341ef1b14946d9dbd59ed6febaa018">  793</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a03341ef1b14946d9dbd59ed6febaa018">rlSvgAnimator::zoomCenter</a>(<span class="keywordtype">float</span> newScale)</div>
-<div class="line"><a name="l00794"></a><span class="lineno">  794</span>&#160;{</div>
-<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;  <span class="keywordtype">float</span> oldX0, oldY0;</div>
-<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;</div>
-<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  <span class="keywordflow">if</span> (newScale &gt; 1000) newScale = 1000.0f;</div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;  oldX0 = (<a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> - ((<a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f) / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;  oldY0 = (<a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> - ((<a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f) / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>  = newScale;</div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> = oldX0*<a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a> + ((<a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f;</div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> = oldY0*<a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a> + ((<a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f;</div>
-<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;</div>
-<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;}</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;</div>
-<div class="line"><a name="l00811"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a4b53c28ceef519264776fb73fdd7f21d">  811</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a4b53c28ceef519264776fb73fdd7f21d">rlSvgAnimator::zoomRect</a>()</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;{</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;  <span class="keywordtype">float</span> newScale, scale1, scale2, rectWidth, rectHeight;</div>
-<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;</div>
-<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;  rectWidth  = <a class="code" href="classrlSvgAnimator.html#ad078d62f54d78d0d58203219ad656c9c">svgMouseX1</a>-<a class="code" href="classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70">svgMouseX0</a>;</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  rectHeight = <a class="code" href="classrlSvgAnimator.html#a751d3e4d6a0b50db38025195e14e5026">svgMouseY1</a>-<a class="code" href="classrlSvgAnimator.html#afdf28428bbcf410cf79ad8c816fe7928">svgMouseY0</a>;</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> = <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> + <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>/2  - (svgMouseX0 + rectWidth/2);</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> = <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> + <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>/2 - (svgMouseY0 + rectHeight/2);</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;  rectWidth  = rectWidth  / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;  rectHeight = rectHeight / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
-<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;  scale1 = <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>  / rectWidth;</div>
-<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;  scale2 = <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a> / rectHeight;</div>
-<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  <span class="keywordflow">if</span>(scale1 &lt; scale2) newScale = scale1;</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <span class="keywordflow">else</span>                newScale = scale2;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a03341ef1b14946d9dbd59ed6febaa018">zoomCenter</a>(newScale);</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;</div>
-<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;}</div>
-<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;</div>
-<div class="line"><a name="l00832"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a7342d6f51c18eec83d0175f21a8408e0">  832</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a7342d6f51c18eec83d0175f21a8408e0">rlSvgAnimator::setMainObjectMatrix</a>()</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;{</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a6a95260db11ee8cdd9cf6a4b6ef2d741">setMatrix</a>(<a class="code" href="classrlSvgAnimator.html#a1c7eb48d9f97664467a750d510f4acd2">main_object_name</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>(), <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>, 0.0f, <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a>, <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a>, 0.0f, 0.0f);</div>
-<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;}</div>
-<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;</div>
-<div class="line"><a name="l00839"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ada15aa0382708dde354ecf453e09af60">  839</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#ada15aa0382708dde354ecf453e09af60">rlSvgAnimator::setWindowSize</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;{</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>  = (float) width;</div>
-<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a> = (float) height;</div>
-<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;}</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;</div>
-<div class="line"><a name="l00847"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a59c8596fc562f0f945c2ee797f7bc504">  847</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a59c8596fc562f0f945c2ee797f7bc504">rlSvgAnimator::windowWidth</a>()</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;{</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>;</div>
-<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;}</div>
-<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;</div>
-<div class="line"><a name="l00852"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#afc37083269304ba7f99aea0b17a0150e">  852</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#afc37083269304ba7f99aea0b17a0150e">rlSvgAnimator::windowHeight</a>()</div>
-<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;{</div>
-<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>;</div>
-<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;}</div>
-<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;</div>
-<div class="line"><a name="l00857"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#af6c86a9453f738a71dab04bb91ae496f">  857</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#af6c86a9453f738a71dab04bb91ae496f">rlSvgAnimator::moveMainObject</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y)</div>
-<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;{</div>
-<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
-<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  <span class="keywordtype">float</span> xx0 = <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>() + (x - <a class="code" href="classrlSvgAnimator.html#ab258ce671ce79fd6fe4e134973449fe9">mouseX0</a>());</div>
-<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  <span class="keywordtype">float</span> yy0 = <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>() + (y - <a class="code" href="classrlSvgAnimator.html#aa3256f050c1fa0f3eb1962624173501a">mouseY0</a>());</div>
-<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a32acbaadeab1fd1d68db65d9cba1a5e5">setXY0</a>(xx0,yy0);</div>
-<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a7342d6f51c18eec83d0175f21a8408e0">setMainObjectMatrix</a>();</div>
-<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;}</div>
-<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;</div>
+<div class="line"><a name="l00576"></a><span class="lineno">  576</span>&#160;  <span class="keywordtype">float</span> a11, a12, a13, a21, a22, a23; <span class="comment">// a31, a32, a33;</span></div>
+<div class="line"><a name="l00577"></a><span class="lineno">  577</span>&#160;  <span class="keywordtype">float</span> cx, cy;</div>
+<div class="line"><a name="l00578"></a><span class="lineno">  578</span>&#160;</div>
+<div class="line"><a name="l00579"></a><span class="lineno">  579</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00580"></a><span class="lineno">  580</span>&#160;  cx = cx_in + <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>;</div>
+<div class="line"><a name="l00581"></a><span class="lineno">  581</span>&#160;  cy = cy_in + <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>;</div>
+<div class="line"><a name="l00582"></a><span class="lineno">  582</span>&#160;</div>
+<div class="line"><a name="l00583"></a><span class="lineno">  583</span>&#160;  a11 = sx*((float) cos(alpha));</div>
+<div class="line"><a name="l00584"></a><span class="lineno">  584</span>&#160;  a12 = -sx*((float) sin(alpha));</div>
+<div class="line"><a name="l00585"></a><span class="lineno">  585</span>&#160;  a13 = (x0 - cx)*((<span class="keywordtype">float</span>) cos(alpha)) - (y0 - cy)*((float) sin(alpha)) + cx;</div>
+<div class="line"><a name="l00586"></a><span class="lineno">  586</span>&#160;  a21 = sx*((float) sin(alpha));</div>
+<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160;  a22 = sx*((float) cos(alpha));</div>
+<div class="line"><a name="l00588"></a><span class="lineno">  588</span>&#160;  a23 = (x0 - cx)*((<span class="keywordtype">float</span>) sin(alpha)) + (y0 - cy)*((float) cos(alpha)) + cy;</div>
+<div class="line"><a name="l00589"></a><span class="lineno">  589</span>&#160;  <span class="comment">//a31 = 0.0f;</span></div>
+<div class="line"><a name="l00590"></a><span class="lineno">  590</span>&#160;  <span class="comment">//a32 = 0.0f;</span></div>
+<div class="line"><a name="l00591"></a><span class="lineno">  591</span>&#160;  <span class="comment">//a33 = 1.0f;</span></div>
+<div class="line"><a name="l00592"></a><span class="lineno">  592</span>&#160;</div>
+<div class="line"><a name="l00593"></a><span class="lineno">  593</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a96442a1738053756d3b071b666dd6736">svgPrintf</a>(objectname,<span class="stringliteral">&quot;transform=&quot;</span>,<span class="stringliteral">&quot;matrix(%f,%f,%f,%f,%f,%f)&quot;</span>,a11,a21,a12,a22,a13,a23);</div>
+<div class="line"><a name="l00594"></a><span class="lineno">  594</span>&#160;</div>
+<div class="line"><a name="l00595"></a><span class="lineno">  595</span>&#160;<span class="comment">/*********************************************************************************************</span></div>
+<div class="line"><a name="l00596"></a><span class="lineno">  596</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00597"></a><span class="lineno">  597</span>&#160;<span class="comment">Definition</span></div>
+<div class="line"><a name="l00598"></a><span class="lineno">  598</span>&#160;<span class="comment">CTM := CurrentTransformationMatrix</span></div>
+<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160;<span class="comment">t   := translate</span></div>
+<div class="line"><a name="l00600"></a><span class="lineno">  600</span>&#160;<span class="comment">r   := rotate</span></div>
+<div class="line"><a name="l00601"></a><span class="lineno">  601</span>&#160;<span class="comment">s   := scale</span></div>
+<div class="line"><a name="l00602"></a><span class="lineno">  602</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00603"></a><span class="lineno">  603</span>&#160;<span class="comment">Equotiation</span></div>
+<div class="line"><a name="l00604"></a><span class="lineno">  604</span>&#160;<span class="comment">CTM = t(cx,cy)*r(a)*t(-cx,-cy)*t(x0,y0)*s(sx)</span></div>
+<div class="line"><a name="l00605"></a><span class="lineno">  605</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00606"></a><span class="lineno">  606</span>&#160;<span class="comment">      |1 0 cx| |cos(a) -sin(a) 0| |1 0 -cx| |1 0 x0| |sx 0  0|</span></div>
+<div class="line"><a name="l00607"></a><span class="lineno">  607</span>&#160;<span class="comment">CTM = |0 1 cy|*|sin(a)  cos(a) 0|*|0 1 -cy|*|0 1 y0|*|0  sx 0|                            # OK</span></div>
+<div class="line"><a name="l00608"></a><span class="lineno">  608</span>&#160;<span class="comment">      |0 0 1 | |  0       0    1| |0 0  1 | |0 0 1 | |0  0  1|</span></div>
+<div class="line"><a name="l00609"></a><span class="lineno">  609</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00610"></a><span class="lineno">  610</span>&#160;<span class="comment">      |1 0 cx| |cos(a) -sin(a) 0| |1 0 -cx| |sx 0  x0|</span></div>
+<div class="line"><a name="l00611"></a><span class="lineno">  611</span>&#160;<span class="comment">CTM = |0 1 cy|*|sin(a)  cos(a) 0|*|0 1 -cy|*|0  sx y0|                                    # OK</span></div>
+<div class="line"><a name="l00612"></a><span class="lineno">  612</span>&#160;<span class="comment">      |0 0 1 | |  0       0    1| |0 0  1 | |0  0  1 |</span></div>
+<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00614"></a><span class="lineno">  614</span>&#160;<span class="comment">      |1 0 cx| |cos(a) -sin(a) 0| |sx 0  x0-cx|</span></div>
+<div class="line"><a name="l00615"></a><span class="lineno">  615</span>&#160;<span class="comment">CTM = |0 1 cy|*|sin(a)  cos(a) 0|*|0  sx y0-cy|                                           # OK</span></div>
+<div class="line"><a name="l00616"></a><span class="lineno">  616</span>&#160;<span class="comment">      |0 0 1 | |  0       0    1| |0  0  1    |</span></div>
+<div class="line"><a name="l00617"></a><span class="lineno">  617</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00618"></a><span class="lineno">  618</span>&#160;<span class="comment">      |1 0 cx| |sx*cos(a) -sx*sin(a) (x0-cx)*cos(a)-(y0-cy)*sin(a)|</span></div>
+<div class="line"><a name="l00619"></a><span class="lineno">  619</span>&#160;<span class="comment">CTM = |0 1 cy|*|sx*sin(a)  sx*cos(a) (x0-cx)*sin(a)+(y0-cy)*cos(a)|                       # OK</span></div>
+<div class="line"><a name="l00620"></a><span class="lineno">  620</span>&#160;<span class="comment">      |0 0 1 | |  0          0                        1           |</span></div>
+<div class="line"><a name="l00621"></a><span class="lineno">  621</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00622"></a><span class="lineno">  622</span>&#160;<span class="comment">      |sx*cos(a) -sx*sin(a) (x0-cx)*cos(a)-(y0-cy)*sin(a)+cx|</span></div>
+<div class="line"><a name="l00623"></a><span class="lineno">  623</span>&#160;<span class="comment">CTM = |sx*sin(a)  sx*cos(a) (x0-cx)*sin(a)+(y0-cy)*cos(a)+cy|                             # OK</span></div>
+<div class="line"><a name="l00624"></a><span class="lineno">  624</span>&#160;<span class="comment">      |  0          0                     1                 |</span></div>
+<div class="line"><a name="l00625"></a><span class="lineno">  625</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;<span class="comment">Check</span></div>
+<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;<span class="comment">with sx = 1 and a,x0,y0,cx,cy = 0</span></div>
+<div class="line"><a name="l00628"></a><span class="lineno">  628</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00629"></a><span class="lineno">  629</span>&#160;<span class="comment">      |1 0 0|</span></div>
+<div class="line"><a name="l00630"></a><span class="lineno">  630</span>&#160;<span class="comment">CTM = |0 1 0|                                                                             # OK</span></div>
+<div class="line"><a name="l00631"></a><span class="lineno">  631</span>&#160;<span class="comment">      |0 0 1|</span></div>
+<div class="line"><a name="l00632"></a><span class="lineno">  632</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00633"></a><span class="lineno">  633</span>&#160;<span class="comment">|x&#39;|         |x|   |sx*cos(a)*x-sx*sin(a)*y+(x0-cx)*cos(a)-(y0-cy)*sin(a)+cx|   |1*x-0*y|</span></div>
+<div class="line"><a name="l00634"></a><span class="lineno">  634</span>&#160;<span class="comment">|y&#39;| = CTM * |y| = |sx*sin(a)*x+sx*cos(a)*y+(x0-cx)*sin(a)+(y0-cy)*cos(a)+cy| = |0*x+1*y| # OK</span></div>
+<div class="line"><a name="l00635"></a><span class="lineno">  635</span>&#160;<span class="comment">|0 |         |0|   |                       0                                |   |   0   |</span></div>
+<div class="line"><a name="l00636"></a><span class="lineno">  636</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00637"></a><span class="lineno">  637</span>&#160;<span class="comment">**********************************************************************************************/</span></div>
+<div class="line"><a name="l00638"></a><span class="lineno">  638</span>&#160;}</div>
+<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160;</div>
+<div class="line"><a name="l00640"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ab86458036f92667471e903326382c61a">  640</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#ab86458036f92667471e903326382c61a">rlSvgAnimator::fillIniFile</a>(<a class="code" href="classrlIniFile.html">rlIniFile</a> *inifile, <span class="keyword">const</span> <span class="keywordtype">char</span> *line)</div>
+<div class="line"><a name="l00641"></a><span class="lineno">  641</span>&#160;{</div>
+<div class="line"><a name="l00642"></a><span class="lineno">  642</span>&#160;  <span class="keywordtype">char</span> myline[<a class="code" href="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471">MAXLINE</a>],*cptr, *cptr2;</div>
+<div class="line"><a name="l00643"></a><span class="lineno">  643</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSvgAnimator.html#a5f936e4f23a2ae9a5db695c5574dc9f8">id</a>;</div>
+<div class="line"><a name="l00644"></a><span class="lineno">  644</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00645"></a><span class="lineno">  645</span>&#160;</div>
+<div class="line"><a name="l00646"></a><span class="lineno">  646</span>&#160;  strcpy(myline,line);</div>
+<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  cptr = strchr(myline,<span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  <span class="keywordflow">if</span>(cptr != NULL) *cptr = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00649"></a><span class="lineno">  649</span>&#160;</div>
+<div class="line"><a name="l00650"></a><span class="lineno">  650</span>&#160;  <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;&gt;&#39;</span> || strncmp(myline,<span class="stringliteral">&quot;/&gt;&quot;</span>,2) == 0)</div>
+<div class="line"><a name="l00651"></a><span class="lineno">  651</span>&#160;  { <span class="comment">// end of data -&gt; fill inifile</span></div>
+<div class="line"><a name="l00652"></a><span class="lineno">  652</span>&#160;    <span class="keywordflow">if</span>(<a class="code" href="classrlSvgAnimator.html#a0db23466983530c4a4b9a90c75672cc3">inifileState</a> == 1) <span class="comment">// if id was found</span></div>
+<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160;    {</div>
+<div class="line"><a name="l00654"></a><span class="lineno">  654</span>&#160;      <span class="keywordflow">for</span>(i=0; i&lt;<a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>; i++)</div>
+<div class="line"><a name="l00655"></a><span class="lineno">  655</span>&#160;      {</div>
+<div class="line"><a name="l00656"></a><span class="lineno">  656</span>&#160;        <span class="keywordtype">id</span> = <a class="code" href="classrlSvgAnimator.html#a807046ca3e37dcfba7af6f57fda9d2f8">inifileID</a>.<a class="code" href="classrlSpreadsheetCell.html#ace0fc695ce08a7d7716c7790a43b36e4">text</a>();</div>
+<div class="line"><a name="l00657"></a><span class="lineno">  657</span>&#160;        inifile-&gt;<a class="code" href="classrlIniFile.html#a7f62e6010be14a96ed7a35eeeea9738e">setText</a>(<span class="keywordtype">id</span>, <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#aef6c97367218966d1e1c38f13254a952">text</a>(1,i+1), <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#aef6c97367218966d1e1c38f13254a952">text</a>(2,i+1));</div>
+<div class="line"><a name="l00658"></a><span class="lineno">  658</span>&#160;      }</div>
+<div class="line"><a name="l00659"></a><span class="lineno">  659</span>&#160;    }</div>
+<div class="line"><a name="l00660"></a><span class="lineno">  660</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a0db23466983530c4a4b9a90c75672cc3">inifileState</a> = 0;</div>
+<div class="line"><a name="l00661"></a><span class="lineno">  661</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a> = 0;</div>
+<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;    <a class="code" href="classrlSvgAnimator.html#a807046ca3e37dcfba7af6f57fda9d2f8">inifileID</a>.<a class="code" href="classrlSpreadsheetCell.html#a3d754e0cf9a503aae678c88946ca61b2">clear</a>();</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;    <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#ac7bfa7233db9a8c373a8ea26fb0f390a">clear</a>();</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;  }</div>
+<div class="line"><a name="l00665"></a><span class="lineno">  665</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(myline[0] == <span class="charliteral">&#39;&lt;&#39;</span>)</div>
+<div class="line"><a name="l00666"></a><span class="lineno">  666</span>&#160;  { <span class="comment">// ignore this</span></div>
+<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160;  }</div>
+<div class="line"><a name="l00668"></a><span class="lineno">  668</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(strncmp(myline,<span class="stringliteral">&quot;id=&quot;</span>,3) == 0)</div>
+<div class="line"><a name="l00669"></a><span class="lineno">  669</span>&#160;  { <span class="comment">// remenber id</span></div>
+<div class="line"><a name="l00670"></a><span class="lineno">  670</span>&#160;    cptr = strchr(myline,<span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="line"><a name="l00671"></a><span class="lineno">  671</span>&#160;    <span class="keywordflow">if</span>(cptr != NULL)</div>
+<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;    {</div>
+<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;      cptr++; cptr++;</div>
+<div class="line"><a name="l00674"></a><span class="lineno">  674</span>&#160;      cptr2 = strchr(cptr,<span class="charliteral">&#39;\&quot;&#39;</span>);</div>
+<div class="line"><a name="l00675"></a><span class="lineno">  675</span>&#160;      <span class="keywordflow">if</span>(cptr2 != NULL) *cptr2 = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;      <a class="code" href="classrlSvgAnimator.html#a807046ca3e37dcfba7af6f57fda9d2f8">inifileID</a>.<a class="code" href="classrlSpreadsheetCell.html#a9a7079f4173abe7ac65a2fef6ee4b963">setText</a>(cptr);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;      <a class="code" href="classrlSvgAnimator.html#a0db23466983530c4a4b9a90c75672cc3">inifileState</a> = 1; <span class="comment">// id was found</span></div>
+<div class="line"><a name="l00678"></a><span class="lineno">  678</span>&#160;    }</div>
+<div class="line"><a name="l00679"></a><span class="lineno">  679</span>&#160;  }</div>
+<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;  { <span class="comment">// fill this in table</span></div>
+<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;    cptr = strchr(myline,<span class="charliteral">&#39;=&#39;</span>);</div>
+<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;    <span class="keywordflow">if</span>(cptr != NULL)</div>
+<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160;    {</div>
+<div class="line"><a name="l00685"></a><span class="lineno">  685</span>&#160;      *cptr = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;      cptr++; cptr++;</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;      cptr2 = strrchr(cptr,<span class="charliteral">&#39;\&quot;&#39;</span>);</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;      <span class="keywordflow">if</span>(cptr2 != NULL) *cptr2 = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00689"></a><span class="lineno">  689</span>&#160;      <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#a890f13ff6fb4f4d0b7513d5b39b42457">setText</a>(1,<a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>+1,myline);</div>
+<div class="line"><a name="l00690"></a><span class="lineno">  690</span>&#160;      <a class="code" href="classrlSvgAnimator.html#aa5b36fa7e95500c5430fb4ce8b29c488">inifileTable</a>.<a class="code" href="classrlSpreadsheetTable.html#a890f13ff6fb4f4d0b7513d5b39b42457">setText</a>(2,<a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>+1,cptr);</div>
+<div class="line"><a name="l00691"></a><span class="lineno">  691</span>&#160;      <a class="code" href="classrlSvgAnimator.html#a5ca316ad6030e18eabd8306c8a7e4dbd">inifileCount</a>++;</div>
+<div class="line"><a name="l00692"></a><span class="lineno">  692</span>&#160;    }</div>
+<div class="line"><a name="l00693"></a><span class="lineno">  693</span>&#160;  }</div>
+<div class="line"><a name="l00694"></a><span class="lineno">  694</span>&#160;</div>
+<div class="line"><a name="l00695"></a><span class="lineno">  695</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00696"></a><span class="lineno">  696</span>&#160;}</div>
+<div class="line"><a name="l00697"></a><span class="lineno">  697</span>&#160;</div>
+<div class="line"><a name="l00698"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a8dd77cb729029f8f45bf8350b95c2add">  698</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a8dd77cb729029f8f45bf8350b95c2add">rlSvgAnimator::fileFillIniFile</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *infile, <a class="code" href="classrlIniFile.html">rlIniFile</a> *inifile)</div>
+<div class="line"><a name="l00699"></a><span class="lineno">  699</span>&#160;{</div>
+<div class="line"><a name="l00700"></a><span class="lineno">  700</span>&#160;  <span class="keywordtype">char</span> line[<a class="code" href="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471">MAXLINE</a>];</div>
+<div class="line"><a name="l00701"></a><span class="lineno">  701</span>&#160;  FILE *fin;</div>
+<div class="line"><a name="l00702"></a><span class="lineno">  702</span>&#160;</div>
+<div class="line"><a name="l00703"></a><span class="lineno">  703</span>&#160;  fin = fopen(infile,<span class="stringliteral">&quot;r&quot;</span>);</div>
+<div class="line"><a name="l00704"></a><span class="lineno">  704</span>&#160;  <span class="keywordflow">if</span>(fin == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00705"></a><span class="lineno">  705</span>&#160;  <span class="keywordflow">while</span>(fgets(line,<span class="keyword">sizeof</span>(line)-1,fin) != NULL)</div>
+<div class="line"><a name="l00706"></a><span class="lineno">  706</span>&#160;  {</div>
+<div class="line"><a name="l00707"></a><span class="lineno">  707</span>&#160;    <a class="code" href="classrlSvgAnimator.html#ab86458036f92667471e903326382c61a">fillIniFile</a>(inifile, line);</div>
+<div class="line"><a name="l00708"></a><span class="lineno">  708</span>&#160;  }</div>
+<div class="line"><a name="l00709"></a><span class="lineno">  709</span>&#160;  fclose(fin);</div>
+<div class="line"><a name="l00710"></a><span class="lineno">  710</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00711"></a><span class="lineno">  711</span>&#160;}</div>
+<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160;</div>
+<div class="line"><a name="l00713"></a><span class="lineno">  713</span>&#160;<span class="comment">// zoomer methods follows</span></div>
+<div class="line"><a name="l00714"></a><span class="lineno">  714</span>&#160;</div>
+<div class="line"><a name="l00715"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aa55d584c5f761aa52a807cba7d8be778">  715</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#aa55d584c5f761aa52a807cba7d8be778">rlSvgAnimator::setMainObject</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *main_object)</div>
+<div class="line"><a name="l00716"></a><span class="lineno">  716</span>&#160;{</div>
+<div class="line"><a name="l00717"></a><span class="lineno">  717</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00718"></a><span class="lineno">  718</span>&#160;  <span class="keywordflow">if</span>(main_object == NULL) <span class="keywordflow">return</span> -1; </div>
+<div class="line"><a name="l00719"></a><span class="lineno">  719</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a1c7eb48d9f97664467a750d510f4acd2">main_object_name</a>.<a class="code" href="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c">setText</a>(main_object);</div>
+<div class="line"><a name="l00720"></a><span class="lineno">  720</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00721"></a><span class="lineno">  721</span>&#160;}</div>
+<div class="line"><a name="l00722"></a><span class="lineno">  722</span>&#160;</div>
+<div class="line"><a name="l00723"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a8a5d772edcca3b2ca054b8d24a3c7bed">  723</a></span>&#160;<span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="classrlSvgAnimator.html#a8a5d772edcca3b2ca054b8d24a3c7bed">rlSvgAnimator::mainObject</a>()</div>
+<div class="line"><a name="l00724"></a><span class="lineno">  724</span>&#160;{</div>
+<div class="line"><a name="l00725"></a><span class="lineno">  725</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a1c7eb48d9f97664467a750d510f4acd2">main_object_name</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>();</div>
+<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160;}</div>
+<div class="line"><a name="l00727"></a><span class="lineno">  727</span>&#160;</div>
+<div class="line"><a name="l00728"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a32acbaadeab1fd1d68db65d9cba1a5e5">  728</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a32acbaadeab1fd1d68db65d9cba1a5e5">rlSvgAnimator::setXY0</a>(<span class="keywordtype">float</span> x0, <span class="keywordtype">float</span> y0)</div>
+<div class="line"><a name="l00729"></a><span class="lineno">  729</span>&#160;{</div>
+<div class="line"><a name="l00730"></a><span class="lineno">  730</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00731"></a><span class="lineno">  731</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> = <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>;</div>
+<div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> = <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>;</div>
+<div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00734"></a><span class="lineno">  734</span>&#160;}</div>
+<div class="line"><a name="l00735"></a><span class="lineno">  735</span>&#160;</div>
+<div class="line"><a name="l00736"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">  736</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">rlSvgAnimator::x0</a>()</div>
+<div class="line"><a name="l00737"></a><span class="lineno">  737</span>&#160;{</div>
+<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a>;</div>
+<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;}</div>
+<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;</div>
+<div class="line"><a name="l00741"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">  741</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">rlSvgAnimator::y0</a>()</div>
+<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160;{</div>
+<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a>;</div>
+<div class="line"><a name="l00744"></a><span class="lineno">  744</span>&#160;}</div>
+<div class="line"><a name="l00745"></a><span class="lineno">  745</span>&#160;</div>
+<div class="line"><a name="l00746"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a6eeff29540cccedab399dea981f476d4">  746</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a6eeff29540cccedab399dea981f476d4">rlSvgAnimator::setMouseXY0</a>(<span class="keywordtype">float</span> x0, <span class="keywordtype">float</span> y0)</div>
+<div class="line"><a name="l00747"></a><span class="lineno">  747</span>&#160;{</div>
+<div class="line"><a name="l00748"></a><span class="lineno">  748</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00749"></a><span class="lineno">  749</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70">svgMouseX0</a> = <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>;</div>
+<div class="line"><a name="l00750"></a><span class="lineno">  750</span>&#160;  <a class="code" href="classrlSvgAnimator.html#afdf28428bbcf410cf79ad8c816fe7928">svgMouseY0</a> = <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>;</div>
+<div class="line"><a name="l00751"></a><span class="lineno">  751</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00752"></a><span class="lineno">  752</span>&#160;}</div>
+<div class="line"><a name="l00753"></a><span class="lineno">  753</span>&#160;</div>
+<div class="line"><a name="l00754"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ab258ce671ce79fd6fe4e134973449fe9">  754</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#ab258ce671ce79fd6fe4e134973449fe9">rlSvgAnimator::mouseX0</a>()</div>
+<div class="line"><a name="l00755"></a><span class="lineno">  755</span>&#160;{</div>
+<div class="line"><a name="l00756"></a><span class="lineno">  756</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70">svgMouseX0</a>;</div>
+<div class="line"><a name="l00757"></a><span class="lineno">  757</span>&#160;}</div>
+<div class="line"><a name="l00758"></a><span class="lineno">  758</span>&#160;</div>
+<div class="line"><a name="l00759"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aa3256f050c1fa0f3eb1962624173501a">  759</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#aa3256f050c1fa0f3eb1962624173501a">rlSvgAnimator::mouseY0</a>()</div>
+<div class="line"><a name="l00760"></a><span class="lineno">  760</span>&#160;{</div>
+<div class="line"><a name="l00761"></a><span class="lineno">  761</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#afdf28428bbcf410cf79ad8c816fe7928">svgMouseY0</a>;</div>
+<div class="line"><a name="l00762"></a><span class="lineno">  762</span>&#160;}</div>
+<div class="line"><a name="l00763"></a><span class="lineno">  763</span>&#160;</div>
+<div class="line"><a name="l00764"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a96071893061dfc26951f04f32b73d587">  764</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a96071893061dfc26951f04f32b73d587">rlSvgAnimator::setMouseXY1</a>(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1)</div>
+<div class="line"><a name="l00765"></a><span class="lineno">  765</span>&#160;{</div>
+<div class="line"><a name="l00766"></a><span class="lineno">  766</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00767"></a><span class="lineno">  767</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ad078d62f54d78d0d58203219ad656c9c">svgMouseX1</a> = x1;</div>
+<div class="line"><a name="l00768"></a><span class="lineno">  768</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a751d3e4d6a0b50db38025195e14e5026">svgMouseY1</a> = y1;</div>
+<div class="line"><a name="l00769"></a><span class="lineno">  769</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00770"></a><span class="lineno">  770</span>&#160;}</div>
+<div class="line"><a name="l00771"></a><span class="lineno">  771</span>&#160;</div>
+<div class="line"><a name="l00772"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ac70276c52f0997889b672d1bbd848203">  772</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#ac70276c52f0997889b672d1bbd848203">rlSvgAnimator::mouseX1</a>()</div>
+<div class="line"><a name="l00773"></a><span class="lineno">  773</span>&#160;{</div>
+<div class="line"><a name="l00774"></a><span class="lineno">  774</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#ad078d62f54d78d0d58203219ad656c9c">svgMouseX1</a>;</div>
+<div class="line"><a name="l00775"></a><span class="lineno">  775</span>&#160;}</div>
+<div class="line"><a name="l00776"></a><span class="lineno">  776</span>&#160;</div>
+<div class="line"><a name="l00777"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a057913bbaee222e63477c082de948b67">  777</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a057913bbaee222e63477c082de948b67">rlSvgAnimator::mouseY1</a>()</div>
+<div class="line"><a name="l00778"></a><span class="lineno">  778</span>&#160;{</div>
+<div class="line"><a name="l00779"></a><span class="lineno">  779</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a751d3e4d6a0b50db38025195e14e5026">svgMouseY1</a>;</div>
+<div class="line"><a name="l00780"></a><span class="lineno">  780</span>&#160;}</div>
+<div class="line"><a name="l00781"></a><span class="lineno">  781</span>&#160;</div>
+<div class="line"><a name="l00782"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aeb552825bb92e6c538ab4e7288d01abc">  782</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#aeb552825bb92e6c538ab4e7288d01abc">rlSvgAnimator::setScale</a>(<span class="keywordtype">float</span> scale)</div>
+<div class="line"><a name="l00783"></a><span class="lineno">  783</span>&#160;{</div>
+<div class="line"><a name="l00784"></a><span class="lineno">  784</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00785"></a><span class="lineno">  785</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a> = <a class="code" href="classrlSvgAnimator.html#aead083138dcfd5b0bb70041495605c63">scale</a>;</div>
+<div class="line"><a name="l00786"></a><span class="lineno">  786</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00787"></a><span class="lineno">  787</span>&#160;}</div>
+<div class="line"><a name="l00788"></a><span class="lineno">  788</span>&#160;</div>
+<div class="line"><a name="l00789"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#aead083138dcfd5b0bb70041495605c63">  789</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#aead083138dcfd5b0bb70041495605c63">rlSvgAnimator::scale</a>()</div>
+<div class="line"><a name="l00790"></a><span class="lineno">  790</span>&#160;{</div>
+<div class="line"><a name="l00791"></a><span class="lineno">  791</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
+<div class="line"><a name="l00792"></a><span class="lineno">  792</span>&#160;}</div>
+<div class="line"><a name="l00793"></a><span class="lineno">  793</span>&#160;</div>
+<div class="line"><a name="l00794"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a03341ef1b14946d9dbd59ed6febaa018">  794</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a03341ef1b14946d9dbd59ed6febaa018">rlSvgAnimator::zoomCenter</a>(<span class="keywordtype">float</span> newScale)</div>
+<div class="line"><a name="l00795"></a><span class="lineno">  795</span>&#160;{</div>
+<div class="line"><a name="l00796"></a><span class="lineno">  796</span>&#160;  <span class="keywordtype">float</span> oldX0, oldY0;</div>
+<div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordflow">if</span> (newScale &gt; 1000) newScale = 1000.0f;</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;</div>
+<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;  oldX0 = (<a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> - ((<a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f) / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
+<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;  oldY0 = (<a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> - ((<a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f) / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
+<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>  = newScale;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> = oldX0*<a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a> + ((<a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f;</div>
+<div class="line"><a name="l00807"></a><span class="lineno">  807</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> = oldY0*<a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a> + ((<a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>) * (1.0f - <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>)) / 2.0f;</div>
+<div class="line"><a name="l00808"></a><span class="lineno">  808</span>&#160;</div>
+<div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;}</div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;</div>
+<div class="line"><a name="l00812"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a4b53c28ceef519264776fb73fdd7f21d">  812</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a4b53c28ceef519264776fb73fdd7f21d">rlSvgAnimator::zoomRect</a>()</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;{</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;  <span class="keywordtype">float</span> newScale, scale1, scale2, rectWidth, rectHeight;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;</div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  rectWidth  = <a class="code" href="classrlSvgAnimator.html#ad078d62f54d78d0d58203219ad656c9c">svgMouseX1</a>-<a class="code" href="classrlSvgAnimator.html#a3f7558016f705c967b75944f52078a70">svgMouseX0</a>;</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  rectHeight = <a class="code" href="classrlSvgAnimator.html#a751d3e4d6a0b50db38025195e14e5026">svgMouseY1</a>-<a class="code" href="classrlSvgAnimator.html#afdf28428bbcf410cf79ad8c816fe7928">svgMouseY0</a>;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> = <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a> + <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>/2  - (svgMouseX0 + rectWidth/2);</div>
+<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> = <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a> + <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>/2 - (svgMouseY0 + rectHeight/2);</div>
+<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;  rectWidth  = rectWidth  / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
+<div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;  rectHeight = rectHeight / <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>;</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;  scale1 = <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>  / rectWidth;</div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  scale2 = <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a> / rectHeight;</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <span class="keywordflow">if</span>(scale1 &lt; scale2) newScale = scale1;</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  <span class="keywordflow">else</span>                newScale = scale2;</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a03341ef1b14946d9dbd59ed6febaa018">zoomCenter</a>(newScale);</div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;}</div>
+<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;</div>
+<div class="line"><a name="l00833"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a7342d6f51c18eec83d0175f21a8408e0">  833</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#a7342d6f51c18eec83d0175f21a8408e0">rlSvgAnimator::setMainObjectMatrix</a>()</div>
+<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;{</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a6a95260db11ee8cdd9cf6a4b6ef2d741">setMatrix</a>(<a class="code" href="classrlSvgAnimator.html#a1c7eb48d9f97664467a750d510f4acd2">main_object_name</a>.<a class="code" href="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985">text</a>(), <a class="code" href="classrlSvgAnimator.html#a82c3a7c67d11de28452c3ed0fd9d98df">svgScale</a>, 0.0f, <a class="code" href="classrlSvgAnimator.html#a990c87993e6046bf8422427df5c3bb8b">svgX0</a>, <a class="code" href="classrlSvgAnimator.html#a184923e8b89d83d60e5cf592704d589e">svgY0</a>, 0.0f, 0.0f);</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;}</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;</div>
+<div class="line"><a name="l00840"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#ada15aa0382708dde354ecf453e09af60">  840</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#ada15aa0382708dde354ecf453e09af60">rlSvgAnimator::setWindowSize</a>(<span class="keywordtype">int</span> width, <span class="keywordtype">int</span> height)</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;{</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>  = (float) width;</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a> = (float) height;</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;}</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;</div>
+<div class="line"><a name="l00848"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#a59c8596fc562f0f945c2ee797f7bc504">  848</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#a59c8596fc562f0f945c2ee797f7bc504">rlSvgAnimator::windowWidth</a>()</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;{</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#ad925e5c63f6f4c81cc27134ef6df9043">svgWindowWidth</a>;</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;}</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;</div>
+<div class="line"><a name="l00853"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#afc37083269304ba7f99aea0b17a0150e">  853</a></span>&#160;<span class="keywordtype">float</span> <a class="code" href="classrlSvgAnimator.html#afc37083269304ba7f99aea0b17a0150e">rlSvgAnimator::windowHeight</a>()</div>
+<div class="line"><a name="l00854"></a><span class="lineno">  854</span>&#160;{</div>
+<div class="line"><a name="l00855"></a><span class="lineno">  855</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSvgAnimator.html#a53c3f462c0cec0ca564f40a265bf1f04">svgWindowHeight</a>;</div>
+<div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;}</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;</div>
+<div class="line"><a name="l00858"></a><span class="lineno"><a class="code" href="classrlSvgAnimator.html#af6c86a9453f738a71dab04bb91ae496f">  858</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classrlSvgAnimator.html#af6c86a9453f738a71dab04bb91ae496f">rlSvgAnimator::moveMainObject</a>(<span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y)</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;{</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;  <a class="code" href="classrlSvgAnimator.html#ae83dee7cdaa8446be7a5fde7d8c8b288">isModified</a> = 1;</div>
+<div class="line"><a name="l00861"></a><span class="lineno">  861</span>&#160;  <span class="keywordtype">float</span> xx0 = <a class="code" href="classrlSvgAnimator.html#a1e56f98f48c143ab9d67e0a3da325565">x0</a>() + (x - <a class="code" href="classrlSvgAnimator.html#ab258ce671ce79fd6fe4e134973449fe9">mouseX0</a>());</div>
+<div class="line"><a name="l00862"></a><span class="lineno">  862</span>&#160;  <span class="keywordtype">float</span> yy0 = <a class="code" href="classrlSvgAnimator.html#a7eb5611bc7359676698494f373ef9080">y0</a>() + (y - <a class="code" href="classrlSvgAnimator.html#aa3256f050c1fa0f3eb1962624173501a">mouseY0</a>());</div>
+<div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a32acbaadeab1fd1d68db65d9cba1a5e5">setXY0</a>(xx0,yy0);</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;  <a class="code" href="classrlSvgAnimator.html#a7342d6f51c18eec83d0175f21a8408e0">setMainObjectMatrix</a>();</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;}</div>
 <div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;</div>
+<div class="line"><a name="l00868"></a><span class="lineno">  868</span>&#160;</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
