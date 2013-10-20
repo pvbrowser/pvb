@@ -4,7 +4,7 @@
   <filterSection>
     <filterAttribute>doxygen</filterAttribute>
     <toc>
-      <section title="rllib 1" ref="À§">
+      <section title="rllib 1" ref=" &amp;o">
         <section title="Classes">
           <section title="Class List" ref="annotated.html">
             <section title="__sched_param" ref="struct____sched__param.html">

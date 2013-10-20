@@ -338,19 +338,19 @@ cb[14] = 0; // set 2 Byte of Remote TSAP
 cb[17] = 1; // set Local TSAP of the PLC to the
 cb[18] = 0; // configuration done within Step 7 
 plc-&gt;setConnectBlock(cb);</pre><pre>Now you can read/write the PLC.</pre><pre>The following matrix shows some combinations:
---------------------------------------
-        | CB13    CB14    CB17   CB18
---------------------------------------
-S7_200  | 'M'     'W'      'M'    'W'
---------------------------------------
-S7_300  |  1       0        1      2
---------------------------------------
-S7_400  |  1       0        1      3
---------------------------------------
-S7_1200 |  1       0        1      0
---------------------------------------
-S7_logo |  2       0        2      0
---------------------------------------</pre><pre>CB17 = (1=PG,2=OP,3=Step7Basic)
+--------------------------------------------
+             | CB13    CB14    CB17   CB18
+--------------------------------------------
+S7_200       | 'M'     'W'      'M'    'W'
+--------------------------------------------
+S7_300       |  1       0        1      2
+--------------------------------------------
+S7_400       |  1       0        1      3
+--------------------------------------------
+S7_1200      |  1       0        1      0
+--------------------------------------------
+S7_logo 0BA7 |  2       0        2      0
+--------------------------------------------</pre><pre>CB17 = (1=PG,2=OP,3=Step7Basic)
 CB18 = (upper_3_bit_is_rack / lower_5_bit_is_slot)
 Thus the above would be:
 A TSAP within Step 7 of 10.00 results in: cb[17] = PG; cb[18] = 0; // rack=0 slot=0 
@@ -442,7 +442,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058af1615c8aa67368f7301ffdb86f0cb41d">S5</a>        = 4,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a6d6e6bee8efe79cc6cf65d97344c8391">RACK_SLOT</a> = 5,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a4912a32076947a6c1e2b7a12ad318747">S7_1200</a>   = 6,  <span class="comment">// patch from user slammera from our forum (8 Nov 2012)</span></div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a1144dbfd5819a578a63bd353f3ef9bf8">LOGO</a>      = 7   <span class="comment">// according to jjmg_engenharia from our forum (3 Sep 2013)</span></div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a1144dbfd5819a578a63bd353f3ef9bf8">LOGO</a>      = 7   <span class="comment">// LOGO! 0BA7, according to jjmg_engenharia from our forum (3 Sep 2013)</span></div>
 <div class="line">  };</div>
 </div><!-- fragment -->
 </div>
