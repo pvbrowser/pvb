@@ -308,9 +308,10 @@ CB19=C0, Identifier: Maximum TPDU size will follow
 CB20= 1, Parameter Length, 1 byte will follow 
 CB21= 9, max 512 octets</pre><pre>For the different PLC types the connect_block looks as follows:
 s7_200  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,'M','W',0xC2,2,'M','W',0xC0,1,9} 
-s7_300  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,2  ,0xC0,1,9} on S7_300 slot of cpu is always 2
-s7_400  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,3  ,0xC0,1,9} on S7_400 slot of cpu is always 3
-s7_1200 = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,0  ,0xC0,1,9} slot may be 0 || 1 and TSAP 03.01 || 10.00
+s7_300  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  1,0  ,0xC2,2,  1,2  ,0xC0,1,9} on S7_300 slot of cpu is always 2
+s7_400  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  1,0  ,0xC2,2,  1,3  ,0xC0,1,9} on S7_400 slot of cpu is always 3
+s7_1200 = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  1,0  ,0xC2,2,  1,0  ,0xC0,1,9} slot may be 0 || 1 and TSAP 03.01 || 10.00
+s7_logo = {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  2,0  ,0xC2,2,  2,0  ,0xC0,1,9} 
 For S7_200 and S7_1200 read: (only symbolic access to DB1) 
 <a href="http://support.automation.siemens.com/WW/llisapi.dll?func=cslib.csinfo&lang=en&objid=21601611&caller=view">http://support.automation.siemens.com/WW/llisapi.dll?func=cslib.csinfo&amp;lang=en&amp;objid=21601611&amp;caller=view</a></pre><pre>According to the Remote TSAP Siemens makes the following statement:
 ######################################################################################
@@ -333,6 +334,7 @@ Hint: It is suggested to choose the same settings for Byte 1 in Remote and Local
 <a class="el" href="classrlSiemensTCP.html">rlSiemensTCP</a> *plc = new rlSiemensTCP(adr);
 plc-&gt;getDefaultConnectBlock(cb);
 cb[13] = 1; // set 1 Byte of Remote TSAP
+cb[14] = 0; // set 2 Byte of Remote TSAP
 cb[17] = 1; // set Local TSAP of the PLC to the
 cb[18] = 0; // configuration done within Step 7 
 plc-&gt;setConnectBlock(cb);</pre><pre>Now you can read/write the PLC.</pre><pre>The following matrix shows some combinations:
@@ -346,6 +348,8 @@ S7_300  |  1       0        1      2
 S7_400  |  1       0        1      3
 --------------------------------------
 S7_1200 |  1       0        1      0
+--------------------------------------
+S7_logo |  2       0        2      0
 --------------------------------------</pre><pre>CB17 = (1=PG,2=OP,3=Step7Basic)
 CB18 = (upper_3_bit_is_rack / lower_5_bit_is_slot)
 Thus the above would be:
@@ -356,7 +360,7 @@ A TSAP within Step 7 of 10.03 results in: cb[17] = PG; cb[18] = 3; // rack=0 slo
 But you can set the whole connect_block and use ANY_SIEMENS_COMPATIBLE_PLC.</pre><pre>Please use Wireshark or tcpdump if the settings of the above matrix do not work for you.
 Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </pre> 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00126">126</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00130">130</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 </div><h2 class="groupheader">Member Enumeration Documentation</h2>
 <a class="anchor" id="acd18816d5c2156e0b585c6bebe30ad75"></a>
 <div class="memitem">
@@ -386,7 +390,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00129">129</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00133">133</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a1b1d79ae437883ab2416c52692c9a30f">ORG_DB</a>   = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a46691156e20846f2342e7f1c7498a2fa">ORG_M</a>    = 2,</div>
@@ -429,7 +433,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00139">139</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00143">143</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 0,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>    = 1,</div>
@@ -461,7 +465,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00150">150</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00154">154</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3a1e8c88e61251f4ef7d75f123a0f20c45">WriteBit</a>   = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3aea0b8490b29fed3d6fe05953d7988330">WriteByte</a>  = 2</div>
@@ -594,20 +598,26 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 <div class="line">  <span class="comment">//{3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,2, 0   ,0xC2,2,2  ,0  ,0xC0,1,9}; // this should be equivalent to the above (see detailed description)</span></div>
 <div class="line">  <span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> other_connect_block[] =</div>
 <div class="line">    {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};</div>
-<div class="line">  <span class="comment">//{3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9}; ### Description of the individual bytes within the connect_block (connect request) ###</span></div>
-<div class="line">  <span class="comment">// |         |    |                            |              |              |- Identifier: Maximum TPDU size will follow, 1 byte, where 9 means max 512 octets</span></div>
+<div class="line">  <span class="comment">//######### Description of the individual bytes within the connect_block (connect request) ###</span></div>
+<div class="line">  <span class="comment">//{3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9}; </span></div>
+<div class="line">  <span class="comment">// |         |    |                            |              |              |- Identifier: Maximum TPDU size will follow, 1 byte, </span></div>
+<div class="line">  <span class="comment">// |         |    |                            |              |                             where 9 means max 512 octets</span></div>
 <div class="line">  <span class="comment">// |         |    |                            |              |---------------- Identifier: Called TSAP will follow, 2 byte, </span></div>
 <div class="line">  <span class="comment">// |         |    |                            |                                            where (1=PG, 2=OP, 3=Step7Basic), </span></div>
-<div class="line">  <span class="comment">// |         |    |                            |                                            rack=0 slot=1 (upper_3_bit_is_rack / lower_5_bit_is_slot)</span></div>
+<div class="line">  <span class="comment">// |         |    |                            |                                            rack=0 slot=1 (upper_3_bit_is_rack / </span></div>
+<div class="line">  <span class="comment">// |         |    |                            |                                            lower_5_bit_is_slot)</span></div>
 <div class="line">  <span class="comment">// |         |    |                            |------------------------------- Identifier: Calling TSAP will follow, 2 byte,</span></div>
 <div class="line">  <span class="comment">// |         |    |                                                                         where (1=PG, 2=OP) 3=Step7Basic), </span></div>
-<div class="line">  <span class="comment">// |         |    |                                                                         rack=0 slot=0 (upper_3_bit_is_rack / lower_5_bit_is_slot)</span></div>
+<div class="line">  <span class="comment">// |         |    |                                                                         rack=0 slot=0 (upper_3_bit_is_rack / </span></div>
+<div class="line">  <span class="comment">// |         |    |                                                                         lower_5_bit_is_slot)</span></div>
 <div class="line">  <span class="comment">// |         |    |------------------------------------------------------------ 0xEO = Connection Request Code, </span></div>
 <div class="line">  <span class="comment">// |         |                                                                              destination ref high/low = 0,0</span></div>
 <div class="line">  <span class="comment">// |         |                                                                              source ref high/low = 0,1</span></div>
 <div class="line">  <span class="comment">// |         |                                                                              Class and Option = 0</span></div>
 <div class="line">  <span class="comment">// |         |----------------------------------------------------------------- 0x11 = 17 = Number of bytes that follow</span></div>
-<div class="line">  <span class="comment">// |--------------------------------------------------------------------------- ISO_HEADER: version=3 reserved=0 lenght_high=0 length_low=22 byte</span></div>
+<div class="line">  <span class="comment">// |--------------------------------------------------------------------------- ISO_HEADER: version=3 reserved=0</span></div>
+<div class="line">  <span class="comment">//                                                                                          lenght_high=0 length_low=22 byte</span></div>
+<div class="line">  <span class="comment">//#############################################################################################</span></div>
 <div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> connect_block[22];</div>
 <div class="line"></div>
 <div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span> connect_block2[] = </div>
@@ -726,7 +736,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00414">414</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00420">420</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len_byte,length;</div>
 <div class="line"></div>
@@ -924,7 +934,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00175">175</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00181">181</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">switch</span>(org)</div>
@@ -965,7 +975,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00541">541</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00547">547</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len;</div>
 <div class="line"></div>
@@ -1084,7 +1094,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00192">192</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00198">198</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ibuf,ret,len_byte,length;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
@@ -1297,7 +1307,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00347">347</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00353">353</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 14 + 12 * (len - 1);</div>
@@ -1391,7 +1401,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00383">383</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00389">389</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0e;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1456,7 +1466,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00587">587</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00593">593</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret;</div>
 <div class="line"></div>
@@ -1530,7 +1540,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00248">248</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00252">252</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1552,7 +1562,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00241">241</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00245">245</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1574,7 +1584,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00245">245</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00249">249</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1596,7 +1606,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00240">240</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00244">244</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1618,7 +1628,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00243">243</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00247">247</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1640,7 +1650,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00242">242</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00246">246</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1662,7 +1672,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00246">246</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00250">250</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1684,7 +1694,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00244">244</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00248">248</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1706,7 +1716,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00243">243</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00247">247</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1728,7 +1738,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00247">247</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00251">251</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1750,7 +1760,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00239">239</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00243">243</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>
@@ -1772,7 +1782,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00238">238</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00242">242</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 
 </div>
 </div>

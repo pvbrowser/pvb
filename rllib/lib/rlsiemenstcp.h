@@ -60,9 +60,10 @@ CB21= 9, max 512 octets
 
 For the different PLC types the connect_block looks as follows:
 s7_200  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,'M','W',0xC2,2,'M','W',0xC0,1,9} 
-s7_300  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,2  ,0xC0,1,9} on S7_300 slot of cpu is always 2
-s7_400  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,3  ,0xC0,1,9} on S7_400 slot of cpu is always 3
-s7_1200 = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,1  ,0  ,0xC0,1,9} slot may be 0 || 1 and TSAP 03.01 || 10.00
+s7_300  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  1,0  ,0xC2,2,  1,2  ,0xC0,1,9} on S7_300 slot of cpu is always 2
+s7_400  = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  1,0  ,0xC2,2,  1,3  ,0xC0,1,9} on S7_400 slot of cpu is always 3
+s7_1200 = {3,0,0,16,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  1,0  ,0xC2,2,  1,0  ,0xC0,1,9} slot may be 0 || 1 and TSAP 03.01 || 10.00
+s7_logo = {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,  2,0  ,0xC2,2,  2,0  ,0xC0,1,9} 
 For S7_200 and S7_1200 read: (only symbolic access to DB1) 
 http://support.automation.siemens.com/WW/llisapi.dll?func=cslib.csinfo&lang=en&objid=21601611&caller=view
 
@@ -88,6 +89,7 @@ unsigned char cb[22];
 rlSiemensTCP *plc = new rlSiemensTCP(adr);
 plc->getDefaultConnectBlock(cb);
 cb[13] = 1; // set 1 Byte of Remote TSAP
+cb[14] = 0; // set 2 Byte of Remote TSAP
 cb[17] = 1; // set Local TSAP of the PLC to the
 cb[18] = 0; // configuration done within Step 7 
 plc->setConnectBlock(cb);
@@ -105,6 +107,8 @@ S7_300  |  1       0        1      2
 S7_400  |  1       0        1      3
 --------------------------------------
 S7_1200 |  1       0        1      0
+--------------------------------------
+S7_logo |  2       0        2      0
 --------------------------------------
 
 CB17 = (1=PG,2=OP,3=Step7Basic)

@@ -84,20 +84,26 @@ void rlSiemensTCP::doConnect()
   //{3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,2, 0   ,0xC2,2,2  ,0  ,0xC0,1,9}; // this should be equivalent to the above (see detailed description)
   static const unsigned char other_connect_block[] =
     {3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9};
-  //{3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9}; ### Description of the individual bytes within the connect_block (connect request) ###
-  // |         |    |                            |              |              |- Identifier: Maximum TPDU size will follow, 1 byte, where 9 means max 512 octets
+  //######### Description of the individual bytes within the connect_block (connect request) ###
+  //{3,0,0,22,0x11,0xE0,0x00,0x00,0x00,0x01,0x00,0xC1,2,1  ,0  ,0xC2,2,0  ,1  ,0xC0,1,9}; 
+  // |         |    |                            |              |              |- Identifier: Maximum TPDU size will follow, 1 byte, 
+  // |         |    |                            |              |                             where 9 means max 512 octets
   // |         |    |                            |              |---------------- Identifier: Called TSAP will follow, 2 byte, 
   // |         |    |                            |                                            where (1=PG, 2=OP, 3=Step7Basic), 
-  // |         |    |                            |                                            rack=0 slot=1 (upper_3_bit_is_rack / lower_5_bit_is_slot)
+  // |         |    |                            |                                            rack=0 slot=1 (upper_3_bit_is_rack / 
+  // |         |    |                            |                                            lower_5_bit_is_slot)
   // |         |    |                            |------------------------------- Identifier: Calling TSAP will follow, 2 byte,
   // |         |    |                                                                         where (1=PG, 2=OP) 3=Step7Basic), 
-  // |         |    |                                                                         rack=0 slot=0 (upper_3_bit_is_rack / lower_5_bit_is_slot)
+  // |         |    |                                                                         rack=0 slot=0 (upper_3_bit_is_rack / 
+  // |         |    |                                                                         lower_5_bit_is_slot)
   // |         |    |------------------------------------------------------------ 0xEO = Connection Request Code, 
   // |         |                                                                              destination ref high/low = 0,0
   // |         |                                                                              source ref high/low = 0,1
   // |         |                                                                              Class and Option = 0
   // |         |----------------------------------------------------------------- 0x11 = 17 = Number of bytes that follow
-  // |--------------------------------------------------------------------------- ISO_HEADER: version=3 reserved=0 lenght_high=0 length_low=22 byte
+  // |--------------------------------------------------------------------------- ISO_HEADER: version=3 reserved=0
+  //                                                                                          lenght_high=0 length_low=22 byte
+  //#############################################################################################
   unsigned char connect_block[22];
 
   unsigned char connect_block2[] = 
