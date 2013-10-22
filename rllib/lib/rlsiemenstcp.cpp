@@ -183,6 +183,7 @@ int rlSiemensTCP::getOrg(int org)
   int ret;
   switch(org)
   {
+    /* before suggestions from sps-forum.de
     case ORG_DB:   ret = 0x84;  break;    //[10] Datenbaustein
     case ORG_M:    ret = 0x83;  break;    //[10] Merker
     case ORG_E:    ret = 0x81;  break;    //[10] Eingang
@@ -191,10 +192,23 @@ int rlSiemensTCP::getOrg(int org)
     case ORG_Z:    ret = 0x84;  break;    //[10] not tested
     case ORG_T:    ret = 29;    break;    //[10] Timer
     default:       return 0x83; break;
+    */
+    case ORG_DB:   ret = 0x84;  break;    //[10] Datenbaustein
+    case ORG_M:    ret = 0x83;  break;    //[10] Merker
+    case ORG_E:    ret = 0x81;  break;    //[10] Eingang
+    case ORG_A:    ret = 0x82;  break;    //[10] Ausgang
+    case ORG_PEPA: ret = 0x80;  break;    //[10] Peripheral Area R/W [tested by VSA]
+    case ORG_Z:    ret = 28;              //[10] Zaehler // according sps-forum.de ---
+                   if(plc_type==S7_200) ret = 30;        // according sps-forum.de ...   
+                   break;
+    case ORG_T:    ret = 29;              //[10] Timer
+                   if(plc_type==S7_200) ret = 31;        // according sps-forum.de ...
+                   break;                                // J. Kühner and R. Hönle
+    // Attention: The encoding of Zaehler and Timer will be different on S7_200 than to other plc models
+    default:       return 0x83; break;
   }
   return ret;
 }
-
 int rlSiemensTCP::write(int org, int dbnr, int start_adr, int len, const unsigned char *buf, int function)
 {
   int i,ibuf,ret,len_byte,length;

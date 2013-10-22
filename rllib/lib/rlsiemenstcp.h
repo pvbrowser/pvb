@@ -142,7 +142,7 @@ public:
   };
   enum PLC_TYPE
   {
-    ANY_SIEMENS_COMPATIBLE_PLC = 0,
+    ANY_SIEMENS_COMPATIBLE_PLC = 1000,
     S7_200    = 1,
     S7_300    = 2,
     S7_400    = 3,

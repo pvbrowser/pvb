@@ -137,7 +137,7 @@ Public Types</h2></td></tr>
  }</td></tr>
 <tr class="separator:acd18816d5c2156e0b585c6bebe30ad75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af98b1992a2efa144476aa6af339b2058"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058">PLC_TYPE</a> { <br/>
-&#160;&#160;<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 0, 
+&#160;&#160;<a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 1000, 
 <a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a> = 1, 
 <a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a> = 2, 
 <a class="el" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a> = 3, 
@@ -435,7 +435,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 
 <p>Definition at line <a class="el" href="rlsiemenstcp_8h_source.html#l00143">143</a> of file <a class="el" href="rlsiemenstcp_8h_source.html">rlsiemenstcp.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
-<div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 0,</div>
+<div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce">ANY_SIEMENS_COMPATIBLE_PLC</a> = 1000,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>    = 1,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ac122d9509215e5223f27164d09a87a19">S7_300</a>    = 2,</div>
 <div class="line">    <a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058acd406e3a6c58caf0da17aebd0aba7e1a">S7_400</a>    = 3,</div>
@@ -736,7 +736,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00420">420</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00434">434</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len_byte,length;</div>
 <div class="line"></div>
@@ -939,13 +939,28 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 <div class="line">  <span class="keywordtype">int</span> ret;</div>
 <div class="line">  <span class="keywordflow">switch</span>(org)</div>
 <div class="line">  {</div>
+<div class="line">    <span class="comment">/* before suggestions from sps-forum.de</span></div>
+<div class="line"><span class="comment">    case ORG_DB:   ret = 0x84;  break;    //[10] Datenbaustein</span></div>
+<div class="line"><span class="comment">    case ORG_M:    ret = 0x83;  break;    //[10] Merker</span></div>
+<div class="line"><span class="comment">    case ORG_E:    ret = 0x81;  break;    //[10] Eingang</span></div>
+<div class="line"><span class="comment">    case ORG_A:    ret = 0x82;  break;    //[10] Ausgang</span></div>
+<div class="line"><span class="comment">    case ORG_PEPA: ret = 0x80;  break;    //[10] Peripheral Area R/W [tested by VSA]</span></div>
+<div class="line"><span class="comment">    case ORG_Z:    ret = 0x84;  break;    //[10] not tested</span></div>
+<div class="line"><span class="comment">    case ORG_T:    ret = 29;    break;    //[10] Timer</span></div>
+<div class="line"><span class="comment">    default:       return 0x83; break;</span></div>
+<div class="line"><span class="comment">    */</span></div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a1b1d79ae437883ab2416c52692c9a30f">ORG_DB</a>:   ret = 0x84;  <span class="keywordflow">break</span>;    <span class="comment">//[10] Datenbaustein</span></div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a46691156e20846f2342e7f1c7498a2fa">ORG_M</a>:    ret = 0x83;  <span class="keywordflow">break</span>;    <span class="comment">//[10] Merker</span></div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a587dfcf758be9247db5506ae6449f4af">ORG_E</a>:    ret = 0x81;  <span class="keywordflow">break</span>;    <span class="comment">//[10] Eingang</span></div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75afba75ee22d4b377950293e105be43ddc">ORG_A</a>:    ret = 0x82;  <span class="keywordflow">break</span>;    <span class="comment">//[10] Ausgang</span></div>
 <div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75adbebe427936ccb73115354b4f226375c">ORG_PEPA</a>: ret = 0x80;  <span class="keywordflow">break</span>;    <span class="comment">//[10] Peripheral Area R/W [tested by VSA]</span></div>
-<div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a3c250638ed45cea0aa4ce8c356ccfa74">ORG_Z</a>:    ret = 0x84;  <span class="keywordflow">break</span>;    <span class="comment">//[10] not tested</span></div>
-<div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a2f5de5a95642f3dbeddc5473bde050b8">ORG_T</a>:    ret = 29;    <span class="keywordflow">break</span>;    <span class="comment">//[10] Timer</span></div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a3c250638ed45cea0aa4ce8c356ccfa74">ORG_Z</a>:    ret = 28;              <span class="comment">//[10] Zaehler // according sps-forum.de ---</span></div>
+<div class="line">                   <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a>==<a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>) ret = 30;        <span class="comment">// according sps-forum.de ...   </span></div>
+<div class="line">                   <span class="keywordflow">break</span>;</div>
+<div class="line">    <span class="keywordflow">case</span> <a class="code" href="classrlSiemensTCP.html#acd18816d5c2156e0b585c6bebe30ad75a2f5de5a95642f3dbeddc5473bde050b8">ORG_T</a>:    ret = 29;              <span class="comment">//[10] Timer</span></div>
+<div class="line">                   <span class="keywordflow">if</span>(<a class="code" href="classrlSiemensTCP.html#a08759c487eece69acfe38a69730ec8bf">plc_type</a>==<a class="code" href="classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ae79536a8749bf8ab934b6cc59bbd16ea">S7_200</a>) ret = 31;        <span class="comment">// according sps-forum.de ...</span></div>
+<div class="line">                   <span class="keywordflow">break</span>;                                <span class="comment">// J. Kühner and R. Hönle</span></div>
+<div class="line">    <span class="comment">// Attention: The encoding of Zaehler and Timer will be different on S7_200 than to other plc models</span></div>
 <div class="line">    <span class="keywordflow">default</span>:       <span class="keywordflow">return</span> 0x83; <span class="keywordflow">break</span>;</div>
 <div class="line">  }</div>
 <div class="line">  <span class="keywordflow">return</span> ret;</div>
@@ -975,7 +990,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00547">547</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00561">561</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret,len;</div>
 <div class="line"></div>
@@ -1094,7 +1109,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00198">198</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00212">212</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ibuf,ret,len_byte,length;</div>
 <div class="line">  <span class="keywordflow">if</span>(<a class="code" href="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a">rlSocket::isConnected</a>() == 0) <a class="code" href="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc">doConnect</a>();</div>
@@ -1307,7 +1322,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00353">353</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00367">367</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> j;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 14 + 12 * (len - 1);</div>
@@ -1401,7 +1416,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00389">389</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00403">403</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x0e;</div>
 <div class="line">  <a class="code" href="classrlSiemensTCP.html#ab2f6033c67d07acee7a85ba2b084cc46">pdu</a>[i++] = 0x00;</div>
@@ -1466,7 +1481,7 @@ Send us your results.</pre><pre>PS: Still wondering about 'M' 'W' on S7-200
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00593">593</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
+<p>Definition at line <a class="el" href="rlsiemenstcp_8cpp_source.html#l00607">607</a> of file <a class="el" href="rlsiemenstcp_8cpp_source.html">rlsiemenstcp.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i,ret;</div>
 <div class="line"></div>
