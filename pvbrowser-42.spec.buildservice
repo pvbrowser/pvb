@@ -38,6 +38,7 @@ BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel readline-devel
 %endif
 
 %if 0%{?suse_version} >= 1100
+Requires:      libQtWebKit4
 BuildRequires: libQtWebKit-devel
 #!BuildIgnore: post-build-checks
 %endif
@@ -53,6 +54,7 @@ BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel pytho
 %endif
 
 %if 0%{?fedora_version} >= 14
+Requires:      qt4-webkit
 BuildRequires: qt4-webkit-devel
 #!BuildIgnore: post-build-checks
 %endif
@@ -64,17 +66,19 @@ Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: wget Mesa-devel gcc-c++ libstdc++-devel qt4 qt4-devel python-devel readline-devel
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel qt4 qt4-devel X11:QtDesktop python-devel readline-devel
 %endif
 
 %if 0%{?centos_version}
 # Requires:  ld-linux.so.2
 Requires:  qt4
+Requires:  qtwebkit
 Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: wget Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel readline-devel
+BuildRequires: pkgconfig
+BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel qtwebkit qtwebkit-devel qt-mobility-devel python-devel readline-devel
 %endif
 
 %if 0%{?mandriva_version}
@@ -135,25 +139,6 @@ BuildRoot: %{_tmppath}/build-%{name}-%{version}
 %setup
 
 %build
-
-%if 0%{?rhel_version}
-if [ -x /usr/lib64 ]; then  
-  wget http://dl.fedoraproject.org/pub/epel/6/x86_64/qtwebkit-devel-2.1.1-1.el6.x86_64.rpm
-  rpm -Uvh qtwebkit-devel-2.1.1-1.el6.x86_64.rpm
-else
-  wget http://dl.fedoraproject.org/pub/epel/6/x86_64/qtwebkit-devel-2.1.1-1.el6.i686.rpm
-  rpm -Uvh qtwebkit-devel-2.1.1-1.el6.i686.rpm
-fi
-%endif
-%if 0%{?centos_version}
-if [ -x /usr/lib64 ]; then  
-  wget http://dl.fedoraproject.org/pub/epel/6/x86_64/qtwebkit-devel-2.1.1-1.el6.x86_64.rpm
-  rpm -Uvh qtwebkit-devel-2.1.1-1.el6.x86_64.rpm
-else
-  wget http://dl.fedoraproject.org/pub/epel/6/x86_64/qtwebkit-devel-2.1.1-1.el6.i686.rpm
-  rpm -Uvh qtwebkit-devel-2.1.1-1.el6.i686.rpm
-fi
-%endif
 
 # within build.sh call qmake.sh
 #!/bin/bash

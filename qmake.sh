@@ -25,5 +25,13 @@ if [ -x /usr/lib64/qt4/bin/qmake ]; then
   /usr/lib64/qt4/bin/qmake $1 $2 $3 $4 $5 $6 $7 $8
   exit
 fi
+if [ -x /usr/bin/qmake ]; then  
+  /usr/bin/qmake $1 $2 $3 $4 $5 $6 $7 $8
+  exit
+fi
+if [ -x /opt/pvb/fake_qmake/fake_qmake ]; then  
+  /opt/pvb/fake_qmake/fake_qmake -fake $1 $2 $3 $4 $5 $6 $7 $8
+  exit
+fi
 qmake $1 $2 $3 $4 $5 $6 $7 $8
 

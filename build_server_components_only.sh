@@ -23,6 +23,10 @@ cd rllib/rlhistory
 ../../qmake.sh rlhistory.pro
 make
 cd ../..
+cd fake_qmake
+../qmake.sh fake_qmake.pro
+make
+cd ..
 echo '################################################################'
 echo '# finished building server components !!!                      #'
 echo '# now run:                                                     #'

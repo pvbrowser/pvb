@@ -6,6 +6,7 @@ TEMPLATE = lib
 CONFIG  += warn_on release
 CONFIG  -= qt
 !macx {
+unix:CXXFLAGS += -fPIC
 unix:QMAKE_LFLAGS_SHLIB += -ldl
 # unix:QMAKE_LFLAGS =  -Wl
 }
