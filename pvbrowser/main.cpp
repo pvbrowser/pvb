@@ -51,6 +51,12 @@ void init(int ac, char **av)
   {
     if(strncmp(av[i],"-h",2) == 0 || strncmp(av[i],"--",2) == 0)
     {
+#ifdef _WIN32        
+      AllocConsole();
+      freopen("conin$",  "r", stdin);
+      freopen("conout$", "w", stdout);
+      freopen("conout$", "w", stderr);
+#endif
       printf("pvbrowser %s (C) Lehrig Software Engineering, lehrig@t-online.de\n", VERSION);
       printf("usage:   pvbrowser <-debug<=level>> <-log> <-ini=filename> <-font=name<:size>> <host<:port></mask>> <-disable> <-geometry=x:y:w:h> <-global_strut=width:height> <-delay=milliseconds>\n");
       printf("example: pvbrowser\n");
@@ -68,6 +74,11 @@ void init(int ac, char **av)
       if(strncmp(av[i],"-debug=",7) == 0)
       {
         sscanf(av[i],"-debug=%d",&opt.arg_debug);
+#ifdef _WIN32        
+        AllocConsole();
+        freopen("conout$", "w", stdout);
+        freopen("conout$", "w", stderr);
+#endif
       }
     }
     if(strncmp(av[i],"-log",4) == 0)

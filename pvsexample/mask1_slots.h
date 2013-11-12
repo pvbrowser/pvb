@@ -21,7 +21,7 @@ static int slotInit(PARAM *p, DATA *d)
 {
   if(p == NULL || d == NULL) return -1;
   //memset(d,0,sizeof(DATA));
-  if(0)
+  if(1)
   {
     pvHide(p,buttonRestroom); // switch on/off restroom support
   }

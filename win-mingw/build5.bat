@@ -104,6 +104,10 @@ xcopy /e /y "%QTDIR%\plugins\playlistformats"                    bin\playlistfor
 xcopy /e /y "%QTDIR%\plugins\mediaservice"                       bin\mediaservice                                
 xcopy /e /y "%QTDIR%\plugins\printsupport"                       bin\printsupport                               
 xcopy /e /y "%QTDIR%\plugins\sqldrivers"                         bin\sqldrivers                                
+mkdir                                                            bin\platforms
+copy "%QTDIR%\plugins\platforms\qwindows.dll"                    bin\platforms\                                
+copy "%QTDIR%\plugins\platforms\qoffscreen.dll"                  bin\platforms\                                
+copy "%QTDIR%\plugins\platforms\qminimal.dll"                    bin\platforms\                                
 copy ..\qwt\designer\plugins\designer\qwt_designer_plugin5.dll   bin\plugins\designer\qwt_designer_plugin5.dll   
 copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\designer\libqwt_designer_plugin5.a  
 copy ..\designer\plugins\pvb_designer_plugin.dll                 bin\plugins\designer\pvb_designer_plugin.dll    
