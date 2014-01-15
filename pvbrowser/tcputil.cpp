@@ -61,7 +61,7 @@ pvb_com_plugin_on_func pvb_com_plugin_on = NULL;
 #ifndef PVWIN32
 #include <dlfcn.h>
 #define RL_RTLD_LAZY RTLD_LAZY
-void *handle;
+void *bifrost;
 #include <unistd.h>
 #include <sys/socket.h>
 #include <sys/time.h>
@@ -75,7 +75,7 @@ void *handle;
 
 #ifdef PVWIN32
 #define RL_RTLD_LAZY 0
-HMODULE handle;
+HMODULE bifrost;
 #ifdef IS_OLD_MSVCPP
 #include "winsock.h"
 #include <windows.h>
@@ -210,32 +210,32 @@ int tcp_init()
     if(opt.arg_debug) printf("Load communication plugin: tcp_init(%s)\n", buf);
 #ifdef PVWIN32
     ::SetLastError(0);
-    handle = ::LoadLibraryA(buf);
+    bifrost = ::LoadLibraryA(buf);
     ::SetLastError(0);
-    if(handle != NULL)
+    if(bifrost != NULL)
     {
-      pvb_com_con        = (pvb_com_con_func)        ::GetProcAddress(handle, "pvb_com_con");
-      pvb_com_rec        = (pvb_com_rec_func)        ::GetProcAddress(handle, "pvb_com_rec");
-      pvb_com_rec_binary = (pvb_com_rec_binary_func) ::GetProcAddress(handle, "pvb_com_rec_binary");
-      pvb_com_send       = (pvb_com_send_func)       ::GetProcAddress(handle, "pvb_com_send");
-      pvb_com_close      = (pvb_com_close_func)      ::GetProcAddress(handle, "pvb_com_close");
-      pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::GetProcAddress(handle, "pvb_com_plugin_on");
+      pvb_com_con        = (pvb_com_con_func)        ::GetProcAddress(bifrost, "pvb_com_con");
+      pvb_com_rec        = (pvb_com_rec_func)        ::GetProcAddress(bifrost, "pvb_com_rec");
+      pvb_com_rec_binary = (pvb_com_rec_binary_func) ::GetProcAddress(bifrost, "pvb_com_rec_binary");
+      pvb_com_send       = (pvb_com_send_func)       ::GetProcAddress(bifrost, "pvb_com_send");
+      pvb_com_close      = (pvb_com_close_func)      ::GetProcAddress(bifrost, "pvb_com_close");
+      pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::GetProcAddress(bifrost, "pvb_com_plugin_on");
     }  
 #else
-    handle = ::dlopen(buf, RL_RTLD_LAZY);
-    if(handle != NULL)
+    bifrost = ::dlopen(buf, RL_RTLD_LAZY);
+    if(bifrost != NULL)
     {
-      pvb_com_con        = (pvb_com_con_func)        ::dlsym(handle, "pvb_com_con");
-      pvb_com_rec        = (pvb_com_rec_func)        ::dlsym(handle, "pvb_com_rec");
-      pvb_com_rec_binary = (pvb_com_rec_binary_func) ::dlsym(handle, "pvb_com_rec_binary");
-      pvb_com_send       = (pvb_com_send_func)       ::dlsym(handle, "pvb_com_send");
-      pvb_com_close      = (pvb_com_close_func)      ::dlsym(handle, "pvb_com_close");
-      pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::dlsym(handle, "pvb_com_plugin_on");
+      pvb_com_con        = (pvb_com_con_func)        ::dlsym(bifrost, "pvb_com_con");
+      pvb_com_rec        = (pvb_com_rec_func)        ::dlsym(bifrost, "pvb_com_rec");
+      pvb_com_rec_binary = (pvb_com_rec_binary_func) ::dlsym(bifrost, "pvb_com_rec_binary");
+      pvb_com_send       = (pvb_com_send_func)       ::dlsym(bifrost, "pvb_com_send");
+      pvb_com_close      = (pvb_com_close_func)      ::dlsym(bifrost, "pvb_com_close");
+      pvb_com_plugin_on  = (pvb_com_plugin_on_func)  ::dlsym(bifrost, "pvb_com_plugin_on");
     }  
 #endif
     if(opt.arg_debug)
     {
-      printf("handle = %ld\n", (long) handle);
+      printf("bifrost = %ld\n", (long) bifrost);
       printf("pvb_com_con        = %ld\n", (long) pvb_com_con);
       printf("pvb_com_rec        = %ld\n", (long) pvb_com_rec);
       printf("pvb_com_rec_binary = %ld\n", (long) pvb_com_rec_binary);
@@ -253,12 +253,12 @@ int tcp_init()
 
 int tcp_free()
 {
-  if(handle != NULL)
+  if(bifrost != NULL)
   {
 #ifdef PVWIN32
-    ::FreeLibrary(handle);
+    ::FreeLibrary(bifrost);
 #else
-    ::dlclose(handle);
+    ::dlclose(bifrost);
 #endif
   }
   return 0;

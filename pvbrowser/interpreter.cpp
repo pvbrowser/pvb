@@ -65,6 +65,12 @@
 #include <sys/utime.h>
 #endif
 
+#ifdef PVWIN32
+#define MY_IMPORT __declspec(dllimport)
+#else
+#define MY_IMPORT
+#endif
+
 #ifndef PVWIN32
 #define closesocket close
 #endif
@@ -2409,6 +2415,7 @@ void Interpreter::interpretp(const char *command)
       }      
     }
 #else    
+    printf("QSound::play(\"%s\")\n",(const char *) text.toUtf8());
     QSound::play(text);
 #endif
 #endif
@@ -7250,17 +7257,21 @@ void Interpreter::interpretQ(const char *command)
       QLibrary *ql = new QLibrary(lib_path.append(libname));
       if(ql != NULL)
       {
+        if(opt.arg_debug) printf("debug: ql != NULL\n");
         mainWindow->libs.insert(libname,ql);
         mainWindow->libs[libname]->load();
         if(mainWindow->libs[libname]->isLoaded())
         {
+          if(opt.arg_debug) printf("debug: library isLoaded\n");
           void (*setTcpSend)(int (*)(int *, const char *, int ));
           mainWindow->newCustomWidget.insert(libname,(QWidget *(*)(const char * , int *, int , QWidget *, const char * ))mainWindow->libs[libname]->resolve("new_pvbCustomWidget"));
           //pointer to setTcpSend
           setTcpSend=(void (*)(int (*)(int *, const char *, int )))mainWindow->libs[libname]->resolve("setTcpSend");
           if(setTcpSend)
           {
+            if(opt.arg_debug) printf("debug: before setTcpSend\n");
             setTcpSend(tcp_send);//set tcp send
+            if(opt.arg_debug) printf("debug: after setTcpSend\n");
           }    
           else
           {
@@ -7308,6 +7319,7 @@ void Interpreter::interpretQ(const char *command)
     //if in cache
     if(mainWindow->libs.contains(libname) && mainWindow->libs[libname]->isLoaded())
     {
+      if(opt.arg_debug) printf("debug: newCustomWidget(%s,%s)\n", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
       all[i]->w = mainWindow->newCustomWidget[libname](classname.toUtf8(), s, i, all[p]->w, arg);
       all[i]->type = TQCustomWidget;
       if(all[i]->w == NULL)
@@ -7319,6 +7331,7 @@ void Interpreter::interpretQ(const char *command)
         all[i]->type = TQWidget;
         QMessageBox::warning(mainWindow,"pvbrowser",msg);
       }
+      if(opt.arg_debug) printf("debug: newCustomWidget done\n");
     }
     else
     {

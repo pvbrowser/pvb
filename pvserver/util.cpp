@@ -26,7 +26,7 @@
 
 #include <locale.h>
 
-const char pvserver_version[] = "4.7.5";
+const char pvserver_version[] = "4.7.6";
 
 /* #include "qimage.h" */
 #include <time.h>
@@ -1065,7 +1065,7 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 static int show_usage()
 {
   printf("###################################################################################\n");
-  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2013       lehrig@t-online.de\n\n", pvserver_version);
+  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2014       lehrig@t-online.de\n\n", pvserver_version);
   printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
@@ -1161,24 +1161,24 @@ int i;
 }
 
 #ifdef PVWIN32
-  static HMODULE com_handle;
+  static HMODULE bifrost;
 #else
-  static void *com_handle;
+  static void *bifrost;
 #endif    
 
 static void *pv_dlopen(const char *libname)
 {
 #ifdef PVWIN32
   ::SetLastError(0);
-  com_handle = ::LoadLibraryA(libname);
+  bifrost = ::LoadLibraryA(libname);
 #endif
 #ifdef PVUNIX
-  com_handle = ::dlopen(libname, RL_RTLD_LAZY);
+  bifrost = ::dlopen(libname, RL_RTLD_LAZY);
 #endif
 #ifdef __VMS
-  com_handle = NULL;
+  bifrost = NULL;
 #endif
-  return com_handle;
+  return bifrost;
 }
 
 static void *pv_dlsym(const char *symbol)
@@ -1186,10 +1186,10 @@ static void *pv_dlsym(const char *symbol)
   void *ret;
 #ifdef PVWIN32
   ::SetLastError(0);
-  ret = (void *) ::GetProcAddress(com_handle, symbol);
+  ret = (void *) ::GetProcAddress(bifrost, symbol);
 #endif
 #ifdef PVUNIX
-  ret = ::dlsym(com_handle, symbol);
+  ret = ::dlsym(bifrost, symbol);
 #endif
 #ifdef __VMS
   ret = NULL;
