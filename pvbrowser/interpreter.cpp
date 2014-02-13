@@ -5147,7 +5147,12 @@ void Interpreter::interprets(const char *command)
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {
         MyQDockWidget *dock = mainWindow->pvbtab[mainWindow->currentTab].dock[id_dock]; 
-        if(dock != NULL) dock->show();
+        if(dock != NULL) 
+        {
+          dock->show();
+          dock->activateWindow(); // according to murn
+          dock->raise();          // feb 2014
+        }  
       }
       return;
     }

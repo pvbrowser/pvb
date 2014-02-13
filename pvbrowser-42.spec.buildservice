@@ -25,6 +25,12 @@ Provides:  librllib.so
 Provides:  librllib.so.1
 Provides:  librllib.so.1.0
 
+%if 0%{?suse_version} >= 1300
+Requires:      libqt5       Mesa       libpng  libqwt5
+BuildRequires: libqt5-devel Mesa-devel gcc-c++ python-devel readline-devel 
+%endif
+
+%if 0%{?suse_version} < 1300
 %if 0%{?suse_version}
 # Requires:  ld-linux.so.2
 Requires:  libqt4
@@ -41,6 +47,7 @@ BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel readline-devel
 Requires:      libQtWebKit4
 BuildRequires: libQtWebKit-devel
 #!BuildIgnore: post-build-checks
+%endif
 %endif
 
 %if 0%{?fedora_version}

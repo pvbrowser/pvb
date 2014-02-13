@@ -1269,6 +1269,10 @@ void MainWindow::slotReconnect()
     strcat(buf, " Symbian");
 #endif
 #endif
+    QRect maxrect = QApplication::desktop()->availableGeometry();
+    char tempbuf[1024];
+    sprintf(tempbuf," (%dx%d)", maxrect.width(), maxrect.height());
+    strcat(buf, tempbuf);
     strcat(buf, "\n");
     tcp_send(&pvbtab[currentTab].s,buf,strlen(buf));
   }
