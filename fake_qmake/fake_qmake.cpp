@@ -738,10 +738,12 @@ for(i=1; i<=n_defines; i++)
     fprintf(fout," -D%s", row_defines.text(i));
 }    
 fprintf(fout,"\n");
-fprintf(fout,"CFLAGS        = -m64 -pipe -O2 -Wall -W $(DEFINES)");
+//fprintf(fout,"CFLAGS        = -m64 -pipe -O2 -Wall -W $(DEFINES)");
+fprintf(fout,"CFLAGS        = -pipe -O2 -Wall -W $(DEFINES)");
 for(i=1; i<=n_cflags; i++) fprintf(fout," %s", row_cflags.text(i));
 fprintf(fout,"\n");
-fprintf(fout,"CXXFLAGS      = -m64 -pipe -O2 -Wall -W $(DEFINES)");
+//fprintf(fout,"CXXFLAGS      = -m64 -pipe -O2 -Wall -W $(DEFINES)");
+fprintf(fout,"CXXFLAGS      = -pipe -O2 -Wall -W $(DEFINES)");
 for(i=1; i<=n_cxxflags; i++) fprintf(fout," %s", row_cxxflags.text(i));
 fprintf(fout,"\n");
 fprintf(fout,"INCPATH       = -I.");
@@ -750,12 +752,14 @@ fprintf(fout,"\n");
 fprintf(fout,"LINK          = g++\n");
 if     (strcmp(str_template.text(),"app") == 0)
 {
-  fprintf(fout,"LFLAGS        = -m64 -Wl,-O1");
+  //fprintf(fout,"LFLAGS        = -m64 -Wl,-O1");
+  fprintf(fout,"LFLAGS        = -Wl,-O1");
   for(i=1; i<=n_qmake_lflags; i++) fprintf(fout," %s", row_qmake_lflags.text(i));
 }
 else if(strcmp(str_template.text(),"lib") == 0)
 {
-  fprintf(fout,"LFLAGS        = -m64 -Wl,-O1 -shared -Wl,-soname,lib%s.so.1", str_target.text());
+  //fprintf(fout,"LFLAGS        = -m64 -Wl,-O1 -shared -Wl,-soname,lib%s.so.1", str_target.text());
+  fprintf(fout,"LFLAGS        = -Wl,-O1 -shared -Wl,-soname,lib%s.so.1", str_target.text());
   for(i=1; i<=n_qmake_lflags; i++) fprintf(fout," %s", row_qmake_lflags.text(i));
 }
 fprintf(fout,"\n");

@@ -29,8 +29,8 @@
  rem   instead of setting QTDIR and MINGWDIR here you could also set them            
  rem   within the registry using the system control                                  
  :start_pvdevelop                                                                    
- set   PATH=%PVBDIR%\win-mingw\bin;%QTDIR%\bin;%MINGWDIR%\bin;c:\windows;
- set   PYTHONPATH=%PVBDIR%\win-mingw\bin;%PYTHONPATH%
+ set   PATH="%PVBDIR%\win-mingw\bin";"%QTDIR%\bin";"%MINGWDIR%\bin";c:\windows;c:\windows\system32;
+ set   PYTHONPATH="%PVBDIR%\win-mingw\bin";%PYTHONPATH%
  echo  PVBDIR     = %PVBDIR%
  echo  QTDIR      = %QTDIR%
  echo  MINGWDIR   = %MINGWDIR%
