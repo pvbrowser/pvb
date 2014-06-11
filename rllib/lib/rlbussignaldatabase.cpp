@@ -57,7 +57,7 @@ int rlBussignalDatabase::openDatabase(const char *database, const char *table)
   connection = (void *) mysql_real_connect(&mysql, "localhost","bususr","buspw",databaseName,0,0,0);
   if(connection == NULL)
   {
-    printf(mysql_error(&mysql));
+    printf((const char *) mysql_error(&mysql));
     return -1;
   }
   return 0;

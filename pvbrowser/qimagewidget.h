@@ -33,6 +33,7 @@ public:
     virtual void    setGeometry(int nx, int ny, int nw, int nh);
     void            setImage(const QImage *newimage);
     void            setImage(const char *filename);
+    void            setJpegImage(unsigned char *buffer, int buffersize);
     QImage          image; // the loaded image
     QImage          original_image; // the original loaded image
 

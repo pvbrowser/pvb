@@ -2988,6 +2988,7 @@ int getWidgetsFromMask(const char *filename, QWidget *root)
     editlayout->uidlg->textEditDef->clear();
   }
   ret = 0;
+  if(opt_develop.arg_debug) printf("before fopen(%s)\n", filename);
   fin = fopen(filename,"r");
   if(fin == NULL)
   {
@@ -3484,6 +3485,7 @@ int importUi(const char *uifile, Designer *designer)
     return -1;
   }
 
+  if(opt_develop.arg_debug) printf("before fopen(uifile=%s)\n", uifile);
   FILE *fin = fopen(uifile,"r");
   if(fin != NULL)
   {
@@ -3499,16 +3501,29 @@ int importUi(const char *uifile, Designer *designer)
       }
     }  
   }
+  else
+  {
+    printf("Usage Error: Before you can import a ui-file you must create the framework for the mask with pvdevelop.\n");
+    return -1;
+  }
   fclose(fin);
 
+  if(opt_develop.arg_debug) printf("perhapsSetTabOrder(%s)\n", uifile);
   perhapsSetTabOrder(uifile);
   QFile ui(uifile);
+  if(opt_develop.arg_debug) printf("ui.open()\n");
   bool ret = ui.open(QIODevice::ReadOnly);
   if(ret == false)
   {
     printf("could not open %s\n", uifile);
     return -1;
   }
+  if(designer->root == NULL)
+  {
+    printf("usage error: frame of mask must be already created before you can import from ui-file.");
+    return -1;
+  }
+  if(opt_develop.arg_debug) printf("uiloader()\n");
   QUiLoader uiloader(designer->root);
   if( (root = uiloader.load(&ui)) == NULL)
   {

@@ -2329,6 +2329,11 @@ Allowed widgets: QImage
 </pre> */
 int pvSetImage(PARAM *p, int id, const char *filename);
 /*! <pre>
+Set a new image in an existing image.
+Allowed widgets: QImage
+</pre> */
+int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize);
+/*! <pre>
 Set the background color of the widget.
 Allowed widgets: QLabel, QDraw
 </pre> */

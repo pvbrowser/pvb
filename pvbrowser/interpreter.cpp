@@ -3458,7 +3458,23 @@ void Interpreter::interprets(const char *command)
             QImageWidget *iw = (QImageWidget *) all[i]->w;
             if(iw != NULL) 
             {
-              iw->setImage(filename.toUtf8());
+              if(opt.arg_debug) printf("interpreter.cpp:: setImage(%s)\n", (const char *) text.toUtf8());
+              if(strncmp(text.toUtf8(),"mjpeg_",6) == 0)
+              {
+                int buffersize = 0;
+                sscanf((const char *) text.toUtf8(), "mjpeg_%d", &buffersize);
+                if(buffersize > 0)
+                {
+                  unsigned char *buffer = new unsigned char [buffersize+8];
+                  tcp_rec_binary(s, (char *) buffer, buffersize);
+                  iw->setJpegImage(buffer,buffersize);
+                  delete [] buffer;
+                }  
+              }
+              else
+              {
+                iw->setImage(filename.toUtf8());
+              }  
             }  
           }
           else if(all[i]->type == TQCustomWidget)

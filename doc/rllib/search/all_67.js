@@ -44,6 +44,7 @@ var searchData=
   ['getfloat',['getFloat',['../classrlDataProvider.html#a1e417d8cdaeb8aaea7d1c7dc2c746af1',1,'rlDataProvider::getFloat()'],['../classrlDataProviderClient.html#a040283c86c787d3fd0d91dff8b6b8c92',1,'rlDataProviderClient::getFloat()']]],
   ['getfloatarray',['getFloatArray',['../classrlDataProvider.html#ab5678852d2a95a243776b0b9e9935cae',1,'rlDataProvider::getFloatArray()'],['../classrlDataProviderClient.html#a40255337f47da5d65499036d8a6a061e',1,'rlDataProviderClient::getFloatArray()']]],
   ['getframe',['getFrame',['../classrlWebcam.html#a32cf8837b9667689fb4d853cc5276e9b',1,'rlWebcam']]],
+  ['getframebuffer',['getFrameBuffer',['../classrlWebcam.html#ae1545adbbf5df673863af5ac3ee2006f',1,'rlWebcam']]],
   ['gethost',['getHost',['../classrlWebcam.html#a9e5e343ce2d8fbce55d274f55c9e441e',1,'rlWebcam']]],
   ['getint',['getInt',['../classrlDataProvider.html#a02a74fa8c65ce2195c8a47556fa08619',1,'rlDataProvider::getInt()'],['../classrlDataProviderClient.html#ad9229c9802adba724373fc4044238d8a',1,'rlDataProviderClient::getInt()']]],
   ['getint0semaphore',['getInt0Semaphore',['../classrlDataProvider.html#ade986f7bfb496bbcafc9e24b3c456144',1,'rlDataProvider::getInt0Semaphore()'],['../classrlDataProviderClient.html#af5ab7861898bbee58e01ca85896d8469',1,'rlDataProviderClient::getInt0Semaphore()']]],

@@ -26,6 +26,9 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include "tcputil.h"
+#include "opt.h"
+
+extern OPT opt;
 
 QImageWidget::QImageWidget(int *sock, int ident, QWidget *parent, const char *name, int wFlags )
              : QWidget(parent)
@@ -186,6 +189,32 @@ void QImageWidget::setImage(const char *filename)
       }
     }
   }
+  perhapsSetMask();
+  original_image = image.copy();
+  repaint();
+}
+
+void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize)
+{
+  if(opt.arg_debug) printf("QImageWidget::setJpegImage buffersize=%d\n", buffersize);
+  image.loadFromData(buffer, buffersize, "JPG");
+  clearMask();
+  if(w > 0 && h > 0 && ( w < image.width() || h < image.height() ) )
+  {
+    //printf("set1: setImage %s xy=%d,%d w=%d h=%d width=%d height=%d\n", filename, 
+    //x(), y(), w, h, 
+    //                                  image.width(),image.height());
+    image = image.scaled(w, h, Qt::KeepAspectRatio);
+  }
+  else if(w > image.width() || h > image.height())
+  {
+    //printf("set2: setImage %s xy=%d,%d w=%d h=%d width=%d height=%d\n", filename, 
+    //x(),y(),w, h, 
+    //                                  image.width(),image.height());
+    //qt3 image = image.smoothScale(w,h,Qt::KeepAspectRatio);
+    image.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  }
+
   perhapsSetMask();
   original_image = image.copy();
   repaint();

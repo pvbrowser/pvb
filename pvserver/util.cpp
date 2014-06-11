@@ -91,6 +91,8 @@ int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWOR
 #include <utime.h>
 #include <unistd.h>
 #include <dirent.h>
+#include <errno.h>
+extern int errno;
 #endif
 
 #ifdef PVWIN32
@@ -1477,6 +1479,12 @@ start_poll:  // only necessary for pause
       Sleep(1000);
 #endif
     *event = '\0';
+#ifdef PVUNIX
+    if(errno == EBADF)
+    {
+      pvThreadFatal(p,"select returned errno=EBADF -> terminate thread");
+    }
+#endif
     return 0;
   }
 
@@ -3802,6 +3810,17 @@ char buf[MAX_PRINTF_LENGTH];
   pv_length_check(p, filename);
   sprintf(buf,"setImage(%d,\"%s\")\n",id,pvFilename(filename));
   pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize)
+{
+char buf[MAX_PRINTF_LENGTH];
+
+  if(buffersize <  1) return -1;
+  sprintf(buf,"setImage(%d,\"mjpeg_%dbytes\")\n",id,buffersize);
+  pvtcpsend(p, buf, strlen(buf));
+  pvtcpsend_binary(p, (const char *) buffer, buffersize);
   return 0;
 }
 

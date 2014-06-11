@@ -21,7 +21,7 @@ var searchData=
   ['write_5fbit',['write_bit',['../classrlSiemensTCP.html#a35312680bd4ac0bfbdc84dfacb47c329',1,'rlSiemensTCP']]],
   ['write_5fbyte',['write_byte',['../classrlSiemensTCP.html#a47639db0e00a36113da0753bcd554027',1,'rlSiemensTCP']]],
   ['write_5fiso',['write_iso',['../classrlSiemensTCP.html#a5f09e6c3ef726892e398b96a292c733a',1,'rlSiemensTCP']]],
-  ['writebit',['WriteBit',['../classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3a1e8c88e61251f4ef7d75f123a0f20c45',1,'rlSiemensTCP::WriteBit()'],['../classrlSiemensTCPClient.html#aa96f81d353cd40a386ac3fdbf9ec85db',1,'rlSiemensTCPClient::writeBit()']]],
+  ['writebit',['writeBit',['../classrlSiemensTCPClient.html#aa96f81d353cd40a386ac3fdbf9ec85db',1,'rlSiemensTCPClient::writeBit()'],['../classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3a1e8c88e61251f4ef7d75f123a0f20c45',1,'rlSiemensTCP::WriteBit()']]],
   ['writeblock',['writeBlock',['../classrlCommandlineInterface.html#abcb86746fa3171cf38fd515573a22374',1,'rlCommandlineInterface::writeBlock()'],['../classrlSerial.html#ac2bb1e98663afb459719ee0b4a2233a0',1,'rlSerial::writeBlock()']]],
   ['writebuffer',['writeBuffer',['../classrlDF1.html#ae8e38f11dbdfa7adebb87c7fa69a42d0',1,'rlDF1::writeBuffer(unsigned char *buffer, int len)'],['../classrlDF1.html#a7f2dea54284be132cfb75ea3ae5f8bb8',1,'rlDF1::writeBuffer(df1Buffer &amp;buffer)']]],
   ['writebyte',['writeByte',['../classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02',1,'rlSharedMemory::writeByte()'],['../classrlSiemensTCPClient.html#ae7d302a3c16032e37d2c66ffeb1c3c36',1,'rlSiemensTCPClient::writeByte()'],['../classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3aea0b8490b29fed3d6fe05953d7988330',1,'rlSiemensTCP::WriteByte()']]],
