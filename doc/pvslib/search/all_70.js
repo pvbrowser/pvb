@@ -184,6 +184,7 @@ var searchData=
   ['pvserver_5fversion',['pvserver_version',['../struct__PARAM__.html#a26a96571e0660c1396b33c397305ebd8',1,'_PARAM_']]],
   ['pvsetalignment',['pvSetAlignment',['../group__State.html#ga2928ca3e3a235dd8a7bba07132a0134c',1,'processviewserver.h']]],
   ['pvsetbackgroundcolor',['pvSetBackgroundColor',['../group__Output.html#ga9867a9293fd97758cd5039e37561c440',1,'processviewserver.h']]],
+  ['pvsetbufferedjpgimage',['pvSetBufferedJpgImage',['../group__Output.html#gae47ff24612e9581828138b3747c7e244',1,'processviewserver.h']]],
   ['pvsetcaption',['pvSetCaption',['../group__Output.html#ga8363a3af3ad2b200162f66b5520b320e',1,'processviewserver.h']]],
   ['pvsetchecked',['pvSetChecked',['../group__State.html#ga126bb32fc13f044d4b3a5dec3e822134',1,'processviewserver.h']]],
   ['pvsetcleanup',['pvSetCleanup',['../group__IniAndGlobal.html#ga995fefba9cbdfeeaf660df83a355401c',1,'processviewserver.h']]],

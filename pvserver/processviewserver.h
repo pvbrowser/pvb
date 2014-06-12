@@ -1394,6 +1394,7 @@ pvSetEnabled()
 pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetImage()
+pvSetBufferedJpgImage()
  </pre> */
 int pvQImage(PARAM *p, int id, int parent, const char *imagename, int *w=NULL, int *h=NULL, int *depth=NULL);
 /*! <pre>
@@ -2330,6 +2331,9 @@ Allowed widgets: QImage
 int pvSetImage(PARAM *p, int id, const char *filename);
 /*! <pre>
 Set a new image in an existing image.
+For example get a frame from a MJPG webcam with the rlWebcam method
+  int getFrameBuffer(unsigned char *buffer, int maxbuffer, int timeout=3000);
+and send it to the pvbrowser client with this function.
 Allowed widgets: QImage
 </pre> */
 int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize);
