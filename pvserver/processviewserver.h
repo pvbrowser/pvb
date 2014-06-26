@@ -2326,17 +2326,21 @@ Allowed widgets: QTextBrowser
 int pvSetSource(PARAM *p, int id, const char *html_file);
 /*! <pre>
 Set a new image in an existing image.
+if(rotate == +90) then rotate +90 degrees
+if(rotate == -90) then rotate -90 degrees
 Allowed widgets: QImage
 </pre> */
-int pvSetImage(PARAM *p, int id, const char *filename);
+int pvSetImage(PARAM *p, int id, const char *filename, int rotate=0);
 /*! <pre>
 Set a new image in an existing image.
 For example get a frame from a MJPG webcam with the rlWebcam method
   int getFrameBuffer(unsigned char *buffer, int maxbuffer, int timeout=3000);
 and send it to the pvbrowser client with this function.
+if(rotate == +90) then rotate +90 degrees
+if(rotate == -90) then rotate -90 degrees
 Allowed widgets: QImage
 </pre> */
-int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize);
+int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize, int rotate=0);
 /*! <pre>
 Set the background color of the widget.
 Allowed widgets: QLabel, QDraw

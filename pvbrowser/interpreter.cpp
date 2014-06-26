@@ -3448,6 +3448,9 @@ void Interpreter::interprets(const char *command)
         else if(strncmp(command,"setImage(",9) == 0) // set new image in existing image
         {
           sscanf(command,"setImage(%d,",&i);
+          int rotate = 0;
+          if(strstr(command,"-rotate=90")  != NULL) rotate = 90;
+          if(strstr(command,"-rotate=-90") != NULL) rotate = -90;
           get_text(command,text); // text = filename of image
           if(i < 0) return;
           if(i >= nmax) return;
@@ -3467,13 +3470,13 @@ void Interpreter::interprets(const char *command)
                 {
                   unsigned char *buffer = new unsigned char [buffersize+8];
                   tcp_rec_binary(s, (char *) buffer, buffersize);
-                  iw->setJpegImage(buffer,buffersize);
+                  iw->setJpegImage(buffer,buffersize,rotate);
                   delete [] buffer;
                 }  
               }
               else
               {
-                iw->setImage(filename.toUtf8());
+                iw->setImage(filename.toUtf8(),rotate);
               }  
             }  
           }

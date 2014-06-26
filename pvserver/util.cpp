@@ -3803,22 +3803,22 @@ char buf[MAX_PRINTF_LENGTH];
   return 0;
 }
 
-int pvSetImage(PARAM *p, int id, const char *filename)
+int pvSetImage(PARAM *p, int id, const char *filename, int rotate)
 {
 char buf[MAX_PRINTF_LENGTH];
 
   pv_length_check(p, filename);
-  sprintf(buf,"setImage(%d,\"%s\")\n",id,pvFilename(filename));
+  sprintf(buf,"setImage(%d,\"%s\") -rotate=%d\n",id,pvFilename(filename),rotate);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }
 
-int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize)
+int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize, int rotate)
 {
 char buf[MAX_PRINTF_LENGTH];
 
   if(buffersize <  1) return -1;
-  sprintf(buf,"setImage(%d,\"mjpeg_%dbytes\")\n",id,buffersize);
+  sprintf(buf,"setImage(%d,\"mjpeg_%dbytes\") -rotate=%d\n",id,buffersize,rotate);
   pvtcpsend(p, buf, strlen(buf));
   pvtcpsend_binary(p, (const char *) buffer, buffersize);
   return 0;

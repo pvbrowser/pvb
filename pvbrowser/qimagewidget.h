@@ -32,8 +32,8 @@ public:
     ~QImageWidget();
     virtual void    setGeometry(int nx, int ny, int nw, int nh);
     void            setImage(const QImage *newimage);
-    void            setImage(const char *filename);
-    void            setJpegImage(unsigned char *buffer, int buffersize);
+    void            setImage(const char *filename, int rotate=0);
+    void            setJpegImage(unsigned char *buffer, int buffersize, int rotate);
     QImage          image; // the loaded image
     QImage          original_image; // the original loaded image
 

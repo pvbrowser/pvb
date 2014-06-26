@@ -148,9 +148,15 @@ void QImageWidget::setGeometry(int nx, int ny, int nw, int nh)
   repaint(0,0,w,h);
 }
 
-void QImageWidget::setImage(const char *filename)
+void QImageWidget::setImage(const char *filename, int rotate)
 {
   image.load(filename);
+  if(rotate)
+  {
+    QMatrix m;
+    m.rotate(rotate);
+    image = image.transformed(m);
+  }
 //#ifdef USE_MAEMO 
 //  unlink(filename);
 //#endif  
@@ -194,11 +200,17 @@ void QImageWidget::setImage(const char *filename)
   repaint();
 }
 
-void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize)
+void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize, int rotate)
 {
   if(opt.arg_debug) printf("QImageWidget::setJpegImage buffersize=%d\n", buffersize);
   image.loadFromData(buffer, buffersize, "JPG");
   clearMask();
+  if(rotate)
+  {
+    QMatrix m;
+    m.rotate(rotate);
+    image = image.transformed(m);
+  }
   if(w > 0 && h > 0 && ( w < image.width() || h < image.height() ) )
   {
     //printf("set1: setImage %s xy=%d,%d w=%d h=%d width=%d height=%d\n", filename, 
