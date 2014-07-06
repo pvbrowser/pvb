@@ -13,11 +13,17 @@ INCLUDEPATH  += ../../qwt/src
 DEFINES      += BROWSERPLUGIN                                              
 DEFINES      -= UNICODE                                                    
 lessThan(QT_MAJOR_VERSION, 5) {
-  QT         += opengl svg webkit network
-  CONFIG     += uitools warn_on release                                    
+  QT           += xml svg webkit network
+  CONFIG       += uitools warn_on release                                    
+  LIBS         += $(MINGWDIR)/lib/libws2_32.a                                
+  LIBS         += $(MINGWDIR)/lib/libimm32.a                                 
+  LIBS         += $(MINGWDIR)/lib/libopengl32.a                              
+  LIBS         += $(MINGWDIR)/lib/libglu32.a                                 
+  LIBS         += $(MINGWDIR)/lib/libadvapi32.a                              
 }else{
-  QT         += uitools webkitwidgets widgets opengl svg webkit network
-  CONFIG     += warn_on release                                    
+  QT           += multimedia uitools webkitwidgets widgets xml svg webkit network
+  CONFIG       += warn_on release                                    
+  LIBS         += -lws2_32
 }    
 DEFINES      += "WINVER=0x0501"
 
@@ -57,11 +63,6 @@ SOURCES       = ../../browserplugin/pvpluginmain.cpp \
 RESOURCES     = ../../browserplugin/pvbrowser.qrc                          
                                                                            
 LIBS         += ../../qwt/lib/libqwt.a                                     
-LIBS         += $(MINGWDIR)/lib/libws2_32.a                                
-LIBS         += $(MINGWDIR)/lib/libimm32.a                                 
-LIBS         += $(MINGWDIR)/lib/libopengl32.a                              
-LIBS         += $(MINGWDIR)/lib/libglu32.a                                 
-LIBS         += $(MINGWDIR)/lib/libadvapi32.a                              
                                                                            
 win32 {                                                                    
    RC_FILE    = ../../browserplugin/pvpluginmain.rc                        

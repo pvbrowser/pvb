@@ -16,6 +16,8 @@
 *.lib
 *.LIB
 
+browserplugin/murx/
+
 # ignore win-ming/bin
 win-mingw/bin/
 

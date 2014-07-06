@@ -56,14 +56,21 @@ struct QtNPInstance
 
 #ifdef Q_WS_WIN
     typedef HWND Widget;
-#endif
-#ifdef Q_WS_X11
+#elif defined(Q_WS_X11)
     typedef Window Widget;
     Display *display;
-#endif
-#ifdef Q_WS_MAC
+#elif defined (Q_WS_MAC)
     typedef NPPort* Widget;
     QWidget *rootWidget;
+#elif defined (PVWIN32)
+    typedef HWND Widget;
+#elif defined (PVMAC)
+    typedef NPPort* Widget;
+    QWidget *rootWidget;
+#elif defined (PVUNIX)
+#   include <X11/Xlib.h>
+    typedef Window Widget;
+    Display *display;
 #endif
 
     Widget window;

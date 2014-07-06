@@ -36,13 +36,17 @@
 **
 ****************************************************************************/
 
+#include "pvdefine.h"
+
 #include <QtGui>
+#include "qtnpapi.h"
+#include <qlogging.h>
 
 #include "qtbrowserplugin.h"
 #include "qtbrowserplugin_p.h"
 
 #include <windows.h>
-#include "qtnpapi.h"
+// rl qt4->qt5 #include "qtnpapi.h"
 
 static HHOOK hhook = 0;
 static bool ownsqapp = false;
@@ -61,11 +65,15 @@ LRESULT CALLBACK FilterProc( int nCode, WPARAM wParam, LPARAM lParam )
 
     // (some) support for key-sequences via QAction and QShortcut
     if(msg->message == WM_KEYDOWN || msg->message == WM_SYSKEYDOWN) {
-        QWidget *focusWidget = QWidget::find(msg->hwnd);
+        QWidget *focusWidget = QWidget::find((unsigned int) msg->hwnd);
         if (focusWidget) {
             int key = msg->wParam;
             if (!(key >= 'A' && key <= 'Z') && !(key >= '0' && key <= '9'))
+#if QT_VERSION < 0x050000
                 key = qt_translateKeyCode(msg->wParam);
+#else
+                key = (int) msg->wParam;
+#endif
 
             Qt::KeyboardModifiers modifiers = 0;
             int modifierKey = 0;
@@ -89,7 +97,11 @@ LRESULT CALLBACK FilterProc( int nCode, WPARAM wParam, LPARAM lParam )
                 processed = override.isAccepted();
 
                 if (!processed) {
+#if QT_VERSION < 0x050000
                     QList<QAction*> actions = qFindChildren<QAction*>(focusWidget->window());
+#else
+                    QList<QAction*> actions = focusWidget->window()->findChildren<QAction*>();
+#endif
                     for (int i = 0; i < actions.count() && !processed; ++i) {
                         QAction *action = actions.at(i);
                         if (!action->isEnabled() || action->shortcut() != shortcutKey)
@@ -99,7 +111,11 @@ LRESULT CALLBACK FilterProc( int nCode, WPARAM wParam, LPARAM lParam )
                     }
                 }
                 if (!processed) {
+#if QT_VERSION < 0x050000
                     QList<QShortcut*> shortcuts = qFindChildren<QShortcut*>(focusWidget->window());
+#else
+                    QList<QShortcut*> shortcuts = focusWidget->window()->findChildren<QShortcut*>();
+#endif
                     for (int i = 0; i < shortcuts.count() && !processed; ++i) {
                         QShortcut *shortcut = shortcuts.at(i);
                         if (!shortcut->isEnabled() || shortcut->key() != shortcutKey)
@@ -124,18 +140,27 @@ extern Q_CORE_EXPORT void qWinMsgHandler(QtMsgType t, const char* str);
 
 extern "C" void qtns_initialize(QtNPInstance*)
 {
-    if (!qApp) {
+    if (!qApp) 
+    {
+#if QT_VERSION < 0x050000
         qInstallMsgHandler(qWinMsgHandler);
         ownsqapp = true;
 	static int argc=0;
 	static char **argv={ 0 };
 	(void)new QApplication(argc, argv);
 
-        QT_WA({
-	    hhook = SetWindowsHookExW( WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );
-        }, {
-	    hhook = SetWindowsHookExA( WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );
-        });
+        QT_WA({ hhook = SetWindowsHookExW( WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );    }, 
+              { hhook = SetWindowsHookExA( WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );    }); 
+#else
+        ownsqapp = true;
+	static int argc=0;
+	static char **argv={ 0 };
+	(void)new QApplication(argc, argv);
+        
+  //hhook = SetWindowsHookExW( WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );     
+  //hhook = SetWindowsHookExA( WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );     
+  hhook   = SetWindowsHookEx(  WH_GETMESSAGE, FilterProc, 0, GetCurrentThreadId() );     
+#endif
     }
 }
 
@@ -173,8 +198,8 @@ extern "C" void qtns_embed(QtNPInstance *This)
 
     LONG oldLong = GetWindowLong(This->window, GWL_STYLE);
     ::SetWindowLong(This->window, GWL_STYLE, oldLong | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
-    ::SetWindowLong(This->qt.widget->winId(), GWL_STYLE, WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
-    ::SetParent(This->qt.widget->winId(), This->window);
+    ::SetWindowLong((HWND) This->qt.widget->winId(), GWL_STYLE, WS_CHILD | WS_CLIPCHILDREN | WS_CLIPSIBLINGS);
+    ::SetParent((HWND) This->qt.widget->winId(), This->window);
 }
 
 extern "C" void qtns_setGeometry(QtNPInstance *This, const QRect &rect, const QRect &)

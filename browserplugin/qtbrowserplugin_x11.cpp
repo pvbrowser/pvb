@@ -36,13 +36,16 @@
 **
 ****************************************************************************/
 
+#include "pvdefine.h"
+
 #include <QtGui>
+#include "qtnpapi.h"
 #include <QtGui/QX11EmbedWidget>
 
 #include "qtbrowserplugin.h"
 #include "qtbrowserplugin_p.h"
 
-#include "qtnpapi.h"
+// rl qt4->qt5 #include "qtnpapi.h"
 
 #include <stdlib.h>
 
@@ -148,3 +151,10 @@ extern "C" void qtns_print(QtNPInstance * This, NPPrint *printInfo)
     // #### Nothing yet.
 }
 */
+
+#if QT_VERSION < 0x050000
+#else
+#error MURX HOCH DREI 
+#error These guys have stolen QX11EmbedWidget in Qt5 only Qt4 will work  
+#error See: http://qt-project.org/forums/viewthread/28795
+#endif

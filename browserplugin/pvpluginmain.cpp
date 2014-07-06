@@ -20,6 +20,7 @@
 ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
 **
 ****************************************************************************/
+#include "pvdefine.h"
 #include <QtGui>
 #include <QTimer>
 #include "mainwindow.h"

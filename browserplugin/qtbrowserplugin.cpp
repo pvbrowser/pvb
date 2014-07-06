@@ -35,13 +35,19 @@
 ** OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE."
 **
 ****************************************************************************/
-
+// define debugging MURX
+// #define MURX
+#include "pvdefine.h"
 #include <QtGui>
 
 #include "qtnpapi.h"
 
 #include "qtbrowserplugin.h"
 #include "qtbrowserplugin_p.h"
+#if QT_VERSION < 0x050000
+#else
+#include "qmetatype.h"
+#endif
 
 #ifndef WINAPI
 # ifdef Q_WS_WIN
@@ -55,6 +61,7 @@
 #  ifdef Bool
 #    undef Bool
 #  endif
+
 
 /*
 static void debuginfo(const QString &str)
@@ -92,6 +99,12 @@ QtNPFactory *qtNPFactory()
 // NPN functions, forwarding to function pointers provided by browser
 void NPN_Version(int* plugin_major, int* plugin_minor, int* netscape_major, int* netscape_minor)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log8","w");
+printf("NPN_Version\n");
+fprintf(murx,"NPN_Version\n");
+fclose(murx);
+#endif
     Q_ASSERT(qNetscapeFuncs);
     *plugin_major   = NP_VERSION_MAJOR;
     *plugin_minor   = NP_VERSION_MINOR;
@@ -106,12 +119,24 @@ void NPN_Version(int* plugin_major, int* plugin_minor, int* netscape_major, int*
 
 const char *NPN_UserAgent(NPP instance)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log9","w");
+printf("NPN_UserAgent\n");
+fprintf(murx,"NPN_UserAgent\n");
+fclose(murx);
+#endif
     NPN_Prolog(uagent);
     return FIND_FUNCTION_POINTER(NPN_UserAgentFP, qNetscapeFuncs->uagent)(instance);
 }
 
 void NPN_Status(NPP instance, const char* message)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log10","w");
+printf("NPN_Status\n");
+fprintf(murx,"NPN_Status\n");
+fclose(murx);
+#endif
     NPN_Prolog(status);
     FIND_FUNCTION_POINTER(NPN_StatusFP, qNetscapeFuncs->status)(instance, message);
 }
@@ -348,7 +373,11 @@ static int publicMethodIndex(NPObject *npobj, const QByteArray &slotName, int ar
         const QMetaMethod slot = qobject->metaObject()->method(slotIndex);
         if (slot.access() != QMetaMethod::Public || slot.methodType() == QMetaMethod::Signal)
             continue;
+#if QT_VERSION < 0x050000
         QByteArray signature = slot.signature();
+#else
+        QByteArray signature = slot.methodSignature();
+#endif
         if (signature.left(signature.indexOf('(')) == slotName) {
             if (argCount == -1 || slot.parameterTypes().count() == argCount)
                 return slotIndex;
@@ -389,14 +418,28 @@ static bool NPClass_Invoke(NPObject *npobj, NPIdentifier name, const NPVariant *
     for (int p = 0; p < parameterTypes.count(); ++p) {
         QVariant::Type type = QVariant::nameToType(parameterTypes.at(p));
         if (type == QVariant::Invalid && parameterTypes.at(p) != "QVariant") {
+#if QT_VERSION < 0x050000
             NPN_SetException(npobj, QString("Parameter %1 in method '%2' has invalid type")
-                .arg(p).arg(QString::fromUtf8(slotName)).toAscii().constData());
+              .arg(p).arg(QString::fromUtf8(slotName)).toAscii().constData());
+#else
+            QString murx = parameterTypes.value(p); 
+            QString murx2 = QString("Parameter %1 in method '%2' has invalid type").arg(p);
+            QString murx3 = murx2.arg(murx);
+            NPN_SetException(npobj, murx3.toUtf8());
+#endif
             return false;
         }
         QVariant qvar = args[p];
         if (type != QVariant::Invalid && !qvar.convert(type)) {
+#if QT_VERSION < 0x050000
             NPN_SetException(npobj, QString("Parameter %1 to method '%2' needs to be convertable to '%3'")
-                .arg(p).arg(QString::fromUtf8(slotName)).arg(QString::fromAscii(parameterTypes.at(p))).toAscii().constData());
+              .arg(p).arg(QString::fromUtf8(slotName)).arg(QString::fromAscii(parameterTypes.at(p))).toAscii().constData());
+#else
+            QString murx = parameterTypes.value(p); 
+            QString murx2 = QString("Parameter %1 to method '%2' needs to be convertable to '%3'").arg(p);
+            QString murx3 = murx2.arg(murx);
+            NPN_SetException(npobj, murx3.toUtf8());
+#endif
             return false;
         }
 
@@ -501,6 +544,7 @@ NPString::operator QString() const
     return QString::fromUtf8(utf8characters, utf8length);
 }
 
+#if QT_VERSION < 0x050000
 NPVariant NPVariant::fromQVariant(QtNPInstance *This, const QVariant &qvariant)
 {
     Q_ASSERT(This);
@@ -545,6 +589,52 @@ NPVariant NPVariant::fromQVariant(QtNPInstance *This, const QVariant &qvariant)
 
     return npvar;
 }
+#else
+NPVariant NPVariant::fromQVariant(QtNPInstance *This, const QVariant &qvariant)
+{
+    Q_ASSERT(This);
+    NPVariant npvar;
+    npvar.type = Null;
+
+    QVariant qvar(qvariant);
+    switch(qvariant.type()) {
+    case true :
+        npvar.value.boolValue = qvar.toBool();
+        npvar.type = Boolean;
+        break;
+    case QVariant::Int:
+        npvar.value.intValue = qvar.toInt();
+        npvar.type = Int32;
+        break;
+    case QVariant::Double:
+        npvar.value.doubleValue = qvar.toDouble();
+        npvar.type = Double;
+        break;
+    case QVariant::UserType:
+        {
+            QByteArray userType = qvariant.typeName();
+            if (userType.endsWith('*')) {
+                QtNPInstance *that = new QtNPInstance;
+                that->npp = This->npp;
+                that->qt.object = *(QObject**)qvariant.constData();
+                NPClass *npclass = new NPClass(that);
+                npclass->delete_qtnp = true;
+                npvar.value.objectValue = NPN_CreateObject(This->npp, npclass);
+                npvar.type = Object;
+            }
+        }
+        break;
+    default: // including QVariant::String
+        if (!qvar.convert(QVariant::String))
+            break;
+        npvar.type = String;
+        npvar.value.stringValue = NPString::fromQString(qvar.toString());
+        break;
+    }
+
+    return npvar;
+}
+#endif
 
 NPVariant::operator QVariant() const
 {
@@ -736,7 +826,11 @@ int QtSignalForwarder::qt_metacall(QMetaObject::Call call, int index, void **arg
             const QMetaMethod method = metaObject->method(index);
             Q_ASSERT(method.methodType() == QMetaMethod::Signal);
 
+#if QT_VERSION < 0x050000
             QByteArray signalSignature = method.signature();
+#else
+            QByteArray signalSignature = method.methodSignature();
+#endif
             QByteArray scriptFunction = signalSignature.left(signalSignature.indexOf('('));
             NPIdentifier id = NPN_GetStringIdentifier(scriptFunction.constData());
             if (NPN_HasMethod(This->npp, domNode, id)) {
@@ -782,6 +876,12 @@ int QtSignalForwarder::qt_metacall(QMetaObject::Call call, int index, void **arg
 extern "C" NPError
 NPP_GetValue(NPP instance, NPPVariable variable, void *value)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log5","w");
+printf("NPP_GetValue\n");
+fprintf(murx,"NPP_GetValue\n");
+fclose(murx);
+#endif
     if (!instance || !instance->pdata)
 	return NPERR_INVALID_INSTANCE_ERROR;
 
@@ -874,6 +974,12 @@ extern "C" int16 NPP_Event(NPP instance, NPEvent* event)
 extern "C" char*
 NP_GetMIMEDescription(void)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log6","w");
+printf("NP_GetMIMEDescription\n");
+fprintf(murx,"NP_GetMIMEDescription\n");
+fclose(murx);
+#endif
     static QByteArray mime = qtNPFactory()->mimeTypes().join(";").toLocal8Bit();
     return (char*)mime.constData();
 }
@@ -881,6 +987,12 @@ NP_GetMIMEDescription(void)
 extern "C" NPError
 NP_GetValue(void*, NPPVariable aVariable, void *aValue)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log7","w");
+printf("NP_GetValue\n");
+fprintf(murx,"NP_GetValue\n");
+fclose(murx);
+#endif
     NPError err = NPERR_NO_ERROR;
 
     static QByteArray name = qtNPFactory()->pluginName().toLocal8Bit();
@@ -919,6 +1031,12 @@ NPP_New(NPMIMEType pluginType,
     char* argv[],
     NPSavedData* /*saved*/)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log4","w");
+printf("NPP_New\n");
+fprintf(murx,"NPP_New\n");
+fclose(murx);
+#endif
     if (!instance)
 	return NPERR_INVALID_INSTANCE_ERROR;
 
@@ -1025,7 +1143,11 @@ NPP_SetWindow(NPP instance, NPWindow* window)
         This->qt.object->setObjectName(QLatin1String(This->htmlID));
 
     This->filter = new QtSignalForwarder(This);
+#if QT_VERSION < 0x050000
     QStatusBar *statusbar = qFindChild<QStatusBar*>(This->qt.object);
+#else
+    QStatusBar *statusbar = This->qt.object->findChild<QStatusBar*>();
+#endif
     if (statusbar) {
         int statusSignal = statusbar->metaObject()->indexOfSignal("messageChanged(QString)");
         if (statusSignal != -1) {
@@ -1219,6 +1341,12 @@ NPP_Print(NPP instance, NPPrint* printInfo)
 // Fills in functiontable used by browser to call entry points in plugin.
 extern "C" NPError WINAPI NP_GetEntryPoints(NPPluginFuncs* pFuncs)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log3","w");
+printf("NP_GetEntryPoints\n");
+fprintf(murx,"NP_GetEntryPoints\n");
+fclose(murx);
+#endif
     if(!pFuncs)
         return NPERR_INVALID_FUNCTABLE_ERROR;
     if(!pFuncs->size)
@@ -1253,6 +1381,12 @@ enum NPNToolkitType
 #ifndef Q_WS_X11
 extern "C" NPError WINAPI NP_Initialize(NPNetscapeFuncs* pFuncs)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log1","w");
+printf("NP_Initialize1\n");
+fprintf(murx,"NP_Initialize1\n");
+fclose(murx);
+#endif
     if(!pFuncs)
         return NPERR_INVALID_FUNCTABLE_ERROR;
 
@@ -1269,6 +1403,12 @@ extern "C" NPError WINAPI NP_Initialize(NPNetscapeFuncs* pFuncs)
 #else
 extern "C" NPError WINAPI NP_Initialize(NPNetscapeFuncs* nFuncs, NPPluginFuncs* pFuncs)
 {
+#ifdef MURX
+FILE *murx = fopen("/tmp/murx.log2","w");
+printf("NP_Initialize2\n");
+fprintf(murx,"NP_Initialize2\n");
+fclose(murx);
+#endif
     if(!nFuncs)
         return NPERR_INVALID_FUNCTABLE_ERROR;
 

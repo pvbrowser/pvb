@@ -1,10 +1,10 @@
 TARGET       = pvbrowser
 
 lessThan(QT_MAJOR_VERSION, 5) {
-  QT         += opengl svg webkit network
+  QT         += xml svg webkit network
 }else{
-  QT         += webkitwidgets widgets opengl svg webkit network
-}
+  QT         += multimedia uitools webkitwidgets widgets xml svg webkit network
+}    
 INCLUDEPATH += ../pvbrowser
 #INCLUDEPATH += ../qwt/include
 INCLUDEPATH += ../qwt/src

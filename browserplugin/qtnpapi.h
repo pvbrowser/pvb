@@ -90,8 +90,21 @@ struct NPEvent
 #elif defined(Q_WS_X11)
 #  include <X11/Xlib.h>
 typedef XEvent NPEvent;
+
 #elif defined (Q_WS_MAC)
 typedef struct EventRecord NPEvent;
+#elif defined (PVWIN32)
+struct NPEvent
+{
+    uint16 event;
+    uint32 wParam;
+    uint32 lParam;
+};
+#elif defined (PVMAC)
+typedef struct EventRecord NPEvent;
+#elif defined (PVUNIX)
+#  include <X11/Xlib.h>
+typedef XEvent NPEvent;
 #endif
 
 // Variable names for NPP_GetValue
