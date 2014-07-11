@@ -2416,6 +2416,66 @@ int pvSelectLanguage(PARAM *p, const char *section)
   return -1;
 }
 
+int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int rotate, int inputIsSocket)
+{
+  int i,ret,c1;
+  char textbuf[80];
+  unsigned char buf[4], output[MAX_PRINTF_LENGTH];
+
+  if(id < 0) return -1;
+  sprintf(textbuf,"setJpegFrame(%d,%d)\n",id,rotate);
+  pvtcpsend(p, textbuf, strlen(textbuf));
+  c1 = 0;
+  while(1)
+  {
+    i = 0;
+    if(inputIsSocket)
+    {
+      while(i < (int) sizeof(output))
+      {
+        ret = recv(source_fhdl,&buf[0],1,0);
+        if(ret <= 0) pvThreadFatal(p,"exit");
+        output[i] = buf[0];
+        i += ret;
+        if(c1==0x0ff && buf[0] == 0x0d9)
+        { // end of JPEG
+          sprintf(textbuf,"setJpegScanline(%d,%d)\n",id,i);
+          pvtcpsend(p, textbuf, strlen(textbuf));
+          pvtcpsend_binary(p, (const char *) output, i);
+          sprintf(textbuf,"setJpegScanline(%d,-1)\n",id);
+          pvtcpsend(p, textbuf, strlen(textbuf));
+          return i;
+        }
+        c1 = buf[i];
+      }
+    }
+    else
+    {
+      while(i < (int) sizeof(output))
+      {
+        ret = read(source_fhdl,&buf[0],1);
+        if(ret <= 0) pvThreadFatal(p,"exit");
+        output[i] = buf[0];
+        i += ret;
+        if(c1==0x0ff && buf[0] == 0x0d9)
+        { // end of JPEG
+          sprintf(textbuf,"setJpegScanline(%d,%d)\n",id,i);
+          pvtcpsend(p, textbuf, strlen(textbuf));
+          pvtcpsend_binary(p, (const char *) output, i);
+          sprintf(textbuf,"setJpegScanline(%d,-1)\n",id);
+          pvtcpsend(p, textbuf, strlen(textbuf));
+          return i;
+        }
+        c1 = buf[i];
+      }
+    }
+    sprintf(textbuf,"setJpegScanline(%d,%d)\n",id,i);
+    pvtcpsend(p, textbuf, strlen(textbuf));
+    pvtcpsend_binary(p, (const char *) output, i);
+  }  
+  return i;
+}
+
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)
 {
 char text[MAX_PRINTF_LENGTH+40],*cptr;

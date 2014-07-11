@@ -951,6 +951,11 @@ The original text is used to select the translation.
 int pvSelectLanguage(PARAM *p, const char *section);
 
 /*! <pre>
+Pass 1 JPEG frame from a camera or other source to the pvbrowser client.
+</pre> */
+int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSocket=1);
+
+/*! <pre>
 This function is intended for script languages.
 It will translate text to different languages.
 See pvSelectLanguage()

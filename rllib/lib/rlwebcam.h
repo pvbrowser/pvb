@@ -90,9 +90,9 @@ public:
   const char *getPath();
   int debug;
   rlString filename;
+  rlSocket *sock;
 
 private:
-  rlSocket *sock;
   rlString url, temp1, temp2, temp3;
 };
 #endif
