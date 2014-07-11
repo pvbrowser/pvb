@@ -209,7 +209,9 @@ static int generateLayoutDefinition(FILE *fout)
   return 0;
 }
 
-static int generateWidgetEnum(FILE *fout, QWidget *root)
+#define isEnum 1
+#define isName 2
+static int generateWidgetEnum(FILE *fout, QWidget *root, int type=isEnum)
 {
   QString item;
   QWidget *widget;
@@ -222,9 +224,18 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
   }
   else
   {
-    fprintf(fout,"// our mask contains the following objects\n");
-    fprintf(fout,"enum {\n");
-    fprintf(fout,"  ID_MAIN_WIDGET = 0,\n");
+    if(type == isName)
+    {
+      fprintf(fout,"// our mask contains the following widget names\n");
+      fprintf(fout,"  static const char *widgetName[] = {\n");
+      fprintf(fout,"  \"ID_MAIN_WIDGET\",\n");
+    }
+    else
+    {
+      fprintf(fout,"// our mask contains the following objects\n");
+      fprintf(fout,"enum {\n");
+      fprintf(fout,"  ID_MAIN_WIDGET = 0,\n");
+    }  
   }
 
   // loop over widgets
@@ -241,7 +252,14 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
       }
       else
       {
-        fprintf(fout,"  %s,\n",(const char *) widget->objectName().toUtf8());
+        if(type == isName)
+        {
+          fprintf(fout,"  \"%s\",\n",(const char *) widget->objectName().toUtf8());
+        }
+        else
+        {
+          fprintf(fout,"  %s,\n",(const char *) widget->objectName().toUtf8());
+        }
       }
     }
     else
@@ -301,9 +319,18 @@ static int generateWidgetEnum(FILE *fout, QWidget *root)
   }
   else
   {
-    fprintf(fout,"  ID_END_OF_WIDGETS\n");
-    fprintf(fout,"};\n");
-    fprintf(fout,"\n");
+    if(type == isName)
+    {
+      fprintf(fout,"  \"ID_END_OF_WIDGETS\",\n");
+      fprintf(fout,"  \"\"};\n");
+      fprintf(fout,"\n");
+    }
+    else
+    {
+      fprintf(fout,"  ID_END_OF_WIDGETS\n");
+      fprintf(fout,"};\n");
+      fprintf(fout,"\n");
+    }
   }
   return 0;
 }
@@ -1164,6 +1191,7 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
     fprintf(fout,"  int w,h,depth;\n");
     fprintf(fout,"\n");
     fprintf(fout,"  if(p == NULL) return 1;\n");
+    fprintf(fout,"  if(widgetName[0] == NULL) return 1; // suppress unused warning\n");
     fprintf(fout,"  w = h = depth = strcmp(toolTip[0],whatsThis[0]);\n");
     fprintf(fout,"  if(widgetType[0] == -1) return 1;\n");
     fprintf(fout,"  if(w==h) depth=0; // fool the compiler\n");
@@ -1565,7 +1593,8 @@ static int generateGeneratedArea(FILE *fout, QWidget *root)
   }
 
   getStrList(root);
-  generateWidgetEnum(fout, root);
+  generateWidgetEnum(fout, root, isEnum);
+  generateWidgetEnum(fout, root, isName);
   generateToolTip(fout, root);
   generateWhatsThis(fout, root);
   generateWidgetType(fout,root);

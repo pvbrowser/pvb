@@ -38,6 +38,7 @@ var searchData=
   ['geteds',['getEDS',['../classrlCanNode.html#a57c89c3cefaeee177887fcdc18eabc73',1,'rlCanNode']]],
   ['getevent',['getEvent',['../classrlEventLogServer.html#ab51d4e25dcbaa47d42936f1615d6a818',1,'rlEventLogServer']]],
   ['getfilemodificationtime',['getFileModificationTime',['../classrlTime.html#ae872be25da7eaca0e34c9a24a8f91ed9',1,'rlTime']]],
+  ['getfilepointer',['getFilepointer',['../classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc',1,'rlSpawn']]],
   ['getfirstcell',['getFirstCell',['../classrlSpreadsheetRow.html#aa69767d91909898f37baab1d9683b078',1,'rlSpreadsheetRow']]],
   ['getfirstrow',['getFirstRow',['../classrlSpreadsheetTable.html#a30b7553141cbb3f309243cfea83d279a',1,'rlSpreadsheetTable']]],
   ['getfirsttable',['getFirstTable',['../classrlSpreadsheetWorkbook.html#aeb1de7065aa35ef3f39533f3ceb6df2d',1,'rlSpreadsheetWorkbook']]],

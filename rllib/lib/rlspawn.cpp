@@ -179,4 +179,8 @@ int rlSpawn::select(int timeout)
 #endif  
 }
 
+FILE *rlSpawn::getFilepointer()
+{
+  return (FILE *) fromChild;
+}
 

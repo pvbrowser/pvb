@@ -1499,6 +1499,7 @@
               <section title="rlSpawn" ref="classrlSpawn.html#ac35cf15bcff86f5c34268024091d1060" />
               <section title="~rlSpawn" ref="classrlSpawn.html#a5e2db93f04d0cc596932c6f4a1d1d2d2" />
               <section title="getchar" ref="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4" />
+              <section title="getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
               <section title="printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
               <section title="printf" ref="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6" />
               <section title="readLine" ref="classrlSpawn.html#af7ae73acac4185d73d7dd8379dede7d4" />
@@ -4142,6 +4143,7 @@
                 <section title="rlSpawn" ref="classrlSpawn.html#ac35cf15bcff86f5c34268024091d1060" />
                 <section title="~rlSpawn" ref="classrlSpawn.html#a5e2db93f04d0cc596932c6f4a1d1d2d2" />
                 <section title="getchar" ref="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4" />
+                <section title="getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
                 <section title="printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
                 <section title="printf" ref="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6" />
                 <section title="readLine" ref="classrlSpawn.html#af7ae73acac4185d73d7dd8379dede7d4" />
@@ -6575,6 +6577,7 @@
       <keyword name="write" id="rlSpawn::write" ref="classrlSpawn.html#ac8a8f582bbaf54d6562db738e3d5261e" />
       <keyword name="printf" id="rlSpawn::printf" ref="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6" />
       <keyword name="printAll" id="rlSpawn::printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
+      <keyword name="getFilepointer" id="rlSpawn::getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
       <keyword name="pid" id="rlSpawn::pid" ref="classrlSpawn.html#ae8fad062ebe5687115162704046bb516" />
       <keyword name="toChild" id="rlSpawn::toChild" ref="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f" />
       <keyword name="fromChild" id="rlSpawn::fromChild" ref="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f" />

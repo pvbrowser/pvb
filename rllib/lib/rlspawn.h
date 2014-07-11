@@ -89,6 +89,11 @@ public:
   </pre> */
   void printAll();
 
+  /*! <pre>
+  Get FILE pointer fromChild
+  </pre> */
+  FILE *getFilepointer();
+
   int pid;
 
 private:
