@@ -723,6 +723,7 @@
             <section title="pvListViewSetSelected" ref="group__Output.html#ga744e7eeb791bd67838a8c5f1d4b25321" />
             <section title="pvMoveCursor" ref="group__Output.html#ga12886a0096c348da03b884d42df5c2c0" />
             <section title="pvMysqldump" ref="group__Output.html#ga064bbccd02f541e76eb8643e78bd2c20" />
+            <section title="pvPassThroughOneJpegFrame" ref="group__Output.html#ga25dadc86712ae96e7c981feb9c7f7616" />
             <section title="pvPlaySound" ref="group__Output.html#gaacefaa886a9e672b46515c0b15e09eb5" />
             <section title="pvPrintf" ref="group__Output.html#ga46a68c8e3aa3163621cf63c513adf3c5" />
             <section title="pvPrintfStyleSheet" ref="group__Output.html#gae0e1688e6b1bfbcf549fff9a9361080c" />
@@ -734,7 +735,7 @@
             <section title="pvRemoveListViewItem" ref="group__Output.html#ga5ee6bcfde98cf05131e986276d426b04" />
             <section title="pvScrollToAnchor" ref="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2" />
             <section title="pvSetBackgroundColor" ref="group__Output.html#ga9867a9293fd97758cd5039e37561c440" />
-            <section title="pvSetBufferedJpgImage" ref="group__Output.html#gae47ff24612e9581828138b3747c7e244" />
+            <section title="pvSetBufferedJpgImage" ref="group__Output.html#ga8c02bba7e4f3f94d6f498485a5003362" />
             <section title="pvSetCaption" ref="group__Output.html#ga8363a3af3ad2b200162f66b5520b320e" />
             <section title="pvSetColumnWidth" ref="group__Output.html#gaff9f010475ed2ce5622ef88e7eec1955" />
             <section title="pvSetDate" ref="group__Output.html#gae9f8d8b11bc8090bb5a43299fc7bc001" />
@@ -742,7 +743,7 @@
             <section title="pvSetFont" ref="group__Output.html#ga256b836700ea2d2b610173001720b8a4" />
             <section title="pvSetFontColor" ref="group__Output.html#ga2430f74771689aeb74166622b2699152" />
             <section title="pvSetIconViewItem" ref="group__Output.html#ga1975dd74f6d6a2f6c1aee203c4230d3d" />
-            <section title="pvSetImage" ref="group__Output.html#ga2c0b36eba6d131c95629acc38d5234dc" />
+            <section title="pvSetImage" ref="group__Output.html#gaa43e8ee1f07613709723f8634e20d713" />
             <section title="pvSetListViewPixmap" ref="group__Output.html#gacfc5cc289eb7dc7dccafdd0f3065fc46" />
             <section title="pvSetListViewText" ref="group__Output.html#gaaf7113f843b4f217999b5953efae3f33" />
             <section title="pvSetMaxDate" ref="group__Output.html#gaf31b8f232535feb4959e5bd71930663f" />
@@ -1920,6 +1921,7 @@
               <section title="pvMysqldump" ref="processviewserver_8h.html#ga064bbccd02f541e76eb8643e78bd2c20" />
               <section title="pvParseEvent" ref="processviewserver_8h.html#ga941dcfea6065f39693ee1c9c27e5188f" />
               <section title="pvParseEventStruct" ref="processviewserver_8h.html#gaf74a985ae4a847b7211e524a91f035a7" />
+              <section title="pvPassThroughOneJpegFrame" ref="processviewserver_8h.html#ga25dadc86712ae96e7c981feb9c7f7616" />
               <section title="pvPlaySound" ref="processviewserver_8h.html#gaacefaa886a9e672b46515c0b15e09eb5" />
               <section title="pvPollEvent" ref="processviewserver_8h.html#ga5aef66d0169c0d1161d367b5fbf86cbd" />
               <section title="pvPopupMenu" ref="processviewserver_8h.html#ga7b418df9dd393b1ad3cc6fee42557989" />
@@ -2000,7 +2002,7 @@
               <section title="pvSendVersion" ref="processviewserver_8h.html#gab63e49f56fbad68d7f24ae08426e8fa6" />
               <section title="pvSetAlignment" ref="processviewserver_8h.html#ga2928ca3e3a235dd8a7bba07132a0134c" />
               <section title="pvSetBackgroundColor" ref="processviewserver_8h.html#ga9867a9293fd97758cd5039e37561c440" />
-              <section title="pvSetBufferedJpgImage" ref="processviewserver_8h.html#gae47ff24612e9581828138b3747c7e244" />
+              <section title="pvSetBufferedJpgImage" ref="processviewserver_8h.html#ga8c02bba7e4f3f94d6f498485a5003362" />
               <section title="pvSetCaption" ref="processviewserver_8h.html#ga8363a3af3ad2b200162f66b5520b320e" />
               <section title="pvSetChecked" ref="processviewserver_8h.html#ga126bb32fc13f044d4b3a5dec3e822134" />
               <section title="pvSetCleanup" ref="processviewserver_8h.html#ga995fefba9cbdfeeaf660df83a355401c" />
@@ -2015,7 +2017,7 @@
               <section title="pvSetFontColor" ref="processviewserver_8h.html#ga2430f74771689aeb74166622b2699152" />
               <section title="pvSetGeometry" ref="processviewserver_8h.html#gaf4b2950e75c28de7614fe0539655fcef" />
               <section title="pvSetIconViewItem" ref="processviewserver_8h.html#ga1975dd74f6d6a2f6c1aee203c4230d3d" />
-              <section title="pvSetImage" ref="processviewserver_8h.html#ga2c0b36eba6d131c95629acc38d5234dc" />
+              <section title="pvSetImage" ref="processviewserver_8h.html#gaa43e8ee1f07613709723f8634e20d713" />
               <section title="pvSetListViewPixmap" ref="processviewserver_8h.html#gacfc5cc289eb7dc7dccafdd0f3065fc46" />
               <section title="pvSetListViewText" ref="processviewserver_8h.html#gaaf7113f843b4f217999b5953efae3f33" />
               <section title="pvSetManualUrl" ref="processviewserver_8h.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
@@ -2495,8 +2497,8 @@
       <keyword name="pvSetPixmap" id="processviewserver.h::pvSetPixmap" ref="processviewserver_8h.html#ga3185ea0218b02d041169df5cac1bd36d" />
       <keyword name="pvSetTablePixmap" id="processviewserver.h::pvSetTablePixmap" ref="processviewserver_8h.html#ga691f055325aaf3b05ebd143f9801d7d7" />
       <keyword name="pvSetSource" id="processviewserver.h::pvSetSource" ref="processviewserver_8h.html#ga4e5a9f7e19a63ee998dccf41d3ae5ec7" />
-      <keyword name="pvSetImage" id="processviewserver.h::pvSetImage" ref="processviewserver_8h.html#ga2c0b36eba6d131c95629acc38d5234dc" />
-      <keyword name="pvSetBufferedJpgImage" id="processviewserver.h::pvSetBufferedJpgImage" ref="processviewserver_8h.html#gae47ff24612e9581828138b3747c7e244" />
+      <keyword name="pvSetImage" id="processviewserver.h::pvSetImage" ref="processviewserver_8h.html#gaa43e8ee1f07613709723f8634e20d713" />
+      <keyword name="pvSetBufferedJpgImage" id="processviewserver.h::pvSetBufferedJpgImage" ref="processviewserver_8h.html#ga8c02bba7e4f3f94d6f498485a5003362" />
       <keyword name="pvSetBackgroundColor" id="processviewserver.h::pvSetBackgroundColor" ref="processviewserver_8h.html#ga9867a9293fd97758cd5039e37561c440" />
       <keyword name="pvSetPaletteBackgroundColor" id="processviewserver.h::pvSetPaletteBackgroundColor" ref="processviewserver_8h.html#ga16e65a199250ef499023173605851cbc" />
       <keyword name="pvSetPaletteForegroundColor" id="processviewserver.h::pvSetPaletteForegroundColor" ref="processviewserver_8h.html#gab4e775b45daebb1dbd2a79869cedcb66" />
@@ -2523,6 +2525,7 @@
       <keyword name="pvSetZoomFactor" id="processviewserver.h::pvSetZoomFactor" ref="processviewserver_8h.html#ga6bcc86eac33d40828635dfb2a53f15f8" />
       <keyword name="pvPrintHtmlOnPrinter" id="processviewserver.h::pvPrintHtmlOnPrinter" ref="processviewserver_8h.html#gab7381258e26336e219415df232945c89" />
       <keyword name="pvSetWidgetProperty" id="processviewserver.h::pvSetWidgetProperty" ref="processviewserver_8h.html#ga80f7897b34d3d4459555dcdd6f180519" />
+      <keyword name="pvPassThroughOneJpegFrame" id="processviewserver.h::pvPassThroughOneJpegFrame" ref="processviewserver_8h.html#ga25dadc86712ae96e7c981feb9c7f7616" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
       <keyword name="pvRequestParentWidgetId" id="processviewserver.h::pvRequestParentWidgetId" ref="processviewserver_8h.html#gad9d3203bb218829e4620b81b691918ac" />
@@ -3359,8 +3362,8 @@
       <keyword name="pvSetPixmap" id="Output::pvSetPixmap" ref="group__Output.html#ga3185ea0218b02d041169df5cac1bd36d" />
       <keyword name="pvSetTablePixmap" id="Output::pvSetTablePixmap" ref="group__Output.html#ga691f055325aaf3b05ebd143f9801d7d7" />
       <keyword name="pvSetSource" id="Output::pvSetSource" ref="group__Output.html#ga4e5a9f7e19a63ee998dccf41d3ae5ec7" />
-      <keyword name="pvSetImage" id="Output::pvSetImage" ref="group__Output.html#ga2c0b36eba6d131c95629acc38d5234dc" />
-      <keyword name="pvSetBufferedJpgImage" id="Output::pvSetBufferedJpgImage" ref="group__Output.html#gae47ff24612e9581828138b3747c7e244" />
+      <keyword name="pvSetImage" id="Output::pvSetImage" ref="group__Output.html#gaa43e8ee1f07613709723f8634e20d713" />
+      <keyword name="pvSetBufferedJpgImage" id="Output::pvSetBufferedJpgImage" ref="group__Output.html#ga8c02bba7e4f3f94d6f498485a5003362" />
       <keyword name="pvSetBackgroundColor" id="Output::pvSetBackgroundColor" ref="group__Output.html#ga9867a9293fd97758cd5039e37561c440" />
       <keyword name="pvSetPaletteBackgroundColor" id="Output::pvSetPaletteBackgroundColor" ref="group__Output.html#ga16e65a199250ef499023173605851cbc" />
       <keyword name="pvSetPaletteForegroundColor" id="Output::pvSetPaletteForegroundColor" ref="group__Output.html#gab4e775b45daebb1dbd2a79869cedcb66" />
@@ -3387,6 +3390,7 @@
       <keyword name="pvSetZoomFactor" id="Output::pvSetZoomFactor" ref="group__Output.html#ga6bcc86eac33d40828635dfb2a53f15f8" />
       <keyword name="pvPrintHtmlOnPrinter" id="Output::pvPrintHtmlOnPrinter" ref="group__Output.html#gab7381258e26336e219415df232945c89" />
       <keyword name="pvSetWidgetProperty" id="Output::pvSetWidgetProperty" ref="group__Output.html#ga80f7897b34d3d4459555dcdd6f180519" />
+      <keyword name="pvPassThroughOneJpegFrame" id="Output::pvPassThroughOneJpegFrame" ref="group__Output.html#ga25dadc86712ae96e7c981feb9c7f7616" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />

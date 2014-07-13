@@ -951,11 +951,6 @@ The original text is used to select the translation.
 int pvSelectLanguage(PARAM *p, const char *section);
 
 /*! <pre>
-Pass 1 JPEG frame from a camera or other source to the pvbrowser client.
-</pre> */
-int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSocket=1);
-
-/*! <pre>
 This function is intended for script languages.
 It will translate text to different languages.
 See pvSelectLanguage()
@@ -1400,6 +1395,7 @@ pvCopyToClipboard()
 pvSaveAsBmp()
 pvSetImage()
 pvSetBufferedJpgImage()
+pvPassThroughOneJpegFrame()
  </pre> */
 int pvQImage(PARAM *p, int id, int parent, const char *imagename, int *w=NULL, int *h=NULL, int *depth=NULL);
 /*! <pre>
@@ -2488,6 +2484,11 @@ See the documentation of the custom widget plugin.
 allowed widgets: QCustomWidget
 </pre> */
 int pvSetWidgetProperty(PARAM *p, int id, const char *name, const char *value);
+/*! <pre>
+Pass 1 JPEG frame from a camera or other source to the pvbrowser client.
+Allowed widgets: QImage
+</pre> */
+int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSocket=1, int rotate=0);
 /** @} */ // end of group
 
 /** @defgroup Input Input

@@ -2416,64 +2416,133 @@ int pvSelectLanguage(PARAM *p, const char *section)
   return -1;
 }
 
-int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int rotate, int inputIsSocket)
+int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSocket, int rotate)
 {
-  int i,ret,c1;
+  int i,ret,c1,c2;
   char textbuf[80];
   unsigned char buf[4], output[MAX_PRINTF_LENGTH];
 
   if(id < 0) return -1;
   sprintf(textbuf,"setJpegFrame(%d,%d)\n",id,rotate);
   pvtcpsend(p, textbuf, strlen(textbuf));
-  c1 = 0;
+  c1 = c2 = 0;
+  // search for startOfImage
+  if(inputIsSocket)
+  {
+    while(1)
+    {
+      ret = recv(source_fhdl,&buf[0],1,0);
+      if(ret <= 0) pvThreadFatal(p,"exit");
+      c1 = buf[0];
+      if(c1 == 0x0ff)
+      {
+         ret = recv(source_fhdl,&buf[0],1,0);
+         if(ret <= 0) pvThreadFatal(p,"exit");
+         c2 = buf[0];
+         if(c2 == 0x0d8)
+         {
+           //printf("\npvPassThrough::Found startOfImage\n");
+           break;
+         }
+      }
+    }
+  }
+  else
+  {
+    while(1)
+    {
+      ret = read(source_fhdl,&buf[0],1);
+      if(ret <= 0) pvThreadFatal(p,"exit");
+      c1 = buf[0];
+      if(c1 == 0x0ff)
+      {
+         ret = recv(source_fhdl,&buf[0],1,0);
+         if(ret <= 0) pvThreadFatal(p,"exit");
+         c2 = buf[0];
+         if(c2 == 0x0d8)
+         {
+           //printf("\npvPassThrough::Found startOfImage\n");
+           break;
+         }
+      }
+    }
+  }
+
+  // read frame
+  i=0;
+  output[i++] = (unsigned char) c1;
+  output[i++] = (unsigned char) c2;
+  c1 = c2 = 0;
   while(1)
   {
-    i = 0;
     if(inputIsSocket)
     {
+      // read chunk
       while(i < (int) sizeof(output))
       {
         ret = recv(source_fhdl,&buf[0],1,0);
         if(ret <= 0) pvThreadFatal(p,"exit");
         output[i] = buf[0];
-        i += ret;
         if(c1==0x0ff && buf[0] == 0x0d9)
         { // end of JPEG
-          sprintf(textbuf,"setJpegScanline(%d,%d)\n",id,i);
+          i++;
+          if(i > 0)
+          {
+            sprintf(textbuf,"setJpegScanline(%d)\n",i);
+            //printf("last1 %s\n",textbuf);
+            pvtcpsend(p, textbuf, strlen(textbuf));
+            pvtcpsend_binary(p, (const char *) output, i);
+          }  
+          sprintf(textbuf,"setJpegScanline(-1)\n");
+          //printf("last2 %s\n",textbuf);
           pvtcpsend(p, textbuf, strlen(textbuf));
-          pvtcpsend_binary(p, (const char *) output, i);
-          sprintf(textbuf,"setJpegScanline(%d,-1)\n",id);
-          pvtcpsend(p, textbuf, strlen(textbuf));
+          //printf("PassThrough end i=%d\n", i);
           return i;
         }
-        c1 = buf[i];
+        c1 = buf[0];
+        i++;
       }
+      //printf(textbuf,"setJpegScanline(%d)\n",i);
+      sprintf(textbuf,"setJpegScanline(%d)\n",i);
+      pvtcpsend(p, textbuf, strlen(textbuf));
+      pvtcpsend_binary(p, (const char *) output, i);
+      i = 0;
     }
-    else
+    else // normal file handle
     {
+      // read chunk
       while(i < (int) sizeof(output))
       {
         ret = read(source_fhdl,&buf[0],1);
         if(ret <= 0) pvThreadFatal(p,"exit");
         output[i] = buf[0];
-        i += ret;
         if(c1==0x0ff && buf[0] == 0x0d9)
         { // end of JPEG
-          sprintf(textbuf,"setJpegScanline(%d,%d)\n",id,i);
+          i++;
+          if(i > 0)
+          {
+            sprintf(textbuf,"setJpegScanline(%d)\n",i);
+            //printf("last1 %s\n",textbuf);
+            pvtcpsend(p, textbuf, strlen(textbuf));
+            pvtcpsend_binary(p, (const char *) output, i);
+          }  
+          sprintf(textbuf,"setJpegScanline(-1)\n");
+          //printf("last2 %s\n",textbuf);
           pvtcpsend(p, textbuf, strlen(textbuf));
-          pvtcpsend_binary(p, (const char *) output, i);
-          sprintf(textbuf,"setJpegScanline(%d,-1)\n",id);
-          pvtcpsend(p, textbuf, strlen(textbuf));
+          //printf("PassThrough end i=%d\n", i);
           return i;
         }
-        c1 = buf[i];
+        c1 = buf[0];
+        i++;
       }
+      //printf(textbuf,"setJpegScanline(%d)\n",i);
+      sprintf(textbuf,"setJpegScanline(%d)\n",i);
+      pvtcpsend(p, textbuf, strlen(textbuf));
+      pvtcpsend_binary(p, (const char *) output, i);
+      i = 0;
     }
-    sprintf(textbuf,"setJpegScanline(%d,%d)\n",id,i);
-    pvtcpsend(p, textbuf, strlen(textbuf));
-    pvtcpsend_binary(p, (const char *) output, i);
   }  
-  return i;
+  return -1;
 }
 
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)

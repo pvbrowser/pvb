@@ -1790,7 +1790,7 @@
               <section title="rlWebcam" ref="classrlWebcam.html#a2724db8b0ccff8d997904dbaead1453d" />
               <section title="~rlWebcam" ref="classrlWebcam.html#a98d82c87e804f6d422058de377505fd1" />
               <section title="disconnect" ref="classrlWebcam.html#ab7f8f81531d5053982de7bfb340f0055" />
-              <section title="getFrame" ref="classrlWebcam.html#a32cf8837b9667689fb4d853cc5276e9b" />
+              <section title="getFrame" ref="classrlWebcam.html#a7f3ac4a229841532c61ea9dae4359643" />
               <section title="getFrameBuffer" ref="classrlWebcam.html#ae1545adbbf5df673863af5ac3ee2006f" />
               <section title="getHost" ref="classrlWebcam.html#a9e5e343ce2d8fbce55d274f55c9e441e" />
               <section title="getPath" ref="classrlWebcam.html#ac787534e44cfc71895de923e52c8435b" />
@@ -4521,7 +4521,7 @@
                 <section title="rlWebcam" ref="classrlWebcam.html#a2724db8b0ccff8d997904dbaead1453d" />
                 <section title="~rlWebcam" ref="classrlWebcam.html#a98d82c87e804f6d422058de377505fd1" />
                 <section title="disconnect" ref="classrlWebcam.html#ab7f8f81531d5053982de7bfb340f0055" />
-                <section title="getFrame" ref="classrlWebcam.html#a32cf8837b9667689fb4d853cc5276e9b" />
+                <section title="getFrame" ref="classrlWebcam.html#a7f3ac4a229841532c61ea9dae4359643" />
                 <section title="getFrameBuffer" ref="classrlWebcam.html#ae1545adbbf5df673863af5ac3ee2006f" />
                 <section title="getHost" ref="classrlWebcam.html#a9e5e343ce2d8fbce55d274f55c9e441e" />
                 <section title="getPath" ref="classrlWebcam.html#ac787534e44cfc71895de923e52c8435b" />
@@ -6849,7 +6849,7 @@
       <keyword name="setUrl" id="rlWebcam::setUrl" ref="classrlWebcam.html#a84bb267e1e0eff6e2f0dc7787940b38e" />
       <keyword name="disconnect" id="rlWebcam::disconnect" ref="classrlWebcam.html#ab7f8f81531d5053982de7bfb340f0055" />
       <keyword name="getSnapshot" id="rlWebcam::getSnapshot" ref="classrlWebcam.html#ad657b425ab0b8fa93382c289b69ec2b4" />
-      <keyword name="getFrame" id="rlWebcam::getFrame" ref="classrlWebcam.html#a32cf8837b9667689fb4d853cc5276e9b" />
+      <keyword name="getFrame" id="rlWebcam::getFrame" ref="classrlWebcam.html#a7f3ac4a229841532c61ea9dae4359643" />
       <keyword name="getFrameBuffer" id="rlWebcam::getFrameBuffer" ref="classrlWebcam.html#ae1545adbbf5df673863af5ac3ee2006f" />
       <keyword name="getUrl" id="rlWebcam::getUrl" ref="classrlWebcam.html#adb6b0bd39878c28aa046bf045ba99ceb" />
       <keyword name="getHost" id="rlWebcam::getHost" ref="classrlWebcam.html#a9e5e343ce2d8fbce55d274f55c9e441e" />

@@ -3449,8 +3449,8 @@ void Interpreter::interprets(const char *command)
         {
           sscanf(command,"setImage(%d,",&i);
           int rotate = 0;
-          if(strstr(command,"-rotate=90")  != NULL) rotate = 90;
-          if(strstr(command,"-rotate=-90") != NULL) rotate = -90;
+          const char *crot = strstr(command,"-rotate=");
+          if(crot != NULL) sscanf(crot,"-rotate=%d", &rotate);
           get_text(command,text); // text = filename of image
           if(i < 0) return;
           if(i >= nmax) return;
@@ -3492,6 +3492,72 @@ void Interpreter::interprets(const char *command)
         }
         break;
       case 'J':
+        if(strncmp(command,"setJpegFrame(",13) == 0) // get jpeg frame and set new image in existing image
+        {
+          int rotate = 0;
+          sscanf(command,"setJpegFrame(%d,%d,",&i,&rotate);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(opt.arg_debug) printf("interpreter.cpp:: setJpegFrame rotate=%d\n", rotate);
+          if(all[i]->type == TQImage)
+          {
+            QImageWidget *iw = (QImageWidget *) all[i]->w;
+            if(iw != NULL) 
+            {
+              char text[MAX_PRINTF_LENGTH];
+              unsigned char *image = NULL;
+              int total = 0;
+              while(1)
+              {
+                int ret = tcp_rec(s,text,sizeof(text)-1);
+                if(ret <= 0) return;
+                if(strncmp(text,"setJpegScanline(",16) == 0)
+                {
+                  //printf("text=%s\n", text);
+                  int buffersize = 0;
+                  sscanf(text,"setJpegScanline(%d",&buffersize);
+                  if(buffersize > 0)
+                  {
+                    unsigned char *buffer = new unsigned char [buffersize+8];
+                    tcp_rec_binary(s, (char *) buffer, buffersize);
+                    int old_size = total;
+                    total += buffersize;
+                    unsigned char *tmp = new unsigned char [total];
+                    memcpy(tmp,image,old_size);
+                    memcpy(&tmp[old_size],buffer,buffersize);
+                    delete [] buffer;
+                    if(image != NULL) delete [] image;
+                    image = tmp;
+                  }
+                  else
+                  {
+                    break;
+                  }
+                }
+                else
+                {
+                  printf("Error: setJpgFrame received text=%s\n", text);
+                  return;
+                }
+              }
+              if(opt.arg_debug) printf("setJpegImage total image.size=%d\n", total);
+              if(image != NULL)
+              {
+                iw->setJpegImage(image, total, rotate);
+                delete [] image;
+              }
+            }
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
+        }
         break;
       case 'K':
         break;

@@ -57,7 +57,7 @@ const char * rlWebcam::getSnapshot(int timeout)
   return cptr;
 }
 
-const char * rlWebcam::getFrame(int timeout)
+const char * rlWebcam::getFrame(int timeout, int requestOnly)
 {
   unsigned char c1,c2;
   unsigned char buffer[1024*1024];
@@ -91,7 +91,8 @@ const char * rlWebcam::getFrame(int timeout)
   sscanf(line,"Content-Length: %d", &len);
   if(debug) printf("getFrame:: len=%d\n",len);
   if(len > (int) (sizeof(buffer) - 1)) return NULL;
-  
+
+  if(requestOnly) return NULL;
   // search for startOfImage
   while(1)
   {

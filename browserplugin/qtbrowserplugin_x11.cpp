@@ -154,7 +154,6 @@ extern "C" void qtns_print(QtNPInstance * This, NPPrint *printInfo)
 
 #if QT_VERSION < 0x050000
 #else
-#error MURX HOCH DREI 
-#error These guys have stolen QX11EmbedWidget in Qt5 only Qt4 will work  
-#error See: http://qt-project.org/forums/viewthread/28795
+#warning These guys have stolen QX11EmbedWidget in Qt5 only Qt4 will work  
+#warning See: http://qt-project.org/forums/viewthread/28795
 #endif

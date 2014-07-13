@@ -82,7 +82,7 @@ public:
   int setUrl(const char *url);
   int disconnect();
   const char *getSnapshot(int timeout=3000);
-  const char *getFrame(int timeout=3000);
+  const char *getFrame(int timeout=3000, int requestOnly=0);
   int         getFrameBuffer(unsigned char *buffer, int maxbuffer, int timeout=3000);
   const char *getUrl();
   const char *getHost();
