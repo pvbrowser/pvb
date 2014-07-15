@@ -5227,12 +5227,11 @@ void Interpreter::interprets(const char *command)
     if(all[i]->type == TQImage)
     {
       unsigned char *image = new unsigned char[width*height*4];
+      int ret = tcp_rec_binary(s, (char *) image, width*height*4);
+      if(opt.arg_debug) printf("sendRGBA:: received %d binary image bytes\n", ret);
       QImageWidget *img = (QImageWidget *) all[i]->w;
-      printf("interpreter0\n");
-      if(img != NULL) img->setRGBA(image,width,height,rotate);
-      printf("interpreter1\n");
+      if(ret > 0 && img != NULL) img->setRGBA(image,width,height,rotate);
       delete [] image;
-      printf("interpreter2\n");
     }
     else if(all[i]->type == TQCustomWidget)
     {

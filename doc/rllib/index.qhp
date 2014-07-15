@@ -4089,6 +4089,7 @@
               <section title="freeaddrinfo" ref="rlsocket_8cpp.html#a01bb3f9d1bc8c8e071f29e0d162cf138" />
               <section title="getaddrinfo" ref="rlsocket_8cpp.html#aadf91875b0d8c3b5301f678b815b4f44" />
               <section title="getnameinfo" ref="rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458" />
+              <section title="rlScoketWrite" ref="rlsocket_8cpp.html#afe006ace2961ebc935c3512ad4697d46" />
               <section title="rlwsa" ref="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024" />
             </section>
             <section title="rlsocket.h" ref="rlsocket_8h.html">
@@ -4135,6 +4136,7 @@
                 <section title="sockaddr" ref="classrlSocket.html#a882f357e0d34547baeacf1b173c75855" />
               </section>
               <section title="wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
+              <section title="rlScoketWrite" ref="rlsocket_8h.html#afe006ace2961ebc935c3512ad4697d46" />
               <section title="rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
             </section>
             <section title="rlspawn.cpp" ref="rlspawn_8cpp.html" />
@@ -4965,8 +4967,10 @@
       <keyword name="getaddrinfo" id="rlsocket.cpp::getaddrinfo" ref="rlsocket_8cpp.html#aadf91875b0d8c3b5301f678b815b4f44" />
       <keyword name="getnameinfo" id="rlsocket.cpp::getnameinfo" ref="rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458" />
       <keyword name="rlwsa" id="rlsocket.cpp::rlwsa" ref="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024" />
+      <keyword name="rlScoketWrite" id="rlsocket.cpp::rlScoketWrite" ref="rlsocket_8cpp.html#afe006ace2961ebc935c3512ad4697d46" />
       <keyword name="wsa" id="rlsocket.h::wsa" ref="rlsocket_8h.html#afaff11cbf3d66e535f6c28ae57b90d6c" />
       <keyword name="rlwsa" id="rlsocket.h::rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
+      <keyword name="rlScoketWrite" id="rlsocket.h::rlScoketWrite" ref="rlsocket_8h.html#afe006ace2961ebc935c3512ad4697d46" />
       <keyword name="null_string" id="rlspreadsheet.cpp::null_string" ref="rlspreadsheet_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
       <keyword name="stepsThread" id="rlstate.cpp::stepsThread" ref="rlstate_8cpp.html#ab4c9f4bf55f0b58929dc3fa7b3d7fb4b" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />

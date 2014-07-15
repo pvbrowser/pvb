@@ -113,6 +113,7 @@ var searchData=
   ['rlprofibus1',['rlProfibus1',['../rlcutil_8cpp.html#a19d5bb49c66eac96703a91512bddbdee',1,'rlProfibus1(int command):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a19d5bb49c66eac96703a91512bddbdee',1,'rlProfibus1(int command):&#160;rlcutil.cpp']]],
   ['rlprofibus2',['rlProfibus2',['../rlcutil_8cpp.html#a9ac74bb6d1fd001d84a2e5ce942d05d4',1,'rlProfibus2(int command):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a9ac74bb6d1fd001d84a2e5ce942d05d4',1,'rlProfibus2(int command):&#160;rlcutil.cpp']]],
   ['rlreport',['rlReport',['../classrlReport.html#a29d9fbc12d8bd6fcf8465903e4ac8517',1,'rlReport']]],
+  ['rlscoketwrite',['rlScoketWrite',['../rlsocket_8cpp.html#afe006ace2961ebc935c3512ad4697d46',1,'rlScoketWrite(int *socket, const void *buf, int len):&#160;rlsocket.cpp'],['../rlsocket_8h.html#afe006ace2961ebc935c3512ad4697d46',1,'rlScoketWrite(int *socket, const void *buf, int len):&#160;rlsocket.cpp']]],
   ['rlsemaphore',['rlSemaphore',['../classrlSemaphore.html#ae3ee24f3b59ab16d4e6916014b4b7276',1,'rlSemaphore']]],
   ['rlserial',['rlSerial',['../classrlSerial.html#a18e73ec05f48a3ea9c909406c40c7a8e',1,'rlSerial']]],
   ['rlsetdebugprintf',['rlSetDebugPrintf',['../rlcutil_8cpp.html#a92640c18316594822730875b5145ad3a',1,'rlSetDebugPrintf(int state):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a92640c18316594822730875b5145ad3a',1,'rlSetDebugPrintf(int state):&#160;rlcutil.cpp']]],

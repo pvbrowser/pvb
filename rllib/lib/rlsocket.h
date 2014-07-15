@@ -37,6 +37,7 @@ you have to call this function before you use any sockets
 </pre> */
 #define wsa rlwsa
 int rlwsa();
+int rlScoketWrite(int *socket, const void *buf, int len);
 
 /*! <pre>
 class for encapsulating TCP/IP socket calls

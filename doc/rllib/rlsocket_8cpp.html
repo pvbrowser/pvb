@@ -132,6 +132,8 @@ Functions</h2></td></tr>
 <tr class="separator:ace354e375e5dc4d9010217b83777a458"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a9b8ddbe56e24b68eacf127767f3024"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#a0a9b8ddbe56e24b68eacf127767f3024">rlwsa</a> ()</td></tr>
 <tr class="separator:a0a9b8ddbe56e24b68eacf127767f3024"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afe006ace2961ebc935c3512ad4697d46"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsocket_8cpp.html#afe006ace2961ebc935c3512ad4697d46">rlScoketWrite</a> (int *socket, const void *buf, int len)</td></tr>
+<tr class="separator:afe006ace2961ebc935c3512ad4697d46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a9f55d0e90dc8cc6b2287312435cdde48"></a>
@@ -285,6 +287,74 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+</div>
+</div>
+<a class="anchor" id="afe006ace2961ebc935c3512ad4697d46"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlScoketWrite </td>
+          <td>(</td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>socket</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>buf</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsocket_8cpp_source.html#l00095">95</a> of file <a class="el" href="rlsocket_8cpp_source.html">rlsocket.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;{</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">int</span> ret,bytes_left,first_byte;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keyword">const</span> <span class="keywordtype">char</span> *cbuf;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">if</span>(socket == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span>(*socket == -1) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  cbuf = (<span class="keywordtype">char</span> *) buf;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  bytes_left = len;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  first_byte = 0;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">while</span>(bytes_left &gt; 0)</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    ret = send(*socket,&amp;cbuf[first_byte],bytes_left,<a class="code" href="rlsocket_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48">MSG_NOSIGNAL</a>);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordflow">if</span>(ret &lt;= 0)</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;      <span class="comment">//disconnect();</span></div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="keywordflow">if</span>(*socket != -1)</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="preprocessor"></span>        closesocket(*socket);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="preprocessor"></span>        close(*socket);</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="preprocessor"></span>      }</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;      *socket = -1;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;      <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    bytes_left -= ret;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    first_byte += ret;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">return</span> first_byte;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<div class="ttc" id="rlsocket_8cpp_html_a9f55d0e90dc8cc6b2287312435cdde48"><div class="ttname"><a href="rlsocket_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48">MSG_NOSIGNAL</a></div><div class="ttdeci">#define MSG_NOSIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="rlsocket_8cpp_source.html#l00053">rlsocket.cpp:53</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 <a class="anchor" id="a0a9b8ddbe56e24b68eacf127767f3024"></a>

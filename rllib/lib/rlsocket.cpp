@@ -92,6 +92,41 @@ int rlwsa()
   return 0;
 }
 
+int rlScoketWrite(int *socket, const void *buf, int len)
+{
+  int ret,bytes_left,first_byte;
+  const char *cbuf;
+
+  if(socket == NULL) return -1;
+  if(*socket == -1) return -1;
+  cbuf = (char *) buf;
+  bytes_left = len;
+  first_byte = 0;
+
+  while(bytes_left > 0)
+  {
+    ret = send(*socket,&cbuf[first_byte],bytes_left,MSG_NOSIGNAL);
+    if(ret <= 0)
+    {
+      //disconnect();
+      if(*socket != -1)
+      {
+#ifdef RLWIN32
+        closesocket(*socket);
+#else
+        close(*socket);
+#endif
+      }
+      *socket = -1;
+      return -1;
+    }
+    bytes_left -= ret;
+    first_byte += ret;
+  }
+
+  return first_byte;
+}
+
 rlSocket::rlSocket(const char *a, int p, int act)
 {
   rlwsa(); // init sockets on windows
