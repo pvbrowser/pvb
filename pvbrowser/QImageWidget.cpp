@@ -236,14 +236,18 @@ void QImageWidget::setRGBA(unsigned char *buffer, int width, int height, int rot
 {
   if(opt.arg_debug) printf("QImageWidget::setRGBA width=%d height=%d rotate=%d\n", width,height,rotate);
   QImage tmpimage(width,height,QImage::Format_ARGB32);
-  unsigned int rgba;
+  unsigned int rgba,amask;
+
   int ind = 0;
   for(int iy=0; iy<height; iy++)
   {
     for(int ix=0; ix<width; ix++)
     {
       rgba = (buffer[ind]*256 + buffer[ind+1])*256 + buffer[ind+2];
-      rgba |= 0x0ff000000;
+      //rgba |= 0x0ff000000;
+      amask = buffer[ind+3];
+      amask = amask << 24;
+      rgba |= amask;
       tmpimage.setPixel(ix,iy,QRgb(rgba));
       ind += 4;
     }
