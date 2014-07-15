@@ -2489,6 +2489,11 @@ Pass 1 JPEG frame from a camera or other source to the pvbrowser client.
 Allowed widgets: QImage
 </pre> */
 int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSocket=1, int rotate=0);
+/*! <pre>
+Send a RGBA image to the pvbrowser client.
+Allowed widgets: QImage
+</pre> */
+int pvSendRGBA(PARAM *p, int id, const unsigned char *image, int width, int height, int rotate=0);
 /** @} */ // end of group
 
 /** @defgroup Input Input

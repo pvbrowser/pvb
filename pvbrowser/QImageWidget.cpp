@@ -232,6 +232,44 @@ void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize, int rotat
   repaint();
 }
 
+void QImageWidget::setRGBA(unsigned char *buffer, int width, int height, int rotate)
+{
+  if(opt.arg_debug) printf("QImageWidget::setRGBA width=%d height=%d rotate=%d\n", width,height,rotate);
+  QImage tmpimage(buffer, width, height, QImage::Format_ARGB32);
+  clearMask();
+  if(rotate)
+  {
+    QMatrix m;
+    m.rotate(rotate);
+    image = tmpimage.transformed(m);
+  }
+  if(opt.arg_debug) printf("tmpimage width=%d height=%d\n", tmpimage.width() , tmpimage.height());
+  if(w > 0 && h > 0 && ( w < tmpimage.width() || h < tmpimage.height() ) )
+  {
+    //printf("set1: setImage %s xy=%d,%d w=%d h=%d width=%d height=%d\n", filename, 
+    //x(), y(), w, h, 
+    //                                  image.width(),image.height());
+    tmpimage = tmpimage.scaled(w, h, Qt::KeepAspectRatio);
+  }
+  else if(w > tmpimage.width() || h > tmpimage.height())
+  {
+    //printf("set2: setImage %s xy=%d,%d w=%d h=%d width=%d height=%d\n", filename, 
+    //x(),y(),w, h, 
+    //                                  image.width(),image.height());
+    //qt3 image = image.smoothScale(w,h,Qt::KeepAspectRatio);
+    tmpimage.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+  }
+  image = tmpimage.copy();
+
+  if(opt.arg_debug) printf("step1\n");
+  perhapsSetMask();
+  if(opt.arg_debug) printf("step2\n");
+  original_image = image.copy();
+  if(opt.arg_debug) printf("step3\n");
+  repaint();
+  if(opt.arg_debug) printf("step4\n");
+}
+
 void QImageWidget::perhapsSetMask()
 {
 /* qt3

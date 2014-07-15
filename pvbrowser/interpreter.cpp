@@ -3511,6 +3511,7 @@ void Interpreter::interprets(const char *command)
               {
                 int ret = tcp_rec(s,text,sizeof(text)-1);
                 if(ret <= 0) return;
+                if(opt.arg_debug) printf("interpreter.cpp:: setJpegFrame scan line command=%s\n", text);
                 if(strncmp(text,"setJpegScanline(",16) == 0)
                 {
                   //printf("text=%s\n", text);
@@ -3518,6 +3519,7 @@ void Interpreter::interprets(const char *command)
                   sscanf(text,"setJpegScanline(%d",&buffersize);
                   if(buffersize > 0)
                   {
+                    if(opt.arg_debug) printf("interpreter.cpp:: scan line %d bytes\n", buffersize);
                     unsigned char *buffer = new unsigned char [buffersize+8];
                     tcp_rec_binary(s, (char *) buffer, buffersize);
                     int old_size = total;
@@ -5214,6 +5216,34 @@ void Interpreter::interprets(const char *command)
       }
     }
   }
+  else if(strncmp(command,"sendRGBA(",9) == 0)
+  {
+    int width = 0;
+    int height = 0;
+    int rotate = 0;
+    sscanf(command,"sendRGBA(%d,%d,%d,%d)\n",&i,&width,&height,&rotate);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    if(all[i]->type == TQImage)
+    {
+      unsigned char *image = new unsigned char[width*height*4];
+      QImageWidget *img = (QImageWidget *) all[i]->w;
+      printf("interpreter0\n");
+      if(img != NULL) img->setRGBA(image,width,height,rotate);
+      printf("interpreter1\n");
+      delete [] image;
+      printf("interpreter2\n");
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
+  }    
   else if(strncmp(command,"show(",5) == 0) // show the widget
   {
     sscanf(command,"show(%d)",&i);

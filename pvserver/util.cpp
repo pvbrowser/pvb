@@ -2420,7 +2420,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
 {
   int i,ret,c1,c2;
   char textbuf[80];
-  unsigned char buf[4], output[MAX_PRINTF_LENGTH];
+  unsigned char buf[4], output[64*1024]; // probably enough for 1 jpeg
 
   if(id < 0) return -1;
   sprintf(textbuf,"setJpegFrame(%d,%d)\n",id,rotate);
@@ -2543,6 +2543,21 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
     }
   }  
   return -1;
+}
+
+int pvSendRGBA(PARAM *p, int id, const unsigned char *image, int width, int height, int rotate)
+{
+  char buf[MAX_PRINTF_LENGTH];
+
+  if(p == NULL) return -1;
+  if(id < 0) return -1;
+  if(width <= 0) return -1;
+  if(height <= 0) return -1;
+  if(image == NULL) return -1;
+  sprintf(buf,"sendRGBA(%d,%d,%d,%d)\n",id,width,height,rotate);
+  pvtcpsend(p, buf, strlen(buf));
+  pvtcpsend_binary(p, (const char *) image, width*height*4);
+  return 0;
 }
 
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)
