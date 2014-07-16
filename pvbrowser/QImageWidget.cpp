@@ -236,6 +236,7 @@ void QImageWidget::setRGBA(unsigned char *buffer, int width, int height, int rot
 {
   if(opt.arg_debug) printf("QImageWidget::setRGBA width=%d height=%d rotate=%d\n", width,height,rotate);
   QImage tmpimage(width,height,QImage::Format_ARGB32);
+  /*
   unsigned int rgba,amask;
 
   int ind = 0;
@@ -252,6 +253,15 @@ void QImageWidget::setRGBA(unsigned char *buffer, int width, int height, int rot
       ind += 4;
     }
   }
+  */
+  int ind = 0;
+  for(int iy=0; iy<height; iy++)
+  {
+    uchar *dest = tmpimage.scanLine(iy);
+    memcpy(dest, &buffer[ind], width*4);
+    ind += (width * 4);
+  }
+  
   image = tmpimage.copy();
 
   clearMask();
