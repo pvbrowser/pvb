@@ -3,6 +3,7 @@
 # usage: ./build_lua_interface.sh <swig>
 #
 echo "### building lua language bindings ###"
+export PVBLANGUAGEDIR=$PWD
 cd lua/lua-5.1/src/
  ../../../../qmake.sh src.pro
  make

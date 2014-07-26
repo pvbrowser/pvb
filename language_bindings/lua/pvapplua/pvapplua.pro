@@ -3,17 +3,25 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG  += warn_on release qt console
+CONFIG  += USE_QT_SQL
+CONFIG  -= qt
+CONFIG  += warn_on release console
 QT      += sql
 DEFINES += LUA
 DEFINES += "WINVER=0x0501"
 
 # Input
 SOURCES     += main.cpp                                   \       
-               ../../sql/qtdatabase.cpp                   \
                ../../language_binding_rllib_wrap_lua.cxx  \
                ../../language_binding_wrap_lua.cxx        \
                ../../pvmain.cpp
+USE_QT_SQL {
+DEFINES += USE_QT_SQL
+CONFIG  += qt
+SOURCES +=../../sql/qtdatabase.cpp                   \
+}
+
+
 INCLUDEPATH += ../lua-5.1/src/
 unix:LIBS          += ../lua-5.1/src/liblua.a
 win32:LIBS         += ../lua-5.1/src/release/liblua.a

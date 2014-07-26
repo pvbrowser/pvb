@@ -1,4 +1,7 @@
 #!/bin/bash
+#echo "ATTENTION: qmake modified for ARM prozessor"
+#qmake "INCLUDEPATH=" $1 $2 $3 $4 $5 $6 $7 $8
+#exit
 ##########################################################
 # use qt5 if available                                   #
 ##########################################################

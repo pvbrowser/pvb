@@ -795,56 +795,6 @@ void Interpreter::interpreta(const char *command)
       }
     }
   }
-  // cmeyer: New command "AddTabIcon" BEGIN BEGIN BEGIN
-  else if(strncmp(command,"addTabIcon(",7) == 0)
-  {
-    char *data = NULL;
-    int position, w, h;
-    // addTabIcon( widgetId, position ) + IconData
-    sscanf(command,"addTabIcon(%d,%d,%d,%d",&i,&position, &w, &h);
-    get_text(command,text);
-    if(i < 0) return;
-    if(i >= nmax) return;
-    if(all[i]->w == NULL) return;
-		if (position < 0) return;
-		
-    QPixmap pm;
-    if( !(w==0 && h==0) )
-    {
-      QImage *temp = readBmpFromSocket(w,h,&data);
-      if(opt.arg_debug) printf("setIconViewItem 1\n");
-      if(temp != NULL)
-      {
-        myCreateHeuristicMask(pm,temp);
-      }
-      if(opt.arg_debug) printf("setIconViewItem 2\n");
-      if(data != NULL) delete [] data;
-      if(temp != NULL) delete temp;
-      if(opt.arg_debug) printf("setIconViewItem 3\n");
-    }
-
-
-    if(all[i]->type == TQTabWidget)
-    {
-      //MyQTabWidget *ptr = (MyQTabWidget *) all[i]->w;
-      // if(ptr != NULL) ptr->addTab(all[child]->w, text);
-    }
-    else if(all[i]->type == TQToolBox)
-    {
-      MyQToolBox *ptr = (MyQToolBox *) all[i]->w;
-      if(ptr != NULL) ptr->setItemIcon(position, QIcon(pm));
-    }
-    else if(all[i]->type == TQCustomWidget)
-    {
-      QWidget *w = all[i]->w;
-      if(w != NULL) 
-      {
-        PvbEvent event(command, text);
-        QCoreApplication::sendEvent(w, &event);
-      }
-    }
-  }
-  // cmeyer: New command "AddTabIcon" END END END END
   else if(strncmp(command,"addColumn(",10) == 0)
   {
     int size;
@@ -883,15 +833,13 @@ void Interpreter::interpreta(const char *command)
       if(i >= nmax) return;
       if(all[i]->type == TQVbox && all[i]->w != NULL) ((QVBoxLayout *) all[i]->w)->addStretch(param);
       if(all[i]->type == TQHbox && all[i]->w != NULL) ((QHBoxLayout *) all[i]->w)->addStretch(param);
-      
-      if(all[i]->type == TQGrid && all[i]->w != NULL) ((QGridLayout *) all[i]->w)->setColumnStretch(0,param);
+      //if(all[i]->type == TQGrid) ((QGridLayout *) all[i]->w)->addStretch(param);
     }
   }
   else if(strncmp(command,"addWidgetOrLayout(",18) == 0)
   {
     int item,type,row,col;
     QWidget *w;
-    // addWidgetOrLayout(parent/where to attach, what to attach, row (when parent is QGridLayout), column (when parent is QGridLayout))
     sscanf(command,"addWidgetOrLayout(%d,%d,%d,%d",&i,&item,&row,&col);
     if(i < 0) return;
     if(i >= nmax) return;
@@ -906,7 +854,7 @@ void Interpreter::interpreta(const char *command)
       else if(all[item]->type == TQHbox) ptr->addLayout((QHBoxLayout *) all[item]->w);
       else if(all[item]->type == TQGrid) ptr->addLayout((QGridLayout *) all[item]->w);
       else                               ptr->addWidget(all[item]->w);
-    } else 
+    }
     if(type == TQHbox && w != NULL)
     {
       QHBoxLayout *ptr = (QHBoxLayout *) w;
@@ -914,23 +862,15 @@ void Interpreter::interpreta(const char *command)
       else if(all[item]->type == TQHbox) ptr->addLayout((QHBoxLayout *) all[item]->w);
       else if(all[item]->type == TQGrid) ptr->addLayout((QGridLayout *) all[item]->w);
       else                               ptr->addWidget(all[item]->w);
-    } else
+    }
     if(type == TQGrid && w != NULL)
     {
       QGridLayout *ptr = (QGridLayout *) w;
-      if     (all[item]->type == TQVbox) ptr->addLayout((QVBoxLayout *) all[item]->w,row,col,1,1);
-      else if(all[item]->type == TQHbox) ptr->addLayout((QHBoxLayout *) all[item]->w,row,col,1,1);
-      else if(all[item]->type == TQGrid) ptr->addLayout((QGridLayout *) all[item]->w,row,col,1,1);
-      else                               ptr->addWidget(all[item]->w,row,col,1,1);
+      if     (all[item]->type == TQVbox) ptr->addLayout((QVBoxLayout *) all[item]->w,row,col);
+      else if(all[item]->type == TQHbox) ptr->addLayout((QHBoxLayout *) all[item]->w,row,col);
+      else if(all[item]->type == TQGrid) ptr->addLayout((QGridLayout *) all[item]->w,row,col);
+      else                               ptr->addWidget(all[item]->w,row,col);
     }
-    else 
-    {
-    	// cmeyer: Added the following to allow adding a layout to a widget:
-      if     (all[item]->type == TQVbox) w->setLayout((QVBoxLayout *) all[item]->w);
-      else if(all[item]->type == TQHbox) w->setLayout((QHBoxLayout *) all[item]->w);
-      else if(all[item]->type == TQGrid) w->setLayout((QGridLayout *) all[item]->w);
-    }
-    // w->updateGeometry(); // cmeyer TEST
   }
 }
 
@@ -2882,18 +2822,8 @@ void Interpreter::interprets(const char *command)
             }
           }
           else
-          { 
-            // rl: adaption would break compatibility -> change rejected
-						if(all[i]->w != NULL) mySetBackgroundColor(all[i]->w,all[i]->type,r,g,b);
-						// cmeyer: Adapted this code following the Qt-Documentation:
-						//         if(all[i]->w != NULL) mySetBackgroundColor(all[i]->w,all[i]->type,r,g,b);
-            //if(all[i]->w != NULL) 
-            //{
-            //  QWidget* widget = all[i]->w;
- 			      //  QPalette palette;
- 						//  palette.setColor(widget->backgroundRole(), QColor(r,g,b));
- 					  //  widget->setPalette(palette);
- 						//}
+          {
+            if(all[i]->w != NULL) mySetBackgroundColor(all[i]->w,all[i]->type,r,g,b);
           }
         }
         else if(strncmp(command,"setBoxSelected(",15) == 0) // set selection of ListBox
@@ -2974,40 +2904,6 @@ void Interpreter::interprets(const char *command)
             }
           }
         }
-// CMEYER ADDED the "setCellWidget" branch:
-        else if(strncmp(command,"setCellWidget(",14) == 0) // set widget for table cell
-        {
-          int p, row, column;
-          // Semantik: setCellWidget(widget id, parent table id, row, column):
-          sscanf(command,"setCellWidget(%d,%d,%d,%d",&i,&p,&row,&column);
-          if(i < 0) return;
-          if(i >= nmax) return;
-          if (p < 0) return;
-          if (p >= nmax) return;
-          if(all[p]->type != TQTable) return;
-          MyTable* t = (MyTable*) (all[p]->w);
-          if (t) t->setCellWidget(row,column,all[i]->w);
-        }
-// CMEYER ADDED the "setCellWidget" branch:
-// CMEYER ADDED the "setContentsMargins" branch:
-        else if(strncmp(command,"setContentsMargins(",18) == 0) // set content margins of widget
-        {
-          int left, right, top, bottom;
-          // Semantik: setContentsMargins(widget id, left, right, top, bottom):
-          sscanf(command,"setContentsMargins(%d,%d,%d,%d,%d",&i,&left,&top,&right,&bottom);
-          if(i < 0) return;
-          if(i >= nmax) return;
-          if( (all[i]->type == TQVbox) ||
-              (all[i]->type == TQHbox) ||
-              (all[i]->type == TQGrid) ) {
-                
-          	if(all[i]->w != NULL) 
-          			((QLayout *) all[i]->w)->setContentsMargins(left, top, right, bottom);
-					} else {
-          			((QWidget *) all[i]->w)->setContentsMargins(left, top, right, bottom);
-					}
-        }
-// CMEYER ADDED the "setCellWidget" branch:
         else if(strncmp(command,"setColumnWidth(",15) == 0) // set column with of the table
         {
           int column, width;
@@ -4379,26 +4275,6 @@ void Interpreter::interprets(const char *command)
             }
           }
         }
-        //cmeyer: Added a setSpacing() command:
-        else if(strncmp(command,"setSpacing(",11) == 0)
-        {
-          int param;
-          sscanf(command,"setSpacing(%d,%d,",&i,&param);
-          if(i == 0)
-          {
-            if(mainLayoutType == TQVbox) ((QVBoxLayout *) mainLayout)->setSpacing(param);
-            if(mainLayoutType == TQHbox) ((QHBoxLayout *) mainLayout)->setSpacing(param);
-            //if(mainLayoutType == TQGrid) ((QGridLayout *) mainLayout)->addStretch(param);
-          }
-          else
-          {
-            if(i < 0) return;
-            if(i >= nmax) return;
-            if(all[i]->type == TQVbox && all[i]->w != NULL) ((QVBoxLayout *) all[i]->w)->setSpacing(6);
-            if(all[i]->type == TQHbox && all[i]->w != NULL) ((QHBoxLayout *) all[i]->w)->setSpacing(6);
-          }
-        }
-        //cmeyer: Added a setSpacing() command:
         else if(strncmp(command,"setStandardPopup(",17) == 0) // set popup menu
         {
           int menu;
@@ -4505,9 +4381,6 @@ void Interpreter::interprets(const char *command)
           }
           else if(all[i]->type == TQLineEdit)
           {
-          	//cmeyer: Reactivated this branch:
-            MyLineEdit *ptr = (MyLineEdit *) all[i]->w;
-            if(shape      != -1) ptr->setFrame(shape); // Qt4
             //trollmurx MyLineEdit *ptr = (MyLineEdit *) all[i]->w;
             //trollmurx if(shape      != -1) ptr->setFrameShape((QFrame::Shape) shape);
             //trollmurx if(shadow     != -1) ptr->setFrameShadow((QFrame::Shadow) shadow);
@@ -4801,16 +4674,6 @@ void Interpreter::interprets(const char *command)
               QCoreApplication::sendEvent(w, &event);
             }
           }
-          // rl: non crashing version
-          if(i>0)
-          {
-            QWidget *w = all[i]->w;
-            if(w != NULL && hasLayout==1) w->updateGeometry();
-          }  
-          // cmeyer: Adapt Geometry to actual sizes:
-          // QWidget *w = all[i]->w;
-          // w->updateGeometry();
-          // cmeyer: END Adapt Geometry to actual sizes:
           if(opt.arg_debug) printf("setText end\n");
         }
         else if(strncmp(command,"setTableButton(",15) == 0) // set button in table
@@ -6921,10 +6784,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new MyQWidget(s,i,parent);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = new MyQWidget(s,i,all[p]->w);
     all[i]->type = TQWidget;
   }
   else if(strncmp(command,"QPushButton(",12) == 0) // create a new QPushButton
@@ -6933,10 +6793,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new MyQPushButton(s,i,parent);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = (QWidget *) new MyQPushButton(s,i,all[p]->w);
     all[i]->type = TQPushButton;
   }
   else if(strncmp(command,"QLabel(",7) == 0) // create a new QLabel
@@ -6945,10 +6802,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new MyLabel(s,i,parent);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = (QWidget *) new MyLabel(s,i,all[p]->w);
     all[i]->type = TQLabel;
   }
   else if(strncmp(command,"QLineEdit(",10) == 0) // create a new QLineEdit
@@ -6957,10 +6811,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new MyLineEdit(s,i,parent);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = (QWidget *) new MyLineEdit(s,i,all[p]->w);
     all[i]->type = TQLineEdit;
   }
   else if(strncmp(command,"QComboBox(",10) == 0) // create a new QComboBox
@@ -6971,10 +6822,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new MyComboBox(s,i,parent);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = (QWidget *) new MyComboBox(s,i,all[p]->w);
     all[i]->type = TQComboBox;
 
     ptr = (MyComboBox *) all[i]->w;
@@ -6994,10 +6842,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new QLCDNumber(numDigits,parent);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = (QWidget *) new QLCDNumber(numDigits,all[p]->w);
     all[i]->type = TQLCDNumber;
     QLCDNumber *ptr = (QLCDNumber *) all[i]->w;
     switch(mode)
@@ -7039,10 +6884,7 @@ void Interpreter::interpretQ(const char *command)
     if(i >= nmax) return;
     if(p >= nmax) return;
 
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    all[i]->w = (QWidget *) new QDrawWidget(parent,0,0,s,i);
-    // cmeyer: ----------------------------------------------
+    all[i]->w = (QWidget *) new QDrawWidget(all[p]->w,0,0,s,i);
     all[i]->type = TQDraw;
   }
   else if(strncmp(command,"QImage(",7) == 0) // create a new QImage
@@ -7057,10 +6899,7 @@ void Interpreter::interpretQ(const char *command)
       QString filename;
       get_text(command,text); // text = filename of image
       filename = temp + text;
-	    // cmeyer: Allow for NULL-parents -----------------------
-	    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-	    // cmeyer: ----------------------------------------------
-      QImageWidget *imagewidget = new QImageWidget(s, i, parent);
+      QImageWidget *imagewidget = new QImageWidget(s, i, all[p]->w);
       all[i]->w = (QWidget *) imagewidget;
       all[i]->type = TQImage;
       imagewidget->setImage(filename.toUtf8());
@@ -7089,10 +6928,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new PvGLWidget(parent,i,s);
+    all[i]->w = (QWidget *) new PvGLWidget(all[p]->w,i,s);
     all[i]->type = TQGl;
   }
 #endif
@@ -7103,10 +6939,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-	  // cmeyer: Allow for NULL-parents -----------------------
-	  QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-	  // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new pvVtkTclWidget(parent,"vtkWidget",i,s);
+    all[i]->w = (QWidget *) new pvVtkTclWidget(all[p]->w,"vtkWidget",i,s);
     all[i]->type = TQVtk;
   }
 #endif
@@ -7118,10 +6951,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new QwtPlotWidget(s,i,parent,nCurves,nMarker);
+    all[i]->w = (QWidget *) new QwtPlotWidget(s,i,all[p]->w,nCurves,nMarker);
     all[i]->type = TQwtPlotWidget;
   }
   else if(strncmp(command,"QwtScale(",9) == 0) // create a new QwtScale
@@ -7131,10 +6961,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtScale(s,i,(QwtScaleDraw::Alignment) pos, parent);
+    all[i]->w = (QWidget *) new MyQwtScale(s,i,(QwtScaleDraw::Alignment) pos, all[p]->w);
     all[i]->type = TQwtScale;
   }
   else if(strncmp(command,"QwtThermo(",10) == 0) // create a new QwtThermo
@@ -7143,10 +6970,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtThermo(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtThermo(s,i,all[p]->w);
     all[i]->type = TQwtThermo;
   }
   else if(strncmp(command,"QwtKnob(",8) == 0) // create a new QwtKnob
@@ -7155,10 +6979,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtKnob(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtKnob(s,i,all[p]->w);
     all[i]->type = TQwtKnob;
   }
   else if(strncmp(command,"QwtCounter(",11) == 0) // create a new QwtCounter
@@ -7167,10 +6988,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtCounter(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtCounter(s,i,all[p]->w);
     all[i]->type = TQwtCounter;
   }
   else if(strncmp(command,"QwtWheel(",9) == 0) // create a new QwtWheel
@@ -7179,10 +6997,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtWheel(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtWheel(s,i,all[p]->w);
     all[i]->type = TQwtWheel;
   }
   else if(strncmp(command,"QwtSlider(",10) == 0) // create a new QwtSlider
@@ -7191,10 +7006,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtSlider(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtSlider(s,i,all[p]->w);
     all[i]->type = TQwtSlider;
   }
   else if(strncmp(command,"QwtDial(",8) == 0) // create a new QwtDial
@@ -7203,10 +7015,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtDial(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtDial(s,i,all[p]->w);
     all[i]->type = TQwtDial;
   }
   else if(strncmp(command,"QwtCompass(",11) == 0) // create a new QwtCompass
@@ -7215,10 +7024,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtCompass(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtCompass(s,i,all[p]->w);
     all[i]->type = TQwtCompass;
   }
   else if(strncmp(command,"QwtAnalogClock(",15) == 0) // create a new QwtAnalogClock
@@ -7227,10 +7033,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyQwtAnalogClock(s,i,parent);
+    all[i]->w = (QWidget *) new MyQwtAnalogClock(s,i,all[p]->w);
     all[i]->type = TQwtAnalogClock;
   }
 #endif //#ifndef NO_QWT
@@ -7243,10 +7046,7 @@ void Interpreter::interpretQ(const char *command)
     if(p >= nmax) return;
     if(orientation == PV::Horizontal) qtori = Qt::Horizontal;
     else                              qtori = Qt::Vertical;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MySlider(s,i,minValue,maxValue,pageStep,value,(Qt::Orientation) qtori,parent);
+    all[i]->w = (QWidget *) new MySlider(s,i,minValue,maxValue,pageStep,value,(Qt::Orientation) qtori,all[p]->w);
     all[i]->type = TQSlider;
   }
   else if(strncmp(command,"QRadio(",7) == 0) // create a new radio button
@@ -7255,10 +7055,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyRadioButton(s,i,parent);
+    all[i]->w = (QWidget *) new MyRadioButton(s,i,all[p]->w);
     all[i]->type = TQRadio;
   }
   else if(strncmp(command,"QButtonGroup(",13) == 0) // create a new button group
@@ -7275,10 +7072,7 @@ void Interpreter::interpretQ(const char *command)
     */
     if(o == PV::Horizontal) o = Qt::Horizontal;
     else                    o = Qt::Vertical;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyGroupBox(s,i,columns,(Qt::Orientation) o,text,parent);
+    all[i]->w = (QWidget *) new MyGroupBox(s,i,columns,(Qt::Orientation) o,text,all[p]->w);
     all[i]->type = TQGroupBox;
 
   }
@@ -7288,10 +7082,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyCheckBox(s,i,parent);
+    all[i]->w = (QWidget *) new MyCheckBox(s,i,all[p]->w);
     all[i]->type = TQCheck;
   }
   else if(strncmp(command,"QFrame(",7) == 0) // create a new frame
@@ -7302,10 +7093,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyFrame(s,i,shape,shadow,line_width,margin,parent);
+    all[i]->w = (QWidget *) new MyFrame(s,i,shape,shadow,line_width,margin,all[p]->w);
     all[i]->type = TQFrame;
   }
   else if(strncmp(command,"QTabWidget(",11) == 0) // create a new QTabWidget
@@ -7314,10 +7102,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QTabWidget *) new MyQTabWidget(s,i,parent);
+    all[i]->w = (QTabWidget *) new MyQTabWidget(s,i,all[p]->w);
     all[i]->type = TQTabWidget;
   }
   else if(strncmp(command,"QToolBox(",9) == 0) // create a new QToolBox
@@ -7326,10 +7111,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QToolBox *) new MyQToolBox(s,i,parent);
+    all[i]->w = (QToolBox *) new MyQToolBox(s,i,all[p]->w);
     all[i]->type = TQToolBox;
   }
   else if(strncmp(command,"QGroupBox(",10) == 0) // create a new QGroupBox
@@ -7343,10 +7125,7 @@ void Interpreter::interpretQ(const char *command)
     if(p >= nmax) return;
     if(o == PV::Horizontal) o = Qt::Horizontal;
     else                    o = Qt::Vertical;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyGroupBox(s,i,columns,(Qt::Orientation) o,text,parent);
+    all[i]->w = (QWidget *) new MyGroupBox(s,i,columns,(Qt::Orientation) o,text,all[p]->w);
     all[i]->type = TQGroupBox;
   }
   else if(strncmp(command,"QListBox(",9) == 0) // create a new QListBox
@@ -7355,10 +7134,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyListBox(s,i,parent);
+    all[i]->w = (QWidget *) new MyListBox(s,i,all[p]->w);
     all[i]->type = TQListBox;
   }
   else if(strncmp(command,"QTable(",7) == 0) // create a new QTable
@@ -7368,10 +7144,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyTable(s,i,row,col,parent);
+    all[i]->w = (QWidget *) new MyTable(s,i,row,col,all[p]->w);
     all[i]->type = TQTable;
   }
   else if(strncmp(command,"QSpinBox(",9) == 0) // create a new QSpinBox
@@ -7381,10 +7154,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MySpinBox(s,i,min,max,step,parent);
+    all[i]->w = (QWidget *) new MySpinBox(s,i,min,max,step,all[p]->w);
     all[i]->type = TQSpinBox;
   }
   else if(strncmp(command,"QDial(",6) == 0) // create a new QDial
@@ -7395,10 +7165,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyDial(s,i,min,max,pageStep,value,parent);
+    all[i]->w = (QWidget *) new MyDial(s,i,min,max,pageStep,value,all[p]->w);
     all[i]->type = TQDial;
   }
   else if(strncmp(command,"QProgressBar(",13) == 0) // create a new QProgressBar
@@ -7412,10 +7179,7 @@ void Interpreter::interpretQ(const char *command)
     if(p >= nmax) return;
     if(orientation == PV::Vertical) qtori = Qt::Vertical;
     else                            qtori = Qt::Horizontal;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyProgressBar(s,i,totalSteps,qtori,parent);
+    all[i]->w = (QWidget *) new MyProgressBar(s,i,totalSteps,qtori,all[p]->w);
     all[i]->type = TQProgressBar;
   }
   else if(strncmp(command,"QMultiLineEdit(",15) == 0) // create a new QMultiLineEdit
@@ -7425,10 +7189,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyMultiLineEdit(s,i,editable,maxLines,parent);
+    all[i]->w = (QWidget *) new MyMultiLineEdit(s,i,editable,maxLines,all[p]->w);
     all[i]->type = TQMultiLineEdit;
   }
   else if(strncmp(command,"QTextBrowser(",13) == 0) // create a new QTextBrowser
@@ -7437,10 +7198,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyTextBrowser(s,i,parent);
+    all[i]->w = (QWidget *) new MyTextBrowser(s,i,all[p]->w);
     all[i]->type = TQTextBrowser;
   }
   else if(strncmp(command,"QListView(",10) == 0) // create a new QListView
@@ -7449,10 +7207,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyListView(s,i,parent);
+    all[i]->w = (QWidget *) new MyListView(s,i,all[p]->w);
     all[i]->type = TQListView;
   }
   else if(strncmp(command,"QIconView(",10) == 0) // create a new QIconView
@@ -7461,10 +7216,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    all[i]->w = (QWidget *) new MyIconView(s,i,parent);
+    all[i]->w = (QWidget *) new MyIconView(s,i,all[p]->w);
     all[i]->type = TQIconView;
   }
   else if(strncmp(command,"QDateEdit(",10) == 0) // create a new QDateEdit
@@ -7473,10 +7225,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    MyQDateEdit *ptr = new MyQDateEdit(s,i,parent);
+    MyQDateEdit *ptr = new MyQDateEdit(s,i,all[p]->w);
     ptr->pvsVersion = mainWindow->pvbtab[mainWindow->currentTab].pvsVersion;
     all[i]->w = (QWidget *) ptr; 
     all[i]->type = TQDateEdit;
@@ -7487,10 +7236,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    MyQTimeEdit *ptr = new MyQTimeEdit(s,i,parent);
+    MyQTimeEdit *ptr = new MyQTimeEdit(s,i,all[p]->w);
     ptr->pvsVersion = mainWindow->pvbtab[mainWindow->currentTab].pvsVersion;
     all[i]->w = (QWidget *) ptr; 
     all[i]->type = TQTimeEdit;
@@ -7501,10 +7247,7 @@ void Interpreter::interpretQ(const char *command)
     if(i < 0) return;
     if(i >= nmax) return;
     if(p >= nmax) return;
-    // cmeyer: Allow for NULL-parents -----------------------
-    QWidget *parent = (p <= -1) ? NULL : all[p]->w;
-    // cmeyer: ----------------------------------------------
-    MyQDateTimeEdit *ptr = new MyQDateTimeEdit(s,i,parent);
+    MyQDateTimeEdit *ptr = new MyQDateTimeEdit(s,i,all[p]->w);
     ptr->pvsVersion = mainWindow->pvbtab[mainWindow->currentTab].pvsVersion;
     all[i]->w = (QWidget *) ptr; 
     all[i]->type = TQDateTimeEdit;
@@ -7591,12 +7334,10 @@ void Interpreter::interpretQ(const char *command)
       if(p >= 0) 
       {
         all[i]->w = (QWidget *) new QGridLayout(all[p]->w);
-        ((QGridLayout*)all[i]->w)->setSizeConstraint(QLayout::SetDefaultConstraint);
       }  
       else
       {
         all[i]->w = (QWidget *) new QGridLayout();
-        ((QGridLayout*)all[i]->w)->setSizeConstraint(QLayout::SetDefaultConstraint);
       }
       all[i]->type = TQGrid;
     }

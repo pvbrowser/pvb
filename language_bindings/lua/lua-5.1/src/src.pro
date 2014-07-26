@@ -9,6 +9,8 @@ CONFIG        -= qt
 TARGET         = lua
 DEPENDPATH    += .
 INCLUDEPATH   += .
+#use the following line on ixxat eicon with self compiled readline and termcap
+#INCLUDEPATH   += $(IXXATDIR)
 unix:DEFINES  += LUA_USE_LINUX
 win32:DEFINES += _WIN32
 

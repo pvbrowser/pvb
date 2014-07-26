@@ -4444,6 +4444,36 @@ fail:
 }
 
 
+static int _wrap_rlScoketWrite(lua_State* L) {
+  int SWIG_arg = 0;
+  int *arg1 = (int *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlScoketWrite",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlScoketWrite",1,"int *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlScoketWrite",2,"void const *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlScoketWrite",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_int,0))){
+    SWIG_fail_ptr("rlScoketWrite",1,SWIGTYPE_p_int);
+  }
+  
+  arg2=(void *)SWIG_MustGetPtr(L,2,0,0,2,"rlScoketWrite");
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)rlScoketWrite(arg1,(void const *)arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_rlSocket__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -22928,6 +22958,30 @@ fail:
 }
 
 
+static int _wrap_rlSpawn_getFilepointer(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSpawn *arg1 = (rlSpawn *) 0 ;
+  FILE *result = 0 ;
+  
+  SWIG_check_num_args("rlSpawn::getFilepointer",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSpawn::getFilepointer",1,"rlSpawn *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSpawn,0))){
+    SWIG_fail_ptr("rlSpawn_getFilepointer",1,SWIGTYPE_p_rlSpawn);
+  }
+  
+  result = (FILE *)(arg1)->getFilepointer();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_FILE,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlSpawn_pid_set(lua_State* L) {
   int SWIG_arg = 0;
   rlSpawn *arg1 = (rlSpawn *) 0 ;
@@ -22991,6 +23045,7 @@ static swig_lua_method swig_rlSpawn_methods[] = {
     {"write", _wrap_rlSpawn_write}, 
     {"printf", _wrap_rlSpawn_printf}, 
     {"printAll", _wrap_rlSpawn_printAll}, 
+    {"getFilepointer", _wrap_rlSpawn_getFilepointer}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlSpawn_attributes[] = {
@@ -29003,6 +29058,36 @@ static int _wrap_rlWebcam_getFrame__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   rlWebcam *arg1 = (rlWebcam *) 0 ;
   int arg2 ;
+  int arg3 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlWebcam::getFrame",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlWebcam::getFrame",1,"rlWebcam *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlWebcam::getFrame",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlWebcam::getFrame",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlWebcam,0))){
+    SWIG_fail_ptr("rlWebcam_getFrame",1,SWIGTYPE_p_rlWebcam);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (char *)(arg1)->getFrame(arg2,arg3);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlWebcam_getFrame__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  int arg2 ;
   char *result = 0 ;
   
   SWIG_check_num_args("rlWebcam::getFrame",2,2)
@@ -29026,7 +29111,7 @@ fail:
 }
 
 
-static int _wrap_rlWebcam_getFrame__SWIG_1(lua_State* L) {
+static int _wrap_rlWebcam_getFrame__SWIG_2(lua_State* L) {
   int SWIG_arg = 0;
   rlWebcam *arg1 = (rlWebcam *) 0 ;
   char *result = 0 ;
@@ -29052,8 +29137,8 @@ fail:
 
 static int _wrap_rlWebcam_getFrame(lua_State* L) {
   int argc;
-  int argv[3]={
-    1,2,3
+  int argv[4]={
+    1,2,3,4
   };
   
   argc = lua_gettop(L);
@@ -29068,7 +29153,7 @@ static int _wrap_rlWebcam_getFrame(lua_State* L) {
       }
     }
     if (_v) {
-      return _wrap_rlWebcam_getFrame__SWIG_1(L);
+      return _wrap_rlWebcam_getFrame__SWIG_2(L);
     }
   }
   if (argc == 2) {
@@ -29086,15 +29171,190 @@ static int _wrap_rlWebcam_getFrame(lua_State* L) {
         _v = lua_isnumber(L,argv[1]);
       }
       if (_v) {
-        return _wrap_rlWebcam_getFrame__SWIG_0(L);
+        return _wrap_rlWebcam_getFrame__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlWebcam, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlWebcam_getFrame__SWIG_0(L);
+        }
       }
     }
   }
   
   lua_pushstring(L,"Wrong arguments for overloaded function 'rlWebcam_getFrame'\n"
     "  Possible C/C++ prototypes are:\n"
+    "    rlWebcam::getFrame(int,int)\n"
     "    rlWebcam::getFrame(int)\n"
     "    rlWebcam::getFrame()\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlWebcam_getFrameBuffer__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("rlWebcam::getFrameBuffer",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlWebcam::getFrameBuffer",1,"rlWebcam *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlWebcam::getFrameBuffer",2,"unsigned char *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlWebcam::getFrameBuffer",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlWebcam::getFrameBuffer",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlWebcam,0))){
+    SWIG_fail_ptr("rlWebcam_getFrameBuffer",1,SWIGTYPE_p_rlWebcam);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlWebcam_getFrameBuffer",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)(arg1)->getFrameBuffer(arg2,arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlWebcam_getFrameBuffer__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlWebcam::getFrameBuffer",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlWebcam::getFrameBuffer",1,"rlWebcam *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlWebcam::getFrameBuffer",2,"unsigned char *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlWebcam::getFrameBuffer",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlWebcam,0))){
+    SWIG_fail_ptr("rlWebcam_getFrameBuffer",1,SWIGTYPE_p_rlWebcam);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlWebcam_getFrameBuffer",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->getFrameBuffer(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlWebcam_getFrameBuffer(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlWebcam, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlWebcam_getFrameBuffer__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlWebcam, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_rlWebcam_getFrameBuffer__SWIG_0(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlWebcam_getFrameBuffer'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlWebcam::getFrameBuffer(unsigned char *,int,int)\n"
+    "    rlWebcam::getFrameBuffer(unsigned char *,int)\n");
   lua_error(L);return 0;
 }
 
@@ -29299,6 +29559,60 @@ fail:
 }
 
 
+static int _wrap_rlWebcam_sock_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  rlSocket *arg2 = (rlSocket *) 0 ;
+  
+  SWIG_check_num_args("rlWebcam::sock",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlWebcam::sock",1,"rlWebcam *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlWebcam::sock",2,"rlSocket *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlWebcam,0))){
+    SWIG_fail_ptr("rlWebcam_sock_set",1,SWIGTYPE_p_rlWebcam);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlSocket,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("rlWebcam_sock_set",2,SWIGTYPE_p_rlSocket);
+  }
+  
+  if (arg1) (arg1)->sock = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlWebcam_sock_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  rlSocket *result = 0 ;
+  
+  SWIG_check_num_args("rlWebcam::sock",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlWebcam::sock",1,"rlWebcam *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlWebcam,0))){
+    SWIG_fail_ptr("rlWebcam_sock_get",1,SWIGTYPE_p_rlWebcam);
+  }
+  
+  result = (rlSocket *) ((arg1)->sock);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlSocket,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlWebcam(void *obj) {
 rlWebcam *arg1 = (rlWebcam *) obj;
 delete arg1;
@@ -29308,6 +29622,7 @@ static swig_lua_method swig_rlWebcam_methods[] = {
     {"disconnect", _wrap_rlWebcam_disconnect}, 
     {"getSnapshot", _wrap_rlWebcam_getSnapshot}, 
     {"getFrame", _wrap_rlWebcam_getFrame}, 
+    {"getFrameBuffer", _wrap_rlWebcam_getFrameBuffer}, 
     {"getUrl", _wrap_rlWebcam_getUrl}, 
     {"getHost", _wrap_rlWebcam_getHost}, 
     {"getPort", _wrap_rlWebcam_getPort}, 
@@ -29317,6 +29632,7 @@ static swig_lua_method swig_rlWebcam_methods[] = {
 static swig_lua_attribute swig_rlWebcam_attributes[] = {
     { "debug", _wrap_rlWebcam_debug_get, _wrap_rlWebcam_debug_set},
     { "filename", _wrap_rlWebcam_filename_get, _wrap_rlWebcam_filename_set},
+    { "sock", _wrap_rlWebcam_sock_get, _wrap_rlWebcam_sock_set},
     {0,0,0}
 };
 static swig_lua_class *swig_rlWebcam_bases[] = {0};
@@ -29348,6 +29664,7 @@ fail:
 
 static const struct luaL_Reg swig_commands[] = {
     { "rlwsa", _wrap_rlwsa},
+    { "rlScoketWrite", _wrap_rlScoketWrite},
     { "rlSetDebugPrintf", _wrap_rlSetDebugPrintf},
     { "rlDebugPrintf", _wrap_rlDebugPrintf},
     { "rlLastLinePrintf", _wrap_rlLastLinePrintf},

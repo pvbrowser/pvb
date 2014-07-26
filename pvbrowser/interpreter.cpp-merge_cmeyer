@@ -826,7 +826,7 @@ void Interpreter::interpreta(const char *command)
 
     if(all[i]->type == TQTabWidget)
     {
-      //MyQTabWidget *ptr = (MyQTabWidget *) all[i]->w;
+      MyQTabWidget *ptr = (MyQTabWidget *) all[i]->w;
       // if(ptr != NULL) ptr->addTab(all[child]->w, text);
     }
     else if(all[i]->type == TQToolBox)
@@ -2883,17 +2883,15 @@ void Interpreter::interprets(const char *command)
           }
           else
           { 
-            // rl: adaption would break compatibility -> change rejected
-						if(all[i]->w != NULL) mySetBackgroundColor(all[i]->w,all[i]->type,r,g,b);
 						// cmeyer: Adapted this code following the Qt-Documentation:
 						//         if(all[i]->w != NULL) mySetBackgroundColor(all[i]->w,all[i]->type,r,g,b);
-            //if(all[i]->w != NULL) 
-            //{
-            //  QWidget* widget = all[i]->w;
- 			      //  QPalette palette;
- 						//  palette.setColor(widget->backgroundRole(), QColor(r,g,b));
- 					  //  widget->setPalette(palette);
- 						//}
+            if(all[i]->w != NULL) 
+            {
+              QWidget* widget = all[i]->w;
+ 			        QPalette palette;
+ 							palette.setColor(widget->backgroundRole(), QColor(r,g,b));
+ 							widget->setPalette(palette);
+ 						}
           }
         }
         else if(strncmp(command,"setBoxSelected(",15) == 0) // set selection of ListBox
@@ -4801,15 +4799,9 @@ void Interpreter::interprets(const char *command)
               QCoreApplication::sendEvent(w, &event);
             }
           }
-          // rl: non crashing version
-          if(i>0)
-          {
-            QWidget *w = all[i]->w;
-            if(w != NULL && hasLayout==1) w->updateGeometry();
-          }  
           // cmeyer: Adapt Geometry to actual sizes:
-          // QWidget *w = all[i]->w;
-          // w->updateGeometry();
+          QWidget *w = all[i]->w;
+          w->updateGeometry();
           // cmeyer: END Adapt Geometry to actual sizes:
           if(opt.arg_debug) printf("setText end\n");
         }

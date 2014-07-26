@@ -431,6 +431,11 @@ void generateInitialProject(const char *name)
   fprintf(fout,"unix:INCLUDEPATH   += /opt/pvb/pvserver\n");
   fprintf(fout,"#unix:LIBS         += /usr/lib/librllib.so\n");
   fprintf(fout,"#unix:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
+  fprintf(fout,"#unix:LIBS         += $(PVBDIR)/pvserver/libpvsmt.so -lpthread\n");
+  fprintf(fout,"#unix:LIBS         += $(PVBDIR)/pvserver/libpvsid.so -lpthread\n");
+  fprintf(fout,"#unix:INCLUDEPATH  += $(PVBDIR)/pvserver\n");
+  fprintf(fout,"#unix:LIBS         += $(PVBDIR)/rllib/lib/librllib.so\n");
+  fprintf(fout,"#unix:INCLUDEPATH  += $(PVBDIR)/rllib/lib\n");
   fprintf(fout,"}\n");
   fprintf(fout,"\n");
   fprintf(fout,"macx:LIBS          += /opt/pvb/pvserver/libpvsmt.a /usr/lib/libpthread.dylib\n");
