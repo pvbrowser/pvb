@@ -237,6 +237,42 @@ int rlPlcState::maxDouble()
   return max_float - 1;
 }
 
+int rlPlcState::getInt(int index)
+{
+  if(index<0 || index >= max_int) return 0;
+  return i[index];
+}
+
+float rlPlcState::getFloat(int index)
+{
+  if(index<0 || index >= max_float) return 0;
+  return f[index];
+}
+
+double rlPlcState::getDouble(int index)
+{
+  if(index<0 || index >= max_double) return 0;
+  return d[index];
+}
+
+int rlPlcState::getOldInt(int index)
+{
+  if(index<0 || index >= max_int) return 0;
+  return i_old[index];
+}
+
+float rlPlcState::getOldFloat(int index)
+{
+  if(index<0 || index >= max_float) return 0;
+  return f_old[index];
+}
+
+double rlPlcState::getOldDouble(int index)
+{
+  if(index<0 || index >= max_double) return 0;
+  return d_old[index];
+}
+
 //###################################################
 
 rlPlcMem::rlPlcMem()
@@ -370,3 +406,4 @@ int rlPlcMem::hasBeenCleared(int bit)
   }
   return 0;
 }
+

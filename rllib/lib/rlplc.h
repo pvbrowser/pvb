@@ -50,6 +50,12 @@ class rlPlcState
     int    maxInt();
     int    maxFloat();
     int    maxDouble();
+    int    getInt(int index);
+    float  getFloat(int index);
+    double getDouble(int index);
+    int    getOldInt(int index);
+    float  getOldFloat(int index);
+    double getOldDouble(int index);
     rlSharedMemory *shm;
 
   private:

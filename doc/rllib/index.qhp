@@ -1172,6 +1172,12 @@
               <section title="floatChanged" ref="classrlPlcState.html#a80dae83a757a84d414648395656f2484" />
               <section title="floatHasDecreased" ref="classrlPlcState.html#a1f96b40a8fc221cc499a05e371f511d3" />
               <section title="floatHasIncreased" ref="classrlPlcState.html#af595716f4db8e05b36d8b52cdd74110c" />
+              <section title="getDouble" ref="classrlPlcState.html#a616de2194841cdb4d683aa4f16347f0a" />
+              <section title="getFloat" ref="classrlPlcState.html#a27596d57f97433ea7bc43cffea1703c5" />
+              <section title="getInt" ref="classrlPlcState.html#a9e2b360618247830ed59c430e03e03f6" />
+              <section title="getOldDouble" ref="classrlPlcState.html#a870e4bb599501bd24d0aaa72d718eb9d" />
+              <section title="getOldFloat" ref="classrlPlcState.html#a91c264c3536bb6e1288ed04d32f15f37" />
+              <section title="getOldInt" ref="classrlPlcState.html#a0bff794fab8a60c8aab54617b496956a" />
               <section title="hasBeenCleared" ref="classrlPlcState.html#a2f4c06109e890296963a75c341e95744" />
               <section title="hasBeenSet" ref="classrlPlcState.html#ae30a62ed8a9a962db81d3059e6b56453" />
               <section title="intChanged" ref="classrlPlcState.html#a0bc12088c0406bf3611a8334820c18b6" />
@@ -3632,6 +3638,12 @@
                 <section title="floatChanged" ref="classrlPlcState.html#a80dae83a757a84d414648395656f2484" />
                 <section title="floatHasDecreased" ref="classrlPlcState.html#a1f96b40a8fc221cc499a05e371f511d3" />
                 <section title="floatHasIncreased" ref="classrlPlcState.html#af595716f4db8e05b36d8b52cdd74110c" />
+                <section title="getDouble" ref="classrlPlcState.html#a616de2194841cdb4d683aa4f16347f0a" />
+                <section title="getFloat" ref="classrlPlcState.html#a27596d57f97433ea7bc43cffea1703c5" />
+                <section title="getInt" ref="classrlPlcState.html#a9e2b360618247830ed59c430e03e03f6" />
+                <section title="getOldDouble" ref="classrlPlcState.html#a870e4bb599501bd24d0aaa72d718eb9d" />
+                <section title="getOldFloat" ref="classrlPlcState.html#a91c264c3536bb6e1288ed04d32f15f37" />
+                <section title="getOldInt" ref="classrlPlcState.html#a0bff794fab8a60c8aab54617b496956a" />
                 <section title="hasBeenCleared" ref="classrlPlcState.html#a2f4c06109e890296963a75c341e95744" />
                 <section title="hasBeenSet" ref="classrlPlcState.html#ae30a62ed8a9a962db81d3059e6b56453" />
                 <section title="intChanged" ref="classrlPlcState.html#a0bc12088c0406bf3611a8334820c18b6" />
@@ -6207,6 +6219,12 @@
       <keyword name="maxInt" id="rlPlcState::maxInt" ref="classrlPlcState.html#a44d3d9fe52739a658dc659a35f14e120" />
       <keyword name="maxFloat" id="rlPlcState::maxFloat" ref="classrlPlcState.html#abede95fe3a72e6f07d3640623a440c1d" />
       <keyword name="maxDouble" id="rlPlcState::maxDouble" ref="classrlPlcState.html#ae9326552e8fb130991fa05bcdbd15e21" />
+      <keyword name="getInt" id="rlPlcState::getInt" ref="classrlPlcState.html#a9e2b360618247830ed59c430e03e03f6" />
+      <keyword name="getFloat" id="rlPlcState::getFloat" ref="classrlPlcState.html#a27596d57f97433ea7bc43cffea1703c5" />
+      <keyword name="getDouble" id="rlPlcState::getDouble" ref="classrlPlcState.html#a616de2194841cdb4d683aa4f16347f0a" />
+      <keyword name="getOldInt" id="rlPlcState::getOldInt" ref="classrlPlcState.html#a0bff794fab8a60c8aab54617b496956a" />
+      <keyword name="getOldFloat" id="rlPlcState::getOldFloat" ref="classrlPlcState.html#a91c264c3536bb6e1288ed04d32f15f37" />
+      <keyword name="getOldDouble" id="rlPlcState::getOldDouble" ref="classrlPlcState.html#a870e4bb599501bd24d0aaa72d718eb9d" />
       <keyword name="i" id="rlPlcState::i" ref="classrlPlcState.html#a7c6e370bda49c8f6339386a7c432f34f" />
       <keyword name="i_old" id="rlPlcState::i_old" ref="classrlPlcState.html#a271718467b6807d370caa581db69daea" />
       <keyword name="f" id="rlPlcState::f" ref="classrlPlcState.html#abc7d462d1843c03af4ea3f755245ddce" />
