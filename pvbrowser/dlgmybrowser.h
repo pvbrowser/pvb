@@ -15,6 +15,7 @@
 ****************************************************************************/
 #ifndef TEXT_MY_BROWSER_H
 #define TEXT_MY_BROWSER_H
+#ifndef NO_WEBKIT
 
 #ifdef USE_WEBKIT
 #include <QWebView>
@@ -53,4 +54,5 @@ private:
     int *s, id;
     MainWindow *mainWindow;
 };
+#endif
 #endif

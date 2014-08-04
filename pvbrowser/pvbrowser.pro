@@ -10,7 +10,7 @@ QT           += opengl
 lessThan(QT_MAJOR_VERSION, 5) {
   QT         += xml svg webkit network
 }else{
-  QT         += multimedia uitools webkitwidgets widgets xml svg webkit network
+  QT         += multimedia uitools webkitwidgets widgets xml svg webkit network printsupport
 }    
 
 linux-g++-gles2 {
@@ -21,6 +21,14 @@ android-g++ {
   DEFINES    += USE_ANDROID
   DEFINES    += USE_MAEMO
   QT         -= opengl
+  lessThan(QT_MAJOR_VERSION, 5) {
+  }else{
+    DEFINES      += NO_WEBKIT
+    QT           -= webkit
+    QT           -= webkitwidgets
+    HEADERS      -= dlgmybrowser.h
+    SOURCES      -= dlgmybrowser.cpp
+  }
 }  
 symbian:CONFIG += USE_SYMBIAN
 USE_SYMBIAN {

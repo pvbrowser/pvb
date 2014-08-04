@@ -236,9 +236,14 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
   if(opt.arg_debug) printf("QDrawWidget::QDrawWidget\n");
   if(name != NULL) setObjectName(name);
   setAutoFillBackground(false); // we draw ourself useing the buffer
+#ifdef NO_WEBKIT  
+  opt.use_webkit_for_svg = 0;
+#else  
   webkitrenderer = NULL;
+#endif  
   webkitrenderer_load_done = 1;
   svg_draw_request_by_pvb = 1;
+#ifndef NO_WEBKIT  
   if(opt.use_webkit_for_svg)
   {
     qwebpage.setViewportSize(QSize(640,480));
@@ -247,6 +252,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
     //webkitrenderer = qwebpage.mainFrame();  // testing qwebframe svg renderer murx
     connect(webkitrenderer, SIGNAL(loadFinished(bool)), this, SLOT(slotLoadFinished(bool)));
   }
+#endif  
   timer.setSingleShot(true);
   connect(&timer, SIGNAL(timeout()), this, SLOT(slotTimeout()));
   fp   = NULL;
@@ -283,6 +289,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
   strcpy(floatFormat,"%.2f");
   buffer = new QPixmap;
   buffer->fill(QColor(br,bg,bb));
+  setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   if(wFlags == -1000) return; //trollmurx
 }
 
@@ -315,6 +322,7 @@ void QDrawWidget::resizeEvent(QResizeEvent *event)
   delete buffer;
   buffer = new QPixmap(w,h);
   buffer->fill(QColor(br,bg,bb));
+#ifndef NO_WEBKIT  
   if(opt.use_webkit_for_svg)
   {
     int wp = w*10 + 50;
@@ -322,6 +330,7 @@ void QDrawWidget::resizeEvent(QResizeEvent *event)
     qwebpage.setViewportSize(QSize(wp,hp));
     //qwebpage.setViewportSize(QSize((wp*100*100)/(opt.zoom*percentZoomMask),(hp*100*100)/(opt.zoom*percentZoomMask)));
   }
+#endif  
   //else // nothing to be done
   //{
     //QRect rect(0,0,(w*100)/opt.zoom,(h*100)/opt.zoom);
@@ -461,6 +470,7 @@ void QDrawWidget::logToFile(const char *filename)
 
 void QDrawWidget::htmlOrSvgDump(const char *filename)
 {
+#ifndef NO_WEBKIT  
   if(webkitrenderer != NULL && opt.use_webkit_for_svg == 1)
   {
     FILE *fout = fopen(filename,"w");
@@ -477,10 +487,14 @@ void QDrawWidget::htmlOrSvgDump(const char *filename)
   {
     printf("ERROR: htmlOrSvgDump only available if use_webkit_for_svg=1\n");
   }
+#else
+    printf("ERROR: htmlOrSvgDump(%s) only available if use_webkit_for_svg=1\n", filename);
+#endif
 }
 
 void QDrawWidget::renderTreeDump(const char *filename)
 {
+#ifndef NO_WEBKIT  
   if(webkitrenderer != NULL && opt.use_webkit_for_svg == 1)
   {
 #if QT_VERSION < 0x050000  
@@ -501,6 +515,9 @@ void QDrawWidget::renderTreeDump(const char *filename)
   {
     printf("ERROR: renderTreeDump only available if use_webkit_for_svg=1\n");
   }
+#else
+    printf("ERROR: htmlOrSvgDump(%s) only available if use_webkit_for_svg=1\n", filename);
+#endif
 }
 
 void QDrawWidget::getDimensions(const char *filename, int *width, int *height)
@@ -1064,6 +1081,9 @@ void QDrawWidget::playSVG(const char *filename)
 
   float fac = ((float) percentZoomMask) / 100.0f;
 
+#ifdef NO_WEBKIT
+  opt.use_webkit_for_svg = 0;
+#endif
   if(opt.use_webkit_for_svg == 0)
   {
     renderer.load(stream);
@@ -1072,6 +1092,7 @@ void QDrawWidget::playSVG(const char *filename)
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
+#ifndef NO_WEBKIT  
   else if(webkitrenderer != NULL)
   {
     webkitrenderer_load_done = 0;
@@ -1081,6 +1102,7 @@ void QDrawWidget::playSVG(const char *filename)
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
   }
+#endif  
 }
 
 void QDrawWidget::socketPlaySVG()
@@ -1125,6 +1147,7 @@ void QDrawWidget::socketPlaySVG()
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
+#ifndef NO_WEBKIT  
   else if(webkitrenderer != NULL)
   {
     webkitrenderer_load_done = 0;
@@ -1133,7 +1156,8 @@ void QDrawWidget::socketPlaySVG()
     p.scale(zoomx*fac,zoomy*fac);
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
-  }  
+  } 
+#endif  
   if(opt.arg_debug) printf("Qt4 socketPlaySVG end\n");
 }
 
@@ -1435,6 +1459,7 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
+#ifndef NO_WEBKIT  
   else if(webkitrenderer != NULL)
   {
     webkitrenderer_load_done = 0;
@@ -1444,6 +1469,7 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
   }  
+#endif
 }
 
 void QDrawWidget::printSVG(QByteArray &stream)
@@ -1467,6 +1493,7 @@ void QDrawWidget::printSVG(QByteArray &stream)
       svgrenderer.render(&painter);
       painter.end();
     }
+#ifndef NO_WEBKIT  
     else if(webkitrenderer != NULL)
     {
       webkitrenderer_load_done = 0;
@@ -1475,6 +1502,7 @@ void QDrawWidget::printSVG(QByteArray &stream)
       webkitrenderer->render(&painter);
       painter.end();
     }  
+#endif    
   }
 #endif
 }
@@ -1568,6 +1596,7 @@ int QDrawWidget::requestSvgBoundsOnElement(QString &text)
     sprintf(buf,"text(%d,\"svgBoundsOnElement:%f,%f,%f,%f=%s\"\n", id, rectf.x(), rectf.y(), rectf.width(), rectf.height(), (const char *) text.toUtf8());
     tcp_send(s,buf,strlen(buf));
   }
+#ifndef NO_WEBKIT  
   else
   {
     if(svgAnimator == NULL) return 0;
@@ -1590,6 +1619,7 @@ int QDrawWidget::requestSvgBoundsOnElement(QString &text)
 #endif    
     }
   }  
+#endif
   return 0;
 }
 
@@ -1634,6 +1664,7 @@ void QDrawWidget::slotWebkitSvgChanged(const QRect &dirtyRect)
   {
     return;
   }
+#ifndef NO_WEBKIT  
   if(webkitrenderer == NULL) return;
 
   webkitrenderer_load_done = 0;
@@ -1648,6 +1679,7 @@ void QDrawWidget::slotWebkitSvgChanged(const QRect &dirtyRect)
   p.end();
   repaint();
   svg_draw_request_by_pvb = 1;
+#endif  
 }
 
 void QDrawWidget::slotTimeout()
@@ -2745,6 +2777,7 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, int buttons)
     y = y / draw->zoomy;
   }  
 
+#ifndef NO_WEBKIT
 #if QT_VERSION >= 0x040601
   if(opt.use_webkit_for_svg)
   {
@@ -2829,6 +2862,7 @@ MyMurx:
     return 0;
   }
 #endif
+#endif
 
   iline = 0;
   svgline = first;
@@ -2876,6 +2910,7 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
     y = y / draw->zoomy;
   }  
 
+#ifndef NO_WEBKIT
 #if QT_VERSION >= 0x040601
   if(opt.use_webkit_for_svg)
   {
@@ -2970,6 +3005,7 @@ MyMurx:
     }
     return 0;
   }
+#endif
 #endif
 
   iline = 0;

@@ -21,10 +21,13 @@
 #include <QtGui>
 #include <QTimer>
 #include <QSvgRenderer>
+#include <QWidget>
+#ifndef NO_WEBKIT
 #include <QWebPage>    // testing qwebframe svg renderer murx
 #include <QWebFrame>   // testing qwebframe svg renderer murx
 #if QT_VERSION >= 0x040601
 #include <QWebElement> // "
+#endif
 #endif
 
 #define MAXARRAY 1024*4  // maximum array size for line(x,y,n)
@@ -162,8 +165,10 @@ public:
     pvSvgAnimator *svgAnimator;
     int selectorState;
     QSvgRenderer renderer;
+#ifndef NO_WEBKIT    
     QWebPage  qwebpage;         // testing WebKit SVG renderer murx
     QWebFrame *webkitrenderer;  // testing Webkit SVG renderer murx
+#endif    
     int originalCursor;
     int origwidth, origheight;
     int percentZoomMask;

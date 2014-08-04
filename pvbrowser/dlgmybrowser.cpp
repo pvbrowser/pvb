@@ -17,10 +17,8 @@
 #include <qglobal.h>
 
 #if QT_VERSION >= 0x040400
-#ifndef NO_WEBKIT
 #define USE_WEBKIT
 #include <QNetworkReply>
-#endif
 #endif
 
 #ifdef USE_WEBKIT
@@ -160,6 +158,7 @@ dlgMyBrowser::~dlgMyBrowser()
 QWebView *dlgMyBrowser::createWindow(QWebPage::WebWindowType type)
 {
   if(opt.arg_debug) printf("dlgMyBrowser::createWindow type=%d\n", (int) type);
+#ifdef USE_WEBKIT
   if(type == QWebPage::WebBrowserWindow)
   {
     QAction *act = form->browser->pageAction(QWebPage::OpenLinkInNewWindow);
@@ -167,6 +166,7 @@ QWebView *dlgMyBrowser::createWindow(QWebPage::WebWindowType type)
     printf("TODO: find out howto get the url text=%s\n", (const char *) str.toUtf8());
     //act->trigger();
   }  
+#endif  
   return NULL;
 }
 

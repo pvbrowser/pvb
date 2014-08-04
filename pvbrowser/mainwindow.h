@@ -17,9 +17,9 @@
 #define MAINWINDOW_H
 
 #if QT_VERSION < 0x050000
-  #define VERSION "4.7.6 - qt4"
+  #define VERSION "4.7.7 - qt4"
 #else
-  #define VERSION "4.7.6 - qt5"
+  #define VERSION "4.7.7 - qt5"
 #endif
 
 #include "interpreter.h"
@@ -50,8 +50,10 @@ class QComboBox;
 class QLabel;
 class MainWindow;
 class MyQWidget;
+#ifndef NO_WEBKIT
 #include "dlgtextbrowser.h"
 #include "dlgmybrowser_ui.h"
+#endif
 
 class MainWindow;
 
@@ -119,7 +121,9 @@ public:
   QToolBar *fileToolBar;
   QToolBar *tabToolBar;
   QTabBar  *tabBar;
+#ifndef NO_WEBKIT  
   dlgTextBrowser *textbrowser;
+#endif  
   PVBTAB pvbtab[MAX_TABS];
   QComboBox *urlComboBox;
   MyThread mythread;

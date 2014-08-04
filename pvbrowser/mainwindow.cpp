@@ -269,7 +269,9 @@ MainWindow::MainWindow()
 #endif
 
   isReconnect = 0;
+#ifndef NO_WEBKIT  
   textbrowser = NULL;
+#endif  
   tabToolBar  = NULL;
   maxfd = currentTab = numTabs = 0;
   for(i=0; i<MAX_TABS; i++)
@@ -380,8 +382,10 @@ MainWindow::~MainWindow()
 void MainWindow::slotExit()
 {
   if(opt.arg_debug) printf("MainWindow::slotExit()\n");
+#ifndef NO_WEBKIT  
   if(textbrowser != NULL) delete textbrowser;
   textbrowser = NULL;
+#endif  
   for(int i=0; i<MAX_TABS; i++)
   {
     if(pvbtab[i].s != -1) 
@@ -466,17 +470,26 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
 void MainWindow::slotManual()
 {
+#ifndef NO_WEBKIT
   if(textbrowser == NULL) textbrowser = new dlgTextBrowser;
+#endif  
   QString url =  pvbtab[currentTab].manual_url;
   if(strncmp(url.toUtf8(),"http://",7)  == 0 ||
      strncmp(url.toUtf8(),"https://",8) == 0  )
   {
+#ifdef NO_WEBKIT
+    //textbrowser->home = url;
+    //textbrowser->homeIsSet = 1;
+    //textbrowser->form->textBrowser->setSource(QUrl(url));
+    //textbrowser->show();
+#else
     textbrowser->home = url;
     textbrowser->homeIsSet = 1;
     textbrowser->form->textBrowser->setHtml("<html><body>Loading manual ...</body></html>");
     textbrowser->form->textBrowser->setUrl(url);
     textbrowser->form->textBrowser->load(QUrl(url));
     textbrowser->show();
+#endif
     return;
   }  
   
@@ -495,10 +508,17 @@ void MainWindow::slotManual()
   pvbtab[currentTab].manual_url = url;
 #endif
   url = pvbtab[currentTab].manual_url;
+#ifdef NO_WEBKIT
+  //textbrowser->home = url;
+  //textbrowser->homeIsSet = 1;
+  //textbrowser->form->textBrowser->setSource(QUrl(url));
+  //textbrowser->show();
+#else
   textbrowser->home = url;
   textbrowser->homeIsSet = 1;
   textbrowser->form->textBrowser->load(QUrl::fromLocalFile(url));
   textbrowser->show();
+#endif
   return;
 }
 

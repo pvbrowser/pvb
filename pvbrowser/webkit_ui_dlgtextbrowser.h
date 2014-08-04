@@ -19,7 +19,11 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QSpacerItem>
+#ifdef NO_WEBKIT
+#include <QTextBrowser>
+#else
 #include <QWebView>
+#endif
 #include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -35,7 +39,11 @@ public:
     QPushButton *pushButtonFind;
     QSpacerItem *spacerItem;
     QPushButton *pushButtonClose;
-    QWebView    *textBrowser;
+#ifdef NO_WEBKIT
+    QTextBrowser *textBrowser;
+#else    
+    QWebView     *textBrowser;
+#endif    
 
     void setupUi(QDialog *DialogTextBrowser)
     {
@@ -84,7 +92,11 @@ public:
 
     vboxLayout->addLayout(hboxLayout);
 
+#ifdef NO_WEBKIT
+    textBrowser = new QTextBrowser(DialogTextBrowser);
+#else    
     textBrowser = new QWebView(DialogTextBrowser);
+#endif
     textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
 
     vboxLayout->addWidget(textBrowser);

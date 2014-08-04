@@ -41,7 +41,9 @@
 #include <QGridLayout>
 #include <QPixmap>
 #include <QDesktopWidget>
+#ifndef NO_WEBKIT
 #include <QWebFrame>
+#endif
 #include <QPrinter>
 #include <QPrintDialog>
 #ifdef PVWIN32
@@ -1812,11 +1814,13 @@ void Interpreter::interpreth(const char *command)
       if(i == -2) mainWindow->fileToolBar->hide();
       if(i == -3) mainWindow->statusBar()->hide();
       if(i == -4) mainWindow->hide();
+#ifndef NO_WEBKIT      
       if(i == -5) 
       {
         if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
         mainWindow->textbrowser->hide();
       }  
+#endif      
       int id_dock = i - DOCK_WIDGETS_BASE;
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {
@@ -2181,6 +2185,9 @@ void Interpreter::interpretm(const char *command)
     if(all[i]->type == TQTextBrowser)
     {
       MyTextBrowser *w = (MyTextBrowser *) all[i]->w;
+#ifdef NO_WEBKIT      
+      w->moveCursor((QTextCursor::MoveOperation) cursor);
+#else      
       if     (cur == PV::NoMove)            w->pageAction(QWebPage::NoWebAction);
       else if(cur == PV::StartOfLine)       w->pageAction(QWebPage::MoveToStartOfLine);
       else if(cur == PV::StartOfBlock)      w->pageAction(QWebPage::MoveToStartOfBlock);      
@@ -2201,7 +2208,7 @@ void Interpreter::interpretm(const char *command)
       else if(cur == PV::Down)              w->pageAction(QWebPage::MoveToEndOfDocument); // ???
       //else if(cur == PV::Right)             ;
       //else if(cur == PV::WordRight)         ;
-      //tb w->moveCursor((QTextCursor::MoveOperation) cursor);
+#endif      
     }
     else if(all[i]->type == TQMultiLineEdit)
     {
@@ -4269,6 +4276,7 @@ void Interpreter::interprets(const char *command)
           get_text(command,text); // text = html filename
           if(i == -5) // ID_HELP
           {
+#ifndef NO_WEBKIT
             if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
 //xmurx -------------------------------------------------------------------------------------------
 //xmurx beginning with Qt 4.8.0 it is no longer allowed to load(QUrl(filename)); from a local disk
@@ -4301,6 +4309,7 @@ void Interpreter::interprets(const char *command)
             {
               mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
             }
+#endif
 //xmurx#else
 //xmurx            mainWindow->textbrowser->form->textBrowser->load(QUrl(text));
 //xmurx#endif
@@ -4313,6 +4322,10 @@ void Interpreter::interprets(const char *command)
             MyTextBrowser *t = (MyTextBrowser *) all[i]->w;
             if(t != NULL) 
             {
+#ifdef NO_WEBKIT            
+              t->setSource(QUrl::fromLocalFile(temp + text));
+              t->reload();
+#else              
 //xmurx#ifdef USE_ANDROID
               // android permission problems
               // google does not allow Qt to access local storage
@@ -4338,14 +4351,13 @@ void Interpreter::interprets(const char *command)
 //xmurx#else
 //xmurx              t->load(QUrl(text));
 //xmurx#endif
+#endif              
               if(t->homeIsSet == 0)
               {
                 t->home      = text;
                 t->homeIsSet = 1;
                 if(opt.arg_debug) printf("home=%s\n", (const char *) text.toUtf8());
               }
-              //tb t->setSource(QUrl::fromLocalFile(temp + text));
-              //tb t->reload();
             }
           }
           else if(all[i]->type == TQCustomWidget)
@@ -4771,10 +4783,14 @@ void Interpreter::interprets(const char *command)
             //int y = c->contentsY();
             if(c != NULL)
             {
-              //tb int vPos = c->verticalScrollBar()->value();   // make cursor not jumping (ernst murnleitner)
-              //tb int hPos = c->horizontalScrollBar()->value();
-              // QTextDocument *doc = c->document();
-              // if(doc != NULL) doc->setHtml(text);
+#ifdef NO_WEBKIT            
+              int vPos = c->verticalScrollBar()->value();   // make cursor not jumping (ernst murnleitner)
+              int hPos = c->horizontalScrollBar()->value();
+              QTextDocument *doc = c->document();
+              if(doc != NULL) doc->setHtml(text);
+              c->verticalScrollBar()->setValue(vPos);
+              c->horizontalScrollBar()->setValue(hPos);
+#else              
               int x = 0;
               int y = 0;
               if(c->page() != NULL && c->page()->mainFrame() != NULL)
@@ -4787,9 +4803,8 @@ void Interpreter::interprets(const char *command)
               {
                 c->page()->mainFrame()->setScrollBarValue(Qt::Horizontal,x);
                 c->page()->mainFrame()->setScrollBarValue(Qt::Vertical,y);
-              }  
-              //tb c->verticalScrollBar()->setValue(vPos);
-              //tb c->horizontalScrollBar()->setValue(hPos);
+              }
+#endif              
             }
           }
           else if(all[i]->type == TQCustomWidget)
@@ -5281,7 +5296,15 @@ void Interpreter::interprets(const char *command)
           sscanf(command,"setZoomFactor(%d,%f",&i,&factor);
           if(i >= nmax && i > 0) return;
           MyTextBrowser *b = (MyTextBrowser*) all[i]->w;
+#ifdef NO_WEBKIT
+          if( b!= NULL)
+          {
+            if(factor > 1) b->zoomIn();
+            else           b->zoomOut();
+          }  
+#else
           if(b != NULL) b->setZoomFactor(factor);
+#endif
 #endif          
         }
         else if(all[i]->type == TQCustomWidget)
@@ -5310,11 +5333,15 @@ void Interpreter::interprets(const char *command)
       MyTextBrowser *tb = (MyTextBrowser *) all[i]->w;
       if(tb != NULL) 
       {
+#ifdef NO_WEBKIT
+        tb->scrollToAnchor(text);
+#else
         QWebPage *page = tb->page();
         if(page != NULL)
         {
           page->currentFrame()->scrollToAnchor(text);
         }
+#endif        
       }  
     }
     else if(all[i]->type == TQCustomWidget)
@@ -5389,11 +5416,13 @@ void Interpreter::interprets(const char *command)
       if(i == -2) mainWindow->fileToolBar->show();
       if(i == -3) mainWindow->statusBar()->show();
       if(i == -4) mainWindow->show();
+#ifndef NO_WEBKIT      
       if(i == -5)
       {
         if(mainWindow->textbrowser == NULL) mainWindow->textbrowser = new dlgTextBrowser;
         mainWindow->textbrowser->show();
       }  
+#endif      
       int id_dock = i - DOCK_WIDGETS_BASE;
       if( id_dock >= 0 && id_dock < MAX_DOCK_WIDGETS)
       {
@@ -7762,10 +7791,14 @@ void Interpreter::showMyBrowser(const char *url)
       if(opt.arg_debug) printf("startDefinition free(all)\n");
       if(all != NULL) free(all);
       //v = new MyQWidget(s,0,mainWindow);
+#ifndef NO_WEBKIT      
       dlgMyBrowser *browser = new dlgMyBrowser(s,0,mainWindow);
       if(opt.arg_debug) printf("showMyBrowser url=%s\n", url);
       browser->setUrl(url);
       mainWidget = (MyQWidget *) browser;
+#else
+      printf("NO_WEBKIT is defined thus showMyBrowser url=%s is not implemented\n", url);
+#endif
     }
     if(opt.arg_debug) printf("startDefinition malloc(all)\n");
     ptr = (char *) malloc(n*sizeof(ptr) + n*sizeof(ALL));

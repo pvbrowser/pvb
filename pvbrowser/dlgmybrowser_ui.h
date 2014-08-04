@@ -9,6 +9,7 @@
 
 #ifndef DLGMYBROWSER_UI_H
 #define DLGMYBROWSER_UI_H
+#ifndef NO_WEBKIT
 
 #include <QtCore/QVariant>
 #include <QAction>
@@ -137,4 +138,5 @@ namespace Ui {
     class MyBrowser: public Ui_MyBrowser {};
 } // namespace Ui
 
+#endif
 #endif // DLGMYBROWSER_UI_H

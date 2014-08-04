@@ -26,8 +26,10 @@
 #include "qmessagebox.h"
 #include <QPixmap>
 #include <QMouseEvent>
+#ifndef NO_WEBKIT
 #include <QWebHistory>
 #include <QWebFrame>
+#endif
 #include "tcputil.h"
 
 extern OPT opt;
@@ -1755,13 +1757,22 @@ void MyMultiLineEdit::leaveEvent(QEvent *event)
 
 ////////////////////////////////////////////////////////////////////////////////
 MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *name)
+#ifdef NO_WEBKIT
+              :QTextBrowser(parent)
+#else
               :QWebView(parent)
+#endif
 {
   s = sock;
   id = ident;
   homeIsSet = 0;
   factor = 1.0f;
   if(name != NULL) setObjectName(name);
+#ifdef NO_WEBKIT
+  setOpenLinks(false);
+  connect(this, SIGNAL(anchorClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
+  //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
+#else
   page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
   connect(this, SIGNAL(linkClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
   //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
@@ -1783,6 +1794,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
   txt += css.toBase64();
   settings()->setUserStyleSheetUrl(QUrl(txt));
+#endif  
 }
 
 MyTextBrowser::~MyTextBrowser()
@@ -1798,11 +1810,31 @@ bool MyTextBrowser::event(QEvent *e)
     if(ge->gesture(Qt::PinchGesture)) return false;
   }
 #endif
+#ifdef NO_WEBKIT
+  return QTextBrowser::event(e);
+#else  
   return QWebView::event(e);
+#endif  
 }
 
 void MyTextBrowser::keyPressEvent(QKeyEvent *event)
 {
+#ifdef NO_WEBKIT
+  if(event->matches(QKeySequence::ZoomIn))
+  {
+    factor = factor*1.1f;
+    zoomIn();
+  }
+  else if(event->matches(QKeySequence::ZoomOut))
+  {
+    factor = factor*0.9f;
+    zoomOut();
+  }
+  else
+  {
+    QTextBrowser::keyPressEvent(event);
+  }
+#else
   if(event->matches(QKeySequence::ZoomIn))
   {
     factor = factor*1.1f;
@@ -1821,8 +1853,11 @@ void MyTextBrowser::keyPressEvent(QKeyEvent *event)
   {
     QWebView::keyPressEvent(event);
   }
+#endif
 }
 
+#ifdef NO_WEBKIT
+#else
 QWebView *MyTextBrowser::createWindow(QWebPage::WebWindowType type)
 {
   QWebHitTestResult r = page()->mainFrame()->hitTestContent(pressPos);
@@ -1844,9 +1879,36 @@ QWebView *MyTextBrowser::createWindow(QWebPage::WebWindowType type)
   }
   return NULL;
 }
+#endif
 
 void MyTextBrowser::moveContent(int pos)
 {
+#ifdef NO_WEBKIT
+  char buf[MAX_PRINTF_LENGTH];
+  QString myurl;
+
+  if(opt.arg_debug) printf("moveContent(%d)\n", pos);
+  if     (pos == 0 && homeIsSet) 
+  { 
+    myurl = home; 
+    setSource(QUrl(home)); 
+  }
+  else if(pos == 1)              
+  { 
+    forward();
+    myurl = source().path();
+  }  
+  else if(pos == 2) 
+  {
+    backward();
+    myurl = source().path();
+  }  
+  else if(pos == 3) 
+  {
+    reload();
+    myurl = source().path();
+  }  
+#else
   char buf[MAX_PRINTF_LENGTH];
   QString myurl;
   QWebHistory *hist;
@@ -1875,6 +1937,7 @@ void MyTextBrowser::moveContent(int pos)
     if(hist != NULL) myurl = hist->currentItem().url().toString(); 
     reload();
   }  
+#endif
 
   if(myurl.isEmpty()) return;
   if(opt.arg_debug) printf("moveContent(%s)\n", (const char *) myurl.toUtf8());
@@ -1901,6 +1964,17 @@ void MyTextBrowser::setHTML(QString &text)
 
 void MyTextBrowser::htmlOrSvgDump(const char *filename)
 {
+#ifdef NO_WEBKIT
+  FILE *fout = fopen(filename,"w");
+  if(fout == NULL)
+  {
+    printf("could not write %s\n", filename);
+    return;
+  }
+  QString xml = toHtml();
+  fputs(xml.toUtf8(), fout);
+  fclose(fout);
+#else
   QWebPage *p = page();
   if(p == NULL) return;
   QWebFrame *f = p->currentFrame();
@@ -1915,6 +1989,7 @@ void MyTextBrowser::htmlOrSvgDump(const char *filename)
   QString xml = f->toHtml();
   fputs(xml.toUtf8(), fout);
   fclose(fout);
+#endif  
 }
 
 void MyTextBrowser::slotLinkClicked(const QUrl &link)
@@ -1982,7 +2057,13 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
     if(url.length()+40 > MAX_PRINTF_LENGTH) return;
     sprintf(buf,"text(%d,\"%s\")\n", id,decode(url));
     tcp_send(s,buf,strlen(buf));
+#ifdef NO_WEBKIT
+    if     (url.startsWith("http:"))  setSource(QUrl(url));
+    else if(url.startsWith("https:")) setSource(QUrl(url));
+    else if(!url.contains("://"))     setSource(QUrl(url));
+#else    
     load(link);
+#endif    
   }  
 }
 
@@ -2006,7 +2087,11 @@ void MyTextBrowser::mousePressEvent(QMouseEvent *event)
   pressPos = event->pos();
   sprintf(buf,"QPushButtonPressed(%d) -xy=%d,%d\n",id, event->x(), event->y());
   tcp_send(s,buf,strlen(buf));
+#ifdef NO_WEBKIT
+  QTextBrowser::mousePressEvent(event);
+#else
   QWebView::mousePressEvent(event);
+#endif  
 }
 
 void MyTextBrowser::mouseReleaseEvent(QMouseEvent *event)
@@ -2016,7 +2101,11 @@ void MyTextBrowser::mouseReleaseEvent(QMouseEvent *event)
   if(event == NULL) return;
   sprintf(buf,"QPushButtonReleased(%d) -xy=%d,%d\n",id, event->x(), event->y());
   if(underMouse()) tcp_send(s,buf,strlen(buf));
+#ifdef NO_WEBKIT
+  QTextBrowser::mouseReleaseEvent(event);
+#else
   QWebView::mouseReleaseEvent(event);
+#endif  
 }
 
 void MyTextBrowser::enterEvent(QEvent *event)
@@ -2024,7 +2113,11 @@ void MyTextBrowser::enterEvent(QEvent *event)
   char buf[100];
   sprintf(buf, "mouseEnterLeave(%d,1)\n",id);
   tcp_send(s,buf,strlen(buf));
+#ifdef NO_WEBKIT
+  QTextBrowser::enterEvent(event);
+#else
   QWebView::enterEvent(event);
+#endif  
 }
 
 void MyTextBrowser::leaveEvent(QEvent *event)
@@ -2032,7 +2125,11 @@ void MyTextBrowser::leaveEvent(QEvent *event)
   char buf[100];
   sprintf(buf, "mouseEnterLeave(%d,0)\n",id);
   tcp_send(s,buf,strlen(buf));
+#ifdef NO_WEBKIT
+  QTextBrowser::leaveEvent(event);
+#else
   QWebView::leaveEvent(event);
+#endif  
 }
 
 ////////////////////////////////////////////////////////////////////////////////

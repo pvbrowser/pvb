@@ -90,9 +90,13 @@ void dlgTextBrowser::slotFind()
 {
   find = 1;
   QString pattern = form->lineEditPattern->text();
+#ifdef NO_WEBKIT
+  form->textBrowser->find(pattern);
+#else
   QWebPage *page = form->textBrowser->page();
   if(page == NULL) return;
   page->findText(pattern,QWebPage::FindWrapsAroundDocument);
+#endif
 }
 
 void dlgTextBrowser::slotBack()
@@ -102,12 +106,20 @@ void dlgTextBrowser::slotBack()
     find = 0;
     return;
   }
+#ifdef NO_WEBKIT
+  form->textBrowser->backward();
+#else
   form->textBrowser->back();
+#endif
 }
 
 void dlgTextBrowser::slotHome()
 {
+#ifdef NO_WEBKIT
+  if(homeIsSet) form->textBrowser->setSource(QUrl(home));
+#else
   if(homeIsSet) form->textBrowser->load(QUrl(home));
+#endif
 }
 
 

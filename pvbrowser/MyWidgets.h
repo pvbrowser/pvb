@@ -42,7 +42,9 @@
 #include <QDateTimeEdit>
 #include <QTextEdit>
 #include <QTextBrowser>
+#ifndef NO_WEBKIT
 #include <QWebView>
+#endif
 #include <QListWidget>
 #include <QTreeWidget>
 #include <QDockWidget>
@@ -424,7 +426,11 @@ private:
     int *s,id;
 };
 
+#ifdef NO_WEBKIT
+class MyTextBrowser : public QTextBrowser
+#else
 class MyTextBrowser : public QWebView
+#endif
 {
     Q_OBJECT
 public:
@@ -442,7 +448,10 @@ public slots:
     void slotUrlChanged(const QUrl &link);
 
 protected:
+#ifdef NO_WEBKIT
+#else
     virtual QWebView *createWindow(QWebPage::WebWindowType type);
+#endif    
     virtual void keyPressEvent(QKeyEvent *event);
   
 private:
