@@ -1314,6 +1314,10 @@ def pvSetImage(*args):
   return _pv.pvSetImage(*args)
 pvSetImage = _pv.pvSetImage
 
+def pvSetBufferedJpgImage(*args):
+  return _pv.pvSetBufferedJpgImage(*args)
+pvSetBufferedJpgImage = _pv.pvSetBufferedJpgImage
+
 def pvSetBackgroundColor(*args):
   return _pv.pvSetBackgroundColor(*args)
 pvSetBackgroundColor = _pv.pvSetBackgroundColor
@@ -1417,6 +1421,14 @@ pvPrintHtmlOnPrinter = _pv.pvPrintHtmlOnPrinter
 def pvSetWidgetProperty(*args):
   return _pv.pvSetWidgetProperty(*args)
 pvSetWidgetProperty = _pv.pvSetWidgetProperty
+
+def pvPassThroughOneJpegFrame(*args):
+  return _pv.pvPassThroughOneJpegFrame(*args)
+pvPassThroughOneJpegFrame = _pv.pvPassThroughOneJpegFrame
+
+def pvSendRGBA(*args):
+  return _pv.pvSendRGBA(*args)
+pvSendRGBA = _pv.pvSendRGBA
 
 def pvText(*args):
   return _pv.pvText(*args)
@@ -1585,6 +1597,22 @@ pvMovieControl = _pv.pvMovieControl
 def pvMovieSpeed(*args):
   return _pv.pvMovieSpeed(*args)
 pvMovieSpeed = _pv.pvMovieSpeed
+
+def pvAddTabIcon(*args):
+  return _pv.pvAddTabIcon(*args)
+pvAddTabIcon = _pv.pvAddTabIcon
+
+def pvSetCellWidget(*args):
+  return _pv.pvSetCellWidget(*args)
+pvSetCellWidget = _pv.pvSetCellWidget
+
+def pvSetContentsMargins(*args):
+  return _pv.pvSetContentsMargins(*args)
+pvSetContentsMargins = _pv.pvSetContentsMargins
+
+def pvSetSpacing(*args):
+  return _pv.pvSetSpacing(*args)
+pvSetSpacing = _pv.pvSetSpacing
 
 def pvVtkTcl(*args):
   return _pv.pvVtkTcl(*args)

@@ -227,6 +227,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga80f7897b34d3d4459555dcdd6f180519"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga25dadc86712ae96e7c981feb9c7f7616"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga25dadc86712ae96e7c981feb9c7f7616">pvPassThroughOneJpegFrame</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int source_fhdl, int inputIsSocket=1, int rotate=0)</td></tr>
 <tr class="separator:ga25dadc86712ae96e7c981feb9c7f7616"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4f18e8eab8bc205327b16e4bcd2041ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba">pvSendRGBA</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const unsigned char *image, int width, int height, int rotate=0)</td></tr>
+<tr class="separator:ga4f18e8eab8bc205327b16e4bcd2041ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>These are the output routines </p>
@@ -1317,6 +1319,58 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">&lt;pre&gt;
 </pre><p> Scroll to anchor allowed widgets: QTextBrowser  </p>
+
+</div>
+</div>
+<a class="anchor" id="ga4f18e8eab8bc205327b16e4bcd2041ba"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSendRGBA </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned char *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>width</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>height</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>rotate</em> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Send a RGBA image to the pvbrowser client. Allowed widgets: QImage  </p>
 
 </div>
 </div>

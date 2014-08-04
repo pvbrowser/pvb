@@ -42,6 +42,7 @@ public:
 
   int read(void *buf, int maxlen);
   int poll();
+  int nmesAvailable();
   int write(const void *buf, int len);
   int printf(const char *format, ...);
 

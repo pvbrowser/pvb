@@ -2431,12 +2431,12 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
   {
     while(1)
     {
-      ret = recv(source_fhdl,&buf[0],1,0);
+      ret = recv(source_fhdl,(char *) &buf[0],1,0);
       if(ret <= 0) pvThreadFatal(p,"exit");
       c1 = buf[0];
       if(c1 == 0x0ff)
       {
-         ret = recv(source_fhdl,&buf[0],1,0);
+         ret = recv(source_fhdl,(char *) &buf[0],1,0);
          if(ret <= 0) pvThreadFatal(p,"exit");
          c2 = buf[0];
          if(c2 == 0x0d8)
@@ -2456,7 +2456,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
       c1 = buf[0];
       if(c1 == 0x0ff)
       {
-         ret = recv(source_fhdl,&buf[0],1,0);
+         ret = recv(source_fhdl,(char *) &buf[0],1,0);
          if(ret <= 0) pvThreadFatal(p,"exit");
          c2 = buf[0];
          if(c2 == 0x0d8)
@@ -2480,7 +2480,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
       // read chunk
       while(i < (int) sizeof(output))
       {
-        ret = recv(source_fhdl,&buf[0],1,0);
+        ret = recv(source_fhdl,(char *) &buf[0],1,0);
         if(ret <= 0) pvThreadFatal(p,"exit");
         output[i] = buf[0];
         if(c1==0x0ff && buf[0] == 0x0d9)
@@ -2747,6 +2747,14 @@ char buf[MAX_PRINTF_LENGTH+40];
     sprintf(buf,"changeItem(%d,%d,0,\"%s\")\n",id,index,text);
     pvtcpsend(p, buf, strlen(buf));
   }
+  else if(strstr(bmp_file,".jpg") != NULL || strstr(bmp_file,".JPG") != NULL)
+  {
+    if(download_icon==1) pvDownloadFile(p,bmp_file);
+    sprintf(buf,"changeItem(%d,%d,1,\"%s\")\n",id,index,text);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"(-2,-2)\n%s\n",pvFilename(bmp_file));
+    pvtcpsend(p, buf, strlen(buf));
+  }
   else if(strstr(bmp_file,".png") != NULL || strstr(bmp_file,".PNG") != NULL)
   {
     if(download_icon==1) pvDownloadFile(p,bmp_file);
@@ -2788,6 +2796,14 @@ int pvInsertItem(PARAM *p, int id, int index, const char *bmp_file, const char *
   if(bmp_file == NULL)
   {
     sprintf(buf,"insertItem(%d,%d,0,\"%s\")\n",id,index,p->mytext);
+    pvtcpsend(p, buf, strlen(buf));
+  }
+  else if(strstr(bmp_file,".jpg") != NULL || strstr(bmp_file,".JPG") != NULL)
+  {
+    if(download_icon==1) pvDownloadFile(p,bmp_file);
+    sprintf(buf,"insertItem(%d,%d,1,\"%s\")\n",id,index,p->mytext);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"(-2,-2)\n%s\n",pvFilename(bmp_file));
     pvtcpsend(p, buf, strlen(buf));
   }
   else if(strstr(bmp_file,".png") != NULL || strstr(bmp_file,".PNG") != NULL)
@@ -3727,6 +3743,15 @@ PVB_IMAGE *image;
     pvtcpsend(p, buf, strlen(buf));
     return 0;
   }
+  else if(strstr(bmp_file,".jpg") != NULL || strstr(bmp_file,".JPG") != NULL)
+  {
+    if(download_icon==1) pvDownloadFile(p,bmp_file);
+    sprintf(buf,"setTablePixmap(%d,%d,%d)\n",id,x,y);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"(-2,-2)\n%s\n",pvFilename(bmp_file));
+    pvtcpsend(p, buf, strlen(buf));
+    return 0;
+  }
   else if(strstr(bmp_file,".png") != NULL || strstr(bmp_file,".PNG") != NULL)
   {
     if(download_icon==1) pvDownloadFile(p,bmp_file);
@@ -4447,6 +4472,73 @@ char buf[MAX_PRINTF_LENGTH+40];
   pvtcpsend(p, buf, strlen(buf));
   return 0;
 }
+
+int pvAddTabIcon(PARAM *p, int id, int position, const char *bmp_file, int download_icon)
+{
+char buf[MAX_PRINTF_LENGTH+40];
+
+  pv_length_check(p,bmp_file);
+  if(bmp_file == NULL) return -1;
+
+  if(strstr(bmp_file,".jpg") != NULL || strstr(bmp_file,".JPG") != NULL)
+  {
+    if(download_icon==1) pvDownloadFile(p,bmp_file);
+    sprintf(buf,"addTabIcon(%d,%d,%d,%d)\n",id,position,-2,-2);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"(-2,-2)\n%s\n",pvFilename(bmp_file));
+    pvtcpsend(p, buf, strlen(buf));
+  }
+  else if(strstr(bmp_file,".png") != NULL || strstr(bmp_file,".PNG") != NULL)
+  {
+    if(download_icon==1) pvDownloadFile(p,bmp_file);
+    sprintf(buf,"addTabIcon(%d,%d,%d,%d)\n",id,position,-2,-2);
+    pvtcpsend(p, buf, strlen(buf));
+    sprintf(buf,"(-2,-2)\n%s\n",pvFilename(bmp_file));
+    pvtcpsend(p, buf, strlen(buf));
+  }
+  else
+  {
+    PVB_IMAGE *image;
+    image = pvbImageRead(bmp_file);
+    if(image != NULL && image->bpp == 8)
+    {
+      sprintf(buf,"addTabIcon(%d,%d,%d,%d)\n",id,position,image->w,image->h);
+      pvtcpsend(p, buf, strlen(buf));
+      sprintf(buf,"(%d,%d)\n",image->w,image->h);
+      sendBmpToSocket(p, image);
+    }
+    pvbImageFree(image);
+  }
+  return 0;
+}
+
+int pvSetCellWidget(PARAM *p, int id, int parent, int row, int column)
+{
+  char buf[MAX_PRINTF_LENGTH+40];
+
+  sprintf(buf,"setCellWidget(%d,%d,%d,%d)\n",id,parent,row,column);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvSetContentsMargins(PARAM *p, int id, int xleft, int ytop, int xright, int ybottom)
+{
+  char buf[MAX_PRINTF_LENGTH+40];
+
+  sprintf(buf,"setContentsMargins(%d,%d,%d,%d,%d)\n",id,xleft,ytop,xright,ybottom);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvSetSpacing(PARAM *p, int id, int param)
+{
+  char buf[MAX_PRINTF_LENGTH+40];
+
+  sprintf(buf,"setSpacing(%d,%d)\n",id,param);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 
 /********* vtk functions ************************************************************/
 int pvVtkTcl(PARAM *p, int id, const char *tcl_command)

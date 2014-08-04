@@ -127,6 +127,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a08912fb3facb76a7df5dfd7c09a8359e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5e2023a9ede4e52fe4c1ff67c24d620"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlFifo.html#ac5e2023a9ede4e52fe4c1ff67c24d620">poll</a> ()</td></tr>
 <tr class="separator:ac5e2023a9ede4e52fe4c1ff67c24d620"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf390578b779883aab9a6bf26d785199"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlFifo.html#abf390578b779883aab9a6bf26d785199">nmesAvailable</a> ()</td></tr>
+<tr class="separator:abf390578b779883aab9a6bf26d785199"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a36bf02c0b5756e36e8c077a17086135d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlFifo.html#a36bf02c0b5756e36e8c077a17086135d">write</a> (const void *buf, int len)</td></tr>
 <tr class="separator:a36bf02c0b5756e36e8c077a17086135d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5a3c5eed6e7f435be7056caa4c0f1c74"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlFifo.html#a5a3c5eed6e7f435be7056caa4c0f1c74">printf</a> (const char *format,...)</td></tr>
@@ -233,11 +235,11 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  <a class="code" href="rlwthread_8cpp.html#add1fc47be58864646c38beb168ed8943">rlwrapinit_semaphore</a>(&amp;<a class="code" href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">semaphore</a>, 1000);</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;}</div>
 <div class="ttc" id="rlwthread_8cpp_html_aa4890400a2f2a2590e5092ca2eb43055"><div class="ttname"><a href="rlwthread_8cpp.html#aa4890400a2f2a2590e5092ca2eb43055">rlwthread_mutex_init</a></div><div class="ttdeci">int rlwthread_mutex_init(pthread_mutex_t *mptr, const pthread_mutexattr_t *attr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00160">rlwthread.cpp:160</a></div></div>
-<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
-<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00050">rlfifo.h:50</a></div></div>
-<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
-<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
-<div class="ttc" id="classrlFifo_html_a3d531fbdfc60183e8148a8976233c085"><div class="ttname"><a href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">rlFifo::maxmes</a></div><div class="ttdeci">int maxmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00049">rlfifo.h:49</a></div></div>
+<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
+<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
+<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
+<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00054">rlfifo.h:54</a></div></div>
+<div class="ttc" id="classrlFifo_html_a3d531fbdfc60183e8148a8976233c085"><div class="ttname"><a href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">rlFifo::maxmes</a></div><div class="ttdeci">int maxmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00050">rlfifo.h:50</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_add1fc47be58864646c38beb168ed8943"><div class="ttname"><a href="rlwthread_8cpp.html#add1fc47be58864646c38beb168ed8943">rlwrapinit_semaphore</a></div><div class="ttdeci">int rlwrapinit_semaphore(WSEMAPHORE *s, int cmax)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00268">rlwthread.cpp:268</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -283,17 +285,39 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="rlwthread_8cpp.html#a135dd0aa35c7514bf41dc936155effe9">rlwrapdestroy_semaphore</a>(&amp;<a class="code" href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">semaphore</a>);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 <div class="ttc" id="rlwthread_8cpp_html_a141460ecaae5b543a071b3d4477a5df5"><div class="ttname"><a href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a></div><div class="ttdeci">int rlwthread_mutex_destroy(pthread_mutex_t *mptr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00178">rlwthread.cpp:178</a></div></div>
-<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
+<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
 <div class="ttc" id="structrlFifo_1_1__MessageList___html_a86656b5d1f949705e12b529dcd8fddec"><div class="ttname"><a href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">rlFifo::_MessageList_::next</a></div><div class="ttdeci">struct _MessageList_ * next</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00032">rlfifo.h:32</a></div></div>
-<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
+<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
 <div class="ttc" id="classrlFifo_html_a83b6674754bcdd9277cfaf1959358417"><div class="ttname"><a href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">rlFifo::MessageList</a></div><div class="ttdeci">struct rlFifo::_MessageList_ MessageList</div></div>
-<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
+<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00054">rlfifo.h:54</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_a135dd0aa35c7514bf41dc936155effe9"><div class="ttname"><a href="rlwthread_8cpp.html#a135dd0aa35c7514bf41dc936155effe9">rlwrapdestroy_semaphore</a></div><div class="ttdeci">int rlwrapdestroy_semaphore(WSEMAPHORE *s)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00294">rlwthread.cpp:294</a></div></div>
 <div class="ttc" id="structrlFifo_1_1__MessageList___html_af1c069a571112f990681506fd6840db6"><div class="ttname"><a href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">rlFifo::_MessageList_::mes</a></div><div class="ttdeci">char * mes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00030">rlfifo.h:30</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="abf390578b779883aab9a6bf26d785199"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlFifo::nmesAvailable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlfifo_8cpp_source.html#l00099">99</a> of file <a class="el" href="rlfifo_8cpp_source.html">rlfifo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a> &gt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;}</div>
+<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="ac5e2023a9ede4e52fe4c1ff67c24d620"></a>
 <div class="memitem">
 <div class="memproto">
@@ -312,7 +336,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a> &gt; 0) <span class="keywordflow">return</span> <a class="code" href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729abc9f9e281c3e2749b8b8ef7a5c3c8ed6">DATA_AVAILABLE</a>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span>              <a class="code" href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729a3481ddef5da056c530e1e1f254f43657">NO_DATA_AVAILABLE</a>;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00050">rlfifo.h:50</a></div></div>
+<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
 <div class="ttc" id="classrlFifo_html_a237c8d41991d1acc854466e6a5e98729a3481ddef5da056c530e1e1f254f43657"><div class="ttname"><a href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729a3481ddef5da056c530e1e1f254f43657">rlFifo::NO_DATA_AVAILABLE</a></div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00040">rlfifo.h:40</a></div></div>
 <div class="ttc" id="classrlFifo_html_a237c8d41991d1acc854466e6a5e98729abc9f9e281c3e2749b8b8ef7a5c3c8ed6"><div class="ttname"><a href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729abc9f9e281c3e2749b8b8ef7a5c3c8ed6">rlFifo::DATA_AVAILABLE</a></div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00040">rlfifo.h:40</a></div></div>
 </div><!-- fragment -->
@@ -342,21 +366,21 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8cpp_source.html#l00136">136</a> of file <a class="el" href="rlfifo_8cpp_source.html">rlfifo.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;{</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordtype">char</span> message[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  va_list ap;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  va_start(ap,format);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  ret = <a class="code" href="rlcutil_8cpp.html#aca23e81037b38c599a5155989257c7cb">rlvsnprintf</a>(message, <a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a> - 1, format, ap);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  va_end(ap);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlFifo.html#a36bf02c0b5756e36e8c077a17086135d">write</a>(message,strlen(message));</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlfifo_8cpp_source.html#l00142">142</a> of file <a class="el" href="rlfifo_8cpp_source.html">rlfifo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;{</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">int</span> ret;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">char</span> message[<a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a>]; <span class="comment">// should be big enough</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  va_list ap;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  va_start(ap,format);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  ret = <a class="code" href="rlcutil_8cpp.html#aca23e81037b38c599a5155989257c7cb">rlvsnprintf</a>(message, <a class="code" href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a> - 1, format, ap);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  va_end(ap);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keywordflow">if</span>(ret &lt; 0) <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlFifo.html#a36bf02c0b5756e36e8c077a17086135d">write</a>(message,strlen(message));</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 <div class="ttc" id="rldefine_8h_html_a1f828641826ba0bf319ef87eaa34e5ce"><div class="ttname"><a href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a></div><div class="ttdeci">#define rl_PRINTF_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="rldefine_8h_source.html#l00047">rldefine.h:47</a></div></div>
 <div class="ttc" id="rlcutil_8cpp_html_aca23e81037b38c599a5155989257c7cb"><div class="ttname"><a href="rlcutil_8cpp.html#aca23e81037b38c599a5155989257c7cb">rlvsnprintf</a></div><div class="ttdeci">int rlvsnprintf(char *text, int len, const char *format, va_list ap)</div><div class="ttdef"><b>Definition:</b> <a href="rlcutil_8cpp_source.html#l00163">rlcutil.cpp:163</a></div></div>
-<div class="ttc" id="classrlFifo_html_a36bf02c0b5756e36e8c077a17086135d"><div class="ttname"><a href="classrlFifo.html#a36bf02c0b5756e36e8c077a17086135d">rlFifo::write</a></div><div class="ttdeci">int write(const void *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8cpp_source.html#l00099">rlfifo.cpp:99</a></div></div>
+<div class="ttc" id="classrlFifo_html_a36bf02c0b5756e36e8c077a17086135d"><div class="ttname"><a href="classrlFifo.html#a36bf02c0b5756e36e8c077a17086135d">rlFifo::write</a></div><div class="ttdeci">int write(const void *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8cpp_source.html#l00105">rlfifo.cpp:105</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -426,12 +450,12 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <span class="keywordflow">return</span> retlen;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 <div class="ttc" id="rlwthread_8cpp_html_ab5944701c53dfdb03ae83fe87540e794"><div class="ttname"><a href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a></div><div class="ttdeci">int rlwthread_mutex_lock(pthread_mutex_t *mptr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00193">rlwthread.cpp:193</a></div></div>
-<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
-<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00050">rlfifo.h:50</a></div></div>
-<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
+<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
+<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
+<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
 <div class="ttc" id="classrlFifo_html_a83b6674754bcdd9277cfaf1959358417"><div class="ttname"><a href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">rlFifo::MessageList</a></div><div class="ttdeci">struct rlFifo::_MessageList_ MessageList</div></div>
 <div class="ttc" id="classrlFifo_html_a237c8d41991d1acc854466e6a5e98729a18f59e21b7b91eda97335c12a777dc8f"><div class="ttname"><a href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729a18f59e21b7b91eda97335c12a777dc8f">rlFifo::MESSAGE_TO_BIG</a></div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00040">rlfifo.h:40</a></div></div>
-<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
+<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00054">rlfifo.h:54</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_ac036b3f6e55ae32af1c5b601b7735452"><div class="ttname"><a href="rlwthread_8cpp.html#ac036b3f6e55ae32af1c5b601b7735452">rlwrapincrement_semaphore</a></div><div class="ttdeci">int rlwrapincrement_semaphore(WSEMAPHORE *s)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00310">rlwthread.cpp:310</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_acda0e664c904c14a8f5ed74bf1d2ddef"><div class="ttname"><a href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a></div><div class="ttdeci">int rlwthread_mutex_unlock(pthread_mutex_t *mptr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00238">rlwthread.cpp:238</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_aefb3ac3b4781672f3a6062e033d783e8"><div class="ttname"><a href="rlwthread_8cpp.html#aefb3ac3b4781672f3a6062e033d783e8">rlwrapwait_semaphore</a></div><div class="ttdeci">int rlwrapwait_semaphore(WSEMAPHORE *s)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00341">rlwthread.cpp:341</a></div></div>
@@ -464,52 +488,52 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8cpp_source.html#l00099">99</a> of file <a class="el" href="rlfifo_8cpp_source.html">rlfifo.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;{</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">MessageList</a> *ptr;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">maxmes</a> == 0);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a> &gt;= <a class="code" href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">maxmes</a>) <span class="keywordflow">return</span> <a class="code" href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729ac206db34ec3d4d4460d3ff3866af48e6">FIFO_FULL</a>;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(&amp;<a class="code" href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">mutex</a>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a> == NULL)</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  {</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a> = <span class="keyword">new</span> <a class="code" href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">MessageList</a>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">mes</a>  = <span class="keyword">new</span> <span class="keywordtype">char</span> [len];</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a045e8ca51998ca2a54060b5a0374adbd">len</a>  = len;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a> = NULL;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a>++;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    memcpy(<a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">mes</a>,buf,len);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(&amp;<a class="code" href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">mutex</a>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="rlwthread_8cpp.html#ac036b3f6e55ae32af1c5b601b7735452">rlwrapincrement_semaphore</a>(&amp;<a class="code" href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">semaphore</a>);</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  }</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="comment">// go to end of list</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  ptr = <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordflow">while</span>(ptr-&gt;next != NULL) ptr = ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a>;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a> = <span class="keyword">new</span> <a class="code" href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">MessageList</a>;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  ptr = ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">mes</a>  = <span class="keyword">new</span> <span class="keywordtype">char</span> [len];</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  ptr-&gt;len  = len;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  ptr-&gt;next = NULL;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a>++;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  memcpy(ptr-&gt;mes,buf,len);</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(&amp;<a class="code" href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">mutex</a>);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <a class="code" href="rlwthread_8cpp.html#ac036b3f6e55ae32af1c5b601b7735452">rlwrapincrement_semaphore</a>(&amp;<a class="code" href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">semaphore</a>);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordflow">return</span> len;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlfifo_8cpp_source.html#l00105">105</a> of file <a class="el" href="rlfifo_8cpp_source.html">rlfifo.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">MessageList</a> *ptr;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">maxmes</a> == 0);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">else</span> <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a> &gt;= <a class="code" href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">maxmes</a>) <span class="keywordflow">return</span> <a class="code" href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729ac206db34ec3d4d4460d3ff3866af48e6">FIFO_FULL</a>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <a class="code" href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a>(&amp;<a class="code" href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">mutex</a>);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a> == NULL)</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a> = <span class="keyword">new</span> <a class="code" href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">MessageList</a>;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">mes</a>  = <span class="keyword">new</span> <span class="keywordtype">char</span> [len];</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a045e8ca51998ca2a54060b5a0374adbd">len</a>  = len;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a> = NULL;</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a>++;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    memcpy(<a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">mes</a>,buf,len);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(&amp;<a class="code" href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">mutex</a>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <a class="code" href="rlwthread_8cpp.html#ac036b3f6e55ae32af1c5b601b7735452">rlwrapincrement_semaphore</a>(&amp;<a class="code" href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">semaphore</a>);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  }</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="comment">// go to end of list</span></div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  ptr = <a class="code" href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">list</a>;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordflow">while</span>(ptr-&gt;next != NULL) ptr = ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a>;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a> = <span class="keyword">new</span> <a class="code" href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">MessageList</a>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  ptr = ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">next</a>;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  ptr-&gt;<a class="code" href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">mes</a>  = <span class="keyword">new</span> <span class="keywordtype">char</span> [len];</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  ptr-&gt;len  = len;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  ptr-&gt;next = NULL;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <a class="code" href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">nmes</a>++;</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  memcpy(ptr-&gt;mes,buf,len);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a>(&amp;<a class="code" href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">mutex</a>);</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <a class="code" href="rlwthread_8cpp.html#ac036b3f6e55ae32af1c5b601b7735452">rlwrapincrement_semaphore</a>(&amp;<a class="code" href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">semaphore</a>);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordflow">return</span> len;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
 <div class="ttc" id="classrlFifo_html_a237c8d41991d1acc854466e6a5e98729ac206db34ec3d4d4460d3ff3866af48e6"><div class="ttname"><a href="classrlFifo.html#a237c8d41991d1acc854466e6a5e98729ac206db34ec3d4d4460d3ff3866af48e6">rlFifo::FIFO_FULL</a></div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00040">rlfifo.h:40</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_ab5944701c53dfdb03ae83fe87540e794"><div class="ttname"><a href="rlwthread_8cpp.html#ab5944701c53dfdb03ae83fe87540e794">rlwthread_mutex_lock</a></div><div class="ttdeci">int rlwthread_mutex_lock(pthread_mutex_t *mptr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00193">rlwthread.cpp:193</a></div></div>
-<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
-<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00050">rlfifo.h:50</a></div></div>
+<div class="ttc" id="classrlFifo_html_ada06ff5c81712e3c4afd55e2faf12373"><div class="ttname"><a href="classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373">rlFifo::semaphore</a></div><div class="ttdeci">WSEMAPHORE semaphore</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
+<div class="ttc" id="classrlFifo_html_aeaa98358894519c14b8afac6d237d68d"><div class="ttname"><a href="classrlFifo.html#aeaa98358894519c14b8afac6d237d68d">rlFifo::nmes</a></div><div class="ttdeci">int nmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
 <div class="ttc" id="structrlFifo_1_1__MessageList___html_a86656b5d1f949705e12b529dcd8fddec"><div class="ttname"><a href="structrlFifo_1_1__MessageList__.html#a86656b5d1f949705e12b529dcd8fddec">rlFifo::_MessageList_::next</a></div><div class="ttdeci">struct _MessageList_ * next</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00032">rlfifo.h:32</a></div></div>
-<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00051">rlfifo.h:51</a></div></div>
+<div class="ttc" id="classrlFifo_html_aacd79fe78ae8ef03540fdade832bc331"><div class="ttname"><a href="classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331">rlFifo::list</a></div><div class="ttdeci">MessageList * list</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00052">rlfifo.h:52</a></div></div>
 <div class="ttc" id="classrlFifo_html_a83b6674754bcdd9277cfaf1959358417"><div class="ttname"><a href="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417">rlFifo::MessageList</a></div><div class="ttdeci">struct rlFifo::_MessageList_ MessageList</div></div>
-<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00053">rlfifo.h:53</a></div></div>
+<div class="ttc" id="classrlFifo_html_ae4ffc9c9834ab8df7d9b5a4c6a933050"><div class="ttname"><a href="classrlFifo.html#ae4ffc9c9834ab8df7d9b5a4c6a933050">rlFifo::mutex</a></div><div class="ttdeci">pthread_mutex_t mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00054">rlfifo.h:54</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_ac036b3f6e55ae32af1c5b601b7735452"><div class="ttname"><a href="rlwthread_8cpp.html#ac036b3f6e55ae32af1c5b601b7735452">rlwrapincrement_semaphore</a></div><div class="ttdeci">int rlwrapincrement_semaphore(WSEMAPHORE *s)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00310">rlwthread.cpp:310</a></div></div>
-<div class="ttc" id="classrlFifo_html_a3d531fbdfc60183e8148a8976233c085"><div class="ttname"><a href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">rlFifo::maxmes</a></div><div class="ttdeci">int maxmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00049">rlfifo.h:49</a></div></div>
+<div class="ttc" id="classrlFifo_html_a3d531fbdfc60183e8148a8976233c085"><div class="ttname"><a href="classrlFifo.html#a3d531fbdfc60183e8148a8976233c085">rlFifo::maxmes</a></div><div class="ttdeci">int maxmes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00050">rlfifo.h:50</a></div></div>
 <div class="ttc" id="rlwthread_8cpp_html_acda0e664c904c14a8f5ed74bf1d2ddef"><div class="ttname"><a href="rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef">rlwthread_mutex_unlock</a></div><div class="ttdeci">int rlwthread_mutex_unlock(pthread_mutex_t *mptr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00238">rlwthread.cpp:238</a></div></div>
 <div class="ttc" id="structrlFifo_1_1__MessageList___html_a045e8ca51998ca2a54060b5a0374adbd"><div class="ttname"><a href="structrlFifo_1_1__MessageList__.html#a045e8ca51998ca2a54060b5a0374adbd">rlFifo::_MessageList_::len</a></div><div class="ttdeci">int len</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00031">rlfifo.h:31</a></div></div>
 <div class="ttc" id="structrlFifo_1_1__MessageList___html_af1c069a571112f990681506fd6840db6"><div class="ttname"><a href="structrlFifo_1_1__MessageList__.html#af1c069a571112f990681506fd6840db6">rlFifo::_MessageList_::mes</a></div><div class="ttdeci">char * mes</div><div class="ttdef"><b>Definition:</b> <a href="rlfifo_8h_source.html#l00030">rlfifo.h:30</a></div></div>
@@ -535,7 +559,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00051">51</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
+<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00052">52</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
 
 </div>
 </div>
@@ -557,7 +581,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00049">49</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
+<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00050">50</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
 
 </div>
 </div>
@@ -579,7 +603,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00053">53</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
+<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00054">54</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +625,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00050">50</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
+<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00051">51</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
 
 </div>
 </div>
@@ -623,7 +647,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00052">52</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
+<p>Definition at line <a class="el" href="rlfifo_8h_source.html#l00053">53</a> of file <a class="el" href="rlfifo_8h_source.html">rlfifo.h</a>.</p>
 
 </div>
 </div>

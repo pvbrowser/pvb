@@ -201,6 +201,7 @@ int rlSerial::openDevice(const char *devicename, int speed, int block, int rtsct
   if(speed == B3500000) baudrate = 3500000;
   if(speed == B4000000) baudrate = 4000000;
 
+  ccsize = sizeof(cc);
   GetCommConfig(hdl,&cc,&ccsize);
   //cc.dwSize            = sizeof(cc);  // size of structure
   //cc.wVersion          = 1;           // version of structure

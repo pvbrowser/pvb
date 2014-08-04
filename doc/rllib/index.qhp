@@ -808,6 +808,7 @@
               </section>
               <section title="rlFifo" ref="classrlFifo.html#a6e853c4e3f05a614a3d1e757a18f4453" />
               <section title="~rlFifo" ref="classrlFifo.html#aff2dc648f1edd1ae2359b4f2d47e6847" />
+              <section title="nmesAvailable" ref="classrlFifo.html#abf390578b779883aab9a6bf26d785199" />
               <section title="poll" ref="classrlFifo.html#ac5e2023a9ede4e52fe4c1ff67c24d620" />
               <section title="printf" ref="classrlFifo.html#a5a3c5eed6e7f435be7056caa4c0f1c74" />
               <section title="read" ref="classrlFifo.html#a08912fb3facb76a7df5dfd7c09a8359e" />
@@ -3213,6 +3214,7 @@
                 </section>
                 <section title="rlFifo" ref="classrlFifo.html#a6e853c4e3f05a614a3d1e757a18f4453" />
                 <section title="~rlFifo" ref="classrlFifo.html#aff2dc648f1edd1ae2359b4f2d47e6847" />
+                <section title="nmesAvailable" ref="classrlFifo.html#abf390578b779883aab9a6bf26d785199" />
                 <section title="poll" ref="classrlFifo.html#ac5e2023a9ede4e52fe4c1ff67c24d620" />
                 <section title="printf" ref="classrlFifo.html#a5a3c5eed6e7f435be7056caa4c0f1c74" />
                 <section title="read" ref="classrlFifo.html#a08912fb3facb76a7df5dfd7c09a8359e" />
@@ -5833,6 +5835,7 @@
       <keyword name="~rlFifo" id="rlFifo::~rlFifo" ref="classrlFifo.html#aff2dc648f1edd1ae2359b4f2d47e6847" />
       <keyword name="read" id="rlFifo::read" ref="classrlFifo.html#a08912fb3facb76a7df5dfd7c09a8359e" />
       <keyword name="poll" id="rlFifo::poll" ref="classrlFifo.html#ac5e2023a9ede4e52fe4c1ff67c24d620" />
+      <keyword name="nmesAvailable" id="rlFifo::nmesAvailable" ref="classrlFifo.html#abf390578b779883aab9a6bf26d785199" />
       <keyword name="write" id="rlFifo::write" ref="classrlFifo.html#a36bf02c0b5756e36e8c077a17086135d" />
       <keyword name="printf" id="rlFifo::printf" ref="classrlFifo.html#a5a3c5eed6e7f435be7056caa4c0f1c74" />
       <keyword name="MessageList" id="rlFifo::MessageList" ref="classrlFifo.html#a83b6674754bcdd9277cfaf1959358417" />

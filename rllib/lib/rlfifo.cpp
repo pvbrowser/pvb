@@ -96,6 +96,12 @@ int rlFifo::poll()
   return              NO_DATA_AVAILABLE;
 }
 
+int rlFifo::nmesAvailable()
+{
+  if(nmes > 0) return nmes;
+  return 0;
+}
+
 int rlFifo::write(const void *buf, int len)
 {
   MessageList *ptr;

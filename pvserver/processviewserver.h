@@ -2744,7 +2744,32 @@ speed in percent
 Allowed widgets QLabel
 </pre> */
 int pvMovieSpeed(PARAM *p, int id, int speed);
+/*! <pre>
+add tab icon
+
+Allowed widgets QTabWidget QToolBox
+</pre> */
+int pvAddTabIcon(PARAM *p, int id, int position, const char *bmp_file, int download_icon=1);
+/*! <pre>
+set cell widget within a table
+
+Allowed widgets QTable
+</pre> */
+int pvSetCellWidget(PARAM *p, int id, int parent, int row, int column);
+/*! <pre>
+set margins within layout
+
+Allowed widgets Layouts
+</pre> */
+int pvSetContentsMargins(PARAM *p, int id, int xleft, int ytop, int xright, int ybottom);
+/*! <pre>
+set spacing within layout
+
+Allowed widgets Layouts
+</pre> */
+int pvSetSpacing(PARAM *p, int id, int param);
 /** @} */ // end of group
+
 
 /** @defgroup VTK Visualization Tool Kit
  *  These are the vtk output routines

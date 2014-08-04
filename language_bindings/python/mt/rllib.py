@@ -296,6 +296,10 @@ rlUdpSocket_swigregister(rlUdpSocket)
 def rlwsa():
   return _rllib.rlwsa()
 rlwsa = _rllib.rlwsa
+
+def rlScoketWrite(*args):
+  return _rllib.rlScoketWrite(*args)
+rlScoketWrite = _rllib.rlScoketWrite
 class rlSocket(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlSocket, name, value)
@@ -768,6 +772,7 @@ class rlFifo(_object):
     FIFO_FULL = _rllib.rlFifo_FIFO_FULL
     def read(self, *args): return _rllib.rlFifo_read(self, *args)
     def poll(self): return _rllib.rlFifo_poll(self)
+    def nmesAvailable(self): return _rllib.rlFifo_nmesAvailable(self)
     def write(self, *args): return _rllib.rlFifo_write(self, *args)
     def printf(self, *args): return _rllib.rlFifo_printf(self, *args)
 rlFifo_swigregister = _rllib.rlFifo_swigregister
@@ -1182,6 +1187,12 @@ class rlPlcState(_object):
     def maxInt(self): return _rllib.rlPlcState_maxInt(self)
     def maxFloat(self): return _rllib.rlPlcState_maxFloat(self)
     def maxDouble(self): return _rllib.rlPlcState_maxDouble(self)
+    def getInt(self, *args): return _rllib.rlPlcState_getInt(self, *args)
+    def getFloat(self, *args): return _rllib.rlPlcState_getFloat(self, *args)
+    def getDouble(self, *args): return _rllib.rlPlcState_getDouble(self, *args)
+    def getOldInt(self, *args): return _rllib.rlPlcState_getOldInt(self, *args)
+    def getOldFloat(self, *args): return _rllib.rlPlcState_getOldFloat(self, *args)
+    def getOldDouble(self, *args): return _rllib.rlPlcState_getOldDouble(self, *args)
     __swig_setmethods__["shm"] = _rllib.rlPlcState_shm_set
     __swig_getmethods__["shm"] = _rllib.rlPlcState_shm_get
     if _newclass:shm = _swig_property(_rllib.rlPlcState_shm_get, _rllib.rlPlcState_shm_set)
@@ -1440,6 +1451,7 @@ class rlSpawn(_object):
     def write(self, *args): return _rllib.rlSpawn_write(self, *args)
     def printf(self, *args): return _rllib.rlSpawn_printf(self, *args)
     def printAll(self): return _rllib.rlSpawn_printAll(self)
+    def getFilepointer(self): return _rllib.rlSpawn_getFilepointer(self)
     __swig_setmethods__["pid"] = _rllib.rlSpawn_pid_set
     __swig_getmethods__["pid"] = _rllib.rlSpawn_pid_get
     if _newclass:pid = _swig_property(_rllib.rlSpawn_pid_get, _rllib.rlSpawn_pid_set)
@@ -1760,7 +1772,8 @@ class rlWebcam(_object):
     def setUrl(self, *args): return _rllib.rlWebcam_setUrl(self, *args)
     def disconnect(self): return _rllib.rlWebcam_disconnect(self)
     def getSnapshot(self, timeout=3000): return _rllib.rlWebcam_getSnapshot(self, timeout)
-    def getFrame(self, timeout=3000): return _rllib.rlWebcam_getFrame(self, timeout)
+    def getFrame(self, timeout=3000, requestOnly=0): return _rllib.rlWebcam_getFrame(self, timeout, requestOnly)
+    def getFrameBuffer(self, *args): return _rllib.rlWebcam_getFrameBuffer(self, *args)
     def getUrl(self): return _rllib.rlWebcam_getUrl(self)
     def getHost(self): return _rllib.rlWebcam_getHost(self)
     def getPort(self): return _rllib.rlWebcam_getPort(self)
@@ -1771,6 +1784,9 @@ class rlWebcam(_object):
     __swig_setmethods__["filename"] = _rllib.rlWebcam_filename_set
     __swig_getmethods__["filename"] = _rllib.rlWebcam_filename_get
     if _newclass:filename = _swig_property(_rllib.rlWebcam_filename_get, _rllib.rlWebcam_filename_set)
+    __swig_setmethods__["sock"] = _rllib.rlWebcam_sock_set
+    __swig_getmethods__["sock"] = _rllib.rlWebcam_sock_get
+    if _newclass:sock = _swig_property(_rllib.rlWebcam_sock_get, _rllib.rlWebcam_sock_set)
 rlWebcam_swigregister = _rllib.rlWebcam_swigregister
 rlWebcam_swigregister(rlWebcam)
 

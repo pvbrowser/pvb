@@ -6520,6 +6520,44 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlScoketWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int *arg1 = (int *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlScoketWrite",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_int, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlScoketWrite" "', argument " "1"" of type '" "int *""'"); 
+  }
+  arg1 = reinterpret_cast< int * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlScoketWrite" "', argument " "2"" of type '" "void const *""'"); 
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlScoketWrite" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)rlScoketWrite(arg1,(void const *)arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_rlSocket__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -14164,6 +14202,28 @@ SWIGINTERN PyObject *_wrap_rlFifo_poll(PyObject *SWIGUNUSEDPARM(self), PyObject 
   }
   arg1 = reinterpret_cast< rlFifo * >(argp1);
   result = (int)(arg1)->poll();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlFifo_nmesAvailable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlFifo *arg1 = (rlFifo *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlFifo_nmesAvailable",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlFifo, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlFifo_nmesAvailable" "', argument " "1"" of type '" "rlFifo *""'"); 
+  }
+  arg1 = reinterpret_cast< rlFifo * >(argp1);
+  result = (int)(arg1)->nmesAvailable();
   resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
@@ -22775,6 +22835,192 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlPlcState_getInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlPlcState_getInt",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlPlcState, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlPlcState_getInt" "', argument " "1"" of type '" "rlPlcState *""'"); 
+  }
+  arg1 = reinterpret_cast< rlPlcState * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlPlcState_getInt" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)(arg1)->getInt(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPlcState_getFloat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlPlcState_getFloat",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlPlcState, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlPlcState_getFloat" "', argument " "1"" of type '" "rlPlcState *""'"); 
+  }
+  arg1 = reinterpret_cast< rlPlcState * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlPlcState_getFloat" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (float)(arg1)->getFloat(arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPlcState_getDouble(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlPlcState_getDouble",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlPlcState, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlPlcState_getDouble" "', argument " "1"" of type '" "rlPlcState *""'"); 
+  }
+  arg1 = reinterpret_cast< rlPlcState * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlPlcState_getDouble" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (double)(arg1)->getDouble(arg2);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPlcState_getOldInt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlPlcState_getOldInt",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlPlcState, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlPlcState_getOldInt" "', argument " "1"" of type '" "rlPlcState *""'"); 
+  }
+  arg1 = reinterpret_cast< rlPlcState * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlPlcState_getOldInt" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)(arg1)->getOldInt(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPlcState_getOldFloat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  float result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlPlcState_getOldFloat",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlPlcState, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlPlcState_getOldFloat" "', argument " "1"" of type '" "rlPlcState *""'"); 
+  }
+  arg1 = reinterpret_cast< rlPlcState * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlPlcState_getOldFloat" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (float)(arg1)->getOldFloat(arg2);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPlcState_getOldDouble(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  double result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlPlcState_getOldDouble",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlPlcState, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlPlcState_getOldDouble" "', argument " "1"" of type '" "rlPlcState *""'"); 
+  }
+  arg1 = reinterpret_cast< rlPlcState * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlPlcState_getOldDouble" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (double)(arg1)->getOldDouble(arg2);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlPlcState_shm_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlPlcState *arg1 = (rlPlcState *) 0 ;
@@ -28011,6 +28257,28 @@ SWIGINTERN PyObject *_wrap_rlSpawn_printAll(PyObject *SWIGUNUSEDPARM(self), PyOb
   arg1 = reinterpret_cast< rlSpawn * >(argp1);
   (arg1)->printAll();
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSpawn_getFilepointer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSpawn *arg1 = (rlSpawn *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  FILE *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlSpawn_getFilepointer",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSpawn, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSpawn_getFilepointer" "', argument " "1"" of type '" "rlSpawn *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSpawn * >(argp1);
+  result = (FILE *)(arg1)->getFilepointer();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_FILE, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -35494,6 +35762,46 @@ SWIGINTERN PyObject *_wrap_rlWebcam_getFrame__SWIG_0(PyObject *SWIGUNUSEDPARM(se
   PyObject *resultobj = 0;
   rlWebcam *arg1 = (rlWebcam *) 0 ;
   int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlWebcam_getFrame",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlWebcam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlWebcam_getFrame" "', argument " "1"" of type '" "rlWebcam *""'"); 
+  }
+  arg1 = reinterpret_cast< rlWebcam * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlWebcam_getFrame" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlWebcam_getFrame" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (char *)(arg1)->getFrame(arg2,arg3);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlWebcam_getFrame__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  int arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
   int val2 ;
@@ -35521,7 +35829,7 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_rlWebcam_getFrame__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+SWIGINTERN PyObject *_wrap_rlWebcam_getFrame__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlWebcam *arg1 = (rlWebcam *) 0 ;
   void *argp1 = 0 ;
@@ -35545,12 +35853,12 @@ fail:
 
 SWIGINTERN PyObject *_wrap_rlWebcam_getFrame(PyObject *self, PyObject *args) {
   int argc;
-  PyObject *argv[3];
+  PyObject *argv[4];
   int ii;
   
   if (!PyTuple_Check(args)) SWIG_fail;
   argc = args ? (int)PyObject_Length(args) : 0;
-  for (ii = 0; (ii < 2) && (ii < argc); ii++) {
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
     argv[ii] = PyTuple_GET_ITEM(args,ii);
   }
   if (argc == 1) {
@@ -35559,7 +35867,7 @@ SWIGINTERN PyObject *_wrap_rlWebcam_getFrame(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_rlWebcam, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      return _wrap_rlWebcam_getFrame__SWIG_1(self, args);
+      return _wrap_rlWebcam_getFrame__SWIG_2(self, args);
     }
   }
   if (argc == 2) {
@@ -35573,7 +35881,28 @@ SWIGINTERN PyObject *_wrap_rlWebcam_getFrame(PyObject *self, PyObject *args) {
         _v = SWIG_CheckState(res);
       }
       if (_v) {
-        return _wrap_rlWebcam_getFrame__SWIG_0(self, args);
+        return _wrap_rlWebcam_getFrame__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_rlWebcam, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      {
+        int res = SWIG_AsVal_int(argv[1], NULL);
+        _v = SWIG_CheckState(res);
+      }
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_rlWebcam_getFrame__SWIG_0(self, args);
+        }
       }
     }
   }
@@ -35581,8 +35910,164 @@ SWIGINTERN PyObject *_wrap_rlWebcam_getFrame(PyObject *self, PyObject *args) {
 fail:
   SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'rlWebcam_getFrame'.\n"
     "  Possible C/C++ prototypes are:\n"
+    "    rlWebcam::getFrame(int,int)\n"
     "    rlWebcam::getFrame(int)\n"
     "    rlWebcam::getFrame()\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlWebcam_getFrameBuffer__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:rlWebcam_getFrameBuffer",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlWebcam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlWebcam_getFrameBuffer" "', argument " "1"" of type '" "rlWebcam *""'"); 
+  }
+  arg1 = reinterpret_cast< rlWebcam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlWebcam_getFrameBuffer" "', argument " "2"" of type '" "unsigned char *""'"); 
+  }
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlWebcam_getFrameBuffer" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "rlWebcam_getFrameBuffer" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  result = (int)(arg1)->getFrameBuffer(arg2,arg3,arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlWebcam_getFrameBuffer__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlWebcam_getFrameBuffer",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlWebcam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlWebcam_getFrameBuffer" "', argument " "1"" of type '" "rlWebcam *""'"); 
+  }
+  arg1 = reinterpret_cast< rlWebcam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlWebcam_getFrameBuffer" "', argument " "2"" of type '" "unsigned char *""'"); 
+  }
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlWebcam_getFrameBuffer" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)(arg1)->getFrameBuffer(arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlWebcam_getFrameBuffer(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[5];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 4) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_rlWebcam, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_char, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_rlWebcam_getFrameBuffer__SWIG_1(self, args);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_rlWebcam, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_unsigned_char, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          {
+            int res = SWIG_AsVal_int(argv[3], NULL);
+            _v = SWIG_CheckState(res);
+          }
+          if (_v) {
+            return _wrap_rlWebcam_getFrameBuffer__SWIG_0(self, args);
+          }
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'rlWebcam_getFrameBuffer'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlWebcam::getFrameBuffer(unsigned char *,int,int)\n"
+    "    rlWebcam::getFrameBuffer(unsigned char *,int)\n");
   return 0;
 }
 
@@ -35779,6 +36264,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlWebcam_sock_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  rlSocket *arg2 = (rlSocket *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlWebcam_sock_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlWebcam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlWebcam_sock_set" "', argument " "1"" of type '" "rlWebcam *""'"); 
+  }
+  arg1 = reinterpret_cast< rlWebcam * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_rlSocket, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlWebcam_sock_set" "', argument " "2"" of type '" "rlSocket *""'"); 
+  }
+  arg2 = reinterpret_cast< rlSocket * >(argp2);
+  if (arg1) (arg1)->sock = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlWebcam_sock_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlWebcam *arg1 = (rlWebcam *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  rlSocket *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlWebcam_sock_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlWebcam, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlWebcam_sock_get" "', argument " "1"" of type '" "rlWebcam *""'"); 
+  }
+  arg1 = reinterpret_cast< rlWebcam * >(argp1);
+  result = (rlSocket *) ((arg1)->sock);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_rlSocket, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *rlWebcam_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -35897,6 +36434,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlUdpSocket_writeflag_get", _wrap_rlUdpSocket_writeflag_get, METH_VARARGS, NULL},
 	 { (char *)"rlUdpSocket_swigregister", rlUdpSocket_swigregister, METH_VARARGS, NULL},
 	 { (char *)"rlwsa", _wrap_rlwsa, METH_VARARGS, NULL},
+	 { (char *)"rlScoketWrite", _wrap_rlScoketWrite, METH_VARARGS, NULL},
 	 { (char *)"new_rlSocket", _wrap_new_rlSocket, METH_VARARGS, NULL},
 	 { (char *)"delete_rlSocket", _wrap_delete_rlSocket, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_setAdr", _wrap_rlSocket_setAdr, METH_VARARGS, NULL},
@@ -36086,6 +36624,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"delete_rlFifo", _wrap_delete_rlFifo, METH_VARARGS, NULL},
 	 { (char *)"rlFifo_read", _wrap_rlFifo_read, METH_VARARGS, NULL},
 	 { (char *)"rlFifo_poll", _wrap_rlFifo_poll, METH_VARARGS, NULL},
+	 { (char *)"rlFifo_nmesAvailable", _wrap_rlFifo_nmesAvailable, METH_VARARGS, NULL},
 	 { (char *)"rlFifo_write", _wrap_rlFifo_write, METH_VARARGS, NULL},
 	 { (char *)"rlFifo_printf", _wrap_rlFifo_printf, METH_VARARGS, NULL},
 	 { (char *)"rlFifo_swigregister", rlFifo_swigregister, METH_VARARGS, NULL},
@@ -36275,6 +36814,12 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlPlcState_maxInt", _wrap_rlPlcState_maxInt, METH_VARARGS, NULL},
 	 { (char *)"rlPlcState_maxFloat", _wrap_rlPlcState_maxFloat, METH_VARARGS, NULL},
 	 { (char *)"rlPlcState_maxDouble", _wrap_rlPlcState_maxDouble, METH_VARARGS, NULL},
+	 { (char *)"rlPlcState_getInt", _wrap_rlPlcState_getInt, METH_VARARGS, NULL},
+	 { (char *)"rlPlcState_getFloat", _wrap_rlPlcState_getFloat, METH_VARARGS, NULL},
+	 { (char *)"rlPlcState_getDouble", _wrap_rlPlcState_getDouble, METH_VARARGS, NULL},
+	 { (char *)"rlPlcState_getOldInt", _wrap_rlPlcState_getOldInt, METH_VARARGS, NULL},
+	 { (char *)"rlPlcState_getOldFloat", _wrap_rlPlcState_getOldFloat, METH_VARARGS, NULL},
+	 { (char *)"rlPlcState_getOldDouble", _wrap_rlPlcState_getOldDouble, METH_VARARGS, NULL},
 	 { (char *)"rlPlcState_shm_set", _wrap_rlPlcState_shm_set, METH_VARARGS, NULL},
 	 { (char *)"rlPlcState_shm_get", _wrap_rlPlcState_shm_get, METH_VARARGS, NULL},
 	 { (char *)"rlPlcState_swigregister", rlPlcState_swigregister, METH_VARARGS, NULL},
@@ -36378,6 +36923,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSpawn_write", _wrap_rlSpawn_write, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_printf", _wrap_rlSpawn_printf, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_printAll", _wrap_rlSpawn_printAll, METH_VARARGS, NULL},
+	 { (char *)"rlSpawn_getFilepointer", _wrap_rlSpawn_getFilepointer, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_pid_set", _wrap_rlSpawn_pid_set, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_pid_get", _wrap_rlSpawn_pid_get, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_swigregister", rlSpawn_swigregister, METH_VARARGS, NULL},
@@ -36563,6 +37109,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlWebcam_disconnect", _wrap_rlWebcam_disconnect, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_getSnapshot", _wrap_rlWebcam_getSnapshot, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_getFrame", _wrap_rlWebcam_getFrame, METH_VARARGS, NULL},
+	 { (char *)"rlWebcam_getFrameBuffer", _wrap_rlWebcam_getFrameBuffer, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_getUrl", _wrap_rlWebcam_getUrl, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_getHost", _wrap_rlWebcam_getHost, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_getPort", _wrap_rlWebcam_getPort, METH_VARARGS, NULL},
@@ -36571,6 +37118,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlWebcam_debug_get", _wrap_rlWebcam_debug_get, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_filename_set", _wrap_rlWebcam_filename_set, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_filename_get", _wrap_rlWebcam_filename_get, METH_VARARGS, NULL},
+	 { (char *)"rlWebcam_sock_set", _wrap_rlWebcam_sock_set, METH_VARARGS, NULL},
+	 { (char *)"rlWebcam_sock_get", _wrap_rlWebcam_sock_get, METH_VARARGS, NULL},
 	 { (char *)"rlWebcam_swigregister", rlWebcam_swigregister, METH_VARARGS, NULL},
 	 { (char *)"rlsleep", _wrap_rlsleep, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }

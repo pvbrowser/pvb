@@ -63,6 +63,7 @@ static void perhapsRunQmake(int ac, char **av)
 {
 #if defined(RLWIN32)
   struct stat buf;
+  if(getenv("QTDIR") == NULL) return;
   rlString name(getenv("QTDIR"));
   name.cat("\\bin\\qmake.exe");
   int ret = stat(name.text(),&buf);
