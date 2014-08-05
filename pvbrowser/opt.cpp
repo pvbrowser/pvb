@@ -258,6 +258,7 @@ void setDefaultOptions()
   opt.fullscreen=0;
   opt.maximized=0;
   opt.tabs_above_toolbar=0;
+  opt.cursor_shape=-1;
   opt.echo_table_updates=0;
 #if QT_VERSION >= 0x040601
   opt.use_webkit_for_svg=0;
@@ -441,6 +442,10 @@ int i;
         {
           sscanf(buf,"tabs_above_toolbar=%d",&opt.tabs_above_toolbar);
         }
+        else if(strncmp(buf,"cursor_shape=",13) == 0)
+        {
+          sscanf(buf,"cursor_shape=%d",&opt.cursor_shape);
+        }
         else if(strncmp(buf,"exitpassword=",13) == 0)
         {
           sscanf(buf,"exitpassword=%d",&opt.exitpassword);
@@ -585,6 +590,7 @@ int i;
         fprintf(fp,"fullscreen=0            # 0|1\n");
         fprintf(fp,"maximized=0             # 0|1\n");
         fprintf(fp,"tabs_above_toolbar=0    # 0|1\n");
+        fprintf(fp,"cursor_shape=-1         # -1 or Qt::CursorShape\n");
         fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
         fprintf(fp,"echo_table_updates=0    # 0|1\n");
 #if QT_VERSION >= 0x040601

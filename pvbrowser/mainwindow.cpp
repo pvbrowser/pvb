@@ -355,6 +355,13 @@ MainWindow::MainWindow()
   {
     resize(800,600);
   }
+
+  if(opt.cursor_shape >= 0)
+  {
+    QApplication::restoreOverrideCursor();
+    QApplication::setOverrideCursor(QCursor((Qt::CursorShape) opt.cursor_shape));
+  }  
+
 // delay textbrowser for speedup starting on windows  
 // loading the help file is damn slow on windows
 // thus we delay this operation until help is really needed

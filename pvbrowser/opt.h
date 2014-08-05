@@ -45,6 +45,7 @@ typedef struct
   int fullscreen;           //=0      # 0|1
   int maximized;            //=0      # 0|1
   int tabs_above_toolbar;   //=0      # 0|1
+  int cursor_shape;         //=
   int echo_table_updates;   //=0      # 0|1
   int use_webkit_for_svg;   //=1    # 0|1
   int enable_webkit_plugins;//=0      # 0|1
