@@ -2437,14 +2437,14 @@ void Interpreter::interpretp(const char *command)
     printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
 #if defined USE_ANDROID
 #define SOUND_HANDLED 1
-    if(QSound::isAvailable())
-    {
+    //if(QSound::isAvailable())
+    //{
       QSound::play(text);
-    }
-    else
-    {
-      qApp->beep();
-    }  
+    //}
+    //else
+    //{
+    //  qApp->beep();
+    //}  
 #elif defined  USE_SYMBIAN
 #define SOUND_HANDLED 1
     if(QSound::isAvailable())

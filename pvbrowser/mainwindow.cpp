@@ -16,6 +16,9 @@
 #include "pvdefine.h"
 #include <QtGui>
 #include <stdio.h>
+#ifdef PVUNIX
+#include <sys/select.h>
+#endif
 #include "opt.h"
 #include "dlgopt.h"
 #include "dlgtextbrowser.h"

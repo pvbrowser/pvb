@@ -191,6 +191,13 @@ int main(int argc, char *argv[])
   mainWin.slotTimeOut();
   mainWin.mythread.start(QThread::HighestPriority);
   mainWin.hideBusyWidget();
+#if QT_VERSION >= 0x040600
+  //grabGesture(Qt::TapGesture,        Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::TapAndHoldGesture, Qt::DontStartGestureOnChildren);
+  //grabGesture(Qt::PanGesture);
+  mainWin.grabGesture(Qt::PinchGesture);
+  //grabGesture(Qt::SwipeGesture);
+#endif
   return app.exec();
 }
 #endif
