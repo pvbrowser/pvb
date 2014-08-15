@@ -123,6 +123,11 @@ public:
   </pre> */
   int removeQuotas(char c='"');
 
+  /*! <pre>
+  Remove "\n" at end of string.
+  </pre> */
+  int removeNewline();
+
 private:
   char *txt;
 };

@@ -32,6 +32,7 @@ var searchData=
   ['registersocket',['registerSocket',['../classrlModbus.html#a5ce8a4c1476a6bbc5196422cc01f044a',1,'rlModbus']]],
   ['rememberstate',['rememberState',['../classrlPlcState.html#a77b1b983c8ba28de88b433def0bf124b',1,'rlPlcState::rememberState()'],['../classrlPlcMem.html#a50f9117dead373034eaadabfa3ed6a03',1,'rlPlcMem::rememberState()']]],
   ['remove',['remove',['../classrlIniFile.html#a08c1628345250ee4458569d7f63f2808',1,'rlIniFile::remove(const char *section)'],['../classrlIniFile.html#a0eac7bebe535ab8f298bd1f24877dc78',1,'rlIniFile::remove(const char *section, const char *name)']]],
+  ['removenewline',['removeNewline',['../classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc',1,'rlString']]],
   ['removequotas',['removeQuotas',['../classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304',1,'rlString']]],
   ['reopensocket',['reopenSocket',['../classrlSvgCat.html#a7805b395c7ab51aff5f7590e9f4c9838',1,'rlSvgCat']]],
   ['request',['request',['../classrlModbus.html#af372c588b1805e831a7f3a6fc7760b58',1,'rlModbus']]],

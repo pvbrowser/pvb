@@ -149,6 +149,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga76b06d17d8bb20a1913bb0aa71339e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gafeaa81af3cfb8c490d8883aae1f199b1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#gafeaa81af3cfb8c490d8883aae1f199b1">pvClientCommand</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *command, const char *filename, int downloadFile=0)</td></tr>
 <tr class="separator:gafeaa81af3cfb8c490d8883aae1f199b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5e4c863d21d28eb38ef88cfc4a24c853"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga5e4c863d21d28eb38ef88cfc4a24c853">pvWriteTextToFileAtClient</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *text, const char *filename)</td></tr>
+<tr class="separator:ga5e4c863d21d28eb38ef88cfc4a24c853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga407ed489b344f88f1a83cb6ad055bacf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf">pvZoomMask</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int percent)</td></tr>
 <tr class="separator:ga407ed489b344f88f1a83cb6ad055bacf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga2d03855da6faa96c4ae3f561a2bc844d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d">pvSetManualUrl</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *url)</td></tr>
@@ -1052,6 +1054,40 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">&lt;pre&gt;
 </pre><p> printf whatsThis text Allowed Widgets: all Widgets  </p>
+
+</div>
+</div>
+<a class="anchor" id="ga5e4c863d21d28eb38ef88cfc4a24c853"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvWriteTextToFileAtClient </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Write "text" to a file "filename" in temp directory at client.  </p>
 
 </div>
 </div>

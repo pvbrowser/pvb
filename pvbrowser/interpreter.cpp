@@ -675,6 +675,9 @@ void Interpreter::interpret(const char *command)
     case 'v':
       interpretv(command);
       break;
+    case 'w':
+      interpretw(command);
+      break;
     case 'q':
       interpretq(command);
       break;
@@ -5988,6 +5991,33 @@ void Interpreter::interpretv(const char *command)
         QFile::copy(buf,fname);
       }
     }  
+  }
+}
+
+void Interpreter::interpretw(const char *command)
+{
+  if(command == NULL) return;
+  if(strncmp(command,"writeTextToFileAtClient(",24) == 0)
+  {
+    QString text;
+    int len = 0;
+    sscanf(command,"writeTextToFileAtClient(%d",&len);
+    get_text(command,text);
+    if(len <= 0) return;
+    char *buf = new char[len+1];
+    tcp_rec_binary(s, buf, len);
+    buf[len] = '\0';
+    FILE *fout = fopen((const char *) text.toUtf8(),"w");
+    if(fout == NULL)
+    {
+      printf("ERROR: writeTextToFileAtClient could not write %s\n", (const char *) text.toUtf8());
+    }
+    else
+    {
+      fprintf(fout,"%s",buf);
+      fclose(fout);
+    }
+    delete [] buf;
   }
 }
 

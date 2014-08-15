@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['rack_5fslot',['RACK_SLOT',['../classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a6d6e6bee8efe79cc6cf65d97344c8391',1,'rlSiemensTCP::RACK_SLOT()'],['../classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f',1,'rlSiemensTCP::rack_slot()']]],
+  ['rack_5fslot',['rack_slot',['../classrlSiemensTCP.html#aa48bdeab3e729d296c201b02ca603c7f',1,'rlSiemensTCP::rack_slot()'],['../classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a6d6e6bee8efe79cc6cf65d97344c8391',1,'rlSiemensTCP::RACK_SLOT()']]],
   ['raw',['RAW',['../classrlSerial.html#a711ed3542b3cd4f879b576262a369687add72a115865d4ab53e0aa4ee5e14eb27',1,'rlSerial']]],
   ['read',['read',['../classrlFifo.html#a08912fb3facb76a7df5dfd7c09a8359e',1,'rlFifo::read()'],['../classrlHistoryReader.html#a5e9cf7c76a9c01637fd782b3358af9d7',1,'rlHistoryReader::read()'],['../classrlIniFile.html#a2d308c9697478c1c0965c2ed7e6581cc',1,'rlIniFile::read()'],['../classrlMailbox.html#af7ee62a6465a5e15ac5f912ff488e13c',1,'rlMailbox::read(void *buf, int maxlen, int wait=WAIT)'],['../classrlMailbox.html#adb26388e87f0eff7ff481b902fd5adc0',1,'rlMailbox::read(int wait=WAIT)'],['../classrlPPIClient.html#ab70bf2e9bbb403d7ef3a403ccd6fb623',1,'rlPPIClient::read()'],['../classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f',1,'rlSharedMemory::read()'],['../classrlSiemensTCPClient.html#a0e1763005d69fa5348232043e7d81333',1,'rlSiemensTCPClient::read()'],['../classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4',1,'rlSocket::read()'],['../classrlSpreadsheetTable.html#a36b068e4063fc3ca4e83ca71dc1e2489',1,'rlSpreadsheetTable::read()'],['../classrlSpreadsheetWorkbook.html#a0eb8e49d473fac0d05bdcdf096a0f24b',1,'rlSpreadsheetWorkbook::read()'],['../classrlSvgAnimator.html#a16895e14019850ed143b33178ee6ed45',1,'rlSvgAnimator::read()']]],
   ['read_5finifile',['read_inifile',['../classrlCanOpen.html#a2ee4ce66da6eac2f80309f968e1a49fe',1,'rlCanOpen']]],
@@ -10,7 +10,7 @@ var searchData=
   ['readbyte',['readByte',['../classrlModbusClient.html#a0a76e60f2b234c0cc72be5c0e3e6022a',1,'rlModbusClient::readByte()'],['../classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716',1,'rlSharedMemory::readByte()']]],
   ['readcallback',['readCallback',['../classrl3964R.html#a97f0a87b321bdb53dab3b6b5bfeb1f12',1,'rl3964R']]],
   ['readchar',['readChar',['../classrlSerial.html#a05de122779086e7f943f182829344fc4',1,'rlSerial']]],
-  ['readcoilstatus',['readCoilStatus',['../classrlModbus.html#a3650d910bd0435f31f46b30142c3cffa',1,'rlModbus::readCoilStatus(int slave, int start_adr, int number_of_coils, unsigned char *status, int timeout=1000)'],['../classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88',1,'rlModbus::ReadCoilStatus()']]],
+  ['readcoilstatus',['ReadCoilStatus',['../classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88',1,'rlModbus::ReadCoilStatus()'],['../classrlModbus.html#a3650d910bd0435f31f46b30142c3cffa',1,'rlModbus::readCoilStatus(int slave, int start_adr, int number_of_coils, unsigned char *status, int timeout=1000)']]],
   ['readconfigurationmessage',['readConfigurationMessage',['../classrlCanNode.html#a7d3ac5280af7bc9a4c4b2856050ec3e2',1,'rlCanNode']]],
   ['readdatabase',['readDatabase',['../classrlBussignalDatabase.html#a2ff44abd88be365e146a979d3f3c9234',1,'rlBussignalDatabase']]],
   ['reader_5fpid',['reader_pid',['../structIOSB.html#ab886af2de749bce8d9e114a0ee0f9476',1,'IOSB']]],
@@ -50,6 +50,7 @@ var searchData=
   ['remlog_5fconnection',['REMLOG_CONNECTION',['../rleibnetip_8cpp.html#abb491e83af6ac2064cb952752a71c00c',1,'rleibnetip.cpp']]],
   ['remoteadress',['remoteadress',['../classrlCanOpenClient.html#a1cd0fd938534e07795a39f5e9c73f277',1,'rlCanOpenClient']]],
   ['remove',['remove',['../classrlIniFile.html#a08c1628345250ee4458569d7f63f2808',1,'rlIniFile::remove(const char *section)'],['../classrlIniFile.html#a0eac7bebe535ab8f298bd1f24877dc78',1,'rlIniFile::remove(const char *section, const char *name)']]],
+  ['removenewline',['removeNewline',['../classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc',1,'rlString']]],
   ['removequotas',['removeQuotas',['../classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304',1,'rlString']]],
   ['reopensocket',['reopenSocket',['../classrlSvgCat.html#a7805b395c7ab51aff5f7590e9f4c9838',1,'rlSvgCat']]],
   ['reportslaveid',['ReportSlaveID',['../classrlModbus.html#af220cecff330a69323f040b1c239c657ae33cbee198a6bfcc56eef4485b365016',1,'rlModbus']]],
@@ -361,7 +362,7 @@ var searchData=
   ['rlwthread_5fmutex_5funlock',['rlwthread_mutex_unlock',['../rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef',1,'rlwthread_mutex_unlock(pthread_mutex_t *mptr):&#160;rlwthread.cpp'],['../rlwthread_8h.html#acda0e664c904c14a8f5ed74bf1d2ddef',1,'rlwthread_mutex_unlock(pthread_mutex_t *mptr):&#160;rlwthread.cpp']]],
   ['rlwthread_5fsleep',['rlwthread_sleep',['../rlwthread_8cpp.html#a80fedc11e30831f16025ad3dc1593724',1,'rlwthread_sleep(long msec):&#160;rlwthread.cpp'],['../rlwthread_8h.html#a80fedc11e30831f16025ad3dc1593724',1,'rlwthread_sleep(long msec):&#160;rlwthread.cpp']]],
   ['rotate',['rotate',['../classrlSvgPosition.html#a5ff465fdab3957ca045e94ee0d013377',1,'rlSvgPosition']]],
-  ['run',['run',['../classrl3964R.html#a11c383caa8d2a8394a3745d163bf6689',1,'rl3964R::run()'],['../classrlCorbaServer.html#af9b18fa485f47fdb95fa550f96837825',1,'rlCorbaServer::run()'],['../classrlDataProvider.html#a017bcbd3fc970a26ca741c58123e6769',1,'rlDataProvider::run()'],['../classrlDF1.html#af5d6308326260b892a7d947eed2ff809ab3e2ac0254553ad49301664408cad49d',1,'rlDF1::RUN()']]],
+  ['run',['RUN',['../classrlDF1.html#af5d6308326260b892a7d947eed2ff809ab3e2ac0254553ad49301664408cad49d',1,'rlDF1::RUN()'],['../classrl3964R.html#a11c383caa8d2a8394a3745d163bf6689',1,'rl3964R::run()'],['../classrlCorbaServer.html#af9b18fa485f47fdb95fa550f96837825',1,'rlCorbaServer::run()'],['../classrlDataProvider.html#a017bcbd3fc970a26ca741c58123e6769',1,'rlDataProvider::run()']]],
   ['running',['running',['../classrlController.html#a74ca7e98649ac725faf7497844b6af64',1,'rlController::running()'],['../classrlEIBnetIP.html#a8ae718a134cdbb39ca65ce0afe66ddba',1,'rlEIBnetIP::running()'],['../structTHREAD__PARAM.html#a437f214e495b314661203fdc2a350e1a',1,'THREAD_PARAM::running()']]],
   ['runsteps',['runSteps',['../classrlState.html#a26b1a3130c654fc9fe3c5ce05871432a',1,'rlState']]]
 ];

@@ -648,6 +648,7 @@
             <section title="pvWait" ref="group__IniAndGlobal.html#gae97cd460f11f1542c11ed9349b8c2b80" />
             <section title="pvWarning" ref="group__IniAndGlobal.html#ga91de12f5b44ae6b136c1eee8e6e014fd" />
             <section title="pvWhatsThisPrintf" ref="group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
+            <section title="pvWriteTextToFileAtClient" ref="group__IniAndGlobal.html#ga5e4c863d21d28eb38ef88cfc4a24c853" />
             <section title="pvXYAllocate" ref="group__IniAndGlobal.html#gaa94a429d64753c7c016bf9f2202def63" />
             <section title="pvZoomMask" ref="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf" />
           </section>
@@ -2102,6 +2103,7 @@
               <section title="pvWarning" ref="processviewserver_8h.html#ga91de12f5b44ae6b136c1eee8e6e014fd" />
               <section title="pvWhatsThisPrintf" ref="processviewserver_8h.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
               <section title="pvWriteFile" ref="processviewserver_8h.html#ga3810a20dd674e00eb1dcacf96d948915" />
+              <section title="pvWriteTextToFileAtClient" ref="processviewserver_8h.html#ga5e4c863d21d28eb38ef88cfc4a24c853" />
               <section title="pvXYAllocate" ref="processviewserver_8h.html#gaa94a429d64753c7c016bf9f2202def63" />
               <section title="pvZoomMask" ref="processviewserver_8h.html#ga407ed489b344f88f1a83cb6ad055bacf" />
               <section title="qpwEnableAxis" ref="processviewserver_8h.html#gaaa68a64a2e240cefa47377ae55311177" />
@@ -2414,6 +2416,7 @@
       <keyword name="pvSetWhatsThis" id="processviewserver.h::pvSetWhatsThis" ref="processviewserver_8h.html#ga4cf6c6a3745f02a74c7b4648d8511a12" />
       <keyword name="pvWhatsThisPrintf" id="processviewserver.h::pvWhatsThisPrintf" ref="processviewserver_8h.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
       <keyword name="pvClientCommand" id="processviewserver.h::pvClientCommand" ref="processviewserver_8h.html#gafeaa81af3cfb8c490d8883aae1f199b1" />
+      <keyword name="pvWriteTextToFileAtClient" id="processviewserver.h::pvWriteTextToFileAtClient" ref="processviewserver_8h.html#ga5e4c863d21d28eb38ef88cfc4a24c853" />
       <keyword name="pvZoomMask" id="processviewserver.h::pvZoomMask" ref="processviewserver_8h.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="processviewserver.h::pvSetManualUrl" ref="processviewserver_8h.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="processviewserver.h::pvSelectLanguage" ref="processviewserver_8h.html#gacf49bec64bf2e889ba67e2e15663805b" />
@@ -3281,6 +3284,7 @@
       <keyword name="pvSetWhatsThis" id="IniAndGlobal::pvSetWhatsThis" ref="group__IniAndGlobal.html#ga4cf6c6a3745f02a74c7b4648d8511a12" />
       <keyword name="pvWhatsThisPrintf" id="IniAndGlobal::pvWhatsThisPrintf" ref="group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
       <keyword name="pvClientCommand" id="IniAndGlobal::pvClientCommand" ref="group__IniAndGlobal.html#gafeaa81af3cfb8c490d8883aae1f199b1" />
+      <keyword name="pvWriteTextToFileAtClient" id="IniAndGlobal::pvWriteTextToFileAtClient" ref="group__IniAndGlobal.html#ga5e4c863d21d28eb38ef88cfc4a24c853" />
       <keyword name="pvZoomMask" id="IniAndGlobal::pvZoomMask" ref="group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf" />
       <keyword name="pvSetManualUrl" id="IniAndGlobal::pvSetManualUrl" ref="group__IniAndGlobal.html#ga2d03855da6faa96c4ae3f561a2bc844d" />
       <keyword name="pvSelectLanguage" id="IniAndGlobal::pvSelectLanguage" ref="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b" />

@@ -17,6 +17,7 @@
 #define _RL_FILE_LOAD_H_
 
 #include "rldefine.h"
+#include "rlstring.h"
 
 typedef struct _rlFileLines_
 {
@@ -38,6 +39,7 @@ class rlFileLoad
     const char *firstLine();
     const char *nextLine();
     void setDebug(int state);
+    int text2rlstring(rlString &rlstring);
   private:
     int loaded;
     int debug;

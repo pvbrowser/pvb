@@ -146,6 +146,7 @@ class Interpreter
     void interprets(const char *command);
     void interprett(const char *command);
     void interpretv(const char *command);
+    void interpretw(const char *command);
     void interpretq(const char *command);
     void interpretz(const char *command);
     void interpretQ(const char *command);

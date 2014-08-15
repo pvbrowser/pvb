@@ -241,3 +241,11 @@ int rlString::removeQuotas(char q)
   return j;
 }
 
+int rlString::removeNewline()
+{
+  if(txt == NULL) return -1;
+  char *cptr = ::strchr(txt,'\n');
+  if(cptr != NULL) *cptr = '\0';
+  return 0;
+}
+

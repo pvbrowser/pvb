@@ -40,6 +40,10 @@
 #endif
 
 // functions from plugin
+// Von Asgard aus schlugen sie eine Brücke
+// auf dass ihnen Midgard nie entrücke,
+// das Reich der ersten Menschen.
+
 typedef int (*pvb_com_con_func)(const char *adr, int port, int *use);
 pvb_com_con_func pvb_com_con = NULL;
 

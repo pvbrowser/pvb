@@ -1162,6 +1162,9 @@ int i;
   return 0;
 }
 
+// Von Asgard aus schlugen sie eine Brücke
+// auf dass ihnen Midgard nie entrücke,
+// das Reich der ersten Menschen.
 #ifdef PVWIN32
   static HMODULE bifrost;
 #else
@@ -2374,6 +2377,17 @@ char buf[MAX_PRINTF_LENGTH];
   strcat(buf,filename);
   strcat(buf,"\n");
   pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
+int pvWriteTextToFileAtClient(PARAM *p, const char *text, const char *filename)
+{
+  char buf[MAX_PRINTF_LENGTH+40];  
+  int len = strlen(text);
+  pv_length_check(p,filename);
+  sprintf(buf,"writeTextToFileAtClient(%d,\"%s\")\n", len, filename);
+  pvtcpsend(p, buf, strlen(buf));
+  pvtcpsend_binary(p, text, len);
   return 0;
 }
 

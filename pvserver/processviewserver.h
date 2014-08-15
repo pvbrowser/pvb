@@ -890,6 +890,10 @@ See view.pdf, view.img, view.svg ... within pvbrowser options.
 </pre> */
 int pvClientCommand(PARAM *p, const char *command, const char *filename, int downloadFile=0);
 /*! <pre>
+Write "text" to a file "filename" in temp directory at client.
+</pre> */
+int pvWriteTextToFileAtClient(PARAM *p, const char *text, const char *filename);
+/*! <pre>
 Zoom the whole mask.
 Zoom factor in percent.
 </pre> */

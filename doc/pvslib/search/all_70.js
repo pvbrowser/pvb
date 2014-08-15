@@ -297,6 +297,7 @@ var searchData=
   ['pvwhatsthisprintf',['pvWhatsThisPrintf',['../group__IniAndGlobal.html#ga76b06d17d8bb20a1913bb0aa71339e06',1,'processviewserver.h']]],
   ['pvwidgetidmanager',['pvWidgetIdManager',['../classpvWidgetIdManager.html',1,'pvWidgetIdManager'],['../classpvWidgetIdManager.html#a7decd0a41989bf9180c3bdc41362bbcf',1,'pvWidgetIdManager::pvWidgetIdManager()']]],
   ['pvwritefile',['pvWriteFile',['../group__Misc.html#ga3810a20dd674e00eb1dcacf96d948915',1,'processviewserver.h']]],
+  ['pvwritetexttofileatclient',['pvWriteTextToFileAtClient',['../group__IniAndGlobal.html#ga5e4c863d21d28eb38ef88cfc4a24c853',1,'processviewserver.h']]],
   ['pvxyallocate',['pvXYAllocate',['../group__IniAndGlobal.html#gaa94a429d64753c7c016bf9f2202def63',1,'processviewserver.h']]],
   ['pvzoommask',['pvZoomMask',['../group__IniAndGlobal.html#ga407ed489b344f88f1a83cb6ad055bacf',1,'processviewserver.h']]]
 ];

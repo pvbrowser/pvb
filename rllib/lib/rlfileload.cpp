@@ -102,3 +102,18 @@ void rlFileLoad::setDebug(int state)
   if(state == 0) debug = 0;
   else           debug = 1;
 }
+
+int rlFileLoad::text2rlstring(rlString &rlstring)
+{
+  rlstring = "";
+  if(loaded == 0) return -1;
+  const char *line = firstLine();
+  while(line != NULL)
+  {
+    rlstring += line;
+    rlstring += "\n";
+    line = nextLine();
+  }
+  return 0;
+}
+

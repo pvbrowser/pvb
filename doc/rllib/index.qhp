@@ -826,6 +826,7 @@
               <section title="load" ref="classrlFileLoad.html#a26b0d9b7ad0dee0d9a5f5220059d0da9" />
               <section title="nextLine" ref="classrlFileLoad.html#a9c4519241741f6280f04df23e98b8602" />
               <section title="setDebug" ref="classrlFileLoad.html#a4d66f0286d92784572375f02fdfa2e60" />
+              <section title="text2rlstring" ref="classrlFileLoad.html#a7fb4120b058eb17a197595648a6d4035" />
               <section title="unload" ref="classrlFileLoad.html#a81eb4344b832955abb4beff569c0b395" />
               <section title="current_line" ref="classrlFileLoad.html#ad30de4cb9dc7b0d9cdb0eff46f6f9068" />
               <section title="debug" ref="classrlFileLoad.html#a0e645f1b374509a98aea7e0c92a69b3f" />
@@ -1613,6 +1614,7 @@
               <section title="operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
               <section title="operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
               <section title="printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
+              <section title="removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
               <section title="removeQuotas" ref="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304" />
               <section title="setText" ref="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c" />
               <section title="startsWith" ref="classrlString.html#a10a7b086caf7fc80d52a11a5fb93ccc8" />
@@ -3244,6 +3246,7 @@
                 <section title="load" ref="classrlFileLoad.html#a26b0d9b7ad0dee0d9a5f5220059d0da9" />
                 <section title="nextLine" ref="classrlFileLoad.html#a9c4519241741f6280f04df23e98b8602" />
                 <section title="setDebug" ref="classrlFileLoad.html#a4d66f0286d92784572375f02fdfa2e60" />
+                <section title="text2rlstring" ref="classrlFileLoad.html#a7fb4120b058eb17a197595648a6d4035" />
                 <section title="unload" ref="classrlFileLoad.html#a81eb4344b832955abb4beff569c0b395" />
                 <section title="current_line" ref="classrlFileLoad.html#ad30de4cb9dc7b0d9cdb0eff46f6f9068" />
                 <section title="debug" ref="classrlFileLoad.html#a0e645f1b374509a98aea7e0c92a69b3f" />
@@ -4279,6 +4282,7 @@
                 <section title="operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
                 <section title="operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
                 <section title="printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
+                <section title="removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
                 <section title="removeQuotas" ref="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304" />
                 <section title="setText" ref="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c" />
                 <section title="startsWith" ref="classrlString.html#a10a7b086caf7fc80d52a11a5fb93ccc8" />
@@ -5860,6 +5864,7 @@
       <keyword name="firstLine" id="rlFileLoad::firstLine" ref="classrlFileLoad.html#a5dfa7eaff9968db88f22799776757c7c" />
       <keyword name="nextLine" id="rlFileLoad::nextLine" ref="classrlFileLoad.html#a9c4519241741f6280f04df23e98b8602" />
       <keyword name="setDebug" id="rlFileLoad::setDebug" ref="classrlFileLoad.html#a4d66f0286d92784572375f02fdfa2e60" />
+      <keyword name="text2rlstring" id="rlFileLoad::text2rlstring" ref="classrlFileLoad.html#a7fb4120b058eb17a197595648a6d4035" />
       <keyword name="loaded" id="rlFileLoad::loaded" ref="classrlFileLoad.html#affa97c5e3d664785dab70fb0a6911faf" />
       <keyword name="debug" id="rlFileLoad::debug" ref="classrlFileLoad.html#a0e645f1b374509a98aea7e0c92a69b3f" />
       <keyword name="file_lines" id="rlFileLoad::file_lines" ref="classrlFileLoad.html#ab290d5a85f994f3687e1ca14ddc658a4" />
@@ -6707,6 +6712,7 @@
       <keyword name="strchr" id="rlString::strchr" ref="classrlString.html#abcdf9c1322753b2dd7bae1dbc43b3a38" />
       <keyword name="strrchr" id="rlString::strrchr" ref="classrlString.html#a0b353cf1b96b45dd9809202a336019e3" />
       <keyword name="removeQuotas" id="rlString::removeQuotas" ref="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304" />
+      <keyword name="removeNewline" id="rlString::removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
       <keyword name="txt" id="rlString::txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator" ref="classrlSvgAnimator.html" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator::rlSvgAnimator" ref="classrlSvgAnimator.html#a26fe378e9772d1c6dae5aa8fa665fab9" />
