@@ -9,5 +9,6 @@ var searchData=
   ['_5f_5fstackaddr',['__stackaddr',['../structpthread__attr__t.html#a760e760523e189db211cd885d1488242',1,'pthread_attr_t']]],
   ['_5f_5fstackaddr_5fset',['__stackaddr_set',['../structpthread__attr__t.html#ad12d917671c06ab58dd2cc9bf1575622',1,'pthread_attr_t']]],
   ['_5f_5fstacksize',['__stacksize',['../structpthread__attr__t.html#a94f10776d02273edaa20e31256ea484c',1,'pthread_attr_t']]],
-  ['_5ffirstsection',['_firstSection',['../classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442',1,'rlIniFile']]]
+  ['_5ffirstsection',['_firstSection',['../classrlIniFile.html#ad751ce57cafc61148e2b15b0cd5fb442',1,'rlIniFile']]],
+  ['_5fsize',['_size',['../classrlBuffer.html#a94abe8e113c5a21f582c38cb0f867030',1,'rlBuffer::_size()'],['../classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95',1,'rlSharedMemory::_size()']]]
 ];

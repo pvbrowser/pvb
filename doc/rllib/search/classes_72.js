@@ -1,6 +1,7 @@
 var searchData=
 [
   ['rl3964r',['rl3964R',['../classrl3964R.html',1,'']]],
+  ['rlbuffer',['rlBuffer',['../classrlBuffer.html',1,'']]],
   ['rlbussignaldatabase',['rlBussignalDatabase',['../classrlBussignalDatabase.html',1,'']]],
   ['rlcanclient',['rlCanClient',['../classrlCanClient.html',1,'']]],
   ['rlcanmapping',['rlCanMapping',['../structrlCanMapping.html',1,'']]],

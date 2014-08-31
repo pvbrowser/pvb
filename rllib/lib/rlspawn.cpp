@@ -22,6 +22,9 @@
 #include <unistd.h>
 #include <sys/time.h>
 #include <sys/types.h>
+#else
+#include <windows.h>
+#include <psapi.h>
 #endif
 #include "rlspawn.h"
 #include "rlcutil.h"
@@ -29,23 +32,233 @@
 #include <sys/wait.h>
 #include <signal.h>
 #endif
+#include "rlstring.h"
+
+#ifdef RLWIN32_NOT_USABLE
+WaitNamedPipe function
+Minimum supported client Windows 2000 Professional [desktop apps only]
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa365800%28v=vs.85%29.aspx
+static int GetFileNameFromHandle(HANDLE hFile, char *pszFilename, const int max_path) 
+{
+  int bSuccess = 0;
+  //TCHAR pszFilename[MAX_PATH+1];
+  HANDLE hFileMap;
+
+  // Get the file size.
+  DWORD dwFileSizeHi = 0;
+  DWORD dwFileSizeLo = GetFileSize(hFile, &dwFileSizeHi); 
+
+  if( dwFileSizeLo == 0 && dwFileSizeHi == 0 )
+  {
+     printf(TEXT("Cannot map a file with a length of zero.\n"));
+     return FALSE;
+  }
+
+  // Create a file mapping object.
+  hFileMap = CreateFileMapping(hFile, 
+                    NULL, 
+                    PAGE_READONLY,
+                    0, 
+                    1,
+                    NULL);
+
+  if (hFileMap) 
+  {
+    // Create a file mapping to get the file name.
+    void* pMem = MapViewOfFile(hFileMap, FILE_MAP_READ, 0, 0, 1);
+
+    if (pMem) 
+    {
+      if (GetMappedFileName (GetCurrentProcess(), 
+                             pMem, 
+                             pszFilename,
+                             max_path)) 
+      {
+
+        // Translate path with device name to drive letters.
+        TCHAR szTemp[1024];
+        szTemp[0] = '\0';
+
+        if (GetLogicalDriveStrings((int) sizeof(szTemp) -1, szTemp)) 
+        {
+          TCHAR szName[max_path];
+          TCHAR szDrive[3] = TEXT(" :");
+          int   bFound = 0;
+          TCHAR* p = szTemp;
+
+          do 
+          {
+            // Copy the drive letter to the template string
+            *szDrive = *p;
+
+            // Look up each device name
+            if (QueryDosDevice(szDrive, szName, max_path))
+            {
+              int uNameLen = strlen(szName);
+              rlString rlName(szName);
+              if (uNameLen < max_path) 
+              {
+                //bFound = _tcsnicmp(pszFilename, szName, uNameLen) == 0
+                //         && *(pszFilename + uNameLen) == _T('\\');
+                bFound = rlName.strnnocasecmp(pszFilename, uNameLen) == 0
+                         && *(pszFilename + uNameLen) == _T('\\');
+
+                if (bFound) 
+                {
+                  // Reconstruct pszFilename using szTempFile
+                  // Replace device path with DOS path
+                  TCHAR szTempFile[max_path];
+                  StringCchPrintf(szTempFile,
+                            max_path,
+                            TEXT("%s%s"),
+                            szDrive,
+                            pszFilename+uNameLen);
+                  StringCchCopyN(pszFilename, max_path+1, szTempFile, _tcslen(szTempFile));
+                }
+              }
+            }
+
+            // Go to the next NULL character.
+            while (*p++);
+          } while (!bFound && *p); // end of string
+        }
+      }
+      bSuccess = 1;
+      UnmapViewOfFile(pMem);
+    } 
+
+    CloseHandle(hFileMap);
+  }
+  //_tprintf(TEXT("File name is %s\n"), pszFilename);
+  return bSuccess;
+}
+#endif
 
 rlSpawn::rlSpawn()
 {
+#ifdef RLWIN32 
+  fromChildRD = NULL;
+  fromChildRD = NULL;
+  toChildRD = NULL;
+  toChildWR = NULL;
+  hThread = NULL;
+  hProcess = NULL;
+  pid = 0;
+#else  
   toChild = fromChild = NULL;
   pid = 0;
+#endif  
 }
 
 rlSpawn::~rlSpawn()
 {
+#ifdef RLWIN32 
+  if(fromChildRD != NULL) CloseHandle(fromChildRD);
+  if(fromChildWR != NULL) CloseHandle(fromChildWR);
+  if(toChildRD   != NULL) CloseHandle(toChildRD);
+  if(toChildWR   != NULL) CloseHandle(toChildWR);
+  if(hThread     != NULL) CloseHandle(hThread);
+  if(hProcess    != NULL) CloseHandle(hProcess);
+#else  
   if(toChild   != NULL) ::fclose((FILE*) toChild);
   if(fromChild != NULL) ::fclose((FILE*) fromChild);
+#endif
 }
 
 int rlSpawn::spawn(const char *command)
 {
 #ifdef RLWIN32 
-  if(command) return -1;
+  if(fromChildRD != NULL) CloseHandle(fromChildRD);
+  if(fromChildWR != NULL) CloseHandle(fromChildWR);
+  if(toChildRD   != NULL) CloseHandle(toChildRD);
+  if(toChildWR   != NULL) CloseHandle(toChildWR);
+  if(hThread     != NULL) CloseHandle(hThread);
+  if(hProcess    != NULL) CloseHandle(hProcess);
+  fromChildRD = NULL;
+  fromChildWR = NULL;
+  toChildRD   = NULL;
+  toChildWR   = NULL;
+  hThread     = NULL;
+  hProcess    = 0;
+
+  SECURITY_ATTRIBUTES saAttr;
+  saAttr.nLength = sizeof(SECURITY_ATTRIBUTES);
+  saAttr.bInheritHandle = TRUE;
+  saAttr.lpSecurityDescriptor = NULL;
+
+  char cmd[strlen(command)+1];
+  strcpy(cmd,command);
+
+  if(!CreatePipe(&fromChildRD, &fromChildWR, &saAttr, 0))
+  {
+    printf("CreatePipe() - pipe for child process STDOUT failed\n");
+    return -1;
+  }
+  if(!SetHandleInformation(fromChildRD, HANDLE_FLAG_INHERIT, 0)) // Ensure the read handle to the pipe for STDOUT is not inherited
+  {
+    printf("SetHandleInformation() - pipe STDOUT read handle failed for inheritance\n");
+    CloseHandle(fromChildRD);
+    fromChildRD = NULL;
+    CloseHandle(fromChildWR);
+    fromChildWR = NULL;
+    return -2;
+  }
+  if(!CreatePipe(&toChildRD, &toChildWR, &saAttr, 0))
+  {
+    printf("CreatePipe() - pipe for child process STDIN failed\n");
+    CloseHandle(fromChildRD);
+    fromChildRD = NULL;
+    CloseHandle(fromChildWR);
+    fromChildWR = NULL;
+    return -3;
+  }
+  if(!SetHandleInformation(toChildWR, HANDLE_FLAG_INHERIT, 0)) // Ensure the write handle to the pipe for STDIN is not inherited
+  {
+    printf("SetHandleInformation() - pipe STDIN write handle failed for inheritance\n");
+    CloseHandle(fromChildRD);
+    fromChildRD = NULL;
+    CloseHandle(fromChildWR);
+    fromChildWR = NULL;
+    CloseHandle(toChildRD);
+    toChildRD = NULL;
+    CloseHandle(toChildWR);
+    toChildWR = NULL;
+    return -4;
+  }  
+
+  STARTUPINFO si; //  = { sizeof(si)};
+  memset(&si,0,sizeof(si));
+  si.cb = sizeof(si);
+  si.hStdError  = fromChildWR;
+  si.hStdOutput = fromChildWR;
+  si.hStdInput  = toChildRD;
+  si.dwFlags   |= STARTF_USESTDHANDLES;
+
+  PROCESS_INFORMATION pi;
+  memset(&pi,0,sizeof(pi));
+
+  DWORD dwCreationFlags = 0;
+
+  int ret = (int) CreateProcess( NULL, cmd
+                                , NULL, NULL
+                                , TRUE, dwCreationFlags
+                                , NULL, NULL
+                                , &si, &pi);
+  if(ret)
+  { // success
+    hProcess = pi.hProcess;
+    hThread  = pi.hThread;
+    return 1;
+  }
+  // fail
+  CloseHandle(fromChildRD);
+  fromChildRD = NULL;
+  CloseHandle(fromChildWR);
+  fromChildWR = NULL;
+  CloseHandle(toChildRD);
+  toChildRD = NULL;
+  CloseHandle(toChildWR);
+  toChildWR = NULL;
   return -1;
 #else  
   int to_child[2],from_child[2],ret;
@@ -93,6 +306,35 @@ int rlSpawn::spawn(const char *command)
 
 const char *rlSpawn::readLine()
 {
+#ifdef RLWIN32
+  char *cptr;
+  if(fromChildRD == NULL) return NULL;
+  int i,c;
+  for(i=0; i < (int) sizeof(line) - 1; i++)
+  {
+    if((c = getchar()) < 0)
+    {
+      if(i==0) return NULL;
+      line[i] = '\0';
+      return line;
+    }  
+    line[i] = (char) c;
+    if(c == '\n')
+    {
+      cptr = strchr(line,0x0d);
+      if(cptr != NULL)
+      {
+        cptr[0] = '\n';
+        cptr[1] = '\0';
+        return line;
+      }
+      line[i+1] = '\0';
+      return line;
+    }
+  }
+  line[i] = '\0';
+  return line;
+#else
   if(fromChild == NULL) return NULL;
   if(::fgets(line,sizeof(line)-1,(FILE*) fromChild) == NULL)
   {
@@ -107,19 +349,38 @@ const char *rlSpawn::readLine()
     return NULL;
   }
   return line;
+#endif  
 }
 
 int rlSpawn::getchar()
 {
+#ifdef RLWIN32
+  if(fromChildRD == NULL) return EOF;
+  DWORD readed = 0;
+  unsigned char buf[4];
+  int ret = (int) ReadFile(fromChildRD, buf, 1, &readed, NULL);
+  if(ret)
+  { // success
+    if(readed == 1) return buf[0];
+    return -1;
+  }
+  return EOF;
+#else
   if(fromChild == NULL) return EOF;
   return ::fgetc((FILE*) fromChild);
+#endif  
 }
 
 int rlSpawn::write(const char *buf, int len)
 {
 #ifdef RLWIN32
-  if(buf) return -1;
-  if(len) return -1;
+  if(toChildWR == NULL) return -1;
+  DWORD written = 0;
+  int ret = (int) WriteFile(toChildWR, buf, len, &written, NULL);
+  if(ret)
+  { // success
+    return written;
+  }
   return -1;
 #else  
   if(toChild == NULL) return -1;
@@ -142,8 +403,14 @@ int rlSpawn::printf(const char *format, ...)
 
 int rlSpawn::writeString(const char *buf)
 {
+#ifdef RLWIN32
+  if(toChildWR == NULL) return -1;
+  int len = strlen(buf);
+  return write(buf,len+1);
+#else
   if(toChild == NULL) return -1;
   return fprintf((FILE*)toChild,"%s",buf);
+#endif  
 }
 
 void rlSpawn::printAll()
@@ -155,8 +422,13 @@ void rlSpawn::printAll()
 int rlSpawn::select(int timeout)
 {
 #ifdef RLWIN32
-  if(timeout) return -1;
-  return -1;
+  // windows does not support select on ReadFile
+  // ReadFile will return if there are no more bytes available
+  //if( _kbhit() ) return 1;
+  if(1) return 1;
+  if(timeout > 0)         return 0;
+  if(fromChildRD == NULL) return 0;
+  return 0;
 #else
   struct timeval timout;
   fd_set wset,rset,eset;
@@ -181,6 +453,10 @@ int rlSpawn::select(int timeout)
 
 FILE *rlSpawn::getFilepointer()
 {
+#ifdef RLWIN32
+  return NULL;
+#else
   return (FILE *) fromChild;
+#endif  
 }
 

@@ -1638,24 +1638,28 @@ SWIG_Lua_dostring(lua_State *L, const char* str) {
 #define SWIGTYPE_p_GLuint swig_types[2]
 #define SWIGTYPE_p_IntegerArray swig_types[3]
 #define SWIGTYPE_p_PARSE_EVENT_STRUCT swig_types[4]
-#define SWIGTYPE_p__PARAM_ swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_double swig_types[7]
-#define SWIGTYPE_p_f_p__PARAM___int swig_types[8]
-#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[9]
-#define SWIGTYPE_p_f_p_void__int swig_types[10]
-#define SWIGTYPE_p_float swig_types[11]
-#define SWIGTYPE_p_glFont swig_types[12]
-#define SWIGTYPE_p_int swig_types[13]
-#define SWIGTYPE_p_p_char swig_types[14]
-#define SWIGTYPE_p_pvAddressTable swig_types[15]
-#define SWIGTYPE_p_pvAddressTableItem swig_types[16]
-#define SWIGTYPE_p_pvTime swig_types[17]
-#define SWIGTYPE_p_pvWidgetIdManager swig_types[18]
-#define SWIGTYPE_p_unsigned_char swig_types[19]
-#define SWIGTYPE_p_void swig_types[20]
-static swig_type_info *swig_types[22];
-static swig_module_info swig_module = {swig_types, 21, 0, 0, 0, 0};
+#define SWIGTYPE_p_QSqlDatabase swig_types[5]
+#define SWIGTYPE_p_QSqlError swig_types[6]
+#define SWIGTYPE_p_QSqlQuery swig_types[7]
+#define SWIGTYPE_p__PARAM_ swig_types[8]
+#define SWIGTYPE_p_char swig_types[9]
+#define SWIGTYPE_p_double swig_types[10]
+#define SWIGTYPE_p_f_p__PARAM___int swig_types[11]
+#define SWIGTYPE_p_f_p__PARAM__p_void__int swig_types[12]
+#define SWIGTYPE_p_f_p_void__int swig_types[13]
+#define SWIGTYPE_p_float swig_types[14]
+#define SWIGTYPE_p_glFont swig_types[15]
+#define SWIGTYPE_p_int swig_types[16]
+#define SWIGTYPE_p_p_char swig_types[17]
+#define SWIGTYPE_p_pvAddressTable swig_types[18]
+#define SWIGTYPE_p_pvAddressTableItem swig_types[19]
+#define SWIGTYPE_p_pvTime swig_types[20]
+#define SWIGTYPE_p_pvWidgetIdManager swig_types[21]
+#define SWIGTYPE_p_qtDatabase swig_types[22]
+#define SWIGTYPE_p_unsigned_char swig_types[23]
+#define SWIGTYPE_p_void swig_types[24]
+static swig_type_info *swig_types[26];
+static swig_module_info swig_module = {swig_types, 25, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -1674,6 +1678,7 @@ typedef struct{} LANGUAGE_OBJ;
 
 /* Put headers and other declarations here */
 #include "../pvserver/processviewserver.h"
+#include "sql/qtdatabase.h"
 PARAM *getParam(unsigned long p);
 int pvQImageScript(PARAM *p, int id, int parent, const char *imagename);
 int *new_int(int ivalue);
@@ -7007,6 +7012,36 @@ static int _wrap_pvClientCommand(lua_State* L) {
     "    pvClientCommand(PARAM *,char const *,char const *,int)\n"
     "    pvClientCommand(PARAM *,char const *,char const *)\n");
   lua_error(L);return 0;
+}
+
+
+static int _wrap_pvWriteTextToFileAtClient(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvWriteTextToFileAtClient",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvWriteTextToFileAtClient",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvWriteTextToFileAtClient",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("pvWriteTextToFileAtClient",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvWriteTextToFileAtClient",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)pvWriteTextToFileAtClient(arg1,(char const *)arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
 }
 
 
@@ -13526,6 +13561,156 @@ static int _wrap_pvPassThroughOneJpegFrame(lua_State* L) {
 }
 
 
+static int _wrap_pvSendJpegFrame__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendJpegFrame",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendJpegFrame",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSendJpegFrame",2,"int");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("pvSendJpegFrame",3,"unsigned char *");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvSendJpegFrame",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendJpegFrame",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("pvSendJpegFrame",3,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)pvSendJpegFrame(arg1,arg2,arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendJpegFrame__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendJpegFrame",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendJpegFrame",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSendJpegFrame",2,"int");
+  if(!SWIG_isptrtype(L,3)) SWIG_fail_arg("pvSendJpegFrame",3,"unsigned char *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendJpegFrame",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,3,(void**)&arg3,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("pvSendJpegFrame",3,SWIGTYPE_p_unsigned_char);
+  }
+  
+  result = (int)pvSendJpegFrame(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendJpegFrame(lua_State* L) {
+  int argc;
+  int argv[5]={
+    1,2,3,4,5
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (SWIG_isptrtype(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          return _wrap_pvSendJpegFrame__SWIG_1(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          void *ptr;
+          if (SWIG_isptrtype(L,argv[2])==0 || SWIG_ConvertPtr(L,argv[2], (void **) &ptr, SWIGTYPE_p_unsigned_char, 0)) {
+            _v = 0;
+          } else {
+            _v = 1;
+          }
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_pvSendJpegFrame__SWIG_0(L);
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'pvSendJpegFrame'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvSendJpegFrame(PARAM *,int,unsigned char *,int)\n"
+    "    pvSendJpegFrame(PARAM *,int,unsigned char *)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_pvSendRGBA__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -15206,6 +15391,259 @@ static int _wrap_pvMovieSpeed(lua_State* L) {
   arg2 = (int)lua_tonumber(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   result = (int)pvMovieSpeed(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddTabIcon__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int arg5 ;
+  int result;
+  
+  SWIG_check_num_args("pvAddTabIcon",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvAddTabIcon",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvAddTabIcon",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvAddTabIcon",3,"int");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("pvAddTabIcon",4,"char const *");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("pvAddTabIcon",5,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvAddTabIcon",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  result = (int)pvAddTabIcon(arg1,arg2,arg3,(char const *)arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddTabIcon__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  char *arg4 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvAddTabIcon",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvAddTabIcon",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvAddTabIcon",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvAddTabIcon",3,"int");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("pvAddTabIcon",4,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvAddTabIcon",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  result = (int)pvAddTabIcon(arg1,arg2,arg3,(char const *)arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvAddTabIcon(lua_State* L) {
+  int argc;
+  int argv[6]={
+    1,2,3,4,5,6
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 4) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = SWIG_lua_isnilstring(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_pvAddTabIcon__SWIG_1(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = SWIG_lua_isnilstring(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_pvAddTabIcon__SWIG_0(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'pvAddTabIcon'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvAddTabIcon(PARAM *,int,int,char const *,int)\n"
+    "    pvAddTabIcon(PARAM *,int,int,char const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_pvSetCellWidget(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetCellWidget",5,5)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetCellWidget",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetCellWidget",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvSetCellWidget",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvSetCellWidget",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("pvSetCellWidget",5,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetCellWidget",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  result = (int)pvSetCellWidget(arg1,arg2,arg3,arg4,arg5);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetContentsMargins(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetContentsMargins",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetContentsMargins",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetContentsMargins",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvSetContentsMargins",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvSetContentsMargins",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("pvSetContentsMargins",5,"int");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("pvSetContentsMargins",6,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetContentsMargins",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (int)pvSetContentsMargins(arg1,arg2,arg3,arg4,arg5,arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSetSpacing(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetSpacing",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetSpacing",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetSpacing",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("pvSetSpacing",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetSpacing",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)pvSetSpacing(arg1,arg2,arg3);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -27311,6 +27749,511 @@ static swig_lua_class *swig_pvWidgetIdManager_bases[] = {0};
 static const char *swig_pvWidgetIdManager_base_names[] = {0};
 static swig_lua_class _wrap_class_pvWidgetIdManager = { "pvWidgetIdManager", &SWIGTYPE_p_pvWidgetIdManager,_wrap_new_pvWidgetIdManager, swig_delete_pvWidgetIdManager, swig_pvWidgetIdManager_methods, swig_pvWidgetIdManager_attributes, swig_pvWidgetIdManager_bases, swig_pvWidgetIdManager_base_names };
 
+static int _wrap_new_qtDatabase(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::qtDatabase",0,0)
+  result = (qtDatabase *)new qtDatabase();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_qtDatabase,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_open(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  char *arg4 = (char *) 0 ;
+  char *arg5 = (char *) 0 ;
+  char *arg6 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("qtDatabase::open",6,6)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::open",1,"qtDatabase *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("qtDatabase::open",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("qtDatabase::open",3,"char const *");
+  if(!SWIG_lua_isnilstring(L,4)) SWIG_fail_arg("qtDatabase::open",4,"char const *");
+  if(!SWIG_lua_isnilstring(L,5)) SWIG_fail_arg("qtDatabase::open",5,"char const *");
+  if(!SWIG_lua_isnilstring(L,6)) SWIG_fail_arg("qtDatabase::open",6,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_open",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (char *)lua_tostring(L, 4);
+  arg5 = (char *)lua_tostring(L, 5);
+  arg6 = (char *)lua_tostring(L, 6);
+  result = (int)(arg1)->open((char const *)arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5,(char const *)arg6);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_close(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("qtDatabase::close",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::close",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_close",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (int)(arg1)->close();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_query(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("qtDatabase::query",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::query",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("qtDatabase::query",2,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("qtDatabase::query",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_query",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("qtDatabase_query",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)(arg1)->query(arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_populateTable(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("qtDatabase::populateTable",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::populateTable",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("qtDatabase::populateTable",2,"PARAM *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("qtDatabase::populateTable",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_populateTable",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("qtDatabase_populateTable",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->populateTable(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_recordFieldValue(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  PARAM *arg2 = (PARAM *) 0 ;
+  int arg3 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::recordFieldValue",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::recordFieldValue",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("qtDatabase::recordFieldValue",2,"PARAM *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("qtDatabase::recordFieldValue",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_recordFieldValue",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("qtDatabase_recordFieldValue",2,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (char *)(arg1)->recordFieldValue(arg2,arg3);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_dbQuery(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::dbQuery",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::dbQuery",1,"qtDatabase *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("qtDatabase::dbQuery",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_dbQuery",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (char *)(arg1)->dbQuery((char const *)arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_dbRecordFieldValue(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int arg2 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::dbRecordFieldValue",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::dbRecordFieldValue",1,"qtDatabase *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("qtDatabase::dbRecordFieldValue",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_dbRecordFieldValue",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (char *)(arg1)->dbRecordFieldValue(arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_nextRecord(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("qtDatabase::nextRecord",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::nextRecord",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_nextRecord",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (int)(arg1)->nextRecord();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_connectionName_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *arg2 ;
+  
+  SWIG_check_num_args("qtDatabase::connectionName",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::connectionName",1,"qtDatabase *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("qtDatabase::connectionName",2,"char [50]");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_connectionName_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  {
+    if(arg2) {
+      strncpy((char*)arg1->connectionName, (const char *)arg2, 50-1);
+      arg1->connectionName[50-1] = 0;
+    } else {
+      arg1->connectionName[0] = 0;
+    }
+  }
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_connectionName_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::connectionName",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::connectionName",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_connectionName_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (char *)(char *) ((arg1)->connectionName);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_db_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlDatabase *arg2 = (QSqlDatabase *) 0 ;
+  
+  SWIG_check_num_args("qtDatabase::db",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::db",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("qtDatabase::db",2,"QSqlDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_db_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_QSqlDatabase,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("qtDatabase_db_set",2,SWIGTYPE_p_QSqlDatabase);
+  }
+  
+  if (arg1) (arg1)->db = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_db_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlDatabase *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::db",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::db",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_db_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (QSqlDatabase *) ((arg1)->db);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_QSqlDatabase,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_result_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlQuery *arg2 = (QSqlQuery *) 0 ;
+  
+  SWIG_check_num_args("qtDatabase::result",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::result",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("qtDatabase::result",2,"QSqlQuery *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_result_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_QSqlQuery,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("qtDatabase_result_set",2,SWIGTYPE_p_QSqlQuery);
+  }
+  
+  if (arg1) (arg1)->result = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_result_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlQuery *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::result",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::result",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_result_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (QSqlQuery *) ((arg1)->result);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_QSqlQuery,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_error_set(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlError *arg2 = (QSqlError *) 0 ;
+  
+  SWIG_check_num_args("qtDatabase::error",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::error",1,"qtDatabase *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("qtDatabase::error",2,"QSqlError *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_error_set",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_QSqlError,SWIG_POINTER_DISOWN))){
+    SWIG_fail_ptr("qtDatabase_error_set",2,SWIGTYPE_p_QSqlError);
+  }
+  
+  if (arg1) (arg1)->error = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_qtDatabase_error_get(lua_State* L) {
+  int SWIG_arg = 0;
+  qtDatabase *arg1 = (qtDatabase *) 0 ;
+  QSqlError *result = 0 ;
+  
+  SWIG_check_num_args("qtDatabase::error",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("qtDatabase::error",1,"qtDatabase *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_qtDatabase,0))){
+    SWIG_fail_ptr("qtDatabase_error_get",1,SWIGTYPE_p_qtDatabase);
+  }
+  
+  result = (QSqlError *) ((arg1)->error);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_QSqlError,0); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_qtDatabase(void *obj) {
+qtDatabase *arg1 = (qtDatabase *) obj;
+delete arg1;
+}
+static swig_lua_method swig_qtDatabase_methods[] = {
+    {"open", _wrap_qtDatabase_open}, 
+    {"close", _wrap_qtDatabase_close}, 
+    {"query", _wrap_qtDatabase_query}, 
+    {"populateTable", _wrap_qtDatabase_populateTable}, 
+    {"recordFieldValue", _wrap_qtDatabase_recordFieldValue}, 
+    {"dbQuery", _wrap_qtDatabase_dbQuery}, 
+    {"dbRecordFieldValue", _wrap_qtDatabase_dbRecordFieldValue}, 
+    {"nextRecord", _wrap_qtDatabase_nextRecord}, 
+    {0,0}
+};
+static swig_lua_attribute swig_qtDatabase_attributes[] = {
+    { "connectionName", _wrap_qtDatabase_connectionName_get, _wrap_qtDatabase_connectionName_set},
+    { "db", _wrap_qtDatabase_db_get, _wrap_qtDatabase_db_set},
+    { "result", _wrap_qtDatabase_result_get, _wrap_qtDatabase_result_set},
+    { "error", _wrap_qtDatabase_error_get, _wrap_qtDatabase_error_set},
+    {0,0,0}
+};
+static swig_lua_class *swig_qtDatabase_bases[] = {0};
+static const char *swig_qtDatabase_base_names[] = {0};
+static swig_lua_class _wrap_class_qtDatabase = { "qtDatabase", &SWIGTYPE_p_qtDatabase,_wrap_new_qtDatabase, swig_delete_qtDatabase, swig_qtDatabase_methods, swig_qtDatabase_attributes, swig_qtDatabase_bases, swig_qtDatabase_base_names };
+
 static int _wrap_getParam(lua_State* L) {
   int SWIG_arg = 0;
   unsigned long arg1 ;
@@ -27470,6 +28413,7 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvSetWhatsThis", _wrap_pvSetWhatsThis},
     { "pvWhatsThisPrintf", _wrap_pvWhatsThisPrintf},
     { "pvClientCommand",_wrap_pvClientCommand},
+    { "pvWriteTextToFileAtClient", _wrap_pvWriteTextToFileAtClient},
     { "pvZoomMask", _wrap_pvZoomMask},
     { "pvSetManualUrl", _wrap_pvSetManualUrl},
     { "pvSelectLanguage", _wrap_pvSelectLanguage},
@@ -27592,6 +28536,7 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvPrintHtmlOnPrinter", _wrap_pvPrintHtmlOnPrinter},
     { "pvSetWidgetProperty", _wrap_pvSetWidgetProperty},
     { "pvPassThroughOneJpegFrame",_wrap_pvPassThroughOneJpegFrame},
+    { "pvSendJpegFrame",_wrap_pvSendJpegFrame},
     { "pvSendRGBA",_wrap_pvSendRGBA},
     { "pvText", _wrap_pvText},
     { "pvRequestGeometry", _wrap_pvRequestGeometry},
@@ -27635,6 +28580,10 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvSetMovie", _wrap_pvSetMovie},
     { "pvMovieControl", _wrap_pvMovieControl},
     { "pvMovieSpeed", _wrap_pvMovieSpeed},
+    { "pvAddTabIcon",_wrap_pvAddTabIcon},
+    { "pvSetCellWidget", _wrap_pvSetCellWidget},
+    { "pvSetContentsMargins", _wrap_pvSetContentsMargins},
+    { "pvSetSpacing", _wrap_pvSetSpacing},
     { "pvVtkTcl", _wrap_pvVtkTcl},
     { "pvVtkTclPrintf", _wrap_pvVtkTclPrintf},
     { "pvVtkTclScript", _wrap_pvVtkTclScript},
@@ -28279,6 +29228,9 @@ static swig_type_info _swigt__p_FloatArray = {"_p_FloatArray", "FloatArray *", 0
 static swig_type_info _swigt__p_GLuint = {"_p_GLuint", "GLuint *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_IntegerArray = {"_p_IntegerArray", "IntegerArray *", 0, 0, (void*)&_wrap_class_IntegerArray, 0};
 static swig_type_info _swigt__p_PARSE_EVENT_STRUCT = {"_p_PARSE_EVENT_STRUCT", "PARSE_EVENT_STRUCT *", 0, 0, (void*)&_wrap_class_PARSE_EVENT_STRUCT, 0};
+static swig_type_info _swigt__p_QSqlDatabase = {"_p_QSqlDatabase", "QSqlDatabase *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlError = {"_p_QSqlError", "QSqlError *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_QSqlQuery = {"_p_QSqlQuery", "QSqlQuery *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p__PARAM_ = {"_p__PARAM_", "PARAM *|_PARAM_ *", 0, 0, (void*)&_wrap_class__PARAM_, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_double = {"_p_double", "double *", 0, 0, (void*)0, 0};
@@ -28293,6 +29245,7 @@ static swig_type_info _swigt__p_pvAddressTable = {"_p_pvAddressTable", "pvAddres
 static swig_type_info _swigt__p_pvAddressTableItem = {"_p_pvAddressTableItem", "pvAddressTableItem *", 0, 0, (void*)&_wrap_class_pvAddressTableItem, 0};
 static swig_type_info _swigt__p_pvTime = {"_p_pvTime", "pvTime *", 0, 0, (void*)&_wrap_class_pvTime, 0};
 static swig_type_info _swigt__p_pvWidgetIdManager = {"_p_pvWidgetIdManager", "pvWidgetIdManager *", 0, 0, (void*)&_wrap_class_pvWidgetIdManager, 0};
+static swig_type_info _swigt__p_qtDatabase = {"_p_qtDatabase", "qtDatabase *", 0, 0, (void*)&_wrap_class_qtDatabase, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
 
@@ -28302,6 +29255,9 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_GLuint,
   &_swigt__p_IntegerArray,
   &_swigt__p_PARSE_EVENT_STRUCT,
+  &_swigt__p_QSqlDatabase,
+  &_swigt__p_QSqlError,
+  &_swigt__p_QSqlQuery,
   &_swigt__p__PARAM_,
   &_swigt__p_char,
   &_swigt__p_double,
@@ -28316,6 +29272,7 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_pvAddressTableItem,
   &_swigt__p_pvTime,
   &_swigt__p_pvWidgetIdManager,
+  &_swigt__p_qtDatabase,
   &_swigt__p_unsigned_char,
   &_swigt__p_void,
 };
@@ -28325,6 +29282,9 @@ static swig_cast_info _swigc__p_FloatArray[] = {  {&_swigt__p_FloatArray, 0, 0, 
 static swig_cast_info _swigc__p_GLuint[] = {  {&_swigt__p_GLuint, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_IntegerArray[] = {  {&_swigt__p_IntegerArray, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_PARSE_EVENT_STRUCT[] = {  {&_swigt__p_PARSE_EVENT_STRUCT, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlDatabase[] = {  {&_swigt__p_QSqlDatabase, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlError[] = {  {&_swigt__p_QSqlError, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_QSqlQuery[] = {  {&_swigt__p_QSqlQuery, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p__PARAM_[] = {  {&_swigt__p__PARAM_, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_double[] = {  {&_swigt__p_double, 0, 0, 0},{0, 0, 0, 0}};
@@ -28339,6 +29299,7 @@ static swig_cast_info _swigc__p_pvAddressTable[] = {  {&_swigt__p_pvAddressTable
 static swig_cast_info _swigc__p_pvAddressTableItem[] = {  {&_swigt__p_pvAddressTableItem, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pvTime[] = {  {&_swigt__p_pvTime, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_pvWidgetIdManager[] = {  {&_swigt__p_pvWidgetIdManager, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_qtDatabase[] = {  {&_swigt__p_qtDatabase, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
@@ -28348,6 +29309,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_GLuint,
   _swigc__p_IntegerArray,
   _swigc__p_PARSE_EVENT_STRUCT,
+  _swigc__p_QSqlDatabase,
+  _swigc__p_QSqlError,
+  _swigc__p_QSqlQuery,
   _swigc__p__PARAM_,
   _swigc__p_char,
   _swigc__p_double,
@@ -28362,6 +29326,7 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_pvAddressTableItem,
   _swigc__p_pvTime,
   _swigc__p_pvWidgetIdManager,
+  _swigc__p_qtDatabase,
   _swigc__p_unsigned_char,
   _swigc__p_void,
 };

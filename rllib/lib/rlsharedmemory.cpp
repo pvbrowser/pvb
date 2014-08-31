@@ -95,7 +95,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   status  = OK;
   name = new char[strlen(shmname)+1];
   strcpy(name,shmname);
-  size    = Size + sizeof(*mutex);
+  _size    = Size + sizeof(*mutex);
 
   // create file
   fdlock = open(name, O_RDWR | O_CREAT, rwmode );
@@ -116,13 +116,13 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   // old stuff, without suggestions from Stefan Lievens 
   //shmkey  = ftok(name,0);
   //
-  //id  = shmget(shmkey, size, IPC_CREAT);
+  //id  = shmget(shmkey, _size, IPC_CREAT);
 
   //shmkey  = ftok(name, 'R');
   shmkey  = ftok(name, 'b');
 
-  //id  = shmget(shmkey, size, 0600 | IPC_CREAT);
-  id  = shmget(shmkey, size, rwmode | IPC_CREAT);
+  //id  = shmget(shmkey, _size, 0600 | IPC_CREAT);
+  id  = shmget(shmkey, _size, rwmode | IPC_CREAT);
   if(id < 0)           { status=ERROR_SHMGET; return; }
 
   base_adr = (char *) shmat(id,NULL,0);
@@ -146,7 +146,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   status  = OK;
   name = new char[strlen(shmname)+1];
   strcpy(name,shmname);
-  size    = Size + sizeof(*mutex);
+  _size    = Size + sizeof(*mutex);
   // The file block size is fixed
   file_block_size = 512; // Bytes
   // Get the page size
@@ -167,8 +167,8 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   // The pagelet size is fixed
   pagelet_size = 512; // Bytes
   // Get memory
-  if(size % page_size == 0) pagelets = size / pagelet_size;
-  else                      pagelets = (size / page_size + 1) * (page_size / pagelet_size);
+  if(_size % page_size == 0) pagelets = _size / pagelet_size;
+  else                      pagelets = (_size / page_size + 1) * (page_size / pagelet_size);
   ret = sys$expreg(pagelets,&add_ret,0,0);
   if(ret != SS$_NORMAL) { status=ERROR_FILE; return; }
   // Set the addresses
@@ -247,7 +247,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   status  = OK;
   name = new char[strlen(shmname)+1];
   strcpy(name,shmname);
-  size    = Size + sizeof(HANDLE); // sizeof(*mutex);
+  _size    = Size + sizeof(HANDLE); // sizeof(*mutex);
 
   //file_existed = 1;
   hSharedFile = CreateFile(name,
@@ -285,7 +285,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
     NULL,                // no security attributes
     PAGE_READWRITE,      // read/write access
     0,                   // size: high 32-bits
-    size,                // size: low 32-bits
+    _size,               // size: low 32-bits
     0);                  // name of map object // changed by FMakkinga 25-03-2013 global_name); 
   //  global_name);      // name of map object
   //delete [] global_name;  
@@ -302,7 +302,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
   memset(&overlapped, 0, sizeof(overlapped));      // Changed by FMakkinga 22-03-2013
-  UnlockFileEx(hSharedFile,0,size,0,&overlapped);
+  UnlockFileEx(hSharedFile,0,_size,0,&overlapped);
 #endif
   if(rwmode == 0) return; // no warning of unused parameter
 }
@@ -328,7 +328,7 @@ int rlSharedMemory::deleteSharedMemory()
   //rlwthread_mutex_destroy(mutex);
   flock(fdlock,LOCK_UN);
   shmctl(id, IPC_RMID, &buf);
-  size = 0;
+  _size = 0;
   return 0;
 #endif
 
@@ -349,7 +349,7 @@ int rlSharedMemory::deleteSharedMemory()
   if(ret != SS$_NORMAL) return -1;
   // Fill the input address
   add_in.start = (long) base_adr;
-  add_in.end   = (long) base_adr + size;
+  add_in.end   = (long) base_adr + _size;
   // Free the memory
   ret = sys$deltva(&add_in,&add_ret,0);
   if(ret != SS$_NORMAL) return -1;
@@ -364,7 +364,7 @@ int rlSharedMemory::deleteSharedMemory()
   UnmapViewOfFile(base_adr);
   CloseHandle((HANDLE) id);
   CloseHandle((HANDLE) shmkey);
-  UnlockFile(hSharedFile,0,0,size,0); // Changed by FMakkinga 18-03-2013
+  UnlockFile(hSharedFile,0,0,_size,0); // Changed by FMakkinga 18-03-2013
   CloseHandle(hSharedFile);           // Changed by FMakkinga 18-03-2013
   status = ~OK;
   return 0;
@@ -374,12 +374,12 @@ int rlSharedMemory::deleteSharedMemory()
 int rlSharedMemory::write(unsigned long offset, const void *buf, int len)
 {
   void *ptr;
-  if(status != OK)      return -1;
-  if(len <= 0)          return -1;
-  if(offset+len > size) return -1;
+  if(status != OK)       return -1;
+  if(len <= 0)           return -1;
+  if(offset+len > _size) return -1;
   ptr = user_adr + offset;
 #ifdef RLWIN32
-  LockFileEx(hSharedFile,LOCKFILE_EXCLUSIVE_LOCK,0,size,0,&overlapped); // Changed by FMakkinga 18-03-2013
+  LockFileEx(hSharedFile,LOCKFILE_EXCLUSIVE_LOCK,0,_size,0,&overlapped); // Changed by FMakkinga 18-03-2013
 #elif defined(RLUNIX)
   flock(fdlock,LOCK_EX);
 #else
@@ -387,7 +387,7 @@ int rlSharedMemory::write(unsigned long offset, const void *buf, int len)
 #endif
   memcpy(ptr,buf,len);
 #ifdef RLWIN32
-  UnlockFileEx(hSharedFile,0,size,0,&overlapped);                       // Changed by FMakkinga 18-03-2013
+  UnlockFileEx(hSharedFile,0,_size,0,&overlapped);                       // Changed by FMakkinga 18-03-2013
 #elif defined(RLUNIX)
   flock(fdlock,LOCK_UN);
 #else
@@ -399,12 +399,12 @@ int rlSharedMemory::write(unsigned long offset, const void *buf, int len)
 int rlSharedMemory::read(unsigned long offset, void *buf, int len)
 {
   void *ptr;
-  if(status != OK)      return -1;
-  if(len <= 0)          return -1;
-  if(offset+len > size) return -1;
+  if(status != OK)       return -1;
+  if(len <= 0)           return -1;
+  if(offset+len > _size) return -1;
   ptr = user_adr + offset;
 #ifdef RLWIN32
-  LockFileEx(hSharedFile,LOCKFILE_EXCLUSIVE_LOCK,0,size,0,&overlapped); // Changed by FMakkinga 18-03-2013
+  LockFileEx(hSharedFile,LOCKFILE_EXCLUSIVE_LOCK,0,_size,0,&overlapped); // Changed by FMakkinga 18-03-2013
 #elif defined(RLUNIX)
   flock(fdlock,LOCK_EX);
 #else
@@ -412,7 +412,7 @@ int rlSharedMemory::read(unsigned long offset, void *buf, int len)
 #endif
   memcpy(buf,ptr,len);
 #ifdef RLWIN32
-  UnlockFileEx(hSharedFile,0,size,0,&overlapped);                       // Changed by FMakkinga 18-03-2013
+  UnlockFileEx(hSharedFile,0,_size,0,&overlapped);                       // Changed by FMakkinga 18-03-2013
 #elif defined(RLUNIX)
   flock(fdlock,LOCK_UN);
 #else
@@ -501,5 +501,10 @@ int rlSharedMemory::shmKey()
 int rlSharedMemory::shmId()
 {
   return id;
+}
+
+unsigned long rlSharedMemory::size()
+{
+  return _size;
 }
 

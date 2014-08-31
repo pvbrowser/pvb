@@ -16,5 +16,6 @@ SOURCES += ../../fake_qmake/main.cpp       \
            ../../rllib/lib/rlcutil.cpp
 
 INCLUDEPATH   += ../../rllib/lib
+LIBS          += -lws2_32
 
 TARGET = fake_qmake

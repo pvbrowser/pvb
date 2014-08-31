@@ -15,7 +15,7 @@ var searchData=
   ['addi1',['addi1',['../structrlEIBnetIP_1_1EIB__TEL.html#a795c6f13ee79124878941360ae1b7a61',1,'rlEIBnetIP::EIB_TEL']]],
   ['addnew',['addNew',['../classrlPcontrol.html#a32aa528fb00baabcf7dbd66ade136f92',1,'rlPcontrol']]],
   ['address',['address',['../classrlIpAdr.html#a73c95244de3109f59499ed468e7f4a4f',1,'rlIpAdr::address()'],['../classrlUdpSocket.html#ab49ac7d1fc4323d981c1b2abd8a5cbd1',1,'rlUdpSocket::address()']]],
-  ['adr',['adr',['../classrlCorbaClient.html#a842673113add34e0922ecb38c8b82aa5',1,'rlCorbaClient::adr()'],['../classrlCorbaServer.html#a4a79b54446460a04e157f0f3e7ddc4ee',1,'rlCorbaServer::adr()'],['../classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82',1,'rlSocket::adr()']]],
+  ['adr',['adr',['../classrlBuffer.html#a23b36219913c57f6b73f4d7cf9c2925f',1,'rlBuffer::adr()'],['../classrlCorbaClient.html#a842673113add34e0922ecb38c8b82aa5',1,'rlCorbaClient::adr()'],['../classrlCorbaServer.html#a4a79b54446460a04e157f0f3e7ddc4ee',1,'rlCorbaServer::adr()'],['../classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82',1,'rlSocket::adr()']]],
   ['allow_5fadd_5fvalues',['allow_add_values',['../classrlDataAcquisitionProvider.html#a61251fdaa308793ca04d3140e3380ea1',1,'rlDataAcquisitionProvider']]],
   ['alpha',['alpha',['../classrlSvgPosition.html#a2129b879046317cbcf379dc60bdb1737',1,'rlSvgPosition::alpha()'],['../structrlSvgPosition_1_1rlPositionInit.html#a148521e7139afa2d55736074475a533b',1,'rlSvgPosition::rlPositionInit::alpha()']]],
   ['any_5fsiemens_5fcompatible_5fplc',['ANY_SIEMENS_COMPATIBLE_PLC',['../classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058ada7ebca77cb85234690bea1767fffcce',1,'rlSiemensTCP']]],

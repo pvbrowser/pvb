@@ -2437,7 +2437,18 @@ void Interpreter::interpretp(const char *command)
   else if(strncmp(command,"playSound(",10) == 0) // play a (WAV) sound
   {
     get_text(command,text);
-    printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
+    if(opt.arg_debug) printf("playSound(\"%s\")\n",(const char *) text.toUtf8());
+    if(opt.ffplay_available)
+    {
+      if(opt.arg_debug) printf("We run ffplay for the sound\n");
+      QString cmd = "ffplay -loglevel quiet -autoexit -vn -showmode 0 -i " + text;
+#ifdef PVUNIX
+      cmd += " &";
+#endif      
+      mysystem(cmd.toUtf8());
+      return;
+    }
+
 #if defined USE_ANDROID
 #define SOUND_HANDLED 1
     //if(QSound::isAvailable())
@@ -2469,11 +2480,6 @@ void Interpreter::interpretp(const char *command)
     else
     {
       int ret = -1;
-#ifdef PVUNIX
-      if(opt.arg_debug) printf("We try to use aplay for the sound\n");
-      QString cmd = "aplay " + text + " &";;
-      ret = system(cmd.toUtf8());
-#endif
       if(ret < 0)
       {
         printf("sound not available on this platform\n");

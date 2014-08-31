@@ -153,6 +153,7 @@ int start_gui = 0;                         // can be set from command line
 const char *url_trailer = NULL;            // can be set from command line
 int pv_cache = 0;                          // can be set from command line
 static int rl_ipversion = 4;               // default: use IPV4
+int pvs_no_announce = 0;                   // announce pvserver version
 
 #ifndef USE_INETD
 extern pthread_mutex_t param_mutex;
@@ -1068,7 +1069,7 @@ static int show_usage()
 {
   printf("###################################################################################\n");
   printf("pvserver %s (C) by Lehrig Software Engineering 2000-2014       lehrig@t-online.de\n\n", pvserver_version);
-  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -gui <url_trailer>\n");
+  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -no_announce -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
   printf("-sleep=500 milliseconds\n");
@@ -1232,6 +1233,7 @@ int i,ret;
     else if(strcmp(av[i],"-noforcenullevent")                  == 0) p->force_null_event = 0;
     else if(strcmp(av[i],"-exit_after_last_client_terminates") == 0) exit_after_last_client_terminates = 1;
     else if(strcmp(av[i],"-cache")                             == 0) pv_cache = 1;
+    else if(strcmp(av[i],"-no_announce")                       == 0) pvs_no_announce = 1;
     else if(strcmp(av[i],"-ipv6")                              == 0)
     {
       printf("useing IPV6 adresses\n");
@@ -2557,6 +2559,38 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
     }
   }  
   return -1;
+}
+
+int pvSendJpegFrame(PARAM *p, int id, unsigned char *frame, int rotate)
+{
+  char textbuf[80];
+  int len = 0;
+
+  if(id < 0) return -1;
+  // search for startOfImage
+  if(frame[0] != 0x0ff || frame[1] != 0x0d8)
+  {
+    printf("ERROR: pvSendJpegFrame() frame is not a JPEG\n");
+    return -1;
+  }
+  
+  sprintf(textbuf,"setJpegFrame(%d,%d)\n",id,rotate);
+  pvtcpsend(p, textbuf, strlen(textbuf));
+
+  while(1)
+  {
+    if(frame[len]==0x0ff && frame[len+1] == 0x0d9)
+    {
+      len += 2;
+      sprintf(textbuf,"setJpegScanline(%d)\n",len);
+      pvtcpsend(p, textbuf, strlen(textbuf));
+      pvtcpsend_binary(p, (const char *) frame, len);
+      sprintf(textbuf,"setJpegScanline(-1)\n");
+      pvtcpsend(p, textbuf, strlen(textbuf));      
+      return len;
+    }
+    len++;
+  }
 }
 
 int pvSendRGBA(PARAM *p, int id, const unsigned char *image, int width, int height, int rotate)
@@ -7020,6 +7054,7 @@ int qwtAnalogClockSetValue(PARAM *p, int id, float value)
 int pvSendVersion(PARAM *p)
 {
   char buf[80];
+  if(pvs_no_announce) return 0;
   strcpy(p->pvserver_version, pvserver_version);
   sprintf(buf,"pvsVersion(%s)\n", pvserver_version);
   pvtcpsend(p, buf, strlen(buf));

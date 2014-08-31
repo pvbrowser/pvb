@@ -57,7 +57,8 @@ HEADERS  = rllib.h                     \
            rlreport.h                  \
 #           rlstatemachine.h            \
            rldf1.h                     \
-           rlstate.h
+           rlstate.h                   \
+           rlbuffer.h
 
 SOURCES  = rlspawn.cpp                   \
            rlwthread.cpp                 \
@@ -102,6 +103,7 @@ SOURCES  = rlspawn.cpp                   \
 #           rlstatemachine.cpp            \
            rldf1.cpp                     \
            rlstate.cpp                   \
+           rlbuffer.cpp                  \
            nodave.c                      \
            setport.c
 

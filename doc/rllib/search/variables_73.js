@@ -17,7 +17,6 @@ var searchData=
   ['shmheader',['shmheader',['../classrlDataAcquisition.html#a41fdc28676b2e60c34a4a1ccc46632bb',1,'rlDataAcquisition::shmheader()'],['../classrlDataAcquisitionProvider.html#a9a26dbc490ffa1cf4dc6587cc416a4ca',1,'rlDataAcquisitionProvider::shmheader()'],['../classrlOpcXmlDa.html#a7ac06d85e6c47ac5cd541c1be3962d6e',1,'rlOpcXmlDa::shmheader()']]],
   ['shmkey',['shmkey',['../classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd',1,'rlSharedMemory']]],
   ['shmvalues',['shmvalues',['../classrlDataAcquisition.html#aa7af552564e8aaab93f78bbc7d17e917',1,'rlDataAcquisition::shmvalues()'],['../classrlDataAcquisitionProvider.html#a009fad245b1e42d387d6dbc523337bfb',1,'rlDataAcquisitionProvider::shmvalues()'],['../classrlOpcXmlDa.html#a56b7064681493ab5ab04117ffdb0aae4',1,'rlOpcXmlDa::shmvalues()']]],
-  ['size',['size',['../classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6',1,'rlSharedMemory']]],
   ['sleeplocally',['sleepLocally',['../classrlController.html#a155171495dfa7e99c12c95a80de20aed',1,'rlController']]],
   ['sock',['sock',['../classrlCommandlineInterface.html#a89b18bcb108a7b1727600974d9b1bbe4',1,'rlCommandlineInterface::sock()'],['../classrlWebcam.html#a98adc748a7419f90c01527d94a6d7a75',1,'rlWebcam::sock()']]],
   ['sockaddr',['sockaddr',['../classrlSocket.html#a882f357e0d34547baeacf1b173c75855',1,'rlSocket']]],

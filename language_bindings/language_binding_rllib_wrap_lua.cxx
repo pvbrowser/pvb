@@ -3458,6 +3458,30 @@ fail:
 }
 
 
+static int _wrap_rlSharedMemory_size(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSharedMemory *arg1 = (rlSharedMemory *) 0 ;
+  unsigned long result;
+  
+  SWIG_check_num_args("rlSharedMemory::size",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSharedMemory::size",1,"rlSharedMemory *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSharedMemory,0))){
+    SWIG_fail_ptr("rlSharedMemory_size",1,SWIGTYPE_p_rlSharedMemory);
+  }
+  
+  result = (unsigned long)(arg1)->size();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlSharedMemory_status_set(lua_State* L) {
   int SWIG_arg = 0;
   rlSharedMemory *arg1 = (rlSharedMemory *) 0 ;
@@ -3585,6 +3609,7 @@ static swig_lua_method swig_rlSharedMemory_methods[] = {
     {"getUserAdr", _wrap_rlSharedMemory_getUserAdr}, 
     {"shmKey", _wrap_rlSharedMemory_shmKey}, 
     {"shmId", _wrap_rlSharedMemory_shmId}, 
+    {"size", _wrap_rlSharedMemory_size}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlSharedMemory_attributes[] = {
@@ -6900,6 +6925,23 @@ fail:
 }
 
 
+static int _wrap_rlInputAvailable(lua_State* L) {
+  int SWIG_arg = 0;
+  int result;
+  
+  SWIG_check_num_args("rlInputAvailable",0,0)
+  result = (int)rlInputAvailable();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlLastLinePrintf(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -6956,6 +6998,32 @@ static int _wrap_rlstrncpy(lua_State* L) {
   arg2 = (char *)lua_tostring(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   result = (char *)rlstrncpy(arg1,(char const *)arg2,arg3);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlstrlinecpy(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlstrlinecpy",3,3)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlstrlinecpy",1,"char *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlstrlinecpy",2,"char const *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlstrlinecpy",3,"int");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (char *)rlstrlinecpy(arg1,(char const *)arg2,arg3);
   lua_pushstring(L,(const char *)result); SWIG_arg++;
   return SWIG_arg;
   
@@ -10919,6 +10987,30 @@ fail:
 }
 
 
+static int _wrap_rlFifo_nmesAvailable(lua_State* L) {
+  int SWIG_arg = 0;
+  rlFifo *arg1 = (rlFifo *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlFifo::nmesAvailable",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlFifo::nmesAvailable",1,"rlFifo *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlFifo,0))){
+    SWIG_fail_ptr("rlFifo_nmesAvailable",1,SWIGTYPE_p_rlFifo);
+  }
+  
+  result = (int)(arg1)->nmesAvailable();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlFifo_write(lua_State* L) {
   int SWIG_arg = 0;
   rlFifo *arg1 = (rlFifo *) 0 ;
@@ -10984,6 +11076,7 @@ delete arg1;
 static swig_lua_method swig_rlFifo_methods[] = {
     {"read", _wrap_rlFifo_read}, 
     {"poll", _wrap_rlFifo_poll}, 
+    {"nmesAvailable", _wrap_rlFifo_nmesAvailable}, 
     {"write", _wrap_rlFifo_write}, 
     {"printf", _wrap_rlFifo_printf}, 
     {0,0}
@@ -11281,6 +11374,37 @@ fail:
 }
 
 
+static int _wrap_rlFileLoad_text2rlstring(lua_State* L) {
+  int SWIG_arg = 0;
+  rlFileLoad *arg1 = (rlFileLoad *) 0 ;
+  rlString *arg2 = 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlFileLoad::text2rlstring",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlFileLoad::text2rlstring",1,"rlFileLoad *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlFileLoad::text2rlstring",2,"rlString &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlFileLoad,0))){
+    SWIG_fail_ptr("rlFileLoad_text2rlstring",1,SWIGTYPE_p_rlFileLoad);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlFileLoad_text2rlstring",2,SWIGTYPE_p_rlString);
+  }
+  
+  result = (int)(arg1)->text2rlstring(*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlFileLoad(void *obj) {
 rlFileLoad *arg1 = (rlFileLoad *) obj;
 delete arg1;
@@ -11291,6 +11415,7 @@ static swig_lua_method swig_rlFileLoad_methods[] = {
     {"firstLine", _wrap_rlFileLoad_firstLine}, 
     {"nextLine", _wrap_rlFileLoad_nextLine}, 
     {"setDebug", _wrap_rlFileLoad_setDebug}, 
+    {"text2rlstring", _wrap_rlFileLoad_text2rlstring}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlFileLoad_attributes[] = {
@@ -18670,6 +18795,168 @@ fail:
 }
 
 
+static int _wrap_rlPlcState_getInt(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("rlPlcState::getInt",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::getInt",1,"rlPlcState *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::getInt",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_getInt",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)(arg1)->getInt(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_getFloat(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  float result;
+  
+  SWIG_check_num_args("rlPlcState::getFloat",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::getFloat",1,"rlPlcState *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::getFloat",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_getFloat",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (float)(arg1)->getFloat(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_getDouble(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  double result;
+  
+  SWIG_check_num_args("rlPlcState::getDouble",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::getDouble",1,"rlPlcState *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::getDouble",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_getDouble",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (double)(arg1)->getDouble(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_getOldInt(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("rlPlcState::getOldInt",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::getOldInt",1,"rlPlcState *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::getOldInt",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_getOldInt",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)(arg1)->getOldInt(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_getOldFloat(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  float result;
+  
+  SWIG_check_num_args("rlPlcState::getOldFloat",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::getOldFloat",1,"rlPlcState *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::getOldFloat",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_getOldFloat",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (float)(arg1)->getOldFloat(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPlcState_getOldDouble(lua_State* L) {
+  int SWIG_arg = 0;
+  rlPlcState *arg1 = (rlPlcState *) 0 ;
+  int arg2 ;
+  double result;
+  
+  SWIG_check_num_args("rlPlcState::getOldDouble",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlPlcState::getOldDouble",1,"rlPlcState *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlPlcState::getOldDouble",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlPlcState,0))){
+    SWIG_fail_ptr("rlPlcState_getOldDouble",1,SWIGTYPE_p_rlPlcState);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (double)(arg1)->getOldDouble(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlPlcState_shm_set(lua_State* L) {
   int SWIG_arg = 0;
   rlPlcState *arg1 = (rlPlcState *) 0 ;
@@ -18751,6 +19038,12 @@ static swig_lua_method swig_rlPlcState_methods[] = {
     {"maxInt", _wrap_rlPlcState_maxInt}, 
     {"maxFloat", _wrap_rlPlcState_maxFloat}, 
     {"maxDouble", _wrap_rlPlcState_maxDouble}, 
+    {"getInt", _wrap_rlPlcState_getInt}, 
+    {"getFloat", _wrap_rlPlcState_getFloat}, 
+    {"getDouble", _wrap_rlPlcState_getDouble}, 
+    {"getOldInt", _wrap_rlPlcState_getOldInt}, 
+    {"getOldFloat", _wrap_rlPlcState_getOldFloat}, 
+    {"getOldDouble", _wrap_rlPlcState_getOldDouble}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlPlcState_attributes[] = {
@@ -25406,6 +25699,30 @@ static int _wrap_rlString_removeQuotas(lua_State* L) {
 }
 
 
+static int _wrap_rlString_removeNewline(lua_State* L) {
+  int SWIG_arg = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlString::removeNewline",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlString::removeNewline",1,"rlString *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString_removeNewline",1,SWIGTYPE_p_rlString);
+  }
+  
+  result = (int)(arg1)->removeNewline();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlString(void *obj) {
 rlString *arg1 = (rlString *) obj;
 delete arg1;
@@ -25427,6 +25744,7 @@ static swig_lua_method swig_rlString_methods[] = {
     {"strchr", _wrap_rlString_strchr}, 
     {"strrchr", _wrap_rlString_strrchr}, 
     {"removeQuotas", _wrap_rlString_removeQuotas}, 
+    {"removeNewline", _wrap_rlString_removeNewline}, 
     {0,0}
 };
 static swig_lua_attribute swig_rlString_attributes[] = {
@@ -29667,9 +29985,11 @@ static const struct luaL_Reg swig_commands[] = {
     { "rlScoketWrite", _wrap_rlScoketWrite},
     { "rlSetDebugPrintf", _wrap_rlSetDebugPrintf},
     { "rlDebugPrintf", _wrap_rlDebugPrintf},
+    { "rlInputAvailable", _wrap_rlInputAvailable},
     { "rlLastLinePrintf", _wrap_rlLastLinePrintf},
     { "rlpass", _wrap_rlpass},
     { "rlstrncpy", _wrap_rlstrncpy},
+    { "rlstrlinecpy", _wrap_rlstrlinecpy},
     { "rlsnprintf", _wrap_rlsnprintf},
     { "rlSetSigtermHandler", _wrap_rlSetSigtermHandler},
     { "rlFindFile", _wrap_rlFindFile},

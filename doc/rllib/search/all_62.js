@@ -78,7 +78,7 @@ var searchData=
   ['bnodenoresponse',['bNodeNoResponse',['../classrlCanOpenTypes.html#a31a3d51b63e5105b8582d566f850b93b',1,'rlCanOpenTypes']]],
   ['bnodestate',['bNodeState',['../classrlCanOpenTypes.html#a80311aa9ab2ef433ee7a6f349622125d',1,'rlCanOpenTypes']]],
   ['boardcount',['boardcount',['../classrlCanOpen.html#a3eff7e93db293eb999c1accf78d56e24',1,'rlCanOpen']]],
-  ['boardid',['boardid',['../structIPCMSGSTRUCT.html#a3e9d17de9492c78203c3ca6881faf6ab',1,'IPCMSGSTRUCT::boardid()'],['../classrlCanNode.html#a345a98cc8b48c7a1afbb8717df36caa5',1,'rlCanNode::boardID()']]],
+  ['boardid',['boardID',['../classrlCanNode.html#a345a98cc8b48c7a1afbb8717df36caa5',1,'rlCanNode::boardID()'],['../structIPCMSGSTRUCT.html#a3e9d17de9492c78203c3ca6881faf6ab',1,'IPCMSGSTRUCT::boardid()']]],
   ['boardnr',['boardnr',['../classrlCanClient.html#a79854500d92c34c63c02fbf1bb843958',1,'rlCanClient']]],
   ['bootstart',['BOOTSTART',['../rlcanopenstructs_8h.html#a493d540465c602715c436346fee5448d',1,'rlcanopenstructs.h']]],
   ['bpdodirection',['bPDODirection',['../structrlCanPDO.html#ad13bac4cc671d138238a79fb69061c51',1,'rlCanPDO']]],

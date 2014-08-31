@@ -32,6 +32,12 @@ int rlSetDebugPrintf(int state);
 int rlDebugPrintf(const char *format, ...);
 
 /*! <pre>
+  test if input line is available
+  #include <sys/select.h>
+</pre> */
+int rlInputAvailable();
+
+/*! <pre>
   like printf in the last line of a terminal
 </pre> */
 int rlLastLinePrintf(const char *format, ...);
@@ -54,6 +60,13 @@ const char *rlpass(const char *p);
   strncpy + terminate with '\\0'
 </pre> */
 char *rlstrncpy(char *dest, const char *source, int n);
+
+/*! <pre>
+  strncpy + terminate with '\\0'
+  terminates on '\\n' or '\\0'
+  '\\n' is not copied
+</pre> */
+char *rlstrlinecpy(char *dest, const char *source, int n);
 
 /*! <pre>
   like vsnprintf but portable

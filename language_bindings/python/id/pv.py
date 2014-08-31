@@ -938,6 +938,10 @@ def pvClientCommand(*args):
   return _pv.pvClientCommand(*args)
 pvClientCommand = _pv.pvClientCommand
 
+def pvWriteTextToFileAtClient(*args):
+  return _pv.pvWriteTextToFileAtClient(*args)
+pvWriteTextToFileAtClient = _pv.pvWriteTextToFileAtClient
+
 def pvZoomMask(*args):
   return _pv.pvZoomMask(*args)
 pvZoomMask = _pv.pvZoomMask
@@ -1425,6 +1429,10 @@ pvSetWidgetProperty = _pv.pvSetWidgetProperty
 def pvPassThroughOneJpegFrame(*args):
   return _pv.pvPassThroughOneJpegFrame(*args)
 pvPassThroughOneJpegFrame = _pv.pvPassThroughOneJpegFrame
+
+def pvSendJpegFrame(*args):
+  return _pv.pvSendJpegFrame(*args)
+pvSendJpegFrame = _pv.pvSendJpegFrame
 
 def pvSendRGBA(*args):
   return _pv.pvSendRGBA(*args)

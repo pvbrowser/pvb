@@ -289,6 +289,8 @@ void setDefaultOptions()
   strcpy(opt.manual,"index.html");
   opt.connect_timeout = 3;
   getcwd(opt.initial_dir, sizeof(opt.initial_dir) - 1);
+  opt.ffmpeg_available = 0;
+  opt.ffplay_available = 0;
 }
 
 const char *readIniFile()
@@ -412,6 +414,21 @@ int i;
           strcat(buf2,"\\");
 #endif
           strcpy(opt.temp,buf2);
+#ifdef PVUNIX
+          system("which ffmpeg > ffmpeg.dat && which ffplay >> ffmpeg.dat");
+          FILE *fin = fopen("ffmpeg.dat","r");
+          if(fin != NULL)
+          {
+            char line[1024];
+            fgets(line, (int) sizeof(line)-1, fin);
+            if(strstr(line,"ffmpeg") != NULL) opt.ffmpeg_available = 1;
+            fgets(line, (int) sizeof(line)-1, fin);
+            if(strstr(line,"ffplay") != NULL) opt.ffplay_available = 1;
+            if(opt.arg_debug) printf("ffmpeg_available=%d ffplay_available=%d\n", opt.ffmpeg_available, opt.ffplay_available);
+            fclose(fin);
+            //system("rm ffmpeg.dat");
+          }
+#endif
         }
         else if(strncmp(buf,"toolbar=",8) == 0)
         {

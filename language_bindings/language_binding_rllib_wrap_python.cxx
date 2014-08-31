@@ -3506,6 +3506,17 @@ SWIG_AsVal_float (PyObject * obj, float *val)
 }
 
 
+  #define SWIG_From_long   PyLong_FromLong 
+
+
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyLong_FromLong(static_cast< long >(value)); 
+}
+
+
 SWIGINTERNINLINE PyObject *
 SWIG_FromCharPtrAndSize(const char* carray, size_t size)
 {
@@ -3575,9 +3586,6 @@ SWIG_AsVal_char (PyObject * obj, char *val)
   }
   return res;
 }
-
-
-  #define SWIG_From_long   PyLong_FromLong 
 
 
 SWIGINTERNINLINE PyObject*
@@ -5451,6 +5459,28 @@ SWIGINTERN PyObject *_wrap_rlSharedMemory_shmId(PyObject *SWIGUNUSEDPARM(self), 
   arg1 = reinterpret_cast< rlSharedMemory * >(argp1);
   result = (int)(arg1)->shmId();
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSharedMemory_size(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSharedMemory *arg1 = (rlSharedMemory *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  unsigned long result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlSharedMemory_size",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSharedMemory, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSharedMemory_size" "', argument " "1"" of type '" "rlSharedMemory *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSharedMemory * >(argp1);
+  result = (unsigned long)(arg1)->size();
+  resultobj = SWIG_From_unsigned_SS_long(static_cast< unsigned long >(result));
   return resultobj;
 fail:
   return NULL;
@@ -9246,6 +9276,19 @@ SWIGINTERN PyObject *_wrap_rlDebugPrintf(PyObject *SWIGUNUSEDPARM(self), PyObjec
 }
 
 
+SWIGINTERN PyObject *_wrap_rlInputAvailable(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)":rlInputAvailable")) SWIG_fail;
+  result = (int)rlInputAvailable();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlLastLinePrintf__varargs__(PyObject *SWIGUNUSEDPARM(self), PyObject *args, PyObject *varargs) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -9346,6 +9389,52 @@ SWIGINTERN PyObject *_wrap_rlstrncpy(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   } 
   arg3 = static_cast< int >(val3);
   result = (char *)rlstrncpy(arg1,(char const *)arg2,arg3);
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlstrlinecpy(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int arg3 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlstrlinecpy",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlstrlinecpy" "', argument " "1"" of type '" "char *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlstrlinecpy" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlstrlinecpy" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (char *)rlstrlinecpy(arg1,(char const *)arg2,arg3);
   resultobj = SWIG_FromCharPtr((const char *)result);
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
@@ -14636,6 +14725,40 @@ SWIGINTERN PyObject *_wrap_rlFileLoad_setDebug(PyObject *SWIGUNUSEDPARM(self), P
   arg2 = static_cast< int >(val2);
   (arg1)->setDebug(arg2);
   resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlFileLoad_text2rlstring(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlFileLoad *arg1 = (rlFileLoad *) 0 ;
+  rlString *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlFileLoad_text2rlstring",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlFileLoad, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlFileLoad_text2rlstring" "', argument " "1"" of type '" "rlFileLoad *""'"); 
+  }
+  arg1 = reinterpret_cast< rlFileLoad * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_rlString,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlFileLoad_text2rlstring" "', argument " "2"" of type '" "rlString &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "rlFileLoad_text2rlstring" "', argument " "2"" of type '" "rlString &""'"); 
+  }
+  arg2 = reinterpret_cast< rlString * >(argp2);
+  result = (int)(arg1)->text2rlstring(*arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -31267,6 +31390,28 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlString_removeNewline(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlString_removeNewline",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlString, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlString_removeNewline" "', argument " "1"" of type '" "rlString *""'"); 
+  }
+  arg1 = reinterpret_cast< rlString * >(argp1);
+  result = (int)(arg1)->removeNewline();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *rlString_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *obj;
   if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
@@ -36406,6 +36551,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSharedMemory_getUserAdr", _wrap_rlSharedMemory_getUserAdr, METH_VARARGS, NULL},
 	 { (char *)"rlSharedMemory_shmKey", _wrap_rlSharedMemory_shmKey, METH_VARARGS, NULL},
 	 { (char *)"rlSharedMemory_shmId", _wrap_rlSharedMemory_shmId, METH_VARARGS, NULL},
+	 { (char *)"rlSharedMemory_size", _wrap_rlSharedMemory_size, METH_VARARGS, NULL},
 	 { (char *)"rlSharedMemory_status_set", _wrap_rlSharedMemory_status_set, METH_VARARGS, NULL},
 	 { (char *)"rlSharedMemory_status_get", _wrap_rlSharedMemory_status_get, METH_VARARGS, NULL},
 	 { (char *)"rlSharedMemory_name_set", _wrap_rlSharedMemory_name_set, METH_VARARGS, NULL},
@@ -36491,9 +36637,11 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlCommandlineInterface_swigregister", rlCommandlineInterface_swigregister, METH_VARARGS, NULL},
 	 { (char *)"rlSetDebugPrintf", _wrap_rlSetDebugPrintf, METH_VARARGS, NULL},
 	 { (char *)"rlDebugPrintf", _wrap_rlDebugPrintf, METH_VARARGS, NULL},
+	 { (char *)"rlInputAvailable", _wrap_rlInputAvailable, METH_VARARGS, NULL},
 	 { (char *)"rlLastLinePrintf", _wrap_rlLastLinePrintf, METH_VARARGS, NULL},
 	 { (char *)"rlpass", _wrap_rlpass, METH_VARARGS, NULL},
 	 { (char *)"rlstrncpy", _wrap_rlstrncpy, METH_VARARGS, NULL},
+	 { (char *)"rlstrlinecpy", _wrap_rlstrlinecpy, METH_VARARGS, NULL},
 	 { (char *)"rlsnprintf", _wrap_rlsnprintf, METH_VARARGS, NULL},
 	 { (char *)"rlSetSigtermHandler", _wrap_rlSetSigtermHandler, METH_VARARGS, NULL},
 	 { (char *)"rlFindFile", _wrap_rlFindFile, METH_VARARGS, NULL},
@@ -36642,6 +36790,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlFileLoad_firstLine", _wrap_rlFileLoad_firstLine, METH_VARARGS, NULL},
 	 { (char *)"rlFileLoad_nextLine", _wrap_rlFileLoad_nextLine, METH_VARARGS, NULL},
 	 { (char *)"rlFileLoad_setDebug", _wrap_rlFileLoad_setDebug, METH_VARARGS, NULL},
+	 { (char *)"rlFileLoad_text2rlstring", _wrap_rlFileLoad_text2rlstring, METH_VARARGS, NULL},
 	 { (char *)"rlFileLoad_swigregister", rlFileLoad_swigregister, METH_VARARGS, NULL},
 	 { (char *)"rlHistoryLogLine_next_set", _wrap_rlHistoryLogLine_next_set, METH_VARARGS, NULL},
 	 { (char *)"rlHistoryLogLine_next_get", _wrap_rlHistoryLogLine_next_get, METH_VARARGS, NULL},
@@ -36996,6 +37145,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlString_strchr", _wrap_rlString_strchr, METH_VARARGS, NULL},
 	 { (char *)"rlString_strrchr", _wrap_rlString_strrchr, METH_VARARGS, NULL},
 	 { (char *)"rlString_removeQuotas", _wrap_rlString_removeQuotas, METH_VARARGS, NULL},
+	 { (char *)"rlString_removeNewline", _wrap_rlString_removeNewline, METH_VARARGS, NULL},
 	 { (char *)"rlString_swigregister", rlString_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlSvgPosition", _wrap_new_rlSvgPosition, METH_VARARGS, NULL},
 	 { (char *)"delete_rlSvgPosition", _wrap_delete_rlSvgPosition, METH_VARARGS, NULL},

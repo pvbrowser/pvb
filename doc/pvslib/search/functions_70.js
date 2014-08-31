@@ -147,6 +147,7 @@ var searchData=
   ['pvselection',['pvSelection',['../group__Input.html#gaa9daf67935f26a7b4b076d1cfff5f4a0',1,'processviewserver.h']]],
   ['pvselectlanguage',['pvSelectLanguage',['../group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b',1,'processviewserver.h']]],
   ['pvsendfile',['pvSendFile',['../group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab',1,'processviewserver.h']]],
+  ['pvsendjpegframe',['pvSendJpegFrame',['../group__Output.html#gaa4f03c9d71a91b9eb412b43f637f4e85',1,'processviewserver.h']]],
   ['pvsendopengl',['pvSendOpenGL',['../group__OpenGL.html#ga94b76602a709d6c857ddf1e2bac4b425',1,'processviewserver.h']]],
   ['pvsendrgba',['pvSendRGBA',['../group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba',1,'processviewserver.h']]],
   ['pvsenduserevent',['pvSendUserEvent',['../group__Misc.html#gaafc31da19672f6c4584d3d5ae2a31373',1,'processviewserver.h']]],

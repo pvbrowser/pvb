@@ -71,6 +71,25 @@ int rlDebugPrintf(const char *format, ...)
   return printf("%s",message);
 }
 
+int rlInputAvailable()
+{
+  struct timeval timout;
+  fd_set wset,rset,eset;
+  int ret,maxfdp1;
+  int s = 0;
+  /* setup sockets to read */
+  maxfdp1 = s+1;
+  FD_ZERO(&rset);
+  FD_SET (s,&rset);
+  FD_ZERO(&wset);
+  FD_ZERO(&eset);
+  timout.tv_sec = 0;
+  timout.tv_usec = 0;
+  ret = ::select(maxfdp1,&rset,&wset,&eset,&timout);
+  if(ret == 0) return 0; /* timeout */
+  return 1;
+}
+
 int rlLastLinePrintf(const char *format, ...)
 {
   int ret,i;
@@ -153,6 +172,20 @@ char *rlstrncpy(char *dest, const char *source, int n)
   for(i=0; i<n; i++)
   {
     if(source[i] == '\0') break;
+    dest[i] = source[i];
+  }
+  dest[i] = '\0';
+  return dest;
+}
+
+char *rlstrlinecpy(char *dest, const char *source, int n)
+{
+  int i;
+
+  for(i=0; i<n; i++)
+  {
+    if(source[i] == '\0') break;
+    if(source[i] == '\n') break;
     dest[i] = source[i];
   }
   dest[i] = '\0';

@@ -11,7 +11,7 @@ var searchData=
   ['activeboard',['activeboard',['../classrlCanOpen.html#af6158583052812792b8036d631d95a72',1,'rlCanOpen']]],
   ['addi1',['addi1',['../structrlEIBnetIP_1_1EIB__TEL.html#a795c6f13ee79124878941360ae1b7a61',1,'rlEIBnetIP::EIB_TEL']]],
   ['address',['address',['../classrlIpAdr.html#a73c95244de3109f59499ed468e7f4a4f',1,'rlIpAdr::address()'],['../classrlUdpSocket.html#ab49ac7d1fc4323d981c1b2abd8a5cbd1',1,'rlUdpSocket::address()']]],
-  ['adr',['adr',['../classrlCorbaClient.html#a842673113add34e0922ecb38c8b82aa5',1,'rlCorbaClient::adr()'],['../classrlCorbaServer.html#a4a79b54446460a04e157f0f3e7ddc4ee',1,'rlCorbaServer::adr()'],['../classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82',1,'rlSocket::adr()']]],
+  ['adr',['adr',['../classrlBuffer.html#a23b36219913c57f6b73f4d7cf9c2925f',1,'rlBuffer::adr()'],['../classrlCorbaClient.html#a842673113add34e0922ecb38c8b82aa5',1,'rlCorbaClient::adr()'],['../classrlCorbaServer.html#a4a79b54446460a04e157f0f3e7ddc4ee',1,'rlCorbaServer::adr()'],['../classrlSocket.html#a83a9454e33ee402d925d19a9c87eda82',1,'rlSocket::adr()']]],
   ['allow_5fadd_5fvalues',['allow_add_values',['../classrlDataAcquisitionProvider.html#a61251fdaa308793ca04d3140e3380ea1',1,'rlDataAcquisitionProvider']]],
   ['alpha',['alpha',['../classrlSvgPosition.html#a2129b879046317cbcf379dc60bdb1737',1,'rlSvgPosition::alpha()'],['../structrlSvgPosition_1_1rlPositionInit.html#a148521e7139afa2d55736074475a533b',1,'rlSvgPosition::rlPositionInit::alpha()']]],
   ['aparameter',['aParameter',['../classrlHilscherCIF.html#aa5e37b09d111fec34be9348828be27f0',1,'rlHilscherCIF']]],

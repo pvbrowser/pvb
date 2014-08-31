@@ -233,6 +233,7 @@ class rlSharedMemory(_object):
     def getUserAdr(self): return _rllib.rlSharedMemory_getUserAdr(self)
     def shmKey(self): return _rllib.rlSharedMemory_shmKey(self)
     def shmId(self): return _rllib.rlSharedMemory_shmId(self)
+    def size(self): return _rllib.rlSharedMemory_size(self)
     __swig_setmethods__["status"] = _rllib.rlSharedMemory_status_set
     __swig_getmethods__["status"] = _rllib.rlSharedMemory_status_get
     if _newclass:status = _swig_property(_rllib.rlSharedMemory_status_get, _rllib.rlSharedMemory_status_set)
@@ -416,6 +417,10 @@ def rlDebugPrintf(*args):
   return _rllib.rlDebugPrintf(*args)
 rlDebugPrintf = _rllib.rlDebugPrintf
 
+def rlInputAvailable():
+  return _rllib.rlInputAvailable()
+rlInputAvailable = _rllib.rlInputAvailable
+
 def rlLastLinePrintf(*args):
   return _rllib.rlLastLinePrintf(*args)
 rlLastLinePrintf = _rllib.rlLastLinePrintf
@@ -427,6 +432,10 @@ rlpass = _rllib.rlpass
 def rlstrncpy(*args):
   return _rllib.rlstrncpy(*args)
 rlstrncpy = _rllib.rlstrncpy
+
+def rlstrlinecpy(*args):
+  return _rllib.rlstrlinecpy(*args)
+rlstrlinecpy = _rllib.rlstrlinecpy
 
 def rlsnprintf(*args):
   return _rllib.rlsnprintf(*args)
@@ -816,6 +825,7 @@ class rlFileLoad(_object):
     def firstLine(self): return _rllib.rlFileLoad_firstLine(self)
     def nextLine(self): return _rllib.rlFileLoad_nextLine(self)
     def setDebug(self, *args): return _rllib.rlFileLoad_setDebug(self, *args)
+    def text2rlstring(self, *args): return _rllib.rlFileLoad_text2rlstring(self, *args)
 rlFileLoad_swigregister = _rllib.rlFileLoad_swigregister
 rlFileLoad_swigregister(rlFileLoad)
 
@@ -1585,6 +1595,7 @@ class rlString(_object):
     def strchr(self, *args): return _rllib.rlString_strchr(self, *args)
     def strrchr(self, *args): return _rllib.rlString_strrchr(self, *args)
     def removeQuotas(self, c='\"'): return _rllib.rlString_removeQuotas(self, c)
+    def removeNewline(self): return _rllib.rlString_removeNewline(self)
 rlString_swigregister = _rllib.rlString_swigregister
 rlString_swigregister(rlString)
 

@@ -735,6 +735,7 @@
             <section title="pvRemoveItemByName" ref="group__Output.html#gada7645ed843776a692b2a9462adb2a3d" />
             <section title="pvRemoveListViewItem" ref="group__Output.html#ga5ee6bcfde98cf05131e986276d426b04" />
             <section title="pvScrollToAnchor" ref="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2" />
+            <section title="pvSendJpegFrame" ref="group__Output.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
             <section title="pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
             <section title="pvSetBackgroundColor" ref="group__Output.html#ga9867a9293fd97758cd5039e37561c440" />
             <section title="pvSetBufferedJpgImage" ref="group__Output.html#ga8c02bba7e4f3f94d6f498485a5003362" />
@@ -2004,6 +2005,7 @@
               <section title="pvSelection" ref="processviewserver_8h.html#gaa9daf67935f26a7b4b076d1cfff5f4a0" />
               <section title="pvSelectLanguage" ref="processviewserver_8h.html#gacf49bec64bf2e889ba67e2e15663805b" />
               <section title="pvSendFile" ref="processviewserver_8h.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
+              <section title="pvSendJpegFrame" ref="processviewserver_8h.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
               <section title="pvSendOpenGL" ref="processviewserver_8h.html#ga94b76602a709d6c857ddf1e2bac4b425" />
               <section title="pvSendRGBA" ref="processviewserver_8h.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
               <section title="pvSendUserEvent" ref="processviewserver_8h.html#gaafc31da19672f6c4584d3d5ae2a31373" />
@@ -2539,6 +2541,7 @@
       <keyword name="pvPrintHtmlOnPrinter" id="processviewserver.h::pvPrintHtmlOnPrinter" ref="processviewserver_8h.html#gab7381258e26336e219415df232945c89" />
       <keyword name="pvSetWidgetProperty" id="processviewserver.h::pvSetWidgetProperty" ref="processviewserver_8h.html#ga80f7897b34d3d4459555dcdd6f180519" />
       <keyword name="pvPassThroughOneJpegFrame" id="processviewserver.h::pvPassThroughOneJpegFrame" ref="processviewserver_8h.html#ga25dadc86712ae96e7c981feb9c7f7616" />
+      <keyword name="pvSendJpegFrame" id="processviewserver.h::pvSendJpegFrame" ref="processviewserver_8h.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
       <keyword name="pvSendRGBA" id="processviewserver.h::pvSendRGBA" ref="processviewserver_8h.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
@@ -3410,6 +3413,7 @@
       <keyword name="pvPrintHtmlOnPrinter" id="Output::pvPrintHtmlOnPrinter" ref="group__Output.html#gab7381258e26336e219415df232945c89" />
       <keyword name="pvSetWidgetProperty" id="Output::pvSetWidgetProperty" ref="group__Output.html#ga80f7897b34d3d4459555dcdd6f180519" />
       <keyword name="pvPassThroughOneJpegFrame" id="Output::pvPassThroughOneJpegFrame" ref="group__Output.html#ga25dadc86712ae96e7c981feb9c7f7616" />
+      <keyword name="pvSendJpegFrame" id="Output::pvSendJpegFrame" ref="group__Output.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
       <keyword name="pvSendRGBA" id="Output::pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />

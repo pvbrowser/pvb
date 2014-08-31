@@ -2,6 +2,7 @@ var searchData=
 [
   ['_7edf1buffer',['~df1Buffer',['../classdf1Buffer.html#a0bcb59b260cbd23e58e0f2a01ace2146',1,'df1Buffer']]],
   ['_7erl3964r',['~rl3964R',['../classrl3964R.html#aed87bbd07817294258e59fe659e5fdc9',1,'rl3964R']]],
+  ['_7erlbuffer',['~rlBuffer',['../classrlBuffer.html#a0849e814da01172e7855e081c6482e3c',1,'rlBuffer']]],
   ['_7erlbussignaldatabase',['~rlBussignalDatabase',['../classrlBussignalDatabase.html#ad5f41a15fd4f4ecf21ea1ff0a179cf8b',1,'rlBussignalDatabase']]],
   ['_7erlcanclient',['~rlCanClient',['../classrlCanClient.html#a414d9f285d41da8df9b3c4c14e12f40c',1,'rlCanClient']]],
   ['_7erlcannode',['~rlCanNode',['../classrlCanNode.html#a612666a6bfd61b096401e41f4d52f631',1,'rlCanNode']]],

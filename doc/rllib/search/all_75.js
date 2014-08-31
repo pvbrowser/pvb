@@ -1,7 +1,9 @@
 var searchData=
 [
+  ['uc',['uc',['../classrlBuffer.html#a02586d90d9cbf8a5c44297aefbbc0da6',1,'rlBuffer']]],
   ['udword',['UDword',['../classrlPPIClient.html#a72584f5dca7f7bd592e271ed6fed3293',1,'rlPPIClient::UDword()'],['../classrlSiemensTCPClient.html#ab402112bced280d14d837ba8e4b010d7',1,'rlSiemensTCPClient::UDword()']]],
-  ['ui',['ui',['../unionSWAP.html#ac28f43aee8b8daceca2ec097f2032c1d',1,'SWAP']]],
+  ['ui',['ui',['../classrlBuffer.html#a9805b23575cf3e10ab07e0031b7438eb',1,'rlBuffer::ui()'],['../unionSWAP.html#ac28f43aee8b8daceca2ec097f2032c1d',1,'SWAP::ui()']]],
+  ['ul',['ul',['../classrlBuffer.html#a30a355488ab78dc92d0feb6714062a24',1,'rlBuffer']]],
   ['unicode_5fstring',['UNICODE_STRING',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398ae1a473662cb95ba0831d0aceba1fd044',1,'rlCanOpenTypes']]],
   ['unload',['unload',['../classrlFileLoad.html#a81eb4344b832955abb4beff569c0b395',1,'rlFileLoad']]],
   ['unlock',['unlock',['../classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3',1,'rlThread::unlock()'],['../classrlMutex.html#ac2b2977e51dfa6ea6213e83974bbe085',1,'rlMutex::unlock()']]],

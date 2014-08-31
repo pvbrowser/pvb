@@ -73,6 +73,8 @@ typedef struct
   char pvb_widget_plugindir[MAXOPT]; // directory for custom widget plugins
   int  connect_timeout;     // connect() timeout in seconds if 0 then standard timeout
   char initial_dir[MAXOPT]; // getcwd at startup
+  int  ffmpeg_available;    // ffmpeg is in PATH
+  int  ffplay_available;    // ffplay is in PATH
 
   // command line args
   int  arg_debug;

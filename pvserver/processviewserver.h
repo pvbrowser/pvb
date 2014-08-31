@@ -1400,6 +1400,7 @@ pvSaveAsBmp()
 pvSetImage()
 pvSetBufferedJpgImage()
 pvPassThroughOneJpegFrame()
+pvSendJpegFrame()
  </pre> */
 int pvQImage(PARAM *p, int id, int parent, const char *imagename, int *w=NULL, int *h=NULL, int *depth=NULL);
 /*! <pre>
@@ -2493,6 +2494,11 @@ Pass 1 JPEG frame from a camera or other source to the pvbrowser client.
 Allowed widgets: QImage
 </pre> */
 int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSocket=1, int rotate=0);
+/*! <pre>
+Send 1 JPEG frame from a camera or other source to the pvbrowser client.
+Allowed widgets: QImage
+</pre> */
+int pvSendJpegFrame(PARAM *p, int id, unsigned char *frame, int rotate=0);
 /*! <pre>
 Send a RGBA image to the pvbrowser client.
 Allowed widgets: QImage

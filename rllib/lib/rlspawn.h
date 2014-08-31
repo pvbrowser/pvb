@@ -20,6 +20,14 @@
 
 #ifndef RLUNIX
 //#warning This Functionality is only available under Linux/Unix
+/*
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa365574%28v=vs.85%29.aspx
+http://www.tenouk.com/cpluscodesnippet/pipeandchildprocess.html
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa365780%28v=vs.85%29.aspx
+
+GetFileNameFromHandle
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa366789%28v=vs.85%29.aspx
+*/
 #endif
 
 /*! <pre>
@@ -97,7 +105,16 @@ public:
   int pid;
 
 private:
+#ifdef RLWIN32
+  HANDLE toChildRD;
+  HANDLE toChildWR;
+  HANDLE fromChildRD;
+  HANDLE fromChildWR;
+  HANDLE hThread;
+  HANDLE hProcess;
+#else
   void *toChild,*fromChild;
+#endif  
   char line[4096]; // adjust this if the buffer is not big enough
 };
 

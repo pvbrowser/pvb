@@ -16,5 +16,6 @@ var searchData=
   ['_5frlhistorylogline_5f',['_rlHistoryLogLine_',['../struct__rlHistoryLogLine__.html',1,'']]],
   ['_5frlhistoryreaderline_5f',['_rlHistoryReaderLine_',['../struct__rlHistoryReaderLine__.html',1,'']]],
   ['_5frlsection_5f',['_rlSection_',['../structrlIniFile_1_1__rlSection__.html',1,'rlIniFile']]],
-  ['_5frlsectionname_5f',['_rlSectionName_',['../structrlIniFile_1_1__rlSectionName__.html',1,'rlIniFile']]]
+  ['_5frlsectionname_5f',['_rlSectionName_',['../structrlIniFile_1_1__rlSectionName__.html',1,'rlIniFile']]],
+  ['_5fsize',['_size',['../classrlBuffer.html#a94abe8e113c5a21f582c38cb0f867030',1,'rlBuffer::_size()'],['../classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95',1,'rlSharedMemory::_size()']]]
 ];

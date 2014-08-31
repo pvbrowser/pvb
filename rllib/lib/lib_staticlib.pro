@@ -4,7 +4,8 @@ CONFIG  += warn_on release staticlib
 #CONFIG  += warn_on release
 CONFIG  -= qt
 CFLAGS   = -pipe -Wall -W -O0 -march=i586 -mcpu=i686 -fmessage-length=0 -DNO_DEBUG -fPIC
-HEADERS  = rlspawn.h                 \
+HEADERS  = rllib.h                   \
+           rlspawn.h                 \
            rlwthread.h               \
            rlthread.h                \
            rlsocket.h                \
@@ -29,10 +30,26 @@ HEADERS  = rlspawn.h                 \
            rlsiemenstcpclient.h      \
            rlcontroller.h            \
            rlppiclient.h             \
-           rludpsocket.h             \
-           rleibnetip.h              \
-           rlsvganimator.h           \
-           rlwebcam.h
+           rlsvganimator.h             \
+           rlsvgcat.h                  \
+           rlfileload.h                \
+           rlhistorylogger.h           \
+           rlhistoryreader.h           \
+           rlhilschercif.h             \
+           rludpsocket.h               \
+           rleibnetip.h                \
+           rlopcxmlda.h                \
+           rldataacquisition.h         \
+           rldataacquisitionprovider.h \
+           rlstring.h                  \
+           rlplc.h                     \
+           rlwebcam.h                  \
+           rlcommandlineinterface.h    \
+           rlreport.h                  \
+#           rlstatemachine.h            \
+           rldf1.h                     \
+           rlstate.h                   \
+           rlbuffer.h
 SOURCES  = rlspawn.cpp                 \
            rlwthread.cpp               \
            rlthread.cpp                \
@@ -57,10 +74,26 @@ SOURCES  = rlspawn.cpp                 \
            rlsiemenstcpclient.cpp      \
            rlcontroller.cpp            \
            rlppiclient.cpp             \
-           rludpsocket.cpp             \
-           rleibnetip.cpp              \
-           rlsvganimator.cpp           \
-           rlwebcam.h
+           rlsvganimator.cpp             \
+           rlsvgcat.cpp                  \
+           rlfileload.cpp                \
+           rlhistorylogger.cpp           \
+           rlhistoryreader.cpp           \
+           rlhilschercif.cpp             \
+           rludpsocket.cpp               \
+           rleibnetip.cpp                \
+           rlopcxmlda.cpp                \
+           rldataacquisition.cpp         \
+           rldataacquisitionprovider.cpp \
+           rlstring.cpp                  \
+           rlplc.cpp                     \
+           rlwebcam.cpp                  \
+           rlcommandlineinterface.cpp    \
+           rlreport.cpp                  \
+#           rlstatemachine.cpp            \
+           rldf1.cpp                     \
+           rlstate.cpp                   \
+           rlbuffer.cpp          
 Hilscher {
   HEADERS += rlcannode.h           \
              rlcanopendaemon.h     \    

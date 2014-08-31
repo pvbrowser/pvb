@@ -99,6 +99,24 @@
               <section title="tel_send_length" ref="classrl3964R.html#aed6004438818daca142730f3e170ada7" />
               <section title="tty" ref="classrl3964R.html#a97210d2af83f63dd143ede97f5230910" />
             </section>
+            <section title="rlBuffer" ref="classrlBuffer.html">
+              <section title="rlBuffer" ref="classrlBuffer.html#a88e178b3e34dc3da8e381a56c207c63d" />
+              <section title="~rlBuffer" ref="classrlBuffer.html#a0849e814da01172e7855e081c6482e3c" />
+              <section title="line" ref="classrlBuffer.html#ab858ea22c4e6dab67000d3d15b33b1ca" />
+              <section title="resize" ref="classrlBuffer.html#a6130948431d391b9caa651c76b0e0e07" />
+              <section title="setText" ref="classrlBuffer.html#a4c4a2b7444cd2ab266b564946029dbbf" />
+              <section title="size" ref="classrlBuffer.html#ad298263b860115b94aaa8bdd9a64aea5" />
+              <section title="_size" ref="classrlBuffer.html#a94abe8e113c5a21f582c38cb0f867030" />
+              <section title="adr" ref="classrlBuffer.html#a23b36219913c57f6b73f4d7cf9c2925f" />
+              <section title="c" ref="classrlBuffer.html#afa429103a283b70c0cc47f6eac32aa03" />
+              <section title="d" ref="classrlBuffer.html#a1487c878677dbacab7b2bd17fe8d5cab" />
+              <section title="f" ref="classrlBuffer.html#a926328a8eb062b08c36df14734bddb51" />
+              <section title="i" ref="classrlBuffer.html#a5890bd81f059b8c4a4e3e767dd444a3b" />
+              <section title="l" ref="classrlBuffer.html#aeb4dd21e2a75d3cad9c8252a91c715ee" />
+              <section title="uc" ref="classrlBuffer.html#a02586d90d9cbf8a5c44297aefbbc0da6" />
+              <section title="ui" ref="classrlBuffer.html#a9805b23575cf3e10ab07e0031b7438eb" />
+              <section title="ul" ref="classrlBuffer.html#a30a355488ab78dc92d0feb6714062a24" />
+            </section>
             <section title="rlBussignalDatabase" ref="classrlBussignalDatabase.html">
               <section title="rlBussignalDatabase" ref="classrlBussignalDatabase.html#a43b78b31584a8dfb7783b9e62a32ab8f" />
               <section title="~rlBussignalDatabase" ref="classrlBussignalDatabase.html#ad5f41a15fd4f4ecf21ea1ff0a179cf8b" />
@@ -1304,11 +1322,13 @@
               <section title="readShort" ref="classrlSharedMemory.html#aea36a14febba55dbf92e2050aa9c18d7" />
               <section title="shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
               <section title="shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
+              <section title="size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
               <section title="write" ref="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2" />
               <section title="writeByte" ref="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02" />
               <section title="writeFloat" ref="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa" />
               <section title="writeInt" ref="classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277" />
               <section title="writeShort" ref="classrlSharedMemory.html#a4eea136f746fe2181687c151ac05e048" />
+              <section title="_size" ref="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95" />
               <section title="base_adr" ref="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf" />
               <section title="hSharedFile" ref="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194" />
               <section title="id" ref="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf" />
@@ -1316,7 +1336,6 @@
               <section title="name" ref="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc" />
               <section title="overlapped" ref="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c" />
               <section title="shmkey" ref="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd" />
-              <section title="size" ref="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6" />
               <section title="status" ref="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90" />
               <section title="user_adr" ref="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d" />
             </section>
@@ -1515,10 +1534,14 @@
               <section title="spawn" ref="classrlSpawn.html#a08217f3678b331714c2499d4199132f1" />
               <section title="write" ref="classrlSpawn.html#ac8a8f582bbaf54d6562db738e3d5261e" />
               <section title="writeString" ref="classrlSpawn.html#a135079af2d93c9ca3f5bc77c103ad65d" />
-              <section title="fromChild" ref="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f" />
+              <section title="fromChildRD" ref="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107" />
+              <section title="fromChildWR" ref="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a" />
+              <section title="hProcess" ref="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe" />
+              <section title="hThread" ref="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b" />
               <section title="line" ref="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4" />
               <section title="pid" ref="classrlSpawn.html#ae8fad062ebe5687115162704046bb516" />
-              <section title="toChild" ref="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f" />
+              <section title="toChildRD" ref="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8" />
+              <section title="toChildWR" ref="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7" />
             </section>
             <section title="rlSpreadsheetCell" ref="classrlSpreadsheetCell.html">
               <section title="rlSpreadsheetCell" ref="classrlSpreadsheetCell.html#a08a5cc928f6d84b017b2d149947a7df5" />
@@ -1875,6 +1898,7 @@
             <section title="rlEIBnetIP::PDU" ref="structrlEIBnetIP_1_1PDU.html" />
             <section title="pthread_attr_t" ref="structpthread__attr__t.html" />
             <section title="rl3964R" ref="classrl3964R.html" />
+            <section title="rlBuffer" ref="classrlBuffer.html" />
             <section title="rlBussignalDatabase" ref="classrlBussignalDatabase.html" />
             <section title="rlCanMapping" ref="structrlCanMapping.html" />
             <section title="rlCanNode" ref="classrlCanNode.html" />
@@ -2095,6 +2119,27 @@
                 <section title="tel_send" ref="classrl3964R.html#a9a02a89d5972d8b2effe5ae357e133dd" />
                 <section title="tel_send_length" ref="classrl3964R.html#aed6004438818daca142730f3e170ada7" />
                 <section title="tty" ref="classrl3964R.html#a97210d2af83f63dd143ede97f5230910" />
+              </section>
+            </section>
+            <section title="rlbuffer.cpp" ref="rlbuffer_8cpp.html" />
+            <section title="rlbuffer.h" ref="rlbuffer_8h.html">
+              <section title="rlBuffer" ref="classrlBuffer.html">
+                <section title="rlBuffer" ref="classrlBuffer.html#a88e178b3e34dc3da8e381a56c207c63d" />
+                <section title="~rlBuffer" ref="classrlBuffer.html#a0849e814da01172e7855e081c6482e3c" />
+                <section title="line" ref="classrlBuffer.html#ab858ea22c4e6dab67000d3d15b33b1ca" />
+                <section title="resize" ref="classrlBuffer.html#a6130948431d391b9caa651c76b0e0e07" />
+                <section title="setText" ref="classrlBuffer.html#a4c4a2b7444cd2ab266b564946029dbbf" />
+                <section title="size" ref="classrlBuffer.html#ad298263b860115b94aaa8bdd9a64aea5" />
+                <section title="_size" ref="classrlBuffer.html#a94abe8e113c5a21f582c38cb0f867030" />
+                <section title="adr" ref="classrlBuffer.html#a23b36219913c57f6b73f4d7cf9c2925f" />
+                <section title="c" ref="classrlBuffer.html#afa429103a283b70c0cc47f6eac32aa03" />
+                <section title="d" ref="classrlBuffer.html#a1487c878677dbacab7b2bd17fe8d5cab" />
+                <section title="f" ref="classrlBuffer.html#a926328a8eb062b08c36df14734bddb51" />
+                <section title="i" ref="classrlBuffer.html#a5890bd81f059b8c4a4e3e767dd444a3b" />
+                <section title="l" ref="classrlBuffer.html#aeb4dd21e2a75d3cad9c8252a91c715ee" />
+                <section title="uc" ref="classrlBuffer.html#a02586d90d9cbf8a5c44297aefbbc0da6" />
+                <section title="ui" ref="classrlBuffer.html#a9805b23575cf3e10ab07e0031b7438eb" />
+                <section title="ul" ref="classrlBuffer.html#a30a355488ab78dc92d0feb6714062a24" />
               </section>
             </section>
             <section title="rlbussignaldatabase.cpp" ref="rlbussignaldatabase_8cpp.html">
@@ -2643,6 +2688,7 @@
               <section title="rlFindFile" ref="rlcutil_8cpp.html#af1e3a2c3fe74d531512bbc2f0063e955" />
               <section title="rlFloatOption" ref="rlcutil_8cpp.html#a7f6b7043d4da7b255137a9b7fa5a9e3d" />
               <section title="rlGetInifile" ref="rlcutil_8cpp.html#a0dab6a8536b5f5bdfb153649a5b96464" />
+              <section title="rlInputAvailable" ref="rlcutil_8cpp.html#a7c83001debae0bd4829f601a6a50445f" />
               <section title="rlIntOption" ref="rlcutil_8cpp.html#ae8d60299ab4fa917eaa9c2d8ccdae51c" />
               <section title="rlLastLinePrintf" ref="rlcutil_8cpp.html#ac9f7231741b0141205f7c32becdfce85" />
               <section title="rlLon1" ref="rlcutil_8cpp.html#ae9c09604eeee69f9f0ef33358e9c79be" />
@@ -2659,6 +2705,7 @@
               <section title="rlsnprintf" ref="rlcutil_8cpp.html#aa9748a7cf07e98e8161667a41afa4944" />
               <section title="rlStartsWith" ref="rlcutil_8cpp.html#a176ada621127ae48c966556c474f20a4" />
               <section title="rlStat" ref="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df" />
+              <section title="rlstrlinecpy" ref="rlcutil_8cpp.html#a5d2635f4f1f16876073c6140bd6522b1" />
               <section title="rlStrMatch" ref="rlcutil_8cpp.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
               <section title="rlstrncpy" ref="rlcutil_8cpp.html#a9a639b36f6ac0c0281ef3b03f821a406" />
               <section title="rlSubmitPvserver" ref="rlcutil_8cpp.html#a74829fd3ab7103ab01e918259a2f1184" />
@@ -2687,6 +2734,7 @@
               <section title="rlFindFile" ref="rlcutil_8h.html#af1e3a2c3fe74d531512bbc2f0063e955" />
               <section title="rlFloatOption" ref="rlcutil_8h.html#aeb98f62680853e9efe77e83d5444c2d2" />
               <section title="rlGetInifile" ref="rlcutil_8h.html#a0dab6a8536b5f5bdfb153649a5b96464" />
+              <section title="rlInputAvailable" ref="rlcutil_8h.html#a7c83001debae0bd4829f601a6a50445f" />
               <section title="rlIntOption" ref="rlcutil_8h.html#a471234eb7bc941ea1a48cf32fa894374" />
               <section title="rlLastLinePrintf" ref="rlcutil_8h.html#ac9f7231741b0141205f7c32becdfce85" />
               <section title="rlLon1" ref="rlcutil_8h.html#ae9c09604eeee69f9f0ef33358e9c79be" />
@@ -2702,6 +2750,7 @@
               <section title="rlsnprintf" ref="rlcutil_8h.html#aa9748a7cf07e98e8161667a41afa4944" />
               <section title="rlStartsWith" ref="rlcutil_8h.html#a176ada621127ae48c966556c474f20a4" />
               <section title="rlStat" ref="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df" />
+              <section title="rlstrlinecpy" ref="rlcutil_8h.html#a5d2635f4f1f16876073c6140bd6522b1" />
               <section title="rlStrMatch" ref="rlcutil_8h.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
               <section title="rlstrncpy" ref="rlcutil_8h.html#a9a639b36f6ac0c0281ef3b03f821a406" />
               <section title="rlSubmitPvserver" ref="rlcutil_8h.html#a7feef3a75e2e6433789cfe03af5b3ce6" />
@@ -3859,11 +3908,13 @@
                 <section title="readShort" ref="classrlSharedMemory.html#aea36a14febba55dbf92e2050aa9c18d7" />
                 <section title="shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
                 <section title="shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
+                <section title="size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
                 <section title="write" ref="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2" />
                 <section title="writeByte" ref="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02" />
                 <section title="writeFloat" ref="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa" />
                 <section title="writeInt" ref="classrlSharedMemory.html#ab5aa8f549deae6ebe201275351d87277" />
                 <section title="writeShort" ref="classrlSharedMemory.html#a4eea136f746fe2181687c151ac05e048" />
+                <section title="_size" ref="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95" />
                 <section title="base_adr" ref="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf" />
                 <section title="hSharedFile" ref="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194" />
                 <section title="id" ref="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf" />
@@ -3871,7 +3922,6 @@
                 <section title="name" ref="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc" />
                 <section title="overlapped" ref="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c" />
                 <section title="shmkey" ref="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd" />
-                <section title="size" ref="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6" />
                 <section title="status" ref="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90" />
                 <section title="user_adr" ref="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d" />
               </section>
@@ -4170,10 +4220,14 @@
                 <section title="spawn" ref="classrlSpawn.html#a08217f3678b331714c2499d4199132f1" />
                 <section title="write" ref="classrlSpawn.html#ac8a8f582bbaf54d6562db738e3d5261e" />
                 <section title="writeString" ref="classrlSpawn.html#a135079af2d93c9ca3f5bc77c103ad65d" />
-                <section title="fromChild" ref="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f" />
+                <section title="fromChildRD" ref="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107" />
+                <section title="fromChildWR" ref="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a" />
+                <section title="hProcess" ref="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe" />
+                <section title="hThread" ref="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b" />
                 <section title="line" ref="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4" />
                 <section title="pid" ref="classrlSpawn.html#ae8fad062ebe5687115162704046bb516" />
-                <section title="toChild" ref="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f" />
+                <section title="toChildRD" ref="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8" />
+                <section title="toChildWR" ref="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7" />
               </section>
             </section>
             <section title="rlspreadsheet.cpp" ref="rlspreadsheet_8cpp.html">
@@ -4746,10 +4800,12 @@
       <keyword name="rlMICO" id="rlcorba.h::rlMICO" ref="rlcorba_8h.html#a6d8f8b8df130d75d0bdf2ec2428d3062" />
       <keyword name="rlSetDebugPrintf" id="rlcutil.cpp::rlSetDebugPrintf" ref="rlcutil_8cpp.html#a92640c18316594822730875b5145ad3a" />
       <keyword name="rlDebugPrintf" id="rlcutil.cpp::rlDebugPrintf" ref="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b" />
+      <keyword name="rlInputAvailable" id="rlcutil.cpp::rlInputAvailable" ref="rlcutil_8cpp.html#a7c83001debae0bd4829f601a6a50445f" />
       <keyword name="rlLastLinePrintf" id="rlcutil.cpp::rlLastLinePrintf" ref="rlcutil_8cpp.html#ac9f7231741b0141205f7c32becdfce85" />
       <keyword name="rlexec" id="rlcutil.cpp::rlexec" ref="rlcutil_8cpp.html#aaf037932d5e4bb98145220bd8db82a21" />
       <keyword name="rlpass" id="rlcutil.cpp::rlpass" ref="rlcutil_8cpp.html#af0db76ffcc3e1f14be6f53ecaaafb498" />
       <keyword name="rlstrncpy" id="rlcutil.cpp::rlstrncpy" ref="rlcutil_8cpp.html#a9a639b36f6ac0c0281ef3b03f821a406" />
+      <keyword name="rlstrlinecpy" id="rlcutil.cpp::rlstrlinecpy" ref="rlcutil_8cpp.html#a5d2635f4f1f16876073c6140bd6522b1" />
       <keyword name="rlvsnprintf" id="rlcutil.cpp::rlvsnprintf" ref="rlcutil_8cpp.html#aca23e81037b38c599a5155989257c7cb" />
       <keyword name="rlsnprintf" id="rlcutil.cpp::rlsnprintf" ref="rlcutil_8cpp.html#aa9748a7cf07e98e8161667a41afa4944" />
       <keyword name="rlSigtermHandler" id="rlcutil.cpp::rlSigtermHandler" ref="rlcutil_8cpp.html#a71fb82c9c37dc21189ff705558203a46" />
@@ -4790,10 +4846,12 @@
       <keyword name="rlUserSigtermHandler" id="rlcutil.cpp::rlUserSigtermHandler" ref="rlcutil_8cpp.html#a95ba5f2760cd6ed5c62315bf1df4234c" />
       <keyword name="rlSetDebugPrintf" id="rlcutil.h::rlSetDebugPrintf" ref="rlcutil_8h.html#a92640c18316594822730875b5145ad3a" />
       <keyword name="rlDebugPrintf" id="rlcutil.h::rlDebugPrintf" ref="rlcutil_8h.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b" />
+      <keyword name="rlInputAvailable" id="rlcutil.h::rlInputAvailable" ref="rlcutil_8h.html#a7c83001debae0bd4829f601a6a50445f" />
       <keyword name="rlLastLinePrintf" id="rlcutil.h::rlLastLinePrintf" ref="rlcutil_8h.html#ac9f7231741b0141205f7c32becdfce85" />
       <keyword name="rlexec" id="rlcutil.h::rlexec" ref="rlcutil_8h.html#aaf037932d5e4bb98145220bd8db82a21" />
       <keyword name="rlpass" id="rlcutil.h::rlpass" ref="rlcutil_8h.html#af0db76ffcc3e1f14be6f53ecaaafb498" />
       <keyword name="rlstrncpy" id="rlcutil.h::rlstrncpy" ref="rlcutil_8h.html#a9a639b36f6ac0c0281ef3b03f821a406" />
+      <keyword name="rlstrlinecpy" id="rlcutil.h::rlstrlinecpy" ref="rlcutil_8h.html#a5d2635f4f1f16876073c6140bd6522b1" />
       <keyword name="rlvsnprintf" id="rlcutil.h::rlvsnprintf" ref="rlcutil_8h.html#aca23e81037b38c599a5155989257c7cb" />
       <keyword name="rlsnprintf" id="rlcutil.h::rlsnprintf" ref="rlcutil_8h.html#aa9748a7cf07e98e8161667a41afa4944" />
       <keyword name="rlSetSigtermHandler" id="rlcutil.h::rlSetSigtermHandler" ref="rlcutil_8h.html#a25b90e10ed09296d9320f1895e1cff81" />
@@ -5118,6 +5176,23 @@
       <keyword name="send_result" id="rl3964R::send_result" ref="classrl3964R.html#a116f2ff85c5965b9be770bec31735eea" />
       <keyword name="highPriority" id="rl3964R::highPriority" ref="classrl3964R.html#a866c4a808fdfac5fee3eb5e5baa47a25a34f08a030cbd306a0eb592e3f1e73d31" />
       <keyword name="lowPriority" id="rl3964R::lowPriority" ref="classrl3964R.html#a866c4a808fdfac5fee3eb5e5baa47a25a1f214a44136e9e6cecf639a4aafc5442" />
+      <keyword name="rlBuffer" id="rlBuffer" ref="classrlBuffer.html" />
+      <keyword name="rlBuffer" id="rlBuffer::rlBuffer" ref="classrlBuffer.html#a88e178b3e34dc3da8e381a56c207c63d" />
+      <keyword name="~rlBuffer" id="rlBuffer::~rlBuffer" ref="classrlBuffer.html#a0849e814da01172e7855e081c6482e3c" />
+      <keyword name="resize" id="rlBuffer::resize" ref="classrlBuffer.html#a6130948431d391b9caa651c76b0e0e07" />
+      <keyword name="size" id="rlBuffer::size" ref="classrlBuffer.html#ad298263b860115b94aaa8bdd9a64aea5" />
+      <keyword name="setText" id="rlBuffer::setText" ref="classrlBuffer.html#a4c4a2b7444cd2ab266b564946029dbbf" />
+      <keyword name="line" id="rlBuffer::line" ref="classrlBuffer.html#ab858ea22c4e6dab67000d3d15b33b1ca" />
+      <keyword name="adr" id="rlBuffer::adr" ref="classrlBuffer.html#a23b36219913c57f6b73f4d7cf9c2925f" />
+      <keyword name="c" id="rlBuffer::c" ref="classrlBuffer.html#afa429103a283b70c0cc47f6eac32aa03" />
+      <keyword name="uc" id="rlBuffer::uc" ref="classrlBuffer.html#a02586d90d9cbf8a5c44297aefbbc0da6" />
+      <keyword name="i" id="rlBuffer::i" ref="classrlBuffer.html#a5890bd81f059b8c4a4e3e767dd444a3b" />
+      <keyword name="ui" id="rlBuffer::ui" ref="classrlBuffer.html#a9805b23575cf3e10ab07e0031b7438eb" />
+      <keyword name="l" id="rlBuffer::l" ref="classrlBuffer.html#aeb4dd21e2a75d3cad9c8252a91c715ee" />
+      <keyword name="ul" id="rlBuffer::ul" ref="classrlBuffer.html#a30a355488ab78dc92d0feb6714062a24" />
+      <keyword name="f" id="rlBuffer::f" ref="classrlBuffer.html#a926328a8eb062b08c36df14734bddb51" />
+      <keyword name="d" id="rlBuffer::d" ref="classrlBuffer.html#a1487c878677dbacab7b2bd17fe8d5cab" />
+      <keyword name="_size" id="rlBuffer::_size" ref="classrlBuffer.html#a94abe8e113c5a21f582c38cb0f867030" />
       <keyword name="rlBussignalDatabase" id="rlBussignalDatabase" ref="classrlBussignalDatabase.html" />
       <keyword name="rlBussignalDatabase" id="rlBussignalDatabase::rlBussignalDatabase" ref="classrlBussignalDatabase.html#a43b78b31584a8dfb7783b9e62a32ab8f" />
       <keyword name="~rlBussignalDatabase" id="rlBussignalDatabase::~rlBussignalDatabase" ref="classrlBussignalDatabase.html#ad5f41a15fd4f4ecf21ea1ff0a179cf8b" />
@@ -6105,6 +6180,7 @@
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
+      <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
       <keyword name="status" id="rlMailbox::status" ref="classrlMailbox.html#ad9c9c09ddae985634ebecdf6a7271945" />
       <keyword name="name" id="rlMailbox::name" ref="classrlMailbox.html#a2b6ae3d81531f1e2c3a6b12c705cf147" />
       <keyword name="status" id="rlSharedMemory::status" ref="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90" />
@@ -6289,6 +6365,7 @@
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
+      <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
       <keyword name="daveSD" id="rlPPIClient::daveSD" ref="classrlPPIClient.html#a57474a72d3e44900e3a56b11c857f5ddad5a97a4fa1eae765b5e7e5c8ea910c7c" />
       <keyword name="daveInputs" id="rlPPIClient::daveInputs" ref="classrlPPIClient.html#a57474a72d3e44900e3a56b11c857f5dda70d114ef4e4e20cf90a8bec92a312afc" />
       <keyword name="daveOutputs" id="rlPPIClient::daveOutputs" ref="classrlPPIClient.html#a57474a72d3e44900e3a56b11c857f5dda9cff21711f4bbdf407045dedb83ab44a" />
@@ -6363,13 +6440,14 @@
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
+      <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
       <keyword name="status" id="rlSharedMemory::status" ref="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90" />
       <keyword name="name" id="rlSharedMemory::name" ref="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc" />
       <keyword name="id" id="rlSharedMemory::id" ref="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf" />
       <keyword name="shmkey" id="rlSharedMemory::shmkey" ref="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd" />
       <keyword name="base_adr" id="rlSharedMemory::base_adr" ref="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf" />
       <keyword name="user_adr" id="rlSharedMemory::user_adr" ref="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d" />
-      <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6" />
+      <keyword name="_size" id="rlSharedMemory::_size" ref="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95" />
       <keyword name="mutex" id="rlSharedMemory::mutex" ref="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a" />
       <keyword name="hSharedFile" id="rlSharedMemory::hSharedFile" ref="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194" />
       <keyword name="overlapped" id="rlSharedMemory::overlapped" ref="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c" />
@@ -6550,6 +6628,7 @@
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
+      <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
       <keyword name="ORG_DB" id="rlSiemensTCPClient::ORG_DB" ref="classrlSiemensTCPClient.html#ae765d2dc4dc08716075e86ebdf40d42ea01cb88c9f5453f05ad66b725984ce106" />
       <keyword name="ORG_M" id="rlSiemensTCPClient::ORG_M" ref="classrlSiemensTCPClient.html#ae765d2dc4dc08716075e86ebdf40d42eac1a8ad5f82c7b1ff2ed079ebdde4d827" />
       <keyword name="ORG_E" id="rlSiemensTCPClient::ORG_E" ref="classrlSiemensTCPClient.html#ae765d2dc4dc08716075e86ebdf40d42ea5587f05bd7364b90c161248c29574d8c" />
@@ -6609,8 +6688,12 @@
       <keyword name="printAll" id="rlSpawn::printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
       <keyword name="getFilepointer" id="rlSpawn::getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
       <keyword name="pid" id="rlSpawn::pid" ref="classrlSpawn.html#ae8fad062ebe5687115162704046bb516" />
-      <keyword name="toChild" id="rlSpawn::toChild" ref="classrlSpawn.html#a61d66c65aed676cabe549f155ece605f" />
-      <keyword name="fromChild" id="rlSpawn::fromChild" ref="classrlSpawn.html#a858ec1f770c526dd11327d786c89152f" />
+      <keyword name="toChildRD" id="rlSpawn::toChildRD" ref="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8" />
+      <keyword name="toChildWR" id="rlSpawn::toChildWR" ref="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7" />
+      <keyword name="fromChildRD" id="rlSpawn::fromChildRD" ref="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107" />
+      <keyword name="fromChildWR" id="rlSpawn::fromChildWR" ref="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a" />
+      <keyword name="hThread" id="rlSpawn::hThread" ref="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b" />
+      <keyword name="hProcess" id="rlSpawn::hProcess" ref="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe" />
       <keyword name="line" id="rlSpawn::line" ref="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4" />
       <keyword name="rlSpreadsheetCell" id="rlSpreadsheetCell" ref="classrlSpreadsheetCell.html" />
       <keyword name="rlSpreadsheetCell" id="rlSpreadsheetCell::rlSpreadsheetCell" ref="classrlSpreadsheetCell.html#a08a5cc928f6d84b017b2d149947a7df5" />
@@ -6967,6 +7050,8 @@
       <file>search/search.js</file>
       <file>rl3964r_8cpp_source.html</file>
       <file>rl3964r_8h_source.html</file>
+      <file>rlbuffer_8cpp_source.html</file>
+      <file>rlbuffer_8h_source.html</file>
       <file>rlbussignaldatabase_8cpp_source.html</file>
       <file>rlbussignaldatabase_8h_source.html</file>
       <file>rlcannode_8cpp_source.html</file>
@@ -7075,6 +7160,11 @@
       <file>rl3964r_8h.html</file>
       <file>rl3964r_8h__incl.png</file>
       <file>rl3964r_8h__dep__incl.png</file>
+      <file>rlbuffer_8cpp.html</file>
+      <file>rlbuffer_8cpp__incl.png</file>
+      <file>rlbuffer_8h.html</file>
+      <file>rlbuffer_8h__incl.png</file>
+      <file>rlbuffer_8h__dep__incl.png</file>
       <file>rlbussignaldatabase_8cpp.html</file>
       <file>rlbussignaldatabase_8cpp__incl.png</file>
       <file>rlbussignaldatabase_8h.html</file>
@@ -7352,6 +7442,8 @@
       <file>classrl3964R.html</file>
       <file>classrl3964R__coll__graph.png</file>
       <file>classrl3964R-members.html</file>
+      <file>classrlBuffer.html</file>
+      <file>classrlBuffer-members.html</file>
       <file>classrlBussignalDatabase.html</file>
       <file>classrlBussignalDatabase-members.html</file>
       <file>classrlCanClient.html</file>
@@ -7665,6 +7757,7 @@
       <file>inherit_graph_80.png</file>
       <file>inherit_graph_81.png</file>
       <file>inherit_graph_82.png</file>
+      <file>inherit_graph_83.png</file>
       <file>functions.html</file>
       <file>functions_0x61.html</file>
       <file>functions_0x62.html</file>

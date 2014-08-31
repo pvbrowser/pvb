@@ -117,7 +117,7 @@ Public Types</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a3e70ce386b12e4b08800578380605d59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a3e70ce386b12e4b08800578380605d59">rlSharedMemory</a> (const char *<a class="el" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, unsigned long <a class="el" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>, int rwmode=0600)</td></tr>
+<tr class="memitem:a3e70ce386b12e4b08800578380605d59"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a3e70ce386b12e4b08800578380605d59">rlSharedMemory</a> (const char *<a class="el" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, unsigned long <a class="el" href="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13">size</a>, int rwmode=0600)</td></tr>
 <tr class="separator:a3e70ce386b12e4b08800578380605d59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add0a7e3cc167b78ee855ab8eace6b4b5"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5">~rlSharedMemory</a> ()</td></tr>
 <tr class="separator:add0a7e3cc167b78ee855ab8eace6b4b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +149,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a2ba4572a598ca60b3d1b21f0f202917d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae2d0562b6cd1a7e16d7f80cd21ae8d3a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a">shmId</a> ()</td></tr>
 <tr class="separator:ae2d0562b6cd1a7e16d7f80cd21ae8d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4665124464ffa92b63996337b15edc13"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13">size</a> ()</td></tr>
+<tr class="separator:a4665124464ffa92b63996337b15edc13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -167,8 +169,8 @@ Private Attributes</h2></td></tr>
 <tr class="separator:a017339872557f85d4bcf3aa8237c6acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add47a185bbb356871d4348e24a57852d"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a></td></tr>
 <tr class="separator:add47a185bbb356871d4348e24a57852d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a088f5f5ae7da2aa17c6d8437ffe2e6d6"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a></td></tr>
-<tr class="separator:a088f5f5ae7da2aa17c6d8437ffe2e6d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac19767458e0d55d90cf468d78be4fe95"><td class="memItemLeft" align="right" valign="top">unsigned long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a></td></tr>
+<tr class="separator:ac19767458e0d55d90cf468d78be4fe95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac0899add3dd6fbd4402d3c62e77f918a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">mutex</a></td></tr>
 <tr class="separator:ac0899add3dd6fbd4402d3c62e77f918a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f92f4cc85ecb590d6acef1077513194"><td class="memItemLeft" align="right" valign="top">HANDLE&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a></td></tr>
@@ -261,7 +263,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a>  = <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[strlen(shmname)+1];</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  strcpy(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,shmname);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>    = Size + <span class="keyword">sizeof</span>(*mutex);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>    = Size + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="comment">// create file</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  fdlock = open(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, O_RDWR | O_CREAT, rwmode );</div>
@@ -282,13 +284,13 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  <span class="comment">// old stuff, without suggestions from Stefan Lievens </span></div>
 <div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="comment">//shmkey  = ftok(name,0);</span></div>
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="comment">//</span></div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="comment">//id  = shmget(shmkey, size, IPC_CREAT);</span></div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="comment">//id  = shmget(shmkey, _size, IPC_CREAT);</span></div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="comment">//shmkey  = ftok(name, &#39;R&#39;);</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>  = ftok(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>, <span class="charliteral">&#39;b&#39;</span>);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="comment">//id  = shmget(shmkey, size, 0600 | IPC_CREAT);</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">id</span>  = shmget(<a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>, <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>, rwmode | IPC_CREAT);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="comment">//id  = shmget(shmkey, _size, 0600 | IPC_CREAT);</span></div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">id</span>  = shmget(<a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>, <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>, rwmode | IPC_CREAT);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">if</span>(<span class="keywordtype">id</span> &lt; 0)           { status=<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2aeb0703375cac6aae746caeaea81d5d">ERROR_SHMGET</a>; <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> = (<span class="keywordtype">char</span> *) shmat(<span class="keywordtype">id</span>,NULL,0);</div>
@@ -312,7 +314,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  status  = <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[strlen(shmname)+1];</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  strcpy(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,shmname);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>    = Size + <span class="keyword">sizeof</span>(*mutex);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>    = Size + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="comment">// The file block size is fixed</span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  file_block_size = 512; <span class="comment">// Bytes</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="comment">// Get the page size</span></div>
@@ -333,8 +335,8 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="comment">// The pagelet size is fixed</span></div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  pagelet_size = 512; <span class="comment">// Bytes</span></div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="comment">// Get memory</span></div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a> % page_size == 0) pagelets = <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a> / pagelet_size;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordflow">else</span>                      pagelets = (<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a> / page_size + 1) * (page_size / pagelet_size);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a> % page_size == 0) pagelets = <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a> / pagelet_size;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  <span class="keywordflow">else</span>                      pagelets = (<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a> / page_size + 1) * (page_size / pagelet_size);</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  ret = sys$expreg(pagelets,&amp;add_ret,0,0);</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) { status=<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d">ERROR_FILE</a>; <span class="keywordflow">return</span>; }</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="comment">// Set the addresses</span></div>
@@ -413,7 +415,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  status  = <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[strlen(shmname)+1];</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  strcpy(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,shmname);</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>    = Size + <span class="keyword">sizeof</span>(HANDLE); <span class="comment">// sizeof(*mutex);</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>    = Size + <span class="keyword">sizeof</span>(HANDLE); <span class="comment">// sizeof(*mutex);</span></div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="comment">//file_existed = 1;</span></div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a> = CreateFile(<a class="code" href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">name</a>,</div>
@@ -451,7 +453,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    NULL,                <span class="comment">// no security attributes</span></div>
 <div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    PAGE_READWRITE,      <span class="comment">// read/write access</span></div>
 <div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    0,                   <span class="comment">// size: high 32-bits</span></div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,                <span class="comment">// size: low 32-bits</span></div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,               <span class="comment">// size: low 32-bits</span></div>
 <div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    0);                  <span class="comment">// name of map object // changed by FMakkinga 25-03-2013 global_name); </span></div>
 <div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="comment">//  global_name);      // name of map object</span></div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;  <span class="comment">//delete [] global_name;  </span></div>
@@ -468,25 +470,25 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  mutex     = (<a class="code" href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a> *) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>  = <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <span class="keyword">sizeof</span>(*mutex);</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  memset(&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>, 0, <span class="keyword">sizeof</span>(<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>));      <span class="comment">// Changed by FMakkinga 22-03-2013</span></div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  UnlockFileEx(hSharedFile,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  UnlockFileEx(hSharedFile,0,<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(rwmode == 0) <span class="keywordflow">return</span>; <span class="comment">// no warning of unused parameter</span></div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;}</div>
-<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00059">rlsharedmemory.h:59</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a088f5f5ae7da2aa17c6d8437ffe2e6d6"><div class="ttname"><a href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">rlSharedMemory::size</a></div><div class="ttdeci">unsigned long size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00063">rlsharedmemory.h:63</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac19767458e0d55d90cf468d78be4fe95"><div class="ttname"><a href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">rlSharedMemory::_size</a></div><div class="ttdeci">unsigned long _size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00064">rlsharedmemory.h:64</a></div></div>
 <div class="ttc" id="structADD_html"><div class="ttname"><a href="structADD.html">ADD</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00041">rlsharedmemory.cpp:41</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a2aeb0703375cac6aae746caeaea81d5d"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2aeb0703375cac6aae746caeaea81d5d">rlSharedMemory::ERROR_SHMGET</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00037">rlsharedmemory.h:37</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a9246f094bcbd06239d2fd98bad038e7e"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a9246f094bcbd06239d2fd98bad038e7e">rlSharedMemory::ERROR_SHMCTL</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00039">rlsharedmemory.h:39</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_abb6f27398290b0f82b1ff3e177445acc"><div class="ttname"><a href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">rlSharedMemory::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_abb6f27398290b0f82b1ff3e177445acc"><div class="ttname"><a href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">rlSharedMemory::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00061">rlsharedmemory.h:61</a></div></div>
 <div class="ttc" id="rlwthread_8h_html_a55f6e50b632a1274e8f93e41bddbfe1b"><div class="ttname"><a href="rlwthread_8h.html#a55f6e50b632a1274e8f93e41bddbfe1b">pthread_mutex_t</a></div><div class="ttdeci">HANDLE pthread_mutex_t</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8h_source.html#l00070">rlwthread.h:70</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00069">rlsharedmemory.h:69</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d">rlSharedMemory::ERROR_FILE</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00036">rlsharedmemory.h:36</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a0db238d56963cbb5b5fc524ecc2affb3"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a0db238d56963cbb5b5fc524ecc2affb3">rlSharedMemory::ERROR_SHMAT</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00038">rlsharedmemory.h:38</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a017339872557f85d4bcf3aa8237c6acf"><div class="ttname"><a href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">rlSharedMemory::base_adr</a></div><div class="ttdeci">char * base_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00064">rlsharedmemory.h:64</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a4c6f5ed36d2c809085749b2775006f4c"><div class="ttname"><a href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">rlSharedMemory::overlapped</a></div><div class="ttdeci">OVERLAPPED overlapped</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a017339872557f85d4bcf3aa8237c6acf"><div class="ttname"><a href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">rlSharedMemory::base_adr</a></div><div class="ttdeci">char * base_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00065">rlsharedmemory.h:65</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a4c6f5ed36d2c809085749b2775006f4c"><div class="ttname"><a href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">rlSharedMemory::overlapped</a></div><div class="ttdeci">OVERLAPPED overlapped</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00071">rlsharedmemory.h:71</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00035">rlsharedmemory.h:35</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00065">rlsharedmemory.h:65</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
 <div class="ttc" id="structADD_html_adfc0e8ed21baba27dc88ab557f6eab46"><div class="ttname"><a href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">ADD::start</a></div><div class="ttdeci">long start</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00043">rlsharedmemory.cpp:43</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_a1e70f49eb1ab8aa6563b0353ff1425c2"><div class="ttname"><a href="classrlSharedMemory.html#a1e70f49eb1ab8aa6563b0353ff1425c2">rlSharedMemory::write</a></div><div class="ttdeci">int write(unsigned long offset, const void *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00374">rlsharedmemory.cpp:374</a></div></div>
 <div class="ttc" id="structADD_html_a8e4f0632b80bddc4db0022978c797179"><div class="ttname"><a href="structADD.html#a8e4f0632b80bddc4db0022978c797179">ADD::end</a></div><div class="ttdeci">long end</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00044">rlsharedmemory.cpp:44</a></div></div>
@@ -526,9 +528,9 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">if</span>(fdlock &gt;= 0) close(fdlock);</div>
 <div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;<span class="preprocessor"></span>}</div>
-<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00059">rlsharedmemory.h:59</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00063">rlsharedmemory.h:63</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_abb6f27398290b0f82b1ff3e177445acc"><div class="ttname"><a href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">rlSharedMemory::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00064">rlsharedmemory.h:64</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_abb6f27398290b0f82b1ff3e177445acc"><div class="ttname"><a href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">rlSharedMemory::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00061">rlsharedmemory.h:61</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00035">rlsharedmemory.h:35</a></div></div>
 </div><!-- fragment -->
 </div>
@@ -555,7 +557,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  <span class="comment">//rlwthread_mutex_destroy(mutex);</span></div>
 <div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  flock(fdlock,LOCK_UN);</div>
 <div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  shmctl(<span class="keywordtype">id</span>, IPC_RMID, &amp;buf);</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a> = 0;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a> = 0;</div>
 <div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor"></span></div>
@@ -576,7 +578,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  <span class="comment">// Fill the input address</span></div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  add_in.<a class="code" href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">start</a> = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  add_in.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a>   = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  add_in.<a class="code" href="structADD.html#a8e4f0632b80bddc4db0022978c797179">end</a>   = (long) <a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a> + <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>;</div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  <span class="comment">// Free the memory</span></div>
 <div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  ret = sys$deltva(&amp;add_in,&amp;add_ret,0);</div>
 <div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keywordflow">if</span>(ret != SS$_NORMAL) <span class="keywordflow">return</span> -1;</div>
@@ -591,21 +593,21 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  UnmapViewOfFile(<a class="code" href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">base_adr</a>);</div>
 <div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  CloseHandle((HANDLE) <span class="keywordtype">id</span>);</div>
 <div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  CloseHandle((HANDLE) <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>);</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  UnlockFile(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  UnlockFile(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,0,<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,0); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  CloseHandle(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>);           <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> = ~<a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>;</div>
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  <span class="keywordflow">return</span> 0;</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;<span class="preprocessor"></span>}</div>
 <div class="ttc" id="rlwthread_8cpp_html_a141460ecaae5b543a071b3d4477a5df5"><div class="ttname"><a href="rlwthread_8cpp.html#a141460ecaae5b543a071b3d4477a5df5">rlwthread_mutex_destroy</a></div><div class="ttdeci">int rlwthread_mutex_destroy(pthread_mutex_t *mptr)</div><div class="ttdef"><b>Definition:</b> <a href="rlwthread_8cpp_source.html#l00178">rlwthread.cpp:178</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00059">rlsharedmemory.h:59</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a088f5f5ae7da2aa17c6d8437ffe2e6d6"><div class="ttname"><a href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">rlSharedMemory::size</a></div><div class="ttdeci">unsigned long size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_ac0899add3dd6fbd4402d3c62e77f918a"><div class="ttname"><a href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">rlSharedMemory::mutex</a></div><div class="ttdeci">pthread_mutex_t * mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00063">rlsharedmemory.h:63</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac19767458e0d55d90cf468d78be4fe95"><div class="ttname"><a href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">rlSharedMemory::_size</a></div><div class="ttdeci">unsigned long _size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac0899add3dd6fbd4402d3c62e77f918a"><div class="ttname"><a href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">rlSharedMemory::mutex</a></div><div class="ttdeci">pthread_mutex_t * mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00068">rlsharedmemory.h:68</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00064">rlsharedmemory.h:64</a></div></div>
 <div class="ttc" id="structADD_html"><div class="ttname"><a href="structADD.html">ADD</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00041">rlsharedmemory.cpp:41</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_abb6f27398290b0f82b1ff3e177445acc"><div class="ttname"><a href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">rlSharedMemory::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00069">rlsharedmemory.h:69</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a017339872557f85d4bcf3aa8237c6acf"><div class="ttname"><a href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">rlSharedMemory::base_adr</a></div><div class="ttdeci">char * base_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00064">rlsharedmemory.h:64</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_abb6f27398290b0f82b1ff3e177445acc"><div class="ttname"><a href="classrlSharedMemory.html#abb6f27398290b0f82b1ff3e177445acc">rlSharedMemory::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00061">rlsharedmemory.h:61</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a017339872557f85d4bcf3aa8237c6acf"><div class="ttname"><a href="classrlSharedMemory.html#a017339872557f85d4bcf3aa8237c6acf">rlSharedMemory::base_adr</a></div><div class="ttdeci">char * base_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00065">rlsharedmemory.h:65</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00035">rlsharedmemory.h:35</a></div></div>
 <div class="ttc" id="structADD_html_adfc0e8ed21baba27dc88ab557f6eab46"><div class="ttname"><a href="structADD.html#adfc0e8ed21baba27dc88ab557f6eab46">ADD::start</a></div><div class="ttdeci">long start</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00043">rlsharedmemory.cpp:43</a></div></div>
 <div class="ttc" id="structADD_html_a8e4f0632b80bddc4db0022978c797179"><div class="ttname"><a href="structADD.html#a8e4f0632b80bddc4db0022978c797179">ADD::end</a></div><div class="ttdeci">long end</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8cpp_source.html#l00044">rlsharedmemory.cpp:44</a></div></div>
@@ -629,7 +631,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;{</div>
 <div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;  <span class="keywordflow">return</span> (<span class="keywordtype">void</span> *) <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a>;</div>
 <div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;}</div>
-<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00065">rlsharedmemory.h:65</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -666,12 +668,12 @@ Private Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00399">399</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;{</div>
 <div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <span class="keywordtype">void</span> *ptr;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)          <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)       <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)           <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>) <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;  ptr = <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a> + offset;</div>
 <div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor"></span>  LockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,LOCKFILE_EXCLUSIVE_LOCK,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;<span class="preprocessor"></span>  LockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,LOCKFILE_EXCLUSIVE_LOCK,0,<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;<span class="preprocessor">#elif defined(RLUNIX)</span></div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;<span class="preprocessor"></span>  flock(fdlock,LOCK_EX);</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">#else</span></div>
@@ -679,7 +681,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor"></span>  memcpy(buf,ptr,len);</div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor"></span>  UnlockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);                       <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor"></span>  UnlockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);                       <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;<span class="preprocessor">#elif defined(RLUNIX)</span></div>
 <div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;<span class="preprocessor"></span>  flock(fdlock,LOCK_UN);</div>
 <div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;<span class="preprocessor">#else</span></div>
@@ -687,13 +689,13 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;}</div>
-<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00059">rlsharedmemory.h:59</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a088f5f5ae7da2aa17c6d8437ffe2e6d6"><div class="ttname"><a href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">rlSharedMemory::size</a></div><div class="ttdeci">unsigned long size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_ac0899add3dd6fbd4402d3c62e77f918a"><div class="ttname"><a href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">rlSharedMemory::mutex</a></div><div class="ttdeci">pthread_mutex_t * mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00069">rlsharedmemory.h:69</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a4c6f5ed36d2c809085749b2775006f4c"><div class="ttname"><a href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">rlSharedMemory::overlapped</a></div><div class="ttdeci">OVERLAPPED overlapped</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac19767458e0d55d90cf468d78be4fe95"><div class="ttname"><a href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">rlSharedMemory::_size</a></div><div class="ttdeci">unsigned long _size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac0899add3dd6fbd4402d3c62e77f918a"><div class="ttname"><a href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">rlSharedMemory::mutex</a></div><div class="ttdeci">pthread_mutex_t * mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00068">rlsharedmemory.h:68</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a4c6f5ed36d2c809085749b2775006f4c"><div class="ttname"><a href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">rlSharedMemory::overlapped</a></div><div class="ttdeci">OVERLAPPED overlapped</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00071">rlsharedmemory.h:71</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00035">rlsharedmemory.h:35</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00065">rlsharedmemory.h:65</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -854,7 +856,7 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00502"></a><span class="lineno">  502</span>&#160;{</div>
 <div class="line"><a name="l00503"></a><span class="lineno">  503</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">id</a>;</div>
 <div class="line"><a name="l00504"></a><span class="lineno">  504</span>&#160;}</div>
-<div class="ttc" id="classrlSharedMemory_html_a6dd5793911ceb0b84fcbb9322941d1cf"><div class="ttname"><a href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">rlSharedMemory::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00062">rlsharedmemory.h:62</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a6dd5793911ceb0b84fcbb9322941d1cf"><div class="ttname"><a href="classrlSharedMemory.html#a6dd5793911ceb0b84fcbb9322941d1cf">rlSharedMemory::id</a></div><div class="ttdeci">int id</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00063">rlsharedmemory.h:63</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -875,7 +877,28 @@ Private Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;{</div>
 <div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">shmkey</a>;</div>
 <div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;}</div>
-<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00063">rlsharedmemory.h:63</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac013c3ee77b7da5badd24be7c822fcdd"><div class="ttname"><a href="classrlSharedMemory.html#ac013c3ee77b7da5badd24be7c822fcdd">rlSharedMemory::shmkey</a></div><div class="ttdeci">int shmkey</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00064">rlsharedmemory.h:64</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a4665124464ffa92b63996337b15edc13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long rlSharedMemory::size </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00506">506</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00507"></a><span class="lineno">  507</span>&#160;{</div>
+<div class="line"><a name="l00508"></a><span class="lineno">  508</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>;</div>
+<div class="line"><a name="l00509"></a><span class="lineno">  509</span>&#160;}</div>
+<div class="ttc" id="classrlSharedMemory_html_ac19767458e0d55d90cf468d78be4fe95"><div class="ttname"><a href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">rlSharedMemory::_size</a></div><div class="ttdeci">unsigned long _size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -912,12 +935,12 @@ Private Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="rlsharedmemory_8cpp_source.html#l00374">374</a> of file <a class="el" href="rlsharedmemory_8cpp_source.html">rlsharedmemory.cpp</a>.</p>
 <div class="fragment"><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;{</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <span class="keywordtype">void</span> *ptr;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)      <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)          <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keywordflow">if</span>(<a class="code" href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">status</a> != <a class="code" href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">OK</a>)       <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordflow">if</span>(len &lt;= 0)           <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  <span class="keywordflow">if</span>(offset+len &gt; <a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>) <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  ptr = <a class="code" href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">user_adr</a> + offset;</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor"></span>  LockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,LOCKFILE_EXCLUSIVE_LOCK,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor"></span>  LockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,LOCKFILE_EXCLUSIVE_LOCK,0,<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>); <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;<span class="preprocessor">#elif defined(RLUNIX)</span></div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor"></span>  flock(fdlock,LOCK_EX);</div>
 <div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">#else</span></div>
@@ -925,7 +948,7 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor"></span>  memcpy(ptr,buf,len);</div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor"></span>  UnlockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,<a class="code" href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);                       <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="preprocessor"></span>  UnlockFileEx(<a class="code" href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">hSharedFile</a>,0,<a class="code" href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">_size</a>,0,&amp;<a class="code" href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">overlapped</a>);                       <span class="comment">// Changed by FMakkinga 18-03-2013</span></div>
 <div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;<span class="preprocessor">#elif defined(RLUNIX)</span></div>
 <div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;<span class="preprocessor"></span>  flock(fdlock,LOCK_UN);</div>
 <div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;<span class="preprocessor">#else</span></div>
@@ -933,13 +956,13 @@ Private Attributes</h2></td></tr>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;<span class="preprocessor"></span>  <span class="keywordflow">return</span> len;</div>
 <div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;}</div>
-<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00059">rlsharedmemory.h:59</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a088f5f5ae7da2aa17c6d8437ffe2e6d6"><div class="ttname"><a href="classrlSharedMemory.html#a088f5f5ae7da2aa17c6d8437ffe2e6d6">rlSharedMemory::size</a></div><div class="ttdeci">unsigned long size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_ac0899add3dd6fbd4402d3c62e77f918a"><div class="ttname"><a href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">rlSharedMemory::mutex</a></div><div class="ttdeci">pthread_mutex_t * mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00069">rlsharedmemory.h:69</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_a4c6f5ed36d2c809085749b2775006f4c"><div class="ttname"><a href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">rlSharedMemory::overlapped</a></div><div class="ttdeci">OVERLAPPED overlapped</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_adabbcd3725ed8cbc322f9e8f25c22c90"><div class="ttname"><a href="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90">rlSharedMemory::status</a></div><div class="ttdeci">int status</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00060">rlsharedmemory.h:60</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac19767458e0d55d90cf468d78be4fe95"><div class="ttname"><a href="classrlSharedMemory.html#ac19767458e0d55d90cf468d78be4fe95">rlSharedMemory::_size</a></div><div class="ttdeci">unsigned long _size</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00067">rlsharedmemory.h:67</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_ac0899add3dd6fbd4402d3c62e77f918a"><div class="ttname"><a href="classrlSharedMemory.html#ac0899add3dd6fbd4402d3c62e77f918a">rlSharedMemory::mutex</a></div><div class="ttdeci">pthread_mutex_t * mutex</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00068">rlsharedmemory.h:68</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a2f92f4cc85ecb590d6acef1077513194"><div class="ttname"><a href="classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194">rlSharedMemory::hSharedFile</a></div><div class="ttdeci">HANDLE hSharedFile</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00070">rlsharedmemory.h:70</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_a4c6f5ed36d2c809085749b2775006f4c"><div class="ttname"><a href="classrlSharedMemory.html#a4c6f5ed36d2c809085749b2775006f4c">rlSharedMemory::overlapped</a></div><div class="ttdeci">OVERLAPPED overlapped</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00071">rlsharedmemory.h:71</a></div></div>
 <div class="ttc" id="classrlSharedMemory_html_aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb"><div class="ttname"><a href="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb">rlSharedMemory::OK</a></div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00035">rlsharedmemory.h:35</a></div></div>
-<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00065">rlsharedmemory.h:65</a></div></div>
+<div class="ttc" id="classrlSharedMemory_html_add47a185bbb356871d4348e24a57852d"><div class="ttname"><a href="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d">rlSharedMemory::user_adr</a></div><div class="ttdeci">char * user_adr</div><div class="ttdef"><b>Definition:</b> <a href="rlsharedmemory_8h_source.html#l00066">rlsharedmemory.h:66</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1111,6 +1134,28 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ac19767458e0d55d90cf468d78be4fe95"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned long rlSharedMemory::_size</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00067">67</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a017339872557f85d4bcf3aa8237c6acf"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1129,7 +1174,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00064">64</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00065">65</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1151,7 +1196,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00069">69</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00070">70</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1218,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00062">62</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00063">63</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1195,7 +1240,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00067">67</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00068">68</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1209,7 +1254,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00060">60</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00061">61</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1276,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00070">70</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00071">71</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1253,29 +1298,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00063">63</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a088f5f5ae7da2aa17c6d8437ffe2e6d6"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned long rlSharedMemory::size</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00066">66</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00064">64</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1289,7 +1312,7 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00059">59</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00060">60</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>
@@ -1311,7 +1334,7 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00065">65</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
+<p>Definition at line <a class="el" href="rlsharedmemory_8h_source.html#l00066">66</a> of file <a class="el" href="rlsharedmemory_8h_source.html">rlsharedmemory.h</a>.</p>
 
 </div>
 </div>

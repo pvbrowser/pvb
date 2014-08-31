@@ -56,6 +56,7 @@ public:
   void  *getUserAdr();
   int   shmKey();
   int   shmId();
+  unsigned long size();
   int   status;
   char *name;
 private:
@@ -63,7 +64,7 @@ private:
   int shmkey;
   char *base_adr;
   char *user_adr;
-  unsigned long size;
+  unsigned long _size;
   pthread_mutex_t *mutex;
 #ifdef RLWIN32
   HANDLE hSharedFile;
