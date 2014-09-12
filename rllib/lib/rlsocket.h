@@ -17,6 +17,7 @@
 #define _RL_SOCKET_H_
 
 #include "rldefine.h"
+#include "rlstring.h"
 #ifdef RLWIN32
 #include <winsock2.h>
 #include <windows.h>
@@ -121,6 +122,12 @@ public:
       return < 0 error
   </pre> */
   int readStr(char *buf, int len, int timeout=0);
+
+  /*! <pre>
+      read a http header and return Content-Length
+      return < 0 error
+  </pre> */
+  int readHttpHeader(rlString *header, int timeout=0);
 
   /*! <pre>
       write a block of data

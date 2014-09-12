@@ -19,6 +19,8 @@
 #include <string.h>
 #include "rldefine.h"
 
+extern const char rlCRLF[];
+
 /*! <pre>
 class for a simple ANSI-C like string.
 </pre> */

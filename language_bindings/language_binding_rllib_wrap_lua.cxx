@@ -4965,6 +4965,140 @@ static int _wrap_rlSocket_readStr(lua_State* L) {
 }
 
 
+static int _wrap_rlSocket_readHttpHeader__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  rlString *arg2 = (rlString *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::readHttpHeader",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSocket::readHttpHeader",1,"rlSocket *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlSocket::readHttpHeader",2,"rlString *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlSocket::readHttpHeader",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSocket,0))){
+    SWIG_fail_ptr("rlSocket_readHttpHeader",1,SWIGTYPE_p_rlSocket);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlSocket_readHttpHeader",2,SWIGTYPE_p_rlString);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->readHttpHeader(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSocket_readHttpHeader__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  rlString *arg2 = (rlString *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::readHttpHeader",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSocket::readHttpHeader",1,"rlSocket *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlSocket::readHttpHeader",2,"rlString *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSocket,0))){
+    SWIG_fail_ptr("rlSocket_readHttpHeader",1,SWIGTYPE_p_rlSocket);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlSocket_readHttpHeader",2,SWIGTYPE_p_rlString);
+  }
+  
+  result = (int)(arg1)->readHttpHeader(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSocket_readHttpHeader(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlSocket, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_rlString, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        return _wrap_rlSocket_readHttpHeader__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p_rlSocket, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        void *ptr;
+        if (SWIG_isptrtype(L,argv[1])==0 || SWIG_ConvertPtr(L,argv[1], (void **) &ptr, SWIGTYPE_p_rlString, 0)) {
+          _v = 0;
+        } else {
+          _v = 1;
+        }
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_rlSocket_readHttpHeader__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  lua_pushstring(L,"Wrong arguments for overloaded function 'rlSocket_readHttpHeader'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlSocket::readHttpHeader(rlString *,int)\n"
+    "    rlSocket::readHttpHeader(rlString *)\n");
+  lua_error(L);return 0;
+}
+
+
 static int _wrap_rlSocket_write(lua_State* L) {
   int SWIG_arg = 0;
   rlSocket *arg1 = (rlSocket *) 0 ;
@@ -5673,6 +5807,7 @@ static swig_lua_method swig_rlSocket_methods[] = {
     {"setActive", _wrap_rlSocket_setActive}, 
     {"read", _wrap_rlSocket_read}, 
     {"readStr", _wrap_rlSocket_readStr}, 
+    {"readHttpHeader", _wrap_rlSocket_readHttpHeader}, 
     {"write", _wrap_rlSocket_write}, 
     {"printf", _wrap_rlSocket_printf}, 
     {"connect", _wrap_rlSocket_connect}, 
@@ -24876,6 +25011,23 @@ static swig_lua_class *swig_rlSpreadsheetWorkbook_bases[] = {0};
 static const char *swig_rlSpreadsheetWorkbook_base_names[] = {0};
 static swig_lua_class _wrap_class_rlSpreadsheetWorkbook = { "rlSpreadsheetWorkbook", &SWIGTYPE_p_rlSpreadsheetWorkbook,_wrap_new_rlSpreadsheetWorkbook, swig_delete_rlSpreadsheetWorkbook, swig_rlSpreadsheetWorkbook_methods, swig_rlSpreadsheetWorkbook_attributes, swig_rlSpreadsheetWorkbook_bases, swig_rlSpreadsheetWorkbook_base_names };
 
+static int _wrap_rlCRLF_get(lua_State* L) {
+  int SWIG_arg = 0;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlCRLF",0,0)
+  result = (char *)(char *)rlCRLF;
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_rlString__SWIG_0(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -30032,6 +30184,7 @@ static const struct luaL_Reg swig_commands[] = {
 
 static swig_lua_var_info swig_variables[] = {
     { "rlevent_name", _wrap_rlevent_name_get, SWIG_Lua_set_immutable },
+    { "rlCRLF", _wrap_rlCRLF_get, SWIG_Lua_set_immutable },
     {0,0,0}
 };
 

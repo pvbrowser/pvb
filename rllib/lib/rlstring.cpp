@@ -18,6 +18,8 @@
 #include "rlstring.h"
 #include "rlcutil.h"
 
+const char rlCRLF[3] = {0x0d, 0x0a, 0};
+
 rlString::rlString(const char *text)
 {
   txt = new char [strlen(text)+1];

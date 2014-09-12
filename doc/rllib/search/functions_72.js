@@ -13,6 +13,7 @@ var searchData=
   ['readerrorcount',['readErrorCount',['../classrlDataAcquisition.html#a3f91544a3db35cd18fdee3268025f6dd',1,'rlDataAcquisition::readErrorCount()'],['../classrlDataAcquisitionProvider.html#a2ccf52e2b2dd605da6946b3ae8e94581',1,'rlDataAcquisitionProvider::readErrorCount()'],['../classrlOpcXmlDa.html#a1a07dbbd528c53255c957f41c6925c22',1,'rlOpcXmlDa::readErrorCount()']]],
   ['readfloat',['readFloat',['../classrlSharedMemory.html#abc92a7f0855afc4ae6c84559a73f7853',1,'rlSharedMemory']]],
   ['readholdingregisters',['readHoldingRegisters',['../classrlModbus.html#ab490c9a04a756f524ae7cc5f138e41f7',1,'rlModbus']]],
+  ['readhttpheader',['readHttpHeader',['../classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21',1,'rlSocket']]],
   ['readinputregisters',['readInputRegisters',['../classrlModbus.html#a60f684a14a1f9c25301ecdecc565538b',1,'rlModbus']]],
   ['readinputstatus',['readInputStatus',['../classrlModbus.html#afbecaf38fc73f8d3082d95be141eeb37',1,'rlModbus']]],
   ['readint',['readInt',['../classrlSharedMemory.html#a7655f93ceb541ca363ad745620a65426',1,'rlSharedMemory']]],

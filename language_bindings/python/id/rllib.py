@@ -326,6 +326,7 @@ class rlSocket(_object):
     def setActive(self, *args): return _rllib.rlSocket_setActive(self, *args)
     def read(self, *args): return _rllib.rlSocket_read(self, *args)
     def readStr(self, *args): return _rllib.rlSocket_readStr(self, *args)
+    def readHttpHeader(self, *args): return _rllib.rlSocket_readHttpHeader(self, *args)
     def write(self, *args): return _rllib.rlSocket_write(self, *args)
     def printf(self, *args): return _rllib.rlSocket_printf(self, *args)
     def connect(self): return _rllib.rlSocket_connect(self)
@@ -1598,6 +1599,7 @@ class rlString(_object):
     def removeNewline(self): return _rllib.rlString_removeNewline(self)
 rlString_swigregister = _rllib.rlString_swigregister
 rlString_swigregister(rlString)
+rlCRLF = cvar.rlCRLF
 
 class rlSvgPosition(_object):
     __swig_setmethods__ = {}

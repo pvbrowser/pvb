@@ -426,7 +426,7 @@ int i;
             if(strstr(line,"ffplay") != NULL) opt.ffplay_available = 1;
             if(opt.arg_debug) printf("ffmpeg_available=%d ffplay_available=%d\n", opt.ffmpeg_available, opt.ffplay_available);
             fclose(fin);
-            //system("rm ffmpeg.dat");
+            system("rm ffmpeg.dat");
           }
 #endif
         }

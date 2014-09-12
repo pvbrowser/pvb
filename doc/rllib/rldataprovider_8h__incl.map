@@ -1,7 +1,8 @@
 <map id="rldataprovider.h" name="rldataprovider.h">
-<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="263,229,339,256"/>
-<area shape="rect" id="node15" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="119,155,197,181"/>
-<area shape="rect" id="node24" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="369,80,445,107"/>
-<area shape="rect" id="node36" href="$rlinterpreter_8h.html" title="rlinterpreter.h" alt="" coords="196,80,295,107"/>
-<area shape="rect" id="node27" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="425,155,511,181"/>
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="234,229,310,256"/>
+<area shape="rect" id="node15" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="150,80,228,107"/>
+<area shape="rect" id="node28" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="446,80,522,107"/>
+<area shape="rect" id="node40" href="$rlinterpreter_8h.html" title="rlinterpreter.h" alt="" coords="22,80,120,107"/>
+<area shape="rect" id="node18" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="325,155,395,181"/>
+<area shape="rect" id="node31" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="522,155,608,181"/>
 </map>

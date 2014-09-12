@@ -1500,6 +1500,7 @@
               <section title="isConnected" ref="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a" />
               <section title="printf" ref="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3" />
               <section title="read" ref="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4" />
+              <section title="readHttpHeader" ref="classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21" />
               <section title="readStr" ref="classrlSocket.html#aca6b7edd806bc447008cc025a0b72dbf" />
               <section title="rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
               <section title="rlGetsockopt" ref="classrlSocket.html#af97bc6ec8c70798f0f8af1d84c1415de" />
@@ -4180,6 +4181,7 @@
                 <section title="isConnected" ref="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a" />
                 <section title="printf" ref="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3" />
                 <section title="read" ref="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4" />
+                <section title="readHttpHeader" ref="classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21" />
                 <section title="readStr" ref="classrlSocket.html#aca6b7edd806bc447008cc025a0b72dbf" />
                 <section title="rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
                 <section title="rlGetsockopt" ref="classrlSocket.html#af97bc6ec8c70798f0f8af1d84c1415de" />
@@ -4316,7 +4318,9 @@
                 <section title="user" ref="classrlState.html#afcdaaea34be6204c1ca66a0cb2d484b2" />
               </section>
             </section>
-            <section title="rlstring.cpp" ref="rlstring_8cpp.html" />
+            <section title="rlstring.cpp" ref="rlstring_8cpp.html">
+              <section title="rlCRLF" ref="rlstring_8cpp.html#ab62ea69a73193eb80768648c83353ffb" />
+            </section>
             <section title="rlstring.h" ref="rlstring_8h.html">
               <section title="rlString" ref="classrlString.html">
                 <section title="rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
@@ -4350,6 +4354,7 @@
                 <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
                 <section title="txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
               </section>
+              <section title="rlCRLF" ref="rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
             </section>
             <section title="rlsubset.h" ref="rlsubset_8h.html" />
             <section title="rlsvganimator.cpp" ref="rlsvganimator_8cpp.html">
@@ -5049,6 +5054,8 @@
       <keyword name="rlScoketWrite" id="rlsocket.h::rlScoketWrite" ref="rlsocket_8h.html#afe006ace2961ebc935c3512ad4697d46" />
       <keyword name="null_string" id="rlspreadsheet.cpp::null_string" ref="rlspreadsheet_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
       <keyword name="stepsThread" id="rlstate.cpp::stepsThread" ref="rlstate_8cpp.html#ab4c9f4bf55f0b58929dc3fa7b3d7fb4b" />
+      <keyword name="rlCRLF" id="rlstring.cpp::rlCRLF" ref="rlstring_8cpp.html#ab62ea69a73193eb80768648c83353ffb" />
+      <keyword name="rlCRLF" id="rlstring.h::rlCRLF" ref="rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MAXLINE" id="rlsvganimator.cpp::MAXLINE" ref="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471" />
@@ -6473,6 +6480,7 @@
       <keyword name="setActive" id="rlSocket::setActive" ref="classrlSocket.html#a4e71d81c9d728df17009c775069a50fe" />
       <keyword name="read" id="rlSocket::read" ref="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4" />
       <keyword name="readStr" id="rlSocket::readStr" ref="classrlSocket.html#aca6b7edd806bc447008cc025a0b72dbf" />
+      <keyword name="readHttpHeader" id="rlSocket::readHttpHeader" ref="classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21" />
       <keyword name="write" id="rlSocket::write" ref="classrlSocket.html#aa069e328b2509cbbc15bf9c91684b6be" />
       <keyword name="printf" id="rlSocket::printf" ref="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3" />
       <keyword name="connect" id="rlSocket::connect" ref="classrlSocket.html#ad30990162e716dce512116d9336de89e" />
@@ -6646,6 +6654,7 @@
       <keyword name="setActive" id="rlSocket::setActive" ref="classrlSocket.html#a4e71d81c9d728df17009c775069a50fe" />
       <keyword name="read" id="rlSocket::read" ref="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4" />
       <keyword name="readStr" id="rlSocket::readStr" ref="classrlSocket.html#aca6b7edd806bc447008cc025a0b72dbf" />
+      <keyword name="readHttpHeader" id="rlSocket::readHttpHeader" ref="classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21" />
       <keyword name="write" id="rlSocket::write" ref="classrlSocket.html#aa069e328b2509cbbc15bf9c91684b6be" />
       <keyword name="printf" id="rlSocket::printf" ref="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3" />
       <keyword name="connect" id="rlSocket::connect" ref="classrlSocket.html#ad30990162e716dce512116d9336de89e" />

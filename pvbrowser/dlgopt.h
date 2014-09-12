@@ -37,12 +37,14 @@ protected:
   QTextEdit   *edit1;
   QPushButton *QPushButton_ok;
   QPushButton *QPushButton_cancel;
+  QPushButton *QPushButton_reset_inifile;
 
 private:
   QString filename;
 
 private slots:
   void okClicked();
+  void slotResetInifile();
 
 private: 
 };

@@ -253,6 +253,32 @@ tryagain:
   }
 }
 
+int rlSocket::readHttpHeader(rlString *header, int timeout)
+{
+  char line[4096];
+  int contentLength = 0;
+  
+  *header = "";
+  while(1)
+  {
+    int ret = readStr(line, (int) sizeof(line)-1, timeout);
+    if(ret < 0) 
+    {
+      printf("ERROR in rlSocket::readHttpHeader() ret=%d\n", ret);
+      return -1;
+    }
+    *header += line;
+    if(strstr(line, "Content-Length:") != NULL)
+    {
+      sscanf(line,"Content-Length: %d", &contentLength);
+    }
+    if(strlen(line) <= 2)
+    {
+      return contentLength;
+    }
+  }
+}
+
 int rlSocket::write(const void *buf, int len)
 {
   int ret,bytes_left,first_byte;

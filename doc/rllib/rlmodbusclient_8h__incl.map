@@ -1,10 +1,11 @@
 <map id="rlmodbusclient.h" name="rlmodbusclient.h">
-<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="269,379,344,405"/>
-<area shape="rect" id="node15" href="$rlmodbus_8h.html" title="rlmodbus.h" alt="" coords="225,80,311,107"/>
-<area shape="rect" id="node43" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="403,155,489,181"/>
-<area shape="rect" id="node46" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="521,229,651,256"/>
-<area shape="rect" id="node18" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="63,304,141,331"/>
-<area shape="rect" id="node27" href="$rlserial_8h.html" title="rlserial.h" alt="" coords="271,155,343,181"/>
-<area shape="rect" id="node29" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="268,229,344,256"/>
-<area shape="rect" id="node32" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="542,304,628,331"/>
+<area shape="rect" id="node3" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="378,379,453,405"/>
+<area shape="rect" id="node15" href="$rlmodbus_8h.html" title="rlmodbus.h" alt="" coords="303,80,389,107"/>
+<area shape="rect" id="node47" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="482,155,568,181"/>
+<area shape="rect" id="node50" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="600,229,729,256"/>
+<area shape="rect" id="node18" href="$rlsocket_8h.html" title="rlsocket.h" alt="" coords="193,229,271,256"/>
+<area shape="rect" id="node31" href="$rlserial_8h.html" title="rlserial.h" alt="" coords="349,155,421,181"/>
+<area shape="rect" id="node21" href="$rlstring_8h.html" title="rlstring.h" alt="" coords="454,304,524,331"/>
+<area shape="rect" id="node33" href="$rlthread_8h.html" title="rlthread.h" alt="" coords="448,229,524,256"/>
+<area shape="rect" id="node36" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="651,304,737,331"/>
 </map>

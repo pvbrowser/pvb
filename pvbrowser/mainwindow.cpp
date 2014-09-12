@@ -1069,7 +1069,9 @@ int ret,cnt,i;
   DlgOpt *dlg = new DlgOpt(this);
   dlg->setWindowTitle("pvbrowser options");
   dlg->setFilename(inifile());
+  if(opt.arg_debug) printf("slotFileOpt before dlg->exec()\n");
   ret = dlg->exec();
+  if(opt.arg_debug) printf("slotFileOpt after dlg->exec() ret=%d\n", ret);
   if(ret == QDialog::Accepted)
   {
     cnt = urlComboBox->count();

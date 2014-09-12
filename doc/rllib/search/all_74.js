@@ -19,7 +19,7 @@ var searchData=
   ['task_5ftfc_5fread',['TASK_TFC_READ',['../rlcanopenstructs_8h.html#a57374c705ca0846e8d00c1036c1d2cbd',1,'rlcanopenstructs.h']]],
   ['task_5ftfc_5fwrite',['TASK_TFC_WRITE',['../rlcanopenstructs_8h.html#ab710ffcc49def608b33679e823c8e0c4',1,'rlcanopenstructs.h']]],
   ['tcpsend',['tcpsend',['../classrlSvgAnimator.html#a8ee5e96362139b7858aae2716cb8cf6c',1,'rlSvgAnimator']]],
-  ['td',['TD',['../classrlController.html#ab60628ed852721e3966f86820a017fb2',1,'rlController::TD()'],['../classrlController.html#a9d3f360b1e915629f33d10715361c7b0',1,'rlController::Td()']]],
+  ['td',['Td',['../classrlController.html#a9d3f360b1e915629f33d10715361c7b0',1,'rlController::Td()'],['../classrlController.html#ab60628ed852721e3966f86820a017fb2',1,'rlController::TD()']]],
   ['tds',['TDS',['../structTDS.html',1,'']]],
   ['tel',['tel',['../classrlModbus.html#a8b8d2c8ccd15c70b3313b914b9252c09',1,'rlModbus']]],
   ['tel_5freceive',['tel_receive',['../classrl3964R.html#af69530cded2a4d610ad51a3287fdbc46',1,'rl3964R']]],

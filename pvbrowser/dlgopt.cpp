@@ -24,12 +24,14 @@ extern OPT opt;
 
 DlgOpt::DlgOpt(QWidget *parent) : QDialog(parent)
 {
+  if(opt.arg_debug) printf("DlgOpt constructor start\n");
   initDialog();
 
   filename = "";
 
-  QObject::connect(QPushButton_ok,    SIGNAL(clicked()),this,SLOT(okClicked()));
-  QObject::connect(QPushButton_cancel,SIGNAL(clicked()),this,SLOT(reject()));
+  QObject::connect(QPushButton_ok,            SIGNAL(clicked()), this,SLOT(okClicked()));
+  QObject::connect(QPushButton_cancel,        SIGNAL(clicked()), this,SLOT(reject()));
+  QObject::connect(QPushButton_reset_inifile, SIGNAL(clicked()), this,SLOT(slotResetInifile()));
   edit1->setLineWrapMode(QTextEdit::NoWrap);
   edit1->setTextInteractionFlags(Qt::TextEditorInteraction);
 
@@ -42,6 +44,8 @@ DlgOpt::DlgOpt(QWidget *parent) : QDialog(parent)
   vlayout->addWidget(edit1);
   hlayout->addSpacing(10);
   hlayout->addSpacing(200);
+  hlayout->addWidget(QPushButton_reset_inifile);
+  hlayout->addSpacing(10);
   hlayout->addWidget(QPushButton_cancel);
   hlayout->addSpacing(10);
   hlayout->addWidget(QPushButton_ok);
@@ -52,6 +56,8 @@ DlgOpt::DlgOpt(QWidget *parent) : QDialog(parent)
   vlayout->addLayout(hlayout);
   hlayout->addSpacing(10);
   hlayout->addSpacing(200);
+  hlayout->addWidget(QPushButton_reset_inifile);
+  hlayout->addSpacing(10);
   hlayout->addWidget(QPushButton_cancel);
   hlayout->addSpacing(10);
   hlayout->addWidget(QPushButton_ok);
@@ -67,6 +73,7 @@ DlgOpt::~DlgOpt()
 
 void  DlgOpt::initDialog()
 {
+  if(opt.arg_debug) printf("DlgOpt initDialog start\n");
 #ifdef USE_MAEMO
   edit1= new QTextEdit(this);
   //edit1->setGeometry(10,10,380,241);
@@ -96,13 +103,20 @@ void  DlgOpt::initDialog()
   QPushButton_cancel->setMinimumSize(0,0);
   QPushButton_cancel->setText(tr("Cancel"));
 
+  QPushButton_reset_inifile= new QPushButton(this);
+  QPushButton_reset_inifile->setGeometry(110,260,100,30);
+  QPushButton_reset_inifile->setMinimumSize(0,0);
+  QPushButton_reset_inifile->setText(tr("Reset inifile"));
+
 #ifdef USE_MAEMO
   showFullScreen();
 #endif
+  if(opt.arg_debug) printf("DlgOpt initDialog end\n");
 }
 
 void DlgOpt::setFilename(const char *file)
 {
+  if(opt.arg_debug) printf("DlgOpt setFilename begin\n");
   QString line;
   QFile qf(file);
   filename = file;
@@ -111,17 +125,24 @@ void DlgOpt::setFilename(const char *file)
   {
     if(qf.open(QIODevice::ReadOnly))
     {
+      if(opt.arg_debug) printf("DlgOpt setFilename set text from inifile filename=%s will eventually crash with chinese text\n", file);
       edit1->clear();
       QTextStream ts( &qf );
       ts.setCodec(QTextCodec::codecForName("UTF-8"));
+//QString murx = ts.readAll();
+//printf("text(%s)\n", (const char *) murx.toUtf8());
+//edit1->setPlainText( murx );
+// chrash with chinese text
       edit1->setPlainText( ts.readAll() );
       qf.close();
     }
   }
+  if(opt.arg_debug) printf("DlgOpt setFilename end\n");
 }
 
 void DlgOpt::okClicked()
 {
+  if(opt.arg_debug) printf("DlgOpt okClicked begin\n");
   QString text;
   QFile qf(filename);
   if(qf.open(QIODevice::WriteOnly))
@@ -132,4 +153,15 @@ void DlgOpt::okClicked()
     qf.close();
   }
   accept();
+  if(opt.arg_debug) printf("DlgOpt okClicked end\n");
 }
+
+void DlgOpt::slotResetInifile()
+{
+  if(opt.arg_debug) printf("DlgOpt remove(%s)\n", (const char *) filename.toUtf8());
+  remove((const char *) filename.toUtf8());  
+  QMessageBox::information(this, "pvbrowser inifile removed", tr("Please restart pvbrowser"));
+  accept();
+}
+
+

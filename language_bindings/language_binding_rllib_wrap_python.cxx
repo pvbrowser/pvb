@@ -7149,6 +7149,131 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSocket_readHttpHeader__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  rlString *arg2 = (rlString *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSocket_readHttpHeader",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSocket, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSocket_readHttpHeader" "', argument " "1"" of type '" "rlSocket *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSocket * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_rlString, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSocket_readHttpHeader" "', argument " "2"" of type '" "rlString *""'"); 
+  }
+  arg2 = reinterpret_cast< rlString * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlSocket_readHttpHeader" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)(arg1)->readHttpHeader(arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSocket_readHttpHeader__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  rlString *arg2 = (rlString *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSocket_readHttpHeader",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSocket, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSocket_readHttpHeader" "', argument " "1"" of type '" "rlSocket *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSocket * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_rlString, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSocket_readHttpHeader" "', argument " "2"" of type '" "rlString *""'"); 
+  }
+  arg2 = reinterpret_cast< rlString * >(argp2);
+  result = (int)(arg1)->readHttpHeader(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSocket_readHttpHeader(PyObject *self, PyObject *args) {
+  int argc;
+  PyObject *argv[4];
+  int ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? (int)PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 3) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 2) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_rlSocket, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_rlString, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        return _wrap_rlSocket_readHttpHeader__SWIG_1(self, args);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    void *vptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_rlSocket, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      void *vptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &vptr, SWIGTYPE_p_rlString, 0);
+      _v = SWIG_CheckState(res);
+      if (_v) {
+        {
+          int res = SWIG_AsVal_int(argv[2], NULL);
+          _v = SWIG_CheckState(res);
+        }
+        if (_v) {
+          return _wrap_rlSocket_readHttpHeader__SWIG_0(self, args);
+        }
+      }
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'rlSocket_readHttpHeader'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlSocket::readHttpHeader(rlString *,int)\n"
+    "    rlSocket::readHttpHeader(rlString *)\n");
+  return 0;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlSocket_write(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlSocket *arg1 = (rlSocket *) 0 ;
@@ -30261,6 +30386,20 @@ SWIGINTERN PyObject *rlSpreadsheetWorkbook_swigregister(PyObject *SWIGUNUSEDPARM
   return SWIG_Py_Void();
 }
 
+SWIGINTERN int Swig_var_rlCRLF_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable rlCRLF is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_rlCRLF_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_FromCharPtr(rlCRLF);
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_new_rlString__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -36589,6 +36728,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSocket_setActive", _wrap_rlSocket_setActive, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_read", _wrap_rlSocket_read, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_readStr", _wrap_rlSocket_readStr, METH_VARARGS, NULL},
+	 { (char *)"rlSocket_readHttpHeader", _wrap_rlSocket_readHttpHeader, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_write", _wrap_rlSocket_write, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_printf", _wrap_rlSocket_printf, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_connect", _wrap_rlSocket_connect, METH_VARARGS, NULL},
@@ -38434,6 +38574,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "rlSiemensTCP_LOGO",SWIG_From_int(static_cast< int >(rlSiemensTCP::LOGO)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_WriteBit",SWIG_From_int(static_cast< int >(rlSiemensTCP::WriteBit)));
   SWIG_Python_SetConstant(d, "rlSiemensTCP_WriteByte",SWIG_From_int(static_cast< int >(rlSiemensTCP::WriteByte)));
+  SWIG_addvarlink(SWIG_globals(),(char*)"rlCRLF",Swig_var_rlCRLF_get, Swig_var_rlCRLF_set);
 #if PY_VERSION_HEX >= 0x03000000
   return m;
 #else
