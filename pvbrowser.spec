@@ -206,6 +206,7 @@ rm -f ./pvsexample/pvsexample
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
+cp    pvbrowser.spec                                      %{buildroot}/opt/pvb/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
 cp    logo1.png                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/
