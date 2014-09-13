@@ -206,7 +206,7 @@ rm -f ./pvsexample/pvsexample
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
-cp    pvbrowser.spec                                      %{buildroot}/opt/pvb/
+cp    pvbrowser.spec                                      %{_sourcedir}/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
 cp    logo1.png                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/
@@ -340,7 +340,7 @@ chmod ugoa+rw /srv/automation/log
 /sbin/ldconfig
 
 %files devel
-%defattr(-,root,root,-)
+%defattr(-,root,root,755)
 /usr/lib/libpvsid.a
 /usr/lib/libpvsid.so
 /usr/lib/libpvsid.so.1
@@ -365,7 +365,6 @@ chmod ugoa+rw /srv/automation/log
 /srv/automation/shm
 /srv/automation/mbx
 /srv/automation/log
-/opt/pvb/pvbrowser.spec
 /opt/pvb/LICENSE.GPL
 /opt/pvb/logo1.png
 /opt/pvb/custom.bmp
