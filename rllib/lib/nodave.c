@@ -3410,7 +3410,7 @@ EXPORTSPEC uc * DECL2 davePut16(uc *b,int v) {
 EXPORTSPEC uc * DECL2 davePut32(uc *b, int v) {
     union {
   int a;
-  uc b[2];
+  uc b[4];
     } u;
     u.a=v;
     *b=u.b[3];
@@ -3427,7 +3427,7 @@ EXPORTSPEC uc * DECL2 davePut32(uc *b, int v) {
 EXPORTSPEC uc * DECL2 davePutFloat(uc *b,float v) {
     union {
   float a;
-  uc b[2];
+  uc b[4];
     } u;
     u.a=v;
     *b=u.b[3];
@@ -3466,7 +3466,7 @@ EXPORTSPEC void DECL2 davePut16at(uc *b, int pos, int v) {
 EXPORTSPEC void DECL2 davePut32at(uc *b, int pos, int v) {
     union {
   int a;
-  uc b[2];
+  uc b[4];
     } u;
     u.a=v;
     b+=pos;
@@ -3482,7 +3482,7 @@ EXPORTSPEC void DECL2 davePut32at(uc *b, int pos, int v) {
 EXPORTSPEC void DECL2 davePutFloatat(uc *b, int pos,float v) {
     union {
   float a;
-  uc b[2];
+  uc b[4];
     } u;
     u.a=v;
     b+=pos;

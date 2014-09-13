@@ -1828,13 +1828,13 @@ short RunFirmwareDownload( unsigned short usDevNumber,
           // ----------------------------
           // Save fimware length given in this RCS message
           // Set download length to this size
-          lFileLength = *(long*)(&tRecvMsg.data[0]);
+          lFileLength = *((long*)(&tRecvMsg.data[0]));
 
           // Send next message
           tSendMsg.rx = RCS_TASK;
           tSendMsg.tx = MSG_SYSTEM_TX;
           tSendMsg.ln = (unsigned char)lSendLen;
-          tSendMsg.nr = ++tSendMsg.nr;
+          tSendMsg.nr = tSendMsg.nr + 1;
           tSendMsg.a  = 0;
           tSendMsg.f  = 0;
           tSendMsg.b  = RCS_B_LOADFKT;
@@ -1874,7 +1874,7 @@ short RunFirmwareDownload( unsigned short usDevNumber,
       case RCS_CONT_MSK:
         tSendMsg.e = RCS_CONT_MSK;
         tSendMsg.ln = (unsigned char)lSendLen;
-        tSendMsg.nr = ++tSendMsg.nr;
+        tSendMsg.nr = tSendMsg.nr + 1;
 
         // Send next message
         memcpy ( &tSendMsg.data[0], &pabData[lActIdx], lSendLen);
@@ -1907,7 +1907,7 @@ short RunFirmwareDownload( unsigned short usDevNumber,
       case RCS_LAST_MSK:
 
         tSendMsg.ln = (unsigned char)lSendLen;
-        tSendMsg.nr = ++tSendMsg.nr;
+        tSendMsg.nr = tSendMsg.nr + 1;
         tSendMsg.e  = RCS_LAST_MSK;
 
         memcpy ( &tSendMsg.data[0], &pabData[lActIdx] , lSendLen);
@@ -2030,7 +2030,7 @@ short RunConfigDownload( unsigned short usDevNumber,
         tSendMsg.rx = RCS_TASK;
         tSendMsg.tx = MSG_SYSTEM_TX;
         tSendMsg.ln = (unsigned char)lSendLen;
-        tSendMsg.nr = ++tSendMsg.nr;
+        tSendMsg.nr = tSendMsg.nr + 1;
         tSendMsg.a  = 0;
         tSendMsg.f  = 0;
         tSendMsg.b  = RCS_B_LOADFKT;
@@ -2067,7 +2067,7 @@ short RunConfigDownload( unsigned short usDevNumber,
         tSendMsg.rx = RCS_TASK;
         tSendMsg.tx = MSG_SYSTEM_TX;
         tSendMsg.ln = (unsigned char)lSendLen;
-        tSendMsg.nr = ++tSendMsg.nr;
+        tSendMsg.nr = tSendMsg.nr + 1;
         tSendMsg.a  = 0;
         tSendMsg.f  = 0;
         tSendMsg.b  = RCS_B_LOADFKT;

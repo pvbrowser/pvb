@@ -6,7 +6,7 @@
 # use qt5 if available                                   #
 ##########################################################
 if [ -x /usr/bin/qmake-qt5 ]; then  
-  /usr/bin/qmake-qt5 $1 $2 $3 $4 $5 $6 $7 $8
+  /usr/bin/qmake-qt5 "QMAKE_CXXFLAGS=$RPM_OPT_FLAGS" "QMAKE_CFLAGS=$RPM_OPT_FLAGS" $1 $2 $3 $4 $5 $6 $7 $8
   exit
 fi
 ##########################################################
