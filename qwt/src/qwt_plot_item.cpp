@@ -522,8 +522,8 @@ QwtDoubleRect QwtPlotItem::scaleRect(const QwtScaleMap &xMap,
 QRect QwtPlotItem::paintRect(const QwtScaleMap &xMap, 
     const QwtScaleMap &yMap) const
 {
-    const QRect rect( qRound(xMap.p1()), qRound(yMap.p1()),
-        qRound(xMap.pDist()), qRound(yMap.pDist()) );
+    const QRect rect( qRound((double) xMap.p1()), qRound((double) yMap.p1()),
+        qRound((double) xMap.pDist()), qRound((double) yMap.pDist()) );
 
     return rect;
 }
