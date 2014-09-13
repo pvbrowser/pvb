@@ -104,42 +104,42 @@ inline bool QwtMetricsMap::isIdentity() const
 
 inline int QwtMetricsMap::layoutToDeviceX(int x) const
 {
-    return qRound(x / d_deviceToLayoutX);
+    return qRound(((double) x) / d_deviceToLayoutX);
 }
 
 inline int QwtMetricsMap::deviceToLayoutX(int x) const
 {
-    return qRound(x * d_deviceToLayoutX);
+    return qRound(((double) x) * d_deviceToLayoutX);
 }
 
 inline int QwtMetricsMap::screenToLayoutX(int x) const
 {
-    return qRound(x * d_screenToLayoutX);
+    return qRound(((double) x) * d_screenToLayoutX);
 }
 
 inline int QwtMetricsMap::layoutToScreenX(int x) const
 {
-    return qRound(x / d_screenToLayoutX);
+    return qRound(((double) x) / d_screenToLayoutX);
 }
 
 inline int QwtMetricsMap::layoutToDeviceY(int y) const
 {
-    return qRound(y / d_deviceToLayoutY);
+    return qRound(((double) y) / d_deviceToLayoutY);
 }
 
 inline int QwtMetricsMap::deviceToLayoutY(int y) const
 {
-    return qRound(y * d_deviceToLayoutY);
+    return qRound(((double) y) * d_deviceToLayoutY);
 }
 
 inline int QwtMetricsMap::screenToLayoutY(int y) const
 {
-    return qRound(y * d_screenToLayoutY);
+    return qRound(((double) y) * d_screenToLayoutY);
 }
 
 inline int QwtMetricsMap::layoutToScreenY(int y) const
 {
-    return qRound(y / d_screenToLayoutY);
+    return qRound(((double) y) / d_screenToLayoutY);
 }
 
 inline QSize QwtMetricsMap::layoutToDevice(const QSize &size) const

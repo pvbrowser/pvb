@@ -341,6 +341,28 @@ chmod ugoa+rw /srv/automation/log
 
 %files devel
 %defattr(-,root,root,755)
+/opt/pvb
+/opt/pvb/browserplugin
+/opt/pvb/designer
+/opt/pvb/designer/plugins
+/opt/pvb/fake_qmake
+/opt/pvb/language_bindings
+/opt/pvb/language_bindings/lua
+/opt/pvb/language_bindings/lua/pvapplua
+/opt/pvb/language_bindings/lua/pvslua
+/opt/pvb/language_bindings/python
+/opt/pvb/language_bindings/python/id
+/opt/pvb/language_bindings/python/mt
+/opt/pvb/language_bindings/python/template
+/opt/pvb/pvbrowser
+/opt/pvb/pvdevelop
+/opt/pvb/pvserver
+/opt/pvb/rllib
+/opt/pvb/rllib/lib
+/opt/pvb/rllib/rlhistory
+/opt/pvb/rllib/rlsvg
+/opt/pvb/start_pvbapp
+/srv/automation
 /usr/lib/libpvsid.a
 /usr/lib/libpvsid.so
 /usr/lib/libpvsid.so.1

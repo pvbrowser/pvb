@@ -1828,7 +1828,10 @@ short RunFirmwareDownload( unsigned short usDevNumber,
           // ----------------------------
           // Save fimware length given in this RCS message
           // Set download length to this size
-          lFileLength = *((long*)(&tRecvMsg.data[0]));
+          void *vptr = &tRecvMsg.data[0];  // lehrig workaround opensuse buildservice
+          long *lptr = (long *) vptr;
+          lFileLength = *lptr;
+          //lFileLength = *((long*)(&tRecvMsg.data[0]));
 
           // Send next message
           tSendMsg.rx = RCS_TASK;
