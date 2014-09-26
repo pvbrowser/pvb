@@ -73,6 +73,7 @@ class pvSvgAnimator
     int calcObjectWanted(const char *pattern);
     int calcCTM(const char *id, TRMatrix *ctm);
     int testoutput();
+    void dumpLocalSvg(FILE *fout);
   private:
     int removeStyleOption(QString *style, const char *option);
     int changeStyleOption(QString *style, const char *option, const char *value);
@@ -157,6 +158,7 @@ public:
     //void layoutResize(int w, int h);
     void renderScene();
 
+    virtual void resizeBuffer(int w, int h);
     virtual void resize(int w, int h);
     virtual void setGeometry(int x, int y, int w, int h);
     virtual void setGeometry(const QRect &r);
@@ -173,6 +175,7 @@ public:
     int origwidth, origheight;
     int percentZoomMask;
     int webkitrenderer_load_done;
+    int alpha_of_buffer;
 
 protected:
     virtual void resizeEvent(QResizeEvent *event);

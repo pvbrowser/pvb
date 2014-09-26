@@ -149,33 +149,6 @@ BuildRoot: %{_tmppath}/build-%{name}-%{version}
 
 # within build.sh call qmake.sh
 #!/bin/bash
-##########################################################
-# fucking stuff to call qmake on different distributions #
-##########################################################
-#if [ -x /usr/bin/qmake-qt4 ]; then  
-#  /usr/bin/qmake-qt4 $1 $2 $3 $4 $5 $6 $7 $8
-#  exit
-#fi
-#if [ -x /usr/lib/qt4/bin/qmake-qt4 ]; then  
-#  /usr/lib/qt4/bin/qmake-qt4 $1 $2 $3 $4 $5 $6 $7 $8
-#  exit
-#fi
-#if [ -x /usr/lib/qt4/bin/qmake ]; then 
-#  /usr/lib/qt4/bin/qmake $1 $2 $3 $4 $5 $6 $7 $8
-#  exit
-#fi
-#qmake $1 $2 $3 $4 $5 $6 $7 $8
-#%if 0%{?debian_version}
-#echo "debian_version"
-#find /usr -name "qmake*"
-#%endif
-#%if 0%{?mandriva_version}
-#echo "mandriva_version"
-#%endif
-#%if 0%{?ubuntu_version}
-#echo "ubuntu_version"
-#find /usr -name "qmake*"
-#%endif
 ###########################################################
 rm -f ./pvsexample/*.o
 rm -f ./pvsexample/pvsexample
@@ -289,7 +262,6 @@ cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/b
 %__ln_s /opt/pvb/rllib/lib/librllib.so      %{buildroot}/usr/lib/librllib.so.1.0.0
 
 %__ln_s /opt/pvb/pvbrowser/pvbrowser        %{buildroot}%{_bindir}/pvbrowser
-#%__ln_s /opt/pvb/pvdevelop/pvdevelop        %{buildroot}%{_bindir}/pvdevelop
 cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/start_pvbapp/start_pvbapp  %{buildroot}%{_bindir}/start_pvbapp
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat       %{buildroot}%{_bindir}/rlsvgcat

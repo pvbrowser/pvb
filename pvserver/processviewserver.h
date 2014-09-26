@@ -1351,6 +1351,7 @@ pvSaveAsBmp()
 pvSetSelector()
 pvPrintSvgOnPrinter()
 pvRenderTreeDump()
+pvSetBufferTransparency()
 See Module: Graphics
 </pre> */
 int pvQDraw(PARAM *p, int id, int parent);
@@ -2347,6 +2348,12 @@ if(rotate == -90) then rotate -90 degrees
 Allowed widgets: QImage
 </pre> */
 int pvSetBufferedJpgImage(PARAM *p, int id, const unsigned char *buffer, int buffersize, int rotate=0);
+/*! <pre>
+Set the transparency for the drawing buffer.
+"int a;" is in the range of 0-255 where 0 is fully transparent and 255 is fully opaque
+Allowed widgets: QDraw
+</pre> */
+int pvSetBufferTransparency(PARAM *p, int id, int a);
 /*! <pre>
 Set the background color of the widget.
 Allowed widgets: QLabel, QDraw

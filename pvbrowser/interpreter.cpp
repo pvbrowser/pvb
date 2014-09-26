@@ -2933,6 +2933,30 @@ void Interpreter::interprets(const char *command)
             }
           }
         }
+        else if(strncmp(command,"setBufferTransparency(",22) == 0) // set the transparency of the QDraw widget
+        {
+          int a;
+          sscanf(command,"setBufferTransparency(%d,%d",&i,&a);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->type == TQDraw)
+          {
+            QDrawWidget *draw = (QDrawWidget *) all[i]->w;
+            if(draw != NULL)
+            {
+              draw->alpha_of_buffer = a;
+            }  
+          }
+          else if(all[i]->type == TQCustomWidget)
+          {
+            QWidget *w = all[i]->w;
+            if(w != NULL) 
+            {
+              PvbEvent event(command, text);
+              QCoreApplication::sendEvent(w, &event);
+            }
+          }
+        }
         break;
       case 'C':
         if(strncmp(command,"setChecked(",11) == 0) // set button state
@@ -3248,6 +3272,15 @@ void Interpreter::interprets(const char *command)
             MyComboBox *cb = (MyComboBox *) all[i]->w;
             if(cb != NULL)
             {
+#ifdef USE_ANDROID
+              cb->setStyleSheet(
+                               "QComboBox {min-height:29px; margin: 1px; padding: 1x; }"
+                               "QComboBox QAbstractItemView::item {min-height:30px; }"
+                               "QComboBox QAbstractItemView::item:hover {min-height:30px; }"
+                               "QComboBox::drop-down { width: 30px; }"
+                            );                           
+                            //"QComboBox::drop-down { width: 30px; image: url(your_arrow_icon.png); }"
+#endif                            
               if     (mode == 0) cb->setEditable(false);
               else if(mode == 1) cb->setEditable(true);
             }
@@ -6733,8 +6766,9 @@ void Interpreter::zoomMask(int percent)
         {
           char buf[80];
           QDrawWidget *iw = (QDrawWidget *) all[i]->w;
-          iw->setGeometry(x,y,w,h);
           iw->percentZoomMask = percentZoomMask;
+          iw->setGeometry(x,y,w,h);
+          //iw->renderScene();
           sprintf(buf,"slider(%d,%d)\n",i,percent);
           tcp_send(s,buf,strlen(buf));
         }
@@ -7043,6 +7077,18 @@ void Interpreter::interpretQ(const char *command)
     all[i]->type = TQComboBox;
 
     ptr = (MyComboBox *) all[i]->w;
+#ifdef USE_ANDROID
+    if(editable == 1)
+    {
+      ptr->setStyleSheet(
+                  "QComboBox {min-height:29px; margin: 1px; padding: 1x; }"
+                  "QComboBox QAbstractItemView::item {min-height:30px; }"
+                  "QComboBox QAbstractItemView::item:hover {min-height:30px; }"
+                  "QComboBox::drop-down { width: 30px; }"
+                        );                           
+      //"QComboBox::drop-down { width: 30px; image: url(your_arrow_icon.png); }"
+    }
+#endif                            
     if(editable == 1) ptr->setEditable(true);
     if     (policy == 0) ptr->setInsertPolicy(QComboBox::NoInsert);
     else if(policy == 1) ptr->setInsertPolicy(QComboBox::InsertAtTop);

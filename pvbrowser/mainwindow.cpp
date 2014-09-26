@@ -793,6 +793,15 @@ void MainWindow::createToolBars()
                              "example: pv://localhost:5050/maskname\n"
                              "http://host"
                              ));
+#ifdef USE_ANDROID
+  urlComboBox->setStyleSheet(
+                               "QComboBox {min-height:29px; min-width:400px; margin: 1px; padding: 1x; }"
+                               "QComboBox QAbstractItemView::item {min-height:30px; }"
+                               "QComboBox QAbstractItemView::item:hover {min-height:30px; }"
+                               "QComboBox::drop-down { width: 30px; }"
+                            );                           
+                            //"QComboBox::drop-down { width: 30px; image: url(your_arrow_icon.png); }"
+#endif                            
   fileToolBar->addWidget(urlComboBox);
   connect(urlComboBox, SIGNAL(activated(const QString &)), this, SLOT(slotUrl(const QString &)));
   

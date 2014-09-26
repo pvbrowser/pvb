@@ -301,7 +301,14 @@ static int generateWidgetEnum(FILE *fout, QWidget *root, int type=isEnum)
             }
             else
             {
-              fprintf(fout,"  %s,\n",start);
+              if(type == isName)
+              {
+                fprintf(fout,"  \"%s\",\n",start);
+              }
+              else
+              {
+                fprintf(fout,"  %s,\n",start);
+              }  
             }
           }
         }

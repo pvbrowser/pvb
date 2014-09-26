@@ -173,6 +173,8 @@ Functions</h2></td></tr>
 <tr class="separator:gaa43e8ee1f07613709723f8634e20d713"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga8c02bba7e4f3f94d6f498485a5003362"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga8c02bba7e4f3f94d6f498485a5003362">pvSetBufferedJpgImage</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const unsigned char *buffer, int buffersize, int rotate=0)</td></tr>
 <tr class="separator:ga8c02bba7e4f3f94d6f498485a5003362"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gade6d36be5c064ba18123efa443237396"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gade6d36be5c064ba18123efa443237396">pvSetBufferTransparency</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int a)</td></tr>
+<tr class="separator:gade6d36be5c064ba18123efa443237396"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga9867a9293fd97758cd5039e37561c440"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga9867a9293fd97758cd5039e37561c440">pvSetBackgroundColor</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int r, int g, int b)</td></tr>
 <tr class="separator:ga9867a9293fd97758cd5039e37561c440"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga16e65a199250ef499023173605851cbc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga16e65a199250ef499023173605851cbc">pvSetPaletteBackgroundColor</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, int r, int g, int b)</td></tr>
@@ -1505,6 +1507,40 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">&lt;pre&gt;
 </pre><p> Set a new image in an existing image. For example get a frame from a MJPG webcam with the rlWebcam method int getFrameBuffer(unsigned char *buffer, int maxbuffer, int timeout=3000); and send it to the pvbrowser client with this function. if(rotate == +90) then rotate +90 degrees if(rotate == -90) then rotate -90 degrees Allowed widgets: QImage  </p>
+
+</div>
+</div>
+<a class="anchor" id="gade6d36be5c064ba18123efa443237396"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetBufferTransparency </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>a</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Set the transparency for the drawing buffer. "int a;" is in the range of 0-255 where 0 is fully transparent and 255 is fully opaque Allowed widgets: QDraw  </p>
 
 </div>
 </div>

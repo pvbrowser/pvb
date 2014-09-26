@@ -739,6 +739,7 @@
             <section title="pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
             <section title="pvSetBackgroundColor" ref="group__Output.html#ga9867a9293fd97758cd5039e37561c440" />
             <section title="pvSetBufferedJpgImage" ref="group__Output.html#ga8c02bba7e4f3f94d6f498485a5003362" />
+            <section title="pvSetBufferTransparency" ref="group__Output.html#gade6d36be5c064ba18123efa443237396" />
             <section title="pvSetCaption" ref="group__Output.html#ga8363a3af3ad2b200162f66b5520b320e" />
             <section title="pvSetColumnWidth" ref="group__Output.html#gaff9f010475ed2ce5622ef88e7eec1955" />
             <section title="pvSetDate" ref="group__Output.html#gae9f8d8b11bc8090bb5a43299fc7bc001" />
@@ -2013,6 +2014,7 @@
               <section title="pvSetAlignment" ref="processviewserver_8h.html#ga2928ca3e3a235dd8a7bba07132a0134c" />
               <section title="pvSetBackgroundColor" ref="processviewserver_8h.html#ga9867a9293fd97758cd5039e37561c440" />
               <section title="pvSetBufferedJpgImage" ref="processviewserver_8h.html#ga8c02bba7e4f3f94d6f498485a5003362" />
+              <section title="pvSetBufferTransparency" ref="processviewserver_8h.html#gade6d36be5c064ba18123efa443237396" />
               <section title="pvSetCaption" ref="processviewserver_8h.html#ga8363a3af3ad2b200162f66b5520b320e" />
               <section title="pvSetCellWidget" ref="processviewserver_8h.html#ga0d1412b70f64c5d6030648904d34af3a" />
               <section title="pvSetChecked" ref="processviewserver_8h.html#ga126bb32fc13f044d4b3a5dec3e822134" />
@@ -2514,6 +2516,7 @@
       <keyword name="pvSetSource" id="processviewserver.h::pvSetSource" ref="processviewserver_8h.html#ga4e5a9f7e19a63ee998dccf41d3ae5ec7" />
       <keyword name="pvSetImage" id="processviewserver.h::pvSetImage" ref="processviewserver_8h.html#gaa43e8ee1f07613709723f8634e20d713" />
       <keyword name="pvSetBufferedJpgImage" id="processviewserver.h::pvSetBufferedJpgImage" ref="processviewserver_8h.html#ga8c02bba7e4f3f94d6f498485a5003362" />
+      <keyword name="pvSetBufferTransparency" id="processviewserver.h::pvSetBufferTransparency" ref="processviewserver_8h.html#gade6d36be5c064ba18123efa443237396" />
       <keyword name="pvSetBackgroundColor" id="processviewserver.h::pvSetBackgroundColor" ref="processviewserver_8h.html#ga9867a9293fd97758cd5039e37561c440" />
       <keyword name="pvSetPaletteBackgroundColor" id="processviewserver.h::pvSetPaletteBackgroundColor" ref="processviewserver_8h.html#ga16e65a199250ef499023173605851cbc" />
       <keyword name="pvSetPaletteForegroundColor" id="processviewserver.h::pvSetPaletteForegroundColor" ref="processviewserver_8h.html#gab4e775b45daebb1dbd2a79869cedcb66" />
@@ -3386,6 +3389,7 @@
       <keyword name="pvSetSource" id="Output::pvSetSource" ref="group__Output.html#ga4e5a9f7e19a63ee998dccf41d3ae5ec7" />
       <keyword name="pvSetImage" id="Output::pvSetImage" ref="group__Output.html#gaa43e8ee1f07613709723f8634e20d713" />
       <keyword name="pvSetBufferedJpgImage" id="Output::pvSetBufferedJpgImage" ref="group__Output.html#ga8c02bba7e4f3f94d6f498485a5003362" />
+      <keyword name="pvSetBufferTransparency" id="Output::pvSetBufferTransparency" ref="group__Output.html#gade6d36be5c064ba18123efa443237396" />
       <keyword name="pvSetBackgroundColor" id="Output::pvSetBackgroundColor" ref="group__Output.html#ga9867a9293fd97758cd5039e37561c440" />
       <keyword name="pvSetPaletteBackgroundColor" id="Output::pvSetPaletteBackgroundColor" ref="group__Output.html#ga16e65a199250ef499023173605851cbc" />
       <keyword name="pvSetPaletteForegroundColor" id="Output::pvSetPaletteForegroundColor" ref="group__Output.html#gab4e775b45daebb1dbd2a79869cedcb66" />

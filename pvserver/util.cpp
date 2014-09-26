@@ -3974,6 +3974,15 @@ char buf[80];
   return 0;
 }
 
+int pvSetBufferTransparency(PARAM *p, int id, int a)
+{
+char buf[80];
+
+  sprintf(buf,"setBufferTransparency(%d,%d)\n",id,a);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvSetBackgroundColor(PARAM *p, int id, int r, int g, int b)
 {
 char buf[80];

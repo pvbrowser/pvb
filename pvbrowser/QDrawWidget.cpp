@@ -287,8 +287,9 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
   //qt3 setBackgroundMode(Qt::NoBackground);
   //setAutoFillBackground(false);
   strcpy(floatFormat,"%.2f");
+  alpha_of_buffer = 255;
   buffer = new QPixmap;
-  buffer->fill(QColor(br,bg,bb));
+  buffer->fill(QColor(br,bg,bb,alpha_of_buffer));
   setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   if(wFlags == -1000) return; //trollmurx
 }
@@ -310,6 +311,15 @@ void QDrawWidget::renderScene()
   }
 }
 
+void QDrawWidget::resizeBuffer(int w, int h)
+{
+  if(opt.arg_debug) 
+    printf("QDrawWidget::resizeBuffer(%d,%d)\n",w,h);
+  delete buffer;
+  buffer = new QPixmap(w,h);
+  buffer->fill(QColor(br,bg,bb,alpha_of_buffer));
+}
+
 void QDrawWidget::resizeEvent(QResizeEvent *event)
 {
   float zxx,zyy;
@@ -319,9 +329,11 @@ void QDrawWidget::resizeEvent(QResizeEvent *event)
   int h = event->size().height();
   if(opt.arg_debug) 
     printf("QDrawWidget::resizeEvent(%d,%d) svg_draw_request_by_pvb=%d\n",w,h,svg_draw_request_by_pvb);
-  delete buffer;
-  buffer = new QPixmap(w,h);
-  buffer->fill(QColor(br,bg,bb));
+  resizeBuffer(w,h);
+  //moved the following 3 line to resizeBuffer
+  //delete buffer;
+  //buffer = new QPixmap(w,h);
+  //buffer->fill(QColor(br,bg,bb,alpha_of_buffer));
 #ifndef NO_WEBKIT  
   if(opt.use_webkit_for_svg)
   {
@@ -339,6 +351,8 @@ void QDrawWidget::resizeEvent(QResizeEvent *event)
   if(origwidth  != 0)
   {
     zxx = ((float) w / (float) origwidth)  * (((float) opt.zoom) / 100.0f);
+    if(opt.arg_debug) 
+      printf("QDrawWidget::resizeEvent: calling setZoom(%f) w=%d origwidt=%d\n",zxx, w, origwidth);    
     setZoomX(zxx);
   }
   if(origheight != 0)
@@ -355,9 +369,9 @@ void QDrawWidget::resize(int w, int h)
 {
   if(opt.arg_debug) 
     printf("QDrawWidget::resize(%d,%d) svg_draw_request_by_pvb=%d\n",w,h,svg_draw_request_by_pvb);
-  QWidget::resize(w,h);
   origwidth  = w;
   origheight = h;
+  QWidget::resize(w,h);
   repaint();
 }
 
@@ -365,18 +379,18 @@ void QDrawWidget::setGeometry(int x, int y, int w, int h)
 {
   if(opt.arg_debug)
     printf("QDrawWidget::setGeometry(%d,%d,%d,%d)\n",x,y,w,h);
-  QWidget::setGeometry(x,y,w,h);
   origwidth  = w;
   origheight = h;
+  QWidget::setGeometry(x,y,w,h);
 }
 
 void QDrawWidget::setGeometry(const QRect &r)
 {
   if(opt.arg_debug)
     printf("QDrawWidget::setGeometry2(%d,%d,%d,%d)\n",r.left(),r.top(),r.width(),r.height());
-  setGeometry(r.left(),r.top(),r.width(),r.height());
   origwidth  = r.width();
   origheight = r.height();
+  setGeometry(r.left(),r.top(),r.width(),r.height());
 }
 
 void QDrawWidget::setBackgroundColor(int r, int g, int b)
@@ -384,7 +398,7 @@ void QDrawWidget::setBackgroundColor(int r, int g, int b)
   br = r;
   bg = g;
   bb = b;
-  buffer->fill(QColor(r,g,b));
+  buffer->fill(QColor(r,g,b,alpha_of_buffer));
 }
 
 void QDrawWidget::beginDraw(int set_request)
@@ -396,8 +410,8 @@ void QDrawWidget::beginDraw(int set_request)
   }  
   if(opt.arg_debug) 
     printf("QDrawWidget::beginDraw svg_draw_request_by_pvb=%d\n", svg_draw_request_by_pvb);
+  buffer->fill(QColor(br,bg,bb,alpha_of_buffer));
   p.begin(buffer);
-  buffer->fill(QColor(br,bg,bb));
   fontsize = p.fontInfo().pointSize();
   fontsize = (zx(fontsize)+zy(fontsize)) / 2;
 }
@@ -509,6 +523,15 @@ void QDrawWidget::renderTreeDump(const char *filename)
     fclose(fout);
 #else
     printf("Warning : renderTreeDump is not available on Qt5. filename=%s But this function was intended for debugging only, so we don't care.\n", filename);
+    printf("We dump our local copy instead\n");
+    FILE *fout = fopen(filename,"w");
+    if(fout == NULL)
+    {
+      printf("could not write %s\n", filename);
+      return;
+    }
+    svgAnimator->dumpLocalSvg(fout);
+    fclose(fout);
 #endif    
   }
   else
@@ -1669,7 +1692,7 @@ void QDrawWidget::slotWebkitSvgChanged(const QRect &dirtyRect)
 
   webkitrenderer_load_done = 0;
   p.begin(buffer);
-  buffer->fill(QColor(br,bg,bb));
+  buffer->fill(QColor(br,bg,bb,alpha_of_buffer));
   fontsize = p.fontInfo().pointSize();
   fontsize = (zx(fontsize)+zy(fontsize)) / 2;
   float fac = ((float) percentZoomMask) / 100.0f;
@@ -2793,8 +2816,8 @@ int pvSvgAnimator::perhapsSetOverrideCursor(int xmouse, int ymouse, int buttons)
         qs = e.attributeNames().at(i); 
         if(qs == "id")
         {
-          QString qname = e.attribute(qs); 
-          if(qname.startsWith("PV.") || qname.startsWith("@@"))
+          QString qname = e.attribute(qs);
+          if(qname.startsWith("PVx") || qname.startsWith("PV.") || qname.startsWith("@@"))
           {
             QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
             return 0;
@@ -2811,7 +2834,7 @@ MyMurx:
           if(qs == "id")
           {
             QString qname = pe.attribute(qs); 
-            if(qname.startsWith("PV.") || qname.startsWith("@@"))
+            if(qname.startsWith("PVx") || qname.startsWith("PV.") || qname.startsWith("@@"))
             {
               QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
               return 0;
@@ -2848,7 +2871,7 @@ MyMurx:
             if(qs == "id")
             {
               QString qname = pe.attribute(qs); 
-              if(qname.startsWith("PV.") || qname.startsWith("@@"))
+              if(qname.startsWith("PVx") || qname.startsWith("PV.") || qname.startsWith("@@"))
               {
                 QApplication::setOverrideCursor(QCursor(Qt::PointingHandCursor));
                 return 0;
@@ -2868,7 +2891,8 @@ MyMurx:
   svgline = first;
   while(svgline != NULL)
   {
-    if((strncmp(svgline->line,"id=\"PV.",7) == 0 || 
+    if((strncmp(svgline->line,"id=\"PVx",7) == 0 || 
+        strncmp(svgline->line,"id=\"PV.",7) == 0 || 
         strncmp(svgline->line,"id=\"@@",6)  == 0 ) && comment[iline] == ' ') // visual feedback ?
     {
       name = &svgline->line[4];
@@ -2927,7 +2951,7 @@ int pvSvgAnimator::perhapsSendSvgEvent(const char *event, int *s, int id, int xm
         if(qs == "id")
         {
           QString qname = e.attribute(qs); 
-          if(qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@@"))
+          if(qname.startsWith("pvx") || qname.startsWith("PVx") || qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@@"))
           {
             buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) qname.toUtf8());
             if(buf.length() < MAX_PRINTF_LENGTH)
@@ -2948,7 +2972,7 @@ MyMurx:
           if(qs == "id")
           {
             QString qname = pe.attribute(qs); 
-            if(qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@"))
+            if(qname.startsWith("pvx") || qname.startsWith("PVx") || qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@"))
             {
               buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) qname.toUtf8());
               if(buf.length() < MAX_PRINTF_LENGTH)
@@ -2989,7 +3013,7 @@ MyMurx:
             if(qs == "id")
             {
               QString qname = pe.attribute(qs); 
-              if(qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@"))
+              if(qname.startsWith("pvx") || qname.startsWith("PVx") || qname.startsWith("pv.") || qname.startsWith("PV.") || qname.startsWith("@"))
               {
                 buf.sprintf("text(%d,\"%s=%s\")\n",id,event,(const char *) qname.toUtf8());
                 if(buf.length() < MAX_PRINTF_LENGTH)
@@ -3012,7 +3036,9 @@ MyMurx:
   svgline = first;
   while(svgline != NULL)
   {
-    if((strncmp(svgline->line,"id=\"pv.",7) == 0 || 
+    if((strncmp(svgline->line,"id=\"pvx",7) == 0 || 
+        strncmp(svgline->line,"id=\"PVx",7) == 0 || 
+        strncmp(svgline->line,"id=\"pv.",7) == 0 || 
         strncmp(svgline->line,"id=\"PV.",7) == 0 || 
         strncmp(svgline->line,"id=\"@",5)   == 0 ) && comment[iline] == ' ') // send click event ?
     {
@@ -3045,4 +3071,18 @@ MyMurx:
 
   return 0;
 }
+
+void pvSvgAnimator::dumpLocalSvg(FILE *fout)
+{
+  SVG_LINE *current_line = first;
+  for(int i=0; i<num_lines; i++)
+  {
+    if(comment[i] == ' ' && current_line->line != NULL)
+    {
+      fprintf(fout,"%s\n",current_line->line);
+    }  
+    current_line = current_line->next;
+    if(current_line == NULL) break;
+  }
+}    
 #endif
