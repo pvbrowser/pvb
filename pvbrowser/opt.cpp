@@ -611,7 +611,7 @@ int i;
         fprintf(fp,"cookies=1               # 0=No 1=Yes 2=Ask\n");
         fprintf(fp,"echo_table_updates=0    # 0|1\n");
 #if QT_VERSION >= 0x040601
-        fprintf(fp,"use_webkit_for_svg=1    # 0|1\n");
+        fprintf(fp,"use_webkit_for_svg=0    # 0|1\n");
 #else
         fprintf(fp,"use_webkit_for_svg=0    # 0|1\n");
 #endif

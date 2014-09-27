@@ -1322,6 +1322,10 @@ def pvSetBufferedJpgImage(*args):
   return _pv.pvSetBufferedJpgImage(*args)
 pvSetBufferedJpgImage = _pv.pvSetBufferedJpgImage
 
+def pvSetBufferTransparency(*args):
+  return _pv.pvSetBufferTransparency(*args)
+pvSetBufferTransparency = _pv.pvSetBufferTransparency
+
 def pvSetBackgroundColor(*args):
   return _pv.pvSetBackgroundColor(*args)
 pvSetBackgroundColor = _pv.pvSetBackgroundColor

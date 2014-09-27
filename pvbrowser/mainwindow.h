@@ -17,9 +17,9 @@
 #define MAINWINDOW_H
 
 #if QT_VERSION < 0x050000
-  #define VERSION "4.7.7 - qt4"
+  #define VERSION "4.7.8 - qt4"
 #else
-  #define VERSION "4.7.7 - qt5"
+  #define VERSION "4.7.8 - qt5"
 #endif
 
 #include "interpreter.h"

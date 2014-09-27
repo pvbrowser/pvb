@@ -15398,6 +15398,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvSetBufferTransparency(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:pvSetBufferTransparency",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSetBufferTransparency" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvSetBufferTransparency" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "pvSetBufferTransparency" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)pvSetBufferTransparency(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvSetBackgroundColor(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -38572,6 +38612,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSetSource", _wrap_pvSetSource, METH_VARARGS, NULL},
 	 { (char *)"pvSetImage", _wrap_pvSetImage, METH_VARARGS, NULL},
 	 { (char *)"pvSetBufferedJpgImage", _wrap_pvSetBufferedJpgImage, METH_VARARGS, NULL},
+	 { (char *)"pvSetBufferTransparency", _wrap_pvSetBufferTransparency, METH_VARARGS, NULL},
 	 { (char *)"pvSetBackgroundColor", _wrap_pvSetBackgroundColor, METH_VARARGS, NULL},
 	 { (char *)"pvSetPaletteBackgroundColor", _wrap_pvSetPaletteBackgroundColor, METH_VARARGS, NULL},
 	 { (char *)"pvSetPaletteForegroundColor", _wrap_pvSetPaletteForegroundColor, METH_VARARGS, NULL},
