@@ -4852,19 +4852,21 @@ void Interpreter::interprets(const char *command)
               c->verticalScrollBar()->setValue(vPos);
               c->horizontalScrollBar()->setValue(hPos);
 #else              
-              int x = 0;
-              int y = 0;
+              //int x = 0;
+              //int y = 0;
               if(c->page() != NULL && c->page()->mainFrame() != NULL)
               {
-                x = c->page()->mainFrame()->scrollBarValue(Qt::Horizontal);
-                y = c->page()->mainFrame()->scrollBarValue(Qt::Vertical);
+                //x = c->page()->mainFrame()->scrollBarValue(Qt::Horizontal);
+                //y = c->page()->mainFrame()->scrollBarValue(Qt::Vertical);
+                c->xOldScroll = c->page()->mainFrame()->scrollBarValue(Qt::Horizontal);
+                c->yOldScroll = c->page()->mainFrame()->scrollBarValue(Qt::Vertical);
               }
               c->setHTML(text);
-              if(c->page() != NULL && c->page()->mainFrame() != NULL)
-              {
-                c->page()->mainFrame()->setScrollBarValue(Qt::Horizontal,x);
-                c->page()->mainFrame()->setScrollBarValue(Qt::Vertical,y);
-              }
+              //if(c->page() != NULL && c->page()->mainFrame() != NULL)
+              //{
+                //c->page()->mainFrame()->setScrollBarValue(Qt::Horizontal,x);
+                //c->page()->mainFrame()->setScrollBarValue(Qt::Vertical,y);
+              //}
 #endif          
             }
           }

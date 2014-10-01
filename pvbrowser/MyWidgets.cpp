@@ -1769,6 +1769,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   factor = 1.0f;
   if(name != NULL) setObjectName(name);
   mHeader = "<html>\n<head><meta charset=\"utf-8\">\n<title>MyTextBrowser</title>\n</head><body>\n";
+  xOldScroll = yOldScroll = 0;
 #ifdef NO_WEBKIT
   setOpenLinks(false);
   connect(this, SIGNAL(anchorClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
@@ -1776,6 +1777,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
 #else
   page()->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
   connect(this, SIGNAL(linkClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
+  connect(this, SIGNAL(loadFinished(bool)), SLOT(slotLoadFinished(bool)));
   //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
   //enabling plugins leads to problems
   //see: https://bugs.webkit.org/show_bug.cgi?id=56552 that we have reported
@@ -2083,6 +2085,15 @@ void MyTextBrowser::slotUrlChanged(const QUrl &link)
   if(url.length()+40 > MAX_PRINTF_LENGTH) return;
   sprintf(buf,"text(%d,\"%s\")\n", id,decode(url));
   tcp_send(s,buf,strlen(buf));
+}
+
+void MyTextBrowser::slotLoadFinished(bool ok)
+{
+  if(ok)
+  {
+    page()->mainFrame()->setScrollBarValue(Qt::Horizontal,xOldScroll);
+    page()->mainFrame()->setScrollBarValue(Qt::Vertical,yOldScroll);
+  }  
 }
 
 void MyTextBrowser::mousePressEvent(QMouseEvent *event)

@@ -444,10 +444,12 @@ public:
     int homeIsSet;
     QString mHeader;
     QString mStyle;
+    int xOldScroll, yOldScroll;
 
 public slots:
     void slotLinkClicked(const QUrl &link);
     void slotUrlChanged(const QUrl &link);
+    void slotLoadFinished(bool ok);
 
 protected:
 #ifdef NO_WEBKIT
