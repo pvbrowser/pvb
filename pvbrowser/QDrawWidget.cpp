@@ -311,6 +311,19 @@ void QDrawWidget::renderScene()
   }
 }
 
+int QDrawWidget::save(const char *filename)
+{
+  if(strstr(filename,"/") == NULL && strstr(filename,"\\") == NULL && strstr(filename,"..") == NULL && buffer != NULL)
+  {
+    if(buffer->save(filename)) return 1;
+  }
+  else
+  {
+    printf("ERROR QDrawWidget::save(%s) does not allow this filename\n", filename);
+  }
+  return -1; 
+}
+
 void QDrawWidget::resizeBuffer(int w, int h)
 {
   if(opt.arg_debug) 

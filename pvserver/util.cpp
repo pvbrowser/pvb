@@ -2608,6 +2608,17 @@ int pvSendRGBA(PARAM *p, int id, const unsigned char *image, int width, int heig
   return 0;
 }
 
+int pvSaveDrawBuffer(PARAM *p, int id, const char *filename)
+{
+  char buf[MAX_PRINTF_LENGTH];
+
+  if(p == NULL) return -1;
+  if(id < 0) return -1;
+  sprintf(buf,"saveDrawBuffer(%d,\"%s\")\n",id,filename);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)
 {
 char text[MAX_PRINTF_LENGTH+40],*cptr;
@@ -2637,9 +2648,9 @@ char buf[MAX_PRINTF_LENGTH+40];
   return 0;
 }
 
-int pvSetText(PARAM *p, int id, const char *text)
+int pvSetTextEx(PARAM *p, int id, const char *text, int option)
 {
-  char buf[MAX_PRINTF_LENGTH+40],*cptr;
+  char buf[MAX_PRINTF_LENGTH+40],coption[40],*cptr;
   int  len;
   mytext(p,text);
   while(1)
@@ -2649,22 +2660,31 @@ int pvSetText(PARAM *p, int id, const char *text)
     else break;
   }
   len = strlen(p->mytext);
+  coption[0] = '\0';
+  if     (option == HTML_HEADER) strcpy(coption," -header");
+  else if(option == HTML_STYLE)  strcpy(coption," -style");
+  else if(option == HTML_BODY)   strcpy(coption," -body");
   if(len < MAX_PRINTF_LENGTH-4)
   {
-    sprintf(buf,"setText(%d)\n",id);
+    sprintf(buf,"setText(%d)%s\n",id,coption);
     pvtcpsend(p, buf, strlen(buf));
     sprintf(buf,"%s\n",p->mytext);
     pvtcpsend(p, buf, strlen(buf));
   }
   else
   {
-    sprintf(buf,"setText(%d)\n",id);
+    sprintf(buf,"setText(%d)%s\n",id,coption);
     pvtcpsend(p, buf, strlen(buf));
     sprintf(buf,"alloc(%d)\n",len);
     pvtcpsend(p, buf, strlen(buf));
     pvtcpsend_binary(p, p->mytext, len);
   }
   return 0;
+}
+
+int pvSetText(PARAM *p, int id, const char *text)
+{
+  return pvSetTextEx(p,id,text,-1);
 }
 
 int pvSetStyleSheet(PARAM *p, int id, const char *text)

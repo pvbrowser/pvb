@@ -130,6 +130,16 @@ public:
   </pre> */
   int removeNewline();
 
+  /*! <pre>
+  Read string from file.
+  </pre> */
+  int read(const char *filename);
+
+  /*! <pre>
+  Write string to file.
+  </pre> */
+  int write(const char *filename);
+
 private:
   char *txt;
 };

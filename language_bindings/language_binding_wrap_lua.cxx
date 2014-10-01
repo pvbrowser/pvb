@@ -9441,6 +9441,39 @@ fail:
 }
 
 
+static int _wrap_pvSetTextEx(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  int arg4 ;
+  int result;
+  
+  SWIG_check_num_args("pvSetTextEx",4,4)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSetTextEx",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSetTextEx",2,"int");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("pvSetTextEx",3,"char const *");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("pvSetTextEx",4,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSetTextEx",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (int)pvSetTextEx(arg1,arg2,(char const *)arg3,arg4);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvSetText(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -13920,6 +13953,36 @@ static int _wrap_pvSendRGBA(lua_State* L) {
     "    pvSendRGBA(PARAM *,int,unsigned char const *,int,int,int)\n"
     "    pvSendRGBA(PARAM *,int,unsigned char const *,int,int)\n");
   lua_error(L);return 0;
+}
+
+
+static int _wrap_pvSaveDrawBuffer(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSaveDrawBuffer",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSaveDrawBuffer",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvSaveDrawBuffer",2,"int");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("pvSaveDrawBuffer",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSaveDrawBuffer",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)pvSaveDrawBuffer(arg1,arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
 }
 
 
@@ -28502,6 +28565,7 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvBeep", _wrap_pvBeep},
     { "pvStatusMessage", _wrap_pvStatusMessage},
     { "pvToolTip", _wrap_pvToolTip},
+    { "pvSetTextEx", _wrap_pvSetTextEx},
     { "pvSetText", _wrap_pvSetText},
     { "pvPrintf", _wrap_pvPrintf},
     { "pvSetStyleSheet", _wrap_pvSetStyleSheet},
@@ -28569,6 +28633,7 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvPassThroughOneJpegFrame",_wrap_pvPassThroughOneJpegFrame},
     { "pvSendJpegFrame",_wrap_pvSendJpegFrame},
     { "pvSendRGBA",_wrap_pvSendRGBA},
+    { "pvSaveDrawBuffer", _wrap_pvSaveDrawBuffer},
     { "pvText", _wrap_pvText},
     { "pvRequestGeometry", _wrap_pvRequestGeometry},
     { "pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId},
@@ -29193,6 +29258,9 @@ static swig_lua_const_info swig_constants[] = {
     {SWIG_LUA_CONSTTAB_INT("MDY", MDY)},
     {SWIG_LUA_CONSTTAB_INT("YMD", YMD)},
     {SWIG_LUA_CONSTTAB_INT("YDM", YDM)},
+    {SWIG_LUA_CONSTTAB_INT("HTML_HEADER", HTML_HEADER)},
+    {SWIG_LUA_CONSTTAB_INT("HTML_STYLE", HTML_STYLE)},
+    {SWIG_LUA_CONSTTAB_INT("HTML_BODY", HTML_BODY)},
     {SWIG_LUA_CONSTTAB_INT("DEFAULT_LANGUAGE", 0)},
     {SWIG_LUA_CONSTTAB_INT("MM2INCH", MM2INCH)},
     {SWIG_LUA_CONSTTAB_INT("INCH2MM", INCH2MM)},

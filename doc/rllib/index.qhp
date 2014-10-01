@@ -1638,6 +1638,7 @@
               <section title="operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
               <section title="operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
               <section title="printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
+              <section title="read" ref="classrlString.html#a8b93712bed17e1fa6141db42df5178a6" />
               <section title="removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
               <section title="removeQuotas" ref="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304" />
               <section title="setText" ref="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c" />
@@ -1650,6 +1651,7 @@
               <section title="strstr" ref="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d" />
               <section title="text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
               <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
+              <section title="write" ref="classrlString.html#a9e6adcf7de053e2584979aeefa1c4bc2" />
               <section title="txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
             </section>
             <section title="rlSvgAnimator" ref="classrlSvgAnimator.html">
@@ -4340,6 +4342,7 @@
                 <section title="operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
                 <section title="operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
                 <section title="printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
+                <section title="read" ref="classrlString.html#a8b93712bed17e1fa6141db42df5178a6" />
                 <section title="removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
                 <section title="removeQuotas" ref="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304" />
                 <section title="setText" ref="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c" />
@@ -4352,6 +4355,7 @@
                 <section title="strstr" ref="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d" />
                 <section title="text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
                 <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
+                <section title="write" ref="classrlString.html#a9e6adcf7de053e2584979aeefa1c4bc2" />
                 <section title="txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
               </section>
               <section title="rlCRLF" ref="rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
@@ -6805,6 +6809,8 @@
       <keyword name="strrchr" id="rlString::strrchr" ref="classrlString.html#a0b353cf1b96b45dd9809202a336019e3" />
       <keyword name="removeQuotas" id="rlString::removeQuotas" ref="classrlString.html#a4ef62f1e1f7286a8946af2f6d7739304" />
       <keyword name="removeNewline" id="rlString::removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
+      <keyword name="read" id="rlString::read" ref="classrlString.html#a8b93712bed17e1fa6141db42df5178a6" />
+      <keyword name="write" id="rlString::write" ref="classrlString.html#a9e6adcf7de053e2584979aeefa1c4bc2" />
       <keyword name="txt" id="rlString::txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator" ref="classrlSvgAnimator.html" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator::rlSvgAnimator" ref="classrlSvgAnimator.html#a26fe378e9772d1c6dae5aa8fa665fab9" />

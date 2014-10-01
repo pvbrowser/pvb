@@ -452,6 +452,8 @@ enum ButtonClicked  { NoButton = 0, LeftButton, MiddleButton, RightButton };
 
 enum Order          { DMY, MDY, YMD, YDM };
 
+enum SetTextOption  { HTML_HEADER = 1, HTML_STYLE, HTML_BODY };
+
 typedef struct
 {
   int  event;
@@ -1352,6 +1354,7 @@ pvSetSelector()
 pvPrintSvgOnPrinter()
 pvRenderTreeDump()
 pvSetBufferTransparency()
+pvSaveDrawBuffer()
 See Module: Graphics
 </pre> */
 int pvQDraw(PARAM *p, int id, int parent);
@@ -2077,6 +2080,12 @@ Set a QToolTip for the widget. It will be displayed near the widget when you mov
 int pvToolTip(PARAM *p, int id, const char *text);
 /*! <pre>
 Set the text of a widget.
+option := -1 || HTML_HEADER || HTML_STYLE || HTML_BODY
+Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser
+</pre> */
+int pvSetTextEx(PARAM *p, int id, const char *text, int option);
+/*! <pre>
+Set the text of a widget.
 Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser
 </pre> */
 int pvSetText(PARAM *p, int id, const char *text);
@@ -2511,6 +2520,12 @@ Send a RGBA image to the pvbrowser client.
 Allowed widgets: QImage
 </pre> */
 int pvSendRGBA(PARAM *p, int id, const unsigned char *image, int width, int height, int rotate=0);
+/*! <pre>
+Save rendered buffer as PNG or JPG file in temporary directory.
+filename is without path.
+Allowed widgets: QDrawWidget
+</pre> */
+int pvSaveDrawBuffer(PARAM *p, int id, const char *filename);
 /** @} */ // end of group
 
 /** @defgroup Input Input

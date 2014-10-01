@@ -12417,6 +12417,58 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvSetTextEx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  int arg4 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  int val4 ;
+  int ecode4 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOO:pvSetTextEx",&obj0,&obj1,&obj2,&obj3)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSetTextEx" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvSetTextEx" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "pvSetTextEx" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  ecode4 = SWIG_AsVal_int(obj3, &val4);
+  if (!SWIG_IsOK(ecode4)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "pvSetTextEx" "', argument " "4"" of type '" "int""'");
+  } 
+  arg4 = static_cast< int >(val4);
+  result = (int)pvSetTextEx(arg1,arg2,(char const *)arg3,arg4);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvSetText(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -18509,6 +18561,49 @@ fail:
     "    pvSendRGBA(PARAM *,int,unsigned char const *,int,int,int)\n"
     "    pvSendRGBA(PARAM *,int,unsigned char const *,int,int)\n");
   return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSaveDrawBuffer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  char *arg3 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  int res3 ;
+  char *buf3 = 0 ;
+  int alloc3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:pvSaveDrawBuffer",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSaveDrawBuffer" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvSaveDrawBuffer" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "pvSaveDrawBuffer" "', argument " "3"" of type '" "char const *""'");
+  }
+  arg3 = reinterpret_cast< char * >(buf3);
+  result = (int)pvSaveDrawBuffer(arg1,arg2,(char const *)arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return resultobj;
+fail:
+  if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
+  return NULL;
 }
 
 
@@ -38575,6 +38670,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvBeep", _wrap_pvBeep, METH_VARARGS, NULL},
 	 { (char *)"pvStatusMessage", _wrap_pvStatusMessage, METH_VARARGS, NULL},
 	 { (char *)"pvToolTip", _wrap_pvToolTip, METH_VARARGS, NULL},
+	 { (char *)"pvSetTextEx", _wrap_pvSetTextEx, METH_VARARGS, NULL},
 	 { (char *)"pvSetText", _wrap_pvSetText, METH_VARARGS, NULL},
 	 { (char *)"pvPrintf", _wrap_pvPrintf, METH_VARARGS, NULL},
 	 { (char *)"pvSetStyleSheet", _wrap_pvSetStyleSheet, METH_VARARGS, NULL},
@@ -38642,6 +38738,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvPassThroughOneJpegFrame", _wrap_pvPassThroughOneJpegFrame, METH_VARARGS, NULL},
 	 { (char *)"pvSendJpegFrame", _wrap_pvSendJpegFrame, METH_VARARGS, NULL},
 	 { (char *)"pvSendRGBA", _wrap_pvSendRGBA, METH_VARARGS, NULL},
+	 { (char *)"pvSaveDrawBuffer", _wrap_pvSaveDrawBuffer, METH_VARARGS, NULL},
 	 { (char *)"pvText", _wrap_pvText, METH_VARARGS, NULL},
 	 { (char *)"pvRequestGeometry", _wrap_pvRequestGeometry, METH_VARARGS, NULL},
 	 { (char *)"pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId, METH_VARARGS, NULL},
@@ -40097,6 +40194,9 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "MDY",SWIG_From_int(static_cast< int >(MDY)));
   SWIG_Python_SetConstant(d, "YMD",SWIG_From_int(static_cast< int >(YMD)));
   SWIG_Python_SetConstant(d, "YDM",SWIG_From_int(static_cast< int >(YDM)));
+  SWIG_Python_SetConstant(d, "HTML_HEADER",SWIG_From_int(static_cast< int >(HTML_HEADER)));
+  SWIG_Python_SetConstant(d, "HTML_STYLE",SWIG_From_int(static_cast< int >(HTML_STYLE)));
+  SWIG_Python_SetConstant(d, "HTML_BODY",SWIG_From_int(static_cast< int >(HTML_BODY)));
   SWIG_Python_SetConstant(d, "DEFAULT_LANGUAGE",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "MM2INCH",SWIG_From_int(static_cast< int >(MM2INCH)));
   SWIG_Python_SetConstant(d, "INCH2MM",SWIG_From_int(static_cast< int >(INCH2MM)));

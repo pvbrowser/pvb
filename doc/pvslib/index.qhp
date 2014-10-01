@@ -459,6 +459,11 @@
               <section title="Filled" ref="group__DefinesAndEnums.html#ggaea1f27eb626c62e855ff84d990cc99a9ac038427d126840bdd4fb9e9ef9cd1b66" />
               <section title="Flat" ref="group__DefinesAndEnums.html#ggaea1f27eb626c62e855ff84d990cc99a9a5a9e3347876551cd38b961213ff1ccde" />
             </section>
+            <section title="SetTextOption" ref="group__DefinesAndEnums.html#ga1609c9408e3d37b9461c554beab89df8">
+              <section title="HTML_HEADER" ref="group__DefinesAndEnums.html#gga1609c9408e3d37b9461c554beab89df8ae0e749b410b26daf8a53fb96bdc89375" />
+              <section title="HTML_STYLE" ref="group__DefinesAndEnums.html#gga1609c9408e3d37b9461c554beab89df8a19d716b28c787ce5e58621f0c1d88041" />
+              <section title="HTML_BODY" ref="group__DefinesAndEnums.html#gga1609c9408e3d37b9461c554beab89df8a4a6f596bb76daf8ef718ca9a28df2c7d" />
+            </section>
             <section title="Shadow" ref="group__DefinesAndEnums.html#ga70fe851ed6ac8ee886b0d46acd615d00">
               <section title="Plain" ref="group__DefinesAndEnums.html#gga70fe851ed6ac8ee886b0d46acd615d00a7a7f78b5276a1c1c8b42a260fa0b1c7a" />
               <section title="Raised" ref="group__DefinesAndEnums.html#gga70fe851ed6ac8ee886b0d46acd615d00a1d2d258e92567cbc6fabf9c2722bb6d6" />
@@ -734,6 +739,7 @@
             <section title="pvRemoveItem" ref="group__Output.html#gaf2f951f514f0df0aa5901fcdf8bae020" />
             <section title="pvRemoveItemByName" ref="group__Output.html#gada7645ed843776a692b2a9462adb2a3d" />
             <section title="pvRemoveListViewItem" ref="group__Output.html#ga5ee6bcfde98cf05131e986276d426b04" />
+            <section title="pvSaveDrawBuffer" ref="group__Output.html#ga9e68338ac797827a8abfc8f3fbafae13" />
             <section title="pvScrollToAnchor" ref="group__Output.html#gaf032f69bc0a48521e79cfbbe668fd5d2" />
             <section title="pvSendJpegFrame" ref="group__Output.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
             <section title="pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
@@ -770,6 +776,7 @@
             <section title="pvSetTableText" ref="group__Output.html#gaee9d4e45a1328bab51409d1ffbb96e92" />
             <section title="pvSetTableTextAlignment" ref="group__Output.html#ga3f622d22578572f44cb3d85051b02e4a" />
             <section title="pvSetText" ref="group__Output.html#ga672a1a5d681ef429126855fb48ac4040" />
+            <section title="pvSetTextEx" ref="group__Output.html#ga0a63e29ac4364c3b4cc25c7a2ff6f1f4" />
             <section title="pvSetTime" ref="group__Output.html#ga963d8e59f999fcd1b6d2d26a802ec968" />
             <section title="pvSetValue" ref="group__Output.html#ga3df593a9ca887b1a32fa45a007a77971" />
             <section title="pvSetWidgetProperty" ref="group__Output.html#ga80f7897b34d3d4459555dcdd6f180519" />
@@ -1667,6 +1674,11 @@
                 <section title="Filled" ref="processviewserver_8h.html#ggaea1f27eb626c62e855ff84d990cc99a9ac038427d126840bdd4fb9e9ef9cd1b66" />
                 <section title="Flat" ref="processviewserver_8h.html#ggaea1f27eb626c62e855ff84d990cc99a9a5a9e3347876551cd38b961213ff1ccde" />
               </section>
+              <section title="SetTextOption" ref="processviewserver_8h.html#ga1609c9408e3d37b9461c554beab89df8">
+                <section title="HTML_HEADER" ref="processviewserver_8h.html#gga1609c9408e3d37b9461c554beab89df8ae0e749b410b26daf8a53fb96bdc89375" />
+                <section title="HTML_STYLE" ref="processviewserver_8h.html#gga1609c9408e3d37b9461c554beab89df8a19d716b28c787ce5e58621f0c1d88041" />
+                <section title="HTML_BODY" ref="processviewserver_8h.html#gga1609c9408e3d37b9461c554beab89df8a4a6f596bb76daf8ef718ca9a28df2c7d" />
+              </section>
               <section title="Shadow" ref="processviewserver_8h.html#ga70fe851ed6ac8ee886b0d46acd615d00">
                 <section title="Plain" ref="processviewserver_8h.html#gga70fe851ed6ac8ee886b0d46acd615d00a7a7f78b5276a1c1c8b42a260fa0b1c7a" />
                 <section title="Raised" ref="processviewserver_8h.html#gga70fe851ed6ac8ee886b0d46acd615d00a1d2d258e92567cbc6fabf9c2722bb6d6" />
@@ -2001,6 +2013,7 @@
               <section title="pvSave" ref="processviewserver_8h.html#ga6420dc6f7eb8a42bd410ac78ec584c9c" />
               <section title="pvSave" ref="processviewserver_8h.html#gac2fecd439e41688c1ee7d971ff09ca1c" />
               <section title="pvSaveAsBmp" ref="processviewserver_8h.html#ga6aa9ac093b1f87c87e399c293c76902d" />
+              <section title="pvSaveDrawBuffer" ref="processviewserver_8h.html#ga9e68338ac797827a8abfc8f3fbafae13" />
               <section title="pvScreenHint" ref="processviewserver_8h.html#ga52a4f82d807e04869b86a08119109a24" />
               <section title="pvScrollToAnchor" ref="processviewserver_8h.html#gaf032f69bc0a48521e79cfbbe668fd5d2" />
               <section title="pvSelection" ref="processviewserver_8h.html#gaa9daf67935f26a7b4b076d1cfff5f4a0" />
@@ -2070,6 +2083,7 @@
               <section title="pvSetTableTextAlignment" ref="processviewserver_8h.html#ga3f622d22578572f44cb3d85051b02e4a" />
               <section title="pvSetTabPosition" ref="processviewserver_8h.html#gaa61c065f1e45d4968a5c40a919768c32" />
               <section title="pvSetText" ref="processviewserver_8h.html#ga672a1a5d681ef429126855fb48ac4040" />
+              <section title="pvSetTextEx" ref="processviewserver_8h.html#ga0a63e29ac4364c3b4cc25c7a2ff6f1f4" />
               <section title="pvSetTime" ref="processviewserver_8h.html#ga963d8e59f999fcd1b6d2d26a802ec968" />
               <section title="pvSetTimeEditDisplay" ref="processviewserver_8h.html#ga0ee8f8d287b1be17de7fc2304af2385c" />
               <section title="pvSetValue" ref="processviewserver_8h.html#ga3df593a9ca887b1a32fa45a007a77971" />
@@ -2479,6 +2493,7 @@
       <keyword name="pvBeep" id="processviewserver.h::pvBeep" ref="processviewserver_8h.html#gae9871e1f521772c3b7cad143bf9a09d7" />
       <keyword name="pvStatusMessage" id="processviewserver.h::pvStatusMessage" ref="processviewserver_8h.html#gab7907d0ccdeaf7f28c97d9cb93234100" />
       <keyword name="pvToolTip" id="processviewserver.h::pvToolTip" ref="processviewserver_8h.html#gab56da8f94cbd4d5b374071bf38a81596" />
+      <keyword name="pvSetTextEx" id="processviewserver.h::pvSetTextEx" ref="processviewserver_8h.html#ga0a63e29ac4364c3b4cc25c7a2ff6f1f4" />
       <keyword name="pvSetText" id="processviewserver.h::pvSetText" ref="processviewserver_8h.html#ga672a1a5d681ef429126855fb48ac4040" />
       <keyword name="pvPrintf" id="processviewserver.h::pvPrintf" ref="processviewserver_8h.html#ga46a68c8e3aa3163621cf63c513adf3c5" />
       <keyword name="pvSetStyleSheet" id="processviewserver.h::pvSetStyleSheet" ref="processviewserver_8h.html#ga81b3d04316a020c78b606853e8dc201c" />
@@ -2546,6 +2561,7 @@
       <keyword name="pvPassThroughOneJpegFrame" id="processviewserver.h::pvPassThroughOneJpegFrame" ref="processviewserver_8h.html#ga25dadc86712ae96e7c981feb9c7f7616" />
       <keyword name="pvSendJpegFrame" id="processviewserver.h::pvSendJpegFrame" ref="processviewserver_8h.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
       <keyword name="pvSendRGBA" id="processviewserver.h::pvSendRGBA" ref="processviewserver_8h.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
+      <keyword name="pvSaveDrawBuffer" id="processviewserver.h::pvSaveDrawBuffer" ref="processviewserver_8h.html#ga9e68338ac797827a8abfc8f3fbafae13" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
       <keyword name="pvRequestParentWidgetId" id="processviewserver.h::pvRequestParentWidgetId" ref="processviewserver_8h.html#gad9d3203bb218829e4620b81b691918ac" />
@@ -3128,6 +3144,9 @@
       <keyword name="Outline" id="DefinesAndEnums::Outline" ref="group__DefinesAndEnums.html#ggaea1f27eb626c62e855ff84d990cc99a9a31235e99874298ee1c1630c6e206a6ec" />
       <keyword name="Filled" id="DefinesAndEnums::Filled" ref="group__DefinesAndEnums.html#ggaea1f27eb626c62e855ff84d990cc99a9ac038427d126840bdd4fb9e9ef9cd1b66" />
       <keyword name="Flat" id="DefinesAndEnums::Flat" ref="group__DefinesAndEnums.html#ggaea1f27eb626c62e855ff84d990cc99a9a5a9e3347876551cd38b961213ff1ccde" />
+      <keyword name="HTML_HEADER" id="DefinesAndEnums::HTML_HEADER" ref="group__DefinesAndEnums.html#gga1609c9408e3d37b9461c554beab89df8ae0e749b410b26daf8a53fb96bdc89375" />
+      <keyword name="HTML_STYLE" id="DefinesAndEnums::HTML_STYLE" ref="group__DefinesAndEnums.html#gga1609c9408e3d37b9461c554beab89df8a19d716b28c787ce5e58621f0c1d88041" />
+      <keyword name="HTML_BODY" id="DefinesAndEnums::HTML_BODY" ref="group__DefinesAndEnums.html#gga1609c9408e3d37b9461c554beab89df8a4a6f596bb76daf8ef718ca9a28df2c7d" />
       <keyword name="Plain" id="DefinesAndEnums::Plain" ref="group__DefinesAndEnums.html#gga70fe851ed6ac8ee886b0d46acd615d00a7a7f78b5276a1c1c8b42a260fa0b1c7a" />
       <keyword name="Raised" id="DefinesAndEnums::Raised" ref="group__DefinesAndEnums.html#gga70fe851ed6ac8ee886b0d46acd615d00a1d2d258e92567cbc6fabf9c2722bb6d6" />
       <keyword name="Sunken" id="DefinesAndEnums::Sunken" ref="group__DefinesAndEnums.html#gga70fe851ed6ac8ee886b0d46acd615d00ad80b1ce00c68b3a51f1e862e726485fb" />
@@ -3352,6 +3371,7 @@
       <keyword name="pvBeep" id="Output::pvBeep" ref="group__Output.html#gae9871e1f521772c3b7cad143bf9a09d7" />
       <keyword name="pvStatusMessage" id="Output::pvStatusMessage" ref="group__Output.html#gab7907d0ccdeaf7f28c97d9cb93234100" />
       <keyword name="pvToolTip" id="Output::pvToolTip" ref="group__Output.html#gab56da8f94cbd4d5b374071bf38a81596" />
+      <keyword name="pvSetTextEx" id="Output::pvSetTextEx" ref="group__Output.html#ga0a63e29ac4364c3b4cc25c7a2ff6f1f4" />
       <keyword name="pvSetText" id="Output::pvSetText" ref="group__Output.html#ga672a1a5d681ef429126855fb48ac4040" />
       <keyword name="pvPrintf" id="Output::pvPrintf" ref="group__Output.html#ga46a68c8e3aa3163621cf63c513adf3c5" />
       <keyword name="pvSetStyleSheet" id="Output::pvSetStyleSheet" ref="group__Output.html#ga81b3d04316a020c78b606853e8dc201c" />
@@ -3419,6 +3439,7 @@
       <keyword name="pvPassThroughOneJpegFrame" id="Output::pvPassThroughOneJpegFrame" ref="group__Output.html#ga25dadc86712ae96e7c981feb9c7f7616" />
       <keyword name="pvSendJpegFrame" id="Output::pvSendJpegFrame" ref="group__Output.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
       <keyword name="pvSendRGBA" id="Output::pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
+      <keyword name="pvSaveDrawBuffer" id="Output::pvSaveDrawBuffer" ref="group__Output.html#ga9e68338ac797827a8abfc8f3fbafae13" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />

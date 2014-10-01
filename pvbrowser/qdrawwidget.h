@@ -157,6 +157,7 @@ public:
     int  hasLayout;
     //void layoutResize(int w, int h);
     void renderScene();
+    int  save(const char *filename);
 
     virtual void resizeBuffer(int w, int h);
     virtual void resize(int w, int h);

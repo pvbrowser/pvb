@@ -99,6 +99,8 @@ Functions</h2></td></tr>
 <tr class="separator:gab7907d0ccdeaf7f28c97d9cb93234100"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gab56da8f94cbd4d5b374071bf38a81596"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#gab56da8f94cbd4d5b374071bf38a81596">pvToolTip</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *text)</td></tr>
 <tr class="separator:gab56da8f94cbd4d5b374071bf38a81596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga0a63e29ac4364c3b4cc25c7a2ff6f1f4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga0a63e29ac4364c3b4cc25c7a2ff6f1f4">pvSetTextEx</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *text, int option)</td></tr>
+<tr class="separator:ga0a63e29ac4364c3b4cc25c7a2ff6f1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga672a1a5d681ef429126855fb48ac4040"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga672a1a5d681ef429126855fb48ac4040">pvSetText</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *text)</td></tr>
 <tr class="separator:ga672a1a5d681ef429126855fb48ac4040"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga46a68c8e3aa3163621cf63c513adf3c5"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga46a68c8e3aa3163621cf63c513adf3c5">pvPrintf</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *format,...)</td></tr>
@@ -233,6 +235,8 @@ Functions</h2></td></tr>
 <tr class="separator:gaa4f03c9d71a91b9eb412b43f637f4e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4f18e8eab8bc205327b16e4bcd2041ba"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba">pvSendRGBA</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const unsigned char *image, int width, int height, int rotate=0)</td></tr>
 <tr class="separator:ga4f18e8eab8bc205327b16e4bcd2041ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9e68338ac797827a8abfc8f3fbafae13"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Output.html#ga9e68338ac797827a8abfc8f3fbafae13">pvSaveDrawBuffer</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id, const char *filename)</td></tr>
+<tr class="separator:ga9e68338ac797827a8abfc8f3fbafae13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>These are the output routines </p>
@@ -1289,6 +1293,40 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">&lt;pre&gt;
 </pre><p> example: path = "/dir/subdir/subsubdir" path := similar to a unix directory path Remove a QListView item  </p>
+
+</div>
+</div>
+<a class="anchor" id="ga9e68338ac797827a8abfc8f3fbafae13"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSaveDrawBuffer </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Save rendered buffer as PNG or JPG file in temporary directory. filename is without path. Allowed widgets: QDrawWidget  </p>
 
 </div>
 </div>
@@ -2871,6 +2909,46 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <pre class="fragment">&lt;pre&gt;
 </pre><p> Set the text of a widget. Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser  </p>
+
+</div>
+</div>
+<a class="anchor" id="ga0a63e29ac4364c3b4cc25c7a2ff6f1f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvSetTextEx </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>option</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre class="fragment">&lt;pre&gt;
+</pre><p> Set the text of a widget. option := -1 || HTML_HEADER || HTML_STYLE || HTML_BODY Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser  </p>
 
 </div>
 </div>

@@ -4334,6 +4334,7 @@ void Interpreter::interprets(const char *command)
             // google does not allow Qt to access local storage
             // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
             //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
+            QWebSettings::clearMemoryCaches();
             if(strstr(text.toUtf8(),"://") == NULL)
             {
               struct stat sb;
@@ -4384,6 +4385,7 @@ void Interpreter::interprets(const char *command)
                   buf[sb.st_size] = '\0';
                   fclose(fin);
                   QUrl url = QUrl::fromLocalFile(temp); 
+                  QWebSettings::clearMemoryCaches();
                   t->setHtml(QString::fromUtf8(buf),url);
               }
               else
@@ -4825,11 +4827,28 @@ void Interpreter::interprets(const char *command)
             //int y = c->contentsY();
             if(c != NULL)
             {
+              if     (strstr(command,"-header") != NULL) { c->mHeader = text; return; }
+              else if(strstr(command,"-style")  != NULL) { c->mStyle  = text; return; }
+              if(strstr(command,"-body")   != NULL)
+              {
+                QString body = text;
+                text  = c->mHeader;
+                if(!c->mStyle.isEmpty())
+                {
+                  text += "<style type=\"text/css\">\n";
+                  text += c->mStyle;
+                  text += "</style>\n";
+                }
+                text += body;
+                text += "</body></html>\n";
+                if(opt.arg_debug) printf("interpreter.cpp::setText Body::html=\n%s\n", (const char *) text.toUtf8());
+              }  
 #ifdef NO_WEBKIT            
               int vPos = c->verticalScrollBar()->value();   // make cursor not jumping (ernst murnleitner)
               int hPos = c->horizontalScrollBar()->value();
               QTextDocument *doc = c->document();
-              if(doc != NULL) doc->setHtml(text);
+              QUrl url = QUrl::fromLocalFile(temp); 
+              if(doc != NULL) doc->setHtml(text,url);
               c->verticalScrollBar()->setValue(vPos);
               c->horizontalScrollBar()->setValue(hPos);
 #else              
@@ -4846,7 +4865,7 @@ void Interpreter::interprets(const char *command)
                 c->page()->mainFrame()->setScrollBarValue(Qt::Horizontal,x);
                 c->page()->mainFrame()->setScrollBarValue(Qt::Vertical,y);
               }
-#endif              
+#endif          
             }
           }
           else if(all[i]->type == TQCustomWidget)
@@ -5396,6 +5415,31 @@ void Interpreter::interprets(const char *command)
       }
     }
 #endif    
+  }
+  else if(strncmp(command,"saveDrawBuffer(",15) == 0) // save buffer to file
+  {
+    sscanf(command,"saveDrawBuffer(%d",&i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    get_text(command,text);
+    if(text.contains("/") || text.contains("\\") || text.contains("..") || text.contains(":"))
+    {
+      return;
+    }
+    if(all[i]->type == TQDraw)
+    {
+      QDrawWidget *dw = (QDrawWidget *) all[i]->w;
+      if(dw != NULL) dw->save(text.toUtf8());
+    }
+    else if(all[i]->type == TQCustomWidget)
+    {
+      QWidget *w = all[i]->w;
+      if(w != NULL) 
+      {
+        PvbEvent event(command, text);
+        QCoreApplication::sendEvent(w, &event);
+      }
+    }
   }
   else if(strncmp(command,"selection(",10) == 0) // request selection in QListView
   {

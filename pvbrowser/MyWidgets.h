@@ -442,6 +442,8 @@ public:
     void htmlOrSvgDump(const char *filename);
     QString home;
     int homeIsSet;
+    QString mHeader;
+    QString mStyle;
 
 public slots:
     void slotLinkClicked(const QUrl &link);

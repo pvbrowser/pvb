@@ -15,6 +15,8 @@
  ***************************************************************************/
 
 #include <stdarg.h>
+#include <sys/stat.h>
+
 #include "rlstring.h"
 #include "rlcutil.h"
 
@@ -249,5 +251,34 @@ int rlString::removeNewline()
   char *cptr = ::strchr(txt,'\n');
   if(cptr != NULL) *cptr = '\0';
   return 0;
+}
+
+int rlString::read(const char *filename)
+{
+  struct stat statbuf;
+#ifdef RLUNIX
+  if(lstat(filename,&statbuf)) return -1;
+#else
+  if(stat(filename,&statbuf)) return -1;
+#endif
+  FILE *fin = fopen(filename,"r");
+  if(fin == NULL) return -1;
+  if(txt != NULL) delete [] txt;
+  txt = new char [statbuf.st_size+1];
+  fread(txt, 1, statbuf.st_size, fin);
+  txt[statbuf.st_size] = '\0';
+  fclose(fin);
+  return statbuf.st_size; 
+}
+
+int rlString::write(const char *filename)
+{
+  if(txt == NULL) return -1;
+  FILE *fout = fopen(filename,"w");
+  if(fout == NULL) return -1;
+  int len = strlen(txt);
+  fprintf(fout,"%s",txt);
+  fclose(fout);
+  return len;
 }
 

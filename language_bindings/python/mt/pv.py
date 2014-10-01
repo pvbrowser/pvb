@@ -408,6 +408,9 @@ DMY = _pv.DMY
 MDY = _pv.MDY
 YMD = _pv.YMD
 YDM = _pv.YDM
+HTML_HEADER = _pv.HTML_HEADER
+HTML_STYLE = _pv.HTML_STYLE
+HTML_BODY = _pv.HTML_BODY
 class PARSE_EVENT_STRUCT(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, PARSE_EVENT_STRUCT, name, value)
@@ -1174,6 +1177,10 @@ def pvToolTip(*args):
   return _pv.pvToolTip(*args)
 pvToolTip = _pv.pvToolTip
 
+def pvSetTextEx(*args):
+  return _pv.pvSetTextEx(*args)
+pvSetTextEx = _pv.pvSetTextEx
+
 def pvSetText(*args):
   return _pv.pvSetText(*args)
 pvSetText = _pv.pvSetText
@@ -1441,6 +1448,10 @@ pvSendJpegFrame = _pv.pvSendJpegFrame
 def pvSendRGBA(*args):
   return _pv.pvSendRGBA(*args)
 pvSendRGBA = _pv.pvSendRGBA
+
+def pvSaveDrawBuffer(*args):
+  return _pv.pvSaveDrawBuffer(*args)
+pvSaveDrawBuffer = _pv.pvSaveDrawBuffer
 
 def pvText(*args):
   return _pv.pvText(*args)

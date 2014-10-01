@@ -1768,6 +1768,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   homeIsSet = 0;
   factor = 1.0f;
   if(name != NULL) setObjectName(name);
+  mHeader = "<html>\n<head><meta charset=\"utf-8\">\n<title>MyTextBrowser</title>\n</head><body>\n";
 #ifdef NO_WEBKIT
   setOpenLinks(false);
   connect(this, SIGNAL(anchorClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
@@ -1959,7 +1960,12 @@ void MyTextBrowser::setHTML(QString &text)
   }
 
   if(opt.arg_debug) printf("MyTextBrowser::setHTML:: %s\n", (const char *) text.toUtf8());
-  setHtml(text);
+  QString base;
+  base.sprintf("file://%s", opt.temp);
+#ifndef NO_WEBKIT  
+  QWebSettings::clearMemoryCaches();
+#endif  
+  setHtml(text,QUrl(base));
 }
 
 void MyTextBrowser::htmlOrSvgDump(const char *filename)

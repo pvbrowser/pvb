@@ -11,6 +11,7 @@ var searchData=
   ['selection_5fevent',['SELECTION_EVENT',['../group__DefinesAndEnums.html#gga312edd1912b98b17988e584ecc4263b4a56c8885608944604893ca5d347b22c91',1,'processviewserver.h']]],
   ['setfontsize',['setFontSize',['../classglFont.html#a5cbd36849aa749dd09dfb9b43ffcc54a',1,'glFont']]],
   ['setrotation',['setRotation',['../classglFont.html#acdf1d812d344fd41babcadab0d87aee6',1,'glFont']]],
+  ['settextoption',['SetTextOption',['../group__DefinesAndEnums.html#ga1609c9408e3d37b9461c554beab89df8',1,'processviewserver.h']]],
   ['setzoom',['setZoom',['../classglFont.html#a3ce3bf8bcf717bc7d12fbad22ec35283',1,'glFont']]],
   ['shadow',['Shadow',['../group__DefinesAndEnums.html#ga70fe851ed6ac8ee886b0d46acd615d00',1,'processviewserver.h']]],
   ['shape',['Shape',['../group__DefinesAndEnums.html#ga55b506070847a13554f8b879c1bfb37c',1,'processviewserver.h']]],
