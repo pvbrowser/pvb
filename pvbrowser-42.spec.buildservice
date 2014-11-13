@@ -267,6 +267,8 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat       %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory  %{buildroot}%{_bindir}/rlhistory
 %__ln_s /opt/pvb/fake_qmake/fake_qmake      %{buildroot}%{_bindir}/fake_qmake
+%__ln_s /opt/pvb/language_bindings/lua/pvslua/pvslua      %{buildroot}%{_bindir}/pvslua 
+%__ln_s /opt/pvb/language_bindings/lua/pvapplua/pvapplua  %{buildroot}%{_bindir}/pvapplua 
 
 %__ln_s /opt/pvb/pvbrowser.desktop          %{buildroot}/usr/share/applications/pvbrowser.desktop
 %__ln_s /opt/pvb/pvdevelop.desktop          %{buildroot}/usr/share/applications/pvdevelop.desktop

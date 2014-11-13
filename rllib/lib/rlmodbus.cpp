@@ -543,7 +543,7 @@ int rlModbus::readRequest(int *slave, int *function, unsigned char *data, int ti
           memcpy(&tel[len],data,5); len += 5;
           byte_count = data[4];
           if(tty->readBlock(&data[4], byte_count+2, timeout) <= 0) return MODBUS_ERROR;
-          memcpy(&tel[len],data,byte_count+2); len += byte_count+2;
+          memcpy(&tel[len],&data[4],byte_count+2); len += byte_count+2;
           if(CRCerror(len) == 1)                          return MODBUS_CHECKSUM_ERROR;
           return 4+byte_count;
         case ReadGeneralReference:
@@ -565,7 +565,7 @@ int rlModbus::readRequest(int *slave, int *function, unsigned char *data, int ti
           memcpy(&tel[len],data,9); len += 9;
           byte_count = data[8];
           if(tty->readBlock(&data[8], byte_count+2, timeout) <= 0) return MODBUS_ERROR;
-          memcpy(&tel[len],data,byte_count+2); len += byte_count+2;
+          memcpy(&tel[len],&data[8],byte_count+2); len += byte_count+2;
           if(CRCerror(len) == 1)                          return MODBUS_CHECKSUM_ERROR;
           return 8+byte_count;
         case ReadFifoQueue:

@@ -1606,6 +1606,10 @@
               <section title="delimitor" ref="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91" />
               <section title="firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
             </section>
+            <section title="rlssl_struct" ref="structrlssl__struct.html">
+              <section title="sslContext" ref="structrlssl__struct.html#a83475d67f368bd8410550225c99ae897" />
+              <section title="sslStream" ref="structrlssl__struct.html#a8469f117cc4bbca18b5e5491ae2d877e" />
+            </section>
             <section title="rlState" ref="classrlState.html">
               <section title="rlState" ref="classrlState.html#a1b8f80b72c657d463c6fd1da9bc96b0d" />
               <section title="~rlState" ref="classrlState.html#a475a08e2c43485c6de32032d2cdac684" />
@@ -1959,6 +1963,7 @@
             <section title="rlSpreadsheetRow" ref="classrlSpreadsheetRow.html" />
             <section title="rlSpreadsheetTable" ref="classrlSpreadsheetTable.html" />
             <section title="rlSpreadsheetWorkbook" ref="classrlSpreadsheetWorkbook.html" />
+            <section title="rlssl_struct" ref="structrlssl__struct.html" />
             <section title="rlState" ref="classrlState.html" />
             <section title="rlString" ref="classrlString.html" />
             <section title="rlSvgAnimator" ref="classrlSvgAnimator.html" />
@@ -1972,9 +1977,9 @@
               <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
             </section>
             <section title="rlWebcam" ref="classrlWebcam.html" />
-            <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
             <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
             <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
+            <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
             <section title="SWAP" ref="unionSWAP.html" />
             <section title="TDS" ref="structTDS.html" />
             <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -4301,6 +4306,20 @@
                 <section title="firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
               </section>
             </section>
+            <section title="rlssl.cpp" ref="rlssl_8cpp.html">
+              <section title="rlssl_struct" ref="structrlssl__struct.html">
+                <section title="sslContext" ref="structrlssl__struct.html#a83475d67f368bd8410550225c99ae897" />
+                <section title="sslStream" ref="structrlssl__struct.html#a8469f117cc4bbca18b5e5491ae2d877e" />
+              </section>
+              <section title="cryptoLockCallback" ref="rlssl_8cpp.html#ad3bb8c264f3127490943158c79752994" />
+              <section title="rlssl_available" ref="rlssl_8cpp.html#a212165bd6823991a6973b50889fa582b" />
+              <section title="rlssl_disconnect" ref="rlssl_8cpp.html#a05e46cd70eb95f6663219634d92c8085" />
+              <section title="rlssl_init" ref="rlssl_8cpp.html#ac2b1a40b9829bbc022d59a2daba35092" />
+              <section title="rlssl_read" ref="rlssl_8cpp.html#a88e1cbae142233fd4dfca8064d3ba640" />
+              <section title="rlssl_starttls" ref="rlssl_8cpp.html#a200fed1a5759181f38f81c543f54649b" />
+              <section title="rlssl_write" ref="rlssl_8cpp.html#a99621b0bee743baf74dfcfc642b7b9a1" />
+              <section title="rlssl_write" ref="rlssl_8cpp.html#a5b4bd9cf7e8f2654034716d614a931d9" />
+            </section>
             <section title="rlstate.cpp" ref="rlstate_8cpp.html">
               <section title="stepsThread" ref="rlstate_8cpp.html#ab4c9f4bf55f0b58929dc3fa7b3d7fb4b" />
             </section>
@@ -5057,6 +5076,14 @@
       <keyword name="rlwsa" id="rlsocket.h::rlwsa" ref="rlsocket_8h.html#a0a9b8ddbe56e24b68eacf127767f3024" />
       <keyword name="rlScoketWrite" id="rlsocket.h::rlScoketWrite" ref="rlsocket_8h.html#afe006ace2961ebc935c3512ad4697d46" />
       <keyword name="null_string" id="rlspreadsheet.cpp::null_string" ref="rlspreadsheet_8cpp.html#ac11bf696f7287842ed6c53430fb6e884" />
+      <keyword name="cryptoLockCallback" id="rlssl.cpp::cryptoLockCallback" ref="rlssl_8cpp.html#ad3bb8c264f3127490943158c79752994" />
+      <keyword name="rlssl_init" id="rlssl.cpp::rlssl_init" ref="rlssl_8cpp.html#ac2b1a40b9829bbc022d59a2daba35092" />
+      <keyword name="rlssl_starttls" id="rlssl.cpp::rlssl_starttls" ref="rlssl_8cpp.html#a200fed1a5759181f38f81c543f54649b" />
+      <keyword name="rlssl_disconnect" id="rlssl.cpp::rlssl_disconnect" ref="rlssl_8cpp.html#a05e46cd70eb95f6663219634d92c8085" />
+      <keyword name="rlssl_available" id="rlssl.cpp::rlssl_available" ref="rlssl_8cpp.html#a212165bd6823991a6973b50889fa582b" />
+      <keyword name="rlssl_write" id="rlssl.cpp::rlssl_write" ref="rlssl_8cpp.html#a99621b0bee743baf74dfcfc642b7b9a1" />
+      <keyword name="rlssl_write" id="rlssl.cpp::rlssl_write" ref="rlssl_8cpp.html#a5b4bd9cf7e8f2654034716d614a931d9" />
+      <keyword name="rlssl_read" id="rlssl.cpp::rlssl_read" ref="rlssl_8cpp.html#a88e1cbae142233fd4dfca8064d3ba640" />
       <keyword name="stepsThread" id="rlstate.cpp::stepsThread" ref="rlstate_8cpp.html#ab4c9f4bf55f0b58929dc3fa7b3d7fb4b" />
       <keyword name="rlCRLF" id="rlstring.cpp::rlCRLF" ref="rlstring_8cpp.html#ab62ea69a73193eb80768648c83353ffb" />
       <keyword name="rlCRLF" id="rlstring.h::rlCRLF" ref="rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
@@ -6766,6 +6793,9 @@
       <keyword name="setDelimitor" id="rlSpreadsheetWorkbook::setDelimitor" ref="classrlSpreadsheetWorkbook.html#aa21c81370f55b0b815c724da52ff0bd2" />
       <keyword name="delimitor" id="rlSpreadsheetWorkbook::delimitor" ref="classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91" />
       <keyword name="firstTable" id="rlSpreadsheetWorkbook::firstTable" ref="classrlSpreadsheetWorkbook.html#acedac4e777da3222e01f252341f6273a" />
+      <keyword name="rlssl_struct" id="rlssl_struct" ref="structrlssl__struct.html" />
+      <keyword name="sslStream" id="rlssl_struct::sslStream" ref="structrlssl__struct.html#a8469f117cc4bbca18b5e5491ae2d877e" />
+      <keyword name="sslContext" id="rlssl_struct::sslContext" ref="structrlssl__struct.html#a83475d67f368bd8410550225c99ae897" />
       <keyword name="rlState" id="rlState" ref="classrlState.html" />
       <keyword name="rlState" id="rlState::rlState" ref="classrlState.html#a1b8f80b72c657d463c6fd1da9bc96b0d" />
       <keyword name="~rlState" id="rlState::~rlState" ref="classrlState.html#a475a08e2c43485c6de32032d2cdac684" />
@@ -7151,6 +7181,7 @@
       <file>rlspawn_8h_source.html</file>
       <file>rlspreadsheet_8cpp_source.html</file>
       <file>rlspreadsheet_8h_source.html</file>
+      <file>rlssl_8cpp_source.html</file>
       <file>rlstate_8cpp_source.html</file>
       <file>rlstate_8h_source.html</file>
       <file>rlstring_8cpp_source.html</file>
@@ -7385,6 +7416,8 @@
       <file>rlspreadsheet_8h.html</file>
       <file>rlspreadsheet_8h__incl.png</file>
       <file>rlspreadsheet_8h__dep__incl.png</file>
+      <file>rlssl_8cpp.html</file>
+      <file>rlssl_8cpp__incl.png</file>
       <file>rlstate_8cpp.html</file>
       <file>rlstate_8cpp__incl.png</file>
       <file>rlstate_8h.html</file>
@@ -7636,6 +7669,8 @@
       <file>classrlSpreadsheetWorkbook.html</file>
       <file>classrlSpreadsheetWorkbook__coll__graph.png</file>
       <file>classrlSpreadsheetWorkbook-members.html</file>
+      <file>structrlssl__struct.html</file>
+      <file>structrlssl__struct-members.html</file>
       <file>classrlState.html</file>
       <file>classrlState__coll__graph.png</file>
       <file>classrlState-members.html</file>
@@ -7773,6 +7808,7 @@
       <file>inherit_graph_81.png</file>
       <file>inherit_graph_82.png</file>
       <file>inherit_graph_83.png</file>
+      <file>inherit_graph_84.png</file>
       <file>functions.html</file>
       <file>functions_0x61.html</file>
       <file>functions_0x62.html</file>

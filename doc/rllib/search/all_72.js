@@ -303,6 +303,14 @@ var searchData=
   ['rlspreadsheetrow',['rlSpreadsheetRow',['../classrlSpreadsheetRow.html',1,'rlSpreadsheetRow'],['../classrlSpreadsheetRow.html#a2723c5e963e2332929195fae22f1cd88',1,'rlSpreadsheetRow::rlSpreadsheetRow()']]],
   ['rlspreadsheettable',['rlSpreadsheetTable',['../classrlSpreadsheetTable.html',1,'rlSpreadsheetTable'],['../classrlSpreadsheetTable.html#ae93a896b0e9ea569c04e9a74238c5e56',1,'rlSpreadsheetTable::rlSpreadsheetTable()']]],
   ['rlspreadsheetworkbook',['rlSpreadsheetWorkbook',['../classrlSpreadsheetWorkbook.html',1,'rlSpreadsheetWorkbook'],['../classrlSpreadsheetWorkbook.html#a1a5a86ee1206067a7b5c5ff6979e9148',1,'rlSpreadsheetWorkbook::rlSpreadsheetWorkbook()']]],
+  ['rlssl_2ecpp',['rlssl.cpp',['../rlssl_8cpp.html',1,'']]],
+  ['rlssl_5favailable',['rlssl_available',['../rlssl_8cpp.html#a212165bd6823991a6973b50889fa582b',1,'rlssl.cpp']]],
+  ['rlssl_5fdisconnect',['rlssl_disconnect',['../rlssl_8cpp.html#a05e46cd70eb95f6663219634d92c8085',1,'rlssl.cpp']]],
+  ['rlssl_5finit',['rlssl_init',['../rlssl_8cpp.html#ac2b1a40b9829bbc022d59a2daba35092',1,'rlssl.cpp']]],
+  ['rlssl_5fread',['rlssl_read',['../rlssl_8cpp.html#a88e1cbae142233fd4dfca8064d3ba640',1,'rlssl.cpp']]],
+  ['rlssl_5fstarttls',['rlssl_starttls',['../rlssl_8cpp.html#a200fed1a5759181f38f81c543f54649b',1,'rlssl.cpp']]],
+  ['rlssl_5fstruct',['rlssl_struct',['../structrlssl__struct.html',1,'']]],
+  ['rlssl_5fwrite',['rlssl_write',['../rlssl_8cpp.html#a99621b0bee743baf74dfcfc642b7b9a1',1,'rlssl_write(rlssl_struct *rlssl, int ch):&#160;rlssl.cpp'],['../rlssl_8cpp.html#a5b4bd9cf7e8f2654034716d614a931d9',1,'rlssl_write(rlssl_struct *rlssl, const char *text):&#160;rlssl.cpp']]],
   ['rlstartswith',['rlStartsWith',['../rlcutil_8cpp.html#a176ada621127ae48c966556c474f20a4',1,'rlStartsWith(const char *str, const char *startstr):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a176ada621127ae48c966556c474f20a4',1,'rlStartsWith(const char *str, const char *startstr):&#160;rlcutil.cpp']]],
   ['rlstat',['rlStat',['../rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df',1,'rlStat(const char *filepath, struct stat *buf):&#160;rlcutil.cpp'],['../rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df',1,'rlStat(const char *filepath, struct stat *buf):&#160;rlcutil.cpp']]],
   ['rlstate',['rlState',['../classrlState.html',1,'rlState'],['../classrlState.html#a1b8f80b72c657d463c6fd1da9bc96b0d',1,'rlState::rlState()']]],
@@ -370,7 +378,7 @@ var searchData=
   ['rlwthread_5fmutex_5funlock',['rlwthread_mutex_unlock',['../rlwthread_8cpp.html#acda0e664c904c14a8f5ed74bf1d2ddef',1,'rlwthread_mutex_unlock(pthread_mutex_t *mptr):&#160;rlwthread.cpp'],['../rlwthread_8h.html#acda0e664c904c14a8f5ed74bf1d2ddef',1,'rlwthread_mutex_unlock(pthread_mutex_t *mptr):&#160;rlwthread.cpp']]],
   ['rlwthread_5fsleep',['rlwthread_sleep',['../rlwthread_8cpp.html#a80fedc11e30831f16025ad3dc1593724',1,'rlwthread_sleep(long msec):&#160;rlwthread.cpp'],['../rlwthread_8h.html#a80fedc11e30831f16025ad3dc1593724',1,'rlwthread_sleep(long msec):&#160;rlwthread.cpp']]],
   ['rotate',['rotate',['../classrlSvgPosition.html#a5ff465fdab3957ca045e94ee0d013377',1,'rlSvgPosition']]],
-  ['run',['run',['../classrl3964R.html#a11c383caa8d2a8394a3745d163bf6689',1,'rl3964R::run()'],['../classrlCorbaServer.html#af9b18fa485f47fdb95fa550f96837825',1,'rlCorbaServer::run()'],['../classrlDataProvider.html#a017bcbd3fc970a26ca741c58123e6769',1,'rlDataProvider::run()'],['../classrlDF1.html#af5d6308326260b892a7d947eed2ff809ab3e2ac0254553ad49301664408cad49d',1,'rlDF1::RUN()']]],
+  ['run',['RUN',['../classrlDF1.html#af5d6308326260b892a7d947eed2ff809ab3e2ac0254553ad49301664408cad49d',1,'rlDF1::RUN()'],['../classrl3964R.html#a11c383caa8d2a8394a3745d163bf6689',1,'rl3964R::run()'],['../classrlCorbaServer.html#af9b18fa485f47fdb95fa550f96837825',1,'rlCorbaServer::run()'],['../classrlDataProvider.html#a017bcbd3fc970a26ca741c58123e6769',1,'rlDataProvider::run()']]],
   ['running',['running',['../classrlController.html#a74ca7e98649ac725faf7497844b6af64',1,'rlController::running()'],['../classrlEIBnetIP.html#a8ae718a134cdbb39ca65ce0afe66ddba',1,'rlEIBnetIP::running()'],['../structTHREAD__PARAM.html#a437f214e495b314661203fdc2a350e1a',1,'THREAD_PARAM::running()']]],
   ['runsteps',['runSteps',['../classrlState.html#a26b1a3130c654fc9fe3c5ce05871432a',1,'rlState']]]
 ];

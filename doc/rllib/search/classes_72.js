@@ -54,6 +54,7 @@ var searchData=
   ['rlspreadsheetrow',['rlSpreadsheetRow',['../classrlSpreadsheetRow.html',1,'']]],
   ['rlspreadsheettable',['rlSpreadsheetTable',['../classrlSpreadsheetTable.html',1,'']]],
   ['rlspreadsheetworkbook',['rlSpreadsheetWorkbook',['../classrlSpreadsheetWorkbook.html',1,'']]],
+  ['rlssl_5fstruct',['rlssl_struct',['../structrlssl__struct.html',1,'']]],
   ['rlstate',['rlState',['../classrlState.html',1,'']]],
   ['rlstring',['rlString',['../classrlString.html',1,'']]],
   ['rlsvganimator',['rlSvgAnimator',['../classrlSvgAnimator.html',1,'']]],

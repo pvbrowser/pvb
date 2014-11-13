@@ -29,6 +29,8 @@ var searchData=
   ['spare2',['spare2',['../structrlSiemensTCP_1_1WA.html#a6e62081d339f1bc84b801aeded61cb2c',1,'rlSiemensTCP::WA::spare2()'],['../structrlSiemensTCP_1_1FA.html#a137b38449ec15b8bf61ef99cce886690',1,'rlSiemensTCP::FA::spare2()']]],
   ['spawn',['spawn',['../classrlCommandlineInterface.html#ac257842ea637f5d2973626c8349a200e',1,'rlCommandlineInterface']]],
   ['sret',['sRet',['../classrlCanOpen.html#a1c40a2fc97d124fafe75c2f58c121f25',1,'rlCanOpen']]],
+  ['sslcontext',['sslContext',['../structrlssl__struct.html#a83475d67f368bd8410550225c99ae897',1,'rlssl_struct']]],
+  ['sslstream',['sslStream',['../structrlssl__struct.html#a8469f117cc4bbca18b5e5491ae2d877e',1,'rlssl_struct']]],
   ['start',['start',['../structADD.html#adfc0e8ed21baba27dc88ab557f6eab46',1,'ADD']]],
   ['start_5fadr',['start_adr',['../structrlSiemensTCP_1_1WH.html#ad03cc7dd2b7c632d02a320c8e86f81f6',1,'rlSiemensTCP::WH::start_adr()'],['../structrlSiemensTCP_1_1FH.html#a5d914a10fd526ccc52072c19a8c05dee',1,'rlSiemensTCP::FH::start_adr()']]],
   ['startup_5fcommand',['startup_command',['../classrlPcontrol.html#a3e954e61d0f49656d597148b4aa607e4',1,'rlPcontrol']]],
