@@ -27,7 +27,7 @@ Provides:  librllib.so.1.0
 
 %if 0%{?suse_version} >= 1300
 Requires:      libqt5       Mesa       libpng  libqwt5
-BuildRequires: libQt5WebKitWidgets-devel libQt5WebKit5-devel libQt5Multimedia-devel libqt5-qttools-devel libqt5-qtbase-devel Mesa-devel gcc-c++ python-devel readline-devel 
+BuildRequires: libQt5WebKitWidgets-devel libQt5WebKit5-devel libQt5Multimedia-devel libqt5-qttools-devel libqt5-qtbase-devel libqt5-qtsvg-devel Mesa-devel gcc-c++ python-devel readline-devel 
 %endif
 
 %if 0%{?suse_version} < 1300
