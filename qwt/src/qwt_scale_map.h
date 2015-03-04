@@ -84,8 +84,11 @@ public:
     inline double pDist() const;
     inline double sDist() const;
 
-    QT_STATIC_CONST double LogMin;
-    QT_STATIC_CONST double LogMax;
+    //removed from qglobal.h in 5.4 R.L.
+    //QT_STATIC_CONST double LogMin;
+    //QT_STATIC_CONST double LogMax;
+    static const double LogMin;
+    static const double LogMax;
 
 private:
     void newFactor();   
