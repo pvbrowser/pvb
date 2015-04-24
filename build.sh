@@ -79,10 +79,11 @@ cd pvbrowser
 ../qmake.sh pvbrowser.pro
 make $1
 cd ..
-cd browserplugin
-../qmake.sh pvpluginmain.pro
-make $1
-cd ..
+# 24 Apr 2015  r.l. removed browser plugin from building
+#cd browserplugin
+#../qmake.sh pvpluginmain.pro
+#make $1
+#cd ..
 cd pvdevelop
 ../qmake.sh pvdevelop.pro
 make $1

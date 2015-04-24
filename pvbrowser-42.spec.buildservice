@@ -175,7 +175,6 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
-%__mkdir_p  %{buildroot}/opt/pvb/browserplugin
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
@@ -234,9 +233,6 @@ cp    language_bindings/python/template/pvs.pvproject     %{buildroot}/opt/pvb/l
 cp    designer/plugins/libpvb_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/README.txt                                 %{buildroot}/opt/pvb/designer/
-cp    browserplugin/libpvbrowser.so                       %{buildroot}/opt/pvb/browserplugin/
-cp    browserplugin/pvbrowserplugin-example.html          %{buildroot}/opt/pvb/browserplugin/
-cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/browserplugin/
 
 %__mkdir_p %{buildroot}/usr/lib
 %__mkdir_p %{buildroot}%{_bindir}
@@ -272,7 +268,6 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 
 %__ln_s /opt/pvb/pvbrowser.desktop          %{buildroot}/usr/share/applications/pvbrowser.desktop
 %__ln_s /opt/pvb/pvdevelop.desktop          %{buildroot}/usr/share/applications/pvdevelop.desktop
-%__ln_s /opt/pvb/browserplugin/libpvbrowser.so %{buildroot}/usr/%{_lib}/browser-plugins/libpvbrowser.so
 
 %__mkdir_p %{buildroot}/srv/automation/shm
 %__mkdir_p %{buildroot}/srv/automation/mbx
@@ -316,7 +311,6 @@ chmod ugoa+rw /srv/automation/log
 %files devel
 %defattr(-,root,root,755)
 %dir /opt/pvb
-%dir /opt/pvb/browserplugin
 %dir /opt/pvb/designer
 %dir /opt/pvb/designer/plugins
 %dir /opt/pvb/fake_qmake
@@ -490,10 +484,6 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/designer/plugins/libpvb_designer_plugin.so
 /opt/pvb/designer/plugins/libqwt_designer_plugin.so
 /opt/pvb/designer/README.txt
-/opt/pvb/browserplugin/libpvbrowser.so
-/usr/%{_lib}/browser-plugins/libpvbrowser.so
-/opt/pvb/browserplugin/pvbrowserplugin-example.html
-/opt/pvb/browserplugin/README.txt
 %if 0%{?fedora_version}
 /opt/pvb/language_bindings/python/id/pv.pyc
 /opt/pvb/language_bindings/python/id/pv.pyo

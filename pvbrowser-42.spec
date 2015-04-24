@@ -157,7 +157,6 @@ cd ..
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
-%__mkdir_p  %{buildroot}/opt/pvb/browserplugin
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
@@ -215,9 +214,6 @@ cp    language_bindings/python/template/pvs.pvproject     %{buildroot}/opt/pvb/l
 cp    designer/plugins/libpvb_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/README.txt                                 %{buildroot}/opt/pvb/designer/
-cp    browserplugin/libpvbrowser.so                       %{buildroot}/opt/pvb/browserplugin/
-cp    browserplugin/pvbrowserplugin-example.html          %{buildroot}/opt/pvb/browserplugin/
-cp    browserplugin/README.txt                            %{buildroot}/opt/pvb/browserplugin/
 
 %__mkdir_p %{buildroot}/usr/lib
 %__mkdir_p %{buildroot}%{_bindir}
@@ -452,7 +448,4 @@ License:     GPL
 %endif
 /opt/pvb/designer/plugins/libqwt_designer_plugin.so
 /opt/pvb/designer/README.txt
-/opt/pvb/browserplugin/libpvbrowser.so
-/opt/pvb/browserplugin/pvbrowserplugin-example.html
-/opt/pvb/browserplugin/README.txt
 
