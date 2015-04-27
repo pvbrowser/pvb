@@ -25,4 +25,4 @@ SOURCES += glencode.cpp      \
            util.cpp
 
 LIBS    += -ldl -lpthread
-
+TARGET = pvsid

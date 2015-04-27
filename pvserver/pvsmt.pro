@@ -30,4 +30,4 @@ SOURCES += glencode.cpp      \
            wthread.cpp
 
 LIBS    += -ldl -lpthread
-
+TARGET = pvsmt

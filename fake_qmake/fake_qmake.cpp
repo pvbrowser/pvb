@@ -761,6 +761,7 @@ else if(strcmp(str_template.text(),"lib") == 0)
   //fprintf(fout,"LFLAGS        = -m64 -Wl,-O1 -shared -Wl,-soname,lib%s.so.1", str_target.text());
   fprintf(fout,"LFLAGS        = -Wl,-O1 -shared -Wl,-soname,lib%s.so.1", str_target.text());
   for(i=1; i<=n_qmake_lflags; i++) fprintf(fout," %s", row_qmake_lflags.text(i));
+  fprintf(fout," -ldl -lpthread");
 }
 fprintf(fout,"\n");
 fprintf(fout,"LIBS          = $(SUBLIBS)");
