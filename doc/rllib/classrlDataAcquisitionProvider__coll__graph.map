@@ -1,4 +1,4 @@
 <map id="rlDataAcquisitionProvider" name="rlDataAcquisitionProvider">
-<area shape="rect" id="node2" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,13,128,40"/>
-<area shape="rect" id="node4" href="$structrlDataAcquisitionProvider_1_1SHM__HEADER.html" title="rlDataAcquisitionProvider\l::SHM_HEADER" alt="" coords="153,6,327,47"/>
+<area shape="rect" id="node2" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,13,128,39"/>
+<area shape="rect" id="node3" href="$structrlDataAcquisitionProvider_1_1SHM__HEADER.html" title="rlDataAcquisitionProvider\l::SHM_HEADER" alt="" coords="153,5,327,47"/>
 </map>

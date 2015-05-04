@@ -1,5 +1,5 @@
 <map id="rlDataProvider" name="rlDataProvider">
-<area shape="rect" id="node2" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="15,96,113,123"/>
-<area shape="rect" id="node4" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,5,121,32"/>
-<area shape="rect" id="node6" href="$classrlMutex.html" title="rlMutex" alt="" coords="155,96,220,123"/>
+<area shape="rect" id="node2" href="$classrlSemaphore.html" title="rlSemaphore" alt="" coords="15,95,113,121"/>
+<area shape="rect" id="node3" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,5,123,32"/>
+<area shape="rect" id="node4" href="$classrlMutex.html" title="rlMutex" alt="" coords="155,95,221,121"/>
 </map>

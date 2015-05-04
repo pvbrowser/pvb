@@ -1,4 +1,4 @@
 <map id="rlModbusClient" name="rlModbusClient">
-<area shape="rect" id="node2" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="5,5,80,32"/>
-<area shape="rect" id="node4" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="105,5,228,32"/>
+<area shape="rect" id="node2" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="5,5,81,32"/>
+<area shape="rect" id="node3" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="106,5,229,32"/>
 </map>
