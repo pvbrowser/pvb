@@ -347,6 +347,8 @@ chmod ugoa+rw /srv/automation/log
 %{_bindir}/rlhistory
 %{_bindir}/fake_qmake
 %{_bindir}/start_pvbapp
+%{_bindir}/pvslua
+%{_bindir}/pvapplua
 /usr/lib/librllib.a
 /usr/lib/librllib.so
 /usr/lib/librllib.so.1

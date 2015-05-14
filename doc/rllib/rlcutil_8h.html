@@ -194,6 +194,10 @@ Functions</h2></td></tr>
 <tr class="separator:a0baa5683b22ec178b24473b86cf0e641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3da5cd694c56cd94598c12dee25a28de"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#a3da5cd694c56cd94598c12dee25a28de">rlBitTest</a> (int bitnumber, int *value)</td></tr>
 <tr class="separator:a3da5cd694c56cd94598c12dee25a28de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addaade1f805b1880f772372cabbfdbb4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#addaade1f805b1880f772372cabbfdbb4">rlPushToDoubleBuffer</a> (double val, double *buffer, int size)</td></tr>
+<tr class="separator:addaade1f805b1880f772372cabbfdbb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a66eb7d773754ba368ecef4e647d73784"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8h.html#a66eb7d773754ba368ecef4e647d73784">rlPushToFloatBuffer</a> (float val, float *buffer, int size)</td></tr>
+<tr class="separator:a66eb7d773754ba368ecef4e647d73784"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a0baa5683b22ec178b24473b86cf0e641"></a>
@@ -1200,6 +1204,90 @@ return = 1 # found
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;  sprintf(buf,<span class="stringliteral">&quot;buscommand -profibus2 %d&quot;</span>,command);</div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;  <span class="keywordflow">return</span> system(buf);</div>
 <div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="addaade1f805b1880f772372cabbfdbb4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlPushToDoubleBuffer </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+Push value to front of buffer.
+Shift all other values.
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00837">837</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;{</div>
+<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;  <span class="keywordflow">if</span>(size &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=size; i&gt;=2; i--) buffer[i-1] = buffer[i-2];</div>
+<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;  buffer[0] = val;</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a66eb7d773754ba368ecef4e647d73784"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void rlPushToFloatBuffer </td>
+          <td>(</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+Push value to front of buffer.
+Shift all other values.
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00844">844</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;{</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  <span class="keywordflow">if</span>(size &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=size; i&gt;=2; i--) buffer[i-1] = buffer[i-2];</div>
+<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;  buffer[0] = val;</div>
+<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

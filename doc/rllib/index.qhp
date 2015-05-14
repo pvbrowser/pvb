@@ -2707,6 +2707,8 @@
               <section title="rlpass" ref="rlcutil_8cpp.html#af0db76ffcc3e1f14be6f53ecaaafb498" />
               <section title="rlProfibus1" ref="rlcutil_8cpp.html#a19d5bb49c66eac96703a91512bddbdee" />
               <section title="rlProfibus2" ref="rlcutil_8cpp.html#a9ac74bb6d1fd001d84a2e5ce942d05d4" />
+              <section title="rlPushToDoubleBuffer" ref="rlcutil_8cpp.html#addaade1f805b1880f772372cabbfdbb4" />
+              <section title="rlPushToFloatBuffer" ref="rlcutil_8cpp.html#a66eb7d773754ba368ecef4e647d73784" />
               <section title="rlSetDebugPrintf" ref="rlcutil_8cpp.html#a92640c18316594822730875b5145ad3a" />
               <section title="rlSetSigtermHandler" ref="rlcutil_8cpp.html#a25b90e10ed09296d9320f1895e1cff81" />
               <section title="rlSigtermHandler" ref="rlcutil_8cpp.html#a71fb82c9c37dc21189ff705558203a46" />
@@ -2753,6 +2755,8 @@
               <section title="rlpass" ref="rlcutil_8h.html#af0db76ffcc3e1f14be6f53ecaaafb498" />
               <section title="rlProfibus1" ref="rlcutil_8h.html#a19d5bb49c66eac96703a91512bddbdee" />
               <section title="rlProfibus2" ref="rlcutil_8h.html#a9ac74bb6d1fd001d84a2e5ce942d05d4" />
+              <section title="rlPushToDoubleBuffer" ref="rlcutil_8h.html#addaade1f805b1880f772372cabbfdbb4" />
+              <section title="rlPushToFloatBuffer" ref="rlcutil_8h.html#a66eb7d773754ba368ecef4e647d73784" />
               <section title="rlSetDebugPrintf" ref="rlcutil_8h.html#a92640c18316594822730875b5145ad3a" />
               <section title="rlSetSigtermHandler" ref="rlcutil_8h.html#a25b90e10ed09296d9320f1895e1cff81" />
               <section title="rlsnprintf" ref="rlcutil_8h.html#aa9748a7cf07e98e8161667a41afa4944" />
@@ -4869,6 +4873,8 @@
       <keyword name="rlBitClear" id="rlcutil.cpp::rlBitClear" ref="rlcutil_8cpp.html#afa69b413f110f689e6093e24f5e21178" />
       <keyword name="rlBitChange" id="rlcutil.cpp::rlBitChange" ref="rlcutil_8cpp.html#a0baa5683b22ec178b24473b86cf0e641" />
       <keyword name="rlBitTest" id="rlcutil.cpp::rlBitTest" ref="rlcutil_8cpp.html#a3da5cd694c56cd94598c12dee25a28de" />
+      <keyword name="rlPushToDoubleBuffer" id="rlcutil.cpp::rlPushToDoubleBuffer" ref="rlcutil_8cpp.html#addaade1f805b1880f772372cabbfdbb4" />
+      <keyword name="rlPushToFloatBuffer" id="rlcutil.cpp::rlPushToFloatBuffer" ref="rlcutil_8cpp.html#a66eb7d773754ba368ecef4e647d73784" />
       <keyword name="rlDebugPrintfState" id="rlcutil.cpp::rlDebugPrintfState" ref="rlcutil_8cpp.html#a73703e6f6e03079d517b69762d7424da" />
       <keyword name="rlsigtermarg" id="rlcutil.cpp::rlsigtermarg" ref="rlcutil_8cpp.html#aa602ca87edb43ec9626731cad82e62bc" />
       <keyword name="rlUserSigtermHandler" id="rlcutil.cpp::rlUserSigtermHandler" ref="rlcutil_8cpp.html#a95ba5f2760cd6ed5c62315bf1df4234c" />
@@ -4912,6 +4918,8 @@
       <keyword name="rlBitClear" id="rlcutil.h::rlBitClear" ref="rlcutil_8h.html#afa69b413f110f689e6093e24f5e21178" />
       <keyword name="rlBitChange" id="rlcutil.h::rlBitChange" ref="rlcutil_8h.html#a0baa5683b22ec178b24473b86cf0e641" />
       <keyword name="rlBitTest" id="rlcutil.h::rlBitTest" ref="rlcutil_8h.html#a3da5cd694c56cd94598c12dee25a28de" />
+      <keyword name="rlPushToDoubleBuffer" id="rlcutil.h::rlPushToDoubleBuffer" ref="rlcutil_8h.html#addaade1f805b1880f772372cabbfdbb4" />
+      <keyword name="rlPushToFloatBuffer" id="rlcutil.h::rlPushToFloatBuffer" ref="rlcutil_8h.html#a66eb7d773754ba368ecef4e647d73784" />
       <keyword name="CLIENT_TIMEOUT" id="rldataprovider.cpp::CLIENT_TIMEOUT" ref="rldataprovider_8cpp.html#acbb5358766b3fd26fcb09271b5f8b1e3" />
       <keyword name="workerThread" id="rldataprovider.cpp::workerThread" ref="rldataprovider_8cpp.html#ae2a3a761e4cf9d98caf2c4779a581e43" />
       <keyword name="rlDataProviderAccept" id="rldataprovider.cpp::rlDataProviderAccept" ref="rldataprovider_8cpp.html#a65646dec4ef9d5e87f7f50ba17f17cc9" />

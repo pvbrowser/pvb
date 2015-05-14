@@ -262,6 +262,8 @@ var searchData=
   ['rlppiclient_2eh',['rlppiclient.h',['../rlppiclient_8h.html',1,'']]],
   ['rlprofibus1',['rlProfibus1',['../rlcutil_8cpp.html#a19d5bb49c66eac96703a91512bddbdee',1,'rlProfibus1(int command):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a19d5bb49c66eac96703a91512bddbdee',1,'rlProfibus1(int command):&#160;rlcutil.cpp']]],
   ['rlprofibus2',['rlProfibus2',['../rlcutil_8cpp.html#a9ac74bb6d1fd001d84a2e5ce942d05d4',1,'rlProfibus2(int command):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a9ac74bb6d1fd001d84a2e5ce942d05d4',1,'rlProfibus2(int command):&#160;rlcutil.cpp']]],
+  ['rlpushtodoublebuffer',['rlPushToDoubleBuffer',['../rlcutil_8cpp.html#addaade1f805b1880f772372cabbfdbb4',1,'rlPushToDoubleBuffer(double val, double *buffer, int size):&#160;rlcutil.cpp'],['../rlcutil_8h.html#addaade1f805b1880f772372cabbfdbb4',1,'rlPushToDoubleBuffer(double val, double *buffer, int size):&#160;rlcutil.cpp']]],
+  ['rlpushtofloatbuffer',['rlPushToFloatBuffer',['../rlcutil_8cpp.html#a66eb7d773754ba368ecef4e647d73784',1,'rlPushToFloatBuffer(float val, float *buffer, int size):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a66eb7d773754ba368ecef4e647d73784',1,'rlPushToFloatBuffer(float val, float *buffer, int size):&#160;rlcutil.cpp']]],
   ['rlreport',['rlReport',['../classrlReport.html',1,'rlReport'],['../classrlReport.html#a29d9fbc12d8bd6fcf8465903e4ac8517',1,'rlReport::rlReport()']]],
   ['rlreport_2ecpp',['rlreport.cpp',['../rlreport_8cpp.html',1,'']]],
   ['rlreport_2eh',['rlreport.h',['../rlreport_8h.html',1,'']]],

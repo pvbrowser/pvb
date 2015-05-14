@@ -834,3 +834,17 @@ int rlBitTest(int bitnumber, int *value)
   return 0;
 }
 
+void rlPushToDoubleBuffer(double val, double *buffer, int size)
+{
+  if(size <= 0) return;
+  for(int i=size; i>=2; i--) buffer[i-1] = buffer[i-2];
+  buffer[0] = val;
+}
+
+void rlPushToFloatBuffer(float val, float *buffer, int size)
+{
+  if(size <= 0) return;
+  for(int i=size; i>=2; i--) buffer[i-1] = buffer[i-2];
+  buffer[0] = val;
+}
+

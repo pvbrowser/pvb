@@ -215,4 +215,17 @@ Return 0 | 1
 </pre> */
 int rlBitTest(int bitnumber, int *value);
 
+/** <pre>
+Push value to front of buffer.
+Shift all other values.
+</pre> */
+void rlPushToDoubleBuffer(double val, double *buffer, int size);
+
+/** <pre>
+Push value to front of buffer.
+Shift all other values.
+</pre> */
+void rlPushToFloatBuffer(float val, float *buffer, int size);
+
+
 #endif
