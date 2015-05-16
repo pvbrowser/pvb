@@ -147,6 +147,7 @@ socklen_t       pvSocklen;  // socklen  of last client. can be used for authoriz
 #ifdef PVWIN32
 int             pvSocklen;  // socklen  of last client. can be used for authorization.
 #endif
+char *pvCmdLine = NULL;
 int num_threads = 0;
 int exit_after_last_client_terminates = 0; // can be set from command line
 int start_gui = 0;                         // can be set from command line
@@ -813,10 +814,32 @@ bind:
       {
         int len = 100;
         if(url_trailer != NULL) len += strlen(url_trailer);
+        if(pvCmdLine   != NULL) len += strlen(pvCmdLine);
         char *buf = (char *) malloc(len);
         start_gui++;
         if(url_trailer == NULL) sprintf(buf,"pvbrowser \"pv://localhost:%d\"",   p->port);
         else                    sprintf(buf,"pvbrowser \"pv://localhost:%d%s\"", p->port, url_trailer);
+        if(pvCmdLine != NULL)
+        {
+          char *cptr = strstr(pvCmdLine," -gui");
+          if(cptr != NULL)
+          {
+            if(url_trailer == NULL)
+            {
+              cptr += 5;
+              strcat(buf,cptr);
+            }
+            else
+            {
+              cptr += 6;
+              cptr = strstr(cptr," -");
+              if(cptr != NULL)
+              {
+                strcat(buf,cptr);
+              }
+            }
+          }
+        }
         printf("Info: starting gui with: %s\n", buf);
 #ifdef  PVUNIX
         strcat(buf, " &");
@@ -1210,13 +1233,14 @@ static void *pv_dlsym(const char *symbol)
 
 int pvInit(int ac, char **av, PARAM *p)
 {
-int i,ret;
+int i,ret,cmdline_length;
 
   printf("pvserver_version %s\n", pvserver_version);
 #ifdef PVWIN32  
   printf("serverlib.a was build with MinGW %d.%d.%d\n", __GNUC__ , __GNUC_MINOR__ , __GNUC_PATCHLEVEL__ );
 #endif  
   ret = 0;
+  cmdline_length = strlen(av[0]);
   pvInitInternal(p);
   delete [] p->mytext;
   p->mytext = NULL;
@@ -1224,6 +1248,8 @@ int i,ret;
   p->mytext2 = NULL;
   for(i=1; i<ac; i++)
   {
+    cmdline_length += 1;
+    cmdline_length += strlen(av[i]);
     if     (strncmp(av[i],"--h",3)                             == 0) { show_usage(); exit(0); }
     if     (strncmp(av[i],"-h",2)                              == 0) { show_usage(); exit(0); }
     else if(strncmp(av[i],"-port=",6)                          == 0) sscanf(av[i],"-port=%d",&p->port);
@@ -1248,7 +1274,15 @@ int i,ret;
     else if(strcmp(av[i],"-use_communication_plugin")          == 0) p->use_communication_plugin = 1;
     else if(strncmp(av[i],"/",1)                               == 0) url_trailer = av[i];
     else if(strncmp(av[i],"?",1)                               == 0) url_trailer = av[i];
-    else if(strncmp(av[i],"-",1)                               == 0) printf("unknown option %s\n", av[i]);
+    else if(strncmp(av[i],"-",1)                               == 0 && start_gui == 0) printf("unknown option %s\n", av[i]);
+  }
+  
+  pvCmdLine = new char[cmdline_length];
+  strcpy(pvCmdLine,av[0]);
+  for(i=1; i<ac; i++)
+  {
+    strcat(pvCmdLine," ");
+    strcat(pvCmdLine,av[i]);
   }
 
   if(start_gui > 0)
