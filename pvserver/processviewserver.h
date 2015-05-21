@@ -4030,6 +4030,7 @@ static int slotButtonPressedEvent(PARAM *p, int id, DATA *d)
 </pre> */
 #ifndef __VMS
 #include <string.h>
+#include <string>
 #include <iostream>
 #include <map>
 
