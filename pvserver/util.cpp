@@ -53,11 +53,13 @@ const char pvserver_version[] = "4.7.9";
 #include <ws2tcpip.h>
 #include <windows.h>
 #include <iostream>
+#ifdef __GNUC__
 #define WTREAD_GNUC3 ( __GNUC__ * 1000 ) + __GNUC_MINOR__
 #if WTREAD_GNUC3 < 4008
 void WSAAPI freeaddrinfo(struct addrinfo*);
 int  WSAAPI getaddrinfo(const char*,const char*,const struct addrinfo*, struct addrinfo**);
 int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWORD,int);
+#endif
 #endif
 //#undef AF_INET6_IS_AVAILABLE
 //#endif
