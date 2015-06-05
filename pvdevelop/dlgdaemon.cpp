@@ -23,6 +23,7 @@
 #ifdef PVWIN32
 #include <process.h>
 #endif
+QString target;
 
 dlgDaemon::dlgDaemon(int _what)
 {
@@ -32,18 +33,26 @@ dlgDaemon::dlgDaemon(int _what)
   QObject::connect(form->pushButtonCompile,SIGNAL(clicked()),SLOT(slotCompile()));
   QObject::connect(form->pushButtonCancel, SIGNAL(clicked()),SLOT(reject()));
   QObject::connect(form->pushButtonClose,  SIGNAL(clicked()),SLOT(slotClose()));
+  QObject::connect(form->pushButtonOpen,  SIGNAL(clicked()),SLOT(slotOpen()));
+  QObject::connect(form->pushButtonNew,  SIGNAL(clicked()),SLOT(slotNew()));
   switch(what)
   {
     case PPI_DAEMON:
       setWindowTitle("pvdevelop Make a PPI Daemon");
+      form->labelFile->hide();
+      form->pushButtonOpen->hide();
       load("ppidaemon.mkppi");
       break;
     case SIEMENSTCP_DAEMON:
       setWindowTitle("pvdevelop Make a SienensTCP Daemon");
+      form->labelFile->hide();
+      form->pushButtonOpen->hide();
       load("siemensdaemon.mksiemens");
       break;
     case MODBUS_DAEMON:
       setWindowTitle("pvdevelop Make a Modbus Daemon");
+      form->labelFile->show();
+      form->pushButtonOpen->show();
       load("modbusdaemon.mkmodbus");
       break;
     default:
@@ -64,6 +73,8 @@ QString dlgDaemon::run()
 void dlgDaemon::slotCompile()
 {
   int ret = 0;
+  QString Buf;
+  QFileInfo f_info(filename);
   save();
   generate();
   switch(what)
@@ -96,14 +107,19 @@ void dlgDaemon::slotCompile()
     case MODBUS_DAEMON:
 #ifdef PVUNIX
 #ifdef PVMAC
-      ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
+      //ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
+      Buf = "xterm -e g++ \""+target+".cpp\" -o "+f_info.baseName()+" -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read";
 #else
       //ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -lpthread;echo compiler_finished;read\"");
-      ret = system("xterm -e \"g++ -c modbusdaemon.cpp  -o modbusdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ modbusdaemon.o /usr/lib/librllib.so -lpthread -o modbusdaemon;echo compiler_finished;read\"");
+      //ret = system("xterm -e \"g++ -c modbusdaemon.cpp  -o modbusdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ modbusdaemon.o /usr/lib/librllib.so -lpthread -o modbusdaemon;echo compiler_finished;read\"");
+      Buf = "xterm -e 'g++ -c \""+target+".cpp\"  -o \""+target+".o\" -I/opt/pvb/rllib/lib -L/usr/lib/; g++ \""+target+".o\" /usr/lib/librllib.so -lpthread -o "+f_info.baseName()+";echo compiler_finished;read'";
 #endif
 #else
-      ret = system("start pvb_make_modbusdaemon.bat");
+      //ret = system("start pvb_make_modbusdaemon.bat");
+      Buf = "g++ \""+target+".cpp\" \"%PVBDIR%\\win-mingw\\bin\\librllib.a\" -lws2_32 \"-I%PVBDIR%\\rllib\\lib\" -ladvapi32  -static-libgcc -o \""+f_info.baseName()+".exe\"";
+      Buf = "echo "+Buf+" & "+Buf+" & pause";
 #endif
+      ret = system(Buf.toUtf8().constData());
       break;
     default:
       break;
@@ -118,10 +134,33 @@ void dlgDaemon::slotClose()
   accept();
 }
 
+void dlgDaemon::slotOpen()
+{
+   filename =  QFileDialog::getOpenFileName(this,"Modbus - Open File","","modbus (*.mkmodbus)");
+   if(!filename.isEmpty())
+   {
+       load(QDir::toNativeSeparators(filename));
+   }
+}
+void dlgDaemon::slotNew()
+{
+   filename =  QFileDialog::getSaveFileName(this,"Modbus - New File","","*.mkmodbus");
+   if(!filename.isEmpty())
+   {
+       if(!filename.contains(".mkmodbus"))
+       {
+           filename.append(".mkmodbus");
+       }
+       load(QDir::toNativeSeparators(filename));
+   }
+}
+
 void dlgDaemon::load(QString name)
 {
   filename = name;
+  target = name.remove(".mkmodbus");
   form->textEdit->clear();
+  form->labelFile->setText(filename);
   QFile f(filename);
   if(f.open(QIODevice::ReadOnly))
   {

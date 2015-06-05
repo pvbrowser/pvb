@@ -478,6 +478,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"//***************************************************************************\n");
   fprintf(fout,"#include \"pvapp.h\"\n");
   fprintf(fout,"// todo: comment me out. you can insert these objects as extern in your masks.\n");
+  fprintf(fout,"// Change \"modbus\"(Change if applicable) and \"modbusdaemon_\" with the \"name\" of your file \"name.mkmodbus\".\n");
   fprintf(fout,"//rlModbusClient     modbus(modbusdaemon_MAILBOX,modbusdaemon_SHARED_MEMORY,modbusdaemon_SHARED_MEMORY_SIZE);\n");
   fprintf(fout,"//rlSiemensTCPClient siemensTCP(siemensdaemon_MAILBOX,siemensdaemon_SHARED_MEMORY,siemensdaemon_SHARED_MEMORY_SIZE);\n");
   fprintf(fout,"//rlPPIClient        ppi(ppidaemon_MAILBOX,ppidaemon_SHARED_MEMORY,ppidaemon_SHARED_MEMORY_SIZE);\n");
@@ -566,7 +567,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"//#include \"rlmodbusclient.h\"\n");
   fprintf(fout,"//#include \"rlsiemenstcpclient.h\"\n");
   fprintf(fout,"//#include \"rlppiclient.h\"\n");
-  fprintf(fout,"//#include \"modbusdaemon.h\"             // this is generated\n");
+  fprintf(fout,"//#include \"modbusdaemon.h\"             // this is generated. Change for name.h -> \"name.mkmodbus\"\n");
   fprintf(fout,"//#include \"siemensdaemon.h\"            // this is generated\n");
   fprintf(fout,"//#include \"ppidaemon.h\"                // this is generated\n");
   fprintf(fout,"\n");
@@ -828,7 +829,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"// todo: uncomment me if you want to use this data aquisiton\n");
   fprintf(fout,"// also uncomment this classes in main.cpp and pvapp.h\n");
   fprintf(fout,"// also remember to uncomment rllib in the project file\n");
-  fprintf(fout,"//extern rlModbusClient     modbus;\n");
+  fprintf(fout,"//extern rlModbusClient     modbus;  //Change if applicable\n");
   fprintf(fout,"//extern rlSiemensTCPClient siemensTCP;\n");
   fprintf(fout,"//extern rlPPIClient        ppi;\n");
   fprintf(fout,"\n");

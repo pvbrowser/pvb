@@ -32,6 +32,8 @@ public:
 public slots:
     void slotCompile();
     void slotClose();
+    void slotOpen();
+    void slotNew();
 private:
     void load(QString name);
     void save();

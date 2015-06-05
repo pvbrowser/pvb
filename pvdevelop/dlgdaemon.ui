@@ -1,10 +1,8 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>DialogDaemon</class>
- <widget class="QDialog" name="DialogDaemon" >
-  <property name="geometry" >
+ <widget class="QDialog" name="DialogDaemon">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -12,7 +10,7 @@
     <height>513</height>
    </rect>
   </property>
-  <property name="font" >
+  <property name="font">
    <font>
     <family>Courier</family>
     <pointsize>10</pointsize>
@@ -23,44 +21,51 @@
     <strikeout>false</strikeout>
    </font>
   </property>
-  <property name="windowTitle" >
+  <property name="windowTitle">
    <string>pvdevelop Make a Daemon</string>
   </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>9</number>
-   </property>
-   <property name="spacing" >
+  <layout class="QVBoxLayout">
+   <property name="spacing">
     <number>6</number>
    </property>
+   <property name="margin">
+    <number>9</number>
+   </property>
    <item>
-    <widget class="QTextEdit" name="textEdit" >
-     <property name="lineWrapMode" >
+    <widget class="QTextEdit" name="textEdit">
+     <property name="lineWrapMode">
       <enum>QTextEdit::NoWrap</enum>
      </property>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" >
-     <property name="margin" >
-      <number>0</number>
-     </property>
-     <property name="spacing" >
+    <layout class="QHBoxLayout">
+     <property name="spacing">
       <number>6</number>
      </property>
+     <property name="margin">
+      <number>0</number>
+     </property>
      <item>
-      <widget class="QPushButton" name="pushButtonCompile" >
-       <property name="text" >
+      <widget class="QPushButton" name="pushButtonCompile">
+       <property name="text">
         <string>Compile</string>
        </property>
       </widget>
      </item>
      <item>
+      <widget class="QLabel" name="labelFile">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <spacer>
-       <property name="orientation" >
+       <property name="orientation">
         <enum>Qt::Horizontal</enum>
        </property>
-       <property name="sizeHint" >
+       <property name="sizeHint" stdset="0">
         <size>
          <width>40</width>
          <height>20</height>
@@ -69,15 +74,29 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonCancel" >
-       <property name="text" >
+      <widget class="QPushButton" name="pushButtonOpen">
+       <property name="text">
+        <string>Open</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonNew">
+       <property name="text">
+        <string>New</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButtonCancel">
+       <property name="text">
         <string>Cancel</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButtonClose" >
-       <property name="text" >
+      <widget class="QPushButton" name="pushButtonClose">
+       <property name="text">
         <string>Close</string>
        </property>
       </widget>
@@ -86,7 +105,6 @@
    </item>
   </layout>
  </widget>
- <pixmapfunction></pixmapfunction>
  <resources/>
  <connections>
   <connection>
@@ -95,11 +113,11 @@
    <receiver>DialogDaemon</receiver>
    <slot>accept()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>351</x>
      <y>38</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>233</x>
      <y>29</y>
     </hint>
@@ -111,11 +129,11 @@
    <receiver>DialogDaemon</receiver>
    <slot>reject()</slot>
    <hints>
-    <hint type="sourcelabel" >
+    <hint type="sourcelabel">
      <x>330</x>
      <y>66</y>
     </hint>
-    <hint type="destinationlabel" >
+    <hint type="destinationlabel">
      <x>197</x>
      <y>125</y>
     </hint>

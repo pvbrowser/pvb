@@ -81,7 +81,7 @@ dlgInsertFunction::dlgInsertFunction()
   subitem = sub(item,"modbus.writeSingleCoil(slave,adr,value);");
   subitem = sub(item,"modbus.writeMultipleCoils(slave,adr,values[],num_coils);");
   subitem = sub(item,"modbus.writePresetSingleRegister(slave,adr,value);");
-  subitem = sub(item,"modbus.writePresetMultipleResisters(slave,adr,values[],num_values);");
+  subitem = sub(item,"modbus.writePresetMultipleRegisters(slave,adr,values[],num_values);");
   subitem = sub(item,"val = modbus.readBit(offset,number);");
   subitem = sub(item,"val = modbus.readByte(offset,number);");  
   subitem = sub(item,"val = modbus.readShort(offset,number);");  

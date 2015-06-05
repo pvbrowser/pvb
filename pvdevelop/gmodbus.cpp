@@ -25,9 +25,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+QFileInfo f_info;
 static char line[256*256];
-static char target[4096];
+static char *target;
 static char shared_memory[4096];
 static char mailbox[4096];
 #define SERIAL 1
@@ -146,7 +146,7 @@ static void init(const char *name)
     exit(-1);
   }
 
-  sprintf(line,"%s.h",target);
+  sprintf(line,"%s.h",f_info.filePath().remove(".mkmodbus").toUtf8().data());
   fout = fopen(line,"w");
   if(fout == NULL)
   {
@@ -212,7 +212,7 @@ static void generate(const char *name)
   char *cptr;
   int  slave,function,start_adr,num_register;
 
-  sprintf(line,"%s.cpp",target);
+  sprintf(line,"%s.cpp",f_info.filePath().remove(".mkmodbus").toUtf8().data());
   fout = fopen(line,"w");
   if(fout == NULL)
   {
@@ -238,7 +238,7 @@ static void generate(const char *name)
   {
     fprintf(fout,"%s","#include \"rlevent.h\"\n");
   }
-  fprintf(fout,"#include \"modbusdaemon.h\"\n");
+  fprintf(fout,"#include \"%s.h\"\n",target);
   fprintf(fout,"\n");
   if(baudrate <= 0) baudrate = 9600;
   fprintf(fout,"#define MODBUS_IDLETIME (4*1000)/%d\n",baudrate/100);
@@ -276,7 +276,7 @@ static void generate(const char *name)
   fprintf(fout,"\n");
   fprintf(fout,"  while(1)\n");
   fprintf(fout,"  {\n");
-  fprintf(fout,"    rlsleep(5000);\n");
+  fprintf(fout,"    rlsleep(60000);\n");
   fprintf(fout,"    if(cnt1 == watchcnt1) break;\n");
   fprintf(fout,"    cnt1 = watchcnt1;\n");
   fprintf(fout,"  }\n");
@@ -315,7 +315,7 @@ static void generate(const char *name)
   fprintf(fout,"    {\n");
   fprintf(fout,"      writeErrorCount++;\n");
   fprintf(fout,"      if(writeErrorCount >= 256*128) writeErrorCount = 0;\n");
-  fprintf(fout,"      shm.write(modbusdaemon_WRITE_ERROR_COUNT_BASE,&writeErrorCount,2);\n");
+  fprintf(fout,"      shm.write(%s_WRITE_ERROR_COUNT_BASE,&writeErrorCount,2);\n",target);
   fprintf(fout,"    }\n");
   strcpy(line, "    printf(\"mbx ret=%d slave=%d function=%d buf[2]=%d\\n\",ret,slave,function,buf[2]);");
   fprintf(fout,"%s\n",line);
@@ -342,7 +342,7 @@ static void generate(const char *name)
   fprintf(fout,"  {\n");
   fprintf(fout,"    readErrorCount++;\n");
   fprintf(fout,"    if(readErrorCount >= 256*128) readErrorCount = 0;\n");
-  fprintf(fout,"    shm.write(modbusdaemon_READ_ERROR_COUNT_BASE,&readErrorCount,2);\n");
+  fprintf(fout,"    shm.write(%s_READ_ERROR_COUNT_BASE,&readErrorCount,2);\n",target);
   fprintf(fout,"  }\n");
   if(eventport != -1)
   {
@@ -394,14 +394,14 @@ static void generate(const char *name)
   fprintf(fout,"  thread.create(reader,NULL);\n");
   fprintf(fout,"  watchdog.create(watchdogthread,NULL);\n");
   fprintf(fout,"\n");
-  fprintf(fout,"  shm.write(modbusdaemon_LIFE_COUNTER_BASE,&lifeCounter,2);\n");
-  fprintf(fout,"  shm.write(modbusdaemon_READ_ERROR_COUNT_BASE,&readErrorCount,2);\n");
-  fprintf(fout,"  shm.write(modbusdaemon_WRITE_ERROR_COUNT_BASE,&writeErrorCount,2);\n");
+  fprintf(fout,"  shm.write(%s_LIFE_COUNTER_BASE,&lifeCounter,2);\n",target);
+  fprintf(fout,"  shm.write(%s_READ_ERROR_COUNT_BASE,&readErrorCount,2);\n",target);
+  fprintf(fout,"  shm.write(%s_WRITE_ERROR_COUNT_BASE,&writeErrorCount,2);\n",target);
   fprintf(fout,"  while(1)\n");
   fprintf(fout,"  {\n");
   fprintf(fout,"    lifeCounter++;\n");
   fprintf(fout,"    if(lifeCounter >= 256*128) lifeCounter = 0;\n");
-  fprintf(fout,"    shm.write(modbusdaemon_LIFE_COUNTER_BASE,&lifeCounter,2);\n");
+  fprintf(fout,"    shm.write(%s_LIFE_COUNTER_BASE,&lifeCounter,2);\n",target);
   fprintf(fout,"    offset = 0;\n");
   fprintf(fout,"    //    modbusCycle(offset, slave, function, start_adr, num_register);\n");
   //fprintf(fout,"    ret = modbusCycle(offset, 1, rlModbus::ReadInputStatus, 0, 10);\n");
@@ -452,8 +452,9 @@ static void generate(const char *name)
 
 int gmodbus(const char *name)
 {
-  strcpy(target,"modbusdaemon");
-  init(name);
-  generate(name);
-  return 0;
+    f_info = QFileInfo(name);
+    target = f_info.fileName().remove(".mkmodbus").toUtf8().data();
+    init(name);
+    generate(name);
+    return 0;
 }
