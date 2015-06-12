@@ -27,6 +27,14 @@ if [ "x${PYTHON_LIB}" = "x" ]; then
   fi
 fi
 
+# When the result contains more than 1 dir, this would break the build:
+# g++ fatal error: no input files compilation terminated.
+# make: ***[qtdatabase.o] Error
+# Please also refer to pvb issue 4 for details.
+# To handle this case, only the first searching result would be used
+PYTHON_INCLUDE=`echo $PYTHON_INCLUDE | cut -d " " -f1 | tr -d " "`
+PYTHON_LIB=`echo $PYTHON_LIB | cut -d " " -f1 | tr -d " "`
+
 echo python_include=${PYTHON_INCLUDE}
 echo python_lib=${PYTHON_LIB}
 
