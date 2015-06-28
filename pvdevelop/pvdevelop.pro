@@ -2,7 +2,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
   QT         += opengl svg webkit
   CONFIG     += uitools warn_on release
 }else{
-  QT         += uitools webkitwidgets widgets opengl svg webkit printsupport
+  QT         += printsupport uitools webkitwidgets widgets opengl svg webkit printsupport
   CONFIG     += warn_on release
 }    
 QMAKE_LFLAGS += -static-libgcc

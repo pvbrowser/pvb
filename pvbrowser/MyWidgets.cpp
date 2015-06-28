@@ -1886,6 +1886,23 @@ QWebView *MyTextBrowser::createWindow(QWebPage::WebWindowType type)
 
 void MyTextBrowser::moveContent(int pos)
 {
+  if(pos >= '\t' || pos < 0)
+  {
+     activateWindow();
+     char text[16];
+     text[0] = pos & 0x0ff;
+     text[1] = '\0';
+     int modifiers = pos & 0x07fffff00;
+     int key = pos & 0x0ff;
+     if     ((pos & 0x0ff) == '\t') key = Qt::Key_Tab;
+     else if((pos & 0x0ff) == 0x0d) key = Qt::Key_Return;
+     QKeyEvent pressEvent(  QEvent::KeyPress,   (Qt::Key) key, (Qt::KeyboardModifiers) modifiers, text);
+     QKeyEvent releaseEvent(QEvent::KeyRelease, (Qt::Key) key, (Qt::KeyboardModifiers) modifiers, text);
+     if((pos & 0x0ff) == '\t') QWidget::setFocus(Qt::TabFocusReason);
+     keyPressEvent(&pressEvent);
+     keyReleaseEvent(&releaseEvent);
+     return;
+  }
 #ifdef NO_WEBKIT
   char buf[MAX_PRINTF_LENGTH];
   QString myurl;

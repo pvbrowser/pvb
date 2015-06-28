@@ -115,9 +115,7 @@ copy ..\designer\plugins\libpvb_designer_plugin.a                bin\plugins\des
 rem copy bin\plugins\designer\*designer_plugin*                      %QTDIR%\plugins\designer\                     
 
 cd bin
-copy %QTDIR%\bin\icudt51.dll
-copy %QTDIR%\bin\icuin51.dll
-copy %QTDIR%\bin\icuuc51.dll
+copy %QTDIR%\bin\icu*.dll
 copy %QTDIR%\bin\libgcc_s_dw2-1.dll
 rem copy %QTDIR%\bin\libstdc++-6.dll
 copy %QTDIR%\bin\libwinpthread-1.dll
@@ -152,6 +150,8 @@ copy %QTDIR%\bin\Qt5WebKitWidgets.dll
 copy %QTDIR%\bin\Qt5Widgets.dll
 copy %QTDIR%\bin\Qt5Xml.dll
 copy %QTDIR%\bin\Qt5XmlPatterns.dll
+copy %QTDIR%\bin\Qt5Positioning.dll
+copy %QTDIR%\bin\Qt5WebChannel.dll
 
 copy %MINGWDIR%\bin\*.dll
 cd ..

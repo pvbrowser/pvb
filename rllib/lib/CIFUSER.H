@@ -582,7 +582,7 @@ typedef struct tagCIF_PLC_DRIVER_INFO {
 
     LARGE_INTEGER   ilCycleTime;
     LARGE_INTEGER   ilTransferTime;
-  } PERFORMANCE_DATA;
+  } PERFORMANCE_DATA_PVB; // appended _PVB because original name lead to name conflict on win32
 
   /*--------------------------*/
   /* Device RAM test test     */

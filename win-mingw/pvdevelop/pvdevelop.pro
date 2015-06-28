@@ -7,7 +7,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
   LIBS       += $(MINGWDIR)/lib/libglu32.a                                 
   LIBS       += $(MINGWDIR)/lib/libadvapi32.a                              
 }else{
-  QT         += uitools webkitwidgets widgets opengl svg webkit
+  QT         += printsupport uitools webkitwidgets widgets opengl svg webkit
   CONFIG     += warn_on release
   LIBS       += -lws2_32                                
   LIBS       += -limm32                                

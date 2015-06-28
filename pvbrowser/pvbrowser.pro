@@ -10,7 +10,7 @@ QT           += opengl
 lessThan(QT_MAJOR_VERSION, 5) {
   QT         += xml svg webkit network
 }else{
-  QT         += multimedia uitools webkitwidgets widgets xml svg webkit network printsupport
+  QT         += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network printsupport
 }    
 
 linux-g++-gles2 {

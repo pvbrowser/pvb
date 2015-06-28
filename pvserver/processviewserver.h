@@ -2576,6 +2576,12 @@ int pvRequestSvgMatrixForElement(PARAM *p, int id, const char *objectname);
 /*! <pre>
 Move within html page.
 pos = Home|Backward|Forward|Reload
+or
+pos = Qt::KeyboardModifiers ored with ascii key. Where key >= ' ' && key < 128
+      Qt::NoModifier      0x00000000  No modifier key is pressed.
+      Qt::ShiftModifier   0x02000000  A Shift key on the keyboard is pressed.
+      Qt::ControlModifier 0x04000000  A Ctrl key on the keyboard is pressed.
+      Qt::AltModifier     0x08000000  An Alt key on the keyboard is pressed.
 Allowed widgets: QTextBrowser
 </pre> */
 int pvMoveContent(PARAM *p, int id, int pos);
