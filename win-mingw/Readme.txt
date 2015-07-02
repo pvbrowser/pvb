@@ -16,10 +16,9 @@ must be included within the PATH environment variable.
 For pvdevelop you need to install the following additional software.
 - Qt
 - MinGW
-- Python (if you want to use it)
 
 Qt can be installed from
-http://qt.nokia.com/downloads
+https://www.qt.io/download
 During the installation of Qt you will be asked,
 if you want to install MinGW also.
 
@@ -28,7 +27,7 @@ if you want to install MinGW also.
 For compiling pvbrowser from sourcecode adjust login.bat and run
 
 login.bat
-build.bat
+build5.bat
 build_language_bindings.bat
 
 ----------------------------------------------------------------

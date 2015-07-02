@@ -26,7 +26,7 @@
 
 #include <locale.h>
 
-const char pvserver_version[] = "4.7.9";
+const char pvserver_version[] = "4.8.0";
 
 /* #include "qimage.h" */
 #include <time.h>

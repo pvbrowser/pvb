@@ -21,7 +21,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
   LIBS         += $(MINGWDIR)/lib/libglu32.a                                 
   LIBS         += $(MINGWDIR)/lib/libadvapi32.a                              
 }else{
-  QT           += multimedia uitools webkitwidgets widgets xml svg webkit network
+  QT           += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network
   CONFIG       += warn_on release                                    
   LIBS         += -lws2_32
 }    

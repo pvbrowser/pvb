@@ -11,8 +11,8 @@ rem ### for qt4.8.2 ###
 rem SET    QTDIR=C:\Qt\4.8.2
 rem MINGWDIR=C:\mingw-old
 rem ### for qt5.1.0 ###
-SET    QTDIR=C:\Qt\5.1.0\5.1.0\mingw48_32
-SET MINGWDIR=C:\Qt\5.1.0\Tools\mingw48_32
+SET    QTDIR=C:\Qt\Qt5.4.2\5.4\mingw491_32
+SET MINGWDIR=C:\Qt\Qt5.4.2\Tools\mingw491_32
 
 rem tools necessary for language bindings
 SET SWIGDIR=Z:\win\swigwin-1.3.33
@@ -21,8 +21,8 @@ SET VTKDIR=z:\Downloads\vtk\VTK5.10.1
 SET TCLDIR=c:\Tcl
 SET TCLLIBPATH=c:\Tcl\Tcl8.5;z:/Downloads/vtk/bin/Wrapping/Tcl
 rem change to directory with our sources
-SET PVBDIR=Z:\cc\priv\cvs\pvb
-z:
+SET PVBDIR=c:\rl\cc\pvb
+c:
 cd  %PVBDIR%\win-mingw
 
 rem setup path variables
