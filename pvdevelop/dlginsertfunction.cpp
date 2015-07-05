@@ -862,6 +862,8 @@ dlgInsertFunction::dlgInsertFunction()
   subsubitem = sub(subitem,"pvClientCommand(p,command,filename);");
   subsubitem = sub(subitem,"pvCSVcreate(p,command,filename);");
   subsubitem = sub(subitem,"pvHyperlink(p,<+>link);");
+
+  if(subsubitem == NULL) return; // suppress warning
 }
 
 dlgInsertFunction::~dlgInsertFunction()
