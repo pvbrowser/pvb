@@ -537,7 +537,7 @@ void MainWindow::about()
  QMessageBox::about(this, tr("About pvbrowser"),
             tr(
                "pvbrowser (R) \nVersion " VERSION
-               "\n(C) 2000-2014 Lehrig Software Engineering"
+               "\n(C) 2000-2015 Lehrig Software Engineering"
                "\nlehrig@t-online.de"
                "\nhttp://pvbrowser.org"
                "\nhttp://www.lehrig.de"
@@ -1614,8 +1614,12 @@ void MainWindow::snapshot(QPixmap &pm)
   {
     w->raise();
     //pm = QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height());
+#if QT_VERSION < 0x050000
     pm = QPixmap::grabWidget(w,0,0,w->width(),w->height());
-  }  
+#else          
+    pm = qApp->primaryScreen()->grabWindow(w->winId(),0,0,w->width(),w->height());
+#endif          
+   }  
   if(opt.arg_debug) printf("snapshot done\n");
 }
 

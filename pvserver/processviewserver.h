@@ -2538,6 +2538,11 @@ Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit
 </pre> */
 int pvText(PARAM *p, int id);
 /*! <pre>
+Request a jpeg from the widget. The jpeg will arrive in an CLIPBOARD_EVENT.
+Allowed widgets: QWidget, QImage, QDraw, QwtPlot
+</pre> */
+int pvRequestJpeg(PARAM *p, int id);
+/*! <pre>
 Request the geometry from the widget. The text will arrive in an TEXT_EVENT.
 geometry:x,y,width,height
 Allowed widgets: all widgets

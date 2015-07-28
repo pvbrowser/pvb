@@ -118,6 +118,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a44e6db2d95881c1f2284504ac7e9629a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae384ab0331cf5ff6eea3441500a57bfc"><td class="memItemLeft" align="right" valign="top">FILE *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc">getFilepointer</a> ()</td></tr>
 <tr class="separator:ae384ab0331cf5ff6eea3441500a57bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9066feb1063f891ce7047eb2bfe4a1b3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classrlSpawn.html#a9066feb1063f891ce7047eb2bfe4a1b3">readJpegBuffer</a> (unsigned char *buffer, int maxbuffer)</td></tr>
+<tr class="separator:a9066feb1063f891ce7047eb2bfe4a1b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -177,12 +179,12 @@ Attention: This class is only available on unix like systems.
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <a class="code" href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">pid</a> = 0;</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">#endif  </span></div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;}</div>
-<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00111">rlspawn.h:111</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a7e192d14dd1b5bea914f1802f34294fe"><div class="ttname"><a href="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe">rlSpawn::hProcess</a></div><div class="ttdeci">HANDLE hProcess</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00114">rlspawn.h:114</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a8fb0700dccc9c8d4b403ad18753c849b"><div class="ttname"><a href="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b">rlSpawn::hThread</a></div><div class="ttdeci">HANDLE hThread</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00113">rlspawn.h:113</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae8fad062ebe5687115162704046bb516"><div class="ttname"><a href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">rlSpawn::pid</a></div><div class="ttdeci">int pid</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00105">rlspawn.h:105</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00110">rlspawn.h:110</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ad1cfeb2657d6a5fefc1e5ae08588b6a8"><div class="ttname"><a href="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8">rlSpawn::toChildRD</a></div><div class="ttdeci">HANDLE toChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00109">rlspawn.h:109</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00154">rlspawn.h:154</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a7e192d14dd1b5bea914f1802f34294fe"><div class="ttname"><a href="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe">rlSpawn::hProcess</a></div><div class="ttdeci">HANDLE hProcess</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00157">rlspawn.h:157</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a8fb0700dccc9c8d4b403ad18753c849b"><div class="ttname"><a href="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b">rlSpawn::hThread</a></div><div class="ttdeci">HANDLE hThread</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00156">rlspawn.h:156</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae8fad062ebe5687115162704046bb516"><div class="ttname"><a href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">rlSpawn::pid</a></div><div class="ttdeci">int pid</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00148">rlspawn.h:148</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00153">rlspawn.h:153</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ad1cfeb2657d6a5fefc1e5ae08588b6a8"><div class="ttname"><a href="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8">rlSpawn::toChildRD</a></div><div class="ttdeci">HANDLE toChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00152">rlspawn.h:152</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -221,12 +223,12 @@ Attention: This class is only available on unix like systems.
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">if</span>(fromChild != NULL) ::fclose((FILE*) fromChild);</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
-<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00111">rlspawn.h:111</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a7e192d14dd1b5bea914f1802f34294fe"><div class="ttname"><a href="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe">rlSpawn::hProcess</a></div><div class="ttdeci">HANDLE hProcess</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00114">rlspawn.h:114</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a8fb0700dccc9c8d4b403ad18753c849b"><div class="ttname"><a href="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b">rlSpawn::hThread</a></div><div class="ttdeci">HANDLE hThread</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00113">rlspawn.h:113</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a54501b9d99e44c9a1c38b24163e7427a"><div class="ttname"><a href="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a">rlSpawn::fromChildWR</a></div><div class="ttdeci">HANDLE fromChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00112">rlspawn.h:112</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00110">rlspawn.h:110</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ad1cfeb2657d6a5fefc1e5ae08588b6a8"><div class="ttname"><a href="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8">rlSpawn::toChildRD</a></div><div class="ttdeci">HANDLE toChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00109">rlspawn.h:109</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00154">rlspawn.h:154</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a7e192d14dd1b5bea914f1802f34294fe"><div class="ttname"><a href="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe">rlSpawn::hProcess</a></div><div class="ttdeci">HANDLE hProcess</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00157">rlspawn.h:157</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a8fb0700dccc9c8d4b403ad18753c849b"><div class="ttname"><a href="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b">rlSpawn::hThread</a></div><div class="ttdeci">HANDLE hThread</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00156">rlspawn.h:156</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a54501b9d99e44c9a1c38b24163e7427a"><div class="ttname"><a href="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a">rlSpawn::fromChildWR</a></div><div class="ttdeci">HANDLE fromChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00155">rlspawn.h:155</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00153">rlspawn.h:153</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ad1cfeb2657d6a5fefc1e5ae08588b6a8"><div class="ttname"><a href="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8">rlSpawn::toChildRD</a></div><div class="ttdeci">HANDLE toChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00152">rlspawn.h:152</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -265,7 +267,7 @@ When the command terminates EOF is returned.
 <div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  return ::fgetc((FILE*) fromChild);</div>
 <div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;<span class="preprocessor">#endif  </span></div>
 <div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;}</div>
-<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00111">rlspawn.h:111</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00154">rlspawn.h:154</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -366,6 +368,93 @@ Return: number of bytes written
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a9066feb1063f891ce7047eb2bfe4a1b3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlSpawn::readJpegBuffer </td>
+          <td>(</td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>buffer</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>maxbuffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+Read JPEG buffer fromChild
+return: length of buffer | -1 as error</pre><pre>Example: A thread continiously reads the mjpeg output of ffmpeg and stores it in jpegBuffer</pre><pre><a class="el" href="classrlThread.html">rlThread</a> mythread;
+unsigned char jpegBuffer[256*256*16];</pre><pre>void *myThread(void *arg) // define your thread function
+{
+  <a class="el" href="classrlSpawn.html">rlSpawn</a> spawn;</pre><pre>  restart:  
+  if(arg == NULL) return NULL;</pre><pre>  <a class="el" href="structTHREAD__PARAM.html">THREAD_PARAM</a>  *p = (<a class="el" href="structTHREAD__PARAM.html">THREAD_PARAM</a> *) arg;
+  //myThreadsData *d = (myThreadsData *) p-&gt;user;
+  spawn.spawn("ffmpeg -f video4linux2 -i /dev/v4l/by-id/usb-046d_0825_A867B3D0-video-index0 -vf \"transpose, hflip" -r 10 -f mjpeg pipe:1");  
+  while(p-&gt;running)
+  {
+    int ret = spawn.readJpegBuffer(jpegBuffer,sizeof(jpegBuffer));
+    printf("ret=%d\n",ret);
+    if(ret &lt; 0) goto restart;
+  }
+  return arg;
+}</pre><pre>Example: The jpegBuffer can now be Send to a Image Widget on the pvbrowser client</pre><pre>extern <a class="el" href="classrlThread.html">rlThread</a> mythread;
+extern unsigned char jpegBuffer[];</pre><pre>static int slotNullEvent(PARAM *p, DATA *d)
+{
+  if(p == NULL || d == NULL) return -1;
+  pvSendJpegFrame(p,imgWebcam,jpegBuffer);
+  return 0;
+}</pre><pre></pre> 
+<p>Definition at line <a class="el" href="rlspawn_8cpp_source.html#l00463">463</a> of file <a class="el" href="rlspawn_8cpp_source.html">rlspawn.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;{</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  <span class="keywordtype">int</span> c1, c2;</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;  <span class="comment">// search for startOfImage ff d8</span></div>
+<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;  <span class="keywordflow">while</span>(1)</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  {</div>
+<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;    <span class="keywordflow">if</span>((c1 = <a class="code" href="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4">getchar</a>()) &lt; 0) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;    <span class="keywordflow">if</span>(c1 == 0x0ff)</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;    {</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;      <span class="keywordflow">if</span>((c2 = <a class="code" href="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4">getchar</a>()) &lt; 0) <span class="keywordflow">return</span> -2;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;      <span class="keywordflow">if</span>(c2 == 0x0d8)</div>
+<div class="line"><a name="l00475"></a><span class="lineno">  475</span>&#160;      {</div>
+<div class="line"><a name="l00476"></a><span class="lineno">  476</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00477"></a><span class="lineno">  477</span>&#160;      }</div>
+<div class="line"><a name="l00478"></a><span class="lineno">  478</span>&#160;    }</div>
+<div class="line"><a name="l00479"></a><span class="lineno">  479</span>&#160;  }</div>
+<div class="line"><a name="l00480"></a><span class="lineno">  480</span>&#160;</div>
+<div class="line"><a name="l00481"></a><span class="lineno">  481</span>&#160;  <span class="keywordtype">int</span> ind = 0;</div>
+<div class="line"><a name="l00482"></a><span class="lineno">  482</span>&#160;  buffer[ind++] = (<span class="keywordtype">unsigned</span> char) c1;</div>
+<div class="line"><a name="l00483"></a><span class="lineno">  483</span>&#160;  buffer[ind++] = (<span class="keywordtype">unsigned</span> char) c2;</div>
+<div class="line"><a name="l00484"></a><span class="lineno">  484</span>&#160;  <span class="keywordflow">while</span>(1) <span class="comment">// read until endOfImage ff d9</span></div>
+<div class="line"><a name="l00485"></a><span class="lineno">  485</span>&#160;  {</div>
+<div class="line"><a name="l00486"></a><span class="lineno">  486</span>&#160;    <span class="keywordflow">if</span>(ind &gt;= maxbuffer) <span class="keywordflow">return</span> -3;</div>
+<div class="line"><a name="l00487"></a><span class="lineno">  487</span>&#160;    <span class="keywordflow">if</span>((c1 = <a class="code" href="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4">getchar</a>()) &lt; 0) <span class="keywordflow">return</span> -4;</div>
+<div class="line"><a name="l00488"></a><span class="lineno">  488</span>&#160;    buffer[ind++] = (<span class="keywordtype">unsigned</span> char) c1;</div>
+<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;    <span class="keywordflow">if</span>(c1 == 0x0ff)</div>
+<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160;    {</div>
+<div class="line"><a name="l00491"></a><span class="lineno">  491</span>&#160;      <span class="keywordflow">if</span>((c2 = <a class="code" href="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4">getchar</a>()) &lt; 0) <span class="keywordflow">return</span> -5;</div>
+<div class="line"><a name="l00492"></a><span class="lineno">  492</span>&#160;      buffer[ind++] = (<span class="keywordtype">unsigned</span> char) c2;</div>
+<div class="line"><a name="l00493"></a><span class="lineno">  493</span>&#160;      <span class="keywordflow">if</span>(c2 == 0x0d9)</div>
+<div class="line"><a name="l00494"></a><span class="lineno">  494</span>&#160;      {</div>
+<div class="line"><a name="l00495"></a><span class="lineno">  495</span>&#160;        <span class="keywordflow">return</span> ind;;</div>
+<div class="line"><a name="l00496"></a><span class="lineno">  496</span>&#160;      }</div>
+<div class="line"><a name="l00497"></a><span class="lineno">  497</span>&#160;    }</div>
+<div class="line"><a name="l00498"></a><span class="lineno">  498</span>&#160;  }  </div>
+<div class="line"><a name="l00499"></a><span class="lineno">  499</span>&#160;}</div>
+<div class="ttc" id="classrlSpawn_html_ac8878a74a22b2b7d3abfdb50090a8db4"><div class="ttname"><a href="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4">rlSpawn::getchar</a></div><div class="ttdeci">int getchar()</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8cpp_source.html#l00355">rlspawn.cpp:355</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="af7ae73acac4185d73d7dd8379dede7d4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -429,10 +518,10 @@ When the command terminates NULL is returned.
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4">line</a>;</div>
 <div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif  </span></div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;}</div>
-<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00111">rlspawn.h:111</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00154">rlspawn.h:154</a></div></div>
 <div class="ttc" id="classrlSpawn_html_ac8878a74a22b2b7d3abfdb50090a8db4"><div class="ttname"><a href="classrlSpawn.html#ac8878a74a22b2b7d3abfdb50090a8db4">rlSpawn::getchar</a></div><div class="ttdeci">int getchar()</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8cpp_source.html#l00355">rlspawn.cpp:355</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a11292b55d7c26e3e1894fd9574d49db4"><div class="ttname"><a href="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4">rlSpawn::line</a></div><div class="ttdeci">char line[4096]</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00118">rlspawn.h:118</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae8fad062ebe5687115162704046bb516"><div class="ttname"><a href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">rlSpawn::pid</a></div><div class="ttdeci">int pid</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00105">rlspawn.h:105</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a11292b55d7c26e3e1894fd9574d49db4"><div class="ttname"><a href="classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4">rlSpawn::line</a></div><div class="ttdeci">char line[4096]</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00161">rlspawn.h:161</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae8fad062ebe5687115162704046bb516"><div class="ttname"><a href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">rlSpawn::pid</a></div><div class="ttdeci">int pid</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00148">rlspawn.h:148</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -486,7 +575,7 @@ return = 1 // characters available
 <div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;<span class="preprocessor">#endif  </span></div>
 <div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;}</div>
 <div class="ttc" id="classrlSpawn_html_a6e72047d975dfd4728aaa41b0cd301f5"><div class="ttname"><a href="classrlSpawn.html#a6e72047d975dfd4728aaa41b0cd301f5">rlSpawn::select</a></div><div class="ttdeci">int select(int timeout=50)</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8cpp_source.html#l00422">rlspawn.cpp:422</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00111">rlspawn.h:111</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00154">rlspawn.h:154</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -647,15 +736,15 @@ Return: 0=success -1=error
 <div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  <span class="keywordflow">return</span> <a class="code" href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">pid</a>;</div>
 <div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
-<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00111">rlspawn.h:111</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a7e192d14dd1b5bea914f1802f34294fe"><div class="ttname"><a href="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe">rlSpawn::hProcess</a></div><div class="ttdeci">HANDLE hProcess</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00114">rlspawn.h:114</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a8fb0700dccc9c8d4b403ad18753c849b"><div class="ttname"><a href="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b">rlSpawn::hThread</a></div><div class="ttdeci">HANDLE hThread</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00113">rlspawn.h:113</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a35651a18a85f5b2ac5c7f08ff329c107"><div class="ttname"><a href="classrlSpawn.html#a35651a18a85f5b2ac5c7f08ff329c107">rlSpawn::fromChildRD</a></div><div class="ttdeci">HANDLE fromChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00154">rlspawn.h:154</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a7e192d14dd1b5bea914f1802f34294fe"><div class="ttname"><a href="classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe">rlSpawn::hProcess</a></div><div class="ttdeci">HANDLE hProcess</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00157">rlspawn.h:157</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a8fb0700dccc9c8d4b403ad18753c849b"><div class="ttname"><a href="classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b">rlSpawn::hThread</a></div><div class="ttdeci">HANDLE hThread</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00156">rlspawn.h:156</a></div></div>
 <div class="ttc" id="classrlSpawn_html_a915fa3b54cd837e81d72aa2a5a925ee6"><div class="ttname"><a href="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6">rlSpawn::printf</a></div><div class="ttdeci">int printf(const char *format,...)</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8cpp_source.html#l00391">rlspawn.cpp:391</a></div></div>
 <div class="ttc" id="rlcutil_8cpp_html_aaf037932d5e4bb98145220bd8db82a21"><div class="ttname"><a href="rlcutil_8cpp.html#aaf037932d5e4bb98145220bd8db82a21">rlexec</a></div><div class="ttdeci">int rlexec(const char *command)</div><div class="ttdef"><b>Definition:</b> <a href="rlcutil_8cpp_source.html#l00112">rlcutil.cpp:112</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae8fad062ebe5687115162704046bb516"><div class="ttname"><a href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">rlSpawn::pid</a></div><div class="ttdeci">int pid</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00105">rlspawn.h:105</a></div></div>
-<div class="ttc" id="classrlSpawn_html_a54501b9d99e44c9a1c38b24163e7427a"><div class="ttname"><a href="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a">rlSpawn::fromChildWR</a></div><div class="ttdeci">HANDLE fromChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00112">rlspawn.h:112</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00110">rlspawn.h:110</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ad1cfeb2657d6a5fefc1e5ae08588b6a8"><div class="ttname"><a href="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8">rlSpawn::toChildRD</a></div><div class="ttdeci">HANDLE toChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00109">rlspawn.h:109</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae8fad062ebe5687115162704046bb516"><div class="ttname"><a href="classrlSpawn.html#ae8fad062ebe5687115162704046bb516">rlSpawn::pid</a></div><div class="ttdeci">int pid</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00148">rlspawn.h:148</a></div></div>
+<div class="ttc" id="classrlSpawn_html_a54501b9d99e44c9a1c38b24163e7427a"><div class="ttname"><a href="classrlSpawn.html#a54501b9d99e44c9a1c38b24163e7427a">rlSpawn::fromChildWR</a></div><div class="ttdeci">HANDLE fromChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00155">rlspawn.h:155</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00153">rlspawn.h:153</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ad1cfeb2657d6a5fefc1e5ae08588b6a8"><div class="ttname"><a href="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8">rlSpawn::toChildRD</a></div><div class="ttdeci">HANDLE toChildRD</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00152">rlspawn.h:152</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -703,7 +792,7 @@ Return: number of bytes written
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  return ::write(fileno((FILE*)toChild),buf,len);</div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;}</div>
-<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00110">rlspawn.h:110</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00153">rlspawn.h:153</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -738,7 +827,7 @@ Return: number of bytes written
 <div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">#endif  </span></div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;}</div>
 <div class="ttc" id="classrlSpawn_html_ac8a8f582bbaf54d6562db738e3d5261e"><div class="ttname"><a href="classrlSpawn.html#ac8a8f582bbaf54d6562db738e3d5261e">rlSpawn::write</a></div><div class="ttdeci">int write(const char *buf, int len)</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8cpp_source.html#l00374">rlspawn.cpp:374</a></div></div>
-<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00110">rlspawn.h:110</a></div></div>
+<div class="ttc" id="classrlSpawn_html_ae5b94761e5e1bca251af9495c02faae7"><div class="ttname"><a href="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7">rlSpawn::toChildWR</a></div><div class="ttdeci">HANDLE toChildWR</div><div class="ttdef"><b>Definition:</b> <a href="rlspawn_8h_source.html#l00153">rlspawn.h:153</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -761,7 +850,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00111">111</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00154">154</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -783,7 +872,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00112">112</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00155">155</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -805,7 +894,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00114">114</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00157">157</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -827,7 +916,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00113">113</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00156">156</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -849,7 +938,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00118">118</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00161">161</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -863,7 +952,7 @@ Return: number of bytes written
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00105">105</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00148">148</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -885,7 +974,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00109">109</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00152">152</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>
@@ -907,7 +996,7 @@ Return: number of bytes written
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00110">110</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
+<p>Definition at line <a class="el" href="rlspawn_8h_source.html#l00153">153</a> of file <a class="el" href="rlspawn_8h_source.html">rlspawn.h</a>.</p>
 
 </div>
 </div>

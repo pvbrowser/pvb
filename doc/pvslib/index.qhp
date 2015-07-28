@@ -788,6 +788,7 @@
           </section>
           <section title="Input" ref="group__Input.html">
             <section title="pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
+            <section title="pvRequestJpeg" ref="group__Input.html#gae35ec18e2f45d830170759a987e2ad1a" />
             <section title="pvRequestParentWidgetId" ref="group__Input.html#gad9d3203bb218829e4620b81b691918ac" />
             <section title="pvRequestSvgBoundsOnElement" ref="group__Input.html#gaf613d4358f7df90307e537dfdbc7c76e" />
             <section title="pvRequestSvgMatrixForElement" ref="group__Input.html#ga16f54f9891c976df51e5895febf63682" />
@@ -1992,6 +1993,7 @@
               <section title="pvRemoveRow" ref="group__State.html#ga36a91f6f6316d579b9b9b24702922aa6" />
               <section title="pvRenderTreeDump" ref="group__Misc.html#ga7ff8a8d3f46fc4cd3c85b26aaf6596b5" />
               <section title="pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
+              <section title="pvRequestJpeg" ref="group__Input.html#gae35ec18e2f45d830170759a987e2ad1a" />
               <section title="pvRequestParentWidgetId" ref="group__Input.html#gad9d3203bb218829e4620b81b691918ac" />
               <section title="pvRequestSvgBoundsOnElement" ref="group__Input.html#gaf613d4358f7df90307e537dfdbc7c76e" />
               <section title="pvRequestSvgMatrixForElement" ref="group__Input.html#ga16f54f9891c976df51e5895febf63682" />
@@ -2551,6 +2553,7 @@
       <keyword name="pvSendRGBA" id="processviewserver.h::pvSendRGBA" ref="processviewserver_8h.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
       <keyword name="pvSaveDrawBuffer" id="processviewserver.h::pvSaveDrawBuffer" ref="processviewserver_8h.html#ga9e68338ac797827a8abfc8f3fbafae13" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
+      <keyword name="pvRequestJpeg" id="processviewserver.h::pvRequestJpeg" ref="processviewserver_8h.html#gae35ec18e2f45d830170759a987e2ad1a" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
       <keyword name="pvRequestParentWidgetId" id="processviewserver.h::pvRequestParentWidgetId" ref="processviewserver_8h.html#gad9d3203bb218829e4620b81b691918ac" />
       <keyword name="pvSelection" id="processviewserver.h::pvSelection" ref="processviewserver_8h.html#gaa9daf67935f26a7b4b076d1cfff5f4a0" />
@@ -3430,6 +3433,7 @@
       <keyword name="pvSaveDrawBuffer" id="Output::pvSaveDrawBuffer" ref="group__Output.html#ga9e68338ac797827a8abfc8f3fbafae13" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
+      <keyword name="pvRequestJpeg" id="Input::pvRequestJpeg" ref="group__Input.html#gae35ec18e2f45d830170759a987e2ad1a" />
       <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
       <keyword name="pvRequestParentWidgetId" id="Input::pvRequestParentWidgetId" ref="group__Input.html#gad9d3203bb218829e4620b81b691918ac" />
       <keyword name="pvSelection" id="Input::pvSelection" ref="group__Input.html#gaa9daf67935f26a7b4b076d1cfff5f4a0" />

@@ -459,4 +459,42 @@ FILE *rlSpawn::getFilepointer()
   return (FILE *) fromChild;
 #endif  
 }
+  
+int rlSpawn::readJpegBuffer(unsigned char *buffer, int maxbuffer)
+{
+  int c1, c2;
+
+  // search for startOfImage ff d8
+  while(1)
+  {
+    if((c1 = getchar()) < 0) return -1;
+    if(c1 == 0x0ff)
+    {
+      if((c2 = getchar()) < 0) return -2;
+      if(c2 == 0x0d8)
+      {
+        break;
+      }
+    }
+  }
+
+  int ind = 0;
+  buffer[ind++] = (unsigned char) c1;
+  buffer[ind++] = (unsigned char) c2;
+  while(1) // read until endOfImage ff d9
+  {
+    if(ind >= maxbuffer) return -3;
+    if((c1 = getchar()) < 0) return -4;
+    buffer[ind++] = (unsigned char) c1;
+    if(c1 == 0x0ff)
+    {
+      if((c2 = getchar()) < 0) return -5;
+      buffer[ind++] = (unsigned char) c2;
+      if(c2 == 0x0d9)
+      {
+        return ind;;
+      }
+    }
+  }  
+}
 

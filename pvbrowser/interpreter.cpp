@@ -1370,7 +1370,11 @@ void Interpreter::interpretg(const char *command)
       QWidget *w = all[i]->w;
       if(w != NULL) 
       {
+#if QT_VERSION < 0x050000
         QPixmap pm(QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height()));
+#else
+        QPixmap pm(qApp->primaryScreen()->grabWindow(w->winId(),0,0,w->width(),w->height()));
+#endif
         QApplication::clipboard()->setPixmap(pm);
       }
     }
@@ -1799,7 +1803,11 @@ void Interpreter::interpretg(const char *command)
       QWidget *w = (QDrawWidget *) all[i]->w;
       if(w != NULL)
       {
+#if QT_VERSION < 0x050000
         QPixmap pm(QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height()));
+#else
+        QPixmap pm(qApp->primaryScreen()->grabWindow(w->winId(),0,0,w->width(),w->height()));
+#endif
         pm.toImage().save(text);
       }
     }
@@ -2330,7 +2338,11 @@ void Interpreter::interpretp(const char *command)
       QWidget *w = all[i]->w;
       if(w != NULL)
       {
+#if QT_VERSION < 0x050000
         QPixmap pm(QPixmap::grabWindow(w->winId(),0,0,w->width(),w->height()));
+#else
+        QPixmap pm(qApp->primaryScreen()->grabWindow(w->winId(),0,0,w->width(),w->height()));
+#endif
         //if(printer.setup(mainWindow))
         QPrintDialog dialog(&printer, mainWindow);
         if(dialog.exec() == QDialog::Accepted)
@@ -2778,6 +2790,52 @@ void Interpreter::interpretr(const char *command)
     {
       sprintf(buf,"text(%d,\"geometry:%d,%d,%d,%d\n", i, ptr->x(), ptr->y(), ptr->width(), ptr->height());
       tcp_send(s,buf,strlen(buf));
+    }
+  }
+  else if(strncmp(command,"requestJpeg(",12) == 0)
+  {
+    sscanf(command,"requestJpeg(%d",&i);
+    if(opt.arg_debug) printf("requestJpeg(%d)\n",i);
+    if(i < 0) return;
+    if(i >= nmax) return;
+    QWidget *ptr = all[i]->w;
+    if(ptr != NULL)
+    {
+      switch(all[i]->type)
+      {
+        case TQImage:
+          QImageWidget *iw;
+          iw = (QImageWidget *) ptr;
+          iw->sendJpeg2clipboard();
+          break;
+        case TQDraw:
+          QDrawWidget *dw;
+          dw = (QDrawWidget *) ptr;
+          dw->sendJpeg2clipboard();
+          break;
+        case TQwtPlotWidget:
+        //  QwtPlotWidget *pww;
+        //  pww = (QwtPlotWidget *) ptr;
+        //  pww->sendJpeg2clipboard();
+        //  break;
+        case TQWidget:
+        default:
+          char buf[80];
+#if QT_VERSION < 0x050000
+          QPixmap clip_pm(QPixmap::grabWindow(ptr->winId(),0,0,ptr->width(),ptr->height()));
+#else          
+          QPixmap clip_pm(qApp->primaryScreen()->grabWindow(ptr->winId(),0,0,ptr->width(),ptr->height()));
+#endif          
+          if(i==0) mainWindow->snapshot(clip_pm);
+          QByteArray bytes;
+          QBuffer qb_buffer(&bytes);
+          qb_buffer.open(QIODevice::WriteOnly);
+          clip_pm.save(&qb_buffer, "JPG"); // writes pixmap into bytes in JPG format
+          sprintf(buf,"@clipboard(%d,%d)\n", i, (int) qb_buffer.size());
+          tcp_send(s,buf,strlen(buf));
+          tcp_send(s, qb_buffer.data(), qb_buffer.size());
+          break;
+      }
     }
   }
   else if(strncmp(command,"requestParent(",14) == 0)

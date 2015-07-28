@@ -633,4 +633,16 @@ int rlSocket::rlSetsockopt(int level, int optname)
   return rlSetsockopt(s,level,optname,&option,sizeof(option));
 }
 
-
+int rlSocket::readHttpContentLength(int timeout)
+{
+  char line[256];
+  while(1)
+  {
+    if(readStr(line, (int)sizeof(line) - 1, timeout) < 1) return -1;
+    if(strncmp(line,"Content-Length:",15) == 0) break;
+  }
+  int len = 0;
+  sscanf(line,"Content-Length: %d", &len);
+  if(readStr(line, (int)sizeof(line) - 1, timeout) < 1) return -1; // read CR LF
+  return len;
+}

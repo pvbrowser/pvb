@@ -2332,6 +2332,15 @@ char buf[80];
   return 0;
 }
 
+int pvRequestJpeg(PARAM *p, int id)
+{
+char buf[80];
+
+  sprintf(buf,"requestJpeg(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvRequestGeometry(PARAM *p, int id)
 {
 char buf[80];

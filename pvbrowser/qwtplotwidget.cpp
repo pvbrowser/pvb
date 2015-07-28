@@ -602,3 +602,16 @@ void QwtPlotWidget::leaveEvent(QEvent *event)
   tcp_send(s,buf,strlen(buf));
   QwtPlot::leaveEvent(event);
 }
+
+int QwtPlotWidget::sendJpeg2clipboard()
+{
+  char buf[80];
+  QByteArray bytes;
+  QBuffer qb_buffer(&bytes);
+  qb_buffer.open(QIODevice::WriteOnly);
+  canvas()->paintCache()->save(&qb_buffer, "JPG"); // writes pixmap into bytes in JPG format
+  sprintf(buf,"@clipboard(%d,%d)\n", id, (int) qb_buffer.size());
+  tcp_send(s,buf,strlen(buf));
+  return tcp_send(s, qb_buffer.data(), qb_buffer.size());
+}
+

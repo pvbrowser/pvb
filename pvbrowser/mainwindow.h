@@ -168,6 +168,7 @@ public slots:
   void slotNewTab();
   void slotDeleteTab();
   void slotBusyWidgetTimeout();
+  void snapshot(QPixmap &pm);
 
 private:
   void createActions();
@@ -176,7 +177,6 @@ private:
   void createStatusBar();
   QString strippedName(const QString &fullFileName);
   //void resizeEvent(QResizeEvent *event);
-  void snapshot(QPixmap &pm);
   void readHosts();
   void add_host(const char *host);
   void appendIniFile(const char *host);

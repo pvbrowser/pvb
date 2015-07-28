@@ -203,6 +203,12 @@ Functions</h2></td></tr>
 <tr class="separator:a83f99e7afc1b87e6a2c263a5d5f66485"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9d36f7c9e98daa66c0cb737e12533df"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df">rlStat</a> (const char *filepath, struct stat *buf)</td></tr>
 <tr class="separator:ad9d36f7c9e98daa66c0cb737e12533df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aedbe0e5f7cbe22b1799ff208d6346a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a7aedbe0e5f7cbe22b1799ff208d6346a">rlFRead</a> (FILE *fin, void *data, int len)</td></tr>
+<tr class="separator:a7aedbe0e5f7cbe22b1799ff208d6346a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c25de9d49ea1868edddcf72f87e079"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a50c25de9d49ea1868edddcf72f87e079">rlFWrite</a> (FILE *fout, void *data, int len)</td></tr>
+<tr class="separator:a50c25de9d49ea1868edddcf72f87e079"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a027a0ae1e822779a734b9049add9bb60"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a027a0ae1e822779a734b9049add9bb60">rlWriteFile</a> (const char *filename, void *data, int len)</td></tr>
+<tr class="separator:a027a0ae1e822779a734b9049add9bb60"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee9aa5351f9ae48a3f33184d484962e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#aaee9aa5351f9ae48a3f33184d484962e">rlMkdir</a> (const char *dir, int mode)</td></tr>
 <tr class="separator:aaee9aa5351f9ae48a3f33184d484962e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1faf9a09d5d0bb7a6ba24c9050697774"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlcutil_8cpp.html#a1faf9a09d5d0bb7a6ba24c9050697774">rlBitSet</a> (int bitnumber, int *value)</td></tr>
@@ -413,12 +419,12 @@ Variables</h2></td></tr>
 XOR bit bitnumber in value
 Return value
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00823">823</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;{</div>
-<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
-<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  *value = *value ^ bit;</div>
-<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  <span class="keywordflow">return</span> *value;</div>
-<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00848">848</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;{</div>
+<div class="line"><a name="l00850"></a><span class="lineno">  850</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00851"></a><span class="lineno">  851</span>&#160;  *value = *value ^ bit;</div>
+<div class="line"><a name="l00852"></a><span class="lineno">  852</span>&#160;  <span class="keywordflow">return</span> *value;</div>
+<div class="line"><a name="l00853"></a><span class="lineno">  853</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -449,13 +455,13 @@ Return value
 Clear bit bitnumber in value
 Return value
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00815">815</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;{</div>
-<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
-<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  bit = ~bit;</div>
-<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;  *value = *value &amp; bit;</div>
-<div class="line"><a name="l00820"></a><span class="lineno">  820</span>&#160;  <span class="keywordflow">return</span> *value;</div>
-<div class="line"><a name="l00821"></a><span class="lineno">  821</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00840">840</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;{</div>
+<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00843"></a><span class="lineno">  843</span>&#160;  bit = ~bit;</div>
+<div class="line"><a name="l00844"></a><span class="lineno">  844</span>&#160;  *value = *value &amp; bit;</div>
+<div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;  <span class="keywordflow">return</span> *value;</div>
+<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -486,12 +492,12 @@ Return value
 Set bit bitnumber in value
 Return value
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00808">808</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;{</div>
-<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
-<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;  *value = *value | bit;</div>
-<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;  <span class="keywordflow">return</span> *value;</div>
-<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00833">833</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;{</div>
+<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00836"></a><span class="lineno">  836</span>&#160;  *value = *value | bit;</div>
+<div class="line"><a name="l00837"></a><span class="lineno">  837</span>&#160;  <span class="keywordflow">return</span> *value;</div>
+<div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -522,12 +528,12 @@ Return value
 Test bit bitnumber in value
 Return 0 | 1
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00830">830</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;{</div>
-<div class="line"><a name="l00832"></a><span class="lineno">  832</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
-<div class="line"><a name="l00833"></a><span class="lineno">  833</span>&#160;  <span class="keywordflow">if</span>(*value &amp; bit) <span class="keywordflow">return</span> 1;</div>
-<div class="line"><a name="l00834"></a><span class="lineno">  834</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00835"></a><span class="lineno">  835</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00855">855</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00856"></a><span class="lineno">  856</span>&#160;{</div>
+<div class="line"><a name="l00857"></a><span class="lineno">  857</span>&#160;  <span class="keywordtype">int</span> bit = 1 &lt;&lt; bitnumber;</div>
+<div class="line"><a name="l00858"></a><span class="lineno">  858</span>&#160;  <span class="keywordflow">if</span>(*value &amp; bit) <span class="keywordflow">return</span> 1;</div>
+<div class="line"><a name="l00859"></a><span class="lineno">  859</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00860"></a><span class="lineno">  860</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -979,6 +985,88 @@ Get option from string
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a7aedbe0e5f7cbe22b1799ff208d6346a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlFRead </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+read data from file
+return := number of bytes read | -1
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00796">796</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;{</div>
+<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;  <span class="keywordflow">if</span>(fin == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordflow">return</span> fread(data,1,len,fin);</div>
+<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a50c25de9d49ea1868edddcf72f87e079"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlFWrite </td>
+          <td>(</td>
+          <td class="paramtype">FILE *&#160;</td>
+          <td class="paramname"><em>fout</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+write data to file
+return := number of bytes written | -1
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00802">802</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;{</div>
+<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;  <span class="keywordflow">if</span>(fout == NULL) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;  <span class="keywordflow">return</span> fwrite(data,1,len,fout);</div>
+<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a0dab6a8536b5f5bdfb153649a5b96464"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1257,17 +1345,17 @@ convert str to lower case
 <pre>
 same as mkdir
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00796">796</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00797"></a><span class="lineno">  797</span>&#160;{</div>
-<div class="line"><a name="l00798"></a><span class="lineno">  798</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
-<div class="line"><a name="l00799"></a><span class="lineno">  799</span>&#160;  <span class="keywordtype">int</span> ret = CreateDirectoryA(dir,NULL);</div>
-<div class="line"><a name="l00800"></a><span class="lineno">  800</span>&#160;  <span class="keywordflow">if</span>(ret) <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00801"></a><span class="lineno">  801</span>&#160;  <span class="keywordflow">if</span>(mode) <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00802"></a><span class="lineno">  802</span>&#160;  <span class="keywordflow">return</span> -1;</div>
-<div class="line"><a name="l00803"></a><span class="lineno">  803</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00804"></a><span class="lineno">  804</span>&#160;  <span class="keywordflow">return</span> mkdir(dir, mode);</div>
-<div class="line"><a name="l00805"></a><span class="lineno">  805</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00806"></a><span class="lineno">  806</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00821">821</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00822"></a><span class="lineno">  822</span>&#160;{</div>
+<div class="line"><a name="l00823"></a><span class="lineno">  823</span>&#160;<span class="preprocessor">#ifdef RLWIN32</span></div>
+<div class="line"><a name="l00824"></a><span class="lineno">  824</span>&#160;  <span class="keywordtype">int</span> ret = CreateDirectoryA(dir,NULL);</div>
+<div class="line"><a name="l00825"></a><span class="lineno">  825</span>&#160;  <span class="keywordflow">if</span>(ret) <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00826"></a><span class="lineno">  826</span>&#160;  <span class="keywordflow">if</span>(mode) <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00827"></a><span class="lineno">  827</span>&#160;  <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00828"></a><span class="lineno">  828</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00829"></a><span class="lineno">  829</span>&#160;  <span class="keywordflow">return</span> mkdir(dir, mode);</div>
+<div class="line"><a name="l00830"></a><span class="lineno">  830</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00831"></a><span class="lineno">  831</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1426,12 +1514,12 @@ return = 1 # found
 Push value to front of buffer.
 Shift all other values.
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00837">837</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00838"></a><span class="lineno">  838</span>&#160;{</div>
-<div class="line"><a name="l00839"></a><span class="lineno">  839</span>&#160;  <span class="keywordflow">if</span>(size &lt;= 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00840"></a><span class="lineno">  840</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=size; i&gt;=2; i--) buffer[i-1] = buffer[i-2];</div>
-<div class="line"><a name="l00841"></a><span class="lineno">  841</span>&#160;  buffer[0] = val;</div>
-<div class="line"><a name="l00842"></a><span class="lineno">  842</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00862">862</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00863"></a><span class="lineno">  863</span>&#160;{</div>
+<div class="line"><a name="l00864"></a><span class="lineno">  864</span>&#160;  <span class="keywordflow">if</span>(size &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00865"></a><span class="lineno">  865</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=size; i&gt;=2; i--) buffer[i-1] = buffer[i-2];</div>
+<div class="line"><a name="l00866"></a><span class="lineno">  866</span>&#160;  buffer[0] = val;</div>
+<div class="line"><a name="l00867"></a><span class="lineno">  867</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1468,12 +1556,12 @@ Shift all other values.
 Push value to front of buffer.
 Shift all other values.
 </pre> 
-<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00844">844</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00845"></a><span class="lineno">  845</span>&#160;{</div>
-<div class="line"><a name="l00846"></a><span class="lineno">  846</span>&#160;  <span class="keywordflow">if</span>(size &lt;= 0) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00847"></a><span class="lineno">  847</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=size; i&gt;=2; i--) buffer[i-1] = buffer[i-2];</div>
-<div class="line"><a name="l00848"></a><span class="lineno">  848</span>&#160;  buffer[0] = val;</div>
-<div class="line"><a name="l00849"></a><span class="lineno">  849</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00869">869</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00870"></a><span class="lineno">  870</span>&#160;{</div>
+<div class="line"><a name="l00871"></a><span class="lineno">  871</span>&#160;  <span class="keywordflow">if</span>(size &lt;= 0) <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00872"></a><span class="lineno">  872</span>&#160;  <span class="keywordflow">for</span>(<span class="keywordtype">int</span> i=size; i&gt;=2; i--) buffer[i-1] = buffer[i-2];</div>
+<div class="line"><a name="l00873"></a><span class="lineno">  873</span>&#160;  buffer[0] = val;</div>
+<div class="line"><a name="l00874"></a><span class="lineno">  874</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -2177,6 +2265,54 @@ convert str to upper case
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
 <div class="ttc" id="rldefine_8h_html_a1f828641826ba0bf319ef87eaa34e5ce"><div class="ttname"><a href="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce">rl_PRINTF_LENGTH</a></div><div class="ttdeci">#define rl_PRINTF_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="rldefine_8h_source.html#l00047">rldefine.h:47</a></div></div>
 <div class="ttc" id="rlcutil_8cpp_html_a9a639b36f6ac0c0281ef3b03f821a406"><div class="ttname"><a href="rlcutil_8cpp.html#a9a639b36f6ac0c0281ef3b03f821a406">rlstrncpy</a></div><div class="ttdeci">char * rlstrncpy(char *dest, const char *source, int n)</div><div class="ttdef"><b>Definition:</b> <a href="rlcutil_8cpp_source.html#l00168">rlcutil.cpp:168</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a027a0ae1e822779a734b9049add9bb60"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int rlWriteFile </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>filename</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>len</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+write data to file
+return := number of bytes written | -1
+</pre> 
+<p>Definition at line <a class="el" href="rlcutil_8cpp_source.html#l00808">808</a> of file <a class="el" href="rlcutil_8cpp_source.html">rlcutil.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00809"></a><span class="lineno">  809</span>&#160;{</div>
+<div class="line"><a name="l00810"></a><span class="lineno">  810</span>&#160;  FILE *fout = fopen(filename,<span class="stringliteral">&quot;w&quot;</span>); </div>
+<div class="line"><a name="l00811"></a><span class="lineno">  811</span>&#160;  <span class="keywordflow">if</span>(fout == NULL) </div>
+<div class="line"><a name="l00812"></a><span class="lineno">  812</span>&#160;  {</div>
+<div class="line"><a name="l00813"></a><span class="lineno">  813</span>&#160;    printf(<span class="stringliteral">&quot;ERROR: rlWriteFile() could not write to %s\n&quot;</span>, filename);</div>
+<div class="line"><a name="l00814"></a><span class="lineno">  814</span>&#160;    <span class="keywordflow">return</span> -1;</div>
+<div class="line"><a name="l00815"></a><span class="lineno">  815</span>&#160;  }  </div>
+<div class="line"><a name="l00816"></a><span class="lineno">  816</span>&#160;  <span class="keywordtype">int</span> ret = fwrite(data,1,len,fout);</div>
+<div class="line"><a name="l00817"></a><span class="lineno">  817</span>&#160;  fclose(fout);</div>
+<div class="line"><a name="l00818"></a><span class="lineno">  818</span>&#160;  <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00819"></a><span class="lineno">  819</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

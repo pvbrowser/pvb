@@ -187,6 +187,24 @@ int rlStat(const char *filepath, struct stat *buf);
 #endif
 
 /** <pre>
+read data from file
+return := number of bytes read | -1
+</pre> */
+int rlFRead(FILE *fin, void *data, int len);
+
+/** <pre>
+write data to file
+return := number of bytes written | -1
+</pre> */
+int rlFWrite(FILE *fout, void *data, int len);
+
+/** <pre>
+write data to file
+return := number of bytes written | -1
+</pre> */
+int rlWriteFile(const char *filename, void *data, int len);
+
+/** <pre>
 same as mkdir
 </pre> */
 int rlMkdir(const char *dir, int mode=0744);

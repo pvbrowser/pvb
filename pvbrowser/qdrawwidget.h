@@ -164,7 +164,8 @@ public:
     virtual void setGeometry(int x, int y, int w, int h);
     virtual void setGeometry(const QRect &r);
 
-    int      interpret(const char *command);
+    int interpret(const char *command);
+    int sendJpeg2clipboard();
     pvSvgAnimator *svgAnimator;
     int selectorState;
     QSvgRenderer renderer;

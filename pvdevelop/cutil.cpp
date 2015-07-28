@@ -426,23 +426,23 @@ void generateInitialProject(const char *name)
   fprintf(fout,"           mask1.cpp\n");
   fprintf(fout,"\n");
   fprintf(fout,"!macx {\n");
-  fprintf(fout,"unix:LIBS          += /usr/lib/libpvsmt.so -lpthread\n");
-  fprintf(fout,"#unix:LIBS         += /usr/lib/libpvsid.so\n");
-  fprintf(fout,"unix:INCLUDEPATH   += /opt/pvb/pvserver\n");
-  fprintf(fout,"#unix:LIBS         += /usr/lib/librllib.so\n");
-  fprintf(fout,"#unix:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
-  fprintf(fout,"#unix:LIBS         += $(PVBDIR)/pvserver/libpvsmt.so -lpthread\n");
-  fprintf(fout,"#unix:LIBS         += $(PVBDIR)/pvserver/libpvsid.so -lpthread\n");
-  fprintf(fout,"#unix:INCLUDEPATH  += $(PVBDIR)/pvserver\n");
-  fprintf(fout,"#unix:LIBS         += $(PVBDIR)/rllib/lib/librllib.so\n");
-  fprintf(fout,"#unix:INCLUDEPATH  += $(PVBDIR)/rllib/lib\n");
+  fprintf(fout,"unix:LIBS         += /usr/lib/libpvsmt.so -lpthread\n");
+  fprintf(fout,"#unix:LIBS        += /usr/lib/libpvsid.so\n");
+  fprintf(fout,"unix:INCLUDEPATH  += /opt/pvb/pvserver\n");
+  fprintf(fout,"unix:LIBS         += /usr/lib/librllib.so\n");
+  fprintf(fout,"unix:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
+  //fprintf(fout,"#unix:LIBS         += $(PVBDIR)/pvserver/libpvsmt.so -lpthread\n");
+  //fprintf(fout,"#unix:LIBS         += $(PVBDIR)/pvserver/libpvsid.so -lpthread\n");
+  //fprintf(fout,"#unix:INCLUDEPATH  += $(PVBDIR)/pvserver\n");
+  //fprintf(fout,"#unix:LIBS         += $(PVBDIR)/rllib/lib/librllib.so\n");
+  //fprintf(fout,"#unix:INCLUDEPATH  += $(PVBDIR)/rllib/lib\n");
   fprintf(fout,"}\n");
   fprintf(fout,"\n");
-  fprintf(fout,"macx:LIBS          += /opt/pvb/pvserver/libpvsmt.a /usr/lib/libpthread.dylib\n");
-  fprintf(fout,"#macx:LIBS         += /opt/pvb/pvserver/libpvsid.a\n");
-  fprintf(fout,"macx:INCLUDEPATH   += /opt/pvb/pvserver\n");
-  fprintf(fout,"#macx:LIBS         += /usr/lib/librllib.dylib\n");
-  fprintf(fout,"#macx:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
+  fprintf(fout,"macx:LIBS         += /opt/pvb/pvserver/libpvsmt.a /usr/lib/libpthread.dylib\n");
+  fprintf(fout,"#macx:LIBS        += /opt/pvb/pvserver/libpvsid.a\n");
+  fprintf(fout,"macx:INCLUDEPATH  += /opt/pvb/pvserver\n");
+  fprintf(fout,"macx:LIBS         += /usr/lib/librllib.dylib\n");
+  fprintf(fout,"macx:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
   fprintf(fout,"\n");
   fprintf(fout,"#\n");
   fprintf(fout,"# Attention:\n");
@@ -757,7 +757,7 @@ void generateInitialMask(int imask)
   fprintf(fout,"%s","      case CLIPBOARD_EVENT:\n"                                                 );
   fprintf(fout,"%s","        sscanf(text,\"(%d\",&val);\n"                                          );
   fprintf(fout,"%s","        if(trace) printf(\"CLIPBOARD_EVENT(id=%d)\\n\",val);\n"                );
-  fprintf(fout,"%s","        if(trace) printf(\"clipboard = \\n%s\\n\",p->clipboard);\n"            );
+  //fprintf(fout,"%s","        if(trace) printf(\"clipboard = \\n%s\\n\",p->clipboard);\n"            );
   fprintf(fout,"%s","        if((ret=slotClipboardEvent(p,i,&d,val)) != 0) return ret;\n"           );
   fprintf(fout,"%s","        break;\n"                                                              );
   fprintf(fout,"%s","      case RIGHT_MOUSE_EVENT:\n"                                               );
@@ -1103,7 +1103,7 @@ void generateInitialSlots(int imask)
   fprintf(fout,"\n");
   fprintf(fout,"static int slotClipboardEvent(PARAM *p, int id, DATA *d, int val)\n");
   fprintf(fout,"{\n");
-  fprintf(fout,"  if(p == NULL || id == 0 || d == NULL || val < -1000) return -1;\n");
+  fprintf(fout,"  if(p == NULL || id == -1 || d == NULL || val < -1000) return -1;\n");
   if(opt_develop.script == PV_PYTHON)
   {
     fprintf(fout,"  PyMethod(\"slotClipboardEvent\");\n");
@@ -2752,7 +2752,7 @@ void lua_generateInitialMask(int imask)
   fprintf(fout,"%s","    elseif id == pv.CLIPBOARD_EVENT then\n");
   fprintf(fout,"%s","        pv.getIntegers(text,iarray)\n");
   fprintf(fout,"%s","        if trace == 1 then print(\"CLIPBOARD_EVENT id=\",iarray.i0) end\n");
-  fprintf(fout,"%s","        if trace == 1 then print(\"clipboard = \",p.clipboard) end\n");
+  //fprintf(fout,"%s","        if trace == 1 then print(\"clipboard = \",p.clipboard) end\n");
   fprintf(fout,"%s","        ret=slotClipboardEvent(p,i,iarray.i0)\n");
   fprintf(fout,"%s","    elseif id == pv.RIGHT_MOUSE_EVENT then\n");
   fprintf(fout,"%s","        if trace == 1 then print(\"RIGHT_MOUSE_EVENT id=\",i,\" text=\",text) end\n");

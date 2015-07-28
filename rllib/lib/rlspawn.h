@@ -102,6 +102,49 @@ public:
   </pre> */
   FILE *getFilepointer();
 
+  /*! <pre>
+  Read JPEG buffer fromChild
+  return: length of buffer | -1 as error
+
+  Example: A thread continiously reads the mjpeg output of ffmpeg and stores it in jpegBuffer
+
+  rlThread mythread;
+  unsigned char jpegBuffer[256*256*16];
+
+  void *myThread(void *arg) // define your thread function
+  {
+    rlSpawn spawn;
+
+    restart:  
+    if(arg == NULL) return NULL;
+        
+    THREAD_PARAM  *p = (THREAD_PARAM *) arg;
+    //myThreadsData *d = (myThreadsData *) p->user;
+    spawn.spawn("ffmpeg -f video4linux2 -i /dev/v4l/by-id/usb-046d_0825_A867B3D0-video-index0 -vf \"transpose, hflip\" -r 10 -f mjpeg pipe:1");  
+    while(p->running)
+    {
+      int ret = spawn.readJpegBuffer(jpegBuffer,sizeof(jpegBuffer));
+      printf("ret=%d\n",ret);
+      if(ret < 0) goto restart;
+    }
+    return arg;
+  }
+
+  Example: The jpegBuffer can now be Send to a Image Widget on the pvbrowser client
+ 
+  extern rlThread mythread;
+  extern unsigned char jpegBuffer[];
+
+  static int slotNullEvent(PARAM *p, DATA *d)
+  {
+    if(p == NULL || d == NULL) return -1;
+    pvSendJpegFrame(p,imgWebcam,jpegBuffer);
+    return 0;
+  }
+
+  </pre> */
+  int readJpegBuffer(unsigned char *buffer, int maxbuffer);
+
   int pid;
 
 private:

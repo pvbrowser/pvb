@@ -793,6 +793,31 @@ int rlStat(const char *filepath, struct stat *buf)
   return stat(filepath, buf);
 }
 
+int rlFRead(FILE *fin, void *data, int len)
+{
+  if(fin == NULL) return -1;
+  return fread(data,1,len,fin);
+}
+
+int rlFWrite(FILE *fout, void *data, int len)
+{
+  if(fout == NULL) return -1;
+  return fwrite(data,1,len,fout);
+}
+
+int rlWriteFile(const char *filename, void *data, int len)
+{
+  FILE *fout = fopen(filename,"w"); 
+  if(fout == NULL) 
+  {
+    printf("ERROR: rlWriteFile() could not write to %s\n", filename);
+    return -1;
+  }  
+  int ret = fwrite(data,1,len,fout);
+  fclose(fout);
+  return ret;
+}
+
 int rlMkdir(const char *dir, int mode)
 {
 #ifdef RLWIN32

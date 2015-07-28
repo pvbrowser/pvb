@@ -85,6 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Functions</h2></td></tr>
 <tr class="memitem:gac9578e16fe3bd92b6b592df9ca8b07dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc">pvText</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
 <tr class="separator:gac9578e16fe3bd92b6b592df9ca8b07dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae35ec18e2f45d830170759a987e2ad1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gae35ec18e2f45d830170759a987e2ad1a">pvRequestJpeg</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
+<tr class="separator:gae35ec18e2f45d830170759a987e2ad1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaf48d8e6f53fa3b8e60d2959bebb7a4db"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db">pvRequestGeometry</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
 <tr class="separator:gaf48d8e6f53fa3b8e60d2959bebb7a4db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad9d3203bb218829e4620b81b691918ac"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gad9d3203bb218829e4620b81b691918ac">pvRequestParentWidgetId</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
@@ -126,6 +128,35 @@ Functions</h2></td></tr>
 Request the geometry from the widget. The text will arrive in an TEXT_EVENT.
 geometry:x,y,width,height
 Allowed widgets: all widgets
+</pre> 
+</div>
+</div>
+<a class="anchor" id="gae35ec18e2f45d830170759a987e2ad1a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvRequestJpeg </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>id</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+Request a jpeg from the widget. The jpeg will arrive in an CLIPBOARD_EVENT.
+Allowed widgets: QWidget, QImage, QDraw, QwtPlot
 </pre> 
 </div>
 </div>
@@ -295,7 +326,7 @@ Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jun 26 2015 10:54:57 for ProcessViewBrowser-ServerProgramming by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jul 28 2015 16:03:59 for ProcessViewBrowser-ServerProgramming by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

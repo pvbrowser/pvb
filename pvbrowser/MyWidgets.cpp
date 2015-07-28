@@ -3625,6 +3625,22 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
 {
   if(opt.arg_debug) printf("mySetBackgroundColor: type=%d r=%d g=%d b=%d\n",type,r,g,b);
   if(w == NULL) return;
+#if QT_VERSION > 0x050000
+  if(type == TQDraw)
+  {
+    ((QDrawWidget *)w)->setBackgroundColor(r,g,b);
+  }
+  else
+  {
+    char text[80];
+    sprintf(text,"background-color: rgb(%d,%d,%d)", r, g , b);
+    if(r == -1 && g == -1 && b == -1)
+    {
+      sprintf(text,"background-color: rgb(%d,%d,%d)", 236, 235 , 235);
+    }
+    w->setStyleSheet(text);
+  }  
+#else
 #ifdef PVWIN32
   // WinXP style does not support background colors
   static int     first = 1;
@@ -3689,4 +3705,5 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
     palette.setColor(QPalette::Window,QColor(r,g,b));
     w->setPalette(palette);
   }
+#endif  
 }

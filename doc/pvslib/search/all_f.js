@@ -167,6 +167,7 @@ var searchData=
   ['pvremoverow',['pvRemoveRow',['../group__State.html#ga36a91f6f6316d579b9b9b24702922aa6',1,'processviewserver.h']]],
   ['pvrendertreedump',['pvRenderTreeDump',['../group__Misc.html#ga7ff8a8d3f46fc4cd3c85b26aaf6596b5',1,'processviewserver.h']]],
   ['pvrequestgeometry',['pvRequestGeometry',['../group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db',1,'processviewserver.h']]],
+  ['pvrequestjpeg',['pvRequestJpeg',['../group__Input.html#gae35ec18e2f45d830170759a987e2ad1a',1,'processviewserver.h']]],
   ['pvrequestparentwidgetid',['pvRequestParentWidgetId',['../group__Input.html#gad9d3203bb218829e4620b81b691918ac',1,'processviewserver.h']]],
   ['pvrequestsvgboundsonelement',['pvRequestSvgBoundsOnElement',['../group__Input.html#gaf613d4358f7df90307e537dfdbc7c76e',1,'processviewserver.h']]],
   ['pvrequestsvgmatrixforelement',['pvRequestSvgMatrixForElement',['../group__Input.html#ga16f54f9891c976df51e5895febf63682',1,'processviewserver.h']]],

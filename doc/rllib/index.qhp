@@ -1500,6 +1500,7 @@
               <section title="isConnected" ref="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a" />
               <section title="printf" ref="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3" />
               <section title="read" ref="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4" />
+              <section title="readHttpContentLength" ref="classrlSocket.html#ae8f10471b987f09fbf42193ba7191974" />
               <section title="readHttpHeader" ref="classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21" />
               <section title="readStr" ref="classrlSocket.html#aca6b7edd806bc447008cc025a0b72dbf" />
               <section title="rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
@@ -1530,6 +1531,7 @@
               <section title="getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
               <section title="printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
               <section title="printf" ref="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6" />
+              <section title="readJpegBuffer" ref="classrlSpawn.html#a9066feb1063f891ce7047eb2bfe4a1b3" />
               <section title="readLine" ref="classrlSpawn.html#af7ae73acac4185d73d7dd8379dede7d4" />
               <section title="select" ref="classrlSpawn.html#a6e72047d975dfd4728aaa41b0cd301f5" />
               <section title="spawn" ref="classrlSpawn.html#a08217f3678b331714c2499d4199132f1" />
@@ -2695,6 +2697,8 @@
               <section title="rlexec" ref="rlcutil_8cpp.html#aaf037932d5e4bb98145220bd8db82a21" />
               <section title="rlFindFile" ref="rlcutil_8cpp.html#af1e3a2c3fe74d531512bbc2f0063e955" />
               <section title="rlFloatOption" ref="rlcutil_8cpp.html#a7f6b7043d4da7b255137a9b7fa5a9e3d" />
+              <section title="rlFRead" ref="rlcutil_8cpp.html#a7aedbe0e5f7cbe22b1799ff208d6346a" />
+              <section title="rlFWrite" ref="rlcutil_8cpp.html#a50c25de9d49ea1868edddcf72f87e079" />
               <section title="rlGetInifile" ref="rlcutil_8cpp.html#a0dab6a8536b5f5bdfb153649a5b96464" />
               <section title="rlInputAvailable" ref="rlcutil_8cpp.html#a7c83001debae0bd4829f601a6a50445f" />
               <section title="rlIntOption" ref="rlcutil_8cpp.html#ae8d60299ab4fa917eaa9c2d8ccdae51c" />
@@ -2724,6 +2728,7 @@
               <section title="rlTextOption" ref="rlcutil_8cpp.html#a05c0ea238f98852df60cf56018734f9e" />
               <section title="rlupper" ref="rlcutil_8cpp.html#a9022208debc1e487f2d2ed7cb9fd21fd" />
               <section title="rlvsnprintf" ref="rlcutil_8cpp.html#aca23e81037b38c599a5155989257c7cb" />
+              <section title="rlWriteFile" ref="rlcutil_8cpp.html#a027a0ae1e822779a734b9049add9bb60" />
               <section title="rlDebugPrintfState" ref="rlcutil_8cpp.html#a73703e6f6e03079d517b69762d7424da" />
               <section title="rlsigtermarg" ref="rlcutil_8cpp.html#aa602ca87edb43ec9626731cad82e62bc" />
               <section title="rlUserSigtermHandler" ref="rlcutil_8cpp.html#a95ba5f2760cd6ed5c62315bf1df4234c" />
@@ -2743,6 +2748,8 @@
               <section title="rlexec" ref="rlcutil_8h.html#aaf037932d5e4bb98145220bd8db82a21" />
               <section title="rlFindFile" ref="rlcutil_8h.html#af1e3a2c3fe74d531512bbc2f0063e955" />
               <section title="rlFloatOption" ref="rlcutil_8h.html#aeb98f62680853e9efe77e83d5444c2d2" />
+              <section title="rlFRead" ref="rlcutil_8h.html#a7aedbe0e5f7cbe22b1799ff208d6346a" />
+              <section title="rlFWrite" ref="rlcutil_8h.html#a50c25de9d49ea1868edddcf72f87e079" />
               <section title="rlGetInifile" ref="rlcutil_8h.html#a0dab6a8536b5f5bdfb153649a5b96464" />
               <section title="rlInputAvailable" ref="rlcutil_8h.html#a7c83001debae0bd4829f601a6a50445f" />
               <section title="rlIntOption" ref="rlcutil_8h.html#a471234eb7bc941ea1a48cf32fa894374" />
@@ -2771,6 +2778,7 @@
               <section title="rlTextOption" ref="rlcutil_8h.html#a40fed03ccdb3030c23aced2f0f7aac16" />
               <section title="rlupper" ref="rlcutil_8h.html#a9022208debc1e487f2d2ed7cb9fd21fd" />
               <section title="rlvsnprintf" ref="rlcutil_8h.html#aca23e81037b38c599a5155989257c7cb" />
+              <section title="rlWriteFile" ref="rlcutil_8h.html#a027a0ae1e822779a734b9049add9bb60" />
             </section>
             <section title="rldataacquisition.cpp" ref="rldataacquisition_8cpp.html" />
             <section title="rldataacquisition.h" ref="rldataacquisition_8h.html">
@@ -2982,6 +2990,7 @@
               <section title="BIT9" ref="rldefine_8h.html#a3aa20ab5eb33383fa31b0e94f4401cdf" />
               <section title="rl_PRINTF_LENGTH" ref="rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce" />
               <section title="rl_PRINTF_LENGTH_SPREADSHEET" ref="rldefine_8h.html#a7ee1c3aab1b7f7fa089acebc3fc55783" />
+              <section title="RLCRLF" ref="rldefine_8h.html#a603b3a6ed9dee1603f3341bf266a9a35" />
               <section title="RLUNIX" ref="rldefine_8h.html#a1a06dee5673cf0e2912f52cb1c5dcb49" />
               <section title="RLWIN32" ref="rldefine_8h.html#aa69fd2b1358365a7eabefb22433241a0" />
               <section title="WTHREAD_GNUC0" ref="rldefine_8h.html#a6511de2fd3d2767d33e8c820b60e3f45" />
@@ -4192,6 +4201,7 @@
                 <section title="isConnected" ref="classrlSocket.html#a4ca3288e228e58fe41e9e64ad1c0ed6a" />
                 <section title="printf" ref="classrlSocket.html#aa02b42928b0f7723a9d928739e5607a3" />
                 <section title="read" ref="classrlSocket.html#a3ecc4e1b3cfa318693ddc9e400da0fe4" />
+                <section title="readHttpContentLength" ref="classrlSocket.html#ae8f10471b987f09fbf42193ba7191974" />
                 <section title="readHttpHeader" ref="classrlSocket.html#a4c4f94e89b40a71dbccb4fc885331b21" />
                 <section title="readStr" ref="classrlSocket.html#aca6b7edd806bc447008cc025a0b72dbf" />
                 <section title="rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
@@ -4228,6 +4238,7 @@
                 <section title="getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
                 <section title="printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
                 <section title="printf" ref="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6" />
+                <section title="readJpegBuffer" ref="classrlSpawn.html#a9066feb1063f891ce7047eb2bfe4a1b3" />
                 <section title="readLine" ref="classrlSpawn.html#af7ae73acac4185d73d7dd8379dede7d4" />
                 <section title="select" ref="classrlSpawn.html#a6e72047d975dfd4728aaa41b0cd301f5" />
                 <section title="spawn" ref="classrlSpawn.html#a08217f3678b331714c2499d4199132f1" />
@@ -4868,6 +4879,9 @@
       <keyword name="rlStartsWith" id="rlcutil.cpp::rlStartsWith" ref="rlcutil_8cpp.html#a176ada621127ae48c966556c474f20a4" />
       <keyword name="rlStrMatch" id="rlcutil.cpp::rlStrMatch" ref="rlcutil_8cpp.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
       <keyword name="rlStat" id="rlcutil.cpp::rlStat" ref="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df" />
+      <keyword name="rlFRead" id="rlcutil.cpp::rlFRead" ref="rlcutil_8cpp.html#a7aedbe0e5f7cbe22b1799ff208d6346a" />
+      <keyword name="rlFWrite" id="rlcutil.cpp::rlFWrite" ref="rlcutil_8cpp.html#a50c25de9d49ea1868edddcf72f87e079" />
+      <keyword name="rlWriteFile" id="rlcutil.cpp::rlWriteFile" ref="rlcutil_8cpp.html#a027a0ae1e822779a734b9049add9bb60" />
       <keyword name="rlMkdir" id="rlcutil.cpp::rlMkdir" ref="rlcutil_8cpp.html#aaee9aa5351f9ae48a3f33184d484962e" />
       <keyword name="rlBitSet" id="rlcutil.cpp::rlBitSet" ref="rlcutil_8cpp.html#a1faf9a09d5d0bb7a6ba24c9050697774" />
       <keyword name="rlBitClear" id="rlcutil.cpp::rlBitClear" ref="rlcutil_8cpp.html#afa69b413f110f689e6093e24f5e21178" />
@@ -4913,6 +4927,9 @@
       <keyword name="rlStartsWith" id="rlcutil.h::rlStartsWith" ref="rlcutil_8h.html#a176ada621127ae48c966556c474f20a4" />
       <keyword name="rlStrMatch" id="rlcutil.h::rlStrMatch" ref="rlcutil_8h.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
       <keyword name="rlStat" id="rlcutil.h::rlStat" ref="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df" />
+      <keyword name="rlFRead" id="rlcutil.h::rlFRead" ref="rlcutil_8h.html#a7aedbe0e5f7cbe22b1799ff208d6346a" />
+      <keyword name="rlFWrite" id="rlcutil.h::rlFWrite" ref="rlcutil_8h.html#a50c25de9d49ea1868edddcf72f87e079" />
+      <keyword name="rlWriteFile" id="rlcutil.h::rlWriteFile" ref="rlcutil_8h.html#a027a0ae1e822779a734b9049add9bb60" />
       <keyword name="rlMkdir" id="rlcutil.h::rlMkdir" ref="rlcutil_8h.html#a38506e038a433fce775f3fcdc340cace" />
       <keyword name="rlBitSet" id="rlcutil.h::rlBitSet" ref="rlcutil_8h.html#a1faf9a09d5d0bb7a6ba24c9050697774" />
       <keyword name="rlBitClear" id="rlcutil.h::rlBitClear" ref="rlcutil_8h.html#afa69b413f110f689e6093e24f5e21178" />
@@ -4960,6 +4977,7 @@
       <keyword name="BIT29" id="rldefine.h::BIT29" ref="rldefine_8h.html#adb368e517e545da53d8aace5923649e1" />
       <keyword name="BIT30" id="rldefine.h::BIT30" ref="rldefine_8h.html#a70105c4a8c864754c8ba9e9b0e5da52a" />
       <keyword name="BIT31" id="rldefine.h::BIT31" ref="rldefine_8h.html#adfb09898dca36071e32cb1fbeec479e5" />
+      <keyword name="RLCRLF" id="rldefine.h::RLCRLF" ref="rldefine_8h.html#a603b3a6ed9dee1603f3341bf266a9a35" />
       <keyword name="DBGPRINTF" id="rldf1.cpp::DBGPRINTF" ref="rldf1_8cpp.html#a8b496503e1abc92d2d6885f9cf508a8e" />
       <keyword name="calcCRC" id="rldf1.cpp::calcCRC" ref="rldf1_8cpp.html#a609a9fa36c803467e5a5e0bfac686d60" />
       <keyword name="computeCRC" id="rldf1.cpp::computeCRC" ref="rldf1_8cpp.html#a8799d9698b5aa9d0452fcda45a0282e7" />
@@ -6531,6 +6549,7 @@
       <keyword name="sendProcessViewBrowserButtonEvent" id="rlSocket::sendProcessViewBrowserButtonEvent" ref="classrlSocket.html#ab9444f22e76c22ab46df0a278aeb1e82" />
       <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#af97bc6ec8c70798f0f8af1d84c1415de" />
       <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a770535c111fb3efb0de39027c1e866d7" />
+      <keyword name="readHttpContentLength" id="rlSocket::readHttpContentLength" ref="classrlSocket.html#ae8f10471b987f09fbf42193ba7191974" />
       <keyword name="doConnect" id="rlSiemensTCP::doConnect" ref="classrlSiemensTCP.html#a14d6ae4a736f17e41fd79a14d3f65abc" />
       <keyword name="read_iso" id="rlSiemensTCP::read_iso" ref="classrlSiemensTCP.html#aa43942074ce5a2e879994a783a784fe2" />
       <keyword name="write_iso" id="rlSiemensTCP::write_iso" ref="classrlSiemensTCP.html#a5f09e6c3ef726892e398b96a292c733a" />
@@ -6705,6 +6724,7 @@
       <keyword name="sendProcessViewBrowserButtonEvent" id="rlSocket::sendProcessViewBrowserButtonEvent" ref="classrlSocket.html#ab9444f22e76c22ab46df0a278aeb1e82" />
       <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#af97bc6ec8c70798f0f8af1d84c1415de" />
       <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a770535c111fb3efb0de39027c1e866d7" />
+      <keyword name="readHttpContentLength" id="rlSocket::readHttpContentLength" ref="classrlSocket.html#ae8f10471b987f09fbf42193ba7191974" />
       <keyword name="rlGetsockopt" id="rlSocket::rlGetsockopt" ref="classrlSocket.html#a9cd8e5629a84bfa9e68b01877ff529c4" />
       <keyword name="rlSetsockopt" id="rlSocket::rlSetsockopt" ref="classrlSocket.html#a10cd80de25e59f4c989d09854dd60853" />
       <keyword name="s" id="rlSocket::s" ref="classrlSocket.html#a3f70186af86837a39592e4bf18076d24" />
@@ -6735,6 +6755,7 @@
       <keyword name="printf" id="rlSpawn::printf" ref="classrlSpawn.html#a915fa3b54cd837e81d72aa2a5a925ee6" />
       <keyword name="printAll" id="rlSpawn::printAll" ref="classrlSpawn.html#a44e6db2d95881c1f2284504ac7e9629a" />
       <keyword name="getFilepointer" id="rlSpawn::getFilepointer" ref="classrlSpawn.html#ae384ab0331cf5ff6eea3441500a57bfc" />
+      <keyword name="readJpegBuffer" id="rlSpawn::readJpegBuffer" ref="classrlSpawn.html#a9066feb1063f891ce7047eb2bfe4a1b3" />
       <keyword name="pid" id="rlSpawn::pid" ref="classrlSpawn.html#ae8fad062ebe5687115162704046bb516" />
       <keyword name="toChildRD" id="rlSpawn::toChildRD" ref="classrlSpawn.html#ad1cfeb2657d6a5fefc1e5ae08588b6a8" />
       <keyword name="toChildWR" id="rlSpawn::toChildWR" ref="classrlSpawn.html#ae5b94761e5e1bca251af9495c02faae7" />

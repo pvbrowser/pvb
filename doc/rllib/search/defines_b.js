@@ -7,6 +7,7 @@ var searchData=
   ['rl_5fprintf_5flength',['rl_PRINTF_LENGTH',['../rldefine_8h.html#a1f828641826ba0bf319ef87eaa34e5ce',1,'rldefine.h']]],
   ['rl_5fprintf_5flength_5fspreadsheet',['rl_PRINTF_LENGTH_SPREADSHEET',['../rldefine_8h.html#a7ee1c3aab1b7f7fa089acebc3fc55783',1,'rldefine.h']]],
   ['rlcanopentypes',['RLCANOPENTYPES',['../rlcanopentypes_8cpp.html#a9b5c5c5511892c4f11e99f2d4f0c4ef3',1,'rlcanopentypes.cpp']]],
+  ['rlcrlf',['RLCRLF',['../rldefine_8h.html#a603b3a6ed9dee1603f3341bf266a9a35',1,'rldefine.h']]],
   ['rlevent',['rlEvent',['../rlevent_8h.html#a166d76d0cb8d7780b72ab63579ca1244',1,'rlevent.h']]],
   ['rlmax_5fevent',['rlMAX_EVENT',['../rlevent_8h.html#abd29ce0a431efd421fae942553dbb5e1',1,'rlevent.h']]],
   ['rlmax_5fmessages',['rlMAX_MESSAGES',['../rleventlogserver_8h.html#a0ca0884a2fa217c7b1237992cd2b49e2',1,'rleventlogserver.h']]],

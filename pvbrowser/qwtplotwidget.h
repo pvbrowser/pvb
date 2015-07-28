@@ -44,6 +44,7 @@ class QwtPlotWidget : public QwtPlot
     QwtPlotWidget(int *sock, int ident, QWidget *parent, int numberCurves=10, int numberMarker=1000);
     ~QwtPlotWidget();
     int interpret(const char *command, double *x=NULL, double *y=NULL);
+    int sendJpeg2clipboard();
     int  nMarker;
     int  nCurves;
     int  autolegend, enablelegend, legendframestyle;

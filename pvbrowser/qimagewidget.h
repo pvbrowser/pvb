@@ -35,6 +35,7 @@ public:
     void            setImage(const char *filename, int rotate=0);
     void            setJpegImage(unsigned char *buffer, int buffersize, int rotate);
     void            setRGBA(unsigned char *buffer, int width, int height, int rotate);
+    int             sendJpeg2clipboard();
     QImage          image; // the loaded image
     QImage          original_image; // the original loaded image
 

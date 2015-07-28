@@ -76,6 +76,7 @@ class MyQWidget : public QWidget
 public:
     MyQWidget(int *sock, int ident, QWidget * parent, const char * name=0 );
     ~MyQWidget();
+    int sendJpeg2clipboard();
 
 public slots:
 

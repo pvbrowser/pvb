@@ -217,6 +217,12 @@ public:
   int rlSetsockopt(int level, int optname);
 
   /*! <pre>
+      read the response to a http get request until Content-Length is received
+      Tip: char line[256];
+  </pre> */
+  int readHttpContentLength(int timeout);
+  
+  /*! <pre>
       this array can be casted to (struct sockaddr *) &sockaddr[0];
       in case of active==0 it will store sockaddr of the last client
       (48 bytes spare)
