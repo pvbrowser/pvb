@@ -1545,6 +1545,7 @@ start_poll:  // only necessary for pause
     {
       int id,size;
       sscanf(event,"@clipboard(%d,%d",&id,&size);
+      if(size > 1024*1024*16) pvThreadFatal(p,"not enough memory for clipboard (more than 16MB were requested)");
       pvlock(p);
       if(p->clipboard != NULL) free(p->clipboard);
       p->clipboard = (char *) malloc(size+1);

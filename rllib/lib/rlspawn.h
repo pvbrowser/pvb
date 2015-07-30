@@ -103,6 +103,11 @@ public:
   FILE *getFilepointer();
 
   /*! <pre>
+  Kill process on other side of pipe
+  </pre> */
+  int sigkill();
+
+  /*! <pre>
   Read JPEG buffer fromChild
   return: length of buffer | -1 as error
 

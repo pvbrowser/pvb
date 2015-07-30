@@ -116,6 +116,10 @@ cd rllib/rlsvg
 ../../qmake.sh rlsvgcat.pro
 make
 cd ../..
+cd rllib/rlfind
+../../qmake.sh rlfind.pro
+make
+cd ../..
 cd rllib/rlhistory
 ../../qmake.sh rlhistory.pro
 make

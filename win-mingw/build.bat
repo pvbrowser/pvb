@@ -65,6 +65,12 @@ mingw32-make.exe
 cd ..                                                                      
 rem pause                                                                  
                                                                            
+cd rlfind                                                                   
+%QTDIR%\bin\qmake rlfind.pro -o Makefile                               
+mingw32-make.exe                                                                
+cd ..                                                                      
+rem pause                                                                  
+                                                                           
 cd rlhistory                                                               
 %QTDIR%\bin\qmake rlhistory.pro -o Makefile                              
 mingw32-make.exe                                                                
@@ -95,6 +101,7 @@ copy browserplugin\release\nppvbrowser.dll                       bin\nppvbrowser
 copy pvdevelop\release\pvdevelop.exe                             bin\pvdevelop.exe                               
 copy pvserver\release\libserverlib.a                             bin\libserverlib.a                              
 copy rlsvg\release\rlsvgcat.exe                                  bin\rlsvgcat.exe                                
+copy rlfind\release\rlfind.exe                                   bin\rlfind.exe                                
 copy rlhistory\release\rlhistory.exe                             bin\rlhistory.exe                               
 copy ..\start_pvbapp\release\\start_pvbapp.exe                   bin\start_pvbapp.exe                            
 copy fake_qmake\release\fake_qmake.exe                           bin\fake_qmake.exe                              

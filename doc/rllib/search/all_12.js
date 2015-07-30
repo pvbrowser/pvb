@@ -143,7 +143,7 @@ var searchData=
   ['showconfiguration',['showConfiguration',['../classrlCanNode.html#a8283a4934c8f5cb99b1459c240f42515',1,'rlCanNode']]],
   ['shownodeconfiguration',['showNodeConfiguration',['../classrlCanOpen.html#af8071fb948b6862ec7444e4f9b33b679',1,'rlCanOpen::showNodeConfiguration(int _boardnr, int _nodeid)'],['../classrlCanOpen.html#afb672e8a6cd805cd5ed902fb740a6f3e',1,'rlCanOpen::showNodeConfiguration()']]],
   ['siemensfunctioncodes',['SiemensFunctionCodes',['../classrlSiemensTCP.html#afbed17feafde338e9447e2b9145095f3',1,'rlSiemensTCP']]],
-  ['sigkill',['sigkill',['../classrlPcontrol.html#aa64ff3228c2399f6e44081780dac39f8',1,'rlPcontrol']]],
+  ['sigkill',['sigkill',['../classrlPcontrol.html#aa64ff3228c2399f6e44081780dac39f8',1,'rlPcontrol::sigkill()'],['../classrlSpawn.html#afd504bbf7d7c736c787c176436842e02',1,'rlSpawn::sigkill()']]],
   ['sigterm',['sigterm',['../classrlPcontrol.html#aad9d4841e724212b0778ac47bd417ced',1,'rlPcontrol']]],
   ['size',['size',['../classrlBuffer.html#ad298263b860115b94aaa8bdd9a64aea5',1,'rlBuffer::size()'],['../classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13',1,'rlSharedMemory::size()']]],
   ['sleeplocally',['sleepLocally',['../classrlController.html#a155171495dfa7e99c12c95a80de20aed',1,'rlController']]],

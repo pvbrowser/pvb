@@ -460,6 +460,35 @@ FILE *rlSpawn::getFilepointer()
 #endif  
 }
   
+int rlSpawn::sigkill()
+{
+#ifdef RLUNIX
+  if(pid == -1) return -1;
+  if(pid ==  0) return -1;
+  kill(pid,SIGKILL);
+  //printf("kill pid=%ld\n",m_pid);
+#endif
+
+#ifdef __VMS
+  if(pid == -1) return -1;
+  if(pid ==  0) return -1;
+  kill(pid,SIGKILL);
+#endif
+
+#ifdef RLWIN32
+  if(hProcess ==  0) return -1;
+  TerminateProcess((HANDLE) hProcess, 0);
+  WaitForSingleObject((HANDLE) hProcess, 60000);
+  CloseHandle((HANDLE) hProcess);
+  CloseHandle((HANDLE) hThread);
+  hThread = 0;
+  hProcess = 0;
+#endif
+
+  pid = 0;
+  return 0;
+}
+
 int rlSpawn::readJpegBuffer(unsigned char *buffer, int maxbuffer)
 {
   int c1, c2;
