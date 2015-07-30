@@ -52,6 +52,7 @@ mkdir -p  /opt/pvb/start_pvbapp
 mkdir -p  /opt/pvb/designer/plugins
 mkdir -p  /opt/pvb/rllib/lib
 mkdir -p  /opt/pvb/rllib/rlsvg
+mkdir -p  /opt/pvb/rllib/rlfind
 mkdir -p  /opt/pvb/rllib/rlhistory
 mkdir -p  /opt/pvb/fake_qmake
 mkdir -p  /opt/pvb/language_bindings/lua/pvslua
@@ -86,6 +87,7 @@ cp    start_pvbapp/README.txt                             /opt/pvb/start_pvbapp/
 cp    start_pvbapp/example.ini.linux                      /opt/pvb/start_pvbapp/example.ini
 cp    start_pvbapp/start_if_not_already_running.sh        /opt/pvb/start_pvbapp/
 cp    rllib/rlsvg/rlsvgcat                                /opt/pvb/rllib/rlsvg/
+cp    rllib/rlfind/rlfind                                 /opt/pvb/rllib/rlfind/
 cp    rllib/rlhistory/rlhistory                           /opt/pvb/rllib/rlhistory/
 cp    fake_qmake/fake_qmake                               /opt/pvb/fake_qmake/
 cp    rllib/lib/*.h                                       /opt/pvb/rllib/lib/
@@ -141,7 +143,7 @@ echo 'set links on linux...'
 ln -sf /opt/pvb/pvbrowser/pvbrowser                     /usr/bin/pvbrowser
 cp /opt/pvb/pvdevelop/pvdevelop.sh                      /usr/bin/pvdevelop
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
-ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
+ln -sf /opt/pvb/rllib/rlfind/rlfind                     /usr/bin/rlfind
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp               /usr/bin/start_pvbapp
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory               /usr/bin/rlhistory
 ln -sf /opt/pvb/fake_qmake/fake_qmake                   /usr/bin/fake_qmake
@@ -172,6 +174,7 @@ cp -r  pvbrowser/pvbrowser.app                     /opt/pvb/pvbrowser/
 cp -r  pvdevelop/pvdevelop.app                     /opt/pvb/pvdevelop/
 cp -r  start_pvbapp/start_pvbapp.app               /opt/pvb/start_pvbapp/
 cp -r  rllib/rlsvg/rlsvgcat.app                    /opt/pvb/rllib/rlsvg/
+cp -r  rllib/rlfind/rlfind.app                     /opt/pvb/rllib/rlfind/
 cp -r  rllib/rlhistory/rlhistory                   /opt/pvb/rllib/rlhistory/
 cp -r  fake_qmake/fake_qmake.app                   /opt/pvb/fake_qmake/
 cp -r  language_bindings/lua/pvslua/pvslua.app     /opt/pvb/pvslua/
@@ -181,6 +184,7 @@ ln -sf /opt/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser                
 ln -sf /opt/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop                     /usr/bin/pvdevelop
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp            /usr/bin/start_pvbapp
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat                     /usr/bin/rlsvgcat
+ln -sf /opt/pvb/rllib/rlfind/rlfind.app/Contents/MacOS/rlfind                        /usr/bin/rlfind
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory                                            /usr/bin/rlhistory
 ln -sf /opt/pvb/fake_qmake/fake_qmake.app/Contents/MacOS/fake_qmake                  /usr/bin/fake_qmake
 ln -sf /opt/pvb/update_pvbrowser.sh                                                  /usr/bin/update_pvbrowser
