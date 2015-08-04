@@ -23,6 +23,7 @@
 //Added by qt3to4:
 #include <QPaintEvent>
 #include <QMouseEvent>
+#include <QResizeEvent>
 
 class QImageWidget : public QWidget
 {
@@ -38,6 +39,7 @@ public:
     int             sendJpeg2clipboard();
     QImage          image; // the loaded image
     QImage          original_image; // the original loaded image
+    void            scale(int w, int h);
 
 protected:
     virtual void paintEvent(QPaintEvent *);
@@ -45,6 +47,7 @@ protected:
     virtual void mouseReleaseEvent(QMouseEvent *e);
     virtual void enterEvent(QEvent *event);
     virtual void leaveEvent(QEvent *event);
+    virtual void resizeEvent(QResizeEvent *event);
 
 private:
     void perhapsSetMask();

@@ -2695,6 +2695,7 @@
               <section title="rlDebugPrintf" ref="rlcutil_8cpp.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b" />
               <section title="rlEib1" ref="rlcutil_8cpp.html#aded00d12d0944372a0bc53fa5c4ea3c1" />
               <section title="rlEib2" ref="rlcutil_8cpp.html#a071cac61880d0033a604b49e81012e8d" />
+              <section title="rlEndsWith" ref="rlcutil_8cpp.html#abe8f3def100bc43766f37b9487ca0d8c" />
               <section title="rlexec" ref="rlcutil_8cpp.html#aaf037932d5e4bb98145220bd8db82a21" />
               <section title="rlFindFile" ref="rlcutil_8cpp.html#af1e3a2c3fe74d531512bbc2f0063e955" />
               <section title="rlFloatOption" ref="rlcutil_8cpp.html#a7f6b7043d4da7b255137a9b7fa5a9e3d" />
@@ -2746,6 +2747,7 @@
               <section title="rlDebugPrintf" ref="rlcutil_8h.html#a5380bd2e87ffcf0c8a24c387b0ac7b7b" />
               <section title="rlEib1" ref="rlcutil_8h.html#aded00d12d0944372a0bc53fa5c4ea3c1" />
               <section title="rlEib2" ref="rlcutil_8h.html#a071cac61880d0033a604b49e81012e8d" />
+              <section title="rlEndsWith" ref="rlcutil_8h.html#abe8f3def100bc43766f37b9487ca0d8c" />
               <section title="rlexec" ref="rlcutil_8h.html#aaf037932d5e4bb98145220bd8db82a21" />
               <section title="rlFindFile" ref="rlcutil_8h.html#af1e3a2c3fe74d531512bbc2f0063e955" />
               <section title="rlFloatOption" ref="rlcutil_8h.html#aeb98f62680853e9efe77e83d5444c2d2" />
@@ -4879,6 +4881,7 @@
       <keyword name="rlupper" id="rlcutil.cpp::rlupper" ref="rlcutil_8cpp.html#a9022208debc1e487f2d2ed7cb9fd21fd" />
       <keyword name="rllower" id="rlcutil.cpp::rllower" ref="rlcutil_8cpp.html#a3147ee004857d9f8934271ca491fd169" />
       <keyword name="rlStartsWith" id="rlcutil.cpp::rlStartsWith" ref="rlcutil_8cpp.html#a176ada621127ae48c966556c474f20a4" />
+      <keyword name="rlEndsWith" id="rlcutil.cpp::rlEndsWith" ref="rlcutil_8cpp.html#abe8f3def100bc43766f37b9487ca0d8c" />
       <keyword name="rlStrMatch" id="rlcutil.cpp::rlStrMatch" ref="rlcutil_8cpp.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
       <keyword name="rlStat" id="rlcutil.cpp::rlStat" ref="rlcutil_8cpp.html#ad9d36f7c9e98daa66c0cb737e12533df" />
       <keyword name="rlFRead" id="rlcutil.cpp::rlFRead" ref="rlcutil_8cpp.html#a7aedbe0e5f7cbe22b1799ff208d6346a" />
@@ -4927,6 +4930,7 @@
       <keyword name="rlupper" id="rlcutil.h::rlupper" ref="rlcutil_8h.html#a9022208debc1e487f2d2ed7cb9fd21fd" />
       <keyword name="rllower" id="rlcutil.h::rllower" ref="rlcutil_8h.html#a3147ee004857d9f8934271ca491fd169" />
       <keyword name="rlStartsWith" id="rlcutil.h::rlStartsWith" ref="rlcutil_8h.html#a176ada621127ae48c966556c474f20a4" />
+      <keyword name="rlEndsWith" id="rlcutil.h::rlEndsWith" ref="rlcutil_8h.html#abe8f3def100bc43766f37b9487ca0d8c" />
       <keyword name="rlStrMatch" id="rlcutil.h::rlStrMatch" ref="rlcutil_8h.html#a83f99e7afc1b87e6a2c263a5d5f66485" />
       <keyword name="rlStat" id="rlcutil.h::rlStat" ref="rlcutil_8h.html#ad9d36f7c9e98daa66c0cb737e12533df" />
       <keyword name="rlFRead" id="rlcutil.h::rlFRead" ref="rlcutil_8h.html#a7aedbe0e5f7cbe22b1799ff208d6346a" />

@@ -1793,10 +1793,12 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
     settings()->setAttribute(QWebSettings::PluginsEnabled, false);
     settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
   }
+#ifdef USE_MAEMO  
   QString    txt("data:text/css;charset=utf-8;base64,");
   QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
   txt += css.toBase64();
   settings()->setUserStyleSheetUrl(QUrl(txt));
+#endif  
 #endif  
 }
 
@@ -2035,7 +2037,7 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
   }
 
   if(opt.arg_debug) printf("slotLinkClicked(%s)\n", (const char *) url.toUtf8());
-  if(url.endsWith(".pdf") || url.endsWith(".PDF"))
+  if(url.startsWith("http://") && (url.endsWith(".pdf") || url.endsWith(".PDF")))
   {
     QString cmd = opt.view_pdf;
     cmd += " ";
@@ -2046,13 +2048,14 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
 #endif
     mysystem(cmd.toUtf8());
   }
-  else if(url.endsWith(".mp3",  Qt::CaseInsensitive) || 
+  else if(url.startsWith("http://") && (
+          url.endsWith(".mp3",  Qt::CaseInsensitive) || 
           url.endsWith(".ogg",  Qt::CaseInsensitive) || 
           url.endsWith(".m3u",  Qt::CaseInsensitive) || 
           url.endsWith(".asx",  Qt::CaseInsensitive) || 
           url.contains(".pls?", Qt::CaseInsensitive) ||
           url.contains("mp3e",  Qt::CaseInsensitive) ||
-          url.startsWith("http://www.youtube.com/watch?") )
+          url.startsWith("http://www.youtube.com/watch?") ))
   {
     QString cmd = opt.view_audio;
     cmd += " ";
@@ -2063,10 +2066,11 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
 #endif
     mysystem(cmd.toUtf8());
   }
-  else if(url.endsWith(".mp4",  Qt::CaseInsensitive) || 
+  else if(url.startsWith("http://") && (
+          url.endsWith(".mp4",  Qt::CaseInsensitive) || 
           url.endsWith(".mov",  Qt::CaseInsensitive) || 
           url.endsWith(".ogv",  Qt::CaseInsensitive) || 
-          url.endsWith(".avi",  Qt::CaseInsensitive) )
+          url.endsWith(".avi",  Qt::CaseInsensitive) ))
   {
     QString cmd = opt.view_video;
     cmd += " ";

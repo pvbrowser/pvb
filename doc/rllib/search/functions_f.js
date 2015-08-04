@@ -80,6 +80,7 @@ var searchData=
   ['rleib1',['rlEib1',['../rlcutil_8cpp.html#aded00d12d0944372a0bc53fa5c4ea3c1',1,'rlEib1(int command):&#160;rlcutil.cpp'],['../rlcutil_8h.html#aded00d12d0944372a0bc53fa5c4ea3c1',1,'rlEib1(int command):&#160;rlcutil.cpp']]],
   ['rleib2',['rlEib2',['../rlcutil_8cpp.html#a071cac61880d0033a604b49e81012e8d',1,'rlEib2(int command):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a071cac61880d0033a604b49e81012e8d',1,'rlEib2(int command):&#160;rlcutil.cpp']]],
   ['rleibnetip',['rlEIBnetIP',['../classrlEIBnetIP.html#a3ef986d39bcac3b584e1ad26d5708e45',1,'rlEIBnetIP']]],
+  ['rlendswith',['rlEndsWith',['../rlcutil_8cpp.html#abe8f3def100bc43766f37b9487ca0d8c',1,'rlEndsWith(const char *str, const char *endstr):&#160;rlcutil.cpp'],['../rlcutil_8h.html#abe8f3def100bc43766f37b9487ca0d8c',1,'rlEndsWith(const char *str, const char *endstr):&#160;rlcutil.cpp']]],
   ['rleventinit',['rlEventInit',['../rlevent_8cpp.html#a2cd69dfcdea93562336f43aa9b131c9a',1,'rlEventInit(int ac, char **av, const char *module):&#160;rlevent.cpp'],['../rlevent_8h.html#a2cd69dfcdea93562336f43aa9b131c9a',1,'rlEventInit(int ac, char **av, const char *module):&#160;rlevent.cpp']]],
   ['rleventlogserver',['rlEventLogServer',['../classrlEventLogServer.html#a77a7ca28b1e60205b23f69136c68de23',1,'rlEventLogServer']]],
   ['rleventlogserverthreads',['rlEventLogServerThreads',['../classrlEventLogServerThreads.html#a41dfdd932001c5ae1a3cc9627edf7fd6',1,'rlEventLogServerThreads']]],

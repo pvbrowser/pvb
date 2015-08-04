@@ -128,6 +128,16 @@ void QImageWidget::setGeometry(int nx, int ny, int nw, int nh)
   yy = ny;
   w  = nw;
   h  = nh;
+  scale(w,h);
+  QWidget::setGeometry(xx,yy,w,h);
+  repaint(0,0,w,h);
+}
+/*
+{
+  xx = nx;
+  yy = ny;
+  w  = nw;
+  h  = nh;
   //move(xx,yy);
   //resize(w,h);
   image = original_image.copy();
@@ -147,6 +157,34 @@ void QImageWidget::setGeometry(int nx, int ny, int nw, int nh)
   }
   repaint(0,0,w,h);
 }
+*/
+
+void QImageWidget::scale(int w, int h)
+{
+  //printf("scale(%d,%d)\n",w,h);
+  image = original_image.copy();
+  if(w > 0 && h > 0 && ( w < image.width() || h < image.height() ) )
+  {
+    image = image.scaled(w, h, Qt::KeepAspectRatio);
+    clearMask();
+    perhapsSetMask();
+  }
+  else if(w > image.width() || h > image.height())
+  {
+    //qt3 image = image.smoothScale(w,h,Qt::KeepAspectRatio);
+    image.scaled(w, h, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+    clearMask();
+    perhapsSetMask();
+  }
+}
+
+void QImageWidget::resizeEvent(QResizeEvent *event)
+{
+  QSize size = event->size();
+  //printf("resizeEvent(%d,%d)\n",size.width(),size.height());
+  scale(size.width(), size.height());
+  return QWidget::resizeEvent(event);
+}
 
 void QImageWidget::setImage(const char *filename, int rotate)
 {
@@ -157,6 +195,7 @@ void QImageWidget::setImage(const char *filename, int rotate)
     m.rotate(rotate);
     image = image.transformed(m);
   }
+/*  
 //#ifdef USE_MAEMO 
 //  unlink(filename);
 //#endif  
@@ -196,7 +235,9 @@ void QImageWidget::setImage(const char *filename, int rotate)
     }
   }
   perhapsSetMask();
+*/  
   original_image = image.copy();
+  scale(width(),height());
   repaint();
 }
 
@@ -211,6 +252,7 @@ void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize, int rotat
     m.rotate(rotate);
     image = image.transformed(m);
   }
+/*  
   if(w > 0 && h > 0 && ( w < image.width() || h < image.height() ) )
   {
     //printf("set1: setImage %s xy=%d,%d w=%d h=%d width=%d height=%d\n", filename, 
@@ -228,7 +270,9 @@ void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize, int rotat
   }
 
   perhapsSetMask();
+*/  
   original_image = image.copy();
+  scale(width(),height());
   repaint();
 }
 

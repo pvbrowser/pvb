@@ -175,6 +175,11 @@ test if str starts with startstr
 int rlStartsWith(const char *str, const char *startstr);
 
 /** <pre>
+test if str ends with endstr
+</pre> */
+int rlEndsWith(const char *str, const char *endstr);
+
+/** <pre>
 test if str matches with wild
 </pre> */
 int rlStrMatch(const char *str, const char *wild);

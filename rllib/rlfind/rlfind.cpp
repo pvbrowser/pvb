@@ -1,3 +1,18 @@
+/***************************************************************************
+                          rlsvgcat.cpp  -  description
+                             -------------------
+    begin                : Tue Jul 30 2015
+    copyright            : (C) 2015 by pvbrowser
+    email                : lehrig@t-online.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as        *
+ *   published by the Free Software Foundation                             *
+ *                                                                         *
+ ***************************************************************************/
 #include <string.h> 
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,7 +85,7 @@ int main(int argc, char **argv)
      find(argv[1], "-only", "");
 #else
      char cmd[strlen(argv[1]) + 80];
-     sprintf(cmd,"find \"%s\" -maxdepth 1 -name \"*\"", argv[1]);
+     sprintf(cmd,"find \"%s\" -maxdepth 1 -name \"*\" -printf \"%%p [%%y]\n\" | sort", argv[1]);
      system(cmd);
 #endif
      return 0;   
@@ -94,8 +109,8 @@ int main(int argc, char **argv)
    find(argv[1], argv[2], mypattern);
 #else
    char cmd[strlen(argv[1]) + strlen(argv[2]) + strlen(argv[3]) + 80];
-   if(strcmp(argv[2],"-only") == 0) sprintf(cmd,"find \"%s\" -maxdepth 1 -name  \"%s\"", argv[1],          argv[3]);
-   else                             sprintf(cmd,"find \"%s\"             \"%s\" \"%s\"", argv[1], argv[2], argv[3]);
+   if(strcmp(argv[2],"-only") == 0) sprintf(cmd,"find \"%s\" -maxdepth 1 -name  \"%s\" -printf \"%%p [%%y]\n\" | sort", argv[1],          argv[3]);
+   else                             sprintf(cmd,"find \"%s\"             \"%s\" \"%s\" -printf \"%%p [%%y]\n\" | sort", argv[1], argv[2], argv[3]);
    system(cmd);
 #endif   
    

@@ -749,6 +749,18 @@ int rlStartsWith(const char *str, const char *startstr)
   int ret;
   if(str == NULL || startstr == NULL) return 0;
   ret = strncmp(str,startstr,strlen(startstr));
+  printf("rlStartsWith(%s,%s) ret=%d\n", str, startstr, ret);
+  if(ret == 0) return 1;
+  return 0;
+}
+
+int rlEndsWith(const char *str, const char *endstr)
+{
+  int ret;
+  if(str == NULL || endstr == NULL) return 0;
+  int index = strlen(str) - strlen(endstr);
+  if(index < 0) return 0;
+  ret = strcmp(&str[index],endstr);
   if(ret == 0) return 1;
   return 0;
 }

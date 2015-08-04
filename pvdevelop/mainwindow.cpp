@@ -1495,8 +1495,10 @@ void MainWindow::slotLinuxWriteStartscript()
     else
     {
       QMessageBox::information(this,"pvdevelop",
-                                    "startscript written to project directory\n"
-                                    "please review it, copy it to /etc/init.d/ and activate it through runlevel editor",
+                                    "traditional startscript written to project directory\n"
+                                    "please review it, copy it to /etc/init.d/ and activate it through runlevel editor\n"
+                                    "\n"
+                                    "systemd <name>.service startscript also written to project directory",
                                     QMessageBox::Ok);
     }
   }

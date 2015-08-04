@@ -167,7 +167,8 @@ int main(int argc, char *argv[])
     //printf are not visible with default settings
     int i;
     qDebug()<<"v: 0.5";//to see if really the app havebeen replaced on debug device
-    for(i=0;i<argc;i++){
+    for(i=0; i<argc; i++)
+    {
         qDebug()<<"ARG["<<i<<"]: "<<argv[i];
     }
 #endif

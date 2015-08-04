@@ -1690,6 +1690,7 @@ void uncommentPpi()
 int writeStartscript(const char *dir, const char *name)
 {
   FILE *fout;
+  char buf[80];
 
   fout = fopen("startscript","w");
   if(fout == NULL) return -1;
@@ -1745,6 +1746,41 @@ int writeStartscript(const char *dir, const char *name)
 
   fclose(fout);
   mysystem("chmod ugoa+x startscript");
+ 
+  sprintf(buf,"%s.service", name); // generate pvs.service for systemd
+  fout = fopen(buf,"w");
+  if(fout == NULL) return -1;
+  fprintf(fout,"%s","# This file may be used to start this pvserver using systemd\n");
+  fprintf(fout,"%s","# Please copy this file to \"/usr/lib/systemd/system/\"\n");
+  fprintf(fout,"%s","# su \n");
+  fprintf(fout,     "# cp %s.service /usr/lib/systemd/system/\n", name);
+  fprintf(fout,"%s","# exit\n");
+  fprintf(fout,"%s","#\n");
+  fprintf(fout,"%s","# Commands:\n");
+  fprintf(fout,     "# systemctl start      %s\n", name);
+  fprintf(fout,     "# systemctl stop       %s\n", name);
+  fprintf(fout,     "# systemctl status     %s\n", name);
+  fprintf(fout,     "# systemctl is-enabled %s\n", name);
+  fprintf(fout,     "# systemctl enable     /usr/lib/systemd/system/%s.service\n", name);
+  fprintf(fout,     "# systemctl disable    %s\n", name);
+  fprintf(fout,     "# systemctl help       %s\n", name);
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","[Unit]\n");
+  fprintf(fout,"%s","Description=this is a pvserver which is used by a pvbrowser client\n");
+  fprintf(fout,"%s","After=syslog.target network.target\n");
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","[Service]\n");
+  fprintf(fout,"%s","Type=simple\n");
+  fprintf(fout,"%s","User=root\n");
+  fprintf(fout,"%s","Group=users\n");
+  fprintf(fout,"%s","StandardOutput=null\n");
+  fprintf(fout,"%s","StandardError=null\n");
+  fprintf(fout,     "ExecStart=%s/%s -cd=%s -port=5050\n", dir, name, dir);
+  fprintf(fout,"%s","\n");
+  fprintf(fout,"%s","[Install]\n");
+  fprintf(fout,"%s","WantedBy=multi-user.target\n");                                                                                           
+  fclose(fout);
+
   return 0;
 }
 
