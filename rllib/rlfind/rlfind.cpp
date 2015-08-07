@@ -75,19 +75,60 @@ int find(const char *szDir, const char *szFunction, const char *szPattern)
    FindClose(hFind);
    return 0;
 }
+#else
+
+#include <sys/types.h>
+#include <dirent.h>
+int find(const char *szDir, const char *szFunction, const char *szPattern)
+{
+   char buf[strlen(szDir) + 4];
+   strcpy(buf,szDir); strcat(buf,"\\*");
+
+   DIR *dir = opendir(szDir);
+   if(dir == NULL) return -1;   
+   while(1)
+   {
+      struct dirent *de = readdir(dir);
+      if(de == NULL) break;
+      if(de->d_type == DT_DIR)
+      {
+	      if(de->d_name[0] != '.')
+	      {
+          char path[strlen(szDir) + strlen(de->d_name) + 1];
+          strcpy(path, szDir);
+          strcat(path,"/");
+          strcat(path,de->d_name);
+	        printf("%s [d]\n", path);
+          if(strcmp(szFunction,"-only") != 0) find(path,szFunction,szPattern);
+	      }  
+      }
+      else
+      {
+        char path[strlen(szDir) + strlen(de->d_name) + 1];
+        strcpy(path, szDir);
+        strcat(path,"/");
+        strcat(path,de->d_name);
+	      if(szPattern[0] == '\0')                      printf("%s [f]\n", path);
+	      else if(strstr(de->d_name,szPattern) != NULL) printf("%s [f]\n", path);
+      }
+      
+   }
+   closedir(dir);
+   return 0;
+}
 #endif
 
 int main(int argc, char **argv)
 {
    if(argc == 2)
    {
-#ifdef _WIN32   
+//#ifdef _WIN32   
      find(argv[1], "-only", "");
-#else
-     char cmd[strlen(argv[1]) + 80];
-     sprintf(cmd,"find \"%s\" -maxdepth 1 -name \"*\" -printf \"%%p [%%y]\n\" | sort", argv[1]);
-     system(cmd);
-#endif
+//#else
+//     char cmd[strlen(argv[1]) + 80];
+//     sprintf(cmd,"find \"%s\" -maxdepth 1 -name \"*\" -printf \"%%p [%%y]\n\" | sort", argv[1]);
+//     system(cmd);
+//#endif
      return 0;   
    }
    else if(argc != 4)
@@ -96,7 +137,7 @@ int main(int argc, char **argv)
       return (-1);
    }
 
-#ifdef _WIN32   
+//#ifdef _WIN32   
    char mypattern[strlen(argv[3])];
    char       *dest = &mypattern[0];
    const char *cptr = argv[3];
@@ -107,12 +148,12 @@ int main(int argc, char **argv)
    }
    *dest = '\0';
    find(argv[1], argv[2], mypattern);
-#else
-   char cmd[strlen(argv[1]) + strlen(argv[2]) + strlen(argv[3]) + 80];
-   if(strcmp(argv[2],"-only") == 0) sprintf(cmd,"find \"%s\" -maxdepth 1 -name  \"%s\" -printf \"%%p [%%y]\n\" | sort", argv[1],          argv[3]);
-   else                             sprintf(cmd,"find \"%s\"             \"%s\" \"%s\" -printf \"%%p [%%y]\n\" | sort", argv[1], argv[2], argv[3]);
-   system(cmd);
-#endif   
+//#else
+//   char cmd[strlen(argv[1]) + strlen(argv[2]) + strlen(argv[3]) + 80];
+//   if(strcmp(argv[2],"-only") == 0) sprintf(cmd,"find \"%s\" -maxdepth 1 -name  \"%s\" -printf \"%%p [%%y]\n\" | sort", argv[1],          argv[3]);
+//   else                             sprintf(cmd,"find \"%s\"             \"%s\" \"%s\" -printf \"%%p [%%y]\n\" | sort", argv[1], argv[2], argv[3]);
+//   system(cmd);
+//#endif   
    
    return 0;
 }

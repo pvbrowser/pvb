@@ -1264,6 +1264,10 @@ Functions</h2></td></tr>
 <tr class="separator:ga4892512cf39a6b3b51c60136b3ddd667"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gad00140754b048cb7c60fa968fec98d41"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#gad00140754b048cb7c60fa968fec98d41">pvDownloadFile</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *filename)</td></tr>
 <tr class="separator:gad00140754b048cb7c60fa968fec98d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga5cee0a72acdf15e3f8c10161c6caa2fc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga5cee0a72acdf15e3f8c10161c6caa2fc">pvSendHttpChunks</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *filename)</td></tr>
+<tr class="separator:ga5cee0a72acdf15e3f8c10161c6caa2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa1674544930d4351855c4b8d52d5fd3c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#gaa1674544930d4351855c4b8d52d5fd3c">pvSendHttpContentLength</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *filename)</td></tr>
+<tr class="separator:gaa1674544930d4351855c4b8d52d5fd3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6c99167a0daa384e40f2cb1e0b1dd63e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e">pvSetMaxClientsPerIpAdr</a> (int max_clients)</td></tr>
 <tr class="separator:ga6c99167a0daa384e40f2cb1e0b1dd63e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga0e8b6843979707a3e585de32f5b3767a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga0e8b6843979707a3e585de32f5b3767a">pvMaxClientsPerIpAdr</a> ()</td></tr>
@@ -1278,6 +1282,8 @@ Functions</h2></td></tr>
 <tr class="separator:ga2756f2e38843461fa0ab9d6b3207fb93"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga22600346bd510d5fcdaa97fbad74021a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a">pvtcpsend</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *buf, int len)</td></tr>
 <tr class="separator:ga22600346bd510d5fcdaa97fbad74021a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga88dc793e8a43a7d48b1b0fe109c654f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga88dc793e8a43a7d48b1b0fe109c654f2">pvtcpsendstring</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *buf)</td></tr>
+<tr class="separator:ga88dc793e8a43a7d48b1b0fe109c654f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga3c8d98351f250fbfae19348f117f9eaa"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa">pvtcpsend_binary</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, const char *buf, int len)</td></tr>
 <tr class="separator:ga3c8d98351f250fbfae19348f117f9eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga7b677664cb5cc96171e62eb64579ada4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Misc.html#ga7b677664cb5cc96171e62eb64579ada4">pvtcpreceive</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, char *buf, int maxlen)</td></tr>
@@ -1673,13 +1679,28 @@ Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:afcc3623cc036b104a9d76b68b39f6094"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="processviewserver_8h.html#afcc3623cc036b104a9d76b68b39f6094">pvserver_version</a> [] = &quot;4.8.0&quot;</td></tr>
+<tr class="separator:afcc3623cc036b104a9d76b68b39f6094"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac11bf696f7287842ed6c53430fb6e884"><td class="memItemLeft" align="right" valign="top">static const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__DefinesAndEnums.html#gac11bf696f7287842ed6c53430fb6e884">null_string</a> [] = &quot;&quot;</td></tr>
 <tr class="separator:gac11bf696f7287842ed6c53430fb6e884"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="afcc3623cc036b104a9d76b68b39f6094"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char pvserver_version[] = &quot;4.8.0&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jul 28 2015 16:03:59 for ProcessViewBrowser-ServerProgramming by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Aug 7 2015 07:54:52 for ProcessViewBrowser-ServerProgramming by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.8
 </small></address>

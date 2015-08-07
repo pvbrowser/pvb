@@ -4,7 +4,7 @@ var searchData=
   ['beforecurrent',['BeforeCurrent',['../group__DefinesAndEnums.html#ggabb491487def337216dea442161545e72aa653f8c033fd8e25066b86604a42f813',1,'processviewserver.h']]],
   ['bin',['Bin',['../group__DefinesAndEnums.html#gga55991492c8e419706e2c7eed0f3a05e2af63676e4d22f0e184202ea660a0bc62a',1,'processviewserver.h']]],
   ['binx',['BINx',['../group__DefinesAndEnums.html#gga46c8a310cf4c094f8c80e1cb8dc1f911abea97d5c719708b5fce6c81963f09466',1,'processviewserver.h']]],
-  ['black',['BLACK',['../group__DefinesAndEnums.html#ga7b3b25cba33b07c303f3060fe41887f6',1,'BLACK():&#160;processviewserver.h'],['../group__DefinesAndEnums.html#ggadd354b854a8899ddb39fc9d57bbe22e3ac1e9bce8242f443c54c7405223d616cd',1,'Black():&#160;processviewserver.h']]],
+  ['black',['Black',['../group__DefinesAndEnums.html#ggadd354b854a8899ddb39fc9d57bbe22e3ac1e9bce8242f443c54c7405223d616cd',1,'Black():&#160;processviewserver.h'],['../group__DefinesAndEnums.html#ga7b3b25cba33b07c303f3060fe41887f6',1,'BLACK():&#160;processviewserver.h']]],
   ['blankcursor',['BlankCursor',['../group__DefinesAndEnums.html#ggad19ba4f288a5afb7970196ceee05e47eae2349c87133218f9561682b85cfc23b7',1,'processviewserver.h']]],
   ['blue',['BLUE',['../group__DefinesAndEnums.html#ga79d10e672abb49ad63eeaa8aaef57c38',1,'processviewserver.h']]],
   ['bold',['Bold',['../group__DefinesAndEnums.html#ggadd354b854a8899ddb39fc9d57bbe22e3aa529a7a50505042b4f78439ecc3fb0d6',1,'processviewserver.h']]],

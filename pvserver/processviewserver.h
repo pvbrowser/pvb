@@ -21,6 +21,8 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
+const char pvserver_version[] = "4.8.0";
+
 // define WIN
 #ifdef _WIN32
 #define PVWIN32
@@ -514,6 +516,7 @@ typedef struct _PARAM_
   int   use_communication_plugin;        /* can also be set at runtime         */
   char  lang_section[32];                /* use pvSelectLanguage()             */
   char  *mytext2;                        /* temp used in language translation  */
+  int   http;                            /* 0|1 talk http                      */
 }PARAM;
 
 #ifndef __VMS
@@ -2929,6 +2932,14 @@ int pvDownloadFileAs(PARAM *p, const char *filename, const char *newname);
 download file to temp directory of the browser
 </pre> */
 int pvDownloadFile(PARAM *p, const char *filename);
+/*! <pre>
+send http response using chunks
+</pre> */
+int pvSendHttpChunks(PARAM *p, const char *filename);
+/*! <pre>
+send http response using Content-Length
+</pre> */
+int pvSendHttpContentLength(PARAM *p, const char *filename);
 
 /*! <pre>
 Set the limit of clients the pvserver accepts from 1 ip address 
@@ -2959,6 +2970,7 @@ read all pending messages from tcp
 </pre> */
 int pvClearMessageQueue(PARAM *p);
 int pvtcpsend(PARAM *p, const char *buf, int len);
+int pvtcpsendstring(PARAM *p, const char *buf);
 int pvtcpsend_binary(PARAM *p, const char *buf, int len);
 int pvtcpreceive(PARAM *p, char *buf, int maxlen);
 int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen);

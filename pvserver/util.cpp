@@ -26,8 +26,6 @@
 
 #include <locale.h>
 
-const char pvserver_version[] = "4.8.0";
-
 /* #include "qimage.h" */
 #include <time.h>
 #include <sys/stat.h>
@@ -87,6 +85,7 @@ int  WSAAPI getnameinfo(const struct sockaddr*,socklen_t,char*,DWORD, char*,DWOR
 #endif
 
 #ifdef PVUNIX
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/time.h>
 #include <time.h>
@@ -98,6 +97,7 @@ extern int errno;
 #endif
 
 #ifdef PVWIN32
+#include <sys/stat.h>
 #include <sys/types.h>
 #include <time.h>
 #include <sys/utime.h>
@@ -1037,6 +1037,12 @@ int pvtcpsend(PARAM *p, const char *buf, int len)
   return 0;
 }
 
+/* send a string (without '\0') to tcp  */
+int pvtcpsendstring(PARAM *p, const char *buf)
+{
+  return pvtcpsend(p,buf,strlen(buf));
+}
+
 /* receive a packet from tcp */
 int pvtcpreceive(PARAM *p, char *buf, int maxlen)
 {
@@ -1094,12 +1100,13 @@ static int show_usage()
 {
   printf("###################################################################################\n");
   printf("pvserver %s (C) by Lehrig Software Engineering 2000-2014       lehrig@t-online.de\n\n", pvserver_version);
-  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -no_announce -gui <url_trailer>\n");
+  printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -no_announce -http -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
   printf("-sleep=500 milliseconds\n");
   printf("do NOT exit_after_last_client_terminates\n\n");
   printf("-cd=/working/directory\n");
+  printf("-http run in http server mode\n");
   printf("-gui # will start pvbrowser pv://localhost:port\n");
   printf("<url_trailer> example1: /?test1=1&test2=2\n");
   printf("<url_trailer> example2: /mask1?test1=1&test2=2\n");
@@ -1176,6 +1183,7 @@ int i;
   p->mytext2[0] = '\0';
   p->communication_plugin = NULL;
   p->use_communication_plugin = 0;
+  p->http = 0;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
   pvthread_mutex_init(&param_mutex, NULL);
@@ -1253,7 +1261,8 @@ int i,ret,cmdline_length;
     cmdline_length += 1;
     cmdline_length += strlen(av[i]);
     if     (strncmp(av[i],"--h",3)                             == 0) { show_usage(); exit(0); }
-    if     (strncmp(av[i],"-h",2)                              == 0) { show_usage(); exit(0); }
+    if     (strcmp(av[i],"-http")                              == 0) p->http = 1;
+    else if(strncmp(av[i],"-h",2)                              == 0) { show_usage(); exit(0); }
     else if(strncmp(av[i],"-port=",6)                          == 0) sscanf(av[i],"-port=%d",&p->port);
     else if(strncmp(av[i],"-sleep=",7)                         == 0) sscanf(av[i],"-sleep=%d",&p->sleep);
     else if(strncmp(av[i],"-cd=",4)                            == 0) ret = chdir(&av[i][4]);
@@ -1391,7 +1400,7 @@ int pvGetInitialMask(PARAM *p)
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
   if(ret == 0) return 0; /* timeout */
   pvtcpreceive(p, event, MAX_EVENT_LENGTH);
-
+  
   if(strncmp(event,"@url=",5) == 0)
   {
 	  char *cptr;
@@ -1529,7 +1538,9 @@ start_poll:  // only necessary for pause
     return 0;
   }
 
+  //printf("RECEIVE\n");
   pvtcpreceive(p, event, MAX_EVENT_LENGTH);
+  //printf("DEBUG:#%s#\n", event);
   p->mouse_x = p->mouse_y = -1;
   if(*event == '@')
   {
@@ -4176,6 +4187,15 @@ int pvParseEvent(const char *event, int *id, char *text)
     pvGetText(event, text);
     return TEXT_EVENT;
   }
+  else if(strncmp(event,"GET ",4) == 0)
+  {
+    if(strlen(event) < MAX_EVENT_LENGTH)
+    {
+      *id = -1;
+      strcpy(text,event);
+      return TEXT_EVENT;
+    }  
+  }
   else if(strncmp(event,"idleGL(",7) == 0)
   {
     sscanf(event,"idleGL(%d)",id);
@@ -5336,6 +5356,81 @@ short len;
 int pvDownloadFile(PARAM *p, const char *filename)
 {
   return pvDownloadFileAs(p,filename,filename);
+}
+
+int pvSendHttpChunks(PARAM *p, const char *filename)
+{
+  struct stat statbuf;
+  stat(filename,&statbuf);
+  if(statbuf.st_size <= 0) return -1;
+  char tbuf[80];
+  char buf[2048];
+  const int maxbuf = sizeof(buf); 
+  FILE *fin = fopen(filename,"rb");
+  if(fin == NULL)
+  {
+    printf("pvSendHttpResponse: could not open file %s\n", filename);
+    return -1;
+  }
+  int fpos = 0;
+  while(1)
+  {
+    if(fpos + maxbuf > statbuf.st_size) break;
+    fread(buf, 1, maxbuf, fin);
+    sprintf(tbuf, "%x\n", maxbuf);
+    pvtcpsend(p,tbuf,strlen(tbuf));
+    pvtcpsend_binary(p,buf,maxbuf);
+    fpos += maxbuf;
+  }
+  int remain = statbuf.st_size - fpos;
+  if(remain > 0)
+  {
+    for(int i=remain; i<maxbuf; i++) buf[i]='\n';
+    fread(buf, 1, maxbuf, fin);
+    sprintf(tbuf, "%x\n", maxbuf);
+    pvtcpsend(p,tbuf,strlen(tbuf));
+    pvtcpsend_binary(p,buf,maxbuf);
+  }
+  strcpy(tbuf,"0\n\n\n");
+  pvtcpsend(p,tbuf,strlen(tbuf));
+  fclose(fin);
+  return 0;
+}
+
+int pvSendHttpContentLength(PARAM *p, const char *filename)
+{
+  struct stat statbuf;
+  stat(filename,&statbuf);
+  if(statbuf.st_size <= 0) return -1;
+  char tbuf[80];
+  char buf[2048];
+  const int maxbuf = sizeof(buf); 
+  FILE *fin = fopen(filename,"rb");
+  if(fin == NULL)
+  {
+    printf("pvSendHttpResponse: could not open file %s\n", filename);
+    return -1;
+  }
+  sprintf(tbuf, "Content-Length: %ld\n\n", statbuf.st_size);
+  pvtcpsend(p,tbuf,strlen(tbuf));
+  int fpos = 0;
+  while(1)
+  {
+    if(fpos + maxbuf > statbuf.st_size) break;
+    fread(buf, 1, maxbuf, fin);
+    sprintf(tbuf, "%x\n", maxbuf);
+    pvtcpsend_binary(p,buf,maxbuf);
+    fpos += maxbuf;
+  }
+  int remain = statbuf.st_size - fpos;
+  if(remain > 0)
+  {
+    fread(buf, 1, maxbuf, fin);
+    sprintf(tbuf, "%x\n", remain);
+    pvtcpsend_binary(p,buf,remain);
+  }
+  fclose(fin);
+  return 0;
 }
 
 int pvSetMaxClientsPerIpAdr(int max_clients)
@@ -7129,6 +7224,7 @@ int qwtAnalogClockSetValue(PARAM *p, int id, float value)
 int pvSendVersion(PARAM *p)
 {
   char buf[80];
+  if(p->http) return 0;
   if(pvs_no_announce) return 0;
   strcpy(p->pvserver_version, pvserver_version);
   sprintf(buf,"pvsVersion(%s)\n", pvserver_version);

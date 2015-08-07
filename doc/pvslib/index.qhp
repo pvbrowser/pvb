@@ -27,6 +27,7 @@
               <section title="fp" ref="struct__PARAM__.html#a5447ec33f1c40f2d75d8b19088ed59e3" />
               <section title="free" ref="struct__PARAM__.html#ae6d0303b78cd630673af4e74a61e1447" />
               <section title="hello_counter" ref="struct__PARAM__.html#a0df7eb0414e7b2c81d5352e7d5aad586" />
+              <section title="http" ref="struct__PARAM__.html#a2a899fd4dcf582367516b03a6be86746" />
               <section title="initial_mask" ref="struct__PARAM__.html#aaacf0b224dc1dfe58386cee22e3ff3a0" />
               <section title="lang_section" ref="struct__PARAM__.html#ab0475d873e22c60c5c3c193379cd071f" />
               <section title="language" ref="struct__PARAM__.html#a591361cbc7ed2fa1d9ac422fc89272dd" />
@@ -865,6 +866,8 @@
             <section title="pvSave" ref="group__Misc.html#gac2fecd439e41688c1ee7d971ff09ca1c" />
             <section title="pvSaveAsBmp" ref="group__Misc.html#ga6aa9ac093b1f87c87e399c293c76902d" />
             <section title="pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
+            <section title="pvSendHttpChunks" ref="group__Misc.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+            <section title="pvSendHttpContentLength" ref="group__Misc.html#gaa1674544930d4351855c4b8d52d5fd3c" />
             <section title="pvSendUserEvent" ref="group__Misc.html#gaafc31da19672f6c4584d3d5ae2a31373" />
             <section title="pvSetMaxClients" ref="group__Misc.html#gae67a22a9458bd7d73a59fff05da3576f" />
             <section title="pvSetMaxClientsPerIpAdr" ref="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
@@ -872,6 +875,7 @@
             <section title="pvtcpreceive_binary" ref="group__Misc.html#ga44c95940c5c32158a027f38ab99eb342" />
             <section title="pvtcpsend" ref="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a" />
             <section title="pvtcpsend_binary" ref="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa" />
+            <section title="pvtcpsendstring" ref="group__Misc.html#ga88dc793e8a43a7d48b1b0fe109c654f2" />
             <section title="pvWriteFile" ref="group__Misc.html#ga3810a20dd674e00eb1dcacf96d948915" />
           </section>
           <section title="OpenGL" ref="group__OpenGL.html">
@@ -1166,6 +1170,7 @@
               <section title="fp" ref="struct__PARAM__.html#a5447ec33f1c40f2d75d8b19088ed59e3" />
               <section title="free" ref="struct__PARAM__.html#ae6d0303b78cd630673af4e74a61e1447" />
               <section title="hello_counter" ref="struct__PARAM__.html#a0df7eb0414e7b2c81d5352e7d5aad586" />
+              <section title="http" ref="struct__PARAM__.html#a2a899fd4dcf582367516b03a6be86746" />
               <section title="initial_mask" ref="struct__PARAM__.html#aaacf0b224dc1dfe58386cee22e3ff3a0" />
               <section title="lang_section" ref="struct__PARAM__.html#ab0475d873e22c60c5c3c193379cd071f" />
               <section title="language" ref="struct__PARAM__.html#a591361cbc7ed2fa1d9ac422fc89272dd" />
@@ -2009,6 +2014,8 @@
               <section title="pvSelection" ref="group__Input.html#gaa9daf67935f26a7b4b076d1cfff5f4a0" />
               <section title="pvSelectLanguage" ref="group__IniAndGlobal.html#gacf49bec64bf2e889ba67e2e15663805b" />
               <section title="pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
+              <section title="pvSendHttpChunks" ref="group__Misc.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+              <section title="pvSendHttpContentLength" ref="group__Misc.html#gaa1674544930d4351855c4b8d52d5fd3c" />
               <section title="pvSendJpegFrame" ref="group__Output.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
               <section title="pvSendOpenGL" ref="group__OpenGL.html#ga94b76602a709d6c857ddf1e2bac4b425" />
               <section title="pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
@@ -2097,6 +2104,7 @@
               <section title="pvtcpreceive_binary" ref="group__Misc.html#ga44c95940c5c32158a027f38ab99eb342" />
               <section title="pvtcpsend" ref="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a" />
               <section title="pvtcpsend_binary" ref="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa" />
+              <section title="pvtcpsendstring" ref="group__Misc.html#ga88dc793e8a43a7d48b1b0fe109c654f2" />
               <section title="pvTerminateModalDialog" ref="group__Dialogs.html#gaa8d2304c0d710bfc73a2e1f7a4966f75" />
               <section title="pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
               <section title="pvThreadFatal" ref="group__IniAndGlobal.html#gaf805ad598042f8da6896135e27cd387b" />
@@ -2253,6 +2261,7 @@
               <section title="textEventType" ref="group__TextEvents.html#ga9346a8e63b25bccf56f9fabf5447e867" />
               <section title="unit" ref="group__UnitConversion.html#gaf75ff5f00e1c8928751ef064d0ebef99" />
               <section title="null_string" ref="group__DefinesAndEnums.html#gac11bf696f7287842ed6c53430fb6e884" />
+              <section title="pvserver_version" ref="processviewserver_8h.html#afcc3623cc036b104a9d76b68b39f6094" />
             </section>
             <section title="wthread.h" ref="wthread_8h.html">
               <section title="WSEMAPHORE" ref="structWSEMAPHORE.html">
@@ -2620,6 +2629,8 @@
       <keyword name="pvSendFile" id="processviewserver.h::pvSendFile" ref="processviewserver_8h.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="processviewserver.h::pvDownloadFileAs" ref="processviewserver_8h.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="processviewserver.h::pvDownloadFile" ref="processviewserver_8h.html#gad00140754b048cb7c60fa968fec98d41" />
+      <keyword name="pvSendHttpChunks" id="processviewserver.h::pvSendHttpChunks" ref="processviewserver_8h.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+      <keyword name="pvSendHttpContentLength" id="processviewserver.h::pvSendHttpContentLength" ref="processviewserver_8h.html#gaa1674544930d4351855c4b8d52d5fd3c" />
       <keyword name="pvSetMaxClientsPerIpAdr" id="processviewserver.h::pvSetMaxClientsPerIpAdr" ref="processviewserver_8h.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
       <keyword name="pvMaxClientsPerIpAdr" id="processviewserver.h::pvMaxClientsPerIpAdr" ref="processviewserver_8h.html#ga0e8b6843979707a3e585de32f5b3767a" />
       <keyword name="pvSetMaxClients" id="processviewserver.h::pvSetMaxClients" ref="processviewserver_8h.html#gae67a22a9458bd7d73a59fff05da3576f" />
@@ -2627,6 +2638,7 @@
       <keyword name="pvGetAdrTableItem" id="processviewserver.h::pvGetAdrTableItem" ref="processviewserver_8h.html#ga28e1e0df8c3a8f08be0162a093038f19" />
       <keyword name="pvClearMessageQueue" id="processviewserver.h::pvClearMessageQueue" ref="processviewserver_8h.html#ga2756f2e38843461fa0ab9d6b3207fb93" />
       <keyword name="pvtcpsend" id="processviewserver.h::pvtcpsend" ref="processviewserver_8h.html#ga22600346bd510d5fcdaa97fbad74021a" />
+      <keyword name="pvtcpsendstring" id="processviewserver.h::pvtcpsendstring" ref="processviewserver_8h.html#ga88dc793e8a43a7d48b1b0fe109c654f2" />
       <keyword name="pvtcpsend_binary" id="processviewserver.h::pvtcpsend_binary" ref="processviewserver_8h.html#ga3c8d98351f250fbfae19348f117f9eaa" />
       <keyword name="pvtcpreceive" id="processviewserver.h::pvtcpreceive" ref="processviewserver_8h.html#ga7b677664cb5cc96171e62eb64579ada4" />
       <keyword name="pvtcpreceive_binary" id="processviewserver.h::pvtcpreceive_binary" ref="processviewserver_8h.html#ga44c95940c5c32158a027f38ab99eb342" />
@@ -2823,6 +2835,7 @@
       <keyword name="getSvgMatrixForElement" id="processviewserver.h::getSvgMatrixForElement" ref="processviewserver_8h.html#gacca451d6eb51024d4e18da3f9b68beaf" />
       <keyword name="getGeometry" id="processviewserver.h::getGeometry" ref="processviewserver_8h.html#ga08801d410f976196767f34eaf9658cbe" />
       <keyword name="getParentWidgetId" id="processviewserver.h::getParentWidgetId" ref="processviewserver_8h.html#ga2b07a747dfb377928b56ecbae3376841" />
+      <keyword name="pvserver_version" id="processviewserver.h::pvserver_version" ref="processviewserver_8h.html#afcc3623cc036b104a9d76b68b39f6094" />
       <keyword name="null_string" id="processviewserver.h::null_string" ref="processviewserver_8h.html#gac11bf696f7287842ed6c53430fb6e884" />
       <keyword name="pvthread_attr_init" id="wthread.h::pvthread_attr_init" ref="wthread_8h.html#a0fb00b56e20413f914fd37bdc0c3c979" />
       <keyword name="pvthread_create" id="wthread.h::pvthread_create" ref="wthread_8h.html#a0ccbd7bcfb0accad9d5d3682d1e17248" />
@@ -3504,6 +3517,8 @@
       <keyword name="pvSendFile" id="Misc::pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="Misc::pvDownloadFileAs" ref="group__Misc.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="Misc::pvDownloadFile" ref="group__Misc.html#gad00140754b048cb7c60fa968fec98d41" />
+      <keyword name="pvSendHttpChunks" id="Misc::pvSendHttpChunks" ref="group__Misc.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+      <keyword name="pvSendHttpContentLength" id="Misc::pvSendHttpContentLength" ref="group__Misc.html#gaa1674544930d4351855c4b8d52d5fd3c" />
       <keyword name="pvSetMaxClientsPerIpAdr" id="Misc::pvSetMaxClientsPerIpAdr" ref="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
       <keyword name="pvMaxClientsPerIpAdr" id="Misc::pvMaxClientsPerIpAdr" ref="group__Misc.html#ga0e8b6843979707a3e585de32f5b3767a" />
       <keyword name="pvSetMaxClients" id="Misc::pvSetMaxClients" ref="group__Misc.html#gae67a22a9458bd7d73a59fff05da3576f" />
@@ -3511,6 +3526,7 @@
       <keyword name="pvGetAdrTableItem" id="Misc::pvGetAdrTableItem" ref="group__Misc.html#ga28e1e0df8c3a8f08be0162a093038f19" />
       <keyword name="pvClearMessageQueue" id="Misc::pvClearMessageQueue" ref="group__Misc.html#ga2756f2e38843461fa0ab9d6b3207fb93" />
       <keyword name="pvtcpsend" id="Misc::pvtcpsend" ref="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a" />
+      <keyword name="pvtcpsendstring" id="Misc::pvtcpsendstring" ref="group__Misc.html#ga88dc793e8a43a7d48b1b0fe109c654f2" />
       <keyword name="pvtcpsend_binary" id="Misc::pvtcpsend_binary" ref="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa" />
       <keyword name="pvtcpreceive" id="Misc::pvtcpreceive" ref="group__Misc.html#ga7b677664cb5cc96171e62eb64579ada4" />
       <keyword name="pvtcpreceive_binary" id="Misc::pvtcpreceive_binary" ref="group__Misc.html#ga44c95940c5c32158a027f38ab99eb342" />
@@ -3768,6 +3784,7 @@
       <keyword name="use_communication_plugin" id="_PARAM_::use_communication_plugin" ref="struct__PARAM__.html#ab9368bf1baa92a254f1465ad7c355a68" />
       <keyword name="lang_section" id="_PARAM_::lang_section" ref="struct__PARAM__.html#ab0475d873e22c60c5c3c193379cd071f" />
       <keyword name="mytext2" id="_PARAM_::mytext2" ref="struct__PARAM__.html#ac7d1f0bf04060535b7d508c6249ce85f" />
+      <keyword name="http" id="_PARAM_::http" ref="struct__PARAM__.html#a2a899fd4dcf582367516b03a6be86746" />
       <keyword name="FloatArray" id="FloatArray" ref="structFloatArray.html" />
       <keyword name="f" id="FloatArray::f" ref="structFloatArray.html#a3a34be14db332114037ffda5816201fb" />
       <keyword name="f0" id="FloatArray::f0" ref="structFloatArray.html#a52bc2acb9748f97fa23a1b1729981b31" />
@@ -4028,6 +4045,7 @@
       <file>globals_func_s.html</file>
       <file>globals_func_t.html</file>
       <file>globals_func_u.html</file>
+      <file>globals_vars.html</file>
       <file>globals_vars.html</file>
       <file>globals_type.html</file>
       <file>globals_enum.html</file>

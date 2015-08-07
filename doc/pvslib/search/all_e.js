@@ -5,7 +5,7 @@ var searchData=
   ['opengl',['OpenGL',['../group__OpenGL.html',1,'']]],
   ['openhandcursor',['OpenHandCursor',['../group__DefinesAndEnums.html#ggad19ba4f288a5afb7970196ceee05e47ea910fd8f06f0a9561d66dd26eda9704e0',1,'processviewserver.h']]],
   ['order',['Order',['../group__DefinesAndEnums.html#gafbb7a18945a0832b5189bbe768dd0c51',1,'processviewserver.h']]],
-  ['orientation',['ORIENTATION',['../group__DefinesAndEnums.html#gadc460053ab2088d3fe74b8b90a7a1c4c',1,'ORIENTATION():&#160;processviewserver.h'],['../group__DefinesAndEnums.html#ga871118a09520247c78a71ecd7b0abd58',1,'Orientation():&#160;processviewserver.h']]],
+  ['orientation',['Orientation',['../group__DefinesAndEnums.html#ga871118a09520247c78a71ecd7b0abd58',1,'Orientation():&#160;processviewserver.h'],['../group__DefinesAndEnums.html#gadc460053ab2088d3fe74b8b90a7a1c4c',1,'ORIENTATION():&#160;processviewserver.h']]],
   ['os',['os',['../struct__PARAM__.html#a12bbd1248abd7c9ba67c82f1e6496e94',1,'_PARAM_']]],
   ['ounce2gr',['OUNCE2GR',['../group__DefinesAndEnums.html#gga19aa07ac6b5e9b2e62d36d20580879f9a2d684e460f5fc9e48fd9640badf19d8d',1,'processviewserver.h']]],
   ['ounce2ml',['OUNCE2ML',['../group__DefinesAndEnums.html#gga19aa07ac6b5e9b2e62d36d20580879f9adc1a5cf68786d3c2c0c7774d99b254f9',1,'processviewserver.h']]],
