@@ -1,0 +1,13 @@
+@media all {
+
+  body                  { background-color: rgb(200,200,200); }  
+  pre                   { color: green; }
+  a[id="rlhtmldirhome"] { color: black; }
+  a[id="rlhtmldirup"]   { color: red;   }
+  a[id="rlhtmldir"]     { color: red;   }  
+  a[id="rlhtmlfile"]    { color: black; }  
+  a:active[id="rlhtmldir"]    { color: yellow;            }  
+  a:active[id="rlhtmlfile"]   { color: yellow;            }  
+  a:focus[id="rlhtmldir"]     { background-color: yellow; }  
+  a:focus[id="rlhtmlfile"]    { background-color: yellow; }  
+}
