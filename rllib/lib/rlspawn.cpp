@@ -362,8 +362,19 @@ int rlSpawn::getchar()
   if(ret)
   { // success
     if(readed == 1) return buf[0];
-    return -1;
   }
+  if(fromChildRD != NULL) CloseHandle(fromChildRD);
+  if(fromChildWR != NULL) CloseHandle(fromChildWR);
+  if(toChildRD   != NULL) CloseHandle(toChildRD);
+  if(toChildWR   != NULL) CloseHandle(toChildWR);
+  if(hThread     != NULL) CloseHandle(hThread);
+  if(hProcess    != NULL) CloseHandle(hProcess);
+  fromChildRD = NULL;
+  fromChildWR = NULL;
+  toChildRD   = NULL;
+  toChildWR   = NULL;
+  hThread     = NULL;
+  hProcess    = NULL;
   return EOF;
 #else
   if(fromChild == NULL) return EOF;

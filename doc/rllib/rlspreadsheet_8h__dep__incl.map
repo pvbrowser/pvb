@@ -1,8 +1,10 @@
 <map id="rlspreadsheet.h" name="rlspreadsheet.h">
-<area shape="rect" id="node2" href="$rllib_8h.html" title="rllib.h" alt="" coords="5,155,57,181"/>
-<area shape="rect" id="node3" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="88,80,201,107"/>
-<area shape="rect" id="node4" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="232,155,311,181"/>
-<area shape="rect" id="node6" href="$rlreport_8cpp.html" title="rlreport.cpp" alt="" coords="277,80,364,107"/>
-<area shape="rect" id="node7" href="$rlspreadsheet_8cpp.html" title="rlspreadsheet.cpp" alt="" coords="389,80,517,107"/>
-<area shape="rect" id="node5" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="81,155,208,181"/>
+<area shape="rect" id="node2" href="$rlhtmldir_8h.html" title="rlhtmldir.h" alt="" coords="21,80,100,107"/>
+<area shape="rect" id="node4" href="$rllib_8h.html" title="rllib.h" alt="" coords="121,155,173,181"/>
+<area shape="rect" id="node5" href="$rlsvganimator_8h.html" title="rlsvganimator.h" alt="" coords="199,80,312,107"/>
+<area shape="rect" id="node6" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="348,155,427,181"/>
+<area shape="rect" id="node8" href="$rlreport_8cpp.html" title="rlreport.cpp" alt="" coords="388,80,475,107"/>
+<area shape="rect" id="node9" href="$rlspreadsheet_8cpp.html" title="rlspreadsheet.cpp" alt="" coords="499,80,627,107"/>
+<area shape="rect" id="node3" href="$rlhtmldir_8cpp.html" title="rlhtmldir.cpp" alt="" coords="5,155,97,181"/>
+<area shape="rect" id="node7" href="$rlsvganimator_8cpp.html" title="rlsvganimator.cpp" alt="" coords="197,155,324,181"/>
 </map>

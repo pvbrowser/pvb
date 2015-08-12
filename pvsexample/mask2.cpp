@@ -23,6 +23,22 @@ enum {
   ID_END_OF_WIDGETS
 };
 
+// our mask contains the following widget names
+  static const char *widgetName[] = {
+  "ID_MAIN_WIDGET",
+  "back",
+  "textLabelNumThreads",
+  "textEditOutput",
+  "textEditInput",
+  "pushButtonSend",
+  "lineEditAlias",
+  "labelChat",
+  "labelAlias",
+  "layout1",
+  "layout2",
+  "ID_END_OF_WIDGETS",
+  ""};
+
   static const char *toolTip[] = {
   "",
   "",
@@ -47,46 +63,67 @@ enum {
   "",
   ""};
 
+  static const int widgetType[ID_END_OF_WIDGETS+1] = {
+  0,
+  TQPushButton,
+  TQLabel,
+  TQMultiLineEdit,
+  TQMultiLineEdit,
+  TQPushButton,
+  TQLineEdit,
+  TQLabel,
+  TQLabel,
+  -1 };
+
 static int generated_defineMask(PARAM *p)
 {
   int w,h,depth;
 
   if(p == NULL) return 1;
+  if(widgetName[0] == NULL) return 1; // suppress unused warning
   w = h = depth = strcmp(toolTip[0],whatsThis[0]);
+  if(widgetType[0] == -1) return 1;
   if(w==h) depth=0; // fool the compiler
   pvStartDefinition(p,ID_END_OF_WIDGETS);
 
   pvQPushButton(p,back,0);
   pvSetGeometry(p,back,10,10,100,30);
-  pvSetText(p,back,"&Back");
+  pvSetText(p,back,pvtr("&Back"));
+  pvSetFont(p,back,"Sans Serif",9,0,0,0,0);
 
   pvQLabel(p,textLabelNumThreads,0);
   pvSetGeometry(p,textLabelNumThreads,125,10,100,30);
-  pvSetText(p,textLabelNumThreads,"numThreads");
+  pvSetText(p,textLabelNumThreads,pvtr("numThreads"));
+  pvSetFont(p,textLabelNumThreads,"Sans Serif",9,0,0,0,0);
 
   pvQMultiLineEdit(p,textEditOutput,0,0,-1);
   pvSetGeometry(p,textEditOutput,10,55,635,290);
+  pvSetFont(p,textEditOutput,"Courier",9,0,0,0,0);
 
   pvQMultiLineEdit(p,textEditInput,0,1,-1);
   pvSetGeometry(p,textEditInput,10,355,635,200);
+  pvSetFont(p,textEditInput,"Courier",9,0,0,0,0);
   pvSetMaxSize(p,textEditInput,99999,200);
 
   pvQPushButton(p,pushButtonSend,0);
   pvSetGeometry(p,pushButtonSend,545,570,100,30);
-  pvSetText(p,pushButtonSend,"&Send <ESC>");
+  pvSetText(p,pushButtonSend,pvtr("&Send <ESC>"));
+  pvSetFont(p,pushButtonSend,"Sans Serif",9,0,0,0,0);
 
   pvQLineEdit(p,lineEditAlias,0);
   pvSetGeometry(p,lineEditAlias,120,575,180,30);
-  pvSetText(p,lineEditAlias,"unknown");
+  pvSetText(p,lineEditAlias,pvtr("unknown"));
+  pvSetFont(p,lineEditAlias,"Sans Serif",9,0,0,0,0);
 
   pvQLabel(p,labelChat,0);
   pvSetGeometry(p,labelChat,535,15,110,30);
-  pvSetText(p,labelChat,"pvbrowser Chat");
+  pvSetText(p,labelChat,pvtr("pvbrowser Chat"));
   pvSetFont(p,labelChat,"Sans Serif",9,1,1,0,0);
 
   pvQLabel(p,labelAlias,0);
   pvSetGeometry(p,labelAlias,10,575,100,30);
-  pvSetText(p,labelAlias,"Alias:");
+  pvSetText(p,labelAlias,pvtr("Alias:"));
+  pvSetFont(p,labelAlias,"Sans Serif",9,0,0,0,0);
 
   pvQLayoutVbox(p,ID_MAIN_WIDGET,-1);
 

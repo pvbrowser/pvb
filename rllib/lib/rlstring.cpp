@@ -25,6 +25,7 @@ const char rlCRLF[3] = {0x0d, 0x0a, 0};
 rlString::rlString(const char *text)
 {
   txt = new char [strlen(text)+1];
+  tmp = NULL;
   ::strcpy(txt, text);
 }
 
@@ -43,6 +44,7 @@ rlString::rlString(rlString *s2)
 rlString::~rlString()
 {
   delete [] txt;
+  if(tmp != NULL) delete [] tmp;
 }
 
 rlString& rlString::operator=(const char *s2)
@@ -280,5 +282,88 @@ int rlString::write(const char *filename)
   fprintf(fout,"%s",txt);
   fclose(fout);
   return len;
+}
+
+const char *rlString::toFilename()
+{
+#ifdef RLUNIX
+  int len = ::strlen(txt);
+  tmp = new char [len+1];
+  ::strcpy(tmp,txt);
+  return tmp;
+#endif
+#ifdef RLWIN32
+  char *cptr = &txt[0];
+  if(*cptr == '/') cptr++;
+  int len = ::strlen(cptr);
+  tmp = new char [len+1];
+  ::strcpy(tmp,cptr);
+  cptr = &tmp[0];
+  while(*cptr != '\0')
+  {
+    if(*cptr == '/') *cptr = '\\';
+    cptr++;
+  }
+  return tmp;
+#endif
+#ifdef __VMS
+  char *cptr = &txt[0];
+  if(*cptr == '/') cptr++;
+  int len = ::strlen(cptr);
+  tmp = new char [len+1];
+  ::strcpy(tmp,cptr);
+  cptr = ::strchr(&tmp[0],'/');
+  if(cptr != NULL) *cptr = '[';
+  cptr = ::strrchr(&tmp[0],'/');
+  if(cptr != NULL) *cptr = ']';
+  cptr = &tmp[0];
+  while(*cptr != '\0')
+  {
+    if(*cptr == '/') *cptr = '.';
+    cptr++;
+  }
+  return tmp;
+#endif
+}
+
+const char *rlString::toDirname()
+{
+#ifdef RLUNIX
+  int len = ::strlen(txt);
+  tmp = new char [len+1];
+  ::strcpy(tmp,txt);
+  return tmp;
+#endif
+#ifdef RLWIN32
+  char *cptr = &txt[0];
+  if(*cptr == '/') cptr++;
+  int len = ::strlen(cptr);
+  tmp = new char [len+1];
+  ::strcpy(tmp,cptr);
+  cptr = &tmp[0];
+  while(*cptr != '\0')
+  {
+    if(*cptr == '/') *cptr = '\\';
+    cptr++;
+  }
+  return tmp;
+#endif
+#ifdef __VMS
+  char *cptr = &txt[0];
+  if(*cptr == '/') cptr++;
+  int len = ::strlen(cptr);
+  tmp = new char [len+2];
+  ::strcpy(tmp,cptr);
+  cptr = ::strchr(&tmp[0],'/');
+  if(cptr != NULL) *cptr = '[';
+  cptr = &tmp[0];
+  while(*cptr != '\0')
+  {
+    if(*cptr == '/') *cptr = '.';
+    cptr++;
+  }
+  ::strcat(tmp,"]");
+  return tmp;
+#endif
 }
 

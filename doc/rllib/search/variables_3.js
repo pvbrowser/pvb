@@ -24,6 +24,7 @@ var searchData=
   ['current_5fitem',['current_item',['../classrlDataAcquisitionProvider.html#aafb5723096f88d5adb5b2056cdd5e560',1,'rlDataAcquisitionProvider']]],
   ['current_5fline',['current_line',['../classrlFileLoad.html#ad30de4cb9dc7b0d9cdb0eff46f6f9068',1,'rlFileLoad::current_line()'],['../classrlHistoryLogger.html#aaad3fd8f06d3df0643c3bc262c9f8ec7',1,'rlHistoryLogger::current_line()'],['../classrlHistoryReader.html#aabef50a02c2eb376ed793f836f552d16',1,'rlHistoryReader::current_line()']]],
   ['currentname',['currentName',['../classrlIniFile.html#a929998cb2bc909c42529dd4762b29647',1,'rlIniFile']]],
+  ['currentpath',['currentPath',['../classrlHtmlDir.html#a8d22435dcd10f6cdc00a94ab60a2d4bb',1,'rlHtmlDir']]],
   ['currentsection',['currentSection',['../classrlIniFile.html#ade58732520eaec75532e2f434878dd7e',1,'rlIniFile']]],
   ['cx',['cx',['../classrlSvgPosition.html#aca4039d7629103f0167f3a99f069da7e',1,'rlSvgPosition']]],
   ['cy',['cy',['../classrlSvgPosition.html#a70bbee91797e5384eebd4188dfe69468',1,'rlSvgPosition']]],

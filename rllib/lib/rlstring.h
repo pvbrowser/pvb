@@ -140,8 +140,19 @@ public:
   </pre> */
   int write(const char *filename);
 
+  /*! <pre>
+  convert to platform independent filename
+  </pre> */
+  const char *toFilename();
+
+  /*! <pre>
+  convert to platform independent directoryname
+  </pre> */
+  const char *toDirname();
+
 private:
   char *txt;
+  char *tmp;
 };
 
 #endif

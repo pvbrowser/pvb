@@ -49,7 +49,10 @@ HEADERS  = rllib.h                   \
 #           rlstatemachine.h            \
            rldf1.h                     \
            rlstate.h                   \
-           rlbuffer.h
+           rlbuffer.h                  \
+           rlhtmldir.h                 \
+           rlhtml.h
+
 SOURCES  = rlspawn.cpp                 \
            rlwthread.cpp               \
            rlthread.cpp                \
@@ -93,7 +96,9 @@ SOURCES  = rlspawn.cpp                 \
 #           rlstatemachine.cpp            \
            rldf1.cpp                     \
            rlstate.cpp                   \
-           rlbuffer.cpp          
+           rlbuffer.cpp                  \
+           rlhtmldir.cpp                 \
+           rlhtml.cpp
 Hilscher {
   HEADERS += rlcannode.h           \
              rlcanopendaemon.h     \    

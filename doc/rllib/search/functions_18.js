@@ -27,6 +27,8 @@ var searchData=
   ['_7erlhilschercif',['~rlHilscherCIF',['../classrlHilscherCIF.html#a3436619f7f8030483018f66bc9c9e01c',1,'rlHilscherCIF']]],
   ['_7erlhistorylogger',['~rlHistoryLogger',['../classrlHistoryLogger.html#af1d5d67ba29f5f4769558c3985bf3a88',1,'rlHistoryLogger']]],
   ['_7erlhistoryreader',['~rlHistoryReader',['../classrlHistoryReader.html#a8fef8fec143fd75e68cb9a2ff9181046',1,'rlHistoryReader']]],
+  ['_7erlhtml',['~rlHtml',['../classrlHtml.html#a087abc803e8eff8d58b12917441ff263',1,'rlHtml']]],
+  ['_7erlhtmldir',['~rlHtmlDir',['../classrlHtmlDir.html#aa8feac223b1e8abbd7f021da93006bc4',1,'rlHtmlDir']]],
   ['_7erlinifile',['~rlIniFile',['../classrlIniFile.html#acb14dd6ebb7222f5866559441b1042de',1,'rlIniFile']]],
   ['_7erlinterpreter',['~rlInterpreter',['../classrlInterpreter.html#a135d21cde3fb0c651de4d54751c07fad',1,'rlInterpreter']]],
   ['_7erlipadr',['~rlIpAdr',['../classrlIpAdr.html#a36b7bf5b5cbef0627c65b99a85ccf0de',1,'rlIpAdr']]],

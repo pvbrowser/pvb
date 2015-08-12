@@ -1,7 +1,9 @@
 <map id="rlspawn.h" name="rlspawn.h">
 <area shape="rect" id="node2" href="$rlcommandlineinterface_8h.html" title="rlcommandlineinterface.h" alt="" coords="13,80,183,107"/>
-<area shape="rect" id="node4" href="$rllib_8h.html" title="rllib.h" alt="" coords="208,80,260,107"/>
-<area shape="rect" id="node5" href="$rlspawn_8cpp.html" title="rlspawn.cpp" alt="" coords="284,80,376,107"/>
-<area shape="rect" id="node6" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="400,80,479,107"/>
+<area shape="rect" id="node4" href="$rlhtml_8cpp.html" title="rlhtml.cpp" alt="" coords="207,80,285,107"/>
+<area shape="rect" id="node5" href="$rlhtmldir_8cpp.html" title="rlhtmldir.cpp" alt="" coords="309,80,401,107"/>
+<area shape="rect" id="node6" href="$rllib_8h.html" title="rllib.h" alt="" coords="425,80,477,107"/>
+<area shape="rect" id="node7" href="$rlspawn_8cpp.html" title="rlspawn.cpp" alt="" coords="501,80,593,107"/>
+<area shape="rect" id="node8" href="$rlsubset_8h.html" title="rlsubset.h" alt="" coords="617,80,696,107"/>
 <area shape="rect" id="node3" href="$rlcommandlineinterface_8cpp.html" title="rlcommandlineinterface.cpp" alt="" coords="5,155,191,181"/>
 </map>

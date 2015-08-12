@@ -29,6 +29,8 @@ var searchData=
   ['rlhilschercif',['rlHilscherCIF',['../classrlHilscherCIF.html',1,'']]],
   ['rlhistorylogger',['rlHistoryLogger',['../classrlHistoryLogger.html',1,'']]],
   ['rlhistoryreader',['rlHistoryReader',['../classrlHistoryReader.html',1,'']]],
+  ['rlhtml',['rlHtml',['../classrlHtml.html',1,'']]],
+  ['rlhtmldir',['rlHtmlDir',['../classrlHtmlDir.html',1,'']]],
   ['rlinifile',['rlIniFile',['../classrlIniFile.html',1,'']]],
   ['rlinterpreter',['rlInterpreter',['../classrlInterpreter.html',1,'']]],
   ['rlipadr',['rlIpAdr',['../classrlIpAdr.html',1,'']]],

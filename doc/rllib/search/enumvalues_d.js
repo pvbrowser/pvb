@@ -1,7 +1,7 @@
 var searchData=
 [
   ['rack_5fslot',['RACK_SLOT',['../classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a6d6e6bee8efe79cc6cf65d97344c8391',1,'rlSiemensTCP']]],
-  ['raw',['RAW',['../classrlSerial.html#a711ed3542b3cd4f879b576262a369687add72a115865d4ab53e0aa4ee5e14eb27',1,'rlSerial']]],
+  ['raw',['RAW',['../classrlSerial.html#aee6491637191d0621bc1370893342d61add72a115865d4ab53e0aa4ee5e14eb27',1,'rlSerial']]],
   ['readcoilstatus',['ReadCoilStatus',['../classrlModbus.html#af220cecff330a69323f040b1c239c657ad104f9632c5253ab7a9da0bbfe123e88',1,'rlModbus']]],
   ['readexceptionstatus',['ReadExceptionStatus',['../classrlModbus.html#af220cecff330a69323f040b1c239c657a9b5d2f1cde4cb8de72946073a21a9806',1,'rlModbus']]],
   ['readfifoqueue',['ReadFifoQueue',['../classrlModbus.html#af220cecff330a69323f040b1c239c657afa0a0876504de7552e05ce9516cba94d',1,'rlModbus']]],
@@ -15,7 +15,7 @@ var searchData=
   ['receiving',['RECEIVING',['../rl3964r_8cpp.html#a5d74787dedbc4e11c1ab15bf487e61f8a59e11bc4b2a068db07d35733ec8c8da0',1,'rl3964r.cpp']]],
   ['reportslaveid',['ReportSlaveID',['../classrlModbus.html#af220cecff330a69323f040b1c239c657ae33cbee198a6bfcc56eef4485b365016',1,'rlModbus']]],
   ['reserved1_5ft',['RESERVED1_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398a1a7900b925dc0b85305337a1aefd081a',1,'rlCanOpenTypes']]],
-  ['reset',['RESET',['../classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd',1,'rlSerial']]],
+  ['reset',['RESET',['../classrlSerial.html#aee6491637191d0621bc1370893342d61a855bca591e29a60a1692458d1b2016cd',1,'rlSerial']]],
   ['reterror',['retERROR',['../classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a3c050fa865293a272413d4d368af38a9',1,'rlDF1']]],
   ['reterror_5fcrc',['retERROR_CRC',['../classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a9df459ce3610d3dcebd9e03dbd3ad52f',1,'rlDF1']]],
   ['reterror_5fnac',['retERROR_NAC',['../classrlDF1.html#a11c19d5e50637a241e50a7e791dfe987a3deea3d8c5585c0ec671f74547020730',1,'rlDF1']]],

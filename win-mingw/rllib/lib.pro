@@ -55,7 +55,9 @@ HEADERS  = ../../rllib/lib/rlwthread.h                \
            ../../rllib/lib/rlreport.h                 \
            ../../rllib/lib/rldf1.h                    \
            ../../rllib/lib/rlstate.h                  \
-           ../../rllib/lib/rlbuffer.h 
+           ../../rllib/lib/rlbuffer.h                 \
+           ../../rllib/lib/rlhtmldir.h                \ 
+           ../../rllib/lib/rlhtml.h
 #           ../../rllib/lib/rlstatemachine.h           \
 
 SOURCES  = ../../rllib/lib/rlwthread.cpp                \
@@ -100,7 +102,9 @@ SOURCES  = ../../rllib/lib/rlwthread.cpp                \
            ../../rllib/lib/rlreport.cpp                 \
            ../../rllib/lib/rldf1.cpp                    \
            ../../rllib/lib/rlstate.cpp                  \
-           ../../rllib/lib/rlbuffer.cpp
+           ../../rllib/lib/rlbuffer.cpp                 \
+           ../../rllib/lib/rlhtmldir.cpp                \
+           ../../rllib/lib/rlhtml.cpp
 #           ../../rllib/lib/rlstatemachine.cpp           \
 
 

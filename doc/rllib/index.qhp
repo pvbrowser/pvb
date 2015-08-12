@@ -921,6 +921,36 @@
               <section title="first_line" ref="classrlHistoryReader.html#acd9a74feaa314ee7b1df744019d9773c" />
               <section title="time" ref="classrlHistoryReader.html#aa1e72755174c0cf1e3acceee1bf14e6e" />
             </section>
+            <section title="rlHtml" ref="classrlHtml.html">
+              <section title="rlHtml" ref="classrlHtml.html#a81556ae0061f1e7095e923710e251012" />
+              <section title="~rlHtml" ref="classrlHtml.html#a087abc803e8eff8d58b12917441ff263" />
+              <section title="hexdumpFile" ref="classrlHtml.html#aba6997f3dab6904c2f544c2909ca20ea" />
+              <section title="htmlHeader" ref="classrlHtml.html#a63f124afd6461417b074ddc009522f1c" />
+              <section title="htmlTrailer" ref="classrlHtml.html#acfa94e2317def6f6f85dc148efc4be12" />
+              <section title="textFile" ref="classrlHtml.html#a00e82d9f89a521ebd32e6b767235b9fc" />
+            </section>
+            <section title="rlHtmlDir" ref="classrlHtmlDir.html">
+              <section title="list_files_and_directories" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a011dc0800fcba9e187fe7d36d87d6045" />
+              <section title="list_directories_only" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a618506554e8015d4c76c2d711bbff21a" />
+              <section title="list_files_only" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a8e35fd22b375896dbd9095a21c3e396e" />
+              <section title="rlHtmlDir" ref="classrlHtmlDir.html#a2cea0d4573f4b6043a2f549c75a86f9b" />
+              <section title="~rlHtmlDir" ref="classrlHtmlDir.html#aa8feac223b1e8abbd7f021da93006bc4" />
+              <section title="cd" ref="classrlHtmlDir.html#a1a7993b2c014d50f2f2b32a329f57059" />
+              <section title="getFilenames" ref="classrlHtmlDir.html#ad7eda90b137c4ef53a59d1af84b7b0c9" />
+              <section title="getHtml" ref="classrlHtmlDir.html#a17bae0b2a7db9db5b093fe60006479b4" />
+              <section title="currentPath" ref="classrlHtmlDir.html#a8d22435dcd10f6cdc00a94ab60a2d4bb" />
+              <section title="endHtml" ref="classrlHtmlDir.html#a5a68e88881a063a9d9edfb1703eaa25e" />
+              <section title="html" ref="classrlHtmlDir.html#a71487dcc841ba8dcd9f0afba34fe0395" />
+              <section title="initialPath" ref="classrlHtmlDir.html#a939582ad51f428baa559b9d0164043c2" />
+              <section title="list_what" ref="classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2" />
+              <section title="pattern" ref="classrlHtmlDir.html#a88a867c1469d65fe3b73e1aac6fe927f" />
+              <section title="recursive" ref="classrlHtmlDir.html#ad3a61e87fbfd19c1230528b80caef99a" />
+              <section title="startHtml" ref="classrlHtmlDir.html#af380e03e5ec7cd9dcbcc98b0a95a2aac" />
+              <section title="textHome" ref="classrlHtmlDir.html#a697a1503afe92123c12f11e1fb9910ab" />
+              <section title="textPath" ref="classrlHtmlDir.html#aadcd72e669d24a46c4cc3d0b42986514" />
+              <section title="textrlHtmlDirCSS" ref="classrlHtmlDir.html#a704eaeb31fe0c33c30899dbddce035bb" />
+              <section title="WHAT_TO_LIST" ref="classrlHtmlDir.html#ace6d566d8621b673f165ea06115f594e" />
+            </section>
             <section title="rlIniFile" ref="classrlIniFile.html">
               <section title="_rlSection_" ref="structrlIniFile_1_1__rlSection__.html">
                 <section title="firstName" ref="structrlIniFile_1_1__rlSection__.html#af978fc870045413494ec748777d3cca8" />
@@ -1276,9 +1306,9 @@
               <section title="semaphore" ref="classrlSemaphore.html#a59be3923f9431f8c85e44ce44dd4f3cf" />
             </section>
             <section title="rlSerial" ref="classrlSerial.html">
-              <section title="RESET" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd" />
-              <section title="RAW" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687add72a115865d4ab53e0aa4ee5e14eb27" />
-              <section title="CBREAK" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a2dfcdec19036e31e2465c2a26c674518" />
+              <section title="RESET" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61a855bca591e29a60a1692458d1b2016cd" />
+              <section title="RAW" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61add72a115865d4ab53e0aa4ee5e14eb27" />
+              <section title="CBREAK" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61a2dfcdec19036e31e2465c2a26c674518" />
               <section title="Parity" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05">
                 <section title="NONE" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05ab95591eec0d17e4ed7d42f0addbce81e" />
                 <section title="ODD" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05ac1159c176ddd79200bbd6d317707f96a" />
@@ -1300,7 +1330,7 @@
               <section title="save_termios" ref="classrlSerial.html#a7f311c2650a7c0d7e16485c09472d95c" />
               <section title="trace" ref="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56" />
               <section title="ttysavefd" ref="classrlSerial.html#a4bd3968313b1c225e8a10c8b1ded7bf2" />
-              <section title="ttystate" ref="classrlSerial.html#a7565f3f0978b1ae94d23c4bc2ab0fc8e" />
+              <section title="ttystate" ref="classrlSerial.html#a9a01a18d1b31d32ab3831148de1e73c1" />
               <section title="vms_channel" ref="classrlSerial.html#a060216d45b73292bf244112b1de1db23" />
             </section>
             <section title="rlSharedMemory" ref="classrlSharedMemory.html">
@@ -1657,8 +1687,11 @@
               <section title="strrchr" ref="classrlString.html#a0b353cf1b96b45dd9809202a336019e3" />
               <section title="strstr" ref="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d" />
               <section title="text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
+              <section title="toDirname" ref="classrlString.html#ac2056be1999a017958e096000096463e" />
+              <section title="toFilename" ref="classrlString.html#a3346961c8759094535809d58b0dbfbdc" />
               <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
               <section title="write" ref="classrlString.html#a9e6adcf7de053e2584979aeefa1c4bc2" />
+              <section title="tmp" ref="classrlString.html#a85e455c609e49d0cee7fbc7cba226e6c" />
               <section title="txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
             </section>
             <section title="rlSvgAnimator" ref="classrlSvgAnimator.html">
@@ -1935,6 +1968,9 @@
             <section title="rlHilscherCIF" ref="classrlHilscherCIF.html" />
             <section title="rlHistoryLogger" ref="classrlHistoryLogger.html" />
             <section title="rlHistoryReader" ref="classrlHistoryReader.html" />
+            <section title="rlHtml" ref="classrlHtml.html">
+              <section title="rlHtmlDir" ref="classrlHtmlDir.html" />
+            </section>
             <section title="rlIniFile" ref="classrlIniFile.html" />
             <section title="rlInterpreter" ref="classrlInterpreter.html" />
             <section title="rlIpAdr" ref="classrlIpAdr.html" />
@@ -1980,9 +2016,9 @@
               <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
             </section>
             <section title="rlWebcam" ref="classrlWebcam.html" />
-            <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
             <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
             <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
+            <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
             <section title="SWAP" ref="unionSWAP.html" />
             <section title="TDS" ref="structTDS.html" />
             <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -3419,6 +3455,42 @@
               </section>
               <section title="rlHistoryReaderLine" ref="rlhistoryreader_8h.html#a63db0baa39ad9785a357792d01e29bc0" />
             </section>
+            <section title="rlhtml.cpp" ref="rlhtml_8cpp.html" />
+            <section title="rlhtml.h" ref="rlhtml_8h.html">
+              <section title="rlHtml" ref="classrlHtml.html">
+                <section title="rlHtml" ref="classrlHtml.html#a81556ae0061f1e7095e923710e251012" />
+                <section title="~rlHtml" ref="classrlHtml.html#a087abc803e8eff8d58b12917441ff263" />
+                <section title="hexdumpFile" ref="classrlHtml.html#aba6997f3dab6904c2f544c2909ca20ea" />
+                <section title="htmlHeader" ref="classrlHtml.html#a63f124afd6461417b074ddc009522f1c" />
+                <section title="htmlTrailer" ref="classrlHtml.html#acfa94e2317def6f6f85dc148efc4be12" />
+                <section title="textFile" ref="classrlHtml.html#a00e82d9f89a521ebd32e6b767235b9fc" />
+              </section>
+            </section>
+            <section title="rlhtmldir.cpp" ref="rlhtmldir_8cpp.html" />
+            <section title="rlhtmldir.h" ref="rlhtmldir_8h.html">
+              <section title="rlHtmlDir" ref="classrlHtmlDir.html">
+                <section title="list_files_and_directories" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a011dc0800fcba9e187fe7d36d87d6045" />
+                <section title="list_directories_only" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a618506554e8015d4c76c2d711bbff21a" />
+                <section title="list_files_only" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a8e35fd22b375896dbd9095a21c3e396e" />
+                <section title="rlHtmlDir" ref="classrlHtmlDir.html#a2cea0d4573f4b6043a2f549c75a86f9b" />
+                <section title="~rlHtmlDir" ref="classrlHtmlDir.html#aa8feac223b1e8abbd7f021da93006bc4" />
+                <section title="cd" ref="classrlHtmlDir.html#a1a7993b2c014d50f2f2b32a329f57059" />
+                <section title="getFilenames" ref="classrlHtmlDir.html#ad7eda90b137c4ef53a59d1af84b7b0c9" />
+                <section title="getHtml" ref="classrlHtmlDir.html#a17bae0b2a7db9db5b093fe60006479b4" />
+                <section title="currentPath" ref="classrlHtmlDir.html#a8d22435dcd10f6cdc00a94ab60a2d4bb" />
+                <section title="endHtml" ref="classrlHtmlDir.html#a5a68e88881a063a9d9edfb1703eaa25e" />
+                <section title="html" ref="classrlHtmlDir.html#a71487dcc841ba8dcd9f0afba34fe0395" />
+                <section title="initialPath" ref="classrlHtmlDir.html#a939582ad51f428baa559b9d0164043c2" />
+                <section title="list_what" ref="classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2" />
+                <section title="pattern" ref="classrlHtmlDir.html#a88a867c1469d65fe3b73e1aac6fe927f" />
+                <section title="recursive" ref="classrlHtmlDir.html#ad3a61e87fbfd19c1230528b80caef99a" />
+                <section title="startHtml" ref="classrlHtmlDir.html#af380e03e5ec7cd9dcbcc98b0a95a2aac" />
+                <section title="textHome" ref="classrlHtmlDir.html#a697a1503afe92123c12f11e1fb9910ab" />
+                <section title="textPath" ref="classrlHtmlDir.html#aadcd72e669d24a46c4cc3d0b42986514" />
+                <section title="textrlHtmlDirCSS" ref="classrlHtmlDir.html#a704eaeb31fe0c33c30899dbddce035bb" />
+                <section title="WHAT_TO_LIST" ref="classrlHtmlDir.html#ace6d566d8621b673f165ea06115f594e" />
+              </section>
+            </section>
             <section title="rlinifile.cpp" ref="rlinifile_8cpp.html">
               <section title="fixquote" ref="rlinifile_8cpp.html#a0b3d873c1fa01a1c62650d87c82f82df" />
               <section title="rlSetTranslator" ref="rlinifile_8cpp.html#a39213397e1d8dae3a8b1495d672224bc" />
@@ -3847,9 +3919,9 @@
             </section>
             <section title="rlserial.h" ref="rlserial_8h.html">
               <section title="rlSerial" ref="classrlSerial.html">
-                <section title="RESET" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd" />
-                <section title="RAW" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687add72a115865d4ab53e0aa4ee5e14eb27" />
-                <section title="CBREAK" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a2dfcdec19036e31e2465c2a26c674518" />
+                <section title="RESET" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61a855bca591e29a60a1692458d1b2016cd" />
+                <section title="RAW" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61add72a115865d4ab53e0aa4ee5e14eb27" />
+                <section title="CBREAK" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61a2dfcdec19036e31e2465c2a26c674518" />
                 <section title="Parity" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05">
                   <section title="NONE" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05ab95591eec0d17e4ed7d42f0addbce81e" />
                   <section title="ODD" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05ac1159c176ddd79200bbd6d317707f96a" />
@@ -3871,7 +3943,7 @@
                 <section title="save_termios" ref="classrlSerial.html#a7f311c2650a7c0d7e16485c09472d95c" />
                 <section title="trace" ref="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56" />
                 <section title="ttysavefd" ref="classrlSerial.html#a4bd3968313b1c225e8a10c8b1ded7bf2" />
-                <section title="ttystate" ref="classrlSerial.html#a7565f3f0978b1ae94d23c4bc2ab0fc8e" />
+                <section title="ttystate" ref="classrlSerial.html#a9a01a18d1b31d32ab3831148de1e73c1" />
                 <section title="vms_channel" ref="classrlSerial.html#a060216d45b73292bf244112b1de1db23" />
               </section>
               <section title="B0" ref="rlserial_8h.html#a8a03ef52aa4926d1d75cb647ac768622" />
@@ -4392,8 +4464,11 @@
                 <section title="strrchr" ref="classrlString.html#a0b353cf1b96b45dd9809202a336019e3" />
                 <section title="strstr" ref="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d" />
                 <section title="text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
+                <section title="toDirname" ref="classrlString.html#ac2056be1999a017958e096000096463e" />
+                <section title="toFilename" ref="classrlString.html#a3346961c8759094535809d58b0dbfbdc" />
                 <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
                 <section title="write" ref="classrlString.html#a9e6adcf7de053e2584979aeefa1c4bc2" />
+                <section title="tmp" ref="classrlString.html#a85e455c609e49d0cee7fbc7cba226e6c" />
                 <section title="txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
               </section>
               <section title="rlCRLF" ref="rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
@@ -6081,6 +6156,40 @@
       <keyword name="current_file" id="rlHistoryReader::current_file" ref="classrlHistoryReader.html#af5ba5832e8d58ed02a11fc40ef6d13b5" />
       <keyword name="csv_name" id="rlHistoryReader::csv_name" ref="classrlHistoryReader.html#a1a6525634853cd165facd5e5cd2f95e2" />
       <keyword name="csv_file_name" id="rlHistoryReader::csv_file_name" ref="classrlHistoryReader.html#a9ce9094fd0cd08c60810d2761dc40354" />
+      <keyword name="rlHtml" id="rlHtml" ref="classrlHtml.html" />
+      <keyword name="rlHtml" id="rlHtml::rlHtml" ref="classrlHtml.html#a81556ae0061f1e7095e923710e251012" />
+      <keyword name="~rlHtml" id="rlHtml::~rlHtml" ref="classrlHtml.html#a087abc803e8eff8d58b12917441ff263" />
+      <keyword name="htmlHeader" id="rlHtml::htmlHeader" ref="classrlHtml.html#a63f124afd6461417b074ddc009522f1c" />
+      <keyword name="htmlTrailer" id="rlHtml::htmlTrailer" ref="classrlHtml.html#acfa94e2317def6f6f85dc148efc4be12" />
+      <keyword name="textFile" id="rlHtml::textFile" ref="classrlHtml.html#a00e82d9f89a521ebd32e6b767235b9fc" />
+      <keyword name="hexdumpFile" id="rlHtml::hexdumpFile" ref="classrlHtml.html#aba6997f3dab6904c2f544c2909ca20ea" />
+      <keyword name="rlHtmlDir" id="rlHtmlDir" ref="classrlHtmlDir.html" />
+      <keyword name="rlHtmlDir" id="rlHtmlDir::rlHtmlDir" ref="classrlHtmlDir.html#a2cea0d4573f4b6043a2f549c75a86f9b" />
+      <keyword name="~rlHtmlDir" id="rlHtmlDir::~rlHtmlDir" ref="classrlHtmlDir.html#aa8feac223b1e8abbd7f021da93006bc4" />
+      <keyword name="cd" id="rlHtmlDir::cd" ref="classrlHtmlDir.html#a1a7993b2c014d50f2f2b32a329f57059" />
+      <keyword name="getHtml" id="rlHtmlDir::getHtml" ref="classrlHtmlDir.html#a17bae0b2a7db9db5b093fe60006479b4" />
+      <keyword name="getFilenames" id="rlHtmlDir::getFilenames" ref="classrlHtmlDir.html#ad7eda90b137c4ef53a59d1af84b7b0c9" />
+      <keyword name="rlHtml" id="rlHtml::rlHtml" ref="classrlHtml.html#a81556ae0061f1e7095e923710e251012" />
+      <keyword name="~rlHtml" id="rlHtml::~rlHtml" ref="classrlHtml.html#a087abc803e8eff8d58b12917441ff263" />
+      <keyword name="htmlHeader" id="rlHtml::htmlHeader" ref="classrlHtml.html#a63f124afd6461417b074ddc009522f1c" />
+      <keyword name="htmlTrailer" id="rlHtml::htmlTrailer" ref="classrlHtml.html#acfa94e2317def6f6f85dc148efc4be12" />
+      <keyword name="textFile" id="rlHtml::textFile" ref="classrlHtml.html#a00e82d9f89a521ebd32e6b767235b9fc" />
+      <keyword name="hexdumpFile" id="rlHtml::hexdumpFile" ref="classrlHtml.html#aba6997f3dab6904c2f544c2909ca20ea" />
+      <keyword name="WHAT_TO_LIST" id="rlHtmlDir::WHAT_TO_LIST" ref="classrlHtmlDir.html#ace6d566d8621b673f165ea06115f594e" />
+      <keyword name="initialPath" id="rlHtmlDir::initialPath" ref="classrlHtmlDir.html#a939582ad51f428baa559b9d0164043c2" />
+      <keyword name="currentPath" id="rlHtmlDir::currentPath" ref="classrlHtmlDir.html#a8d22435dcd10f6cdc00a94ab60a2d4bb" />
+      <keyword name="pattern" id="rlHtmlDir::pattern" ref="classrlHtmlDir.html#a88a867c1469d65fe3b73e1aac6fe927f" />
+      <keyword name="recursive" id="rlHtmlDir::recursive" ref="classrlHtmlDir.html#ad3a61e87fbfd19c1230528b80caef99a" />
+      <keyword name="list_what" id="rlHtmlDir::list_what" ref="classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2" />
+      <keyword name="textHome" id="rlHtmlDir::textHome" ref="classrlHtmlDir.html#a697a1503afe92123c12f11e1fb9910ab" />
+      <keyword name="textPath" id="rlHtmlDir::textPath" ref="classrlHtmlDir.html#aadcd72e669d24a46c4cc3d0b42986514" />
+      <keyword name="textrlHtmlDirCSS" id="rlHtmlDir::textrlHtmlDirCSS" ref="classrlHtmlDir.html#a704eaeb31fe0c33c30899dbddce035bb" />
+      <keyword name="startHtml" id="rlHtmlDir::startHtml" ref="classrlHtmlDir.html#af380e03e5ec7cd9dcbcc98b0a95a2aac" />
+      <keyword name="endHtml" id="rlHtmlDir::endHtml" ref="classrlHtmlDir.html#a5a68e88881a063a9d9edfb1703eaa25e" />
+      <keyword name="html" id="rlHtmlDir::html" ref="classrlHtmlDir.html#a71487dcc841ba8dcd9f0afba34fe0395" />
+      <keyword name="list_files_and_directories" id="rlHtmlDir::list_files_and_directories" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a011dc0800fcba9e187fe7d36d87d6045" />
+      <keyword name="list_directories_only" id="rlHtmlDir::list_directories_only" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a618506554e8015d4c76c2d711bbff21a" />
+      <keyword name="list_files_only" id="rlHtmlDir::list_files_only" ref="classrlHtmlDir.html#a49dd8a31a290e9a90601a47933a917c6a8e35fd22b375896dbd9095a21c3e396e" />
       <keyword name="rlIniFile" id="rlIniFile" ref="classrlIniFile.html" />
       <keyword name="rlIniFile" id="rlIniFile::rlIniFile" ref="classrlIniFile.html#aef58dc7d91a659e6cedeb8c6753516c4" />
       <keyword name="~rlIniFile" id="rlIniFile::~rlIniFile" ref="classrlIniFile.html#acb14dd6ebb7222f5866559441b1042de" />
@@ -6483,13 +6592,13 @@
       <keyword name="save_termios" id="rlSerial::save_termios" ref="classrlSerial.html#a7f311c2650a7c0d7e16485c09472d95c" />
       <keyword name="vms_channel" id="rlSerial::vms_channel" ref="classrlSerial.html#a060216d45b73292bf244112b1de1db23" />
       <keyword name="hdl" id="rlSerial::hdl" ref="classrlSerial.html#a57b8e825f127c43596cb3e971d32fe5f" />
-      <keyword name="ttystate" id="rlSerial::ttystate" ref="classrlSerial.html#a7565f3f0978b1ae94d23c4bc2ab0fc8e" />
+      <keyword name="ttystate" id="rlSerial::ttystate" ref="classrlSerial.html#a9a01a18d1b31d32ab3831148de1e73c1" />
       <keyword name="ttysavefd" id="rlSerial::ttysavefd" ref="classrlSerial.html#a4bd3968313b1c225e8a10c8b1ded7bf2" />
       <keyword name="fd" id="rlSerial::fd" ref="classrlSerial.html#ae3e7fea227fc87a862158589fdcf32fd" />
       <keyword name="trace" id="rlSerial::trace" ref="classrlSerial.html#a75960ef76d8877ab4ed5d2f962863a56" />
-      <keyword name="RESET" id="rlSerial::RESET" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a855bca591e29a60a1692458d1b2016cd" />
-      <keyword name="RAW" id="rlSerial::RAW" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687add72a115865d4ab53e0aa4ee5e14eb27" />
-      <keyword name="CBREAK" id="rlSerial::CBREAK" ref="classrlSerial.html#a711ed3542b3cd4f879b576262a369687a2dfcdec19036e31e2465c2a26c674518" />
+      <keyword name="RESET" id="rlSerial::RESET" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61a855bca591e29a60a1692458d1b2016cd" />
+      <keyword name="RAW" id="rlSerial::RAW" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61add72a115865d4ab53e0aa4ee5e14eb27" />
+      <keyword name="CBREAK" id="rlSerial::CBREAK" ref="classrlSerial.html#aee6491637191d0621bc1370893342d61a2dfcdec19036e31e2465c2a26c674518" />
       <keyword name="NONE" id="rlSerial::NONE" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05ab95591eec0d17e4ed7d42f0addbce81e" />
       <keyword name="ODD" id="rlSerial::ODD" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05ac1159c176ddd79200bbd6d317707f96a" />
       <keyword name="EVEN" id="rlSerial::EVEN" ref="classrlSerial.html#ae705e4dac522e9af64f656dc89495b05a972046b38ab66fa2f58fe844f16dca2b" />
@@ -6877,7 +6986,10 @@
       <keyword name="removeNewline" id="rlString::removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
       <keyword name="read" id="rlString::read" ref="classrlString.html#a8b93712bed17e1fa6141db42df5178a6" />
       <keyword name="write" id="rlString::write" ref="classrlString.html#a9e6adcf7de053e2584979aeefa1c4bc2" />
+      <keyword name="toFilename" id="rlString::toFilename" ref="classrlString.html#a3346961c8759094535809d58b0dbfbdc" />
+      <keyword name="toDirname" id="rlString::toDirname" ref="classrlString.html#ac2056be1999a017958e096000096463e" />
       <keyword name="txt" id="rlString::txt" ref="classrlString.html#aecf572fe5eff4cb556de83402a725008" />
+      <keyword name="tmp" id="rlString::tmp" ref="classrlString.html#a85e455c609e49d0cee7fbc7cba226e6c" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator" ref="classrlSvgAnimator.html" />
       <keyword name="rlSvgAnimator" id="rlSvgAnimator::rlSvgAnimator" ref="classrlSvgAnimator.html#a26fe378e9772d1c6dae5aa8fa665fab9" />
       <keyword name="~rlSvgAnimator" id="rlSvgAnimator::~rlSvgAnimator" ref="classrlSvgAnimator.html#a29096f6dc11b6f06f5a30be02ddb957c" />
@@ -7178,6 +7290,10 @@
       <file>rlhistorylogger_8h_source.html</file>
       <file>rlhistoryreader_8cpp_source.html</file>
       <file>rlhistoryreader_8h_source.html</file>
+      <file>rlhtml_8cpp_source.html</file>
+      <file>rlhtml_8h_source.html</file>
+      <file>rlhtmldir_8cpp_source.html</file>
+      <file>rlhtmldir_8h_source.html</file>
       <file>rlinifile_8cpp_source.html</file>
       <file>rlinifile_8h_source.html</file>
       <file>rlinterpreter_8cpp_source.html</file>
@@ -7361,6 +7477,16 @@
       <file>rlhistoryreader_8h.html</file>
       <file>rlhistoryreader_8h__incl.png</file>
       <file>rlhistoryreader_8h__dep__incl.png</file>
+      <file>rlhtml_8cpp.html</file>
+      <file>rlhtml_8cpp__incl.png</file>
+      <file>rlhtml_8h.html</file>
+      <file>rlhtml_8h__incl.png</file>
+      <file>rlhtml_8h__dep__incl.png</file>
+      <file>rlhtmldir_8cpp.html</file>
+      <file>rlhtmldir_8cpp__incl.png</file>
+      <file>rlhtmldir_8h.html</file>
+      <file>rlhtmldir_8h__incl.png</file>
+      <file>rlhtmldir_8h__dep__incl.png</file>
       <file>rlinifile_8cpp.html</file>
       <file>rlinifile_8cpp__incl.png</file>
       <file>rlinifile_8h.html</file>
@@ -7614,6 +7740,13 @@
       <file>classrlHistoryReader.html</file>
       <file>classrlHistoryReader__coll__graph.png</file>
       <file>classrlHistoryReader-members.html</file>
+      <file>classrlHtml.html</file>
+      <file>classrlHtml__inherit__graph.png</file>
+      <file>classrlHtml-members.html</file>
+      <file>classrlHtmlDir.html</file>
+      <file>classrlHtmlDir__inherit__graph.png</file>
+      <file>classrlHtmlDir__coll__graph.png</file>
+      <file>classrlHtmlDir-members.html</file>
       <file>classrlIniFile.html</file>
       <file>classrlIniFile__coll__graph.png</file>
       <file>classrlIniFile-members.html</file>
@@ -7842,6 +7975,7 @@
       <file>inherit_graph_82.png</file>
       <file>inherit_graph_83.png</file>
       <file>inherit_graph_84.png</file>
+      <file>inherit_graph_85.png</file>
       <file>functions.html</file>
       <file>functions_a.html</file>
       <file>functions_b.html</file>

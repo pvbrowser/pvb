@@ -10,5 +10,6 @@ var searchData=
   ['hsemaphore',['hSemaphore',['../structWSEMAPHORE.html#abc9a31daacc7ef2097d38c9356cca7b6',1,'WSEMAPHORE']]],
   ['hsharedfile',['hSharedFile',['../classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194',1,'rlSharedMemory']]],
   ['hth',['hth',['../structTDS.html#aba39f6ccfbaf511208fbbeb9e942b93e',1,'TDS']]],
-  ['hthread',['hThread',['../classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b',1,'rlSpawn']]]
+  ['hthread',['hThread',['../classrlSpawn.html#a8fb0700dccc9c8d4b403ad18753c849b',1,'rlSpawn']]],
+  ['html',['html',['../classrlHtmlDir.html#a71487dcc841ba8dcd9f0afba34fe0395',1,'rlHtmlDir']]]
 ];
