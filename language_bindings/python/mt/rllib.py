@@ -103,6 +103,7 @@ BIT28 = _rllib.BIT28
 BIT29 = _rllib.BIT29
 BIT30 = _rllib.BIT30
 BIT31 = _rllib.BIT31
+RLCRLF = _rllib.RLCRLF
 class THREAD_PARAM(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, THREAD_PARAM, name, value)
@@ -343,6 +344,7 @@ class rlSocket(_object):
     if _newclass:s = _swig_property(_rllib.rlSocket_s_get, _rllib.rlSocket_s_set)
     def rlGetsockopt(self, *args): return _rllib.rlSocket_rlGetsockopt(self, *args)
     def rlSetsockopt(self, *args): return _rllib.rlSocket_rlSetsockopt(self, *args)
+    def readHttpContentLength(self, *args): return _rllib.rlSocket_readHttpContentLength(self, *args)
     __swig_setmethods__["sockaddr"] = _rllib.rlSocket_sockaddr_set
     __swig_getmethods__["sockaddr"] = _rllib.rlSocket_sockaddr_get
     if _newclass:sockaddr = _swig_property(_rllib.rlSocket_sockaddr_get, _rllib.rlSocket_sockaddr_set)
@@ -536,9 +538,25 @@ def rlStartsWith(*args):
   return _rllib.rlStartsWith(*args)
 rlStartsWith = _rllib.rlStartsWith
 
+def rlEndsWith(*args):
+  return _rllib.rlEndsWith(*args)
+rlEndsWith = _rllib.rlEndsWith
+
 def rlStrMatch(*args):
   return _rllib.rlStrMatch(*args)
 rlStrMatch = _rllib.rlStrMatch
+
+def rlFRead(*args):
+  return _rllib.rlFRead(*args)
+rlFRead = _rllib.rlFRead
+
+def rlFWrite(*args):
+  return _rllib.rlFWrite(*args)
+rlFWrite = _rllib.rlFWrite
+
+def rlWriteFile(*args):
+  return _rllib.rlWriteFile(*args)
+rlWriteFile = _rllib.rlWriteFile
 
 def rlMkdir(*args):
   return _rllib.rlMkdir(*args)
@@ -559,6 +577,14 @@ rlBitChange = _rllib.rlBitChange
 def rlBitTest(*args):
   return _rllib.rlBitTest(*args)
 rlBitTest = _rllib.rlBitTest
+
+def rlPushToDoubleBuffer(*args):
+  return _rllib.rlPushToDoubleBuffer(*args)
+rlPushToDoubleBuffer = _rllib.rlPushToDoubleBuffer
+
+def rlPushToFloatBuffer(*args):
+  return _rllib.rlPushToFloatBuffer(*args)
+rlPushToFloatBuffer = _rllib.rlPushToFloatBuffer
 class rlDataAcquisition(_object):
     __swig_setmethods__ = {}
     __setattr__ = lambda self, name, value: _swig_setattr(self, rlDataAcquisition, name, value)
@@ -1465,6 +1491,8 @@ class rlSpawn(_object):
     def printf(self, *args): return _rllib.rlSpawn_printf(self, *args)
     def printAll(self): return _rllib.rlSpawn_printAll(self)
     def getFilepointer(self): return _rllib.rlSpawn_getFilepointer(self)
+    def sigkill(self): return _rllib.rlSpawn_sigkill(self)
+    def readJpegBuffer(self, *args): return _rllib.rlSpawn_readJpegBuffer(self, *args)
     __swig_setmethods__["pid"] = _rllib.rlSpawn_pid_set
     __swig_getmethods__["pid"] = _rllib.rlSpawn_pid_get
     if _newclass:pid = _swig_property(_rllib.rlSpawn_pid_get, _rllib.rlSpawn_pid_set)
@@ -1601,6 +1629,8 @@ class rlString(_object):
     def removeNewline(self): return _rllib.rlString_removeNewline(self)
     def read(self, *args): return _rllib.rlString_read(self, *args)
     def write(self, *args): return _rllib.rlString_write(self, *args)
+    def toFilename(self): return _rllib.rlString_toFilename(self)
+    def toDirname(self): return _rllib.rlString_toDirname(self)
 rlString_swigregister = _rllib.rlString_swigregister
 rlString_swigregister(rlString)
 rlCRLF = cvar.rlCRLF

@@ -2687,6 +2687,23 @@ SWIGINTERN int SWIG_lua_isnilstring(lua_State *L, int idx) {
 #ifdef __cplusplus
 extern "C" {
 #endif
+static int _wrap_pvserver_version_get(lua_State* L) {
+  int SWIG_arg = 0;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("pvserver_version",0,0)
+  result = (char *)(char *)pvserver_version;
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_PARSE_EVENT_STRUCT_event_set(lua_State* L) {
   int SWIG_arg = 0;
   PARSE_EVENT_STRUCT *arg1 = (PARSE_EVENT_STRUCT *) 0 ;
@@ -5112,6 +5129,56 @@ fail:
 }
 
 
+static int _wrap_PARAM_http_set(lua_State* L) {
+  int SWIG_arg = 0;
+  _PARAM_ *arg1 = (_PARAM_ *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("_PARAM_::http",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("_PARAM_::http",1,"_PARAM_ *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("_PARAM_::http",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_http_set",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->http = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_PARAM_http_get(lua_State* L) {
+  int SWIG_arg = 0;
+  _PARAM_ *arg1 = (_PARAM_ *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("_PARAM_::http",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("_PARAM_::http",1,"_PARAM_ *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("PARAM_http_get",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  result = (int) ((arg1)->http);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_new_PARAM(lua_State* L) {
   int SWIG_arg = 0;
   _PARAM_ *result = 0 ;
@@ -5184,6 +5251,7 @@ static swig_lua_attribute swig_PARAM_attributes[] = {
     { "use_communication_plugin", _wrap_PARAM_use_communication_plugin_get, _wrap_PARAM_use_communication_plugin_set },
     { "lang_section", _wrap_PARAM_lang_section_get, _wrap_PARAM_lang_section_set },
     { "mytext2", _wrap_PARAM_mytext2_get, _wrap_PARAM_mytext2_set },
+    { "http", _wrap_PARAM_http_get, _wrap_PARAM_http_set },
     {0,0,0}
 };
 static swig_lua_method swig_PARAM_methods[]= {
@@ -15235,6 +15303,33 @@ fail:
 }
 
 
+static int _wrap_pvRequestJpeg(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("pvRequestJpeg",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvRequestJpeg",1,"PARAM *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("pvRequestJpeg",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvRequestJpeg",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)pvRequestJpeg(arg1,arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvRequestGeometry(lua_State* L) {
   int SWIG_arg = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -17626,6 +17721,60 @@ fail:
 }
 
 
+static int _wrap_pvSendHttpChunks(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpChunks",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpChunks",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpChunks",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpChunks",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSendHttpChunks(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendHttpContentLength(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpContentLength",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpContentLength",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpContentLength",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpContentLength",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSendHttpContentLength(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_pvSetMaxClientsPerIpAdr(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
@@ -17760,6 +17909,33 @@ static int _wrap_pvtcpsend(lua_State* L) {
   arg2 = (char *)lua_tostring(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   result = (int)pvtcpsend(arg1,(char const *)arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvtcpsendstring(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvtcpsendstring",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvtcpsendstring",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvtcpsendstring",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvtcpsendstring",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvtcpsendstring(arg1,(char const *)arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -29790,6 +29966,7 @@ fail:
 
 
 static swig_lua_attribute swig_SwigModule_attributes[] = {
+    { "pvserver_version", _wrap_pvserver_version_get, SWIG_Lua_set_immutable },
     { "null_string", _wrap_null_string_get, SWIG_Lua_set_immutable },
     {0,0,0}
 };
@@ -30359,6 +30536,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "pvSendRGBA", _wrap_pvSendRGBA},
     { "pvSaveDrawBuffer", _wrap_pvSaveDrawBuffer},
     { "pvText", _wrap_pvText},
+    { "pvRequestJpeg", _wrap_pvRequestJpeg},
     { "pvRequestGeometry", _wrap_pvRequestGeometry},
     { "pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId},
     { "pvSelection", _wrap_pvSelection},
@@ -30424,6 +30602,8 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "pvSendFile", _wrap_pvSendFile},
     { "pvDownloadFileAs", _wrap_pvDownloadFileAs},
     { "pvDownloadFile", _wrap_pvDownloadFile},
+    { "pvSendHttpChunks", _wrap_pvSendHttpChunks},
+    { "pvSendHttpContentLength", _wrap_pvSendHttpContentLength},
     { "pvSetMaxClientsPerIpAdr", _wrap_pvSetMaxClientsPerIpAdr},
     { "pvMaxClientsPerIpAdr", _wrap_pvMaxClientsPerIpAdr},
     { "pvSetMaxClients", _wrap_pvSetMaxClients},
@@ -30431,6 +30611,7 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "pvGetAdrTableItem", _wrap_pvGetAdrTableItem},
     { "pvClearMessageQueue", _wrap_pvClearMessageQueue},
     { "pvtcpsend", _wrap_pvtcpsend},
+    { "pvtcpsendstring", _wrap_pvtcpsendstring},
     { "pvtcpsend_binary", _wrap_pvtcpsend_binary},
     { "pvtcpreceive", _wrap_pvtcpreceive},
     { "pvtcpreceive_binary", _wrap_pvtcpreceive_binary},

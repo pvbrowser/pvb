@@ -169,6 +169,7 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/lib
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlsvg
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhistory
+%__mkdir_p  %{buildroot}/opt/pvb/rllib/rlfind
 %__mkdir_p  %{buildroot}/opt/pvb/fake_qmake
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvslua
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvapplua
@@ -330,6 +331,7 @@ chmod ugoa+rw /srv/automation/log
 %dir /opt/pvb/rllib
 %dir /opt/pvb/rllib/lib
 %dir /opt/pvb/rllib/rlhistory
+%dir /opt/pvb/rllib/rlfind
 %dir /opt/pvb/rllib/rlsvg
 %dir /opt/pvb/start_pvbapp
 %dir /srv/automation

@@ -3153,6 +3153,51 @@ SWIGINTERNINLINE PyObject*
 }
 
 
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+#if PY_VERSION_HEX >= 0x03000000
+#if PY_VERSION_HEX >= 0x03010000
+      return PyUnicode_DecodeUTF8(carray, static_cast< int >(size), "surrogateescape");
+#else
+      return PyUnicode_FromStringAndSize(carray, static_cast< int >(size));
+#endif
+#else
+      return PyString_FromStringAndSize(carray, static_cast< int >(size));
+#endif
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject * 
+SWIG_FromCharPtr(const char *cptr)
+{ 
+  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
+
 #include <limits.h>
 #if !defined(SWIG_NO_LLONG_MAX)
 # if !defined(LLONG_MAX) && defined(__GNUC__) && defined (__LONG_LONG_MAX__)
@@ -3295,19 +3340,6 @@ SWIG_AsVal_int (PyObject * obj, int *val)
     }
   }  
   return res;
-}
-
-
-SWIGINTERN swig_type_info*
-SWIG_pchar_descriptor(void)
-{
-  static int init = 0;
-  static swig_type_info* info = 0;
-  if (!init) {
-    info = SWIG_TypeQuery("_p_char");
-    init = 1;
-  }
-  return info;
 }
 
 
@@ -3520,38 +3552,6 @@ SWIG_From_unsigned_SS_long  (unsigned long value)
 {
   return (value > LONG_MAX) ?
     PyLong_FromUnsignedLong(value) : PyLong_FromLong(static_cast< long >(value)); 
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_FromCharPtrAndSize(const char* carray, size_t size)
-{
-  if (carray) {
-    if (size > INT_MAX) {
-      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-      return pchar_descriptor ? 
-	SWIG_InternalNewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
-    } else {
-#if PY_VERSION_HEX >= 0x03000000
-#if PY_VERSION_HEX >= 0x03010000
-      return PyUnicode_DecodeUTF8(carray, static_cast< int >(size), "surrogateescape");
-#else
-      return PyUnicode_FromStringAndSize(carray, static_cast< int >(size));
-#endif
-#else
-      return PyString_FromStringAndSize(carray, static_cast< int >(size));
-#endif
-    }
-  } else {
-    return SWIG_Py_Void();
-  }
-}
-
-
-SWIGINTERNINLINE PyObject * 
-SWIG_FromCharPtr(const char *cptr)
-{ 
-  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
 }
 
 
@@ -8010,6 +8010,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSocket_readHttpContentLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlSocket_readHttpContentLength",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSocket, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSocket_readHttpContentLength" "', argument " "1"" of type '" "rlSocket *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSocket * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "rlSocket_readHttpContentLength" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)(arg1)->readHttpContentLength(arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlSocket_sockaddr_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlSocket *arg1 = (rlSocket *) 0 ;
@@ -10445,6 +10476,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlEndsWith(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:rlEndsWith",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlEndsWith" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlEndsWith" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)rlEndsWith((char const *)arg1,(char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlStrMatch(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -10478,6 +10546,123 @@ SWIGINTERN PyObject *_wrap_rlStrMatch(PyObject *SWIGUNUSEDPARM(self), PyObject *
 fail:
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlFRead(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FILE *arg1 = (FILE *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlFRead",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FILE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlFRead" "', argument " "1"" of type '" "FILE *""'"); 
+  }
+  arg1 = reinterpret_cast< FILE * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlFRead" "', argument " "2"" of type '" "void *""'"); 
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlFRead" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)rlFRead(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlFWrite(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  FILE *arg1 = (FILE *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlFWrite",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_FILE, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlFWrite" "', argument " "1"" of type '" "FILE *""'"); 
+  }
+  arg1 = reinterpret_cast< FILE * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlFWrite" "', argument " "2"" of type '" "void *""'"); 
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlFWrite" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)rlFWrite(arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlWriteFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  int res2 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlWriteFile",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlWriteFile" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlWriteFile" "', argument " "2"" of type '" "void *""'"); 
+  }
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlWriteFile" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)rlWriteFile((char const *)arg1,arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
   return NULL;
 }
 
@@ -10701,6 +10886,84 @@ SWIGINTERN PyObject *_wrap_rlBitTest(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   arg2 = reinterpret_cast< int * >(argp2);
   result = (int)rlBitTest(arg1,arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPushToDoubleBuffer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  double arg1 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  double val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlPushToDoubleBuffer",&obj0,&obj1,&obj2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_double(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "rlPushToDoubleBuffer" "', argument " "1"" of type '" "double""'");
+  } 
+  arg1 = static_cast< double >(val1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_double, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlPushToDoubleBuffer" "', argument " "2"" of type '" "double *""'"); 
+  }
+  arg2 = reinterpret_cast< double * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlPushToDoubleBuffer" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  rlPushToDoubleBuffer(arg1,arg2,arg3);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlPushToFloatBuffer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  float arg1 ;
+  float *arg2 = (float *) 0 ;
+  int arg3 ;
+  float val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlPushToFloatBuffer",&obj0,&obj1,&obj2)) SWIG_fail;
+  ecode1 = SWIG_AsVal_float(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "rlPushToFloatBuffer" "', argument " "1"" of type '" "float""'");
+  } 
+  arg1 = static_cast< float >(val1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_float, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlPushToFloatBuffer" "', argument " "2"" of type '" "float *""'"); 
+  }
+  arg2 = reinterpret_cast< float * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlPushToFloatBuffer" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  rlPushToFloatBuffer(arg1,arg2,arg3);
+  resultobj = SWIG_Py_Void();
   return resultobj;
 fail:
   return NULL;
@@ -28544,6 +28807,68 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_rlSpawn_sigkill(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSpawn *arg1 = (rlSpawn *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlSpawn_sigkill",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSpawn, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSpawn_sigkill" "', argument " "1"" of type '" "rlSpawn *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSpawn * >(argp1);
+  result = (int)(arg1)->sigkill();
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlSpawn_readJpegBuffer(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlSpawn *arg1 = (rlSpawn *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  int val3 ;
+  int ecode3 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOO:rlSpawn_readJpegBuffer",&obj0,&obj1,&obj2)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlSpawn, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlSpawn_readJpegBuffer" "', argument " "1"" of type '" "rlSpawn *""'"); 
+  }
+  arg1 = reinterpret_cast< rlSpawn * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_unsigned_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "rlSpawn_readJpegBuffer" "', argument " "2"" of type '" "unsigned char *""'"); 
+  }
+  arg2 = reinterpret_cast< unsigned char * >(argp2);
+  ecode3 = SWIG_AsVal_int(obj2, &val3);
+  if (!SWIG_IsOK(ecode3)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "rlSpawn_readJpegBuffer" "', argument " "3"" of type '" "int""'");
+  } 
+  arg3 = static_cast< int >(val3);
+  result = (int)(arg1)->readJpegBuffer(arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_rlSpawn_pid_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   rlSpawn *arg1 = (rlSpawn *) 0 ;
@@ -31626,6 +31951,50 @@ SWIGINTERN PyObject *_wrap_rlString_write(PyObject *SWIGUNUSEDPARM(self), PyObje
   return resultobj;
 fail:
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlString_toFilename(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlString_toFilename",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlString, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlString_toFilename" "', argument " "1"" of type '" "rlString *""'"); 
+  }
+  arg1 = reinterpret_cast< rlString * >(argp1);
+  result = (char *)(arg1)->toFilename();
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_rlString_toDirname(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  char *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:rlString_toDirname",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_rlString, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "rlString_toDirname" "', argument " "1"" of type '" "rlString *""'"); 
+  }
+  arg1 = reinterpret_cast< rlString * >(argp1);
+  result = (char *)(arg1)->toDirname();
+  resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -36821,6 +37190,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSocket_s_get", _wrap_rlSocket_s_get, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_rlGetsockopt", _wrap_rlSocket_rlGetsockopt, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_rlSetsockopt", _wrap_rlSocket_rlSetsockopt, METH_VARARGS, NULL},
+	 { (char *)"rlSocket_readHttpContentLength", _wrap_rlSocket_readHttpContentLength, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_sockaddr_set", _wrap_rlSocket_sockaddr_set, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_sockaddr_get", _wrap_rlSocket_sockaddr_get, METH_VARARGS, NULL},
 	 { (char *)"rlSocket_swigregister", rlSocket_swigregister, METH_VARARGS, NULL},
@@ -36885,12 +37255,18 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlupper", _wrap_rlupper, METH_VARARGS, NULL},
 	 { (char *)"rllower", _wrap_rllower, METH_VARARGS, NULL},
 	 { (char *)"rlStartsWith", _wrap_rlStartsWith, METH_VARARGS, NULL},
+	 { (char *)"rlEndsWith", _wrap_rlEndsWith, METH_VARARGS, NULL},
 	 { (char *)"rlStrMatch", _wrap_rlStrMatch, METH_VARARGS, NULL},
+	 { (char *)"rlFRead", _wrap_rlFRead, METH_VARARGS, NULL},
+	 { (char *)"rlFWrite", _wrap_rlFWrite, METH_VARARGS, NULL},
+	 { (char *)"rlWriteFile", _wrap_rlWriteFile, METH_VARARGS, NULL},
 	 { (char *)"rlMkdir", _wrap_rlMkdir, METH_VARARGS, NULL},
 	 { (char *)"rlBitSet", _wrap_rlBitSet, METH_VARARGS, NULL},
 	 { (char *)"rlBitClear", _wrap_rlBitClear, METH_VARARGS, NULL},
 	 { (char *)"rlBitChange", _wrap_rlBitChange, METH_VARARGS, NULL},
 	 { (char *)"rlBitTest", _wrap_rlBitTest, METH_VARARGS, NULL},
+	 { (char *)"rlPushToDoubleBuffer", _wrap_rlPushToDoubleBuffer, METH_VARARGS, NULL},
+	 { (char *)"rlPushToFloatBuffer", _wrap_rlPushToFloatBuffer, METH_VARARGS, NULL},
 	 { (char *)"new_rlDataAcquisition", _wrap_new_rlDataAcquisition, METH_VARARGS, NULL},
 	 { (char *)"delete_rlDataAcquisition", _wrap_delete_rlDataAcquisition, METH_VARARGS, NULL},
 	 { (char *)"rlDataAcquisition_stringValue", _wrap_rlDataAcquisition_stringValue, METH_VARARGS, NULL},
@@ -37292,6 +37668,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlSpawn_printf", _wrap_rlSpawn_printf, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_printAll", _wrap_rlSpawn_printAll, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_getFilepointer", _wrap_rlSpawn_getFilepointer, METH_VARARGS, NULL},
+	 { (char *)"rlSpawn_sigkill", _wrap_rlSpawn_sigkill, METH_VARARGS, NULL},
+	 { (char *)"rlSpawn_readJpegBuffer", _wrap_rlSpawn_readJpegBuffer, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_pid_set", _wrap_rlSpawn_pid_set, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_pid_get", _wrap_rlSpawn_pid_get, METH_VARARGS, NULL},
 	 { (char *)"rlSpawn_swigregister", rlSpawn_swigregister, METH_VARARGS, NULL},
@@ -37367,6 +37745,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"rlString_removeNewline", _wrap_rlString_removeNewline, METH_VARARGS, NULL},
 	 { (char *)"rlString_read", _wrap_rlString_read, METH_VARARGS, NULL},
 	 { (char *)"rlString_write", _wrap_rlString_write, METH_VARARGS, NULL},
+	 { (char *)"rlString_toFilename", _wrap_rlString_toFilename, METH_VARARGS, NULL},
+	 { (char *)"rlString_toDirname", _wrap_rlString_toDirname, METH_VARARGS, NULL},
 	 { (char *)"rlString_swigregister", rlString_swigregister, METH_VARARGS, NULL},
 	 { (char *)"new_rlSvgPosition", _wrap_new_rlSvgPosition, METH_VARARGS, NULL},
 	 { (char *)"delete_rlSvgPosition", _wrap_delete_rlSvgPosition, METH_VARARGS, NULL},
@@ -38524,6 +38904,7 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "BIT29",SWIG_From_int(static_cast< int >(256*256*256*32)));
   SWIG_Python_SetConstant(d, "BIT30",SWIG_From_int(static_cast< int >(256*256*256*64)));
   SWIG_Python_SetConstant(d, "BIT31",SWIG_From_int(static_cast< int >(256*256*256*128)));
+  SWIG_Python_SetConstant(d, "RLCRLF",SWIG_FromCharPtr("\r\n"));
   SWIG_Python_SetConstant(d, "rlSharedMemory_OK",SWIG_From_int(static_cast< int >(rlSharedMemory::OK)));
   SWIG_Python_SetConstant(d, "rlSharedMemory_ERROR_FILE",SWIG_From_int(static_cast< int >(rlSharedMemory::ERROR_FILE)));
   SWIG_Python_SetConstant(d, "rlSharedMemory_ERROR_SHMGET",SWIG_From_int(static_cast< int >(rlSharedMemory::ERROR_SHMGET)));

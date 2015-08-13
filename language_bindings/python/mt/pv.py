@@ -436,6 +436,8 @@ class PARSE_EVENT_STRUCT(_object):
     __del__ = lambda self : None;
 PARSE_EVENT_STRUCT_swigregister = _pv.PARSE_EVENT_STRUCT_swigregister
 PARSE_EVENT_STRUCT_swigregister(PARSE_EVENT_STRUCT)
+cvar = _pv.cvar
+pvserver_version = cvar.pvserver_version
 
 class PARAM(_object):
     __swig_setmethods__ = {}
@@ -569,6 +571,9 @@ class PARAM(_object):
     __swig_setmethods__["mytext2"] = _pv.PARAM_mytext2_set
     __swig_getmethods__["mytext2"] = _pv.PARAM_mytext2_get
     if _newclass:mytext2 = _swig_property(_pv.PARAM_mytext2_get, _pv.PARAM_mytext2_set)
+    __swig_setmethods__["http"] = _pv.PARAM_http_set
+    __swig_getmethods__["http"] = _pv.PARAM_http_get
+    if _newclass:http = _swig_property(_pv.PARAM_http_get, _pv.PARAM_http_set)
     def __init__(self): 
         this = _pv.new_PARAM()
         try: self.this.append(this)
@@ -679,7 +684,6 @@ class IntegerArray(_object):
     __del__ = lambda self : None;
 IntegerArray_swigregister = _pv.IntegerArray_swigregister
 IntegerArray_swigregister(IntegerArray)
-cvar = _pv.cvar
 null_string = cvar.null_string
 
 class FloatArray(_object):
@@ -1459,6 +1463,10 @@ def pvText(*args):
   return _pv.pvText(*args)
 pvText = _pv.pvText
 
+def pvRequestJpeg(*args):
+  return _pv.pvRequestJpeg(*args)
+pvRequestJpeg = _pv.pvRequestJpeg
+
 def pvRequestGeometry(*args):
   return _pv.pvRequestGeometry(*args)
 pvRequestGeometry = _pv.pvRequestGeometry
@@ -1719,6 +1727,14 @@ def pvDownloadFile(*args):
   return _pv.pvDownloadFile(*args)
 pvDownloadFile = _pv.pvDownloadFile
 
+def pvSendHttpChunks(*args):
+  return _pv.pvSendHttpChunks(*args)
+pvSendHttpChunks = _pv.pvSendHttpChunks
+
+def pvSendHttpContentLength(*args):
+  return _pv.pvSendHttpContentLength(*args)
+pvSendHttpContentLength = _pv.pvSendHttpContentLength
+
 def pvSetMaxClientsPerIpAdr(*args):
   return _pv.pvSetMaxClientsPerIpAdr(*args)
 pvSetMaxClientsPerIpAdr = _pv.pvSetMaxClientsPerIpAdr
@@ -1746,6 +1762,10 @@ pvClearMessageQueue = _pv.pvClearMessageQueue
 def pvtcpsend(*args):
   return _pv.pvtcpsend(*args)
 pvtcpsend = _pv.pvtcpsend
+
+def pvtcpsendstring(*args):
+  return _pv.pvtcpsendstring(*args)
+pvtcpsendstring = _pv.pvtcpsendstring
 
 def pvtcpsend_binary(*args):
   return _pv.pvtcpsend_binary(*args)

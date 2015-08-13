@@ -5360,6 +5360,7 @@ int pvDownloadFile(PARAM *p, const char *filename)
 
 int pvSendHttpChunks(PARAM *p, const char *filename)
 {
+  int ret;
   struct stat statbuf;
   stat(filename,&statbuf);
   if(statbuf.st_size <= 0) return -1;
@@ -5376,7 +5377,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   while(1)
   {
     if(fpos + maxbuf > statbuf.st_size) break;
-    fread(buf, 1, maxbuf, fin);
+    ret = fread(buf, 1, maxbuf, fin);
     sprintf(tbuf, "%x\n", maxbuf);
     pvtcpsend(p,tbuf,strlen(tbuf));
     pvtcpsend_binary(p,buf,maxbuf);
@@ -5386,7 +5387,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   if(remain > 0)
   {
     for(int i=remain; i<maxbuf; i++) buf[i]='\n';
-    fread(buf, 1, maxbuf, fin);
+    ret = fread(buf, 1, maxbuf, fin);
     sprintf(tbuf, "%x\n", maxbuf);
     pvtcpsend(p,tbuf,strlen(tbuf));
     pvtcpsend_binary(p,buf,maxbuf);
@@ -5394,11 +5395,13 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   strcpy(tbuf,"0\n\n\n");
   pvtcpsend(p,tbuf,strlen(tbuf));
   fclose(fin);
+  if(ret) return 0;
   return 0;
 }
 
 int pvSendHttpContentLength(PARAM *p, const char *filename)
 {
+  int ret;
   struct stat statbuf;
   stat(filename,&statbuf);
   if(statbuf.st_size <= 0) return -1;
@@ -5417,7 +5420,7 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   while(1)
   {
     if(fpos + maxbuf > statbuf.st_size) break;
-    fread(buf, 1, maxbuf, fin);
+    ret = fread(buf, 1, maxbuf, fin);
     sprintf(tbuf, "%x\n", maxbuf);
     pvtcpsend_binary(p,buf,maxbuf);
     fpos += maxbuf;
@@ -5425,11 +5428,12 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   int remain = statbuf.st_size - fpos;
   if(remain > 0)
   {
-    fread(buf, 1, maxbuf, fin);
+    ret = fread(buf, 1, maxbuf, fin);
     sprintf(tbuf, "%x\n", remain);
     pvtcpsend_binary(p,buf,remain);
   }
   fclose(fin);
+  if(ret) return 0;
   return 0;
 }
 

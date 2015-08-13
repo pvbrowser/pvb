@@ -6966,6 +6966,33 @@ static int _wrap_rlSocket_rlSetsockopt(lua_State* L) {
 }
 
 
+static int _wrap_rlSocket_readHttpContentLength(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSocket *arg1 = (rlSocket *) 0 ;
+  int arg2 ;
+  int result;
+  
+  SWIG_check_num_args("rlSocket::readHttpContentLength",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSocket::readHttpContentLength",1,"rlSocket *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlSocket::readHttpContentLength",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSocket,0))){
+    SWIG_fail_ptr("rlSocket_readHttpContentLength",1,SWIGTYPE_p_rlSocket);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (int)(arg1)->readHttpContentLength(arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlSocket_sockaddr_set(lua_State* L) {
   int SWIG_arg = 0;
   rlSocket *arg1 = (rlSocket *) 0 ;
@@ -7060,6 +7087,7 @@ static swig_lua_method swig_rlSocket_methods[]= {
     { "sendProcessViewBrowserButtonEvent", _wrap_rlSocket_sendProcessViewBrowserButtonEvent},
     { "rlGetsockopt", _wrap_rlSocket_rlGetsockopt},
     { "rlSetsockopt", _wrap_rlSocket_rlSetsockopt},
+    { "readHttpContentLength", _wrap_rlSocket_readHttpContentLength},
     {0,0}
 };
 static swig_lua_method swig_rlSocket_meta[] = {
@@ -9127,6 +9155,29 @@ fail:
 }
 
 
+static int _wrap_rlEndsWith(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlEndsWith",2,2)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlEndsWith",1,"char const *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlEndsWith",2,"char const *");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)rlEndsWith((char const *)arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlStrMatch(lua_State* L) {
   int SWIG_arg = 0;
   char *arg1 = (char *) 0 ;
@@ -9139,6 +9190,92 @@ static int _wrap_rlStrMatch(lua_State* L) {
   arg1 = (char *)lua_tostring(L, 1);
   arg2 = (char *)lua_tostring(L, 2);
   result = (int)rlStrMatch((char const *)arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlFRead(lua_State* L) {
+  int SWIG_arg = 0;
+  FILE *arg1 = (FILE *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlFRead",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlFRead",1,"FILE *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlFRead",2,"void *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlFRead",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_FILE,0))){
+    SWIG_fail_ptr("rlFRead",1,SWIGTYPE_p_FILE);
+  }
+  
+  arg2=(void *)SWIG_MustGetPtr(L,2,0,0,2,"rlFRead");
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)rlFRead(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlFWrite(lua_State* L) {
+  int SWIG_arg = 0;
+  FILE *arg1 = (FILE *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlFWrite",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlFWrite",1,"FILE *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlFWrite",2,"void *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlFWrite",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_FILE,0))){
+    SWIG_fail_ptr("rlFWrite",1,SWIGTYPE_p_FILE);
+  }
+  
+  arg2=(void *)SWIG_MustGetPtr(L,2,0,0,2,"rlFWrite");
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)rlFWrite(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlWriteFile(lua_State* L) {
+  int SWIG_arg = 0;
+  char *arg1 = (char *) 0 ;
+  void *arg2 = (void *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlWriteFile",3,3)
+  if(!SWIG_lua_isnilstring(L,1)) SWIG_fail_arg("rlWriteFile",1,"char const *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlWriteFile",2,"void *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlWriteFile",3,"int");
+  arg1 = (char *)lua_tostring(L, 1);
+  arg2=(void *)SWIG_MustGetPtr(L,2,0,0,2,"rlWriteFile");
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)rlWriteFile((char const *)arg1,arg2,arg3);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -9330,6 +9467,64 @@ static int _wrap_rlBitTest(lua_State* L) {
   
   result = (int)rlBitTest(arg1,arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPushToDoubleBuffer(lua_State* L) {
+  int SWIG_arg = 0;
+  double arg1 ;
+  double *arg2 = (double *) 0 ;
+  int arg3 ;
+  
+  SWIG_check_num_args("rlPushToDoubleBuffer",3,3)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlPushToDoubleBuffer",1,"double");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlPushToDoubleBuffer",2,"double *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlPushToDoubleBuffer",3,"int");
+  arg1 = (double)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_double,0))){
+    SWIG_fail_ptr("rlPushToDoubleBuffer",2,SWIGTYPE_p_double);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  rlPushToDoubleBuffer(arg1,arg2,arg3);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlPushToFloatBuffer(lua_State* L) {
+  int SWIG_arg = 0;
+  float arg1 ;
+  float *arg2 = (float *) 0 ;
+  int arg3 ;
+  
+  SWIG_check_num_args("rlPushToFloatBuffer",3,3)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlPushToFloatBuffer",1,"float");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlPushToFloatBuffer",2,"float *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlPushToFloatBuffer",3,"int");
+  arg1 = (float)lua_tonumber(L, 1);
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_float,0))){
+    SWIG_fail_ptr("rlPushToFloatBuffer",2,SWIGTYPE_p_float);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  rlPushToFloatBuffer(arg1,arg2,arg3);
+  
   return SWIG_arg;
   
   if(0) SWIG_fail;
@@ -25712,6 +25907,64 @@ fail:
 }
 
 
+static int _wrap_rlSpawn_sigkill(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSpawn *arg1 = (rlSpawn *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlSpawn::sigkill",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSpawn::sigkill",1,"rlSpawn *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSpawn,0))){
+    SWIG_fail_ptr("rlSpawn_sigkill",1,SWIGTYPE_p_rlSpawn);
+  }
+  
+  result = (int)(arg1)->sigkill();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlSpawn_readJpegBuffer(lua_State* L) {
+  int SWIG_arg = 0;
+  rlSpawn *arg1 = (rlSpawn *) 0 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  int arg3 ;
+  int result;
+  
+  SWIG_check_num_args("rlSpawn::readJpegBuffer",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSpawn::readJpegBuffer",1,"rlSpawn *");
+  if(!SWIG_isptrtype(L,2)) SWIG_fail_arg("rlSpawn::readJpegBuffer",2,"unsigned char *");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlSpawn::readJpegBuffer",3,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSpawn,0))){
+    SWIG_fail_ptr("rlSpawn_readJpegBuffer",1,SWIGTYPE_p_rlSpawn);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_unsigned_char,0))){
+    SWIG_fail_ptr("rlSpawn_readJpegBuffer",2,SWIGTYPE_p_unsigned_char);
+  }
+  
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (int)(arg1)->readJpegBuffer(arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static int _wrap_rlSpawn_pid_set(lua_State* L) {
   int SWIG_arg = 0;
   rlSpawn *arg1 = (rlSpawn *) 0 ;
@@ -25788,6 +26041,8 @@ static swig_lua_method swig_rlSpawn_methods[]= {
     { "printf", _wrap_rlSpawn_printf},
     { "printAll", _wrap_rlSpawn_printAll},
     { "getFilepointer", _wrap_rlSpawn_getFilepointer},
+    { "sigkill", _wrap_rlSpawn_sigkill},
+    { "readJpegBuffer", _wrap_rlSpawn_readJpegBuffer},
     {0,0}
 };
 static swig_lua_method swig_rlSpawn_meta[] = {
@@ -28396,6 +28651,54 @@ fail:
 }
 
 
+static int _wrap_rlString_toFilename(lua_State* L) {
+  int SWIG_arg = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlString::toFilename",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlString::toFilename",1,"rlString *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString_toFilename",1,SWIGTYPE_p_rlString);
+  }
+  
+  result = (char *)(arg1)->toFilename();
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlString_toDirname(lua_State* L) {
+  int SWIG_arg = 0;
+  rlString *arg1 = (rlString *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlString::toDirname",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlString::toDirname",1,"rlString *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlString,0))){
+    SWIG_fail_ptr("rlString_toDirname",1,SWIGTYPE_p_rlString);
+  }
+  
+  result = (char *)(arg1)->toDirname();
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
 static void swig_delete_rlString(void *obj) {
 rlString *arg1 = (rlString *) obj;
 delete arg1;
@@ -28431,6 +28734,8 @@ static swig_lua_method swig_rlString_methods[]= {
     { "removeNewline", _wrap_rlString_removeNewline},
     { "read", _wrap_rlString_read},
     { "write", _wrap_rlString_write},
+    { "toFilename", _wrap_rlString_toFilename},
+    { "toDirname", _wrap_rlString_toDirname},
     {0,0}
 };
 static swig_lua_method swig_rlString_meta[] = {
@@ -32896,6 +33201,7 @@ static swig_lua_const_info swig_SwigModule_constants[]= {
     {SWIG_LUA_CONSTTAB_INT("BIT29", 256*256*256*32)},
     {SWIG_LUA_CONSTTAB_INT("BIT30", 256*256*256*64)},
     {SWIG_LUA_CONSTTAB_INT("BIT31", 256*256*256*128)},
+    {SWIG_LUA_CONSTTAB_STRING("RLCRLF", "\r\n")},
     {SWIG_LUA_CONSTTAB_INT("rlSharedMemory_OK", rlSharedMemory::OK)},
     {SWIG_LUA_CONSTTAB_INT("rlSharedMemory_ERROR_FILE", rlSharedMemory::ERROR_FILE)},
     {SWIG_LUA_CONSTTAB_INT("rlSharedMemory_ERROR_SHMGET", rlSharedMemory::ERROR_SHMGET)},
@@ -33061,12 +33367,18 @@ static swig_lua_method swig_SwigModule_methods[]= {
     { "rlupper", _wrap_rlupper},
     { "rllower", _wrap_rllower},
     { "rlStartsWith", _wrap_rlStartsWith},
+    { "rlEndsWith", _wrap_rlEndsWith},
     { "rlStrMatch", _wrap_rlStrMatch},
+    { "rlFRead", _wrap_rlFRead},
+    { "rlFWrite", _wrap_rlFWrite},
+    { "rlWriteFile", _wrap_rlWriteFile},
     { "rlMkdir", _wrap_rlMkdir},
     { "rlBitSet", _wrap_rlBitSet},
     { "rlBitClear", _wrap_rlBitClear},
     { "rlBitChange", _wrap_rlBitChange},
     { "rlBitTest", _wrap_rlBitTest},
+    { "rlPushToDoubleBuffer", _wrap_rlPushToDoubleBuffer},
+    { "rlPushToFloatBuffer", _wrap_rlPushToFloatBuffer},
     { "rlEventInit", _wrap_rlEventInit},
     { "rlSetEventLocation", _wrap_rlSetEventLocation},
     { "rlEventPrintf", _wrap_rlEventPrintf},

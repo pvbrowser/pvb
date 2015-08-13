@@ -3067,13 +3067,6 @@ int  get_int(int *i);
 void delete_int(int *i);
 
 
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
-
-
 SWIGINTERN swig_type_info*
 SWIG_pchar_descriptor(void)
 {
@@ -3116,6 +3109,13 @@ SWIGINTERNINLINE PyObject *
 SWIG_FromCharPtr(const char *cptr)
 { 
   return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
 }
 
 
@@ -3524,6 +3524,20 @@ SWIG_From_float  (float value)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN int Swig_var_pvserver_version_set(PyObject *) {
+  SWIG_Error(SWIG_AttributeError,"Variable pvserver_version is read-only.");
+  return 1;
+}
+
+
+SWIGINTERN PyObject *Swig_var_pvserver_version_get(void) {
+  PyObject *pyobj = 0;
+  
+  pyobj = SWIG_FromCharPtr(pvserver_version);
+  return pyobj;
+}
+
+
 SWIGINTERN PyObject *_wrap_PARSE_EVENT_STRUCT_event_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARSE_EVENT_STRUCT *arg1 = (PARSE_EVENT_STRUCT *) 0 ;
@@ -5972,6 +5986,58 @@ SWIGINTERN PyObject *_wrap_PARAM_mytext2_get(PyObject *SWIGUNUSEDPARM(self), PyO
   arg1 = reinterpret_cast< _PARAM_ * >(argp1);
   result = (char *) ((arg1)->mytext2);
   resultobj = SWIG_FromCharPtr((const char *)result);
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PARAM_http_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  _PARAM_ *arg1 = (_PARAM_ *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:PARAM_http_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PARAM_http_set" "', argument " "1"" of type '" "_PARAM_ *""'"); 
+  }
+  arg1 = reinterpret_cast< _PARAM_ * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "PARAM_http_set" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  if (arg1) (arg1)->http = arg2;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_PARAM_http_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  _PARAM_ *arg1 = (_PARAM_ *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:PARAM_http_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "PARAM_http_get" "', argument " "1"" of type '" "_PARAM_ *""'"); 
+  }
+  arg1 = reinterpret_cast< _PARAM_ * >(argp1);
+  result = (int) ((arg1)->http);
+  resultobj = SWIG_From_int(static_cast< int >(result));
   return resultobj;
 fail:
   return NULL;
@@ -18659,6 +18725,37 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvRequestJpeg(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  int arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvRequestJpeg",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvRequestJpeg" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  ecode2 = SWIG_AsVal_int(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "pvRequestJpeg" "', argument " "2"" of type '" "int""'");
+  } 
+  arg2 = static_cast< int >(val2);
+  result = (int)pvRequestJpeg(arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvRequestGeometry(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   PARAM *arg1 = (PARAM *) 0 ;
@@ -21925,6 +22022,74 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_pvSendHttpChunks(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvSendHttpChunks",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSendHttpChunks" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvSendHttpChunks" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)pvSendHttpChunks(arg1,(char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvSendHttpContentLength(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvSendHttpContentLength",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvSendHttpContentLength" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvSendHttpContentLength" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)pvSendHttpContentLength(arg1,(char const *)arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_pvSetMaxClientsPerIpAdr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -22064,6 +22229,40 @@ SWIGINTERN PyObject *_wrap_pvtcpsend(PyObject *SWIGUNUSEDPARM(self), PyObject *a
   } 
   arg3 = static_cast< int >(val3);
   result = (int)pvtcpsend(arg1,(char const *)arg2,arg3);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_pvtcpsendstring(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:pvtcpsendstring",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p__PARAM_, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "pvtcpsendstring" "', argument " "1"" of type '" "PARAM *""'"); 
+  }
+  arg1 = reinterpret_cast< PARAM * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "pvtcpsendstring" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = (int)pvtcpsendstring(arg1,(char const *)arg2);
   resultobj = SWIG_From_int(static_cast< int >(result));
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
@@ -38515,6 +38714,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"PARAM_lang_section_get", _wrap_PARAM_lang_section_get, METH_VARARGS, NULL},
 	 { (char *)"PARAM_mytext2_set", _wrap_PARAM_mytext2_set, METH_VARARGS, NULL},
 	 { (char *)"PARAM_mytext2_get", _wrap_PARAM_mytext2_get, METH_VARARGS, NULL},
+	 { (char *)"PARAM_http_set", _wrap_PARAM_http_set, METH_VARARGS, NULL},
+	 { (char *)"PARAM_http_get", _wrap_PARAM_http_get, METH_VARARGS, NULL},
 	 { (char *)"new_PARAM", _wrap_new_PARAM, METH_VARARGS, NULL},
 	 { (char *)"delete_PARAM", _wrap_delete_PARAM, METH_VARARGS, NULL},
 	 { (char *)"PARAM_swigregister", PARAM_swigregister, METH_VARARGS, NULL},
@@ -38761,6 +38962,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSendRGBA", _wrap_pvSendRGBA, METH_VARARGS, NULL},
 	 { (char *)"pvSaveDrawBuffer", _wrap_pvSaveDrawBuffer, METH_VARARGS, NULL},
 	 { (char *)"pvText", _wrap_pvText, METH_VARARGS, NULL},
+	 { (char *)"pvRequestJpeg", _wrap_pvRequestJpeg, METH_VARARGS, NULL},
 	 { (char *)"pvRequestGeometry", _wrap_pvRequestGeometry, METH_VARARGS, NULL},
 	 { (char *)"pvRequestParentWidgetId", _wrap_pvRequestParentWidgetId, METH_VARARGS, NULL},
 	 { (char *)"pvSelection", _wrap_pvSelection, METH_VARARGS, NULL},
@@ -38826,6 +39028,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvSendFile", _wrap_pvSendFile, METH_VARARGS, NULL},
 	 { (char *)"pvDownloadFileAs", _wrap_pvDownloadFileAs, METH_VARARGS, NULL},
 	 { (char *)"pvDownloadFile", _wrap_pvDownloadFile, METH_VARARGS, NULL},
+	 { (char *)"pvSendHttpChunks", _wrap_pvSendHttpChunks, METH_VARARGS, NULL},
+	 { (char *)"pvSendHttpContentLength", _wrap_pvSendHttpContentLength, METH_VARARGS, NULL},
 	 { (char *)"pvSetMaxClientsPerIpAdr", _wrap_pvSetMaxClientsPerIpAdr, METH_VARARGS, NULL},
 	 { (char *)"pvMaxClientsPerIpAdr", _wrap_pvMaxClientsPerIpAdr, METH_VARARGS, NULL},
 	 { (char *)"pvSetMaxClients", _wrap_pvSetMaxClients, METH_VARARGS, NULL},
@@ -38833,6 +39037,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"pvGetAdrTableItem", _wrap_pvGetAdrTableItem, METH_VARARGS, NULL},
 	 { (char *)"pvClearMessageQueue", _wrap_pvClearMessageQueue, METH_VARARGS, NULL},
 	 { (char *)"pvtcpsend", _wrap_pvtcpsend, METH_VARARGS, NULL},
+	 { (char *)"pvtcpsendstring", _wrap_pvtcpsendstring, METH_VARARGS, NULL},
 	 { (char *)"pvtcpsend_binary", _wrap_pvtcpsend_binary, METH_VARARGS, NULL},
 	 { (char *)"pvtcpreceive", _wrap_pvtcpreceive, METH_VARARGS, NULL},
 	 { (char *)"pvtcpreceive_binary", _wrap_pvtcpreceive_binary, METH_VARARGS, NULL},
@@ -39874,6 +40079,8 @@ SWIG_init(void) {
   
   SWIG_InstallConstants(d,swig_const_table);
   
+  PyDict_SetItemString(md,(char*)"cvar", SWIG_globals());
+  SWIG_addvarlink(SWIG_globals(),(char*)"pvserver_version",Swig_var_pvserver_version_get, Swig_var_pvserver_version_set);
   SWIG_Python_SetConstant(d, "pv_STDIN",SWIG_From_int(static_cast< int >(0)));
   SWIG_Python_SetConstant(d, "pv_STDOUT",SWIG_From_int(static_cast< int >(1)));
   SWIG_Python_SetConstant(d, "MAX_PRINTF_LENGTH",SWIG_From_int(static_cast< int >(1024)));
@@ -40261,7 +40468,6 @@ SWIG_init(void) {
   SWIG_Python_SetConstant(d, "TON2T",SWIG_From_int(static_cast< int >(TON2T)));
   SWIG_Python_SetConstant(d, "C2FAHRENHEIT",SWIG_From_int(static_cast< int >(C2FAHRENHEIT)));
   SWIG_Python_SetConstant(d, "FAHRENHEIT2C",SWIG_From_int(static_cast< int >(FAHRENHEIT2C)));
-  PyDict_SetItemString(md,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"null_string",Swig_var_null_string_get, Swig_var_null_string_set);
   SWIG_Python_SetConstant(d, "PLAIN_TEXT_EVENT",SWIG_From_int(static_cast< int >(PLAIN_TEXT_EVENT)));
   SWIG_Python_SetConstant(d, "SVG_LEFT_BUTTON_PRESSED",SWIG_From_int(static_cast< int >(SVG_LEFT_BUTTON_PRESSED)));
