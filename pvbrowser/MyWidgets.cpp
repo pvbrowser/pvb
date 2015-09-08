@@ -1986,7 +1986,11 @@ void MyTextBrowser::setHTML(QString &text)
 #ifndef NO_WEBKIT  
   QWebSettings::clearMemoryCaches();
 #endif  
+#ifdef NO_WEBKIT  
+  setHtml(text);
+#else
   setHtml(text,QUrl(base));
+#endif
 }
 
 void MyTextBrowser::htmlOrSvgDump(const char *filename)
@@ -2112,8 +2116,10 @@ void MyTextBrowser::slotLoadFinished(bool ok)
 {
   if(ok)
   {
+#ifndef NO_WEBKIT  
     page()->mainFrame()->setScrollBarValue(Qt::Horizontal,xOldScroll);
     page()->mainFrame()->setScrollBarValue(Qt::Vertical,yOldScroll);
+#endif    
   }  
 }
 

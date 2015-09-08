@@ -1288,7 +1288,7 @@ int i,ret,cmdline_length;
     else if(strncmp(av[i],"-",1)                               == 0 && start_gui == 0) printf("unknown option %s\n", av[i]);
   }
   
-  pvCmdLine = new char[cmdline_length];
+  pvCmdLine = new char[cmdline_length+1];
   strcpy(pvCmdLine,av[0]);
   for(i=1; i<ac; i++)
   {
@@ -5401,7 +5401,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
 
 int pvSendHttpContentLength(PARAM *p, const char *filename)
 {
-  int ret;
+  int ret = 0;
   struct stat statbuf;
   stat(filename,&statbuf);
   if(statbuf.st_size <= 0) return -1;

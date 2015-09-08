@@ -32,12 +32,14 @@ rlString::rlString(const char *text)
 rlString::rlString(rlString &s2)
 {
   txt = new char [strlen(s2.text())+1];
+  tmp = NULL;
   ::strcpy(txt,s2.text());
 }
 
 rlString::rlString(rlString *s2)
 {
   txt = new char [strlen(s2->text())+1];
+  tmp = NULL;
   ::strcpy(txt,s2->text());
 }
 
@@ -288,6 +290,7 @@ const char *rlString::toFilename()
 {
 #ifdef RLUNIX
   int len = ::strlen(txt);
+  if(tmp != NULL) delete [] tmp;
   tmp = new char [len+1];
   ::strcpy(tmp,txt);
   return tmp;
@@ -296,6 +299,7 @@ const char *rlString::toFilename()
   char *cptr = &txt[0];
   if(*cptr == '/') cptr++;
   int len = ::strlen(cptr);
+  if(tmp != NULL) delete [] tmp;
   tmp = new char [len+1];
   ::strcpy(tmp,cptr);
   cptr = &tmp[0];
@@ -310,6 +314,7 @@ const char *rlString::toFilename()
   char *cptr = &txt[0];
   if(*cptr == '/') cptr++;
   int len = ::strlen(cptr);
+  if(tmp != NULL) delete [] tmp;
   tmp = new char [len+1];
   ::strcpy(tmp,cptr);
   cptr = ::strchr(&tmp[0],'/');
@@ -330,6 +335,7 @@ const char *rlString::toDirname()
 {
 #ifdef RLUNIX
   int len = ::strlen(txt);
+  if(tmp != NULL) delete [] tmp;
   tmp = new char [len+1];
   ::strcpy(tmp,txt);
   return tmp;
@@ -338,6 +344,7 @@ const char *rlString::toDirname()
   char *cptr = &txt[0];
   if(*cptr == '/') cptr++;
   int len = ::strlen(cptr);
+  if(tmp != NULL) delete [] tmp;
   tmp = new char [len+1];
   ::strcpy(tmp,cptr);
   cptr = &tmp[0];
@@ -352,6 +359,7 @@ const char *rlString::toDirname()
   char *cptr = &txt[0];
   if(*cptr == '/') cptr++;
   int len = ::strlen(cptr);
+  if(tmp != NULL) delete [] tmp;
   tmp = new char [len+2];
   ::strcpy(tmp,cptr);
   cptr = ::strchr(&tmp[0],'/');

@@ -4905,8 +4905,8 @@ void Interpreter::interprets(const char *command)
               int vPos = c->verticalScrollBar()->value();   // make cursor not jumping (ernst murnleitner)
               int hPos = c->horizontalScrollBar()->value();
               QTextDocument *doc = c->document();
-              QUrl url = QUrl::fromLocalFile(temp); 
-              if(doc != NULL) doc->setHtml(text,url);
+              //QUrl url = QUrl::fromLocalFile(temp); 
+              if(doc != NULL) doc->setHtml(text); // ,url);
               c->verticalScrollBar()->setValue(vPos);
               c->horizontalScrollBar()->setValue(hPos);
 #else              
