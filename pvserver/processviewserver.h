@@ -517,6 +517,7 @@ typedef struct _PARAM_
   char  lang_section[32];                /* use pvSelectLanguage()             */
   char  *mytext2;                        /* temp used in language translation  */
   int   http;                            /* 0|1 talk http                      */
+  FILE  *fptmp;                          /* temporary file pointer             */
 }PARAM;
 
 #ifndef __VMS

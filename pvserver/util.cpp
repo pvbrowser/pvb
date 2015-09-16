@@ -321,6 +321,7 @@ static int pvUnlink(PARAM *p)
   static struct dirent *dp;
 
   dirp = opendir(".");
+  if(dirp == NULL) return -1;
   while((dp = readdir(dirp)) != NULL)
   {
     if(dp->d_name[0] == '.') ;
@@ -520,6 +521,11 @@ int pvThreadFatal(PARAM *p, const char *text)
   p->clipboard_length = 0;
   delete [] p->mytext;
   delete [] p->mytext2;
+  if(p->fptmp != NULL)
+  {
+    fclose(p->fptmp);
+    p->fptmp = NULL;
+  }
   pvUnlink(p);
   if(p->cleanup != NULL) p->cleanup(p->app_data);
   //printf("Thread finished2: %s s=%d\n",text,p->s);
@@ -1184,6 +1190,7 @@ int i;
   p->communication_plugin = NULL;
   p->use_communication_plugin = 0;
   p->http = 0;
+  p->fptmp = NULL;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
   pvthread_mutex_init(&param_mutex, NULL);
@@ -3318,12 +3325,17 @@ int pvMysqldump(PARAM *p, int id, const char *command)
   }
 
   // calculate dimension of table
+  if(p->fptmp != NULL)
+  {
+    pvThreadFatal(p,"ERROR: pvMysqldump fptmp != NULL");    
+  }
   fin = fopen(filename,"r");
   if(fin == NULL)
   {
     printf("pvMysqldump:: could not open: %s\n",filename);
     return -1;
   }
+  p->fptmp = fin;
   row_cnt = field_cnt = 0;
   while(fgets(line,sizeof(line)-1,fin) != NULL)
   {
@@ -3371,6 +3383,7 @@ int pvMysqldump(PARAM *p, int id, const char *command)
   }
 
   fclose(fin);
+  p->fptmp = NULL;
   return 0;
 }
 
@@ -3416,6 +3429,10 @@ int pvCSVdump(PARAM *p, int id, const char *filename, char delimitor)
   // read table
   line = new char[256*256+1];
   sprintf(line,"%s%s",p->file_prefix,filename);
+  if(p->fptmp != NULL)
+  {
+    pvThreadFatal(p,"ERROR: pvCSVdump fptmp != NULL");    
+  }
   fp = fopen(line,"r");
   if(fp == NULL) 
   {
@@ -3427,6 +3444,7 @@ int pvCSVdump(PARAM *p, int id, const char *filename, char delimitor)
       return -1;
     }  
   }
+  p->fptmp = fp;
   while(fgets((char *) line,256*256,fp) != NULL)
   {
     if(y == -1)
@@ -3445,6 +3463,7 @@ int pvCSVdump(PARAM *p, int id, const char *filename, char delimitor)
   }
   delete [] line;
   fclose(fp);
+  p->fptmp = NULL;
   return 0;
 }
 
@@ -5130,17 +5149,23 @@ int pvSendFile(PARAM *p, const char *filename)
 FILE *fp;
 char line[1024];
 
+  if(p->fptmp != NULL)
+  {
+    pvThreadFatal(p,"ERROR: pvSendFile fptmp != NULL");    
+  }
   fp = fopen(filename,"r");
   if(fp == NULL)
   {
     printf("pvSendFile: could not open %s",filename);
     return -1;
   }
+  p->fptmp = fp;
   while(fgets(line,sizeof(line)-1,fp) != NULL)
   {
     pvtcpsend(p,line,strlen(line));
   }
   fclose(fp);
+  p->fptmp = NULL;
   return 0;
 }
 
@@ -5166,12 +5191,17 @@ glFont *font = NULL;
     fixed->setFontSize(10, fzoom);
   }  
   ind = opcode = -1;
+  if(p->fptmp != NULL)
+  {
+    pvThreadFatal(p,"ERROR: pvSendOpenGL fptmp != NULL");    
+  }
   fp = fopen(filename,"r");
   if(fp == NULL)
   {
     printf("pvSendOpenGL: could not open %s",filename);
     return -1;
   }
+  p->fptmp = fp;
   while(fgets(line,sizeof(line)-1,fp) != NULL)
   {
     if(line[0] != '/')
@@ -5278,6 +5308,7 @@ glFont *font = NULL;
     }
   }
   fclose(fp);
+  p->fptmp = NULL;
   return ind+1;
 }
 
@@ -5367,12 +5398,17 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   char tbuf[80];
   char buf[2048];
   const int maxbuf = sizeof(buf); 
+  if(p->fptmp != NULL)
+  {
+    pvThreadFatal(p,"ERROR: pvSendHttpChunks fptmp != NULL");    
+  }
   FILE *fin = fopen(filename,"rb");
   if(fin == NULL)
   {
     printf("pvSendHttpResponse: could not open file %s\n", filename);
     return -1;
   }
+  p->fptmp = fin;
   int fpos = 0;
   while(1)
   {
@@ -5395,6 +5431,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   strcpy(tbuf,"0\n\n\n");
   pvtcpsend(p,tbuf,strlen(tbuf));
   fclose(fin);
+  p->fptmp = NULL;
   if(ret) return 0;
   return 0;
 }
@@ -5407,20 +5444,25 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   if(statbuf.st_size <= 0) return -1;
   char tbuf[80];
   char buf[2048];
-  const int maxbuf = sizeof(buf); 
-  FILE *fin = fopen(filename,"rb");
-  if(fin == NULL)
+  const int maxbuf = sizeof(buf);
+  if(p->fptmp != NULL)
+  {
+    pvThreadFatal(p,"ERROR: pvSendHttpContentLength fptmp != NULL");    
+  }
+  FILE *fp = fopen(filename,"rb");
+  if(fp == NULL)
   {
     printf("pvSendHttpResponse: could not open file %s\n", filename);
     return -1;
   }
+  p->fptmp = fp;
   sprintf(tbuf, "Content-Length: %ld\n\n", statbuf.st_size);
   pvtcpsend(p,tbuf,strlen(tbuf));
   int fpos = 0;
   while(1)
   {
     if(fpos + maxbuf > statbuf.st_size) break;
-    ret = fread(buf, 1, maxbuf, fin);
+    ret = fread(buf, 1, maxbuf, fp);
     sprintf(tbuf, "%x\n", maxbuf);
     pvtcpsend_binary(p,buf,maxbuf);
     fpos += maxbuf;
@@ -5428,11 +5470,12 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   int remain = statbuf.st_size - fpos;
   if(remain > 0)
   {
-    ret = fread(buf, 1, maxbuf, fin);
+    ret = fread(buf, 1, maxbuf, fp);
     sprintf(tbuf, "%x\n", remain);
     pvtcpsend_binary(p,buf,remain);
   }
-  fclose(fin);
+  fclose(fp);
+  p->fptmp = NULL;
   if(ret) return 0;
   return 0;
 }
