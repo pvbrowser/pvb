@@ -518,6 +518,7 @@ typedef struct _PARAM_
   char  *mytext2;                        /* temp used in language translation  */
   int   http;                            /* 0|1 talk http                      */
   FILE  *fptmp;                          /* temporary file pointer             */
+  int   fhdltmp;                         /* temporary file handle              */
 }PARAM;
 
 #ifndef __VMS

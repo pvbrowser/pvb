@@ -526,6 +526,11 @@ int pvThreadFatal(PARAM *p, const char *text)
     fclose(p->fptmp);
     p->fptmp = NULL;
   }
+  if(p->fhdltmp != 0)
+  {
+    close(p->fhdltmp);
+    p->fhdltmp = 0;
+  }
   pvUnlink(p);
   if(p->cleanup != NULL) p->cleanup(p->app_data);
   //printf("Thread finished2: %s s=%d\n",text,p->s);
@@ -1191,6 +1196,7 @@ int i;
   p->use_communication_plugin = 0;
   p->http = 0;
   p->fptmp = NULL;
+  p->fhdltmp = 0;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
   pvthread_mutex_init(&param_mutex, NULL);
@@ -5360,6 +5366,11 @@ short len;
   //printf("download %s again\n", filename);
 
   pv_length_check(p,newname);
+  
+  if(p->fhdltmp != 0)
+  {
+    pvThreadFatal(p,"ERROR: pvDownloadFileAs fhdltmp != 0");    
+  }
 
   fhdl = pvopenBinary(filename);
   if(fhdl <= 0)
@@ -5368,6 +5379,7 @@ short len;
     return -1;
   }
 
+  p->fhdltmp = fhdl;
   sprintf(buf,"downloadFile(\"%s\")\n",pvFilename(newname));
   pvtcpsend(p, buf, strlen(buf));
   while(1)
@@ -5381,6 +5393,7 @@ short len;
   len = htons(0);
   pvtcpsend_binary(p, (const char *) &len, 2);
   close(fhdl);
+  p->fhdltmp = 0;
   return 0;
 }
 

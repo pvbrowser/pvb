@@ -48,8 +48,10 @@ fi
 fi
 if [ "$HOME" == "/home/lehrig" ]; then
   echo "We are at home"
-  export QTDIR=/usr/share/qt4
-  export QMAKESPEC=/usr/share/qt4/mkspecs/linux-g++
+  export QTDIR=/usr/lib64/qt5
+  export QMAKESPEC=/usr/lib64/qt5/mkspecs/linux-g++
+  #export QTDIR=/usr/share/qt4
+  #export QMAKESPEC=/usr/share/qt4/mkspecs/linux-g++
   #export QTDIR=/usr/local/Trolltech/Qt-4.2.1
   #export QMAKESPEC=/usr/local/Trolltech/Qt-4.2.1/mkspecs/linux-g++
   #export PATH=/usr/local/Trolltech/Qt-4.2.1/bin:$PATH
