@@ -207,6 +207,7 @@ var searchData=
   ['pvsetechomode',['pvSetEchoMode',['../group__State.html#ga1787c858081ced4f1694eb967aefb75b',1,'processviewserver.h']]],
   ['pvseteditable',['pvSetEditable',['../group__State.html#ga5d8d92745b72ea32a39262d7b081a8b1',1,'processviewserver.h']]],
   ['pvsetenabled',['pvSetEnabled',['../group__State.html#ga197a4b3fa478959884194c14f7c2513d',1,'processviewserver.h']]],
+  ['pvsetfocus',['pvSetFocus',['../group__State.html#gabc384328aaec4512a51b9a0fcb40dad2',1,'processviewserver.h']]],
   ['pvsetfont',['pvSetFont',['../group__Output.html#ga256b836700ea2d2b610173001720b8a4',1,'processviewserver.h']]],
   ['pvsetfontcolor',['pvSetFontColor',['../group__Output.html#ga2430f74771689aeb74166622b2699152',1,'processviewserver.h']]],
   ['pvsetgeometry',['pvSetGeometry',['../group__State.html#gaf4b2950e75c28de7614fe0539655fcef',1,'processviewserver.h']]],

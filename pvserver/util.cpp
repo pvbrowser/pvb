@@ -3625,6 +3625,15 @@ char buf[80];
   return 0;
 }
 
+int pvSetFocus(PARAM *p, int id)
+{
+char buf[80];
+
+  sprintf(buf,"setFocus(%d)\n",id);
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvTableSetEnabled(PARAM *p, int id, int x, int y, int enabled)
 {
 char buf[80];

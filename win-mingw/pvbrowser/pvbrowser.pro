@@ -11,7 +11,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
   QT           += xml svg webkit network
   CONFIG       += uitools warn_on release                                    
 }else{
-  QT           += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network
+  QT           += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network opengl
   CONFIG       += warn_on release                                    
   LIBS         += -lws2_32
 }    
@@ -53,6 +53,7 @@ SOURCES       = ../../pvbrowser/main.cpp \
 #INCLUDEPATH  += ../../qwt/include                                         
 INCLUDEPATH  += ../../qwt/src                                              
 LIBS         += ../../qwt/lib/libqwt.a                                     
+LIBS         += $(MINGWDIR)/i686-w64-mingw32/lib/libopengl32.a
 lessThan(QT_MAJOR_VERSION, 5) {
 LIBS         += $(MINGWDIR)/lib/libws2_32.a                                
 LIBS         += $(MINGWDIR)/lib/libimm32.a                                 

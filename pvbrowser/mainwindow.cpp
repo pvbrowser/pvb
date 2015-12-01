@@ -111,10 +111,14 @@ bool MyScrollArea::event(QEvent *event)
       QPinchGesture *pinch=static_cast<QPinchGesture *>(ge_pinch);
       int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
       int old_percent = percent;
-      if     (pinch->scaleFactor() < 0.99f) percent -= 5;
-      else if(pinch->scaleFactor() > 1.01f) percent += 5;
+      float sf = pinch->scaleFactor();
+      if     (sf < 0.99f) percent -= 5;
+      else if(sf > 1.01f) percent += 5;
       if(percent<10)       percent=10;
       else if(percent>250) percent=250;
+      char buf[80];
+      sprintf(buf,"slider(%d,%d)\n",0, (int) (sf*100));
+      tcp_send(&mw->pvbtab[mw->currentTab].s,buf,strlen(buf));
       //char buf[1024];
       //sprintf(buf,"percent=%d old_percent=%d scaleFactor=%f", percent, old_percent, pinch->scaleFactor());
       //mw->statusBar()->showMessage(buf);

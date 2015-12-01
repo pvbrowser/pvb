@@ -3363,7 +3363,14 @@ void Interpreter::interprets(const char *command)
         }
         break;
       case 'F':
-        if(strncmp(command,"setFont(",8) == 0) // set font
+        if(strncmp(command,"setFocus(",9) == 0) // set keyboard focus all widgets
+        {
+          sscanf(command,"setFocus(%d",&i);
+          if(i < 0) return;
+          if(i >= nmax) return;
+          if(all[i]->w != NULL) all[i]->w->setFocus();
+        }
+        else if(strncmp(command,"setFont(",8) == 0) // set font
         {
           int pointsize,bold,italic,underline,strikeout;
           sscanf(command,"setFont(%d,%d,%d,%d,%d,%d",&i,&pointsize,&bold,&italic,&underline,&strikeout);

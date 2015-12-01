@@ -310,7 +310,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
 rlSharedMemory::~rlSharedMemory()
 {
   delete [] name;
-  printf("We are within the destructor\n");
+  //printf("We are within the destructor\n");
 #ifdef RLWIN32
   if(status != OK) return;
   CloseHandle((HANDLE) id);
