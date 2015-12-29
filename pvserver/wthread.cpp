@@ -88,7 +88,7 @@ void pvthread_close_handle(pthread_t *tid)
 #ifdef PVWIN32THREAD
   CloseHandle((HANDLE) *tid);
 #else
-  if(tid == NULL) tid = NULL;
+  if(tid == NULL) return; //tid = NULL;
 #endif
 }
 

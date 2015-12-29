@@ -533,7 +533,6 @@ int pvThreadFatal(PARAM *p, const char *text)
   }
   pvUnlink(p);
   if(p->cleanup != NULL) p->cleanup(p->app_data);
-  //printf("Thread finished2: %s s=%d\n",text,p->s);
   for(i=0; i<MAX_CLIENTS; i++) // remove from address table
   {
     if(adrTable.adr[i].s == p->s)
@@ -550,7 +549,6 @@ int pvThreadFatal(PARAM *p, const char *text)
       break;
     }
   }
-  //printf("Thread finished3: %s s=%d\n",text,p->s);
   if(p->use_communication_plugin)
   {
     plug_closesocket(p->s);
@@ -559,21 +557,19 @@ int pvThreadFatal(PARAM *p, const char *text)
   {
     closesocket(p->s);
   }  
-  //printf("Thread finished4: %s s=%d free=%d\n",text,p->s,p->free);
   // if(p->free == 1) free(p); // valgrind: "Invalid write of size 4"
-  //printf("Thread finished5: %s\n",text);
   printf("pvthread_exit\n");
   p->my_pvlock_count = 0; // ensure that mutex gets unlocked
-  pvunlock(p); // valgrind: "Invalid write of size 4"
+  //before_dec_2015 pvunlock(p); // valgrind: "Invalid write of size 4"
   if(p->free == 1) free(p);
-  //printf("Thread finished6: %s\n",text);
+#ifndef USE_INETD
+  pvthread_mutex_unlock(&param_mutex); // since_dec_2015
+#endif
   if(exit_after_last_client_terminates == 1 && num_threads <= 0) exit(0);
-  //printf("Thread finished7: %s\n",text);
 #ifdef USE_INETD
   exit(0);
 #else
   pvthread_exit(NULL);
-  //printf("Thread finished8: %s\n",text);
 #endif
   return 0;
 }
@@ -1834,7 +1830,24 @@ int pvCreateThread(PARAM *p, int s)
   ptr->mytext2[0] = '\0';
 #ifndef USE_INETD
   printf("pvCreateThread s=%d\n",ptr->s);
-  pvthread_create(&tid, NULL, send_thread, (void *) ptr);
+  int retval = pvthread_create(&tid, NULL, send_thread, (void *) ptr);
+  if(retval != 0 || tid == 0)
+  {
+    if     (retval == EAGAIN) fprintf(stderr,"ERROR retval=EAGAIN\n ");
+    else if(retval == EINVAL) fprintf(stderr,"ERROR retval=EINVAL\n ");
+    else if(retval == EPERM)  fprintf(stderr,"ERROR retval=EPERM\n ");
+    else                      fprintf(stderr,"pvCreateThread: ERROR retval is ok\n ");
+    for(int i=0; i<MAX_CLIENTS; i++)
+    {
+      if(clientsocket[i] == s)
+      {
+        clientsocket[i] = -1;
+        break;
+      }
+    }
+    closesocket(s);
+    return 0;
+  }
 #ifndef PVWIN32
   pthread_detach(tid);
 #endif
