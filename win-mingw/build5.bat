@@ -35,10 +35,10 @@ cd ..
 rem pause                                                                  
                                                                            
 echo Netscape plugins are not supported in Qt5    
-cd browserplugin                                                           
-qmake pvpluginmain.pro -o Makefile                           
-mingw32-make.exe                                                                
-cd ..                                                                      
+rem cd browserplugin                                                           
+rem qmake pvpluginmain.pro -o Makefile                           
+rem mingw32-make.exe                                                                
+rem cd ..                                                                      
 rem rem pause                                                                  
                                                                            
 cd pvdevelop                                                               

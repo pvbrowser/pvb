@@ -21,8 +21,8 @@ SET VTKDIR=z:\Downloads\vtk\VTK5.10.1
 SET TCLDIR=c:\Tcl
 SET TCLLIBPATH=c:\Tcl\Tcl8.5;z:/Downloads/vtk/bin/Wrapping/Tcl
 rem change to directory with our sources
-SET PVBDIR=c:\rl\cc\pvb
-c:
+SET PVBDIR=z:\rl\cc\pvb
+z:
 cd  %PVBDIR%\win-mingw
 
 rem setup path variables

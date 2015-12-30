@@ -144,7 +144,6 @@ int   s;
   {
     s = pvAccept(&p);
     if(s != -1) pvCreateThread(&p,s);
-    else        break;
   }
   return 0;
 }

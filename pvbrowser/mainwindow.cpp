@@ -541,7 +541,7 @@ void MainWindow::about()
  QMessageBox::about(this, tr("About pvbrowser"),
             tr(
                "pvbrowser (R) \nVersion " VERSION
-               "\n(C) 2000-2015 Lehrig Software Engineering"
+               "\n(C) 2000-2016 Lehrig Software Engineering"
                "\nlehrig@t-online.de"
                "\nhttp://pvbrowser.org"
                "\nhttp://www.lehrig.de"

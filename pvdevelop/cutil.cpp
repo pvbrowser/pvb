@@ -532,7 +532,6 @@ void generateInitialProject(const char *name)
   fprintf(fout,"  {\n");
   fprintf(fout,"    s = pvAccept(&p);\n");
   fprintf(fout,"    if(s != -1) pvCreateThread(&p,s);\n");
-  fprintf(fout,"    else        break;\n");
   fprintf(fout,"  }\n");
   fprintf(fout,"  return 0;\n");
   fprintf(fout,"}\n");
