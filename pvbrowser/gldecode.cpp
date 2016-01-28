@@ -36,10 +36,14 @@ OpenGL decoder for use with Process View Browser    (C) R. Lehrig 2000
 
 #ifdef USE_OPEN_GL
 
+#ifdef PVGLWIDGET_H_V5
+#include <QOpenGLFunctions>
+#else
 #ifdef PVMAC
 #include <OpenGL/gl.h>
 #else
 #include <GL/gl.h>
+#endif
 #endif
 
 #include "tcputil.h"

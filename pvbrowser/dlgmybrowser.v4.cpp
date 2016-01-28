@@ -21,6 +21,10 @@
 #include <QNetworkReply>
 #endif
 
+#ifdef USE_WEBKIT
+#include <QWebFrame>
+#endif
+
 #include "pvdefine.h"
 #include "dlgmybrowser.h"
 #include "dlgmybrowser_ui.h"
@@ -29,13 +33,13 @@
 extern OPT opt;
 
 pvQWebView::pvQWebView(QWidget *parent)
-           :QWebEngineView(parent)
+           :QWebView(parent)
 {
   factor = 1.0f;
   QString    txt("data:text/css;charset=utf-8;base64,");
   QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
   txt += css.toBase64();
-  //v5diff settings()->setUserStyleSheetUrl(QUrl(txt));
+  settings()->setUserStyleSheetUrl(QUrl(txt));
 }
 
 pvQWebView::~pvQWebView()
@@ -51,7 +55,7 @@ bool pvQWebView::event(QEvent *e)
     if(ge->gesture(Qt::PinchGesture)) return false;
   }
 #endif
-  return QWebEngineView::event(e);
+  return QWebView::event(e);
 }
 
 void pvQWebView::keyPressEvent(QKeyEvent *event)
@@ -72,13 +76,12 @@ void pvQWebView::keyPressEvent(QKeyEvent *event)
   }
   else
   {
-    QWebEngineView::keyPressEvent(event);
+    QWebView::keyPressEvent(event);
   }
 }
 
-QWebEngineView *pvQWebView::createWindow(QWebEnginePage::WebWindowType type)
+QWebView *pvQWebView::createWindow(QWebPage::WebWindowType type)
 {
-/*v5diff
   QWebHitTestResult r = page()->mainFrame()->hitTestContent(pressPos);
   if(!r.linkUrl().isEmpty() && type == QWebPage::WebBrowserWindow) 
   {
@@ -98,14 +101,13 @@ QWebEngineView *pvQWebView::createWindow(QWebEnginePage::WebWindowType type)
 
     if(ret < 0) printf("ERROR system(%s)\n", (const char *) cmd.toUtf8());
   }
-*/  
   return NULL;
 }
 
 void pvQWebView::mousePressEvent(QMouseEvent *event)
 {
   pressPos = event->pos();
-  QWebEngineView::mousePressEvent(event);
+  QWebView::mousePressEvent(event);
 }
 
 dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *manual)
@@ -134,14 +136,14 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   if(opt.enable_webkit_plugins)
   {
     if(opt.arg_debug) printf("enable_webkit_plugins\n");
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+    form->browser->settings()->setAttribute(QWebSettings::PluginsEnabled, true);
+    form->browser->settings()->setAttribute(QWebSettings::JavascriptEnabled, true);
   }
   else
   {
     if(opt.arg_debug) printf("do not enable_webkit_plugins\n");
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
+    form->browser->settings()->setAttribute(QWebSettings::PluginsEnabled, false);
+    form->browser->settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
   }
 #endif
   if(manual == NULL) return;
@@ -153,19 +155,17 @@ dlgMyBrowser::~dlgMyBrowser()
   delete form;
 }
 
-QWebEngineView *dlgMyBrowser::createWindow(QWebEnginePage::WebWindowType type)
+QWebView *dlgMyBrowser::createWindow(QWebPage::WebWindowType type)
 {
   if(opt.arg_debug) printf("dlgMyBrowser::createWindow type=%d\n", (int) type);
 #ifdef USE_WEBKIT
-/*v5diff
-  if(type == QWebEnginePage::WebBrowserWindow)
+  if(type == QWebPage::WebBrowserWindow)
   {
-    QAction *act = form->browser->pageAction(QWebEnginePage::OpenLinkInNewWindow);
+    QAction *act = form->browser->pageAction(QWebPage::OpenLinkInNewWindow);
     QString str = act->text();
     printf("TODO: find out howto get the url text=%s\n", (const char *) str.toUtf8());
     //act->trigger();
   }  
-*/
 #endif  
   return NULL;
 }
@@ -178,7 +178,7 @@ void dlgMyBrowser::setUrl(const char *url)
 #ifdef USE_WEBKIT
   if(opt.arg_debug) printf("dlgMyBrowser::setUrl url=%s\n", url);
   form->browser->setUrl(QUrl(url));
-  //v5diff form->browser->page()->setLinkDelegationPolicy(QWebEnginePage::DelegateExternalLinks);
+  form->browser->page()->setLinkDelegationPolicy(QWebPage::DelegateExternalLinks);
   //form->browser->page()->setLinkDelegationPolicy(QWebPage::DontDelegateLinks);
   homepath = QUrl(url).host() + QUrl(url).path();
 #endif
@@ -229,10 +229,9 @@ void dlgMyBrowser::slotFind()
   if(opt.arg_debug) printf("dlgMyBrowser:slotFind()\n");
 #ifdef USE_WEBKIT  
   QString pattern = form->lineEditPattern->text();
-  QWebEnginePage *page = form->browser->page();
+  QWebPage *page = form->browser->page();
   if(page == NULL) return;
-  //v5diff page->findText(pattern,QWebEnginePage::FindWrapsAroundDocument);
-  page->findText(pattern);
+  page->findText(pattern,QWebPage::FindWrapsAroundDocument);
 #endif
 }
 
@@ -335,11 +334,11 @@ void dlgMyBrowser::slotLoadFinished(bool ok)
 #if QT_VERSION >= 0x040700
   if(anchor.length() > 0)
   {
-    QWebEnginePage *page = form->browser->page();
+    QWebPage *page = form->browser->page();
     if(page != NULL)
     {
       if(opt.arg_debug) printf("dlgMyBrowser::slotLoadFinshed scrollToAnchor\n");
-      //v5diff page->currentFrame()->scrollToAnchor(anchor);
+      page->currentFrame()->scrollToAnchor(anchor);
     }
   }
 #endif  

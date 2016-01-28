@@ -22,7 +22,16 @@ SET PYTHONPATH=%PVBDIR%\win\bin;%PYTHONPATH%
 
 ### build ###
 cd win-mingw
-CreatePvbWithMinGW.bat
+rem adjust environment variables in login.bat
+rem SET    QTDIR=C:\Qt\Qt5.5.1\5.5\mingw492_32
+rem SET MINGWDIR=C:\Qt\Qt5.5.1\Tools\mingw492_32
+edit login.bat
+rem run login.bat in order to set environment variables
+login.bat
+rem run build5.bat
+build5.bat
+rem run build5.bat again to see that no error occured
+build5.bat
 
 ### run ###
 pvbrowser

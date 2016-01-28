@@ -1,3 +1,5 @@
+#QT         += opengl svg webkit
+#QT         += printsupport uitools webkitwidgets widgets opengl svg webkit printsupport
 lessThan(QT_MAJOR_VERSION, 5) {
   QT         += opengl svg webkit
   CONFIG     += uitools warn_on release
@@ -11,6 +13,7 @@ INCLUDEPATH  += ../pvbrowser
 INCLUDEPATH  += ../qwt/src
 LIBS         += ../qwt/lib/libqwt.a
 DEFINES      += PVDEVELOP
+DEFINES      += NO_WEBKIT
 #DEFINES     += NO_QWT
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
@@ -49,6 +52,7 @@ HEADERS       = mainwindow.h \
                 ui_dlgeditlayout.h \
                 ../pvbrowser/opt.h \
                 ../pvbrowser/MyWidgets.h \
+                ../pvbrowser/MyTextBrowser_v4.h \
                 ../pvbrowser/qwtwidgets.h \
                 ../pvbrowser/qwtplotwidget.h \
                 ../pvbrowser/qdrawwidget.h \
@@ -79,6 +83,7 @@ SOURCES       = main.cpp \
                 gsiemens.cpp \
                 widgetgenerator.cpp \
                 ../pvbrowser/MyWidgets.cpp \
+                ../pvbrowser/MyTextBrowser_v4.cpp \
                 ../pvbrowser/qwtplotwidget.cpp \
                 ../pvbrowser/QImageWidget.cpp \
                 ../pvbrowser/QDrawWidget.cpp \

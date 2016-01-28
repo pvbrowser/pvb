@@ -25,6 +25,7 @@ HEADERS       = ../../pvbrowser/mainwindow.h \
                 ../../pvbrowser/interpreter.h \                            
                 ../../pvbrowser/pvserver.h \                               
                 ../../pvbrowser/MyWidgets.h \                              
+                ../../pvbrowser/MyTextBrowser_v4.h \
                 ../../pvbrowser/qimagewidget.h \                           
                 ../../pvbrowser/qdrawwidget.h \                            
                 ../../pvbrowser/pvglwidget.h \                             
@@ -41,6 +42,7 @@ SOURCES       = ../../pvbrowser/main.cpp \
                 ../../pvbrowser/tcputil.cpp \                              
                 ../../pvbrowser/interpreter.cpp \                          
                 ../../pvbrowser/MyWidgets.cpp \                            
+                ../../pvbrowser/MyTextBrowser_v4.cpp \
                 ../../pvbrowser/QDrawWidget.cpp \                          
                 ../../pvbrowser/QImageWidget.cpp \                         
                 ../../pvbrowser/pvglwidget.cpp \                           

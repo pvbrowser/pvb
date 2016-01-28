@@ -22,6 +22,7 @@ DEFINES      += "WINVER=0x0501"
 
 HEADERS       = ../../pvbrowser/webkit_ui_dlgtextbrowser.h \               
                 ../../pvbrowser/MyWidgets.h \                              
+                ../../pvbrowser/MyTextBrowser_v4.h \
                 ../../pvbrowser/qwtwidgets.h \                             
                 ../../pvbrowser/qwtplotwidget.h \                          
                 ../../pvbrowser/qdrawwidget.h \                            
@@ -60,6 +61,7 @@ HEADERS       = ../../pvbrowser/webkit_ui_dlgtextbrowser.h \
                 ../../pvdevelop/ui_dlgeditlayout.h \                       
                                                                            
 SOURCES       = ../../pvbrowser/MyWidgets.cpp \                            
+                ../../pvbrowser/MyTextBrowser_v4.cpp \
                 ../../pvbrowser/qwtplotwidget.cpp \                        
                 ../../pvbrowser/QDrawWidget.cpp \                          
                 ../../pvbrowser/QImageWidget.cpp \                         

@@ -42,9 +42,9 @@
 #include <QDateTimeEdit>
 #include <QTextEdit>
 #include <QTextBrowser>
-#ifndef NO_WEBKIT
-#include <QWebView>
-#endif
+//v5diff #ifndef NO_WEBKIT
+//v5diff #include <QWebView>
+//v5diff #endif
 #include <QListWidget>
 #include <QTreeWidget>
 #include <QDockWidget>
@@ -427,48 +427,6 @@ private:
     int *s,id;
 };
 
-#ifdef NO_WEBKIT
-class MyTextBrowser : public QTextBrowser
-#else
-class MyTextBrowser : public QWebView
-#endif
-{
-    Q_OBJECT
-public:
-    MyTextBrowser(int *sock, int ident, QWidget * parent=0, const char * name=0);
-    ~MyTextBrowser();
-    virtual bool event(QEvent *e);
-    void moveContent(int pos);
-    void setHTML(QString &text);
-    void htmlOrSvgDump(const char *filename);
-    QString home;
-    int homeIsSet;
-    QString mHeader;
-    QString mStyle;
-    int xOldScroll, yOldScroll;
-
-public slots:
-    void slotLinkClicked(const QUrl &link);
-    void slotUrlChanged(const QUrl &link);
-    void slotLoadFinished(bool ok);
-
-protected:
-#ifdef NO_WEBKIT
-#else
-    virtual QWebView *createWindow(QWebPage::WebWindowType type);
-#endif    
-    virtual void keyPressEvent(QKeyEvent *event);
-  
-private:
-    virtual void mousePressEvent(QMouseEvent *event);
-    virtual void mouseReleaseEvent(QMouseEvent *event);
-    virtual void enterEvent(QEvent *event);
-    virtual void leaveEvent(QEvent *event);
-    int *s,id;
-    float factor;
-    QPoint pressPos;
-};
-
 class MyListViewItem;
 
 #define MAX_TREE_RECURSION 80
@@ -618,5 +576,11 @@ public slots:
 private:
     int *s,id,dock_id;
 };
+
+#ifdef USE_GOOGLE_WEBKIT_FORK
+#include "MyTextBrowser_v5.h"
+#else
+#include "MyTextBrowser_v4.h"
+#endif
 
 #endif

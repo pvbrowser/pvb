@@ -2633,12 +2633,18 @@ int glFont::read(const char *filename)
   //printf("after read w=%d h=%d\n", width, height);
 
   // Generate an alpha texture with it.
+printf("read1\n");  
   glGenTextures(1, &_texture);
+printf("read2\n");  
   glBindTexture(GL_TEXTURE_2D, _texture);
+printf("read3\n");  
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+printf("read4\n");  
   glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+printf("read5\n");  
   glTexImage2D(GL_TEXTURE_2D, 0, GL_ALPHA8, width, height, 0, GL_ALPHA,
                GL_UNSIGNED_BYTE, tex_data);
+printf("read6\n");  
   // And delete the texture memory block
   delete[] tex_data;
   close(fhdl);

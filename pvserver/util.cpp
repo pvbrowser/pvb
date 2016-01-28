@@ -1821,7 +1821,55 @@ int pvCreateThread(PARAM *p, int s)
   pvlock(p);
   ptr = (PARAM *) malloc(sizeof(PARAM));
   pvunlock(p);
-  if(ptr == NULL) pvMainFatal(p,"out of memory");
+  if(ptr == NULL) 
+  { // our server might be under attack
+    // we ignore further connect requests until the load becomes bearable
+    // thus we do not terminate the server
+    fprintf(stderr, "pvCreateThread: out of memory s=%d\n",p->s);
+    num_threads--;
+    int i;
+    for(i=0; i<MAX_CLIENTS; i++) // remove from address table
+    {
+      if(adrTable.adr[i].s == s)
+      {
+        memset(&adrTable.adr[i],0,sizeof(pvAddressTableItem));
+        break;
+      }  
+    }
+    for(i=0; i<MAX_CLIENTS; i++)
+    {
+      if(clientsocket[i] == s)
+      {
+        clientsocket[i] = -1;
+        break;
+      }
+    }
+    if(p->use_communication_plugin)
+    {
+      plug_closesocket(s);
+    }
+    else
+    {
+      closesocket(s);
+    }  
+    struct sockaddr_in *sockaddr_in_ptr  = (sockaddr_in *) &pvSockaddr;
+    if(sockaddr_in_ptr->sin_family == AF_INET)
+    {
+      char adr[64];
+      unsigned int *ipadr_ptr,a1,a2,a3,a4;
+      ipadr_ptr = (unsigned int *) &sockaddr_in_ptr->sin_addr;
+      unsigned char *uc = (unsigned char *) ipadr_ptr;
+      a1 = uc[0];
+      a2 = uc[1];
+      a3 = uc[2];
+      a4 = uc[3];
+      sprintf(adr,"%d.%d.%d.%d", a1,a2,a3,a4);
+      fprintf(stderr, "Server might be under attack from ipv4=%s\n",adr);
+    }
+    return 0;
+    //pvMainFatal(p,"out of memory");
+  }
+
   memcpy(ptr,p,sizeof(PARAM));
   ptr->s = s;
   ptr->mytext = new char[2];
@@ -1836,7 +1884,7 @@ int pvCreateThread(PARAM *p, int s)
     if     (retval == EAGAIN) fprintf(stderr,"ERROR retval=EAGAIN\n ");
     else if(retval == EINVAL) fprintf(stderr,"ERROR retval=EINVAL\n ");
     else if(retval == EPERM)  fprintf(stderr,"ERROR retval=EPERM\n ");
-    else                      fprintf(stderr,"pvCreateThread: ERROR retval is ok\n ");
+    else                      fprintf(stderr,"pvCreateThread: ERROR retval is ok. We might be under attack. retval=%d\n", retval);
     for(int i=0; i<MAX_CLIENTS; i++)
     {
       if(clientsocket[i] == s)
@@ -1846,6 +1894,24 @@ int pvCreateThread(PARAM *p, int s)
       }
     }
     closesocket(s);
+    pvlock(p);
+    free(ptr);
+    pvunlock(p);
+    struct sockaddr_in *sockaddr_in_ptr  = (sockaddr_in *) &pvSockaddr;
+    if(sockaddr_in_ptr->sin_family == AF_INET)
+    {
+      char adr[64];
+      unsigned int *ipadr_ptr,a1,a2,a3,a4;
+      ipadr_ptr = (unsigned int *) &sockaddr_in_ptr->sin_addr;
+      unsigned char *uc = (unsigned char *) ipadr_ptr;
+      a1 = uc[0];
+      a2 = uc[1];
+      a3 = uc[2];
+      a4 = uc[3];
+      sprintf(adr,"%d.%d.%d.%d", a1,a2,a3,a4);
+      fprintf(stderr, "Server might be under attack from ipv4=%s\n",adr);
+    }
+    pvSleep(100); // we might be under attack
     return 0;
   }
 #ifndef PVWIN32

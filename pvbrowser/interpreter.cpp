@@ -41,9 +41,9 @@
 #include <QGridLayout>
 #include <QPixmap>
 #include <QDesktopWidget>
-#ifndef NO_WEBKIT
-#include <QWebFrame>
-#endif
+//murxv5 #ifndef NO_WEBKIT
+//murxv5 #include <QWebFrame>
+//murxv5 #endif
 #include <QPrinter>
 #include <QPrintDialog>
 #ifdef PVWIN32
@@ -2196,30 +2196,7 @@ void Interpreter::interpretm(const char *command)
     if(all[i]->type == TQTextBrowser)
     {
       MyTextBrowser *w = (MyTextBrowser *) all[i]->w;
-#ifdef NO_WEBKIT      
-      w->moveCursor((QTextCursor::MoveOperation) cursor);
-#else      
-      if     (cur == PV::NoMove)            w->pageAction(QWebPage::NoWebAction);
-      else if(cur == PV::StartOfLine)       w->pageAction(QWebPage::MoveToStartOfLine);
-      else if(cur == PV::StartOfBlock)      w->pageAction(QWebPage::MoveToStartOfBlock);      
-      //else if(cur == PV::StartOfWord)       ;
-      else if(cur == PV::PreviousBlock)     w->pageAction(QWebPage::QWebPage::MoveToPreviousLine);
-      else if(cur == PV::PreviousCharacter) w->pageAction(QWebPage::MoveToPreviousChar); 
-      else if(cur == PV::PreviousWord)      w->pageAction(QWebPage::MoveToPreviousWord);
-      else if(cur == PV::Up)                w->pageAction(QWebPage::MoveToStartOfDocument); // ???
-      //else if(cur == PV::Left)              ;
-      //else if(cur == PV::WordLeft)          ;
-      else if(cur == PV::End)               w->pageAction(QWebPage::MoveToEndOfDocument);
-      else if(cur == PV::EndOfLine)         w->pageAction(QWebPage::MoveToEndOfLine);
-      //else if(cur == PV::EndOfWord)         ;
-      else if(cur == PV::EndOfBlock)        w->pageAction(QWebPage::MoveToEndOfBlock);
-      else if(cur == PV::NextBlock)         w->pageAction(QWebPage::QWebPage::MoveToNextLine);       
-      else if(cur == PV::NextCharacter)     w->pageAction(QWebPage::MoveToNextChar);
-      else if(cur == PV::NextWord)          w->pageAction(QWebPage::MoveToNextWord);
-      else if(cur == PV::Down)              w->pageAction(QWebPage::MoveToEndOfDocument); // ???
-      //else if(cur == PV::Right)             ;
-      //else if(cur == PV::WordRight)         ;
-#endif      
+      w->tbMoveCursor(cur);
     }
     else if(all[i]->type == TQMultiLineEdit)
     {
@@ -4399,7 +4376,9 @@ void Interpreter::interprets(const char *command)
             // google does not allow Qt to access local storage
             // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
             //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
+#ifdef QWEBKITGLOBAL_H
             QWebSettings::clearMemoryCaches();
+#endif            
             if(strstr(text.toUtf8(),"://") == NULL)
             {
               struct stat sb;
@@ -4430,43 +4409,7 @@ void Interpreter::interprets(const char *command)
             MyTextBrowser *t = (MyTextBrowser *) all[i]->w;
             if(t != NULL) 
             {
-#ifdef NO_WEBKIT            
-              t->setSource(QUrl::fromLocalFile(temp + text));
-              t->reload();
-#else              
-//xmurx#ifdef USE_ANDROID
-              // android permission problems
-              // google does not allow Qt to access local storage
-              // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
-              //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
-              if(strstr(text.toUtf8(),"://") == NULL)
-              {
-                  struct stat sb;
-                  if(stat(text.toUtf8(), &sb) < 0) return;
-                  char buf[sb.st_size+1];
-                  FILE *fin = fopen(text.toUtf8(),"r");
-                  if(fin == NULL) return;
-                  fread(buf,1,sb.st_size,fin);
-                  buf[sb.st_size] = '\0';
-                  fclose(fin);
-                  QUrl url = QUrl::fromLocalFile(temp); 
-                  QWebSettings::clearMemoryCaches();
-                  t->setHtml(QString::fromUtf8(buf),url);
-              }
-              else
-              {
-                t->load(QUrl(text));
-              }
-//xmurx#else
-//xmurx              t->load(QUrl(text));
-//xmurx#endif
-#endif              
-              if(t->homeIsSet == 0)
-              {
-                t->home      = text;
-                t->homeIsSet = 1;
-                if(opt.arg_debug) printf("home=%s\n", (const char *) text.toUtf8());
-              }
+              t->setSOURCE( temp, text);
             }
           }
           else if(all[i]->type == TQCustomWidget)
@@ -4908,31 +4851,7 @@ void Interpreter::interprets(const char *command)
                 text += "</body></html>\n";
                 if(opt.arg_debug) printf("interpreter.cpp::setText Body::html=\n%s\n", (const char *) text.toUtf8());
               }  
-#ifdef NO_WEBKIT            
-              int vPos = c->verticalScrollBar()->value();   // make cursor not jumping (ernst murnleitner)
-              int hPos = c->horizontalScrollBar()->value();
-              QTextDocument *doc = c->document();
-              //QUrl url = QUrl::fromLocalFile(temp); 
-              if(doc != NULL) doc->setHtml(text); // ,url);
-              c->verticalScrollBar()->setValue(vPos);
-              c->horizontalScrollBar()->setValue(hPos);
-#else              
-              //int x = 0;
-              //int y = 0;
-              if(c->page() != NULL && c->page()->mainFrame() != NULL)
-              {
-                //x = c->page()->mainFrame()->scrollBarValue(Qt::Horizontal);
-                //y = c->page()->mainFrame()->scrollBarValue(Qt::Vertical);
-                c->xOldScroll = c->page()->mainFrame()->scrollBarValue(Qt::Horizontal);
-                c->yOldScroll = c->page()->mainFrame()->scrollBarValue(Qt::Vertical);
-              }
-              c->setHTML(text);
-              //if(c->page() != NULL && c->page()->mainFrame() != NULL)
-              //{
-                //c->page()->mainFrame()->setScrollBarValue(Qt::Horizontal,x);
-                //c->page()->mainFrame()->setScrollBarValue(Qt::Vertical,y);
-              //}
-#endif          
+              c->tbSetText(text);
             }
           }
           else if(all[i]->type == TQCustomWidget)
@@ -5424,16 +5343,11 @@ void Interpreter::interprets(const char *command)
           sscanf(command,"setZoomFactor(%d,%f",&i,&factor);
           if(i >= nmax && i > 0) return;
           MyTextBrowser *b = (MyTextBrowser*) all[i]->w;
-#ifdef NO_WEBKIT
-          if( b!= NULL)
+          if(b != NULL)
           {
-            if(factor > 1) b->zoomIn();
-            else           b->zoomOut();
-          }  
-#else
-          if(b != NULL) b->setZoomFactor(factor);
+            b->setZOOM_FACTOR(factor);
+          }
 #endif
-#endif          
         }
         else if(all[i]->type == TQCustomWidget)
         {
@@ -5461,15 +5375,7 @@ void Interpreter::interprets(const char *command)
       MyTextBrowser *tb = (MyTextBrowser *) all[i]->w;
       if(tb != NULL) 
       {
-#ifdef NO_WEBKIT
-        tb->scrollToAnchor(text);
-#else
-        QWebPage *page = tb->page();
-        if(page != NULL)
-        {
-          page->currentFrame()->scrollToAnchor(text);
-        }
-#endif        
+        tb->tbScrollToAnchor(text);
       }  
     }
     else if(all[i]->type == TQCustomWidget)

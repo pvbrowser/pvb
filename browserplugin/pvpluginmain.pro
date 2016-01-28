@@ -9,6 +9,7 @@ INCLUDEPATH += ../pvbrowser
 #INCLUDEPATH += ../qwt/include
 INCLUDEPATH += ../qwt/src
 DEFINES     += BROWSERPLUGIN
+DEFINES     += NO_WEBKIT
 
 HEADERS      = ../pvbrowser/mainwindow.h \
                ../pvbrowser/dlgopt.h \
@@ -17,9 +18,10 @@ HEADERS      = ../pvbrowser/mainwindow.h \
                ../pvbrowser/interpreter.h \
                ../pvbrowser/pvserver.h \
                ../pvbrowser/MyWidgets.h \
+               ../pvbrowser/MyTextBrowser_v4.h \
                ../pvbrowser/qimagewidget.h \
                ../pvbrowser/qdrawwidget.h \
-               ../pvbrowser/pvglwidget.h \
+               ../pvbrowser/pvglwidget.v4.h \
                ../pvbrowser/qwtwidgets.h \
                ../pvbrowser/qwtplotwidget.h \
                ../pvbrowser/dlgtextbrowser.h \
@@ -35,9 +37,10 @@ SOURCES      = pvpluginmain.cpp \
                ../pvbrowser/tcputil.cpp \
                ../pvbrowser/interpreter.cpp \
                ../pvbrowser/MyWidgets.cpp \
+               ../pvbrowser/MyTextBrowser_v4.cpp \
                ../pvbrowser/QDrawWidget.cpp \
                ../pvbrowser/QImageWidget.cpp \
-               ../pvbrowser/pvglwidget.cpp \
+               ../pvbrowser/pvglwidget.v4.cpp \
                ../pvbrowser/gldecode.cpp \
                ../pvbrowser/qwtplotwidget.cpp \
                ../pvbrowser/dlgtextbrowser.cpp \

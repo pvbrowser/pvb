@@ -65,7 +65,10 @@ static void initializeGL()
   glEnable(GL_LIGHTING);
   glEnable(GL_LIGHT0);
   glEnable(GL_DEPTH_TEST);
+}
 
+static void initialize2GL() // opengl functions with responses
+{
   //pvSendFile(myparam,"scene.gl");
   //pvSendFile(myparam,"scene1.gl");
   //pvSendFile(myparam,"scene2.gl");
@@ -240,6 +243,9 @@ GLdouble dval;
   memset(&d,0,sizeof(DATA));
   readData(&d); // from shared memory or out of database
   showData(p,&d);
+  pvGlBegin(p,ID_GL);
+  initialize2GL();
+  pvGlEnd(p);
   while(1)
   {
     pvPollEvent(p,event);

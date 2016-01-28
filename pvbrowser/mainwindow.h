@@ -22,6 +22,14 @@
   #define VERSION "4.8.3 - qt5"
 #endif
 
+#if defined USE_GOOGLE_WEBKIT_FORK
+#define WEBVERSION " Google Blink"
+#elif defined NO_WEBKIT
+#define WEBVERSION " no Webkit"
+#else
+#define WEBVERSION " Webkit"
+#endif
+
 #include "interpreter.h"
 
 #include <QMainWindow>

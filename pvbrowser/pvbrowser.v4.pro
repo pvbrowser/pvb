@@ -5,10 +5,13 @@
 CONFIG       += warn_on release
 #CONFIG      += USE_VTK
 #DEFINES     += NO_QWT
-DEFINES      += USE_GOOGLE_WEBKIT_FORK
 #mobile devices without opengl
-#QT           += opengl
-QT           += printsupport multimedia uitools webenginewidgets widgets xml svg webkit network printsupport
+QT           += opengl
+lessThan(QT_MAJOR_VERSION, 5) {
+  QT         += xml svg webkit network
+}else{
+  QT         += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network printsupport
+}    
 
 linux-g++-gles2 {
   DEFINES    += USE_MAEMO
@@ -49,7 +52,7 @@ HEADERS       = mainwindow.h \
                 interpreter.h \
                 pvserver.h \
                 MyWidgets.h \
-                MyTextBrowser_v5.h \
+                MyTextBrowser_v4.h \
                 qimagewidget.h \
                 qdrawwidget.h \
                 pvglwidget.h \
@@ -67,7 +70,7 @@ SOURCES       = main.cpp \
                 tcputil.cpp \
                 interpreter.cpp \
                 MyWidgets.cpp \
-                MyTextBrowser_v5.cpp \
+                MyTextBrowser_v4.cpp \
                 QDrawWidget.cpp \
                 QImageWidget.cpp \
                 pvglwidget.cpp \

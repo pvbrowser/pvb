@@ -25,6 +25,11 @@
 #include "qdrawwidget.h"
 #include "tcputil.h"
 
+//v5diff
+#ifndef QWEBKITGLOBAL_H
+#define NO_WEBKIT  
+#endif
+
 extern OPT opt;
 
 static int mystrlen(const char *name)

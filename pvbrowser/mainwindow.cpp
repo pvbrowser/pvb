@@ -540,7 +540,7 @@ void MainWindow::about()
 {
  QMessageBox::about(this, tr("About pvbrowser"),
             tr(
-               "pvbrowser (R) \nVersion " VERSION
+               "pvbrowser (R) \nVersion " VERSION WEBVERSION
                "\n(C) 2000-2016 Lehrig Software Engineering"
                "\nlehrig@t-online.de"
                "\nhttp://pvbrowser.org"

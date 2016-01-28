@@ -23,10 +23,12 @@
 #include <QSvgRenderer>
 #include <QWidget>
 #ifndef NO_WEBKIT
+#ifndef USE_GOOGLE_WEBKIT_FORK
 #include <QWebPage>    // testing qwebframe svg renderer murx
 #include <QWebFrame>   // testing qwebframe svg renderer murx
 #if QT_VERSION >= 0x040601
 #include <QWebElement> // "
+#endif
 #endif
 #endif
 
@@ -170,8 +172,10 @@ public:
     int selectorState;
     QSvgRenderer renderer;
 #ifndef NO_WEBKIT    
+#ifndef USE_GOOGLE_WEBKIT_FORK
     QWebPage  qwebpage;         // testing WebKit SVG renderer murx
     QWebFrame *webkitrenderer;  // testing Webkit SVG renderer murx
+#endif    
 #endif    
     int originalCursor;
     int origwidth, origheight;

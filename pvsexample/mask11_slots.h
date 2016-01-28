@@ -95,6 +95,7 @@ static int paintGL(PARAM *p, DATA *d)
 static int slotInit(PARAM *p, DATA *d)
 {
   if(p == NULL || d == NULL) return -1;
+  printf("slotInit 1\n");
   // init DATA d
   memset(d,0,sizeof(DATA));
   d->gl.frustSize = 0.5;
@@ -115,20 +116,31 @@ static int slotInit(PARAM *p, DATA *d)
   d->gl.mouseFirstPressed = 0;  
 
   // set sliders
+  printf("slotInit 2\n");
   pvSetValue(p,sliderPos,50);
+  printf("slotInit 2.1\n");
 
   // load OpenGL graphic
+  printf("slotInit 3\n");
   pvGlBegin(p,OpenGL1);
+  printf("slotInit 3.1\n");
   d->gl.proportional.read("gl/proportional.glfont"); // load proportional font
+  printf("slotInit 3.2\n");
   d->gl.fixed.read("gl/fixed.glfont");               // load fixed font
+  printf("slotInit 3.3\n");
   d->gl.proportional.setZoom(0.9f);
+  printf("slotInit 3.4\n");
   d->gl.fixed.setZoom(0.9f);
+  printf("slotInit 3.5\n");
   d->gl.num_listarray = pvSendOpenGL(p,"gl/scene.gl.cpp",d->gl.listarray,100,&d->gl.proportional,&d->gl.fixed);
+  printf("slotInit 3.6\n");
   pvGlEnd(p);
 
+  printf("slotInit 4\n");
   paintGL(p,d);
 
   // Download Graphics
+  printf("slotInit 5\n");
   pvDownloadFile(p,"1uparrow2.png");
   pvDownloadFile(p,"1uparrow3.png");
   pvDownloadFile(p,"1leftarrow2.png");
@@ -143,6 +155,7 @@ static int slotInit(PARAM *p, DATA *d)
   // set images 4 buttons
   pvSetPixmap(p,btBack,"back.png");
 
+  printf("slotInit end\n");
   return 0;
 }
 
@@ -318,7 +331,8 @@ static int slotGlResizeEvent(PARAM *p, int id, DATA *d, int width, int height)
     pvGlBegin(p,id);
     resizeGL(p,width,height);
     pvGlEnd(p);
-    pvGlUpdate(p,id);
+    //pvGlUpdate(p,id);
+    paintGL(p,d);
   }
   return 0;
 }

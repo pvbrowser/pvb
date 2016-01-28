@@ -84,12 +84,19 @@ static int generated_defineMask(PARAM *p)
   if(w==h) depth=0; // fool the compiler
   pvStartDefinition(p,ID_END_OF_WIDGETS);
 
+  printf("generated_defineMaks 1\n");
   pvQGL(p,OpenGL1,0);
+  printf("generated_defineMaks 2\n");
   pvSetGeometry(p,OpenGL1,105,0,1024,768);
+  printf("generated_defineMaks 3\n");
   pvGlBegin(p,OpenGL1);
+  printf("generated_defineMaks 4\n");
   initializeGL(p);    // (todo: write your gl initialization routine) see example
+  printf("generated_defineMaks 5\n");
   resizeGL(p,1024,768);  // (todo: write your resize routine) see example
+  printf("generated_defineMaks 6\n");
   pvGlEnd(p);
+  printf("generated_defineMaks 7\n");
 
   pvQGroupBox(p,group1,0,-1,HORIZONTAL,"w2d");
   pvSetGeometry(p,group1,0,0,100,515);
@@ -152,7 +159,9 @@ static int generated_defineMask(PARAM *p)
   pvAddWidgetOrLayout(p,ID_MAIN_WIDGET,OpenGL1,-1,-1);
   pvAddWidgetOrLayout(p,layout1,group1,-1,-1);
 
+  printf("generated_defineMaks x\n");
   pvEndDefinition(p);
+  printf("generated_defineMaks end\n");
   return 0;
 }
 
