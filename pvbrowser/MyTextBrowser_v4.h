@@ -43,6 +43,7 @@ public:
     void tbScrollToAnchor(QString &text);
     void setSOURCE(QString &temp, QString &text);
     void setZOOM_FACTOR(int factor);
+    void PRINT(QPrinter *printer);
     QString home;
     int homeIsSet;
     QString mHeader;

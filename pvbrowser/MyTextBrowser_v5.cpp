@@ -296,8 +296,8 @@ QWebEngineView *MyTextBrowser::createWindow(QWebEnginePage::WebWindowType type)
 #endif
     if(ret < 0) printf("ERROR system(%s)", (const char *) cmd.toUtf8());
   }
-  return NULL;
 */  
+  return NULL;
 }
 #endif
 

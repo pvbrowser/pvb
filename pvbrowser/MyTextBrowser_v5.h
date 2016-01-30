@@ -18,13 +18,14 @@
 #ifndef _MY_TEXTBROWSER_V5_H_
 #define _MY_TEXTBROWSER_V5_H_
 
-#define MY_NO_WEBKIT
+//#define MY_NO_WEBKIT
 
 #include <QMouseEvent>
 #include <QTextBrowser>
 #include <QPrinter>
 #ifndef MY_NO_WEBKIT
 #include <QWebEngineView>
+//todo: will come in 5.6  #include <QWebEngineUrlRequestInterceptor>
 #endif
 
 #ifdef MY_NO_WEBKIT
@@ -73,6 +74,7 @@ private:
     int *s,id;
     float factor;
     QPoint pressPos;
+    //todo: will come in 5.6 QWebEngineUrlRequestInterceptor *urlRequestInterceptor;
 };
 
 #endif

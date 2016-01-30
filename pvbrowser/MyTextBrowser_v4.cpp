@@ -640,4 +640,12 @@ void MyTextBrowser::setZOOM_FACTOR(int factor)
 #endif
 }
 
+void MyTextBrowser::PRINT(QPrinter *printer)
+{
+  if(printer == NULL) return;
+#ifdef MY_NO_WEBKIT
+  render(printer);
+#else
+#endif
+}
 

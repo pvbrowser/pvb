@@ -2367,7 +2367,7 @@ void Interpreter::interpretp(const char *command)
         QPrintDialog dialog(&printer, mainWindow);
         if(dialog.exec() == QDialog::Accepted)
         {
-          ptr->print(&printer);
+          ptr->PRINT(&printer);
         }
       }
     }

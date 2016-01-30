@@ -8,7 +8,7 @@ CONFIG       += warn_on release
 DEFINES      += USE_GOOGLE_WEBKIT_FORK
 #mobile devices without opengl
 #QT           += opengl
-QT           += printsupport multimedia uitools webenginewidgets widgets xml svg webkit network printsupport
+QT           += printsupport multimedia uitools webenginewidgets widgets xml svg network printsupport
 
 linux-g++-gles2 {
   DEFINES    += USE_MAEMO
