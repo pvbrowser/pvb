@@ -74,7 +74,7 @@ const char *rlEventLogServer::getEvent(char *buf, int *num)
     cptr = strchr(buf,'\n');
     if(cptr != NULL) *cptr = '\0';                // delete newline
     mutex.unlock();
-    if(buf[0] < ' ') return "";
+    // if(buf[0] < ' ') return "";
     return buf;
   }
 }

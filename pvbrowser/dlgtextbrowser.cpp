@@ -97,10 +97,9 @@ void dlgTextBrowser::slotFind()
 #ifdef NO_WEBKIT
   form->textBrowser->find(pattern);
 #else
-  QWebEnginePage *page = form->textBrowser->page();
+  QWebPage *page = form->textBrowser->page();
   if(page == NULL) return;
-  //v5diff page->findText(pattern,QWebEnginePage::FindWrapsAroundDocument);
-  page->findText(pattern);
+  page->findText(pattern,QWebPage::FindWrapsAroundDocument);
 #endif
 }
 

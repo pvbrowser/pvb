@@ -20,6 +20,7 @@
 
 #include <QMouseEvent>
 #include <QTextBrowser>
+#include <QPrinter>
 #ifndef NO_WEBKIT
 #include <QWebView>
 #endif
