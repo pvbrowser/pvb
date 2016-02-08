@@ -25,6 +25,7 @@
 #include <QPrinter>
 #ifndef MY_NO_WEBKIT
 #include <QWebEngineView>
+#include <QWebEnginePage>
 //todo: will come in 5.6  #include <QWebEngineUrlRequestInterceptor>
 #endif
 
@@ -54,8 +55,8 @@ public:
     QString mStyle;
     int xOldScroll, yOldScroll;
 
-public slots:
     void slotLinkClicked(const QUrl &link);
+public slots:
     void slotUrlChanged(const QUrl &link);
     void slotLoadFinished(bool ok);
 
@@ -76,5 +77,21 @@ private:
     QPoint pressPos;
     //todo: will come in 5.6 QWebEngineUrlRequestInterceptor *urlRequestInterceptor;
 };
+
+#ifdef MY_NO_WEBKIT
+#else
+class MyWebEnginePage : public QWebEnginePage
+{
+    Q_OBJECT
+public:
+    MyWebEnginePage(int *sock, int ident, MyTextBrowser *myView, QObject *parent=0);
+    ~MyWebEnginePage();
+protected:    
+    virtual bool acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame);
+private:
+    int *s,id;
+    MyTextBrowser *my_view;
+};
+#endif
 
 #endif

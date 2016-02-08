@@ -114,6 +114,12 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
 {
   s = sock;
   id = ident;
+  
+  if(opt.arg_debug) printf("MyTextBrowser()\n");
+  MyWebEnginePage *p;
+  p = new MyWebEnginePage(s, id, this);
+  setPage(p);
+  
   homeIsSet = 0;
   factor = 1.0f;
   if(name != NULL) setObjectName(name);
@@ -153,6 +159,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
 
 MyTextBrowser::~MyTextBrowser()
 {
+  printf("~MyTextBrowser()\n");
 }
 
 void MyTextBrowser::tbSetText(QString &text)
@@ -297,6 +304,7 @@ QWebEngineView *MyTextBrowser::createWindow(QWebEnginePage::WebWindowType type)
     if(ret < 0) printf("ERROR system(%s)", (const char *) cmd.toUtf8());
   }
 */  
+  if(type == -1) return NULL;
   return NULL;
 }
 #endif
@@ -410,6 +418,19 @@ void MyTextBrowser::setHTML(QString &text)
 #endif
 }
 
+static QString myDummyFilename;
+static void    myDummyToHtml(QString html)
+{
+  FILE *fout = fopen(myDummyFilename.toUtf8(),"w");
+  if(fout == NULL)
+  {
+    printf("could not write %s\n", (const char *) myDummyFilename.toUtf8());
+    return;
+  }
+  fputs(html.toUtf8(), fout);
+  fclose(fout);
+}
+
 void MyTextBrowser::htmlOrSvgDump(const char *filename)
 {
 #ifdef MY_NO_WEBKIT
@@ -423,8 +444,9 @@ void MyTextBrowser::htmlOrSvgDump(const char *filename)
   fputs(xml.toUtf8(), fout);
   fclose(fout);
 #else
-  QWebEnginePage *p = page();
-  if(p == NULL) return;
+  myDummyFilename = filename;
+  MyWebEnginePage *p = (MyWebEnginePage *) page();
+  if(p != NULL) p->toHtml(myDummyToHtml);
 /*v5diff  
   QWebFrame *f = p->currentFrame();
   if(f == NULL) return;
@@ -608,6 +630,7 @@ void MyTextBrowser::setSOURCE(QString &temp, QString &text)
   // google does not allow Qt to access local storage
   // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
   //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
+  printf("setSOURCE text=%s\n", (const char *) text.toUtf8());
   if(strstr(text.toUtf8(),"://") == NULL)
   {
     struct stat sb;
@@ -659,4 +682,30 @@ void MyTextBrowser::PRINT(QPrinter *printer)
 #endif
 }
 
+//###################################################################################
+#ifdef MY_NO_WEBKIT
+#else
+MyWebEnginePage::MyWebEnginePage(int *sock, int ident, MyTextBrowser *myView, QObject *parent)
+                :QWebEnginePage(parent)
+{
+  if(opt.arg_debug) printf("MyWebEnginePage()\n");
+  s = sock;
+  id = ident;
+  my_view = myView;
+}
+
+MyWebEnginePage::~MyWebEnginePage()
+{
+  if(opt.arg_debug) printf("~MyWebEnginePage()\n");
+}
+
+bool MyWebEnginePage::acceptNavigationRequest(const QUrl &url, NavigationType type, bool isMainFrame)
+{
+  QString surl = url.toString(); 
+  if(opt.arg_debug) printf("acceptNavigationRequest isMainFrame=%d type=%d url=%s\n", 
+                                                    isMainFrame,   type,   (const char *) surl.toUtf8());
+  if(type == 0) my_view->slotLinkClicked(url);
+  return false;
+}
+#endif
 
