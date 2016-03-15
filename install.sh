@@ -54,6 +54,7 @@ mkdir -p  /opt/pvb/rllib/lib
 mkdir -p  /opt/pvb/rllib/rlsvg
 mkdir -p  /opt/pvb/rllib/rlfind
 mkdir -p  /opt/pvb/rllib/rlhistory
+mkdir -p  /opt/pvb/rllib/rlhtml2pdf
 mkdir -p  /opt/pvb/fake_qmake
 mkdir -p  /opt/pvb/language_bindings/lua/pvslua
 mkdir -p  /opt/pvb/language_bindings/lua/pvapplua
@@ -89,6 +90,7 @@ cp    start_pvbapp/start_if_not_already_running.sh        /opt/pvb/start_pvbapp/
 cp    rllib/rlsvg/rlsvgcat                                /opt/pvb/rllib/rlsvg/
 cp    rllib/rlfind/rlfind                                 /opt/pvb/rllib/rlfind/
 cp    rllib/rlhistory/rlhistory                           /opt/pvb/rllib/rlhistory/
+cp    rllib/rlhtml2pdf/rlhtml2pdf                         /opt/pvb/rllib/rlhtml2pdf/
 cp    fake_qmake/fake_qmake                               /opt/pvb/fake_qmake/
 cp    rllib/lib/*.h                                       /opt/pvb/rllib/lib/
 cp    rllib/lib/nodave.o                                  /opt/pvb/rllib/lib/
@@ -146,6 +148,7 @@ ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat                    /usr/bin/rlsvgcat
 ln -sf /opt/pvb/rllib/rlfind/rlfind                     /usr/bin/rlfind
 ln -sf /opt/pvb/start_pvbapp/start_pvbapp               /usr/bin/start_pvbapp
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory               /usr/bin/rlhistory
+ln -sf /opt/pvb/rllib/rlhtml2pdf/rlhtml2pdf             /usr/bin/rlhtml2pdf
 ln -sf /opt/pvb/fake_qmake/fake_qmake                   /usr/bin/fake_qmake
 ln -sf /opt/pvb/update_pvbrowser.sh                     /usr/bin/update_pvbrowser
 ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua     /usr/bin/pvslua
@@ -176,6 +179,7 @@ cp -r  start_pvbapp/start_pvbapp.app               /opt/pvb/start_pvbapp/
 cp -r  rllib/rlsvg/rlsvgcat.app                    /opt/pvb/rllib/rlsvg/
 cp -r  rllib/rlfind/rlfind.app                     /opt/pvb/rllib/rlfind/
 cp -r  rllib/rlhistory/rlhistory                   /opt/pvb/rllib/rlhistory/
+cp -r  rllib/rlhtml2pdf/rlhtml2pdf                 /opt/pvb/rllib/rlhtml2pdf/
 cp -r  fake_qmake/fake_qmake.app                   /opt/pvb/fake_qmake/
 cp -r  language_bindings/lua/pvslua/pvslua.app     /opt/pvb/pvslua/
 cp -r  language_bindings/lua/pvapplua/pvapplua.app /opt/pvb/pvapplua/
@@ -186,6 +190,7 @@ ln -sf /opt/pvb/start_pvbapp/start_pvbapp.app/Contents/MacOS/start_pvbapp       
 ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat.app/Contents/MacOS/rlsvgcat                     /usr/bin/rlsvgcat
 ln -sf /opt/pvb/rllib/rlfind/rlfind.app/Contents/MacOS/rlfind                        /usr/bin/rlfind
 ln -sf /opt/pvb/rllib/rlhistory/rlhistory                                            /usr/bin/rlhistory
+ln -sf /opt/pvb/rllib/rlhtml2pdf/rlhtml2pdf                                          /usr/bin/rlhtml2pdf
 ln -sf /opt/pvb/fake_qmake/fake_qmake.app/Contents/MacOS/fake_qmake                  /usr/bin/fake_qmake
 ln -sf /opt/pvb/update_pvbrowser.sh                                                  /usr/bin/update_pvbrowser
 ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua.app/Contents/MacOS/pvslua        /usr/bin/pvslua

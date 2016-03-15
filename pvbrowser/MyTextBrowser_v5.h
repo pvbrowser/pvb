@@ -59,6 +59,7 @@ public:
 public slots:
     void slotUrlChanged(const QUrl &link);
     void slotLoadFinished(bool ok);
+    void slotPRINTER();
 
 protected:
 #ifdef MY_NO_WEBKIT

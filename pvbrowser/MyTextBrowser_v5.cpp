@@ -28,6 +28,7 @@
 #include "qmessagebox.h"
 #include <QPixmap>
 #include <QMouseEvent>
+#include <QPrintDialog>
 #ifndef MY_NO_WEBKIT
 #include <QWebEngineView>
 #include <QWebEngineHistory>
@@ -240,6 +241,14 @@ bool MyTextBrowser::event(QEvent *e)
 #else  
   return QWebEngineView::event(e);
 #endif  
+}
+
+void MyTextBrowser::contextMenuEvent(QContextMenuEvent *event)
+{
+  QMenu menu(this);
+  QAction *printAct = menu.addAction("Print");
+  connect(printAct, SIGNAL(triggered()), this, SLOT(slotPRINTER()));
+  menu.exec(event->globalPos());
 }
 
 void MyTextBrowser::keyPressEvent(QKeyEvent *event)
@@ -676,11 +685,26 @@ void MyTextBrowser::setZOOM_FACTOR(int factor)
 void MyTextBrowser::PRINT(QPrinter *printer)
 {
   if(printer == NULL) return;
+  if(opt.arg_debug)printf("in PRINT printer\n");
 #ifdef MY_NO_WEBKIT
+  printer->setOutputFormat(QPrinter::PdfFormat);
   print(printer);
+  printer->newPage();
 #else
 #endif
 }
+
+void MyTextBrowser::slotPRINTER()
+{
+  QPrinter printer;
+  printer.setColorMode(QPrinter::Color);
+  QPrintDialog dialog(&printer);
+  if (dialog.exec() == QDialog::Accepted)
+  {
+    PRINT(&printer);
+  } 
+}
+
 
 //###################################################################################
 #ifdef MY_NO_WEBKIT

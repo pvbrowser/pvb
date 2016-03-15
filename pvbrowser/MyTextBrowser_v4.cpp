@@ -28,6 +28,7 @@
 #include "qmessagebox.h"
 #include <QPixmap>
 #include <QMouseEvent>
+#include <QPrintDialog>
 #ifndef NO_WEBKIT
 #include <QWebView>
 #include <QWebHistory>
@@ -142,6 +143,7 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
     settings()->setAttribute(QWebSettings::PluginsEnabled, false);
     settings()->setAttribute(QWebSettings::JavascriptEnabled, false);
   }
+  setContextMenuPolicy(Qt::DefaultContextMenu);
 #ifdef USE_MAEMO  
   QString    txt("data:text/css;charset=utf-8;base64,");
   QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
@@ -229,6 +231,14 @@ bool MyTextBrowser::event(QEvent *e)
 #else  
   return QWebView::event(e);
 #endif  
+}
+
+void MyTextBrowser::contextMenuEvent(QContextMenuEvent *event)
+{
+  QMenu menu(this);
+  QAction *printAct = menu.addAction("Print");
+  connect(printAct, SIGNAL(triggered()), this, SLOT(slotPRINTER()));
+  menu.exec(event->globalPos());
 }
 
 void MyTextBrowser::keyPressEvent(QKeyEvent *event)
@@ -643,9 +653,24 @@ void MyTextBrowser::setZOOM_FACTOR(int factor)
 void MyTextBrowser::PRINT(QPrinter *printer)
 {
   if(printer == NULL) return;
-#ifdef MY_NO_WEBKIT
-  render(printer);
-#else
-#endif
+  if(opt.arg_debug)printf("in PRINT printer\n");
+//#ifdef MY_NO_WEBKIT
+//render(printer);
+//#else
+//#endif
+  printer->setOutputFormat(QPrinter::PdfFormat);
+  print(printer);
+  printer->newPage();
+}
+
+void MyTextBrowser::slotPRINTER()
+{
+  QPrinter printer;
+  printer.setColorMode(QPrinter::Color);
+  QPrintDialog dialog(&printer);
+  if (dialog.exec() == QDialog::Accepted)
+  {
+    PRINT(&printer);
+  } 
 }
 

@@ -56,6 +56,7 @@ public:
   rlString pattern;           // search pattern for rlfind, default *
   int recursive;              // 0|1
   int list_what;              // enum WHAT_TO_LIST
+  int hide_hidden_files;      // 0|1
   rlString textHome;          // default Home:
   rlString textPath;          // default Path:
   rlString textrlHtmlDirCSS;  // default rlhtml.css

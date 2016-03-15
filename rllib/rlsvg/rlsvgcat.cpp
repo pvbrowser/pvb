@@ -23,6 +23,7 @@ rlSvgCat::rlSvgCat()
 {
   fin = fout = 0;
   s = -1;
+  line = NULL;
 }
 
 rlSvgCat::~rlSvgCat()
@@ -47,7 +48,9 @@ void rlSvgCat::close()
 int rlSvgCat::open(const char *infile, const char *outfile)
 {
   fin = fout = NULL;
-  fin = (void *) fopen(infile,"r");
+
+  if(infile == NULL) fin = stdin;
+  else               fin = (void *) fopen(infile,"r");
   if(fin == 0)
   {
     printf("could not open %s\n",infile);
@@ -78,7 +81,8 @@ int rlSvgCat::reopenSocket(const char *infile, int socket)
     return -1;
   }
   fin = fout = NULL;
-  fin = (void *) fopen(infile,"r");
+  if(infile == NULL) fin = stdin;
+  else               fin = (void *) fopen(infile,"r");
   if(fin == 0)
   {
     printf("could not open %s\n",infile);
@@ -93,12 +97,22 @@ int rlSvgCat::reopenSocket(const char *infile, int socket)
   return 0;
 }
 
+int  rlSvgCat::sendOverSocket(char *line_in, int s)
+{
+  if(reopenSocket(NULL,s) != 0) return -1;
+  catline(line_in);
+  return 0;
+}
+
 void rlSvgCat::cat()
 {
-  while(fgets(line,sizeof(line)-1,(FILE *) fin) != 0)
+  line = new char [256*256];
+  while(fgets(line,256*256-1,(FILE *) fin) != 0)
   {
-    catline();
+    catline(line);
   }
+  delete [] line;
+  line = NULL;
 }
 
 int rlSvgCat::outUntil(int i, const char *tag)
@@ -219,10 +233,11 @@ int rlSvgCat::outValue(int i)
   return i;
 }
 
-void rlSvgCat::catline()
+void rlSvgCat::catline(char *line_in)
 {
   int i = 0;
   FILE *out = (FILE *) fout;
+  line = line_in;
 
   while(line[i] != '\0' && line[i] != '\n')
   {
@@ -325,13 +340,21 @@ void rlSvgCat::catline()
   }
 }
 
-//#define TESTING
-#ifndef TESTING
+//#define RLSVGCAT_MAIN_OFF
+#ifndef RLSVGCAT_MAIN_OFF
 int main(int ac, char **av)
 {
   rlSvgCat svgcat;
 
-  if(ac == 2)
+  if(ac == 1)
+  {
+    if(svgcat.open(NULL) == 0)
+    {
+      svgcat.cat();
+      return 0;
+    }
+  }
+  else if(ac == 2)
   {
     if(svgcat.open(av[1]) == 0)
     {
@@ -339,7 +362,7 @@ int main(int ac, char **av)
       return 0;
     }
   }
-  if(ac == 3)
+  else if(ac == 3)
   {
     if(svgcat.open(av[1],av[2]) == 0)
     {
@@ -347,7 +370,7 @@ int main(int ac, char **av)
       return 0;
     }
   }
-  printf("usage: rlsvgcat file.svg <outputfile>\n");
+  else printf("usage: rlsvgcat file.svg <outputfile>\n");
   return -1;
 }
 #endif

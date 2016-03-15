@@ -77,6 +77,12 @@ mingw32-make.exe
 cd ..                                                                      
 rem pause                                                                  
                                                                            
+cd rlhtml2pdf                                                               
+%QTDIR%\bin\qmake rlhtml2pdf.pro -o Makefile                              
+mingw32-make.exe                                                                
+cd ..                                                                      
+rem pause                                                                  
+                                                                           
 cd fake_qmake                                                               
 %QTDIR%\bin\qmake fake_qmake.pro -o Makefile                              
 mingw32-make.exe                                                                
@@ -103,6 +109,7 @@ copy pvserver\release\libserverlib.a                             bin\libserverli
 copy rlsvg\release\rlsvgcat.exe                                  bin\rlsvgcat.exe                                
 copy rlfind\release\rlfind.exe                                   bin\rlfind.exe                                
 copy rlhistory\release\rlhistory.exe                             bin\rlhistory.exe                               
+copy rlhtml2pdf\release\rlhtml2pdf.exe                           bin\rlhtml2pdf.exe                               
 copy ..\start_pvbapp\release\\start_pvbapp.exe                   bin\start_pvbapp.exe                            
 copy fake_qmake\release\fake_qmake.exe                           bin\fake_qmake.exe                              
 xcopy /e /y "%QTDIR%\plugins\imageformats"                       bin\imageformats                                

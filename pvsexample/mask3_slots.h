@@ -100,6 +100,7 @@ static int slotInit(PARAM *p, DATA *d)
 
   // axes
   qpwSetAxisTitle(p,qwtPlot1,xBottom, "Alpha");
+  // qpwSetAxisScaleDraw(p,qwtPlot1,xBottom, "hh:mm:ss");
   qpwSetAxisTitle(p,qwtPlot1,yLeft, "f(Alpha)");
 
   // curves

@@ -55,12 +55,14 @@ public slots:
     void slotLinkClicked(const QUrl &link);
     void slotUrlChanged(const QUrl &link);
     void slotLoadFinished(bool ok);
+    void slotPRINTER();
 
 protected:
 #ifdef NO_WEBKIT
 #else
     virtual QWebView *createWindow(QWebPage::WebWindowType type);
 #endif    
+    virtual void contextMenuEvent(QContextMenuEvent *event);
     virtual void keyPressEvent(QKeyEvent *event);
   
 private:

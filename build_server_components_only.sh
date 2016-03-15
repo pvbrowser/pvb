@@ -27,6 +27,10 @@ cd rllib/rlhistory
 ../../qmake.sh rlhistory.pro
 make
 cd ../..
+cd rllib/rlhtml2pdf
+../../qmake.sh rlhtml2pdf.pro
+make
+cd ../..
 cd fake_qmake
 ../qmake.sh fake_qmake.pro
 make

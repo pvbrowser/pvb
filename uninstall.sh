@@ -25,6 +25,7 @@ rm -f /usr/local/bin/start_pvbapp
 rm -f /usr/local/bin/rlsvgcat
 rm -f /usr/local/bin/rlfind
 rm -f /usr/local/bin/rlhistory
+rm -f /usr/local/bin/rlhtml2pdf
 rm -f /usr/local/bin/fake_qmake
 rm -f /usr/local/bin/pvbrowserdemo
 rm -f /usr/local/bin/update_pvbrowser
@@ -39,6 +40,7 @@ rm -f /usr/bin/start_pvbapp
 rm -f /usr/bin/rlsvgcat
 rm -f /usr/bin/rlfind
 rm -f /usr/bin/rlhistory
+rm -f /usr/bin/rlhtml2pdf
 rm -f /usr/bin/fake_qmake
 rm -f /usr/bin/pvbrowserdemo
 rm -f /usr/bin/update_pvbrowser
@@ -66,6 +68,7 @@ rm -f /usr/bin/start_pvbapp
 rm -f /usr/bin/rlsvgcat
 rm -f /usr/bin/rlfind
 rm -f /usr/bin/rlhistory
+rm -f /usr/bin/rlhtml2pdf
 rm -f /usr/bin/pvbrowserdemo
 rm -f /usr/bin/update_pvbrowser
 rm -f /usr/bin/rlsvgcat

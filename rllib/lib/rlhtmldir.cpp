@@ -19,6 +19,7 @@
 rlHtmlDir::rlHtmlDir()
           :rlHtml()
 {
+  hide_hidden_files = 0;
   pattern     = "*";
   initialPath = "";
   currentPath = "";
@@ -80,7 +81,7 @@ const char * rlHtmlDir::getHtml(int generate_html_header_and_trailer)
   }          
 
   html += startHtml.text();
-  html += "<pre id=\"rlhtmldirpre\">\n";
+  html += "<pre class=\"rlhtmldirpre\">\n";
 
   rlSpawn spawn;
   rlString cmd;
@@ -98,14 +99,14 @@ const char * rlHtmlDir::getHtml(int generate_html_header_and_trailer)
 #endif
   if(1) //recursive == 0)
   {
-    htmlline.printf("%s <a  id=\"rlhtmldirhome\" href=\"rlhtmldirhome://%s\">%s</a>\n", textHome.text(), initialPath.text(), initialPath.text());
+    htmlline.printf("%s <a  class=\"rlhtmldirhome\" href=\"rlhtmldirhome://%s\">%s</a>\n", textHome.text(), initialPath.text(), initialPath.text());
     html += htmlline.text();
     //htmlline.printf("Path: <a href=\"rlhtmldircurrent://%s\">%s</a>\n", currentPath.text(), currentPath.text());
     htmlline.printf("%s %s\n", textPath.text(), currentPath.text());
     html += htmlline.text();
     if(strcmp(initialPath.text(),currentPath.text()) != 0)
     {
-      htmlline.printf("<a id=\"rlhtmldirup\" href=\"rlhtmldirup://dir/up\">..</a>\n");
+      htmlline.printf("<a class=\"rlhtmldirup\" href=\"rlhtmldirup://dir/up\">..</a>\n");
       html += htmlline.text();
     }  
   } 
@@ -134,8 +135,8 @@ const char * rlHtmlDir::getHtml(int generate_html_header_and_trailer)
             cptr = strrchr(file.text(),'/');
             if(cptr == NULL) cptr = file.text();
             cptr++;
-            if(recursive) htmlline.printf("+<a  id=\"rlhtmldir\" href=\"rlhtmldir://%s\">%s</a>\n", file.text(), file.text());
-            else          htmlline.printf("+<a  id=\"rlhtmldir\" href=\"rlhtmldir://%s\">%s</a>\n", file.text(), cptr);
+            if(recursive) htmlline.printf("+<a  class=\"rlhtmldir\" href=\"rlhtmldir://%s\">%s</a>\n", file.text(), file.text());
+            else          htmlline.printf("+<a  class=\"rlhtmldir\" href=\"rlhtmldir://%s\">%s</a>\n", file.text(), cptr);
             html += htmlline.text();
           }
         }  
@@ -151,9 +152,12 @@ const char * rlHtmlDir::getHtml(int generate_html_header_and_trailer)
           cptr = strrchr(file.text(),'/');
           if(cptr == NULL) cptr = file.text();
           cptr++;
-          if(recursive) htmlline.printf(" <a id=\"rlhtmlfile\" href=\"rlhtmlfile://%s\">%s</a>\n", file.text(), file.text());
-          else          htmlline.printf(" <a id=\"rlhtmlfile\" href=\"rlhtmlfile://%s\">%s</a>\n", file.text(), cptr);
-          html += htmlline.text();
+          if(hide_hidden_files == 0 || (hide_hidden_files == 1 && strncmp(cptr,".",1) != 0))
+          {
+            if(recursive) htmlline.printf(" <a class=\"rlhtmlfile\" href=\"rlhtmlfile://%s\">%s</a>\n", file.text(), file.text());
+            else          htmlline.printf(" <a class=\"rlhtmlfile\" href=\"rlhtmlfile://%s\">%s</a>\n", file.text(), cptr);
+            html += htmlline.text();
+          }  
         }  
       }
     }
@@ -193,9 +197,12 @@ int rlHtmlDir::getFilenames(rlSpreadsheetRow *row)
     line = spawn.readLine();
     if(line == NULL) break;
     file = line;
-    file.removeNewline();
-    row->setText(i++,file.text());
-    //printf("file=%s\n", file.text());
+    if(hide_hidden_files == 0 || (hide_hidden_files == 1 && strncmp(file.text(),".",1) != 0))
+    {      
+      file.removeNewline();
+      row->setText(i++,file.text());
+      //printf("file=%s\n", file.text());
+    }  
   }  
   return i-1;
 }

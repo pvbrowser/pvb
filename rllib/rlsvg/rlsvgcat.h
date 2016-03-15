@@ -23,15 +23,16 @@ class rlSvgCat
     ~rlSvgCat();
     int  open(const char *infile, const char *outfile = 0);
     int  reopenSocket(const char *infile, int s);
+    int  sendOverSocket(char *line_in, int s);
     void cat();
     void close();
   private:
     int  outUntil(int i, const char *tag);
     int  outUntilEnd(int i);
     int  outValue(int i);
-    void catline();
+    void catline(char *line_in);
     void *fin, *fout;
     int  s;
-    char line[256*256];
+    char *line;
 };
 #endif

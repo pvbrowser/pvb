@@ -152,6 +152,7 @@ cd ..
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlsvg
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlfind
 %__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhistory
+%__mkdir_p  %{buildroot}/opt/pvb/rllib/rlhtml2pdf
 %__mkdir_p  %{buildroot}/opt/pvb/fake_qmake
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvslua
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvapplua
@@ -187,6 +188,7 @@ cp    start_pvbapp/start_if_not_already_running.sh        %{buildroot}/opt/pvb/s
 cp    rllib/rlsvg/rlsvgcat                                %{buildroot}/opt/pvb/rllib/rlsvg/
 cp    rllib/rlfind/rlfind                                 %{buildroot}/opt/pvb/rllib/rlfind/
 cp    rllib/rlhistory/rlhistory                           %{buildroot}/opt/pvb/rllib/rlhistory/
+cp    rllib/rlhtml2pdf/rlhtml2pdf                         %{buildroot}/opt/pvb/rllib/rlhtml2pdf/
 cp    fake_qmake/fake_qmake                               %{buildroot}/opt/pvb/fake_qmake/
 cp    rllib/lib/librllib.a                                %{buildroot}/opt/pvb/rllib/lib/
 cp    rllib/lib/librllib.so                               %{buildroot}/opt/pvb/rllib/lib/
@@ -240,6 +242,7 @@ cp pvdevelop/pvdevelop.sh                        %{buildroot}%{_bindir}/pvdevelo
 %__ln_s /opt/pvb/rllib/rlsvg/rlsvgcat            %{buildroot}%{_bindir}/rlsvgcat
 %__ln_s /opt/pvb/rllib/rlfind/rlfind             %{buildroot}%{_bindir}/rlfind
 %__ln_s /opt/pvb/rllib/rlhistory/rlhistory       %{buildroot}%{_bindir}/rlhistory
+%__ln_s /opt/pvb/rllib/rlhtml2pdf/rlhtml2pdf     %{buildroot}%{_bindir}/rlhtml2pdf
 %__ln_s /opt/pvb/fake_qmake/fake_qmake           %{buildroot}%{_bindir}/fake_qmake
 
 %__ln_s /opt/pvb/rllib/lib/librllib.so     %{buildroot}/usr/lib/librllib.a
@@ -304,6 +307,7 @@ License:     GPL
 %{_bindir}/rlsvgcat
 %{_bindir}/rlfind
 %{_bindir}/rlhistory
+%{_bindir}/rlhtml2pdf
 %{_bindir}/fake_qmake
 %{_bindir}/start_pvbapp
 /usr/lib/librllib.so
@@ -340,6 +344,7 @@ License:     GPL
 /opt/pvb/rllib/rlsvg/rlsvgcat
 /opt/pvb/rllib/rlfind/rlfind
 /opt/pvb/rllib/rlhistory/rlhistory
+/opt/pvb/rllib/rlhtml2pdf/rlhtml2pdf
 /opt/pvb/fake_qmake/fake_qmake
 /opt/pvb/pvserver/wthread.h
 /opt/pvb/pvserver/BMP.h
