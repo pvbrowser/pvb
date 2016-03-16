@@ -3,7 +3,7 @@
 ######################################################################
 
 CONFIG       += warn_on release
-QT           += webenginewidgets network printsupport
+QT           += network printsupport
 TEMPLATE     = app
 TARGET       = rlhtml2pdf 
 DEPENDPATH  += .
@@ -11,25 +11,18 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += main.h
-SOURCES += main.cpp
+SOURCES += main.cpp            \
+           ../lib/rlstring.cpp \
+           ../lib/rlcutil.cpp
 
 !macx {
-unix:LIBS         += /usr/lib/librllib.so
-unix:INCLUDEPATH  += /opt/pvb/rllib/lib
+unix:INCLUDEPATH  += ../lib
 }
 
-macx:LIBS         += /usr/lib/librllib.dylib
-macx:INCLUDEPATH  += /opt/pvb/rllib/lib
+macx:INCLUDEPATH  += ../lib
 
-#
-# Attention:
-# starting with mingw 4.8 we use mingw pthread and not our own mapping to windows threads
-# you will have to adjust existing pro files
-#
 win32-g++ {
 QMAKE_LFLAGS      += -static-libgcc
-win32:LIBS        += $(PVBDIR)/win-mingw/bin/libserverlib.a 
-win32:LIBS        += -lws2_32 -ladvapi32 -lpthread
-win32:INCLUDEPATH += $(PVBDIR)/rllib/lib
+win32:INCLUDEPATH += ../lib
 }
 

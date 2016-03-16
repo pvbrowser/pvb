@@ -2,7 +2,7 @@
 rm -f herzelieb*
 rm -f Herzelieb*
 wget https://de.wikipedia.org/wiki/Herzeliebez_vrouwelin
-rlhtml2pdf Herzeliebez_vrouwelin herzeliebs_frowelin.pdf
+./rlhtml2pdf '-tableopt=border="1"'  Herzeliebez_vrouwelin herzeliebs_frowelin.pdf
 echo Under der linden
 echo an der heide,
 echo dâ unser zweier bette was,

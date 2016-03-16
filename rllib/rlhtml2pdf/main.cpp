@@ -1,15 +1,119 @@
-//
-// print HTML2PDF
-//
+/***************************************************************************
+                          main.cpp  -  description
+                             -------------------
+    begin                : Mar 2016
+    copyright            : (C) 2006 by R. Lehrig
+    email                : lehrig@t-online.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as        *
+ *   published by the Free Software Foundation                             *
+ *                                                                         *
+ ***************************************************************************/
 #include "main.h"
+int debug = 0;
+
+void applyFilter(char *line, const char *tableopt, const char *imgopt)
+{
+  rlString lbuf(line);
+  char *cptr = lbuf.text();
+  int idest = 0;
+
+  while(*cptr != '\0')
+  {
+    if(strncmp(cptr,"<table",6) == 0 || strncmp(cptr,"<TABLE",6) == 0)
+    {
+      while(*cptr != '>' && *cptr != '\0')
+      {
+        line[idest++] = *cptr++;
+      }
+      line[idest++] = ' ';
+      int isource = 0;
+      while(tableopt[isource] != '\0') line[idest++] = tableopt[isource++];
+      line[idest++] = ' ';
+      line[idest++] = *cptr;
+      line[idest]   = '\0';
+      if(debug) printf("applyFilter1: line=%s tableopt=%s\n", line, tableopt);
+      cptr++;
+    }
+    else if(strncmp(cptr,"<img",4) == 0 || strncmp(cptr,"<IMG",4) == 0)
+    {
+      while(*cptr != '\\' && *cptr != '>' && *cptr != '\0')
+      {
+        line[idest++] = *cptr++;
+      }
+      line[idest++] = ' ';
+      int isource = 0;
+      while(imgopt[isource] != '\0') line[idest++] = imgopt[isource++];
+      line[idest++] = ' ';
+      line[idest++] = *cptr;
+      line[idest]   = '\0';
+      if(debug) printf("applyFilter2: line=%s imgopt=%s\n", line, imgopt);
+      cptr++;
+    }
+    else
+    {
+      line[idest++] = *cptr++;
+      line[idest]   = '\0';
+    }
+  }
+}
+
+int readInput(rlString *html, rlString *inputfilename, rlString *tableopt, rlString *imgopt)
+{
+  char line[4096],*cptr1,*cptr2;
+  FILE *fin;
+  if(strcmp(inputfilename->text(),"-") == 0)
+  {
+    fin = stdin;
+  }
+  else
+  {
+    fin = fopen(inputfilename->text(),"r");
+    if(fin == NULL)
+    {
+      printf("could not read file %s\n", inputfilename->text());
+      return -1;
+    }
+  }
+
+  int filter = 1;
+  if(strlen(tableopt->text()) == 0 && strlen(imgopt->text()) == 0) filter = 0;
+
+  while(fgets(line, sizeof(line)-128, fin) != NULL)
+  {
+    if(filter)
+    {
+      cptr1 = strstr(line,"<table");
+      cptr2 = strstr(line,"<img");
+      if(cptr1 != NULL || cptr2 != NULL)
+      {
+        applyFilter(line,tableopt->text(),imgopt->text());
+      }
+    }
+    *html += line;
+  }
+
+  if(strcmp(inputfilename->text(),"-") != 0) fclose(fin);
+  return 0;
+  //if(strlen(tableopt.text()) == 0 && strlen(imgopt.text()) == 0)
+  //{
+  //  html->read(inputfilename->text());
+  //}  
+}
 
 int main(int argc, char **argv)
 {
-  rlString  inputfilename;
-  rlString  outputfilename("rlhtml2pdf_output.pdf");
-  rlString  printername;
-  rlString  defaultfont;
-  rlString  defaultstyle;
+  rlString inputfilename;
+  rlString outputfilename("rlhtml2pdf_output.pdf");
+  rlString printername;
+  rlString defaultfont;
+  rlString defaultstyle;
+  rlString tableopt;
+  rlString imgopt;
   float margin      = -1.0f;
   float indentwidth = -1.0f;
   float textwidth   = -1.0f;
@@ -21,7 +125,6 @@ int main(int argc, char **argv)
   int   ask = 0;
   int   ax  = 4;
   int   landscape = 0;
-  int debug = 0;
 
   QApplication a(argc, argv);
   for(int i=1; i<argc; i++)
@@ -32,6 +135,14 @@ int main(int argc, char **argv)
       if     (strncmp(arg,"-debug",6) == 0)
       {
         debug = 1;
+      }
+      else if(strncmp(arg,"-tableopt=",10) == 0)
+      {
+        tableopt = &arg[10];
+      }
+      else if(strncmp(arg,"-imgopt=",8) == 0)
+      {
+        imgopt = &arg[8];
       }
       else if(strncmp(arg,"-margin=",8) == 0)
       {
@@ -79,11 +190,13 @@ int main(int argc, char **argv)
       }
       else if(strncmp(arg,"-list",5) == 0)
       {
+#if QT_VERSION >= 0x050000
         QStringList printerlist = QPrinterInfo::availablePrinterNames();
         for(int i=0; i<printerlist.size(); i++)
         {
           printf("printername%d = %s\n", i, (const char *) printerlist.at(i).toUtf8());
         }
+#endif        
         return 0;
       }  
       else if(strncmp(arg,"-font=",6) == 0)
@@ -101,6 +214,10 @@ int main(int argc, char **argv)
       else if(strncmp(arg,"-landscape",10) == 0)
       {
         landscape = 1;
+      }
+      else if(strcmp(arg,"-") == 0)
+      {
+        inputfilename = "-"; // stdin;
       }
     }
     else if(strlen(inputfilename.text()) == 0)
@@ -121,9 +238,13 @@ int main(int argc, char **argv)
   }
   if(strlen(inputfilename.text()) == 0)
   {
-    printf("usage: rlhtml2pdf <-options> inputfilename <outputfilename|printername>\n");
+    printf("usage: rlhtml2pdf <-options> inputfilename <outputfilename|printername|defaultprinter>\n");
     printf("### global options ####################################################\n");
     printf("  -debug # switches on some printf(messages) for debugging\n");
+    printf("  -      # a standalone - means input from stdin\n");
+    printf("  # some HTML elements may be replaced globally before rendering to PDF\n");
+    printf("  -imgopt=string   # Example: width=\"80%%\"\n");
+    printf("  -tableopt=string # Example: align=\"center\" border=\"3\" cellpadding=\"8\" cellspacing=\"0\" width=\"50%%\">\n");
     printf("### QPrinter options ##################################################\n");
     printf("  -lm=%%f # mm left margin\n");
     printf("  -rm=%%f # mm right margin\n");
@@ -144,22 +265,22 @@ int main(int argc, char **argv)
     printf("         # 9=A9, 19=B9\n");
     printf("  -landscape  # default is portrait\n");
     printf("### QTextDocument options #############################################\n");
-    printf("  -font=defaultfont  # family,pointSize,pixelSize,styleHint,weight,style,underline,strikeOut,fixedPitch,rawMode\n");
-    printf("                     # Examples: -font=Times,10,-1,0,50,0,0,0,0,0\n");
-    printf("    family,          # Times|Arial|Courier\n");
-    printf("    pointSize,       # 10\n");
-    printf("    pixelSize,       # -1\n");
-    printf("    styleHint,       # 0\n");
-    printf("    weight,          # 0=Thin 12=ExtraLight 25=Light 50=Normal 57=Medium 63=DemoBold 75=Bold 81=ExtraBold 87=Black50\n");
-    printf("    style,           # 0=Normal 1=Italic 2=Oblique\n");
-    printf("    underline,       # 0|1\n");
-    printf("    strikeOut,       # 0|1\n");
-    printf("    fixedPitch,      # 0|1\n");
-    printf("    rawMode,         # 0|1\n");
-    printf("  -css=defaultstyle.css\n");
-    printf("  -margin=%%f         # qt document margin\n");
-    printf("  -indentwidth=%%f    # qt document indent width\n");
-    printf("  -textwidth=%%f      # qt document text width\n");
+    printf("  -font=defaultfont      # family,pointSize,pixelSize,styleHint,weight,style,underline,strikeOut,fixedPitch,rawMode\n");
+    printf("                         # Examples: -font=Times,10,-1,0,50,0,0,0,0,0\n");
+    printf("    family,              # Times|Arial|Courier\n");
+    printf("    pointSize,           # 10\n");
+    printf("    pixelSize,           # -1\n");
+    printf("    styleHint,           # 0\n");
+    printf("    weight,              # 0=Thin 12=ExtraLight 25=Light 50=Normal 57=Medium 63=DemoBold 75=Bold 81=ExtraBold 87=Black50\n");
+    printf("    style,               # 0=Normal 1=Italic 2=Oblique\n");
+    printf("    underline,           # 0|1\n");
+    printf("    strikeOut,           # 0|1\n");
+    printf("    fixedPitch,          # 0|1\n");
+    printf("    rawMode,             # 0|1\n");
+    printf("  -css=defaultstyle.css  # The style sheet needs to be compliant to CSS 2.1 syntax.\n");
+    printf("  -margin=%%f             # qt document margin\n");
+    printf("  -indentwidth=%%f        # qt document indent width\n");
+    printf("  -textwidth=%%f          # qt document text width\n");
     printf("  -use_design_metrics=%%d # 0|1 qt document use design metrics\n");
     return 0;
   }
@@ -201,7 +322,7 @@ int main(int argc, char **argv)
   //printf("defaultprinter = %s\n", (const char *) defaultprinter.toUtf8());
   //QPrinter *printer = new QPrinter(QPrinterInfo::printerInfo(defaultprinter));
 
-  QPrinter printer(QPrinter::HighResolution); //create your QPrinter (don't need to be high resolution, anyway)
+  QPrinter printer(QPrinterInfo::defaultPrinter(), QPrinter::HighResolution); //create your QPrinter (don't need to be high resolution, anyway)
   if     (ax ==  0) printer.setPageSize(QPrinter::A0);
   else if(ax ==  1) printer.setPageSize(QPrinter::A1);
   else if(ax ==  2) printer.setPageSize(QPrinter::A2);
@@ -230,7 +351,10 @@ int main(int argc, char **argv)
   printer.setFullPage(false);
   if(strlen(printername.text()) > 0)
   {
-    printer.setPrinterName(printername.text());
+    if(strstr(printername.text(),"defaultprinter") != NULL)
+    {
+      printer.setPrinterName(printername.text());
+    }  
   }
   else
   {
@@ -254,7 +378,8 @@ int main(int argc, char **argv)
   }  
 
   rlString html;
-  html.read(inputfilename.text());
+  readInput(&html,&inputfilename,&tableopt,&imgopt);
+  //html.read(inputfilename.text());
   QTextDocument doc;
   if(strlen(defaultfont.text()) > 0) 
   {
