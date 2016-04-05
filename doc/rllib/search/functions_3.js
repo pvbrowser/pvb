@@ -28,6 +28,8 @@ var searchData=
   ['doublehasdecreased',['doubleHasDecreased',['../classrlPlcState.html#aa7b15c6df80a28e3520ceb60e8c028b0',1,'rlPlcState::doubleHasDecreased()'],['../classrlPlcMem.html#a72d9299612fe1b5efb11efb25d503dcd',1,'rlPlcMem::doubleHasDecreased()']]],
   ['doublehasincreased',['doubleHasIncreased',['../classrlPlcState.html#afb70f5554603032eda34625497b1921f',1,'rlPlcState::doubleHasIncreased()'],['../classrlPlcMem.html#a4a97f4abfdb56c627cdd9a83f77695cb',1,'rlPlcMem::doubleHasIncreased()']]],
   ['dprintf',['dprintf',['../classrl3964R.html#aeff9837c28291c04cd0ac3d6df2195df',1,'rl3964R']]],
+  ['drawellipse',['drawEllipse',['../classrlSvgVdi.html#a3dff052493af6d262c24a9c88d413d10',1,'rlSvgVdi']]],
+  ['drawsymbol',['drawSymbol',['../classrlSvgVdi.html#a8c9cc87df30d6c51752dfb9768243d51',1,'rlSvgVdi']]],
   ['dump',['dump',['../classrlEIBnetIP.html#aaa0d9fe5684e3a709cdef4262cf3d64e',1,'rlEIBnetIP']]],
   ['dword',['Dword',['../classrlPPIClient.html#a0c7386dbad88b6e1720499f0f584682e',1,'rlPPIClient::Dword()'],['../classrlSiemensTCPClient.html#a405e90be8cf8ab7d5d791afea398ac8e',1,'rlSiemensTCPClient::Dword()']]]
 ];

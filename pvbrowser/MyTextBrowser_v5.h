@@ -66,6 +66,7 @@ protected:
 #else
     virtual QWebEngineView *createWindow(QWebEnginePage::WebWindowType type);
 #endif    
+    virtual void contextMenuEvent(QContextMenuEvent *event);
     virtual void keyPressEvent(QKeyEvent *event);
   
 private:

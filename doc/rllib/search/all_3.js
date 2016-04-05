@@ -44,6 +44,7 @@ var searchData=
   ['cmdsetcpumode',['cmdSetCPUMode',['../classrlDF1.html#a9305393792fcdb687f04ec8968306349',1,'rlDF1']]],
   ['cnt',['cnt',['../classrlEventLogServer.html#a2eeed2e497c8360ac7c4a390b6dc1ebd',1,'rlEventLogServer']]],
   ['coldstart',['COLDSTART',['../rlcanopenstructs_8h.html#a7b8662dc7d7c48c1b6a0e418e54ef61e',1,'rlcanopenstructs.h']]],
+  ['comment',['comment',['../classrlSvgVdi.html#adee7479940ced90c2962931bd5b0c80c',1,'rlSvgVdi']]],
   ['computecrc',['computeCRC',['../rldf1_8cpp.html#a8799d9698b5aa9d0452fcda45a0282e7',1,'rldf1.cpp']]],
   ['connect',['connect',['../classrlCanOpenClient.html#a2f82f0217da4193296558d4ca302c203',1,'rlCanOpenClient::connect()'],['../classrlEIBnetIP.html#a9e88f3f47ed27092ccea75182b3a1c0a',1,'rlEIBnetIP::connect()'],['../classrlSocket.html#ad30990162e716dce512116d9336de89e',1,'rlSocket::connect()']]],
   ['connect_5ferr',['CONNECT_ERR',['../classrlSocket.html#a3b70eecec7f08e38ee0c7d9ee6baf632a887c2201731d9c4f4ae8c971f0e09d75',1,'rlSocket']]],

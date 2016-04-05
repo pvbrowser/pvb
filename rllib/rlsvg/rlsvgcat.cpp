@@ -340,11 +340,95 @@ void rlSvgCat::catline(char *line_in)
   }
 }
 
+int pipe2cpp(int ac, char **av)
+{
+  char *cptr;
+  char line[256*256+1];
+  char printf_string[256] = "vdi.svg_printf";
+  char from[256] = "";
+  char to[256] = "";
+  for(int i=2; i<ac; i++)
+  {
+    char *arg = av[i];
+    if(strncmp(arg,"-printf=",8) == 0)
+    {
+      strcpy(printf_string,&arg[8]);
+    }
+    else if(strncmp(arg,"-from=",6) == 0)
+    {
+      strcpy(from,&arg[6]);
+    }
+    else if(strncmp(arg,"-to=",4) == 0)
+    {
+      strcpy(to,&arg[4]);
+    }
+  }
+
+  int doit = 0;
+  if(from[0] == '\0') doit = 1;
+  while(fgets(line,255*255,stdin) != NULL)
+  {
+    if(from[0] != '\0' && strstr(line,from) != NULL) doit = 1;
+
+    if(doit)
+    {
+      printf("  %s(\"", printf_string);
+      cptr = &line[0];
+      while(*cptr != '\0')
+      {
+        if(*cptr == '"')
+        {
+          printf("\\\"");
+        }
+        else if(*cptr == '\\')
+        {
+          printf("\\\\");
+        }
+        else if(*cptr == '\n')
+        {
+        }
+        else
+        {
+          printf("%c",*cptr);
+        }
+        cptr++;
+      }
+      printf("\\n\");\n");
+    }  
+
+    if(to[0]   != '\0' && strstr(line,to)   != NULL) doit = 0;
+  }           
+  return 0;
+}
+
 //#define RLSVGCAT_MAIN_OFF
 #ifndef RLSVGCAT_MAIN_OFF
+void print_usage()
+{
+  printf("usage: rlsvgcat file.svg <outputfile>\n");
+  printf("       rlsvgcat -pipe2cpp <-printf=string> <-from=pattern> <-to=pattern>\n");
+}
+
 int main(int ac, char **av)
 {
   rlSvgCat svgcat;
+
+  if(ac > 1)
+  {
+    const char *arg = av[1];
+    if(*arg == '-')
+    {
+      if(strcmp(arg,"-pipe2cpp") == 0)
+      {
+        pipe2cpp(ac,av);
+      }
+      else
+      {
+        print_usage();
+      }
+      return 0;
+    }
+  }
 
   if(ac == 1)
   {
@@ -370,7 +454,10 @@ int main(int ac, char **av)
       return 0;
     }
   }
-  else printf("usage: rlsvgcat file.svg <outputfile>\n");
+  else
+  {
+    print_usage();
+  }  
   return -1;
 }
 #endif

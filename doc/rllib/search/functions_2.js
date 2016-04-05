@@ -18,6 +18,7 @@ var searchData=
   ['cmdlogicalread',['cmdLogicalRead',['../classrlDF1.html#a0c87ec47aba4a21fd41d954d74182626',1,'rlDF1']]],
   ['cmdlogicalwrite',['cmdLogicalWrite',['../classrlDF1.html#a69a3f8589dcf7a85ed50a7b2017b0840',1,'rlDF1']]],
   ['cmdsetcpumode',['cmdSetCPUMode',['../classrlDF1.html#a9305393792fcdb687f04ec8968306349',1,'rlDF1']]],
+  ['comment',['comment',['../classrlSvgVdi.html#adee7479940ced90c2962931bd5b0c80c',1,'rlSvgVdi']]],
   ['computecrc',['computeCRC',['../rldf1_8cpp.html#a8799d9698b5aa9d0452fcda45a0282e7',1,'rldf1.cpp']]],
   ['connect',['connect',['../classrlCanOpenClient.html#a2f82f0217da4193296558d4ca302c203',1,'rlCanOpenClient::connect()'],['../classrlEIBnetIP.html#a9e88f3f47ed27092ccea75182b3a1c0a',1,'rlEIBnetIP::connect()'],['../classrlSocket.html#ad30990162e716dce512116d9336de89e',1,'rlSocket::connect()']]],
   ['control',['control',['../rlcontroller_8cpp.html#a6944c6ed7403a335d5d5912c79cad294',1,'rlcontroller.cpp']]],

@@ -58,6 +58,7 @@ var searchData=
   ['_7erlsvganimator',['~rlSvgAnimator',['../classrlSvgAnimator.html#a29096f6dc11b6f06f5a30be02ddb957c',1,'rlSvgAnimator']]],
   ['_7erlsvgcat',['~rlSvgCat',['../classrlSvgCat.html#a35d5cffc740c5ea3af7657d9cedb3588',1,'rlSvgCat']]],
   ['_7erlsvgposition',['~rlSvgPosition',['../classrlSvgPosition.html#a1b67eec12614aa59c3d8f9fc532d7a49',1,'rlSvgPosition']]],
+  ['_7erlsvgvdi',['~rlSvgVdi',['../classrlSvgVdi.html#a614d8afbbfe0ed982f7d4290e4c2c952',1,'rlSvgVdi']]],
   ['_7erlthread',['~rlThread',['../classrlThread.html#a207ef107f2a2c07239329a43f5d58cd8',1,'rlThread']]],
   ['_7erltime',['~rlTime',['../classrlTime.html#a04a079518ff398b3fb55118b79dcc565',1,'rlTime']]],
   ['_7erludpsocket',['~rlUdpSocket',['../classrlUdpSocket.html#a4e717ecec012a4afc53a3b2e87a1cdc8',1,'rlUdpSocket']]],

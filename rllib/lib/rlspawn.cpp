@@ -414,6 +414,29 @@ int rlSpawn::printf(const char *format, ...)
 
 int rlSpawn::writeString(const char *buf)
 {
+  if(buf[0] == EOF && buf[1] == '\0')
+  {
+#ifdef RLWIN32 
+    if(fromChildRD != NULL) CloseHandle(fromChildRD);
+    if(fromChildWR != NULL) CloseHandle(fromChildWR);
+    if(toChildRD   != NULL) CloseHandle(toChildRD);
+    if(toChildWR   != NULL) CloseHandle(toChildWR);
+    if(hThread     != NULL) CloseHandle(hThread);
+    if(hProcess    != NULL) CloseHandle(hProcess);
+    fromChildRD = NULL;
+    fromChildWR = NULL;
+    toChildRD   = NULL;
+    toChildWR   = NULL;
+    hThread     = NULL;
+    hProcess    = NULL;
+#else  
+    if(toChild   != NULL) ::fclose((FILE*) toChild);
+    if(fromChild != NULL) ::fclose((FILE*) fromChild);
+    toChild   = NULL;
+    fromChild = NULL;
+#endif
+    return 0;
+  } 
 #ifdef RLWIN32
   if(toChildWR == NULL) return -1;
   int len = strlen(buf);

@@ -940,6 +940,7 @@
               <section title="getHtml" ref="classrlHtmlDir.html#a17bae0b2a7db9db5b093fe60006479b4" />
               <section title="currentPath" ref="classrlHtmlDir.html#a8d22435dcd10f6cdc00a94ab60a2d4bb" />
               <section title="endHtml" ref="classrlHtmlDir.html#a5a68e88881a063a9d9edfb1703eaa25e" />
+              <section title="hide_hidden_files" ref="classrlHtmlDir.html#a667624185744a8b78191eaed642dccc2" />
               <section title="html" ref="classrlHtmlDir.html#a71487dcc841ba8dcd9f0afba34fe0395" />
               <section title="initialPath" ref="classrlHtmlDir.html#a939582ad51f428baa559b9d0164043c2" />
               <section title="list_what" ref="classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2" />
@@ -1798,6 +1799,81 @@
               <section title="x0" ref="classrlSvgPosition.html#a296f63b6514292d1d0662ea15e5c903c" />
               <section title="y0" ref="classrlSvgPosition.html#a263c6775ec963f459f56c71d25612dcf" />
             </section>
+            <section title="rlSvgVdi" ref="classrlSvgVdi.html">
+              <section title="rlSvgVdi" ref="classrlSvgVdi.html#a84107dae74b0841cc91980a1dd748b2d" />
+              <section title="~rlSvgVdi" ref="classrlSvgVdi.html#a614d8afbbfe0ed982f7d4290e4c2c952" />
+              <section title="box" ref="classrlSvgVdi.html#ad0db4f0f750bb47649f17c5e4010d9e9" />
+              <section title="boxWithText" ref="classrlSvgVdi.html#a05d7dddda9302771b08d609fadb5de36" />
+              <section title="comment" ref="classrlSvgVdi.html#adee7479940ced90c2962931bd5b0c80c" />
+              <section title="drawEllipse" ref="classrlSvgVdi.html#a3dff052493af6d262c24a9c88d413d10" />
+              <section title="drawSymbol" ref="classrlSvgVdi.html#a8c9cc87df30d6c51752dfb9768243d51" />
+              <section title="endOutput" ref="classrlSvgVdi.html#a14f1c56df29fe1e86aae9436d2cfad28" />
+              <section title="getBoxH" ref="classrlSvgVdi.html#a71c85d1016301d2185b001cf8741375e" />
+              <section title="getBoxW" ref="classrlSvgVdi.html#a9427e180ac259dfd77d0a514e012005d" />
+              <section title="getBoxX" ref="classrlSvgVdi.html#a6270026569351b0c00fa6d4355a549fc" />
+              <section title="getBoxY" ref="classrlSvgVdi.html#a3c29400c1369b87d04a7497ad15833ac" />
+              <section title="getFontsize" ref="classrlSvgVdi.html#a9fcc78fe63ec6b450ccaec6c4eb0ae3b" />
+              <section title="line" ref="classrlSvgVdi.html#a57f930deb46f53436975129dcc51d232" />
+              <section title="line" ref="classrlSvgVdi.html#ac606488d5a3aed3702163093ba40ca92" />
+              <section title="lineTo" ref="classrlSvgVdi.html#a7e457fd0cd48826461fbc45697e425f3" />
+              <section title="moveTo" ref="classrlSvgVdi.html#a9c5a8066cb469cdf140e01248dcb57ba" />
+              <section title="perhapsSend" ref="classrlSvgVdi.html#a32e505da92515f840d7bf0db0c311b48" />
+              <section title="rect" ref="classrlSvgVdi.html#ad98e0a8877ea190e9ead03f1ccf2c0b7" />
+              <section title="rightYAxis" ref="classrlSvgVdi.html#a88feabce5d4c840d676668b889d0a796" />
+              <section title="setColor" ref="classrlSvgVdi.html#a00d01f624b19f3fbf9b58b008d058910" />
+              <section title="setFont" ref="classrlSvgVdi.html#a6ce41f4d7adfcea86eae3cc765b89bdb" />
+              <section title="setLinestyle" ref="classrlSvgVdi.html#a8c6194fefd9b5e859cec8f58e75bea29" />
+              <section title="setOutput" ref="classrlSvgVdi.html#a038d0a27f494ef3413598b2c61ee41ab" />
+              <section title="setOutput" ref="classrlSvgVdi.html#af9f91b9b6693ef537e3d9d4d38836a74" />
+              <section title="setOutput" ref="classrlSvgVdi.html#aaeb37e52343aa711f92f2ec491dd16b8" />
+              <section title="setOutput" ref="classrlSvgVdi.html#ac220c6de9b2dc1848850d8749b5cc075" />
+              <section title="setWidth" ref="classrlSvgVdi.html#a21de6fd462218fa96b4ba6f9685a44cf" />
+              <section title="svg_d" ref="classrlSvgVdi.html#afaa0e92548cbbbcfce894f7bb3e9b8ef" />
+              <section title="svg_points" ref="classrlSvgVdi.html#acc77e3c78129b19ad0d8dc8eedcc8068" />
+              <section title="svg_printf" ref="classrlSvgVdi.html#a3a7eadbe127de50f2799056105ae6024" />
+              <section title="svg_put" ref="classrlSvgVdi.html#a29ac9099d35f4f4382ccd311fc8dc8db" />
+              <section title="svgHeader" ref="classrlSvgVdi.html#afa6255bb4b1d78d10c64b4291b55e5dc" />
+              <section title="svgTrailer" ref="classrlSvgVdi.html#ab7b5d881d3396a96aa5dcdd8b61a5961" />
+              <section title="text" ref="classrlSvgVdi.html#a8a0a55e88827c4e7e17caef6183b0e02" />
+              <section title="textInAxis" ref="classrlSvgVdi.html#a80f783ca256961916ccc9e52b209408e" />
+              <section title="tx" ref="classrlSvgVdi.html#a270e923a6ea25458fe853a288c4f45b2" />
+              <section title="ty" ref="classrlSvgVdi.html#a6a44c86ed11da46aae80b3b3007902ec" />
+              <section title="xAxis" ref="classrlSvgVdi.html#a18f9dc4175ee4276a5ed4153c468a33a" />
+              <section title="xGrid" ref="classrlSvgVdi.html#aead041325ae396544e3553e219fae108" />
+              <section title="yAxis" ref="classrlSvgVdi.html#aeac6bdc1232abd81936a486957884e79" />
+              <section title="yGrid" ref="classrlSvgVdi.html#a9118af84829c6d8f208d54a30ead5e6a" />
+              <section title="boxh" ref="classrlSvgVdi.html#aef442c9a6c3fc83689151d24827b9afe" />
+              <section title="boxw" ref="classrlSvgVdi.html#ab6970a2e9d05d3f4f3a522a13c53d0d7" />
+              <section title="boxx" ref="classrlSvgVdi.html#a064f62f8513806ab66182299243ae071" />
+              <section title="boxy" ref="classrlSvgVdi.html#a30a93c21ae5dfd8aae62e975fad56381" />
+              <section title="dasharray" ref="classrlSvgVdi.html#a23b31b440ca4b6be86b41b68442b6b5d" />
+              <section title="dx" ref="classrlSvgVdi.html#aaf05c1c542ac41ef9110dc8ae5a13a7e" />
+              <section title="dy" ref="classrlSvgVdi.html#aa68196edf5c22a24fe9c8c74eb7f1f57" />
+              <section title="filename" ref="classrlSvgVdi.html#af5fa9cd4b87912a17083221ddb189d62" />
+              <section title="floatFormat" ref="classrlSvgVdi.html#a051de220ad008b3b71fceadfd6c084b9" />
+              <section title="fontsize" ref="classrlSvgVdi.html#a5e8904f75fe716becf3846bca5577333" />
+              <section title="fontstring" ref="classrlSvgVdi.html#ab93e7f6a05545b3163639ce3f51bfc6d" />
+              <section title="fout" ref="classrlSvgVdi.html#a8281d46ff1a9305b69281c970d3c1c49" />
+              <section title="idForPvbrowser" ref="classrlSvgVdi.html#a36355cef8086cd9eea1790c1cc1b1e41" />
+              <section title="lineoptions" ref="classrlSvgVdi.html#aa6eda911ddbceee2937ffe4e6db6fcb1" />
+              <section title="outputfilename" ref="classrlSvgVdi.html#a1e1435f1740f1465f4b07275909b8922" />
+              <section title="outputState" ref="classrlSvgVdi.html#af717171698c7b008553a21bc14012d25" />
+              <section title="pipe" ref="classrlSvgVdi.html#a462686f6393d6534a6411e419ff36012" />
+              <section title="sout" ref="classrlSvgVdi.html#afcc8d3b328480b07e1066a354a39034d" />
+              <section title="sr" ref="classrlSvgVdi.html#a89e347aa72fcedab21dc5a8beed73793" />
+              <section title="stroke" ref="classrlSvgVdi.html#aa877742791e8db36bbfffda96227af7e" />
+              <section title="svg" ref="classrlSvgVdi.html#a7eb002cc67fc32caace76a22f6591a73" />
+              <section title="svg2" ref="classrlSvgVdi.html#a356ef185d99c08b3637455eec8d1a662" />
+              <section title="svg3" ref="classrlSvgVdi.html#a5936eeb7185a7c616c62380024938871" />
+              <section title="textoptions" ref="classrlSvgVdi.html#a84e7dee6fb6f1cbaac5fb501be23e2f2" />
+              <section title="width" ref="classrlSvgVdi.html#a5a7a84f777545e3fb1a329302ad86a81" />
+              <section title="xmax" ref="classrlSvgVdi.html#ae75b779a8a548be483ebc2c305fa750f" />
+              <section title="xmin" ref="classrlSvgVdi.html#aaed99322a2b4f83cfacfd33cd295d479" />
+              <section title="xold" ref="classrlSvgVdi.html#adf3ea868c8d746ddaf501878274fb8ed" />
+              <section title="ymax" ref="classrlSvgVdi.html#a0382b7e56fc3ef24fba647acddd15ec8" />
+              <section title="ymin" ref="classrlSvgVdi.html#a4bfaba16b56f6d95098513f5fd19f8af" />
+              <section title="yold" ref="classrlSvgVdi.html#a62d5135b00cca3e1083d5db78f8175d3" />
+            </section>
             <section title="rlThread" ref="classrlThread.html">
               <section title="rlThread" ref="classrlThread.html#a25bfd19bd7b382d71ecb12b554a31b3f" />
               <section title="~rlThread" ref="classrlThread.html#a207ef107f2a2c07239329a43f5d58cd8" />
@@ -2008,6 +2084,7 @@
             <section title="rlSvgAnimator" ref="classrlSvgAnimator.html" />
             <section title="rlSvgCat" ref="classrlSvgCat.html" />
             <section title="rlSvgPosition" ref="classrlSvgPosition.html" />
+            <section title="rlSvgVdi" ref="classrlSvgVdi.html" />
             <section title="rlThread" ref="classrlThread.html">
               <section title="rlController" ref="classrlController.html" />
             </section>
@@ -2016,9 +2093,9 @@
               <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
             </section>
             <section title="rlWebcam" ref="classrlWebcam.html" />
-            <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
             <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
             <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
+            <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
             <section title="SWAP" ref="unionSWAP.html" />
             <section title="TDS" ref="structTDS.html" />
             <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html" />
@@ -3479,6 +3556,7 @@
                 <section title="getHtml" ref="classrlHtmlDir.html#a17bae0b2a7db9db5b093fe60006479b4" />
                 <section title="currentPath" ref="classrlHtmlDir.html#a8d22435dcd10f6cdc00a94ab60a2d4bb" />
                 <section title="endHtml" ref="classrlHtmlDir.html#a5a68e88881a063a9d9edfb1703eaa25e" />
+                <section title="hide_hidden_files" ref="classrlHtmlDir.html#a667624185744a8b78191eaed642dccc2" />
                 <section title="html" ref="classrlHtmlDir.html#a71487dcc841ba8dcd9f0afba34fe0395" />
                 <section title="initialPath" ref="classrlHtmlDir.html#a939582ad51f428baa559b9d0164043c2" />
                 <section title="list_what" ref="classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2" />
@@ -4597,6 +4675,102 @@
                 <section title="s" ref="classrlSvgCat.html#aca36c1d5f0e2f4eb0622cbbfafd2719b" />
               </section>
             </section>
+            <section title="rlsvgvdi.cpp" ref="rlsvgvdi_8cpp.html">
+              <section title="beautyval" ref="rlsvgvdi_8cpp.html#a878c3557bca39cb0fa4b122ecbf33861" />
+            </section>
+            <section title="rlsvgvdi.h" ref="rlsvgvdi_8h.html">
+              <section title="rlSvgVdi" ref="classrlSvgVdi.html">
+                <section title="rlSvgVdi" ref="classrlSvgVdi.html#a84107dae74b0841cc91980a1dd748b2d" />
+                <section title="~rlSvgVdi" ref="classrlSvgVdi.html#a614d8afbbfe0ed982f7d4290e4c2c952" />
+                <section title="box" ref="classrlSvgVdi.html#ad0db4f0f750bb47649f17c5e4010d9e9" />
+                <section title="boxWithText" ref="classrlSvgVdi.html#a05d7dddda9302771b08d609fadb5de36" />
+                <section title="comment" ref="classrlSvgVdi.html#adee7479940ced90c2962931bd5b0c80c" />
+                <section title="drawEllipse" ref="classrlSvgVdi.html#a3dff052493af6d262c24a9c88d413d10" />
+                <section title="drawSymbol" ref="classrlSvgVdi.html#a8c9cc87df30d6c51752dfb9768243d51" />
+                <section title="endOutput" ref="classrlSvgVdi.html#a14f1c56df29fe1e86aae9436d2cfad28" />
+                <section title="getBoxH" ref="classrlSvgVdi.html#a71c85d1016301d2185b001cf8741375e" />
+                <section title="getBoxW" ref="classrlSvgVdi.html#a9427e180ac259dfd77d0a514e012005d" />
+                <section title="getBoxX" ref="classrlSvgVdi.html#a6270026569351b0c00fa6d4355a549fc" />
+                <section title="getBoxY" ref="classrlSvgVdi.html#a3c29400c1369b87d04a7497ad15833ac" />
+                <section title="getFontsize" ref="classrlSvgVdi.html#a9fcc78fe63ec6b450ccaec6c4eb0ae3b" />
+                <section title="line" ref="classrlSvgVdi.html#a57f930deb46f53436975129dcc51d232" />
+                <section title="line" ref="classrlSvgVdi.html#ac606488d5a3aed3702163093ba40ca92" />
+                <section title="lineTo" ref="classrlSvgVdi.html#a7e457fd0cd48826461fbc45697e425f3" />
+                <section title="moveTo" ref="classrlSvgVdi.html#a9c5a8066cb469cdf140e01248dcb57ba" />
+                <section title="perhapsSend" ref="classrlSvgVdi.html#a32e505da92515f840d7bf0db0c311b48" />
+                <section title="rect" ref="classrlSvgVdi.html#ad98e0a8877ea190e9ead03f1ccf2c0b7" />
+                <section title="rightYAxis" ref="classrlSvgVdi.html#a88feabce5d4c840d676668b889d0a796" />
+                <section title="setColor" ref="classrlSvgVdi.html#a00d01f624b19f3fbf9b58b008d058910" />
+                <section title="setFont" ref="classrlSvgVdi.html#a6ce41f4d7adfcea86eae3cc765b89bdb" />
+                <section title="setLinestyle" ref="classrlSvgVdi.html#a8c6194fefd9b5e859cec8f58e75bea29" />
+                <section title="setOutput" ref="classrlSvgVdi.html#a038d0a27f494ef3413598b2c61ee41ab" />
+                <section title="setOutput" ref="classrlSvgVdi.html#af9f91b9b6693ef537e3d9d4d38836a74" />
+                <section title="setOutput" ref="classrlSvgVdi.html#aaeb37e52343aa711f92f2ec491dd16b8" />
+                <section title="setOutput" ref="classrlSvgVdi.html#ac220c6de9b2dc1848850d8749b5cc075" />
+                <section title="setWidth" ref="classrlSvgVdi.html#a21de6fd462218fa96b4ba6f9685a44cf" />
+                <section title="svg_d" ref="classrlSvgVdi.html#afaa0e92548cbbbcfce894f7bb3e9b8ef" />
+                <section title="svg_points" ref="classrlSvgVdi.html#acc77e3c78129b19ad0d8dc8eedcc8068" />
+                <section title="svg_printf" ref="classrlSvgVdi.html#a3a7eadbe127de50f2799056105ae6024" />
+                <section title="svg_put" ref="classrlSvgVdi.html#a29ac9099d35f4f4382ccd311fc8dc8db" />
+                <section title="svgHeader" ref="classrlSvgVdi.html#afa6255bb4b1d78d10c64b4291b55e5dc" />
+                <section title="svgTrailer" ref="classrlSvgVdi.html#ab7b5d881d3396a96aa5dcdd8b61a5961" />
+                <section title="text" ref="classrlSvgVdi.html#a8a0a55e88827c4e7e17caef6183b0e02" />
+                <section title="textInAxis" ref="classrlSvgVdi.html#a80f783ca256961916ccc9e52b209408e" />
+                <section title="tx" ref="classrlSvgVdi.html#a270e923a6ea25458fe853a288c4f45b2" />
+                <section title="ty" ref="classrlSvgVdi.html#a6a44c86ed11da46aae80b3b3007902ec" />
+                <section title="xAxis" ref="classrlSvgVdi.html#a18f9dc4175ee4276a5ed4153c468a33a" />
+                <section title="xGrid" ref="classrlSvgVdi.html#aead041325ae396544e3553e219fae108" />
+                <section title="yAxis" ref="classrlSvgVdi.html#aeac6bdc1232abd81936a486957884e79" />
+                <section title="yGrid" ref="classrlSvgVdi.html#a9118af84829c6d8f208d54a30ead5e6a" />
+                <section title="boxh" ref="classrlSvgVdi.html#aef442c9a6c3fc83689151d24827b9afe" />
+                <section title="boxw" ref="classrlSvgVdi.html#ab6970a2e9d05d3f4f3a522a13c53d0d7" />
+                <section title="boxx" ref="classrlSvgVdi.html#a064f62f8513806ab66182299243ae071" />
+                <section title="boxy" ref="classrlSvgVdi.html#a30a93c21ae5dfd8aae62e975fad56381" />
+                <section title="dasharray" ref="classrlSvgVdi.html#a23b31b440ca4b6be86b41b68442b6b5d" />
+                <section title="dx" ref="classrlSvgVdi.html#aaf05c1c542ac41ef9110dc8ae5a13a7e" />
+                <section title="dy" ref="classrlSvgVdi.html#aa68196edf5c22a24fe9c8c74eb7f1f57" />
+                <section title="filename" ref="classrlSvgVdi.html#af5fa9cd4b87912a17083221ddb189d62" />
+                <section title="floatFormat" ref="classrlSvgVdi.html#a051de220ad008b3b71fceadfd6c084b9" />
+                <section title="fontsize" ref="classrlSvgVdi.html#a5e8904f75fe716becf3846bca5577333" />
+                <section title="fontstring" ref="classrlSvgVdi.html#ab93e7f6a05545b3163639ce3f51bfc6d" />
+                <section title="fout" ref="classrlSvgVdi.html#a8281d46ff1a9305b69281c970d3c1c49" />
+                <section title="idForPvbrowser" ref="classrlSvgVdi.html#a36355cef8086cd9eea1790c1cc1b1e41" />
+                <section title="lineoptions" ref="classrlSvgVdi.html#aa6eda911ddbceee2937ffe4e6db6fcb1" />
+                <section title="outputfilename" ref="classrlSvgVdi.html#a1e1435f1740f1465f4b07275909b8922" />
+                <section title="outputState" ref="classrlSvgVdi.html#af717171698c7b008553a21bc14012d25" />
+                <section title="pipe" ref="classrlSvgVdi.html#a462686f6393d6534a6411e419ff36012" />
+                <section title="sout" ref="classrlSvgVdi.html#afcc8d3b328480b07e1066a354a39034d" />
+                <section title="sr" ref="classrlSvgVdi.html#a89e347aa72fcedab21dc5a8beed73793" />
+                <section title="stroke" ref="classrlSvgVdi.html#aa877742791e8db36bbfffda96227af7e" />
+                <section title="svg" ref="classrlSvgVdi.html#a7eb002cc67fc32caace76a22f6591a73" />
+                <section title="svg2" ref="classrlSvgVdi.html#a356ef185d99c08b3637455eec8d1a662" />
+                <section title="svg3" ref="classrlSvgVdi.html#a5936eeb7185a7c616c62380024938871" />
+                <section title="textoptions" ref="classrlSvgVdi.html#a84e7dee6fb6f1cbaac5fb501be23e2f2" />
+                <section title="width" ref="classrlSvgVdi.html#a5a7a84f777545e3fb1a329302ad86a81" />
+                <section title="xmax" ref="classrlSvgVdi.html#ae75b779a8a548be483ebc2c305fa750f" />
+                <section title="xmin" ref="classrlSvgVdi.html#aaed99322a2b4f83cfacfd33cd295d479" />
+                <section title="xold" ref="classrlSvgVdi.html#adf3ea868c8d746ddaf501878274fb8ed" />
+                <section title="ymax" ref="classrlSvgVdi.html#a0382b7e56fc3ef24fba647acddd15ec8" />
+                <section title="ymin" ref="classrlSvgVdi.html#a4bfaba16b56f6d95098513f5fd19f8af" />
+                <section title="yold" ref="classrlSvgVdi.html#a62d5135b00cca3e1083d5db78f8175d3" />
+              </section>
+              <section title="MAXARRAY" ref="rlsvgvdi_8h.html#aff12d531f542494441a3cd72b58a9375" />
+              <section title="rlFontAlignment" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65">
+                <section title="ALIGN_LEFT" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a6ec599857e15466988726932dd592305" />
+                <section title="ALIGN_CENTER" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a5624165187e56db612253e608a45b1c6" />
+                <section title="ALIGN_RIGHT" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a9c81840e8cad46418b39a8b74a246354" />
+                <section title="ALIGN_VERT_CENTER" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a08b780b9e2476a108faa8175b840f6c9" />
+              </section>
+              <section title="rlLinestyle" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4f">
+                <section title="LINESTYLE_NONE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa6d0c792332975a57539928941618c59b" />
+                <section title="LINESTYLE_CIRCLE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa3a0a4d7b9771186d8356e647c5e76566" />
+                <section title="LINESTYLE_CROSS" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa19cbf6923fa820de29ae17c11db77a96" />
+                <section title="LINESTYLE_RECT" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fae4e7a6b19bf703bcabaa8607e4d2e50c" />
+                <section title="LINESTYLE_CIRCLE_NO_LINE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa763b1c5a5bb370015f10f535052c0a64" />
+                <section title="LINESTYLE_CROSS_NO_LINE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa930a2565006f8e5f54c4dc3648b8653b" />
+                <section title="LINESTYLE_RECT_NO_LINE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4faeb57b7caa1c43ab2b913e897a51949f7" />
+              </section>
+            </section>
             <section title="rlthread.cpp" ref="rlthread_8cpp.html" />
             <section title="rlthread.h" ref="rlthread_8h.html">
               <section title="THREAD_PARAM" ref="structTHREAD__PARAM.html">
@@ -5198,6 +5372,19 @@
       <keyword name="MSG_NOSIGNAL" id="rlsvganimator.cpp::MSG_NOSIGNAL" ref="rlsvganimator_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="MAXLINE" id="rlsvganimator.cpp::MAXLINE" ref="rlsvganimator_8cpp.html#a3e937c42922f7601edb17b747602c471" />
       <keyword name="MAXBUF" id="rlsvganimator.cpp::MAXBUF" ref="rlsvganimator_8cpp.html#ad7871643c05865c80f5d8050aead2b57" />
+      <keyword name="beautyval" id="rlsvgvdi.cpp::beautyval" ref="rlsvgvdi_8cpp.html#a878c3557bca39cb0fa4b122ecbf33861" />
+      <keyword name="MAXARRAY" id="rlsvgvdi.h::MAXARRAY" ref="rlsvgvdi_8h.html#aff12d531f542494441a3cd72b58a9375" />
+      <keyword name="ALIGN_LEFT" id="rlsvgvdi.h::ALIGN_LEFT" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a6ec599857e15466988726932dd592305" />
+      <keyword name="ALIGN_CENTER" id="rlsvgvdi.h::ALIGN_CENTER" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a5624165187e56db612253e608a45b1c6" />
+      <keyword name="ALIGN_RIGHT" id="rlsvgvdi.h::ALIGN_RIGHT" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a9c81840e8cad46418b39a8b74a246354" />
+      <keyword name="ALIGN_VERT_CENTER" id="rlsvgvdi.h::ALIGN_VERT_CENTER" ref="rlsvgvdi_8h.html#acaca83a1b230db2bc717101e14b9ce65a08b780b9e2476a108faa8175b840f6c9" />
+      <keyword name="LINESTYLE_NONE" id="rlsvgvdi.h::LINESTYLE_NONE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa6d0c792332975a57539928941618c59b" />
+      <keyword name="LINESTYLE_CIRCLE" id="rlsvgvdi.h::LINESTYLE_CIRCLE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa3a0a4d7b9771186d8356e647c5e76566" />
+      <keyword name="LINESTYLE_CROSS" id="rlsvgvdi.h::LINESTYLE_CROSS" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa19cbf6923fa820de29ae17c11db77a96" />
+      <keyword name="LINESTYLE_RECT" id="rlsvgvdi.h::LINESTYLE_RECT" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fae4e7a6b19bf703bcabaa8607e4d2e50c" />
+      <keyword name="LINESTYLE_CIRCLE_NO_LINE" id="rlsvgvdi.h::LINESTYLE_CIRCLE_NO_LINE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa763b1c5a5bb370015f10f535052c0a64" />
+      <keyword name="LINESTYLE_CROSS_NO_LINE" id="rlsvgvdi.h::LINESTYLE_CROSS_NO_LINE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4fa930a2565006f8e5f54c4dc3648b8653b" />
+      <keyword name="LINESTYLE_RECT_NO_LINE" id="rlsvgvdi.h::LINESTYLE_RECT_NO_LINE" ref="rlsvgvdi_8h.html#a6f0b7c996dc81496e912daa7104faf4faeb57b7caa1c43ab2b913e897a51949f7" />
       <keyword name="MSG_NOSIGNAL" id="rludpsocket.h::MSG_NOSIGNAL" ref="rludpsocket_8h.html#a9f55d0e90dc8cc6b2287312435cdde48" />
       <keyword name="USE_OLD_JOIN" id="rlwthread.cpp::USE_OLD_JOIN" ref="rlwthread_8cpp.html#a9c9cacdce530ec82b54bcd580e374db6" />
       <keyword name="TESTINGx" id="rlwthread.cpp::TESTINGx" ref="rlwthread_8cpp.html#ab37079086f58d9ffdb48af71ff14ce26" />
@@ -6181,6 +6368,7 @@
       <keyword name="pattern" id="rlHtmlDir::pattern" ref="classrlHtmlDir.html#a88a867c1469d65fe3b73e1aac6fe927f" />
       <keyword name="recursive" id="rlHtmlDir::recursive" ref="classrlHtmlDir.html#ad3a61e87fbfd19c1230528b80caef99a" />
       <keyword name="list_what" id="rlHtmlDir::list_what" ref="classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2" />
+      <keyword name="hide_hidden_files" id="rlHtmlDir::hide_hidden_files" ref="classrlHtmlDir.html#a667624185744a8b78191eaed642dccc2" />
       <keyword name="textHome" id="rlHtmlDir::textHome" ref="classrlHtmlDir.html#a697a1503afe92123c12f11e1fb9910ab" />
       <keyword name="textPath" id="rlHtmlDir::textPath" ref="classrlHtmlDir.html#aadcd72e669d24a46c4cc3d0b42986514" />
       <keyword name="textrlHtmlDirCSS" id="rlHtmlDir::textrlHtmlDirCSS" ref="classrlHtmlDir.html#a704eaeb31fe0c33c30899dbddce035bb" />
@@ -7090,6 +7278,80 @@
       <keyword name="y0" id="rlSvgPosition::rlPositionInit::y0" ref="structrlSvgPosition_1_1rlPositionInit.html#a47e4bbf6529cfbca5b214e988cebb0ad" />
       <keyword name="w" id="rlSvgPosition::rlPositionInit::w" ref="structrlSvgPosition_1_1rlPositionInit.html#a6d2046792e09060594e83c2219dcf742" />
       <keyword name="h" id="rlSvgPosition::rlPositionInit::h" ref="structrlSvgPosition_1_1rlPositionInit.html#a558e9c13624b93fe483ee7022097a69a" />
+      <keyword name="rlSvgVdi" id="rlSvgVdi" ref="classrlSvgVdi.html" />
+      <keyword name="rlSvgVdi" id="rlSvgVdi::rlSvgVdi" ref="classrlSvgVdi.html#a84107dae74b0841cc91980a1dd748b2d" />
+      <keyword name="~rlSvgVdi" id="rlSvgVdi::~rlSvgVdi" ref="classrlSvgVdi.html#a614d8afbbfe0ed982f7d4290e4c2c952" />
+      <keyword name="setOutput" id="rlSvgVdi::setOutput" ref="classrlSvgVdi.html#a038d0a27f494ef3413598b2c61ee41ab" />
+      <keyword name="setOutput" id="rlSvgVdi::setOutput" ref="classrlSvgVdi.html#af9f91b9b6693ef537e3d9d4d38836a74" />
+      <keyword name="setOutput" id="rlSvgVdi::setOutput" ref="classrlSvgVdi.html#aaeb37e52343aa711f92f2ec491dd16b8" />
+      <keyword name="setOutput" id="rlSvgVdi::setOutput" ref="classrlSvgVdi.html#ac220c6de9b2dc1848850d8749b5cc075" />
+      <keyword name="endOutput" id="rlSvgVdi::endOutput" ref="classrlSvgVdi.html#a14f1c56df29fe1e86aae9436d2cfad28" />
+      <keyword name="svgHeader" id="rlSvgVdi::svgHeader" ref="classrlSvgVdi.html#afa6255bb4b1d78d10c64b4291b55e5dc" />
+      <keyword name="svgTrailer" id="rlSvgVdi::svgTrailer" ref="classrlSvgVdi.html#ab7b5d881d3396a96aa5dcdd8b61a5961" />
+      <keyword name="drawEllipse" id="rlSvgVdi::drawEllipse" ref="classrlSvgVdi.html#a3dff052493af6d262c24a9c88d413d10" />
+      <keyword name="moveTo" id="rlSvgVdi::moveTo" ref="classrlSvgVdi.html#a9c5a8066cb469cdf140e01248dcb57ba" />
+      <keyword name="lineTo" id="rlSvgVdi::lineTo" ref="classrlSvgVdi.html#a7e457fd0cd48826461fbc45697e425f3" />
+      <keyword name="line" id="rlSvgVdi::line" ref="classrlSvgVdi.html#a57f930deb46f53436975129dcc51d232" />
+      <keyword name="text" id="rlSvgVdi::text" ref="classrlSvgVdi.html#a8a0a55e88827c4e7e17caef6183b0e02" />
+      <keyword name="textInAxis" id="rlSvgVdi::textInAxis" ref="classrlSvgVdi.html#a80f783ca256961916ccc9e52b209408e" />
+      <keyword name="box" id="rlSvgVdi::box" ref="classrlSvgVdi.html#ad0db4f0f750bb47649f17c5e4010d9e9" />
+      <keyword name="boxWithText" id="rlSvgVdi::boxWithText" ref="classrlSvgVdi.html#a05d7dddda9302771b08d609fadb5de36" />
+      <keyword name="rect" id="rlSvgVdi::rect" ref="classrlSvgVdi.html#ad98e0a8877ea190e9ead03f1ccf2c0b7" />
+      <keyword name="xAxis" id="rlSvgVdi::xAxis" ref="classrlSvgVdi.html#a18f9dc4175ee4276a5ed4153c468a33a" />
+      <keyword name="yAxis" id="rlSvgVdi::yAxis" ref="classrlSvgVdi.html#aeac6bdc1232abd81936a486957884e79" />
+      <keyword name="xGrid" id="rlSvgVdi::xGrid" ref="classrlSvgVdi.html#aead041325ae396544e3553e219fae108" />
+      <keyword name="yGrid" id="rlSvgVdi::yGrid" ref="classrlSvgVdi.html#a9118af84829c6d8f208d54a30ead5e6a" />
+      <keyword name="rightYAxis" id="rlSvgVdi::rightYAxis" ref="classrlSvgVdi.html#a88feabce5d4c840d676668b889d0a796" />
+      <keyword name="drawSymbol" id="rlSvgVdi::drawSymbol" ref="classrlSvgVdi.html#a8c9cc87df30d6c51752dfb9768243d51" />
+      <keyword name="line" id="rlSvgVdi::line" ref="classrlSvgVdi.html#ac606488d5a3aed3702163093ba40ca92" />
+      <keyword name="setColor" id="rlSvgVdi::setColor" ref="classrlSvgVdi.html#a00d01f624b19f3fbf9b58b008d058910" />
+      <keyword name="setFont" id="rlSvgVdi::setFont" ref="classrlSvgVdi.html#a6ce41f4d7adfcea86eae3cc765b89bdb" />
+      <keyword name="setWidth" id="rlSvgVdi::setWidth" ref="classrlSvgVdi.html#a21de6fd462218fa96b4ba6f9685a44cf" />
+      <keyword name="setLinestyle" id="rlSvgVdi::setLinestyle" ref="classrlSvgVdi.html#a8c6194fefd9b5e859cec8f58e75bea29" />
+      <keyword name="comment" id="rlSvgVdi::comment" ref="classrlSvgVdi.html#adee7479940ced90c2962931bd5b0c80c" />
+      <keyword name="svg_put" id="rlSvgVdi::svg_put" ref="classrlSvgVdi.html#a29ac9099d35f4f4382ccd311fc8dc8db" />
+      <keyword name="svg_printf" id="rlSvgVdi::svg_printf" ref="classrlSvgVdi.html#a3a7eadbe127de50f2799056105ae6024" />
+      <keyword name="svg_d" id="rlSvgVdi::svg_d" ref="classrlSvgVdi.html#afaa0e92548cbbbcfce894f7bb3e9b8ef" />
+      <keyword name="svg_points" id="rlSvgVdi::svg_points" ref="classrlSvgVdi.html#acc77e3c78129b19ad0d8dc8eedcc8068" />
+      <keyword name="getFontsize" id="rlSvgVdi::getFontsize" ref="classrlSvgVdi.html#a9fcc78fe63ec6b450ccaec6c4eb0ae3b" />
+      <keyword name="getBoxX" id="rlSvgVdi::getBoxX" ref="classrlSvgVdi.html#a6270026569351b0c00fa6d4355a549fc" />
+      <keyword name="getBoxY" id="rlSvgVdi::getBoxY" ref="classrlSvgVdi.html#a3c29400c1369b87d04a7497ad15833ac" />
+      <keyword name="getBoxW" id="rlSvgVdi::getBoxW" ref="classrlSvgVdi.html#a9427e180ac259dfd77d0a514e012005d" />
+      <keyword name="getBoxH" id="rlSvgVdi::getBoxH" ref="classrlSvgVdi.html#a71c85d1016301d2185b001cf8741375e" />
+      <keyword name="outputState" id="rlSvgVdi::outputState" ref="classrlSvgVdi.html#af717171698c7b008553a21bc14012d25" />
+      <keyword name="perhapsSend" id="rlSvgVdi::perhapsSend" ref="classrlSvgVdi.html#a32e505da92515f840d7bf0db0c311b48" />
+      <keyword name="tx" id="rlSvgVdi::tx" ref="classrlSvgVdi.html#a270e923a6ea25458fe853a288c4f45b2" />
+      <keyword name="ty" id="rlSvgVdi::ty" ref="classrlSvgVdi.html#a6a44c86ed11da46aae80b3b3007902ec" />
+      <keyword name="sout" id="rlSvgVdi::sout" ref="classrlSvgVdi.html#afcc8d3b328480b07e1066a354a39034d" />
+      <keyword name="fout" id="rlSvgVdi::fout" ref="classrlSvgVdi.html#a8281d46ff1a9305b69281c970d3c1c49" />
+      <keyword name="pipe" id="rlSvgVdi::pipe" ref="classrlSvgVdi.html#a462686f6393d6534a6411e419ff36012" />
+      <keyword name="filename" id="rlSvgVdi::filename" ref="classrlSvgVdi.html#af5fa9cd4b87912a17083221ddb189d62" />
+      <keyword name="outputfilename" id="rlSvgVdi::outputfilename" ref="classrlSvgVdi.html#a1e1435f1740f1465f4b07275909b8922" />
+      <keyword name="idForPvbrowser" id="rlSvgVdi::idForPvbrowser" ref="classrlSvgVdi.html#a36355cef8086cd9eea1790c1cc1b1e41" />
+      <keyword name="svg" id="rlSvgVdi::svg" ref="classrlSvgVdi.html#a7eb002cc67fc32caace76a22f6591a73" />
+      <keyword name="svg2" id="rlSvgVdi::svg2" ref="classrlSvgVdi.html#a356ef185d99c08b3637455eec8d1a662" />
+      <keyword name="svg3" id="rlSvgVdi::svg3" ref="classrlSvgVdi.html#a5936eeb7185a7c616c62380024938871" />
+      <keyword name="fontstring" id="rlSvgVdi::fontstring" ref="classrlSvgVdi.html#ab93e7f6a05545b3163639ce3f51bfc6d" />
+      <keyword name="stroke" id="rlSvgVdi::stroke" ref="classrlSvgVdi.html#aa877742791e8db36bbfffda96227af7e" />
+      <keyword name="width" id="rlSvgVdi::width" ref="classrlSvgVdi.html#a5a7a84f777545e3fb1a329302ad86a81" />
+      <keyword name="dasharray" id="rlSvgVdi::dasharray" ref="classrlSvgVdi.html#a23b31b440ca4b6be86b41b68442b6b5d" />
+      <keyword name="lineoptions" id="rlSvgVdi::lineoptions" ref="classrlSvgVdi.html#aa6eda911ddbceee2937ffe4e6db6fcb1" />
+      <keyword name="textoptions" id="rlSvgVdi::textoptions" ref="classrlSvgVdi.html#a84e7dee6fb6f1cbaac5fb501be23e2f2" />
+      <keyword name="xold" id="rlSvgVdi::xold" ref="classrlSvgVdi.html#adf3ea868c8d746ddaf501878274fb8ed" />
+      <keyword name="yold" id="rlSvgVdi::yold" ref="classrlSvgVdi.html#a62d5135b00cca3e1083d5db78f8175d3" />
+      <keyword name="xmin" id="rlSvgVdi::xmin" ref="classrlSvgVdi.html#aaed99322a2b4f83cfacfd33cd295d479" />
+      <keyword name="dx" id="rlSvgVdi::dx" ref="classrlSvgVdi.html#aaf05c1c542ac41ef9110dc8ae5a13a7e" />
+      <keyword name="xmax" id="rlSvgVdi::xmax" ref="classrlSvgVdi.html#ae75b779a8a548be483ebc2c305fa750f" />
+      <keyword name="ymin" id="rlSvgVdi::ymin" ref="classrlSvgVdi.html#a4bfaba16b56f6d95098513f5fd19f8af" />
+      <keyword name="dy" id="rlSvgVdi::dy" ref="classrlSvgVdi.html#aa68196edf5c22a24fe9c8c74eb7f1f57" />
+      <keyword name="ymax" id="rlSvgVdi::ymax" ref="classrlSvgVdi.html#a0382b7e56fc3ef24fba647acddd15ec8" />
+      <keyword name="boxx" id="rlSvgVdi::boxx" ref="classrlSvgVdi.html#a064f62f8513806ab66182299243ae071" />
+      <keyword name="boxy" id="rlSvgVdi::boxy" ref="classrlSvgVdi.html#a30a93c21ae5dfd8aae62e975fad56381" />
+      <keyword name="boxw" id="rlSvgVdi::boxw" ref="classrlSvgVdi.html#ab6970a2e9d05d3f4f3a522a13c53d0d7" />
+      <keyword name="boxh" id="rlSvgVdi::boxh" ref="classrlSvgVdi.html#aef442c9a6c3fc83689151d24827b9afe" />
+      <keyword name="fontsize" id="rlSvgVdi::fontsize" ref="classrlSvgVdi.html#a5e8904f75fe716becf3846bca5577333" />
+      <keyword name="sr" id="rlSvgVdi::sr" ref="classrlSvgVdi.html#a89e347aa72fcedab21dc5a8beed73793" />
+      <keyword name="floatFormat" id="rlSvgVdi::floatFormat" ref="classrlSvgVdi.html#a051de220ad008b3b71fceadfd6c084b9" />
       <keyword name="rlThread" id="rlThread" ref="classrlThread.html" />
       <keyword name="rlThread" id="rlThread::rlThread" ref="classrlThread.html#a25bfd19bd7b382d71ecb12b554a31b3f" />
       <keyword name="~rlThread" id="rlThread::~rlThread" ref="classrlThread.html#a207ef107f2a2c07239329a43f5d58cd8" />
@@ -7221,6 +7483,9 @@
       <file>ftv2doc.png</file>
       <file>ftv2folderclosed.png</file>
       <file>ftv2folderopen.png</file>
+      <file>ftv2ns.png</file>
+      <file>ftv2mo.png</file>
+      <file>ftv2cl.png</file>
       <file>ftv2lastnode.png</file>
       <file>ftv2link.png</file>
       <file>ftv2mlastnode.png</file>
@@ -7340,6 +7605,8 @@
       <file>rlsvganimator_8h_source.html</file>
       <file>rlsvgcat_8cpp_source.html</file>
       <file>rlsvgcat_8h_source.html</file>
+      <file>rlsvgvdi_8cpp_source.html</file>
+      <file>rlsvgvdi_8h_source.html</file>
       <file>rlthread_8cpp_source.html</file>
       <file>rlthread_8h_source.html</file>
       <file>rltime_8cpp_source.html</file>
@@ -7599,6 +7866,11 @@
       <file>rlsvgcat_8h.html</file>
       <file>rlsvgcat_8h__incl.png</file>
       <file>rlsvgcat_8h__dep__incl.png</file>
+      <file>rlsvgvdi_8cpp.html</file>
+      <file>rlsvgvdi_8cpp__incl.png</file>
+      <file>rlsvgvdi_8h.html</file>
+      <file>rlsvgvdi_8h__incl.png</file>
+      <file>rlsvgvdi_8h__dep__incl.png</file>
       <file>rlthread_8cpp.html</file>
       <file>rlthread_8cpp__incl.png</file>
       <file>rlthread_8h.html</file>
@@ -7852,6 +8124,9 @@
       <file>classrlSvgPosition-members.html</file>
       <file>structrlSvgPosition_1_1rlPositionInit.html</file>
       <file>structrlSvgPosition_1_1rlPositionInit-members.html</file>
+      <file>classrlSvgVdi.html</file>
+      <file>classrlSvgVdi__coll__graph.png</file>
+      <file>classrlSvgVdi-members.html</file>
       <file>classrlThread.html</file>
       <file>classrlThread__inherit__graph.png</file>
       <file>classrlThread__coll__graph.png</file>
@@ -7976,6 +8251,7 @@
       <file>inherit_graph_83.png</file>
       <file>inherit_graph_84.png</file>
       <file>inherit_graph_85.png</file>
+      <file>inherit_graph_86.png</file>
       <file>functions.html</file>
       <file>functions_a.html</file>
       <file>functions_b.html</file>
@@ -8114,6 +8390,7 @@
       <file>globals_func.html</file>
       <file>globals_func.html</file>
       <file>globals_func.html</file>
+      <file>globals_func.html</file>
       <file>globals_vars.html</file>
       <file>globals_vars.html</file>
       <file>globals_vars.html</file>
@@ -8126,6 +8403,8 @@
       <file>globals_enum.html</file>
       <file>globals_enum.html</file>
       <file>globals_enum.html</file>
+      <file>globals_eval.html</file>
+      <file>globals_eval.html</file>
       <file>globals_eval.html</file>
       <file>globals_eval.html</file>
       <file>globals_eval.html</file>

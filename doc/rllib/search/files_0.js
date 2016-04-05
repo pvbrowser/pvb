@@ -102,6 +102,8 @@ var searchData=
   ['rlsvganimator_2eh',['rlsvganimator.h',['../rlsvganimator_8h.html',1,'']]],
   ['rlsvgcat_2ecpp',['rlsvgcat.cpp',['../rlsvgcat_8cpp.html',1,'']]],
   ['rlsvgcat_2eh',['rlsvgcat.h',['../rlsvgcat_8h.html',1,'']]],
+  ['rlsvgvdi_2ecpp',['rlsvgvdi.cpp',['../rlsvgvdi_8cpp.html',1,'']]],
+  ['rlsvgvdi_2eh',['rlsvgvdi.h',['../rlsvgvdi_8h.html',1,'']]],
   ['rlthread_2ecpp',['rlthread.cpp',['../rlthread_8cpp.html',1,'']]],
   ['rlthread_2eh',['rlthread.h',['../rlthread_8h.html',1,'']]],
   ['rltime_2ecpp',['rltime.cpp',['../rltime_8cpp.html',1,'']]],

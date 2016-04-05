@@ -10,6 +10,7 @@ var searchData=
   ['lifecounter',['lifeCounter',['../structrlDataAcquisition_1_1SHM__HEADER.html#a63363c7709a725667b182acd4e41fe24',1,'rlDataAcquisition::SHM_HEADER::lifeCounter()'],['../structrlDataAcquisitionProvider_1_1SHM__HEADER.html#a4b72d1f8bd3af7570d41087cfedd2abc',1,'rlDataAcquisitionProvider::SHM_HEADER::lifeCounter()']]],
   ['limited',['limited',['../classrlController.html#a43983410385111ed15103ea18fc3427b',1,'rlController']]],
   ['line',['line',['../classrlCommandlineInterface.html#af950aa2005786b52a287493119dc577a',1,'rlCommandlineInterface::line()'],['../struct__rlFileLines__.html#a6851ce607f0b2cb498942f65018b9f30',1,'_rlFileLines_::line()'],['../struct__rlHistoryLogLine__.html#abddc0eb5ecb0cd5d5f6792eddaad83e1',1,'_rlHistoryLogLine_::line()'],['../struct__rlHistoryReaderLine__.html#aaf114f209acd9fbb1b909038e59fcf37',1,'_rlHistoryReaderLine_::line()'],['../classrlInterpreter.html#aefeeb45a9fa31628d87896bef00a02b6',1,'rlInterpreter::line()'],['../classrlSpawn.html#a11292b55d7c26e3e1894fd9574d49db4',1,'rlSpawn::line()'],['../classrlSvgCat.html#abd8e00e51e997051d3a063fb1dcfc674',1,'rlSvgCat::line()']]],
+  ['lineoptions',['lineoptions',['../classrlSvgVdi.html#aa6eda911ddbceee2937ffe4e6db6fcb1',1,'rlSvgVdi']]],
   ['list',['list',['../classrlFifo.html#aacd79fe78ae8ef03540fdade832bc331',1,'rlFifo']]],
   ['list_5fwhat',['list_what',['../classrlHtmlDir.html#aa68ad77418f12fa5f648125ab24612a2',1,'rlHtmlDir']]],
   ['loaded',['loaded',['../classrlFileLoad.html#affa97c5e3d664785dab70fb0a6911faf',1,'rlFileLoad']]],

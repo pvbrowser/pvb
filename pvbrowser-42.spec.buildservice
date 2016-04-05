@@ -477,6 +477,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/rllib/lib/rldf1.h
 /opt/pvb/rllib/lib/rlhtmldir.h  
 /opt/pvb/rllib/lib/rlhtml.h
+/opt/pvb/rllib/lib/rlsvgvdi.h
 /opt/pvb/language_bindings/lua/pvslua/pvslua
 /opt/pvb/language_bindings/lua/pvapplua/pvapplua
 /opt/pvb/language_bindings/python/id/pv.py

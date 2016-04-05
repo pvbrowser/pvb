@@ -13,6 +13,7 @@ var searchData=
   ['move',['move',['../classrlSvgPosition.html#af519a34184fc50fe7109f21445d36f67',1,'rlSvgPosition']]],
   ['movemainobject',['moveMainObject',['../classrlSvgAnimator.html#af6c86a9453f738a71dab04bb91ae496f',1,'rlSvgAnimator']]],
   ['moverelative',['moveRelative',['../classrlSvgPosition.html#a8a2265ea97ad54b5122185baa97f658c',1,'rlSvgPosition']]],
+  ['moveto',['moveTo',['../classrlSvgVdi.html#a9c5a8066cb469cdf140e01248dcb57ba',1,'rlSvgVdi']]],
   ['myquery',['myquery',['../classrlBussignalDatabase.html#af0ee4e5881f614eea25f9d2b76a4da8c',1,'rlBussignalDatabase']]],
   ['mysystem',['mysystem',['../rlcutil_8cpp.html#a08f65360e4ba6d52b22f9be5d3b61aa9',1,'rlcutil.cpp']]]
 ];

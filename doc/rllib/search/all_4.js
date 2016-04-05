@@ -13,6 +13,7 @@ var searchData=
   ['daq_5ferror',['DAQ_ERROR',['../classrlDataAcquisition.html#a0890888cf8df68c79bec2683c65ea759a4e49d3ed703939da7f99355861f92a8b',1,'rlDataAcquisition']]],
   ['daq_5fprovider_5fenum',['DAQ_PROVIDER_ENUM',['../classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7',1,'rlDataAcquisitionProvider']]],
   ['daq_5fprovider_5ferror',['DAQ_PROVIDER_ERROR',['../classrlDataAcquisitionProvider.html#a65b9aea6997a04f0b67bdd5f92aaaee7a299951e0922728741b98e46f451325e2',1,'rlDataAcquisitionProvider']]],
+  ['dasharray',['dasharray',['../classrlSvgVdi.html#a23b31b440ca4b6be86b41b68442b6b5d',1,'rlSvgVdi']]],
   ['dat',['dat',['../classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2',1,'df1Buffer']]],
   ['data',['data',['../structrlEIBnetIP_1_1PDU.html#a575d929b65cf7fb04749631afcf737dd',1,'rlEIBnetIP::PDU::data()'],['../classdf1Buffer.html#a53021e47a0f7f88a3847ea586cf954a6',1,'df1Buffer::data()']]],
   ['data2int',['data2int',['../classrlModbus.html#a02da348cb1bef2021a253189f55aeb11',1,'rlModbus']]],
@@ -78,7 +79,11 @@ var searchData=
   ['doublehasdecreased',['doubleHasDecreased',['../classrlPlcState.html#aa7b15c6df80a28e3520ceb60e8c028b0',1,'rlPlcState::doubleHasDecreased()'],['../classrlPlcMem.html#a72d9299612fe1b5efb11efb25d503dcd',1,'rlPlcMem::doubleHasDecreased()']]],
   ['doublehasincreased',['doubleHasIncreased',['../classrlPlcState.html#afb70f5554603032eda34625497b1921f',1,'rlPlcState::doubleHasIncreased()'],['../classrlPlcMem.html#a4a97f4abfdb56c627cdd9a83f77695cb',1,'rlPlcMem::doubleHasIncreased()']]],
   ['dprintf',['dprintf',['../classrl3964R.html#aeff9837c28291c04cd0ac3d6df2195df',1,'rl3964R']]],
+  ['drawellipse',['drawEllipse',['../classrlSvgVdi.html#a3dff052493af6d262c24a9c88d413d10',1,'rlSvgVdi']]],
+  ['drawsymbol',['drawSymbol',['../classrlSvgVdi.html#a8c9cc87df30d6c51752dfb9768243d51',1,'rlSvgVdi']]],
   ['dt',['dt',['../classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549',1,'rlController']]],
   ['dump',['dump',['../classrlEIBnetIP.html#aaa0d9fe5684e3a709cdef4262cf3d64e',1,'rlEIBnetIP']]],
-  ['dword',['Dword',['../classrlPPIClient.html#a0c7386dbad88b6e1720499f0f584682e',1,'rlPPIClient::Dword()'],['../classrlSiemensTCPClient.html#a405e90be8cf8ab7d5d791afea398ac8e',1,'rlSiemensTCPClient::Dword()']]]
+  ['dword',['Dword',['../classrlPPIClient.html#a0c7386dbad88b6e1720499f0f584682e',1,'rlPPIClient::Dword()'],['../classrlSiemensTCPClient.html#a405e90be8cf8ab7d5d791afea398ac8e',1,'rlSiemensTCPClient::Dword()']]],
+  ['dx',['dx',['../classrlSvgVdi.html#aaf05c1c542ac41ef9110dc8ae5a13a7e',1,'rlSvgVdi']]],
+  ['dy',['dy',['../classrlSvgVdi.html#aa68196edf5c22a24fe9c8c74eb7f1f57',1,'rlSvgVdi']]]
 ];

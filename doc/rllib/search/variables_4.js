@@ -8,6 +8,7 @@ var searchData=
   ['daddr',['daddr',['../structrlEIBnetIP_1_1EIB__TEL.html#a363f3ae10e635e7ba96454293a8a3e3f',1,'rlEIBnetIP::EIB_TEL']]],
   ['daemon_5fthread',['daemon_thread',['../classrlCanOpenDaemon.html#a0ba207ed336015b1ec56340aa1ffebce',1,'rlCanOpenDaemon']]],
   ['daemonptr',['daemonptr',['../structTHREADTRANSFER.html#a2d180c880175d6b3d4a98ad5114d6baf',1,'THREADTRANSFER']]],
+  ['dasharray',['dasharray',['../classrlSvgVdi.html#a23b31b440ca4b6be86b41b68442b6b5d',1,'rlSvgVdi']]],
   ['dat',['dat',['../classdf1Buffer.html#a1b3873c34ba6c7a7e12ab6b1b1dc57a2',1,'df1Buffer']]],
   ['data',['data',['../structrlEIBnetIP_1_1PDU.html#a575d929b65cf7fb04749631afcf737dd',1,'rlEIBnetIP::PDU']]],
   ['database',['database',['../classrlBussignalDatabase.html#a6a4a8b3afb2bb36df4e7d2b5c4b9b303',1,'rlBussignalDatabase']]],
@@ -18,5 +19,7 @@ var searchData=
   ['debug',['debug',['../classrl3964R.html#a033851e104777a80be42011fc58628f4',1,'rl3964R::debug()'],['../classrlEIBnetIP.html#ac13a696b9fedeb2cb2a5a764ae0cef82',1,'rlEIBnetIP::debug()'],['../classrlFileLoad.html#a0e645f1b374509a98aea7e0c92a69b3f',1,'rlFileLoad::debug()'],['../classrlHilscherCIF.html#a288d50a6b6a12cdccfb4512594344fae',1,'rlHilscherCIF::debug()'],['../classrlHistoryLogger.html#a7efdf6947d6b6439b58d09101b8d0e81',1,'rlHistoryLogger::debug()'],['../classrlHistoryReader.html#ac2d9cac993e682b0efc246073b95d1dc',1,'rlHistoryReader::debug()'],['../classrlUdpSocket.html#a6104de2d13cd329c5db92d7e1c6ff284',1,'rlUdpSocket::debug()'],['../classrlWebcam.html#a9fd52f042a0a338ea3d2b4877e1e68a2',1,'rlWebcam::debug()']]],
   ['default_5fsection',['default_section',['../classrlIniFile.html#a248eaf5b934bdaf468d29b30be00926f',1,'rlIniFile']]],
   ['delimitor',['delimitor',['../classrlModbus.html#a9777d76fbc901e32d03bbc86ca557842',1,'rlModbus::delimitor()'],['../classrlSpreadsheetTable.html#a5f9ace1eb14d77b84aeb945f3fe8f4b2',1,'rlSpreadsheetTable::delimitor()'],['../classrlSpreadsheetWorkbook.html#a8135dc4020e8ade4d52e962e0b687a91',1,'rlSpreadsheetWorkbook::delimitor()']]],
-  ['dt',['dt',['../classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549',1,'rlController']]]
+  ['dt',['dt',['../classrlController.html#ae6a2b3f80cef1c1ecddf8f4d1eae3549',1,'rlController']]],
+  ['dx',['dx',['../classrlSvgVdi.html#aaf05c1c542ac41ef9110dc8ae5a13a7e',1,'rlSvgVdi']]],
+  ['dy',['dy',['../classrlSvgVdi.html#aa68196edf5c22a24fe9c8c74eb7f1f57',1,'rlSvgVdi']]]
 ];

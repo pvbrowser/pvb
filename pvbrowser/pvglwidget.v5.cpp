@@ -225,3 +225,13 @@ void PvGLWidget::leaveEvent(QEvent *event)
 }
 
 #endif
+
+#ifdef PVDEVELOP
+int PvGLWidget::interpret(const char *line)
+{
+  if(line == NULL) return -1;
+  return 0; // I'm a dummy
+}
+#endif
+
+

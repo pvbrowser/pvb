@@ -62,6 +62,7 @@ var searchData=
   ['rlsvganimator',['rlSvgAnimator',['../classrlSvgAnimator.html',1,'']]],
   ['rlsvgcat',['rlSvgCat',['../classrlSvgCat.html',1,'']]],
   ['rlsvgposition',['rlSvgPosition',['../classrlSvgPosition.html',1,'']]],
+  ['rlsvgvdi',['rlSvgVdi',['../classrlSvgVdi.html',1,'']]],
   ['rlthread',['rlThread',['../classrlThread.html',1,'']]],
   ['rltime',['rlTime',['../classrlTime.html',1,'']]],
   ['rludpsocket',['rlUdpSocket',['../classrlUdpSocket.html',1,'']]],
