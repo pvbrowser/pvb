@@ -4,12 +4,13 @@
 ########################################################
 export LIBPTHREAD='-pthread'
 cd pvserver
-rm util.o glencode.o
-../qmake.sh pvsid.pro -o pvsid.mak
-make -f pvsid.mak
-rm util.o glencode.o
-../qmake.sh pvsmt.pro -o pvsmt.mak
-make -f pvsmt.mak
+./makelibs.sh
+# rm util.o glencode.o
+# ../qmake.sh pvsid.pro -o pvsid.mak
+# make -f pvsid.mak
+# rm util.o glencode.o
+# ../qmake.sh pvsmt.pro -o pvsmt.mak
+# make -f pvsmt.mak
 cd ..
 cd rllib/lib
 ../../qmake.sh lib.pro
