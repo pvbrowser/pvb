@@ -23,6 +23,7 @@
 #include <windows.h>
 #include <io.h>
 #include <direct.h>
+#define  MSG_NOSIGNAL 0
 #else
 #include <sys/time.h>
 #include <sys/socket.h>
