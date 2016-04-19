@@ -21,7 +21,7 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
-const char pvserver_version[] = "4.8.3";
+const char pvserver_version[] = "4.8.4";
 
 // define WIN
 #ifdef _WIN32

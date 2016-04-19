@@ -945,37 +945,40 @@ bindv6:
   }
 
   // Brute force attack detection BEGIN
-  unsigned char *ptr1 = (unsigned char *) &lastSockaddr; 
-  ptr1 += 4;
-  unsigned char *ptr2 = (unsigned char *) &pvSockaddr; 
-  ptr2 += 4;
-  int plen = 4;
-  if(rl_ipversion == 6)
+  if(p->http == 1)
   {
+    unsigned char *ptr1 = (unsigned char *) &lastSockaddr; 
     ptr1 += 4;
+    unsigned char *ptr2 = (unsigned char *) &pvSockaddr; 
     ptr2 += 4;
-    plen = 16;
-  }  
-  if(memcmp(ptr1, ptr2, plen) == 0)
-  {
-    pvTime now;
-    pvGetLocalTime(&now);
-    if(now.second == last_connect.second &&
-       now.minute == last_connect.minute &&
-       now.hour   == last_connect.hour   &&
-       now.day    == last_connect.day    &&
-       now.month  == last_connect.month  &&
-       now.year   == last_connect.year    )
+    int plen = 4;
+    if(rl_ipversion == 6)
     {
-      closesocket(p->s);
-      p->s = -2;
-      sprintf(buf,"Brute force attack");
-      pvWarning(p,buf);
-      return -2;
+      ptr1 += 4;
+      ptr2 += 4;
+      plen = 16;
+    }  
+    if(memcmp(ptr1, ptr2, plen) == 0)
+    {
+      pvTime now;
+      pvGetLocalTime(&now);
+      if(now.second == last_connect.second &&
+         now.minute == last_connect.minute &&
+         now.hour   == last_connect.hour   &&
+         now.day    == last_connect.day    &&
+         now.month  == last_connect.month  &&
+         now.year   == last_connect.year    )
+      {
+        closesocket(p->s);
+        p->s = -2;
+        sprintf(buf,"Brute force attack");
+        pvWarning(p,buf);
+        return -2;
+      }
+      memcpy(&last_connect,&now,sizeof(pvTime));
     }
-    memcpy(&last_connect,&now,sizeof(pvTime));
+    memcpy(&lastSockaddr,&pvSockaddr,pvSocklen);
   }
-  memcpy(&lastSockaddr,&pvSockaddr,pvSocklen);
   // Brute force attack detection END
 
   pvlock(p);
