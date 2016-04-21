@@ -15,14 +15,14 @@ SET    QTDIR=C:\Qt\Qt5.5.1\5.5\mingw492_32
 SET MINGWDIR=C:\Qt\Qt5.5.1\Tools\mingw492_32
 
 rem tools necessary for language bindings
-SET SWIGDIR=Z:\win\swigwin-1.3.33
-SET PYDIR=C:\Python25
+SET SWIGDIR=c:\rl\tools\swigwin-1.3.33
+SET PYDIR=c:\Python25
 SET VTKDIR=z:\Downloads\vtk\VTK5.10.1
 SET TCLDIR=c:\Tcl
 SET TCLLIBPATH=c:\Tcl\Tcl8.5;z:/Downloads/vtk/bin/Wrapping/Tcl
 rem change to directory with our sources
-SET PVBDIR=z:\rl\cc\pvb
-z:
+SET PVBDIR=c:\rl\cc\pvb
+c:
 cd  %PVBDIR%\win-mingw
 
 rem setup path variables

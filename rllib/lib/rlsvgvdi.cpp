@@ -33,6 +33,10 @@
 #include "unistd.h"
 #endif
 
+#ifdef PVMAC
+#define MSG_NOSIGNAL 0
+#endif
+
 rlSvgVdi::rlSvgVdi()
 {
   sout = NULL;
