@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">rlsvgvdi.cpp File Reference</div>  </div>
@@ -108,11 +109,31 @@ Include dependency graph for rlsvgvdi.cpp:</div>
 </div>
 <p><a href="rlsvgvdi_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a9f55d0e90dc8cc6b2287312435cdde48"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsvgvdi_8cpp.html#a9f55d0e90dc8cc6b2287312435cdde48">MSG_NOSIGNAL</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a9f55d0e90dc8cc6b2287312435cdde48"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a878c3557bca39cb0fa4b122ecbf33861"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="rlsvgvdi_8cpp.html#a878c3557bca39cb0fa4b122ecbf33861">beautyval</a> (char *text)</td></tr>
 <tr class="separator:a878c3557bca39cb0fa4b122ecbf33861"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="a9f55d0e90dc8cc6b2287312435cdde48"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define MSG_NOSIGNAL&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="rlsvgvdi_8cpp_source.html#l00026">26</a> of file <a class="el" href="rlsvgvdi_8cpp_source.html">rlsvgvdi.cpp</a>.</p>
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="a878c3557bca39cb0fa4b122ecbf33861"></a>
 <div class="memitem">
@@ -136,23 +157,23 @@ Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="rlsvgvdi_8cpp_source.html#l00382">382</a> of file <a class="el" href="rlsvgvdi_8cpp_source.html">rlsvgvdi.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;{</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordtype">char</span> *cptr = strchr(text,<span class="charliteral">&#39;.&#39;</span>);</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <span class="keywordflow">if</span>(cptr != NULL)</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  {</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;    <span class="keywordtype">char</span> *end = cptr + strlen(cptr) - 1;</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;    <span class="keywordflow">while</span>(end != cptr) <span class="comment">// eliminate trailing 0</span></div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    {</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;      <span class="keywordflow">if</span>     (*end == <span class="charliteral">&#39;0&#39;</span>) { *end = <span class="charliteral">&#39;\0&#39;</span>; }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*end == <span class="charliteral">&#39;.&#39;</span>) { *end = <span class="charliteral">&#39;\0&#39;</span>; <span class="keywordflow">break</span>; }</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;      <span class="keywordflow">else</span>                 { <span class="keywordflow">break</span>; }</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;      end--;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    }</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span>(cptr == end) *cptr = <span class="charliteral">&#39;\0&#39;</span>;</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  }</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
+<p>Definition at line <a class="el" href="rlsvgvdi_8cpp_source.html#l00387">387</a> of file <a class="el" href="rlsvgvdi_8cpp_source.html">rlsvgvdi.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;{</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <span class="keywordtype">char</span> *cptr = strchr(text,<span class="charliteral">&#39;.&#39;</span>);</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="keywordflow">if</span>(cptr != NULL)</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  {</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;    <span class="keywordtype">char</span> *end = cptr + strlen(cptr) - 1;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordflow">while</span>(end != cptr) <span class="comment">// eliminate trailing 0</span></div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;    {</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;      <span class="keywordflow">if</span>     (*end == <span class="charliteral">&#39;0&#39;</span>) { *end = <span class="charliteral">&#39;\0&#39;</span>; }</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;      <span class="keywordflow">else</span> <span class="keywordflow">if</span>(*end == <span class="charliteral">&#39;.&#39;</span>) { *end = <span class="charliteral">&#39;\0&#39;</span>; <span class="keywordflow">break</span>; }</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;      <span class="keywordflow">else</span>                 { <span class="keywordflow">break</span>; }</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;      end--;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;    }</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    <span class="keywordflow">if</span>(cptr == end) *cptr = <span class="charliteral">&#39;\0&#39;</span>;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  }</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>

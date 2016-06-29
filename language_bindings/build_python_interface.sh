@@ -12,6 +12,12 @@ if [ "${1}" = "swig" ]; then
   fi
 fi
 
+echo "If Python is not found, please edit this file and define Python manually as shown here"
+# set Python manually
+# export PYTHON_INCLUDE=/usr/include/python2.7
+# export PYTHON_LIB=/usr/lib64/libpython2.7.so
+
+# or try to find Python automatically
 export PYTHON_INCLUDE=$(find /usr/include -name "python2.*")
 if [ "x${PYTHON_INCLUDE}" = "x" ]; then
   echo "No Python Includes found. Install package python-devel !"

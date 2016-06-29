@@ -291,6 +291,8 @@ void setDefaultOptions()
   getcwd(opt.initial_dir, sizeof(opt.initial_dir) - 1);
   opt.ffmpeg_available = 0;
   opt.ffplay_available = 0;
+  strcpy(opt.proxyadr,"localhost");
+  opt.proxyport = -1;
 }
 
 const char *readIniFile()
@@ -429,6 +431,20 @@ int i;
             system("rm ffmpeg.dat");
           }
 #endif
+        }
+        else if(strncmp(buf,"proxyadr=",9) == 0)
+        {
+          buf[MAXOPT - 1] = '\0';
+          strcpy(opt.proxyadr,&buf[9]);
+          char *cptr;
+          cptr = strchr(opt.proxyadr,'\n');
+          if(cptr != NULL) *cptr = '\0';
+          cptr = strchr(opt.proxyadr,' ');
+          if(cptr != NULL) *cptr = '\0';
+        }
+        else if(strncmp(buf,"proxyport=",10) == 0)
+        {
+          sscanf(buf,"proxyport=%d",&opt.proxyport);
         }
         else if(strncmp(buf,"toolbar=",8) == 0)
         {
@@ -710,6 +726,8 @@ int i;
 #endif
 #endif
         fprintf(fp,"generate_cookie=pvb_generate_cookie\n");
+        fprintf(fp,"proxyadr=localhost      # ip adr of proxy that might encrypt the network traffic\n");
+        fprintf(fp,"proxyport=-1            # -1 if proxy is not used\n");
 
         fprintf(fp,"##################################################################\n");
         fprintf(fp,"#\n");

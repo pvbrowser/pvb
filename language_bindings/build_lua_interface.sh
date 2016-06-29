@@ -3,6 +3,7 @@
 # usage: ./build_lua_interface.sh <swig>
 #
 echo "### building lua language bindings ###"
+echo "Info for Linux: libreadline-dev must be installed in order to build the lua interface"
 export PVBLANGUAGEDIR=$PWD
 cd lua/lua-5.1/src/
  ../../../../qmake.sh src.pro

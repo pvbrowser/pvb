@@ -1279,7 +1279,14 @@ void MainWindow::slotReconnect()
   cptr = strstr(buf,"/");
   if(cptr != NULL) *cptr = '\0';
   QApplication::setOverrideCursor( Qt::WaitCursor );
-  pvbtab[currentTab].s = tcp_con(buf,iport);
+  if(opt.proxyport < 0)
+  {
+    pvbtab[currentTab].s = tcp_con(buf,iport);
+  }
+  else
+  {
+    pvbtab[currentTab].s = tcp_con(opt.proxyadr,opt.proxyport);
+  }  
   if(pvbtab[currentTab].s > 0)
   {
     pvbtab[currentTab].in_use = 1;
