@@ -3378,6 +3378,7 @@ void Interpreter::interprets(const char *command)
           else
           {
             QWidget *w = (QWidget *) all[i]->w;
+            printf("setFont murx text=%s\n", (const char *) text.toUtf8());
             if(w != NULL) w->setFont(font);
           }
         }

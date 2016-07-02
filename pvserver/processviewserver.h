@@ -2977,6 +2977,10 @@ int pvSendHttpChunks(PARAM *p, const char *filename);
 send http response using Content-Length
 </pre> */
 int pvSendHttpContentLength(PARAM *p, const char *filename);
+/*! <pre>
+send http response using HTML
+</pre> */
+int pvSendHttpResponse(PARAM *p, const char *html);
 
 /*! <pre>
 Set the limit of clients the pvserver accepts from 1 ip address 

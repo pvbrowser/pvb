@@ -1309,7 +1309,8 @@ int i,ret,cmdline_length;
     cmdline_length += 1;
     cmdline_length += strlen(av[i]);
     if     (strncmp(av[i],"--h",3)                             == 0) { show_usage(); exit(0); }
-    if     (strcmp(av[i],"-http")                              == 0) p->http = 1;
+    if     (strcmp(av[i], "-http")                             == 0) p->http = 1;
+    else if(strncmp(av[i],"-http=",6)                          == 0) sscanf(av[i],"-http=%d",&p->http);
     else if(strncmp(av[i],"-h",2)                              == 0) { show_usage(); exit(0); }
     else if(strncmp(av[i],"-port=",6)                          == 0) sscanf(av[i],"-port=%d",&p->port);
     else if(strncmp(av[i],"-sleep=",7)                         == 0) sscanf(av[i],"-sleep=%d",&p->sleep);
@@ -1412,6 +1413,15 @@ int pvGetInitialMask(PARAM *p)
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
   if(ret == 0) return 0; /* timeout */
   pvtcpreceive(p, event, MAX_EVENT_LENGTH);
+  
+  if(strncmp(event,"GET ",4) == 0)
+  {
+	  char *cptr;
+    strcpy(p->url,event);
+		cptr = strchr(p->url,'\n');
+		if(cptr != NULL) *cptr = '\0';
+    return 0;
+  }
 
   if(strncmp(event,"initial(",8) == 0)
   {
@@ -5617,6 +5627,27 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   fclose(fp);
   p->fptmp = NULL;
   if(ret) return 0;
+  return 0;
+}
+
+int pvSendHttpResponse(PARAM *p, const char *html)
+{
+  if(html == NULL) return -1;
+  char tbuf[80];
+  sprintf(tbuf,"HTTP/1.1 200 OK\n");
+  pvtcpsendstring(p,tbuf);
+  sprintf(tbuf,"Server: pvserver-%s\n", pvserver_version);
+  pvtcpsendstring(p,tbuf);
+  sprintf(tbuf,"Keep-Alive: timeout=15, max=100\n");
+  pvtcpsendstring(p,tbuf);
+  sprintf(tbuf,"Connection: Keep-Alive\n");
+  pvtcpsendstring(p,tbuf);
+  sprintf(tbuf,"Content-Type: text/html\n");
+  pvtcpsendstring(p,tbuf);
+  sprintf(tbuf,"Content-length: %ld\n\n", strlen(html));
+  pvtcpsendstring(p,tbuf);
+
+  pvtcpsendstring(p, html);
   return 0;
 }
 
