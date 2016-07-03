@@ -2978,6 +2978,11 @@ send http response using Content-Length
 </pre> */
 int pvSendHttpContentLength(PARAM *p, const char *filename);
 /*! <pre>
+send http response file
+default Content-Type = text/html
+</pre> */
+int pvSendHttpResponseFile(PARAM *p, const char *filename, const char *content_type="text/html");
+/*! <pre>
 send http response using HTML
 </pre> */
 int pvSendHttpResponse(PARAM *p, const char *html);

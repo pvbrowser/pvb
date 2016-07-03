@@ -5630,6 +5630,24 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   return 0;
 }
 
+int pvSendHttpResponseFile(PARAM *p, const char *filename, const char *content_type)
+{
+  char buf[MAX_EVENT_LENGTH];
+
+  sprintf(buf,"HTTP/1.1 200 OK\n");
+  pvtcpsendstring(p,buf);
+  sprintf(buf,"Server: pvserver-%s\n", pvserver_version);
+  pvtcpsendstring(p,buf);
+  sprintf(buf,"Keep-Alive: timeout=15, max=100\n");
+  pvtcpsendstring(p,buf);
+  sprintf(buf,"Connection: Keep-Alive\n");
+  pvtcpsendstring(p,buf);
+  sprintf(buf,"Content-Type: %s\n", content_type);
+  pvtcpsendstring(p,buf);
+  pvSendHttpContentLength(p,filename);
+  return 0;
+}
+
 int pvSendHttpResponse(PARAM *p, const char *html)
 {
   if(html == NULL) return -1;
