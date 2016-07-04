@@ -869,8 +869,6 @@
             <section title="pvSave" ref="group__Misc.html#gac2fecd439e41688c1ee7d971ff09ca1c" />
             <section title="pvSaveAsBmp" ref="group__Misc.html#ga6aa9ac093b1f87c87e399c293c76902d" />
             <section title="pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
-            <section title="pvSendHttpChunks" ref="group__Misc.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
-            <section title="pvSendHttpContentLength" ref="group__Misc.html#gaa1674544930d4351855c4b8d52d5fd3c" />
             <section title="pvSendUserEvent" ref="group__Misc.html#gaafc31da19672f6c4584d3d5ae2a31373" />
             <section title="pvSetMaxClients" ref="group__Misc.html#gae67a22a9458bd7d73a59fff05da3576f" />
             <section title="pvSetMaxClientsPerIpAdr" ref="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
@@ -880,6 +878,12 @@
             <section title="pvtcpsend_binary" ref="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa" />
             <section title="pvtcpsendstring" ref="group__Misc.html#ga88dc793e8a43a7d48b1b0fe109c654f2" />
             <section title="pvWriteFile" ref="group__Misc.html#ga3810a20dd674e00eb1dcacf96d948915" />
+          </section>
+          <section title="http helper functions" ref="group__http.html">
+            <section title="pvSendHttpChunks" ref="group__http.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+            <section title="pvSendHttpContentLength" ref="group__http.html#gaa1674544930d4351855c4b8d52d5fd3c" />
+            <section title="pvSendHttpResponse" ref="group__http.html#ga060ee11b332c7f20a83f320058781be8" />
+            <section title="pvSendHttpResponseFile" ref="group__http.html#ga6755f223c065a795421229a840844c63" />
           </section>
           <section title="OpenGL" ref="group__OpenGL.html">
             <section title="glFont" ref="classglFont.html">
@@ -2033,6 +2037,8 @@
               <section title="pvSendFile" ref="processviewserver_8h.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
               <section title="pvSendHttpChunks" ref="processviewserver_8h.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
               <section title="pvSendHttpContentLength" ref="processviewserver_8h.html#gaa1674544930d4351855c4b8d52d5fd3c" />
+              <section title="pvSendHttpResponse" ref="processviewserver_8h.html#ga060ee11b332c7f20a83f320058781be8" />
+              <section title="pvSendHttpResponseFile" ref="processviewserver_8h.html#ga6755f223c065a795421229a840844c63" />
               <section title="pvSendJpegFrame" ref="processviewserver_8h.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
               <section title="pvSendOpenGL" ref="processviewserver_8h.html#ga94b76602a709d6c857ddf1e2bac4b425" />
               <section title="pvSendRGBA" ref="processviewserver_8h.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
@@ -2648,8 +2654,6 @@
       <keyword name="pvSendFile" id="processviewserver.h::pvSendFile" ref="processviewserver_8h.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="processviewserver.h::pvDownloadFileAs" ref="processviewserver_8h.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="processviewserver.h::pvDownloadFile" ref="processviewserver_8h.html#gad00140754b048cb7c60fa968fec98d41" />
-      <keyword name="pvSendHttpChunks" id="processviewserver.h::pvSendHttpChunks" ref="processviewserver_8h.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
-      <keyword name="pvSendHttpContentLength" id="processviewserver.h::pvSendHttpContentLength" ref="processviewserver_8h.html#gaa1674544930d4351855c4b8d52d5fd3c" />
       <keyword name="pvSetMaxClientsPerIpAdr" id="processviewserver.h::pvSetMaxClientsPerIpAdr" ref="processviewserver_8h.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
       <keyword name="pvMaxClientsPerIpAdr" id="processviewserver.h::pvMaxClientsPerIpAdr" ref="processviewserver_8h.html#ga0e8b6843979707a3e585de32f5b3767a" />
       <keyword name="pvSetMaxClients" id="processviewserver.h::pvSetMaxClients" ref="processviewserver_8h.html#gae67a22a9458bd7d73a59fff05da3576f" />
@@ -2661,6 +2665,10 @@
       <keyword name="pvtcpsend_binary" id="processviewserver.h::pvtcpsend_binary" ref="processviewserver_8h.html#ga3c8d98351f250fbfae19348f117f9eaa" />
       <keyword name="pvtcpreceive" id="processviewserver.h::pvtcpreceive" ref="processviewserver_8h.html#ga7b677664cb5cc96171e62eb64579ada4" />
       <keyword name="pvtcpreceive_binary" id="processviewserver.h::pvtcpreceive_binary" ref="processviewserver_8h.html#ga44c95940c5c32158a027f38ab99eb342" />
+      <keyword name="pvSendHttpChunks" id="processviewserver.h::pvSendHttpChunks" ref="processviewserver_8h.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+      <keyword name="pvSendHttpContentLength" id="processviewserver.h::pvSendHttpContentLength" ref="processviewserver_8h.html#gaa1674544930d4351855c4b8d52d5fd3c" />
+      <keyword name="pvSendHttpResponseFile" id="processviewserver.h::pvSendHttpResponseFile" ref="processviewserver_8h.html#ga6755f223c065a795421229a840844c63" />
+      <keyword name="pvSendHttpResponse" id="processviewserver.h::pvSendHttpResponse" ref="processviewserver_8h.html#ga060ee11b332c7f20a83f320058781be8" />
       <keyword name="pvGlBegin" id="processviewserver.h::pvGlBegin" ref="processviewserver_8h.html#ga494d8bbe0ab0f1a96b06dae34ce97c1f" />
       <keyword name="pvSendOpenGL" id="processviewserver.h::pvSendOpenGL" ref="processviewserver_8h.html#ga94b76602a709d6c857ddf1e2bac4b425" />
       <keyword name="pvGlEnd" id="processviewserver.h::pvGlEnd" ref="processviewserver_8h.html#ga9146ce61ae866a0d5f0d2e6dba2f5c27" />
@@ -3537,8 +3545,6 @@
       <keyword name="pvSendFile" id="Misc::pvSendFile" ref="group__Misc.html#ga8a396fee0ff82578cdb82eb54c76dfab" />
       <keyword name="pvDownloadFileAs" id="Misc::pvDownloadFileAs" ref="group__Misc.html#ga4892512cf39a6b3b51c60136b3ddd667" />
       <keyword name="pvDownloadFile" id="Misc::pvDownloadFile" ref="group__Misc.html#gad00140754b048cb7c60fa968fec98d41" />
-      <keyword name="pvSendHttpChunks" id="Misc::pvSendHttpChunks" ref="group__Misc.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
-      <keyword name="pvSendHttpContentLength" id="Misc::pvSendHttpContentLength" ref="group__Misc.html#gaa1674544930d4351855c4b8d52d5fd3c" />
       <keyword name="pvSetMaxClientsPerIpAdr" id="Misc::pvSetMaxClientsPerIpAdr" ref="group__Misc.html#ga6c99167a0daa384e40f2cb1e0b1dd63e" />
       <keyword name="pvMaxClientsPerIpAdr" id="Misc::pvMaxClientsPerIpAdr" ref="group__Misc.html#ga0e8b6843979707a3e585de32f5b3767a" />
       <keyword name="pvSetMaxClients" id="Misc::pvSetMaxClients" ref="group__Misc.html#gae67a22a9458bd7d73a59fff05da3576f" />
@@ -3550,6 +3556,11 @@
       <keyword name="pvtcpsend_binary" id="Misc::pvtcpsend_binary" ref="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa" />
       <keyword name="pvtcpreceive" id="Misc::pvtcpreceive" ref="group__Misc.html#ga7b677664cb5cc96171e62eb64579ada4" />
       <keyword name="pvtcpreceive_binary" id="Misc::pvtcpreceive_binary" ref="group__Misc.html#ga44c95940c5c32158a027f38ab99eb342" />
+      <keyword name="http helper functions" id="http helper functions" ref="group__http.html" />
+      <keyword name="pvSendHttpChunks" id="http::pvSendHttpChunks" ref="group__http.html#ga5cee0a72acdf15e3f8c10161c6caa2fc" />
+      <keyword name="pvSendHttpContentLength" id="http::pvSendHttpContentLength" ref="group__http.html#gaa1674544930d4351855c4b8d52d5fd3c" />
+      <keyword name="pvSendHttpResponseFile" id="http::pvSendHttpResponseFile" ref="group__http.html#ga6755f223c065a795421229a840844c63" />
+      <keyword name="pvSendHttpResponse" id="http::pvSendHttpResponse" ref="group__http.html#ga060ee11b332c7f20a83f320058781be8" />
       <keyword name="OpenGL" id="OpenGL" ref="group__OpenGL.html" />
       <keyword name="pvGlBegin" id="OpenGL::pvGlBegin" ref="group__OpenGL.html#ga494d8bbe0ab0f1a96b06dae34ce97c1f" />
       <keyword name="pvSendOpenGL" id="OpenGL::pvSendOpenGL" ref="group__OpenGL.html#ga94b76602a709d6c857ddf1e2bac4b425" />
@@ -3952,6 +3963,7 @@
       <file>group__VTK.html</file>
       <file>group__Hyperlink.html</file>
       <file>group__Misc.html</file>
+      <file>group__http.html</file>
       <file>group__OpenGL.html</file>
       <file>group__Dialogs.html</file>
       <file>group__QwtPlotWidget.html</file>
