@@ -96,7 +96,16 @@ Functions</h2></td></tr>
 <p>These functions you can use to act as httpd. It is possible to implement your pvserver to act as pvbrowser server and httpd at the same time. Please read the manual in PDF format.</p>
 <p>Note: You must use the -http option to start your pvserver.</p>
 <p>./pvs -http</p>
-<p>This will suppress the automatic sending of pvsVersion() at pvserver startup. </p>
+<p>This will suppress the automatic sending of pvsVersion() at pvserver startup.</p>
+<p>The full HTTP/1.1 specification can be found here:</p>
+<p><a href="https://www.w3.org/Protocols/rfc2616/rfc2616.html">https://www.w3.org/Protocols/rfc2616/rfc2616.html</a></p>
+<p>In future we might add more helper function based on this specification. But you can implement helper functions at your own using.</p>
+<p>int <a class="el" href="group__Misc.html#ga22600346bd510d5fcdaa97fbad74021a">pvtcpsend(PARAM *p, const char *buf, int len)</a>;</p>
+<p>int <a class="el" href="group__Misc.html#ga88dc793e8a43a7d48b1b0fe109c654f2">pvtcpsendstring(PARAM *p, const char *buf)</a>;</p>
+<p>int <a class="el" href="group__Misc.html#ga3c8d98351f250fbfae19348f117f9eaa">pvtcpsend_binary(PARAM *p, const char *buf, int len)</a>;</p>
+<p>int <a class="el" href="group__Misc.html#ga7b677664cb5cc96171e62eb64579ada4">pvtcpreceive(PARAM *p, char *buf, int maxlen)</a>;</p>
+<p>int <a class="el" href="group__Misc.html#ga44c95940c5c32158a027f38ab99eb342">pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)</a>;</p>
+<p>Your own httpd helper functions could be included within the upstream project. Please take care that the helper functions are usefull for wide use cases. </p>
 <h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ga5cee0a72acdf15e3f8c10161c6caa2fc"></a>
 <div class="memitem">

@@ -21,7 +21,7 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
-const char pvserver_version[] = "4.8.4";
+const char pvserver_version[] = "4.8.5";
 
 // define WIN
 #ifdef _WIN32
@@ -3016,6 +3016,26 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen);
  *  ./pvs -http
  *
  *  This will suppress the automatic sending of pvsVersion() at pvserver startup.
+ *
+ *  The full HTTP/1.1 specification can be found here:
+ *
+ *  https://www.w3.org/Protocols/rfc2616/rfc2616.html
+ *
+ *  In future we might add more helper function based on this specification.
+ *  But you can implement helper functions at your own using.
+ *
+ *  int pvtcpsend(PARAM *p, const char *buf, int len);
+ *
+ *  int pvtcpsendstring(PARAM *p, const char *buf);
+ *
+ *  int pvtcpsend_binary(PARAM *p, const char *buf, int len);
+ *
+ *  int pvtcpreceive(PARAM *p, char *buf, int maxlen);
+ *
+ *  int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen);
+ *
+ *  Your own httpd helper functions could be included within the upstream project.
+ *  Please take care that the helper functions are usefull for wide use cases.
  *  @{ */
 /*! <pre>
 send http response using chunks
