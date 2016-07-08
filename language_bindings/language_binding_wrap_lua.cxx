@@ -16925,60 +16925,6 @@ fail:
 }
 
 
-static int _wrap_pvSendHttpChunks(lua_State* L) {
-  int SWIG_arg = 0;
-  PARAM *arg1 = (PARAM *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int result;
-  
-  SWIG_check_num_args("pvSendHttpChunks",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpChunks",1,"PARAM *");
-  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpChunks",2,"char const *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
-    SWIG_fail_ptr("pvSendHttpChunks",1,SWIGTYPE_p__PARAM_);
-  }
-  
-  arg2 = (char *)lua_tostring(L, 2);
-  result = (int)pvSendHttpChunks(arg1,(char const *)arg2);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
-static int _wrap_pvSendHttpContentLength(lua_State* L) {
-  int SWIG_arg = 0;
-  PARAM *arg1 = (PARAM *) 0 ;
-  char *arg2 = (char *) 0 ;
-  int result;
-  
-  SWIG_check_num_args("pvSendHttpContentLength",2,2)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpContentLength",1,"PARAM *");
-  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpContentLength",2,"char const *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
-    SWIG_fail_ptr("pvSendHttpContentLength",1,SWIGTYPE_p__PARAM_);
-  }
-  
-  arg2 = (char *)lua_tostring(L, 2);
-  result = (int)pvSendHttpContentLength(arg1,(char const *)arg2);
-  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
 static int _wrap_pvSetMaxClientsPerIpAdr(lua_State* L) {
   int SWIG_arg = 0;
   int arg1 ;
@@ -17230,6 +17176,203 @@ static int _wrap_pvtcpreceive_binary(lua_State* L) {
   arg2 = (char *)lua_tostring(L, 2);
   arg3 = (int)lua_tonumber(L, 3);
   result = (int)pvtcpreceive_binary(arg1,arg2,arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendHttpChunks(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpChunks",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpChunks",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpChunks",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpChunks",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSendHttpChunks(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendHttpContentLength(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpContentLength",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpContentLength",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpContentLength",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpContentLength",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSendHttpContentLength(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendHttpResponseFile__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *arg3 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpResponseFile",3,3)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpResponseFile",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpResponseFile",2,"char const *");
+  if(!SWIG_lua_isnilstring(L,3)) SWIG_fail_arg("pvSendHttpResponseFile",3,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpResponseFile",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  arg3 = (char *)lua_tostring(L, 3);
+  result = (int)pvSendHttpResponseFile(arg1,(char const *)arg2,(char const *)arg3);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendHttpResponseFile__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpResponseFile",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpResponseFile",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpResponseFile",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpResponseFile",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSendHttpResponseFile(arg1,(char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_pvSendHttpResponseFile(lua_State* L) {
+  int argc;
+  int argv[4]={
+    1,2,3,4
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 2) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_pvSendHttpResponseFile__SWIG_1(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      void *ptr;
+      if (SWIG_isptrtype(L,argv[0])==0 || SWIG_ConvertPtr(L,argv[0], (void **) &ptr, SWIGTYPE_p__PARAM_, 0)) {
+        _v = 0;
+      } else {
+        _v = 1;
+      }
+    }
+    if (_v) {
+      {
+        _v = SWIG_lua_isnilstring(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = SWIG_lua_isnilstring(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_pvSendHttpResponseFile__SWIG_0(L);
+        }
+      }
+    }
+  }
+  
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'pvSendHttpResponseFile'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    pvSendHttpResponseFile(PARAM *,char const *,char const *)\n"
+    "    pvSendHttpResponseFile(PARAM *,char const *)\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_pvSendHttpResponse(lua_State* L) {
+  int SWIG_arg = 0;
+  PARAM *arg1 = (PARAM *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("pvSendHttpResponse",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("pvSendHttpResponse",1,"PARAM *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("pvSendHttpResponse",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p__PARAM_,0))){
+    SWIG_fail_ptr("pvSendHttpResponse",1,SWIGTYPE_p__PARAM_);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)pvSendHttpResponse(arg1,(char const *)arg2);
   lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
   return SWIG_arg;
   
@@ -29331,8 +29474,6 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvSendFile", _wrap_pvSendFile},
     { "pvDownloadFileAs", _wrap_pvDownloadFileAs},
     { "pvDownloadFile", _wrap_pvDownloadFile},
-    { "pvSendHttpChunks", _wrap_pvSendHttpChunks},
-    { "pvSendHttpContentLength", _wrap_pvSendHttpContentLength},
     { "pvSetMaxClientsPerIpAdr", _wrap_pvSetMaxClientsPerIpAdr},
     { "pvMaxClientsPerIpAdr", _wrap_pvMaxClientsPerIpAdr},
     { "pvSetMaxClients", _wrap_pvSetMaxClients},
@@ -29344,6 +29485,10 @@ static const struct luaL_Reg swig_commands[] = {
     { "pvtcpsend_binary", _wrap_pvtcpsend_binary},
     { "pvtcpreceive", _wrap_pvtcpreceive},
     { "pvtcpreceive_binary", _wrap_pvtcpreceive_binary},
+    { "pvSendHttpChunks", _wrap_pvSendHttpChunks},
+    { "pvSendHttpContentLength", _wrap_pvSendHttpContentLength},
+    { "pvSendHttpResponseFile",_wrap_pvSendHttpResponseFile},
+    { "pvSendHttpResponse", _wrap_pvSendHttpResponse},
     { "pvGlBegin", _wrap_pvGlBegin},
     { "pvSendOpenGL",_wrap_pvSendOpenGL},
     { "pvGlEnd", _wrap_pvGlEnd},
