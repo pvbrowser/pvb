@@ -377,6 +377,9 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     pen.setWidth(width);
     pen.setStyle((Qt::PenStyle) style);
     if(curves[pos] != NULL) curves[pos]->setPen(pen);
+    // 2016july begin requested by user
+    if(curves[pos] != NULL) curves[pos]->setRenderHint(QwtPlotItem::RenderAntialiased,1);
+    // 2016july end   requested by user
   }
   else if(isCommand("setCurveSymbol("))
   {
