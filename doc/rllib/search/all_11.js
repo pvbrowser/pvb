@@ -334,7 +334,7 @@ var searchData=
   ['rlstate',['rlState',['../classrlState.html',1,'rlState'],['../classrlState.html#a1b8f80b72c657d463c6fd1da9bc96b0d',1,'rlState::rlState()']]],
   ['rlstate_2ecpp',['rlstate.cpp',['../rlstate_8cpp.html',1,'']]],
   ['rlstate_2eh',['rlstate.h',['../rlstate_8h.html',1,'']]],
-  ['rlstring',['rlString',['../classrlString.html',1,'rlString'],['../classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3',1,'rlString::rlString(const char *text=&quot;&quot;)'],['../classrlString.html#a481402a9edec0a5ecbf4238947a8aece',1,'rlString::rlString(rlString &amp;text)'],['../classrlString.html#ae531537074f3ba6a221d5fb3e6c8f270',1,'rlString::rlString(rlString *text)']]],
+  ['rlstring',['rlString',['../classrlString.html',1,'rlString'],['../classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3',1,'rlString::rlString(const char *text=&quot;&quot;)'],['../classrlString.html#a481402a9edec0a5ecbf4238947a8aece',1,'rlString::rlString(rlString &amp;text)'],['../classrlString.html#ae531537074f3ba6a221d5fb3e6c8f270',1,'rlString::rlString(rlString *text)'],['../classrlString.html#a5badc9d2fed321a8bf4f3da306a2aa7e',1,'rlString::rlString(const rlString &amp;text)']]],
   ['rlstring_2ecpp',['rlstring.cpp',['../rlstring_8cpp.html',1,'']]],
   ['rlstring_2eh',['rlstring.h',['../rlstring_8h.html',1,'']]],
   ['rlstrlen',['rlstrlen',['../classrlPcontrol.html#a037dbe717858fd5f52ef1d6cab53dff1',1,'rlPcontrol']]],

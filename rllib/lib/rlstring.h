@@ -33,6 +33,7 @@ public:
   rlString(const char *text="");
   rlString(rlString &text);
   rlString(rlString *text);
+  rlString(const rlString &text);
 
   /*! <pre>
   destruct the string
@@ -50,6 +51,7 @@ public:
 
   int       operator==(const char *s2);
   int       operator==(rlString &s2);
+  int       operator==(const rlString &s2);
 
   int       operator!=(const char *s2);
   int       operator!=(rlString &s2);
@@ -58,6 +60,7 @@ public:
   get the text
   </pre> */
   char *text();
+  char *text() const;
 
   /*! <pre>
   set the text

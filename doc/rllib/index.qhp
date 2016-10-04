@@ -1662,6 +1662,7 @@
               <section title="rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
               <section title="rlString" ref="classrlString.html#a481402a9edec0a5ecbf4238947a8aece" />
               <section title="rlString" ref="classrlString.html#ae531537074f3ba6a221d5fb3e6c8f270" />
+              <section title="rlString" ref="classrlString.html#a5badc9d2fed321a8bf4f3da306a2aa7e" />
               <section title="~rlString" ref="classrlString.html#a88514d75e0bcdf7dfd3f91b407405d04" />
               <section title="cat" ref="classrlString.html#ad1e6769a61802dc7d39d99c69a47cb99" />
               <section title="lower" ref="classrlString.html#ab4f56d7cad146a696ead2fcf4ea4fae8" />
@@ -1675,6 +1676,7 @@
               <section title="operator=" ref="classrlString.html#a41c730585f79b6b060b9c367b095ff41" />
               <section title="operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
               <section title="operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
+              <section title="operator==" ref="classrlString.html#ad401afa7be57679cc3f972e5f79c48ae" />
               <section title="printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
               <section title="read" ref="classrlString.html#a8b93712bed17e1fa6141db42df5178a6" />
               <section title="removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
@@ -1688,6 +1690,7 @@
               <section title="strrchr" ref="classrlString.html#a0b353cf1b96b45dd9809202a336019e3" />
               <section title="strstr" ref="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d" />
               <section title="text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
+              <section title="text" ref="classrlString.html#a0bfb88f9f88fed6f6c05a87c922b287b" />
               <section title="toDirname" ref="classrlString.html#ac2056be1999a017958e096000096463e" />
               <section title="toFilename" ref="classrlString.html#a3346961c8759094535809d58b0dbfbdc" />
               <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
@@ -4516,6 +4519,7 @@
                 <section title="rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
                 <section title="rlString" ref="classrlString.html#a481402a9edec0a5ecbf4238947a8aece" />
                 <section title="rlString" ref="classrlString.html#ae531537074f3ba6a221d5fb3e6c8f270" />
+                <section title="rlString" ref="classrlString.html#a5badc9d2fed321a8bf4f3da306a2aa7e" />
                 <section title="~rlString" ref="classrlString.html#a88514d75e0bcdf7dfd3f91b407405d04" />
                 <section title="cat" ref="classrlString.html#ad1e6769a61802dc7d39d99c69a47cb99" />
                 <section title="lower" ref="classrlString.html#ab4f56d7cad146a696ead2fcf4ea4fae8" />
@@ -4529,6 +4533,7 @@
                 <section title="operator=" ref="classrlString.html#a41c730585f79b6b060b9c367b095ff41" />
                 <section title="operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
                 <section title="operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
+                <section title="operator==" ref="classrlString.html#ad401afa7be57679cc3f972e5f79c48ae" />
                 <section title="printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
                 <section title="read" ref="classrlString.html#a8b93712bed17e1fa6141db42df5178a6" />
                 <section title="removeNewline" ref="classrlString.html#a956a28f1d6e7a7e2b6f6ca13a71045bc" />
@@ -4542,6 +4547,7 @@
                 <section title="strrchr" ref="classrlString.html#a0b353cf1b96b45dd9809202a336019e3" />
                 <section title="strstr" ref="classrlString.html#a56c72b3717f79d0f4ece33e54fd4a16d" />
                 <section title="text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
+                <section title="text" ref="classrlString.html#a0bfb88f9f88fed6f6c05a87c922b287b" />
                 <section title="toDirname" ref="classrlString.html#ac2056be1999a017958e096000096463e" />
                 <section title="toFilename" ref="classrlString.html#a3346961c8759094535809d58b0dbfbdc" />
                 <section title="upper" ref="classrlString.html#ab2a663ab064ea96b70eee0c8a12a219d" />
@@ -7148,6 +7154,7 @@
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a3a8200b9e3def8d39f7081b9c88380f3" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a481402a9edec0a5ecbf4238947a8aece" />
       <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#ae531537074f3ba6a221d5fb3e6c8f270" />
+      <keyword name="rlString" id="rlString::rlString" ref="classrlString.html#a5badc9d2fed321a8bf4f3da306a2aa7e" />
       <keyword name="~rlString" id="rlString::~rlString" ref="classrlString.html#a88514d75e0bcdf7dfd3f91b407405d04" />
       <keyword name="operator=" id="rlString::operator=" ref="classrlString.html#a6092e1ae26dcda17dcb998536a1b1cbd" />
       <keyword name="operator=" id="rlString::operator=" ref="classrlString.html#a41c730585f79b6b060b9c367b095ff41" />
@@ -7157,9 +7164,11 @@
       <keyword name="operator+=" id="rlString::operator+=" ref="classrlString.html#aa686c0bb48889af87ee83de400a49974" />
       <keyword name="operator==" id="rlString::operator==" ref="classrlString.html#a091f7099eda4b8f802daab77c2075acc" />
       <keyword name="operator==" id="rlString::operator==" ref="classrlString.html#adacf72fe2ee820cbcd42a4c1048c67ff" />
+      <keyword name="operator==" id="rlString::operator==" ref="classrlString.html#ad401afa7be57679cc3f972e5f79c48ae" />
       <keyword name="operator!=" id="rlString::operator!=" ref="classrlString.html#a9984e47340753b76d23b61701cb98ad6" />
       <keyword name="operator!=" id="rlString::operator!=" ref="classrlString.html#a1b1a068453c606222a72a58ec31af4d1" />
       <keyword name="text" id="rlString::text" ref="classrlString.html#a41b7a0eaaf1e6309c5b1f218baf4c985" />
+      <keyword name="text" id="rlString::text" ref="classrlString.html#a0bfb88f9f88fed6f6c05a87c922b287b" />
       <keyword name="setText" id="rlString::setText" ref="classrlString.html#a36f0b76c8c6f9938433f862906f2d44c" />
       <keyword name="printf" id="rlString::printf" ref="classrlString.html#a9c303363e2405a11fb3062fbc4f29bbb" />
       <keyword name="strcpy" id="rlString::strcpy" ref="classrlString.html#ad1a9088b6d5d8756d67cb7602603dd26" />

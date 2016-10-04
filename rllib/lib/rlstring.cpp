@@ -43,6 +43,14 @@ rlString::rlString(rlString *s2)
   ::strcpy(txt,s2->text());
 }
 
+rlString::rlString(const rlString &s2)
+{
+  txt = new char [strlen(s2.text())+1];
+  tmp = NULL;
+  ::strcpy(txt,s2.text());
+}
+
+
 rlString::~rlString()
 {
   delete [] txt;
@@ -97,6 +105,12 @@ int rlString::operator==(rlString &s2)
   return 0;
 }
 
+int rlString::operator==(const rlString &s2)
+{
+  if(strcmp(txt,s2.text()) == 0) return 1;
+  return 0;
+}
+
 int rlString::operator!=(const char *s2)
 {
   if(strcmp(txt,s2) != 0) return 1;
@@ -110,6 +124,11 @@ int rlString::operator!=(rlString &s2)
 }
 
 char * rlString::text()
+{
+  return txt;
+}
+
+char * rlString::text() const
 {
   return txt;
 }
