@@ -345,11 +345,12 @@ public slots:
     void slotClicked( int row, int col);
     void slotCurrentChanged( int row, int col, int oldrow, int oldcol);
     void slotValueChanged(int row, int col);
+    void slotActivated(QModelIndex index);
 private:
     void mousePressEvent(QMouseEvent *event);
     virtual void enterEvent(QEvent *event);
     virtual void leaveEvent(QEvent *event);
-    int *s,id,button;
+    int *s,id,button,is_editable;
     QString cellbuf;
 };
 

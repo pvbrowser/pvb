@@ -1101,6 +1101,7 @@ MyTable::MyTable(int *sock, int ident, int numRows, int numColumns, QWidget *par
   id = ident;
   wrap = 1;
   autoresize = 0;
+  is_editable = 1;
 #if QT_VERSION >= 0x040300                  
   setWordWrap(true);
 #endif
@@ -1119,6 +1120,7 @@ MyTable::MyTable(int *sock, int ident, int numRows, int numColumns, QWidget *par
   connect(this, SIGNAL(cellClicked(int,int)), SLOT(slotClicked(int,int)));
   connect(this, SIGNAL(currentCellChanged(int,int,int,int)), SLOT(slotCurrentChanged(int,int,int,int)));
   connect(this, SIGNAL(cellChanged(int,int)), SLOT(slotValueChanged(int,int)));
+  connect(this, SIGNAL(activated(QModelIndex)), SLOT(slotActivated(QModelIndex)));
 }
 
 MyTable::~MyTable()
@@ -1127,6 +1129,8 @@ MyTable::~MyTable()
 
 void MyTable::setEditable(int editable)
 {
+  if(editable) is_editable = 1;
+  else         is_editable = 0;
   for(int row=0; row<rowCount(); row++)
   {
     for(int column=0; column<columnCount(); column++)
@@ -1245,6 +1249,20 @@ char buf[80];
 
   sprintf(buf,"QTable(%d,%d,%d,%d)\n",id,-1,section,1);
   tcp_send(s,buf,strlen(buf));
+}
+
+void MyTable::slotActivated(QModelIndex index)
+{
+  if(opt.arg_debug) printf("MyTbale::slotActivated()\n");
+  if(is_editable) return;
+  QTableWidgetItem *tableitem = itemFromIndex(index);
+  if(tableitem == NULL)
+  {
+    tableitem = new QTableWidgetItem();
+    if(is_editable == 0) tableitem->setFlags(Qt::ItemIsEnabled); // remove editable flag
+    setItem(currentRow(),currentColumn(),tableitem);
+    if(opt.arg_debug) printf("setTableItem\n");
+  }
 }
 
 void MyTable::mousePressEvent(QMouseEvent *event)
