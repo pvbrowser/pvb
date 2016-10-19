@@ -4943,8 +4943,12 @@ void Interpreter::interprets(const char *command)
                     t->updates += 2;
                     item = new QTableWidgetItem(text);
                     t->setItem(x,y,item);
+                    if(t->is_editable == 0) item->setFlags(Qt::ItemIsEnabled); // remove editable flag
                   }
-                  if(item != NULL) item->setBackgroundColor(QColor(r,g,b));
+                  if(item != NULL) 
+                  {
+                    item->setBackgroundColor(QColor(r,g,b));
+                  }
                   if(t->autoresize == 1)
                   {
                     t->resizeRowToContents(x);

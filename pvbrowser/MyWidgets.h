@@ -337,7 +337,7 @@ public:
     void setTableLabel(int row, int col, QString text);
     void copyToClipboard(int title);
     void saveTextfile(const char *filename=NULL);
-    int wrap,read_only,updates,autoresize;
+    int wrap,read_only,updates,autoresize,is_editable;
 
 public slots:
     void slotRowClicked(int section);
@@ -350,7 +350,7 @@ private:
     void mousePressEvent(QMouseEvent *event);
     virtual void enterEvent(QEvent *event);
     virtual void leaveEvent(QEvent *event);
-    int *s,id,button,is_editable;
+    int *s,id,button;
     QString cellbuf;
 };
 

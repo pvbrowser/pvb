@@ -1253,12 +1253,13 @@ char buf[80];
 
 void MyTable::slotActivated(QModelIndex index)
 {
-  if(opt.arg_debug) printf("MyTbale::slotActivated()\n");
+  if(opt.arg_debug) printf("MyTable::slotActivated()\n");
   if(is_editable) return;
   QTableWidgetItem *tableitem = itemFromIndex(index);
   if(tableitem == NULL)
   {
     tableitem = new QTableWidgetItem();
+    tableitem->setText("");
     if(is_editable == 0) tableitem->setFlags(Qt::ItemIsEnabled); // remove editable flag
     setItem(currentRow(),currentColumn(),tableitem);
     if(opt.arg_debug) printf("setTableItem\n");
