@@ -1601,6 +1601,7 @@ pvSetTableCheckBox()
 pvSetTableComboBox()
 pvSetTableLabel()
 pvTablePrintf()
+pvClear();
 pvSetColumnWidth()
 pvSetRowHeight()
 pvSetWordWrap()
