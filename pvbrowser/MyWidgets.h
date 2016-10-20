@@ -337,6 +337,7 @@ public:
     void setTableLabel(int row, int col, QString text);
     void copyToClipboard(int title);
     void saveTextfile(const char *filename=NULL);
+    void clear();
     int wrap,read_only,updates,autoresize,is_editable;
 
 public slots:

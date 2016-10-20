@@ -954,7 +954,12 @@ void Interpreter::interpretc(const char *command)
     sscanf(command,"clear(%d",&i);
     if(i < 0) return;
     if(i >= nmax) return;
-    if(all[i]->type == TQListBox)
+    if(all[i]->type == TQTable)
+    {
+      MyTable *ptr = (MyTable *) all[i]->w;
+      if(ptr != NULL) ptr->clear();
+    }
+    else if(all[i]->type == TQListBox)
     {
       MyListBox *ptr = (MyListBox *) all[i]->w;
       if(ptr != NULL) ptr->clear();
@@ -3378,7 +3383,7 @@ void Interpreter::interprets(const char *command)
           else
           {
             QWidget *w = (QWidget *) all[i]->w;
-            printf("setFont murx text=%s\n", (const char *) text.toUtf8());
+            if(opt.arg_debug) printf("setFont text=%s\n", (const char *) text.toUtf8());
             if(w != NULL) w->setFont(font);
           }
         }

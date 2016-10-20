@@ -1494,6 +1494,26 @@ void MyTable::leaveEvent(QEvent *event)
   QTableWidget::leaveEvent(event);
 }
 
+void MyTable::clear()
+{
+  for(int y=0; y<rowCount(); y++)
+  {
+    for(int x=0; x<columnCount(); x++)
+    {
+      QTableWidgetItem *tableitem = item(y,x);
+      if(tableitem == NULL)
+      {
+        tableitem = new QTableWidgetItem();
+        tableitem->setText("");
+        setItem(y,x,tableitem);
+      }
+      else
+      {
+        tableitem->setText("");
+      }
+    }
+  }
+}
 ////////////////////////////////////////////////////////////////////////////////
 MySpinBox::MySpinBox(int *sock, int ident, int minValue, int maxValue, int step, QWidget *parent, const char *name)
           :QSpinBox(parent)

@@ -2161,7 +2161,7 @@ For QMultiLineEdit set maxlines = value
 int pvSetValue(PARAM *p, int id, int value);
 /*! <pre>
 Clear the content of a widget.
-Allowed widgets: QListBox, QComboBox, QMultiLineEdit, QListView, QIconView
+Allowed widgets: QTable, QListBox, QComboBox, QMultiLineEdit, QListView, QIconView
 </pre> */
 int pvClear(PARAM *p, int id);
 /*! <pre>
