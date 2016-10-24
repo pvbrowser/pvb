@@ -3145,7 +3145,7 @@ void Interpreter::interprets(const char *command)
                   t->verticalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
                   t->verticalHeader()->setMinimumWidth(0);
                   t->verticalHeader()->setMaximumWidth(99999);
-                  t->verticalHeader()->resizeSection(0,width);
+                  t->verticalHeader()->resizeSection(0,1); //width); ... fix for bug report from our forum OCT 2016
                   t->verticalHeader()->setSectionResizeMode(QHeaderView::Fixed);
                 }
 #endif
