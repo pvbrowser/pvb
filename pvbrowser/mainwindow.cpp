@@ -1286,6 +1286,12 @@ void MainWindow::slotReconnect()
   else
   {
     pvbtab[currentTab].s = tcp_con(opt.proxyadr,opt.proxyport);
+    QString connect;
+    connect.sprintf("CONNECT %s:%d HTTP/1.1\n", buf, iport);
+    tcp_send(&pvbtab[currentTab].s,connect.toUtf8(),connect.length());
+    tcp_send(&pvbtab[currentTab].s,"\n",strlen("\n"));
+    tcp_rec(&pvbtab[currentTab].s, buf, sizeof(buf)-1);
+    if(opt.arg_debug) printf("response from proxy=%s", buf);
   }  
   if(pvbtab[currentTab].s > 0)
   {
