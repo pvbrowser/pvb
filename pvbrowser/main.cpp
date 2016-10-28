@@ -27,7 +27,7 @@
 
 extern OPT opt;
 
-void init(int ac, char **av)
+void init1(int ac, char **av)
 {
   setlocale(LC_NUMERIC, "C");
 #ifdef BROWSERPLUGIN
@@ -58,7 +58,7 @@ void init(int ac, char **av)
       freopen("conout$", "w", stderr);
 #endif
       printf("pvbrowser %s (C) Lehrig Software Engineering, lehrig@t-online.de\n", VERSION);
-      printf("usage:   pvbrowser <-debug<=level>> <-log> <-ini=filename> <-font=name<:size>> <host<:port></mask>> <-disable> <-geometry=x:y:w:h> <-global_strut=width:height> <-delay=milliseconds>\n");
+      printf("usage:   pvbrowser <-debug<=level>> <-log> <-ini=filename> <-font=name<:size>> <host<:port></mask>> <-disable> <-geometry=x:y:w:h> <-global_strut=width:height> <-delay=milliseconds> <-poxyadr=nodename> <-proxyport=n>\n");
       printf("example: pvbrowser\n");
       printf("example: pvbrowser localhost\n");
       printf("example: pvbrowser localhost:5050\n");
@@ -132,6 +132,22 @@ void init(int ac, char **av)
   }
 }
 
+void init2(int ac, char **av)
+{
+  for(int i=1; i<ac; i++)  // read command line args
+  {
+    char *arg = av[i];
+    if     (strncmp(av[i],"-proxyadr=",10) == 0)
+    {
+      strcpy(opt.proxyadr,&arg[10]);
+    }
+    else if(strncmp(av[i],"-proxyport=",11) == 0)
+    {
+      sscanf(arg,"-proxyport=%d",&opt.proxyport);
+    }
+  }
+}
+
 void perhapsSetFont(QApplication &app)
 {
   int  fsize;
@@ -177,11 +193,12 @@ int main(int argc, char *argv[])
   QPixmap pm(splash);
   QSplashScreen *splash = new QSplashScreen(pm);
   splash->show();
-  init(argc,argv);
+  init1(argc,argv);
   perhapsSetFont(app);
   QIcon appIcon(":/images/app.png");
   app.setWindowIcon(appIcon);
   MainWindow mainWin;
+  init2(argc,argv);
   app.processEvents();
   splash->finish(&mainWin);
   delete splash;
