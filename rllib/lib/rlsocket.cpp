@@ -358,6 +358,7 @@ bind:
         ret = bind(os, (struct sockaddr *) &localAddr, sizeof(localAddr));
         if(ret == -1)
         {
+          ::printf("warning: could not bind to port=%d\n", port);
           rlwthread_sleep(1000);
           goto bind;
         }
@@ -369,6 +370,7 @@ bind:
       first = 0;
 
       // accept connections
+      if(os < 0) return ACCEPT_ERR;
       s = accept(os, (struct sockaddr *) &sockaddr[0], &socklen);
       if(s == -1) return ACCEPT_ERR;
     }
@@ -431,6 +433,7 @@ bindv6:
       }
       first = 0;
       // accept connections
+      if(os < 0) return ACCEPT_ERR;
       s = accept(os, (struct sockaddr *) &sockaddr[0], &socklen);
       if(s == -1) return ACCEPT_ERR;
 #else
