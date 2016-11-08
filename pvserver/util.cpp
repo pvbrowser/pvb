@@ -2476,6 +2476,15 @@ int pvToolTip(PARAM *p, int id, const char *text)
   return 0;
 }
 
+int pvWaitpid(PARAM *p)
+{
+char buf[80];
+
+  sprintf(buf,"waitpid()\n");
+  pvtcpsend(p, buf, strlen(buf));
+  return 0;
+}
+
 int pvText(PARAM *p, int id)
 {
 char buf[80];
@@ -5662,7 +5671,7 @@ int pvSendHttpResponse(PARAM *p, const char *html)
   pvtcpsendstring(p,tbuf);
   sprintf(tbuf,"Content-Type: text/html\n");
   pvtcpsendstring(p,tbuf);
-  sprintf(tbuf,"Content-length: %ld\n\n", strlen(html));
+  sprintf(tbuf,"Content-length: %ld\n\n", (long) strlen(html));
   pvtcpsendstring(p,tbuf);
 
   pvtcpsendstring(p, html);

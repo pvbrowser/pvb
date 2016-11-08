@@ -2568,6 +2568,12 @@ int pvSaveDrawBuffer(PARAM *p, int id, const char *filename);
  *  These are the input routines
  *  @{ */
 /*! <pre>
+Request a waitpid() call on the client.
+The response is send as TEXT_MESSAGE with id=ID_MAINWINDOW.
+waitpid_response=%d
+</pre> */
+int pvWaitpid(PARAM *p);
+/*! <pre>
 Request the text from the widget. The text will arrive in an TEXT_EVENT.
 In case of a QMultiLineEdit the text will arrive in a CLIPBOARD_EVENT.
 Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit

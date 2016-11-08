@@ -15,6 +15,7 @@
 ****************************************************************************/
 #include "pvdefine.h"
 #include <stdlib.h>
+#include <errno.h>
 
 #include "opt.h"
 #include "interpreter.h"
@@ -53,6 +54,7 @@
 #include <sys/types.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #endif
 #include <sys/stat.h>
 #include <fcntl.h>
@@ -80,6 +82,7 @@
 #define LEFT_PRINT_MARGIN  10
 #define UPPER_PRINT_MARGIN 70
 
+extern int errno;
 extern OPT opt;
 extern QString l_print_header;
 
@@ -6063,7 +6066,23 @@ void Interpreter::interpretv(const char *command)
 void Interpreter::interpretw(const char *command)
 {
   if(command == NULL) return;
-  if(strncmp(command,"writeTextToFileAtClient(",24) == 0)
+  if(strncmp(command,"waitpid(",8) == 0)
+  {
+    int ret = -1;
+#ifdef PVUNIX
+    int status = 0;
+    int options = WNOHANG | WUNTRACED | WCONTINUED;
+    ret = waitpid(-1,&status,options);
+    if(opt.arg_debug) printf("errno=%d ret=%d status=%d\n", errno, ret, status);
+    if(errno == ECHILD) ret = 0; // errno=10 no child processes otherwise return pid number
+#else
+#endif
+    char buf[80];
+    const int ID_MAINWINDOW = -4;
+    sprintf(buf,"text(%d,i\"waitpid_response=%d\")\n",ID_MAINWINDOW,ret);
+    tcp_send(s,buf,strlen(buf));    
+  }
+  else if(strncmp(command,"writeTextToFileAtClient(",24) == 0)
   {
     QString text;
     int len = 0;

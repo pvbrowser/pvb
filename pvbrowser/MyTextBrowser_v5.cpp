@@ -502,7 +502,9 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
 #endif
     mysystem(cmd.toUtf8());
   }
-  else if(url.startsWith("http://") && (
+  else if(
+         !url.startsWith("http://audio.") &&
+          url.startsWith("http://") && (
           url.endsWith(".mp3",  Qt::CaseInsensitive) || 
           url.endsWith(".ogg",  Qt::CaseInsensitive) || 
           url.endsWith(".m3u",  Qt::CaseInsensitive) || 
@@ -520,7 +522,9 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
 #endif
     mysystem(cmd.toUtf8());
   }
-  else if(url.startsWith("http://") && (
+  else if(
+         !url.startsWith("http://video.") &&
+          url.startsWith("http://") && (
           url.endsWith(".mp4",  Qt::CaseInsensitive) || 
           url.endsWith(".mov",  Qt::CaseInsensitive) || 
           url.endsWith(".ogv",  Qt::CaseInsensitive) || 

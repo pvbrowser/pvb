@@ -981,6 +981,44 @@ int i;
   }
 }
 
+#ifdef PVUNIX
+static int rlexec(const char *command)
+{
+  char *buf;
+  char *arg[512];
+  int i,iarg,ret;
+
+  buf = new char [strlen(command)+1];
+  strcpy(buf,command);
+  iarg = 0;
+  i = 0;
+  while(buf[i] != '\0')
+  {
+    if(buf[i] == '\"')
+    {
+      i++;
+      arg[iarg++] = &buf[i];
+      while(buf[i] != '\"' && buf[i] != '\0') i++;
+      if(buf[i] == '\0') break;
+      buf[i] = '\0';
+    }
+    else if(buf[i] != ' ' || i == 0)
+    {
+      arg[iarg++] = &buf[i];
+      while(buf[i] != ' ' && buf[i] != '\0') i++;
+      if(buf[i] == '\0') break;
+      buf[i] = '\0';
+    }
+    i++;
+  }
+  arg[iarg] = NULL;
+
+  ret = execvp(arg[0],arg);
+  delete [] buf;
+  return ret;
+}
+#endif
+
 int mysystem(const char *command)
 {
 #ifdef PVWIN32
@@ -1006,6 +1044,15 @@ int mysystem(const char *command)
   return ret;
 #else
   if(opt.arg_debug) printf("run client command: %s\n", command);
-  return system(command);
+  //return system(command);
+  pid_t pid = fork();
+  if(pid == -1)
+  {
+    printf("Fork failed %s\n", command);
+  }
+  else if(pid == 0)
+  {
+    rlexec(command);
+  }
 #endif
 }
