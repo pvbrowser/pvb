@@ -1862,9 +1862,9 @@ void Interpreter::interpreth(const char *command)
     if(text[0] == '+')
     {
       QString cmd = "pvbrowser " + text.mid(1);
-#ifdef PVUNIX
-      cmd += " &";
-#endif
+//#ifdef PVUNIX
+//      cmd += " &";
+//#endif
       mysystem(cmd.toUtf8());
     }
     else
@@ -2439,9 +2439,9 @@ void Interpreter::interpretp(const char *command)
     {
       if(opt.arg_debug) printf("We run ffplay for the sound\n");
       QString cmd = "ffplay -loglevel quiet -autoexit -vn -showmode 0 -i " + text;
-#ifdef PVUNIX
-      cmd += " &";
-#endif      
+//#ifdef PVUNIX
+//      cmd += " &";
+//#endif      
       mysystem(cmd.toUtf8());
       return;
     }
@@ -5924,9 +5924,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[10]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_audio) >= 3) mysystem(buf);
     }  
   }
@@ -5940,9 +5940,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[10]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_video) >= 3) mysystem(buf);
     }  
   }
@@ -5956,9 +5956,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[8]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_pdf) >= 3) mysystem(buf);
     }  
   }
@@ -5972,9 +5972,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[8]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_img) >= 3) mysystem(buf);
     }  
   }
@@ -5988,9 +5988,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[8]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_svg) >= 3) mysystem(buf);
     }  
   }
@@ -6004,9 +6004,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[8]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_txt) >= 3) mysystem(buf);
     }  
   }
@@ -6020,9 +6020,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[8]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_csv) >= 3) mysystem(buf);
     }  
   }
@@ -6036,9 +6036,9 @@ void Interpreter::interpretv(const char *command)
       strcat(buf, &command[9]);
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
-#ifndef PVWIN32
-      strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//      strcat(buf, " &");
+//#endif
       if(strlen(opt.view_html) >= 3) mysystem(buf);
     }  
   }

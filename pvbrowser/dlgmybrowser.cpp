@@ -91,7 +91,7 @@ QWebView *pvQWebView::createWindow(QWebPage::WebWindowType type)
     cmd += r.linkUrl().toString();;
     cmd += "\"";
 #ifdef PVUNIX
-    cmd += " &";
+    //cmd += " &";
     qDebug()<<"pvQWebView::createWindow system('"<<cmd<<"')";
     int ret = system(cmd.toUtf8());
 #endif
@@ -273,9 +273,9 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
     cmd += " ";
     text.replace(" ","%20");
     cmd += text;
-#ifndef PVWIN32
-    cmd +=  " &";
-#endif
+//#ifndef PVWIN32
+//    cmd +=  " &";
+//#endif
     mysystem(cmd.toUtf8());
     return;
   }
@@ -291,9 +291,9 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
      cmd += " ";
      text.replace(" ","%20");
      cmd += text;
-#ifndef PVWIN32
-     cmd +=  " &";
-#endif
+//#ifndef PVWIN32
+//     cmd +=  " &";
+//#endif
      mysystem(cmd.toUtf8());
   }
   else if(text.endsWith(".mp4",  Qt::CaseInsensitive) || 
@@ -305,9 +305,9 @@ void dlgMyBrowser::slotLinkClicked(const QUrl &url)
      cmd += " ";
      text.replace(" ","%20");
      cmd += text;
-#ifndef PVWIN32
-     cmd +=  " &";
-#endif
+//#ifndef PVWIN32
+//     cmd +=  " &";
+//#endif
      mysystem(cmd.toUtf8());
   }
   else if(webpath == homepath)

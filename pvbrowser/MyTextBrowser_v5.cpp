@@ -304,7 +304,7 @@ QWebEngineView *MyTextBrowser::createWindow(QWebEnginePage::WebWindowType type)
     cmd += r.linkUrl().toString();;
     cmd += "\"";
 #ifdef PVUNIX
-    cmd += " &";
+    //cmd += " &";
     int ret = system(cmd.toUtf8());
 #endif
 #ifdef PVWIN32
@@ -497,9 +497,9 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
     cmd += " ";
     url.replace(" ","%20");
     cmd += url;
-#ifndef PVWIN32
-    cmd +=  " &";
-#endif
+//#ifndef PVWIN32
+//    cmd +=  " &";
+//#endif
     mysystem(cmd.toUtf8());
   }
   else if(
@@ -517,9 +517,9 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
     cmd += " ";
     url.replace(" ","%20");
     cmd += url;
-#ifndef PVWIN32
-    cmd +=  " &";
-#endif
+//#ifndef PVWIN32
+//    cmd +=  " &";
+//#endif
     mysystem(cmd.toUtf8());
   }
   else if(
@@ -534,9 +534,9 @@ void MyTextBrowser::slotLinkClicked(const QUrl &link)
     cmd += " ";
     url.replace(" ","%20");
     cmd += url;
-#ifndef PVWIN32
-    cmd +=  " &";
-#endif
+//#ifndef PVWIN32
+//    cmd +=  " &";
+//#endif
     mysystem(cmd.toUtf8());
   }
   else

@@ -1225,7 +1225,7 @@ void MainWindow::slotReconnect()
       isReconnect = 1;
       QString qbuf;
 #ifdef PVUNIX    
-      qbuf.sprintf("xterm -e %s -L %d:%s:%d %s &",opt.ssh,opt.sshport,ssh_host,ssh_port,ssh_user_host);
+      qbuf.sprintf("xterm -e %s -L %d:%s:%d %s",opt.ssh,opt.sshport,ssh_host,ssh_port,ssh_user_host);
 #endif
 #ifdef PVWIN32
       qbuf.sprintf("%s -ssh -L %d:%s:%d %s",opt.ssh,opt.sshport,ssh_host,ssh_port,ssh_user_host);

@@ -1318,9 +1318,9 @@ void MyTable::mousePressEvent(QMouseEvent *event)
         {
           strcpy(buf, opt.view_csv);
           strcat(buf, " table.csv");
-#ifndef PVWIN32
-          strcat(buf, " &");
-#endif
+//#ifndef PVWIN32
+//          strcat(buf, " &");
+//#endif
           if(strlen(opt.view_csv) >= 3) mysystem(buf);
         }  
       }  
