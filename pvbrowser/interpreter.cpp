@@ -6076,6 +6076,8 @@ void Interpreter::interpretw(const char *command)
     if(opt.arg_debug) printf("errno=%d ret=%d status=%d\n", errno, ret, status);
     if(errno == ECHILD) ret = 0; // errno=10 no child processes otherwise return pid number
 #else
+    ret = winWaitpid();
+    if(opt.arg_debug) printf("winWaitpid ret=%d\n", ret);
 #endif
     char buf[80];
     const int ID_MAINWINDOW = -4;

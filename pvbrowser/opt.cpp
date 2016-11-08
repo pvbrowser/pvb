@@ -1019,12 +1019,22 @@ static int rlexec(const char *command)
 }
 #endif
 
+#ifdef PVWIN32
+static PROCESS_INFORMATION pi;
+int winWaitpid()
+{
+  int ret;
+  ret = WaitForSingleObject(pi.hProcess,0);
+  return ret;
+}
+#endif
+
 int mysystem(const char *command)
 {
 #ifdef PVWIN32
   int ret;
   STARTUPINFO         si = { sizeof(si)};
-  PROCESS_INFORMATION pi;
+  //PROCESS_INFORMATION pi;
   char cmd[4096];
 
   if(strncmp(command,"start",5) == 0 || strncmp(command,"START",5) == 0)
@@ -1054,5 +1064,6 @@ int mysystem(const char *command)
   {
     rlexec(command);
   }
+  return pid;
 #endif
 }

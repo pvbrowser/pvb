@@ -100,6 +100,7 @@ const char *passfile();
 const char *pvpass(const char *p);
 void setDefaultOptions();
 const char *readIniFile();
+int winWaitpid();
 int mysystem(const char *command);
 
 #endif
