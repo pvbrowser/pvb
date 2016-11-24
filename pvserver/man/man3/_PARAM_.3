@@ -1,0 +1,245 @@
+.TH "_PARAM_" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+_PARAM_ \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <processviewserver\&.h>\fP
+.SS "Data Fields"
+
+.in +1c
+.ti -1c
+.RI "int \fBs\fP"
+.br
+.ti -1c
+.RI "int \fBos\fP"
+.br
+.ti -1c
+.RI "int \fBport\fP"
+.br
+.ti -1c
+.RI "int \fBlanguage\fP"
+.br
+.ti -1c
+.RI "int \fBconvert_units\fP"
+.br
+.ti -1c
+.RI "FILE * \fBfp\fP"
+.br
+.ti -1c
+.RI "int \fBsleep\fP"
+.br
+.ti -1c
+.RI "int(* \fBcleanup\fP )(void *)"
+.br
+.ti -1c
+.RI "void * \fBapp_data\fP"
+.br
+.ti -1c
+.RI "void * \fBuser\fP"
+.br
+.ti -1c
+.RI "char * \fBclipboard\fP"
+.br
+.ti -1c
+.RI "long \fBclipboard_length\fP"
+.br
+.ti -1c
+.RI "int \fBmodal\fP"
+.br
+.ti -1c
+.RI "int(* \fBreadData\fP )(void *d)"
+.br
+.ti -1c
+.RI "int(* \fBshowData\fP )(\fB_PARAM_\fP *p, void *d)"
+.br
+.ti -1c
+.RI "void * \fBmodal_d\fP"
+.br
+.ti -1c
+.RI "void * \fBmodalUserData\fP"
+.br
+.ti -1c
+.RI "\fBPARSE_EVENT_STRUCT\fP \fBparse_event_struct\fP"
+.br
+.ti -1c
+.RI "float * \fBx\fP"
+.br
+.ti -1c
+.RI "float * \fBy\fP"
+.br
+.ti -1c
+.RI "int \fBnxy\fP"
+.br
+.ti -1c
+.RI "char \fBurl\fP [\fBMAX_PRINTF_LENGTH\fP]"
+.br
+.ti -1c
+.RI "char \fBinitial_mask\fP [\fBMAX_PRINTF_LENGTH\fP]"
+.br
+.ti -1c
+.RI "char \fBfile_prefix\fP [32]"
+.br
+.ti -1c
+.RI "int \fBfree\fP"
+.br
+.ti -1c
+.RI "char \fBversion\fP [32]"
+.br
+.ti -1c
+.RI "char \fBpvserver_version\fP [32]"
+.br
+.ti -1c
+.RI "int \fBexit_on_bind_error\fP"
+.br
+.ti -1c
+.RI "int \fBhello_counter\fP"
+.br
+.ti -1c
+.RI "int \fBlocal_milliseconds\fP"
+.br
+.ti -1c
+.RI "int \fBforce_null_event\fP"
+.br
+.ti -1c
+.RI "int \fBallow_pause\fP"
+.br
+.ti -1c
+.RI "int \fBpause\fP"
+.br
+.ti -1c
+.RI "int \fBmy_pvlock_count\fP"
+.br
+.ti -1c
+.RI "int \fBnum_additional_widgets\fP"
+.br
+.ti -1c
+.RI "int \fBmouse_x\fP"
+.br
+.ti -1c
+.RI "int \fBmouse_y\fP"
+.br
+.ti -1c
+.RI "char * \fBmytext\fP"
+.br
+.ti -1c
+.RI "const char * \fBcommunication_plugin\fP"
+.br
+.ti -1c
+.RI "int \fBuse_communication_plugin\fP"
+.br
+.ti -1c
+.RI "char \fBlang_section\fP [32]"
+.br
+.ti -1c
+.RI "char * \fBmytext2\fP"
+.br
+.ti -1c
+.RI "int \fBhttp\fP"
+.br
+.ti -1c
+.RI "FILE * \fBfptmp\fP"
+.br
+.ti -1c
+.RI "int \fBfhdltmp\fP"
+.br
+.in -1c
+.SH "Field Documentation"
+.PP 
+.SS "int _PARAM_::allow_pause"
+
+.SS "void* _PARAM_::app_data"
+
+.SS "int(* _PARAM_::cleanup)(void *)"
+
+.SS "char* _PARAM_::clipboard"
+
+.SS "long _PARAM_::clipboard_length"
+
+.SS "const char* _PARAM_::communication_plugin"
+
+.SS "int _PARAM_::convert_units"
+
+.SS "int _PARAM_::exit_on_bind_error"
+
+.SS "int _PARAM_::fhdltmp"
+
+.SS "char _PARAM_::file_prefix[32]"
+
+.SS "int _PARAM_::force_null_event"
+
+.SS "FILE* _PARAM_::fp"
+
+.SS "FILE* _PARAM_::fptmp"
+
+.SS "int _PARAM_::free"
+
+.SS "int _PARAM_::hello_counter"
+
+.SS "int _PARAM_::http"
+
+.SS "char _PARAM_::initial_mask[\fBMAX_PRINTF_LENGTH\fP]"
+
+.SS "char _PARAM_::lang_section[32]"
+
+.SS "int _PARAM_::language"
+
+.SS "int _PARAM_::local_milliseconds"
+
+.SS "int _PARAM_::modal"
+
+.SS "void* _PARAM_::modal_d"
+
+.SS "void* _PARAM_::modalUserData"
+
+.SS "int _PARAM_::mouse_x"
+
+.SS "int _PARAM_::mouse_y"
+
+.SS "int _PARAM_::my_pvlock_count"
+
+.SS "char* _PARAM_::mytext"
+
+.SS "char* _PARAM_::mytext2"
+
+.SS "int _PARAM_::num_additional_widgets"
+
+.SS "int _PARAM_::nxy"
+
+.SS "int _PARAM_::os"
+
+.SS "\fBPARSE_EVENT_STRUCT\fP _PARAM_::parse_event_struct"
+
+.SS "int _PARAM_::pause"
+
+.SS "int _PARAM_::port"
+
+.SS "char _PARAM_::pvserver_version[32]"
+
+.SS "int(* _PARAM_::readData)(void *d)"
+
+.SS "int _PARAM_::s"
+
+.SS "int(* _PARAM_::showData)(\fB_PARAM_\fP *p, void *d)"
+
+.SS "int _PARAM_::sleep"
+
+.SS "char _PARAM_::url[\fBMAX_PRINTF_LENGTH\fP]"
+
+.SS "int _PARAM_::use_communication_plugin"
+
+.SS "void* _PARAM_::user"
+
+.SS "char _PARAM_::version[32]"
+
+.SS "float* _PARAM_::x"
+
+.SS "float* _PARAM_::y"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

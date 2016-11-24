@@ -1,0 +1,1152 @@
+.TH "Output" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Output \- 
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBpvSetColumnWith\fP   \fBpvSetColumnWidth\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvSetCaption\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvPlaySound\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvBeep\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvStatusMessage\fP (\fBPARAM\fP *p, int r, int g, int b, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvToolTip\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTextEx\fP (\fBPARAM\fP *p, int id, const char *text, int option)"
+.br
+.ti -1c
+.RI "int \fBpvSetText\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvPrintf\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvSetStyleSheet\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvPrintfStyleSheet\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinValue\fP (\fBPARAM\fP *p, int id, int value)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxValue\fP (\fBPARAM\fP *p, int id, int value)"
+.br
+.ti -1c
+.RI "int \fBpvSetValue\fP (\fBPARAM\fP *p, int id, int value)"
+.br
+.ti -1c
+.RI "int \fBpvClear\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvChangeItem\fP (\fBPARAM\fP *p, int id, int index, const char *bmp_file, const char *text, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvInsertItem\fP (\fBPARAM\fP *p, int id, int index, const char *bmp_file, const char *text, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveItem\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveItemByName\fP (\fBPARAM\fP *p, int id, const char *name)"
+.br
+.ti -1c
+.RI "int \fBpvAddColumn\fP (\fBPARAM\fP *p, int id, const char *text, int size)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveAllColumns\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableText\fP (\fBPARAM\fP *p, int id, int x, int y, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableButton\fP (\fBPARAM\fP *p, int id, int x, int y, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableCheckBox\fP (\fBPARAM\fP *p, int id, int x, int y, int state, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableComboBox\fP (\fBPARAM\fP *p, int id, int x, int y, int editable, const char *textlist)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableLabel\fP (\fBPARAM\fP *p, int id, int x, int y, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvTablePrintf\fP (\fBPARAM\fP *p, int id, int x, int y, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableTextAlignment\fP (\fBPARAM\fP *p, int id, int x, int y, int alignment)"
+.br
+.ti -1c
+.RI "int \fBpvMysqldump\fP (\fBPARAM\fP *p, int id, const char *command)"
+.br
+.ti -1c
+.RI "int \fBpvCSVdump\fP (\fBPARAM\fP *p, int id, const char *filename, char delimitor='\\t')"
+.br
+.ti -1c
+.RI "int \fBpvCSVcreate\fP (\fBPARAM\fP *p, const char *command, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvCSV\fP (\fBPARAM\fP *p, int id, const char *command, char delimitor='\\t')"
+.br
+.ti -1c
+.RI "int \fBpvSetListViewText\fP (\fBPARAM\fP *p, int id, const char *path, int column, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvListViewPrintf\fP (\fBPARAM\fP *p, int id, const char *path, int column, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetSelected\fP (\fBPARAM\fP *p, int id, const char *path, int column, int selected)"
+.br
+.ti -1c
+.RI "int \fBpvListBoxSetSelected\fP (\fBPARAM\fP *p, int id, int index, int selected)"
+.br
+.ti -1c
+.RI "int \fBpvSetColumnWidth\fP (\fBPARAM\fP *p, int id, int column, int width)"
+.br
+.ti -1c
+.RI "int \fBpvSetRowHeight\fP (\fBPARAM\fP *p, int id, int row, int height)"
+.br
+.ti -1c
+.RI "int \fBpvSetWordWrap\fP (\fBPARAM\fP *p, int id, int wrap)"
+.br
+.ti -1c
+.RI "int \fBpvSetPixmap\fP (\fBPARAM\fP *p, int id, const char *bmp_file, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetTablePixmap\fP (\fBPARAM\fP *p, int id, int x, int y, const char *bmp_file, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetSource\fP (\fBPARAM\fP *p, int id, const char *html_file)"
+.br
+.ti -1c
+.RI "int \fBpvSetImage\fP (\fBPARAM\fP *p, int id, const char *filename, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetBufferedJpgImage\fP (\fBPARAM\fP *p, int id, const unsigned char *buffer, int buffersize, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetBufferTransparency\fP (\fBPARAM\fP *p, int id, int a)"
+.br
+.ti -1c
+.RI "int \fBpvSetBackgroundColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetPaletteBackgroundColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetPaletteForegroundColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetFontColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetFont\fP (\fBPARAM\fP *p, int id, const char *family, int pointsize, int bold, int italic, int underline, int strikeout)"
+.br
+.ti -1c
+.RI "int \fBpvDisplayNum\fP (\fBPARAM\fP *p, int id, int num)"
+.br
+.ti -1c
+.RI "int \fBpvDisplayFloat\fP (\fBPARAM\fP *p, int id, float val)"
+.br
+.ti -1c
+.RI "int \fBpvDisplayStr\fP (\fBPARAM\fP *p, int id, const char *str)"
+.br
+.ti -1c
+.RI "int \fBpvAddTab\fP (\fBPARAM\fP *p, int id, int id_child, const char *str)"
+.br
+.ti -1c
+.RI "int \fBpvSetListViewPixmap\fP (\fBPARAM\fP *p, int id, const char *path, const char *bmp_file, int column, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveListViewItem\fP (\fBPARAM\fP *p, int id, const char *path)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveIconViewItem\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetIconViewItem\fP (\fBPARAM\fP *p, int id, const char *bmp_file, const char *text, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetDateOrder\fP (\fBPARAM\fP *p, int id, int order)"
+.br
+.ti -1c
+.RI "int \fBpvSetDate\fP (\fBPARAM\fP *p, int id, int year, int month, int day)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinDate\fP (\fBPARAM\fP *p, int id, int year, int month, int day)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxDate\fP (\fBPARAM\fP *p, int id, int year, int month, int day)"
+.br
+.ti -1c
+.RI "int \fBpvSetTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second=0, int msec=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second=0, int msec=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second=0, int msec=0)"
+.br
+.ti -1c
+.RI "int \fBpvEnsureCellVisible\fP (\fBPARAM\fP *p, int id, int row, int col=1)"
+.br
+.ti -1c
+.RI "int \fBpvMoveCursor\fP (\fBPARAM\fP *p, int id, int cursor)"
+.br
+.ti -1c
+.RI "int \fBpvScrollToAnchor\fP (\fBPARAM\fP *p, int id, const char *anchor)"
+.br
+.ti -1c
+.RI "int \fBpvSetZoomFactor\fP (\fBPARAM\fP *p, int id, float factor)"
+.br
+.ti -1c
+.RI "int \fBpvPrintHtmlOnPrinter\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetWidgetProperty\fP (\fBPARAM\fP *p, int id, const char *name, const char *value)"
+.br
+.ti -1c
+.RI "int \fBpvPassThroughOneJpegFrame\fP (\fBPARAM\fP *p, int id, int source_fhdl, int inputIsSocket=1, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSendJpegFrame\fP (\fBPARAM\fP *p, int id, unsigned char *frame, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSendRGBA\fP (\fBPARAM\fP *p, int id, const unsigned char *image, int width, int height, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSaveDrawBuffer\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are the output routines 
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define pvSetColumnWith   \fBpvSetColumnWidth\fP"
+
+.SH "Function Documentation"
+.PP 
+.SS "int pvAddColumn (\fBPARAM\fP *p, intid, const char *text, intsize)"
+
+.PP
+.nf
+
+Add a Column in a QListView\&.
+Allowed widgets: QListView
+.fi
+.PP
+ 
+.SS "int pvAddTab (\fBPARAM\fP *p, intid, intid_child, const char *str)"
+
+.PP
+.nf
+
+Add a Tab to an QTabDialog
+id       := id of TabWidget
+id_child := id of the QWidget for this tab
+str      := text on the tab
+.fi
+.PP
+ 
+.SS "int pvBeep (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Output a beep\&.
+.fi
+.PP
+ 
+.SS "int pvChangeItem (\fBPARAM\fP *p, intid, intindex, const char *bmp_file, const char *text, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+Set the content of a widget\&.
+if bmp_file == NULL no pixmap is drawn
+else bmp_file = name of PNG file or an 8bpp bitmap file
+Allowed widgets: QListBox
+.fi
+.PP
+ 
+.SS "int pvClear (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Clear the content of a widget\&.
+Allowed widgets: QTable, QListBox, QComboBox, QMultiLineEdit, QListView, QIconView
+.fi
+.PP
+ 
+.SS "int pvCSV (\fBPARAM\fP *p, intid, const char *command, chardelimitor = \fC'\\t'\fP)"
+
+.PP
+.nf
+
+dump CSV file to table=id by calling 'command'\&.
+.fi
+.PP
+ 
+.SS "int pvCSVcreate (\fBPARAM\fP *p, const char *command, const char *filename)"
+
+.PP
+.nf
+
+create CSV file by calling 'command > filename'\&.
+.fi
+.PP
+ 
+.SS "int pvCSVdump (\fBPARAM\fP *p, intid, const char *filename, chardelimitor = \fC'\\t'\fP)"
+
+.PP
+.nf
+
+dump CSV file and populate table\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvDisplayFloat (\fBPARAM\fP *p, intid, floatval)"
+
+.PP
+.nf
+
+Display float on a QLCDNumber
+.fi
+.PP
+ 
+.SS "int pvDisplayNum (\fBPARAM\fP *p, intid, intnum)"
+
+.PP
+.nf
+
+Display num on a QLCDNumber
+.fi
+.PP
+ 
+.SS "int pvDisplayStr (\fBPARAM\fP *p, intid, const char *str)"
+
+.PP
+.nf
+
+Display string on a QLCDNumber
+.fi
+.PP
+ 
+.SS "int pvEnsureCellVisible (\fBPARAM\fP *p, intid, introw, intcol = \fC1\fP)"
+
+.PP
+.nf
+
+Ensure that the table cell is visible, scroll if necessary
+allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvInsertItem (\fBPARAM\fP *p, intid, intindex, const char *bmp_file, const char *text, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+Insert an item\&.
+if bmp_file == NULL no pixmap is drawn
+else bmp_file = name of PNG file or an 8bpp bitmap file
+if index == -1 append text at the end of the list
+Allowed widgets: QListBox, QComboBox
+.fi
+.PP
+ 
+.SS "int pvListBoxSetSelected (\fBPARAM\fP *p, intid, intindex, intselected)"
+
+.PP
+.nf
+
+selected = 0 | 1 | 2
+if selected == 0 item is unselected
+if selected == 1 item is selected
+.fi
+.PP
+ 
+.SS "int pvListViewPrintf (\fBPARAM\fP *p, intid, const char *path, intcolumn, const char *format, \&.\&.\&.)"
+
+.PP
+.nf
+
+Set the text of a ListViewItem\&.
+Works as printf(format,\&.\&.\&.);
+example:
+path = '/dir/subdir/subsubdir'
+path := similar to a unix directory path
+.fi
+.PP
+.PP
+.PP
+.nf
+Example for colored cells:
+pvListViewPrintf(p,myListView,'/path/to',0,'color(255,0,0)this is the colored text');
+prepend: color(r,g,b)
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QListView
+.fi
+.PP
+ 
+.SS "int pvListViewSetSelected (\fBPARAM\fP *p, intid, const char *path, intcolumn, intselected)"
+
+.PP
+.nf
+
+selected = 0 | 1 | 2
+if selected == 0 item is unselected
+if selected == 1 item is selected
+if selected == 2 item is selected and all other tree branches are closed
+.fi
+.PP
+ 
+.SS "int pvMoveCursor (\fBPARAM\fP *p, intid, intcursor)"
+
+.PP
+.nf
+
+Move the cursor
+allowed widgets: QTextBrowser, QMultiLineEdit
+cursor := \fBTextCursor\fP
+.fi
+.PP
+ 
+.SS "int pvMysqldump (\fBPARAM\fP *p, intid, const char *command)"
+
+.PP
+.nf
+
+Run mysqldump and populate table\&.
+See: mysqldump --help
+Runs: mysqldump -X command
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvPassThroughOneJpegFrame (\fBPARAM\fP *p, intid, intsource_fhdl, intinputIsSocket = \fC1\fP, introtate = \fC0\fP)"
+
+.PP
+.nf
+
+Pass 1 JPEG frame from a camera or other source to the pvbrowser client\&.
+Allowed widgets: QImage
+.fi
+.PP
+ 
+.SS "int pvPlaySound (\fBPARAM\fP *p, const char *filename)"
+
+.PP
+.nf
+
+Play Sound\&. filename should point to a *\&.wav audio file\&. First \fBpvDownloadFile(PARAM *p, const char *filename)\fP;
+.fi
+.PP
+ 
+.SS "int pvPrintf (\fBPARAM\fP *p, intid, const char *format, \&.\&.\&.)"
+
+.PP
+.nf
+
+Set the text of a widget\&.
+The functions works like printf()
+Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser, QGroupBox
+.fi
+.PP
+ 
+.SS "int pvPrintfStyleSheet (\fBPARAM\fP *p, intid, const char *format, \&.\&.\&.)"
+
+.PP
+.nf
+
+Printf the style sheet of a widget\&. (See Qt documentation for style sheets)
+The functions works like printf()
+Allowed widgets: all widgets
+id := id_of_widget or ID_ROOTWIDGET, ID_EDITBAR, ID_TOOLBAR, ID_STATUSBAR, ID_MAINWINDOW or  id_of_dock_widget
+.fi
+.PP
+ 
+.SS "int pvPrintHtmlOnPrinter (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Print the HTML page on a printer
+allowed widgets: QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvRemoveAllColumns (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Remove all Columns in a QListView\&.
+Allowed widgets: QListView
+.fi
+.PP
+ 
+.SS "int pvRemoveIconViewItem (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Remove a QIconView item
+.fi
+.PP
+ 
+.SS "int pvRemoveItem (\fBPARAM\fP *p, intid, intindex)"
+
+.PP
+.nf
+
+Remove an item\&.
+Allowed widgets: QListBox, QComboBox
+.fi
+.PP
+ 
+.SS "int pvRemoveItemByName (\fBPARAM\fP *p, intid, const char *name)"
+
+.PP
+.nf
+
+Remove an item by it's name\&.
+Allowed widgets: QListBox, QComboBox
+.fi
+.PP
+ 
+.SS "int pvRemoveListViewItem (\fBPARAM\fP *p, intid, const char *path)"
+
+.PP
+.nf
+
+example:
+path = '/dir/subdir/subsubdir'
+path := similar to a unix directory path
+Remove a QListView item
+.fi
+.PP
+ 
+.SS "int pvSaveDrawBuffer (\fBPARAM\fP *p, intid, const char *filename)"
+
+.PP
+.nf
+
+Save rendered buffer as PNG or JPG file in temporary directory\&.
+filename is without path\&.
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SS "int pvScrollToAnchor (\fBPARAM\fP *p, intid, const char *anchor)"
+
+.PP
+.nf
+
+Scroll to anchor
+allowed widgets: QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvSendJpegFrame (\fBPARAM\fP *p, intid, unsigned char *frame, introtate = \fC0\fP)"
+
+.PP
+.nf
+
+Send 1 JPEG frame from a camera or other source to the pvbrowser client\&.
+Allowed widgets: QImage
+.fi
+.PP
+ 
+.SS "int pvSendRGBA (\fBPARAM\fP *p, intid, const unsigned char *image, intwidth, intheight, introtate = \fC0\fP)"
+
+.PP
+.nf
+
+Send a RGBA image to the pvbrowser client\&.
+Allowed widgets: QImage
+.fi
+.PP
+ 
+.SS "int pvSetBackgroundColor (\fBPARAM\fP *p, intid, intr, intg, intb)"
+
+.PP
+.nf
+
+Set the background color of the widget\&.
+Allowed widgets: QLabel, QDraw
+.fi
+.PP
+ 
+.SS "int pvSetBufferedJpgImage (\fBPARAM\fP *p, intid, const unsigned char *buffer, intbuffersize, introtate = \fC0\fP)"
+
+.PP
+.nf
+
+Set a new image in an existing image\&.
+For example get a frame from a MJPG webcam with the rlWebcam method
+  int getFrameBuffer(unsigned char *buffer, int maxbuffer, int timeout=3000);
+and send it to the pvbrowser client with this function\&.
+if(rotate == +90) then rotate +90 degrees
+if(rotate == -90) then rotate -90 degrees
+Allowed widgets: QImage
+.fi
+.PP
+ 
+.SS "int pvSetBufferTransparency (\fBPARAM\fP *p, intid, inta)"
+
+.PP
+.nf
+
+Set the transparency for the drawing buffer\&.
+'int a;' is in the range of 0-255 where 0 is fully transparent and 255 is fully opaque
+Allowed widgets: QDraw
+.fi
+.PP
+ 
+.SS "int pvSetCaption (\fBPARAM\fP *p, const char *text)"
+
+.PP
+.nf
+
+Set program Title\&.
+.fi
+.PP
+ 
+.SS "int pvSetColumnWidth (\fBPARAM\fP *p, intid, intcolumn, intwidth)"
+
+.PP
+.nf
+
+Set the width of a table column\&.
+if column == -1 then 
+  set border width
+  if width >  0  -> set width
+  if width == 0  -> hide
+  if width == -1 -> resize to contents
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetDate (\fBPARAM\fP *p, intid, intyear, intmonth, intday)"
+
+.PP
+.nf
+
+Set date
+allowed widgets: QDateEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetDateOrder (\fBPARAM\fP *p, intid, intorder)"
+
+.PP
+.nf
+
+Set date order, enum Order { DMY, MDY, YMD, YDM }
+allowed widgets: QDateEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetFont (\fBPARAM\fP *p, intid, const char *family, intpointsize, intbold, intitalic, intunderline, intstrikeout)"
+
+.PP
+.nf
+
+Set the font of the widget\&. The font will be propagated to all children\&.
+pointsize (in pitch)
+bold      = 0|1
+italic    = 0|1
+underline = 0|1
+strikeout = 0|1
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvSetFontColor (\fBPARAM\fP *p, intid, intr, intg, intb)"
+
+.PP
+.nf
+
+Set the font color of the widget\&.
+r=-1,g=-1,b=-1 := unsetPalette()
+Allowed widgets: QMultiLineEdit
+.fi
+.PP
+ 
+.SS "int pvSetIconViewItem (\fBPARAM\fP *p, intid, const char *bmp_file, const char *text, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+Insert a QIconViewItem pixmap and text
+.fi
+.PP
+ 
+.SS "int pvSetImage (\fBPARAM\fP *p, intid, const char *filename, introtate = \fC0\fP)"
+
+.PP
+.nf
+
+Set a new image in an existing image\&.
+if(rotate == +90) then rotate +90 degrees
+if(rotate == -90) then rotate -90 degrees
+Allowed widgets: QImage
+.fi
+.PP
+ 
+.SS "int pvSetListViewPixmap (\fBPARAM\fP *p, intid, const char *path, const char *bmp_file, intcolumn, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+example:
+path = '/dir/subdir/subsubdir'
+path := similar to a unix directory path
+Set a QListView pixmap
+Use PNG file\&.
+.fi
+.PP
+ 
+.SS "int pvSetListViewText (\fBPARAM\fP *p, intid, const char *path, intcolumn, const char *text)"
+
+.PP
+.nf
+
+Set the text of a ListViewItem\&.
+example:
+path = '/dir/subdir/subsubdir'
+path := similar to a unix directory path
+.fi
+.PP
+.PP
+.PP
+.nf
+Example for colored cells:
+pvSetListViewText(p,myListView,'/path/to',0,'color(255,0,0)this is the colored text');
+prepend: color(r,g,b)
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QListView
+.fi
+.PP
+ 
+.SS "int pvSetMaxDate (\fBPARAM\fP *p, intid, intyear, intmonth, intday)"
+
+.PP
+.nf
+
+Set max date
+allowed widgets: QDateEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetMaxTime (\fBPARAM\fP *p, intid, inthour, intminute, intsecond = \fC0\fP, intmsec = \fC0\fP)"
+
+.PP
+.nf
+
+Set time
+allowed widgets: QTimeEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetMaxValue (\fBPARAM\fP *p, intid, intvalue)"
+
+.PP
+.nf
+
+Set the maximum value of a widget\&.
+Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar
+.fi
+.PP
+ 
+.SS "int pvSetMinDate (\fBPARAM\fP *p, intid, intyear, intmonth, intday)"
+
+.PP
+.nf
+
+Set min date
+allowed widgets: QDateEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetMinTime (\fBPARAM\fP *p, intid, inthour, intminute, intsecond = \fC0\fP, intmsec = \fC0\fP)"
+
+.PP
+.nf
+
+Set time
+allowed widgets: QTimeEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetMinValue (\fBPARAM\fP *p, intid, intvalue)"
+
+.PP
+.nf
+
+Set the minimum value of a widget\&.
+Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar
+.fi
+.PP
+ 
+.SS "int pvSetPaletteBackgroundColor (\fBPARAM\fP *p, intid, intr, intg, intb)"
+
+.PP
+.nf
+
+Set the background color of the widget\&.
+r=-1,g=-1,b=-1 := unsetPalette()
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvSetPaletteForegroundColor (\fBPARAM\fP *p, intid, intr, intg, intb)"
+
+.PP
+.nf
+
+Set the foreground color of the widget\&.
+r=-1,g=-1,b=-1 := unsetPalette()
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvSetPixmap (\fBPARAM\fP *p, intid, const char *bmp_file, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+Set the pixmap\&.
+Use PNG file\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+also:
+bmp_file = name of an 8bpp bitmap file
+if bmp_file == NULL reset pixmap
+Allowed widgets: QPushButton
+.fi
+.PP
+ 
+.SS "int pvSetRowHeight (\fBPARAM\fP *p, intid, introw, intheight)"
+
+.PP
+.nf
+
+Set the height of a table row\&.
+if row == -1 then set border height
+if row >= 0 && height == -1 then set autoresizeRowToContents=1
+if row >= 0 && height == -2 then set autoresizeRowToContents=0
+default autoresizeRowToContents=0
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetSource (\fBPARAM\fP *p, intid, const char *html_file)"
+
+.PP
+.nf
+
+Set the file to show in QTextBrowser\&.
+html_file = file to start with
+or
+http://webpage.url
+Allowed widgets: QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvSetStyleSheet (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Set the style sheet of a widget\&. (See Qt documentation for style sheets)
+Allowed widgets: all widgets
+id := id_of_widget or ID_ROOTWIDGET, ID_EDITBAR, ID_TOOLBAR, ID_STATUSBAR, ID_MAINWINDOW or id_of_dock_widget
+.fi
+.PP
+ 
+.SS "int pvSetTableButton (\fBPARAM\fP *p, intid, intx, inty, const char *text)"
+
+.PP
+.nf
+
+Set a table cell to Button\&.
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetTableCheckBox (\fBPARAM\fP *p, intid, intx, inty, intstate, const char *text)"
+
+.PP
+.nf
+
+Set a table cell to CheckBox\&.
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetTableComboBox (\fBPARAM\fP *p, intid, intx, inty, inteditable, const char *textlist)"
+
+.PP
+.nf
+
+Set a table cell to ComboBox\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+example:
+pvSetTableComboBox(p,Table1,2,1,1,'choice1,choice2,choice3');
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetTableLabel (\fBPARAM\fP *p, intid, intx, inty, const char *text)"
+
+.PP
+.nf
+
+Set a table cell to label
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetTablePixmap (\fBPARAM\fP *p, intid, intx, inty, const char *bmp_file, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+Set the pixmap of a table cell\&.
+Use PNG file\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+also:
+bmp_file = name of an 8bpp bitmap file
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetTableText (\fBPARAM\fP *p, intid, intx, inty, const char *text)"
+
+.PP
+.nf
+
+Set the text of a table cell\&.
+if x == -1 then set row text
+if y == -1 then set column text
+.fi
+.PP
+.PP
+.PP
+.nf
+Example for colored table cells:
+pvTableText(p,Table1,0,0,'color(255,0,0)this is the cell text');
+prepend: color(r,g,b)
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetTableTextAlignment (\fBPARAM\fP *p, intid, intx, inty, intalignment)"
+
+.PP
+.nf
+
+Set the text alignment of a table cell\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+alignment :=
+  AlignLeft     # Aligns with the left edge\&.
+  AlignRight    # Aligns with the right edge\&.
+  AlignHCenter  # Centers horizontally in the available space\&.
+  AlignJustify  # Justifies the text in the available space\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetText (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Set the text of a widget\&.
+Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvSetTextEx (\fBPARAM\fP *p, intid, const char *text, intoption)"
+
+.PP
+.nf
+
+Set the text of a widget\&.
+option := -1 || HTML_HEADER || HTML_STYLE || HTML_BODY
+Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit, QComboBox, QRadioButton, QCheckBox, QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvSetTime (\fBPARAM\fP *p, intid, inthour, intminute, intsecond = \fC0\fP, intmsec = \fC0\fP)"
+
+.PP
+.nf
+
+Set time
+allowed widgets: QTimeEdit, QDateTimeEdit
+.fi
+.PP
+ 
+.SS "int pvSetValue (\fBPARAM\fP *p, intid, intvalue)"
+
+.PP
+.nf
+
+Set the value of a widget\&.
+Allowed widgets: QSlider, QSpinBox, QDial, QProgressBar, QTabWidget, QToolBox
+For QMultiLineEdit set maxlines = value
+.fi
+.PP
+ 
+.SS "int pvSetWidgetProperty (\fBPARAM\fP *p, intid, const char *name, const char *value)"
+
+.PP
+.nf
+
+Set a property of a custom widget\&.
+See the documentation of the custom widget plugin\&.
+allowed widgets: QCustomWidget
+.fi
+.PP
+ 
+.SS "int pvSetWordWrap (\fBPARAM\fP *p, intid, intwrap)"
+
+.PP
+.nf
+
+Set word wrap for table\&.
+wrap = 0 | 1
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSetZoomFactor (\fBPARAM\fP *p, intid, floatfactor)"
+
+.PP
+.nf
+
+Set zoom factor of the HTML page
+allowed widgets: QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvStatusMessage (\fBPARAM\fP *p, intr, intg, intb, const char *format, \&.\&.\&.)"
+
+.PP
+.nf
+
+Output status message\&.
+If r = g = b = -1 -> normal background color
+.fi
+.PP
+ 
+.SS "int pvTablePrintf (\fBPARAM\fP *p, intid, intx, inty, const char *format, \&.\&.\&.)"
+
+.PP
+.nf
+
+Set the text of a table cell\&.
+Works as printf(format,\&.\&.\&.);
+if x == -1 then set row text
+if y == -1 then set column text
+.fi
+.PP
+.PP
+.PP
+.nf
+Example for colored table cells:
+pvTablePrintf(p,Table1,0,0,'color(255,0,0)this is the cell text');
+prepend: color(r,g,b)
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvToolTip (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Set a QToolTip for the widget\&. It will be displayed near the widget when you move over\&.
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

@@ -797,6 +797,7 @@
             <section title="pvRequestSvgMatrixForElement" ref="group__Input.html#ga16f54f9891c976df51e5895febf63682" />
             <section title="pvSelection" ref="group__Input.html#gaa9daf67935f26a7b4b076d1cfff5f4a0" />
             <section title="pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
+            <section title="pvWaitpid" ref="group__Input.html#ga53cbd20c94a35baa84884650ff7a263d" />
           </section>
           <section title="State" ref="group__State.html">
             <section title="pvAddTabIcon" ref="group__State.html#ga34c62213f9e691883d4daf8802bf1770" />
@@ -2140,6 +2141,7 @@
               <section title="pvVtkTclPrintf" ref="processviewserver_8h.html#ga0afd8375f4b05b0fea25176cc47cdb2c" />
               <section title="pvVtkTclScript" ref="processviewserver_8h.html#gaf4f08181216933f6a7bdf68ca1f25093" />
               <section title="pvWait" ref="processviewserver_8h.html#gae97cd460f11f1542c11ed9349b8c2b80" />
+              <section title="pvWaitpid" ref="processviewserver_8h.html#ga53cbd20c94a35baa84884650ff7a263d" />
               <section title="pvWarning" ref="processviewserver_8h.html#ga91de12f5b44ae6b136c1eee8e6e014fd" />
               <section title="pvWhatsThisPrintf" ref="processviewserver_8h.html#ga76b06d17d8bb20a1913bb0aa71339e06" />
               <section title="pvWriteFile" ref="processviewserver_8h.html#ga3810a20dd674e00eb1dcacf96d948915" />
@@ -2585,6 +2587,7 @@
       <keyword name="pvSendJpegFrame" id="processviewserver.h::pvSendJpegFrame" ref="processviewserver_8h.html#gaa4f03c9d71a91b9eb412b43f637f4e85" />
       <keyword name="pvSendRGBA" id="processviewserver.h::pvSendRGBA" ref="processviewserver_8h.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
       <keyword name="pvSaveDrawBuffer" id="processviewserver.h::pvSaveDrawBuffer" ref="processviewserver_8h.html#ga9e68338ac797827a8abfc8f3fbafae13" />
+      <keyword name="pvWaitpid" id="processviewserver.h::pvWaitpid" ref="processviewserver_8h.html#ga53cbd20c94a35baa84884650ff7a263d" />
       <keyword name="pvText" id="processviewserver.h::pvText" ref="processviewserver_8h.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestJpeg" id="processviewserver.h::pvRequestJpeg" ref="processviewserver_8h.html#gae35ec18e2f45d830170759a987e2ad1a" />
       <keyword name="pvRequestGeometry" id="processviewserver.h::pvRequestGeometry" ref="processviewserver_8h.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />
@@ -3472,6 +3475,7 @@
       <keyword name="pvSendRGBA" id="Output::pvSendRGBA" ref="group__Output.html#ga4f18e8eab8bc205327b16e4bcd2041ba" />
       <keyword name="pvSaveDrawBuffer" id="Output::pvSaveDrawBuffer" ref="group__Output.html#ga9e68338ac797827a8abfc8f3fbafae13" />
       <keyword name="Input" id="Input" ref="group__Input.html" />
+      <keyword name="pvWaitpid" id="Input::pvWaitpid" ref="group__Input.html#ga53cbd20c94a35baa84884650ff7a263d" />
       <keyword name="pvText" id="Input::pvText" ref="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc" />
       <keyword name="pvRequestJpeg" id="Input::pvRequestJpeg" ref="group__Input.html#gae35ec18e2f45d830170759a987e2ad1a" />
       <keyword name="pvRequestGeometry" id="Input::pvRequestGeometry" ref="group__Input.html#gaf48d8e6f53fa3b8e60d2959bebb7a4db" />

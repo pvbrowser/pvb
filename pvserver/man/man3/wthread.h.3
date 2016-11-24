@@ -1,0 +1,108 @@
+.TH "wthread.h" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+wthread.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'processviewserver\&.h'\fP
+.br
+\fC#include <stddef\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include <pthread\&.h>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBWSEMAPHORE\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvthread_attr_init\fP (pthread_attr_t *attr)"
+.br
+.ti -1c
+.RI "int \fBpvthread_create\fP (pthread_t *tid, const pthread_attr_t *attr, void *(*func)(void *), void *arg)"
+.br
+.ti -1c
+.RI "void \fBpvthread_close_handle\fP (pthread_t *tid)"
+.br
+.ti -1c
+.RI "void \fBpvthread_exit\fP (void *status)"
+.br
+.ti -1c
+.RI "int \fBpvthread_join\fP (pthread_t tid, void **status)"
+.br
+.ti -1c
+.RI "int \fBpvthread_mutex_init\fP (pthread_mutex_t *mptr, const pthread_mutexattr_t *attr)"
+.br
+.ti -1c
+.RI "int \fBpvthread_mutex_destroy\fP (pthread_mutex_t *mptr)"
+.br
+.ti -1c
+.RI "int \fBpvthread_mutex_lock\fP (pthread_mutex_t *mptr)"
+.br
+.ti -1c
+.RI "int \fBpvthread_mutex_trylock\fP (pthread_mutex_t *mptr)"
+.br
+.ti -1c
+.RI "int \fBpvthread_mutex_unlock\fP (pthread_mutex_t *mptr)"
+.br
+.ti -1c
+.RI "int \fBpvthread_cancel\fP (pthread_t tid)"
+.br
+.ti -1c
+.RI "int \fBpvinit_semaphore\fP (\fBWSEMAPHORE\fP *s, int cmax)"
+.br
+.ti -1c
+.RI "int \fBpvincrement_semaphore\fP (\fBWSEMAPHORE\fP *s)"
+.br
+.ti -1c
+.RI "int \fBpvwait_semaphore\fP (\fBWSEMAPHORE\fP *s)"
+.br
+.ti -1c
+.RI "int \fBpvthread_sleep\fP (long msec)"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int pvincrement_semaphore (\fBWSEMAPHORE\fP *s)"
+
+.SS "int pvinit_semaphore (\fBWSEMAPHORE\fP *s, intcmax)"
+
+.SS "int pvthread_attr_init (pthread_attr_t *attr)"
+
+.SS "int pvthread_cancel (pthread_ttid)"
+
+.SS "void pvthread_close_handle (pthread_t *tid)"
+
+.SS "int pvthread_create (pthread_t *tid, const pthread_attr_t *attr, void *(*)(void *)func, void *arg)"
+
+.SS "void pvthread_exit (void *status)"
+
+.SS "int pvthread_join (pthread_ttid, void **status)"
+
+.SS "int pvthread_mutex_destroy (pthread_mutex_t *mptr)"
+
+.SS "int pvthread_mutex_init (pthread_mutex_t *mptr, const pthread_mutexattr_t *attr)"
+
+.SS "int pvthread_mutex_lock (pthread_mutex_t *mptr)"
+
+.SS "int pvthread_mutex_trylock (pthread_mutex_t *mptr)"
+
+.SS "int pvthread_mutex_unlock (pthread_mutex_t *mptr)"
+
+.SS "int pvthread_sleep (longmsec)"
+
+.SS "int pvwait_semaphore (\fBWSEMAPHORE\fP *s)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

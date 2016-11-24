@@ -1,0 +1,1674 @@
+.TH "processviewserver.h" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+processviewserver.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <string\&.h>\fP
+.br
+\fC#include 'vmsgl\&.h'\fP
+.br
+\fC#include 'wthread\&.h'\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <map>\fP
+.br
+
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBPARSE_EVENT_STRUCT\fP"
+.br
+.ti -1c
+.RI "struct \fB_PARAM_\fP"
+.br
+.ti -1c
+.RI "struct \fBIntegerArray\fP"
+.br
+.ti -1c
+.RI "struct \fBFloatArray\fP"
+.br
+.ti -1c
+.RI "struct \fBpvTime\fP"
+.br
+.ti -1c
+.RI "struct \fBpvAddressTableItem\fP"
+.br
+.ti -1c
+.RI "struct \fBpvAddressTable\fP"
+.br
+.ti -1c
+.RI "class \fBglFont\fP"
+.br
+.ti -1c
+.RI "struct \fBglFont::Glyph\fP"
+.br
+.ti -1c
+.RI "class \fBpvWidgetIdManager\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBpv_STDIN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBpv_STDOUT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBMAX_PRINTF_LENGTH\fP   1024   /*! max length of \fBpvPrintf\fP buffer (must be less than or equal to MAX_PRINTF_LENGTH of ProcessViewBrowser) */"
+.br
+.ti -1c
+.RI "#define \fBMAX_EVENT_LENGTH\fP   1024   /*! max length of an event        */"
+.br
+.ti -1c
+.RI "#define \fBMAX_CLIENTS\fP   100    /*! max number of clients         */"
+.br
+.ti -1c
+.RI "#define \fBMAX_DOCK_WIDGETS\fP   32"
+.br
+.ti -1c
+.RI "#define \fBHELVETICA\fP   'Helvetica'"
+.br
+.ti -1c
+.RI "#define \fBTIMES\fP   'Times'"
+.br
+.ti -1c
+.RI "#define \fBCOURIER\fP   'Courier'"
+.br
+.ti -1c
+.RI "#define \fBOLDENGLISH\fP   'OldEnglish'"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM\fP   'System'"
+.br
+.ti -1c
+.RI "#define \fBANYSTYLE\fP   'AnyStyle'"
+.br
+.ti -1c
+.RI "#define \fBRED\fP   255,0,0"
+.br
+.ti -1c
+.RI "#define \fBGREEN\fP   0,255,0"
+.br
+.ti -1c
+.RI "#define \fBBLUE\fP   0,0,255"
+.br
+.ti -1c
+.RI "#define \fBWHITE\fP   255,255,255"
+.br
+.ti -1c
+.RI "#define \fBBLACK\fP   0,0,0"
+.br
+.ti -1c
+.RI "#define \fBYELLOW\fP   255,255,0"
+.br
+.ti -1c
+.RI "#define \fBLILA\fP   255,0,255"
+.br
+.ti -1c
+.RI "#define \fBCYAN\fP   0,255,255"
+.br
+.ti -1c
+.RI "#define \fBDARK_GREY\fP   128,128,128"
+.br
+.ti -1c
+.RI "#define \fBLIGHT_GREY\fP   180,180,180"
+.br
+.ti -1c
+.RI "#define \fBWHEAT\fP   213,213,154"
+.br
+.ti -1c
+.RI "#define \fBDARK_RED\fP   128,0,0"
+.br
+.ti -1c
+.RI "#define \fBDARK_GREEN\fP   0,128,0"
+.br
+.ti -1c
+.RI "#define \fBDARK_LILA\fP   128,0,128"
+.br
+.ti -1c
+.RI "#define \fBDARK_CYAN\fP   0,128,128"
+.br
+.ti -1c
+.RI "#define \fBDARK_YELLOW\fP   200,200,0"
+.br
+.ti -1c
+.RI "#define \fBDARK_BLUE\fP   0,0,128"
+.br
+.ti -1c
+.RI "#define \fBDEFAULT_LANGUAGE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBpvtr\fP(txt)   txt"
+.br
+.ti -1c
+.RI "#define \fBPARAM_P\fP   \fBPARAM\fP p;\fBpvInit\fP(0,NULL,&p);"
+.br
+.ti -1c
+.RI "#define \fBINITIALIZE_GL\fP   'initializeGL'"
+.br
+.ti -1c
+.RI "#define \fBRESIZE_GL\fP   'resizeGL'"
+.br
+.ti -1c
+.RI "#define \fBpvSetColumnWith\fP   \fBpvSetColumnWidth\fP"
+.br
+.ti -1c
+.RI "#define \fBreadDataCast\fP   int (*)(void *)"
+.br
+.ti -1c
+.RI "#define \fBshowDataCast\fP   int (*)(\fBPARAM\fP *, void *)"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB_PARAM_\fP \fBPARAM\fP"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvAccept\fP )(\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvtcpsend_binary\fP )(\fBPARAM\fP *p, const char *buf, int len)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvtcpreceive\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvtcpreceive_binary\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_closesocket\fP )(int s)"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMainWindowIds\fP { \fBID_ROOTWIDGET\fP = 0, \fBID_EDITBAR\fP = -1, \fBID_TOOLBAR\fP = -2, \fBID_STATUSBAR\fP = -3, \fBID_MAINWINDOW\fP = -4, \fBID_HELP\fP = -5, \fBID_COOKIE\fP = -6, \fBID_TAB\fP = -7, \fBID_OPTIONS\fP = -8, \fBID_DOCK_WIDGETS\fP = -1000 }"
+.br
+.ti -1c
+.RI "enum \fBPvEvent\fP { \fBNULL_EVENT\fP =1, \fBBUTTON_EVENT\fP, \fBTEXT_EVENT\fP, \fBSLIDER_EVENT\fP, \fBCHECKBOX_EVENT\fP, \fBRADIOBUTTON_EVENT\fP, \fBGL_IDLE_EVENT\fP, \fBGL_PAINT_EVENT\fP, \fBGL_INITIALIZE_EVENT\fP, \fBGL_RESIZE_EVENT\fP, \fBTAB_EVENT\fP, \fBTABLE_CLICKED_EVENT\fP, \fBTABLE_TEXT_EVENT\fP, \fBSELECTION_EVENT\fP, \fBCLIPBOARD_EVENT\fP, \fBBUTTON_PRESSED_EVENT\fP, \fBBUTTON_RELEASED_EVENT\fP, \fBRIGHT_MOUSE_EVENT\fP, \fBKEYBOARD_EVENT\fP, \fBPLOT_MOUSE_MOVED_EVENT\fP, \fBPLOT_MOUSE_PRESSED_EVENT\fP, \fBPLOT_MOUSE_RELEASED_EVENT\fP, \fBUSER_EVENT\fP, \fBMOUSE_OVER_EVENT\fP }"
+.br
+.ti -1c
+.RI "enum { \fBTQWidget\fP = 0, \fBTQPushButton\fP, \fBTQLabel\fP, \fBTQLineEdit\fP, \fBTQComboBox\fP, \fBTQLCDNumber\fP, \fBTQButtonGroup\fP, \fBTQRadio\fP, \fBTQCheck\fP, \fBTQSlider\fP, \fBTQFrame\fP, \fBTQImage\fP, \fBTQDraw\fP, \fBTQGl\fP, \fBTQTabWidget\fP, \fBTQGroupBox\fP, \fBTQListBox\fP, \fBTQTable\fP, \fBTQSpinBox\fP, \fBTQDial\fP, \fBTQProgressBar\fP, \fBTQMultiLineEdit\fP, \fBTQTextBrowser\fP, \fBTQListView\fP, \fBTQIconView\fP, \fBTQVtk\fP, \fBTQwtPlotWidget\fP, \fBTQwtScale\fP, \fBTQwtThermo\fP, \fBTQwtKnob\fP, \fBTQwtCounter\fP, \fBTQwtWheel\fP, \fBTQwtSlider\fP, \fBTQwtDial\fP, \fBTQwtCompass\fP, \fBTQwtAnalogClock\fP, \fBTQDateEdit\fP, \fBTQTimeEdit\fP, \fBTQDateTimeEdit\fP, \fBTQToolBox\fP, \fBTQVbox\fP, \fBTQHbox\fP, \fBTQGrid\fP, \fBTQCustomWidget\fP }"
+.br
+.ti -1c
+.RI "enum \fBLinestyle\fP { \fBLINESTYLE_NONE\fP =0, \fBLINESTYLE_CIRCLE\fP, \fBLINESTYLE_CROSS\fP, \fBLINESTYLE_RECT\fP }"
+.br
+.ti -1c
+.RI "enum \fBWeight\fP { \fBLight\fP = 25, \fBNormal\fP = 50, \fBDemiBold\fP = 63, \fBBold\fP = 75, \fBBlack\fP = 87 }"
+.br
+.ti -1c
+.RI "enum \fBFontAlignment\fP { \fBALIGN_LEFT\fP =0, \fBALIGN_CENTER\fP, \fBALIGN_RIGHT\fP, \fBALIGN_VERT_CENTER\fP }"
+.br
+.ti -1c
+.RI "enum \fBAlignmentFlags\fP { \fBAlignAuto\fP = 0x0000, \fBAlignLeft\fP = 0x0001, \fBAlignRight\fP = 0x0002, \fBAlignHCenter\fP = 0x0004, \fBAlignJustify\fP = 0x0008, \fBAlignHorizontal_Mask\fP = AlignLeft | AlignRight | AlignHCenter | AlignJustify, \fBAlignTop\fP = 0x0010, \fBAlignBottom\fP = 0x0020, \fBAlignVCenter\fP = 0x0040, \fBAlignVertical_Mask\fP = AlignTop | AlignBottom | AlignVCenter, \fBAlignCenter\fP = AlignVCenter | AlignHCenter }"
+.br
+.ti -1c
+.RI "enum \fBTextFlags\fP { \fBSingleLine\fP = 0x0080, \fBDontClip\fP = 0x0100, \fBExpandTabs\fP = 0x0200, \fBShowPrefix\fP = 0x0400, \fBWordBreak\fP = 0x0800, \fBBreakAnywhere\fP = 0x1000, \fBDontPrint\fP = 0x2000, \fBUnderline\fP = 0x01000000, \fBOverline\fP = 0x02000000, \fBStrikeOut\fP = 0x04000000, \fBIncludeTrailingSpaces\fP = 0x08000000, \fBNoAccel\fP = 0x4000 }"
+.br
+.ti -1c
+.RI "enum \fBTextCursor\fP { \fBNoMove\fP = 0, \fBStart\fP, \fBStartOfLine\fP, \fBStartOfBlock\fP, \fBStartOfWord\fP, \fBPreviousBlock\fP, \fBPreviousCharacter\fP, \fBPreviousWord\fP, \fBUp\fP, \fBLeft\fP, \fBWordLeft\fP, \fBEnd\fP, \fBEndOfLine\fP, \fBEndOfWord\fP, \fBEndOfBlock\fP, \fBNextBlock\fP, \fBNextCharacter\fP, \fBNextWord\fP, \fBDown\fP, \fBRight\fP, \fBWordRight\fP }"
+.br
+.ti -1c
+.RI "enum \fBFontNormalItalic\fP { \fBNORMAL\fP = 0, \fBITALIC\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBPolicy\fP { \fBNoInsertion\fP =0, \fBAtTop\fP, \fBAtCurrent\fP, \fBAtBottom\fP, \fBAfterCurrent\fP, \fBBeforeCurrent\fP }"
+.br
+.ti -1c
+.RI "enum \fBMode\fP { \fBHEX\fP =0, \fBDEC\fP, \fBOCT\fP, \fBBINx\fP }"
+.br
+.ti -1c
+.RI "enum \fBMode2\fP { \fBHex\fP =0, \fBDec\fP, \fBOct\fP, \fBBin\fP }"
+.br
+.ti -1c
+.RI "enum \fBSegmentStyle\fP { \fBOutline\fP =0, \fBFilled\fP, \fBFlat\fP }"
+.br
+.ti -1c
+.RI "enum \fBORIENTATION\fP { \fBHORIZONTAL\fP = 0, \fBVERTICAL\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBOrientation\fP { \fBHorizontal\fP = HORIZONTAL, \fBVertical\fP = VERTICAL }"
+.br
+.ti -1c
+.RI "enum \fBMouseShape\fP { \fBArrowCursor\fP = 0, \fBUpArrowCursor\fP = 1, \fBCrossCursor\fP = 2, \fBWaitCursor\fP = 3, \fBIBeamCursor\fP = 4, \fBSizeVerCursor\fP = 5, \fBSizeHorCursor\fP = 6, \fBSizeFDiagCursor\fP = 8, \fBSizeBDiagCursor\fP = 7, \fBSizeAllCursor\fP = 9, \fBBlankCursor\fP = 10, \fBSplitVCursor\fP = 11, \fBSplitHCursor\fP = 12, \fBPointingHandCursor\fP = 13, \fBForbiddenCursor\fP = 14, \fBOpenHandCursor\fP = 17, \fBClosedHandCursor\fP = 18, \fBWhatsThisCursor\fP = 15, \fBBusyCursor\fP = 16 }"
+.br
+.ti -1c
+.RI "enum \fBShape\fP { \fBNoFrame\fP = 0, \fBBox\fP = 0x0001, \fBPanel\fP = 0x0002, \fBWinPanel\fP = 0x0003, \fBHLine\fP = 0x0004, \fBVLine\fP = 0x0005, \fBStyledPanel\fP = 0x0006, \fBPopupPanel\fP = 0x0007, \fBMenuBarPanel\fP = 0x0008, \fBToolBarPanel\fP = 0x0009, \fBLineEditPanel\fP = 0x000a, \fBTabWidgetPanel\fP = 0x000b, \fBGroupBoxPanel\fP = 0x000c, \fBMShape\fP = 0x000f }"
+.br
+.ti -1c
+.RI "enum \fBShadow\fP { \fBPlain\fP = 0x0010, \fBRaised\fP = 0x0020, \fBSunken\fP = 0x0030, \fBMShadow\fP = 0x00f0 }"
+.br
+.ti -1c
+.RI "enum \fBFileDialogs\fP { \fBFileOpenDialog\fP = 0, \fBFileSaveDialog\fP, \fBFindDirectoryDialog\fP }"
+.br
+.ti -1c
+.RI "enum \fBMessageBoxTypes\fP { \fBBoxInformation\fP = 0, \fBBoxWarning\fP, \fBBoxCritical\fP }"
+.br
+.ti -1c
+.RI "enum \fBMessageBoxButtons\fP { \fBMessageBoxOk\fP = 0x00000400, \fBMessageBoxOpen\fP = 0x00002000, \fBMessageBoxSave\fP = 0x00000800, \fBMessageBoxCancel\fP = 0x00400000, \fBMessageBoxClose\fP = 0x00200000, \fBMessageBoxDiscard\fP = 0x00800000, \fBMessageBoxApply\fP = 0x02000000, \fBMessageBoxReset\fP = 0x04000000, \fBMessageBoxRestoreDefaults\fP = 0x08000000, \fBMessageBoxHelp\fP = 0x01000000, \fBMessageBoxSaveAll\fP = 0x00001000, \fBMessageBoxYes\fP = 0x00004000, \fBMessageBoxYesToAll\fP = 0x00008000, \fBMessageBoxNo\fP = 0x00010000, \fBMessageBoxNoToAll\fP = 0x00020000, \fBMessageBoxAbort\fP = 0x00040000, \fBMessageBoxRetry\fP = 0x00080000, \fBMessageBoxIgnore\fP = 0x00100000, \fBMessageBoxNoButton\fP }"
+.br
+.ti -1c
+.RI "enum \fBTextBrowserPos\fP { \fBHome\fP = 0, \fBForward\fP, \fBBackward\fP, \fBReload\fP }"
+.br
+.ti -1c
+.RI "enum \fBTabWidgetPos\fP { \fBTop\fP = 0, \fBBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBKeyboardModifiers\fP { \fBShiftButton\fP = 4, \fBControlButton\fP = 3, \fBAltButton\fP = 2, \fBNormalKey\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBKeyCodes\fP { \fBKey_Escape\fP = 0x1000000, \fBKey_Pause\fP = 0x1000008, \fBKey_Print\fP = 0x1000009, \fBKey_SysReq\fP = 0x100000a, \fBKey_PageUp\fP = 0x1000016, \fBKey_PageDown\fP = 0x1000017, \fBKey_F1\fP = 0x1000030, \fBKey_F2\fP = 0x1000031, \fBKey_F3\fP = 0x1000032, \fBKey_F4\fP = 0x1000033, \fBKey_F5\fP = 0x1000034, \fBKey_F6\fP = 0x1000035, \fBKey_F7\fP = 0x1000036, \fBKey_F8\fP = 0x1000037, \fBKey_F9\fP = 0x1000038, \fBKey_F10\fP = 0x1000039, \fBKey_F11\fP = 0x100003a, \fBKey_F12\fP = 0x100003b }"
+.br
+.ti -1c
+.RI "enum \fBQpwLegend\fP { \fBBottomLegend\fP = 0, \fBTopLegend\fP, \fBLeftLegend\fP, \fBRightLegend\fP }"
+.br
+.ti -1c
+.RI "enum \fBQwtAxis\fP { \fByLeft\fP, \fByRight\fP, \fBxBottom\fP, \fBxTop\fP, \fBaxisCnt\fP }"
+.br
+.ti -1c
+.RI "enum \fBQwtAutoscale\fP { \fBpvNone\fP = 0, \fBIncludeRef\fP = 1, \fBSymmetric\fP = 2, \fBFloating\fP = 4, \fBLogarithmic\fP = 8, \fBInverted\fP = 16 }"
+.br
+.ti -1c
+.RI "enum \fBScalePosition\fP { \fBScaleLeft\fP, \fBScaleRight\fP, \fBScaleTop\fP, \fBScaleBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBThermoPosition\fP { \fBThermoNone\fP, \fBThermoLeft\fP, \fBThermoRight\fP, \fBThermoTop\fP, \fBThermoBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBKnobSymbol\fP { \fBKnobLine\fP, \fBKnobDot\fP }"
+.br
+.ti -1c
+.RI "enum \fBCounterButton\fP { \fBCounterButton1\fP, \fBCounterButton2\fP, \fBCounterButton3\fP, \fBCounterButtonCnt\fP }"
+.br
+.ti -1c
+.RI "enum \fBSliderScalePos\fP { \fBSliderNone\fP, \fBSliderLeft\fP, \fBSliderRight\fP, \fBSliderTop\fP, \fBSliderBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBSliderBGSTYLE\fP { \fBSliderBgTrough\fP = 0x1, \fBSliderBgSlot\fP = 0x2, \fBSliderBgBoth\fP = SliderBgTrough | SliderBgSlot }"
+.br
+.ti -1c
+.RI "enum \fBDialShadow\fP { \fBDialPlain\fP = Plain, \fBDialRaised\fP = Raised, \fBDialSunken\fP = Sunken }"
+.br
+.ti -1c
+.RI "enum \fBDialMode\fP { \fBRotateNeedle\fP, \fBRotateScale\fP }"
+.br
+.ti -1c
+.RI "enum \fBDialNeedle\fP { \fBQwtDialNeedle1\fP = 1, \fBQwtDialNeedle2\fP, \fBQwtDialNeedle3\fP, \fBQwtDialNeedle4\fP, \fBQwtDialLineNeedle\fP, \fBQwtDialArrowNeedle\fP }"
+.br
+.ti -1c
+.RI "enum \fBCompassNeedle\fP { \fBQwtCompassNeedle1\fP = 1, \fBQwtCompassNeedle2\fP, \fBQwtCompassNeedle3\fP, \fBQwtCompassNeedle4\fP, \fBQwtCompassLineNeedle\fP }"
+.br
+.ti -1c
+.RI "enum \fBPenStyle\fP { \fBNoPen\fP, \fBSolidLine\fP, \fBDashLine\fP, \fBDotLine\fP, \fBDashDotLine\fP, \fBDashDotDotLine\fP, \fBMPenStyle\fP = 0x0f }"
+.br
+.ti -1c
+.RI "enum \fBMarkerSymbol\fP { \fBMarkerNone\fP, \fBMarkerEllipse\fP, \fBMarkerRect\fP, \fBMarkerDiamond\fP, \fBMarkerTriangle\fP, \fBMarkerDTriangle\fP, \fBMarkerUTriangle\fP, \fBMarkerLTriangle\fP, \fBMarkerRTriangle\fP, \fBMarkerCross\fP, \fBMarkerXCross\fP, \fBMarkerStyleCnt\fP }"
+.br
+.ti -1c
+.RI "enum \fBButtonClicked\fP { \fBNoButton\fP = 0, \fBLeftButton\fP, \fBMiddleButton\fP, \fBRightButton\fP }"
+.br
+.ti -1c
+.RI "enum \fBOrder\fP { \fBDMY\fP, \fBMDY\fP, \fBYMD\fP, \fBYDM\fP }"
+.br
+.ti -1c
+.RI "enum \fBSetTextOption\fP { \fBHTML_HEADER\fP = 1, \fBHTML_STYLE\fP, \fBHTML_BODY\fP }"
+.br
+.ti -1c
+.RI "enum \fBUNIT_CONVERSION\fP { \fBMM2INCH\fP = 1, \fBINCH2MM\fP, \fBCM2FOOT\fP, \fBFOOT2CM\fP, \fBCM2YARD\fP, \fBYARD2CM\fP, \fBKM2MILE\fP, \fBMILE2KM\fP, \fBKM2NAUTICAL_MILE\fP, \fBNAUTICAL_MILE2KM\fP, \fBQMM2SQINCH\fP, \fBSQINCH2QMM\fP, \fBQCM2SQFOOT\fP, \fBSQFOOT2QCM\fP, \fBQM2SQYARD\fP, \fBSQYARD2QM\fP, \fBQM2ACRE\fP, \fBACRE2QM\fP, \fBQKM2SQMILE\fP, \fBSQMILE2QKM\fP, \fBML2TEASPOON\fP, \fBTEASPOON2ML\fP, \fBML2TABLESPOON\fP, \fBTABLESPOON2ML\fP, \fBML2OUNCE\fP, \fBOUNCE2ML\fP, \fBL2CUP\fP, \fBCUP2L\fP, \fBL2PINT\fP, \fBPINT2L\fP, \fBL2QUART\fP, \fBQUART2L\fP, \fBL2GALLON\fP, \fBGALLON2L\fP, \fBGR2OUNCE\fP, \fBOUNCE2GR\fP, \fBKG2POUND\fP, \fBPOUND2KG\fP, \fBT2TON\fP, \fBTON2T\fP, \fBC2FAHRENHEIT\fP, \fBFAHRENHEIT2C\fP }"
+.br
+.ti -1c
+.RI "enum \fBTextEvents\fP { \fBPLAIN_TEXT_EVENT\fP = 0, \fBSVG_LEFT_BUTTON_PRESSED\fP, \fBSVG_MIDDLE_BUTTON_PRESSED\fP, \fBSVG_RIGHT_BUTTON_PRESSED\fP, \fBSVG_LEFT_BUTTON_RELEASED\fP, \fBSVG_MIDDLE_BUTTON_RELEASED\fP, \fBSVG_RIGHT_BUTTON_RELEASED\fP, \fBSVG_BOUNDS_ON_ELEMENT\fP, \fBSVG_MATRIX_FOR_ELEMENT\fP, \fBWIDGET_GEOMETRY\fP, \fBPARENT_WIDGET_ID\fP }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBglencode_set_param\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvlock\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvunlock\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvsystem\fP (const char *command)"
+.br
+.ti -1c
+.RI "void \fBpvGetLocalTime\fP (\fBpvTime\fP *pvtime)"
+.br
+.ti -1c
+.RI "int \fBpvIsAccessAllowed\fP (const char *adr, int trace)"
+.br
+.ti -1c
+.RI "int \fBpvSendVersion\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvXYAllocate\fP (\fBPARAM\fP *p, int n)"
+.br
+.ti -1c
+.RI "int \fBgetIntegers\fP (const char *text, \fBIntegerArray\fP *ia)"
+.br
+.ti -1c
+.RI "int \fBgetFloats\fP (const char *text, \fBFloatArray\fP *fa)"
+.br
+.ti -1c
+.RI "const char * \fBgetTextFromText\fP (const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetXY\fP (\fBPARAM\fP *p, int i, float x, float y)"
+.br
+.ti -1c
+.RI "int * \fBpvGetSocketPointer\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvInitInternal\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvInit\fP (int ac, char **av, \fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvAccept\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvCreateThread\fP (\fBPARAM\fP *p, int s)"
+.br
+.ti -1c
+.RI "int \fBpvGetInitialMask\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvMain\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvSetCleanup\fP (\fBPARAM\fP *p, int(*cleanup)(void *), void *app_data)"
+.br
+.ti -1c
+.RI "char * \fBpvGetEvent\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvPollEvent\fP (\fBPARAM\fP *p, char *event)"
+.br
+.ti -1c
+.RI "int \fBpvWait\fP (\fBPARAM\fP *p, const char *pattern)"
+.br
+.ti -1c
+.RI "int \fBpvGlUpdate\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSleep\fP (int milliseconds)"
+.br
+.ti -1c
+.RI "int \fBpvWarning\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvMainFatal\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvThreadFatal\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvScreenHint\fP (\fBPARAM\fP *p, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetMouseShape\fP (\fBPARAM\fP *p, int shape)"
+.br
+.ti -1c
+.RI "int \fBpvSetWhatsThis\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvWhatsThisPrintf\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvClientCommand\fP (\fBPARAM\fP *p, const char *command, const char *filename, int downloadFile=0)"
+.br
+.ti -1c
+.RI "int \fBpvWriteTextToFileAtClient\fP (\fBPARAM\fP *p, const char *text, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvZoomMask\fP (\fBPARAM\fP *p, int percent)"
+.br
+.ti -1c
+.RI "int \fBpvSetManualUrl\fP (\fBPARAM\fP *p, const char *url)"
+.br
+.ti -1c
+.RI "int \fBpvSelectLanguage\fP (\fBPARAM\fP *p, const char *section)"
+.br
+.ti -1c
+.RI "int \fBpvStartDefinition\fP (\fBPARAM\fP *p, int num_objects)"
+.br
+.ti -1c
+.RI "int \fBpvQWidget\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLayoutVbox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLayoutHbox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLayoutGrid\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLabel\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQComboBox\fP (\fBPARAM\fP *p, int id, int parent, int editable, int policy)"
+.br
+.ti -1c
+.RI "int \fBpvQLineEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQPushButton\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLCDNumber\fP (\fBPARAM\fP *p, int id, int parent, int numDigits, int segmentStyle, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvQSlider\fP (\fBPARAM\fP *p, int id, int parent, int minValue, int maxValue, int pageStep, int value, int orientation)"
+.br
+.ti -1c
+.RI "int \fBpvQButtonGroup\fP (\fBPARAM\fP *p, int id, int parent, int columns, int orientation, const char *title)"
+.br
+.ti -1c
+.RI "int \fBpvQRadioButton\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQCheckBox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQFrame\fP (\fBPARAM\fP *p, int id, int parent, int shape, int shadow, int line_width, int margin)"
+.br
+.ti -1c
+.RI "int \fBpvQDraw\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQImage\fP (\fBPARAM\fP *p, int id, int parent, const char *imagename, int *w=NULL, int *h=NULL, int *depth=NULL)"
+.br
+.ti -1c
+.RI "int \fBpvQGL\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQTabWidget\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQToolBox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQGroupBox\fP (\fBPARAM\fP *p, int id, int parent, int columns, int orientation, const char *title)"
+.br
+.ti -1c
+.RI "int \fBpvQListBox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQTable\fP (\fBPARAM\fP *p, int id, int parent, int rows, int columns)"
+.br
+.ti -1c
+.RI "int \fBpvQSpinBox\fP (\fBPARAM\fP *p, int id, int parent, int min, int max, int step)"
+.br
+.ti -1c
+.RI "int \fBpvQDial\fP (\fBPARAM\fP *p, int id, int parent, int min, int max, int page_step, int value)"
+.br
+.ti -1c
+.RI "int \fBpvQProgressBar\fP (\fBPARAM\fP *p, int id, int parent, int total_steps, int orientation=\fBHorizontal\fP)"
+.br
+.ti -1c
+.RI "int \fBpvQMultiLineEdit\fP (\fBPARAM\fP *p, int id, int parent, int editable, int max_lines)"
+.br
+.ti -1c
+.RI "int \fBpvQTextBrowser\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQListView\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQIconView\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQVtkTclWidget\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtPlotWidget\fP (\fBPARAM\fP *p, int id, int parent, int nCurves, int nMarker)"
+.br
+.ti -1c
+.RI "int \fBpvQwtScale\fP (\fBPARAM\fP *p, int id, int parent, int pos)"
+.br
+.ti -1c
+.RI "int \fBpvQwtThermo\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtKnob\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtCounter\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtWheel\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtSlider\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtDial\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtCompass\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtAnalogClock\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQDateEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQTimeEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQDateTimeEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQCustomWidget\fP (\fBPARAM\fP *p, int id, int parent, const char *name, const char *arg=NULL)"
+.br
+.ti -1c
+.RI "int \fBpvEndDefinition\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvAddWidgetOrLayout\fP (\fBPARAM\fP *p, int id, int item, int row, int col)"
+.br
+.ti -1c
+.RI "int \fBpvAddStretch\fP (\fBPARAM\fP *p, int id, int param)"
+.br
+.ti -1c
+.RI "int \fBpvTabOrder\fP (\fBPARAM\fP *p, int id1, int id2)"
+.br
+.ti -1c
+.RI "int \fBpvDeleteWidget\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetCaption\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvPlaySound\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvBeep\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvStatusMessage\fP (\fBPARAM\fP *p, int r, int g, int b, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvToolTip\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTextEx\fP (\fBPARAM\fP *p, int id, const char *text, int option)"
+.br
+.ti -1c
+.RI "int \fBpvSetText\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvPrintf\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvSetStyleSheet\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvPrintfStyleSheet\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinValue\fP (\fBPARAM\fP *p, int id, int value)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxValue\fP (\fBPARAM\fP *p, int id, int value)"
+.br
+.ti -1c
+.RI "int \fBpvSetValue\fP (\fBPARAM\fP *p, int id, int value)"
+.br
+.ti -1c
+.RI "int \fBpvClear\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvChangeItem\fP (\fBPARAM\fP *p, int id, int index, const char *bmp_file, const char *text, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvInsertItem\fP (\fBPARAM\fP *p, int id, int index, const char *bmp_file, const char *text, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveItem\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveItemByName\fP (\fBPARAM\fP *p, int id, const char *name)"
+.br
+.ti -1c
+.RI "int \fBpvAddColumn\fP (\fBPARAM\fP *p, int id, const char *text, int size)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveAllColumns\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableText\fP (\fBPARAM\fP *p, int id, int x, int y, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableButton\fP (\fBPARAM\fP *p, int id, int x, int y, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableCheckBox\fP (\fBPARAM\fP *p, int id, int x, int y, int state, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableComboBox\fP (\fBPARAM\fP *p, int id, int x, int y, int editable, const char *textlist)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableLabel\fP (\fBPARAM\fP *p, int id, int x, int y, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvTablePrintf\fP (\fBPARAM\fP *p, int id, int x, int y, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvSetTableTextAlignment\fP (\fBPARAM\fP *p, int id, int x, int y, int alignment)"
+.br
+.ti -1c
+.RI "int \fBpvMysqldump\fP (\fBPARAM\fP *p, int id, const char *command)"
+.br
+.ti -1c
+.RI "int \fBpvCSVdump\fP (\fBPARAM\fP *p, int id, const char *filename, char delimitor='\\t')"
+.br
+.ti -1c
+.RI "int \fBpvCSVcreate\fP (\fBPARAM\fP *p, const char *command, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvCSV\fP (\fBPARAM\fP *p, int id, const char *command, char delimitor='\\t')"
+.br
+.ti -1c
+.RI "int \fBpvSetListViewText\fP (\fBPARAM\fP *p, int id, const char *path, int column, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvListViewPrintf\fP (\fBPARAM\fP *p, int id, const char *path, int column, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetSelected\fP (\fBPARAM\fP *p, int id, const char *path, int column, int selected)"
+.br
+.ti -1c
+.RI "int \fBpvListBoxSetSelected\fP (\fBPARAM\fP *p, int id, int index, int selected)"
+.br
+.ti -1c
+.RI "int \fBpvSetColumnWidth\fP (\fBPARAM\fP *p, int id, int column, int width)"
+.br
+.ti -1c
+.RI "int \fBpvSetRowHeight\fP (\fBPARAM\fP *p, int id, int row, int height)"
+.br
+.ti -1c
+.RI "int \fBpvSetWordWrap\fP (\fBPARAM\fP *p, int id, int wrap)"
+.br
+.ti -1c
+.RI "int \fBpvSetPixmap\fP (\fBPARAM\fP *p, int id, const char *bmp_file, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetTablePixmap\fP (\fBPARAM\fP *p, int id, int x, int y, const char *bmp_file, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetSource\fP (\fBPARAM\fP *p, int id, const char *html_file)"
+.br
+.ti -1c
+.RI "int \fBpvSetImage\fP (\fBPARAM\fP *p, int id, const char *filename, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetBufferedJpgImage\fP (\fBPARAM\fP *p, int id, const unsigned char *buffer, int buffersize, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetBufferTransparency\fP (\fBPARAM\fP *p, int id, int a)"
+.br
+.ti -1c
+.RI "int \fBpvSetBackgroundColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetPaletteBackgroundColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetPaletteForegroundColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetFontColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBpvSetFont\fP (\fBPARAM\fP *p, int id, const char *family, int pointsize, int bold, int italic, int underline, int strikeout)"
+.br
+.ti -1c
+.RI "int \fBpvDisplayNum\fP (\fBPARAM\fP *p, int id, int num)"
+.br
+.ti -1c
+.RI "int \fBpvDisplayFloat\fP (\fBPARAM\fP *p, int id, float val)"
+.br
+.ti -1c
+.RI "int \fBpvDisplayStr\fP (\fBPARAM\fP *p, int id, const char *str)"
+.br
+.ti -1c
+.RI "int \fBpvAddTab\fP (\fBPARAM\fP *p, int id, int id_child, const char *str)"
+.br
+.ti -1c
+.RI "int \fBpvSetListViewPixmap\fP (\fBPARAM\fP *p, int id, const char *path, const char *bmp_file, int column, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveListViewItem\fP (\fBPARAM\fP *p, int id, const char *path)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveIconViewItem\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetIconViewItem\fP (\fBPARAM\fP *p, int id, const char *bmp_file, const char *text, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetDateOrder\fP (\fBPARAM\fP *p, int id, int order)"
+.br
+.ti -1c
+.RI "int \fBpvSetDate\fP (\fBPARAM\fP *p, int id, int year, int month, int day)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinDate\fP (\fBPARAM\fP *p, int id, int year, int month, int day)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxDate\fP (\fBPARAM\fP *p, int id, int year, int month, int day)"
+.br
+.ti -1c
+.RI "int \fBpvSetTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second=0, int msec=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second=0, int msec=0)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second=0, int msec=0)"
+.br
+.ti -1c
+.RI "int \fBpvEnsureCellVisible\fP (\fBPARAM\fP *p, int id, int row, int col=1)"
+.br
+.ti -1c
+.RI "int \fBpvMoveCursor\fP (\fBPARAM\fP *p, int id, int cursor)"
+.br
+.ti -1c
+.RI "int \fBpvScrollToAnchor\fP (\fBPARAM\fP *p, int id, const char *anchor)"
+.br
+.ti -1c
+.RI "int \fBpvSetZoomFactor\fP (\fBPARAM\fP *p, int id, float factor)"
+.br
+.ti -1c
+.RI "int \fBpvPrintHtmlOnPrinter\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetWidgetProperty\fP (\fBPARAM\fP *p, int id, const char *name, const char *value)"
+.br
+.ti -1c
+.RI "int \fBpvPassThroughOneJpegFrame\fP (\fBPARAM\fP *p, int id, int source_fhdl, int inputIsSocket=1, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSendJpegFrame\fP (\fBPARAM\fP *p, int id, unsigned char *frame, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSendRGBA\fP (\fBPARAM\fP *p, int id, const unsigned char *image, int width, int height, int rotate=0)"
+.br
+.ti -1c
+.RI "int \fBpvSaveDrawBuffer\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvWaitpid\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvText\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestJpeg\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestGeometry\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestParentWidgetId\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSelection\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestSvgBoundsOnElement\fP (\fBPARAM\fP *p, int id, const char *objectname)"
+.br
+.ti -1c
+.RI "int \fBpvRequestSvgMatrixForElement\fP (\fBPARAM\fP *p, int id, const char *objectname)"
+.br
+.ti -1c
+.RI "int \fBpvMoveContent\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBpvSetGeometry\fP (\fBPARAM\fP *p, int id, int x, int y, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinSize\fP (\fBPARAM\fP *p, int id, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxSize\fP (\fBPARAM\fP *p, int id, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetAlignment\fP (\fBPARAM\fP *p, int id, int alignment)"
+.br
+.ti -1c
+.RI "int \fBpvSetChecked\fP (\fBPARAM\fP *p, int id, int state)"
+.br
+.ti -1c
+.RI "int \fBpvMove\fP (\fBPARAM\fP *p, int id, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBpvResize\fP (\fBPARAM\fP *p, int id, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvHide\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvShow\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetParent\fP (\fBPARAM\fP *p, int id, int id_parent)"
+.br
+.ti -1c
+.RI "int \fBpvSetMultiSelection\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvSetEchoMode\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvSetEditable\fP (\fBPARAM\fP *p, int id, int editable)"
+.br
+.ti -1c
+.RI "int \fBpvSetEnabled\fP (\fBPARAM\fP *p, int id, int enabled)"
+.br
+.ti -1c
+.RI "int \fBpvSetFocus\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvTableSetEnabled\fP (\fBPARAM\fP *p, int id, int x, int y, int enabled)"
+.br
+.ti -1c
+.RI "int \fBpvTableSetHeaderResizeEnabled\fP (\fBPARAM\fP *p, int id, int horizontal, int enabled, int section)"
+.br
+.ti -1c
+.RI "int \fBpvSetSorting\fP (\fBPARAM\fP *p, int id, int column, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvSetTabPosition\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBpvEnableTabBar\fP (\fBPARAM\fP *p, int id, int state)"
+.br
+.ti -1c
+.RI "int \fBpvSetNumRows\fP (\fBPARAM\fP *p, int id, int num)"
+.br
+.ti -1c
+.RI "int \fBpvSetNumCols\fP (\fBPARAM\fP *p, int id, int num)"
+.br
+.ti -1c
+.RI "int \fBpvInsertRows\fP (\fBPARAM\fP *p, int id, int row, int count=1)"
+.br
+.ti -1c
+.RI "int \fBpvInsertColumns\fP (\fBPARAM\fP *p, int id, int col, int count=1)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveRow\fP (\fBPARAM\fP *p, int id, int row)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveColumn\fP (\fBPARAM\fP *p, int id, int col)"
+.br
+.ti -1c
+.RI "int \fBpvSetCurrentItem\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBpvSetTimeEditDisplay\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second, int ampm)"
+.br
+.ti -1c
+.RI "int \fBpvListViewEnsureVisible\fP (\fBPARAM\fP *p, int id, const char *path)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetOpen\fP (\fBPARAM\fP *p, int id, const char *path, int open)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetHidden\fP (\fBPARAM\fP *p, int id, int column, int hidden)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetStandardPopupMenu\fP (\fBPARAM\fP *p, int id, int standard_menu)"
+.br
+.ti -1c
+.RI "int \fBpvSetStyle\fP (\fBPARAM\fP *p, int id, int shape, int shadow, int line_width, int margin)"
+.br
+.ti -1c
+.RI "int \fBpvSetMovie\fP (\fBPARAM\fP *p, int id, int background, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvMovieControl\fP (\fBPARAM\fP *p, int id, int step)"
+.br
+.ti -1c
+.RI "int \fBpvMovieSpeed\fP (\fBPARAM\fP *p, int id, int speed)"
+.br
+.ti -1c
+.RI "int \fBpvAddTabIcon\fP (\fBPARAM\fP *p, int id, int position, const char *bmp_file, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetCellWidget\fP (\fBPARAM\fP *p, int id, int parent, int row, int column)"
+.br
+.ti -1c
+.RI "int \fBpvSetContentsMargins\fP (\fBPARAM\fP *p, int id, int xleft, int ytop, int xright, int ybottom)"
+.br
+.ti -1c
+.RI "int \fBpvSetSpacing\fP (\fBPARAM\fP *p, int id, int param)"
+.br
+.ti -1c
+.RI "int \fBpvVtkTcl\fP (\fBPARAM\fP *p, int id, const char *tcl_command)"
+.br
+.ti -1c
+.RI "int \fBpvVtkTclPrintf\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvVtkTclScript\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvHyperlink\fP (\fBPARAM\fP *p, const char *link)"
+.br
+.ti -1c
+.RI "int \fBpvSendUserEvent\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvWriteFile\fP (\fBPARAM\fP *p, const char *filename, int width, int height)"
+.br
+.ti -1c
+.RI "int \fBpvCloseFile\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "char * \fBpvGetTextParam\fP (\fBPARAM\fP *p, const char *command)"
+.br
+.ti -1c
+.RI "int \fBpvGetText\fP (const char *command, char *text)"
+.br
+.ti -1c
+.RI "\fBPARSE_EVENT_STRUCT\fP * \fBpvParseEventStruct\fP (\fBPARAM\fP *p, const char *event)"
+.br
+.ti -1c
+.RI "int \fBpvParseEvent\fP (const char *event, int *id, char *text)"
+.br
+.ti -1c
+.RI "int \fBpvCopyToClipboard\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvPrint\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSave\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSave\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSaveAsBmp\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvHtmlOrSvgDump\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvRenderTreeDump\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSendFile\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvDownloadFileAs\fP (\fBPARAM\fP *p, const char *filename, const char *newname)"
+.br
+.ti -1c
+.RI "int \fBpvDownloadFile\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxClientsPerIpAdr\fP (int max_clients)"
+.br
+.ti -1c
+.RI "int \fBpvMaxClientsPerIpAdr\fP ()"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxClients\fP (int max_clients)"
+.br
+.ti -1c
+.RI "int \fBpvMaxClients\fP ()"
+.br
+.ti -1c
+.RI "const \fBpvAddressTableItem\fP * \fBpvGetAdrTableItem\fP ()"
+.br
+.ti -1c
+.RI "int \fBpvClearMessageQueue\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvtcpsend\fP (\fBPARAM\fP *p, const char *buf, int len)"
+.br
+.ti -1c
+.RI "int \fBpvtcpsendstring\fP (\fBPARAM\fP *p, const char *buf)"
+.br
+.ti -1c
+.RI "int \fBpvtcpsend_binary\fP (\fBPARAM\fP *p, const char *buf, int len)"
+.br
+.ti -1c
+.RI "int \fBpvtcpreceive\fP (\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "int \fBpvtcpreceive_binary\fP (\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpChunks\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpContentLength\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpResponseFile\fP (\fBPARAM\fP *p, const char *filename, const char *content_type='text/html')"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpResponse\fP (\fBPARAM\fP *p, const char *html)"
+.br
+.ti -1c
+.RI "int \fBpvGlBegin\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSendOpenGL\fP (\fBPARAM\fP *p, const char *filename, GLuint *listarray, int max_array, \fBglFont\fP *proportional=NULL, \fBglFont\fP *fixed=NULL)"
+.br
+.ti -1c
+.RI "int \fBpvGlEnd\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvFileDialog\fP (\fBPARAM\fP *p, int id_return, int type)"
+.br
+.ti -1c
+.RI "int \fBpvPopupMenu\fP (\fBPARAM\fP *p, int id_return, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvMessageBox\fP (\fBPARAM\fP *p, int id_return, int type, const char *text, int button0, int button1, int button2)"
+.br
+.ti -1c
+.RI "int \fBpvInputDialog\fP (\fBPARAM\fP *p, int id_return, const char *text, const char *default_text)"
+.br
+.ti -1c
+.RI "int \fBpvRunModalDialog\fP (\fBPARAM\fP *p, int width, int height, int(*showMask)(\fBPARAM\fP *p), void *userData, int(*readData)(void *d), int(*showData)(\fBPARAM\fP *p, void *d), void *d)"
+.br
+.ti -1c
+.RI "int \fBpvRunModalDialogScript\fP (\fBPARAM\fP *p, int width, int height)"
+.br
+.ti -1c
+.RI "int \fBpvTerminateModalDialog\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvUpdateBaseWindow\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvUpdateBaseWindowOnOff\fP (\fBPARAM\fP *p, int onoff)"
+.br
+.ti -1c
+.RI "int \fBpvAddDockWidget\fP (\fBPARAM\fP *p, const char *title, int dock_id, int root_id, int allow_close=0, int floating=1, int allow_left=1, int allow_right=0, int allow_top=0, int allow_bottom=0)"
+.br
+.ti -1c
+.RI "int \fBpvDeleteDockWidget\fP (\fBPARAM\fP *p, int dock_id, int delete_widget=0)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurveData\fP (\fBPARAM\fP *p, int id, int c, int count, double *x, double *y)"
+.br
+.ti -1c
+.RI "int \fBqpwSetBufferedCurveData\fP (\fBPARAM\fP *p, int id, int c)"
+.br
+.ti -1c
+.RI "int \fBqpwReplot\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBqpwSetTitle\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCanvasBackground\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableOutline\fP (\fBPARAM\fP *p, int id, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetOutlinePen\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAutoLegend\fP (\fBPARAM\fP *p, int id, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableLegend\fP (\fBPARAM\fP *p, int id, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetLegendPos\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwSetLegendFrameStyle\fP (\fBPARAM\fP *p, int id, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableGridXMin\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBqpwSetGridMajPen\fP (\fBPARAM\fP *p, int id, int r, int g, int b, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetGridMinPen\fP (\fBPARAM\fP *p, int id, int r, int g, int b, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableAxis\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisTitle\fP (\fBPARAM\fP *p, int id, int pos, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisOptions\fP (\fBPARAM\fP *p, int id, int pos, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisMaxMajor\fP (\fBPARAM\fP *p, int id, int pos, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisMaxMinor\fP (\fBPARAM\fP *p, int id, int pos, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwInsertCurve\fP (\fBPARAM\fP *p, int id, int index, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwRemoveCurve\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurvePen\fP (\fBPARAM\fP *p, int id, int index, int r, int g, int b, int width=1, int style=\fBSolidLine\fP)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurveSymbol\fP (\fBPARAM\fP *p, int id, int index, int symbol, int r1, int g1, int b1, int r2, int g2, int b2, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurveYAxis\fP (\fBPARAM\fP *p, int id, int index, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwInsertMarker\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerLineStyle\fP (\fBPARAM\fP *p, int id, int index, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerPos\fP (\fBPARAM\fP *p, int id, int index, float x, float y)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerLabelAlign\fP (\fBPARAM\fP *p, int id, int index, int align)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerPen\fP (\fBPARAM\fP *p, int id, int index, int r, int g, int b, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerLabel\fP (\fBPARAM\fP *p, int id, int number, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerFont\fP (\fBPARAM\fP *p, int id, int index, const char *family, int size, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerSymbol\fP (\fBPARAM\fP *p, int id, int index, int symbol, int r1, int g1, int b1, int r2, int g2, int b2, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBqpwInsertLineMarker\fP (\fBPARAM\fP *p, int id, int index, const char *text, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisScaleDraw\fP (\fBPARAM\fP *p, int id, int pos, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisScale\fP (\fBPARAM\fP *p, int id, int pos, float min, float max, float step)"
+.br
+.ti -1c
+.RI "int \fBpvSetZoomX\fP (\fBPARAM\fP *p, int id, float zoom)"
+.br
+.ti -1c
+.RI "int \fBpvSetZoomY\fP (\fBPARAM\fP *p, int id, float zoom)"
+.br
+.ti -1c
+.RI "int \fBgWriteFile\fP (const char *file)"
+.br
+.ti -1c
+.RI "int \fBgCloseFile\fP ()"
+.br
+.ti -1c
+.RI "int \fBgBeginDraw\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBgBox\fP (\fBPARAM\fP *p, int x, int y, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBgRect\fP (\fBPARAM\fP *p, int x, int y, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBgEndDraw\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgLineTo\fP (\fBPARAM\fP *p, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBgBufferedLine\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgLine\fP (\fBPARAM\fP *p, float *x, float *y, int n)"
+.br
+.ti -1c
+.RI "int \fBgMoveTo\fP (\fBPARAM\fP *p, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBgRightYAxis\fP (\fBPARAM\fP *p, float start, float delta, float end, int draw)"
+.br
+.ti -1c
+.RI "int \fBgSetColor\fP (\fBPARAM\fP *p, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBgSetWidth\fP (\fBPARAM\fP *p, int w)"
+.br
+.ti -1c
+.RI "int \fBgSetStyle\fP (\fBPARAM\fP *p, int style)"
+.br
+.ti -1c
+.RI "int \fBgDrawArc\fP (\fBPARAM\fP *p, int x, int y, int w, int h, int start_angle, int angle_length)"
+.br
+.ti -1c
+.RI "int \fBgDrawPie\fP (\fBPARAM\fP *p, int x, int y, int w, int h, int start_angle, int angle_length)"
+.br
+.ti -1c
+.RI "int \fBgDrawPolygon\fP (\fBPARAM\fP *p, int *x, int *y, int n)"
+.br
+.ti -1c
+.RI "int \fBgSetFont\fP (\fBPARAM\fP *p, const char *family, int size, int weight, int italic)"
+.br
+.ti -1c
+.RI "int \fBgSetLinestyle\fP (\fBPARAM\fP *p, int style)"
+.br
+.ti -1c
+.RI "int \fBgText\fP (\fBPARAM\fP *p, int x, int y, const char *text, int alignment)"
+.br
+.ti -1c
+.RI "int \fBgTextInAxis\fP (\fBPARAM\fP *p, float x, float y, const char *text, int alignment)"
+.br
+.ti -1c
+.RI "int \fBgSetFloatFormat\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBgXAxis\fP (\fBPARAM\fP *p, float start, float delta, float end, int draw)"
+.br
+.ti -1c
+.RI "int \fBgYAxis\fP (\fBPARAM\fP *p, float start, float delta, float end, int draw)"
+.br
+.ti -1c
+.RI "int \fBgXGrid\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgYGrid\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgBoxWithText\fP (\fBPARAM\fP *p, int x, int y, int w, int h, int fontsize, const char *xlabel, const char *ylabel, const char *rylabel)"
+.br
+.ti -1c
+.RI "int \fBgComment\fP (\fBPARAM\fP *p, const char *comment)"
+.br
+.ti -1c
+.RI "int \fBgPlaySVG\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBgSocketPlaySVG\fP (\fBPARAM\fP *p, const char *svgstring)"
+.br
+.ti -1c
+.RI "int \fBgTranslate\fP (\fBPARAM\fP *p, float x, float y)"
+.br
+.ti -1c
+.RI "int \fBgRotate\fP (\fBPARAM\fP *p, float angle)"
+.br
+.ti -1c
+.RI "int \fBgScale\fP (\fBPARAM\fP *p, float sx, float sy)"
+.br
+.ti -1c
+.RI "int \fBpvSetSelector\fP (\fBPARAM\fP *p, int id, int state)"
+.br
+.ti -1c
+.RI "int \fBpvPrintSvgOnPrinter\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetTitle\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetTitleColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetTitleFont\fP (\fBPARAM\fP *p, int id, const char *family, int pointsize, int bold, int italic, int underline, int strikeout)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetTitleAlignment\fP (\fBPARAM\fP *p, int id, int flags)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetBorderDist\fP (\fBPARAM\fP *p, int id, int start, int end)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetBaselineDist\fP (\fBPARAM\fP *p, int id, int bd)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetScaleDiv\fP (\fBPARAM\fP *p, int id, float lBound, float hBound, int maxMaj, int maxMin, int log, float step, int ascend)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetLabelFormat\fP (\fBPARAM\fP *p, int id, int f, int prec, int fieldWidth)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetLabelAlignment\fP (\fBPARAM\fP *p, int id, int align)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetLabelRotation\fP (\fBPARAM\fP *p, int id, float rotation)"
+.br
+.ti -1c
+.RI "int \fBqwtScaleSetPosition\fP (\fBPARAM\fP *p, int id, int position)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetScale\fP (\fBPARAM\fP *p, int id, float min, float max, float step, int logarithmic)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetOrientation\fP (\fBPARAM\fP *p, int id, int orientation, int position)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetBorderWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetFillColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetAlarmColor\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetAlarmLevel\fP (\fBPARAM\fP *p, int id, float level)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetAlarmEnabled\fP (\fBPARAM\fP *p, int id, int tf)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetPipeWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetRange\fP (\fBPARAM\fP *p, int id, float vmin, float vmax, float step=0\&.0f)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetMargin\fP (\fBPARAM\fP *p, int id, int margin)"
+.br
+.ti -1c
+.RI "int \fBqwtThermoSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetScale\fP (\fBPARAM\fP *p, int id, float min, float max, float step, int logarithmic)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetOrientation\fP (\fBPARAM\fP *p, int id, int orientation)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetKnobWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetTotalAngle\fP (\fBPARAM\fP *p, int id, float angle)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetBorderWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetSymbol\fP (\fBPARAM\fP *p, int id, int symbol)"
+.br
+.ti -1c
+.RI "int \fBqwtKnobSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetStep\fP (\fBPARAM\fP *p, int id, float step)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetMinValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetMaxValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetStepButton1\fP (\fBPARAM\fP *p, int id, int n)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetStepButton2\fP (\fBPARAM\fP *p, int id, int n)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetStepButton3\fP (\fBPARAM\fP *p, int id, int n)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetNumButtons\fP (\fBPARAM\fP *p, int id, int n)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetIncSteps\fP (\fBPARAM\fP *p, int id, int button, int n)"
+.br
+.ti -1c
+.RI "int \fBqwtCounterSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetOrientation\fP (\fBPARAM\fP *p, int id, int orientation)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetTotalAngle\fP (\fBPARAM\fP *p, int id, float angle)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetTickCnt\fP (\fBPARAM\fP *p, int id, int cnt)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetViewAngle\fP (\fBPARAM\fP *p, int id, float angle)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetInternalBorder\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetWheelWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtWheelSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetScale\fP (\fBPARAM\fP *p, int id, float min, float max, float step, int logarithmic)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetOrientation\fP (\fBPARAM\fP *p, int id, int orientation)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetBgStyle\fP (\fBPARAM\fP *p, int id, int style)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetScalePos\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetThumbLength\fP (\fBPARAM\fP *p, int id, int length)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetThumbWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetBorderWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetMargins\fP (\fBPARAM\fP *p, int id, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBqwtSliderSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetSimpleCompassRose\fP (\fBPARAM\fP *p, int id, int numThorns, int numThornLevels, float width=0\&.2f)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetRange\fP (\fBPARAM\fP *p, int id, float vmin, float vmax, float step=0\&.0f)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetFrameShadow\fP (\fBPARAM\fP *p, int id, int shadow)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassShowBackground\fP (\fBPARAM\fP *p, int id, int show)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetLineWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetMode\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetWrapping\fP (\fBPARAM\fP *p, int id, int wrap)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetScale\fP (\fBPARAM\fP *p, int id, int maxMajIntv, int maxMinIntv, float step)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetScaleArc\fP (\fBPARAM\fP *p, int id, float min, float max)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetOrigin\fP (\fBPARAM\fP *p, int id, float o)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetNeedle\fP (\fBPARAM\fP *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetRange\fP (\fBPARAM\fP *p, int id, float vmin, float vmax, float step=0\&.0f)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetFrameShadow\fP (\fBPARAM\fP *p, int id, int shadow)"
+.br
+.ti -1c
+.RI "int \fBqwtDialShowBackground\fP (\fBPARAM\fP *p, int id, int show)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetLineWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetMode\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetWrapping\fP (\fBPARAM\fP *p, int id, int wrap)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetScale\fP (\fBPARAM\fP *p, int id, int maxMajIntv, int maxMinIntv, float step)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetScaleArc\fP (\fBPARAM\fP *p, int id, float min, float max)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetOrigin\fP (\fBPARAM\fP *p, int id, float o)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetNeedle\fP (\fBPARAM\fP *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128)"
+.br
+.ti -1c
+.RI "int \fBqwtDialSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetTime\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetFrameShadow\fP (\fBPARAM\fP *p, int id, int shadow)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockShowBackground\fP (\fBPARAM\fP *p, int id, int show)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetLineWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetMode\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetWrapping\fP (\fBPARAM\fP *p, int id, int wrap)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetScale\fP (\fBPARAM\fP *p, int id, int maxMajIntv, int maxMinIntv, float step)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetScaleArc\fP (\fBPARAM\fP *p, int id, float min, float max)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetOrigin\fP (\fBPARAM\fP *p, int id, float o)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetNeedle\fP (\fBPARAM\fP *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128)"
+.br
+.ti -1c
+.RI "int \fBqwtAnalogClockSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.ti -1c
+.RI "float \fBunit\fP (\fBPARAM\fP *p, float val, int conversion)"
+.br
+.ti -1c
+.RI "int \fBtextEventType\fP (const char *text)"
+.br
+.ti -1c
+.RI "const char * \fBsvgObjectName\fP (const char *text)"
+.br
+.ti -1c
+.RI "int \fBgetSvgBoundsOnElement\fP (const char *text, float *x, float *y, float *width, float *height)"
+.br
+.ti -1c
+.RI "int \fBgetSvgMatrixForElement\fP (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)"
+.br
+.ti -1c
+.RI "int \fBgetGeometry\fP (const char *text, int *x, int *y, int *width, int *height)"
+.br
+.ti -1c
+.RI "int \fBgetParentWidgetId\fP (const char *text, int *parent)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const char \fBpvserver_version\fP [] = '4\&.8\&.5'"
+.br
+.ti -1c
+.RI "static const char \fBnull_string\fP [] = ''"
+.br
+.in -1c
+.SH "Variable Documentation"
+.PP 
+.SS "const char pvserver_version[] = '4\&.8\&.5'"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

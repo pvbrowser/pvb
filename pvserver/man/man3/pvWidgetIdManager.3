@@ -1,0 +1,212 @@
+.TH "pvWidgetIdManager" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+pvWidgetIdManager \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <processviewserver\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBpvWidgetIdManager\fP ()"
+.br
+.ti -1c
+.RI "virtual \fB~pvWidgetIdManager\fP ()"
+.br
+.ti -1c
+.RI "int \fBinit\fP (\fBPARAM\fP *p, int \fBid_start\fP)"
+.br
+.ti -1c
+.RI "virtual int \fBnewId\fP (const char *\fBname\fP)"
+.br
+.ti -1c
+.RI "virtual int \fBdeleteWidget\fP (\fBPARAM\fP *p, const char *\fBname\fP)"
+.br
+.ti -1c
+.RI "virtual int \fBid\fP (const char *\fBname\fP)"
+.br
+.ti -1c
+.RI "virtual int \fBisInMap\fP (const char *\fBname\fP)"
+.br
+.ti -1c
+.RI "int \fBisInMap\fP (int \fBid\fP)"
+.br
+.ti -1c
+.RI "int \fBfirstId\fP ()"
+.br
+.ti -1c
+.RI "int \fBnextId\fP ()"
+.br
+.ti -1c
+.RI "int \fBendId\fP ()"
+.br
+.ti -1c
+.RI "const char * \fBname\fP (int \fBid\fP)"
+.br
+.ti -1c
+.RI "int \fBidStart\fP ()"
+.br
+.ti -1c
+.RI "virtual int \fBreadEnumFromMask\fP (const char *maskname)"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBinsertBasicId\fP (int \fBid\fP, const char *\fBname\fP)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBid_start\fP"
+.br
+.ti -1c
+.RI "int \fBnum_additional_widgets\fP"
+.br
+.ti -1c
+.RI "int * \fBfree\fP"
+.br
+.ti -1c
+.RI "std::map< std::string, int > \fBid_list\fP"
+.br
+.ti -1c
+.RI "std::multimap< std::string, 
+.br
+int >::iterator \fBit\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+
+Use this class for manageing p->num_additional_widgets by widget names
+Example:
+.fi
+.PP
+.PP
+.PP
+.nf
+typedef struct // (todo: define your data structure here)
+{
+  \fBpvWidgetIdManager\fP mgr;
+}
+DATA;
+.fi
+.PP
+.PP
+.PP
+.nf
+static int slotInit(PARAM *p, DATA *d)
+{
+  if(p == NULL || d == NULL) return -1;
+  int id;
+.fi
+.PP
+.PP
+.PP
+.nf
+  d->mgr\&.init(p,ID_END_OF_WIDGETS);
+.fi
+.PP
+.PP
+.PP
+.nf
+  id = d->mgr\&.newId('test1');
+  pvQPushButton(p,id,0);
+  pvSetGeometry(p,id,270,40,100,30);
+  pvSetText(p,id,'test1');
+  pvShow(p,id);
+.fi
+.PP
+.PP
+.PP
+.nf
+  return 0;
+}                                                      }
+.fi
+.PP
+.PP
+.PP
+.nf
+static int slotButtonPressedEvent(PARAM *p, int id, DATA *d)
+{
+  if(p == NULL || id == 0 || d == NULL) return -1;
+  if(id == obj1)
+  {
+    printf('knowns id's:\\n');
+    int i = d->mgr\&.first();
+    while(i > 0)
+    {
+      printf('name=%s id=%d\\n', d->mgr\&.name(i),i);
+      i = d->mgr\&.next();
+    }
+  }
+  return 0;
+}
+.fi
+.PP
+.PP
+.PP
+.nf
+.fi
+.PP
+ 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "pvWidgetIdManager::pvWidgetIdManager ()"
+
+.SS "virtual pvWidgetIdManager::~pvWidgetIdManager ()\fC [virtual]\fP"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual int pvWidgetIdManager::deleteWidget (\fBPARAM\fP *p, const char *name)\fC [virtual]\fP"
+
+.SS "int pvWidgetIdManager::endId ()"
+
+.SS "int pvWidgetIdManager::firstId ()"
+
+.SS "virtual int pvWidgetIdManager::id (const char *name)\fC [virtual]\fP"
+
+.SS "int pvWidgetIdManager::idStart ()"
+
+.SS "int pvWidgetIdManager::init (\fBPARAM\fP *p, intid_start)"
+
+.SS "int pvWidgetIdManager::insertBasicId (intid, const char *name)\fC [private]\fP"
+
+.SS "virtual int pvWidgetIdManager::isInMap (const char *name)\fC [virtual]\fP"
+
+.SS "int pvWidgetIdManager::isInMap (intid)"
+
+.SS "const char* pvWidgetIdManager::name (intid)"
+
+.SS "virtual int pvWidgetIdManager::newId (const char *name)\fC [virtual]\fP"
+
+.SS "int pvWidgetIdManager::nextId ()"
+
+.SS "virtual int pvWidgetIdManager::readEnumFromMask (const char *maskname)\fC [virtual]\fP"
+
+.SH "Field Documentation"
+.PP 
+.SS "int* pvWidgetIdManager::free\fC [private]\fP"
+
+.SS "std::map<std::string, int> pvWidgetIdManager::id_list\fC [private]\fP"
+
+.SS "int pvWidgetIdManager::id_start\fC [private]\fP"
+
+.SS "std::multimap<std::string, int>::iterator pvWidgetIdManager::it\fC [private]\fP"
+
+.SS "int pvWidgetIdManager::num_additional_widgets\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

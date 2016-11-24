@@ -1,0 +1,168 @@
+.TH "TextEvents" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+TextEvents \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBtextEventType\fP (const char *text)"
+.br
+.ti -1c
+.RI "const char * \fBsvgObjectName\fP (const char *text)"
+.br
+.ti -1c
+.RI "int \fBgetSvgBoundsOnElement\fP (const char *text, float *x, float *y, float *width, float *height)"
+.br
+.ti -1c
+.RI "int \fBgetSvgMatrixForElement\fP (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)"
+.br
+.ti -1c
+.RI "int \fBgetGeometry\fP (const char *text, int *x, int *y, int *width, int *height)"
+.br
+.ti -1c
+.RI "int \fBgetParentWidgetId\fP (const char *text, int *parent)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are parsing functions for TEXT_EVENT 
+.PP
+.nf
+
+.SS "Example for useing TEXT_EVENTS:
+"
+.fi
+.PP
+.PP
+.PP
+.nf
+
+static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
+{
+  if(p == NULL || id == 0 || d == NULL || text == NULL) return -1;
+  float x,y,w,h;
+  float m11,m12,m21,m22,det,dx,dy;
+  switch(textEventType(text))
+  {
+    case PLAIN_TEXT_EVENT:
+      printf('plain\\n');
+      break;
+    case WIDGET_GEOMETRY:
+      int X,Y,W,H;
+      getGeometry(text,&X,&Y,&W,&H);
+      printf('geometry(%d)=%d,%d,%d,%d\\n',id,X,Y,W,H);
+      break;
+    case PARENT_WIDGET_ID:
+      int PID;
+      getParentWidgetId(text,&PID);
+      printf('parent(%d)=%d\\n',id,PID);
+      break;
+    case SVG_LEFT_BUTTON_PRESSED:
+      printf('left pressed\\n');
+      printf('objectname=%s\\n',svgObjectName(text));
+      break;
+    case SVG_MIDDLE_BUTTON_PRESSED:
+      printf('middle pressed\\n');
+      printf('objectname=%s\\n',svgObjectName(text));
+      break;
+    case SVG_RIGHT_BUTTON_PRESSED:
+      printf('right pressed\\n');
+      printf('objectname=%s\\n',svgObjectName(text));
+      break;
+    case SVG_LEFT_BUTTON_RELEASED:
+      printf('left released\\n');
+      printf('objectname=%s\\n',svgObjectName(text));
+      break;
+    case SVG_MIDDLE_BUTTON_RELEASED:
+      printf('middle released\\n');
+      printf('objectname=%s\\n',svgObjectName(text));
+      break;
+    case SVG_RIGHT_BUTTON_RELEASED:
+      printf('right released\\n');
+      break;
+    case SVG_BOUNDS_ON_ELEMENT:
+      getSvgBoundsOnElement(text, &x, &y, &w, &h);
+      printf('bounds object=%s xywh=%f,%f,%f,%f\\n',svgObjectName(text),x,y,w,h);
+      break;
+    case SVG_MATRIX_FOR_ELEMENT:
+      getSvgMatrixForElement(text, &m11, &m12, &m21, &m22, &det, &dx, &dy);
+      printf('matrix object=%s m=%f,%f,%f,%f det=%f dx=%f dy=%f\\n',svgObjectName(text),
+                               m11,m12,m21,m22,det,dx,dy);
+      break;
+    default:
+      printf('default\\n');
+      break;
+  }
+  return 0;
+}
+.fi
+.PP
+ 
+.SH "Function Documentation"
+.PP 
+.SS "int getGeometry (const char *text, int *x, int *y, int *width, int *height)"
+
+.PP
+.nf
+
+Returns the geometry for a widget from a TEXT_EVENT
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int getParentWidgetId (const char *text, int *parent)"
+
+.PP
+.nf
+
+Returns the parent id for a widget from a TEXT_EVENT
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int getSvgBoundsOnElement (const char *text, float *x, float *y, float *width, float *height)"
+
+.PP
+.nf
+
+Returns the bounds on object within a SVG graphic from a TEXT_EVENT
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SS "int getSvgMatrixForElement (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)"
+
+.PP
+.nf
+
+Returns the matrix for object within a SVG graphic from a TEXT_EVENT
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SS "const char* svgObjectName (const char *text)"
+
+.PP
+.nf
+
+Returns the object name within a SVG graphic from a TEXT_EVENT
+or '' if not found
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SS "int textEventType (const char *text)"
+
+.PP
+.nf
+
+Return the enum \fBTextEvents\fP
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

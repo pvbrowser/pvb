@@ -1,0 +1,192 @@
+.TH "glFont" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+glFont \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <processviewserver\&.h>\fP
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBGlyph\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBglFont\fP ()"
+.br
+.ti -1c
+.RI "\fB~glFont\fP ()"
+.br
+.ti -1c
+.RI "int \fBread\fP (const char *filename)"
+.br
+.ti -1c
+.RI "int \fBlineHeight\fP ()"
+.br
+.ti -1c
+.RI "int \fBcharWidth\fP (unsigned char c)"
+.br
+.ti -1c
+.RI "int \fBstringWidth\fP (const char *str)"
+.br
+.ti -1c
+.RI "void \fBdrawString\fP (float x, float y, const char *str)"
+.br
+.ti -1c
+.RI "void \fBsetZoom\fP (float factor)"
+.br
+.ti -1c
+.RI "void \fBsetRotation\fP (int angle)"
+.br
+.ti -1c
+.RI "void \fBsetFontSize\fP (int pitch, float factor)"
+.br
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBGlyph\fP \fB_glyphs\fP [256]"
+.br
+.ti -1c
+.RI "\fBGlyph\fP * \fB_table\fP [256]"
+.br
+.ti -1c
+.RI "GLuint \fB_line_height\fP"
+.br
+.ti -1c
+.RI "GLuint \fB_texture\fP"
+.br
+.ti -1c
+.RI "float \fB_tex_line_height\fP"
+.br
+.ti -1c
+.RI "double \fBzoom\fP"
+.br
+.ti -1c
+.RI "double \fBzoom0\fP"
+.br
+.ti -1c
+.RI "int \fBangle_128x128\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+
+This class is for reading a font for use within OpenGL 
+.fi
+.PP
+ 
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "glFont::glFont ()"
+
+.SS "glFont::~glFont ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int glFont::charWidth (unsigned charc)"
+
+.PP
+.nf
+
+get width of a character
+.fi
+.PP
+ 
+.SS "void glFont::drawString (floatx, floaty, const char *str)"
+
+.PP
+.nf
+
+draw string at position x,y
+push matrix, translate and rotate first if you want to place it in 3D
+.fi
+.PP
+ 
+.SS "int glFont::lineHeight ()"
+
+.PP
+.nf
+
+get lineHeight
+.fi
+.PP
+ 
+.SS "int glFont::read (const char *filename)"
+
+.PP
+.nf
+
+read font file
+.fi
+.PP
+ 
+.SS "void glFont::setFontSize (intpitch, floatfactor)"
+
+.PP
+.nf
+
+for internal use only\&.
+.fi
+.PP
+ 
+.SS "void glFont::setRotation (intangle)"
+
+.PP
+.nf
+
+rotate font in degree angle\&.
+.fi
+.PP
+ 
+.SS "void glFont::setZoom (floatfactor)"
+
+.PP
+.nf
+
+zoom all texts\&. default: zoom=1\&.0
+.fi
+.PP
+ 
+.SS "int glFont::stringWidth (const char *str)"
+
+.PP
+.nf
+
+get width of string
+.fi
+.PP
+ 
+.SH "Field Documentation"
+.PP 
+.SS "\fBGlyph\fP glFont::_glyphs[256]\fC [private]\fP"
+
+.SS "GLuint glFont::_line_height\fC [private]\fP"
+
+.SS "\fBGlyph\fP* glFont::_table[256]\fC [private]\fP"
+
+.SS "float glFont::_tex_line_height\fC [private]\fP"
+
+.SS "GLuint glFont::_texture\fC [private]\fP"
+
+.SS "int glFont::angle_128x128\fC [private]\fP"
+
+.SS "double glFont::zoom\fC [private]\fP"
+
+.SS "double glFont::zoom0\fC [private]\fP"
+
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

@@ -1,0 +1,175 @@
+.TH "QwtCompass" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtCompass \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBqwtCompassSetSimpleCompassRose\fP (\fBPARAM\fP *p, int id, int numThorns, int numThornLevels, float width=0\&.2f)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetRange\fP (\fBPARAM\fP *p, int id, float vmin, float vmax, float step=0\&.0f)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetMass\fP (\fBPARAM\fP *p, int id, float mass)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetReadOnly\fP (\fBPARAM\fP *p, int id, int rdonly)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetFrameShadow\fP (\fBPARAM\fP *p, int id, int shadow)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassShowBackground\fP (\fBPARAM\fP *p, int id, int show)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetLineWidth\fP (\fBPARAM\fP *p, int id, int width)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetMode\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetWrapping\fP (\fBPARAM\fP *p, int id, int wrap)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetScale\fP (\fBPARAM\fP *p, int id, int maxMajIntv, int maxMinIntv, float step)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetScaleArc\fP (\fBPARAM\fP *p, int id, float min, float max)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetOrigin\fP (\fBPARAM\fP *p, int id, float o)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetNeedle\fP (\fBPARAM\fP *p, int id, int which, int r1=0, int g1=0, int b1=0, int r2=255, int g2=255, int b2=255, int r3=128, int g3=128, int b3=128)"
+.br
+.ti -1c
+.RI "int \fBqwtCompassSetValue\fP (\fBPARAM\fP *p, int id, float value)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+QwtCompass Widget 
+.SH "Function Documentation"
+.PP 
+.SS "int qwtCompassSetFrameShadow (\fBPARAM\fP *p, intid, intshadow)"
+
+.PP
+.nf
+
+\fBDialShadow\fP\&.
+.fi
+.PP
+ 
+.SS "int qwtCompassSetLineWidth (\fBPARAM\fP *p, intid, intwidth)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetMass (\fBPARAM\fP *p, intid, floatmass)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetMode (\fBPARAM\fP *p, intid, intmode)"
+
+.PP
+.nf
+
+\fBDialMode\fP\&.
+.fi
+.PP
+ 
+.SS "int qwtCompassSetNeedle (\fBPARAM\fP *p, intid, intwhich, intr1 = \fC0\fP, intg1 = \fC0\fP, intb1 = \fC0\fP, intr2 = \fC255\fP, intg2 = \fC255\fP, intb2 = \fC255\fP, intr3 = \fC128\fP, intg3 = \fC128\fP, intb3 = \fC128\fP)"
+
+.PP
+.nf
+
+which = \fBCompassNeedle\fP\&.
+.fi
+.PP
+ 
+.SS "int qwtCompassSetOrigin (\fBPARAM\fP *p, intid, floato)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetRange (\fBPARAM\fP *p, intid, floatvmin, floatvmax, floatstep = \fC0\&.0f\fP)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetReadOnly (\fBPARAM\fP *p, intid, intrdonly)"
+
+.PP
+.nf
+
+rdonly = 0 | 1
+.fi
+.PP
+ 
+.SS "int qwtCompassSetScale (\fBPARAM\fP *p, intid, intmaxMajIntv, intmaxMinIntv, floatstep)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetScaleArc (\fBPARAM\fP *p, intid, floatmin, floatmax)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetSimpleCompassRose (\fBPARAM\fP *p, intid, intnumThorns, intnumThornLevels, floatwidth = \fC0\&.2f\fP)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetValue (\fBPARAM\fP *p, intid, floatvalue)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassSetWrapping (\fBPARAM\fP *p, intid, intwrap)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SS "int qwtCompassShowBackground (\fBPARAM\fP *p, intid, intshow)"
+
+.PP
+.nf
+
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

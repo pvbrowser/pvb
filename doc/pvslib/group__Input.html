@@ -83,6 +83,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:ga53cbd20c94a35baa84884650ff7a263d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#ga53cbd20c94a35baa84884650ff7a263d">pvWaitpid</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p)</td></tr>
+<tr class="separator:ga53cbd20c94a35baa84884650ff7a263d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gac9578e16fe3bd92b6b592df9ca8b07dc"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gac9578e16fe3bd92b6b592df9ca8b07dc">pvText</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
 <tr class="separator:gac9578e16fe3bd92b6b592df9ca8b07dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gae35ec18e2f45d830170759a987e2ad1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__Input.html#gae35ec18e2f45d830170759a987e2ad1a">pvRequestJpeg</a> (<a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *p, int id)</td></tr>
@@ -320,6 +322,26 @@ Allowed widgets: QListBox, QListView
 Request the text from the widget. The text will arrive in an TEXT_EVENT.
 In case of a QMultiLineEdit the text will arrive in a CLIPBOARD_EVENT.
 Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit
+</pre> 
+</div>
+</div>
+<a class="anchor" id="ga53cbd20c94a35baa84884650ff7a263d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int pvWaitpid </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__DefinesAndEnums.html#ga18296754012515ac673ee13d34243180">PARAM</a> *&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<pre>
+Request a waitpid() call on the client.
+The response is send as TEXT_MESSAGE with id=ID_MAINWINDOW.
+waitpid_response=d
 </pre> 
 </div>
 </div>

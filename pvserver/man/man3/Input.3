@@ -1,0 +1,129 @@
+.TH "Input" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Input \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvWaitpid\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvText\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestJpeg\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestGeometry\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestParentWidgetId\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSelection\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvRequestSvgBoundsOnElement\fP (\fBPARAM\fP *p, int id, const char *objectname)"
+.br
+.ti -1c
+.RI "int \fBpvRequestSvgMatrixForElement\fP (\fBPARAM\fP *p, int id, const char *objectname)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are the input routines 
+.SH "Function Documentation"
+.PP 
+.SS "int pvRequestGeometry (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Request the geometry from the widget\&. The text will arrive in an TEXT_EVENT\&.
+geometry:x,y,width,height
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvRequestJpeg (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Request a jpeg from the widget\&. The jpeg will arrive in an CLIPBOARD_EVENT\&.
+Allowed widgets: QWidget, QImage, QDraw, QwtPlot
+.fi
+.PP
+ 
+.SS "int pvRequestParentWidgetId (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Request the parent id for the widget\&. The text will arrive in an TEXT_EVENT\&.
+parent:parent
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvRequestSvgBoundsOnElement (\fBPARAM\fP *p, intid, const char *objectname)"
+
+.PP
+.nf
+
+Request the bounds of an object within a SVG graphic\&.
+The response will arrive in a TEXT_EVENT
+Response: name=x,y,width,height
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SS "int pvRequestSvgMatrixForElement (\fBPARAM\fP *p, intid, const char *objectname)"
+
+.PP
+.nf
+
+Request the matrix for an object within a SVG graphic\&.
+The response will arrive in a TEXT_EVENT
+Response: name=m11, m12, m21, m22, det, dx, dy
+Allowed widgets: QDrawWidget
+.fi
+.PP
+ 
+.SS "int pvSelection (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Request the selected items from a QListBox or QListView\&. The text will arrive in an SELECTION_EVENT\&.
+Allowed widgets: QListBox, QListView
+.fi
+.PP
+ 
+.SS "int pvText (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Request the text from the widget\&. The text will arrive in an TEXT_EVENT\&.
+In case of a QMultiLineEdit the text will arrive in a CLIPBOARD_EVENT\&.
+Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit
+.fi
+.PP
+ 
+.SS "int pvWaitpid (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Request a waitpid() call on the client\&.
+The response is send as TEXT_MESSAGE with id=ID_MAINWINDOW\&.
+waitpid_response=d
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

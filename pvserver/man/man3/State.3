@@ -1,0 +1,619 @@
+.TH "State" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+State \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvMoveContent\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBpvSetGeometry\fP (\fBPARAM\fP *p, int id, int x, int y, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetMinSize\fP (\fBPARAM\fP *p, int id, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxSize\fP (\fBPARAM\fP *p, int id, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetAlignment\fP (\fBPARAM\fP *p, int id, int alignment)"
+.br
+.ti -1c
+.RI "int \fBpvSetChecked\fP (\fBPARAM\fP *p, int id, int state)"
+.br
+.ti -1c
+.RI "int \fBpvMove\fP (\fBPARAM\fP *p, int id, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBpvResize\fP (\fBPARAM\fP *p, int id, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvHide\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvShow\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSetParent\fP (\fBPARAM\fP *p, int id, int id_parent)"
+.br
+.ti -1c
+.RI "int \fBpvSetMultiSelection\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvSetEchoMode\fP (\fBPARAM\fP *p, int id, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvSetEditable\fP (\fBPARAM\fP *p, int id, int editable)"
+.br
+.ti -1c
+.RI "int \fBpvSetEnabled\fP (\fBPARAM\fP *p, int id, int enabled)"
+.br
+.ti -1c
+.RI "int \fBpvSetFocus\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvTableSetEnabled\fP (\fBPARAM\fP *p, int id, int x, int y, int enabled)"
+.br
+.ti -1c
+.RI "int \fBpvTableSetHeaderResizeEnabled\fP (\fBPARAM\fP *p, int id, int horizontal, int enabled, int section)"
+.br
+.ti -1c
+.RI "int \fBpvSetSorting\fP (\fBPARAM\fP *p, int id, int column, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvSetTabPosition\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBpvEnableTabBar\fP (\fBPARAM\fP *p, int id, int state)"
+.br
+.ti -1c
+.RI "int \fBpvSetNumRows\fP (\fBPARAM\fP *p, int id, int num)"
+.br
+.ti -1c
+.RI "int \fBpvSetNumCols\fP (\fBPARAM\fP *p, int id, int num)"
+.br
+.ti -1c
+.RI "int \fBpvInsertRows\fP (\fBPARAM\fP *p, int id, int row, int count=1)"
+.br
+.ti -1c
+.RI "int \fBpvInsertColumns\fP (\fBPARAM\fP *p, int id, int col, int count=1)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveRow\fP (\fBPARAM\fP *p, int id, int row)"
+.br
+.ti -1c
+.RI "int \fBpvRemoveColumn\fP (\fBPARAM\fP *p, int id, int col)"
+.br
+.ti -1c
+.RI "int \fBpvSetCurrentItem\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBpvSetTimeEditDisplay\fP (\fBPARAM\fP *p, int id, int hour, int minute, int second, int ampm)"
+.br
+.ti -1c
+.RI "int \fBpvListViewEnsureVisible\fP (\fBPARAM\fP *p, int id, const char *path)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetOpen\fP (\fBPARAM\fP *p, int id, const char *path, int open)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetHidden\fP (\fBPARAM\fP *p, int id, int column, int hidden)"
+.br
+.ti -1c
+.RI "int \fBpvListViewSetStandardPopupMenu\fP (\fBPARAM\fP *p, int id, int standard_menu)"
+.br
+.ti -1c
+.RI "int \fBpvSetStyle\fP (\fBPARAM\fP *p, int id, int shape, int shadow, int line_width, int margin)"
+.br
+.ti -1c
+.RI "int \fBpvSetMovie\fP (\fBPARAM\fP *p, int id, int background, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvMovieControl\fP (\fBPARAM\fP *p, int id, int step)"
+.br
+.ti -1c
+.RI "int \fBpvMovieSpeed\fP (\fBPARAM\fP *p, int id, int speed)"
+.br
+.ti -1c
+.RI "int \fBpvAddTabIcon\fP (\fBPARAM\fP *p, int id, int position, const char *bmp_file, int download_icon=1)"
+.br
+.ti -1c
+.RI "int \fBpvSetCellWidget\fP (\fBPARAM\fP *p, int id, int parent, int row, int column)"
+.br
+.ti -1c
+.RI "int \fBpvSetContentsMargins\fP (\fBPARAM\fP *p, int id, int xleft, int ytop, int xright, int ybottom)"
+.br
+.ti -1c
+.RI "int \fBpvSetSpacing\fP (\fBPARAM\fP *p, int id, int param)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are the state routines 
+.SH "Function Documentation"
+.PP 
+.SS "int pvAddTabIcon (\fBPARAM\fP *p, intid, intposition, const char *bmp_file, intdownload_icon = \fC1\fP)"
+
+.PP
+.nf
+
+add tab icon
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets QTabWidget QToolBox
+.fi
+.PP
+ 
+.SS "int pvEnableTabBar (\fBPARAM\fP *p, intid, intstate)"
+
+.PP
+.nf
+
+Enable the TabBar 0=disable | 1=enable
+Allowed widgets QTabWidget
+.fi
+.PP
+ 
+.SS "int pvHide (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Hide the widget\&.
+See also \fBMainWindowIds\fP\&.
+.fi
+.PP
+ 
+.SS "int pvInsertColumns (\fBPARAM\fP *p, intid, intcol, intcount = \fC1\fP)"
+
+.PP
+.nf
+
+Insert count columns
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvInsertRows (\fBPARAM\fP *p, intid, introw, intcount = \fC1\fP)"
+
+.PP
+.nf
+
+Insert count rows
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvListViewEnsureVisible (\fBPARAM\fP *p, intid, const char *path)"
+
+.PP
+.nf
+
+Ensures that the given item is visible\&.
+example:
+path = '/dir/subdir/subsubdir'
+path := similar to a unix directory path
+Allowed widgets QListView
+.fi
+.PP
+ 
+.SS "int pvListViewSetHidden (\fBPARAM\fP *p, intid, intcolumn, inthidden)"
+
+.PP
+.nf
+
+Hide or show column
+.fi
+.PP
+ 
+.SS "int pvListViewSetOpen (\fBPARAM\fP *p, intid, const char *path, intopen)"
+
+.PP
+.nf
+
+Opens/Closes the given item\&.
+open = 0 | 1
+example:
+path = '/dir/subdir/subsubdir'
+path := similar to a unix directory path
+Allowed widgets QListView
+.fi
+.PP
+ 
+.SS "int pvListViewSetStandardPopupMenu (\fBPARAM\fP *p, intid, intstandard_menu)"
+
+.PP
+.nf
+
+Set standard popup menu of list view\&.
+standard_menu = 0 do not show standard popup menu
+standard_menu = 1 show standard popup menu and do not allow to hide column 1
+standard_menu = N show standard popup menu and do not allow to hide column N
+.fi
+.PP
+ 
+.SS "int pvMove (\fBPARAM\fP *p, intid, intx, inty)"
+
+.PP
+.nf
+
+Move the widget to a new position\&.
+.fi
+.PP
+ 
+.SS "int pvMoveContent (\fBPARAM\fP *p, intid, intpos)"
+
+.PP
+.nf
+
+Move within html page\&.
+pos = Home|Backward|Forward|Reload
+or
+pos = Qt::KeyboardModifiers ored with ascii key\&. Where key >= ' ' && key < 128
+      Qt::NoModifier      0x00000000  No modifier key is pressed\&.
+      Qt::ShiftModifier   0x02000000  A Shift key on the keyboard is pressed\&.
+      Qt::ControlModifier 0x04000000  A Ctrl key on the keyboard is pressed\&.
+      Qt::AltModifier     0x08000000  An Alt key on the keyboard is pressed\&.
+Allowed widgets: QTextBrowser
+.fi
+.PP
+ 
+.SS "int pvMovieControl (\fBPARAM\fP *p, intid, intstep)"
+
+.PP
+.nf
+
+step == -2 restart
+step == -1 unpause
+step == 0  pause
+step >  0  step step steps
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets QLabel
+.fi
+.PP
+ 
+.SS "int pvMovieSpeed (\fBPARAM\fP *p, intid, intspeed)"
+
+.PP
+.nf
+
+speed in percent
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets QLabel
+.fi
+.PP
+ 
+.SS "int pvRemoveColumn (\fBPARAM\fP *p, intid, intcol)"
+
+.PP
+.nf
+
+Remove a colum
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvRemoveRow (\fBPARAM\fP *p, intid, introw)"
+
+.PP
+.nf
+
+Remove a row
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvResize (\fBPARAM\fP *p, intid, intw, inth)"
+
+.PP
+.nf
+
+Resize the widget\&.
+See also \fBMainWindowIds\fP\&.
+.fi
+.PP
+ 
+.SS "int pvSetAlignment (\fBPARAM\fP *p, intid, intalignment)"
+
+.PP
+.nf
+
+Set Alignment\&. \fBAlignmentFlags\fP
+Allowed widgets: QLabel QLineEdit
+.fi
+.PP
+ 
+.SS "int pvSetCellWidget (\fBPARAM\fP *p, intid, intparent, introw, intcolumn)"
+
+.PP
+.nf
+
+set cell widget within a table
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvSetChecked (\fBPARAM\fP *p, intid, intstate)"
+
+.PP
+.nf
+
+Set the state (0,1) of a button
+Allowed widgets: QRadioButton, QCheckBox
+.fi
+.PP
+ 
+.SS "int pvSetContentsMargins (\fBPARAM\fP *p, intid, intxleft, intytop, intxright, intybottom)"
+
+.PP
+.nf
+
+set margins within layout
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets Layouts
+.fi
+.PP
+ 
+.SS "int pvSetCurrentItem (\fBPARAM\fP *p, intid, intindex)"
+
+.PP
+.nf
+
+Set current item
+Allowed widgets QComboBox
+.fi
+.PP
+ 
+.SS "int pvSetEchoMode (\fBPARAM\fP *p, intid, intmode)"
+
+.PP
+.nf
+
+Set echo mode of QLineEdit\&.
+mode = 0=NoEcho|1=Normal|2=Password
+.fi
+.PP
+ 
+.SS "int pvSetEditable (\fBPARAM\fP *p, intid, inteditable)"
+
+.PP
+.nf
+
+Set editable 0|1
+Allowed widgets QLineEdit, QMultiLineEdit, QTable, QComboBox
+.fi
+.PP
+ 
+.SS "int pvSetEnabled (\fBPARAM\fP *p, intid, intenabled)"
+
+.PP
+.nf
+
+Set enabled 0|1
+Allowed widgets all widgets
+.fi
+.PP
+ 
+.SS "int pvSetFocus (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Set keyboad focus
+Allowed widgets all widgets
+.fi
+.PP
+ 
+.SS "int pvSetGeometry (\fBPARAM\fP *p, intid, intx, inty, intw, inth)"
+
+.PP
+.nf
+
+Set the Geometry of the widget\&.
+.fi
+.PP
+ 
+.SS "int pvSetMaxSize (\fBPARAM\fP *p, intid, intw, inth)"
+
+.PP
+.nf
+
+Set the Maximum Size of the widget\&.
+.fi
+.PP
+ 
+.SS "int pvSetMinSize (\fBPARAM\fP *p, intid, intw, inth)"
+
+.PP
+.nf
+
+Set the Minimum Size of the widget\&.
+.fi
+.PP
+ 
+.SS "int pvSetMovie (\fBPARAM\fP *p, intid, intbackground, const char *filename)"
+
+.PP
+.nf
+
+Set to an animated MNG or GIF
+background = 0|1
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets QLabel
+.fi
+.PP
+ 
+.SS "int pvSetMultiSelection (\fBPARAM\fP *p, intid, intmode)"
+
+.PP
+.nf
+
+Set multi selection of QListBox, QListView\&.
+mode = 0=SingleSelection|1=MultiSelection|2=NoSelection
+.fi
+.PP
+ 
+.SS "int pvSetNumCols (\fBPARAM\fP *p, intid, intnum)"
+
+.PP
+.nf
+
+Set num cols in table
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvSetNumRows (\fBPARAM\fP *p, intid, intnum)"
+
+.PP
+.nf
+
+Set num rows in table
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvSetParent (\fBPARAM\fP *p, intid, intid_parent)"
+
+.PP
+.nf
+
+Reparent a widget
+All widgets allowed
+.fi
+.PP
+ 
+.SS "int pvSetSorting (\fBPARAM\fP *p, intid, intcolumn, intmode)"
+
+.PP
+.nf
+
+Sort column
+mode=0 decending
+mode=1 ascendin
+column=-1 do not allow sorting (this is the default)
+Allowed widgets QListView
+.fi
+.PP
+ 
+.SS "int pvSetSpacing (\fBPARAM\fP *p, intid, intparam)"
+
+.PP
+.nf
+
+set spacing within layout
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets Layouts
+.fi
+.PP
+ 
+.SS "int pvSetStyle (\fBPARAM\fP *p, intid, intshape, intshadow, intline_width, intmargin)"
+
+.PP
+.nf
+
+Set style of QLabel or QFrame
+\fBShape\fP\&. \fBShadow\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+if parameter == -1 -> do not set this paramter
+.fi
+.PP
+.PP
+.PP
+.nf
+Allowed widgets QLabel QLineEdit QFrame QGroupBox QLCDNumber QProgressBar QToolBox
+.fi
+.PP
+ 
+.SS "int pvSetTabPosition (\fBPARAM\fP *p, intid, intpos)"
+
+.PP
+.nf
+
+Set tab position 0=Top | 1=Bottom | 2=West | 3=East
+Allowed widgets QTabWidget
+.fi
+.PP
+ 
+.SS "int pvSetTimeEditDisplay (\fBPARAM\fP *p, intid, inthour, intminute, intsecond, intampm)"
+
+.PP
+.nf
+
+Set display of time edit
+values may be 0 or 1
+Allowed widgets QTimeEdit
+.fi
+.PP
+ 
+.SS "int pvShow (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Show the widget\&.
+See also \fBMainWindowIds\fP\&.
+.fi
+.PP
+ 
+.SS "int pvTableSetEnabled (\fBPARAM\fP *p, intid, intx, inty, intenabled)"
+
+.PP
+.nf
+
+Set enabled 0|1
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SS "int pvTableSetHeaderResizeEnabled (\fBPARAM\fP *p, intid, inthorizontal, intenabled, intsection)"
+
+.PP
+.nf
+
+horizontal = 0 is vertical
+horizontal = 1 is horizontal
+enabled := 0|1
+section := section in horizontal or vertical direction
+Allowed widgets QTable
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

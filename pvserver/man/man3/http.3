@@ -1,0 +1,124 @@
+.TH "http helper functions" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+http helper functions \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvSendHttpChunks\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpContentLength\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpResponseFile\fP (\fBPARAM\fP *p, const char *filename, const char *content_type='text/html')"
+.br
+.ti -1c
+.RI "int \fBpvSendHttpResponse\fP (\fBPARAM\fP *p, const char *html)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These functions you can use to act as httpd\&. It is possible to implement your pvserver to act as pvbrowser server and httpd at the same time\&. Please read the manual in PDF format\&.
+.PP
+Note: You must use the -http option to start your pvserver\&.
+.PP
+\&./pvs -http
+.PP
+This will suppress the automatic sending of pvsVersion() at pvserver startup\&.
+.PP
+The full HTTP/1\&.1 specification can be found here:
+.PP
+https://www.w3.org/Protocols/rfc2616/rfc2616.html
+.PP
+In future we might add more helper function based on this specification\&. But you can implement helper functions at your own using\&.
+.PP
+int \fBpvtcpsend(PARAM *p, const char *buf, int len)\fP;
+.PP
+int \fBpvtcpsendstring(PARAM *p, const char *buf)\fP;
+.PP
+int \fBpvtcpsend_binary(PARAM *p, const char *buf, int len)\fP;
+.PP
+int \fBpvtcpreceive(PARAM *p, char *buf, int maxlen)\fP;
+.PP
+int \fBpvtcpreceive_binary(PARAM *p, char *buf, int maxlen)\fP;
+.PP
+Your own httpd helper functions could be included within the upstream project\&. Please take care that the helper functions are usefull for wide use cases\&. 
+.SH "Function Documentation"
+.PP 
+.SS "int pvSendHttpChunks (\fBPARAM\fP *p, const char *filename)"
+
+.PP
+.nf
+
+send http response using chunks
+.fi
+.PP
+.PP
+.PP
+.nf
+Example:
+  pvtcpsendstring(p,
+    'HTTP/1\&.1 200 OK\\n'
+    'Date: Wed, 05 Aug 2015 14:10:30 GMT\\n'
+    'Server: Apache/2\&.2\&.4 (Linux/SUSE)\\n'
+    'X-Powered-By: PHP/5\&.2\&.11\\n'
+    'Keep-Alive: timeout=150, max=1000\\n'
+    'Connection: Keep-Alive\\n'
+    'Transfer-Encoding: chunked\\n'
+    'Content-Type: text/html\\n'
+    '\\n');
+  pvSendHttpChunks(p,'test\&.html');
+.fi
+.PP
+ 
+.SS "int pvSendHttpContentLength (\fBPARAM\fP *p, const char *filename)"
+
+.PP
+.nf
+
+send http response using Content-Length
+.fi
+.PP
+.PP
+.PP
+.nf
+Example: 
+  sprintf(buf,'HTTP/1\&.1 200 OK\\n'); 
+  pvtcpsendstring(p,buf); 
+  sprintf(buf,'Server: pvserver-%s\\n', pvserver_version); 
+  pvtcpsendstring(p,buf); 
+  sprintf(buf,'Keep-Alive: timeout=15, max=100\\n'); 
+  pvtcpsendstring(p,buf); 
+  sprintf(buf,'Connection: Keep-Alive\\n'); 
+  pvtcpsendstring(p,buf); 
+  sprintf(buf,'Content-Type: text/html\\n'); 
+  pvtcpsendstring(p,buf); 
+  pvSendHttpContentLength(p,'test\&.html'); 
+.fi
+.PP
+ 
+.SS "int pvSendHttpResponse (\fBPARAM\fP *p, const char *html)"
+
+.PP
+.nf
+
+send http response using HTML text\&.
+.fi
+.PP
+ 
+.SS "int pvSendHttpResponseFile (\fBPARAM\fP *p, const char *filename, const char *content_type = \fC'text/html'\fP)"
+
+.PP
+.nf
+
+send http response file
+default Content-Type = text/html
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

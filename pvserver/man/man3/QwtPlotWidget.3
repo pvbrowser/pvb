@@ -1,0 +1,457 @@
+.TH "QwtPlotWidget" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotWidget \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBqpwSetCurveData\fP (\fBPARAM\fP *p, int id, int c, int count, double *x, double *y)"
+.br
+.ti -1c
+.RI "int \fBqpwSetBufferedCurveData\fP (\fBPARAM\fP *p, int id, int c)"
+.br
+.ti -1c
+.RI "int \fBqpwReplot\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBqpwSetTitle\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCanvasBackground\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableOutline\fP (\fBPARAM\fP *p, int id, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetOutlinePen\fP (\fBPARAM\fP *p, int id, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAutoLegend\fP (\fBPARAM\fP *p, int id, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableLegend\fP (\fBPARAM\fP *p, int id, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetLegendPos\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwSetLegendFrameStyle\fP (\fBPARAM\fP *p, int id, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableGridXMin\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBqpwSetGridMajPen\fP (\fBPARAM\fP *p, int id, int r, int g, int b, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetGridMinPen\fP (\fBPARAM\fP *p, int id, int r, int g, int b, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwEnableAxis\fP (\fBPARAM\fP *p, int id, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisTitle\fP (\fBPARAM\fP *p, int id, int pos, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisOptions\fP (\fBPARAM\fP *p, int id, int pos, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisMaxMajor\fP (\fBPARAM\fP *p, int id, int pos, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisMaxMinor\fP (\fBPARAM\fP *p, int id, int pos, int val)"
+.br
+.ti -1c
+.RI "int \fBqpwInsertCurve\fP (\fBPARAM\fP *p, int id, int index, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwRemoveCurve\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurvePen\fP (\fBPARAM\fP *p, int id, int index, int r, int g, int b, int width=1, int style=\fBSolidLine\fP)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurveSymbol\fP (\fBPARAM\fP *p, int id, int index, int symbol, int r1, int g1, int b1, int r2, int g2, int b2, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBqpwSetCurveYAxis\fP (\fBPARAM\fP *p, int id, int index, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwInsertMarker\fP (\fBPARAM\fP *p, int id, int index)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerLineStyle\fP (\fBPARAM\fP *p, int id, int index, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerPos\fP (\fBPARAM\fP *p, int id, int index, float x, float y)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerLabelAlign\fP (\fBPARAM\fP *p, int id, int index, int align)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerPen\fP (\fBPARAM\fP *p, int id, int index, int r, int g, int b, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerLabel\fP (\fBPARAM\fP *p, int id, int number, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerFont\fP (\fBPARAM\fP *p, int id, int index, const char *family, int size, int style)"
+.br
+.ti -1c
+.RI "int \fBqpwSetMarkerSymbol\fP (\fBPARAM\fP *p, int id, int index, int symbol, int r1, int g1, int b1, int r2, int g2, int b2, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBqpwInsertLineMarker\fP (\fBPARAM\fP *p, int id, int index, const char *text, int pos)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisScaleDraw\fP (\fBPARAM\fP *p, int id, int pos, const char *text)"
+.br
+.ti -1c
+.RI "int \fBqpwSetAxisScale\fP (\fBPARAM\fP *p, int id, int pos, float min, float max, float step)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Commands for the QwtPlotWidget 
+.SH "Function Documentation"
+.PP 
+.SS "int qpwEnableAxis (\fBPARAM\fP *p, intid, intpos)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwEnableGridXMin (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+enable grid
+.fi
+.PP
+ 
+.SS "int qpwEnableLegend (\fBPARAM\fP *p, intid, intval)"
+
+.PP
+.nf
+
+val = 0|1
+.fi
+.PP
+ 
+.SS "int qpwEnableOutline (\fBPARAM\fP *p, intid, intval)"
+
+.PP
+.nf
+
+val = 0|1
+.fi
+.PP
+ 
+.SS "int qpwInsertCurve (\fBPARAM\fP *p, intid, intindex, const char *text)"
+
+.PP
+.nf
+
+index = index of curve 0\&.\&.\&.
+.fi
+.PP
+ 
+.SS "int qpwInsertLineMarker (\fBPARAM\fP *p, intid, intindex, const char *text, intpos)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwInsertMarker (\fBPARAM\fP *p, intid, intindex)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+.fi
+.PP
+ 
+.SS "int qpwRemoveCurve (\fBPARAM\fP *p, intid, intindex)"
+
+.PP
+.nf
+
+index = index of curve 0\&.\&.\&.
+.fi
+.PP
+ 
+.SS "int qpwReplot (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+replot the widget
+.fi
+.PP
+ 
+.SS "int qpwSetAutoLegend (\fBPARAM\fP *p, intid, intval)"
+
+.PP
+.nf
+
+val = 0|1
+.fi
+.PP
+ 
+.SS "int qpwSetAxisMaxMajor (\fBPARAM\fP *p, intid, intpos, intval)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwSetAxisMaxMinor (\fBPARAM\fP *p, intid, intpos, intval)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwSetAxisOptions (\fBPARAM\fP *p, intid, intpos, intval)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+val = \fBQwtAutoscale\fP\&.
+.fi
+.PP
+ 
+.SS "int qpwSetAxisScale (\fBPARAM\fP *p, intid, intpos, floatmin, floatmax, floatstep)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwSetAxisScaleDraw (\fBPARAM\fP *p, intid, intpos, const char *text)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+text = format yyyy-MM-dd hh:mm:ss as QDateTime\&.toString
+.fi
+.PP
+ 
+.SS "int qpwSetAxisTitle (\fBPARAM\fP *p, intid, intpos, const char *text)"
+
+.PP
+.nf
+
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwSetBufferedCurveData (\fBPARAM\fP *p, intid, intc)"
+
+.PP
+.nf
+
+Set/Overwrite a curve
+See pvXYAllocate
+c = index of curve
+.fi
+.PP
+ 
+.SS "int qpwSetCanvasBackground (\fBPARAM\fP *p, intid, intr, intg, intb)"
+
+.PP
+.nf
+
+Set the background color of the canvas
+.fi
+.PP
+ 
+.SS "int qpwSetCurveData (\fBPARAM\fP *p, intid, intc, intcount, double *x, double *y)"
+
+.PP
+.nf
+
+Set/Overwrite a curve
+c = index of curve
+count = number of coordinates in x,y
+.fi
+.PP
+ 
+.SS "int qpwSetCurvePen (\fBPARAM\fP *p, intid, intindex, intr, intg, intb, intwidth = \fC1\fP, intstyle = \fC\fBSolidLine\fP\fP)"
+
+.PP
+.nf
+
+index = index of curve 0\&.\&.\&.
+style = \fBPenStyle\fP\&.
+.fi
+.PP
+ 
+.SS "int qpwSetCurveSymbol (\fBPARAM\fP *p, intid, intindex, intsymbol, intr1, intg1, intb1, intr2, intg2, intb2, intw, inth)"
+
+.PP
+.nf
+
+index = index of curve 0\&.\&.\&.
+symbol = \fBMarkerSymbol\fP\&.
+.fi
+.PP
+ 
+.SS "int qpwSetCurveYAxis (\fBPARAM\fP *p, intid, intindex, intpos)"
+
+.PP
+.nf
+
+index = index of curve 0\&.\&.\&.
+pos = yLeft | yRight | xBottom | xTop
+.fi
+.PP
+ 
+.SS "int qpwSetGridMajPen (\fBPARAM\fP *p, intid, intr, intg, intb, intstyle)"
+
+.PP
+.nf
+
+style = \fBPenStyle\fP\&.
+.fi
+.PP
+ 
+.SS "int qpwSetGridMinPen (\fBPARAM\fP *p, intid, intr, intg, intb, intstyle)"
+
+.PP
+.nf
+
+style = \fBPenStyle\fP\&.
+.fi
+.PP
+ 
+.SS "int qpwSetLegendFrameStyle (\fBPARAM\fP *p, intid, intstyle)"
+
+.PP
+.nf
+
+style = \fBShape\fP | \fBShadow\fP
+.fi
+.PP
+ 
+.SS "int qpwSetLegendPos (\fBPARAM\fP *p, intid, intpos)"
+
+.PP
+.nf
+
+pos = Left   |
+      Right  |
+      Top    |
+      Bottom |
+      Center |
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerFont (\fBPARAM\fP *p, intid, intindex, const char *family, intsize, intstyle)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+style =
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerLabel (\fBPARAM\fP *p, intid, intnumber, const char *text)"
+
+.PP
+.nf
+
+number = Number of Marker
+text = Text to out
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerLabelAlign (\fBPARAM\fP *p, intid, intindex, intalign)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerLineStyle (\fBPARAM\fP *p, intid, intindex, intstyle)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+style = NoLine | HLine | VLine | Cross
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerPen (\fBPARAM\fP *p, intid, intindex, intr, intg, intb, intstyle)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+style =
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerPos (\fBPARAM\fP *p, intid, intindex, floatx, floaty)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+style =
+.fi
+.PP
+ 
+.SS "int qpwSetMarkerSymbol (\fBPARAM\fP *p, intid, intindex, intsymbol, intr1, intg1, intb1, intr2, intg2, intb2, intw, inth)"
+
+.PP
+.nf
+
+index = index of marker 0\&.\&.\&.
+symbol = \fBMarkerSymbol\fP\&.
+.fi
+.PP
+ 
+.SS "int qpwSetOutlinePen (\fBPARAM\fP *p, intid, intr, intg, intb)"
+
+.PP
+.nf
+
+Set outine pen color
+.fi
+.PP
+ 
+.SS "int qpwSetTitle (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Set the title of the plot
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

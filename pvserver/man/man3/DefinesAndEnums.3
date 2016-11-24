@@ -1,0 +1,1435 @@
+.TH "Defines and Enums" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Defines and Enums \- 
+.SS "Data Structures"
+
+.in +1c
+.ti -1c
+.RI "struct \fBPARSE_EVENT_STRUCT\fP"
+.br
+.ti -1c
+.RI "struct \fB_PARAM_\fP"
+.br
+.ti -1c
+.RI "struct \fBIntegerArray\fP"
+.br
+.ti -1c
+.RI "struct \fBFloatArray\fP"
+.br
+.ti -1c
+.RI "struct \fBpvTime\fP"
+.br
+.ti -1c
+.RI "struct \fBpvAddressTableItem\fP"
+.br
+.ti -1c
+.RI "struct \fBpvAddressTable\fP"
+.br
+.in -1c
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBpv_STDIN\fP   0"
+.br
+.ti -1c
+.RI "#define \fBpv_STDOUT\fP   1"
+.br
+.ti -1c
+.RI "#define \fBMAX_PRINTF_LENGTH\fP   1024   /*! max length of \fBpvPrintf\fP buffer (must be less than or equal to MAX_PRINTF_LENGTH of ProcessViewBrowser) */"
+.br
+.ti -1c
+.RI "#define \fBMAX_EVENT_LENGTH\fP   1024   /*! max length of an event        */"
+.br
+.ti -1c
+.RI "#define \fBMAX_CLIENTS\fP   100    /*! max number of clients         */"
+.br
+.ti -1c
+.RI "#define \fBMAX_DOCK_WIDGETS\fP   32"
+.br
+.ti -1c
+.RI "#define \fBHELVETICA\fP   'Helvetica'"
+.br
+.ti -1c
+.RI "#define \fBTIMES\fP   'Times'"
+.br
+.ti -1c
+.RI "#define \fBCOURIER\fP   'Courier'"
+.br
+.ti -1c
+.RI "#define \fBOLDENGLISH\fP   'OldEnglish'"
+.br
+.ti -1c
+.RI "#define \fBSYSTEM\fP   'System'"
+.br
+.ti -1c
+.RI "#define \fBANYSTYLE\fP   'AnyStyle'"
+.br
+.ti -1c
+.RI "#define \fBRED\fP   255,0,0"
+.br
+.ti -1c
+.RI "#define \fBGREEN\fP   0,255,0"
+.br
+.ti -1c
+.RI "#define \fBBLUE\fP   0,0,255"
+.br
+.ti -1c
+.RI "#define \fBWHITE\fP   255,255,255"
+.br
+.ti -1c
+.RI "#define \fBBLACK\fP   0,0,0"
+.br
+.ti -1c
+.RI "#define \fBYELLOW\fP   255,255,0"
+.br
+.ti -1c
+.RI "#define \fBLILA\fP   255,0,255"
+.br
+.ti -1c
+.RI "#define \fBCYAN\fP   0,255,255"
+.br
+.ti -1c
+.RI "#define \fBDARK_GREY\fP   128,128,128"
+.br
+.ti -1c
+.RI "#define \fBLIGHT_GREY\fP   180,180,180"
+.br
+.ti -1c
+.RI "#define \fBWHEAT\fP   213,213,154"
+.br
+.ti -1c
+.RI "#define \fBDARK_RED\fP   128,0,0"
+.br
+.ti -1c
+.RI "#define \fBDARK_GREEN\fP   0,128,0"
+.br
+.ti -1c
+.RI "#define \fBDARK_LILA\fP   128,0,128"
+.br
+.ti -1c
+.RI "#define \fBDARK_CYAN\fP   0,128,128"
+.br
+.ti -1c
+.RI "#define \fBDARK_YELLOW\fP   200,200,0"
+.br
+.ti -1c
+.RI "#define \fBDARK_BLUE\fP   0,0,128"
+.br
+.ti -1c
+.RI "#define \fBDEFAULT_LANGUAGE\fP   0"
+.br
+.ti -1c
+.RI "#define \fBpvtr\fP(txt)   txt"
+.br
+.ti -1c
+.RI "#define \fBPARAM_P\fP   \fBPARAM\fP p;\fBpvInit\fP(0,NULL,&p);"
+.br
+.ti -1c
+.RI "#define \fBINITIALIZE_GL\fP   'initializeGL'"
+.br
+.ti -1c
+.RI "#define \fBRESIZE_GL\fP   'resizeGL'"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct \fB_PARAM_\fP \fBPARAM\fP"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvAccept\fP )(\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvtcpsend_binary\fP )(\fBPARAM\fP *p, const char *buf, int len)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvtcpreceive\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_pvtcpreceive_binary\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "typedef int(* \fBplugin_closesocket\fP )(int s)"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMainWindowIds\fP { \fBID_ROOTWIDGET\fP = 0, \fBID_EDITBAR\fP = -1, \fBID_TOOLBAR\fP = -2, \fBID_STATUSBAR\fP = -3, \fBID_MAINWINDOW\fP = -4, \fBID_HELP\fP = -5, \fBID_COOKIE\fP = -6, \fBID_TAB\fP = -7, \fBID_OPTIONS\fP = -8, \fBID_DOCK_WIDGETS\fP = -1000 }"
+.br
+.ti -1c
+.RI "enum \fBPvEvent\fP { \fBNULL_EVENT\fP =1, \fBBUTTON_EVENT\fP, \fBTEXT_EVENT\fP, \fBSLIDER_EVENT\fP, \fBCHECKBOX_EVENT\fP, \fBRADIOBUTTON_EVENT\fP, \fBGL_IDLE_EVENT\fP, \fBGL_PAINT_EVENT\fP, \fBGL_INITIALIZE_EVENT\fP, \fBGL_RESIZE_EVENT\fP, \fBTAB_EVENT\fP, \fBTABLE_CLICKED_EVENT\fP, \fBTABLE_TEXT_EVENT\fP, \fBSELECTION_EVENT\fP, \fBCLIPBOARD_EVENT\fP, \fBBUTTON_PRESSED_EVENT\fP, \fBBUTTON_RELEASED_EVENT\fP, \fBRIGHT_MOUSE_EVENT\fP, \fBKEYBOARD_EVENT\fP, \fBPLOT_MOUSE_MOVED_EVENT\fP, \fBPLOT_MOUSE_PRESSED_EVENT\fP, \fBPLOT_MOUSE_RELEASED_EVENT\fP, \fBUSER_EVENT\fP, \fBMOUSE_OVER_EVENT\fP }"
+.br
+.ti -1c
+.RI "enum { \fBTQWidget\fP = 0, \fBTQPushButton\fP, \fBTQLabel\fP, \fBTQLineEdit\fP, \fBTQComboBox\fP, \fBTQLCDNumber\fP, \fBTQButtonGroup\fP, \fBTQRadio\fP, \fBTQCheck\fP, \fBTQSlider\fP, \fBTQFrame\fP, \fBTQImage\fP, \fBTQDraw\fP, \fBTQGl\fP, \fBTQTabWidget\fP, \fBTQGroupBox\fP, \fBTQListBox\fP, \fBTQTable\fP, \fBTQSpinBox\fP, \fBTQDial\fP, \fBTQProgressBar\fP, \fBTQMultiLineEdit\fP, \fBTQTextBrowser\fP, \fBTQListView\fP, \fBTQIconView\fP, \fBTQVtk\fP, \fBTQwtPlotWidget\fP, \fBTQwtScale\fP, \fBTQwtThermo\fP, \fBTQwtKnob\fP, \fBTQwtCounter\fP, \fBTQwtWheel\fP, \fBTQwtSlider\fP, \fBTQwtDial\fP, \fBTQwtCompass\fP, \fBTQwtAnalogClock\fP, \fBTQDateEdit\fP, \fBTQTimeEdit\fP, \fBTQDateTimeEdit\fP, \fBTQToolBox\fP, \fBTQVbox\fP, \fBTQHbox\fP, \fBTQGrid\fP, \fBTQCustomWidget\fP }"
+.br
+.ti -1c
+.RI "enum \fBLinestyle\fP { \fBLINESTYLE_NONE\fP =0, \fBLINESTYLE_CIRCLE\fP, \fBLINESTYLE_CROSS\fP, \fBLINESTYLE_RECT\fP }"
+.br
+.ti -1c
+.RI "enum \fBWeight\fP { \fBLight\fP = 25, \fBNormal\fP = 50, \fBDemiBold\fP = 63, \fBBold\fP = 75, \fBBlack\fP = 87 }"
+.br
+.ti -1c
+.RI "enum \fBFontAlignment\fP { \fBALIGN_LEFT\fP =0, \fBALIGN_CENTER\fP, \fBALIGN_RIGHT\fP, \fBALIGN_VERT_CENTER\fP }"
+.br
+.ti -1c
+.RI "enum \fBAlignmentFlags\fP { \fBAlignAuto\fP = 0x0000, \fBAlignLeft\fP = 0x0001, \fBAlignRight\fP = 0x0002, \fBAlignHCenter\fP = 0x0004, \fBAlignJustify\fP = 0x0008, \fBAlignHorizontal_Mask\fP = AlignLeft | AlignRight | AlignHCenter | AlignJustify, \fBAlignTop\fP = 0x0010, \fBAlignBottom\fP = 0x0020, \fBAlignVCenter\fP = 0x0040, \fBAlignVertical_Mask\fP = AlignTop | AlignBottom | AlignVCenter, \fBAlignCenter\fP = AlignVCenter | AlignHCenter }"
+.br
+.ti -1c
+.RI "enum \fBTextFlags\fP { \fBSingleLine\fP = 0x0080, \fBDontClip\fP = 0x0100, \fBExpandTabs\fP = 0x0200, \fBShowPrefix\fP = 0x0400, \fBWordBreak\fP = 0x0800, \fBBreakAnywhere\fP = 0x1000, \fBDontPrint\fP = 0x2000, \fBUnderline\fP = 0x01000000, \fBOverline\fP = 0x02000000, \fBStrikeOut\fP = 0x04000000, \fBIncludeTrailingSpaces\fP = 0x08000000, \fBNoAccel\fP = 0x4000 }"
+.br
+.ti -1c
+.RI "enum \fBTextCursor\fP { \fBNoMove\fP = 0, \fBStart\fP, \fBStartOfLine\fP, \fBStartOfBlock\fP, \fBStartOfWord\fP, \fBPreviousBlock\fP, \fBPreviousCharacter\fP, \fBPreviousWord\fP, \fBUp\fP, \fBLeft\fP, \fBWordLeft\fP, \fBEnd\fP, \fBEndOfLine\fP, \fBEndOfWord\fP, \fBEndOfBlock\fP, \fBNextBlock\fP, \fBNextCharacter\fP, \fBNextWord\fP, \fBDown\fP, \fBRight\fP, \fBWordRight\fP }"
+.br
+.ti -1c
+.RI "enum \fBFontNormalItalic\fP { \fBNORMAL\fP = 0, \fBITALIC\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBPolicy\fP { \fBNoInsertion\fP =0, \fBAtTop\fP, \fBAtCurrent\fP, \fBAtBottom\fP, \fBAfterCurrent\fP, \fBBeforeCurrent\fP }"
+.br
+.ti -1c
+.RI "enum \fBMode\fP { \fBHEX\fP =0, \fBDEC\fP, \fBOCT\fP, \fBBINx\fP }"
+.br
+.ti -1c
+.RI "enum \fBMode2\fP { \fBHex\fP =0, \fBDec\fP, \fBOct\fP, \fBBin\fP }"
+.br
+.ti -1c
+.RI "enum \fBSegmentStyle\fP { \fBOutline\fP =0, \fBFilled\fP, \fBFlat\fP }"
+.br
+.ti -1c
+.RI "enum \fBORIENTATION\fP { \fBHORIZONTAL\fP = 0, \fBVERTICAL\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBOrientation\fP { \fBHorizontal\fP = HORIZONTAL, \fBVertical\fP = VERTICAL }"
+.br
+.ti -1c
+.RI "enum \fBMouseShape\fP { \fBArrowCursor\fP = 0, \fBUpArrowCursor\fP = 1, \fBCrossCursor\fP = 2, \fBWaitCursor\fP = 3, \fBIBeamCursor\fP = 4, \fBSizeVerCursor\fP = 5, \fBSizeHorCursor\fP = 6, \fBSizeFDiagCursor\fP = 8, \fBSizeBDiagCursor\fP = 7, \fBSizeAllCursor\fP = 9, \fBBlankCursor\fP = 10, \fBSplitVCursor\fP = 11, \fBSplitHCursor\fP = 12, \fBPointingHandCursor\fP = 13, \fBForbiddenCursor\fP = 14, \fBOpenHandCursor\fP = 17, \fBClosedHandCursor\fP = 18, \fBWhatsThisCursor\fP = 15, \fBBusyCursor\fP = 16 }"
+.br
+.ti -1c
+.RI "enum \fBShape\fP { \fBNoFrame\fP = 0, \fBBox\fP = 0x0001, \fBPanel\fP = 0x0002, \fBWinPanel\fP = 0x0003, \fBHLine\fP = 0x0004, \fBVLine\fP = 0x0005, \fBStyledPanel\fP = 0x0006, \fBPopupPanel\fP = 0x0007, \fBMenuBarPanel\fP = 0x0008, \fBToolBarPanel\fP = 0x0009, \fBLineEditPanel\fP = 0x000a, \fBTabWidgetPanel\fP = 0x000b, \fBGroupBoxPanel\fP = 0x000c, \fBMShape\fP = 0x000f }"
+.br
+.ti -1c
+.RI "enum \fBShadow\fP { \fBPlain\fP = 0x0010, \fBRaised\fP = 0x0020, \fBSunken\fP = 0x0030, \fBMShadow\fP = 0x00f0 }"
+.br
+.ti -1c
+.RI "enum \fBFileDialogs\fP { \fBFileOpenDialog\fP = 0, \fBFileSaveDialog\fP, \fBFindDirectoryDialog\fP }"
+.br
+.ti -1c
+.RI "enum \fBMessageBoxTypes\fP { \fBBoxInformation\fP = 0, \fBBoxWarning\fP, \fBBoxCritical\fP }"
+.br
+.ti -1c
+.RI "enum \fBMessageBoxButtons\fP { \fBMessageBoxOk\fP = 0x00000400, \fBMessageBoxOpen\fP = 0x00002000, \fBMessageBoxSave\fP = 0x00000800, \fBMessageBoxCancel\fP = 0x00400000, \fBMessageBoxClose\fP = 0x00200000, \fBMessageBoxDiscard\fP = 0x00800000, \fBMessageBoxApply\fP = 0x02000000, \fBMessageBoxReset\fP = 0x04000000, \fBMessageBoxRestoreDefaults\fP = 0x08000000, \fBMessageBoxHelp\fP = 0x01000000, \fBMessageBoxSaveAll\fP = 0x00001000, \fBMessageBoxYes\fP = 0x00004000, \fBMessageBoxYesToAll\fP = 0x00008000, \fBMessageBoxNo\fP = 0x00010000, \fBMessageBoxNoToAll\fP = 0x00020000, \fBMessageBoxAbort\fP = 0x00040000, \fBMessageBoxRetry\fP = 0x00080000, \fBMessageBoxIgnore\fP = 0x00100000, \fBMessageBoxNoButton\fP }"
+.br
+.ti -1c
+.RI "enum \fBTextBrowserPos\fP { \fBHome\fP = 0, \fBForward\fP, \fBBackward\fP, \fBReload\fP }"
+.br
+.ti -1c
+.RI "enum \fBTabWidgetPos\fP { \fBTop\fP = 0, \fBBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBKeyboardModifiers\fP { \fBShiftButton\fP = 4, \fBControlButton\fP = 3, \fBAltButton\fP = 2, \fBNormalKey\fP = 1 }"
+.br
+.ti -1c
+.RI "enum \fBKeyCodes\fP { \fBKey_Escape\fP = 0x1000000, \fBKey_Pause\fP = 0x1000008, \fBKey_Print\fP = 0x1000009, \fBKey_SysReq\fP = 0x100000a, \fBKey_PageUp\fP = 0x1000016, \fBKey_PageDown\fP = 0x1000017, \fBKey_F1\fP = 0x1000030, \fBKey_F2\fP = 0x1000031, \fBKey_F3\fP = 0x1000032, \fBKey_F4\fP = 0x1000033, \fBKey_F5\fP = 0x1000034, \fBKey_F6\fP = 0x1000035, \fBKey_F7\fP = 0x1000036, \fBKey_F8\fP = 0x1000037, \fBKey_F9\fP = 0x1000038, \fBKey_F10\fP = 0x1000039, \fBKey_F11\fP = 0x100003a, \fBKey_F12\fP = 0x100003b }"
+.br
+.ti -1c
+.RI "enum \fBQpwLegend\fP { \fBBottomLegend\fP = 0, \fBTopLegend\fP, \fBLeftLegend\fP, \fBRightLegend\fP }"
+.br
+.ti -1c
+.RI "enum \fBQwtAxis\fP { \fByLeft\fP, \fByRight\fP, \fBxBottom\fP, \fBxTop\fP, \fBaxisCnt\fP }"
+.br
+.ti -1c
+.RI "enum \fBQwtAutoscale\fP { \fBpvNone\fP = 0, \fBIncludeRef\fP = 1, \fBSymmetric\fP = 2, \fBFloating\fP = 4, \fBLogarithmic\fP = 8, \fBInverted\fP = 16 }"
+.br
+.ti -1c
+.RI "enum \fBScalePosition\fP { \fBScaleLeft\fP, \fBScaleRight\fP, \fBScaleTop\fP, \fBScaleBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBThermoPosition\fP { \fBThermoNone\fP, \fBThermoLeft\fP, \fBThermoRight\fP, \fBThermoTop\fP, \fBThermoBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBKnobSymbol\fP { \fBKnobLine\fP, \fBKnobDot\fP }"
+.br
+.ti -1c
+.RI "enum \fBCounterButton\fP { \fBCounterButton1\fP, \fBCounterButton2\fP, \fBCounterButton3\fP, \fBCounterButtonCnt\fP }"
+.br
+.ti -1c
+.RI "enum \fBSliderScalePos\fP { \fBSliderNone\fP, \fBSliderLeft\fP, \fBSliderRight\fP, \fBSliderTop\fP, \fBSliderBottom\fP }"
+.br
+.ti -1c
+.RI "enum \fBSliderBGSTYLE\fP { \fBSliderBgTrough\fP = 0x1, \fBSliderBgSlot\fP = 0x2, \fBSliderBgBoth\fP = SliderBgTrough | SliderBgSlot }"
+.br
+.ti -1c
+.RI "enum \fBDialShadow\fP { \fBDialPlain\fP = Plain, \fBDialRaised\fP = Raised, \fBDialSunken\fP = Sunken }"
+.br
+.ti -1c
+.RI "enum \fBDialMode\fP { \fBRotateNeedle\fP, \fBRotateScale\fP }"
+.br
+.ti -1c
+.RI "enum \fBDialNeedle\fP { \fBQwtDialNeedle1\fP = 1, \fBQwtDialNeedle2\fP, \fBQwtDialNeedle3\fP, \fBQwtDialNeedle4\fP, \fBQwtDialLineNeedle\fP, \fBQwtDialArrowNeedle\fP }"
+.br
+.ti -1c
+.RI "enum \fBCompassNeedle\fP { \fBQwtCompassNeedle1\fP = 1, \fBQwtCompassNeedle2\fP, \fBQwtCompassNeedle3\fP, \fBQwtCompassNeedle4\fP, \fBQwtCompassLineNeedle\fP }"
+.br
+.ti -1c
+.RI "enum \fBPenStyle\fP { \fBNoPen\fP, \fBSolidLine\fP, \fBDashLine\fP, \fBDotLine\fP, \fBDashDotLine\fP, \fBDashDotDotLine\fP, \fBMPenStyle\fP = 0x0f }"
+.br
+.ti -1c
+.RI "enum \fBMarkerSymbol\fP { \fBMarkerNone\fP, \fBMarkerEllipse\fP, \fBMarkerRect\fP, \fBMarkerDiamond\fP, \fBMarkerTriangle\fP, \fBMarkerDTriangle\fP, \fBMarkerUTriangle\fP, \fBMarkerLTriangle\fP, \fBMarkerRTriangle\fP, \fBMarkerCross\fP, \fBMarkerXCross\fP, \fBMarkerStyleCnt\fP }"
+.br
+.ti -1c
+.RI "enum \fBButtonClicked\fP { \fBNoButton\fP = 0, \fBLeftButton\fP, \fBMiddleButton\fP, \fBRightButton\fP }"
+.br
+.ti -1c
+.RI "enum \fBOrder\fP { \fBDMY\fP, \fBMDY\fP, \fBYMD\fP, \fBYDM\fP }"
+.br
+.ti -1c
+.RI "enum \fBSetTextOption\fP { \fBHTML_HEADER\fP = 1, \fBHTML_STYLE\fP, \fBHTML_BODY\fP }"
+.br
+.ti -1c
+.RI "enum \fBUNIT_CONVERSION\fP { \fBMM2INCH\fP = 1, \fBINCH2MM\fP, \fBCM2FOOT\fP, \fBFOOT2CM\fP, \fBCM2YARD\fP, \fBYARD2CM\fP, \fBKM2MILE\fP, \fBMILE2KM\fP, \fBKM2NAUTICAL_MILE\fP, \fBNAUTICAL_MILE2KM\fP, \fBQMM2SQINCH\fP, \fBSQINCH2QMM\fP, \fBQCM2SQFOOT\fP, \fBSQFOOT2QCM\fP, \fBQM2SQYARD\fP, \fBSQYARD2QM\fP, \fBQM2ACRE\fP, \fBACRE2QM\fP, \fBQKM2SQMILE\fP, \fBSQMILE2QKM\fP, \fBML2TEASPOON\fP, \fBTEASPOON2ML\fP, \fBML2TABLESPOON\fP, \fBTABLESPOON2ML\fP, \fBML2OUNCE\fP, \fBOUNCE2ML\fP, \fBL2CUP\fP, \fBCUP2L\fP, \fBL2PINT\fP, \fBPINT2L\fP, \fBL2QUART\fP, \fBQUART2L\fP, \fBL2GALLON\fP, \fBGALLON2L\fP, \fBGR2OUNCE\fP, \fBOUNCE2GR\fP, \fBKG2POUND\fP, \fBPOUND2KG\fP, \fBT2TON\fP, \fBTON2T\fP, \fBC2FAHRENHEIT\fP, \fBFAHRENHEIT2C\fP }"
+.br
+.ti -1c
+.RI "enum \fBTextEvents\fP { \fBPLAIN_TEXT_EVENT\fP = 0, \fBSVG_LEFT_BUTTON_PRESSED\fP, \fBSVG_MIDDLE_BUTTON_PRESSED\fP, \fBSVG_RIGHT_BUTTON_PRESSED\fP, \fBSVG_LEFT_BUTTON_RELEASED\fP, \fBSVG_MIDDLE_BUTTON_RELEASED\fP, \fBSVG_RIGHT_BUTTON_RELEASED\fP, \fBSVG_BOUNDS_ON_ELEMENT\fP, \fBSVG_MATRIX_FOR_ELEMENT\fP, \fBWIDGET_GEOMETRY\fP, \fBPARENT_WIDGET_ID\fP }"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "static const char \fBnull_string\fP [] = ''"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are the Defines and Enums 
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define ANYSTYLE   'AnyStyle'"
+
+.SS "#define BLACK   0,0,0"
+
+.SS "#define BLUE   0,0,255"
+
+.SS "#define COURIER   'Courier'"
+
+.SS "#define CYAN   0,255,255"
+
+.SS "#define DARK_BLUE   0,0,128"
+
+.SS "#define DARK_CYAN   0,128,128"
+
+.SS "#define DARK_GREEN   0,128,0"
+
+.SS "#define DARK_GREY   128,128,128"
+
+.SS "#define DARK_LILA   128,0,128"
+
+.SS "#define DARK_RED   128,0,0"
+
+.SS "#define DARK_YELLOW   200,200,0"
+
+.SS "#define DEFAULT_LANGUAGE   0"
+
+.SS "#define GREEN   0,255,0"
+
+.SS "#define HELVETICA   'Helvetica'"
+
+.SS "#define INITIALIZE_GL   'initializeGL'"
+
+.SS "#define LIGHT_GREY   180,180,180"
+
+.SS "#define LILA   255,0,255"
+
+.SS "#define MAX_CLIENTS   100    /*! max number of clients         */"
+
+.SS "#define MAX_DOCK_WIDGETS   32"
+
+.SS "#define MAX_EVENT_LENGTH   1024   /*! max length of an event        */"
+
+.SS "#define MAX_PRINTF_LENGTH   1024   /*! max length of \fBpvPrintf\fP buffer (must be less than or equal to MAX_PRINTF_LENGTH of ProcessViewBrowser) */"
+
+.SS "#define OLDENGLISH   'OldEnglish'"
+
+.SS "#define PARAM_P   \fBPARAM\fP p;\fBpvInit\fP(0,NULL,&p);"
+
+.SS "#define pv_STDIN   0"
+#define USE_INETD // comment this out if you want to use inetd instead of a multithreaded server 
+.SS "#define pv_STDOUT   1"
+
+.SS "#define pvtr(txt)   txt"
+
+.SS "#define RED   255,0,0"
+
+.SS "#define RESIZE_GL   'resizeGL'"
+
+.SS "#define SYSTEM   'System'"
+
+.SS "#define TIMES   'Times'"
+
+.SS "#define WHEAT   213,213,154"
+
+.SS "#define WHITE   255,255,255"
+
+.SS "#define YELLOW   255,255,0"
+
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef struct \fB_PARAM_\fP \fBPARAM\fP"
+
+.SS "typedef int(* plugin_closesocket)(int s)"
+
+.SS "typedef int(* plugin_pvAccept)(\fBPARAM\fP *p)"
+
+.SS "typedef int(* plugin_pvtcpreceive)(\fBPARAM\fP *p, char *buf, int maxlen)"
+
+.SS "typedef int(* plugin_pvtcpreceive_binary)(\fBPARAM\fP *p, char *buf, int maxlen)"
+
+.SS "typedef int(* plugin_pvtcpsend_binary)(\fBPARAM\fP *p, const char *buf, int len)"
+
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "anonymous enum"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITQWidget \fP\fP
+.TP
+\fB\fITQPushButton \fP\fP
+.TP
+\fB\fITQLabel \fP\fP
+.TP
+\fB\fITQLineEdit \fP\fP
+.TP
+\fB\fITQComboBox \fP\fP
+.TP
+\fB\fITQLCDNumber \fP\fP
+.TP
+\fB\fITQButtonGroup \fP\fP
+.TP
+\fB\fITQRadio \fP\fP
+.TP
+\fB\fITQCheck \fP\fP
+.TP
+\fB\fITQSlider \fP\fP
+.TP
+\fB\fITQFrame \fP\fP
+.TP
+\fB\fITQImage \fP\fP
+.TP
+\fB\fITQDraw \fP\fP
+.TP
+\fB\fITQGl \fP\fP
+.TP
+\fB\fITQTabWidget \fP\fP
+.TP
+\fB\fITQGroupBox \fP\fP
+.TP
+\fB\fITQListBox \fP\fP
+.TP
+\fB\fITQTable \fP\fP
+.TP
+\fB\fITQSpinBox \fP\fP
+.TP
+\fB\fITQDial \fP\fP
+.TP
+\fB\fITQProgressBar \fP\fP
+.TP
+\fB\fITQMultiLineEdit \fP\fP
+.TP
+\fB\fITQTextBrowser \fP\fP
+.TP
+\fB\fITQListView \fP\fP
+.TP
+\fB\fITQIconView \fP\fP
+.TP
+\fB\fITQVtk \fP\fP
+.TP
+\fB\fITQwtPlotWidget \fP\fP
+.TP
+\fB\fITQwtScale \fP\fP
+.TP
+\fB\fITQwtThermo \fP\fP
+.TP
+\fB\fITQwtKnob \fP\fP
+.TP
+\fB\fITQwtCounter \fP\fP
+.TP
+\fB\fITQwtWheel \fP\fP
+.TP
+\fB\fITQwtSlider \fP\fP
+.TP
+\fB\fITQwtDial \fP\fP
+.TP
+\fB\fITQwtCompass \fP\fP
+.TP
+\fB\fITQwtAnalogClock \fP\fP
+.TP
+\fB\fITQDateEdit \fP\fP
+.TP
+\fB\fITQTimeEdit \fP\fP
+.TP
+\fB\fITQDateTimeEdit \fP\fP
+.TP
+\fB\fITQToolBox \fP\fP
+.TP
+\fB\fITQVbox \fP\fP
+.TP
+\fB\fITQHbox \fP\fP
+.TP
+\fB\fITQGrid \fP\fP
+.TP
+\fB\fITQCustomWidget \fP\fP
+.SS "enum \fBAlignmentFlags\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAlignAuto \fP\fP
+.TP
+\fB\fIAlignLeft \fP\fP
+.TP
+\fB\fIAlignRight \fP\fP
+.TP
+\fB\fIAlignHCenter \fP\fP
+.TP
+\fB\fIAlignJustify \fP\fP
+.TP
+\fB\fIAlignHorizontal_Mask \fP\fP
+.TP
+\fB\fIAlignTop \fP\fP
+.TP
+\fB\fIAlignBottom \fP\fP
+.TP
+\fB\fIAlignVCenter \fP\fP
+.TP
+\fB\fIAlignVertical_Mask \fP\fP
+.TP
+\fB\fIAlignCenter \fP\fP
+.SS "enum \fBButtonClicked\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoButton \fP\fP
+.TP
+\fB\fILeftButton \fP\fP
+.TP
+\fB\fIMiddleButton \fP\fP
+.TP
+\fB\fIRightButton \fP\fP
+.SS "enum \fBCompassNeedle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIQwtCompassNeedle1 \fP\fP
+.TP
+\fB\fIQwtCompassNeedle2 \fP\fP
+.TP
+\fB\fIQwtCompassNeedle3 \fP\fP
+.TP
+\fB\fIQwtCompassNeedle4 \fP\fP
+.TP
+\fB\fIQwtCompassLineNeedle \fP\fP
+.SS "enum \fBCounterButton\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICounterButton1 \fP\fP
+.TP
+\fB\fICounterButton2 \fP\fP
+.TP
+\fB\fICounterButton3 \fP\fP
+.TP
+\fB\fICounterButtonCnt \fP\fP
+.SS "enum \fBDialMode\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIRotateNeedle \fP\fP
+.TP
+\fB\fIRotateScale \fP\fP
+.SS "enum \fBDialNeedle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIQwtDialNeedle1 \fP\fP
+.TP
+\fB\fIQwtDialNeedle2 \fP\fP
+.TP
+\fB\fIQwtDialNeedle3 \fP\fP
+.TP
+\fB\fIQwtDialNeedle4 \fP\fP
+.TP
+\fB\fIQwtDialLineNeedle \fP\fP
+.TP
+\fB\fIQwtDialArrowNeedle \fP\fP
+.SS "enum \fBDialShadow\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDialPlain \fP\fP
+.TP
+\fB\fIDialRaised \fP\fP
+.TP
+\fB\fIDialSunken \fP\fP
+.SS "enum \fBFileDialogs\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIFileOpenDialog \fP\fP
+.TP
+\fB\fIFileSaveDialog \fP\fP
+.TP
+\fB\fIFindDirectoryDialog \fP\fP
+.SS "enum \fBFontAlignment\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIALIGN_LEFT \fP\fP
+.TP
+\fB\fIALIGN_CENTER \fP\fP
+.TP
+\fB\fIALIGN_RIGHT \fP\fP
+.TP
+\fB\fIALIGN_VERT_CENTER \fP\fP
+.SS "enum \fBFontNormalItalic\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINORMAL \fP\fP
+.TP
+\fB\fIITALIC \fP\fP
+.SS "enum \fBKeyboardModifiers\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIShiftButton \fP\fP
+.TP
+\fB\fIControlButton \fP\fP
+.TP
+\fB\fIAltButton \fP\fP
+.TP
+\fB\fINormalKey \fP\fP
+.SS "enum \fBKeyCodes\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIKey_Escape \fP\fP
+.TP
+\fB\fIKey_Pause \fP\fP
+.TP
+\fB\fIKey_Print \fP\fP
+.TP
+\fB\fIKey_SysReq \fP\fP
+.TP
+\fB\fIKey_PageUp \fP\fP
+.TP
+\fB\fIKey_PageDown \fP\fP
+.TP
+\fB\fIKey_F1 \fP\fP
+.TP
+\fB\fIKey_F2 \fP\fP
+.TP
+\fB\fIKey_F3 \fP\fP
+.TP
+\fB\fIKey_F4 \fP\fP
+.TP
+\fB\fIKey_F5 \fP\fP
+.TP
+\fB\fIKey_F6 \fP\fP
+.TP
+\fB\fIKey_F7 \fP\fP
+.TP
+\fB\fIKey_F8 \fP\fP
+.TP
+\fB\fIKey_F9 \fP\fP
+.TP
+\fB\fIKey_F10 \fP\fP
+.TP
+\fB\fIKey_F11 \fP\fP
+.TP
+\fB\fIKey_F12 \fP\fP
+.SS "enum \fBKnobSymbol\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIKnobLine \fP\fP
+.TP
+\fB\fIKnobDot \fP\fP
+.SS "enum \fBLinestyle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILINESTYLE_NONE \fP\fP
+.TP
+\fB\fILINESTYLE_CIRCLE \fP\fP
+.TP
+\fB\fILINESTYLE_CROSS \fP\fP
+.TP
+\fB\fILINESTYLE_RECT \fP\fP
+.SS "enum \fBMainWindowIds\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIID_ROOTWIDGET \fP\fP
+.TP
+\fB\fIID_EDITBAR \fP\fP
+
+.SH "pvHide(p,ID_EDITBAR) pvShow(p,ID_EDITBAR)"
+.PP
+
+.TP
+\fB\fIID_TOOLBAR \fP\fP
+
+.SH "pvHide(p,ID_TOOLBAR) pvShow(p,ID_TOOLBAR)"
+.PP
+
+.TP
+\fB\fIID_STATUSBAR \fP\fP
+
+.SH "pvHide(p,ID_STATUSBAR) pvShow(p,ID_STATUSBAR)"
+.PP
+
+.TP
+\fB\fIID_MAINWINDOW \fP\fP
+
+.SH "pvResize(p,ID_MAINWINDOW,width,height)"
+.PP
+
+.TP
+\fB\fIID_HELP \fP\fP
+
+.SH "pvHide(p,ID_HELP) pvShow(p,ID_HELP)"
+.PP
+
+.TP
+\fB\fIID_COOKIE \fP\fP
+
+.SH "pvPrintf(p,ID_COOKIE,'%s=%s',cookie_name,cookie_values) pvPrintf(p,ID_COOKIE,cookie_name)"
+.PP
+
+.TP
+\fB\fIID_TAB \fP\fP
+
+.SH "pvPrintf(p,ID_TAB,'%s', 'title');"
+.PP
+
+.TP
+\fB\fIID_OPTIONS \fP\fP
+
+.SH "pvText(p,ID_OPTIONS);"
+.PP
+
+.TP
+\fB\fIID_DOCK_WIDGETS \fP\fP
+.SS "enum \fBMarkerSymbol\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMarkerNone \fP\fP
+.TP
+\fB\fIMarkerEllipse \fP\fP
+.TP
+\fB\fIMarkerRect \fP\fP
+.TP
+\fB\fIMarkerDiamond \fP\fP
+.TP
+\fB\fIMarkerTriangle \fP\fP
+.TP
+\fB\fIMarkerDTriangle \fP\fP
+.TP
+\fB\fIMarkerUTriangle \fP\fP
+.TP
+\fB\fIMarkerLTriangle \fP\fP
+.TP
+\fB\fIMarkerRTriangle \fP\fP
+.TP
+\fB\fIMarkerCross \fP\fP
+.TP
+\fB\fIMarkerXCross \fP\fP
+.TP
+\fB\fIMarkerStyleCnt \fP\fP
+.SS "enum \fBMessageBoxButtons\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMessageBoxOk \fP\fP
+.TP
+\fB\fIMessageBoxOpen \fP\fP
+.TP
+\fB\fIMessageBoxSave \fP\fP
+.TP
+\fB\fIMessageBoxCancel \fP\fP
+.TP
+\fB\fIMessageBoxClose \fP\fP
+.TP
+\fB\fIMessageBoxDiscard \fP\fP
+.TP
+\fB\fIMessageBoxApply \fP\fP
+.TP
+\fB\fIMessageBoxReset \fP\fP
+.TP
+\fB\fIMessageBoxRestoreDefaults \fP\fP
+.TP
+\fB\fIMessageBoxHelp \fP\fP
+.TP
+\fB\fIMessageBoxSaveAll \fP\fP
+.TP
+\fB\fIMessageBoxYes \fP\fP
+.TP
+\fB\fIMessageBoxYesToAll \fP\fP
+.TP
+\fB\fIMessageBoxNo \fP\fP
+.TP
+\fB\fIMessageBoxNoToAll \fP\fP
+.TP
+\fB\fIMessageBoxAbort \fP\fP
+.TP
+\fB\fIMessageBoxRetry \fP\fP
+.TP
+\fB\fIMessageBoxIgnore \fP\fP
+.TP
+\fB\fIMessageBoxNoButton \fP\fP
+.SS "enum \fBMessageBoxTypes\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBoxInformation \fP\fP
+.TP
+\fB\fIBoxWarning \fP\fP
+.TP
+\fB\fIBoxCritical \fP\fP
+.SS "enum \fBMode\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIHEX \fP\fP
+.TP
+\fB\fIDEC \fP\fP
+.TP
+\fB\fIOCT \fP\fP
+.TP
+\fB\fIBINx \fP\fP
+.SS "enum \fBMode2\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIHex \fP\fP
+.TP
+\fB\fIDec \fP\fP
+.TP
+\fB\fIOct \fP\fP
+.TP
+\fB\fIBin \fP\fP
+.SS "enum \fBMouseShape\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIArrowCursor \fP\fP
+.TP
+\fB\fIUpArrowCursor \fP\fP
+.TP
+\fB\fICrossCursor \fP\fP
+.TP
+\fB\fIWaitCursor \fP\fP
+.TP
+\fB\fIIBeamCursor \fP\fP
+.TP
+\fB\fISizeVerCursor \fP\fP
+.TP
+\fB\fISizeHorCursor \fP\fP
+.TP
+\fB\fISizeFDiagCursor \fP\fP
+.TP
+\fB\fISizeBDiagCursor \fP\fP
+.TP
+\fB\fISizeAllCursor \fP\fP
+.TP
+\fB\fIBlankCursor \fP\fP
+.TP
+\fB\fISplitVCursor \fP\fP
+.TP
+\fB\fISplitHCursor \fP\fP
+.TP
+\fB\fIPointingHandCursor \fP\fP
+.TP
+\fB\fIForbiddenCursor \fP\fP
+.TP
+\fB\fIOpenHandCursor \fP\fP
+.TP
+\fB\fIClosedHandCursor \fP\fP
+.TP
+\fB\fIWhatsThisCursor \fP\fP
+.TP
+\fB\fIBusyCursor \fP\fP
+.SS "enum \fBOrder\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDMY \fP\fP
+.TP
+\fB\fIMDY \fP\fP
+.TP
+\fB\fIYMD \fP\fP
+.TP
+\fB\fIYDM \fP\fP
+.SS "enum \fBORIENTATION\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIHORIZONTAL \fP\fP
+.TP
+\fB\fIVERTICAL \fP\fP
+.SS "enum \fBOrientation\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIHorizontal \fP\fP
+.TP
+\fB\fIVertical \fP\fP
+.SS "enum \fBPenStyle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoPen \fP\fP
+.TP
+\fB\fISolidLine \fP\fP
+.TP
+\fB\fIDashLine \fP\fP
+.TP
+\fB\fIDotLine \fP\fP
+.TP
+\fB\fIDashDotLine \fP\fP
+.TP
+\fB\fIDashDotDotLine \fP\fP
+.TP
+\fB\fIMPenStyle \fP\fP
+.SS "enum \fBPolicy\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoInsertion \fP\fP
+.TP
+\fB\fIAtTop \fP\fP
+.TP
+\fB\fIAtCurrent \fP\fP
+.TP
+\fB\fIAtBottom \fP\fP
+.TP
+\fB\fIAfterCurrent \fP\fP
+.TP
+\fB\fIBeforeCurrent \fP\fP
+.SS "enum \fBPvEvent\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINULL_EVENT \fP\fP
+.TP
+\fB\fIBUTTON_EVENT \fP\fP
+.TP
+\fB\fITEXT_EVENT \fP\fP
+.TP
+\fB\fISLIDER_EVENT \fP\fP
+.TP
+\fB\fICHECKBOX_EVENT \fP\fP
+.TP
+\fB\fIRADIOBUTTON_EVENT \fP\fP
+.TP
+\fB\fIGL_IDLE_EVENT \fP\fP
+.TP
+\fB\fIGL_PAINT_EVENT \fP\fP
+.TP
+\fB\fIGL_INITIALIZE_EVENT \fP\fP
+.TP
+\fB\fIGL_RESIZE_EVENT \fP\fP
+.TP
+\fB\fITAB_EVENT \fP\fP
+.TP
+\fB\fITABLE_CLICKED_EVENT \fP\fP
+.TP
+\fB\fITABLE_TEXT_EVENT \fP\fP
+.TP
+\fB\fISELECTION_EVENT \fP\fP
+.TP
+\fB\fICLIPBOARD_EVENT \fP\fP
+.TP
+\fB\fIBUTTON_PRESSED_EVENT \fP\fP
+.TP
+\fB\fIBUTTON_RELEASED_EVENT \fP\fP
+.TP
+\fB\fIRIGHT_MOUSE_EVENT \fP\fP
+.TP
+\fB\fIKEYBOARD_EVENT \fP\fP
+.TP
+\fB\fIPLOT_MOUSE_MOVED_EVENT \fP\fP
+.TP
+\fB\fIPLOT_MOUSE_PRESSED_EVENT \fP\fP
+.TP
+\fB\fIPLOT_MOUSE_RELEASED_EVENT \fP\fP
+.TP
+\fB\fIUSER_EVENT \fP\fP
+.TP
+\fB\fIMOUSE_OVER_EVENT \fP\fP
+.SS "enum \fBQpwLegend\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBottomLegend \fP\fP
+.TP
+\fB\fITopLegend \fP\fP
+.TP
+\fB\fILeftLegend \fP\fP
+.TP
+\fB\fIRightLegend \fP\fP
+.SS "enum \fBQwtAutoscale\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIpvNone \fP\fP
+.TP
+\fB\fIIncludeRef \fP\fP
+.TP
+\fB\fISymmetric \fP\fP
+.TP
+\fB\fIFloating \fP\fP
+.TP
+\fB\fILogarithmic \fP\fP
+.TP
+\fB\fIInverted \fP\fP
+.SS "enum \fBQwtAxis\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIyLeft \fP\fP
+.TP
+\fB\fIyRight \fP\fP
+.TP
+\fB\fIxBottom \fP\fP
+.TP
+\fB\fIxTop \fP\fP
+.TP
+\fB\fIaxisCnt \fP\fP
+.SS "enum \fBScalePosition\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIScaleLeft \fP\fP
+.TP
+\fB\fIScaleRight \fP\fP
+.TP
+\fB\fIScaleTop \fP\fP
+.TP
+\fB\fIScaleBottom \fP\fP
+.SS "enum \fBSegmentStyle\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOutline \fP\fP
+.TP
+\fB\fIFilled \fP\fP
+.TP
+\fB\fIFlat \fP\fP
+.SS "enum \fBSetTextOption\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIHTML_HEADER \fP\fP
+.TP
+\fB\fIHTML_STYLE \fP\fP
+.TP
+\fB\fIHTML_BODY \fP\fP
+.SS "enum \fBShadow\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPlain \fP\fP
+.TP
+\fB\fIRaised \fP\fP
+.TP
+\fB\fISunken \fP\fP
+.TP
+\fB\fIMShadow \fP\fP
+.SS "enum \fBShape\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoFrame \fP\fP
+.TP
+\fB\fIBox \fP\fP
+.TP
+\fB\fIPanel \fP\fP
+.TP
+\fB\fIWinPanel \fP\fP
+.TP
+\fB\fIHLine \fP\fP
+.TP
+\fB\fIVLine \fP\fP
+.TP
+\fB\fIStyledPanel \fP\fP
+.TP
+\fB\fIPopupPanel \fP\fP
+.TP
+\fB\fIMenuBarPanel \fP\fP
+.TP
+\fB\fIToolBarPanel \fP\fP
+.TP
+\fB\fILineEditPanel \fP\fP
+.TP
+\fB\fITabWidgetPanel \fP\fP
+.TP
+\fB\fIGroupBoxPanel \fP\fP
+.TP
+\fB\fIMShape \fP\fP
+.SS "enum \fBSliderBGSTYLE\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISliderBgTrough \fP\fP
+.TP
+\fB\fISliderBgSlot \fP\fP
+.TP
+\fB\fISliderBgBoth \fP\fP
+.SS "enum \fBSliderScalePos\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISliderNone \fP\fP
+.TP
+\fB\fISliderLeft \fP\fP
+.TP
+\fB\fISliderRight \fP\fP
+.TP
+\fB\fISliderTop \fP\fP
+.TP
+\fB\fISliderBottom \fP\fP
+.SS "enum \fBTabWidgetPos\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fITop \fP\fP
+.TP
+\fB\fIBottom \fP\fP
+.SS "enum \fBTextBrowserPos\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIHome \fP\fP
+.TP
+\fB\fIForward \fP\fP
+.TP
+\fB\fIBackward \fP\fP
+.TP
+\fB\fIReload \fP\fP
+.SS "enum \fBTextCursor\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoMove \fP\fP
+.TP
+\fB\fIStart \fP\fP
+.TP
+\fB\fIStartOfLine \fP\fP
+.TP
+\fB\fIStartOfBlock \fP\fP
+.TP
+\fB\fIStartOfWord \fP\fP
+.TP
+\fB\fIPreviousBlock \fP\fP
+.TP
+\fB\fIPreviousCharacter \fP\fP
+.TP
+\fB\fIPreviousWord \fP\fP
+.TP
+\fB\fIUp \fP\fP
+.TP
+\fB\fILeft \fP\fP
+.TP
+\fB\fIWordLeft \fP\fP
+.TP
+\fB\fIEnd \fP\fP
+.TP
+\fB\fIEndOfLine \fP\fP
+.TP
+\fB\fIEndOfWord \fP\fP
+.TP
+\fB\fIEndOfBlock \fP\fP
+.TP
+\fB\fINextBlock \fP\fP
+.TP
+\fB\fINextCharacter \fP\fP
+.TP
+\fB\fINextWord \fP\fP
+.TP
+\fB\fIDown \fP\fP
+.TP
+\fB\fIRight \fP\fP
+.TP
+\fB\fIWordRight \fP\fP
+.SS "enum \fBTextEvents\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPLAIN_TEXT_EVENT \fP\fP
+.TP
+\fB\fISVG_LEFT_BUTTON_PRESSED \fP\fP
+.TP
+\fB\fISVG_MIDDLE_BUTTON_PRESSED \fP\fP
+.TP
+\fB\fISVG_RIGHT_BUTTON_PRESSED \fP\fP
+.TP
+\fB\fISVG_LEFT_BUTTON_RELEASED \fP\fP
+.TP
+\fB\fISVG_MIDDLE_BUTTON_RELEASED \fP\fP
+.TP
+\fB\fISVG_RIGHT_BUTTON_RELEASED \fP\fP
+.TP
+\fB\fISVG_BOUNDS_ON_ELEMENT \fP\fP
+.TP
+\fB\fISVG_MATRIX_FOR_ELEMENT \fP\fP
+.TP
+\fB\fIWIDGET_GEOMETRY \fP\fP
+.TP
+\fB\fIPARENT_WIDGET_ID \fP\fP
+.SS "enum \fBTextFlags\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISingleLine \fP\fP
+.TP
+\fB\fIDontClip \fP\fP
+.TP
+\fB\fIExpandTabs \fP\fP
+.TP
+\fB\fIShowPrefix \fP\fP
+.TP
+\fB\fIWordBreak \fP\fP
+.TP
+\fB\fIBreakAnywhere \fP\fP
+.TP
+\fB\fIDontPrint \fP\fP
+.TP
+\fB\fIUnderline \fP\fP
+.TP
+\fB\fIOverline \fP\fP
+.TP
+\fB\fIStrikeOut \fP\fP
+.TP
+\fB\fIIncludeTrailingSpaces \fP\fP
+.TP
+\fB\fINoAccel \fP\fP
+.SS "enum \fBThermoPosition\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIThermoNone \fP\fP
+.TP
+\fB\fIThermoLeft \fP\fP
+.TP
+\fB\fIThermoRight \fP\fP
+.TP
+\fB\fIThermoTop \fP\fP
+.TP
+\fB\fIThermoBottom \fP\fP
+.SS "enum \fBUNIT_CONVERSION\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMM2INCH \fP\fP
+.TP
+\fB\fIINCH2MM \fP\fP
+.TP
+\fB\fICM2FOOT \fP\fP
+.TP
+\fB\fIFOOT2CM \fP\fP
+.TP
+\fB\fICM2YARD \fP\fP
+.TP
+\fB\fIYARD2CM \fP\fP
+.TP
+\fB\fIKM2MILE \fP\fP
+.TP
+\fB\fIMILE2KM \fP\fP
+.TP
+\fB\fIKM2NAUTICAL_MILE \fP\fP
+.TP
+\fB\fINAUTICAL_MILE2KM \fP\fP
+.TP
+\fB\fIQMM2SQINCH \fP\fP
+.TP
+\fB\fISQINCH2QMM \fP\fP
+.TP
+\fB\fIQCM2SQFOOT \fP\fP
+.TP
+\fB\fISQFOOT2QCM \fP\fP
+.TP
+\fB\fIQM2SQYARD \fP\fP
+.TP
+\fB\fISQYARD2QM \fP\fP
+.TP
+\fB\fIQM2ACRE \fP\fP
+.TP
+\fB\fIACRE2QM \fP\fP
+.TP
+\fB\fIQKM2SQMILE \fP\fP
+.TP
+\fB\fISQMILE2QKM \fP\fP
+.TP
+\fB\fIML2TEASPOON \fP\fP
+.TP
+\fB\fITEASPOON2ML \fP\fP
+.TP
+\fB\fIML2TABLESPOON \fP\fP
+.TP
+\fB\fITABLESPOON2ML \fP\fP
+.TP
+\fB\fIML2OUNCE \fP\fP
+.TP
+\fB\fIOUNCE2ML \fP\fP
+.TP
+\fB\fIL2CUP \fP\fP
+.TP
+\fB\fICUP2L \fP\fP
+.TP
+\fB\fIL2PINT \fP\fP
+.TP
+\fB\fIPINT2L \fP\fP
+.TP
+\fB\fIL2QUART \fP\fP
+.TP
+\fB\fIQUART2L \fP\fP
+.TP
+\fB\fIL2GALLON \fP\fP
+.TP
+\fB\fIGALLON2L \fP\fP
+.TP
+\fB\fIGR2OUNCE \fP\fP
+.TP
+\fB\fIOUNCE2GR \fP\fP
+.TP
+\fB\fIKG2POUND \fP\fP
+.TP
+\fB\fIPOUND2KG \fP\fP
+.TP
+\fB\fIT2TON \fP\fP
+.TP
+\fB\fITON2T \fP\fP
+.TP
+\fB\fIC2FAHRENHEIT \fP\fP
+.TP
+\fB\fIFAHRENHEIT2C \fP\fP
+.SS "enum \fBWeight\fP"
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILight \fP\fP
+.TP
+\fB\fINormal \fP\fP
+.TP
+\fB\fIDemiBold \fP\fP
+.TP
+\fB\fIBold \fP\fP
+.TP
+\fB\fIBlack \fP\fP
+.SH "Variable Documentation"
+.PP 
+.SS "const char null_string[] = ''\fC [static]\fP"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

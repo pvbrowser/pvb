@@ -1,0 +1,731 @@
+.TH "Initialisation and global routines" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Initialisation and global routines \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBglencode_set_param\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvlock\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvunlock\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvsystem\fP (const char *command)"
+.br
+.ti -1c
+.RI "void \fBpvGetLocalTime\fP (\fBpvTime\fP *pvtime)"
+.br
+.ti -1c
+.RI "int \fBpvIsAccessAllowed\fP (const char *adr, int trace)"
+.br
+.ti -1c
+.RI "int \fBpvSendVersion\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvXYAllocate\fP (\fBPARAM\fP *p, int n)"
+.br
+.ti -1c
+.RI "int \fBgetIntegers\fP (const char *text, \fBIntegerArray\fP *ia)"
+.br
+.ti -1c
+.RI "int \fBgetFloats\fP (const char *text, \fBFloatArray\fP *fa)"
+.br
+.ti -1c
+.RI "const char * \fBgetTextFromText\fP (const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvSetXY\fP (\fBPARAM\fP *p, int i, float x, float y)"
+.br
+.ti -1c
+.RI "int * \fBpvGetSocketPointer\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvInitInternal\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvInit\fP (int ac, char **av, \fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvAccept\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvCreateThread\fP (\fBPARAM\fP *p, int s)"
+.br
+.ti -1c
+.RI "int \fBpvGetInitialMask\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvMain\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvSetCleanup\fP (\fBPARAM\fP *p, int(*cleanup)(void *), void *app_data)"
+.br
+.ti -1c
+.RI "char * \fBpvGetEvent\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvPollEvent\fP (\fBPARAM\fP *p, char *event)"
+.br
+.ti -1c
+.RI "int \fBpvWait\fP (\fBPARAM\fP *p, const char *pattern)"
+.br
+.ti -1c
+.RI "int \fBpvGlUpdate\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSleep\fP (int milliseconds)"
+.br
+.ti -1c
+.RI "int \fBpvWarning\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvMainFatal\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvThreadFatal\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvScreenHint\fP (\fBPARAM\fP *p, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBpvSetMouseShape\fP (\fBPARAM\fP *p, int shape)"
+.br
+.ti -1c
+.RI "int \fBpvSetWhatsThis\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvWhatsThisPrintf\fP (\fBPARAM\fP *p, int id, const char *format,\&.\&.\&.)"
+.br
+.ti -1c
+.RI "int \fBpvClientCommand\fP (\fBPARAM\fP *p, const char *command, const char *filename, int downloadFile=0)"
+.br
+.ti -1c
+.RI "int \fBpvWriteTextToFileAtClient\fP (\fBPARAM\fP *p, const char *text, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvZoomMask\fP (\fBPARAM\fP *p, int percent)"
+.br
+.ti -1c
+.RI "int \fBpvSetManualUrl\fP (\fBPARAM\fP *p, const char *url)"
+.br
+.ti -1c
+.RI "int \fBpvSelectLanguage\fP (\fBPARAM\fP *p, const char *section)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These routines are used for initialisation\&. And also some global usable routines are available\&. 
+.SH "Function Documentation"
+.PP 
+.SS "int getFloats (const char *text, \fBFloatArray\fP *fa)"
+
+.PP
+.nf
+
+Get integer array from string for script language
+.fi
+.PP
+ 
+.SS "int getIntegers (const char *text, \fBIntegerArray\fP *ia)"
+
+.PP
+.nf
+
+Get integer array from string for script language
+.fi
+.PP
+ 
+.SS "const char* getTextFromText (const char *text)"
+
+.PP
+.nf
+
+Get text in parentesis from text for script language
+.fi
+.PP
+ 
+.SS "int glencode_set_param (\fBPARAM\fP *p)"
+
+.SS "int pvAccept (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+see pvInit
+.fi
+.PP
+ 
+.SS "int pvClientCommand (\fBPARAM\fP *p, const char *command, const char *filename, intdownloadFile = \fC0\fP)"
+
+.PP
+.nf
+
+Run command on client\&.
+command := pdf | img | svg | txt | csv | html | audio | video | save_as
+See view\&.pdf, view\&.img, view\&.svg \&.\&.\&. within pvbrowser options\&.
+.fi
+.PP
+ 
+.SS "int pvCreateThread (\fBPARAM\fP *p, ints)"
+
+.PP
+.nf
+
+see pvInit
+.fi
+.PP
+ 
+.SS "char* pvGetEvent (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+If it is necessary to cleanup your application when the main worker thread terminates
+you can set an exit handler that receives the data in app_data\&.
+Call this function in pvMain\&. See also pvMain\&.
+.fi
+.PP
+ 
+.SS "int pvGetInitialMask (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Get the initial mask the user wants to see
+p->initial_mask is a string identifying the initial mask 
+.fi
+.PP
+ 
+.SS "void pvGetLocalTime (\fBpvTime\fP *pvtime)"
+
+.PP
+.nf
+
+Get local time
+.fi
+.PP
+ 
+.SS "int* pvGetSocketPointer (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Get a pointer to the socket for script language
+.fi
+.PP
+ 
+.SS "int pvGlUpdate (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+update OpenGL widget
+.fi
+.PP
+ 
+.SS "int pvInit (intac, char **av, \fBPARAM\fP *p)"
+
+.PP
+.nf
+
+(Test) pvInit must be called in main()\&. It interprets the command line switches that it knows\&.
+Afterwards you can interpret your command line switches\&. It is possible to set p\&.user to data
+of your choice\&. This data will be available in the worker threads\&. (Caution: the worker threads are
+only allowed to read the p\&.user data because it is shared among all clients)
+Then there must be a while(1) in which new clients are accepted\&. For each client a new thread
+is created\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+ int main(int ac, char **av)
+ {
+ PARAM p;
+ int   s;
+.fi
+.PP
+.PP
+.PP
+.nf
+   pvInit(ac,av,&p);
+here you may interpret ac,av and set p\&.user to your data
+   while(1)
+   {
+     s = pvAccept(&p);
+     if(s != -1) pvCreateThread(&p,s);
+   }
+   return 0;
+ }
+.fi
+.PP
+ 
+.SS "int pvInitInternal (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+see pvInit
+Init for script languages
+.fi
+.PP
+ 
+.SS "int pvIsAccessAllowed (const char *adr, inttrace)"
+
+.PP
+.nf
+
+Test if access is allowed by files 'allow\&.ipv4' and 'deny\&.ipv4' in your local directory
+adr := dottet ip address
+trace = 1 print messages on stdout
+trace = 0 do not print messages on stdout
+return = 1 access allowed
+return = 0 access is not allowed
+.fi
+.PP
+.PP
+.PP
+.nf
+Example allow\&.ipv4:
+1\&.0\&.0\&.127/32         # allow localhost
+192\&.168\&.1\&.0/24       # allow 192\&.168\&.1\&.0 - 192\&.168\&.1\&.255
+.SH "insert more areas here"
+.PP
+.fi
+.PP
+.PP
+.PP
+.nf
+.fi
+.PP
+.PP
+.PP
+.nf
+Example deny\&.ipv4:
+.SH "deny a individual address"
+.PP
+.fi
+.PP
+.PP
+.PP
+.nf
+
+192\&.168\&.2\&.14/32
+.SH "insert more areas here"
+.PP
+.fi
+.PP
+.PP
+.PP
+.nf
+.fi
+.PP
+.PP
+.PP
+.nf
+The number behind the / is the number of significant bits of the ip address\&.
+Every pvserver will evaluate 'allow\&.ipv4 and 'deny\&.ipv4" when client connects\&.
+.fi
+.PP
+ 
+.SS "int pvlock (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+If you access variables that are global to the server or
+if you want to use malloc() and free()
+you must surround the operations with
+\fBpvlock()\fP and \fBpvunlock()\fP
+because these operations are not thread save\&.
+.fi
+.PP
+ 
+.SS "int pvMain (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+pvMain is your main worker thread\&. It could look as follows\&.
+The main worker thread is never closed\&. It will be closed automatically when the client disconnects\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+int \fBpvMain(PARAM *p)\fP
+{
+int ret;
+.fi
+.PP
+.PP
+.PP
+.nf
+here you can initialize your worker thread
+  pvSetCleanup(p,your_exit_handler,your_app_data); // if cleanup is necessary
+  pvResize(p,0,970,600);  // this will resize your working area
+  ret = showMask1(p);
+  while(1)
+  {
+    switch(ret)
+    {
+      case 1:
+        ret = showMask1(p);
+        break;
+      case 2:
+        ret = showMask2(p);
+        break;
+      case 3:
+        ret = showMask3(p);
+        break;
+      default:
+        return 0;
+    }
+  }
+}
+.fi
+.PP
+ 
+.SS "int pvMainFatal (\fBPARAM\fP *p, const char *text)"
+
+.PP
+.nf
+
+Output a fatal message and terminate the whole server\&.
+.fi
+.PP
+ 
+.SS "int pvPollEvent (\fBPARAM\fP *p, char *event)"
+
+.PP
+.nf
+
+This function will return the next event as soon as it is available\&.
+The maximum wait time is p->sleep in milliseconds (default 100)\&.
+You can specify a different wait time on the commandline (-sleep=1000)
+.fi
+.PP
+.PP
+.PP
+.nf
+Example:
+.fi
+.PP
+.PP
+.PP
+.nf
+ int showMask1(PARAM *p)
+ {
+ DATA d;
+ char event[MAX_EVENT_LENGTH];
+ int  i;
+ char text[MAX_EVENT_LENGTH];
+.fi
+.PP
+.PP
+.PP
+.nf
+   defineMask1(p);
+   readData1(&d); // from shared memory or out of database
+   showData1(p,&d);
+   while(1)
+   {
+     pvPollEvent(p,event);
+     switch(pvParseEvent(event, &i, text))
+     {
+       case NULL_EVENT:
+         readData1(&d); // from shared memory or out of database
+         showData1(p,&d);
+         break;
+       case BUTTON_EVENT:
+         \&.\&.\&.
+         break;
+       case TEXT_EVENT:
+         \&.\&.\&.
+         break;
+       default:
+         printf('UNKNOWN_EVENT id=\\%d \\%s\\\\n',i,text);
+         break;
+     }
+   }
+ }
+.fi
+.PP
+ 
+.SS "int pvScreenHint (\fBPARAM\fP *p, intw, inth)"
+
+.PP
+.nf
+
+Output a screenHint for calculating the zoom factor
+Optimal screen width=w height=h \&.
+.fi
+.PP
+ 
+.SS "int pvSelectLanguage (\fBPARAM\fP *p, const char *section)"
+
+.PP
+.nf
+
+Select the section for language translations with the \fBpvtr()\fP macro\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+\fBprocessviewserver\&.h\fP defines the macro
+#define \fBpvtr(txt)\fP txt
+.fi
+.PP
+.PP
+.PP
+.nf
+If you use something like pvSetText(p,id,pvtr('Hello World'));
+the above macro will return the original untranslated text\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+If you #include 'rlinifile\&.h' the macro pvtr will be redefined to
+#define \fBpvtr(txt)\fP rltranslate2(p->lang_section,txt)
+Thus the subroutine rltranslate2() will be called\&.
+This routine will also return the untranslated text until you call
+.fi
+.PP
+.PP
+.PP
+.nf
+rlSetTranslator('GERMAN','translation\&.ini');
+.fi
+.PP
+.PP
+.PP
+.nf
+within your main() program\&.
+The above call to rlSetTranslator() will read the ini file 'translation\&.ini' and
+set the default section to 'GERMAN'\&.
+This will be the default language within your pvserver\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+If your translation\&.ini looks like
+[GERMAN]
+Hello World=Hallo Welt
+.fi
+.PP
+.PP
+.PP
+.nf
+the call to pvtr('Hello World') will return 'Hallo Welt'\&.
+If there is no translation for a phrase then the original untranslated text will be returned\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Now you might want that each client can choose his own language\&.
+This can be done by calling
+.fi
+.PP
+.PP
+.PP
+.nf
+pvSelectLanguage(p,'YOUR_LANGUAGE');
+.fi
+.PP
+.PP
+.PP
+.nf
+within \fBpvMain()\fP or one of your masks\&.
+Hint: after changing the language you should return from the mask
+with a return value that will call the mask again and will show the mask in the new language\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+If the strings within the ini file include '=' characters you must quote them as '\\='\&.
+Also tabs and newline characters must be quoted as '\\t' and '\\n'\&.
+Within the graphical designer of pvdevelop you must use 2 quotes instead of one '\\\\=', '\\\\t' and '\\\\n'\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Background:
+We use an INI file for language translation\&.
+The section names the language\&.
+The original text is used to select the translation\&.
+.fi
+.PP
+ 
+.SS "int pvSendVersion (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Send version of pvserver to client
+.fi
+.PP
+ 
+.SS "int pvSetCleanup (\fBPARAM\fP *p, int(*)(void *)cleanup, void *app_data)"
+
+.PP
+.nf
+
+If it is necessary to cleanup your application when the main worker thread terminates
+you can set an exit handler that receives the data in app_data\&.
+Call this function in pvMain\&. See also pvMain\&.
+.fi
+.PP
+ 
+.SS "int pvSetManualUrl (\fBPARAM\fP *p, const char *url)"
+
+.PP
+.nf
+
+Set the URL which will be used for Help->Manual within pvbrowser\&.
+default: index\&.html
+You could also set the URL of a webserver which hosts your documentation\&.
+Example:
+pvSetManualUrl(p,'http://your\&.server\&.org');
+.fi
+.PP
+ 
+.SS "int pvSetMouseShape (\fBPARAM\fP *p, intshape)"
+
+.PP
+.nf
+
+Set mouse shape
+\fBMouseShape\fP\&.
+.fi
+.PP
+ 
+.SS "int pvSetWhatsThis (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Set whatsThis text
+Allowed Widgets: all Widgets
+.fi
+.PP
+ 
+.SS "int pvSetXY (\fBPARAM\fP *p, inti, floatx, floaty)"
+
+.PP
+.nf
+
+Set x,y array for script language
+.fi
+.PP
+ 
+.SS "int pvSleep (intmilliseconds)"
+
+.PP
+.nf
+
+Sleep for milliseconds\&.
+.fi
+.PP
+ 
+.SS "int pvsystem (const char *command)"
+
+.PP
+.nf
+
+Same as system(command); but portable
+.fi
+.PP
+ 
+.SS "int pvThreadFatal (\fBPARAM\fP *p, const char *text)"
+
+.PP
+.nf
+
+Output a fatal message and terminate the worker thread\&.
+.fi
+.PP
+ 
+.SS "int pvunlock (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+If you access variables that are global to the server or
+if you want to use malloc() and free()
+you must surround the operations with
+\fBpvlock()\fP and \fBpvunlock()\fP
+because these operations are not thread save\&.
+.fi
+.PP
+ 
+.SS "int pvWait (\fBPARAM\fP *p, const char *pattern)"
+
+.PP
+.nf
+
+waits for an event\&.
+.fi
+.PP
+ 
+.SS "int pvWarning (\fBPARAM\fP *p, const char *text)"
+
+.PP
+.nf
+
+Output a warning message\&.
+.fi
+.PP
+ 
+.SS "int pvWhatsThisPrintf (\fBPARAM\fP *p, intid, const char *format, \&.\&.\&.)"
+
+.PP
+.nf
+
+printf whatsThis text
+Allowed Widgets: all Widgets
+.fi
+.PP
+ 
+.SS "int pvWriteTextToFileAtClient (\fBPARAM\fP *p, const char *text, const char *filename)"
+
+.PP
+.nf
+
+Write 'text' to a file 'filename' in temp directory at client\&.
+.fi
+.PP
+ 
+.SS "int pvXYAllocate (\fBPARAM\fP *p, intn)"
+
+.PP
+.nf
+
+Allocate x,y array for script language
+.fi
+.PP
+ 
+.SS "int pvZoomMask (\fBPARAM\fP *p, intpercent)"
+
+.PP
+.nf
+
+Zoom the whole mask\&.
+Zoom factor in percent\&.
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

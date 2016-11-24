@@ -1,0 +1,502 @@
+.TH "Graphics" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graphics \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvSetZoomX\fP (\fBPARAM\fP *p, int id, float zoom)"
+.br
+.ti -1c
+.RI "int \fBpvSetZoomY\fP (\fBPARAM\fP *p, int id, float zoom)"
+.br
+.ti -1c
+.RI "int \fBgWriteFile\fP (const char *file)"
+.br
+.ti -1c
+.RI "int \fBgCloseFile\fP ()"
+.br
+.ti -1c
+.RI "int \fBgBeginDraw\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBgBox\fP (\fBPARAM\fP *p, int x, int y, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBgRect\fP (\fBPARAM\fP *p, int x, int y, int w, int h)"
+.br
+.ti -1c
+.RI "int \fBgEndDraw\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgLineTo\fP (\fBPARAM\fP *p, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBgBufferedLine\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgLine\fP (\fBPARAM\fP *p, float *x, float *y, int n)"
+.br
+.ti -1c
+.RI "int \fBgMoveTo\fP (\fBPARAM\fP *p, int x, int y)"
+.br
+.ti -1c
+.RI "int \fBgRightYAxis\fP (\fBPARAM\fP *p, float start, float delta, float end, int draw)"
+.br
+.ti -1c
+.RI "int \fBgSetColor\fP (\fBPARAM\fP *p, int r, int g, int b)"
+.br
+.ti -1c
+.RI "int \fBgSetWidth\fP (\fBPARAM\fP *p, int w)"
+.br
+.ti -1c
+.RI "int \fBgSetStyle\fP (\fBPARAM\fP *p, int style)"
+.br
+.ti -1c
+.RI "int \fBgDrawArc\fP (\fBPARAM\fP *p, int x, int y, int w, int h, int start_angle, int angle_length)"
+.br
+.ti -1c
+.RI "int \fBgDrawPie\fP (\fBPARAM\fP *p, int x, int y, int w, int h, int start_angle, int angle_length)"
+.br
+.ti -1c
+.RI "int \fBgDrawPolygon\fP (\fBPARAM\fP *p, int *x, int *y, int n)"
+.br
+.ti -1c
+.RI "int \fBgSetFont\fP (\fBPARAM\fP *p, const char *family, int size, int weight, int italic)"
+.br
+.ti -1c
+.RI "int \fBgSetLinestyle\fP (\fBPARAM\fP *p, int style)"
+.br
+.ti -1c
+.RI "int \fBgText\fP (\fBPARAM\fP *p, int x, int y, const char *text, int alignment)"
+.br
+.ti -1c
+.RI "int \fBgTextInAxis\fP (\fBPARAM\fP *p, float x, float y, const char *text, int alignment)"
+.br
+.ti -1c
+.RI "int \fBgSetFloatFormat\fP (\fBPARAM\fP *p, const char *text)"
+.br
+.ti -1c
+.RI "int \fBgXAxis\fP (\fBPARAM\fP *p, float start, float delta, float end, int draw)"
+.br
+.ti -1c
+.RI "int \fBgYAxis\fP (\fBPARAM\fP *p, float start, float delta, float end, int draw)"
+.br
+.ti -1c
+.RI "int \fBgXGrid\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgYGrid\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBgBoxWithText\fP (\fBPARAM\fP *p, int x, int y, int w, int h, int fontsize, const char *xlabel, const char *ylabel, const char *rylabel)"
+.br
+.ti -1c
+.RI "int \fBgComment\fP (\fBPARAM\fP *p, const char *comment)"
+.br
+.ti -1c
+.RI "int \fBgPlaySVG\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBgSocketPlaySVG\fP (\fBPARAM\fP *p, const char *svgstring)"
+.br
+.ti -1c
+.RI "int \fBgTranslate\fP (\fBPARAM\fP *p, float x, float y)"
+.br
+.ti -1c
+.RI "int \fBgRotate\fP (\fBPARAM\fP *p, float angle)"
+.br
+.ti -1c
+.RI "int \fBgScale\fP (\fBPARAM\fP *p, float sx, float sy)"
+.br
+.ti -1c
+.RI "int \fBpvSetSelector\fP (\fBPARAM\fP *p, int id, int state)"
+.br
+.ti -1c
+.RI "int \fBpvPrintSvgOnPrinter\fP (\fBPARAM\fP *p, int id)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are the graphis routines usable with pyQDrawWidget() 
+.SH "Function Documentation"
+.PP 
+.SS "int gBeginDraw (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Call this function before you start drawing the widget\&.
+.fi
+.PP
+ 
+.SS "int gBox (\fBPARAM\fP *p, intx, inty, intw, inth)"
+
+.PP
+.nf
+
+Draws a rectangle frame\&. Later you can use it's coordinates to draw xAxis, yAxiy and ryAxis\&.
+.fi
+.PP
+ 
+.SS "int gBoxWithText (\fBPARAM\fP *p, intx, inty, intw, inth, intfontsize, const char *xlabel, const char *ylabel, const char *rylabel)"
+
+.PP
+.nf
+
+This is a convenience function that draws a box and write the xlabel ylabel and rylabel
+in the given font\&.
+If one of the text parameters is NULL no text is drawn for that item\&.
+.fi
+.PP
+ 
+.SS "int gBufferedLine (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Draw a line in a Axis\&.
+See pvXYAllocate
+See also \fBLinestyle\fP\&.
+.fi
+.PP
+ 
+.SS "int gCloseFile ()"
+
+.PP
+.nf
+
+Call this function after you have written graphical commands to a file\&.
+.fi
+.PP
+ 
+.SS "int gComment (\fBPARAM\fP *p, const char *comment)"
+
+.PP
+.nf
+
+Write a comment in the metafile
+.fi
+.PP
+ 
+.SS "int gDrawArc (\fBPARAM\fP *p, intx, inty, intw, inth, intstart_angle, intangle_length)"
+
+.PP
+.nf
+
+Draw an arc\&. For circle write:
+  gDrawArc(p,x-radius/2,y-radius/2,radius/2,radius/2,0,360);
+.fi
+.PP
+ 
+.SS "int gDrawPie (\fBPARAM\fP *p, intx, inty, intw, inth, intstart_angle, intangle_length)"
+
+.PP
+.nf
+
+Draw an pie (filled part of a circle) \&. For filled circle write:
+  gDrawArc(p,x-radius/2,y-radius/2,radius/2,radius/2,0,360);
+.fi
+.PP
+ 
+.SS "int gDrawPolygon (\fBPARAM\fP *p, int *x, int *y, intn)"
+
+.PP
+.nf
+
+x,y is an array with the edge points\&.
+n is the number of points
+.fi
+.PP
+ 
+.SS "int gEndDraw (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Call this function when you are finished with drawing\&.
+.fi
+.PP
+ 
+.SS "int gLine (\fBPARAM\fP *p, float *x, float *y, intn)"
+
+.PP
+.nf
+
+Draw a line in a Axis n=number of values in x,y\&.
+See also \fBLinestyle\fP\&.
+.fi
+.PP
+ 
+.SS "int gLineTo (\fBPARAM\fP *p, intx, inty)"
+
+.PP
+.nf
+
+Draw a line from the actual position to x,y\&.
+.fi
+.PP
+ 
+.SS "int gMoveTo (\fBPARAM\fP *p, intx, inty)"
+
+.PP
+.nf
+
+Move to x,y\&.
+.fi
+.PP
+ 
+.SS "int gPlaySVG (\fBPARAM\fP *p, const char *filename)"
+
+.PP
+.nf
+
+Play SVG file
+You have to download the file first using:
+int \fBpvDownloadFile(PARAM *p, const char *filename)\fP;
+.fi
+.PP
+.PP
+.PP
+.nf
+Attention:
+This is a deprecated function\&.
+It only works with the Qt3 version of pvbrowser client\&.
+Now use rlSvgAnumator from rllib\&.
+.fi
+.PP
+ 
+.SS "int gRect (\fBPARAM\fP *p, intx, inty, intw, inth)"
+
+.PP
+.nf
+
+Draws a filled rectangle\&.
+.fi
+.PP
+ 
+.SS "int gRightYAxis (\fBPARAM\fP *p, floatstart, floatdelta, floatend, intdraw)"
+
+.PP
+.nf
+
+Draw a Axis on the right side of the diagram\&.
+It starts with start in steps of delta until end is reached\&.
+.fi
+.PP
+ 
+.SS "int gRotate (\fBPARAM\fP *p, floatangle)"
+
+.PP
+.nf
+
+Rotate the graphic
+Rotates the coordinate system angle degrees counterclockwise\&.
+.fi
+.PP
+ 
+.SS "int gScale (\fBPARAM\fP *p, floatsx, floatsy)"
+
+.PP
+.nf
+
+Scale the graphic
+.fi
+.PP
+ 
+.SS "int gSetColor (\fBPARAM\fP *p, intr, intg, intb)"
+
+.PP
+.nf
+
+Set the drawing color\&.
+.fi
+.PP
+ 
+.SS "int gSetFloatFormat (\fBPARAM\fP *p, const char *text)"
+
+.PP
+.nf
+
+Set the format in which the Axis is drawn\&.
+default: '%f'
+For example set
+'%5\&.2f'
+if you want two digits behind the \&.
+.fi
+.PP
+ 
+.SS "int gSetFont (\fBPARAM\fP *p, const char *family, intsize, intweight, intitalic)"
+
+.PP
+.nf
+
+Set a font\&. For the availabe fonts see Definitions (Events, Fonts, Colors \&.\&.\&.)
+.fi
+.PP
+ 
+.SS "int gSetLinestyle (\fBPARAM\fP *p, intstyle)"
+
+.PP
+.nf
+
+Set the linestyle of a line in the Axis\&. You can draw a simple line or a line with centered symbols\&.
+.fi
+.PP
+ 
+.SS "int gSetStyle (\fBPARAM\fP *p, intstyle)"
+
+.PP
+.nf
+
+style = \fBPenStyle\fP\&.
+.fi
+.PP
+ 
+.SS "int gSetWidth (\fBPARAM\fP *p, intw)"
+
+.PP
+.nf
+
+Set the line width
+.fi
+.PP
+ 
+.SS "int gSocketPlaySVG (\fBPARAM\fP *p, const char *svgstring)"
+
+.PP
+.nf
+
+Play SVG string over the socket
+.fi
+.PP
+.PP
+.PP
+.nf
+Attention:
+This is a deprecated function\&.
+It only works with the Qt3 version of pvbrowser client\&.
+Now use rlSvgAnumator from rllib\&.
+.fi
+.PP
+ 
+.SS "int gText (\fBPARAM\fP *p, intx, inty, const char *text, intalignment)"
+
+.PP
+.nf
+
+Draw a text at x,y\&.
+For alignment see Definitions (Events, Fonts, Colors \&.\&.\&.)
+.fi
+.PP
+ 
+.SS "int gTextInAxis (\fBPARAM\fP *p, floatx, floaty, const char *text, intalignment)"
+
+.PP
+.nf
+
+Draw a text at x,y in Axis\&.
+For alignment see Definitions (Events, Fonts, Colors \&.\&.\&.)
+.fi
+.PP
+ 
+.SS "int gTranslate (\fBPARAM\fP *p, floatx, floaty)"
+
+.PP
+.nf
+
+Translate the graphic
+.fi
+.PP
+ 
+.SS "int gWriteFile (const char *file)"
+
+.PP
+.nf
+
+Call this function before you write graphical commands to a file\&.
+.fi
+.PP
+ 
+.SS "int gXAxis (\fBPARAM\fP *p, floatstart, floatdelta, floatend, intdraw)"
+
+.PP
+.nf
+
+Draw a Axis on the bottom of the diagram\&.
+It starts with start in steps of delta until end is reached\&.
+.fi
+.PP
+ 
+.SS "int gXGrid (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Draw a grid orthogonal to the x-axis in the diagram\&.
+.fi
+.PP
+ 
+.SS "int gYAxis (\fBPARAM\fP *p, floatstart, floatdelta, floatend, intdraw)"
+
+.PP
+.nf
+
+Draw a Axis on the left side of the diagram\&.
+It starts with start in steps of delta until end is reached\&.
+.fi
+.PP
+ 
+.SS "int gYGrid (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Draw a grid orthogonal to the y-axis in the diagram\&.
+.fi
+.PP
+ 
+.SS "int pvPrintSvgOnPrinter (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Print the SVG on the QDraw widget on a printer
+.fi
+.PP
+ 
+.SS "int pvSetSelector (\fBPARAM\fP *p, intid, intstate)"
+
+.PP
+.nf
+
+Set Selector in QDraw Widget 0|1
+default 1
+.fi
+.PP
+ 
+.SS "int pvSetZoomX (\fBPARAM\fP *p, intid, floatzoom)"
+
+.PP
+.nf
+
+Zoom the image in X direction\&. (default: zoom=1\&.0)
+If zoom < 0\&.0 then keep aspect ratio, factor = |zoom|\&.
+.fi
+.PP
+ 
+.SS "int pvSetZoomY (\fBPARAM\fP *p, intid, floatzoom)"
+
+.PP
+.nf
+
+Zoom the image in Y direction\&. (default: zoom=1\&.0)
+If zoom < 0\&.0 then keep aspect ratio, factor = |zoom|\&.
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

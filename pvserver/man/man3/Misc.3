@@ -1,0 +1,336 @@
+.TH "Misc" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Misc \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvSendUserEvent\fP (\fBPARAM\fP *p, int id, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvWriteFile\fP (\fBPARAM\fP *p, const char *filename, int width, int height)"
+.br
+.ti -1c
+.RI "int \fBpvCloseFile\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "char * \fBpvGetTextParam\fP (\fBPARAM\fP *p, const char *command)"
+.br
+.ti -1c
+.RI "int \fBpvGetText\fP (const char *command, char *text)"
+.br
+.ti -1c
+.RI "\fBPARSE_EVENT_STRUCT\fP * \fBpvParseEventStruct\fP (\fBPARAM\fP *p, const char *event)"
+.br
+.ti -1c
+.RI "int \fBpvParseEvent\fP (const char *event, int *id, char *text)"
+.br
+.ti -1c
+.RI "int \fBpvCopyToClipboard\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvPrint\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSave\fP (\fBPARAM\fP *p, int id)"
+.br
+.ti -1c
+.RI "int \fBpvSave\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSaveAsBmp\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvHtmlOrSvgDump\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvRenderTreeDump\fP (\fBPARAM\fP *p, int id, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSendFile\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvDownloadFileAs\fP (\fBPARAM\fP *p, const char *filename, const char *newname)"
+.br
+.ti -1c
+.RI "int \fBpvDownloadFile\fP (\fBPARAM\fP *p, const char *filename)"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxClientsPerIpAdr\fP (int max_clients)"
+.br
+.ti -1c
+.RI "int \fBpvMaxClientsPerIpAdr\fP ()"
+.br
+.ti -1c
+.RI "int \fBpvSetMaxClients\fP (int max_clients)"
+.br
+.ti -1c
+.RI "int \fBpvMaxClients\fP ()"
+.br
+.ti -1c
+.RI "const \fBpvAddressTableItem\fP * \fBpvGetAdrTableItem\fP ()"
+.br
+.ti -1c
+.RI "int \fBpvClearMessageQueue\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvtcpsend\fP (\fBPARAM\fP *p, const char *buf, int len)"
+.br
+.ti -1c
+.RI "int \fBpvtcpsendstring\fP (\fBPARAM\fP *p, const char *buf)"
+.br
+.ti -1c
+.RI "int \fBpvtcpsend_binary\fP (\fBPARAM\fP *p, const char *buf, int len)"
+.br
+.ti -1c
+.RI "int \fBpvtcpreceive\fP (\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.ti -1c
+.RI "int \fBpvtcpreceive_binary\fP (\fBPARAM\fP *p, char *buf, int maxlen)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+These are the misc routines 
+.SH "Function Documentation"
+.PP 
+.SS "int pvClearMessageQueue (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+read all pending messages from tcp
+.fi
+.PP
+ 
+.SS "int pvCloseFile (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+close the open file
+.fi
+.PP
+ 
+.SS "int pvCopyToClipboard (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Copy the widget to the clipboard\&.
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvDownloadFile (\fBPARAM\fP *p, const char *filename)"
+
+.PP
+.nf
+
+download file to temp directory of the browser
+.fi
+.PP
+ 
+.SS "int pvDownloadFileAs (\fBPARAM\fP *p, const char *filename, const char *newname)"
+
+.PP
+.nf
+
+download file to temp directory of the browser
+The file in the temp directory is called newname
+.fi
+.PP
+ 
+.SS "const \fBpvAddressTableItem\fP* pvGetAdrTableItem ()"
+
+.PP
+.nf
+
+Get the table of connected clients\&.
+It is an array of MAX_CLIENT elements\&.
+.fi
+.PP
+ 
+.SS "int pvGetText (const char *command, char *text)"
+
+.PP
+.nf
+
+The function will get the '' surrounded text out of command\&.
+This is useful to retrieve the text from an event\&.
+.fi
+.PP
+ 
+.SS "char* pvGetTextParam (\fBPARAM\fP *p, const char *command)"
+
+.PP
+.nf
+
+The function will get the '' surrounded text out of command\&.
+This is useful to retrieve the text from an event\&.
+Used in Script languages
+.fi
+.PP
+ 
+.SS "int pvHtmlOrSvgDump (\fBPARAM\fP *p, intid, const char *filename)"
+
+.PP
+.nf
+
+Dump the HTML or SVG code on the client\&.
+Allowed widgets: QTextBrowser/WebKit widget for HTML and QDraw/SVG widget for SVG
+.fi
+.PP
+ 
+.SS "int pvMaxClients ()"
+
+.PP
+.nf
+
+Set the total limit of clients the pvserver accepts 
+0 < max_clients <= MAX_CLIENTS
+.fi
+.PP
+ 
+.SS "int pvMaxClientsPerIpAdr ()"
+
+.PP
+.nf
+
+Get the limit of clients the pvserver accepts from 1 ip address 
+.fi
+.PP
+ 
+.SS "int pvParseEvent (const char *event, int *id, char *text)"
+
+.PP
+.nf
+
+This fuction will parse the event\&. It returns the event\&. If there is a text in the event
+it will be returned\&. Otherwise *text will be '\\0'\&.
+.fi
+.PP
+ 
+.SS "\fBPARSE_EVENT_STRUCT\fP* pvParseEventStruct (\fBPARAM\fP *p, const char *event)"
+
+.PP
+.nf
+
+This fuction will parse the event\&. It is a stub for script languages\&.
+.fi
+.PP
+ 
+.SS "int pvPrint (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Print the contents of the widget on a printer\&. The user will see the print dialog\&.
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvRenderTreeDump (\fBPARAM\fP *p, intid, const char *filename)"
+
+.PP
+.nf
+
+Dump the SVG rendering data to a SVG file on the client\&.
+Allowed widgets: QDraw/SVG widget
+.fi
+.PP
+ 
+.SS "int pvSave (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+Save the widget to file on local node\&. The user will see a SaveAs dialog\&.
+Allowed widgets: QTable
+.fi
+.PP
+ 
+.SS "int pvSave (\fBPARAM\fP *p, intid, const char *filename)"
+
+.PP
+.nf
+
+Save the widget to a file on the client computer\&. (vector form)
+Allowed widgets: QDraw
+.fi
+.PP
+ 
+.SS "int pvSaveAsBmp (\fBPARAM\fP *p, intid, const char *filename)"
+
+.PP
+.nf
+
+Save the widget to a file on the client computer\&. (bitmap file)
+Allowed widgets: all widgets
+.fi
+.PP
+ 
+.SS "int pvSendFile (\fBPARAM\fP *p, const char *filename)"
+
+.PP
+.nf
+
+send file to browser
+.fi
+.PP
+ 
+.SS "int pvSendUserEvent (\fBPARAM\fP *p, intid, const char *text)"
+
+.PP
+.nf
+
+Send a USER_EVENT to ourself
+.fi
+.PP
+ 
+.SS "int pvSetMaxClients (intmax_clients)"
+
+.PP
+.nf
+
+Set the total limit of clients the pvserver accepts 
+0 < max_clients <= MAX_CLIENTS
+.fi
+.PP
+ 
+.SS "int pvSetMaxClientsPerIpAdr (intmax_clients)"
+
+.PP
+.nf
+
+Set the limit of clients the pvserver accepts from 1 ip address 
+.fi
+.PP
+ 
+.SS "int pvtcpreceive (\fBPARAM\fP *p, char *buf, intmaxlen)"
+
+.SS "int pvtcpreceive_binary (\fBPARAM\fP *p, char *buf, intmaxlen)"
+
+.SS "int pvtcpsend (\fBPARAM\fP *p, const char *buf, intlen)"
+
+.SS "int pvtcpsend_binary (\fBPARAM\fP *p, const char *buf, intlen)"
+
+.SS "int pvtcpsendstring (\fBPARAM\fP *p, const char *buf)"
+
+.SS "int pvWriteFile (\fBPARAM\fP *p, const char *filename, intwidth, intheight)"
+
+.PP
+.nf
+
+write the following to file
+during the file is open nothing will be send to tcp
+return=0 failure
+return=1 success
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

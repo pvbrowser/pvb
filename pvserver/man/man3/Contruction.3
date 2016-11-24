@@ -1,0 +1,1736 @@
+.TH "Construction" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Construction \- 
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvStartDefinition\fP (\fBPARAM\fP *p, int num_objects)"
+.br
+.ti -1c
+.RI "int \fBpvQWidget\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLayoutVbox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLayoutHbox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLayoutGrid\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLabel\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQComboBox\fP (\fBPARAM\fP *p, int id, int parent, int editable, int policy)"
+.br
+.ti -1c
+.RI "int \fBpvQLineEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQPushButton\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQLCDNumber\fP (\fBPARAM\fP *p, int id, int parent, int numDigits, int segmentStyle, int mode)"
+.br
+.ti -1c
+.RI "int \fBpvQSlider\fP (\fBPARAM\fP *p, int id, int parent, int minValue, int maxValue, int pageStep, int value, int orientation)"
+.br
+.ti -1c
+.RI "int \fBpvQButtonGroup\fP (\fBPARAM\fP *p, int id, int parent, int columns, int orientation, const char *title)"
+.br
+.ti -1c
+.RI "int \fBpvQRadioButton\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQCheckBox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQFrame\fP (\fBPARAM\fP *p, int id, int parent, int shape, int shadow, int line_width, int margin)"
+.br
+.ti -1c
+.RI "int \fBpvQDraw\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQImage\fP (\fBPARAM\fP *p, int id, int parent, const char *imagename, int *w=NULL, int *h=NULL, int *depth=NULL)"
+.br
+.ti -1c
+.RI "int \fBpvQGL\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQTabWidget\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQToolBox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQGroupBox\fP (\fBPARAM\fP *p, int id, int parent, int columns, int orientation, const char *title)"
+.br
+.ti -1c
+.RI "int \fBpvQListBox\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQTable\fP (\fBPARAM\fP *p, int id, int parent, int rows, int columns)"
+.br
+.ti -1c
+.RI "int \fBpvQSpinBox\fP (\fBPARAM\fP *p, int id, int parent, int min, int max, int step)"
+.br
+.ti -1c
+.RI "int \fBpvQDial\fP (\fBPARAM\fP *p, int id, int parent, int min, int max, int page_step, int value)"
+.br
+.ti -1c
+.RI "int \fBpvQProgressBar\fP (\fBPARAM\fP *p, int id, int parent, int total_steps, int orientation=\fBHorizontal\fP)"
+.br
+.ti -1c
+.RI "int \fBpvQMultiLineEdit\fP (\fBPARAM\fP *p, int id, int parent, int editable, int max_lines)"
+.br
+.ti -1c
+.RI "int \fBpvQTextBrowser\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQListView\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQIconView\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQVtkTclWidget\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtPlotWidget\fP (\fBPARAM\fP *p, int id, int parent, int nCurves, int nMarker)"
+.br
+.ti -1c
+.RI "int \fBpvQwtScale\fP (\fBPARAM\fP *p, int id, int parent, int pos)"
+.br
+.ti -1c
+.RI "int \fBpvQwtThermo\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtKnob\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtCounter\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtWheel\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtSlider\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtDial\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtCompass\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQwtAnalogClock\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQDateEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQTimeEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQDateTimeEdit\fP (\fBPARAM\fP *p, int id, int parent)"
+.br
+.ti -1c
+.RI "int \fBpvQCustomWidget\fP (\fBPARAM\fP *p, int id, int parent, const char *name, const char *arg=NULL)"
+.br
+.ti -1c
+.RI "int \fBpvEndDefinition\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvAddWidgetOrLayout\fP (\fBPARAM\fP *p, int id, int item, int row, int col)"
+.br
+.ti -1c
+.RI "int \fBpvAddStretch\fP (\fBPARAM\fP *p, int id, int param)"
+.br
+.ti -1c
+.RI "int \fBpvTabOrder\fP (\fBPARAM\fP *p, int id1, int id2)"
+.br
+.ti -1c
+.RI "int \fBpvDeleteWidget\fP (\fBPARAM\fP *p, int id)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.PP
+.nf
+
+This function is intended for script languages\&.
+It will translate text to different languages\&.
+See \fBpvSelectLanguage()\fP
+C/C++ pvservers may use the \fBpvtr(txt)\fP macro instead\&.
+.fi
+.PP
+ These are the construction routines for the widgets\&. Normally you need not to use them because these calls are generated by ui2pvc\&. 
+.SH "Function Documentation"
+.PP 
+.SS "int pvAddStretch (\fBPARAM\fP *p, intid, intparam)"
+
+.PP
+.nf
+
+add stretch to layout
+.fi
+.PP
+ 
+.SS "int pvAddWidgetOrLayout (\fBPARAM\fP *p, intid, intitem, introw, intcol)"
+
+.PP
+.nf
+
+add widget or layout to layout\&.
+.fi
+.PP
+ 
+.SS "int pvDeleteWidget (\fBPARAM\fP *p, intid)"
+
+.PP
+.nf
+
+delete widget and it's children\&.
+.fi
+.PP
+ 
+.SS "int pvEndDefinition (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Call this function when you are finished with the definition of your mask\&.
+.fi
+.PP
+ 
+.SS "int pvQButtonGroup (\fBPARAM\fP *p, intid, intparent, intcolumns, intorientation, const char *title)"
+
+.PP
+.nf
+
+Creates a new QButtonGroup\&. See also \fBpvQWidget()\fP\&.
+orientation = HORIZONTAL|VERTICAL
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+.fi
+.PP
+ 
+.SS "int pvQCheckBox (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QCheckBox\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvSetChecked()\fP
+.fi
+.PP
+ 
+.SS "int pvQComboBox (\fBPARAM\fP *p, intid, intparent, inteditable, intpolicy)"
+
+.PP
+.nf
+
+editable = 0  not editable
+editable = 1  user can edit combo box
+\fBPolicy\fP\&.
+Creates a new QComboBox\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetAlignment()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvClear()\fP
+\fBpvInsertItem()\fP
+\fBpvRemoveItem()\fP
+\fBpvRemoveItemByName()\fP
+\fBpvSetCurrentItem()\fP
+\fBpvSetEditable()\fP
+.fi
+.PP
+ 
+.SS "int pvQCustomWidget (\fBPARAM\fP *p, intid, intparent, const char *name, const char *arg = \fCNULL\fP)"
+
+.PP
+.nf
+
+create a QCustomWidget provided by a plugin\&.
+name := '/library/widgettype<:arg>' defined by the whats_this property in the designer\&.
+        library is the name without the platform dependend extension (\&.so, \&.dll, \&.dylib)\&.
+        The library_filename will be PVB_WIDGET_PLUGINDIR/library\&.platform_extension\&.
+        PVB_WIDGET_PLUGINDIR is defined in the pvbrowser ini file\&.
+arg  := argument for the widget constructor defined by the whats_this property in the designer\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetWidgetProperty()\fP
+.fi
+.PP
+ 
+.SS "int pvQDateEdit (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+create a QDateEdit widget\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetDate()\fP
+\fBpvSetMinDate()\fP
+\fBpvSetMaxDate()\fP
+\fBpvSetDateOrder()\fP
+.fi
+.PP
+ 
+.SS "int pvQDateTimeEdit (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+create a QDateTimeEdit widget\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetDate()\fP
+\fBpvSetMinDate()\fP
+\fBpvSetMaxDate()\fP
+\fBpvSetTime()\fP
+\fBpvSetMinTime()\fP
+\fBpvSetMaxTime()\fP
+\fBpvSetDateOrder()\fP
+.fi
+.PP
+ 
+.SS "int pvQDial (\fBPARAM\fP *p, intid, intparent, intmin, intmax, intpage_step, intvalue)"
+
+.PP
+.nf
+
+Creates a new QDial \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetMinValue()\fP
+\fBpvSetMaxValue()\fP
+\fBpvSetValue()\fP
+.fi
+.PP
+ 
+.SS "int pvQDraw (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QDrawWidget\&. See also \fBpvQWidget()\fP\&.
+This type of widget can be used to draw diagrams and whatever you want\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetSelector()\fP
+\fBpvPrintSvgOnPrinter()\fP
+\fBpvRenderTreeDump()\fP
+\fBpvSetBufferTransparency()\fP
+\fBpvSaveDrawBuffer()\fP
+See Module: Graphics
+.fi
+.PP
+ 
+.SS "int pvQFrame (\fBPARAM\fP *p, intid, intparent, intshape, intshadow, intline_width, intmargin)"
+
+.PP
+.nf
+
+Creates a new QFrame\&. See also \fBpvQWidget()\fP\&.
+\fBShape\fP\&. \fBShadow\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetStyle()\fP
+.fi
+.PP
+ 
+.SS "int pvQGL (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new OpenGL Widget \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+See Module: OpenGL
+.fi
+.PP
+ 
+.SS "int pvQGroupBox (\fBPARAM\fP *p, intid, intparent, intcolumns, intorientation, const char *title)"
+
+.PP
+.nf
+
+Creates a new QGroupBox \&. See also \fBpvQWidget()\fP\&.
+orientation = HORIZONTAL|VERTICAL
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetStyle()\fP
+.fi
+.PP
+ 
+.SS "int pvQIconView (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QIconView \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvClear()\fP
+\fBpvRemoveIconViewItem()\fP
+\fBpvSetIconViewItem()\fP
+.fi
+.PP
+ 
+.SS "int pvQImage (\fBPARAM\fP *p, intid, intparent, const char *imagename, int *w = \fCNULL\fP, int *h = \fCNULL\fP, int *depth = \fCNULL\fP)"
+
+.PP
+.nf
+
+Creates a new QImage\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+If you specify the name of a 8bpp bmp file:
+w = width of image will be returned   (w must be a multiple of 2)
+h = height of image will be returned  (h must be a multiple of 2)
+depth = number of bits per pixel (currently only 8 is supported)
+A color of red=1 green=1 blue=1 will be treated as transparent
+.fi
+.PP
+.PP
+.PP
+.nf
+If you specify any other file format:
+1) The format must be supported by Qt
+2) you have to download the file to the client first
+   see: int \fBpvDownloadFile(PARAM *p, const char *filename)\fP;
+w = 0
+h = 0
+depth = 0
+will be returned
+.fi
+.PP
+.PP
+.PP
+.nf
+Using Qt Designer:
+Insert a QFrame
+set paletteBackgroundPixmap in the Property Editor pane and select a graphics file
+set whatsThis=filename in the Property Editor pane
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetImage()\fP
+\fBpvSetBufferedJpgImage()\fP
+\fBpvPassThroughOneJpegFrame()\fP
+\fBpvSendJpegFrame()\fP
+ 
+.fi
+.PP
+ 
+.SS "int pvQLabel (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QLabel\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetAlignment()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvSetBackgroundColor()\fP
+\fBpvText()\fP
+\fBpvSetStyle()\fP
+\fBpvSetMovie()\fP
+\fBpvMovieControl()\fP
+\fBpvMovieSpeed()\fP
+.fi
+.PP
+ 
+.SS "int pvQLayoutGrid (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Layout Grid
+.fi
+.PP
+ 
+.SS "int pvQLayoutHbox (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Layout Hbox
+.fi
+.PP
+ 
+.SS "int pvQLayoutVbox (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Layout Vbox
+.fi
+.PP
+ 
+.SS "int pvQLCDNumber (\fBPARAM\fP *p, intid, intparent, intnumDigits, intsegmentStyle, intmode)"
+
+.PP
+.nf
+
+Creates a new QLCDNumber\&.
+\fBMode\fP\&. \fBSegmentStyle\fP\&.
+enum Mode         { HEX=0, DEC, OCT, BIN };
+enum SegmentStyle { Outline=0, Filled, Flat };
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvDisplayNum()\fP
+\fBpvDisplayFloat()\fP
+\fBpvDisplayStr()\fP
+\fBpvSetStyle()\fP
+.fi
+.PP
+ 
+.SS "int pvQLineEdit (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QLineEdit\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetAlignment()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvText()\fP
+\fBpvSetEditable()\fP
+\fBpvSetStyle()\fP
+\fBpvSetEchoMode()\fP
+.fi
+.PP
+ 
+.SS "int pvQListBox (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QListBox \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvClear()\fP
+\fBpvChangeItem()\fP
+\fBpvInsertItem()\fP
+\fBpvRemoveItem()\fP
+\fBpvRemoveItemByName()\fP
+\fBpvSelection()\fP
+\fBpvSetMultiSelection()\fP
+\fBpvListBoxSetSelected()\fP;
+.fi
+.PP
+ 
+.SS "int pvQListView (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QListView \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvClear()\fP
+\fBpvAddColumn()\fP
+\fBpvRemoveAllColumns()\fP
+\fBpvSetListViewText()\fP
+\fBpvListViewPrintf()\fP
+\fBpvListViewSetSelected()\fP
+\fBpvSetListViewPixmap()\fP
+\fBpvRemoveListViewItem()\fP
+\fBpvSelection()\fP
+\fBpvSetMultiSelection()\fP
+\fBpvSetSorting()\fP
+\fBpvListViewEnsureVisible()\fP
+\fBpvListViewSetHidden()\fP
+\fBpvListViewSetStandardPopupMenu()\fP
+.fi
+.PP
+ 
+.SS "int pvQMultiLineEdit (\fBPARAM\fP *p, intid, intparent, inteditable, intmax_lines)"
+
+.PP
+.nf
+
+Creates a new QMultiLineEdit \&. See also \fBpvQWidget()\fP\&.
+editable = 0|1
+if max_lines == -1 then no limit
+Because of port from Qt3->Qt4 max_lines must be ignored\&.
+Please use \fBpvSetValue()\fP instead\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvClear()\fP
+\fBpvText()\fP
+\fBpvSetEditable()\fP
+\fBpvSetValue()\fP
+\fBpvMoveCursor()\fP
+.fi
+.PP
+ 
+.SS "int pvQProgressBar (\fBPARAM\fP *p, intid, intparent, inttotal_steps, intorientation = \fC\fBHorizontal\fP\fP)"
+
+.PP
+.nf
+
+Creates a new QProgressBar \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetMinValue()\fP
+\fBpvSetMaxValue()\fP
+\fBpvSetValue()\fP
+\fBpvSetStyle()\fP
+.fi
+.PP
+ 
+.SS "int pvQPushButton (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QPushButton\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvSetPixmap()\fP
+\fBpvText()\fP
+.fi
+.PP
+ 
+.SS "int pvQRadioButton (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QRadioButton\&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvSetChecked()\fP
+.fi
+.PP
+ 
+.SS "int pvQSlider (\fBPARAM\fP *p, intid, intparent, intminValue, intmaxValue, intpageStep, intvalue, intorientation)"
+
+.PP
+.nf
+
+Creates a new QSlider\&. See also \fBpvQWidget()\fP\&.
+orientation = HORIZONTAL|VERTICAL
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetMinValue()\fP
+\fBpvSetMaxValue()\fP
+\fBpvSetValue()\fP
+.fi
+.PP
+ 
+.SS "int pvQSpinBox (\fBPARAM\fP *p, intid, intparent, intmin, intmax, intstep)"
+
+.PP
+.nf
+
+Creates a new QSpinBox \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetMinValue()\fP
+\fBpvSetMaxValue()\fP
+\fBpvSetValue()\fP
+.fi
+.PP
+ 
+.SS "int pvQTable (\fBPARAM\fP *p, intid, intparent, introws, intcolumns)"
+
+.PP
+.nf
+
+Creates a new QTable \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetTableText()\fP
+\fBpvSetTableButton()\fP
+\fBpvSetTableCheckBox()\fP
+\fBpvSetTableComboBox()\fP
+\fBpvSetTableLabel()\fP
+\fBpvTablePrintf()\fP
+\fBpvClear()\fP;
+\fBpvSetColumnWidth()\fP
+\fBpvSetRowHeight()\fP
+\fBpvSetWordWrap()\fP
+\fBpvSetTablePixmap()\fP
+\fBpvEnsureCellVisible()\fP
+\fBpvSetEditable()\fP
+\fBpvTableSetEnabled()\fP
+\fBpvTableSetHeaderResizeEnabled()\fP
+\fBpvSetNumRows()\fP
+\fBpvSetNumCols()\fP
+\fBpvInsertRows()\fP
+\fBpvInsertColumns()\fP
+\fBpvRemoveRow()\fP
+\fBpvRemoveColumn()\fP
+\fBpvSetTableTextAlignment()\fP;
+\fBpvSave()\fP
+\fBpvMysqldump()\fP
+\fBpvCSVcreate()\fP
+\fBpvCSVdump()\fP
+\fBpvCSV()\fP
+.fi
+.PP
+ 
+.SS "int pvQTabWidget (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QTabWidget \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetValue()\fP
+\fBpvSetTabPosition()\fP
+\fBpvEnableTabBar()\fP
+.fi
+.PP
+ 
+.SS "int pvQTextBrowser (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QTextBrowser \&. See also \fBpvQWidget()\fP\&.
+QTextBrowser is now a WebKit Widget
+editable = 0|1
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetText()\fP
+\fBpvPrintf()\fP
+\fBpvSetSource()\fP
+\fBpvMoveContent()\fP
+\fBpvMoveCursor()\fP
+\fBpvScrollToAnchor()\fP
+\fBpvSetZoomFactor()\fP
+\fBpvPrintHtmlOnPrinter()\fP
+.fi
+.PP
+ 
+.SS "int pvQTimeEdit (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+create a QTimeEdit widget\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetTime()\fP
+\fBpvSetMinTime()\fP
+\fBpvSetMaxTime()\fP
+\fBpvSetTimeEditDisplay()\fP
+.fi
+.PP
+ 
+.SS "int pvQToolBox (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QToolBox \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvSetWhatsThis()\fP
+\fBpvWhatsThisPrintf()\fP
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+\fBpvSetValue()\fP
+\fBpvSetStyle()\fP
+.fi
+.PP
+ 
+.SS "int pvQVtkTclWidget (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QVtkTclWidget \&. See also \fBpvQWidget()\fP\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+You can use this widget to use VTK for 3D Graphics\&.
+Use \fBpvVtkTcl()\fP          to send single Tcl commands\&.
+Use \fBpvVtkTclPrintf()\fP    to send single Tcl commands (use like printf)\&.
+Use \fBpvVtkTclScript()\fP    to send Tcl programs\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+The constructor also runs the Tcl commands:
+package require vtk
+package require vtkinteraction
+package require vtktesting
+vtkRenderer renderer4
+vtkRenderer renderer3
+vtkRenderer renderer2
+vtkRenderer renderer
+.fi
+.PP
+.PP
+.PP
+.nf
+renderer4 is connected to your widget !!!
+renderer3 is connected to your widget !!!
+renderer2 is connected to your widget !!!
+renderer  is connected to your widget !!!
+.fi
+.PP
+.PP
+.PP
+.nf
+The destructor also runs the Tcl command:
+vtkCommand DeleteAllObjects
+.fi
+.PP
+ 
+.SS "int pvQWidget (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Creates a new QWidget\&. It's id can be used to identify it\&. It's parent widget is parent\&.
+You can set one widget on top of another widget if you set parent to the parent widgets id\&.
+When parent == 0 the widget will be set on the background screen (ID_MAIN_WIDGET)\&.
+QWidget draws nothing, but it is useful to group objects hierarchically\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to this widget:
+\fBpvToolTip()\fP
+\fBpvSetGeometry()\fP
+\fBpvSetMinSize()\fP
+\fBpvSetMaxSize()\fP
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+\fBpvSetStyleSheet()\fP
+\fBpvPrintfStyleSheet()\fP;
+\fBpvSetPaletteBackgroundColor()\fP
+\fBpvSetPaletteForegroundColor()\fP
+\fBpvSetFontColor()\fP
+\fBpvSetFont()\fP
+\fBpvSetEnabled()\fP
+\fBpvSetFocus()\fP
+\fBpvCopyToClipboard()\fP
+\fBpvSaveAsBmp()\fP
+.fi
+.PP
+ 
+.SS "int pvQwtAnalogClock (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtAnalogClock\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtAnalog Clock 
+.fi
+.PP
+ 
+.SS "int pvQwtCompass (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtCompass\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtCompass 
+.fi
+.PP
+ 
+.SS "int pvQwtCounter (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtCounter\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtCounter 
+.fi
+.PP
+ 
+.SS "int pvQwtDial (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtDial\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtDial 
+.fi
+.PP
+ 
+.SS "int pvQwtKnob (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtKnob\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtKnob
+.fi
+.PP
+ 
+.SS "int pvQwtPlotWidget (\fBPARAM\fP *p, intid, intparent, intnCurves, intnMarker)"
+
+.PP
+.nf
+
+Call this function to create a QWT Plot Widget\&.
+nCurves = Max Number of Curves in Plot
+nMarker = Max Number of Markers in Plot
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtPlotWidget 
+.fi
+.PP
+ 
+.SS "int pvQwtScale (\fBPARAM\fP *p, intid, intparent, intpos)"
+
+.PP
+.nf
+
+Call this function to create a QwtScale\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtScale 
+.fi
+.PP
+ 
+.SS "int pvQwtSlider (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtSlider\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtSlider 
+.fi
+.PP
+ 
+.SS "int pvQwtThermo (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtThermo\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtThermo 
+.fi
+.PP
+ 
+.SS "int pvQwtWheel (\fBPARAM\fP *p, intid, intparent)"
+
+.PP
+.nf
+
+Call this function to create a QwtWheel\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+See Module: QwtWheel 
+.fi
+.PP
+ 
+.SS "int pvStartDefinition (\fBPARAM\fP *p, intnum_objects)"
+
+.PP
+.nf
+
+Call this function first when you want to define a new mask\&.
+Your enum for the mask should always contain ID_END_OF_WIDGETS as the last element\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Example:
+.fi
+.PP
+.PP
+.PP
+.nf
+pvStartDefinition(p,ID_END_OF_WIDGETS);
+.fi
+.PP
+.PP
+.PP
+.nf
+You can allocate space for additional widgets after ID_END_OF_WIDGETS by setting 
+p->num_additional_widgets = number;
+.fi
+.PP
+ 
+.SS "int pvTabOrder (\fBPARAM\fP *p, intid1, intid2)"
+
+.PP
+.nf
+
+set TAB order\&.
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.

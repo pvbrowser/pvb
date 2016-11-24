@@ -1,0 +1,224 @@
+.TH "Dialogs" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Dialogs \- 
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBreadDataCast\fP   int (*)(void *)"
+.br
+.ti -1c
+.RI "#define \fBshowDataCast\fP   int (*)(\fBPARAM\fP *, void *)"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBpvFileDialog\fP (\fBPARAM\fP *p, int id_return, int type)"
+.br
+.ti -1c
+.RI "int \fBpvPopupMenu\fP (\fBPARAM\fP *p, int id_return, const char *text)"
+.br
+.ti -1c
+.RI "int \fBpvMessageBox\fP (\fBPARAM\fP *p, int id_return, int type, const char *text, int button0, int button1, int button2)"
+.br
+.ti -1c
+.RI "int \fBpvInputDialog\fP (\fBPARAM\fP *p, int id_return, const char *text, const char *default_text)"
+.br
+.ti -1c
+.RI "int \fBpvRunModalDialog\fP (\fBPARAM\fP *p, int width, int height, int(*showMask)(\fBPARAM\fP *p), void *userData, int(*readData)(void *d), int(*showData)(\fBPARAM\fP *p, void *d), void *d)"
+.br
+.ti -1c
+.RI "int \fBpvRunModalDialogScript\fP (\fBPARAM\fP *p, int width, int height)"
+.br
+.ti -1c
+.RI "int \fBpvTerminateModalDialog\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvUpdateBaseWindow\fP (\fBPARAM\fP *p)"
+.br
+.ti -1c
+.RI "int \fBpvUpdateBaseWindowOnOff\fP (\fBPARAM\fP *p, int onoff)"
+.br
+.ti -1c
+.RI "int \fBpvAddDockWidget\fP (\fBPARAM\fP *p, const char *title, int dock_id, int root_id, int allow_close=0, int floating=1, int allow_left=1, int allow_right=0, int allow_top=0, int allow_bottom=0)"
+.br
+.ti -1c
+.RI "int \fBpvDeleteDockWidget\fP (\fBPARAM\fP *p, int dock_id, int delete_widget=0)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Some dialogs 
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define readDataCast   int (*)(void *)"
+
+.PP
+.nf
+
+Open and run a modal dialog box
+.fi
+.PP
+ 
+.SS "#define showDataCast   int (*)(\fBPARAM\fP *, void *)"
+
+.SH "Function Documentation"
+.PP 
+.SS "int pvAddDockWidget (\fBPARAM\fP *p, const char *title, intdock_id, introot_id, intallow_close = \fC0\fP, intfloating = \fC1\fP, intallow_left = \fC1\fP, intallow_right = \fC0\fP, intallow_top = \fC0\fP, intallow_bottom = \fC0\fP)"
+
+.PP
+.nf
+
+This function will add a QDockWidget (floating modeless docking dialog)
+.fi
+.PP
+.PP
+.PP
+.nf
+title       := title of the docking dialog
+dock_id     := ID_DOCK_WIDGETS + n \&. Where n = 0\&.\&.\&.31 MAX_DOCK_WIDGETS 
+root_id     := id of root object\&. root_id is the id of a widget out of the designed widgets\&. 
+               The root object will be reparent to the dock widget\&. Thus disappering in the main mask\&.
+allow_close := 0|1 allow the user to close (hide) the dialog
+floating    := 0|1 moveable by user
+allow_X     := 0|1 allow dock widget to be docked on the according position\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+Functions that apply to dock_id:
+\fBpvSetGeometry()\fP;
+\fBpvMove()\fP;
+\fBpvResize()\fP;
+\fBpvHide()\fP;
+\fBpvShow()\fP;
+.fi
+.PP
+.PP
+.PP
+.nf
+You can control the size of the area occupied for the dock area by specifying the
+min/man size property of the root_id widget\&.
+.fi
+.PP
+ 
+.SS "int pvDeleteDockWidget (\fBPARAM\fP *p, intdock_id, intdelete_widget = \fC0\fP)"
+
+.PP
+.nf
+
+This function will delete the DockWidget\&.
+You may reuse the widgets within the DockWidget for other purposes\&.
+If delete_widgets == 1 the widgets within the dock will be deleted\&.
+If delete_widgets == 0 the widgets within the dock will be reparent to the main widget of the mask\&.
+.fi
+.PP
+ 
+.SS "int pvFileDialog (\fBPARAM\fP *p, intid_return, inttype)"
+
+.PP
+.nf
+
+Open a file selection dialog on the client
+id_return is send in a TEXT_EVENT
+type = FileOpenDialog|FileSaveDialog|FindDirectoryDialog
+\fBFileDialogs\fP\&.
+.fi
+.PP
+ 
+.SS "int pvInputDialog (\fBPARAM\fP *p, intid_return, const char *text, const char *default_text)"
+
+.PP
+.nf
+
+Open a InputDialog on the client
+id_return is send in a TEXT_EVENT
+if user clicked Cancel TEXT_EVENT will return ''
+.fi
+.PP
+ 
+.SS "int pvMessageBox (\fBPARAM\fP *p, intid_return, inttype, const char *text, intbutton0, intbutton1, intbutton2)"
+
+.PP
+.nf
+
+Open a MessageBox on the client
+id_return is send in a SLIDER_EVENT
+type = BoxInformation|BoxWarning|BoxCritical
+\fBMessageBoxTypes\fP\&.
+if buttonX == 0 the button is not shown
+\fBMessageBoxButtons\fP
+.fi
+.PP
+ 
+.SS "int pvPopupMenu (\fBPARAM\fP *p, intid_return, const char *text)"
+
+.PP
+.nf
+
+Open a PopupMenu on the client
+id_return is send in a TEXT_EVENT
+The Text will be the selected item or ''
+Example for text:
+menu1,menu2,,menu3
+(Two commas means, separator)
+You can add a checkbox in front of each entry with '#c(1)'
+You can add a icon in front of each entry with '#i(name\&.png)'
+Example for text:
+'menu1,,#c(1)#i(icon\&.png)menu2,#c(0)menu3,#i(icon\&.png)menu4'
+.fi
+.PP
+ 
+.SS "int pvRunModalDialog (\fBPARAM\fP *p, intwidth, intheight, int(*)(\fBPARAM\fP *p)showMask, void *userData, int(*)(void *d)readData, int(*)(\fBPARAM\fP *p, void *d)showData, void *d)"
+
+.SS "int pvRunModalDialogScript (\fBPARAM\fP *p, intwidth, intheight)"
+
+.PP
+.nf
+
+For script languages:
+pvRunModalDialogScript(\&.\&.\&.)
+mask->show()
+pvTerminateModalDialog(\&.\&.\&.)
+.fi
+.PP
+ 
+.SS "int pvTerminateModalDialog (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Terminate the modal dialog box
+.fi
+.PP
+ 
+.SS "int pvUpdateBaseWindow (\fBPARAM\fP *p)"
+
+.PP
+.nf
+
+Call this function from a ModalDialog in order to update the base window
+.fi
+.PP
+ 
+.SS "int pvUpdateBaseWindowOnOff (\fBPARAM\fP *p, intonoff)"
+
+.PP
+.nf
+
+Call this function from a script language
+pvUpdateBaseWindowOnOff($p,1);
+base->readData();
+base->showData();
+pvUpdateBaseWindowOnOff($p,0);
+.fi
+.PP
+ 
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for ProcessViewBrowser-ServerProgramming from the source code\&.
