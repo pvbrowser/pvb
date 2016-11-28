@@ -64,7 +64,7 @@ var searchData=
   ['getisotimestring',['getIsoTimeString',['../classrlTime.html#a7254d05ff0ddf6d681eb2d05b0a628b0',1,'rlTime']]],
   ['getlength',['getLength',['../classrlCanOpenTypes.html#ab9855e0b33acd508a2a87b8c45655d70',1,'rlCanOpenTypes']]],
   ['getlocaltime',['getLocalTime',['../classrlTime.html#a58e753a2b74eea66ef8df028f266f7e2',1,'rlTime']]],
-  ['getmeasurement',['getMeasurement',['../classrlController.html#a6fde48997e009a469c6698370f29b1ba',1,'rlController']]],
+  ['getmeasurement',['getMeasurement',['../classrlController.html#a1f075dac20dbe25498a907c363a20d83',1,'rlController']]],
   ['getnameinfo',['getnameinfo',['../rlsocket_8cpp.html#ace354e375e5dc4d9010217b83777a458',1,'rlsocket.cpp']]],
   ['getnext',['getNext',['../classrlPcontrol.html#ae1dbba01a4fbd4f7562a0dba9f6f6199',1,'rlPcontrol']]],
   ['getnextcell',['getNextCell',['../classrlSpreadsheetCell.html#a3f89af9dd5a0f6d8ca17d19d31743576',1,'rlSpreadsheetCell']]],
