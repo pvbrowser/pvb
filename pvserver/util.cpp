@@ -435,6 +435,7 @@ int       y,i,w,h,depth;
     cptr = (char *) image->image;
     for(y=0; y<h; y++) // send image
     {
+      p->is_binary = 1;
       pvtcpsend_binary(p, cptr, w);
       cptr += image->w;
     }
@@ -484,7 +485,7 @@ int pvMainFatal(PARAM *p, const char *text)
     {
       if(p->use_communication_plugin)
       {
-        plug_closesocket(clientsocket[i]);
+        plug_closesocket(clientsocket[i], NULL);
       }
       else
       {
@@ -496,7 +497,7 @@ int pvMainFatal(PARAM *p, const char *text)
   {
     if(p->use_communication_plugin)
     {
-      plug_closesocket(serversocket);
+      plug_closesocket(serversocket, NULL);
     }
     else
     {
@@ -553,7 +554,7 @@ int pvThreadFatal(PARAM *p, const char *text)
   }
   if(p->use_communication_plugin)
   {
-    plug_closesocket(p->s);
+    plug_closesocket(p->s, p);
   }
   else
   {
@@ -732,6 +733,8 @@ const char *getTextFromText(const char *text)
   return buf;
 }
 
+int do_post_accept_operations(PARAM *p);
+
 int pvAccept(PARAM *p)
 {
 static int first = 1;
@@ -748,7 +751,10 @@ int option = 1;
   if(p->use_communication_plugin)
   {
     ret = plug_pvAccept(p);
-    if(ret > 0) return ret;
+    if(ret > 0)
+    {
+      return do_post_accept_operations(p);
+    }
   }
 
   if(rl_ipversion == 4)
@@ -944,6 +950,14 @@ bindv6:
     exit(0);
   }
 
+  return do_post_accept_operations(p);
+}
+
+int do_post_accept_operations(PARAM *p)
+{
+char buf[132];
+int i;
+
   // Brute force attack detection BEGIN
   if(p->http == 1)
   {
@@ -987,6 +1001,7 @@ bindv6:
     if(clientsocket[i] == -1)
     {
       clientsocket[i] = p->s;
+      p->iclientsocket = i;
       break;
     }
   }
@@ -995,7 +1010,7 @@ bindv6:
   {
     if(p->use_communication_plugin)
     {
-      plug_closesocket(p->s);
+      plug_closesocket(p->s, p);
     }
     else
     {
@@ -1071,6 +1086,7 @@ int pvtcpsend_binary(PARAM *p, const char *buf, int len)
 int pvtcpsend(PARAM *p, const char *buf, int len)
 {
   // if(len >= MAX_PRINTF_LENGTH-1) // old version
+  p->is_binary = 0;
   if(len >= MAX_PRINTF_LENGTH)      // fixed by mur 
   {
     char message[80];
@@ -1240,6 +1256,8 @@ int i;
   pvFilePrefix(p);
 #endif  
   p->lang_section[0] = '\0';
+  p->iclientsocket = 0;
+  p->is_binary = 0;
 
   return 0;
 }
@@ -1895,7 +1913,7 @@ int pvCreateThread(PARAM *p, int s)
     }
     if(p->use_communication_plugin)
     {
-      plug_closesocket(s);
+      plug_closesocket(s, p);
     }
     else
     {
@@ -2714,6 +2732,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
             sprintf(textbuf,"setJpegScanline(%d)\n",i);
             //printf("last1 %s\n",textbuf);
             pvtcpsend(p, textbuf, strlen(textbuf));
+            p->is_binary = 1;
             pvtcpsend_binary(p, (const char *) output, i);
           }  
           sprintf(textbuf,"setJpegScanline(-1)\n");
@@ -2728,6 +2747,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
       //printf(textbuf,"setJpegScanline(%d)\n",i);
       sprintf(textbuf,"setJpegScanline(%d)\n",i);
       pvtcpsend(p, textbuf, strlen(textbuf));
+      p->is_binary = 1;
       pvtcpsend_binary(p, (const char *) output, i);
       i = 0;
     }
@@ -2747,6 +2767,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
             sprintf(textbuf,"setJpegScanline(%d)\n",i);
             //printf("last1 %s\n",textbuf);
             pvtcpsend(p, textbuf, strlen(textbuf));
+            p->is_binary = 1;
             pvtcpsend_binary(p, (const char *) output, i);
           }  
           sprintf(textbuf,"setJpegScanline(-1)\n");
@@ -2761,6 +2782,7 @@ int pvPassThroughOneJpegFrame(PARAM *p, int id, int source_fhdl, int inputIsSock
       //printf(textbuf,"setJpegScanline(%d)\n",i);
       sprintf(textbuf,"setJpegScanline(%d)\n",i);
       pvtcpsend(p, textbuf, strlen(textbuf));
+      p->is_binary = 1;
       pvtcpsend_binary(p, (const char *) output, i);
       i = 0;
     }
@@ -2791,6 +2813,7 @@ int pvSendJpegFrame(PARAM *p, int id, unsigned char *frame, int rotate)
       len += 2;
       sprintf(textbuf,"setJpegScanline(%d)\n",len);
       pvtcpsend(p, textbuf, strlen(textbuf));
+      p->is_binary = 1;
       pvtcpsend_binary(p, (const char *) frame, len);
       sprintf(textbuf,"setJpegScanline(-1)\n");
       pvtcpsend(p, textbuf, strlen(textbuf));      
@@ -2811,6 +2834,7 @@ int pvSendRGBA(PARAM *p, int id, const unsigned char *image, int width, int heig
   if(image == NULL) return -1;
   sprintf(buf,"sendRGBA(%d,%d,%d,%d)\n",id,width,height,rotate);
   pvtcpsend(p, buf, strlen(buf));
+  p->is_binary = 1;
   pvtcpsend_binary(p, (const char *) image, width*height*4);
   return 0;
 }
@@ -4294,6 +4318,7 @@ char buf[MAX_PRINTF_LENGTH];
   if(buffersize <  1) return -1;
   sprintf(buf,"setImage(%d,\"mjpeg_%dbytes\") -rotate=%d\n",id,buffersize,rotate);
   pvtcpsend(p, buf, strlen(buf));
+  p->is_binary = 1;
   pvtcpsend_binary(p, (const char *) buffer, buffersize);
   return 0;
 }
@@ -5533,10 +5558,12 @@ short len;
     ret = pvmyread(fhdl, buf, sizeof(buf));
     if(ret <= 0) break;
     len = htons(ret);
+    p->is_binary = 1;
     pvtcpsend_binary(p, (const char *) &len, 2);
     pvtcpsend_binary(p, buf, ret);
   }
   len = htons(0);
+  p->is_binary = 1;
   pvtcpsend_binary(p, (const char *) &len, 2);
   close(fhdl);
   p->fhdltmp = 0;
@@ -5575,6 +5602,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
     ret = fread(buf, 1, maxbuf, fin);
     sprintf(tbuf, "%x\n", maxbuf);
     pvtcpsend(p,tbuf,strlen(tbuf));
+    p->is_binary = 1;
     pvtcpsend_binary(p,buf,maxbuf);
     fpos += maxbuf;
   }
@@ -5585,6 +5613,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
     ret = fread(buf, 1, maxbuf, fin);
     sprintf(tbuf, "%x\n", maxbuf);
     pvtcpsend(p,tbuf,strlen(tbuf));
+    p->is_binary = 1;
     pvtcpsend_binary(p,buf,maxbuf);
   }
   strcpy(tbuf,"0\n\n\n");

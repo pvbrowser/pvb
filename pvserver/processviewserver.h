@@ -519,6 +519,8 @@ typedef struct _PARAM_
   int   http;                            /* 0|1 talk http                      */
   FILE  *fptmp;                          /* temporary file pointer             */
   int   fhdltmp;                         /* temporary file handle              */
+  int   iclientsocket;                   /* 0 <= iclientsockert < MAX_CLIENTS index into clientsocket[] */
+  int   is_binary;                       /* 0 for text message 1 otherwise     */
 }PARAM;
 
 #ifndef __VMS
@@ -526,7 +528,7 @@ typedef int (*plugin_pvAccept)(PARAM *p);
 typedef int (*plugin_pvtcpsend_binary)(PARAM *p, const char *buf, int len);
 typedef int (*plugin_pvtcpreceive)(PARAM *p, char *buf, int maxlen);
 typedef int (*plugin_pvtcpreceive_binary)(PARAM *p, char *buf, int maxlen);
-typedef int (*plugin_closesocket)(int s);
+typedef int (*plugin_closesocket)(int s, PARAM *p);
 #endif
 
 #define DEFAULT_LANGUAGE 0
