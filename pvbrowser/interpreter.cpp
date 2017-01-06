@@ -4392,14 +4392,20 @@ void Interpreter::interprets(const char *command)
             {
               struct stat sb;
               if(stat(text.toUtf8(), &sb) < 0) return;
-              char buf[sb.st_size+1];
+              //char buf[sb.st_size+1]; // MSVC cant't do this
+              char *buf = new char[sb.st_size+1];
               FILE *fin = fopen(text.toUtf8(),"r");
-              if(fin == NULL) return;
+              if(fin == NULL)
+              {
+                delete [] buf;
+                return;
+              }
               fread(buf,1,sb.st_size,fin);
               buf[sb.st_size] = '\0';
               fclose(fin);
               QUrl url = QUrl::fromLocalFile(temp); 
               mainWindow->textbrowser->form->textBrowser->setHtml(QString::fromUtf8(buf),url);
+              delete [] buf;
             }
             else
             {

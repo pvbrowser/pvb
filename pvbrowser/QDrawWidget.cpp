@@ -1316,7 +1316,9 @@ int x,y,w,h,r,g,b,n,i;
         cptr = strstr(linebuf,"-n=");
         if(cptr != NULL) sscanf(cptr,"-n=%d", &maxarray);
         if(maxarray < 1) maxarray = MAXARRAY;
-        float xa[maxarray],ya[maxarray];
+        // float xa[maxarray],ya[maxarray]; // MSVC can't do this
+        float *xa = new float[maxarray];
+        float *ya = new float[maxarray];
         char buf[80];
         for(n=0; 1; n++)
         {
@@ -1326,6 +1328,8 @@ int x,y,w,h,r,g,b,n,i;
           sscanf(buf,"%f,%f",&xa[n],&ya[n]);
         }
         if(n>0) line(xa,ya,n);
+        delete [] xa;
+        delete [] ya;
       }
       break;
     case 'm':

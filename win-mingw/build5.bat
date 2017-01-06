@@ -158,9 +158,9 @@ copy %QTDIR%\bin\Qt5SerialPort.dll
 copy %QTDIR%\bin\Qt5Sql.dll
 copy %QTDIR%\bin\Qt5Svg.dll
 copy %QTDIR%\bin\Qt5Test.dll
-copy %QTDIR%\bin\Qt5V8.dll
 copy %QTDIR%\bin\Qt5WebKit.dll
 copy %QTDIR%\bin\Qt5WebKitWidgets.dll
+copy %QTDIR%\bin\Qt5WebView.dll
 copy %QTDIR%\bin\Qt5Widgets.dll
 copy %QTDIR%\bin\Qt5Xml.dll
 copy %QTDIR%\bin\Qt5XmlPatterns.dll

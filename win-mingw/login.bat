@@ -11,8 +11,8 @@ rem ### for qt4.8.2 ###
 rem SET    QTDIR=C:\Qt\4.8.2
 rem MINGWDIR=C:\mingw-old
 rem ### for qt5.1.0 ###
-SET    QTDIR=C:\Qt\Qt5.5.1\5.5\mingw492_32
-SET MINGWDIR=C:\Qt\Qt5.5.1\Tools\mingw492_32
+SET    QTDIR=C:\Qt\Qt5.4.2\5.4\mingw491_32
+SET MINGWDIR=C:\Qt\Qt5.4.2\Tools\mingw491_32
 
 rem tools necessary for language bindings
 SET SWIGDIR=c:\rl\tools\swigwin-1.3.33

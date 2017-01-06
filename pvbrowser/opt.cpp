@@ -189,7 +189,7 @@ const char *inifile()
   strcpy(name,"sys$login:pvbrowser.ini");
 #endif
 #ifdef PVWIN32
-  ExpandEnvironmentStrings("%USERPROFILE%",name,sizeof(name)-1);
+  ExpandEnvironmentStringsA("%USERPROFILE%",name,sizeof(name)-1);
   if(strcmp(name,"%USERPROFILE%") == 0) strcpy(name,"C:");
   strcat(name,"\\pvbrowser.ini");
 #endif
@@ -219,7 +219,7 @@ const char *passfile()
   strcpy(name,"sys$login:pvbrowserpass.ini");
 #endif
 #ifdef PVWIN32
-  ExpandEnvironmentStrings("%USERPROFILE%",name,sizeof(name)-1);
+  ExpandEnvironmentStringsA("%USERPROFILE%",name,sizeof(name)-1);
   if(strcmp(name,"%USERPROFILE%") == 0) strcpy(name,"C:");
   strcat(name,"\\pvbrowserpass.ini");
 #endif
@@ -387,7 +387,7 @@ int i;
 #endif
 #endif
 #ifdef PVWIN32
-          ExpandEnvironmentStrings(buf2,buf,sizeof(buf)-1);
+          ExpandEnvironmentStringsA(buf2,buf,sizeof(buf)-1);
           if(strstr(buf,"%") != NULL) QMessageBox::warning(NULL,buf,"readIniFile temp directory unknown: adjust pvbrowser.ini temp=");
           strcpy(buf2,buf);
 #endif
@@ -557,7 +557,7 @@ int i;
         {
 #ifdef PVWIN32
           strcpy(buf2, buf);
-          ExpandEnvironmentStrings(buf2,buf,sizeof(buf)-1);
+          ExpandEnvironmentStringsA(buf2,buf,sizeof(buf)-1);
           if(strstr(buf,"%") != NULL) QMessageBox::warning(NULL,buf,"readIniFile customlogo directory unknown: adjust pvbrowser.ini temp=");
 #endif
           cptr = strchr(buf,'=');
@@ -1033,19 +1033,19 @@ int mysystem(const char *command)
 {
 #ifdef PVWIN32
   int ret;
-  STARTUPINFO         si = { sizeof(si)};
+  STARTUPINFOA         si = { sizeof(si)};
   //PROCESS_INFORMATION pi;
   char cmd[4096];
 
   if(strncmp(command,"start",5) == 0 || strncmp(command,"START",5) == 0)
   {
-    ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
+    ExpandEnvironmentStringsA(command,cmd,sizeof(cmd)-1);
     ret = system(cmd);
   }
   else
   {
-    ExpandEnvironmentStrings(command,cmd,sizeof(cmd)-1);
-    ret = (int) CreateProcess( NULL, cmd
+    ExpandEnvironmentStringsA(command,cmd,sizeof(cmd)-1);
+    ret = (int) CreateProcessA( NULL, cmd
                              , NULL, NULL
                              , FALSE, CREATE_NO_WINDOW
                              , NULL, NULL

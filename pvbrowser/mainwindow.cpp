@@ -511,7 +511,7 @@ void MainWindow::slotManual()
   char cmd[1024],buf[1024];
   strcpy(buf,opt.temp);
   strcat(buf,"\\index.html");
-  ExpandEnvironmentStrings(buf,cmd,sizeof(cmd)-1);
+  ExpandEnvironmentStringsA(buf,cmd,sizeof(cmd)-1);
   url = cmd;
   pvbtab[currentTab].manual_url = url;
 #else

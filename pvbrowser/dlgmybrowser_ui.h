@@ -11,7 +11,6 @@
 #define DLGMYBROWSER_UI_H
 #ifndef NO_WEBKIT
 
-#include <QWebEngineView>
 #include <QtCore/QVariant>
 #include <QAction>
 #include <QApplication>
@@ -23,14 +22,14 @@
 #include <QVBoxLayout>
 #include <QWidget>
 
-class pvQWebView : public QWebEngineView
+class pvQWebView : public QWebView
 {
 public:
   pvQWebView(QWidget *parent);
   ~pvQWebView();
   virtual bool event(QEvent *e);
 protected:
-  virtual QWebEngineView *createWindow(QWebEnginePage::WebWindowType type);
+  virtual QWebView *createWindow(QWebPage::WebWindowType type);
 private:
   virtual void keyPressEvent(QKeyEvent *event);
   virtual void mousePressEvent(QMouseEvent *event);

@@ -50,7 +50,7 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
   }
 
 #ifdef PVWIN32
-  ExpandEnvironmentStrings(buf,cmd,sizeof(cmd)-1);
+  ExpandEnvironmentStringsA(buf,cmd,sizeof(cmd)-1);
 #else
   strcpy(cmd,buf);
 #endif

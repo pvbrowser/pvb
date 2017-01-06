@@ -17,7 +17,6 @@
 
 #ifndef PVGLWIDGET_H
 #define PVGLWIDGET_H
-#define PVGLWIDGET_H_V5
 
 #ifndef USE_MAEMO
 #ifndef USE_ANDROID
@@ -30,26 +29,22 @@
 #endif
 
 #ifdef USE_OPEN_GL
-#include <QOpenGLWidget>
-#include <QOpenGLContext>
-#include <QOpenGLFunctions>
-#include <QStringList>
+#include <qgl.h>
 #include <qevent.h>
 
 /**
   *@author R. Lehrig
   */
 
-class PvGLWidget : public QOpenGLWidget , protected QOpenGLFunctions
+class PvGLWidget : public QGLWidget
 {
   Q_OBJECT
 
 public:
-  PvGLWidget(QWidget *parent=0, int ident=0, int *socket=NULL , const char *name=0);
+  PvGLWidget(QWidget *parent=0, int ident=0, int *socket=NULL , const char *name=0, const QGLWidget* shareWidget=0);
   ~PvGLWidget();
   void gl_interpret();
   int paint_done;
-  void updateGL();
 
 protected:
   // these 3 methods are empty (it is done by the server)
@@ -70,7 +65,6 @@ private:
   int *s;  // socket
   int id; // id of OpenGL widget
   GLsizei minobject, maxobject; // OpenGL lists that we have to free in the destructor
-  QStringList list;
 };
 
 #endif
