@@ -9,12 +9,12 @@
 
 # qmake project file for building the qwt libraries
 lessThan(QT_MAJOR_VERSION, 5) {
-}else{
-  QT += webenginewidgets widgets
-}    
 #}else{
-#  QT += webkitwidgets widgets
+#  QT += webenginewidgets widgets
 #}    
+}else{
+  QT += webkitwidgets widgets
+}    
 
 
 QWT_ROOT = ..
