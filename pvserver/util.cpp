@@ -959,7 +959,7 @@ char buf[132];
 int i;
 
   // Brute force attack detection BEGIN
-  if(p->http == 1)
+  if(0) //p->http == 1)
   {
     unsigned char *ptr1 = (unsigned char *) &lastSockaddr; 
     ptr1 += 4;
@@ -1436,7 +1436,9 @@ int pvGetInitialMask(PARAM *p)
   {
 	  char *cptr;
     strcpy(p->url,event);
-		cptr = strchr(p->url,'\n');
+		cptr = strchr(p->url,0x0d);
+		if(cptr != NULL) *cptr = '\0';
+		cptr = strchr(p->url,0x0a);
 		if(cptr != NULL) *cptr = '\0';
     return 0;
   }
@@ -1481,7 +1483,9 @@ int pvGetInitialMask(PARAM *p)
   {
 	  char *cptr;
     strcpy(p->url,&event[5]);
-		cptr = strchr(p->url,'\n');
+		cptr = strchr(p->url,0x0d);
+		if(cptr != NULL) *cptr = '\0';
+		cptr = strchr(p->url,0x0a);
 		if(cptr != NULL) *cptr = '\0';
   }
   return 0;

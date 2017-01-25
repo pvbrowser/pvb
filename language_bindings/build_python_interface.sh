@@ -2,6 +2,9 @@
 #
 # Build the Python interface for ProcessViewServer Library
 #
+echo "we do no longer build python bindings"
+exit
+
 echo "### Probe necessary components for python language binding ###"
 
 if [ "${1}" = "swig" ]; then
