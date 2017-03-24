@@ -27,5 +27,6 @@ int generatePHP(int imask, QWidget *root);
 int generatePerl(int imask, QWidget *root);
 int generateTcl(int imask, QWidget *root);
 int generateLua(int imask, QWidget *root);
+int drawDrawWidgets(QWidget *root);
 
 #endif

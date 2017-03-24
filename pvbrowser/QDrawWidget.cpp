@@ -293,7 +293,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
   //setAutoFillBackground(false);
   strcpy(floatFormat,"%.2f");
   alpha_of_buffer = 255;
-  buffer = new QPixmap;
+  buffer = new QPixmap();
   buffer->fill(QColor(br,bg,bb,alpha_of_buffer));
   setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
   if(wFlags == -1000) return; //trollmurx

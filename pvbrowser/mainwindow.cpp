@@ -1498,7 +1498,8 @@ void MainWindow::slotTimeOut()
   {
     if(opt.autoreconnect == 1) 
     {
-     if(strncmp(pvbtab[currentTab].url.toUtf8(),"http://",7) != 0)
+     if(strncmp(pvbtab[currentTab].url.toUtf8(),"http://",7)  != 0 &&
+        strncmp(pvbtab[currentTab].url.toUtf8(),"https://",8) != 0 )
      {
        isReconnect = 1;
        slotReconnect();

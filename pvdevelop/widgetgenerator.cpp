@@ -1288,6 +1288,31 @@ static int generateDefineMaskWidgets(FILE *fout, QWidget *root)
   return 0;
 }
 
+int drawDrawWidgets(QWidget *root)
+{
+  QString item;
+  QWidget *widget;
+  getStrList(root);
+  // loop over widgets
+  for(int i=0; i<strlist.size(); i++)
+  {
+    item = strlist.at(i);
+    widget = findChild(item.toUtf8()); //root->findChild<QWidget *>(item);
+    if(widget->statusTip().startsWith("TQDraw:"))
+    {
+      QString fname = widget->whatsThis();
+      if(!fname.isEmpty())
+      {
+        QDrawWidget *dw = (QDrawWidget *) widget;
+        dw->beginDraw(1);
+        dw->playSVG(fname.toUtf8());
+        dw->endDraw();
+      }
+    }
+  }
+  return 0;
+}
+
 static int generateToolTip(FILE *fout, QWidget *root)
 {
   QString item,qbuf;

@@ -992,6 +992,7 @@ void MainWindow::viewDesigner()
   //setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("pvdevelop")));
   setWindowTitle(tr("%1[*]").arg(shownName));
 
+  drawDrawWidgets(designer->root);
   if(opt_develop.arg_debug) printf("viewDesigner end\n");;
 }
 
