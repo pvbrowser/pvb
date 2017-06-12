@@ -1888,16 +1888,16 @@ int pvCreateThread(PARAM *p, int s)
 #endif
   PARAM *ptr;
 
-  num_threads++;
   pvlock(p);
+  num_threads++;
   ptr = (PARAM *) malloc(sizeof(PARAM));
-  pvunlock(p);
   if(ptr == NULL) 
   { // our server might be under attack
     // we ignore further connect requests until the load becomes bearable
     // thus we do not terminate the server
     fprintf(stderr, "pvCreateThread: out of memory s=%d\n",p->s);
     num_threads--;
+    pvunlock(p);
     int i;
     for(i=0; i<MAX_CLIENTS; i++) // remove from address table
     {
@@ -1941,6 +1941,7 @@ int pvCreateThread(PARAM *p, int s)
     //pvMainFatal(p,"out of memory");
   }
 
+  pvunlock(p);
   memcpy(ptr,p,sizeof(PARAM));
   ptr->s = s;
   ptr->mytext = new char[2];
