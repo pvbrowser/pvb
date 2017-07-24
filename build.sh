@@ -5,6 +5,11 @@
 # pvrowser/pvbrowser.pro                               #
 ########################################################
 
+echo "which qmake"
+which qmake
+echo "which qmake-qt5"
+which qmake-qt5
+
 # detect real OS on different linux distries
 export PVB_OSTYPE="unknown"
 if [ "$OSTYPE" == "linux" ]; then

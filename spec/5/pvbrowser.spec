@@ -1,14 +1,15 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   4.8.6
-Release:   0
+Version:   5.1.1
+Release:   5.1
 Group:     Productivity/Graphics/Visualization/Other
 #Copyright: GPL with the possibility of commercial use
+# for debian, ubuntu -> qt5-default qtdeclarative5-dev
 License:   GPL
 Packager:  Lehrig Software Engineering <lehrig@t-online.de>
 Vendor:    pvb
 URL:       http://pvbrowser.org
-Source:    http://pvbrowser.de/pvbrowser/tar/pvbrowser-4.tar.gz
+Source:    http://pvbrowser.de/pvbrowser/tar/pvbrowser-5.tar.gz
 
 #
 AutoReqProv: no
@@ -25,107 +26,40 @@ Provides:  librllib.so
 Provides:  librllib.so.1
 Provides:  librllib.so.1.0
 
-%if 0%{?suse_version} >= 1300
-Requires:      libqt5       Mesa       libpng  libqwt5
-BuildRequires: libQt5WebKitWidgets-devel libQt5WebKit5-devel libQt5Multimedia-devel libqt5-qttools-devel libqt5-qtbase-devel libqt5-qtsvg-devel Mesa-devel gcc-c++ python-devel readline-devel 
-%endif
-
-%if 0%{?suse_version} < 1300
 %if 0%{?suse_version}
-# Requires:  ld-linux.so.2
-Requires:  libqt4
-Requires:  Mesa
-Requires:  libpng
-Requires:  libqwt5
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ python-devel readline-devel 
-%endif
-
-%if 0%{?suse_version} >= 1100
-Requires:      libQtWebKit4
-BuildRequires: libQtWebKit-devel
-#!BuildIgnore: post-build-checks
-%endif
+Requires:      libqt5 libpng
+BuildRequires: libQt5Gui-devel libqt5-qtwebengine-devel libQt5OpenGL-devel libQt5Sql-devel libQt5PrintSupport-devel libqt5-qttools-devel libqt5-qtsvg-devel libqt5-qtmultimedia-devel gcc-c++ libreadline6 readline-devel 
 %endif
 
 %if 0%{?fedora_version}
 # Requires:  ld-linux.so.2
-Requires:  qt4
-Requires:  Mesa
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel readline-devel
-%endif
-
-%if 0%{?fedora_version} >= 14
-Requires:      qt4-webkit
-BuildRequires: qt4-webkit-devel
-#!BuildIgnore: post-build-checks
+Requires:  qt5-qtbase
+BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt5-qtwayland-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools-common qt5-qttools-static qt5-qttools qt5-qttools-devel readline-devel
 %endif
 
 %if 0%{?rhel_version}
 # Requires:  ld-linux.so.2
-Requires:  qt4 
-Requires:  Mesa
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel qt4 qt4-devel X11:QtDesktop python-devel readline-devel
+Requires:  qt5-qtbase 
+BuildRequires: gcc-c++ libstdc++-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools qt5-qttools-devel readline-devel
 %endif
 
 %if 0%{?centos_version}
 # Requires:  ld-linux.so.2
-Requires:  qt4
-Requires:  qtwebkit
-Requires:  Mesa
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
+Requires:  qt5-qtbase
 BuildRequires: pkgconfig
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel qtwebkit qtwebkit-devel qt-mobility-devel python-devel readline-devel
+BuildRequires: gcc-c++ libstdc++-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools qt5-qttools-devel readline-devel
 %endif
 
-%if 0%{?mandriva_version}
+%if 0%{?mageia}
 # Requires:  ld-linux.so.2
-Requires:  libqt4
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
-BuildRequires: libqt4-devel gcc-c++ qt4-devel python-devel readline-devel
-%endif
-
-%if 0%{?debian_version}
-# Requires:  ld-linux.so.2
-Requires:  libqt4
-Requires:  Mesa
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
-BuildRequires: libqt4-devel Mesa-devel gcc-c++ qt4-devel qt4-dev-tools python-devel readline-devel
-%endif
-
-%if 0%{?ubuntu_version}
-# Requires:  ld-linux.so.2
-Requires:  libqt4
-# Requires:  Mesa
-# Requires:  VTK
-# Requires:  tcl
-# Requires:  tk
-BuildRequires: libqt4-dev gcc-c++ python-devel readline-devel
-%endif
-
-%if 0%{?ubuntu_version} >= 1010
-BuildRequires: libqt4-webkit-dev
-#!BuildIgnore: post-build-checks
+Requires:  qt5-qtbase
+BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt5core-devel libqt5gui-devel libqt5multimedia-devel libqt5widgets-devel qtbase5-common-devel lib64qt5webengine-devel readline-devel
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}
 
 %description
- This is pvbrowser Qt4-Series:
+ This is pvbrowser Qt5-Series:
 
  pvbrowser and pvserver are
  a system for industrial process visualization.
@@ -174,9 +108,6 @@ rm -f ./pvsexample/pvsexample
 %__mkdir_p  %{buildroot}/opt/pvb/fake_qmake
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvslua
 %__mkdir_p  %{buildroot}/opt/pvb/language_bindings/lua/pvapplua
-%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/id
-%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/mt
-%__mkdir_p  %{buildroot}/opt/pvb/language_bindings/python/template
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
@@ -216,24 +147,6 @@ cp    rllib/lib/nodave.o                                  %{buildroot}/opt/pvb/r
 cp    rllib/lib/setport.o                                 %{buildroot}/opt/pvb/rllib/lib/
 cp    language_bindings/lua/pvslua/pvslua                 %{buildroot}/opt/pvb/language_bindings/lua/pvslua/
 cp    language_bindings/lua/pvapplua/pvapplua             %{buildroot}/opt/pvb/language_bindings/lua/pvapplua/
-cp    language_bindings/python/id/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/python/id/_rllib.so               %{buildroot}/opt/pvb/language_bindings/python/id/
-cp    language_bindings/README_PYTHON.txt                 %{buildroot}/opt/pvb/language_bindings/
-cp    language_bindings/python/mt/pv.py                   %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/_pv.so                  %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/rllib.py                %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/mt/_rllib.so               %{buildroot}/opt/pvb/language_bindings/python/mt/
-cp    language_bindings/python/template/main.cpp          %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/Makefile          %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/mask1.cpp         %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/mask1.py          %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/mask1_slots.h     %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvapp.h           %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvs_init.py       %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvs.pro           %{buildroot}/opt/pvb/language_bindings/python/template/
-cp    language_bindings/python/template/pvs.pvproject     %{buildroot}/opt/pvb/language_bindings/python/template/
 cp    designer/plugins/libpvb_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.so          %{buildroot}/opt/pvb/designer/plugins/
 cp    designer/README.txt                                 %{buildroot}/opt/pvb/designer/
@@ -288,7 +201,7 @@ Group:       Productivity/Graphics/Visualization/Other
 License:     GPL
 
 %description devel
- This is pvbrowser Qt4-Series:
+ This is pvbrowser Qt5-Series:
 
  pvbrowser and pvserver are
  a system for industrial process visualization.
@@ -299,13 +212,13 @@ License:     GPL
  pvbrowser and how interaction is done.
  Your task will be to implement your pvserver.
  This is done by creating your pvserver with pvdevelop.
- pvprowser is a registrated Trademark of S. Lehrig 
+ pvb is a registrated Trademark of S. Lehrig 
 
  Commands:
    pvbrowser
    pvdevelop
 
-%postin
+%post
 /sbin/ldconfig
 chmod ugoa+rw /srv/automation/mbx
 chmod ugoa+rw /srv/automation/shm
@@ -324,10 +237,6 @@ chmod ugoa+rw /srv/automation/log
 %dir /opt/pvb/language_bindings/lua
 %dir /opt/pvb/language_bindings/lua/pvapplua
 %dir /opt/pvb/language_bindings/lua/pvslua
-%dir /opt/pvb/language_bindings/python
-%dir /opt/pvb/language_bindings/python/id
-%dir /opt/pvb/language_bindings/python/mt
-%dir /opt/pvb/language_bindings/python/template
 %dir /opt/pvb/pvbrowser
 %dir /opt/pvb/pvdevelop
 %dir /opt/pvb/pvserver
@@ -480,67 +389,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/rllib/lib/rlsvgvdi.h
 /opt/pvb/language_bindings/lua/pvslua/pvslua
 /opt/pvb/language_bindings/lua/pvapplua/pvapplua
-/opt/pvb/language_bindings/python/id/pv.py
-/opt/pvb/language_bindings/python/id/_pv.so
-/opt/pvb/language_bindings/python/id/rllib.py
-/opt/pvb/language_bindings/python/id/_rllib.so
-/opt/pvb/language_bindings/README_PYTHON.txt
-/opt/pvb/language_bindings/python/mt/pv.py
-/opt/pvb/language_bindings/python/mt/_pv.so
-/opt/pvb/language_bindings/python/mt/rllib.py
-/opt/pvb/language_bindings/python/mt/_rllib.so
-/opt/pvb/language_bindings/python/template/main.cpp
-/opt/pvb/language_bindings/python/template/Makefile  
-/opt/pvb/language_bindings/python/template/mask1.cpp  
-/opt/pvb/language_bindings/python/template/mask1.py  
-/opt/pvb/language_bindings/python/template/mask1_slots.h  
-/opt/pvb/language_bindings/python/template/pvapp.h  
-/opt/pvb/language_bindings/python/template/pvs_init.py  
-/opt/pvb/language_bindings/python/template/pvs.pro  
-/opt/pvb/language_bindings/python/template/pvs.pvproject
 /opt/pvb/designer/plugins/libpvb_designer_plugin.so
 /opt/pvb/designer/plugins/libqwt_designer_plugin.so
 /opt/pvb/designer/README.txt
-%if 0%{?fedora_version}
-/opt/pvb/language_bindings/python/id/pv.pyc
-/opt/pvb/language_bindings/python/id/pv.pyo
-/opt/pvb/language_bindings/python/id/rllib.pyc
-/opt/pvb/language_bindings/python/id/rllib.pyo
-/opt/pvb/language_bindings/python/mt/pv.pyc
-/opt/pvb/language_bindings/python/mt/pv.pyo
-/opt/pvb/language_bindings/python/mt/rllib.pyc
-/opt/pvb/language_bindings/python/mt/rllib.pyo
-/opt/pvb/language_bindings/python/template/mask1.pyc
-/opt/pvb/language_bindings/python/template/mask1.pyo
-/opt/pvb/language_bindings/python/template/pvs_init.pyc
-/opt/pvb/language_bindings/python/template/pvs_init.pyo
-%endif
-%if 0%{?rhel_version}
-/opt/pvb/language_bindings/python/id/pv.pyc
-/opt/pvb/language_bindings/python/id/pv.pyo
-/opt/pvb/language_bindings/python/id/rllib.pyc
-/opt/pvb/language_bindings/python/id/rllib.pyo
-/opt/pvb/language_bindings/python/mt/pv.pyc
-/opt/pvb/language_bindings/python/mt/pv.pyo
-/opt/pvb/language_bindings/python/mt/rllib.pyc
-/opt/pvb/language_bindings/python/mt/rllib.pyo
-/opt/pvb/language_bindings/python/template/mask1.pyc
-/opt/pvb/language_bindings/python/template/mask1.pyo
-/opt/pvb/language_bindings/python/template/pvs_init.pyc
-/opt/pvb/language_bindings/python/template/pvs_init.pyo
-%endif
-%if 0%{?centos_version}
-/opt/pvb/language_bindings/python/id/pv.pyc
-/opt/pvb/language_bindings/python/id/pv.pyo
-/opt/pvb/language_bindings/python/id/rllib.pyc
-/opt/pvb/language_bindings/python/id/rllib.pyo
-/opt/pvb/language_bindings/python/mt/pv.pyc
-/opt/pvb/language_bindings/python/mt/pv.pyo
-/opt/pvb/language_bindings/python/mt/rllib.pyc
-/opt/pvb/language_bindings/python/mt/rllib.pyo
-/opt/pvb/language_bindings/python/template/mask1.pyc
-/opt/pvb/language_bindings/python/template/mask1.pyo
-/opt/pvb/language_bindings/python/template/pvs_init.pyc
-/opt/pvb/language_bindings/python/template/pvs_init.pyo
-%endif
 

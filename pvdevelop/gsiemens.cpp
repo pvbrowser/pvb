@@ -219,7 +219,7 @@ static void generate(const char *name)
       cptr = strstr(line,"rack_slot=");
       if(cptr!=NULL) sscanf(cptr,"rack_slot=%d",&rack_slot);
       
-      if(adr[0] == '\0' || plc_type == '\0' || slave < 0)
+      if(adr[0] == '\0' || plc_type[0] == '\0' || slave < 0)
       {
         printf("parameter missing in: %s\n",line);
         fclose(fp);

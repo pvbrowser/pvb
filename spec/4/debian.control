@@ -1,0 +1,52 @@
+Source: pvbrowser-devel
+Section: unknown  
+Priority: optional
+Maintainer: Arian Mares <arian.mares@bluenote.ro>
+Build-Depends: debhelper (>=9) 
+Standards-Version: 3.7.3
+
+Package: pvbrowser-devel
+Architecture: any
+Depends: g++,libqt4-dev, libqt4-opengl, libqt4-opengl-dev, libqt4-webkit ,xterm, ${misc:Depends}
+Description: Package pvbrowser + pvdevelop + rlsvgcat + libraries
+  This is pvbrowser Qt4-Series:
+ .
+  pvbrowser and pvserver are
+  a system for industrial process visualization.
+  ProcessViewBrowser is based on Qt http://www.trolltech.com
+  It is capable of displaying most Qt widgets and some more.
+  Normally you will not have to modify pvbrowser.
+  pvserver defines everything that is displayed within
+  pvbrowser and how interaction is done.
+  Your task will be to implement your pvserver.
+  This is done by creating your pvserver with pvdevelop.
+  pvprowser is a registrated Trademark of Sebastian Lehrig
+ .
+  Commands:
+    pvbrowser
+    pvdevelop
+ .
+ %postin
+ ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      /usr/lib/libpvsid.so
+ ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      /usr/lib/libpvsid.so.1
+ ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      /usr/lib/libpvsid.so.1.0
+ ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      /usr/lib/libpvsid.so.1.0.0
+ ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      /usr/lib/libpvsmt.so
+ ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      /usr/lib/libpvsmt.so.1
+ ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      /usr/lib/libpvsmt.so.1.0
+ ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      /usr/lib/libpvsmt.so.1.0.0
+ ln -sf /opt/pvb/pvbrowser/pvbrowser             /usr/bin/pvbrowser
+ ln -sf /opt/pvb/pvdevelop/pvdevelop             /usr/bin/pvdevelop
+ ln -sf /opt/pvb/start_pvbapp/start_pvbapp       /usr/bin/start_pvbapp
+ ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat            /usr/bin/rlsvgcat
+ ln -sf /opt/pvb/rllib/rlfind/rlfind             /usr/bin/rlfind
+ ln -sf /opt/pvb/rllib/rlhistory/rlhistory       /usr/bin/rlhistory
+ ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     /usr/lib/librllib.so
+ ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     /usr/lib/librllib.so.1
+ ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     /usr/lib/librllib.so.1.0
+ ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     /usr/lib/librllib.so.1.0.0
+ /sbin/ldconfig
+ chmod ugoa+rw /srv/automation/mbx
+ chmod ugoa+rw /srv/automation/shm
+ chmod ugoa+rw /srv/automation/log
+ .

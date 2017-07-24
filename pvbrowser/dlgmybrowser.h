@@ -18,7 +18,7 @@
 #ifndef NO_WEBKIT
 
 #ifdef USE_WEBKIT
-#include <QWebView>
+#include <QWebEngineView>
 #endif
 
 #include "mainwindow.h"
@@ -48,7 +48,7 @@ public slots:
     void slotUnsupportedContent(QNetworkReply *reply);
     void slotLoadFinished(bool ok);
 protected:
-    virtual QWebView *createWindow(QWebPage::WebWindowType type);
+    virtual QWebEngineView *createWindow(QWebEnginePage::WebWindowType type);
 private:
     QString homeurl, homepath, anchor;
     int *s, id;

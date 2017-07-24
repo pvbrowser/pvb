@@ -5,7 +5,7 @@ TEMPLATE         = lib
 INCLUDEPATH     += ../pvbrowser 
 TARGET           = pvb_designer_plugin
 DESTDIR          = ../plugins
-lessThan(QT_MAJOR_VERSION, 5) {
+lessThan(QT_MAJOR_VERSION, 5.4) {
   CONFIG        += designer plugin release
 }else{
   QT            += designer widgets webenginewidgets

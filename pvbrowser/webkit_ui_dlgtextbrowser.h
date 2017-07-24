@@ -22,7 +22,7 @@
 #ifdef NO_WEBKIT
 #include <QTextBrowser>
 #else
-#include <QWebView>
+#include <QWebEngineView>
 #endif
 #include <QVBoxLayout>
 
@@ -40,9 +40,9 @@ public:
     QSpacerItem *spacerItem;
     QPushButton *pushButtonClose;
 #ifdef NO_WEBKIT
-    QTextBrowser *textBrowser;
+    QTextBrowser   *textBrowser;
 #else    
-    QWebView     *textBrowser;
+    QWebEngineView *textBrowser;
 #endif    
 
     void setupUi(QDialog *DialogTextBrowser)
@@ -95,7 +95,7 @@ public:
 #ifdef NO_WEBKIT
     textBrowser = new QTextBrowser(DialogTextBrowser);
 #else    
-    textBrowser = new QWebView(DialogTextBrowser);
+    textBrowser = new QWebEngineView(DialogTextBrowser);
 #endif
     textBrowser->setObjectName(QString::fromUtf8("textBrowser"));
 

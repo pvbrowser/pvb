@@ -1,0 +1,212 @@
+#!/usr/bin/make -f
+# Sample debian/rules that uses debhelper.
+# GNU copyright 1997 to 1999 by Joey Hess.
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+# This is the debhelper compatibility version to use.
+# export DH_COMPAT=5
+
+CFLAGS = -g
+ifneq (,$(findstring noopt,$(DEB_BUILD_OPTIONS)))
+CFLAGS += -O0
+else
+CFLAGS += -O2
+endif
+
+build: build-stamp
+build-stamp:
+	# echo 9 > $(CURDIR)/debian/compat
+	dh_testdir
+
+	# Add here commands to compile the package.
+	rm -f ./pvsexample/*.o
+	rm -f ./pvsexample/pvsexample
+	./build.sh all buildservice
+	./build.sh all buildservice
+	# --- end custom part for compiling
+
+	touch build-stamp
+
+clean:
+	dh_testdir
+	dh_testroot
+	rm -f build-stamp
+
+	# Add here commands to clean up after the build process.
+	./clean.sh
+	# --- end custom part for cleaning up
+
+	dh_clean
+
+install: build
+
+	dh_testdir
+	dh_testroot
+	#rl dh_clean -k
+	dh_prep
+	dh_installdirs
+
+	# Add here commands to install the package
+	# The DESTDIR Has To Be Exactly /usr/src/packages/BUILD/debian/debian/<nameOfPackage>
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/doc
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvsexample
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvbrowser
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvbrowser/widget_plugins
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvdevelop
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/fake_qmake
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/designer/plugins
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/lib
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlsvg
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlhistory
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlhtml2pdf
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlfind
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/lua/pvslua
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/lua/pvapplua
+	# mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/id
+	# mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/mt
+	# mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template
+	# mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/usr/lib
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/usr/bin
+	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin
+
+	cp -r doc						 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp -r pvsexample					  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    LICENSE.GPL					 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    logo1.png					   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    custom.bmp					  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    gamsleiten.png					  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    pvbrowser.desktop				   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    pvdevelop.desktop				   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
+	cp    pvserver/libpvsid.so.1.0.0			  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/libpvsmt.so.1.0.0			  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/wthread.h				  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/BMP.h				      $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/vmsglext.h				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/pvbImage.h				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/vmsgl.h				    $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvserver/processviewserver.h			$(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvserver/
+	cp    pvbrowser/pvbrowser				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvbrowser/
+	cp    pvdevelop/pvdevelop				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvdevelop/
+	cp    fake_qmake/fake_qmake				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/fake_qmake/
+	cp    browserplugin/libpvbrowser.so				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/libpvbrowser.so
+	cp    browserplugin/pvbrowserplugin-example.html				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/pvbrowserplugin-example.html
+	cp    start_pvbapp/start_pvbapp			   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/
+	cp    start_pvbapp/README.txt			     $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/
+	cp    start_pvbapp/example.ini.linux		      $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/example.ini
+	cp    start_pvbapp/start_if_not_already_running.sh	$(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/
+	cp    rllib/rlsvg/rlsvgcat				$(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlsvg/
+	cp    rllib/rlfind/rlfind				$(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlfind/
+	cp    rllib/rlhistory/rlhistory			   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlhistory/
+	cp    rllib/rlhtml2pdf/rlhtml2pdf			   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/rlhtml2pdf/
+	cp    rllib/lib/librllib.so.1.0.0			 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/lib/
+	cp    rllib/lib/*.h				       $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/lib/
+	cp    rllib/lib/nodave.o				  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/lib/
+	cp    rllib/lib/setport.o				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/rllib/lib/
+	#cp    language_bindings/python/id/pv.py		   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/id/
+	#cp    language_bindings/python/id/_pv.so		  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/id/
+	#cp    language_bindings/python/id/rllib.py		$(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/id/
+	#cp    language_bindings/python/id/_rllib.so	       $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/id/
+	#cp    language_bindings/README_PYTHON.txt		 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/
+	#cp    language_bindings/python/mt/pv.py		   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/mt/
+	#cp    language_bindings/python/mt/_pv.so		  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/mt/
+	#cp    language_bindings/python/mt/rllib.py		$(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/mt/
+	#cp    language_bindings/python/mt/_rllib.so	       $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/mt/
+	#cp    language_bindings/python/template/main.cpp	  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/Makefile	  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/mask1.cpp	 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/mask1.py	  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/mask1_slots.h     $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/pvapp.h	   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/pvs_init.py       $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/pvs.pro	   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	#cp    language_bindings/python/template/pvs.pvproject     $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/python/template/
+	cp    language_bindings/lua/pvslua/pvslua                 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/lua/pvslua/
+	cp    language_bindings/lua/pvapplua/pvapplua             $(CURDIR)/debian/pvbrowser-devel/opt/pvb/language_bindings/lua/pvapplua/
+
+	cp    designer/plugins/libpvb_designer_plugin.so	  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/designer/plugins/
+	cp    designer/plugins/libqwt_designer_plugin.so	  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/designer/plugins/
+	cp    designer/README.txt				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/designer/
+	#cp    browserplugin/libpvbrowser.so		       $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/
+	#cp    browserplugin/pvbrowserplugin-example.html	  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/
+	#cp    browserplugin/README.txt			    $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/
+
+	ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsid.so
+	ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsid.so.1
+	ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsid.so.1.0
+	ln -sf /opt/pvb/pvserver/libpvsid.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsid.so.1.0.0
+
+	ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsmt.so
+	ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsmt.so.1
+	ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsmt.so.1.0
+	ln -sf /opt/pvb/pvserver/libpvsmt.so.1.0.0      $(CURDIR)/debian/pvbrowser-devel/usr/lib/libpvsmt.so.1.0.0
+
+	ln -sf /opt/pvb/pvbrowser/pvbrowser	            $(CURDIR)/debian/pvbrowser-devel/usr/bin/pvbrowser
+	#ln -sf /opt/pvb/pvdevelop/pvdevelop	            $(CURDIR)/debian/pvbrowser-devel/usr/bin/pvdevelop
+	cp     pvdevelop/pvdevelop.sh     	            $(CURDIR)/debian/pvbrowser-devel/usr/bin/pvdevelop
+	ln -sf /opt/pvb/fake_qmake/fake_qmake	          $(CURDIR)/debian/pvbrowser-devel/usr/bin/fake_qmake
+	ln -sf /opt/pvb/start_pvbapp/start_pvbapp       $(CURDIR)/debian/pvbrowser-devel/usr/bin/start_pvbapp
+	ln -sf /opt/pvb/rllib/rlsvg/rlsvgcat	          $(CURDIR)/debian/pvbrowser-devel/usr/bin/rlsvgcat
+	ln -sf /opt/pvb/rllib/rlfind/rlfind	            $(CURDIR)/debian/pvbrowser-devel/usr/bin/rlfind
+	ln -sf /opt/pvb/rllib/rlhistory/rlhistory       $(CURDIR)/debian/pvbrowser-devel/usr/bin/rlhistory
+	ln -sf /opt/pvb/rllib/rlhtml2pdf/rlhtml2pdf     $(CURDIR)/debian/pvbrowser-devel/usr/bin/rlhtml2pdf
+	ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua       $(CURDIR)/debian/pvbrowser-devel/usr/bin/pvslua  
+	ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua   $(CURDIR)/debian/pvbrowser-devel/usr/bin/pvapplua 
+
+	ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     $(CURDIR)/debian/pvbrowser-devel/usr/lib/librllib.so
+	ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     $(CURDIR)/debian/pvbrowser-devel/usr/lib/librllib.so.1
+	ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     $(CURDIR)/debian/pvbrowser-devel/usr/lib/librllib.so.1.0
+	ln -sf /opt/pvb/rllib/lib/librllib.so.1.0.0     $(CURDIR)/debian/pvbrowser-devel/usr/lib/librllib.so.1.0.0
+
+	mkdir -p $(CURDIR)/debian/pvbrowser-devel/srv/automation/shm
+	mkdir -p $(CURDIR)/debian/pvbrowser-devel/srv/automation/mbx
+	mkdir -p $(CURDIR)/debian/pvbrowser-devel/srv/automation/log
+
+	# make install DESTDIR=/usr/src/packages/BUILD/debian/ace
+	# --- end custom part for installing
+	echo "pvbrowser-devel source: debian-files-list-in-source"                          > $(CURDIR)/debian/source.lintian-overrides
+	echo "# Upstream distributes it like this, repacking would be overkill though, so" >> $(CURDIR)/debian/source.lintian-overrides
+	echo "# tell lintian to not complain:"                                             >> $(CURDIR)/debian/source.lintian-overrides
+	echo "pvbrowser-devel source: configure-generated-file-in-source config.cache"     >> $(CURDIR)/debian/source.lintian-overrides
+
+# Build architecture-independent files here.
+binary-indep: build install
+	# We have nothing to do by default.
+
+# Build architecture-dependent files here.
+binary-arch: build install
+	dh_testdir
+	dh_testroot
+#       dh_installdebconf
+	dh_installdocs
+	dh_installexamples
+	dh_installmenu
+#       dh_installlogrotate
+#       dh_installemacsen
+#       dh_installpam
+#       dh_installmime
+#       dh_installinit
+	dh_installcron
+	dh_installman
+	dh_installinfo
+#       dh_undocumented
+	dh_installchangelogs
+	dh_link
+	dh_strip
+	dh_compress
+	dh_fixperms
+#       dh_makeshlibs
+	dh_installdeb
+#       dh_perl
+#	dh_shlibdeps
+	dh_gencontrol
+	dh_md5sums
+	dh_builddeb
+
+binary: binary-indep binary-arch
+.PHONY: build clean binary-indep binary-arch binary install

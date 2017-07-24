@@ -13,7 +13,7 @@ lessThan(QT_MAJOR_VERSION, 5) {
 #  QT += webenginewidgets widgets
 #}    
 }else{
-  QT += webkitwidgets widgets
+  QT += webenginewidgets widgets
 }    
 
 
