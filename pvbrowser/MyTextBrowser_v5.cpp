@@ -140,14 +140,14 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   if(opt.enable_webkit_plugins)
   {
     if(opt.arg_debug) printf("enable_webkit_plugins\n");
-    //v5diff settings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
-    //v5diff settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+    settings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);     // reenabled 15 Okt 2017
+    settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);  // reenabled 15 Okt 2017
   }
   else
   {
     if(opt.arg_debug) printf("do not enable_webkit_plugins\n");
-    //v5diff settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
-    //v5diff settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
+    settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);    // reenabled 15 Okt 2017
+    settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false); // reenabled 15 Okt 2017
   }
 #ifdef USE_MAEMO  
   QString    txt("data:text/css;charset=utf-8;base64,");

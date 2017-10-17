@@ -116,9 +116,11 @@ bool MyScrollArea::event(QEvent *event)
       else if(sf > 1.01f) percent += 5;
       if(percent<10)       percent=10;
       else if(percent>250) percent=250;
+#ifndef USE_ANDROID
       char buf[80];
       sprintf(buf,"slider(%d,%d)\n",0, (int) (sf*100));
       tcp_send(&mw->pvbtab[mw->currentTab].s,buf,strlen(buf));
+#endif
       //char buf[1024];
       //sprintf(buf,"percent=%d old_percent=%d scaleFactor=%f", percent, old_percent, pinch->scaleFactor());
       //mw->statusBar()->showMessage(buf);
@@ -1669,6 +1671,12 @@ void MainWindow::keyPressEvent(QKeyEvent *e)
     slotToolbar();
     return;
   }
+  else if(e->modifiers() == Qt::NoModifier && key == Qt::Key_Home)
+  {
+    modifier = 1;
+    slotGohome();
+    return;
+  }
   else if(e->modifiers() == Qt::ShiftModifier)
   {
     modifier = 4;
@@ -1783,4 +1791,3 @@ void MainWindow::hideBusyWidget()
   busyWidgetTimer->stop();
   busyWidget->hide();
 }
-

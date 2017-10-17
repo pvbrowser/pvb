@@ -13,7 +13,7 @@ if [ "${HOSTTYPE}" = "x86_64" ]; then
   echo "Enter root password for installation"
   su -c "cd pvb; ./install.sh"
   rm -rf pvb/
-  echo "If you have not installed Qt4 you will have todo it"
+  echo "If you have not installed Qt5 you will have todo it"
   echo "now trying to run /opt/pvb/pvsexample/pvsexample"
   cd /opt/pvb/pvsexample
   xterm -e "./pvsexample -sleep=100" &

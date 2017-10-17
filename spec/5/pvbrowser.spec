@@ -1,6 +1,6 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   5.1.1
+Version:   5.1.2
 Release:   5.1
 Group:     Productivity/Graphics/Visualization/Other
 #Copyright: GPL with the possibility of commercial use
@@ -9,7 +9,7 @@ License:   GPL
 Packager:  Lehrig Software Engineering <lehrig@t-online.de>
 Vendor:    pvb
 URL:       http://pvbrowser.org
-Source:    http://pvbrowser.de/pvbrowser/tar/pvbrowser-5.tar.gz
+Source:    http://pvbrowser.de/pvbrowser/tar/pvb5/pvbrowser-5.tar.gz
 
 #
 AutoReqProv: no
@@ -111,7 +111,7 @@ rm -f ./pvsexample/pvsexample
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
-cp    pvbrowser.spec                                      %{_sourcedir}/
+cp    spec/5/pvbrowser.spec                               %{_sourcedir}/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
 cp    logo1.png                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/

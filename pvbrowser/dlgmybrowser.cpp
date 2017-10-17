@@ -134,14 +134,14 @@ dlgMyBrowser::dlgMyBrowser(int *sock, int ident, QWidget *parent, const char *ma
   if(opt.enable_webkit_plugins)
   {
     if(opt.arg_debug) printf("enable_webkit_plugins\n");
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+    form->browser->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, true);     // reenabled 15 Okt 2017
+    form->browser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);  // reenabled 15 Okt 2017
   }
   else
   {
     if(opt.arg_debug) printf("do not enable_webkit_plugins\n");
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
-    //v5diff form->browser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false);
+    form->browser->settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);    // reenabled 15 Okt 2017
+    form->browser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false); // reenabled 15 Okt 2017
   }
 #endif
   if(manual == NULL) return;

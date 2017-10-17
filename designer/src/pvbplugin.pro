@@ -5,7 +5,7 @@ TEMPLATE         = lib
 INCLUDEPATH     += ../pvbrowser 
 TARGET           = pvb_designer_plugin
 DESTDIR          = ../plugins
-lessThan(QT_MAJOR_VERSION, 5.4) {
+lessThan(QT_MAJOR_VERSION, 5) {
   CONFIG        += designer plugin release
 }else{
   QT            += designer widgets webenginewidgets
@@ -24,3 +24,4 @@ win32-g++:LIBS  += release/libpvbdummy.a
 HEADERS         += pvb_designer_plugin.h
 SOURCES         += pvb_designer_plugin.cpp
 RESOURCES       += pvb_designer_plugin.qrc
+

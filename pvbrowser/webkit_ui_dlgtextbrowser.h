@@ -19,7 +19,7 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QSpacerItem>
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
 #include <QTextBrowser>
 #else
 #include <QWebEngineView>
@@ -39,7 +39,7 @@ public:
     QPushButton *pushButtonFind;
     QSpacerItem *spacerItem;
     QPushButton *pushButtonClose;
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
     QTextBrowser   *textBrowser;
 #else    
     QWebEngineView *textBrowser;
@@ -92,7 +92,7 @@ public:
 
     vboxLayout->addLayout(hboxLayout);
 
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
     textBrowser = new QTextBrowser(DialogTextBrowser);
 #else    
     textBrowser = new QWebEngineView(DialogTextBrowser);

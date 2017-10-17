@@ -26,6 +26,7 @@
 #ifndef MY_NO_WEBKIT
 #include <QWebEngineView>
 #include <QWebEnginePage>
+#include <QWebEngineSettings>
 //todo: will come in 5.6  #include <QWebEngineUrlRequestInterceptor>
 #endif
 

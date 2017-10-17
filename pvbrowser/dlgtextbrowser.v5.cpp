@@ -16,6 +16,9 @@
 #include "pvdefine.h"
 #include "dlgtextbrowser.h"
 #include "webkit_ui_dlgtextbrowser.h"
+#ifndef USE_ANDROID
+#include <QWebEngineSettings>
+#endif
 #include <QPushButton>
 #include <QInputDialog>
 #include <QLineEdit>
@@ -39,6 +42,9 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
   
   form = new Ui_DialogTextBrowser;
   form->setupUi(this);
+#ifndef USE_ANDROID
+  form->textBrowser->settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+#endif
 
   if(manual == NULL)
   {
@@ -61,7 +67,7 @@ dlgTextBrowser::dlgTextBrowser(const char *manual)
     // this is damn slow on windows begin
 #ifdef PVDEVELOP
     QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
     form->textBrowser->setSource(QUrl::fromLocalFile(cmd));
 #else
     form->textBrowser->load(QUrl::fromLocalFile(cmd));
@@ -94,7 +100,7 @@ void dlgTextBrowser::slotFind()
 {
   find = 1;
   QString pattern = form->lineEditPattern->text();
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
   form->textBrowser->find(pattern);
 #else
   QWebEnginePage *page = form->textBrowser->page();
@@ -111,7 +117,7 @@ void dlgTextBrowser::slotBack()
     find = 0;
     return;
   }
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
   form->textBrowser->backward();
 #else
   form->textBrowser->back();
@@ -120,7 +126,7 @@ void dlgTextBrowser::slotBack()
 
 void dlgTextBrowser::slotHome()
 {
-#ifdef NO_WEBKIT
+#ifdef USE_ANDROID
   if(homeIsSet) form->textBrowser->setSource(QUrl(home));
 #else
   if(homeIsSet) form->textBrowser->load(QUrl(home));
