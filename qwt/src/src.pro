@@ -8,10 +8,8 @@
 ##############################################
 
 # qmake project file for building the qwt libraries
-lessThan(QT_MAJOR_VERSION, 5) {
-#}else{
-#  QT += webenginewidgets widgets
-#}    
+lessThan(QT_VERSION, 5.5.0) {
+  QT += webkitwidgets widgets
 }else{
   QT += webenginewidgets widgets
 }    

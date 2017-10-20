@@ -1,6 +1,6 @@
 #QT         += opengl svg webkit
 #QT         += printsupport uitools webkitwidgets widgets opengl svg webkit printsupport
-lessThan(QT_MAJOR_VERSION, 5) {
+lessThan(QT_VERSION, 5.5.0) {
   QT         += opengl svg webkit
   CONFIG     += uitools warn_on release
 }else{

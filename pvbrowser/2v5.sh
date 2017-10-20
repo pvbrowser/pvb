@@ -9,7 +9,7 @@ cp dlgtextbrowser.v5.cpp         dlgtextbrowser.cpp
 cp pvglwidget.v5.h               pvglwidget.h
 cp pvglwidget.v5.cpp             pvglwidget.cpp
 
-qmake-qt5 pvbrowser.pro
+../qmake.sh pvbrowser.pro
 make clean
 make
 

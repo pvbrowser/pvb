@@ -38,6 +38,7 @@ echo SWIGDIR=%SWIGDIR%
 echo PYDIR=%PYDIR%
 echo PATH=%PATH%
 echo now run: 
-echo build.bat  // if you want to use Qt4
-echo build5.bat // if you want to use Qt5
+echo build.bat  // if you want to use MinGW for complete 32 bit development system
+echo and 
+echo for 64 Bit pvbrowser client with MS Visual C++ see pvb/win-msvc/build.bat
 

@@ -34,10 +34,11 @@ mingw32-make.exe
 cd ..                                                                      
 rem pause                                                                  
                                                                            
-cd browserplugin                                                           
-%QTDIR%\bin\qmake pvpluginmain.pro -o Makefile                           
-mingw32-make.exe                                                                
-cd ..                                                                      
+echo Netscape plugins are not supported in Qt5
+rem cd browserplugin                                                           
+rem %QTDIR%\bin\qmake pvpluginmain.pro -o Makefile                           
+rem mingw32-make.exe                                                                
+rem cd ..                                                                      
 rem pause                                                                  
                                                                            
 cd pvdevelop                                                               
@@ -103,7 +104,7 @@ cd ..
 %mingwdir%\bin\gcc.exe nodave.c -o nodave_mingw.o -c -D_WIN32 -DBCCWIN -I%mingwdir%\include
                                                                            
 copy pvbrowser\release\pvbrowser.exe                             bin\pvbrowser.exe                               
-copy browserplugin\release\nppvbrowser.dll                       bin\nppvbrowser.dll                             
+rem copy browserplugin\release\nppvbrowser.dll                       bin\nppvbrowser.dll                             
 copy pvdevelop\release\pvdevelop.exe                             bin\pvdevelop.exe                               
 copy pvserver\release\libserverlib.a                             bin\libserverlib.a                              
 copy rlsvg\release\rlsvgcat.exe                                  bin\rlsvgcat.exe                                
@@ -118,26 +119,26 @@ copy ..\qwt\designer\plugins\designer\libqwt_designer_plugin5.a  bin\plugins\des
 copy ..\designer\plugins\pvb_designer_plugin.dll                 bin\plugins\designer\pvb_designer_plugin.dll    
 copy ..\designer\plugins\libpvb_designer_plugin.a                bin\plugins\designer\libpvb_designer_plugin.a   
 copy bin\plugins\designer\*designer_plugin*                      %QTDIR%\plugins\designer\                     
-copy %MINGWDIR%\bin\mingwm10.dll                                 bin\
-copy %MINGWDIR%\bin\libgcc_s_dw2-1.dll                           bin\
-copy %QTDIR%\bin\phonon4.dll                                     bin\
-copy %QTDIR%\bin\QtCLucene4.dll                                  bin\
-copy %QTDIR%\bin\QtCore4.dll                                     bin\
-copy %QTDIR%\bin\QtDeclarative4.dll                              bin\
-copy %QTDIR%\bin\QtGui4.dll                                      bin\
-copy %QTDIR%\bin\QtHelp4.dll                                     bin\
-copy %QTDIR%\bin\QtMultimedia4.dll                               bin\
-copy %QTDIR%\bin\QtNetwork4.dll                                  bin\
-copy %QTDIR%\bin\QtOpenGL4.dll                                   bin\
-copy %QTDIR%\bin\QtScript4.dll                                   bin\
-copy %QTDIR%\bin\QtScriptTools4.dll                              bin\
-copy %QTDIR%\bin\QtSql4.dll                                      bin\
-copy %QTDIR%\bin\QtSvg4.dll                                      bin\
-copy %QTDIR%\bin\QtTest4.dll                                     bin\
-copy %QTDIR%\bin\QtWebKit4.dll                                   bin\
-copy %QTDIR%\bin\QtXml4.dll                                      bin\
-copy %QTDIR%\bin\QtXmlPatterns4.dll                              bin\
-
+rem copy %MINGWDIR%\bin\mingwm10.dll                                 bin\
+rem copy %MINGWDIR%\bin\libgcc_s_dw2-1.dll                           bin\
+rem copy %QTDIR%\bin\phonon4.dll                                     bin\
+rem copy %QTDIR%\bin\QtCLucene4.dll                                  bin\
+rem copy %QTDIR%\bin\QtCore4.dll                                     bin\
+rem copy %QTDIR%\bin\QtDeclarative4.dll                              bin\
+rem copy %QTDIR%\bin\QtGui4.dll                                      bin\
+rem copy %QTDIR%\bin\QtHelp4.dll                                     bin\
+rem copy %QTDIR%\bin\QtMultimedia4.dll                               bin\
+rem copy %QTDIR%\bin\QtNetwork4.dll                                  bin\
+rem copy %QTDIR%\bin\QtOpenGL4.dll                                   bin\
+rem copy %QTDIR%\bin\QtScript4.dll                                   bin\
+rem copy %QTDIR%\bin\QtScriptTools4.dll                              bin\
+rem copy %QTDIR%\bin\QtSql4.dll                                      bin\
+rem copy %QTDIR%\bin\QtSvg4.dll                                      bin\
+rem copy %QTDIR%\bin\QtTest4.dll                                     bin\
+rem copy %QTDIR%\bin\QtWebKit4.dll                                   bin\
+rem copy %QTDIR%\bin\QtXml4.dll                                      bin\
+rem copy %QTDIR%\bin\QtXmlPatterns4.dll                              bin\
+windeployqt bin/pvbrowser.exe
 
 echo ##############################################################################
 echo # run me again in order to verify that no errors occured                     #

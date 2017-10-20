@@ -7,7 +7,7 @@ CONFIG       += warn_on release
 #DEFINES     += NO_QWT
 #mobile devices without opengl
 QT           += opengl
-lessThan(QT_MAJOR_VERSION, 5) {
+lessThan(QT_VERSION, 5.5.0) {
   QT         += xml svg webkit network
 }else{
   QT         += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network printsupport
@@ -21,14 +21,11 @@ android-g++ {
   DEFINES    += USE_ANDROID
   DEFINES    += USE_MAEMO
   QT         -= opengl
-  lessThan(QT_MAJOR_VERSION, 5) {
-  }else{
-    DEFINES      += NO_WEBKIT
-    QT           -= webkit
-    QT           -= webkitwidgets
-    HEADERS      -= dlgmybrowser.h
-    SOURCES      -= dlgmybrowser.cpp
-  }
+  DEFINES    += NO_WEBKIT
+  QT         -= webkit
+  QT         -= webkitwidgets
+  HEADERS    -= dlgmybrowser.h
+  SOURCES    -= dlgmybrowser.cpp
 }  
 symbian:CONFIG += USE_SYMBIAN
 USE_SYMBIAN {
