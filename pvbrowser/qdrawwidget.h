@@ -220,6 +220,7 @@ private:
     char     floatFormat[80];
     int      svg_draw_request_by_pvb;
     QTimer   timer;
+    QPixmap  *serverPixmap;
 
 public slots:
     void     slotWebkitSvgChanged(const QRect &dirtyRect);

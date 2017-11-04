@@ -240,6 +240,7 @@ QDrawWidget::QDrawWidget( QWidget *parent, const char *name, int wFlags, int *so
 {
   if(opt.arg_debug) printf("QDrawWidget::QDrawWidget\n");
   if(name != NULL) setObjectName(name);
+  serverPixmap = NULL;
   setAutoFillBackground(false); // we draw ourself useing the buffer
 #ifdef NO_WEBKIT  
   opt.use_webkit_for_svg = 0;
@@ -303,6 +304,7 @@ QDrawWidget::~QDrawWidget()
 {
   if(fp != NULL) fclose(fp);
   if(svgAnimator != NULL) delete svgAnimator;
+  if(serverPixmap != NULL) delete serverPixmap;
   delete buffer;
 }
 
@@ -928,7 +930,17 @@ void QDrawWidget::paintEvent(QPaintEvent *e)
            e->rect().x(), e->rect().y(), e->rect().width(), e->rect().height(), svg_draw_request_by_pvb);
   QPainter painter;
   painter.begin(this);
-  painter.drawPixmap(0,0,*buffer);
+  if(serverPixmap == NULL)
+  {
+    painter.drawPixmap(0,0,*buffer);
+  }
+  else
+  {
+    float z = ((float) percentZoomMask) / 100.0f; 
+    painter.scale(z*zoomx,z*zoomy);
+    painter.drawPixmap(0,0,*serverPixmap);
+    painter.scale(1.0,1.0);
+  }
   if(pressedX != -1)
   {
     int w = movedX - pressedX;
@@ -971,19 +983,22 @@ void QDrawWidget::mouseMoveEvent(QMouseEvent *event)
 void QDrawWidget::mousePressEvent(QMouseEvent *event)
 {
   char buf[100];
-  int  button;
+  int  button,ibutton;
 
   pressedX = event->x();
   pressedY = event->y();
+  button   = event->button();
   QWidget::mousePressEvent(event);
   if(svgAnimator != NULL)
   {
-    button = event->button();
     if(button == Qt::LeftButton)  svgAnimator->perhapsSendSvgEvent("svgPressedLeftButton" ,s,id,pressedX,pressedY);
     if(button == Qt::RightButton) svgAnimator->perhapsSendSvgEvent("svgPressedRightButton",s,id,pressedX,pressedY);
     if(button == Qt::MidButton)   svgAnimator->perhapsSendSvgEvent("svgPressedMidButton"  ,s,id,pressedX,pressedY);
   }
-  sprintf( buf, "QPlotMousePressed(%d,%d,%d)\n",id, pressedX, pressedY);
+  if(button == Qt::LeftButton)  ibutton = 1;
+  if(button == Qt::MidButton)   ibutton = 2;
+  if(button == Qt::RightButton) ibutton = 3;
+  sprintf( buf, "QPlotMousePressed(%d,%d,%d) -button=%d\n",id, pressedX, pressedY, ibutton);
   tcp_send(s,buf,strlen(buf));
 }
 
@@ -1264,6 +1279,37 @@ int x,y,w,h,r,g,b,n,i;
         sscanf(linebuf,"gbox(%d,%d,%d,%d)",&x,&y,&w,&h);
         box(x,y,w,h);
       }
+      else if(strncmp(linebuf,"gbufferLoadFromData",18) == 0)
+      {
+        QByteArray ba;
+        unsigned char buf[MAX_PRINTF_LENGTH];
+        int len, bytes_left, bytes_to_read;
+        while(1)
+        {
+          tcp_rec(s,(char *) buf,sizeof(buf));
+          if(strncmp((char *) buf,"pngchunk=",9) != 0)
+          {
+            printf("ERROR: did not get pngchunk\n");
+            break;
+          }
+          sscanf((char *) buf,"pngchunk=%d", &bytes_left);
+          len = bytes_left;
+          while(bytes_left > 0)
+          {
+            bytes_to_read = bytes_left;
+            if(bytes_to_read >= (int) sizeof(buf)) bytes_to_read = sizeof(buf);
+            tcp_rec_binary(s, (char *) buf, bytes_to_read);
+            ba.append((const char *) buf, bytes_to_read);
+            bytes_left -= bytes_to_read;
+          }
+          if(len == 4)
+          {
+            if(buf[0]==0xAE && buf[1]==0x42 && buf[2]==0x60 && buf[3]==0x82) break;
+          }
+        }
+        if(serverPixmap == NULL) serverPixmap = new QPixmap();
+        serverPixmap->loadFromData(ba);
+      }
       break;
     case 'd':
       if(strncmp(linebuf,"gdrawArc",8) == 0)
@@ -1500,7 +1546,7 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
   if(opt.use_webkit_for_svg == 0)
   {
     renderer.load(stream);
-    p.scale(zoomx*fac,zoomy*fac);
+    if(hasLayout || autoZoomX || autoZoomY) p.scale(zoomx*fac,zoomy*fac); //SvgZoomFixOkt2017 added if(hasLayout)
     renderer.render(&p);
     p.scale(1.0,1.0);
   }
@@ -1510,7 +1556,7 @@ void QDrawWidget::svgUpdate(QByteArray &stream)
     webkitrenderer_load_done = 0;
     webkitrenderer->setContent(stream,"image/svg+xml");
     if(p.isActive() == false) return; //rlfeb2012 line added to avoid thread problem with webkit
-    p.scale(zoomx*fac,zoomy*fac);
+    if(hasLayout || autoZoomX || autoZoomY) p.scale(zoomx*fac,zoomy*fac); //SvgZoomFixOkt2017 added if(hasLayout)
     webkitrenderer->render(&p);
     p.scale(1.0,1.0);
   }  
@@ -1971,6 +2017,11 @@ int pvSvgAnimator::read()
   {
     tcp_rec(s,line,sizeof(line));
     if(opt.arg_debug > 1) printf("svg_read=%s", line);
+    if(opt.replace_svg_symbol_by_g && line[0] == '<')
+    {
+      if     (strncmp(line,"<symbol",7)   == 0) strcpy(line,"<g");
+      else if(strncmp(line,"</symbol>",9) == 0) strcpy(line,"</g>");
+    }
     if(strstr(line,"<svgend></svgend>") != NULL) break;
     if(strncmp(line,"viewBox=",8) != 0)
     {

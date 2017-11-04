@@ -14,16 +14,6 @@ linux-g++-gles2 {
   DEFINES    += USE_MAEMO
   QT         -= opengl
 }  
-android-g++ {
-  DEFINES    += USE_ANDROID
-  DEFINES    += USE_MAEMO
-  QT         -= opengl
-  DEFINES    += NO_WEBKIT
-  QT         -= webkit
-  QT         -= webkitwidgets
-  HEADERS    -= dlgmybrowser.h
-  SOURCES    -= dlgmybrowser.cpp
-}  
 symbian:CONFIG += USE_SYMBIAN
 USE_SYMBIAN {
   DEFINES    += USE_SYMBIAN
@@ -142,6 +132,17 @@ LIBS += /usr/local/lib/vtk-5.10/libvtkmetaio.so
 LIBS += /usr/local/lib/vtk-5.10/libLSDyna.so
 }
 ### end USE_VTK ###############################################
+android-g++ {
+  DEFINES    += USE_ANDROID
+  DEFINES    += USE_MAEMO
+  QT         -= opengl
+  DEFINES    += NO_WEBKIT
+  QT         -= webkit
+  QT         -= webkitwidgets
+  QT         -= webenginewidgets
+  HEADERS    -= dlgmybrowser.h
+  SOURCES    -= dlgmybrowser.cpp
+}
 
 RESOURCES     = pvbrowser.qrc
 TARGET        = pvbrowser

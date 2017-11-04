@@ -15,7 +15,9 @@
 ****************************************************************************/
 #include "pvdefine.h"
 #include <stdlib.h>
+#ifndef USE_ANDROID
 #include <errno.h>
+#endif
 
 #include "opt.h"
 #include "interpreter.h"
@@ -82,7 +84,9 @@
 #define LEFT_PRINT_MARGIN  10
 #define UPPER_PRINT_MARGIN 70
 
+#ifndef USE_ANDROID
 extern int errno;
+#endif
 extern OPT opt;
 extern QString l_print_header;
 

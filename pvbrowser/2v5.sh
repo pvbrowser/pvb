@@ -1,4 +1,10 @@
 #!/bin/bash
+echo "##################################################################"
+echo "# this shell script switches to version v5                       #"
+echo "# that is: use Google Blink on Linux and Windows                 #"
+echo "#          fall back to QTextBrowser on OS-X and mobile devices  #"
+echo "# use this version on systems with Qt Version bigger than Qt 5.4 #"
+echo "##################################################################"
 cp pvbrowser.v5.pro              pvbrowser.pro
 cp dlgmybrowser.v5.cpp           dlgmybrowser.cpp 
 cp dlgmybrowser.v5.h             dlgmybrowser.h 
@@ -11,5 +17,3 @@ cp pvglwidget.v5.cpp             pvglwidget.cpp
 
 ../qmake.sh pvbrowser.pro
 make clean
-make
-

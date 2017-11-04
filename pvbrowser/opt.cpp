@@ -293,6 +293,7 @@ void setDefaultOptions()
   opt.ffplay_available = 0;
   strcpy(opt.proxyadr,"localhost");
   opt.proxyport = -1;
+  opt.replace_svg_symbol_by_g = 1;
 }
 
 const char *readIniFile()

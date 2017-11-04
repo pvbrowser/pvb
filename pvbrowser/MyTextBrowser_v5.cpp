@@ -117,9 +117,11 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
   id = ident;
   
   if(opt.arg_debug) printf("MyTextBrowser()\n");
+#ifndef USE_ANDROID
   MyWebEnginePage *p;
   p = new MyWebEnginePage(s, id, this);
   setPage(p);
+#endif
   
   homeIsSet = 0;
   factor = 1.0f;
@@ -643,7 +645,7 @@ void MyTextBrowser::setSOURCE(QString &temp, QString &text)
   // google does not allow Qt to access local storage
   // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
   //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
-  printf("setSOURCE text=%s\n", (const char *) text.toUtf8());
+  //printf("setSOURCE text=%s\n", (const char *) text.toUtf8());
   if(strstr(text.toUtf8(),"://") == NULL)
   {
     struct stat sb;

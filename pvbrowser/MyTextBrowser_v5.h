@@ -18,7 +18,9 @@
 #ifndef _MY_TEXTBROWSER_V5_H_
 #define _MY_TEXTBROWSER_V5_H_
 
-//#define MY_NO_WEBKIT
+#ifdef USE_ANDROID
+#define MY_NO_WEBKIT
+#endif
 
 #include <QMouseEvent>
 #include <QTextBrowser>

@@ -21,7 +21,7 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
-const char pvserver_version[] = "5.1.2";
+const char pvserver_version[] = "5.1.3";
 
 // define WIN
 #ifdef _WIN32
@@ -521,6 +521,7 @@ typedef struct _PARAM_
   int   fhdltmp;                         /* temporary file handle              */
   int   iclientsocket;                   /* 0 <= iclientsockert < MAX_CLIENTS index into clientsocket[] */
   int   is_binary;                       /* 0 for text message 1 otherwise     */
+  int   button;                          /* last clicked button                */
 }PARAM;
 
 #ifndef __VMS

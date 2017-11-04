@@ -1,6 +1,6 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   5.1.2
+Version:   5.1.3
 Release:   5.1
 Group:     Productivity/Graphics/Visualization/Other
 #Copyright: GPL with the possibility of commercial use

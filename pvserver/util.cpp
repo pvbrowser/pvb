@@ -1258,6 +1258,7 @@ int i;
   p->lang_section[0] = '\0';
   p->iclientsocket = 0;
   p->is_binary = 0;
+  p->button = 0;
 
   return 0;
 }
@@ -1621,7 +1622,7 @@ start_poll:  // only necessary for pause
   //printf("RECEIVE\n");
   pvtcpreceive(p, event, MAX_EVENT_LENGTH);
   //printf("DEBUG:#%s#\n", event);
-  p->mouse_x = p->mouse_y = -1;
+  p->mouse_x = p->mouse_y = p->button = -1;
   if(*event == '@')
   {
     if(strncmp(event,"@hello",6) == 0)
@@ -1652,13 +1653,19 @@ start_poll:  // only necessary for pause
       *event = '\0';
     }
   }
-  else if(event[0] == 'Q' && event[1] == 'P' && event[2] == 'u')
+  else if(event[0] == 'Q' && event[1] == 'P')
   {
     const char *cptr = strstr(event,"-xy=");
     if(cptr != NULL)
     {
       sscanf(cptr,"-xy=%d,%d", &p->mouse_x, &p->mouse_y);
       //printf("mouse_xy = %d,%d\n", p->mouse_x, p->mouse_y);
+    }
+    cptr = strstr(event,"-button=");
+    if(cptr != NULL)
+    {
+      sscanf(cptr,"-button=%d", &p->button);
+      //printf("button=%d\n", p->button);
     }
   }
   if(p->allow_pause && p->pause) 

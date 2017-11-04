@@ -77,6 +77,7 @@ typedef struct
   int  ffplay_available;    // ffplay is in PATH
   char proxyadr[MAXOPT];    // default: localhost
   int  proxyport;           // default: -1 # which means proxy not used
+  int  replace_svg_symbol_by_g; // currently always on, because QSvgRenderer does not handle the symbol element, This might become an option in the future
 
   // command line args
   int  arg_debug;
