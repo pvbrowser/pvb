@@ -193,8 +193,8 @@ ln -sf /opt/pvb/rllib/rlhistory/rlhistory                                       
 ln -sf /opt/pvb/rllib/rlhtml2pdf/rlhtml2pdf                                          /usr/bin/rlhtml2pdf
 ln -sf /opt/pvb/fake_qmake/fake_qmake.app/Contents/MacOS/fake_qmake                  /usr/bin/fake_qmake
 ln -sf /opt/pvb/update_pvbrowser.sh                                                  /usr/bin/update_pvbrowser
-ln -sf /opt/pvb/language_bindings/lua/pvslua/pvslua.app/Contents/MacOS/pvslua        /usr/bin/pvslua
-ln -sf /opt/pvb/language_bindings/lua/pvapplua/pvapplua.app/Contents/MacOS/pvapplua  /usr/bin/pvapplua
+ln -sf /opt/pvb/pvslua/Contents/MacOS/pvslua      /usr/bin/pvslua
+ln -sf /opt/pvb/pvapplua/Contents/MacOS/pvapplua  /usr/bin/pvapplua
 
 ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.dylib
 ln -sf /opt/pvb/rllib/lib/librllib.dylib    /usr/lib/librllib.1.dylib

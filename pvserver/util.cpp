@@ -165,8 +165,6 @@ extern pthread_mutex_t param_mutex;
 #endif
 static int serversocket = -1;
 static int clientsocket[MAX_CLIENTS];
-static char last_event[MAX_EVENT_LENGTH] = "";
-static char this_event[MAX_EVENT_LENGTH] = "";
 
 static pvAddressTable adrTable;           // table of connected clients
 
@@ -1161,7 +1159,7 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 static int show_usage()
 {
   printf("###################################################################################\n");
-  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2014       lehrig@t-online.de\n\n", pvserver_version);
+  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2018       lehrig@t-online.de\n\n", pvserver_version);
   printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -no_announce -http -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
@@ -1495,15 +1493,17 @@ int pvGetInitialMask(PARAM *p)
 int pvSendUserEvent(PARAM *p, int id, const char *text)
 {
   if(p == NULL) return -1;
+  delete [] p->mytext;
+  p->mytext = new char[MAX_EVENT_LENGTH];
 #ifdef PVUNIX  
-  snprintf(last_event,sizeof(last_event)-1,"user(%d,\"%s\")",id,text);
+  snprintf(p->mytext,MAX_EVENT_LENGTH - 1,"user(%d,\"%s\")",id,text);
 #endif  
 #ifdef PVWIN32  
-  _snprintf(last_event,sizeof(last_event)-1,"user(%d,\"%s\")",id,text);
+  _snprintf(p->mytext,MAX_EVENT_LENGTH - 1,"user(%d,\"%s\")",id,text);
 #endif  
 #ifdef __VMS
-  sprintf(last_event,"user(%d,\"%s\")",id,text);
-#endif  
+  sprintf(p->mytext,"user(%d,\"%s\")",id,text);
+#endif
   return 0;
 }
 
@@ -1536,8 +1536,10 @@ int pvSetCleanup(PARAM *p, int (*cleanup)(void *), void *app_data)
 
 char *pvGetEvent(PARAM *p)
 {
-  pvPollEvent(p,this_event);
-  return this_event;
+  delete [] p->mytext2;
+  p->mytext2 = new char[MAX_EVENT_LENGTH];
+  pvPollEvent(p,p->mytext2);
+  return p->mytext2;
 }
 
 int pvPollEvent(PARAM *p, char *event)
@@ -1562,10 +1564,10 @@ int pvPollEvent(PARAM *p, char *event)
     }
   }  
 
-  if(last_event[0] != '\0')
+  if(p->mytext[0] != '\0')
   {
-    strcpy(event,last_event);
-    last_event[0] = '\0';
+    strcpy(event,p->mytext);
+    p->mytext[0] = '\0';
     return 0;
   }
 
@@ -1681,12 +1683,14 @@ int pvWait(PARAM *p,const char *pattern)
   int  len;
   char line[MAX_EVENT_LENGTH];
 
+  delete [] p->mytext;
+  p->mytext = new char[MAX_EVENT_LENGTH];
   len = strlen(pattern);
   while(1)
   {
     pvtcpreceive(p, line, MAX_EVENT_LENGTH);
     if(strncmp(line,pattern,len) == 0) return 0;
-    strcpy(last_event,line);
+    strcpy(p->mytext, line); // last_event
   }
 }
 
@@ -2503,6 +2507,7 @@ int pvToolTip(PARAM *p, int id, const char *text)
   }
   sprintf(buf,"QToolTip(%d,\"%s\")\n",id,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -2922,6 +2927,7 @@ int pvSetTextEx(PARAM *p, int id, const char *text, int option)
     pvtcpsend(p, buf, strlen(buf));
     pvtcpsend_binary(p, p->mytext, len);
   }
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -2957,6 +2963,7 @@ int pvSetStyleSheet(PARAM *p, int id, const char *text)
     pvtcpsend(p, buf, strlen(buf));
     pvtcpsend_binary(p, p->mytext, len);
   }
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3139,6 +3146,7 @@ int pvInsertItem(PARAM *p, int id, int index, const char *bmp_file, const char *
     }
     pvbImageFree(image);
   }
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3255,6 +3263,7 @@ int pvSetIconViewItem(PARAM *p, int id, const char *bmp_file, const char *text, 
     }
     pvbImageFree(image);
   }
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3377,6 +3386,7 @@ int pvAddColumn(PARAM *p, int id, const char *text, int size)
   }
   sprintf(buf,"addColumn(%d,%d,\"%s\")\n",id,size,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3401,6 +3411,7 @@ int pvSetTableText(PARAM *p, int id, int x, int y, const char *text)
   }
   sprintf(buf,"setTableText(%d,%d,%d,\"%s\")\n",id,y,x,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3456,6 +3467,7 @@ int pvSetTableCheckBox(PARAM *p, int id, int x, int y, int state, const char *te
   }
   sprintf(buf,"setTableCheckBox(%d,%d,%d,%d,\"%s\")\n",id,y,x,state,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3472,6 +3484,7 @@ int pvSetTableComboBox(PARAM *p, int id, int x, int y, int editable, const char 
   }
   sprintf(buf,"setTableComboBox(%d,%d,%d,%d,\"%s\")\n",id,y,x,editable,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -3680,6 +3693,7 @@ int pvSetListViewText(PARAM *p, int id, const char *path, int column, const char
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"(\"%s\")\n",p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -4757,6 +4771,7 @@ int pvPopupMenu(PARAM *p, int id_return, const char *text)
   }
   sprintf(buf,"popupMenu(%d,\"%s\")\n",id_return,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -4784,6 +4799,7 @@ int pvMessageBox(PARAM *p, int id_return, int type, const char *text, int button
   }
   sprintf(buf,"messageBox(%d,%d,%d,%d,%d,\"%s\")\n",id_return,type,button0,button1,button2,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -4811,6 +4827,7 @@ int pvInputDialog(PARAM *p, int id_return, const char *text, const char *default
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"%s\n",default_text);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -5160,6 +5177,7 @@ int gText(PARAM *p, int x, int y, const char *text, int alignment)
   sprintf(buf,"gtext(%d,%d,%d,\"%s\")\n",x,y,alignment,p->mytext);
   if(gfp == NULL) pvtcpsend(p, buf, strlen(buf));
   else            fprintf(gfp,"%s",buf);
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -5177,6 +5195,7 @@ int gTextInAxis(PARAM *p, float x, float y, const char *text, int alignment)
   sprintf(buf,"gtextInAxis(%f,%f,%d,\"%s\")\n",x,y,alignment,p->mytext);
   if(gfp == NULL) pvtcpsend(p, buf, strlen(buf));
   else            fprintf(gfp,"%s",buf);
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -5612,7 +5631,7 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   {
     if(fpos + maxbuf > statbuf.st_size) break;
     ret = fread(buf, 1, maxbuf, fin);
-    sprintf(tbuf, "%x\n", maxbuf);
+    sprintf(tbuf, "%x\r\n", maxbuf);
     pvtcpsend(p,tbuf,strlen(tbuf));
     p->is_binary = 1;
     pvtcpsend_binary(p,buf,maxbuf);
@@ -5623,12 +5642,12 @@ int pvSendHttpChunks(PARAM *p, const char *filename)
   {
     for(int i=remain; i<maxbuf; i++) buf[i]='\n';
     ret = fread(buf, 1, maxbuf, fin);
-    sprintf(tbuf, "%x\n", maxbuf);
+    sprintf(tbuf, "%x\r\n", maxbuf);
     pvtcpsend(p,tbuf,strlen(tbuf));
     p->is_binary = 1;
     pvtcpsend_binary(p,buf,maxbuf);
   }
-  strcpy(tbuf,"0\n\n\n");
+  strcpy(tbuf,"0\r\n\r\n\r\n");
   pvtcpsend(p,tbuf,strlen(tbuf));
   fclose(fin);
   p->fptmp = NULL;
@@ -5656,14 +5675,14 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
     return -1;
   }
   p->fptmp = fp;
-  sprintf(tbuf, "Content-Length: %ld\n\n", statbuf.st_size);
+  sprintf(tbuf, "Content-Length: %ld\r\n\r\n", statbuf.st_size);
   pvtcpsend(p,tbuf,strlen(tbuf));
   int fpos = 0;
   while(1)
   {
     if(fpos + maxbuf > statbuf.st_size) break;
     ret = fread(buf, 1, maxbuf, fp);
-    sprintf(tbuf, "%x\n", maxbuf);
+    sprintf(tbuf, "%x\r\n", maxbuf);
     pvtcpsend_binary(p,buf,maxbuf);
     fpos += maxbuf;
   }
@@ -5671,7 +5690,7 @@ int pvSendHttpContentLength(PARAM *p, const char *filename)
   if(remain > 0)
   {
     ret = fread(buf, 1, maxbuf, fp);
-    sprintf(tbuf, "%x\n", remain);
+    sprintf(tbuf, "%x\r\n", remain);
     pvtcpsend_binary(p,buf,remain);
   }
   fclose(fp);
@@ -5684,15 +5703,15 @@ int pvSendHttpResponseFile(PARAM *p, const char *filename, const char *content_t
 {
   char buf[MAX_EVENT_LENGTH];
 
-  sprintf(buf,"HTTP/1.1 200 OK\n");
+  sprintf(buf,"HTTP/1.1 200 OK\r\n");
   pvtcpsendstring(p,buf);
-  sprintf(buf,"Server: pvserver-%s\n", pvserver_version);
+  sprintf(buf,"Server: pvserver-%s\r\n", pvserver_version);
   pvtcpsendstring(p,buf);
-  sprintf(buf,"Keep-Alive: timeout=15, max=100\n");
+  sprintf(buf,"Keep-Alive: timeout=15, max=100\r\n");
   pvtcpsendstring(p,buf);
-  sprintf(buf,"Connection: Keep-Alive\n");
+  sprintf(buf,"Connection: Keep-Alive\r\n");
   pvtcpsendstring(p,buf);
-  sprintf(buf,"Content-Type: %s\n", content_type);
+  sprintf(buf,"Content-Type: %s\r\n", content_type);
   pvtcpsendstring(p,buf);
   pvSendHttpContentLength(p,filename);
   return 0;
@@ -5702,17 +5721,17 @@ int pvSendHttpResponse(PARAM *p, const char *html)
 {
   if(html == NULL) return -1;
   char tbuf[80];
-  sprintf(tbuf,"HTTP/1.1 200 OK\n");
+  sprintf(tbuf,"HTTP/1.1 200 OK\r\n");
   pvtcpsendstring(p,tbuf);
-  sprintf(tbuf,"Server: pvserver-%s\n", pvserver_version);
+  sprintf(tbuf,"Server: pvserver-%s\r\n", pvserver_version);
   pvtcpsendstring(p,tbuf);
-  sprintf(tbuf,"Keep-Alive: timeout=15, max=100\n");
+  sprintf(tbuf,"Keep-Alive: timeout=15, max=100\r\n");
   pvtcpsendstring(p,tbuf);
-  sprintf(tbuf,"Connection: Keep-Alive\n");
+  sprintf(tbuf,"Connection: Keep-Alive\r\n");
   pvtcpsendstring(p,tbuf);
-  sprintf(tbuf,"Content-Type: text/html\n");
+  sprintf(tbuf,"Content-Type: text/html\r\n");
   pvtcpsendstring(p,tbuf);
-  sprintf(tbuf,"Content-length: %ld\n\n", (long) strlen(html));
+  sprintf(tbuf,"Content-length: %ld\r\n\r\n", (long) strlen(html));
   pvtcpsendstring(p,tbuf);
 
   pvtcpsendstring(p, html);
@@ -5928,6 +5947,7 @@ int qpwSetTitle(PARAM *p, int id, const char *text)
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"setTitle(\"%s\")\n",p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -6068,6 +6088,7 @@ int qpwSetAxisTitle(PARAM *p, int id, int pos, const char *text)
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"setAxisTitle(%d,\"%s\")\n",pos,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -6128,6 +6149,7 @@ int qpwInsertCurve(PARAM *p, int id, int index, const char *text)
   sprintf(buf,"insertCurve(%d,\"%s\")\n",index,p->mytext);
 #endif  
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -6239,6 +6261,7 @@ int qpwSetMarkerLabel(PARAM *p, int id, int pos, const char * text)
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf, "setMarkerLabel(%d,\"%s\")\n", pos, p->mytext );
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -6298,6 +6321,7 @@ int qpwInsertLineMarker(PARAM *p, int id, int index, const char *text, int pos)
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"insertLineMarker(%d,%d,\"%s\")\n",index,pos,p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -6316,6 +6340,7 @@ int qpwSetAxisScaleDraw( PARAM *p, int id, int pos, const char *text )
   pvtcpsend( p, buf, strlen(buf));
   sprintf( buf, "setAxisScaleDraw(%d,\"%s\")\n", pos, p->mytext );
   pvtcpsend( p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 
@@ -6346,6 +6371,7 @@ int qwtScaleSetTitle(PARAM *p, int id, const char *text)
   pvtcpsend(p, buf, strlen(buf));
   sprintf(buf,"setTitle(\"%s\")\n",p->mytext);
   pvtcpsend(p, buf, strlen(buf));
+  p->mytext[0] = '\0';
   return 0;
 }
 

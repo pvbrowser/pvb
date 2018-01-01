@@ -47,7 +47,9 @@ if [ "$HOME" != "/home/lehrig" ]; then
   echo "######################################"
   echo "# then remove the exit command below #"
   echo "######################################"
+if [ "$2" != "homebrew" ]; then
   exit
+fi
 fi
 fi
 fi
@@ -150,6 +152,11 @@ if [ "$PVB_OSTYPE" == "linux" ]; then
 cd language_bindings
 ./build_lua_interface.sh
 ./build_python_interface.sh
+cd ..
+fi
+if [ "$2" == "homebrew" ]; then
+cd language_bindings
+./build_lua_interface.sh
 cd ..
 fi
 echo "################################################################"

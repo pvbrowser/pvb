@@ -2,6 +2,18 @@
 #echo "ATTENTION: qmake modified for ARM prozessor"
 #qmake "INCLUDEPATH=" $1 $2 $3 $4 $5 $6 $7 $8
 #exit
+#<Mac version>
+if [ -x /usr/local/Cellar/qt/5.10.0/bin/qmake  ]; then  
+        /usr/local/Cellar/qt/5.10.0/bin/qmake  $1 $2 $3 $4 $5 $6 $7 $8
+        exit
+fi
+#</Mac version>
+export osversion=$(grep Linux /proc/version)
+if [ "x${osversion}" = "x" ]; then
+  echo "run qmake on Mac"
+  qmake $1 $2 $3 $4 $5 $6 $7 $8
+  exit
+fi
 ##########################################################
 # use qt5 if available                                   #
 ##########################################################

@@ -53,11 +53,10 @@ BuildRequires: libQtWebKit-devel
 %if 0%{?fedora_version}
 # Requires:  ld-linux.so.2
 Requires:  qt4
-Requires:  Mesa
 # Requires:  VTK
 # Requires:  tcl
 # Requires:  tk
-BuildRequires: Mesa-devel gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel readline-devel
+BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt4 qt4-devel python-devel readline-devel
 %endif
 
 %if 0%{?fedora_version} >= 14
@@ -180,7 +179,7 @@ rm -f ./pvsexample/pvsexample
 
 cp -r doc                                                 %{buildroot}/opt/pvb/
 cp -r pvsexample                                          %{buildroot}/opt/pvb/
-cp    pvbrowser.spec                                      %{_sourcedir}/
+#cp    pvbrowser.spec                                      %{_sourcedir}/
 cp    LICENSE.GPL                                         %{buildroot}/opt/pvb/
 cp    logo1.png                                           %{buildroot}/opt/pvb/
 cp    custom.bmp                                          %{buildroot}/opt/pvb/

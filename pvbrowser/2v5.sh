@@ -17,3 +17,8 @@ cp pvglwidget.v5.cpp             pvglwidget.cpp
 
 ../qmake.sh pvbrowser.pro
 make clean
+
+echo "Please adjust manually:"
+echo "vi pvdevelop/pvdevelop.pro"
+echo "vi designer/src/pvbplugin.pro"
+

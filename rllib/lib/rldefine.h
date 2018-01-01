@@ -44,6 +44,12 @@ The header that is included in every file of rllib.
 #define RLUNIX
 #endif
 
+#if defined(__APPLE__) && defined(__MACH__)
+#ifndef RLUNIX
+#define RLUNIX
+#endif
+#endif
+
 #define rl_PRINTF_LENGTH             4096
 #define rl_PRINTF_LENGTH_SPREADSHEET 4096
 

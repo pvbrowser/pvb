@@ -7,8 +7,8 @@ CONFIG       += warn_on release
 #DEFINES     += NO_QWT
 #mobile devices without opengl
 QT           += opengl
-lessThan(QT_VERSION, 5.5.0) {
-  QT         += xml svg webkit network
+lessThan(QT_VERSION, 5.0.0) {
+  QT         += printsupport xml svg webkit network
 }else{
   QT         += printsupport multimedia uitools webkitwidgets widgets xml svg webkit network printsupport
 }    
