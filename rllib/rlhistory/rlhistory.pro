@@ -3,7 +3,7 @@
 ######################################################################
 
 TEMPLATE = app
-CONFIG   = warn_on release console 
+CONFIG  += warn_on release console 
 CONFIG  -= qt
 #mac2017 QMAKE_LFLAGS += -static-libgcc
 contains(QMAKE_CXX, g++) {
@@ -22,5 +22,3 @@ LIBS    += ../lib/librllib.so -lpthread
 macx::LIBS    += ../lib/librllib.a
 
 TARGET = rlhistory
-QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
-

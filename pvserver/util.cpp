@@ -1248,7 +1248,15 @@ int i;
   p->fhdltmp = 0;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
+  // rl april 2018
+#ifdef PTHREAD_PROCESS_SHARED
+  pthread_mutexattr_t mattr;
+  pthread_mutexattr_init(&mattr);
+  pthread_mutexattr_setpshared(&mattr, PTHREAD_PROCESS_SHARED);
+  pvthread_mutex_init(&param_mutex, &mattr);
+#else
   pvthread_mutex_init(&param_mutex, NULL);
+#endif
 #endif
 #ifdef USE_INETD  
   pvFilePrefix(p);
@@ -1585,6 +1593,7 @@ start_poll:  // only necessary for pause
   timeout.tv_usec = (p->sleep % 1000) * 1000;
 
   /* call select */
+  //printf("SELECT\n");
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
   if(ret == 0) /* timeout */
   {
@@ -1608,6 +1617,7 @@ start_poll:  // only necessary for pause
   p->hello_counter = 0;
   if(ret <  0) /* error condition */
   {
+    printf("SELECT ret<0 ret=%d errno=%d\n", ret, errno);
 #ifdef PVWIN32
       Sleep(1000);
 #endif
@@ -1618,6 +1628,7 @@ start_poll:  // only necessary for pause
       pvThreadFatal(p,"select returned errno=EBADF -> terminate thread");
     }
 #endif
+    printf("RETURN 0\n");
     return 0;
   }
 

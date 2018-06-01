@@ -95,7 +95,7 @@ void dlgDaemon::slotCompile()
     case SIEMENSTCP_DAEMON:
 #ifdef PVUNIX
 #ifdef PVMAC
-      ret = system("xterm -e \"g++ siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
+      ret = system("xterm -e \"g++ siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ -L/usr/local/lib/ /usr/local/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
 #else
       //ret = system("xterm -e \"g++ siemensdaemon.cpp -o siemensdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -lpthread;echo compiler_finished;read\"");
       ret = system("xterm -e \"g++ -c siemensdaemon.cpp  -o siemensdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ siemensdaemon.o /usr/lib/librllib.so -lpthread -o siemensdaemon ;echo compiler_finished;read\"");
@@ -108,7 +108,7 @@ void dlgDaemon::slotCompile()
 #ifdef PVUNIX
 #ifdef PVMAC
       //ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read\"");
-      Buf = "xterm -e g++ \""+target+".cpp\" -o "+f_info.baseName()+" -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read";
+      Buf = "xterm -e g++ \""+target+".cpp\" -o "+f_info.baseName()+" -I/opt/pvb/rllib/lib -L/usr/lib/ -L/usr/local/lib/ /usr/local/lib/librllib.dylib /usr/lib/libpthread.dylib;echo compiler_finished;read";
 #else
       //ret = system("xterm -e \"g++ modbusdaemon.cpp -o modbusdaemon -I/opt/pvb/rllib/lib -L/usr/lib/ /usr/lib/librllib.so -lpthread;echo compiler_finished;read\"");
       //ret = system("xterm -e \"g++ -c modbusdaemon.cpp  -o modbusdaemon.o -I/opt/pvb/rllib/lib -L/usr/lib/; g++ modbusdaemon.o /usr/lib/librllib.so -lpthread -o modbusdaemon;echo compiler_finished;read\"");

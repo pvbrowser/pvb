@@ -133,10 +133,8 @@ else
 echo 'copy shared objects on OS-X ...'
 cp    designer/plugins/libpvb_designer_plugin.dylib       ${1}/pvb/designer/plugins/
 cp    designer/plugins/libqwt_designer_plugin.dylib       ${1}/pvb/designer/plugins/
-cp    pvserver/libpvsid.dylib                             ${1}/pvb/pvserver/
-cp    pvserver/libpvsmt.dylib                             ${1}/pvb/pvserver/
 cp    pvserver/libpvsid.a                                 ${1}/pvb/pvserver/
-cp    pvserver/libpvsmt.a                                ${1}/pvb/pvserver/
+cp    pvserver/libpvsmt.a                                 ${1}/pvb/pvserver/
 cp    rllib/lib/librllib.dylib                            ${1}/pvb/rllib/lib/
 fi
 
@@ -179,11 +177,15 @@ cp -r  pvdevelop/pvdevelop.app                     ${1}/pvb/pvdevelop/
 cp -r  start_pvbapp/start_pvbapp.app               ${1}/pvb/start_pvbapp/
 cp -r  rllib/rlsvg/rlsvgcat.app                    ${1}/pvb/rllib/rlsvg/
 cp -r  rllib/rlfind/rlfind.app                     ${1}/pvb/rllib/rlfind/
-cp -r  rllib/rlhistory/rlhistory                   ${1}/pvb/rllib/rlhistory/
-cp -r  rllib/rlhtml2pdf/rlhtml2pdf                 ${1}/pvb/rllib/rlhtml2pdf/
+cp -r  rllib/rlhistory/rlhistory.app               ${1}/pvb/rllib/rlhistory/
+cp -r  rllib/rlhtml2pdf/rlhtml2pdf.app             ${1}/pvb/rllib/rlhtml2pdf/
 cp -r  fake_qmake/fake_qmake.app                   ${1}/pvb/fake_qmake/
-cp -r  language_bindings/lua/pvslua/pvslua.app     ${1}/pvb/pvslua/
-cp -r  language_bindings/lua/pvapplua/pvapplua.app ${1}/pvb/pvapplua/
+mkdir -p                                           ${1}/pvb/language_bindings/lua/pvslua
+cp -r  language_bindings/lua/pvslua/pvslua.app     ${1}/pvb/language_bindings/lua/pvslua/
+mkdir -p                                           ${1}/pvb/language_bindings/lua/pvapplua
+cp -r  language_bindings/lua/pvapplua/pvapplua.app ${1}/pvb/language_bindings/lua/pvapplua/
+mkdir -p                                           ${1}/pvb/spec/mac
+cp -r  spec/mac/*                                  ${1}/pvb/spec/mac/
 
 # ln -sf /usr/local/Cellar/pvb/pvbrowser/pvbrowser.app/Contents/MacOS/pvbrowser          /usr/local/bin/pvbrowser
 # ln -sf /usr/local/Cellar/pvb/pvdevelop/pvdevelop.app/Contents/MacOS/pvdevelop          /usr/local/bin/pvdevelop

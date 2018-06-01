@@ -27,9 +27,9 @@ USE_SYMBIAN {
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
 unix:!symbian:LIBS    += -ldl
-#mac2017 !symbian:QMAKE_LFLAGS += -static-libgcc
+#!symbian:QMAKE_LFLAGS += -static-libgcc
 contains(QMAKE_CXX, g++) {
-  !symbian:QMAKE_LFLAGS += -static-libgcc
+  QMAKE_LFLAGS += -static-libgcc
 }
 
 HEADERS       = mainwindow.h \

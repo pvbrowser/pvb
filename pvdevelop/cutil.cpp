@@ -441,7 +441,7 @@ void generateInitialProject(const char *name)
   fprintf(fout,"macx:LIBS         += /opt/pvb/pvserver/libpvsmt.a /usr/lib/libpthread.dylib\n");
   fprintf(fout,"#macx:LIBS        += /opt/pvb/pvserver/libpvsid.a\n");
   fprintf(fout,"macx:INCLUDEPATH  += /opt/pvb/pvserver\n");
-  fprintf(fout,"macx:LIBS         += /usr/lib/librllib.dylib\n");
+  fprintf(fout,"macx:LIBS         += /usr/local/lib/librllib.dylib\n");
   fprintf(fout,"macx:INCLUDEPATH  += /opt/pvb/rllib/lib\n");
   fprintf(fout,"\n");
   fprintf(fout,"#\n");

@@ -83,7 +83,7 @@ cd ..
 ../qmake.sh qwt.pro 
 make $1
 cd ..
-cp qwt/designer/plugins/designer/libqwt_designer_plugin.so designer/plugins/
+cp qwt/designer/plugins/designer/libqwt_designer_plugin.* designer/plugins/
 cd pvbrowser
 ../qmake.sh pvbrowser.pro
 make $1

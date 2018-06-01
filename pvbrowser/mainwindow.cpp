@@ -800,12 +800,17 @@ void MainWindow::createToolBars()
                              "http://host"
                              ));
 #ifdef USE_ANDROID
+  urlComboBox->setMinimumWidth(777);
+  urlComboBox->setMaximumWidth(1024);
+  urlComboBox->setMinimumHeight(77);
+  /*
   urlComboBox->setStyleSheet(
                                "QComboBox {min-height:29px; min-width:400px; margin: 1px; padding: 1x; }"
                                "QComboBox QAbstractItemView::item {min-height:30px; }"
                                "QComboBox QAbstractItemView::item:hover {min-height:30px; }"
                                "QComboBox::drop-down { width: 30px; }"
-                            );                           
+                            );
+  */                            
                             //"QComboBox::drop-down { width: 30px; image: url(your_arrow_icon.png); }"
 #endif                            
   fileToolBar->addWidget(urlComboBox);
