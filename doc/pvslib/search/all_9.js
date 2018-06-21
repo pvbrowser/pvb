@@ -12,6 +12,7 @@ var searchData=
   ['i8',['i8',['../structIntegerArray.html#a95b8f09331974234870a48a20800348c',1,'IntegerArray']]],
   ['i9',['i9',['../structIntegerArray.html#a13fe59d5a4fb1c3a8f6e1de5fa184cd0',1,'IntegerArray']]],
   ['ibeamcursor',['IBeamCursor',['../group__DefinesAndEnums.html#ggad19ba4f288a5afb7970196ceee05e47eaf1602112873b15bfd4428cfe61429a70',1,'processviewserver.h']]],
+  ['iclientsocket',['iclientsocket',['../struct__PARAM__.html#aa502ec616acadd71cdae11560aff7385',1,'_PARAM_']]],
   ['id',['id',['../classpvWidgetIdManager.html#ac242a592f8deb51f83faa3cf61cc14e9',1,'pvWidgetIdManager']]],
   ['id_5fcookie',['ID_COOKIE',['../group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9ae90c12663b573e0504e676e453069966',1,'processviewserver.h']]],
   ['id_5fdock_5fwidgets',['ID_DOCK_WIDGETS',['../group__DefinesAndEnums.html#gga600fd02725e649122b5dd768eb70b1a9a6e27492c6d3e882426cac106489a8d71',1,'processviewserver.h']]],
@@ -37,6 +38,7 @@ var searchData=
   ['insertbasicid',['insertBasicId',['../classpvWidgetIdManager.html#aabae5e7df18a28b0bf98f66734864b1a',1,'pvWidgetIdManager']]],
   ['integerarray',['IntegerArray',['../structIntegerArray.html',1,'']]],
   ['inverted',['Inverted',['../group__DefinesAndEnums.html#gga8d218a54579a0943de425d04427f27e7aae4234c0f201c82b211ea2d2d2528da2',1,'processviewserver.h']]],
+  ['is_5fbinary',['is_binary',['../struct__PARAM__.html#ab7daac67ca9b431599175bf5d47ebf22',1,'_PARAM_']]],
   ['isinmap',['isInMap',['../classpvWidgetIdManager.html#ab2376a8382011c9c8a4b92d7d8dd550a',1,'pvWidgetIdManager::isInMap(const char *name)'],['../classpvWidgetIdManager.html#a2f3a57f922b382f8a2abc1be3c47e4b5',1,'pvWidgetIdManager::isInMap(int id)']]],
   ['it',['it',['../classpvWidgetIdManager.html#a1b55c25aa4a517a65eaf9113bf6a9714',1,'pvWidgetIdManager']]],
   ['italic',['ITALIC',['../group__DefinesAndEnums.html#gga2efbfe6765124e3b9e774d7e9e12005dac1005585401f6364dc82967ecf313617',1,'processviewserver.h']]]

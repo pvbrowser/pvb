@@ -1,8 +1,11 @@
-.TH "Defines and Enums" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "DefinesAndEnums" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Defines and Enums \- 
+DefinesAndEnums
+.SH SYNOPSIS
+.br
+.PP
 .SS "Data Structures"
 
 .in +1c
@@ -141,19 +144,19 @@ Defines and Enums \-
 .RI "typedef struct \fB_PARAM_\fP \fBPARAM\fP"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvAccept\fP )(\fBPARAM\fP *p)"
+.RI "typedef int(* \fBplugin_pvAccept\fP) (\fBPARAM\fP *p)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvtcpsend_binary\fP )(\fBPARAM\fP *p, const char *buf, int len)"
+.RI "typedef int(* \fBplugin_pvtcpsend_binary\fP) (\fBPARAM\fP *p, const char *buf, int len)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvtcpreceive\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.RI "typedef int(* \fBplugin_pvtcpreceive\fP) (\fBPARAM\fP *p, char *buf, int maxlen)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvtcpreceive_binary\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.RI "typedef int(* \fBplugin_pvtcpreceive_binary\fP) (\fBPARAM\fP *p, char *buf, int maxlen)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_closesocket\fP )(int s)"
+.RI "typedef int(* \fBplugin_closesocket\fP) (int s, \fBPARAM\fP *p)"
 .br
 .in -1c
 .SS "Enumerations"
@@ -382,15 +385,15 @@ These are the Defines and Enums
 .PP 
 .SS "typedef struct \fB_PARAM_\fP \fBPARAM\fP"
 
-.SS "typedef int(* plugin_closesocket)(int s)"
+.SS "typedef int(* plugin_closesocket) (int s, \fBPARAM\fP *p)"
 
-.SS "typedef int(* plugin_pvAccept)(\fBPARAM\fP *p)"
+.SS "typedef int(* plugin_pvAccept) (\fBPARAM\fP *p)"
 
-.SS "typedef int(* plugin_pvtcpreceive)(\fBPARAM\fP *p, char *buf, int maxlen)"
+.SS "typedef int(* plugin_pvtcpreceive) (\fBPARAM\fP *p, char *buf, int maxlen)"
 
-.SS "typedef int(* plugin_pvtcpreceive_binary)(\fBPARAM\fP *p, char *buf, int maxlen)"
+.SS "typedef int(* plugin_pvtcpreceive_binary) (\fBPARAM\fP *p, char *buf, int maxlen)"
 
-.SS "typedef int(* plugin_pvtcpsend_binary)(\fBPARAM\fP *p, const char *buf, int len)"
+.SS "typedef int(* plugin_pvtcpsend_binary) (\fBPARAM\fP *p, const char *buf, int len)"
 
 .SH "Enumeration Type Documentation"
 .PP 

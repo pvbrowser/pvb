@@ -1,8 +1,8 @@
-.TH "glFont" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "glFont" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-glFont \- 
+glFont
 .SH SYNOPSIS
 .br
 .PP
@@ -83,7 +83,8 @@ glFont \-
 .PP
 .nf
 
-This class is for reading a font for use within OpenGL 
+// This class is for reading a font for use within OpenGL 
+// 
 .fi
 .PP
  
@@ -95,7 +96,7 @@ This class is for reading a font for use within OpenGL
 
 .SH "Member Function Documentation"
 .PP 
-.SS "int glFont::charWidth (unsigned charc)"
+.SS "int glFont::charWidth (unsigned char c)"
 
 .PP
 .nf
@@ -104,7 +105,7 @@ get width of a character
 .fi
 .PP
  
-.SS "void glFont::drawString (floatx, floaty, const char *str)"
+.SS "void glFont::drawString (float x, float y, const char * str)"
 
 .PP
 .nf
@@ -123,7 +124,7 @@ get lineHeight
 .fi
 .PP
  
-.SS "int glFont::read (const char *filename)"
+.SS "int glFont::read (const char * filename)"
 
 .PP
 .nf
@@ -132,7 +133,7 @@ read font file
 .fi
 .PP
  
-.SS "void glFont::setFontSize (intpitch, floatfactor)"
+.SS "void glFont::setFontSize (int pitch, float factor)"
 
 .PP
 .nf
@@ -141,7 +142,7 @@ for internal use only\&.
 .fi
 .PP
  
-.SS "void glFont::setRotation (intangle)"
+.SS "void glFont::setRotation (int angle)"
 
 .PP
 .nf
@@ -150,7 +151,7 @@ rotate font in degree angle\&.
 .fi
 .PP
  
-.SS "void glFont::setZoom (floatfactor)"
+.SS "void glFont::setZoom (float factor)"
 
 .PP
 .nf
@@ -159,7 +160,7 @@ zoom all texts\&. default: zoom=1\&.0
 .fi
 .PP
  
-.SS "int glFont::stringWidth (const char *str)"
+.SS "int glFont::stringWidth (const char * str)"
 
 .PP
 .nf

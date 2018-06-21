@@ -20,7 +20,8 @@
 
 #endif
 
-#include <QDesignerCustomWidgetInterface>
+//#include <QDesignerCustomWidgetInterface>
+#include <QtUiPlugin/QDesignerCustomWidgetInterface>
 #include <QDesignerTaskMenuExtension>
 #include <QExtensionFactory>
 

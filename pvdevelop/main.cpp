@@ -132,7 +132,7 @@ int gmodbus(const char *name);
 void  perhapsDoAction()
 {
   FILE *fout;
-  char buf[MAXOPT_DEVELOP];
+  char buf[2*MAXOPT_DEVELOP];
   int ret = 0;
 
   if(opt_develop.arg_action[0]=='\0') return;

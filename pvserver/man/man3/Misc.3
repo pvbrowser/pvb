@@ -1,8 +1,11 @@
-.TH "Misc" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "Misc" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Misc \- 
+Misc
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -96,7 +99,7 @@ Misc \-
 These are the misc routines 
 .SH "Function Documentation"
 .PP 
-.SS "int pvClearMessageQueue (\fBPARAM\fP *p)"
+.SS "int pvClearMessageQueue (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -105,7 +108,7 @@ read all pending messages from tcp
 .fi
 .PP
  
-.SS "int pvCloseFile (\fBPARAM\fP *p)"
+.SS "int pvCloseFile (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -114,7 +117,7 @@ close the open file
 .fi
 .PP
  
-.SS "int pvCopyToClipboard (\fBPARAM\fP *p, intid)"
+.SS "int pvCopyToClipboard (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -124,7 +127,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int pvDownloadFile (\fBPARAM\fP *p, const char *filename)"
+.SS "int pvDownloadFile (\fBPARAM\fP * p, const char * filename)"
 
 .PP
 .nf
@@ -133,7 +136,7 @@ download file to temp directory of the browser
 .fi
 .PP
  
-.SS "int pvDownloadFileAs (\fBPARAM\fP *p, const char *filename, const char *newname)"
+.SS "int pvDownloadFileAs (\fBPARAM\fP * p, const char * filename, const char * newname)"
 
 .PP
 .nf
@@ -153,7 +156,7 @@ It is an array of MAX_CLIENT elements\&.
 .fi
 .PP
  
-.SS "int pvGetText (const char *command, char *text)"
+.SS "int pvGetText (const char * command, char * text)"
 
 .PP
 .nf
@@ -163,7 +166,7 @@ This is useful to retrieve the text from an event\&.
 .fi
 .PP
  
-.SS "char* pvGetTextParam (\fBPARAM\fP *p, const char *command)"
+.SS "char* pvGetTextParam (\fBPARAM\fP * p, const char * command)"
 
 .PP
 .nf
@@ -174,7 +177,7 @@ Used in Script languages
 .fi
 .PP
  
-.SS "int pvHtmlOrSvgDump (\fBPARAM\fP *p, intid, const char *filename)"
+.SS "int pvHtmlOrSvgDump (\fBPARAM\fP * p, int id, const char * filename)"
 
 .PP
 .nf
@@ -203,7 +206,7 @@ Get the limit of clients the pvserver accepts from 1 ip address
 .fi
 .PP
  
-.SS "int pvParseEvent (const char *event, int *id, char *text)"
+.SS "int pvParseEvent (const char * event, int * id, char * text)"
 
 .PP
 .nf
@@ -213,7 +216,7 @@ it will be returned\&. Otherwise *text will be '\\0'\&.
 .fi
 .PP
  
-.SS "\fBPARSE_EVENT_STRUCT\fP* pvParseEventStruct (\fBPARAM\fP *p, const char *event)"
+.SS "\fBPARSE_EVENT_STRUCT\fP* pvParseEventStruct (\fBPARAM\fP * p, const char * event)"
 
 .PP
 .nf
@@ -222,7 +225,7 @@ This fuction will parse the event\&. It is a stub for script languages\&.
 .fi
 .PP
  
-.SS "int pvPrint (\fBPARAM\fP *p, intid)"
+.SS "int pvPrint (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -232,7 +235,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int pvRenderTreeDump (\fBPARAM\fP *p, intid, const char *filename)"
+.SS "int pvRenderTreeDump (\fBPARAM\fP * p, int id, const char * filename)"
 
 .PP
 .nf
@@ -242,7 +245,7 @@ Allowed widgets: QDraw/SVG widget
 .fi
 .PP
  
-.SS "int pvSave (\fBPARAM\fP *p, intid)"
+.SS "int pvSave (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -252,7 +255,7 @@ Allowed widgets: QTable
 .fi
 .PP
  
-.SS "int pvSave (\fBPARAM\fP *p, intid, const char *filename)"
+.SS "int pvSave (\fBPARAM\fP * p, int id, const char * filename)"
 
 .PP
 .nf
@@ -262,7 +265,7 @@ Allowed widgets: QDraw
 .fi
 .PP
  
-.SS "int pvSaveAsBmp (\fBPARAM\fP *p, intid, const char *filename)"
+.SS "int pvSaveAsBmp (\fBPARAM\fP * p, int id, const char * filename)"
 
 .PP
 .nf
@@ -272,7 +275,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int pvSendFile (\fBPARAM\fP *p, const char *filename)"
+.SS "int pvSendFile (\fBPARAM\fP * p, const char * filename)"
 
 .PP
 .nf
@@ -281,7 +284,7 @@ send file to browser
 .fi
 .PP
  
-.SS "int pvSendUserEvent (\fBPARAM\fP *p, intid, const char *text)"
+.SS "int pvSendUserEvent (\fBPARAM\fP * p, int id, const char * text)"
 
 .PP
 .nf
@@ -290,7 +293,7 @@ Send a USER_EVENT to ourself
 .fi
 .PP
  
-.SS "int pvSetMaxClients (intmax_clients)"
+.SS "int pvSetMaxClients (int max_clients)"
 
 .PP
 .nf
@@ -300,7 +303,7 @@ Set the total limit of clients the pvserver accepts
 .fi
 .PP
  
-.SS "int pvSetMaxClientsPerIpAdr (intmax_clients)"
+.SS "int pvSetMaxClientsPerIpAdr (int max_clients)"
 
 .PP
 .nf
@@ -309,17 +312,17 @@ Set the limit of clients the pvserver accepts from 1 ip address
 .fi
 .PP
  
-.SS "int pvtcpreceive (\fBPARAM\fP *p, char *buf, intmaxlen)"
+.SS "int pvtcpreceive (\fBPARAM\fP * p, char * buf, int maxlen)"
 
-.SS "int pvtcpreceive_binary (\fBPARAM\fP *p, char *buf, intmaxlen)"
+.SS "int pvtcpreceive_binary (\fBPARAM\fP * p, char * buf, int maxlen)"
 
-.SS "int pvtcpsend (\fBPARAM\fP *p, const char *buf, intlen)"
+.SS "int pvtcpsend (\fBPARAM\fP * p, const char * buf, int len)"
 
-.SS "int pvtcpsend_binary (\fBPARAM\fP *p, const char *buf, intlen)"
+.SS "int pvtcpsend_binary (\fBPARAM\fP * p, const char * buf, int len)"
 
-.SS "int pvtcpsendstring (\fBPARAM\fP *p, const char *buf)"
+.SS "int pvtcpsendstring (\fBPARAM\fP * p, const char * buf)"
 
-.SS "int pvWriteFile (\fBPARAM\fP *p, const char *filename, intwidth, intheight)"
+.SS "int pvWriteFile (\fBPARAM\fP * p, const char * filename, int width, int height)"
 
 .PP
 .nf

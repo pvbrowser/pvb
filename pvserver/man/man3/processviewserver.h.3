@@ -1,8 +1,8 @@
-.TH "processviewserver.h" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "processviewserver.h" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-processviewserver.h \- 
+processviewserver.h
 .SH SYNOPSIS
 .br
 .PP
@@ -177,19 +177,19 @@ processviewserver.h \-
 .RI "typedef struct \fB_PARAM_\fP \fBPARAM\fP"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvAccept\fP )(\fBPARAM\fP *p)"
+.RI "typedef int(* \fBplugin_pvAccept\fP) (\fBPARAM\fP *p)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvtcpsend_binary\fP )(\fBPARAM\fP *p, const char *buf, int len)"
+.RI "typedef int(* \fBplugin_pvtcpsend_binary\fP) (\fBPARAM\fP *p, const char *buf, int len)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvtcpreceive\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.RI "typedef int(* \fBplugin_pvtcpreceive\fP) (\fBPARAM\fP *p, char *buf, int maxlen)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_pvtcpreceive_binary\fP )(\fBPARAM\fP *p, char *buf, int maxlen)"
+.RI "typedef int(* \fBplugin_pvtcpreceive_binary\fP) (\fBPARAM\fP *p, char *buf, int maxlen)"
 .br
 .ti -1c
-.RI "typedef int(* \fBplugin_closesocket\fP )(int s)"
+.RI "typedef int(* \fBplugin_closesocket\fP) (int s, \fBPARAM\fP *p)"
 .br
 .in -1c
 .SS "Enumerations"
@@ -1659,7 +1659,7 @@ processviewserver.h \-
 
 .in +1c
 .ti -1c
-.RI "const char \fBpvserver_version\fP [] = '4\&.8\&.5'"
+.RI "const char \fBpvserver_version\fP [] = '5\&.1\&.3'"
 .br
 .ti -1c
 .RI "static const char \fBnull_string\fP [] = ''"
@@ -1667,7 +1667,7 @@ processviewserver.h \-
 .in -1c
 .SH "Variable Documentation"
 .PP 
-.SS "const char pvserver_version[] = '4\&.8\&.5'"
+.SS "const char pvserver_version[] = '5\&.1\&.3'"
 
 .SH "Author"
 .PP 

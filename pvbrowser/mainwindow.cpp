@@ -802,7 +802,7 @@ void MainWindow::createToolBars()
 #ifdef USE_ANDROID
   urlComboBox->setMinimumWidth(777);
   urlComboBox->setMaximumWidth(1024);
-  urlComboBox->setMinimumHeight(77);
+  urlComboBox->setMinimumHeight(88);
   /*
   urlComboBox->setStyleSheet(
                                "QComboBox {min-height:29px; min-width:400px; margin: 1px; padding: 1x; }"

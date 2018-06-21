@@ -1,8 +1,11 @@
-.TH "QwtAnalogClock" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "QwtAnalogClock" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-QwtAnalogClock \- 
+QwtAnalogClock
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -51,7 +54,7 @@ QwtAnalogClock \-
 QwtAnalogClock Widget 
 .SH "Function Documentation"
 .PP 
-.SS "int qwtAnalogClockSetFrameShadow (\fBPARAM\fP *p, intid, intshadow)"
+.SS "int qwtAnalogClockSetFrameShadow (\fBPARAM\fP * p, int id, int shadow)"
 
 .PP
 .nf
@@ -60,7 +63,7 @@ QwtAnalogClock Widget
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetLineWidth (\fBPARAM\fP *p, intid, intwidth)"
+.SS "int qwtAnalogClockSetLineWidth (\fBPARAM\fP * p, int id, int width)"
 
 .PP
 .nf
@@ -68,7 +71,7 @@ QwtAnalogClock Widget
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetMass (\fBPARAM\fP *p, intid, floatmass)"
+.SS "int qwtAnalogClockSetMass (\fBPARAM\fP * p, int id, float mass)"
 
 .PP
 .nf
@@ -76,7 +79,7 @@ QwtAnalogClock Widget
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetMode (\fBPARAM\fP *p, intid, intmode)"
+.SS "int qwtAnalogClockSetMode (\fBPARAM\fP * p, int id, int mode)"
 
 .PP
 .nf
@@ -85,7 +88,7 @@ QwtAnalogClock Widget
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetNeedle (\fBPARAM\fP *p, intid, intwhich, intr1 = \fC0\fP, intg1 = \fC0\fP, intb1 = \fC0\fP, intr2 = \fC255\fP, intg2 = \fC255\fP, intb2 = \fC255\fP, intr3 = \fC128\fP, intg3 = \fC128\fP, intb3 = \fC128\fP)"
+.SS "int qwtAnalogClockSetNeedle (\fBPARAM\fP * p, int id, int which, int r1 = \fC0\fP, int g1 = \fC0\fP, int b1 = \fC0\fP, int r2 = \fC255\fP, int g2 = \fC255\fP, int b2 = \fC255\fP, int r3 = \fC128\fP, int g3 = \fC128\fP, int b3 = \fC128\fP)"
 
 .PP
 .nf
@@ -99,7 +102,7 @@ if(which==QwtCompassLineNeedle) QwtCompassLineNeedle(r1,g1,b1);
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetOrigin (\fBPARAM\fP *p, intid, floato)"
+.SS "int qwtAnalogClockSetOrigin (\fBPARAM\fP * p, int id, float o)"
 
 .PP
 .nf
@@ -107,7 +110,7 @@ if(which==QwtCompassLineNeedle) QwtCompassLineNeedle(r1,g1,b1);
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetReadOnly (\fBPARAM\fP *p, intid, intrdonly)"
+.SS "int qwtAnalogClockSetReadOnly (\fBPARAM\fP * p, int id, int rdonly)"
 
 .PP
 .nf
@@ -116,7 +119,7 @@ rdonly = 0 | 1
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetScale (\fBPARAM\fP *p, intid, intmaxMajIntv, intmaxMinIntv, floatstep)"
+.SS "int qwtAnalogClockSetScale (\fBPARAM\fP * p, int id, int maxMajIntv, int maxMinIntv, float step)"
 
 .PP
 .nf
@@ -124,7 +127,7 @@ rdonly = 0 | 1
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetScaleArc (\fBPARAM\fP *p, intid, floatmin, floatmax)"
+.SS "int qwtAnalogClockSetScaleArc (\fBPARAM\fP * p, int id, float min, float max)"
 
 .PP
 .nf
@@ -132,7 +135,7 @@ rdonly = 0 | 1
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetTime (\fBPARAM\fP *p, intid, inthour, intminute, intsecond)"
+.SS "int qwtAnalogClockSetTime (\fBPARAM\fP * p, int id, int hour, int minute, int second)"
 
 .PP
 .nf
@@ -140,7 +143,7 @@ rdonly = 0 | 1
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetValue (\fBPARAM\fP *p, intid, floatvalue)"
+.SS "int qwtAnalogClockSetValue (\fBPARAM\fP * p, int id, float value)"
 
 .PP
 .nf
@@ -148,7 +151,7 @@ rdonly = 0 | 1
 .fi
 .PP
  
-.SS "int qwtAnalogClockSetWrapping (\fBPARAM\fP *p, intid, intwrap)"
+.SS "int qwtAnalogClockSetWrapping (\fBPARAM\fP * p, int id, int wrap)"
 
 .PP
 .nf
@@ -156,7 +159,7 @@ rdonly = 0 | 1
 .fi
 .PP
  
-.SS "int qwtAnalogClockShowBackground (\fBPARAM\fP *p, intid, intshow)"
+.SS "int qwtAnalogClockShowBackground (\fBPARAM\fP * p, int id, int show)"
 
 .PP
 .nf

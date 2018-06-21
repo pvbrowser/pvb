@@ -5,10 +5,7 @@
 TEMPLATE = app
 CONFIG  += warn_on release console 
 CONFIG  -= qt
-#mac2017 QMAKE_LFLAGS += -static-libgcc
-contains(QMAKE_CXX, g++) {
-  !symbian:QMAKE_LFLAGS += -static-libgcc
-}
+QMAKE_LFLAGS += -static-libgcc
 INCLUDEPATH += .
 
 # Input

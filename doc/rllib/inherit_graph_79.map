@@ -1,3 +1,4 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classrlWebcam.html" title="rlWebcam" alt="" coords="5,5,88,32"/>
+<area shape="rect" id="node1" href="$classrlUdpSocket.html" title="rlUdpSocket" alt="" coords="5,5,100,32"/>
+<area shape="rect" id="node2" href="$classrlEIBnetIP.html" title="rlEIBnetIP" alt="" coords="148,5,227,32"/>
 </map>

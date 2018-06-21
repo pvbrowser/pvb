@@ -3,7 +3,7 @@ var searchData=
   ['i18n',['i18n',['../classrlIniFile.html#aaca881704690345b4c7e0569059f3239',1,'rlIniFile']]],
   ['include',['include',['../classrlReport.html#aa32da2c2efb7773b41379068ef028c35',1,'rlReport']]],
   ['includecsv',['includeCSV',['../classrlReport.html#a6de378ea27efe2bdf482f80a8422d088',1,'rlReport']]],
-  ['includeheader',['includeHeader',['../classrlReport.html#a3a676c7a85d5b268d5799d5660dc3917',1,'rlReport']]],
+  ['includeheader',['includeHeader',['../classrlReport.html#ab5d7195d91da5353dcc57f5894d3b056',1,'rlReport']]],
   ['includeimage',['includeImage',['../classrlReport.html#a8e486958cb3b422bf371f2c35302578a',1,'rlReport']]],
   ['incrementsemaphore',['incrementSemaphore',['../classrlThread.html#a92c846978cc81fb0350e2ee875977105',1,'rlThread::incrementSemaphore()'],['../classrlSemaphore.html#aaa04f4f1d75a185b2dda705f27bc4968',1,'rlSemaphore::incrementSemaphore()']]],
   ['ini',['ini',['../classrlCanOpen.html#aab75d58a1776264647ee87df5972f921',1,'rlCanOpen']]],

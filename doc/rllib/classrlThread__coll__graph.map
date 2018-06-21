@@ -1,5 +1,5 @@
 <map id="rlThread" name="rlThread">
-<area shape="rect" id="node2" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="57,273,188,300"/>
+<area shape="rect" id="node2" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="51,273,181,300"/>
 <area shape="rect" id="node3" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,95,123,121"/>
 <area shape="rect" id="node4" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="147,95,250,121"/>
 <area shape="rect" id="node5" href="$struct____sched__param.html" title="__sched_param" alt="" coords="139,5,258,32"/>

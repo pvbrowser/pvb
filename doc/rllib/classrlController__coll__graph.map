@@ -1,6 +1,6 @@
 <map id="rlController" name="rlController">
-<area shape="rect" id="node2" href="$classrlThread.html" title="rlThread" alt="" coords="85,184,160,211"/>
-<area shape="rect" id="node3" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="131,273,261,300"/>
+<area shape="rect" id="node2" href="$classrlThread.html" title="rlThread" alt="" coords="79,184,153,211"/>
+<area shape="rect" id="node3" href="$structTHREAD__PARAM.html" title="THREAD_PARAM" alt="" coords="124,273,255,300"/>
 <area shape="rect" id="node4" href="$structWSEMAPHORE.html" title="WSEMAPHORE" alt="" coords="5,95,123,121"/>
 <area shape="rect" id="node5" href="$structpthread__attr__t.html" title="pthread_attr_t" alt="" coords="147,95,250,121"/>
 <area shape="rect" id="node6" href="$struct____sched__param.html" title="__sched_param" alt="" coords="139,5,258,32"/>

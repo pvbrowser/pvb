@@ -1,8 +1,11 @@
-.TH "TextEvents" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "TextEvents" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-TextEvents \- 
+TextEvents
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -102,7 +105,7 @@ static int slotTextEvent(PARAM *p, int id, DATA *d, const char *text)
  
 .SH "Function Documentation"
 .PP 
-.SS "int getGeometry (const char *text, int *x, int *y, int *width, int *height)"
+.SS "int getGeometry (const char * text, int * x, int * y, int * width, int * height)"
 
 .PP
 .nf
@@ -112,7 +115,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int getParentWidgetId (const char *text, int *parent)"
+.SS "int getParentWidgetId (const char * text, int * parent)"
 
 .PP
 .nf
@@ -122,7 +125,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int getSvgBoundsOnElement (const char *text, float *x, float *y, float *width, float *height)"
+.SS "int getSvgBoundsOnElement (const char * text, float * x, float * y, float * width, float * height)"
 
 .PP
 .nf
@@ -132,7 +135,7 @@ Allowed widgets: QDrawWidget
 .fi
 .PP
  
-.SS "int getSvgMatrixForElement (const char *text, float *m11, float *m12, float *m21, float *m22, float *det, float *dx, float *dy)"
+.SS "int getSvgMatrixForElement (const char * text, float * m11, float * m12, float * m21, float * m22, float * det, float * dx, float * dy)"
 
 .PP
 .nf
@@ -142,7 +145,7 @@ Allowed widgets: QDrawWidget
 .fi
 .PP
  
-.SS "const char* svgObjectName (const char *text)"
+.SS "const char* svgObjectName (const char * text)"
 
 .PP
 .nf
@@ -153,7 +156,7 @@ Allowed widgets: QDrawWidget
 .fi
 .PP
  
-.SS "int textEventType (const char *text)"
+.SS "int textEventType (const char * text)"
 
 .PP
 .nf

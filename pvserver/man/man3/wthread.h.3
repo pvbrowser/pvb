@@ -1,8 +1,8 @@
-.TH "wthread.h" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "wthread.h" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-wthread.h \- 
+wthread.h
 .SH SYNOPSIS
 .br
 .PP
@@ -73,35 +73,35 @@ wthread.h \-
 .in -1c
 .SH "Function Documentation"
 .PP 
-.SS "int pvincrement_semaphore (\fBWSEMAPHORE\fP *s)"
+.SS "int pvincrement_semaphore (\fBWSEMAPHORE\fP * s)"
 
-.SS "int pvinit_semaphore (\fBWSEMAPHORE\fP *s, intcmax)"
+.SS "int pvinit_semaphore (\fBWSEMAPHORE\fP * s, int cmax)"
 
-.SS "int pvthread_attr_init (pthread_attr_t *attr)"
+.SS "int pvthread_attr_init (pthread_attr_t * attr)"
 
-.SS "int pvthread_cancel (pthread_ttid)"
+.SS "int pvthread_cancel (pthread_t tid)"
 
-.SS "void pvthread_close_handle (pthread_t *tid)"
+.SS "void pvthread_close_handle (pthread_t * tid)"
 
-.SS "int pvthread_create (pthread_t *tid, const pthread_attr_t *attr, void *(*)(void *)func, void *arg)"
+.SS "int pvthread_create (pthread_t * tid, const pthread_attr_t * attr, void *(*)(void *) func, void * arg)"
 
-.SS "void pvthread_exit (void *status)"
+.SS "void pvthread_exit (void * status)"
 
-.SS "int pvthread_join (pthread_ttid, void **status)"
+.SS "int pvthread_join (pthread_t tid, void ** status)"
 
-.SS "int pvthread_mutex_destroy (pthread_mutex_t *mptr)"
+.SS "int pvthread_mutex_destroy (pthread_mutex_t * mptr)"
 
-.SS "int pvthread_mutex_init (pthread_mutex_t *mptr, const pthread_mutexattr_t *attr)"
+.SS "int pvthread_mutex_init (pthread_mutex_t * mptr, const pthread_mutexattr_t * attr)"
 
-.SS "int pvthread_mutex_lock (pthread_mutex_t *mptr)"
+.SS "int pvthread_mutex_lock (pthread_mutex_t * mptr)"
 
-.SS "int pvthread_mutex_trylock (pthread_mutex_t *mptr)"
+.SS "int pvthread_mutex_trylock (pthread_mutex_t * mptr)"
 
-.SS "int pvthread_mutex_unlock (pthread_mutex_t *mptr)"
+.SS "int pvthread_mutex_unlock (pthread_mutex_t * mptr)"
 
-.SS "int pvthread_sleep (longmsec)"
+.SS "int pvthread_sleep (long msec)"
 
-.SS "int pvwait_semaphore (\fBWSEMAPHORE\fP *s)"
+.SS "int pvwait_semaphore (\fBWSEMAPHORE\fP * s)"
 
 .SH "Author"
 .PP 

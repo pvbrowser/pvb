@@ -1,8 +1,11 @@
-.TH "Input" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "Input" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Input \- 
+Input
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -36,7 +39,7 @@ Input \-
 These are the input routines 
 .SH "Function Documentation"
 .PP 
-.SS "int pvRequestGeometry (\fBPARAM\fP *p, intid)"
+.SS "int pvRequestGeometry (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -47,7 +50,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int pvRequestJpeg (\fBPARAM\fP *p, intid)"
+.SS "int pvRequestJpeg (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -57,7 +60,7 @@ Allowed widgets: QWidget, QImage, QDraw, QwtPlot
 .fi
 .PP
  
-.SS "int pvRequestParentWidgetId (\fBPARAM\fP *p, intid)"
+.SS "int pvRequestParentWidgetId (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -68,7 +71,7 @@ Allowed widgets: all widgets
 .fi
 .PP
  
-.SS "int pvRequestSvgBoundsOnElement (\fBPARAM\fP *p, intid, const char *objectname)"
+.SS "int pvRequestSvgBoundsOnElement (\fBPARAM\fP * p, int id, const char * objectname)"
 
 .PP
 .nf
@@ -80,7 +83,7 @@ Allowed widgets: QDrawWidget
 .fi
 .PP
  
-.SS "int pvRequestSvgMatrixForElement (\fBPARAM\fP *p, intid, const char *objectname)"
+.SS "int pvRequestSvgMatrixForElement (\fBPARAM\fP * p, int id, const char * objectname)"
 
 .PP
 .nf
@@ -92,7 +95,7 @@ Allowed widgets: QDrawWidget
 .fi
 .PP
  
-.SS "int pvSelection (\fBPARAM\fP *p, intid)"
+.SS "int pvSelection (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -102,7 +105,7 @@ Allowed widgets: QListBox, QListView
 .fi
 .PP
  
-.SS "int pvText (\fBPARAM\fP *p, intid)"
+.SS "int pvText (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -113,7 +116,7 @@ Allowed widgets: QLabel, QPushButton, QLineEdit, QMultiLineEdit
 .fi
 .PP
  
-.SS "int pvWaitpid (\fBPARAM\fP *p)"
+.SS "int pvWaitpid (\fBPARAM\fP * p)"
 
 .PP
 .nf

@@ -185,9 +185,6 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__ln_s /opt/pvb/language_bindings/lua/pvslua/pvslua      %{buildroot}%{_bindir}/pvslua 
 %__ln_s /opt/pvb/language_bindings/lua/pvapplua/pvapplua  %{buildroot}%{_bindir}/pvapplua 
 
-%__ln_s /opt/pvb/pvbrowser.desktop          %{buildroot}/usr/share/applications/pvbrowser.desktop
-%__ln_s /opt/pvb/pvdevelop.desktop          %{buildroot}/usr/share/applications/pvdevelop.desktop
-
 %__mkdir_p %{buildroot}/srv/automation/shm
 %__mkdir_p %{buildroot}/srv/automation/mbx
 %__mkdir_p %{buildroot}/srv/automation/log
@@ -282,8 +279,6 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/gamsleiten.png
 /opt/pvb/pvbrowser.desktop
 /opt/pvb/pvdevelop.desktop
-/usr/share/applications/pvbrowser.desktop
-/usr/share/applications/pvdevelop.desktop
 /opt/pvb/doc
 /opt/pvb/pvsexample
 /opt/pvb/start_pvbapp/start_pvbapp

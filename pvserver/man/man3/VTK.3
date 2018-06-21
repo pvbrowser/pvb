@@ -1,8 +1,11 @@
-.TH "Visualization Tool Kit" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "VTK" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Visualization Tool Kit \- 
+VTK
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -21,7 +24,7 @@ Visualization Tool Kit \-
 These are the vtk output routines 
 .SH "Function Documentation"
 .PP 
-.SS "int pvVtkTcl (\fBPARAM\fP *p, intid, const char *tcl_command)"
+.SS "int pvVtkTcl (\fBPARAM\fP * p, int id, const char * tcl_command)"
 
 .PP
 .nf
@@ -30,7 +33,7 @@ Send a single Tcl command to the widget
 .fi
 .PP
  
-.SS "int pvVtkTclPrintf (\fBPARAM\fP *p, intid, const char *format, \&.\&.\&.)"
+.SS "int pvVtkTclPrintf (\fBPARAM\fP * p, int id, const char * format,  \&.\&.\&.)"
 
 .PP
 .nf
@@ -39,7 +42,7 @@ Send a single Tcl command to the widget\&. Used like printf()
 .fi
 .PP
  
-.SS "int pvVtkTclScript (\fBPARAM\fP *p, intid, const char *filename)"
+.SS "int pvVtkTclScript (\fBPARAM\fP * p, int id, const char * filename)"
 
 .PP
 .nf

@@ -237,7 +237,7 @@ GENERATE_QHP       = YES
 QHP_NAMESPACE      = "pvbrowser.org.pvslib"
 QHP_VIRTUAL_FOLDER = "pvslib"
 QCH_FILE           = "../../../qhelp/pvslib.qch"
-QHG_LOCATION       = "qhelpgenerator"
+QHG_LOCATION       = "/usr/lib64/qt5/bin/qhelpgenerator"
 
 # This tag can be used to specify a number of aliases that acts 
 # as commands in the documentation. An alias has the form "name=value". 

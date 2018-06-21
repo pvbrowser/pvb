@@ -1,8 +1,11 @@
-.TH "http helper functions" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "http" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-http helper functions \- 
+http
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -48,7 +51,7 @@ int \fBpvtcpreceive_binary(PARAM *p, char *buf, int maxlen)\fP;
 Your own httpd helper functions could be included within the upstream project\&. Please take care that the helper functions are usefull for wide use cases\&. 
 .SH "Function Documentation"
 .PP 
-.SS "int pvSendHttpChunks (\fBPARAM\fP *p, const char *filename)"
+.SS "int pvSendHttpChunks (\fBPARAM\fP * p, const char * filename)"
 
 .PP
 .nf
@@ -74,7 +77,7 @@ Example:
 .fi
 .PP
  
-.SS "int pvSendHttpContentLength (\fBPARAM\fP *p, const char *filename)"
+.SS "int pvSendHttpContentLength (\fBPARAM\fP * p, const char * filename)"
 
 .PP
 .nf
@@ -100,7 +103,7 @@ Example:
 .fi
 .PP
  
-.SS "int pvSendHttpResponse (\fBPARAM\fP *p, const char *html)"
+.SS "int pvSendHttpResponse (\fBPARAM\fP * p, const char * html)"
 
 .PP
 .nf
@@ -109,7 +112,7 @@ send http response using HTML text\&.
 .fi
 .PP
  
-.SS "int pvSendHttpResponseFile (\fBPARAM\fP *p, const char *filename, const char *content_type = \fC'text/html'\fP)"
+.SS "int pvSendHttpResponseFile (\fBPARAM\fP * p, const char * filename, const char * content_type = \fC'text/html'\fP)"
 
 .PP
 .nf

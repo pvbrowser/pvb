@@ -1,8 +1,11 @@
-.TH "QwtPlotWidget" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "QwtPlotWidget" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-QwtPlotWidget \- 
+QwtPlotWidget
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -117,7 +120,7 @@ QwtPlotWidget \-
 Commands for the QwtPlotWidget 
 .SH "Function Documentation"
 .PP 
-.SS "int qpwEnableAxis (\fBPARAM\fP *p, intid, intpos)"
+.SS "int qpwEnableAxis (\fBPARAM\fP * p, int id, int pos)"
 
 .PP
 .nf
@@ -126,7 +129,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwEnableGridXMin (\fBPARAM\fP *p, intid)"
+.SS "int qpwEnableGridXMin (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -135,7 +138,7 @@ enable grid
 .fi
 .PP
  
-.SS "int qpwEnableLegend (\fBPARAM\fP *p, intid, intval)"
+.SS "int qpwEnableLegend (\fBPARAM\fP * p, int id, int val)"
 
 .PP
 .nf
@@ -144,7 +147,7 @@ val = 0|1
 .fi
 .PP
  
-.SS "int qpwEnableOutline (\fBPARAM\fP *p, intid, intval)"
+.SS "int qpwEnableOutline (\fBPARAM\fP * p, int id, int val)"
 
 .PP
 .nf
@@ -153,7 +156,7 @@ val = 0|1
 .fi
 .PP
  
-.SS "int qpwInsertCurve (\fBPARAM\fP *p, intid, intindex, const char *text)"
+.SS "int qpwInsertCurve (\fBPARAM\fP * p, int id, int index, const char * text)"
 
 .PP
 .nf
@@ -162,7 +165,7 @@ index = index of curve 0\&.\&.\&.
 .fi
 .PP
  
-.SS "int qpwInsertLineMarker (\fBPARAM\fP *p, intid, intindex, const char *text, intpos)"
+.SS "int qpwInsertLineMarker (\fBPARAM\fP * p, int id, int index, const char * text, int pos)"
 
 .PP
 .nf
@@ -172,7 +175,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwInsertMarker (\fBPARAM\fP *p, intid, intindex)"
+.SS "int qpwInsertMarker (\fBPARAM\fP * p, int id, int index)"
 
 .PP
 .nf
@@ -181,7 +184,7 @@ index = index of marker 0\&.\&.\&.
 .fi
 .PP
  
-.SS "int qpwRemoveCurve (\fBPARAM\fP *p, intid, intindex)"
+.SS "int qpwRemoveCurve (\fBPARAM\fP * p, int id, int index)"
 
 .PP
 .nf
@@ -190,7 +193,7 @@ index = index of curve 0\&.\&.\&.
 .fi
 .PP
  
-.SS "int qpwReplot (\fBPARAM\fP *p, intid)"
+.SS "int qpwReplot (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -199,7 +202,7 @@ replot the widget
 .fi
 .PP
  
-.SS "int qpwSetAutoLegend (\fBPARAM\fP *p, intid, intval)"
+.SS "int qpwSetAutoLegend (\fBPARAM\fP * p, int id, int val)"
 
 .PP
 .nf
@@ -208,7 +211,7 @@ val = 0|1
 .fi
 .PP
  
-.SS "int qpwSetAxisMaxMajor (\fBPARAM\fP *p, intid, intpos, intval)"
+.SS "int qpwSetAxisMaxMajor (\fBPARAM\fP * p, int id, int pos, int val)"
 
 .PP
 .nf
@@ -217,7 +220,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwSetAxisMaxMinor (\fBPARAM\fP *p, intid, intpos, intval)"
+.SS "int qpwSetAxisMaxMinor (\fBPARAM\fP * p, int id, int pos, int val)"
 
 .PP
 .nf
@@ -226,7 +229,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwSetAxisOptions (\fBPARAM\fP *p, intid, intpos, intval)"
+.SS "int qpwSetAxisOptions (\fBPARAM\fP * p, int id, int pos, int val)"
 
 .PP
 .nf
@@ -236,7 +239,7 @@ val = \fBQwtAutoscale\fP\&.
 .fi
 .PP
  
-.SS "int qpwSetAxisScale (\fBPARAM\fP *p, intid, intpos, floatmin, floatmax, floatstep)"
+.SS "int qpwSetAxisScale (\fBPARAM\fP * p, int id, int pos, float min, float max, float step)"
 
 .PP
 .nf
@@ -245,7 +248,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwSetAxisScaleDraw (\fBPARAM\fP *p, intid, intpos, const char *text)"
+.SS "int qpwSetAxisScaleDraw (\fBPARAM\fP * p, int id, int pos, const char * text)"
 
 .PP
 .nf
@@ -255,7 +258,7 @@ text = format yyyy-MM-dd hh:mm:ss as QDateTime\&.toString
 .fi
 .PP
  
-.SS "int qpwSetAxisTitle (\fBPARAM\fP *p, intid, intpos, const char *text)"
+.SS "int qpwSetAxisTitle (\fBPARAM\fP * p, int id, int pos, const char * text)"
 
 .PP
 .nf
@@ -264,7 +267,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwSetBufferedCurveData (\fBPARAM\fP *p, intid, intc)"
+.SS "int qpwSetBufferedCurveData (\fBPARAM\fP * p, int id, int c)"
 
 .PP
 .nf
@@ -275,7 +278,7 @@ c = index of curve
 .fi
 .PP
  
-.SS "int qpwSetCanvasBackground (\fBPARAM\fP *p, intid, intr, intg, intb)"
+.SS "int qpwSetCanvasBackground (\fBPARAM\fP * p, int id, int r, int g, int b)"
 
 .PP
 .nf
@@ -284,7 +287,7 @@ Set the background color of the canvas
 .fi
 .PP
  
-.SS "int qpwSetCurveData (\fBPARAM\fP *p, intid, intc, intcount, double *x, double *y)"
+.SS "int qpwSetCurveData (\fBPARAM\fP * p, int id, int c, int count, double * x, double * y)"
 
 .PP
 .nf
@@ -295,7 +298,7 @@ count = number of coordinates in x,y
 .fi
 .PP
  
-.SS "int qpwSetCurvePen (\fBPARAM\fP *p, intid, intindex, intr, intg, intb, intwidth = \fC1\fP, intstyle = \fC\fBSolidLine\fP\fP)"
+.SS "int qpwSetCurvePen (\fBPARAM\fP * p, int id, int index, int r, int g, int b, int width = \fC1\fP, int style = \fC\fBSolidLine\fP\fP)"
 
 .PP
 .nf
@@ -305,7 +308,7 @@ style = \fBPenStyle\fP\&.
 .fi
 .PP
  
-.SS "int qpwSetCurveSymbol (\fBPARAM\fP *p, intid, intindex, intsymbol, intr1, intg1, intb1, intr2, intg2, intb2, intw, inth)"
+.SS "int qpwSetCurveSymbol (\fBPARAM\fP * p, int id, int index, int symbol, int r1, int g1, int b1, int r2, int g2, int b2, int w, int h)"
 
 .PP
 .nf
@@ -315,7 +318,7 @@ symbol = \fBMarkerSymbol\fP\&.
 .fi
 .PP
  
-.SS "int qpwSetCurveYAxis (\fBPARAM\fP *p, intid, intindex, intpos)"
+.SS "int qpwSetCurveYAxis (\fBPARAM\fP * p, int id, int index, int pos)"
 
 .PP
 .nf
@@ -325,7 +328,7 @@ pos = yLeft | yRight | xBottom | xTop
 .fi
 .PP
  
-.SS "int qpwSetGridMajPen (\fBPARAM\fP *p, intid, intr, intg, intb, intstyle)"
+.SS "int qpwSetGridMajPen (\fBPARAM\fP * p, int id, int r, int g, int b, int style)"
 
 .PP
 .nf
@@ -334,7 +337,7 @@ style = \fBPenStyle\fP\&.
 .fi
 .PP
  
-.SS "int qpwSetGridMinPen (\fBPARAM\fP *p, intid, intr, intg, intb, intstyle)"
+.SS "int qpwSetGridMinPen (\fBPARAM\fP * p, int id, int r, int g, int b, int style)"
 
 .PP
 .nf
@@ -343,7 +346,7 @@ style = \fBPenStyle\fP\&.
 .fi
 .PP
  
-.SS "int qpwSetLegendFrameStyle (\fBPARAM\fP *p, intid, intstyle)"
+.SS "int qpwSetLegendFrameStyle (\fBPARAM\fP * p, int id, int style)"
 
 .PP
 .nf
@@ -352,7 +355,7 @@ style = \fBShape\fP | \fBShadow\fP
 .fi
 .PP
  
-.SS "int qpwSetLegendPos (\fBPARAM\fP *p, intid, intpos)"
+.SS "int qpwSetLegendPos (\fBPARAM\fP * p, int id, int pos)"
 
 .PP
 .nf
@@ -365,7 +368,7 @@ pos = Left   |
 .fi
 .PP
  
-.SS "int qpwSetMarkerFont (\fBPARAM\fP *p, intid, intindex, const char *family, intsize, intstyle)"
+.SS "int qpwSetMarkerFont (\fBPARAM\fP * p, int id, int index, const char * family, int size, int style)"
 
 .PP
 .nf
@@ -375,7 +378,7 @@ style =
 .fi
 .PP
  
-.SS "int qpwSetMarkerLabel (\fBPARAM\fP *p, intid, intnumber, const char *text)"
+.SS "int qpwSetMarkerLabel (\fBPARAM\fP * p, int id, int number, const char * text)"
 
 .PP
 .nf
@@ -385,7 +388,7 @@ text = Text to out
 .fi
 .PP
  
-.SS "int qpwSetMarkerLabelAlign (\fBPARAM\fP *p, intid, intindex, intalign)"
+.SS "int qpwSetMarkerLabelAlign (\fBPARAM\fP * p, int id, int index, int align)"
 
 .PP
 .nf
@@ -394,7 +397,7 @@ index = index of marker 0\&.\&.\&.
 .fi
 .PP
  
-.SS "int qpwSetMarkerLineStyle (\fBPARAM\fP *p, intid, intindex, intstyle)"
+.SS "int qpwSetMarkerLineStyle (\fBPARAM\fP * p, int id, int index, int style)"
 
 .PP
 .nf
@@ -404,7 +407,7 @@ style = NoLine | HLine | VLine | Cross
 .fi
 .PP
  
-.SS "int qpwSetMarkerPen (\fBPARAM\fP *p, intid, intindex, intr, intg, intb, intstyle)"
+.SS "int qpwSetMarkerPen (\fBPARAM\fP * p, int id, int index, int r, int g, int b, int style)"
 
 .PP
 .nf
@@ -414,7 +417,7 @@ style =
 .fi
 .PP
  
-.SS "int qpwSetMarkerPos (\fBPARAM\fP *p, intid, intindex, floatx, floaty)"
+.SS "int qpwSetMarkerPos (\fBPARAM\fP * p, int id, int index, float x, float y)"
 
 .PP
 .nf
@@ -424,7 +427,7 @@ style =
 .fi
 .PP
  
-.SS "int qpwSetMarkerSymbol (\fBPARAM\fP *p, intid, intindex, intsymbol, intr1, intg1, intb1, intr2, intg2, intb2, intw, inth)"
+.SS "int qpwSetMarkerSymbol (\fBPARAM\fP * p, int id, int index, int symbol, int r1, int g1, int b1, int r2, int g2, int b2, int w, int h)"
 
 .PP
 .nf
@@ -434,7 +437,7 @@ symbol = \fBMarkerSymbol\fP\&.
 .fi
 .PP
  
-.SS "int qpwSetOutlinePen (\fBPARAM\fP *p, intid, intr, intg, intb)"
+.SS "int qpwSetOutlinePen (\fBPARAM\fP * p, int id, int r, int g, int b)"
 
 .PP
 .nf
@@ -443,7 +446,7 @@ Set outine pen color
 .fi
 .PP
  
-.SS "int qpwSetTitle (\fBPARAM\fP *p, intid, const char *text)"
+.SS "int qpwSetTitle (\fBPARAM\fP * p, int id, const char * text)"
 
 .PP
 .nf

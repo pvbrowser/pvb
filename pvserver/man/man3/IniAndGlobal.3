@@ -1,8 +1,11 @@
-.TH "Initialisation and global routines" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "IniAndGlobal" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Initialisation and global routines \- 
+IniAndGlobal
+.SH SYNOPSIS
+.br
+.PP
 .SS "Functions"
 
 .in +1c
@@ -123,7 +126,7 @@ Initialisation and global routines \-
 These routines are used for initialisation\&. And also some global usable routines are available\&. 
 .SH "Function Documentation"
 .PP 
-.SS "int getFloats (const char *text, \fBFloatArray\fP *fa)"
+.SS "int getFloats (const char * text, \fBFloatArray\fP * fa)"
 
 .PP
 .nf
@@ -132,7 +135,7 @@ Get integer array from string for script language
 .fi
 .PP
  
-.SS "int getIntegers (const char *text, \fBIntegerArray\fP *ia)"
+.SS "int getIntegers (const char * text, \fBIntegerArray\fP * ia)"
 
 .PP
 .nf
@@ -141,7 +144,7 @@ Get integer array from string for script language
 .fi
 .PP
  
-.SS "const char* getTextFromText (const char *text)"
+.SS "const char* getTextFromText (const char * text)"
 
 .PP
 .nf
@@ -150,9 +153,9 @@ Get text in parentesis from text for script language
 .fi
 .PP
  
-.SS "int glencode_set_param (\fBPARAM\fP *p)"
+.SS "int glencode_set_param (\fBPARAM\fP * p)"
 
-.SS "int pvAccept (\fBPARAM\fP *p)"
+.SS "int pvAccept (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -161,7 +164,7 @@ see pvInit
 .fi
 .PP
  
-.SS "int pvClientCommand (\fBPARAM\fP *p, const char *command, const char *filename, intdownloadFile = \fC0\fP)"
+.SS "int pvClientCommand (\fBPARAM\fP * p, const char * command, const char * filename, int downloadFile = \fC0\fP)"
 
 .PP
 .nf
@@ -172,7 +175,7 @@ See view\&.pdf, view\&.img, view\&.svg \&.\&.\&. within pvbrowser options\&.
 .fi
 .PP
  
-.SS "int pvCreateThread (\fBPARAM\fP *p, ints)"
+.SS "int pvCreateThread (\fBPARAM\fP * p, int s)"
 
 .PP
 .nf
@@ -181,7 +184,7 @@ see pvInit
 .fi
 .PP
  
-.SS "char* pvGetEvent (\fBPARAM\fP *p)"
+.SS "char* pvGetEvent (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -192,7 +195,7 @@ Call this function in pvMain\&. See also pvMain\&.
 .fi
 .PP
  
-.SS "int pvGetInitialMask (\fBPARAM\fP *p)"
+.SS "int pvGetInitialMask (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -202,7 +205,7 @@ p->initial_mask is a string identifying the initial mask
 .fi
 .PP
  
-.SS "void pvGetLocalTime (\fBpvTime\fP *pvtime)"
+.SS "void pvGetLocalTime (\fBpvTime\fP * pvtime)"
 
 .PP
 .nf
@@ -211,7 +214,7 @@ Get local time
 .fi
 .PP
  
-.SS "int* pvGetSocketPointer (\fBPARAM\fP *p)"
+.SS "int* pvGetSocketPointer (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -220,7 +223,7 @@ Get a pointer to the socket for script language
 .fi
 .PP
  
-.SS "int pvGlUpdate (\fBPARAM\fP *p, intid)"
+.SS "int pvGlUpdate (\fBPARAM\fP * p, int id)"
 
 .PP
 .nf
@@ -229,7 +232,7 @@ update OpenGL widget
 .fi
 .PP
  
-.SS "int pvInit (intac, char **av, \fBPARAM\fP *p)"
+.SS "int pvInit (int ac, char ** av, \fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -255,7 +258,7 @@ is created\&.
 .PP
 .nf
    pvInit(ac,av,&p);
-here you may interpret ac,av and set p\&.user to your data
+   // here you may interpret ac,av and set p\&.user to your data
    while(1)
    {
      s = pvAccept(&p);
@@ -266,7 +269,7 @@ here you may interpret ac,av and set p\&.user to your data
 .fi
 .PP
  
-.SS "int pvInitInternal (\fBPARAM\fP *p)"
+.SS "int pvInitInternal (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -276,7 +279,7 @@ Init for script languages
 .fi
 .PP
  
-.SS "int pvIsAccessAllowed (const char *adr, inttrace)"
+.SS "int pvIsAccessAllowed (const char * adr, int trace)"
 
 .PP
 .nf
@@ -334,7 +337,7 @@ Every pvserver will evaluate 'allow\&.ipv4 and 'deny\&.ipv4" when client connect
 .fi
 .PP
  
-.SS "int pvlock (\fBPARAM\fP *p)"
+.SS "int pvlock (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -347,7 +350,7 @@ because these operations are not thread save\&.
 .fi
 .PP
  
-.SS "int pvMain (\fBPARAM\fP *p)"
+.SS "int pvMain (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -367,7 +370,7 @@ int ret;
 .PP
 .PP
 .nf
-here you can initialize your worker thread
+  // here you can initialize your worker thread
   pvSetCleanup(p,your_exit_handler,your_app_data); // if cleanup is necessary
   pvResize(p,0,970,600);  // this will resize your working area
   ret = showMask1(p);
@@ -392,7 +395,7 @@ here you can initialize your worker thread
 .fi
 .PP
  
-.SS "int pvMainFatal (\fBPARAM\fP *p, const char *text)"
+.SS "int pvMainFatal (\fBPARAM\fP * p, const char * text)"
 
 .PP
 .nf
@@ -401,7 +404,7 @@ Output a fatal message and terminate the whole server\&.
 .fi
 .PP
  
-.SS "int pvPollEvent (\fBPARAM\fP *p, char *event)"
+.SS "int pvPollEvent (\fBPARAM\fP * p, char * event)"
 
 .PP
 .nf
@@ -458,7 +461,7 @@ Example:
 .fi
 .PP
  
-.SS "int pvScreenHint (\fBPARAM\fP *p, intw, inth)"
+.SS "int pvScreenHint (\fBPARAM\fP * p, int w, int h)"
 
 .PP
 .nf
@@ -468,7 +471,7 @@ Optimal screen width=w height=h \&.
 .fi
 .PP
  
-.SS "int pvSelectLanguage (\fBPARAM\fP *p, const char *section)"
+.SS "int pvSelectLanguage (\fBPARAM\fP * p, const char * section)"
 
 .PP
 .nf
@@ -568,7 +571,7 @@ The original text is used to select the translation\&.
 .fi
 .PP
  
-.SS "int pvSendVersion (\fBPARAM\fP *p)"
+.SS "int pvSendVersion (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -577,7 +580,7 @@ Send version of pvserver to client
 .fi
 .PP
  
-.SS "int pvSetCleanup (\fBPARAM\fP *p, int(*)(void *)cleanup, void *app_data)"
+.SS "int pvSetCleanup (\fBPARAM\fP * p, int(*)(void *) cleanup, void * app_data)"
 
 .PP
 .nf
@@ -588,7 +591,7 @@ Call this function in pvMain\&. See also pvMain\&.
 .fi
 .PP
  
-.SS "int pvSetManualUrl (\fBPARAM\fP *p, const char *url)"
+.SS "int pvSetManualUrl (\fBPARAM\fP * p, const char * url)"
 
 .PP
 .nf
@@ -601,7 +604,7 @@ pvSetManualUrl(p,'http://your\&.server\&.org');
 .fi
 .PP
  
-.SS "int pvSetMouseShape (\fBPARAM\fP *p, intshape)"
+.SS "int pvSetMouseShape (\fBPARAM\fP * p, int shape)"
 
 .PP
 .nf
@@ -611,7 +614,7 @@ Set mouse shape
 .fi
 .PP
  
-.SS "int pvSetWhatsThis (\fBPARAM\fP *p, intid, const char *text)"
+.SS "int pvSetWhatsThis (\fBPARAM\fP * p, int id, const char * text)"
 
 .PP
 .nf
@@ -621,7 +624,7 @@ Allowed Widgets: all Widgets
 .fi
 .PP
  
-.SS "int pvSetXY (\fBPARAM\fP *p, inti, floatx, floaty)"
+.SS "int pvSetXY (\fBPARAM\fP * p, int i, float x, float y)"
 
 .PP
 .nf
@@ -630,7 +633,7 @@ Set x,y array for script language
 .fi
 .PP
  
-.SS "int pvSleep (intmilliseconds)"
+.SS "int pvSleep (int milliseconds)"
 
 .PP
 .nf
@@ -639,7 +642,7 @@ Sleep for milliseconds\&.
 .fi
 .PP
  
-.SS "int pvsystem (const char *command)"
+.SS "int pvsystem (const char * command)"
 
 .PP
 .nf
@@ -648,7 +651,7 @@ Same as system(command); but portable
 .fi
 .PP
  
-.SS "int pvThreadFatal (\fBPARAM\fP *p, const char *text)"
+.SS "int pvThreadFatal (\fBPARAM\fP * p, const char * text)"
 
 .PP
 .nf
@@ -657,7 +660,7 @@ Output a fatal message and terminate the worker thread\&.
 .fi
 .PP
  
-.SS "int pvunlock (\fBPARAM\fP *p)"
+.SS "int pvunlock (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -670,7 +673,7 @@ because these operations are not thread save\&.
 .fi
 .PP
  
-.SS "int pvWait (\fBPARAM\fP *p, const char *pattern)"
+.SS "int pvWait (\fBPARAM\fP * p, const char * pattern)"
 
 .PP
 .nf
@@ -679,7 +682,7 @@ waits for an event\&.
 .fi
 .PP
  
-.SS "int pvWarning (\fBPARAM\fP *p, const char *text)"
+.SS "int pvWarning (\fBPARAM\fP * p, const char * text)"
 
 .PP
 .nf
@@ -688,7 +691,7 @@ Output a warning message\&.
 .fi
 .PP
  
-.SS "int pvWhatsThisPrintf (\fBPARAM\fP *p, intid, const char *format, \&.\&.\&.)"
+.SS "int pvWhatsThisPrintf (\fBPARAM\fP * p, int id, const char * format,  \&.\&.\&.)"
 
 .PP
 .nf
@@ -698,7 +701,7 @@ Allowed Widgets: all Widgets
 .fi
 .PP
  
-.SS "int pvWriteTextToFileAtClient (\fBPARAM\fP *p, const char *text, const char *filename)"
+.SS "int pvWriteTextToFileAtClient (\fBPARAM\fP * p, const char * text, const char * filename)"
 
 .PP
 .nf
@@ -707,7 +710,7 @@ Write 'text' to a file 'filename' in temp directory at client\&.
 .fi
 .PP
  
-.SS "int pvXYAllocate (\fBPARAM\fP *p, intn)"
+.SS "int pvXYAllocate (\fBPARAM\fP * p, int n)"
 
 .PP
 .nf
@@ -716,7 +719,7 @@ Allocate x,y array for script language
 .fi
 .PP
  
-.SS "int pvZoomMask (\fBPARAM\fP *p, intpercent)"
+.SS "int pvZoomMask (\fBPARAM\fP * p, int percent)"
 
 .PP
 .nf

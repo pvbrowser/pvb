@@ -1,8 +1,11 @@
-.TH "Dialogs" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "Dialogs" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Dialogs \- 
+Dialogs
+.SH SYNOPSIS
+.br
+.PP
 .SS "Macros"
 
 .in +1c
@@ -68,7 +71,7 @@ Open and run a modal dialog box
 
 .SH "Function Documentation"
 .PP 
-.SS "int pvAddDockWidget (\fBPARAM\fP *p, const char *title, intdock_id, introot_id, intallow_close = \fC0\fP, intfloating = \fC1\fP, intallow_left = \fC1\fP, intallow_right = \fC0\fP, intallow_top = \fC0\fP, intallow_bottom = \fC0\fP)"
+.SS "int pvAddDockWidget (\fBPARAM\fP * p, const char * title, int dock_id, int root_id, int allow_close = \fC0\fP, int floating = \fC1\fP, int allow_left = \fC1\fP, int allow_right = \fC0\fP, int allow_top = \fC0\fP, int allow_bottom = \fC0\fP)"
 
 .PP
 .nf
@@ -107,7 +110,7 @@ min/man size property of the root_id widget\&.
 .fi
 .PP
  
-.SS "int pvDeleteDockWidget (\fBPARAM\fP *p, intdock_id, intdelete_widget = \fC0\fP)"
+.SS "int pvDeleteDockWidget (\fBPARAM\fP * p, int dock_id, int delete_widget = \fC0\fP)"
 
 .PP
 .nf
@@ -119,7 +122,7 @@ If delete_widgets == 0 the widgets within the dock will be reparent to the main 
 .fi
 .PP
  
-.SS "int pvFileDialog (\fBPARAM\fP *p, intid_return, inttype)"
+.SS "int pvFileDialog (\fBPARAM\fP * p, int id_return, int type)"
 
 .PP
 .nf
@@ -131,7 +134,7 @@ type = FileOpenDialog|FileSaveDialog|FindDirectoryDialog
 .fi
 .PP
  
-.SS "int pvInputDialog (\fBPARAM\fP *p, intid_return, const char *text, const char *default_text)"
+.SS "int pvInputDialog (\fBPARAM\fP * p, int id_return, const char * text, const char * default_text)"
 
 .PP
 .nf
@@ -142,7 +145,7 @@ if user clicked Cancel TEXT_EVENT will return ''
 .fi
 .PP
  
-.SS "int pvMessageBox (\fBPARAM\fP *p, intid_return, inttype, const char *text, intbutton0, intbutton1, intbutton2)"
+.SS "int pvMessageBox (\fBPARAM\fP * p, int id_return, int type, const char * text, int button0, int button1, int button2)"
 
 .PP
 .nf
@@ -156,7 +159,7 @@ if buttonX == 0 the button is not shown
 .fi
 .PP
  
-.SS "int pvPopupMenu (\fBPARAM\fP *p, intid_return, const char *text)"
+.SS "int pvPopupMenu (\fBPARAM\fP * p, int id_return, const char * text)"
 
 .PP
 .nf
@@ -174,9 +177,9 @@ Example for text:
 .fi
 .PP
  
-.SS "int pvRunModalDialog (\fBPARAM\fP *p, intwidth, intheight, int(*)(\fBPARAM\fP *p)showMask, void *userData, int(*)(void *d)readData, int(*)(\fBPARAM\fP *p, void *d)showData, void *d)"
+.SS "int pvRunModalDialog (\fBPARAM\fP * p, int width, int height, int(*)(\fBPARAM\fP *p) showMask, void * userData, int(*)(void *d) readData, int(*)(\fBPARAM\fP *p, void *d) showData, void * d)"
 
-.SS "int pvRunModalDialogScript (\fBPARAM\fP *p, intwidth, intheight)"
+.SS "int pvRunModalDialogScript (\fBPARAM\fP * p, int width, int height)"
 
 .PP
 .nf
@@ -188,7 +191,7 @@ pvTerminateModalDialog(\&.\&.\&.)
 .fi
 .PP
  
-.SS "int pvTerminateModalDialog (\fBPARAM\fP *p)"
+.SS "int pvTerminateModalDialog (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -197,7 +200,7 @@ Terminate the modal dialog box
 .fi
 .PP
  
-.SS "int pvUpdateBaseWindow (\fBPARAM\fP *p)"
+.SS "int pvUpdateBaseWindow (\fBPARAM\fP * p)"
 
 .PP
 .nf
@@ -206,7 +209,7 @@ Call this function from a ModalDialog in order to update the base window
 .fi
 .PP
  
-.SS "int pvUpdateBaseWindowOnOff (\fBPARAM\fP *p, intonoff)"
+.SS "int pvUpdateBaseWindowOnOff (\fBPARAM\fP * p, int onoff)"
 
 .PP
 .nf

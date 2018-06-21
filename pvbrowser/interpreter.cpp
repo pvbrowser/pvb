@@ -5634,7 +5634,7 @@ void Interpreter::interprett(const char *command)
   if(strncmp(command,"text(",5) == 0)
   {
     QString quote;
-    char buf[MAX_PRINTF_LENGTH];
+    char buf[2*MAX_PRINTF_LENGTH];
     sscanf(command,"text(%d)",&i);
     buf[0] = '\0';
     if(i < 0)

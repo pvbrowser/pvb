@@ -1,8 +1,8 @@
-.TH "pvWidgetIdManager" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "pvWidgetIdManager" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-pvWidgetIdManager \- 
+pvWidgetIdManager
 .SH SYNOPSIS
 .br
 .PP
@@ -77,9 +77,7 @@ pvWidgetIdManager \-
 .RI "std::map< std::string, int > \fBid_list\fP"
 .br
 .ti -1c
-.RI "std::multimap< std::string, 
-.br
-int >::iterator \fBit\fP"
+.RI "std::multimap< std::string, int >::iterator \fBit\fP"
 .br
 .in -1c
 .SH "Detailed Description"
@@ -168,31 +166,31 @@ static int slotButtonPressedEvent(PARAM *p, int id, DATA *d)
 
 .SH "Member Function Documentation"
 .PP 
-.SS "virtual int pvWidgetIdManager::deleteWidget (\fBPARAM\fP *p, const char *name)\fC [virtual]\fP"
+.SS "virtual int pvWidgetIdManager::deleteWidget (\fBPARAM\fP * p, const char * name)\fC [virtual]\fP"
 
 .SS "int pvWidgetIdManager::endId ()"
 
 .SS "int pvWidgetIdManager::firstId ()"
 
-.SS "virtual int pvWidgetIdManager::id (const char *name)\fC [virtual]\fP"
+.SS "virtual int pvWidgetIdManager::id (const char * name)\fC [virtual]\fP"
 
 .SS "int pvWidgetIdManager::idStart ()"
 
-.SS "int pvWidgetIdManager::init (\fBPARAM\fP *p, intid_start)"
+.SS "int pvWidgetIdManager::init (\fBPARAM\fP * p, int id_start)"
 
-.SS "int pvWidgetIdManager::insertBasicId (intid, const char *name)\fC [private]\fP"
+.SS "int pvWidgetIdManager::insertBasicId (int id, const char * name)\fC [private]\fP"
 
-.SS "virtual int pvWidgetIdManager::isInMap (const char *name)\fC [virtual]\fP"
+.SS "virtual int pvWidgetIdManager::isInMap (const char * name)\fC [virtual]\fP"
 
-.SS "int pvWidgetIdManager::isInMap (intid)"
+.SS "int pvWidgetIdManager::isInMap (int id)"
 
-.SS "const char* pvWidgetIdManager::name (intid)"
+.SS "const char* pvWidgetIdManager::name (int id)"
 
-.SS "virtual int pvWidgetIdManager::newId (const char *name)\fC [virtual]\fP"
+.SS "virtual int pvWidgetIdManager::newId (const char * name)\fC [virtual]\fP"
 
 .SS "int pvWidgetIdManager::nextId ()"
 
-.SS "virtual int pvWidgetIdManager::readEnumFromMask (const char *maskname)\fC [virtual]\fP"
+.SS "virtual int pvWidgetIdManager::readEnumFromMask (const char * maskname)\fC [virtual]\fP"
 
 .SH "Field Documentation"
 .PP 

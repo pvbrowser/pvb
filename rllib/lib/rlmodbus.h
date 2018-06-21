@@ -148,6 +148,28 @@ This table shows the bytes that are specific to a given function.
 class rlModbus
 {
   public:
+/*! <pre>
+data exchanged by Modbus is either: 
+1byte unsigned for coils 
+2byte unsigned for registers
+
+Helper union for converting Modbus data to data types that are not standard Modbus data types
+Example:
+rlModbus::DATA data;
+data.u_short[0] = registers[0]; // store an unsigned 16 bit register in union data
+printf("print registers[0] as signed int value=%d\n", data.s_short[0]);
+</pre> */
+    typedef union
+    {
+      unsigned char  u_char[4];  // 4 * 8bit_data,  unsigned
+      char           s_char[4];  // 4 * 8bit_data,  signed
+      unsigned short u_short[2]; // 2 * 16bit_data, signed
+      short          s_short[2]; // 2 * 16bit_data, signed
+      unsigned int   u_int;      // 1 * 32bit_data, unsigned
+      int            s_int;      // 1 * 32bit_data, signed
+      float          s_float;    // 1 * 32bit_data, signed
+    }DATA;
+
     enum Modbus
     {
       MODBUS_CHECKSUM_ERROR = -2,
@@ -192,11 +214,26 @@ class rlModbus
     int  autoreconnectSocket;
     int  readCoilStatus          (int slave, int start_adr,    int number_of_coils,     unsigned char *status, int timeout=1000);
     int  readInputStatus         (int slave, int start_adr,    int number_of_inputs,    unsigned char *status, int timeout=1000);
+/*! <pre>
+We assume positive values for registers: 0 <= registers < 256*256
+</pre> */
     int  readHoldingRegisters    (int slave, int start_adr,    int number_of_registers, int *registers,        int timeout=1000);
+/*! <pre>
+We assume positive values for registers: 0 <= registers < 256*256
+</pre> */
     int  readInputRegisters      (int slave, int start_adr,    int number_of_registers, int *registers,        int timeout=1000);
     int  forceSingleCoil         (int slave, int coil_adr,     int value,                                      int timeout=1000);
+/*! <pre>
+We assume positive values for registers: 0 <= value < 256*256
+</pre> */
     int  presetSingleRegister    (int slave, int register_adr, int value,                                      int timeout=1000);
+/*! <pre>
+We assume positive values for registers: 0 <= registers < 256*256
+</pre> */
     int  forceMultipleCoils      (int slave, int coil_adr,     int number_of_coils,     unsigned char *coils,  int timeout=1000);
+/*! <pre>
+We assume positive values for registers: 0 <= registers < 256*256
+</pre> */
     int  presetMultipleRegisters (int slave, int start_adr,    int number_of_registers, int *registers,        int timeout=1000);
 
   private:

@@ -1,8 +1,8 @@
-.TH "_PARAM_" 3 "Tue Nov 22 2016" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "_PARAM_" 3 "Thu Jun 21 2018" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-_PARAM_ \- 
+_PARAM_
 .SH SYNOPSIS
 .br
 .PP
@@ -146,6 +146,15 @@ _PARAM_ \-
 .ti -1c
 .RI "int \fBfhdltmp\fP"
 .br
+.ti -1c
+.RI "int \fBiclientsocket\fP"
+.br
+.ti -1c
+.RI "int \fBis_binary\fP"
+.br
+.ti -1c
+.RI "int \fBbutton\fP"
+.br
 .in -1c
 .SH "Field Documentation"
 .PP 
@@ -153,7 +162,9 @@ _PARAM_ \-
 
 .SS "void* _PARAM_::app_data"
 
-.SS "int(* _PARAM_::cleanup)(void *)"
+.SS "int _PARAM_::button"
+
+.SS "int(* _PARAM_::cleanup) (void *)"
 
 .SS "char* _PARAM_::clipboard"
 
@@ -181,7 +192,11 @@ _PARAM_ \-
 
 .SS "int _PARAM_::http"
 
+.SS "int _PARAM_::iclientsocket"
+
 .SS "char _PARAM_::initial_mask[\fBMAX_PRINTF_LENGTH\fP]"
+
+.SS "int _PARAM_::is_binary"
 
 .SS "char _PARAM_::lang_section[32]"
 
@@ -219,11 +234,11 @@ _PARAM_ \-
 
 .SS "char _PARAM_::pvserver_version[32]"
 
-.SS "int(* _PARAM_::readData)(void *d)"
+.SS "int(* _PARAM_::readData) (void *d)"
 
 .SS "int _PARAM_::s"
 
-.SS "int(* _PARAM_::showData)(\fB_PARAM_\fP *p, void *d)"
+.SS "int(* _PARAM_::showData) (\fB_PARAM_\fP *p, void *d)"
 
 .SS "int _PARAM_::sleep"
 

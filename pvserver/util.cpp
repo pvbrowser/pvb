@@ -1990,6 +1990,7 @@ int pvCreateThread(PARAM *p, int s)
     closesocket(s);
     pvlock(p);
     free(ptr);
+    num_threads--;
     pvunlock(p);
     struct sockaddr_in *sockaddr_in_ptr  = (sockaddr_in *) &pvSockaddr;
     if(sockaddr_in_ptr->sin_family == AF_INET)
@@ -2902,6 +2903,7 @@ char buf[MAX_PRINTF_LENGTH+40];
     if(cptr != NULL) *cptr = 27; // Escape
     else break;
   }
+  text[MAX_PRINTF_LENGTH - 1] = '\0';
   sprintf(buf,"statusMessage(%d,%d,%d,\"%s\")\n",r,g,b,text);
   pvtcpsend(p, buf, strlen(buf));
   return 0;
