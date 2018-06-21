@@ -1,0 +1,83 @@
+/***************************************************************************
+                          rlmqtt.h  -  description
+                             -------------------
+    begin                : Sun Dec 17 2017
+    copyright            : (C) 2017 by R. Lehrig
+    email                : lehrig@t-online.de
+ ***************************************************************************/
+
+/***************************************************************************
+ *                                                                         *
+ *   This library is free software; you can redistribute it and/or modify  *
+ *   it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as        *
+ *   published by the Free Software Foundation                             *
+ *                                                                         *
+ ***************************************************************************/
+#ifndef _RL_MQTT_TCP_H_
+#define _RL_MQTT_TCP_H_
+
+#include "rldefine.h"
+#include "rlsocket.h"
+
+/*! <pre>
+class for communication with MQTT
+
+See:
+http://docs.oasis-open.org/mqtt/mqtt/v5.0/mqtt-v5.0.html
+
+Test server:
+http://test.mosquitto.org/
+
+</pre> */
+class rlMQTT : public rlSocket
+{
+public:
+  enum ControlPacketType
+  {
+    Reserved0   = 0,  // Forbidden Reserved 
+    CONNECT     = 1,  // Client to Server Client request to connect to Server 
+    CONNACK     = 2,  // Server to Client Connect acknowledgment 
+    PUBLISH     = 3,  // Client to Server or Server to Client / Publish message
+    PUBACK      = 4,  // Client to Server or Server to Client / Publish acknowledgment
+    PUBREC      = 5,  // Client to Server or Server to Client / Publish received (assured delivery part 1)
+    PUBREL      = 6,  // Client to Server or Server to Client / Publish release (assured delivery part 2)
+    PUBCOMP     = 7,  // Client to Server or Server to Client / Publish complete (assured delivery part 3)
+    SUBSCRIBE   = 8,  // Client to Server Client subscribe request 
+    SUBACK      = 9,  // Server to Client Subscribe acknowledgment 
+    UNSUBSCRIBE = 10, // Client to Server Unsubscribe request 
+    UNSUBACK    = 11, // Server to Client Unsubscribe acknowledgment 
+    PINGREQ     = 12, // Client to Server PING request 
+    PINGRESP    = 13, // Server to Client PING response 
+    DISCONNECT  = 14, // Client to Server Client is disconnecting 
+    Reserved15  = 15  // Forbidden Reserved
+  };
+  rlMQTT(const char *adr);
+  virtual ~rlMQTT();
+
+  /*! <pre>
+  </pre> */
+  int sendCONNECT     (int connect_flags=0);
+  int sendCONNACK     ();
+  int sendPUBLISH     ();
+  int sendPUBACK      ();
+  int sendPUBREC      ();
+  int sendPUBREL      ();
+  int sendPUBCOMP     ();
+  int sendSUBSCRIBE   ();
+  int sendSUBACK      ();
+  int sendUNSUBSCRIBE ();
+  int sendUNSUBACK    ();
+  int sendPINGREQ     ();
+  int sendPINGRESP    ();
+  int sendDISCONNECT  ();
+  
+  int receivePacket(); // return ControlPacketType or -1 in case of error
+ 
+private:
+  int sendFixedHeader(int control_packet_type, int remaining_length=0, int flags=0);
+  int sendString(const char *text); // send as MQTT string with string length as header
+
+  int last_send_control_packet_type, last_send_flags, last_send_packet_identifier;
+};
+
+#endif
