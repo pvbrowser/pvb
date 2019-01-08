@@ -1159,7 +1159,7 @@ int pvtcpreceive_binary(PARAM *p, char *buf, int maxlen)
 static int show_usage()
 {
   printf("###################################################################################\n");
-  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2018       lehrig@t-online.de\n\n", pvserver_version);
+  printf("pvserver %s (C) by Lehrig Software Engineering 2000-2019       lehrig@t-online.de\n\n", pvserver_version);
   printf("usage: pvserver -port=5050 -sleep=500 -cd=/working/directory -exit_on_bind_error -exit_after_last_client_terminates -noforcenullevent -cache -ipv6 -communication_plugin=libname -use_communication_plugin -no_announce -http -gui <url_trailer>\n");
   printf("default:\n");
   printf("-port=5050\n");
@@ -1248,15 +1248,7 @@ int i;
   p->fhdltmp = 0;
   for(i=0; i<MAX_CLIENTS; i++) clientsocket[i] = -1;
 #ifndef USE_INETD
-  // rl april 2018
-#ifdef PTHREAD_PROCESS_SHARED
-  pthread_mutexattr_t mattr;
-  pthread_mutexattr_init(&mattr);
-  pthread_mutexattr_setpshared(&mattr, PTHREAD_PROCESS_SHARED);
-  pvthread_mutex_init(&param_mutex, &mattr);
-#else
   pvthread_mutex_init(&param_mutex, NULL);
-#endif
 #endif
 #ifdef USE_INETD  
   pvFilePrefix(p);
@@ -1314,6 +1306,11 @@ static void *pv_dlsym(const char *symbol)
   return ret;
 }
 
+void cleanup_pvCmdLine()
+{
+  if(pvCmdLine != NULL) delete [] pvCmdLine;
+}
+
 int pvInit(int ac, char **av, PARAM *p)
 {
 int i,ret,cmdline_length;
@@ -1362,6 +1359,7 @@ int i,ret,cmdline_length;
     else if(strncmp(av[i],"-",1)                               == 0 && start_gui == 0) printf("unknown option %s\n", av[i]);
   }
   
+  atexit(cleanup_pvCmdLine);
   pvCmdLine = new char[cmdline_length+1];
   strcpy(pvCmdLine,av[0]);
   for(i=1; i<ac; i++)
@@ -1595,6 +1593,10 @@ start_poll:  // only necessary for pause
   /* call select */
   //printf("SELECT\n");
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
+  if(ret < 0)
+  {
+    pvThreadFatal(p,"client disconnected -> terminate thread");
+  }
   if(ret == 0) /* timeout */
   {
     p->local_milliseconds = getLocalMilliseconds();
@@ -1694,8 +1696,9 @@ int pvWait(PARAM *p,const char *pattern)
   int  len;
   char line[MAX_EVENT_LENGTH];
 
-  delete [] p->mytext;
+  if(p->mytext != NULL) delete [] p->mytext;
   p->mytext = new char[MAX_EVENT_LENGTH];
+  p->mytext[0] = '\0';
   len = strlen(pattern);
   while(1)
   {
