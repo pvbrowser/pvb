@@ -30,7 +30,7 @@ Wrapper for posix threads (UNIX,VMS,windows)
 
 #ifdef RLWIN32
 #define WTREAD_GNUC10 ( __GNUC__ * 1000 ) + __GNUC_MINOR__
-#if WTREAD_GNUC5 < 4008
+#if WTREAD_GNUC10 < 4008
 #define RLWIN32THREAD
 #else
 #include <pthread.h>
