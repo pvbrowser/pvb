@@ -539,6 +539,7 @@ static int mysystem(const char *command)
 {
   int ret;
   STARTUPINFOA        si; //  = { sizeof(si)};
+  memset(&si, 0, sizeof(si));
   si.cb = sizeof(si);
   PROCESS_INFORMATION pi;
   char cmd[4096];
