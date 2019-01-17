@@ -93,7 +93,7 @@ void rlIniFile::copyName(char *buf, const char *line)
   while(i>=0 && (buf[i] == ' ' || buf[i] == '\t'))
   {
     buf[i--] = '\0';
-  } 
+  }
 }
 
 void rlIniFile::copyParam(char *buf, const char *line)
@@ -106,7 +106,7 @@ void rlIniFile::copyParam(char *buf, const char *line)
     if(cptr == NULL) return;
     cptr++;
     if(cptr[-2] != '\\') break;
-  } 
+  }
   while((*cptr == ' ' || *cptr == '\t') && *cptr != '\0') cptr++;
   if(*cptr == '\0') return;
   while(*cptr != '\0' && *cptr != '\n') *buf++ = *cptr++;
@@ -344,7 +344,7 @@ int rlIniFile::printf(const char *section, const char *name, const char *format,
 {
   int ret;
   char buf[rl_PRINTF_LENGTH]; // should be big enough
-  
+
   va_list ap;
   va_start(ap,format);
   ret = rlvsnprintf(buf, rl_PRINTF_LENGTH - 1, format, ap);
@@ -365,6 +365,8 @@ void rlIniFile::remove(const char *section)
     {
       deleteSectionNames(s);
       if(last != NULL) last->nextSection = s->nextSection;
+      if (s == _firstSection)
+        _firstSection = NULL;
       delete s;
       return;
     }
@@ -392,6 +394,8 @@ void rlIniFile::remove(const char *section, const char *name)
           if(n->name  != NULL) delete [] n->name;
           if(n->param != NULL) delete [] n->param;
           if(last != NULL) last->nextName = n->nextName;
+          if (n == s->firstName)
+            s->firstName = NULL;
           delete n;
           return;
         }
@@ -411,10 +415,10 @@ const char *rlIniFile::firstSection()
 }
 
 const char *rlIniFile::nextSection()
-{  
+{
   rlSection *s;
   int i;
-    
+
   if(currentSection < 0) return NULL;
   currentSection++;
   i = 0;
@@ -453,7 +457,7 @@ const char *rlIniFile::nextName(const char *section)
   rlSection *s;
   rlSectionName *n;
   int i;
-  
+
   if(currentName < 0) return NULL;
   currentName++;
   i = 0;
