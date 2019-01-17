@@ -548,3 +548,59 @@ unsigned long rlSharedMemory::size()
   return _size;
 }
 
+auto rlSharedMemory::getLock() -> std::shared_ptr<LockUserAddr>
+{
+  return std::make_shared<LockUserAddr>(this);
+}
+
+rlSharedMemory::LockUserAddr::LockUserAddr(rlSharedMemory* lockTarget, bool syncOnUnlock)
+: target(lockTarget), unlockWithSync(syncOnUnlock)
+{
+  if (target)
+  {
+#ifdef RLWIN32
+    LockFileEx(target->hSharedFile, LOCKFILE_EXCLUSIVE_LOCK, 0, target->_size,0, &target->overlapped); // Changed by FMakkinga 18-03-2013
+#elif defined(RLUNIX)
+    flock(target->fdlock, LOCK_EX);
+#else
+    mylock(target->mutex, 1);
+#endif
+  }
+}
+
+rlSharedMemory::LockUserAddr::LockUserAddr(LockUserAddr&& other)
+: target(nullptr), unlockWithSync(false)
+{
+  std::swap(this->target, other.target);
+  std::swap(this->unlockWithSync, other.unlockWithSync);
+}
+
+rlSharedMemory::LockUserAddr::~LockUserAddr()
+{
+  if (target)
+  {
+#ifdef RLWIN32
+    UnlockFileEx(target->hSharedFile, 0, target->_size, 0, &target->overlapped);                       // Changed by FMakkinga 18-03-2013
+#elif defined(RLUNIX)
+    flock(target->fdlock, LOCK_UN);
+    if (unlockWithSync)
+      msync(target->base_adr, target->_size, MS_SYNC);
+#else
+    myunlock(target->mutex);
+#endif
+    target = nullptr;
+    unlockWithSync = false;
+  }
+}
+
+auto rlSharedMemory::LockUserAddr::operator=(LockUserAddr&& other) -> LockUserAddr&
+{
+  if (this->target)
+    this->~LockUserAddr();
+
+  std::swap(this->target, other.target);
+  std::swap(this->unlockWithSync, other.unlockWithSync);
+
+  return *this;
+}
+
