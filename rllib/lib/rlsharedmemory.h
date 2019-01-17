@@ -19,6 +19,12 @@
 #include "rldefine.h"
 #include "rlwthread.h"
 
+#ifdef RLUNIX
+#ifndef RLSHAREDMEMORY_PREFER_IPC
+#define RLSHAREDMEMORY_PREFER_POSIX
+#endif
+#endif
+
 /*! <pre>
 class for a shared memory.
 

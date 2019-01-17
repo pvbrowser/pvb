@@ -17,13 +17,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <algorithm>  // swap C++98
+#include <utility>    // swap C++11
 #ifndef RLWIN32
 #include <unistd.h>
+#include <sys/types.h>
 #endif
 
 #ifdef RLUNIX
+#ifdef RLSHAREDMEMORY_PREFER_POSIX
+#include <sys/mman.h>
+#else
 #include <sys/ipc.h>
 #include <sys/shm.h>
+#endif
 #include <sys/file.h>
 #endif
 
@@ -90,8 +97,6 @@ static void myunlock(pthread_mutex_t *mutex)
 rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmode)
 {
 #ifdef RLUNIX
-  struct shmid_ds buf;
-
   status  = OK;
   name = new char[strlen(shmname)+1];
   strcpy(name,shmname);
@@ -113,7 +118,27 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
     exit(-1);
   }
 
-  // old stuff, without suggestions from Stefan Lievens 
+#ifdef RLSHAREDMEMORY_PREFER_POSIX
+  int res = 0;
+  res = ftruncate(fdlock, _size);
+  if (res)
+  {
+    perror("could not resize SHM backend file! Exiting...");
+    status=ERROR_FILE;
+    exit(-1);
+  }
+  base_adr = (char *) mmap(nullptr, _size, PROT_READ | PROT_WRITE, MAP_SHARED, fdlock, 0);
+  if(base_adr == MAP_FAILED)
+  {
+    status=ERROR_SHMAT;
+    return;
+  }
+  shmkey = 0;
+  id = 0;
+#else
+  struct shmid_ds buf;
+
+  // old stuff, without suggestions from Stefan Lievens
   //shmkey  = ftok(name,0);
   //
   //id  = shmget(shmkey, _size, IPC_CREAT);
@@ -129,6 +154,7 @@ rlSharedMemory::rlSharedMemory(const char *shmname, unsigned long Size, int rwmo
   if(base_adr == NULL) { status=ERROR_SHMAT;  return; }
 
   if(shmctl(id, IPC_STAT, &buf) != 0) { status=ERROR_SHMCTL; return; };
+#endif
 
   mutex     = (pthread_mutex_t *) base_adr;
   user_adr  = base_adr + sizeof(*mutex);
@@ -316,19 +342,33 @@ rlSharedMemory::~rlSharedMemory()
   CloseHandle((HANDLE) id);
   CloseHandle((HANDLE) shmkey);
 #elif defined(RLUNIX)
-  if(fdlock >= 0) close(fdlock);
+  if(fdlock >= 0)
+  {
+#ifdef RLSHAREDMEMORY_PREFER_POSIX
+  munmap(base_adr, _size);
+#else
+  shmdt(base_adr);
+#endif
+  close(fdlock);
+  }
 #endif
 }
 
 int rlSharedMemory::deleteSharedMemory()
 {
 #ifdef RLUNIX
-  struct shmid_ds buf;
   if(status != OK) return -1;
   //rlwthread_mutex_destroy(mutex);
   flock(fdlock,LOCK_UN);
+#ifdef RLSHAREDMEMORY_PREFER_POSIX
+  munmap(base_adr, _size);
+  if(fdlock >= 0) close(fdlock);
+#else
+  struct shmid_ds buf;
   shmctl(id, IPC_RMID, &buf);
+#endif
   _size = 0;
+  status = ~OK;
   return 0;
 #endif
 
