@@ -100,14 +100,14 @@ void rlTime::setTimeFromIsoString(const char *iso_time_string)
 
 const char *rlTime::getTimeString()
 {
-  sprintf(time_string,"%04d-%02d-%02d %02d:%02d:%02d %04d",year,month,day, hour,minute,second, millisecond);
+  sprintf(time_string,"%04d-%02d-%02d %02d:%02d:%02d %03d",year, month, day, hour, minute, second, millisecond);
   return time_string;
 }
 
 const char *rlTime::getIsoTimeString()
 {
-  sprintf(time_string,"%04d-%02d-%02dT%02d:%02d:%02d.%d",year,month,day, hour,minute,second, millisecond);
-  return time_string;
+  sprintf(iso_time_string,"%04d-%02d-%02dT%02d:%02d:%02d.%03d",year, month, day, hour, minute, second, millisecond);
+  return iso_time_string;
 }
 
 void rlTime::getLocalTime()

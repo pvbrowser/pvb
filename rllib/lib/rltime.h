@@ -55,6 +55,7 @@ public:
   int     second;
   int     millisecond;
 private:
-  char    time_string[32]; // 2001-11-23 12:52:60 0568
+  char    time_string[32];     // 2001-11-23 12:52:60 056
+  char    iso_time_string[32]; // 2001-11-23T12:52:60.056
 };
 #endif
