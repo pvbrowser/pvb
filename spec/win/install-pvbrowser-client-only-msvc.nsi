@@ -36,10 +36,10 @@
 ;--------------------------------
 
 ; The name of the installer
-Name "install-pvbrowser-${VERSION}-client ${VERSION}"
+Name "install-pvbrowser-${VERSION}-client-msvc ${VERSION}"
 
 ; The file to write
-OutFile "install-pvbrowser-${VERSION}-client.exe"
+OutFile "install-pvbrowser-${VERSION}-client-msvc.exe"
 
 ; The default installation directory
 InstallDir $PROGRAMFILES\pvb-client-msvc

@@ -21,8 +21,8 @@ make clean
 echo "Please adjust manually:"
 echo "vi pvdevelop/pvdevelop.pro"     "QT+CONFIG webkit/webengine"
 echo "vi designer/src/pvbplugin.pro"  "QT+CONFIG webkit/webengine"
-rem  #include <QDesignerCustomWidgetInterface>
-rem  #include <QtUiPlugin/QDesignerCustomWidgetInterface>
+#rem  #include <QDesignerCustomWidgetInterface>
+#rem  #include <QtUiPlugin/QDesignerCustomWidgetInterface>
 echo "vi qwt/designer/qwt_designer_plugin.h"    
 echo "vi pvb/designer/src/pvb_designer_plugin.h"
 
