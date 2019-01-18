@@ -113,7 +113,7 @@ private:
 
 int rlSetTranslator(const char *language, const char *inifile=NULL);
 #ifndef SWIGPYTHON
-const char *rltranslate(const char *txt, const char **mytext=NULL);
+const char *rltranslate(const char *txt, char **mytext=NULL);
 const char *rltranslate2(const char *section, const char *txt, char **mytext=NULL);
 #define rltr(txt) rltranslate(txt)
 
