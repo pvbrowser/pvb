@@ -1,3 +1,4 @@
+
 /***************************************************************************
                           rlsharedmemory.h  -  description
                              -------------------
@@ -19,6 +20,18 @@
 #include "rldefine.h"
 #include "rlwthread.h"
 
+#ifdef RLUNIX
+#ifndef RLSHAREDMEMORY_PREFER_IPC
+#define RLSHAREDMEMORY_PREFER_POSIX
+#include <memory>
+#endif
+#endif
+
+#ifdef RLWIN32
+#define RLSHAREDMEMORY_PREFER_POSIX
+#include <memory>
+#endif
+
 /*! <pre>
 class for a shared memory.
 
@@ -39,6 +52,24 @@ public:
     ERROR_SHMCTL
   };
 
+#ifdef RLSHAREDMEMORY_PREFER_POSIX
+  class LockUserAddr
+  {
+  public:
+    explicit
+    LockUserAddr(rlSharedMemory* lockTarget, bool syncOnUnlock = false);
+    LockUserAddr(const LockUserAddr&) = delete;
+    LockUserAddr(LockUserAddr&&);
+    ~LockUserAddr();
+
+    LockUserAddr& operator=(const LockUserAddr&) = delete;
+    LockUserAddr& operator=(LockUserAddr&&);
+  private:
+    rlSharedMemory* target;
+    bool unlockWithSync;
+  };
+#endif  
+
   /*! rwmode := access rights under unix. default 0600 user=read,write */
   rlSharedMemory(const char *name, unsigned long size, int rwmode=0600);
   virtual ~rlSharedMemory();
@@ -54,6 +85,9 @@ public:
   int   writeByte(unsigned long offset, int index, unsigned char val);
   int   writeFloat(unsigned long offset, int index, float val);
   void  *getUserAdr();
+#ifdef RLSHAREDMEMORY_PREFER_POSIX
+  std::shared_ptr<LockUserAddr> getLock(); ///< will block, until the memory segment is locked, unlock happens on destruction of the proxy object
+#endif  
   int   shmKey();
   int   shmId();
   unsigned long size();
