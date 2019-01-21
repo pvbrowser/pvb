@@ -93,9 +93,9 @@ public:
   std::string formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction);
 
   static
-  time_t timegm(struct tm* tm_);
+  time_t timegm(struct tm* tm_); ///< emulates the POSIX function, which is i.e. under Windows not available
 
-  void normalizeAsDate();
+  void normalizeAsDate(); ///< normalizes odd constructions of time and date, such 2014-03-36 is normalized to 2014-04-05, simelar oddities for the time are corrected.
 
 private:
   char    time_string[32];     // 2001-11-23 12:52:60 056
