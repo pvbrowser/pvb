@@ -1,4 +1,3 @@
-
 /***************************************************************************
                           rltime.cpp  -  description
                              -------------------
@@ -19,6 +18,8 @@
 #include <string.h>
 #include <time.h>
 #include <sys/stat.h>
+#include <math.h>
+#include <stdlib.h>
 
 #ifdef RLUNIX
 #include <sys/types.h>
@@ -58,7 +59,73 @@ VAX_BIN_TIME;
 #ifdef RLWIN32
 #include <windows.h>
 #include <mmsystem.h>
+
+// gmtime_r can be defined by mingw
+#ifndef gmtime_r
+static struct tm* gmtime_r(const time_t* t, struct tm* r)
+{
+  // gmtime is threadsafe in windows because it uses TLS
+  struct tm *theTm = gmtime(t);
+  if (theTm) {
+    *r = *theTm;
+    return r;
+  } else {
+    return 0;
+  }
+}
+#endif // gmtime_r
+
+// gmtime_r can be defined by mingw
+#ifndef localtime_r
+static struct tm* localtime_r(const time_t* t, struct tm* r)
+{
+  // localtime is threadsafe in windows because it uses TLS
+  struct tm *theTm = localtime(t);
+  if (theTm) {
+    *r = *theTm;
+    return r;
+  } else {
+    return 0;
+  }
+}
+#endif // localtime_r
+
 #endif
+
+void rlTime::normalizeAsDate()
+{
+  if (year)
+  {
+    // read members
+    tm t;
+    memset(&t, 0, sizeof(t));
+    t.tm_year  = year - 1900;
+    t.tm_mon   = month - 1;
+    t.tm_mday  = day;
+    t.tm_hour  = hour;
+    t.tm_min   = minute;
+    t.tm_sec   = second;
+
+    // normalize milliseconds
+    while (millisecond > 1000)
+    {
+      ++t.tm_sec;
+      millisecond -= 1000;
+    }
+
+    // normalize time structure
+    auto ep = timegm(&t);
+    gmtime_r(&ep, &t);
+
+    // set members
+    year        = 1900 + t.tm_year;
+    month       = 1 + t.tm_mon;
+    day         = t.tm_mday;
+    hour        = t.tm_hour;
+    minute      = t.tm_min;
+    second      = t.tm_sec;
+  }
+}
 
 rlTime::rlTime(int Year, int Month, int Day, int Hour, int Minute, int Second, int Millisecond)
 {
@@ -69,6 +136,8 @@ rlTime::rlTime(int Year, int Month, int Day, int Hour, int Minute, int Second, i
   minute      = Minute;
   second      = Second;
   millisecond = Millisecond;
+
+  normalizeAsDate();
 }
 
 rlTime::~rlTime()
@@ -85,6 +154,7 @@ void rlTime::setTimeFromString(const char *time_string)
   second      = 0;
   millisecond = 0;
   sscanf(time_string,"%d-%d-%d %d:%d:%d %d",&year,&month,&day, &hour,&minute,&second, &millisecond);
+  normalizeAsDate();
 }
 
 void rlTime::setTimeFromIsoString(const char *iso_time_string)
@@ -97,6 +167,7 @@ void rlTime::setTimeFromIsoString(const char *iso_time_string)
   second      = 0;
   millisecond = 0;
   sscanf(iso_time_string,"%d-%d-%dT%d:%d:%d.%d",&year,&month,&day, &hour,&minute,&second, &millisecond);
+  normalizeAsDate();
 }
 
 const char *rlTime::getTimeString()
@@ -116,24 +187,21 @@ void rlTime::getLocalTime()
 #ifdef RLUNIX
   time_t t;
   struct tm       *tms;
+  struct tm       tmsbuf;
   struct timeval  tv;
   struct timezone tz;
 
   time(&t);
-  tms = localtime(&t);
+  tms = localtime_r(&t, &tmsbuf);
   gettimeofday(&tv, &tz);
-
-  /* adjust year and month */
-  tms->tm_year += 1900;
-  tms->tm_mon  += 1;
 
   millisecond = (int)tv.tv_usec / 1000;
   second      = (int)tms->tm_sec;
   minute      = (int)tms->tm_min;
   hour        = (int)tms->tm_hour;
   day         = (int)tms->tm_mday;
-  month       = (int)tms->tm_mon;
-  year        = (int)tms->tm_year;
+  month       = (int)tms->tm_mon + 1;
+  year        = (int)tms->tm_year + 1900;
 #endif
 
 #ifdef __VMS
@@ -165,25 +233,22 @@ int rlTime::getFileModificationTime(const char *filename)
 {
   struct stat statbuf;
   struct tm *tms;
+  struct tm tmsbuf;
 
 #ifdef RLUNIX
   if(lstat(filename,&statbuf)) return -1;
 #else
   if(stat(filename,&statbuf)) return -1;
 #endif
-  tms = localtime(&statbuf.st_mtime);
-
-  /* adjust year and month */
-  tms->tm_year += 1900;
-  tms->tm_mon  += 1;
+  tms = localtime_r(&statbuf.st_mtime, &tmsbuf);
 
   millisecond = 0;
   second      = (int)tms->tm_sec;
   minute      = (int)tms->tm_min;
   hour        = (int)tms->tm_hour;
   day         = (int)tms->tm_mday;
-  month       = (int)tms->tm_mon;
-  year        = (int)tms->tm_year;
+  month       = (int)tms->tm_mon + 1;
+  year        = (int)tms->tm_year + 1900;
 
   return 0;
 }
@@ -258,196 +323,123 @@ void rlTime::setLocalTime()
 #endif
 }
 
-rlTime& rlTime::operator+=(rlTime &time)
+rlTime& rlTime::operator+=(time_t seconds)
 {
-  rlTime t;
-  t = *this + time;
-  *this = t;
-  return *this;
-}
+  if (0 > seconds)
+    return this->operator -=(-seconds);
 
-rlTime& rlTime::operator-=(rlTime &time)
-{
-  rlTime t;
-  t = *this - time;
-  *this = t;
-  return *this;
-}
-
-rlTime rlTime::operator+(rlTime &time)
-{
-  int maxmonth,y,m;
-  rlTime t;
-
-  t.year        = year        + time.year;
-  t.month       = month       + time.month;
-  t.day         = day         + time.day;
-  t.hour        = hour        + time.hour;
-  t.minute      = minute      + time.minute;
-  t.second      = second      + time.second;
-  t.millisecond = millisecond + time.millisecond;
-
-  y = t.year;
-  if(t.month > 12 || (t.month==12 && t.day==31 && t.hour>=24)) y++;
-  m = t.month;
-  if(t.month > 12 || (t.month==12 && t.day==31 && t.hour>=24)) m = 1;
-
-  switch(m % 12)
+  auto d = std::div(seconds, time_t(60));
+  second += d.rem;
+  if (d.quot)
   {
-    case 1: // january
-      maxmonth = 31;
-      break;
-    case 2: // february
-      maxmonth = 28;
-      // Annus bisextilis (calendario Gregoriano)
-      if(y%4==0) 
-      {
-        maxmonth = 29;
-        int hth = y % 100;
-        int special = y % 400; // 1900-+-2100-2200-2300-+-2500-2600-2700
-        if(hth == 0 && special != 0) maxmonth = 28;
-      }  
-      break;
-    case 3: // march
-      maxmonth = 31;
-      break;
-    case 4: // april
-      maxmonth = 30;
-      break;
-    case 5: // may
-      maxmonth = 31;
-      break;
-    case 6: // june
-      maxmonth = 30;
-      break;
-    case 7: // july
-      maxmonth = 31;
-      break;
-    case 8: // august
-      maxmonth = 31;
-      break;
-    case 9: // september
-      maxmonth = 30;
-      break;
-    case 10: // october
-      maxmonth = 31;
-      break;
-    case 11: // november
-      maxmonth = 30;
-      break;
-    case 12: // december
-      maxmonth = 31;
-      break;
-    default:
-      maxmonth = 31;
-      break;
-  }
-
-  if(t.millisecond >= 1000) { t.second++; t.millisecond -= 1000; }
-  if(t.second >= 60)        { t.minute++; t.second      -= 60; }
-  if(t.minute >= 60)        { t.hour++,   t.minute      -= 60; }
-  if(t.hour >= 24)          { t.day++;    t.hour        -= 24; }
-  if(t.day > maxmonth)      { t.month++;  t.day         -= maxmonth; }
-  if(t.month > 12)          { t.year++;   t.month       -= 12; }
-  return t;
-}
-
-rlTime rlTime::operator-(rlTime &time)
-{
-  int maxmonth,y,m;
-  rlTime t;
-
-  y = 0;
-  t.year        = year        - time.year;
-  t.month       = month       - time.month;
-  t.day         = day         - time.day;
-  t.hour        = hour        - time.hour;
-  t.minute      = minute      - time.minute;
-  t.second      = second      - time.second;
-  t.millisecond = millisecond - time.millisecond;
-
-  if(t.millisecond < 0) { t.second--; t.millisecond += 1000; }
-  if(t.second < 0)      { t.minute--; t.second      += 60; }
-  if(t.minute < 0)      { t.hour--,   t.minute      += 60; }
-  if(t.hour < 0)        { t.day--;    t.hour        += 24; }
-
-  if(t.day < 0)
-  {
-    t.month--;
-    y = t.year;
-    m = t.month;
-    if(m <= 0) { m += 12; y--; }
-    switch(m % 12)
+    d = std::div(d.quot, time_t(60));
+    minute += d.rem;
+    if (d.quot)
     {
-      case 1: // january
-        maxmonth = 31;
-        break;
-      case 2: // february
-        maxmonth = 28;
-        // Annus bisextilis (calendario Gregoriano)
-        if(y%4==0) 
+      d = std::div(d.quot, time_t(24));
+      hour += d.rem;
+      if (d.quot)
+      {
+        d = std::div(d.quot, time_t(31));
+        day += d.rem;
+        if (d.quot)
         {
-          maxmonth = 29;
-          int hth = y % 100;
-          int special = y % 400; // 1900-+-2100-2200-2300-+-2500-2600-2700
-          if(hth == 0 && special != 0) maxmonth = 28;
-        }  
-        break;
-      case 3: // march
-        maxmonth = 31;
-        break;
-      case 4: // april
-        maxmonth = 30;
-        break;
-      case 5: // may
-        maxmonth = 31;
-        break;
-      case 6: // june
-        maxmonth = 30;
-        break;
-      case 7: // july
-        maxmonth = 31;
-        break;
-      case 8: // august
-        maxmonth = 31;
-        break;
-      case 9: // september
-        maxmonth = 30;
-        break;
-      case 10: // october
-        maxmonth = 31;
-        break;
-      case 11: // november
-        maxmonth = 30;
-        break;
-      case 12: // december
-        maxmonth = 31;
-        break;
-      default:
-        maxmonth = 31;
-        break;
+          d = std::div(d.quot, time_t(12));
+          month += d.rem;
+          year += d.quot;
+        }
+      }
     }
-    t.day += maxmonth; 
   }
 
-  if(y >= 0)
+  this->normalizeAsDate();
+
+  return *this;
+}
+
+rlTime& rlTime::operator-=(time_t seconds)
+{
+  if (0 > seconds)
+    return this->operator +=(-seconds);
+
+  auto d = std::div(seconds, time_t(60));
+  second -= d.rem;
+  if (second < 0)
   {
-    //printf("after christ was born. thus everything is ok.\n");                           
+    ++d.quot;
+    second += 60;
   }
-  else
+  if (d.quot)
   {
-    //printf("before christ was born. now also ok\n");
-                      { t.month++;  t.day         -= 30;   }
-    if(t.day    < 30) { t.day++;    t.hour        -= 24;   }
-    if(t.hour   < 0 ) { t.hour++;   t.minute      -= 60;   }
-    if(t.minute < 0 ) { t.minute++; t.second      -= 60;   } 
-    if(t.second < 0 ) { t.second++; t.millisecond -= 1000; }
+    d = std::div(d.quot, time_t(60));
+    minute -= d.rem;
+    if (minute < 0)
+    {
+      ++d.quot;
+      minute += 60;
+    }
+    if (d.quot)
+    {
+      d = std::div(d.quot, time_t(24));
+      hour -= d.rem;
+      if (hour < 0)
+      {
+        ++d.quot;
+        hour += 24;
+      }
+      if (d.quot)
+      {
+        d = std::div(d.quot, time_t(31));
+        day -= d.rem;
+        if (day < 0)
+        {
+          ++d.quot;
+          day += 31;
+        }
+        if (d.quot)
+        {
+          d = std::div(d.quot, time_t(12));
+          month -= d.rem;
+          if (month < 0)
+          {
+            ++d.quot;
+            month += 12;
+          }
+          year -= d.quot;
+        }
+      }
+    }
   }
+
+  this->normalizeAsDate();
+
+  return *this;
+}
+
+rlTime rlTime::operator+(time_t seconds) const
+{
+  rlTime t(*this);
+
+  t += seconds;
 
   return t;
 }
 
-int rlTime::operator==(rlTime &time)
+rlTime rlTime::operator-(time_t seconds) const
+{
+  rlTime t(*this);
+
+  t -= seconds;
+
+  return t;
+}
+
+double  rlTime::operator-(const rlTime &time) const
+{
+  return this->secondsSinceEpoche() - time.secondsSinceEpoche();
+}
+
+int rlTime::operator==(const rlTime &time) const
 {
   if(year        != time.year)        return 0;
   if(month       != time.month)       return 0;
@@ -460,71 +452,108 @@ int rlTime::operator==(rlTime &time)
   return 1;
 }
 
-int rlTime::operator<(rlTime &time)
-{
-  rlTime diff,t1;
-
-  t1.year        = year;
-  t1.month       = month;
-  t1.day         = day;
-  t1.hour        = hour;
-  t1.minute      = minute;
-  t1.second      = second;
-  t1.millisecond = millisecond;
-  //printf("<t1=%s\n",t1.getTimeString());
-  //printf("<time=%s\n",time.getTimeString());
-  diff = t1 - time;
-  //printf("<diff=%s\n",diff.getTimeString());
-  if(diff.year        < 0) return 1;
-  if(diff.month       < 0) return 1;
-  if(diff.day         < 0) return 1;
-  if(diff.hour        < 0) return 1;
-  if(diff.minute      < 0) return 1;
-  if(diff.second      < 0) return 1;
-  if(diff.millisecond < 0) return 1;
-  return 0;
-}
-
-int rlTime::operator<=(rlTime &time)
+int rlTime::operator<=(const rlTime &time) const
 {
   if((*this) == time) return 1;
   if((*this) <  time) return 1;
   return 0;
 }
 
-int rlTime::operator>(rlTime &time)
-{
-  rlTime diff,t1;
-
-  t1.year        = year;
-  t1.month       = month;
-  t1.day         = day;
-  t1.hour        = hour;
-  t1.minute      = minute;
-  t1.second      = second;
-  t1.millisecond = millisecond;
-  //printf(">t1=%s\n",t1.getTimeString());
-  //printf(">time=%s\n",time.getTimeString());
-  diff = time - t1;
-  //printf(">diff=%s\n",diff.getTimeString());
-  if(diff.year        < 0)        return 1;
-  if(diff.month       < 0)        return 1;
-  if(diff.day         < 0)        return 1;
-  if(diff.hour        < 0)        return 1;
-  if(diff.minute      < 0)        return 1;
-  if(diff.second      < 0)        return 1;
-  if(diff.millisecond < 0)        return 1;
-  return 0;
-}
-
-int rlTime::operator>=(rlTime &time)
+int rlTime::operator>=(const rlTime &time) const
 {
   if((*this) == time) return 1;
   if((*this) >  time) return 1;
   return 0;
 }
 
-double rlTime::secondsSinceEpoche()
+int rlTime::operator<(const rlTime &time) const
+{
+  if (this->year < time.year)
+    return 1;
+  else if (this->year == time.year)
+  {
+    if (this->month < time.month)
+      return 1;
+    else if (this->month == time.month)
+    {
+      if (this->day < time.day)
+        return 1;
+      else if (this->day == time.day)
+      {
+        if (this->hour < time.hour)
+          return 1;
+        else if (this->hour == time.hour)
+        {
+          if (this->minute < time.minute)
+            return 1;
+          else if (this->minute == time.minute)
+          {
+            if (this->second < time.second)
+              return 1;
+            else if (this->second == time.second)
+            {
+              if (this->millisecond < time.millisecond)
+                return 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return 0;
+}
+
+int rlTime::operator>(const rlTime &time) const
+{
+  if (this->year > time.year)
+    return 1;
+  else if (this->year == time.year)
+  {
+    if (this->month > time.month)
+      return 1;
+    else if (this->month == time.month)
+    {
+      if (this->day > time.day)
+        return 1;
+      else if (this->day == time.day)
+      {
+        if (this->hour > time.hour)
+          return 1;
+        else if (this->hour == time.hour)
+        {
+          if (this->minute > time.minute)
+            return 1;
+          else if (this->minute == time.minute)
+          {
+            if (this->second > time.second)
+              return 1;
+            else if (this->second == time.second)
+            {
+              if (this->millisecond > time.millisecond)
+                return 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return 0;
+}
+
+time_t rlTime::timegm(struct tm* tm_)
+{
+  auto t = mktime(tm_);
+  struct tm ltm;
+  struct tm gtm;
+  auto lt = localtime_r(&t, &ltm);
+  auto gt = gmtime_r(&t, &gtm);
+  auto diff = mktime(lt) - mktime(gt);
+  return t + diff;
+}
+
+double rlTime::secondsSinceEpoche() const
 {
   struct tm begin;
   struct tm test;
@@ -534,10 +563,11 @@ double rlTime::secondsSinceEpoche()
 
   begin.tm_year = 70;
   begin.tm_mon  = 0;
-  begin.tm_mday = 1;
+  begin.tm_mday = 2;  // see below
   begin.tm_hour = 0;
   begin.tm_min  = 0;
   begin.tm_sec  = 0;
+  begin.tm_isdst = 0;
 
   test.tm_year = year - 1900;
   test.tm_mon  = month - 1;
@@ -545,10 +575,100 @@ double rlTime::secondsSinceEpoche()
   test.tm_hour = hour;
   test.tm_min  = minute;
   test.tm_sec  = second;
+  test.tm_isdst = -1;
 
-  time_t t0 = mktime(&begin);
-  time_t t1 = mktime(&test);
+  time_t t0 = timegm(&begin) - 86400; // a weak workaround: on several platform (especially Windows 7 in Europe Timezones) mktime() is not capable of converting 19070-01-01T00:00:00 into seconds, because they try to convert it into UTC instead of localtime
+  time_t t1 = mktime(&test);          // this might be error prone, see above
 
   return difftime(t1,t0) + (((double) millisecond) / 1000);
+}
+
+const char* rlTime::formatTimeDiff(double tdiff, enum FormatLargestUnit fmt, unsigned bufferLength, char* buffer)
+{
+  if (0 < bufferLength)
+  {
+    if (not buffer)
+      buffer = new char[bufferLength];
+
+    bool isNegative = (tdiff < 0);
+    tdiff = fabs(tdiff);
+    int milliseconds = ((int) (tdiff * 1000)) % 1000;
+    time_t seconds = (time_t) tdiff;
+    lldiv_t minutes, hours, days, weeks;
+
+    minutes = lldiv(seconds, 60);
+
+    const char* fmtString = "%s%d:%02d.%03d";
+    switch (fmt)
+    {
+    case MinutesSecondsFraction:
+      fmtString = "%s%d:%02d.%03d";
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), minutes.quot, minutes.rem, milliseconds);
+      break;
+    case HoursMinutesSecondsFraction:
+      fmtString = "%s%d:%02d:%02d.%03d";
+      hours = lldiv(minutes.quot, 60);
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), hours.quot, hours.rem, minutes.rem, milliseconds);
+      break;
+    case DaysHoursMinutesSecondsFraction:
+      fmtString = "%s%d:%02d:%02d:%02d.%03d";
+      hours = lldiv(minutes.quot, 60);
+      days = lldiv(hours.quot, 24);
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), days.quot, days.rem, hours.rem, minutes.rem, milliseconds);
+      break;
+    case WeeksDaysHoursMinutesSecondsFraction:
+      fmtString = "%s%d:%d:%02d:%02d:%02d.%03d";
+      hours = lldiv(minutes.quot, 60);
+      days = lldiv(hours.quot, 24);
+      weeks = lldiv(days.quot, 7);
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), weeks.quot, weeks.rem, days.rem, hours.rem, minutes.rem, milliseconds);
+      break;
+    case MinutesSeconds:
+      fmtString = "%s%d:%02d";
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), minutes.quot, minutes.rem);
+      break;
+    case HoursMinutesSeconds:
+      fmtString = "%s%d:%02d:%02d";
+      hours = lldiv(minutes.quot, 60);
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), hours.quot, hours.rem, minutes.rem);
+      break;
+    case DaysHoursMinutesSeconds:
+      fmtString = "%s%d:%02d:%02d:%02d";
+      hours = lldiv(minutes.quot, 60);
+      days = lldiv(hours.quot, 24);
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), days.quot, days.rem, hours.rem, minutes.rem);
+      break;
+    case WeeksDaysHoursMinutesSeconds:
+      fmtString = "%s%d:%d:%02d:%02d:%02d";
+      hours = lldiv(minutes.quot, 60);
+      days = lldiv(hours.quot, 24);
+      weeks = lldiv(days.quot, 7);
+      snprintf(buffer, bufferLength, fmtString, (isNegative ? "-" : ""), weeks.quot, weeks.rem, days.rem, hours.rem, minutes.rem);
+      break;
+    }
+}
+
+  return buffer;
+}
+
+const char* rlTime::formatTimeDiff(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit fmt, unsigned bufferLength, char* buffer)
+{
+  return formatTimeDiff(t2 - t1, fmt, bufferLength, buffer);
+}
+
+std::string rlTime::formatTimeDiffString(double tdiff, enum FormatLargestUnit fmt)
+{
+  char strBuffer[32];
+
+  const char* result = formatTimeDiff(tdiff, fmt, sizeof(strBuffer), strBuffer);
+
+  std::string diffStr(result);
+
+  return diffStr;
+}
+
+std::string rlTime::formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit fmt)
+{
+  return formatTimeDiffString(t2 - t1, fmt);
 }
 

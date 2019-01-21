@@ -18,14 +18,17 @@
 #define _RL_TIME_H_
 
 #include "rldefine.h"
+#include <time.h>
+#include <string>
 
 /*! <pre>
-class for handling time.
+class for handling absolute points in time. It supports also simple formatting of time differences.
 </pre> */
 class rlTime
 {
 public:
   rlTime(int Year=0, int Month=0, int Day=0, int Hour=0, int Minute=0, int Second=0, int Millisecond=0);
+  rlTime(double) = delete;
   virtual ~rlTime();
   const char *getTimeString();
   const char *getIsoTimeString();
@@ -38,16 +41,21 @@ public:
   void    setTimeFromString(const char *time_string);
   void    setTimeFromIsoString(const char *iso_time_string);
   void    setLocalTime();
-  double  secondsSinceEpoche();
-  rlTime& operator+=  (rlTime &time);
-  rlTime& operator-=  (rlTime &time);
-  rlTime  operator+   (rlTime &time);
-  rlTime  operator-   (rlTime &time);
-  int     operator==  (rlTime &time);
-  int     operator<   (rlTime &time);
-  int     operator<=  (rlTime &time);
-  int     operator>   (rlTime &time);
-  int     operator>=  (rlTime &time);
+  double  secondsSinceEpoche() const;
+
+  rlTime& operator+=  (time_t seconds); ///< adjust absolute time by number of seconds
+  rlTime& operator-=  (time_t seconds); ///< adjust absolute time by number of seconds
+  rlTime  operator+   (time_t seconds) const; ///< make new object with absolute time adjusted by number of seconds
+  rlTime  operator-   (time_t seconds) const; ///< make new object with absolute time adjusted by number of seconds
+
+  double  operator-   (const rlTime &time) const; ///< difference of two points in time in seconds.milliseconds
+
+  int     operator==  (const rlTime &time) const;
+  int     operator<   (const rlTime &time) const;
+  int     operator<=  (const rlTime &time) const;
+  int     operator>   (const rlTime &time) const;
+  int     operator>=  (const rlTime &time) const;
+
   int     year;
   int     month;
   int     day;
@@ -55,6 +63,40 @@ public:
   int     minute;
   int     second;
   int     millisecond;
+
+  enum FormatLargestUnit
+  {
+    MinutesSecondsFraction = 0, ///< "0:00.000", needs at least 9 bytes buffer
+    HoursMinutesSecondsFraction, ///< "0:00:00.000", needs at least 12 bytes buffer
+    DaysHoursMinutesSecondsFraction, ///< "0:00:00:00.000", needs at least 15 bytes buffer
+    WeeksDaysHoursMinutesSecondsFraction, ///< "0:0:00:00:00.000", needs at least 17 bytes buffer
+    MinutesSeconds, ///< "0:00", needs at least 5 bytes buffer
+    HoursMinutesSeconds, ///< "0:00:00", needs at least 8 bytes buffer
+    DaysHoursMinutesSeconds, ///< "0:00:00:00", needs at least 11 bytes buffer
+    WeeksDaysHoursMinutesSeconds, ///< "0:0:00:00:00", needs at least 13 bytes buffer
+  };
+
+  ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, caller provides buffer, or, NULL pointer, buffer must be deleted (delete[])
+  static
+  const char* formatTimeDiff(double, enum FormatLargestUnit = HoursMinutesSecondsFraction, unsigned bufferLength = 32, char* buffer = 0);
+
+  ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, caller provides buffer, or buffer must be deleted (delete[])
+  static
+  const char* formatTimeDiff(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction, unsigned bufferLength = 32, char* buffer = 0);
+
+  ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, returned object manages string memory
+  static
+  std::string formatTimeDiffString(double, enum FormatLargestUnit = HoursMinutesSecondsFraction);
+
+  ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, returned object manages string memory
+  static
+  std::string formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction);
+
+  static
+  time_t timegm(struct tm* tm_);
+
+  void normalizeAsDate();
+
 private:
   char    time_string[32];     // 2001-11-23 12:52:60 056
   char    iso_time_string[32]; // 2001-11-23T12:52:60.056
