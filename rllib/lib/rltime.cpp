@@ -195,13 +195,17 @@ void rlTime::getLocalTime()
   tms = localtime_r(&t, &tmsbuf);
   gettimeofday(&tv, &tz);
 
+  /* adjust year and month */
+  tms->tm_year += 1900;
+  tms->tm_mon  += 1;
+
   millisecond = (int)tv.tv_usec / 1000;
   second      = (int)tms->tm_sec;
   minute      = (int)tms->tm_min;
   hour        = (int)tms->tm_hour;
   day         = (int)tms->tm_mday;
-  month       = (int)tms->tm_mon + 1;
-  year        = (int)tms->tm_year + 1900;
+  month       = (int)tms->tm_mon;
+  year        = (int)tms->tm_year;
 #endif
 
 #ifdef __VMS
@@ -242,13 +246,17 @@ int rlTime::getFileModificationTime(const char *filename)
 #endif
   tms = localtime_r(&statbuf.st_mtime, &tmsbuf);
 
+  /* adjust year and month */
+  tms->tm_year += 1900;
+  tms->tm_mon  += 1;
+
   millisecond = 0;
   second      = (int)tms->tm_sec;
   minute      = (int)tms->tm_min;
   hour        = (int)tms->tm_hour;
   day         = (int)tms->tm_mday;
-  month       = (int)tms->tm_mon + 1;
-  year        = (int)tms->tm_year + 1900;
+  month       = (int)tms->tm_mon;
+  year        = (int)tms->tm_year;
 
   return 0;
 }

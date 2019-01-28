@@ -28,7 +28,9 @@ class rlTime
 {
 public:
   rlTime(int Year=0, int Month=0, int Day=0, int Hour=0, int Minute=0, int Second=0, int Millisecond=0);
-  rlTime(double) = delete;
+#ifdef RLCPP11
+  rlTime(double&) = delete;
+#endif
   virtual ~rlTime();
   const char *getTimeString();
   const char *getIsoTimeString();
@@ -100,5 +102,9 @@ public:
 private:
   char    time_string[32];     // 2001-11-23 12:52:60 056
   char    iso_time_string[32]; // 2001-11-23T12:52:60.056
+
+#ifndef RLCPP11
+  explicit rlTime(double&);  // intentionally no implementation, as this shall not be explicit or implicit used
+#endif
 };
 #endif
