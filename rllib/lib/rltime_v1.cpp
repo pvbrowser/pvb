@@ -1,6 +1,5 @@
-
 /***************************************************************************
-                          rltime.cpp  -  description
+                      rltime_v1.cpp  -  description
                              -------------------
     begin                : Tue Jan 02 2001
     copyright            : (C) 2001 by R. Lehrig
@@ -14,7 +13,7 @@
  *   published by the Free Software Foundation                             *
  *                                                                         *
  ***************************************************************************/
-#include "rltime.h"
+#include "rltime_v1.h"
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
@@ -60,6 +59,9 @@ VAX_BIN_TIME;
 #include <mmsystem.h>
 #endif
 
+namespace ns_rltime_v1
+{
+
 rlTime::rlTime(int Year, int Month, int Day, int Hour, int Minute, int Second, int Millisecond)
 {
   year        = Year;
@@ -73,6 +75,11 @@ rlTime::rlTime(int Year, int Month, int Day, int Hour, int Minute, int Second, i
 
 rlTime::~rlTime()
 {
+}
+
+const char *rlTime::version()
+{
+  return __FILE__;
 }
 
 void rlTime::setTimeFromString(const char *time_string)
@@ -551,4 +558,6 @@ double rlTime::secondsSinceEpoche()
 
   return difftime(t1,t0) + (((double) millisecond) / 1000);
 }
+
+} // end of namespace ns_rltime_v1
 
