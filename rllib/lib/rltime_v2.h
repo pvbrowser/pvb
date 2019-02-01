@@ -18,8 +18,6 @@
 
 #include "rldefine.h"
 #include <time.h>
-//#include <stdint.h>
-#include <string>
 
 namespace ns_rltime_v2
 {
@@ -30,8 +28,8 @@ class rlTime
 {
 public:
   // local time type, on some platforms there is no 2038 safe definition available which we can avoid this way
-  typedef int64_t time_t;   ///< for applying relative adjustments to the time, it's a redefintion on most modern platform, but anyway
-  // typedef double ftime_t;  ///< for applying relative adjustments in fractions of a second
+  // typedef int64_t time_t; ///< for applying relative adjustments to the time, it's a redefintion on most modern platform, but anyway
+  // typedef double ftime_t; ///< for applying relative adjustments in fractions of a second
 
   rlTime(int Year=0, int Month=0, int Day=0, int Hour=0, int Minute=0, int Second=0, int Millisecond=0);
 #ifdef RLCPP11
@@ -93,14 +91,14 @@ public:
 
   enum FormatLargestUnit
   {
-    MinutesSecondsFraction = 0, ///< "0:00.000", needs at least 9 bytes buffer
-    HoursMinutesSecondsFraction, ///< "0:00:00.000", needs at least 12 bytes buffer
-    DaysHoursMinutesSecondsFraction, ///< "0:00:00:00.000", needs at least 15 bytes buffer
+    MinutesSecondsFraction = 0,           ///< "0:00.000",         needs at least 9 bytes buffer
+    HoursMinutesSecondsFraction,          ///< "0:00:00.000",      needs at least 12 bytes buffer
+    DaysHoursMinutesSecondsFraction,      ///< "0:00:00:00.000",   needs at least 15 bytes buffer
     WeeksDaysHoursMinutesSecondsFraction, ///< "0:0:00:00:00.000", needs at least 17 bytes buffer
-    MinutesSeconds, ///< "0:00", needs at least 5 bytes buffer
-    HoursMinutesSeconds, ///< "0:00:00", needs at least 8 bytes buffer
-    DaysHoursMinutesSeconds, ///< "0:00:00:00", needs at least 11 bytes buffer
-    WeeksDaysHoursMinutesSeconds, ///< "0:0:00:00:00", needs at least 13 bytes buffer
+    MinutesSeconds,                       ///< "0:00",             needs at least 5 bytes buffer
+    HoursMinutesSeconds,                  ///< "0:00:00",          needs at least 8 bytes buffer
+    DaysHoursMinutesSeconds,              ///< "0:00:00:00",       needs at least 11 bytes buffer
+    WeeksDaysHoursMinutesSeconds,         ///< "0:0:00:00:00",     needs at least 13 bytes buffer
   };
 
   ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, caller provides buffer, or, NULL pointer, buffer must be deleted (delete[])
@@ -116,10 +114,11 @@ public:
   const char *formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction);
 
 
-  static time_t timegm(struct tm* tm_); ///< emulates the POSIX function, which is i.e. under Windows not available
-
-  void normalizeAsDate(); ///< normalizes odd constructions of time and date, such 2014-03-36 is normalized to 2014-04-05, simelar oddities for the time are corrected.
-
+  static time_t timegm(struct tm* tm_); ///< emulates the POSIX function, 
+                                        ///  which is i.e. under Windows not available
+  void normalizeAsDate();               ///< normalizes odd constructions of time and date, 
+                                        ///  such 2014-03-36 is normalized to 2014-04-05, 
+                                        //   similar oddities for the time are corrected.
 private:
   char    time_string[32*2];   // 2001-11-23 12:52:60 056
   char    iso_time_string[32]; // 2001-11-23T12:52:60.056
