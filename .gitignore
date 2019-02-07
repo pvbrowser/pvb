@@ -54,3 +54,5 @@ win-mingw/bin/fake_qmake.exe
 win-mingw/bin/rlsvgcat.exe
 language_bindings/lua/pvslua/pvslua
 language_bindings/lua/pvslua/pvapplua
+/.cproject
+/.project
