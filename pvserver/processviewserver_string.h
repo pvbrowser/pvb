@@ -12,20 +12,34 @@ inline int pvWait(PARAM *p, string pattern) { return pvWait(p, pattern.c_str());
 inline int pvWarning(PARAM *p, string text) { return pvWarning(p, text.c_str()); }
 inline int pvMainFatal(PARAM *p, string text) { return pvMainFatal(p, text.c_str()); }
 inline int pvThreadFatal(PARAM *p, string text) { return pvThreadFatal(p, text.c_str()); }
+inline int pvSetWhatsThis(PARAM *p, int id, string text) { return pvSetWhatsThis(p, id, text.c_str()); }
+inline int pvClientCommand(PARAM *p, string command, string filename, int downloadFile=0) { return pvClientCommand(p, command.c_str(), filename.c_str(), downloadFile); }
+inline int pvWriteTextToFileAtClient(PARAM *p, string text, string filename) { return pvWriteTextToFileAtClient(p, text.c_str(), filename.c_str()); }
+inline int pvSelectLanguage(PARAM *p, string section) { return pvSelectLanguage(p, section.c_str()); }
 inline int pvQButtonGroup(PARAM *p, int id, int parent, int columns, int orientation, string title) { return pvQButtonGroup(p, id, parent, columns, orientation, title.c_str()); }
 inline int pvQImage(PARAM *p, int id, int parent, string imagename, int *w, int *h, int *depth) { return pvQImage(p, id, parent, imagename.c_str(), w, h, depth); }
 inline int pvQGroupBox(PARAM *p, int id, int parent, int columns, int orientation, string title) { return pvQGroupBox(p, id, parent, columns, orientation, title.c_str()); }
 inline int pvSetCaption(PARAM *p, string text) { return pvSetCaption(p, text.c_str()); }
+inline int pvPlaySound(PARAM *p, string filename) { return pvPlaySound(p, filename.c_str()); }
 inline int pvToolTip(PARAM *p, int id, string text) { return pvToolTip(p, id, text.c_str()); }
+inline int pvSetTextEx(PARAM *p, int id, string text, int option) { return pvSetTextEx(p, id, text.c_str(), option); }
 inline int pvSetText(PARAM *p, int id, string text) { return pvSetText(p, id, text.c_str()); }
+inline int pvSetStyleSheet(PARAM *p, int id, string text) { return pvSetStyleSheet(p, id, text.c_str()); }
 inline int pvChangeItem(PARAM *p, int id, int index, string bmp_file, string text) { return pvChangeItem(p, id, index, bmp_file.c_str(), text.c_str()); }
 inline int pvInsertItem(PARAM *p, int id, int index, string bmp_file, string text) { return pvInsertItem(p, id, index, bmp_file.c_str(), text.c_str()); }
 inline int pvRemoveItemByName(PARAM *p, int id, string name) { return pvRemoveItemByName(p, id, name.c_str()); }
 inline int pvAddColumn(PARAM *p, int id, string text, int size) { return pvAddColumn(p, id, text.c_str(), size); }
 inline int pvSetTableText(PARAM *p, int id, int x, int y, string text) { return pvSetTableText(p, id, x, y, text.c_str()); }
+inline int pvSetTableButton(PARAM *p, int id, int x, int y, string text) { return pvSetTableButton(p, id, x, y, text.c_str()); }
 inline int pvSetTableCheckBox(PARAM *p, int id, int x, int y, int state, string text) { return pvSetTableCheckBox(p, id, x, y, state, text.c_str()); }
 inline int pvSetTableComboBox(PARAM *p, int id, int x, int y, int editable, string textlist) { return pvSetTableComboBox(p, id, x, y, editable, textlist.c_str()); }
+inline int pvSetTableLabel(PARAM *p, int id, int x, int y, string text) { return pvSetTableLabel(p, id, x, y, text.c_str()); }
+inline int pvMysqldump(PARAM *p, int id, string command) { return pvMysqldump(p, id, command.c_str()); }
+inline int pvCSVdump(PARAM *p, int id, string filename, char delimitor='\t') { return pvCSVdump(p, id, filename.c_str(), delimitor); }
+inline int pvCSVcreate(PARAM *p, string command, string filename) { return pvCSVcreate(p, command.c_str(), filename.c_str()); }
+inline int pvCSV(PARAM *p, int id, string command, char delimitor='\t') { return pvCSV(p, id, command.c_str(), delimitor); }
 inline int pvSetListViewText(PARAM *p, int id, string path, int column, string text) { return pvSetListViewText(p, id, path.c_str(), column, text.c_str()); }
+inline int pvListViewSetSelected(PARAM *p, int id, string path, int column, int selected) { return pvListViewSetSelected(p, id, path.c_str(), column, selected); }
 inline int pvSetPixmap(PARAM *p, int id, string bmp_file) { return pvSetPixmap(p, id, bmp_file.c_str()); }
 inline int pvSetTablePixmap(PARAM *p, int id, int x, int y, string bmp_file) { return pvSetTablePixmap(p, id, x, y, bmp_file.c_str()); }
 inline int pvSetSource(PARAM *p, int id, string html_file) { return pvSetSource(p, id, html_file.c_str()); }
@@ -37,6 +51,8 @@ inline int pvSetListViewPixmap(PARAM *p, int id, string path, string bmp_file, i
 inline int pvRemoveListViewItem(PARAM *p, int id, string path) { return pvRemoveListViewItem(p, id, path.c_str()); }
 inline int pvRemoveIconViewItem(PARAM *p, int id, string text) { return pvRemoveIconViewItem(p, id, text.c_str()); }
 inline int pvSetIconViewItem(PARAM *p, int id, string bmp_file, string text) { return pvSetIconViewItem(p, id, bmp_file.c_str(), text.c_str()); }
+inline int pvScrollToAnchor(PARAM *p, int id, string anchor) { return pvScrollToAnchor(p, id, anchor.c_str()); }
+inline int pvSetWidgetProperty(PARAM *p, int id, string name, string value) { return pvSetWidgetProperty(p, id, name.c_str(), value.c_str()); }
 inline int pvListViewEnsureVisible(PARAM *p, int id, string path) { return pvListViewEnsureVisible(p, id, path.c_str()); }
 inline int pvListViewSetOpen(PARAM *p, int id, string path, int open) { return pvListViewSetOpen(p, id, path.c_str(), open); }
 inline int pvVtkTcl(PARAM *p, int id, string tcl_command) { return pvVtkTcl(p, id, tcl_command.c_str()); }
@@ -68,5 +84,8 @@ inline int gComment(PARAM *p, string comment) { return gComment(p, comment.c_str
 inline int gPlaySVG(PARAM *p, string filename) { return gPlaySVG(p, filename.c_str()); }
 inline int qwtScaleSetTitle(PARAM *p, int id, string text) { return qwtScaleSetTitle(p, id, text.c_str()); }
 inline int qwtScaleSetTitleFont(PARAM *p, int id, string family, int pointsize, int bold, int italic, int underline, int strikeout) { return qwtScaleSetTitleFont(p, id, family.c_str(), pointsize, bold, italic, underline, strikeout); }
+inline int pvsystem(string command) { return pvsystem(command.c_str()); }
+inline int pvIsAccessAllowed(string adr, int trace) { return pvIsAccessAllowed(adr.c_str(), trace); }
+
 
 #endif

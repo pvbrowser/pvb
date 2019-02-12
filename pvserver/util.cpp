@@ -766,7 +766,15 @@ int option = 1;
     {
       wsa(); /* windows stuff */
       /* create a socket                     */
+#ifdef PVWIN32
       p->os = socket(AF_INET,SOCK_STREAM,0);
+#else
+#ifdef SOCK_CLOEXEC
+      p->os = socket(AF_INET,SOCK_STREAM|SOCK_CLOEXEC,0);
+#else
+      p->os = socket(AF_INET,SOCK_STREAM,0);
+#endif
+#endif
       if(p->os == -1) pvMainFatal(p,"could not create socket");
 #ifdef PVWIN32
       setsockopt(p->os,SOL_SOCKET,SO_REUSEADDR,(const char *) &option,sizeof(option));
@@ -4813,7 +4821,7 @@ int pvMessageBox(PARAM *p, int id_return, int type, const char *text, int button
     if(cptr != NULL) *cptr = 12; // insert FF instead
     else             break;
   }
-  sprintf(buf,"messageBox(%d,%d,%d,%d,%d,\"%s\")\n",id_return,type,button0,button1,button2,p->mytext);
+  snprintf(buf, sizeof(buf), "messageBox(%d,%d,%d,%d,%d,\"%s\")\n", id_return, type, button0, button1, button2, p->mytext);
   pvtcpsend(p, buf, strlen(buf));
   p->mytext[0] = '\0';
   return 0;
