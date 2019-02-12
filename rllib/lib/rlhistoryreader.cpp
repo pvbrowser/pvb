@@ -21,7 +21,7 @@ rlHistoryReader::rlHistoryReader(unsigned maxLineLength)
 : maxLineLength(maxLineLength)
 {
   debug = 0;
-  first_line = current_line = NULL;
+  first_line = last_line = current_line = NULL;
   fin = NULL;
   current_file = -1;
   csv_name = NULL;
@@ -37,7 +37,7 @@ rlHistoryReader::~rlHistoryReader()
   csv_file_name = NULL;
 }
 
-int rlHistoryReader::read(const char *csvName, rlTime *start, rlTime *end)
+int rlHistoryReader::read(const char *csvName, const rlTime *start, const rlTime *end, int orderNewToOld)
 {
   char *buf;
   clean();
@@ -46,7 +46,7 @@ int rlHistoryReader::read(const char *csvName, rlTime *start, rlTime *end)
   if(csv_file_name != NULL) delete [] csv_file_name;
   csv_file_name = NULL;
 
-  first_line = current_line = NULL;
+  first_line = last_line = current_line = NULL;
   fin = NULL;
   current_file = -1;
   csv_name = new char[strlen(csvName)+1];
@@ -74,7 +74,7 @@ int rlHistoryReader::read(const char *csvName, rlTime *start, rlTime *end)
       else
       {
         if(debug) printf("pushLineToMemory=%s",buf);
-        pushLineToMemory(buf);
+        pushLineToMemory(buf, orderNewToOld);
       }
     }
     fclose(fin);
@@ -145,25 +145,34 @@ int rlHistoryReader::openFile()
   return 0;
 }
 
-int rlHistoryReader::pushLineToMemory(const char *line)
+int rlHistoryReader::pushLineToMemory(const char *line, int prepend)
 {
   rlHistoryReaderLine *history_line;
 
-  // put line at 1st position
   if(first_line == NULL)
   {
     first_line = new rlHistoryReaderLine;
     first_line->line = new char[strlen(line)+1];
     strcpy(first_line->line,line);
     first_line->next = NULL;
+    last_line = first_line;
   }
-  else
+  else if (prepend) // put line at 1st position
   {
     history_line = first_line;
     first_line = new rlHistoryReaderLine;
     first_line->line = new char[strlen(line)+1];
     strcpy(first_line->line,line);
     first_line->next = history_line;
+  }
+  else
+  {
+    history_line = last_line;
+    last_line = new rlHistoryReaderLine;
+    last_line->line = new char[strlen(line)+1];
+    strcpy(last_line->line,line);
+    last_line->next = NULL;
+    history_line->next = last_line;
   }
   return 0;
 }
@@ -192,7 +201,7 @@ int rlHistoryReader::cat(const char *csvName, FILE *fout)
   if(csv_file_name != NULL) delete [] csv_file_name;
   csv_file_name = NULL;
 
-  first_line = current_line = NULL;
+  first_line = last_line = current_line = NULL;
   fin = NULL;
   current_file = -1;
   csv_name = new char[strlen(csvName)+1];
