@@ -17,6 +17,8 @@
 #include "rlcutil.h"
 #include <string.h>
 
+#define MAXBUF 256*256
+
 rlHistoryLogger::rlHistoryLogger(const char *csvName, int maxHoursPerFile, int maxLinesInMemory)
 {
   int val;
@@ -145,20 +147,63 @@ int rlHistoryLogger::openFile()
   {
     // find oldest file and open it for writing
     int i_oldest = 0;
-    rlTime t,t_oldest;
+    int i_youngest = 0;
+    int file_count = 0;
+    rlTime t, t_oldest, t_youngest;
     t_oldest.getLocalTime(); // this must be newer that any file time
     for(int i=0; i<10; i++)
     {
       sprintf(csv_file_name,"%s%d.csv",csv_name,i);
       if(t.getFileModificationTime(csv_file_name) == 0)
       {
-        if(t < t_oldest) i_oldest = i;
+        if(t < t_oldest)
+        {
+          i_oldest = i;
+          t_oldest = t;
+        }
+        if (t > t_youngest)
+        {
+          i_youngest = i;
+          t_youngest = t;
+        }
+        ++file_count;
+      }
+      else  // create missing file
+      {
+        FILE* f = fopen(csv_file_name, "w");
+        if (f)
+          fclose(f);
       }
     }
-    current_file = i_oldest;
-    sprintf(csv_file_name,"%s%d.csv",csv_name,i_oldest);
-    fout = fopen(csv_file_name,"w");
-    file_start_time.getLocalTime();
+
+    if ((t_youngest + time_diff) > time) // file is in our time slot, append; this reduces data loss in case of frequent restarts
+    {
+      current_file = i_youngest;
+      sprintf(csv_file_name, "%s%d.csv", csv_name, current_file);
+
+      // "a+" does not work reliable,
+      // under Windows is the order of creation of read- and write-pointer unpredictable,
+      // they are not independent and the file IO layer has problems after
+      // system crashes or UID changes,
+      // this leads to unexplored problems, which prevent successful data write operations
+      fout = fopen(csv_file_name, "r");
+      auto buf = new char[MAXBUF];
+      if (fgets(buf, MAXBUF-1, fout) != NULL)
+        file_start_time.setTimeFromString(buf);
+      else
+        file_start_time = t_youngest;
+      delete[] buf;
+      fclose(fout);
+      fout = fopen(csv_file_name, "a");
+    }
+    else
+    {
+      // oldest file is old enough for truncation
+      current_file = i_oldest;
+      sprintf(csv_file_name, "%s%d.csv", csv_name, current_file);
+      fout = fopen(csv_file_name,"w");
+      file_start_time.getLocalTime();
+    }
   }
   else
   {
