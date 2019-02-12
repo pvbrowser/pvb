@@ -1284,7 +1284,11 @@ void Interpreter::interprete(const char *command)
     {
       get_text(command,text);
       MyListView *l = (MyListView *) all[i]->w;
-      if(l != NULL) l->ensureVisible(text.toUtf8(), (MyListViewItem *) l->firstChild(NULL));
+      if(l != NULL)
+      {
+        unsigned recursion = 0;
+        l->ensureVisible(text.toUtf8(), (MyListViewItem *) l->firstChild(NULL, recursion), recursion);
+      }
     }
     else if(all[i]->type == TQCustomWidget)
     {
@@ -2072,7 +2076,7 @@ void Interpreter::interpreti(const char *command)
     get_text(command,text);
     for(int i=0; i<text.length(); i++)
     {
-      if(text[i] == 12) text[i] = '\n'; // replace FF
+      if(text[i].unicode() == 12) text[i].unicode() = '\n'; // replace FF
     }
     tcp_rec(s,default_text,sizeof(default_text));
     cptr = strchr(default_text,'\n');
@@ -2145,7 +2149,7 @@ void Interpreter::interpretm(const char *command)
     get_text(command,text);
     for(int i=0; i<text.length(); i++)
     {
-      if(text[i] == 12) text[i] = '\n'; // replace FF
+      if(text[i].unicode() == 12) text[i].unicode() = '\n'; // replace FF
     }
     ret = -1;
     if(opt.arg_debug) printf("QMessageBox type=%d text=%s\n",type,(const char *) text.toUtf8());
@@ -2711,7 +2715,11 @@ void Interpreter::interpretr(const char *command)
     if(all[i]->type == TQListView)
     {
       MyListView *ptr = (MyListView *) all[i]->w;
-      if(ptr != NULL) ptr->deleteListViewItem(text.toUtf8(), (MyListViewItem *) ptr->firstChild(NULL));
+      if(ptr != NULL)
+      {
+        unsigned recursion = 0;
+        ptr->deleteListViewItem(text.toUtf8(), (MyListViewItem *) ptr->firstChild(NULL, recursion), recursion);
+      }
     }
     else if(all[i]->type == TQCustomWidget)
     {
@@ -4147,7 +4155,11 @@ void Interpreter::interprets(const char *command)
           {
             get_text(command,text);
             MyListView *l = (MyListView *) all[i]->w;
-            if(l != NULL) l->setItemOpen(text.toUtf8(),open, (MyListViewItem *) l->firstChild(NULL));
+            if(l != NULL)
+            {
+              unsigned recursion = 0;
+              l->setItemOpen(text.toUtf8(),open, (MyListViewItem *) l->firstChild(NULL, recursion), recursion);
+            }
           }
           else if(all[i]->type == TQCustomWidget)
           {

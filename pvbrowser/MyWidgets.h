@@ -441,13 +441,13 @@ public:
     ~MyListView();
     void setListViewText(const char *path, int column, QString &text);
     void setListViewPixmap(const char *path, int column, QPixmap &pixmap);
-    int  deleteListViewItem(const char *path, MyListViewItem *item);
-    void doSendSelected(MyListViewItem *item);
-    int  ensureVisible(const char *path, MyListViewItem *item);
-    int  setItemOpen(const char *path, int open, MyListViewItem *item);
+    int  deleteListViewItem(const char *path, MyListViewItem *item, unsigned& recursion);
+    void doSendSelected(MyListViewItem *item, unsigned& recursion);
+    int  ensureVisible(const char *path, MyListViewItem *item, unsigned &recursion);
+    int  setItemOpen(const char *path, int open, MyListViewItem *item, unsigned& recursion);
     void setSelected(int mode, const char *path);
-    MyListViewItem *firstChild(MyListViewItem *parent);
-    MyListViewItem *nextSibling(MyListViewItem *sibling, QTreeWidgetItem *parent);
+    MyListViewItem *firstChild(MyListViewItem *parent, unsigned& recursion);
+    MyListViewItem *nextSibling(MyListViewItem *sibling, QTreeWidgetItem *parent, unsigned& recursion);
     void addColumn(QString text, int size);
     void removeAllColumns();
     void setMultiSelection(int mode);
@@ -466,12 +466,13 @@ private:
     virtual void enterEvent(QEvent *event);
     virtual void leaveEvent(QEvent *event);
     void insertItem(MyListViewItem *item, MyListViewItem *parent, int num_slash);
-    void closeTree(MyListViewItem *lvi, int mode);
-    void nameVersionSetListViewText(const char *path, int column, QString &text, MyListViewItem *item, const char *relpath, int num_slash);
-    void nameVersionSetListViewPixmap(const char *path, int column, QPixmap &pixmap, MyListViewItem *item, const char *relpath, int num_slash);
+    void closeTree(MyListViewItem *lvi, int mode, unsigned& recursion);
+    void nameVersionSetListViewText(const char *path, int column, QString &text, MyListViewItem *item, const char *relpath, int num_slash, unsigned& recursion);
+    void nameVersionSetListViewPixmap(const char *path, int column, QPixmap &pixmap, MyListViewItem *item, const char *relpath, int num_slash, unsigned &recursion);
     void standardPopupMenu();
     int *s,id;
-    int ichild[MAX_TREE_RECURSION],recursion,icol;
+    int ichild[MAX_TREE_RECURSION];
+    int icol;
     int colwidth[20];
 };
 

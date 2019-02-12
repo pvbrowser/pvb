@@ -21,6 +21,7 @@
 #include "opt.h"
 #include "mainwindow.h"
 #include "interpreter.h"
+#include <cassert>
 
 #include "qtabbar.h"
 #include "qpainter.h"
@@ -93,9 +94,9 @@ static const char *decode(QString text)
   }
   else
   {
-#if QT_VERSION < 0x050000 
+#if QT_VERSION < 0x050000
     strncpy(buf, text.toAscii(), maxlen);
-#endif    
+#endif
   }
   buf[maxlen-1] = '\0';
   return buf;
@@ -175,7 +176,7 @@ void MyLabel::mousePressEvent(QMouseEvent *event)
     sprintf(buf,"QPushButtonPressed(%d) -xy=%d,%d\n",id, event->x(), event->y());
     tcp_send(s,buf,strlen(buf));
     QLabel::mousePressEvent(event);
-  }  
+  }
 }
 
 void MyLabel::mouseReleaseEvent(QMouseEvent *event)
@@ -190,7 +191,7 @@ void MyLabel::mouseReleaseEvent(QMouseEvent *event)
   {
     sprintf(buf,"QPushButtonReleased(%d) -xy=%d,%d\n",id, event->x(), event->y());
     if(underMouse()) tcp_send(s,buf,strlen(buf));
-  }  
+  }
   QLabel::mouseReleaseEvent(event);
 }
 
@@ -240,7 +241,7 @@ char buf[80];
   {
     sprintf(buf,"QPushButton(%d)\n",id);
     tcp_send(s,buf,strlen(buf));
-  }  
+  }
 }
 
 void MyQPushButton::slotPressed()
@@ -365,7 +366,7 @@ void MyComboBox::slotActivated(const QString &txt)
 {
   char buf[MAX_PRINTF_LENGTH];
   QString txt2 = txt;
-  
+
   if(txt2.isEmpty())
   {
     txt2.sprintf("index%d", currentIndex());
@@ -1102,12 +1103,12 @@ MyTable::MyTable(int *sock, int ident, int numRows, int numColumns, QWidget *par
   wrap = 1;
   autoresize = 0;
   is_editable = 1;
-#if QT_VERSION >= 0x040300                  
+#if QT_VERSION >= 0x040300
   setWordWrap(true);
 #endif
   button = read_only = updates = 0;
   if(name != NULL) setObjectName(name);
-#ifdef USE_MAEMO  
+#ifdef USE_MAEMO
   QPalette palette;
   QColor   color(128,128,128);
   palette.setColor(QPalette::Text, color);
@@ -1222,7 +1223,7 @@ void MyTable::setTableComboBox(int row, int col, int editable, const char *menu)
   combo->setEditable(editable);
   combo->row = row;
   combo->col = col;
-  setCellWidget(row,col,combo); 
+  setCellWidget(row,col,combo);
   //printf("ComboBox(%d,%d,%d,%s)\n",row,col,editable,text);
 }
 
@@ -1294,22 +1295,22 @@ void MyTable::mousePressEvent(QMouseEvent *event)
     {
       buf.sprintf("Open table with %s", opt.view_csv);
       popupMenu.addAction(buf);
-    }  
+    }
     ret = popupMenu.exec(QCursor::pos());
     if(ret != NULL)
     {
-      if(ret->text().startsWith(l_copy_plus_title)) 
+      if(ret->text().startsWith(l_copy_plus_title))
       {
         copyToClipboard(1);
-      }  
-      else if(ret->text().startsWith(l_copy)) 
+      }
+      else if(ret->text().startsWith(l_copy))
       {
         copyToClipboard(0);
-      }  
-      else if(ret->text().startsWith("Save")) 
+      }
+      else if(ret->text().startsWith("Save"))
       {
         saveTextfile();
-      }  
+      }
       else
       {
         char buf[MAX_PRINTF_LENGTH];
@@ -1322,10 +1323,10 @@ void MyTable::mousePressEvent(QMouseEvent *event)
 //          strcat(buf, " &");
 //#endif
           if(strlen(opt.view_csv) >= 3) mysystem(buf);
-        }  
-      }  
+        }
+      }
     }
-  }  
+  }
   QTableWidget::mousePressEvent(event);
 }
 
@@ -1360,7 +1361,7 @@ void MyTable::slotValueChanged(int row, int col)
       updates--;
       return;
     }
-  }  
+  }
   updates = 0;
   if(opt.arg_debug) printf("MyTable::slotValueChanged\n");
   QString txt;
@@ -1446,7 +1447,7 @@ void MyTable::saveTextfile(const char *filename)
       ret = QMessageBox::warning(this,"Save Table","File already exists: Overwrite ?",QMessageBox::Yes,QMessageBox::No,0);
       if(ret == QMessageBox::No) return;
     }
-  }  
+  }
   fp = fopen(name.toUtf8(),"w");
   if(fp == NULL)
   {
@@ -1838,7 +1839,7 @@ MyListView::MyListView(int *sock, int ident, QWidget *parent, const char *name)
 {
   s = sock;
   id = ident;
-  recursion = icol = 0;
+  icol = 0;
   hasStandardPopupMenu = 1;
   if(name != NULL) setObjectName(name);
   setSortingEnabled(false);
@@ -1904,7 +1905,7 @@ void MyListView::addColumn(QString text, int size)
       {
         setColumnWidth(i, colwidth[i]);
       }
-    }  
+    }
   }
   setColumnHidden(icol,false);
   icol++;
@@ -1959,34 +1960,44 @@ void MyListView::setSorting(int col, int mode)
   }
 }
 
-MyListViewItem *MyListView::firstChild(MyListViewItem *parent)
+MyListViewItem *MyListView::firstChild(MyListViewItem *parent, unsigned& recursion)
 {
   MyListViewItem *item;
   if(recursion >= MAX_TREE_RECURSION) return NULL;
+  assert(recursion >= 0);
   ichild[recursion] = 0;
   if(parent == NULL) // child of ListView
   {
+    assert(recursion >= 0);
     item = (MyListViewItem *) topLevelItem(ichild[recursion]++);
   }
   else               // child of ListViewItem
   {
     item = NULL;
-    if(parent->childCount() > 0) item = (MyListViewItem *) parent->child(ichild[recursion]++);
+    if(parent->childCount() > 0)
+    {
+      assert(recursion >= 0);
+      item = (MyListViewItem *) parent->child(ichild[recursion]++);
+    }
   }
   return item;
 }
 
-MyListViewItem *MyListView::nextSibling(MyListViewItem *sibling, QTreeWidgetItem *parent)
+MyListViewItem *MyListView::nextSibling(MyListViewItem *sibling, QTreeWidgetItem *parent, unsigned& recursion)
 {
   MyListViewItem *item = NULL;
   if(sibling == NULL) return NULL;
   if(parent == NULL) // child of ListView
   {
-    if(topLevelItemCount() >= ichild[recursion]) item = (MyListViewItem *) topLevelItem(ichild[recursion]++);
+    assert(recursion >= 0);
+    if(topLevelItemCount() >= ichild[recursion])
+      item = (MyListViewItem *) topLevelItem(ichild[recursion]++);
   }
   else                                   // child of ListViewItem
   {
-    if(parent->childCount() >= ichild[recursion]) item = (MyListViewItem *) parent->child(ichild[recursion]++);
+    assert(recursion >= 0);
+    if(parent->childCount() >= ichild[recursion])
+      item = (MyListViewItem *) parent->child(ichild[recursion]++);
   }
   return item;
 }
@@ -2003,16 +2014,16 @@ void MyListView::insertItem(MyListViewItem *item, MyListViewItem *parent, int nu
   }
 }
 
-void MyListView::nameVersionSetListViewText(const char *path, int column, QString &text, MyListViewItem *parent, const char *relpath, int num_slash)
+void MyListView::nameVersionSetListViewText(const char *path, int column, QString &text, MyListViewItem *parent, const char *relpath, int num_slash, unsigned &recursion)
 {
   MyListViewItem *item;
   const char *cptr;
 
-  item = firstChild(parent);
+  item = firstChild(parent, recursion);
   while(item != NULL)
   {
     if(strcmp(path,item->path.toUtf8()) == 0) // update existing item
-    { 
+    {
       if(text.startsWith("color("))
       {
         int r,g,b;
@@ -2020,19 +2031,19 @@ void MyListView::nameVersionSetListViewText(const char *path, int column, QStrin
         text = text.section(')',1);
         item->setBackground(column,QBrush(QColor(r,g,b)));
       }
-      item->setText(column,text); 
-      return; 
-    }     
+      item->setText(column,text);
+      return;
+    }
     if(starts_with(path,item->path.toUtf8()))
     {
       cptr = strchr(&relpath[1],'/');
       if(cptr == NULL) return;
       recursion++;
-      nameVersionSetListViewText(path,column,text,item,cptr,num_slash+1); // recurse
+      nameVersionSetListViewText(path,column,text,item,cptr,num_slash+1, recursion); // recurse
       recursion--;
       return;
     }
-    item = nextSibling(item,parent);
+    item = nextSibling(item,parent, recursion);
   }
   if(num_slash == 1)   item = new MyListViewItem((MyListView *) NULL); // add root path
   else                 item = new MyListViewItem((MyListViewItem *) NULL); // add root path
@@ -2047,23 +2058,23 @@ void MyListView::nameVersionSetListViewText(const char *path, int column, QStrin
       text = text.section(')',1);
       item->setBackground(column,QBrush(QColor(r,g,b)));
     }
-    item->setText(column,text); 
-    return; 
+    item->setText(column,text);
+    return;
   }
   cptr = strchr(&relpath[1],'/');
   if(cptr == NULL) return;
   recursion++;
-  nameVersionSetListViewText(path,column,text,item,cptr,num_slash+1); // recurse
+  nameVersionSetListViewText(path,column,text,item,cptr,num_slash+1, recursion); // recurse
   recursion--;
   return;
 }
 
-void MyListView::nameVersionSetListViewPixmap(const char *path, int column, QPixmap &pixmap, MyListViewItem *parent, const char *relpath, int num_slash)
+void MyListView::nameVersionSetListViewPixmap(const char *path, int column, QPixmap &pixmap, MyListViewItem *parent, const char *relpath, int num_slash, unsigned &recursion)
 {
   MyListViewItem *item;
   const char *cptr;
 
-  item = firstChild(parent);
+  item = firstChild(parent, recursion);
   while(item != NULL)
   {
     if(strcmp(path,item->path.toUtf8()) == 0) { item->setIcon(column,pixmap); return; }  // update existing item
@@ -2072,11 +2083,11 @@ void MyListView::nameVersionSetListViewPixmap(const char *path, int column, QPix
       cptr = strchr(&relpath[1],'/');
       if(cptr == NULL) return;
       recursion++;
-      nameVersionSetListViewPixmap(path,column,pixmap,item,cptr,num_slash+1);     // recurse
+      nameVersionSetListViewPixmap(path,column,pixmap,item,cptr,num_slash+1, recursion);     // recurse
       recursion--;
       return;
     }
-    item = nextSibling(item,parent);
+    item = nextSibling(item,parent, recursion);
   }
   if(num_slash == 1)   item = new MyListViewItem((MyListView *)NULL);     // add root path
   else                 item = new MyListViewItem((MyListViewItem *)NULL);   // add root path
@@ -2086,7 +2097,7 @@ void MyListView::nameVersionSetListViewPixmap(const char *path, int column, QPix
   cptr = strchr(&relpath[1],'/');
   if(cptr == NULL) return;
   recursion++;
-  nameVersionSetListViewPixmap(path,column,pixmap,item,cptr,num_slash+1);         // recurse
+  nameVersionSetListViewPixmap(path,column,pixmap,item,cptr,num_slash+1, recursion);         // recurse
   recursion--;
   return;
 }
@@ -2095,19 +2106,19 @@ void MyListView::setListViewText(const char *path, int column, QString &text)
 {
   if(path[0] != '/') return;
   //triggerUpdate(); //rlehrig not necessary ?
-  recursion = 0;
-  nameVersionSetListViewText(path,column,text,NULL,path,1);
+  unsigned recursion = 0;
+  nameVersionSetListViewText(path,column,text,NULL,path,1, recursion);
 }
 
 void MyListView::setListViewPixmap(const char *path, int column, QPixmap &pixmap)
 {
   if(path[0] != '/') return;
   //triggerUpdate(); //rlehrig not necessary ?
-  recursion = 0;
-  nameVersionSetListViewPixmap(path,column,pixmap,NULL,path,1);
+  unsigned recursion = 0;
+  nameVersionSetListViewPixmap(path,column,pixmap,NULL,path,1, recursion);
 }
 
-int MyListView::deleteListViewItem(const char *path, MyListViewItem *item)
+int MyListView::deleteListViewItem(const char *path, MyListViewItem *item, unsigned &recursion)
 {
   MyListViewItem *child;
   int ret;
@@ -2120,10 +2131,10 @@ int MyListView::deleteListViewItem(const char *path, MyListViewItem *item)
       return 1;
     }
     recursion++;
-    child = firstChild(item);
+    child = firstChild(item, recursion);
     if(child != NULL)
     {
-      ret = deleteListViewItem(path,child);
+      ret = deleteListViewItem(path,child, recursion);
       if(ret != 0)
       {
         recursion--;
@@ -2131,12 +2142,12 @@ int MyListView::deleteListViewItem(const char *path, MyListViewItem *item)
       }
     }
     recursion--;
-    item = nextSibling(item,item->parent());
+    item = nextSibling(item,item->parent(), recursion);
   }
   return 0;
 }
 
-int MyListView::ensureVisible(const char *path, MyListViewItem *item)
+int MyListView::ensureVisible(const char *path, MyListViewItem *item, unsigned &recursion)
 {
   MyListViewItem *child;
   int ret;
@@ -2149,10 +2160,10 @@ int MyListView::ensureVisible(const char *path, MyListViewItem *item)
       return 1;
     }
     recursion++;
-    child = firstChild(item);
+    child = firstChild(item, recursion);
     if(child != NULL)
     {
-      ret = ensureVisible(path,child);
+      ret = ensureVisible(path,child, recursion);
       if(ret != 0)
       {
         recursion--;
@@ -2160,12 +2171,12 @@ int MyListView::ensureVisible(const char *path, MyListViewItem *item)
       }
     }
     recursion--;
-    item = nextSibling(item,item->parent());
+    item = nextSibling(item,item->parent(), recursion);
   }
   return 0;
 }
 
-int MyListView::setItemOpen(const char *path, int open, MyListViewItem *item)
+int MyListView::setItemOpen(const char *path, int open, MyListViewItem *item, unsigned& recursion)
 {
   MyListViewItem *child;
   int ret;
@@ -2178,10 +2189,10 @@ int MyListView::setItemOpen(const char *path, int open, MyListViewItem *item)
       return 1;
     }
     recursion++;
-    child = firstChild(item);
+    child = firstChild(item, recursion);
     if(child != NULL)
     {
-      ret = setItemOpen(path,open,child);
+      ret = setItemOpen(path,open,child, recursion);
       if(ret != 0)
       {
         recursion--;
@@ -2189,12 +2200,12 @@ int MyListView::setItemOpen(const char *path, int open, MyListViewItem *item)
       }
     }
     recursion--;
-    item = nextSibling(item,item->parent());
+    item = nextSibling(item,item->parent(), recursion);
   }
   return 0;
 }
 
-void MyListView::closeTree(MyListViewItem *lvi, int mode)
+void MyListView::closeTree(MyListViewItem *lvi, int mode, unsigned& recursion)
 {
   recursion++;
   if(lvi)
@@ -2202,8 +2213,8 @@ void MyListView::closeTree(MyListViewItem *lvi, int mode)
     if(mode==2)  setItemExpanded(lvi, false);
     setItemSelected(lvi,false);
     //rlehrig not necessary ? lvi->repaint();
-    closeTree(firstChild(lvi), mode);
-    closeTree(nextSibling(lvi,lvi->parent()), mode);
+    closeTree(firstChild(lvi, recursion), mode, recursion);
+    closeTree(nextSibling(lvi,lvi->parent(), recursion), mode, recursion);
   }
   recursion--;
   return;
@@ -2213,14 +2224,15 @@ void MyListView::setSelected(int mode, const char *path)
 {
   const char *ptr;
 
+  unsigned recursion = 0;
   ptr = &path[1];
   MyListViewItem *plvi;
-  MyListViewItem *lvi = firstChild(NULL);
+  MyListViewItem *lvi = firstChild(NULL, recursion);
 
   plvi=lvi;
-  closeTree(plvi, mode);
+  closeTree(plvi, mode, recursion);
 
-  while((ptr=strchr(ptr, '/')))
+  while((plvi and (ptr=strchr(ptr, '/'))))
   {
     do
     {
@@ -2230,11 +2242,11 @@ void MyListView::setSelected(int mode, const char *path)
         setItemExpanded(plvi, (bool) mode);
         break;
       }
-      plvi = nextSibling(plvi,plvi->parent());
+      plvi = nextSibling(plvi,plvi->parent(), recursion);
     }
     while(plvi);
     if(!plvi) break;
-    plvi = firstChild(plvi);
+    plvi = firstChild(plvi, recursion);
     ptr++;
   }
 
@@ -2244,10 +2256,10 @@ void MyListView::setSelected(int mode, const char *path)
     {
       setItemExpanded(plvi, (bool) mode); //plvi->setOpen(mode);
       setItemSelected(plvi, (bool) mode);
-      doSendSelected(plvi);
+      doSendSelected(plvi, recursion);
       break;
     }
-    plvi = nextSibling(plvi,plvi->parent());
+    plvi = nextSibling(plvi,plvi->parent(), recursion);
   }
 
   //rllehrig not necessary ? repaint();
@@ -2293,12 +2305,12 @@ void MyListView::slotCustomContextMenuRequested(const QPoint &pos)
   if(hasStandardPopupMenu)
   {
     standardPopupMenu();
-  }   
+  }
   else
   {
     sprintf(buf,"selected(%d,%d,\"%s\")\n", id, col, "headerContextMenuRequested");
     tcp_send(s,buf,strlen(buf));
-  }  
+  }
 }
 
 void MyListView::slotClicked(QTreeWidgetItem *item, int column)
@@ -2326,13 +2338,13 @@ void MyListView::slotSendSelected()
 {
 char buf[MAX_PRINTF_LENGTH];
 
-  recursion = 0;
-  doSendSelected(firstChild(NULL));
+  unsigned recursion = 0;
+  doSendSelected(firstChild(NULL, recursion), recursion);
   sprintf(buf,"selected(%d,-2,\"(null)\")\n",id);
   tcp_send(s,buf,strlen(buf));
 }
 
-void MyListView::doSendSelected(MyListViewItem *item)
+void MyListView::doSendSelected(MyListViewItem *item, unsigned& recursion)
 {
 char buf[MAX_PRINTF_LENGTH];
 int column;
@@ -2355,12 +2367,12 @@ int column;
       tcp_send(s,buf,strlen(buf));
     }
     recursion++;
-    if(firstChild(item) != NULL)
+    if(firstChild(item, recursion) != NULL)
     {
-      doSendSelected(firstChild(item));
+      doSendSelected(firstChild(item, recursion), recursion);
     }
     recursion--;
-    item = nextSibling(item,item->parent());
+    item = nextSibling(item,item->parent(), recursion);
   }
 }
 
@@ -3142,7 +3154,7 @@ void MyQDateTimeEdit::slotValueChanged(const QDateTime &date_time)
 {
 char buf[200];
 
-  if(pvsVersion <= 0x040600) sprintf(buf,"text(%d,\"%d:%d:%d-%d.%d.%d.%d\")\n", id, 
+  if(pvsVersion <= 0x040600) sprintf(buf,"text(%d,\"%d:%d:%d-%d.%d.%d.%d\")\n", id,
                                                                  date_time.date().year(),
                                                                  date_time.date().month(),
                                                                  date_time.date().day(),
@@ -3150,7 +3162,7 @@ char buf[200];
                                                                  date_time.time().minute(),
                                                                  date_time.time().second(),
                                                                  date_time.time().msec());
-  else sprintf(buf,"text(%d,\"%04d-%02d-%02dT%02d:%02d:%02d.%d\")\n", id, 
+  else sprintf(buf,"text(%d,\"%04d-%02d-%02dT%02d:%02d:%02d.%d\")\n", id,
                                                                  date_time.date().year(),
                                                                  date_time.date().month(),
                                                                  date_time.date().day(),
@@ -3270,7 +3282,7 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
       sprintf(text,"background-color: rgb(%d,%d,%d)", 236, 235 , 235);
     }
     w->setStyleSheet(text);
-  }  
+  }
 #else
 #ifdef PVWIN32
   // WinXP style does not support background colors
@@ -3278,11 +3290,11 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
   static QStyle *style = NULL;
   if(first)
   {
-#if QT_VERSION < 0x050000 
+#if QT_VERSION < 0x050000
     style = new QWindowsStyle;
-#endif    
+#endif
     first = 0;
-  }  
+  }
 #endif
   if(r==-1 && g==-1 && b==-1)
   {
@@ -3336,5 +3348,5 @@ void mySetBackgroundColor(QWidget *w, int type, int r, int g, int b)
     palette.setColor(QPalette::Window,QColor(r,g,b));
     w->setPalette(palette);
   }
-#endif  
+#endif
 }
