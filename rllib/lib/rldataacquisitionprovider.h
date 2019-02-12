@@ -40,13 +40,13 @@ public:
     int  spare[7];          // for future use
     char cspare[32];        // for future use
   }SHM_HEADER;
-  
+
   enum DAQ_PROVIDER_ENUM
   {
     DAQ_PROVIDER_ERROR = 256*256*128
   };
 
-#ifdef RLWIN32  
+#ifdef RLWIN32
   rlDataAcquisitionProvider(int maxNameLength=31, const char *shared_memory="c:\\automation\\shm\\dataacquisition.shm", long shared_memory_size=65536);
 #else
   rlDataAcquisitionProvider(int maxNameLength=31, const char *shared_memory="/srv/automation/shm/dataacquisition.shm", long shared_memory_size=65536);
@@ -70,7 +70,7 @@ public:
   int         shmStatus(); // 0 if shared memory is ok | DAQ_PROVIDER_ERROR if shared memory is not ok
   int         setAllowAddValues(int allow, int maxItemNameLength);
 
-private:
+protected:
   SHM_HEADER     *shmheader;
   char           *shmvalues;
   int             current_item, allow_add_values;
