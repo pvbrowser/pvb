@@ -393,7 +393,7 @@ MessageBoxNoToAll         = 0x00020000,
 MessageBoxAbort           = 0x00040000,
 MessageBoxRetry           = 0x00080000,
 MessageBoxIgnore          = 0x00100000,
-MessageBoxNoButton
+MessageBoxNoButton        = 0
 };
 
 enum TextBrowserPos{
