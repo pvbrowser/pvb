@@ -19,6 +19,8 @@ HEADERS  = rllib.h                     \
            rlthread.h                  \
            rlsocket.h                  \
            rltime.h                    \
+           rltime_v1.h                 \
+           rltime_v2.h                 \
            rlmailbox.h                 \
            rlfifo.h                    \
            rlsharedmemory.h            \
@@ -67,7 +69,8 @@ SOURCES  = rlspawn.cpp                   \
            rlwthread.cpp                 \
            rlthread.cpp                  \
            rlsocket.cpp                  \
-           rltime.cpp                    \
+           rltime_v1.cpp                 \
+           rltime_v2.cpp                 \
            rlmailbox.cpp                 \
            rlfifo.cpp                    \
            rlsharedmemory.cpp            \
