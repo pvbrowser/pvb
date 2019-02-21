@@ -228,7 +228,13 @@ rlTime::rlTime(int Year, int Month, int Day, int Hour, int Minute, int Second, i
 }
 
 rlTime::~rlTime()
-{}
+{
+}
+
+const char *rlTime::version()
+{
+  return __FILE__;
+}
 
 /***
  * Read an absolute point in time from time_string.
@@ -281,7 +287,7 @@ rlTime& rlTime::setTimeFromIsoString(const char *iso_time_string)
  * milliseconds within the fraction
  * calculating with 1 month <=> 30.5 days
  </pre> */
-void rlTime::setTimeFromSeconds(double seconds)
+rlTime& rlTime::setTimeFromSeconds(double seconds)
 { // we assume that the average month has 30.5 days
   double mod = fmod(seconds * 1000, 1000.);
   millisecond = (int) mod;
@@ -559,7 +565,7 @@ const char *rlTime::toString(const char *format)
   return time_string;
 }
 
-void rlTime::getLocalTime()
+rlTime& rlTime::getLocalTime()
 {
 #ifdef RLUNIX
   time_t t;
@@ -717,7 +723,7 @@ void rlTime::setLocalTime()
   objectHoldsRelativeTime = false;
 }
 
-rlTime& rlTime::operator-=(const rlTime &time)
+rlTime& rlTime::operator+=(time_t seconds)
 {
   if (0 > seconds)
     return this->operator -=(-seconds);
@@ -1182,7 +1188,7 @@ const char* rlTime::formatTimeDiff(const rlTime& t1, const rlTime& t2, enum Form
   return formatTimeDiff(t2 - t1, fmt, bufferLength, buffer);
 }
 
-const char *rlTime::formatTimeDiffString(double tdiff, enum FormatLargestUnit fmt)
+std::string rlTime::formatTimeDiffString(double tdiff, enum FormatLargestUnit fmt)
 {
   char strBuffer[32];
 

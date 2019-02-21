@@ -68,7 +68,7 @@ public:
   </pre> */
   rlTime& setTimeFromString(const char *time_string);
   rlTime& setTimeFromIsoString(const char *iso_time_string);
-  rlTime& setTimeFromSeconds(double seconds);   // we assume 30.5 days per month
+  rlTime& setTimeFromSeconds(double seconds);
 
   void    setLocalTime();
   double  secondsSinceEpoche() const;
@@ -149,7 +149,7 @@ public:
   static const char* formatTimeDiff(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction, unsigned bufferLength = 32, char* buffer = 0);
 
   ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, returned object manages string memory
-  static const char *formatTimeDiffString(double, enum FormatLargestUnit = HoursMinutesSecondsFraction);
+  static std::string formatTimeDiffString(double, enum FormatLargestUnit = HoursMinutesSecondsFraction);
 
   ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, returned object manages string memory
   static std::string formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction);
@@ -191,49 +191,49 @@ private:
 
 #ifdef RLCPP11
 // implementation of the template declarations and overloads above
-template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
 rlTime& rlTime::operator+=  (argType seconds)
 {
   return this->operator +=(time_t(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
 rlTime& rlTime::operator-=  (argType seconds)
 {
   return this->operator -=(time_t(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
 rlTime  rlTime::operator+   (argType seconds) const
 {
   return this->operator +(time_t(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
 rlTime  rlTime::operator-   (argType seconds) const
 {
   return this->operator -(time_t(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
 rlTime& rlTime::operator+=  (argType seconds)
 {
   return this->operator +=(double(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
 rlTime& rlTime::operator-=  (argType seconds)
 {
   return this->operator -=(double(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
 rlTime  rlTime::operator+   (argType seconds) const
 {
   return this->operator +(double(seconds));
 }
 
-template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
 rlTime  rlTime::operator-   (argType seconds) const
 {
   return this->operator -(double(seconds));
