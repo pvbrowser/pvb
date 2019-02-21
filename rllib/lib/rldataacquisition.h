@@ -41,13 +41,13 @@ public:
     int  spare[7];          // for future use
     char cspare[32];        // for future use
   }SHM_HEADER;
-  
+
   enum DAQ_ENUM
   {
     DAQ_ERROR = 256*256*128
   };
 
-#ifdef RLWIN32  
+#ifdef RLWIN32
   rlDataAcquisition(const char *mailbox="c:\\automation\\mbx\\dataacquisition.mbx", const char *shared_memory="c:\\automation\\shm\\dataacquisition.shm", long shared_memory_size=65536);
 #else
   rlDataAcquisition(const char *mailbox="/srv/automation/mbx/dataacquisition.mbx", const char *shared_memory="/srv/automation/shm/dataacquisition.shm", long shared_memory_size=65536);
@@ -71,7 +71,7 @@ public:
   int         shmKey();    // key of shared memory
   int         shmId();     // id of shared memory
 
-private:
+protected:
   SHM_HEADER     *shmheader;
   const char     *shmvalues;
   rlMailbox      *mbx;

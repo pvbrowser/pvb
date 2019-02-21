@@ -19,19 +19,24 @@
 #include <ctype.h>
 
 rlDataAcquisitionProvider::rlDataAcquisitionProvider(int maxNameLength, const char *shared_memory, long shared_memory_size)
+: shmheader(NULL)
 {
   shm = new rlSharedMemory(shared_memory,shared_memory_size);
-  shmheader = (SHM_HEADER *) shm->getUserAdr();
-  shmvalues = ((char *)shmheader) + sizeof(SHM_HEADER);
-  memset(shmheader,0,shared_memory_size);
-  shmheader->maxItemNameLength = 0;
-  shmheader->maxNameLength = maxNameLength;
-  shmheader->numItems = 0;
-  shmheader->readErrorCount = 0;
-  shmheader->writeErrorCount = 0;
-  sharedMemorySize = shared_memory_size;
-  strcpy(shmheader->ident, "daq");
-  allow_add_values = 0;
+  if (shm->OK == shm->status)
+  {
+    shmheader = (SHM_HEADER *) shm->getUserAdr();
+    shmvalues = ((char *)shmheader) + sizeof(SHM_HEADER);
+    memset(shmheader,0,shared_memory_size);
+    shmheader->maxItemNameLength = 0;
+    shmheader->maxNameLength = maxNameLength;
+    shmheader->numItems = 0;
+    shmheader->readErrorCount = 0;
+    shmheader->writeErrorCount = 0;
+    sharedMemorySize = shared_memory_size;
+    strcpy(shmheader->ident, "daq");
+    current_item = 0;
+    allow_add_values = 0;
+  }
 }
 
 rlDataAcquisitionProvider::~rlDataAcquisitionProvider()
@@ -39,6 +44,14 @@ rlDataAcquisitionProvider::~rlDataAcquisitionProvider()
   delete shm;
 }
 
+/**
+ * Read list of items from a file and configure the SHM accordingly.
+ *
+ * Determine the maxItemNameLength in the process and the number of items.
+ *
+ * @param filename
+ * @return the number of read item names and thus number of entries
+ */
 int rlDataAcquisitionProvider::readItemList(const char *filename)
 {
   if(filename == NULL) return DAQ_PROVIDER_ERROR;
@@ -67,7 +80,13 @@ int rlDataAcquisitionProvider::readItemList(const char *filename)
     }
   }
   fclose(fin);
-  shmheader->maxItemNameLength = maxItemNameLength;
+  if (shmheader->maxItemNameLength and (maxItemNameLength > shmheader->maxItemNameLength))
+  {
+    fprintf(stderr, "maxItemNameLength(%d) is configured to small for item list maximum length of %d\n", shmheader->maxItemNameLength, maxItemNameLength);
+    return DAQ_PROVIDER_ERROR;
+  }
+  else if (maxItemNameLength > shmheader->maxItemNameLength)
+    shmheader->maxItemNameLength = maxItemNameLength;
   shmheader->numItems = numItems;
 
   // read items
@@ -84,6 +103,7 @@ int rlDataAcquisitionProvider::readItemList(const char *filename)
   if(ilong < numItems*delta_index)
   {
     printf("rlDataAcquisitionProvider::shared memmory is too small sharedMemorySize=%ld sizeNeeded=%d\n", sharedMemorySize, (int) (numItems*delta_index + sizeof(SHM_HEADER)));
+    fclose(fin);
     return DAQ_PROVIDER_ERROR;
   }
   i = 0;
@@ -106,7 +126,7 @@ int rlDataAcquisitionProvider::readItemList(const char *filename)
   fclose(fin);
   strcpy(shmheader->ident, "daq");
 
-  return 0;
+  return i;
 }
 
 const char *rlDataAcquisitionProvider::firstItem()
@@ -212,7 +232,7 @@ int rlDataAcquisitionProvider::setStringValue(const char *variable, const char *
   char *val = new char[len+1];
   strcpy(val,value);
   if(len > shmheader->maxNameLength) val[shmheader->maxNameLength] = '\0';
- 
+
   value_offset = shmheader->maxItemNameLength + 1;
   delta_index  = value_offset + shmheader->maxNameLength + 1;
   nmax         = shmheader->numItems;
@@ -241,7 +261,7 @@ int rlDataAcquisitionProvider::setStringValue(const char *variable, const char *
     }
     else
     {
-      ::printf("rlDataAcquisitionProvider: ERROR shared memory too small to add variable=%s val=%s please increase shared memory size", variable, val);
+      ::fprintf(stderr, "rlDataAcquisitionProvider: ERROR shared memory too small to add variable=%s val=%s please increase shared memory size", variable, val);
     }
   }
 
@@ -315,6 +335,8 @@ int rlDataAcquisitionProvider::setAllowAddValues(int allow, int maxItemNameLengt
 {
   if(allow == 0) allow_add_values = 0;
   else           allow_add_values = 1;
+  if (maxItemNameLength and shmheader->numItems and shmheader->maxItemNameLength)
+    fprintf(stderr, "BIG FAT WARNING: reconfiguring the maxItemNameLength of a filled SHM segment!\n");
   if(maxItemNameLength > 0) shmheader->maxItemNameLength = maxItemNameLength;
   return 0;
 }
