@@ -58,7 +58,8 @@ static void *eib_reader(void *arg) // thread
   THREAD_PARAM *p = (THREAD_PARAM *) arg;
   rlEIBnetIP *eib = (rlEIBnetIP *) p->user;
   rlEIBnetIP::PDU pdu;
-  rlTime now, last, diff;
+  rlTime now, last;
+  double diff;
   int ret, len;
   int recseq = 0;
   int expected_recseq = 0;
@@ -136,7 +137,7 @@ static void *eib_reader(void *arg) // thread
       }
     }
     diff = now - last;
-    if(eib->isConnected() && eib->channelid != -1 && diff.second > 50)
+    if(eib->isConnected() && eib->channelid != -1 && diff > 50)
     { // send heartbeat
       if(eib->debug) ::printf("send heartbeat\n");
       pdu.headersize  = EIB_HEADERSIZE;
@@ -789,7 +790,7 @@ int rlEIBnetIP::getText(const char *name, char *text, int maxlen)
 
 int rlEIBnetIP::setText(const char *name, const char *text)
 {
-  if(name == NULL || text == NULL) return rlEIBnetIP::EIBERROR; 
+  if(name == NULL || text == NULL) return rlEIBnetIP::EIBERROR;
   char buf[16];
   int length = strlen(text);
   unsigned int a1,a2,a3,daddr;

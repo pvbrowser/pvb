@@ -86,9 +86,9 @@ static int slotButtonEvent(PARAM *p, int id, DATA *d)
 class rlHistoryReader
 {
 public:
-  rlHistoryReader();
+  rlHistoryReader(unsigned maxLineLength = 256*256);
   virtual ~rlHistoryReader();
-  int read(const char *csvName, rlTime *start, rlTime *end);
+  int read(const char *csvName, const rlTime *start, const rlTime *end, int orderNewToOld = 1);
   const char *firstLine();
   const char *nextLine();
   int clean();
@@ -96,11 +96,12 @@ public:
   int debug;
 private:
   int openFile();
-  int pushLineToMemory(const char *line);
-  rlHistoryReaderLine *first_line,*current_line;
+  int pushLineToMemory(const char *line, int prepend);
+  rlHistoryReaderLine *first_line, *last_line, *current_line;
   rlTime time;
   FILE *fin;
   int current_file;
   char *csv_name, *csv_file_name;
+  unsigned const maxLineLength;
 };
 #endif

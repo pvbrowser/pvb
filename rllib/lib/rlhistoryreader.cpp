@@ -17,12 +17,11 @@
 #include "rlcutil.h"
 #include <string.h>
 
-#define MAXBUF 256*256
-
-rlHistoryReader::rlHistoryReader()
+rlHistoryReader::rlHistoryReader(unsigned maxLineLength)
+: maxLineLength(maxLineLength)
 {
   debug = 0;
-  first_line = current_line = NULL;
+  first_line = last_line = current_line = NULL;
   fin = NULL;
   current_file = -1;
   csv_name = NULL;
@@ -38,7 +37,7 @@ rlHistoryReader::~rlHistoryReader()
   csv_file_name = NULL;
 }
 
-int rlHistoryReader::read(const char *csvName, rlTime *start, rlTime *end)
+int rlHistoryReader::read(const char *csvName, const rlTime *start, const rlTime *end, int orderNewToOld)
 {
   char *buf;
   clean();
@@ -47,27 +46,27 @@ int rlHistoryReader::read(const char *csvName, rlTime *start, rlTime *end)
   if(csv_file_name != NULL) delete [] csv_file_name;
   csv_file_name = NULL;
 
-  first_line = current_line = NULL;
+  first_line = last_line = current_line = NULL;
   fin = NULL;
   current_file = -1;
   csv_name = new char[strlen(csvName)+1];
   strcpy(csv_name,csvName);
   csv_file_name = new char[strlen(csvName)+132];
 
-  buf = new char[MAXBUF];
+  buf = new char[maxLineLength];
   for(int i=0; i<10; i++)
   {
     openFile();
     if(debug) printf("reading=%s\n",csv_file_name);
     if(fin == NULL) break;
-    while(fgets(buf,MAXBUF-1,fin) != NULL)
+    while(fgets(buf,maxLineLength-1,fin) != NULL)
     {
       time.setTimeFromString(buf);
-      if(time < *start)
+      if(time <= *start)
       {
         if(debug) printf("too old=%s",buf);
       }
-      else if(time > *end)
+      else if(time >= *end)
       {
         if(debug) printf("too new=%s",buf);
         break;
@@ -75,7 +74,7 @@ int rlHistoryReader::read(const char *csvName, rlTime *start, rlTime *end)
       else
       {
         if(debug) printf("pushLineToMemory=%s",buf);
-        pushLineToMemory(buf);
+        pushLineToMemory(buf, orderNewToOld);
       }
     }
     fclose(fin);
@@ -146,25 +145,34 @@ int rlHistoryReader::openFile()
   return 0;
 }
 
-int rlHistoryReader::pushLineToMemory(const char *line)
+int rlHistoryReader::pushLineToMemory(const char *line, int prepend)
 {
   rlHistoryReaderLine *history_line;
 
-  // put line at 1 position
   if(first_line == NULL)
   {
     first_line = new rlHistoryReaderLine;
     first_line->line = new char[strlen(line)+1];
     strcpy(first_line->line,line);
     first_line->next = NULL;
+    last_line = first_line;
   }
-  else
+  else if (prepend) // put line at 1st position
   {
     history_line = first_line;
     first_line = new rlHistoryReaderLine;
     first_line->line = new char[strlen(line)+1];
     strcpy(first_line->line,line);
     first_line->next = history_line;
+  }
+  else
+  {
+    history_line = last_line;
+    last_line = new rlHistoryReaderLine;
+    last_line->line = new char[strlen(line)+1];
+    strcpy(last_line->line,line);
+    last_line->next = NULL;
+    history_line->next = last_line;
   }
   return 0;
 }
@@ -193,19 +201,19 @@ int rlHistoryReader::cat(const char *csvName, FILE *fout)
   if(csv_file_name != NULL) delete [] csv_file_name;
   csv_file_name = NULL;
 
-  first_line = current_line = NULL;
+  first_line = last_line = current_line = NULL;
   fin = NULL;
   current_file = -1;
   csv_name = new char[strlen(csvName)+1];
   strcpy(csv_name,csvName);
   csv_file_name = new char[strlen(csvName)+132];
 
-  buf = new char[MAXBUF];
+  buf = new char[maxLineLength];
   for(int i=0; i<10; i++)
   {
     openFile();
     if(fin == NULL) break;
-    while(fgets(buf,MAXBUF-1,fin) != NULL)
+    while(fgets(buf,maxLineLength-1,fin) != NULL)
     {
       fprintf(fout,"%s",buf);
     }

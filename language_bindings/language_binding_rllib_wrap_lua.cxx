@@ -14192,7 +14192,28 @@ static swig_lua_class *swig_rlHistoryReaderLine_bases[] = {0};
 static const char *swig_rlHistoryReaderLine_base_names[] = {0};
 static swig_lua_class _wrap_class_rlHistoryReaderLine = { "rlHistoryReaderLine", "rlHistoryReaderLine", &SWIGTYPE_p__rlHistoryReaderLine_,_proxy__wrap_new_rlHistoryReaderLine, swig_delete_rlHistoryReaderLine, swig_rlHistoryReaderLine_methods, swig_rlHistoryReaderLine_attributes, &swig_rlHistoryReaderLine_Sf_SwigStatic, swig_rlHistoryReaderLine_meta, swig_rlHistoryReaderLine_bases, swig_rlHistoryReaderLine_base_names };
 
-static int _wrap_new_rlHistoryReader(lua_State* L) {
+static int _wrap_new_rlHistoryReader__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  unsigned int arg1 ;
+  rlHistoryReader *result = 0 ;
+  
+  SWIG_check_num_args("rlHistoryReader::rlHistoryReader",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlHistoryReader::rlHistoryReader",1,"unsigned int");
+  SWIG_contract_assert((lua_tonumber(L,1)>=0),"number must not be negative")
+  arg1 = (unsigned int)lua_tonumber(L, 1);
+  result = (rlHistoryReader *)new rlHistoryReader(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlHistoryReader,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlHistoryReader__SWIG_1(lua_State* L) {
   int SWIG_arg = 0;
   rlHistoryReader *result = 0 ;
   
@@ -14206,6 +14227,34 @@ static int _wrap_new_rlHistoryReader(lua_State* L) {
 fail:
   lua_error(L);
   return SWIG_arg;
+}
+
+
+static int _wrap_new_rlHistoryReader(lua_State* L) {
+  int argc;
+  int argv[2]={
+    1,2
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_rlHistoryReader__SWIG_1(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      return _wrap_new_rlHistoryReader__SWIG_0(L);
+    }
+  }
+  
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'new_rlHistoryReader'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlHistoryReader::rlHistoryReader(unsigned int)\n"
+    "    rlHistoryReader::rlHistoryReader()\n");
+  lua_error(L);return 0;
 }
 
 
