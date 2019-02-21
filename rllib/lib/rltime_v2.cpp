@@ -20,6 +20,7 @@
 #include <sys/stat.h>
 #include <math.h>
 #include <stdlib.h>
+#include <limits>
 
 #ifdef RLUNIX
 #include <sys/types.h>
@@ -95,8 +96,79 @@ static struct tm* localtime_r(const time_t* t, struct tm* r)
 namespace ns_rltime_v2
 {
 
+void rlTime::normalizeAsRelativeTime()
+{
+  assert(objectHoldsRelativeTime && "object must represent relative time, otherwise normalization as relative time is not defined");
+
+  // accumulate years and months into days, assuming 30.5 days per month and 365.25 days per year
+  if (year != 0)
+  {
+    day += year * 365 + (year / 4);
+    year = 0;
+  }
+
+  if (month != 0)
+  {
+    day += month * 30 + (month / 2);
+    month = 0;
+  }
+
+  if (
+  (1000 <= std::abs(millisecond)) or
+      (60 <= std::abs(second)) or
+      (60 <= std::abs(minute)) or
+      (24 <= std::abs(hour))
+      )
+  {
+    time_t linear_value = second + (minute * 60) + (hour * 60 * 60) + (day * 24 * 60 * 60);
+
+    // normalize milliseconds
+    std::lldiv_t d = std::lldiv(millisecond, 1000);
+    millisecond = d.rem;
+    while (0 > millisecond)
+    {
+      millisecond += 1000;
+      --d.quot;
+    }
+
+    // adjust linear value
+    linear_value += d.quot;
+
+    // normalize milliseconds to negative, if linear value is negative
+    if (0 > linear_value)
+    {
+      if (0 < millisecond)
+      {
+        millisecond -= 1000;
+        ++linear_value;
+      }
+    }
+
+    // decompose linear value
+    if (linear_value)
+    {
+      d = std::lldiv(linear_value, 60);
+      second = d.rem;
+      if (d.quot)
+      {
+        d = std::lldiv(d.quot, 60);
+        minute = d.rem;
+        if (d.quot)
+        {
+          d = std::lldiv(d.quot, 24);
+          hour = d.rem;
+          day = d.quot;
+        }
+      }
+    }
+  }
+}
+
 void rlTime::normalizeAsDate()
 {
+  assert(not objectHoldsRelativeTime && "object must represent absolute time and date, otherwise normalization as time and date is not defined");
+  assert(year >= 1970);
+
   if (year)
   {
     // read members
@@ -140,7 +212,19 @@ rlTime::rlTime(int Year, int Month, int Day, int Hour, int Minute, int Second, i
   second      = Second;
   millisecond = Millisecond;
 
+  memset(time_string, 0, sizeof(time_string));
+  memset(iso_time_string, 0, sizeof(iso_time_string));
+
+  if (1970 <= year)
+  {
+    objectHoldsRelativeTime = false;
   normalizeAsDate();
+}
+  else
+{
+    objectHoldsRelativeTime = true;
+    normalizeAsRelativeTime();
+  }
 }
 
 rlTime::~rlTime()
@@ -152,7 +236,14 @@ const char *rlTime::version()
   return __FILE__;
 }
 
-void rlTime::setTimeFromString(const char *time_string)
+/***
+ * Read an absolute point in time from time_string.
+ *
+ * This method expects a time formatted as in return from getTimeString(),
+ * following the template "YYYY-MM-DD hh:mm:ss ms".
+ * @param time_string
+ */
+rlTime& rlTime::setTimeFromString(const char *time_string)
 {
   year        = 0;
   month       = 0;
@@ -161,11 +252,21 @@ void rlTime::setTimeFromString(const char *time_string)
   minute      = 0;
   second      = 0;
   millisecond = 0;
+  objectHoldsRelativeTime = false;
   sscanf(time_string,"%d-%d-%d %d:%d:%d %d",&year,&month,&day, &hour,&minute,&second, &millisecond);
   normalizeAsDate();
+
+  return *this;
 }
 
-void rlTime::setTimeFromIsoString(const char *iso_time_string)
+/***
+ * Read an absolute point in time from time_string.
+ *
+ * This method expects a time formatted as in return from getIsoTimeString(),
+ * following the template "YYYY-MM-DDThh:mm:ss.xxx".
+ * @param time_string
+ */
+rlTime& rlTime::setTimeFromIsoString(const char *iso_time_string)
 {
   year        = 0;
   month       = 0;
@@ -174,8 +275,11 @@ void rlTime::setTimeFromIsoString(const char *iso_time_string)
   minute      = 0;
   second      = 0;
   millisecond = 0;
+  objectHoldsRelativeTime = false;
   sscanf(iso_time_string,"%d-%d-%dT%d:%d:%d.%d",&year,&month,&day, &hour,&minute,&second, &millisecond);
   normalizeAsDate();
+
+  return *this;
 }
 
 /*! <pre>
@@ -183,43 +287,54 @@ void rlTime::setTimeFromIsoString(const char *iso_time_string)
  * milliseconds within the fraction
  * calculating with 1 month <=> 30.5 days
  </pre> */
-void rlTime::setTimeFromSeconds(double seconds)
+rlTime& rlTime::setTimeFromSeconds(double seconds)
 { // we assume that the average month has 30.5 days
-  double mod = fmod(seconds*1000, 1000);
+  double mod = fmod(seconds * 1000, 1000.);
   millisecond = (int) mod;
 
-  mod = fmod(seconds, 60);
+  mod = fmod(seconds, 60.);
   second = (int) mod;
 
   seconds /= 60;
-  mod = fmod(seconds, 60);
+  mod = fmod(seconds, 60.);
   minute = (int) mod;
 
   seconds /= 60;
-  mod = fmod(seconds, 24);
+  mod = fmod(seconds, 24.);
   hour = (int) mod;
 
   seconds /= 24;
-  mod = fmod(seconds, 30.5);
-  day = (int) mod;
+  day = int(seconds);
 
-  seconds /= 30.5;
-  mod = fmod(seconds, 12);
-  month = (int) mod;
+//  mod = fmod(seconds, 30.5);
+//  day = (int) mod;
+//
+//  seconds /= 30.5;
+//  mod = fmod(seconds, 12);
+//  month = (int) mod;
+//
+//  seconds /= 12;
+//  year = (int) seconds;
 
-  seconds /= 12;
-  year = (int) seconds;
+  objectHoldsRelativeTime = true;
+  normalizeAsRelativeTime();
+
+  return *this;
 }
 
 
 const char *rlTime::getTimeString()
 {
+  assert(not objectHoldsRelativeTime && "object must hold an absolute time and date");
+  memset(time_string, 0, sizeof(time_string));
   sprintf(time_string,"%04d-%02d-%02d %02d:%02d:%02d %03d",year, month, day, hour, minute, second, millisecond);
   return time_string;
 }
 
 const char *rlTime::getIsoTimeString()
 {
+  assert(not objectHoldsRelativeTime && "object must hold an absolute time and date");
+  memset(iso_time_string, 0, sizeof(iso_time_string));
   sprintf(iso_time_string,"%04d-%02d-%02dT%02d:%02d:%02d.%03d",year, month, day, hour, minute, second, millisecond);
   return iso_time_string;
 }
@@ -264,6 +379,8 @@ const char *rlTime::getIsoTimeString()
  </pre> */
 const char *rlTime::toString(const char *format)
 {
+  memset(time_string, 0, sizeof(time_string));
+
   // See:
   // https://doc.qt.io/qt-5/qdatetime.html#toString
   //
@@ -448,7 +565,7 @@ const char *rlTime::toString(const char *format)
   return time_string;
 }
 
-void rlTime::getLocalTime()
+rlTime& rlTime::getLocalTime()
 {
 #ifdef RLUNIX
   time_t t;
@@ -497,6 +614,10 @@ void rlTime::getLocalTime()
   month        = st.wMonth;
   year         = st.wYear;
 #endif
+
+  objectHoldsRelativeTime = false;
+
+  return *this;
 }
 
 int rlTime::getFileModificationTime(const char *filename)
@@ -506,7 +627,7 @@ int rlTime::getFileModificationTime(const char *filename)
   struct tm tmsbuf;
 
 #ifdef RLUNIX
-  if(lstat(filename,&statbuf)) return -1;
+  if(lstat(filename, &statbuf)) return -1;
 #else
   if(stat(filename,&statbuf)) return -1;
 #endif
@@ -523,12 +644,15 @@ int rlTime::getFileModificationTime(const char *filename)
   day         = (int)tms->tm_mday;
   month       = (int)tms->tm_mon;
   year        = (int)tms->tm_year;
+  objectHoldsRelativeTime = false;
 
   return 0;
 }
 
 void rlTime::setLocalTime()
 {
+  assert(not this->objectHoldsRelativeTime && "cannot set local time/clock from relative time object");
+
 #ifdef RLUNIX
   struct timeval tv;
   struct tm t;
@@ -595,318 +719,61 @@ void rlTime::setLocalTime()
   st.wMilliseconds = millisecond;
   SetSystemTime(&st);
 #endif
-}
 
-rlTime& rlTime::operator+=(const rlTime &time)
-{
-  rlTime t;
-  t = *this + time;
-  *this = t;
-  return *this;
-}
-
-rlTime& rlTime::operator-=(const rlTime &time)
-{
-  rlTime t;
-  t = *this - time;
-  *this = t;
-  return *this;
-}
-
-rlTime rlTime::operator+(const rlTime &time) const
-{
-  int maxmonth,y,m;
-  rlTime t;
-
-  t.year        = year        + time.year;
-  t.month       = month       + time.month;
-  t.day         = day         + time.day;
-  t.hour        = hour        + time.hour;
-  t.minute      = minute      + time.minute;
-  t.second      = second      + time.second;
-  t.millisecond = millisecond + time.millisecond;
-
-  y = t.year;
-  if(t.month > 12 || (t.month==12 && t.day==31 && t.hour>=24)) y++;
-  m = t.month;
-  if(t.month > 12 || (t.month==12 && t.day==31 && t.hour>=24)) m = 1;
-
-  switch(m % 12)
-  {
-    case 1: // january
-      maxmonth = 31;
-      break;
-    case 2: // february
-      maxmonth = 28;
-      // Annus bisextilis (calendario Gregoriano)
-      if(y%4==0) 
-      {
-        maxmonth = 29;
-        int hth = y % 100;
-        int special = y % 400; // 1900-+-2100-2200-2300-+-2500-2600-2700
-        if(hth == 0 && special != 0) maxmonth = 28;
-      }  
-      break;
-    case 3: // march
-      maxmonth = 31;
-      break;
-    case 4: // april
-      maxmonth = 30;
-      break;
-    case 5: // may
-      maxmonth = 31;
-      break;
-    case 6: // june
-      maxmonth = 30;
-      break;
-    case 7: // july
-      maxmonth = 31;
-      break;
-    case 8: // august
-      maxmonth = 31;
-      break;
-    case 9: // september
-      maxmonth = 30;
-      break;
-    case 10: // october
-      maxmonth = 31;
-      break;
-    case 11: // november
-      maxmonth = 30;
-      break;
-    case 12: // december
-      maxmonth = 31;
-      break;
-    default:
-      maxmonth = 31;
-      break;
-  }
-
-  if(t.millisecond >= 1000) { t.second++; t.millisecond -= 1000; }
-  if(t.second >= 60)        { t.minute++; t.second      -= 60; }
-  if(t.minute >= 60)        { t.hour++,   t.minute      -= 60; }
-  if(t.hour >= 24)          { t.day++;    t.hour        -= 24; }
-  if(t.day > maxmonth)      { t.month++;  t.day         -= maxmonth; }
-  if(t.month > 12)          { t.year++;   t.month       -= 12; }
-  return t;
-}
-
-rlTime rlTime::operator-(const rlTime &time) const
-{
-  int maxmonth,y,m;
-  rlTime t;
-
-  y = 0;
-  t.year        = year        - time.year;
-  t.month       = month       - time.month;
-  t.day         = day         - time.day;
-  t.hour        = hour        - time.hour;
-  t.minute      = minute      - time.minute;
-  t.second      = second      - time.second;
-  t.millisecond = millisecond - time.millisecond;
-
-  if(t.millisecond < 0) { t.second--; t.millisecond += 1000; }
-  if(t.second < 0)      { t.minute--; t.second      += 60; }
-  if(t.minute < 0)      { t.hour--,   t.minute      += 60; }
-  if(t.hour < 0)        { t.day--;    t.hour        += 24; }
-
-  if(t.day < 0)
-  {
-    t.month--;
-    y = t.year;
-    m = t.month;
-    if(m <= 0) { m += 12; y--; }
-    switch(m % 12)
-    {
-      case 1: // january
-        maxmonth = 31;
-        break;
-      case 2: // february
-        maxmonth = 28;
-        // Annus bisextilis (calendario Gregoriano)
-        if(y%4==0) 
-        {
-          maxmonth = 29;
-          int hth = y % 100;
-          int special = y % 400; // 1900-+-2100-2200-2300-+-2500-2600-2700
-          if(hth == 0 && special != 0) maxmonth = 28;
-        }  
-        break;
-      case 3: // march
-        maxmonth = 31;
-        break;
-      case 4: // april
-        maxmonth = 30;
-        break;
-      case 5: // may
-        maxmonth = 31;
-        break;
-      case 6: // june
-        maxmonth = 30;
-        break;
-      case 7: // july
-        maxmonth = 31;
-        break;
-      case 8: // august
-        maxmonth = 31;
-        break;
-      case 9: // september
-        maxmonth = 30;
-        break;
-      case 10: // october
-        maxmonth = 31;
-        break;
-      case 11: // november
-        maxmonth = 30;
-        break;
-      case 12: // december
-        maxmonth = 31;
-        break;
-      default:
-        maxmonth = 31;
-        break;
-    }
-    t.day += maxmonth; 
-  }
-
-  if(y >= 0)
-  {
-    //printf("after christ was born. thus everything is ok.\n");                           
-  }
-  else
-  {
-    //printf("before christ was born. now also ok\n");
-                      { t.month++;  t.day         -= 30;   }
-    if(t.day    < 30) { t.day++;    t.hour        -= 24;   }
-    if(t.hour   < 0 ) { t.hour++;   t.minute      -= 60;   }
-    if(t.minute < 0 ) { t.minute++; t.second      -= 60;   } 
-    if(t.second < 0 ) { t.second++; t.millisecond -= 1000; }
-  }
-
-  return t;
-}
-
-int rlTime::operator==(const rlTime &time) const
-{
-  if(year        != time.year)        return 0;
-  if(month       != time.month)       return 0;
-  if(day         != time.day)         return 0;
-  if(hour        != time.hour)        return 0;
-  if(minute      != time.minute)      return 0;
-  if(second      != time.second)      return 0;
-  if(millisecond != time.millisecond) return 0;
-
-  return 1;
-}
-
-int rlTime::operator<(const rlTime &time) const
-{
-  if(this->year < time.year) return 1;
-  else if(this->year == time.year)
-  {
-    if(this->month < time.month) return 1;
-    else if(this->month == time.month)
-    {
-      if(this->day < time.day) return 1;
-      else if(this->day == time.day)
-      {
-        if(this->hour < time.hour) return 1;
-        else if(this->hour == time.hour)
-        {
-          if(this->minute < time.minute) return 1;
-          else if(this->minute == time.minute)
-          {
-            if(this->second < time.second) return 1;
-            else if(this->second == time.second)
-            {
-              if(this->millisecond < time.millisecond) return 1;
-            }
-          }
-        }
-      }
-    }
-  }
-  return 0;
-}
-
-int rlTime::operator<=(const rlTime &time) const
-{
-  if((*this) == time) return 1;
-  if((*this) <  time) return 1;
-  return 0;
-}
-
-int rlTime::operator>(const rlTime &time) const
-{
-  if(this->year > time.year) return 1;
-  else if(this->year == time.year)
-  {
-    if(this->month > time.month) return 1;
-    else if(this->month == time.month)
-    {
-      if(this->day > time.day) return 1;
-      else if(this->day == time.day)
-      {
-        if(this->hour > time.hour) return 1;
-        else if(this->hour == time.hour)
-        {
-          if(this->minute > time.minute) return 1;
-          else if(this->minute == time.minute)
-          {
-            if(this->second > time.second) return 1;
-            else if (this->second == time.second)
-            {
-              if(this->millisecond > time.millisecond) return 1;
-            }
-          }
-        }
-      }
-    }
-  }
-  return 0;
-}
-
-int rlTime::operator>=(const rlTime &time) const
-{
-  if((*this) == time) return 1;
-  if((*this) >  time) return 1;
-  return 0;
+  objectHoldsRelativeTime = false;
 }
 
 rlTime& rlTime::operator+=(time_t seconds)
 {
-  if(0 > seconds) return this->operator -=(-seconds);
-  lldiv_t d = lldiv(seconds, time_t(60));
+  if (0 > seconds)
+    return this->operator -=(-seconds);
+
+  std::lldiv_t d = std::lldiv(seconds, time_t(60));
   second += d.rem;
   if(d.quot)
   {
-    d = lldiv(d.quot, time_t(60));
+    d = std::lldiv(d.quot, time_t(60));
     minute += d.rem;
     if(d.quot)
     {
-      d = lldiv(d.quot, time_t(24));
+      d = std::lldiv(d.quot, time_t(24));
       hour += d.rem;
       if (d.quot)
       {
-        d = lldiv(d.quot, time_t(31));
+        if (not objectHoldsRelativeTime)
+        {
+          d = std::lldiv(d.quot, time_t(31));
         day += d.rem;
         if(d.quot)
         {
-          d = lldiv(d.quot, time_t(12));
+            d = std::lldiv(d.quot, time_t(12));
           month += d.rem;
           year += d.quot;
         }
       }
+        else // do not split remaining days down to months and years, as this is not linear
+        {
+          day += d.quot;
+        }
+      }
     }
   }
-  this->normalizeAsDate();
+
+  // now normalize the values, as this is not done above
+  if (not objectHoldsRelativeTime)
+    normalizeAsDate();
+  else
+    normalizeAsRelativeTime();
+
   return *this;
 }
 
 rlTime& rlTime::operator-=(time_t seconds)
 {
-  if(0 > seconds) return this->operator +=(-seconds);
-  lldiv_t d = lldiv(seconds, time_t(60));
+  if (0 > seconds)
+    return this->operator +=(-seconds);
+
+  std::lldiv_t d = std::lldiv(seconds, time_t(60));
   second -= d.rem;
   if(second < 0)
   {
@@ -915,7 +782,7 @@ rlTime& rlTime::operator-=(time_t seconds)
   }
   if(d.quot)
   {
-    d = lldiv(d.quot, time_t(60));
+    d = std::lldiv(d.quot, time_t(60));
     minute -= d.rem;
     if(minute < 0)
     {
@@ -924,7 +791,7 @@ rlTime& rlTime::operator-=(time_t seconds)
     }
     if(d.quot)
     {
-      d = lldiv(d.quot, time_t(24));
+      d = std::lldiv(d.quot, time_t(24));
       hour -= d.rem;
       if(hour < 0)
       {
@@ -933,7 +800,9 @@ rlTime& rlTime::operator-=(time_t seconds)
       }
       if(d.quot)
       {
-        d = lldiv(d.quot, time_t(31));
+        if (not objectHoldsRelativeTime)
+        {
+          d = std::lldiv(d.quot, time_t(31));
         day -= d.rem;
         if(day < 0)
         {
@@ -942,7 +811,7 @@ rlTime& rlTime::operator-=(time_t seconds)
         }
         if(d.quot)
         {
-          d = lldiv(d.quot, time_t(12));
+            d = std::lldiv(d.quot, time_t(12));
           month -= d.rem;
           if(month < 0)
           {
@@ -952,9 +821,20 @@ rlTime& rlTime::operator-=(time_t seconds)
           year -= d.quot;
         }
       }
+        else // do not split remaining days down to months and years, as this is not linear
+        {
+          day -= d.quot;
+        }
+      }
     }
   }
-  this->normalizeAsDate();
+
+  // now normalize the values, as this is not done above
+  if (not objectHoldsRelativeTime)
+    normalizeAsDate();
+  else
+    normalizeAsRelativeTime();
+
   return *this;
 }
 
@@ -971,47 +851,212 @@ rlTime rlTime::operator-(time_t seconds) const
   rlTime t(*this);
 
   t -= seconds;
+
   return t;
 }
 
-// ???
-//double rlTime::operator-(const rlTime &time) const
-//{
-//  return this->secondsSinceEpoche() - time.secondsSinceEpoche();
-//}
+rlTime& rlTime::operator +=(const double& seconds)
+{
+  int ms = fmod(round(seconds * 1000.), 1000.);
+  time_t sec = time_t(seconds);
 
-rlTime& rlTime::operator+=(double seconds)
-{
-  rlTime t, sec;
-  sec.setTimeFromSeconds(seconds);
-  t = *this + sec;
-  *this = t;
+  millisecond += ms;
+  *this += sec;
+
   return *this;
 }
- 
-rlTime& rlTime::operator-=(double seconds)
+
+rlTime& rlTime::operator -=(const double& seconds)
 {
-  rlTime t, sec;
-  sec.setTimeFromSeconds(seconds);
-  t = *this - sec;
-  *this = t;
+  int ms = fmod(round(seconds * 1000.), 1000.);
+  time_t sec = time_t(seconds);
+
+  millisecond -= ms;
+  *this -= sec;
+
   return *this;
 }
- 
-rlTime rlTime::operator+(double seconds) const
-{
-  rlTime t, sec;
-  sec.setTimeFromSeconds(seconds);
-  t = *this + sec;
+
+rlTime rlTime::operator +(const double& seconds) const
+                              {
+  rlTime t(*this);
+
+  t += seconds;
+
   return t;
 }
- 
-rlTime rlTime::operator-(double seconds) const
-{
-  rlTime t, sec;
-  sec.setTimeFromSeconds(seconds);
-  t = *this - sec;
+
+rlTime rlTime::operator -(const double& seconds) const
+                              {
+  rlTime t(*this);
+
+  t -= seconds;
+
   return t;
+}
+
+rlTime& rlTime::operator+=(const RelativeTime &t)
+{
+  time_t linear_value = t.m_myParent_.second + (t.m_myParent_.minute * 60) + (t.m_myParent_.hour * 60 * 60) + (t.m_myParent_.day * 24 * 60 * 60);
+  this->millisecond += t.m_myParent_.millisecond;
+  *this += linear_value;
+
+  return *this;
+}
+
+rlTime& rlTime::operator-=(const RelativeTime &t)
+{
+  time_t linear_value = t.m_myParent_.second + (t.m_myParent_.minute * 60) + (t.m_myParent_.hour * 60 * 60) + (t.m_myParent_.day * 24 * 60 * 60);
+  this->millisecond -= t.m_myParent_.millisecond;
+  *this -= linear_value;
+
+  return *this;
+}
+
+rlTime rlTime::operator+(const RelativeTime &time) const
+{
+  rlTime t(*this);
+
+  t += time;
+
+  return t;
+}
+
+rlTime rlTime::operator-(const RelativeTime &time) const
+{
+  rlTime t(*this);
+
+  t -= time;
+
+  return t;
+}
+
+double rlTime::operator-(const rlTime &time) const
+                           {
+  if (this->objectHoldsRelativeTime and time.objectHoldsRelativeTime)
+    return (this->seconds() - time.seconds());
+  else if (not this->objectHoldsRelativeTime and time.objectHoldsRelativeTime)
+    return this->secondsSinceEpoche() - time.seconds();
+  else if (not this->objectHoldsRelativeTime and not time.objectHoldsRelativeTime)
+    return (this->secondsSinceEpoche() - time.secondsSinceEpoche());
+  else
+  {
+    assert(not time.objectHoldsRelativeTime && "you cannot run the difference between relative and absolute time this way (relative minus absolute)");
+    return std::numeric_limits<double>::quiet_NaN();; // just to make code inspection tools happy, in case assert() is defined empty
+  }
+}
+
+int rlTime::operator==(const rlTime &time) const
+                         {
+  if (objectHoldsRelativeTime != time.objectHoldsRelativeTime)
+    return 0;
+  if(year        != time.year)        return 0;
+  if(month       != time.month)       return 0;
+  if(day         != time.day)         return 0;
+  if(hour        != time.hour)        return 0;
+  if(minute      != time.minute)      return 0;
+  if(second      != time.second)      return 0;
+  if(millisecond != time.millisecond) return 0;
+
+  return 1;
+}
+
+int rlTime::operator<=(const rlTime &time) const
+                         {
+  if (objectHoldsRelativeTime != time.objectHoldsRelativeTime)
+    return 0;
+  if((*this) == time) return 1;
+  if((*this) <  time) return 1;
+  return 0;
+}
+
+int rlTime::operator>=(const rlTime &time) const
+                         {
+  if (objectHoldsRelativeTime != time.objectHoldsRelativeTime)
+    return 0;
+  if((*this) == time) return 1;
+  if((*this) >  time) return 1;
+  return 0;
+}
+
+int rlTime::operator<(const rlTime &time) const
+                        {
+  if (objectHoldsRelativeTime != time.objectHoldsRelativeTime)
+    return 0;
+  if (this->year < time.year)
+    return 1;
+  else if (this->year == time.year)
+  {
+    if (this->month < time.month)
+      return 1;
+    else if (this->month == time.month)
+    {
+      if (this->day < time.day)
+        return 1;
+      else if (this->day == time.day)
+      {
+        if (this->hour < time.hour)
+          return 1;
+        else if (this->hour == time.hour)
+        {
+          if (this->minute < time.minute)
+            return 1;
+          else if (this->minute == time.minute)
+          {
+            if (this->second < time.second)
+              return 1;
+            else if (this->second == time.second)
+            {
+              if (this->millisecond < time.millisecond)
+                return 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return 0;
+}
+
+int rlTime::operator>(const rlTime &time) const
+                        {
+  if (objectHoldsRelativeTime != time.objectHoldsRelativeTime)
+    return 0;
+  if (this->year > time.year)
+    return 1;
+  else if (this->year == time.year)
+  {
+    if (this->month > time.month)
+      return 1;
+    else if (this->month == time.month)
+    {
+      if (this->day > time.day)
+        return 1;
+      else if (this->day == time.day)
+      {
+        if (this->hour > time.hour)
+          return 1;
+        else if (this->hour == time.hour)
+        {
+          if (this->minute > time.minute)
+            return 1;
+          else if (this->minute == time.minute)
+          {
+            if (this->second > time.second)
+              return 1;
+            else if (this->second == time.second)
+            {
+              if (this->millisecond > time.millisecond)
+                return 1;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return 0;
 }
 
 time_t rlTime::timegm(struct tm* tm_)
@@ -1027,6 +1072,8 @@ time_t rlTime::timegm(struct tm* tm_)
 
 double rlTime::secondsSinceEpoche() const
 {
+  assert(not objectHoldsRelativeTime && "object must hold an absolute time and date");
+
   struct tm begin;
   struct tm test;
 
@@ -1061,7 +1108,11 @@ double rlTime::secondsSinceEpoche() const
  */
 double rlTime::seconds() const
 {
-  double ret = (((double) millisecond) / 1000) + second + minute*60 + hour*60*60 + month*60*60*30.5 + year*60*60*30.5*12;
+  assert(objectHoldsRelativeTime && "object must hold an relative time");
+
+  double ret = (((double) millisecond) / 1000);
+  ret += second + minute * 60 + hour * 60 * 60 + day * 24 * 60 * 60;
+  ret += month*60*60*30.5 + year*60*60*30.5*12;
   return ret;
 }
 
@@ -1134,23 +1185,21 @@ const char* rlTime::formatTimeDiff(double tdiff, enum FormatLargestUnit fmt, uns
 
 const char* rlTime::formatTimeDiff(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit fmt, unsigned bufferLength, char* buffer)
 {
-   rlTime tdiff;
-   tdiff = t2 - t1;
-   return formatTimeDiff(tdiff.seconds(), fmt, bufferLength, buffer);
+  return formatTimeDiff(t2 - t1, fmt, bufferLength, buffer);
 }
 
-const char *rlTime::formatTimeDiffString(double tdiff, enum FormatLargestUnit fmt)
+std::string rlTime::formatTimeDiffString(double tdiff, enum FormatLargestUnit fmt)
 {
   char strBuffer[32];
 
   const char* result = formatTimeDiff(tdiff, fmt, sizeof(strBuffer), strBuffer);
-  int len = strlen(result);
-  time_string[0] = '\0';
-  if(len+1 < (int) sizeof(time_string)) strcpy(time_string, result);
-  return time_string;
+
+  std::string diffStr(result);
+
+  return diffStr;
 }
 
-const char *rlTime::formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit fmt)
+std::string rlTime::formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit fmt)
 {
   return formatTimeDiffString(t2 - t1, fmt);
 }
