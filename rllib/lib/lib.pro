@@ -19,6 +19,8 @@ HEADERS  = rllib.h                     \
            rlthread.h                  \
            rlsocket.h                  \
            rltime.h                    \
+           rltime_v1.h                 \
+           rltime_v2.h                 \
            rlmailbox.h                 \
            rlfifo.h                    \
            rlsharedmemory.h            \
