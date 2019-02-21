@@ -19,6 +19,24 @@ The header that is included in every file of rllib.
 #ifndef _RL_DEFINE_H_
 #define _RL_DEFINE_H_
 
+// CPP Standard
+#if __cplusplus >= 199711L
+#define RLCPP98
+#endif
+
+#if __cplusplus >= 201103L
+#define RLCPP11
+#endif
+
+#if __cplusplus >= 201402L
+#define RLCPP14
+#endif
+
+#if __cplusplus >= 201703L
+#define RLCPP17
+#endif
+
+
 // define WIN
 #ifdef _WIN32
 #define RLWIN32
