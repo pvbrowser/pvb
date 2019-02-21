@@ -47,7 +47,8 @@ private:
   int pushLineToFile(const char *line);
   int openFile();
   rlHistoryLogLine *first_line,*current_line;
-  rlTime time,file_start_time,time_diff;
+  rlTime time,file_start_time;
+  time_t time_diff;
   FILE *fout;
   int max_hours_per_file, max_lines_in_memory, current_file;
   char *csv_name, *csv_file_name;

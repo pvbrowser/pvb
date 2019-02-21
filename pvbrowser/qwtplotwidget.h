@@ -85,10 +85,9 @@ public:
   virtual QwtText label(double v) const
   {
     QwtText qwttext;
-    time_t curtime;
 //  struct tm *loctime;
 //  char time[1024];
-    curtime = (int) v;
+    uint64_t curtime = (uint64_t) v;
     QDateTime qdt;
     qdt.setTime_t( curtime );
 //  loctime = localtime( &curtime );
