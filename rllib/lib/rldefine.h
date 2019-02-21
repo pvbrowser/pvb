@@ -104,6 +104,6 @@ The header that is included in every file of rllib.
 #define BIT30 256*256*256*64
 #define BIT31 256*256*256*128
 
-#define RLCRLF "\r\n" 
+#define RLCRLF "\r\n"
 
 #endif

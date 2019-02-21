@@ -18,11 +18,28 @@
 
 #include "rldefine.h"
 #include <time.h>
+#include <stdint.h>
+#include <string>
+#include <assert.h>
+
+#ifdef RLCPP11
+#include <type_traits>
+#endif
 
 namespace ns_rltime_v2
 {
 /*! <pre>
-class for handling time.
+class for handling time. It supports also simple formatting of time differences.
+
+If the year is smaller than 1970 a relative time is assumed in contrast to an absolute point in time for
+years greater than 1970.
+
+For good clarity of what you want express, avoid years and months for relative times and express relative
+times as days, hours etc.
+
+Relative times are normalized in a fashion that, as of its nonlinear nature of months length and year length,
+finally the most rough granularity component for relative times is expressed in days. This way are assumptions of
+month length and year length are taken out of calculations as early as possible.
 </pre> */
 class rlTime
 {
@@ -31,6 +48,9 @@ public:
   // typedef int64_t time_t; ///< for applying relative adjustments to the time, it's a redefintion on most modern platform, but anyway
   // typedef double ftime_t; ///< for applying relative adjustments in fractions of a second
 
+  struct RelativeTime; ///< a proxy type for adding relative time to absolutes
+
+  explicit
   rlTime(int Year=0, int Month=0, int Day=0, int Hour=0, int Minute=0, int Second=0, int Millisecond=0);
 #ifdef RLCPP11
   rlTime(double&) = delete;
@@ -40,40 +60,61 @@ public:
   const char *getTimeString();
   const char *getIsoTimeString();
   const char *toString(const char *format);
-  void    getLocalTime();
+  rlTime& getLocalTime();
   int     getFileModificationTime(const char *filename);
 
   /*! <pre>
   format: sscanf(time_string,"%d-%d-%d %d:%d:%d %d",&year,&month,&day, &hour,&minute,&second, &millisecond);
   </pre> */
-  void    setTimeFromString(const char *time_string);
-  void    setTimeFromIsoString(const char *iso_time_string);
-  void    setTimeFromSeconds(double const seconds);  // we assume 30.5 days per month
+  rlTime& setTimeFromString(const char *time_string);
+  rlTime& setTimeFromIsoString(const char *iso_time_string);
+  rlTime& setTimeFromSeconds(double seconds);
 
   void    setLocalTime();
   double  secondsSinceEpoche() const;
-  double  seconds() const;                           // we assume 30.5 days per month
+  double  seconds() const;
 
-  rlTime& operator+=  (const rlTime &time);
-  rlTime& operator-=  (const rlTime &time);
-  rlTime  operator+   (const rlTime &time) const;
-  rlTime  operator-   (const rlTime &time) const;
+  // implicitly converted rlTime objects for doing relative adjustments to objects
+  rlTime& operator+=  (const RelativeTime &time);
+  rlTime& operator-=  (const RelativeTime &time);
+  rlTime  operator+   (const RelativeTime &time) const;
+  rlTime  operator-   (const RelativeTime &time) const; // one must cast explicitly to get an rlTime object back, i.e. t2 - RelativeTime(t1);
 
-  rlTime& operator+=  (double seconds);              // we assume 30.5 days per month
-  rlTime& operator-=  (double seconds);              // we assume 30.5 days per month
-  rlTime  operator+   (double seconds) const;        // we assume 30.5 days per month
-  rlTime  operator-   (double seconds) const;        // we assume 30.5 days per month
-  
-  rlTime& operator+=  (time_t seconds);              ///< adjust absolute time by number of seconds
-  rlTime& operator-=  (time_t seconds);              ///< adjust absolute time by number of seconds
-  rlTime  operator+   (time_t seconds) const;        ///< make new object with absolute time adjusted by number of seconds
-  rlTime  operator-   (time_t seconds) const;        ///< make new object with absolute time adjusted by number of seconds
+  // integral time spans, pre C++11 compiler users must convert argument value explicitly to time_t by time_t(seconds)
+  rlTime& operator+=  (time_t seconds); ///< adjust absolute time by number of seconds
+  rlTime& operator-=  (time_t seconds); ///< adjust absolute time by number of seconds
+  rlTime  operator+   (time_t seconds) const; ///< make new object with absolute time adjusted by number of seconds
+  rlTime  operator-   (time_t seconds) const; ///< make new object with absolute time adjusted by number of seconds
 
-  // already defined see: "double const" above
-  //rlTime& operator += (const ftime_t& seconds);       // we assume 30.5 days per month
-  //rlTime& operator -= (const ftime_t& seconds);       // we assume 30.5 days per month
-  //rlTime  operator +  (const ftime_t& seconds) const; // we assume 30.5 days per month
-  //rlTime  operator -  (const ftime_t& seconds) const; // we assume 30.5 days per month
+  // floating point time spans with millisecond resolution, pre C++11 compiler users must convert argument value to double by double(seconds)
+  rlTime& operator += (const double& seconds);
+  rlTime& operator -= (const double& seconds);
+  rlTime  operator +  (const double& seconds) const;
+  rlTime  operator -  (const double& seconds) const;
+
+#ifdef RLCPP11
+  // some templates to catch all other integer type arguments and convert them to time_t
+  template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+  rlTime& operator+=  (argType seconds); ///< adjust absolute time by number of seconds
+  template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+  rlTime& operator-=  (argType seconds); ///< adjust absolute time by number of seconds
+  template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+  rlTime  operator+   (argType seconds) const; ///< make new object with absolute time adjusted by number of seconds
+  template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type* = nullptr>
+  rlTime  operator-   (argType seconds) const; ///< make new object with absolute time adjusted by number of seconds
+
+  // some templates to catch all other floating point type arguments and convert them to double
+  template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+  rlTime& operator+=  (argType seconds); ///< adjust absolute time by number of seconds
+  template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+  rlTime& operator-=  (argType seconds); ///< adjust absolute time by number of seconds
+  template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+  rlTime  operator+   (argType seconds) const; ///< make new object with absolute time adjusted by number of seconds
+  template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type* = nullptr>
+  rlTime  operator-   (argType seconds) const; ///< make new object with absolute time adjusted by number of seconds
+#endif
+
+  double  operator-   (const rlTime &time) const; ///< difference of two points in time in seconds.milliseconds
 
   int     operator==  (const rlTime &time) const;
   int     operator<   (const rlTime &time) const;
@@ -108,25 +149,96 @@ public:
   static const char* formatTimeDiff(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction, unsigned bufferLength = 32, char* buffer = 0);
 
   ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, returned object manages string memory
-  const char *formatTimeDiffString(double, enum FormatLargestUnit = HoursMinutesSecondsFraction);
+  static std::string formatTimeDiffString(double, enum FormatLargestUnit = HoursMinutesSecondsFraction);
 
   ///< Caller chooses formatting template, default is Hours:Minutes:Seconds.Milliseconds, returned object manages string memory
-  const char *formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction);
+  static std::string formatTimeDiffString(const rlTime& t1, const rlTime& t2, enum FormatLargestUnit = HoursMinutesSecondsFraction);
 
+  static
+  time_t timegm(struct tm* tm_); ///< emulates the POSIX function, which is i.e. under Windows not available
 
-  static time_t timegm(struct tm* tm_); ///< emulates the POSIX function, 
-                                        ///  which is i.e. under Windows not available
-  void normalizeAsDate();               ///< normalizes odd constructions of time and date, 
-                                        ///  such 2014-03-36 is normalized to 2014-04-05, 
-                                        //   similar oddities for the time are corrected.
+  void normalizeAsDate(); ///< normalizes odd constructions of time and date, such 2014-03-36 is normalized to 2014-04-05, simelar oddities for the time are corrected.
+  void normalizeAsRelativeTime(); // we assume 30.5 days per month and 365.25 days per year and accumulate months and years in the days component
+
+  struct RelativeTime // inline implmentation of the proxy type for adding relative time to absolutes
+  {
+    inline
+    RelativeTime(const rlTime& rlt)
+    : m_myParent_(rlt)
+    {
+      assert(rlt.objectHoldsRelativeTime);
+    }
+
+    inline
+    operator double() const
+    {
+      return m_myParent_.seconds();
+    }
+
+    const rlTime& m_myParent_;
+  };
+
 private:
   char    time_string[32*2];   // 2001-11-23 12:52:60 056
   char    iso_time_string[32]; // 2001-11-23T12:52:60.056
+
+  bool    objectHoldsRelativeTime:1;
 
 #ifndef RLCPP11
   explicit rlTime(double&);  // intentionally no implementation, as this shall not be explicit or implicit used
 #endif
 };
+
+#ifdef RLCPP11
+// implementation of the template declarations and overloads above
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
+rlTime& rlTime::operator+=  (argType seconds)
+{
+  return this->operator +=(time_t(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
+rlTime& rlTime::operator-=  (argType seconds)
+{
+  return this->operator -=(time_t(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
+rlTime  rlTime::operator+   (argType seconds) const
+{
+  return this->operator +(time_t(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_integral<argType>::value, argType>::type*>
+rlTime  rlTime::operator-   (argType seconds) const
+{
+  return this->operator -(time_t(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
+rlTime& rlTime::operator+=  (argType seconds)
+{
+  return this->operator +=(double(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
+rlTime& rlTime::operator-=  (argType seconds)
+{
+  return this->operator -=(double(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
+rlTime  rlTime::operator+   (argType seconds) const
+{
+  return this->operator +(double(seconds));
+}
+
+template<typename argType, typename std::enable_if<std::is_floating_point<argType>::value, argType>::type*>
+rlTime  rlTime::operator-   (argType seconds) const
+{
+  return this->operator -(double(seconds));
+}
+#endif
 
 } // end of namespace ns_rltime_v2
 
