@@ -56,3 +56,4 @@ language_bindings/lua/pvslua/pvslua
 language_bindings/lua/pvslua/pvapplua
 /.cproject
 /.project
+/.settings/
