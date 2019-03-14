@@ -202,8 +202,11 @@ int pvlock(PARAM *p)
 {
   if(p == NULL) return -1;
 #ifndef USE_INETD
-  p->my_pvlock_count++;
-  pvthread_mutex_lock(&param_mutex);
+  if(p->my_pvlock_count == 0)
+  {
+    p->my_pvlock_count++;
+    pvthread_mutex_lock(&param_mutex);
+  }  
 #endif
   return 0;
 }
@@ -212,14 +215,12 @@ int pvunlock(PARAM *p)
 {
   if(p == NULL) return -1;
 #ifndef USE_INETD
-  //mar2019 p->my_pvlock_count--;
-  //mar2019 if(p->my_pvlock_count < 0) p->my_pvlock_count = 0;
-  //mar2019 if(p->my_pvlock_count == 0)
-  //mar2019 {
-  //mar2019   pvthread_mutex_unlock(&param_mutex);
-  //mar2019 }  
-  p->my_pvlock_count = 0;
-  pvthread_mutex_unlock(&param_mutex);
+  p->my_pvlock_count--;
+  if(p->my_pvlock_count < 0) p->my_pvlock_count = 0;
+  if(p->my_pvlock_count == 0)
+  {
+    pvthread_mutex_unlock(&param_mutex);
+  }  
 #endif
   return 0;
 }

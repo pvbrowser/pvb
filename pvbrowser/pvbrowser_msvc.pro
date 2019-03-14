@@ -6,6 +6,7 @@
 CONFIG       += warn_on release
 #CONFIG      += USE_VTK
 #DEFINES     += NO_QWT
+DEFINES      += USE_OPEN_GL
 DEFINES      += USE_GOOGLE_WEBKIT_FORK
 QT           += printsupport multimedia uitools webenginewidgets widgets xml svg network printsupport
 
