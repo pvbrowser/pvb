@@ -21,6 +21,9 @@ fi
 if [ "$OSTYPE" == "linux-gnu" ]; then
   export PVB_OSTYPE="linux"
 fi
+if [ "$2" == "buildservice" ]; then
+  export PVB_OSTYPE="linux"
+fi
 
 echo OSTYPE = $PVB_OSTYPE
 if [ "$PVB_OSTYPE" != "linux"  ]; then

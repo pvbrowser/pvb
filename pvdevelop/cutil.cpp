@@ -2636,7 +2636,7 @@ start2:
     for(int i=0; i<tablist.size(); i++)
     {
       QString item = tablist.at(i);
-      fprintf(fout,"  <tabstop>%s</tabstop>\n",(const char *) item.toUtf8().constData());
+      fprintf(fout,"  <tabstop>%s</tabstop>\n",(const char *) item.toUtf8().data());
     }
     fprintf(fout, " </tabstops>\n");
     tablist.clear();

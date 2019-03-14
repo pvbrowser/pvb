@@ -32,6 +32,7 @@ var searchData=
   ['load',['load',['../classrlFileLoad.html#a26b0d9b7ad0dee0d9a5f5220059d0da9',1,'rlFileLoad']]],
   ['loaded',['loaded',['../classrlFileLoad.html#affa97c5e3d664785dab70fb0a6911faf',1,'rlFileLoad']]],
   ['lock',['lock',['../classrlThread.html#a543d60a27fdd4362af6a859049e19f52',1,'rlThread::lock()'],['../classrlMutex.html#ad9d3b571205672f8c85ce51731944ff4',1,'rlMutex::lock()']]],
+  ['lockuseraddr',['LockUserAddr',['../classrlSharedMemory_1_1LockUserAddr.html',1,'rlSharedMemory::LockUserAddr'],['../classrlSharedMemory_1_1LockUserAddr.html#a2036571e5602487f45f5bdf854c223ea',1,'rlSharedMemory::LockUserAddr::LockUserAddr(rlSharedMemory *lockTarget, bool syncOnUnlock=false)'],['../classrlSharedMemory_1_1LockUserAddr.html#a81d153cf1455f8e659eba17ccb4d3e16',1,'rlSharedMemory::LockUserAddr::LockUserAddr(const LockUserAddr &amp;)=delete'],['../classrlSharedMemory_1_1LockUserAddr.html#a3d91df0486d6cf48c90fa2f5a3b6e276',1,'rlSharedMemory::LockUserAddr::LockUserAddr(LockUserAddr &amp;&amp;)']]],
   ['logfilename',['logFileName',['../classrlCanOpen.html#a0547463787b69513660fefb1f5b5848d',1,'rlCanOpen']]],
   ['logo',['LOGO',['../classrlSiemensTCP.html#af98b1992a2efa144476aa6af339b2058a1144dbfd5819a578a63bd353f3ef9bf8',1,'rlSiemensTCP']]],
   ['lower',['lower',['../classrlString.html#ab4f56d7cad146a696ead2fcf4ea4fae8',1,'rlString']]],

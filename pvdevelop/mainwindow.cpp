@@ -879,7 +879,7 @@ bool MainWindow::saveFile(const QString &fileName)
 
   QApplication::restoreOverrideCursor();
   QApplication::setOverrideCursor(QCursor(Qt::WaitCursor));
-  fprintf(fout,"%s",editor->edit->toPlainText().toUtf8().constData());
+  fprintf(fout,"%s",editor->edit->toPlainText().toUtf8().data());
   QApplication::restoreOverrideCursor();
   fclose(fout);
 

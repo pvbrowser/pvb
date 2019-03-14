@@ -119,7 +119,7 @@ void dlgDaemon::slotCompile()
       Buf = "g++ \""+target+".cpp\" \"%PVBDIR%\\win-mingw\\bin\\librllib.a\" -lws2_32 \"-I%PVBDIR%\\rllib\\lib\" -ladvapi32  -static-libgcc -o \""+f_info.baseName()+".exe\"";
       Buf = "echo "+Buf+" & "+Buf+" & pause";
 #endif
-      ret = system(Buf.toUtf8().constData());
+      ret = system(Buf.toUtf8().data());
       break;
     default:
       break;

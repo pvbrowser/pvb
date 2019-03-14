@@ -52,7 +52,6 @@ HEADERS       = mainwindow.h \
                 MyTextBrowser_v4.h \
                 qimagewidget.h \
                 qdrawwidget.h \
-                pvglwidget.h \
                 qwtwidgets.h \
                 qwtplotwidget.h \
                 dlgtextbrowser.h \
@@ -70,11 +69,24 @@ SOURCES       = main.cpp \
                 MyTextBrowser_v4.cpp \
                 QDrawWidget.cpp \
                 QImageWidget.cpp \
-                pvglwidget.cpp \
-                gldecode.cpp \
                 qwtplotwidget.cpp \
                 dlgtextbrowser.cpp \
                 dlgmybrowser.cpp
+
+contains(QMAKE_HOST.arch, "i586") {
+message("i586 -> USE_OPEN_GL")
+DEFINES      += USE_OPEN_GL
+HEADERS      += pvglwidget.h
+SOURCES      += pvglwidget.cpp \
+                gldecode.cpp
+}
+contains(QMAKE_HOST.arch, "x86_64") {
+message("x86_64 -> USE_OPEN_GL")
+DEFINES      += USE_OPEN_GL
+HEADERS      += pvglwidget.h
+SOURCES      += pvglwidget.cpp \
+                gldecode.cpp
+}
 
 # FORMS        += dlgtextbrowser.ui
 #               dlgmybrowser.ui

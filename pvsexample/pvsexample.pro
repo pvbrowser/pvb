@@ -33,11 +33,10 @@ SOURCES += main.cpp     \
            mask1.cpp
 
 !macx {
-//unix:LIBS       += /usr/lib/libpvsmt.so -lpthread
-unix:LIBS         += /opt/pvb/pvserver/libpvsmt.so -lpthread
+unix:LIBS         += /usr/lib/libpvsmt.so -lpthread
 #unix:LIBS        += /usr/lib/libpvsid.so
 unix:INCLUDEPATH  += /opt/pvb/pvserver
-unix:LIBS         += /opt/pvb/rllib/lib/librllib.so
+unix:LIBS         += /usr/lib/librllib.so
 unix:INCLUDEPATH  += /opt/pvb/rllib/lib
 }
 

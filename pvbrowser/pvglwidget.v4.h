@@ -18,16 +18,6 @@
 #ifndef PVGLWIDGET_H
 #define PVGLWIDGET_H
 
-#ifndef USE_MAEMO
-#ifndef USE_ANDROID
-#ifndef USE_SYMBIAN
-#ifndef __VMS
-#define USE_OPEN_GL
-#endif
-#endif
-#endif
-#endif
-
 #ifdef USE_OPEN_GL
 #include <qgl.h>
 #include <qevent.h>

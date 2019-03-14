@@ -10,6 +10,7 @@ var searchData=
   ['unicode_5fstring',['UNICODE_STRING',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398ae1a473662cb95ba0831d0aceba1fd044',1,'rlCanOpenTypes']]],
   ['unload',['unload',['../classrlFileLoad.html#a81eb4344b832955abb4beff569c0b395',1,'rlFileLoad']]],
   ['unlock',['unlock',['../classrlThread.html#ab52388712ba58b879ea1f0ceca547ad3',1,'rlThread::unlock()'],['../classrlMutex.html#ac2b2977e51dfa6ea6213e83974bbe085',1,'rlMutex::unlock()']]],
+  ['unlockwithsync',['unlockWithSync',['../classrlSharedMemory_1_1LockUserAddr.html#aea9dfc74cf08a8e493d63115b01b6d12',1,'rlSharedMemory::LockUserAddr']]],
   ['unsigned16_5ft',['UNSIGNED16_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398aa850c0fb5259b0a563b83470e8561ae6',1,'rlCanOpenTypes']]],
   ['unsigned24_5ft',['UNSIGNED24_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398ae768c04dc6f86ca7922ef3d90ff4c538',1,'rlCanOpenTypes']]],
   ['unsigned32_5ft',['UNSIGNED32_t',['../classrlCanOpenTypes.html#a43e8ddee21c75d1e00896fc72df7f398a6d6203ae6b09c93ddc239889b1db587a',1,'rlCanOpenTypes']]],

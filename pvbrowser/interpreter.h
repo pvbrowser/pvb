@@ -23,7 +23,9 @@
 #include "MyWidgets.h"
 #include "qdrawwidget.h"
 #include "qimagewidget.h"
+#ifdef USE_OPEN_GL
 #include "pvglwidget.h"
+#endif
 #ifndef NO_QWT
 #include "qwtplotwidget.h"
 #endif

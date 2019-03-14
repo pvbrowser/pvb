@@ -27,10 +27,7 @@ USE_SYMBIAN {
 macx:DEFINES += PVMAC
 macx:DEFINES += unix
 unix:!symbian:LIBS    += -ldl
-#!symbian:QMAKE_LFLAGS += -static-libgcc
-contains(QMAKE_CXX, g++) {
-  QMAKE_LFLAGS += -static-libgcc
-}
+!symbian:QMAKE_LFLAGS += -static-libgcc
 
 HEADERS       = mainwindow.h \
                 dlgopt.h \
@@ -42,7 +39,6 @@ HEADERS       = mainwindow.h \
                 MyTextBrowser_v5.h \
                 qimagewidget.h \
                 qdrawwidget.h \
-                pvglwidget.h \
                 qwtwidgets.h \
                 qwtplotwidget.h \
                 dlgtextbrowser.h \
@@ -60,11 +56,26 @@ SOURCES       = main.cpp \
                 MyTextBrowser_v5.cpp \
                 QDrawWidget.cpp \
                 QImageWidget.cpp \
-                pvglwidget.cpp \
-                gldecode.cpp \
                 qwtplotwidget.cpp \
                 dlgtextbrowser.cpp \
                 dlgmybrowser.cpp
+
+message($$QMAKE_HOST.arch)
+
+contains(QMAKE_HOST.arch, "i686") {
+message("i686 -> USE_OPEN_GL")
+DEFINES      += USE_OPEN_GL
+HEADERS      += pvglwidget.h
+SOURCES      += pvglwidget.cpp \
+                gldecode.cpp
+}
+contains(QMAKE_HOST.arch, "x86_64") {
+message("x86_64 -> USE_OPEN_GL")
+DEFINES      += USE_OPEN_GL
+HEADERS      += pvglwidget.h
+SOURCES      += pvglwidget.cpp \
+                gldecode.cpp
+}
 
 # FORMS        += dlgtextbrowser.ui
 #               dlgmybrowser.ui

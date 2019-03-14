@@ -73,7 +73,7 @@ install: build
 	# mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin
 	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/usr/lib
 	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/usr/bin
-	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin
+  #	mkdir -p  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin
 
 	cp -r doc						 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
 	cp -r pvsexample					  $(CURDIR)/debian/pvbrowser-devel/opt/pvb/
@@ -94,8 +94,8 @@ install: build
 	cp    pvbrowser/pvbrowser				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvbrowser/
 	cp    pvdevelop/pvdevelop				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/pvdevelop/
 	cp    fake_qmake/fake_qmake				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/fake_qmake/
-	cp    browserplugin/libpvbrowser.so				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/libpvbrowser.so
-	cp    browserplugin/pvbrowserplugin-example.html				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/pvbrowserplugin-example.html
+  # cp    browserplugin/libpvbrowser.so				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/libpvbrowser.so
+  # cp    browserplugin/pvbrowserplugin-example.html				 $(CURDIR)/debian/pvbrowser-devel/opt/pvb/browserplugin/pvbrowserplugin-example.html
 	cp    start_pvbapp/start_pvbapp			   $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/
 	cp    start_pvbapp/README.txt			     $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/
 	cp    start_pvbapp/example.ini.linux		      $(CURDIR)/debian/pvbrowser-devel/opt/pvb/start_pvbapp/example.ini

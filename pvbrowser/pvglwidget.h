@@ -19,16 +19,6 @@
 #define PVGLWIDGET_H
 #define PVGLWIDGET_H_V5
 
-#ifndef USE_MAEMO
-#ifndef USE_ANDROID
-#ifndef USE_SYMBIAN
-#ifndef __VMS
-#define USE_OPEN_GL
-#endif
-#endif
-#endif
-#endif
-
 #ifdef USE_OPEN_GL
 #include <QOpenGLWidget>
 #include <QOpenGLContext>

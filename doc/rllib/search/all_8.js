@@ -11,7 +11,7 @@ var searchData=
   ['hexdumpfile',['hexdumpFile',['../classrlHtml.html#aba6997f3dab6904c2f544c2909ca20ea',1,'rlHtml']]],
   ['hide_5fhidden_5ffiles',['hide_hidden_files',['../classrlHtmlDir.html#a667624185744a8b78191eaed642dccc2',1,'rlHtmlDir']]],
   ['highpriority',['highPriority',['../classrl3964R.html#a866c4a808fdfac5fee3eb5e5baa47a25a34f08a030cbd306a0eb592e3f1e73d31',1,'rl3964R']]],
-  ['hour',['hour',['../structTDS.html#a28b7c08476394f266f43cfafc71ba946',1,'TDS::hour()'],['../classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b',1,'rlTime::hour()']]],
+  ['hour',['hour',['../structTDS.html#a28b7c08476394f266f43cfafc71ba946',1,'TDS::hour()'],['../classrlTime.html#ade67c1945c3b3afdf8d7991ab9a4801b',1,'rlTime::hour()'],['../classrlTimeEx.html#ad84acea3b7db1b3a5a53b306b457e01a',1,'rlTimeEx::hour()']]],
   ['hprocess',['hProcess',['../classrlSpawn.html#a7e192d14dd1b5bea914f1802f34294fe',1,'rlSpawn']]],
   ['hsemaphore',['hSemaphore',['../structWSEMAPHORE.html#abc9a31daacc7ef2097d38c9356cca7b6',1,'WSEMAPHORE']]],
   ['hsharedfile',['hSharedFile',['../classrlSharedMemory.html#a2f92f4cc85ecb590d6acef1077513194',1,'rlSharedMemory']]],
