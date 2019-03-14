@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['shm_5fheader',['SHM_HEADER',['../structrlDataAcquisition_1_1SHM__HEADER.html',1,'rlDataAcquisition::SHM_HEADER'],['../structrlDataAcquisitionProvider_1_1SHM__HEADER.html',1,'rlDataAcquisitionProvider::SHM_HEADER'],['../structrlOpcXmlDa_1_1SHM__HEADER.html',1,'rlOpcXmlDa::SHM_HEADER']]],
-  ['swap',['SWAP',['../unionSWAP.html',1,'']]]
+  ['tds',['TDS',['../structTDS.html',1,'']]],
+  ['thread_5fparam',['THREAD_PARAM',['../structTHREAD__PARAM.html',1,'']]],
+  ['threadtransfer',['THREADTRANSFER',['../structTHREADTRANSFER.html',1,'']]]
 ];

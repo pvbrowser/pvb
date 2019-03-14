@@ -9,7 +9,7 @@ var searchData=
   ['save_5ftermios',['save_termios',['../classrlSerial.html#a7f311c2650a7c0d7e16485c09472d95c',1,'rlSerial']]],
   ['sched_5fpriority',['sched_priority',['../struct____sched__param.html#a3e023c3e43ac0c9e850a477c455691f3',1,'__sched_param']]],
   ['sec',['sec',['../structTDS.html#add711ae0017c7b490e0ab0a806b25a62',1,'TDS']]],
-  ['second',['second',['../classrlTime.html#ac1eaa68b719eff17648d5f291b3433de',1,'rlTime::second()'],['../classrlTimeEx.html#a90c8769258c7954698e9fe3dda5ac33d',1,'rlTimeEx::second()']]],
+  ['second',['second',['../classrlTime.html#ac1eaa68b719eff17648d5f291b3433de',1,'rlTime']]],
   ['semaphore',['semaphore',['../classrlFifo.html#ada06ff5c81712e3c4afd55e2faf12373',1,'rlFifo::semaphore()'],['../classrlThread.html#a13a4758afc3f8cd47664035b68426b1a',1,'rlThread::semaphore()'],['../classrlSemaphore.html#a59be3923f9431f8c85e44ce44dd4f3cf',1,'rlSemaphore::semaphore()']]],
   ['send_5fresult',['send_result',['../classrl3964R.html#a116f2ff85c5965b9be770bec31735eea',1,'rl3964R']]],
   ['send_5fsequencecounter',['send_sequencecounter',['../classrlEIBnetIP.html#a06af0c51db3d51b13ab3bb6296019b7b',1,'rlEIBnetIP']]],

@@ -1,6 +1,6 @@
 <map id="rldataacquisition.h" name="rldataacquisition.h">
 <area shape="rect" id="node2" href="$rldefine_8h.html" title="rldefine.h" alt="" coords="176,229,252,256"/>
-<area shape="rect" id="node8" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="196,80,283,107"/>
-<area shape="rect" id="node9" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="307,80,438,107"/>
-<area shape="rect" id="node10" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="329,155,416,181"/>
+<area shape="rect" id="node8" href="$rlmailbox_8h.html" title="rlmailbox.h" alt="" coords="95,155,181,181"/>
+<area shape="rect" id="node9" href="$rlsharedmemory_8h.html" title="rlsharedmemory.h" alt="" coords="257,80,387,107"/>
+<area shape="rect" id="node10" href="$rlwthread_8h.html" title="rlwthread.h" alt="" coords="336,155,423,181"/>
 </map>

@@ -7,7 +7,6 @@ var searchData=
   ['listenerthread',['listenerthread',['../rlcanopendaemon_8cpp.html#a5f85429028b201fd3ae153c19073e5ac',1,'rlcanopendaemon.cpp']]],
   ['load',['load',['../classrlFileLoad.html#a26b0d9b7ad0dee0d9a5f5220059d0da9',1,'rlFileLoad']]],
   ['lock',['lock',['../classrlThread.html#a543d60a27fdd4362af6a859049e19f52',1,'rlThread::lock()'],['../classrlMutex.html#ad9d3b571205672f8c85ce51731944ff4',1,'rlMutex::lock()']]],
-  ['lockuseraddr',['LockUserAddr',['../classrlSharedMemory_1_1LockUserAddr.html#a2036571e5602487f45f5bdf854c223ea',1,'rlSharedMemory::LockUserAddr::LockUserAddr(rlSharedMemory *lockTarget, bool syncOnUnlock=false)'],['../classrlSharedMemory_1_1LockUserAddr.html#a81d153cf1455f8e659eba17ccb4d3e16',1,'rlSharedMemory::LockUserAddr::LockUserAddr(const LockUserAddr &amp;)=delete'],['../classrlSharedMemory_1_1LockUserAddr.html#a3d91df0486d6cf48c90fa2f5a3b6e276',1,'rlSharedMemory::LockUserAddr::LockUserAddr(LockUserAddr &amp;&amp;)']]],
   ['lower',['lower',['../classrlString.html#ab4f56d7cad146a696ead2fcf4ea4fae8',1,'rlString']]],
   ['lrcerror',['LRCerror',['../classrlModbus.html#ad9c8ac435545e9f724bd905c1db49f28',1,'rlModbus']]]
 ];

@@ -6,7 +6,7 @@ var searchData=
   ['yaxis',['yAxis',['../classrlSvgVdi.html#aeac6bdc1232abd81936a486957884e79',1,'rlSvgVdi']]],
   ['ydk',['ydk',['../classrlController.html#aafa3f7e90e65eae10b486d13330e15b0',1,'rlController']]],
   ['ydk_5f1',['ydk_1',['../classrlController.html#a85898bc18cf5d29abbdeb8a85beed41c',1,'rlController']]],
-  ['year',['year',['../structTDS.html#a278aa14d1c7403e51e38dd11421b1bb3',1,'TDS::year()'],['../classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f',1,'rlTime::year()'],['../classrlTimeEx.html#a8ede4e7563362039b6858cf058cd9187',1,'rlTimeEx::year()']]],
+  ['year',['year',['../structTDS.html#a278aa14d1c7403e51e38dd11421b1bb3',1,'TDS::year()'],['../classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f',1,'rlTime::year()']]],
   ['ygrid',['yGrid',['../classrlSvgVdi.html#a9118af84829c6d8f208d54a30ead5e6a',1,'rlSvgVdi']]],
   ['yk',['yk',['../classrlController.html#a75af0409513954ea207ae7fb1cfc4230',1,'rlController']]],
   ['yk_5f1',['yk_1',['../classrlController.html#a91235395759fd67e47b914b3b257b49e',1,'rlController']]],

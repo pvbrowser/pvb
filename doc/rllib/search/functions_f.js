@@ -173,7 +173,6 @@ var searchData=
   ['rltextoption',['rlTextOption',['../rlcutil_8cpp.html#a05c0ea238f98852df60cf56018734f9e',1,'rlTextOption(const char *string, const char *option, const char *def):&#160;rlcutil.cpp'],['../rlcutil_8h.html#a40fed03ccdb3030c23aced2f0f7aac16',1,'rlTextOption(const char *string, const char *option, const char *_default):&#160;rlcutil.cpp']]],
   ['rlthread',['rlThread',['../classrlThread.html#a25bfd19bd7b382d71ecb12b554a31b3f',1,'rlThread']]],
   ['rltime',['rlTime',['../classrlTime.html#a457cc74862f31eee9e1a90be17420d9d',1,'rlTime']]],
-  ['rltimeex',['rlTimeEx',['../classrlTimeEx.html#a4a8b6f5b7717326e39ed5a78d5bbf2c6',1,'rlTimeEx']]],
   ['rltranslate',['rltranslate',['../rlinifile_8cpp.html#aa036d7b6d0936dd9350e894948431f64',1,'rltranslate(const char *txt, char **mytext):&#160;rlinifile.cpp'],['../rlinifile_8h.html#ae1bb5c44c6aae2e63f64adeb86e02f47',1,'rltranslate(const char *txt, char **mytext=NULL):&#160;rlinifile.cpp']]],
   ['rltranslate2',['rltranslate2',['../rlinifile_8cpp.html#aafe6303bb03add537bfb81530f368e71',1,'rltranslate2(const char *section, const char *txt, char **mytext):&#160;rlinifile.cpp'],['../rlinifile_8h.html#abaf1fefb3674d2f1c8126911f6567445',1,'rltranslate2(const char *section, const char *txt, char **mytext=NULL):&#160;rlinifile.cpp']]],
   ['rludpsocket',['rlUdpSocket',['../classrlUdpSocket.html#a7d3e7c9282f12a97b318d213a57939a2',1,'rlUdpSocket']]],

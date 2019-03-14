@@ -12,7 +12,6 @@ var searchData=
   ['rlmax_5fevent',['rlMAX_EVENT',['../rlevent_8h.html#abd29ce0a431efd421fae942553dbb5e1',1,'rlevent.h']]],
   ['rlmax_5fmessages',['rlMAX_MESSAGES',['../rleventlogserver_8h.html#a0ca0884a2fa217c7b1237992cd2b49e2',1,'rleventlogserver.h']]],
   ['rlmico',['rlMICO',['../rlcorba_8h.html#a6d8f8b8df130d75d0bdf2ec2428d3062',1,'rlcorba.h']]],
-  ['rlsharedmemory_5fprefer_5fposix',['RLSHAREDMEMORY_PREFER_POSIX',['../rlsharedmemory_8h.html#a63c82e3cddae0570de6e8702d2839b98',1,'RLSHAREDMEMORY_PREFER_POSIX():&#160;rlsharedmemory.h'],['../rlsharedmemory_8h.html#a63c82e3cddae0570de6e8702d2839b98',1,'RLSHAREDMEMORY_PREFER_POSIX():&#160;rlsharedmemory.h']]],
   ['rltr',['rltr',['../rlinifile_8h.html#a28ec05f6825cf46c78a89fd062acfd75',1,'rlinifile.h']]],
   ['rlunix',['RLUNIX',['../rldefine_8h.html#a1a06dee5673cf0e2912f52cb1c5dcb49',1,'rldefine.h']]],
   ['rlwin32',['RLWIN32',['../rldefine_8h.html#aa69fd2b1358365a7eabefb22433241a0',1,'rldefine.h']]],

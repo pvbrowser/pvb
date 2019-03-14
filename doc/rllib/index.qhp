@@ -1344,16 +1344,6 @@
               <section title="vms_channel" ref="classrlSerial.html#a060216d45b73292bf244112b1de1db23" />
             </section>
             <section title="rlSharedMemory" ref="classrlSharedMemory.html">
-              <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html">
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a2036571e5602487f45f5bdf854c223ea" />
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a81d153cf1455f8e659eba17ccb4d3e16" />
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a3d91df0486d6cf48c90fa2f5a3b6e276" />
-                <section title="~LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a54bbfafd53f80741d3447abf78daa3c3" />
-                <section title="operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a9287c0beaffbaa361e17fdcac1baca8f" />
-                <section title="operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a59a1c56ddec9d4f6986e69c66762d1eb" />
-                <section title="target" ref="classrlSharedMemory_1_1LockUserAddr.html#afcb8b810437e19acdd2217d044d71622" />
-                <section title="unlockWithSync" ref="classrlSharedMemory_1_1LockUserAddr.html#aea9dfc74cf08a8e493d63115b01b6d12" />
-              </section>
               <section title="SharedMemoryEnum" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8">
                 <section title="OK" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb" />
                 <section title="ERROR_FILE" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d" />
@@ -1364,7 +1354,6 @@
               <section title="rlSharedMemory" ref="classrlSharedMemory.html#a3e70ce386b12e4b08800578380605d59" />
               <section title="~rlSharedMemory" ref="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5" />
               <section title="deleteSharedMemory" ref="classrlSharedMemory.html#a0bf250d26a9c57dd3c73d22e5ca98f09" />
-              <section title="getLock" ref="classrlSharedMemory.html#a9b910aba2e8bc2de95b0f5eaf04e7e5b" />
               <section title="getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
               <section title="read" ref="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f" />
               <section title="readByte" ref="classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716" />
@@ -1947,43 +1936,6 @@
               <section title="time_string" ref="classrlTime.html#a8bf45af6290380cca3a194e1df1c5871" />
               <section title="year" ref="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f" />
             </section>
-            <section title="rlTimeEx" ref="classrlTimeEx.html">
-              <section title="rlTimeEx" ref="classrlTimeEx.html#a4a8b6f5b7717326e39ed5a78d5bbf2c6" />
-              <section title="~rlTimeEx" ref="classrlTimeEx.html#a9140c0b1c3291ce96915025f6219f695" />
-              <section title="getFileModificationTime" ref="classrlTimeEx.html#a6dbd7030f20b22b3df3f51d6e7eb9ec8" />
-              <section title="getIsoTimeString" ref="classrlTimeEx.html#a6fd5a7b779b3c81761ad956acb34b0e6" />
-              <section title="getLocalTime" ref="classrlTimeEx.html#a747a366c85b898c3132e09aa9099d140" />
-              <section title="getTimeString" ref="classrlTimeEx.html#abc951fd9b15ad1c0f081dee2989d8c52" />
-              <section title="operator+" ref="classrlTimeEx.html#af9457b790bcf0ab22ace53d7d20b86e3" />
-              <section title="operator+" ref="classrlTimeEx.html#a1976683742bf5edc59906f902493ea2f" />
-              <section title="operator+=" ref="classrlTimeEx.html#a96cfdb0c7070a941717c2cf5a767eff8" />
-              <section title="operator+=" ref="classrlTimeEx.html#aafa8adcae3ce2ce669eb4b3a4c9ddc79" />
-              <section title="operator-" ref="classrlTimeEx.html#a1698e0d11b91bffc9ccb5e4b36da6266" />
-              <section title="operator-" ref="classrlTimeEx.html#a162b6fc0cd15bccb511494b8611abf34" />
-              <section title="operator-=" ref="classrlTimeEx.html#a43f90180751fc3887d19c1b46ba14a14" />
-              <section title="operator-=" ref="classrlTimeEx.html#a3c15134ca2ad736e6f3e808382d9da31" />
-              <section title="operator&lt;" ref="classrlTimeEx.html#a4858f6923abe0ae6fafc4804b35810ef" />
-              <section title="operator&lt;=" ref="classrlTimeEx.html#afdf3c1d09ffe0dc98a708c983adf6843" />
-              <section title="operator==" ref="classrlTimeEx.html#a0abe54dfff0f29f7edad42eba35f8b97" />
-              <section title="operator&gt;" ref="classrlTimeEx.html#a459d6d924440bf4c014a09936c7bc1cf" />
-              <section title="operator&gt;=" ref="classrlTimeEx.html#aad88cfa9ccb54f56800337d9775dc9bd" />
-              <section title="seconds" ref="classrlTimeEx.html#a6957081df207a131fd514f0a614dc9c1" />
-              <section title="secondsSinceEpoche" ref="classrlTimeEx.html#a610496a91669b0262e91c1c370662a01" />
-              <section title="setLocalTime" ref="classrlTimeEx.html#a395b5e5f94c2b4a95769a0877dbb03f4" />
-              <section title="setTimeFromIsoString" ref="classrlTimeEx.html#aaadd1e7bc358b1b60e27de39855bc27c" />
-              <section title="setTimeFromSeconds" ref="classrlTimeEx.html#a81b99352a620244d53867c455f1443cb" />
-              <section title="setTimeFromString" ref="classrlTimeEx.html#a53fe860c965cdb8f5b41ee435325d947" />
-              <section title="toString" ref="classrlTimeEx.html#ab30b4b7cf38ed33141e182939771df4a" />
-              <section title="day" ref="classrlTimeEx.html#af5df9e9eb8b8f0e144ba6d2daa366e41" />
-              <section title="hour" ref="classrlTimeEx.html#ad84acea3b7db1b3a5a53b306b457e01a" />
-              <section title="iso_time_string" ref="classrlTimeEx.html#a0efc34db6e56b561b97d8764c5a807d2" />
-              <section title="millisecond" ref="classrlTimeEx.html#a9211aa56082787d4a7606f3773b8cd2b" />
-              <section title="minute" ref="classrlTimeEx.html#ac188556e5136bb60c5256c1d14af5156" />
-              <section title="month" ref="classrlTimeEx.html#af118c87f4278fc1ddddcdeac2e329fd3" />
-              <section title="second" ref="classrlTimeEx.html#a90c8769258c7954698e9fe3dda5ac33d" />
-              <section title="time_string" ref="classrlTimeEx.html#a88a83d556f0dba7aee0acdfaf8f169eb" />
-              <section title="year" ref="classrlTimeEx.html#a8ede4e7563362039b6858cf058cd9187" />
-            </section>
             <section title="rlUdpSocket" ref="classrlUdpSocket.html">
               <section title="rlUdpSocket" ref="classrlUdpSocket.html#a7d3e7c9282f12a97b318d213a57939a2" />
               <section title="~rlUdpSocket" ref="classrlUdpSocket.html#a4e717ecec012a4afc53a3b2e87a1cdc8" />
@@ -2078,7 +2030,6 @@
             <section title="rlSiemensTCP::IH" ref="structrlSiemensTCP_1_1IH.html" />
             <section title="IOSB" ref="structIOSB.html" />
             <section title="IPCMSGSTRUCT" ref="structIPCMSGSTRUCT.html" />
-            <section title="rlSharedMemory::LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html" />
             <section title="rlEIBnetIP::PDU" ref="structrlEIBnetIP_1_1PDU.html" />
             <section title="pthread_attr_t" ref="structpthread__attr__t.html" />
             <section title="rl3964R" ref="classrl3964R.html" />
@@ -2154,13 +2105,12 @@
               <section title="rlController" ref="classrlController.html" />
             </section>
             <section title="rlTime" ref="classrlTime.html" />
-            <section title="rlTimeEx" ref="classrlTimeEx.html" />
             <section title="rlUdpSocket" ref="classrlUdpSocket.html">
               <section title="rlEIBnetIP" ref="classrlEIBnetIP.html" />
             </section>
             <section title="rlWebcam" ref="classrlWebcam.html" />
-            <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
             <section title="rlDataAcquisitionProvider::SHM_HEADER" ref="structrlDataAcquisitionProvider_1_1SHM__HEADER.html" />
+            <section title="rlDataAcquisition::SHM_HEADER" ref="structrlDataAcquisition_1_1SHM__HEADER.html" />
             <section title="rlOpcXmlDa::SHM_HEADER" ref="structrlOpcXmlDa_1_1SHM__HEADER.html" />
             <section title="SWAP" ref="unionSWAP.html" />
             <section title="TDS" ref="structTDS.html" />
@@ -4148,16 +4098,6 @@
             </section>
             <section title="rlsharedmemory.h" ref="rlsharedmemory_8h.html">
               <section title="rlSharedMemory" ref="classrlSharedMemory.html">
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html">
-                  <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a2036571e5602487f45f5bdf854c223ea" />
-                  <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a81d153cf1455f8e659eba17ccb4d3e16" />
-                  <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a3d91df0486d6cf48c90fa2f5a3b6e276" />
-                  <section title="~LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a54bbfafd53f80741d3447abf78daa3c3" />
-                  <section title="operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a9287c0beaffbaa361e17fdcac1baca8f" />
-                  <section title="operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a59a1c56ddec9d4f6986e69c66762d1eb" />
-                  <section title="target" ref="classrlSharedMemory_1_1LockUserAddr.html#afcb8b810437e19acdd2217d044d71622" />
-                  <section title="unlockWithSync" ref="classrlSharedMemory_1_1LockUserAddr.html#aea9dfc74cf08a8e493d63115b01b6d12" />
-                </section>
                 <section title="SharedMemoryEnum" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8">
                   <section title="OK" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a7cb8ffc76ae98203b312b406504bcebb" />
                   <section title="ERROR_FILE" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2ca716bae614d124d98bf8f74ed0134d" />
@@ -4168,7 +4108,6 @@
                 <section title="rlSharedMemory" ref="classrlSharedMemory.html#a3e70ce386b12e4b08800578380605d59" />
                 <section title="~rlSharedMemory" ref="classrlSharedMemory.html#add0a7e3cc167b78ee855ab8eace6b4b5" />
                 <section title="deleteSharedMemory" ref="classrlSharedMemory.html#a0bf250d26a9c57dd3c73d22e5ca98f09" />
-                <section title="getLock" ref="classrlSharedMemory.html#a9b910aba2e8bc2de95b0f5eaf04e7e5b" />
                 <section title="getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
                 <section title="read" ref="classrlSharedMemory.html#aad15636d30ccc89649304ce9263e709f" />
                 <section title="readByte" ref="classrlSharedMemory.html#a5e0532a6d43790db19e43edc508d1716" />
@@ -4194,18 +4133,6 @@
                 <section title="status" ref="classrlSharedMemory.html#adabbcd3725ed8cbc322f9e8f25c22c90" />
                 <section title="user_adr" ref="classrlSharedMemory.html#add47a185bbb356871d4348e24a57852d" />
               </section>
-              <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html">
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a2036571e5602487f45f5bdf854c223ea" />
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a81d153cf1455f8e659eba17ccb4d3e16" />
-                <section title="LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a3d91df0486d6cf48c90fa2f5a3b6e276" />
-                <section title="~LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a54bbfafd53f80741d3447abf78daa3c3" />
-                <section title="operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a9287c0beaffbaa361e17fdcac1baca8f" />
-                <section title="operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a59a1c56ddec9d4f6986e69c66762d1eb" />
-                <section title="target" ref="classrlSharedMemory_1_1LockUserAddr.html#afcb8b810437e19acdd2217d044d71622" />
-                <section title="unlockWithSync" ref="classrlSharedMemory_1_1LockUserAddr.html#aea9dfc74cf08a8e493d63115b01b6d12" />
-              </section>
-              <section title="RLSHAREDMEMORY_PREFER_POSIX" ref="rlsharedmemory_8h.html#a63c82e3cddae0570de6e8702d2839b98" />
-              <section title="RLSHAREDMEMORY_PREFER_POSIX" ref="rlsharedmemory_8h.html#a63c82e3cddae0570de6e8702d2839b98" />
             </section>
             <section title="rlsiemenstcp.cpp" ref="rlsiemenstcp_8cpp.html">
               <section title="ISO_PORT" ref="rlsiemenstcp_8cpp.html#ae225137011f41c60873bb13862741f6b" />
@@ -4972,60 +4899,6 @@
                 <section title="year" ref="classrlTime.html#a33a2e594a5e60e9f571fed9de79a447f" />
               </section>
             </section>
-            <section title="rltimeex.cpp" ref="rltimeex_8cpp.html">
-              <section title="TDS" ref="structTDS.html">
-                <section title="day" ref="structTDS.html#a8c9787507a1fe4ebb877ec4e3f29f58c" />
-                <section title="hour" ref="structTDS.html#a28b7c08476394f266f43cfafc71ba946" />
-                <section title="hth" ref="structTDS.html#aba39f6ccfbaf511208fbbeb9e942b93e" />
-                <section title="min" ref="structTDS.html#a26624321f47700c71081582db2055aa8" />
-                <section title="month" ref="structTDS.html#abf7aaa7a7c5af9a8fe616c6a8b45a1f3" />
-                <section title="sec" ref="structTDS.html#add711ae0017c7b490e0ab0a806b25a62" />
-                <section title="year" ref="structTDS.html#a278aa14d1c7403e51e38dd11421b1bb3" />
-              </section>
-              <section title="VAX_BIN_TIME" ref="structVAX__BIN__TIME.html">
-                <section title="word_1" ref="structVAX__BIN__TIME.html#a4696bf93ae3f49f70ac74940a0fb3886" />
-                <section title="word_2" ref="structVAX__BIN__TIME.html#af35ae32a7949a1a8df645a0f97d46027" />
-              </section>
-            </section>
-            <section title="rltimeex.h" ref="rltimeex_8h.html">
-              <section title="rlTimeEx" ref="classrlTimeEx.html">
-                <section title="rlTimeEx" ref="classrlTimeEx.html#a4a8b6f5b7717326e39ed5a78d5bbf2c6" />
-                <section title="~rlTimeEx" ref="classrlTimeEx.html#a9140c0b1c3291ce96915025f6219f695" />
-                <section title="getFileModificationTime" ref="classrlTimeEx.html#a6dbd7030f20b22b3df3f51d6e7eb9ec8" />
-                <section title="getIsoTimeString" ref="classrlTimeEx.html#a6fd5a7b779b3c81761ad956acb34b0e6" />
-                <section title="getLocalTime" ref="classrlTimeEx.html#a747a366c85b898c3132e09aa9099d140" />
-                <section title="getTimeString" ref="classrlTimeEx.html#abc951fd9b15ad1c0f081dee2989d8c52" />
-                <section title="operator+" ref="classrlTimeEx.html#af9457b790bcf0ab22ace53d7d20b86e3" />
-                <section title="operator+" ref="classrlTimeEx.html#a1976683742bf5edc59906f902493ea2f" />
-                <section title="operator+=" ref="classrlTimeEx.html#a96cfdb0c7070a941717c2cf5a767eff8" />
-                <section title="operator+=" ref="classrlTimeEx.html#aafa8adcae3ce2ce669eb4b3a4c9ddc79" />
-                <section title="operator-" ref="classrlTimeEx.html#a1698e0d11b91bffc9ccb5e4b36da6266" />
-                <section title="operator-" ref="classrlTimeEx.html#a162b6fc0cd15bccb511494b8611abf34" />
-                <section title="operator-=" ref="classrlTimeEx.html#a43f90180751fc3887d19c1b46ba14a14" />
-                <section title="operator-=" ref="classrlTimeEx.html#a3c15134ca2ad736e6f3e808382d9da31" />
-                <section title="operator&lt;" ref="classrlTimeEx.html#a4858f6923abe0ae6fafc4804b35810ef" />
-                <section title="operator&lt;=" ref="classrlTimeEx.html#afdf3c1d09ffe0dc98a708c983adf6843" />
-                <section title="operator==" ref="classrlTimeEx.html#a0abe54dfff0f29f7edad42eba35f8b97" />
-                <section title="operator&gt;" ref="classrlTimeEx.html#a459d6d924440bf4c014a09936c7bc1cf" />
-                <section title="operator&gt;=" ref="classrlTimeEx.html#aad88cfa9ccb54f56800337d9775dc9bd" />
-                <section title="seconds" ref="classrlTimeEx.html#a6957081df207a131fd514f0a614dc9c1" />
-                <section title="secondsSinceEpoche" ref="classrlTimeEx.html#a610496a91669b0262e91c1c370662a01" />
-                <section title="setLocalTime" ref="classrlTimeEx.html#a395b5e5f94c2b4a95769a0877dbb03f4" />
-                <section title="setTimeFromIsoString" ref="classrlTimeEx.html#aaadd1e7bc358b1b60e27de39855bc27c" />
-                <section title="setTimeFromSeconds" ref="classrlTimeEx.html#a81b99352a620244d53867c455f1443cb" />
-                <section title="setTimeFromString" ref="classrlTimeEx.html#a53fe860c965cdb8f5b41ee435325d947" />
-                <section title="toString" ref="classrlTimeEx.html#ab30b4b7cf38ed33141e182939771df4a" />
-                <section title="day" ref="classrlTimeEx.html#af5df9e9eb8b8f0e144ba6d2daa366e41" />
-                <section title="hour" ref="classrlTimeEx.html#ad84acea3b7db1b3a5a53b306b457e01a" />
-                <section title="iso_time_string" ref="classrlTimeEx.html#a0efc34db6e56b561b97d8764c5a807d2" />
-                <section title="millisecond" ref="classrlTimeEx.html#a9211aa56082787d4a7606f3773b8cd2b" />
-                <section title="minute" ref="classrlTimeEx.html#ac188556e5136bb60c5256c1d14af5156" />
-                <section title="month" ref="classrlTimeEx.html#af118c87f4278fc1ddddcdeac2e329fd3" />
-                <section title="second" ref="classrlTimeEx.html#a90c8769258c7954698e9fe3dda5ac33d" />
-                <section title="time_string" ref="classrlTimeEx.html#a88a83d556f0dba7aee0acdfaf8f169eb" />
-                <section title="year" ref="classrlTimeEx.html#a8ede4e7563362039b6858cf058cd9187" />
-              </section>
-            </section>
             <section title="rludpsocket.cpp" ref="rludpsocket_8cpp.html" />
             <section title="rludpsocket.h" ref="rludpsocket_8h.html">
               <section title="rlIpAdr" ref="classrlIpAdr.html">
@@ -5509,8 +5382,6 @@
       <keyword name="B3000000" id="rlserial.h::B3000000" ref="rlserial_8h.html#acb80c15451346a6ae479344124cea120" />
       <keyword name="B3500000" id="rlserial.h::B3500000" ref="rlserial_8h.html#a0db8961ca1fb43dbb690b6d2ee7217f8" />
       <keyword name="B4000000" id="rlserial.h::B4000000" ref="rlserial_8h.html#a0078dd80905a2b3dbccff97e5bea8054" />
-      <keyword name="RLSHAREDMEMORY_PREFER_POSIX" id="rlsharedmemory.h::RLSHAREDMEMORY_PREFER_POSIX" ref="rlsharedmemory_8h.html#a63c82e3cddae0570de6e8702d2839b98" />
-      <keyword name="RLSHAREDMEMORY_PREFER_POSIX" id="rlsharedmemory.h::RLSHAREDMEMORY_PREFER_POSIX" ref="rlsharedmemory_8h.html#a63c82e3cddae0570de6e8702d2839b98" />
       <keyword name="TIMEOUT" id="rlsiemenstcp.cpp::TIMEOUT" ref="rlsiemenstcp_8cpp.html#a45ba202b05caf39795aeca91b0ae547e" />
       <keyword name="ISO_PORT" id="rlsiemenstcp.cpp::ISO_PORT" ref="rlsiemenstcp_8cpp.html#ae225137011f41c60873bb13862741f6b" />
       <keyword name="rlDebugPrintfState" id="rlsiemenstcp.cpp::rlDebugPrintfState" ref="rlsiemenstcp_8cpp.html#a73703e6f6e03079d517b69762d7424da" />
@@ -6724,7 +6595,6 @@
       <keyword name="writeByte" id="rlSharedMemory::writeByte" ref="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02" />
       <keyword name="writeFloat" id="rlSharedMemory::writeFloat" ref="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa" />
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
-      <keyword name="getLock" id="rlSharedMemory::getLock" ref="classrlSharedMemory.html#a9b910aba2e8bc2de95b0f5eaf04e7e5b" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
       <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
@@ -6910,7 +6780,6 @@
       <keyword name="writeByte" id="rlSharedMemory::writeByte" ref="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02" />
       <keyword name="writeFloat" id="rlSharedMemory::writeFloat" ref="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa" />
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
-      <keyword name="getLock" id="rlSharedMemory::getLock" ref="classrlSharedMemory.html#a9b910aba2e8bc2de95b0f5eaf04e7e5b" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
       <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
@@ -6986,7 +6855,6 @@
       <keyword name="writeByte" id="rlSharedMemory::writeByte" ref="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02" />
       <keyword name="writeFloat" id="rlSharedMemory::writeFloat" ref="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa" />
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
-      <keyword name="getLock" id="rlSharedMemory::getLock" ref="classrlSharedMemory.html#a9b910aba2e8bc2de95b0f5eaf04e7e5b" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
       <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
@@ -7005,15 +6873,6 @@
       <keyword name="ERROR_SHMGET" id="rlSharedMemory::ERROR_SHMGET" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a2aeb0703375cac6aae746caeaea81d5d" />
       <keyword name="ERROR_SHMAT" id="rlSharedMemory::ERROR_SHMAT" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a0db238d56963cbb5b5fc524ecc2affb3" />
       <keyword name="ERROR_SHMCTL" id="rlSharedMemory::ERROR_SHMCTL" ref="classrlSharedMemory.html#aa1375e00b92e5a7567a23bdfdb036ae8a9246f094bcbd06239d2fd98bad038e7e" />
-      <keyword name="rlSharedMemory::LockUserAddr" id="rlSharedMemory::LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html" />
-      <keyword name="LockUserAddr" id="rlSharedMemory::LockUserAddr::LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a2036571e5602487f45f5bdf854c223ea" />
-      <keyword name="LockUserAddr" id="rlSharedMemory::LockUserAddr::LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a81d153cf1455f8e659eba17ccb4d3e16" />
-      <keyword name="LockUserAddr" id="rlSharedMemory::LockUserAddr::LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a3d91df0486d6cf48c90fa2f5a3b6e276" />
-      <keyword name="~LockUserAddr" id="rlSharedMemory::LockUserAddr::~LockUserAddr" ref="classrlSharedMemory_1_1LockUserAddr.html#a54bbfafd53f80741d3447abf78daa3c3" />
-      <keyword name="operator=" id="rlSharedMemory::LockUserAddr::operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a9287c0beaffbaa361e17fdcac1baca8f" />
-      <keyword name="operator=" id="rlSharedMemory::LockUserAddr::operator=" ref="classrlSharedMemory_1_1LockUserAddr.html#a59a1c56ddec9d4f6986e69c66762d1eb" />
-      <keyword name="target" id="rlSharedMemory::LockUserAddr::target" ref="classrlSharedMemory_1_1LockUserAddr.html#afcb8b810437e19acdd2217d044d71622" />
-      <keyword name="unlockWithSync" id="rlSharedMemory::LockUserAddr::unlockWithSync" ref="classrlSharedMemory_1_1LockUserAddr.html#aea9dfc74cf08a8e493d63115b01b6d12" />
       <keyword name="rlSiemensTCP" id="rlSiemensTCP" ref="classrlSiemensTCP.html" />
       <keyword name="rlSiemensTCP" id="rlSiemensTCP::rlSiemensTCP" ref="classrlSiemensTCP.html#aed49bf6600c970cc4979a306b1afd49c" />
       <keyword name="~rlSiemensTCP" id="rlSiemensTCP::~rlSiemensTCP" ref="classrlSiemensTCP.html#abc7f07fa73e9944671126ad0bfbc15f5" />
@@ -7186,7 +7045,6 @@
       <keyword name="writeByte" id="rlSharedMemory::writeByte" ref="classrlSharedMemory.html#a738851091f53b27222bb73c567a0ec02" />
       <keyword name="writeFloat" id="rlSharedMemory::writeFloat" ref="classrlSharedMemory.html#a9d077dc749cd31cc22163bc7181ebefa" />
       <keyword name="getUserAdr" id="rlSharedMemory::getUserAdr" ref="classrlSharedMemory.html#a8f2ac1ae5fe2715c39346be6fa681c12" />
-      <keyword name="getLock" id="rlSharedMemory::getLock" ref="classrlSharedMemory.html#a9b910aba2e8bc2de95b0f5eaf04e7e5b" />
       <keyword name="shmKey" id="rlSharedMemory::shmKey" ref="classrlSharedMemory.html#a2ba4572a598ca60b3d1b21f0f202917d" />
       <keyword name="shmId" id="rlSharedMemory::shmId" ref="classrlSharedMemory.html#ae2d0562b6cd1a7e16d7f80cd21ae8d3a" />
       <keyword name="size" id="rlSharedMemory::size" ref="classrlSharedMemory.html#a4665124464ffa92b63996337b15edc13" />
@@ -7595,42 +7453,6 @@
       <keyword name="millisecond" id="rlTime::millisecond" ref="classrlTime.html#a348ab72053e91b194f84e35004793575" />
       <keyword name="time_string" id="rlTime::time_string" ref="classrlTime.html#a8bf45af6290380cca3a194e1df1c5871" />
       <keyword name="iso_time_string" id="rlTime::iso_time_string" ref="classrlTime.html#ab1bd2f438f509a7983ed7184976aa87c" />
-      <keyword name="rlTimeEx" id="rlTimeEx" ref="classrlTimeEx.html" />
-      <keyword name="rlTimeEx" id="rlTimeEx::rlTimeEx" ref="classrlTimeEx.html#a4a8b6f5b7717326e39ed5a78d5bbf2c6" />
-      <keyword name="~rlTimeEx" id="rlTimeEx::~rlTimeEx" ref="classrlTimeEx.html#a9140c0b1c3291ce96915025f6219f695" />
-      <keyword name="getTimeString" id="rlTimeEx::getTimeString" ref="classrlTimeEx.html#abc951fd9b15ad1c0f081dee2989d8c52" />
-      <keyword name="getIsoTimeString" id="rlTimeEx::getIsoTimeString" ref="classrlTimeEx.html#a6fd5a7b779b3c81761ad956acb34b0e6" />
-      <keyword name="toString" id="rlTimeEx::toString" ref="classrlTimeEx.html#ab30b4b7cf38ed33141e182939771df4a" />
-      <keyword name="getLocalTime" id="rlTimeEx::getLocalTime" ref="classrlTimeEx.html#a747a366c85b898c3132e09aa9099d140" />
-      <keyword name="getFileModificationTime" id="rlTimeEx::getFileModificationTime" ref="classrlTimeEx.html#a6dbd7030f20b22b3df3f51d6e7eb9ec8" />
-      <keyword name="setTimeFromString" id="rlTimeEx::setTimeFromString" ref="classrlTimeEx.html#a53fe860c965cdb8f5b41ee435325d947" />
-      <keyword name="setTimeFromIsoString" id="rlTimeEx::setTimeFromIsoString" ref="classrlTimeEx.html#aaadd1e7bc358b1b60e27de39855bc27c" />
-      <keyword name="setTimeFromSeconds" id="rlTimeEx::setTimeFromSeconds" ref="classrlTimeEx.html#a81b99352a620244d53867c455f1443cb" />
-      <keyword name="setLocalTime" id="rlTimeEx::setLocalTime" ref="classrlTimeEx.html#a395b5e5f94c2b4a95769a0877dbb03f4" />
-      <keyword name="secondsSinceEpoche" id="rlTimeEx::secondsSinceEpoche" ref="classrlTimeEx.html#a610496a91669b0262e91c1c370662a01" />
-      <keyword name="seconds" id="rlTimeEx::seconds" ref="classrlTimeEx.html#a6957081df207a131fd514f0a614dc9c1" />
-      <keyword name="operator+=" id="rlTimeEx::operator+=" ref="classrlTimeEx.html#a96cfdb0c7070a941717c2cf5a767eff8" />
-      <keyword name="operator-=" id="rlTimeEx::operator-=" ref="classrlTimeEx.html#a43f90180751fc3887d19c1b46ba14a14" />
-      <keyword name="operator+" id="rlTimeEx::operator+" ref="classrlTimeEx.html#af9457b790bcf0ab22ace53d7d20b86e3" />
-      <keyword name="operator-" id="rlTimeEx::operator-" ref="classrlTimeEx.html#a1698e0d11b91bffc9ccb5e4b36da6266" />
-      <keyword name="operator+=" id="rlTimeEx::operator+=" ref="classrlTimeEx.html#aafa8adcae3ce2ce669eb4b3a4c9ddc79" />
-      <keyword name="operator-=" id="rlTimeEx::operator-=" ref="classrlTimeEx.html#a3c15134ca2ad736e6f3e808382d9da31" />
-      <keyword name="operator+" id="rlTimeEx::operator+" ref="classrlTimeEx.html#a1976683742bf5edc59906f902493ea2f" />
-      <keyword name="operator-" id="rlTimeEx::operator-" ref="classrlTimeEx.html#a162b6fc0cd15bccb511494b8611abf34" />
-      <keyword name="operator==" id="rlTimeEx::operator==" ref="classrlTimeEx.html#a0abe54dfff0f29f7edad42eba35f8b97" />
-      <keyword name="operator&lt;" id="rlTimeEx::operator&lt;" ref="classrlTimeEx.html#a4858f6923abe0ae6fafc4804b35810ef" />
-      <keyword name="operator&lt;=" id="rlTimeEx::operator&lt;=" ref="classrlTimeEx.html#afdf3c1d09ffe0dc98a708c983adf6843" />
-      <keyword name="operator&gt;" id="rlTimeEx::operator&gt;" ref="classrlTimeEx.html#a459d6d924440bf4c014a09936c7bc1cf" />
-      <keyword name="operator&gt;=" id="rlTimeEx::operator&gt;=" ref="classrlTimeEx.html#aad88cfa9ccb54f56800337d9775dc9bd" />
-      <keyword name="year" id="rlTimeEx::year" ref="classrlTimeEx.html#a8ede4e7563362039b6858cf058cd9187" />
-      <keyword name="month" id="rlTimeEx::month" ref="classrlTimeEx.html#af118c87f4278fc1ddddcdeac2e329fd3" />
-      <keyword name="day" id="rlTimeEx::day" ref="classrlTimeEx.html#af5df9e9eb8b8f0e144ba6d2daa366e41" />
-      <keyword name="hour" id="rlTimeEx::hour" ref="classrlTimeEx.html#ad84acea3b7db1b3a5a53b306b457e01a" />
-      <keyword name="minute" id="rlTimeEx::minute" ref="classrlTimeEx.html#ac188556e5136bb60c5256c1d14af5156" />
-      <keyword name="second" id="rlTimeEx::second" ref="classrlTimeEx.html#a90c8769258c7954698e9fe3dda5ac33d" />
-      <keyword name="millisecond" id="rlTimeEx::millisecond" ref="classrlTimeEx.html#a9211aa56082787d4a7606f3773b8cd2b" />
-      <keyword name="time_string" id="rlTimeEx::time_string" ref="classrlTimeEx.html#a88a83d556f0dba7aee0acdfaf8f169eb" />
-      <keyword name="iso_time_string" id="rlTimeEx::iso_time_string" ref="classrlTimeEx.html#a0efc34db6e56b561b97d8764c5a807d2" />
       <keyword name="rlUdpSocket" id="rlUdpSocket" ref="classrlUdpSocket.html" />
       <keyword name="rlUdpSocket" id="rlUdpSocket::rlUdpSocket" ref="classrlUdpSocket.html#a7d3e7c9282f12a97b318d213a57939a2" />
       <keyword name="~rlUdpSocket" id="rlUdpSocket::~rlUdpSocket" ref="classrlUdpSocket.html#a4e717ecec012a4afc53a3b2e87a1cdc8" />
@@ -7831,8 +7653,6 @@
       <file>rlthread_8h_source.html</file>
       <file>rltime_8cpp_source.html</file>
       <file>rltime_8h_source.html</file>
-      <file>rltimeex_8cpp_source.html</file>
-      <file>rltimeex_8h_source.html</file>
       <file>rludpsocket_8cpp_source.html</file>
       <file>rludpsocket_8h_source.html</file>
       <file>rlwebcam_8cpp_source.html</file>
@@ -8103,11 +7923,6 @@
       <file>rltime_8h.html</file>
       <file>rltime_8h__incl.png</file>
       <file>rltime_8h__dep__incl.png</file>
-      <file>rltimeex_8cpp.html</file>
-      <file>rltimeex_8cpp__incl.png</file>
-      <file>rltimeex_8h.html</file>
-      <file>rltimeex_8h__incl.png</file>
-      <file>rltimeex_8h__dep__incl.png</file>
       <file>rludpsocket_8cpp.html</file>
       <file>rludpsocket_8cpp__incl.png</file>
       <file>rludpsocket_8h.html</file>
@@ -8301,9 +8116,6 @@
       <file>classrlSharedMemory.html</file>
       <file>classrlSharedMemory__inherit__graph.png</file>
       <file>classrlSharedMemory-members.html</file>
-      <file>classrlSharedMemory_1_1LockUserAddr.html</file>
-      <file>classrlSharedMemory_1_1LockUserAddr__coll__graph.png</file>
-      <file>classrlSharedMemory_1_1LockUserAddr-members.html</file>
       <file>classrlSiemensTCP.html</file>
       <file>classrlSiemensTCP__inherit__graph.png</file>
       <file>classrlSiemensTCP__coll__graph.png</file>
@@ -8365,8 +8177,6 @@
       <file>classrlThread-members.html</file>
       <file>classrlTime.html</file>
       <file>classrlTime-members.html</file>
-      <file>classrlTimeEx.html</file>
-      <file>classrlTimeEx-members.html</file>
       <file>classrlUdpSocket.html</file>
       <file>classrlUdpSocket__inherit__graph.png</file>
       <file>classrlUdpSocket-members.html</file>
@@ -8486,8 +8296,6 @@
       <file>inherit_graph_85.png</file>
       <file>inherit_graph_86.png</file>
       <file>inherit_graph_87.png</file>
-      <file>inherit_graph_88.png</file>
-      <file>inherit_graph_89.png</file>
       <file>functions.html</file>
       <file>functions_a.html</file>
       <file>functions_b.html</file>

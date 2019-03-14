@@ -2740,13 +2740,12 @@ SWIG_Lua_dostring(lua_State *L, const char *str) {
 #define SWIGTYPE_p_rlWebcam swig_types[62]
 #define SWIGTYPE_p_short swig_types[63]
 #define SWIGTYPE_p_sockaddr_in swig_types[64]
-#define SWIGTYPE_p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t swig_types[65]
-#define SWIGTYPE_p_unsigned_char swig_types[66]
-#define SWIGTYPE_p_unsigned_int swig_types[67]
-#define SWIGTYPE_p_unsigned_short swig_types[68]
-#define SWIGTYPE_p_void swig_types[69]
-static swig_type_info *swig_types[71];
-static swig_module_info swig_module = {swig_types, 70, 0, 0, 0, 0};
+#define SWIGTYPE_p_unsigned_char swig_types[65]
+#define SWIGTYPE_p_unsigned_int swig_types[66]
+#define SWIGTYPE_p_unsigned_short swig_types[67]
+#define SWIGTYPE_p_void swig_types[68]
+static swig_type_info *swig_types[70];
+static swig_module_info swig_module = {swig_types, 69, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -4585,33 +4584,6 @@ fail:
 }
 
 
-static int _wrap_rlSharedMemory_getLock(lua_State* L) {
-  int SWIG_arg = 0;
-  rlSharedMemory *arg1 = (rlSharedMemory *) 0 ;
-  SwigValueWrapper< std::shared_ptr< rlSharedMemory::LockUserAddr > > result;
-  
-  SWIG_check_num_args("rlSharedMemory::getLock",1,1)
-  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlSharedMemory::getLock",1,"rlSharedMemory *");
-  
-  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlSharedMemory,0))){
-    SWIG_fail_ptr("rlSharedMemory_getLock",1,SWIGTYPE_p_rlSharedMemory);
-  }
-  
-  result = (arg1)->getLock();
-  {
-    std::shared_ptr< rlSharedMemory::LockUserAddr > * resultptr = new std::shared_ptr< rlSharedMemory::LockUserAddr >((const std::shared_ptr< rlSharedMemory::LockUserAddr > &) result);
-    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t,1); SWIG_arg++;
-  }
-  return SWIG_arg;
-  
-  if(0) SWIG_fail;
-  
-fail:
-  lua_error(L);
-  return SWIG_arg;
-}
-
-
 static int _wrap_rlSharedMemory_shmKey(lua_State* L) {
   int SWIG_arg = 0;
   rlSharedMemory *arg1 = (rlSharedMemory *) 0 ;
@@ -4822,7 +4794,6 @@ static swig_lua_method swig_rlSharedMemory_methods[]= {
     { "writeByte", _wrap_rlSharedMemory_writeByte},
     { "writeFloat", _wrap_rlSharedMemory_writeFloat},
     { "getUserAdr", _wrap_rlSharedMemory_getUserAdr},
-    { "getLock", _wrap_rlSharedMemory_getLock},
     { "shmKey", _wrap_rlSharedMemory_shmKey},
     { "shmId", _wrap_rlSharedMemory_shmId},
     { "size", _wrap_rlSharedMemory_size},
@@ -31406,6 +31377,1252 @@ static swig_lua_class *swig_rlSvgCat_bases[] = {0};
 static const char *swig_rlSvgCat_base_names[] = {0};
 static swig_lua_class _wrap_class_rlSvgCat = { "rlSvgCat", "rlSvgCat", &SWIGTYPE_p_rlSvgCat,_proxy__wrap_new_rlSvgCat, swig_delete_rlSvgCat, swig_rlSvgCat_methods, swig_rlSvgCat_attributes, &swig_rlSvgCat_Sf_SwigStatic, swig_rlSvgCat_meta, swig_rlSvgCat_bases, swig_rlSvgCat_base_names };
 
+static int _wrap_new_rlTime__SWIG_0(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  int arg7 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",7,7)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::rlTime",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlTime::rlTime",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlTime::rlTime",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rlTime::rlTime",5,"int");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlTime::rlTime",6,"int");
+  if(!lua_isnumber(L,7)) SWIG_fail_arg("rlTime::rlTime",7,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  arg6 = (int)lua_tonumber(L, 6);
+  arg7 = (int)lua_tonumber(L, 7);
+  result = (rlTime *)new rlTime(arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_1(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  int arg6 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",6,6)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::rlTime",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlTime::rlTime",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlTime::rlTime",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rlTime::rlTime",5,"int");
+  if(!lua_isnumber(L,6)) SWIG_fail_arg("rlTime::rlTime",6,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  arg6 = (int)lua_tonumber(L, 6);
+  result = (rlTime *)new rlTime(arg1,arg2,arg3,arg4,arg5,arg6);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_2(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  int arg5 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",5,5)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::rlTime",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlTime::rlTime",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlTime::rlTime",4,"int");
+  if(!lua_isnumber(L,5)) SWIG_fail_arg("rlTime::rlTime",5,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  arg5 = (int)lua_tonumber(L, 5);
+  result = (rlTime *)new rlTime(arg1,arg2,arg3,arg4,arg5);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_3(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  int arg4 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",4,4)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::rlTime",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlTime::rlTime",3,"int");
+  if(!lua_isnumber(L,4)) SWIG_fail_arg("rlTime::rlTime",4,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  arg4 = (int)lua_tonumber(L, 4);
+  result = (rlTime *)new rlTime(arg1,arg2,arg3,arg4);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_4(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  int arg3 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",3,3)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::rlTime",2,"int");
+  if(!lua_isnumber(L,3)) SWIG_fail_arg("rlTime::rlTime",3,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  arg3 = (int)lua_tonumber(L, 3);
+  result = (rlTime *)new rlTime(arg1,arg2,arg3);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_5(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  int arg2 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",2,2)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::rlTime",2,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  arg2 = (int)lua_tonumber(L, 2);
+  result = (rlTime *)new rlTime(arg1,arg2);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_6(lua_State* L) {
+  int SWIG_arg = 0;
+  int arg1 ;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",1,1)
+  if(!lua_isnumber(L,1)) SWIG_fail_arg("rlTime::rlTime",1,"int");
+  arg1 = (int)lua_tonumber(L, 1);
+  result = (rlTime *)new rlTime(arg1);
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime__SWIG_7(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::rlTime",0,0)
+  result = (rlTime *)new rlTime();
+  SWIG_NewPointerObj(L,result,SWIGTYPE_p_rlTime,1); SWIG_arg++; 
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_new_rlTime(lua_State* L) {
+  int argc;
+  int argv[8]={
+    1,2,3,4,5,6,7,8
+  };
+  
+  argc = lua_gettop(L);
+  if (argc == 0) {
+    return _wrap_new_rlTime__SWIG_7(L);
+  }
+  if (argc == 1) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      return _wrap_new_rlTime__SWIG_6(L);
+    }
+  }
+  if (argc == 2) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        return _wrap_new_rlTime__SWIG_5(L);
+      }
+    }
+  }
+  if (argc == 3) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          return _wrap_new_rlTime__SWIG_4(L);
+        }
+      }
+    }
+  }
+  if (argc == 4) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            return _wrap_new_rlTime__SWIG_3(L);
+          }
+        }
+      }
+    }
+  }
+  if (argc == 5) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              return _wrap_new_rlTime__SWIG_2(L);
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 6) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                return _wrap_new_rlTime__SWIG_1(L);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  if (argc == 7) {
+    int _v;
+    {
+      _v = lua_isnumber(L,argv[0]);
+    }
+    if (_v) {
+      {
+        _v = lua_isnumber(L,argv[1]);
+      }
+      if (_v) {
+        {
+          _v = lua_isnumber(L,argv[2]);
+        }
+        if (_v) {
+          {
+            _v = lua_isnumber(L,argv[3]);
+          }
+          if (_v) {
+            {
+              _v = lua_isnumber(L,argv[4]);
+            }
+            if (_v) {
+              {
+                _v = lua_isnumber(L,argv[5]);
+              }
+              if (_v) {
+                {
+                  _v = lua_isnumber(L,argv[6]);
+                }
+                if (_v) {
+                  return _wrap_new_rlTime__SWIG_0(L);
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  SWIG_Lua_pusherrstring(L,"Wrong arguments for overloaded function 'new_rlTime'\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    rlTime::rlTime(int,int,int,int,int,int,int)\n"
+    "    rlTime::rlTime(int,int,int,int,int,int)\n"
+    "    rlTime::rlTime(int,int,int,int,int)\n"
+    "    rlTime::rlTime(int,int,int,int)\n"
+    "    rlTime::rlTime(int,int,int)\n"
+    "    rlTime::rlTime(int,int)\n"
+    "    rlTime::rlTime(int)\n"
+    "    rlTime::rlTime()\n");
+  lua_error(L);return 0;
+}
+
+
+static int _wrap_rlTime_version(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::version",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::version",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_version",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (char *)(arg1)->version();
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_getTimeString(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::getTimeString",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::getTimeString",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_getTimeString",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (char *)(arg1)->getTimeString();
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_getIsoTimeString(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::getIsoTimeString",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::getIsoTimeString",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_getIsoTimeString",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (char *)(arg1)->getIsoTimeString();
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_toString(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *arg2 = (char *) 0 ;
+  char *result = 0 ;
+  
+  SWIG_check_num_args("rlTime::toString",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::toString",1,"rlTime *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlTime::toString",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_toString",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (char *)(arg1)->toString((char const *)arg2);
+  lua_pushstring(L,(const char *)result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_getLocalTime(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  
+  SWIG_check_num_args("rlTime::getLocalTime",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::getLocalTime",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_getLocalTime",1,SWIGTYPE_p_rlTime);
+  }
+  
+  (arg1)->getLocalTime();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_getFileModificationTime(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *arg2 = (char *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::getFileModificationTime",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::getFileModificationTime",1,"rlTime *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlTime::getFileModificationTime",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_getFileModificationTime",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  result = (int)(arg1)->getFileModificationTime((char const *)arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_setTimeFromString(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  SWIG_check_num_args("rlTime::setTimeFromString",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::setTimeFromString",1,"rlTime *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlTime::setTimeFromString",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_setTimeFromString",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  (arg1)->setTimeFromString((char const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_setTimeFromIsoString(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  char *arg2 = (char *) 0 ;
+  
+  SWIG_check_num_args("rlTime::setTimeFromIsoString",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::setTimeFromIsoString",1,"rlTime *");
+  if(!SWIG_lua_isnilstring(L,2)) SWIG_fail_arg("rlTime::setTimeFromIsoString",2,"char const *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_setTimeFromIsoString",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (char *)lua_tostring(L, 2);
+  (arg1)->setTimeFromIsoString((char const *)arg2);
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_setLocalTime(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  
+  SWIG_check_num_args("rlTime::setLocalTime",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::setLocalTime",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_setLocalTime",1,SWIGTYPE_p_rlTime);
+  }
+  
+  (arg1)->setLocalTime();
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_secondsSinceEpoche(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  double result;
+  
+  SWIG_check_num_args("rlTime::secondsSinceEpoche",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::secondsSinceEpoche",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_secondsSinceEpoche",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (double)(arg1)->secondsSinceEpoche();
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime___add(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  rlTime *arg2 = 0 ;
+  rlTime result;
+  
+  SWIG_check_num_args("rlTime::operator +",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::operator +",1,"rlTime *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlTime::operator +",2,"rlTime &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___add",1,SWIGTYPE_p_rlTime);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___add",2,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (arg1)->operator +(*arg2);
+  {
+    rlTime * resultptr = new rlTime((const rlTime &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_rlTime,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime___sub(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  rlTime *arg2 = 0 ;
+  rlTime result;
+  
+  SWIG_check_num_args("rlTime::operator -",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::operator -",1,"rlTime *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlTime::operator -",2,"rlTime &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___sub",1,SWIGTYPE_p_rlTime);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___sub",2,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (arg1)->operator -(*arg2);
+  {
+    rlTime * resultptr = new rlTime((const rlTime &) result);
+    SWIG_NewPointerObj(L,(void *) resultptr,SWIGTYPE_p_rlTime,1); SWIG_arg++;
+  }
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime___eq(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  rlTime *arg2 = 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::operator ==",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::operator ==",1,"rlTime *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlTime::operator ==",2,"rlTime &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___eq",1,SWIGTYPE_p_rlTime);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___eq",2,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int)(arg1)->operator ==(*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime___lt(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  rlTime *arg2 = 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::operator <",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::operator <",1,"rlTime *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlTime::operator <",2,"rlTime &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___lt",1,SWIGTYPE_p_rlTime);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___lt",2,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int)(arg1)->operator <(*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime___le(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  rlTime *arg2 = 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::operator <=",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::operator <=",1,"rlTime *");
+  if(!lua_isuserdata(L,2)) SWIG_fail_arg("rlTime::operator <=",2,"rlTime &");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___le",1,SWIGTYPE_p_rlTime);
+  }
+  
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,2,(void**)&arg2,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime___le",2,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int)(arg1)->operator <=(*arg2);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_year_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::year",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::year",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::year",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_year_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->year = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_year_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::year",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::year",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_year_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->year);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_month_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::month",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::month",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::month",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_month_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->month = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_month_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::month",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::month",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_month_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->month);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_day_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::day",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::day",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::day",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_day_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->day = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_day_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::day",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::day",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_day_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->day);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_hour_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::hour",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::hour",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::hour",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_hour_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->hour = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_hour_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::hour",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::hour",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_hour_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->hour);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_minute_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::minute",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::minute",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::minute",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_minute_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->minute = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_minute_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::minute",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::minute",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_minute_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->minute);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_second_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::second",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::second",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::second",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_second_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->second = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_second_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::second",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::second",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_second_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->second);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_millisecond_set(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int arg2 ;
+  
+  SWIG_check_num_args("rlTime::millisecond",2,2)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::millisecond",1,"rlTime *");
+  if(!lua_isnumber(L,2)) SWIG_fail_arg("rlTime::millisecond",2,"int");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_millisecond_set",1,SWIGTYPE_p_rlTime);
+  }
+  
+  arg2 = (int)lua_tonumber(L, 2);
+  if (arg1) (arg1)->millisecond = arg2;
+  
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static int _wrap_rlTime_millisecond_get(lua_State* L) {
+  int SWIG_arg = 0;
+  rlTime *arg1 = (rlTime *) 0 ;
+  int result;
+  
+  SWIG_check_num_args("rlTime::millisecond",1,1)
+  if(!SWIG_isptrtype(L,1)) SWIG_fail_arg("rlTime::millisecond",1,"rlTime *");
+  
+  if (!SWIG_IsOK(SWIG_ConvertPtr(L,1,(void**)&arg1,SWIGTYPE_p_rlTime,0))){
+    SWIG_fail_ptr("rlTime_millisecond_get",1,SWIGTYPE_p_rlTime);
+  }
+  
+  result = (int) ((arg1)->millisecond);
+  lua_pushnumber(L, (lua_Number) result); SWIG_arg++;
+  return SWIG_arg;
+  
+  if(0) SWIG_fail;
+  
+fail:
+  lua_error(L);
+  return SWIG_arg;
+}
+
+
+static void swig_delete_rlTime(void *obj) {
+rlTime *arg1 = (rlTime *) obj;
+delete arg1;
+}
+static int _proxy__wrap_new_rlTime(lua_State *L) {
+    assert(lua_istable(L,1));
+    lua_pushcfunction(L,_wrap_new_rlTime);
+    assert(!lua_isnil(L,-1));
+    lua_replace(L,1); /* replace our table with real constructor */
+    lua_call(L,lua_gettop(L)-1,1);
+    return 1;
+}
+static swig_lua_attribute swig_rlTime_attributes[] = {
+    { "year", _wrap_rlTime_year_get, _wrap_rlTime_year_set },
+    { "month", _wrap_rlTime_month_get, _wrap_rlTime_month_set },
+    { "day", _wrap_rlTime_day_get, _wrap_rlTime_day_set },
+    { "hour", _wrap_rlTime_hour_get, _wrap_rlTime_hour_set },
+    { "minute", _wrap_rlTime_minute_get, _wrap_rlTime_minute_set },
+    { "second", _wrap_rlTime_second_get, _wrap_rlTime_second_set },
+    { "millisecond", _wrap_rlTime_millisecond_get, _wrap_rlTime_millisecond_set },
+    {0,0,0}
+};
+static swig_lua_method swig_rlTime_methods[]= {
+    { "version", _wrap_rlTime_version},
+    { "getTimeString", _wrap_rlTime_getTimeString},
+    { "getIsoTimeString", _wrap_rlTime_getIsoTimeString},
+    { "toString", _wrap_rlTime_toString},
+    { "getLocalTime", _wrap_rlTime_getLocalTime},
+    { "getFileModificationTime", _wrap_rlTime_getFileModificationTime},
+    { "setTimeFromString", _wrap_rlTime_setTimeFromString},
+    { "setTimeFromIsoString", _wrap_rlTime_setTimeFromIsoString},
+    { "setLocalTime", _wrap_rlTime_setLocalTime},
+    { "secondsSinceEpoche", _wrap_rlTime_secondsSinceEpoche},
+    { "__add", _wrap_rlTime___add},
+    { "__sub", _wrap_rlTime___sub},
+    { "__eq", _wrap_rlTime___eq},
+    { "__lt", _wrap_rlTime___lt},
+    { "__le", _wrap_rlTime___le},
+    {0,0}
+};
+static swig_lua_method swig_rlTime_meta[] = {
+    { "__add", _wrap_rlTime___add},
+    { "__sub", _wrap_rlTime___sub},
+    { "__eq", _wrap_rlTime___eq},
+    { "__lt", _wrap_rlTime___lt},
+    { "__le", _wrap_rlTime___le},
+    {0,0}
+};
+
+static swig_lua_attribute swig_rlTime_Sf_SwigStatic_attributes[] = {
+    {0,0,0}
+};
+static swig_lua_const_info swig_rlTime_Sf_SwigStatic_constants[]= {
+    {0,0,0,0,0,0}
+};
+static swig_lua_method swig_rlTime_Sf_SwigStatic_methods[]= {
+    {0,0}
+};
+static swig_lua_class* swig_rlTime_Sf_SwigStatic_classes[]= {
+    0
+};
+
+static swig_lua_namespace swig_rlTime_Sf_SwigStatic = {
+    "rlTime",
+    swig_rlTime_Sf_SwigStatic_methods,
+    swig_rlTime_Sf_SwigStatic_attributes,
+    swig_rlTime_Sf_SwigStatic_constants,
+    swig_rlTime_Sf_SwigStatic_classes,
+    0
+};
+static swig_lua_class *swig_rlTime_bases[] = {0};
+static const char *swig_rlTime_base_names[] = {0};
+static swig_lua_class _wrap_class_rlTime = { "rlTime", "rlTime", &SWIGTYPE_p_rlTime,_proxy__wrap_new_rlTime, swig_delete_rlTime, swig_rlTime_methods, swig_rlTime_attributes, &swig_rlTime_Sf_SwigStatic, swig_rlTime_meta, swig_rlTime_bases, swig_rlTime_base_names };
+
 static int _wrap_new_rlWebcam(lua_State* L) {
   int SWIG_arg = 0;
   rlWebcam *result = 0 ;
@@ -32485,6 +33702,7 @@ static swig_lua_class* swig_SwigModule_classes[]= {
 &_wrap_class_rlSvgPosition,
 &_wrap_class_rlSvgAnimator,
 &_wrap_class_rlSvgCat,
+&_wrap_class_rlTime,
 &_wrap_class_rlWebcam,
     0
 };
@@ -32587,12 +33805,11 @@ static swig_type_info _swigt__p_rlSvgCat = {"_p_rlSvgCat", "rlSvgCat *", 0, 0, (
 static swig_type_info _swigt__p_rlSvgPosition = {"_p_rlSvgPosition", "rlSvgPosition *", 0, 0, (void*)&_wrap_class_rlSvgPosition, 0};
 static swig_type_info _swigt__p_rlSvgPosition__rlPositionInit = {"_p_rlSvgPosition__rlPositionInit", "rlSvgPosition::rlPositionInit *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_rlThread = {"_p_rlThread", "rlThread *", 0, 0, (void*)&_wrap_class_rlThread, 0};
-static swig_type_info _swigt__p_rlTime = {"_p_rlTime", "rlTime *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_rlTime = {"_p_rlTime", "rlTime *", 0, 0, (void*)&_wrap_class_rlTime, 0};
 static swig_type_info _swigt__p_rlUdpSocket = {"_p_rlUdpSocket", "rlUdpSocket *", 0, 0, (void*)&_wrap_class_rlUdpSocket, 0};
 static swig_type_info _swigt__p_rlWebcam = {"_p_rlWebcam", "rlWebcam *", 0, 0, (void*)&_wrap_class_rlWebcam, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_sockaddr_in = {"_p_sockaddr_in", "sockaddr_in *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t = {"_p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t", "std::shared_ptr< rlSharedMemory::LockUserAddr > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *", 0, 0, (void*)0, 0};
@@ -32664,7 +33881,6 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_rlWebcam,
   &_swigt__p_short,
   &_swigt__p_sockaddr_in,
-  &_swigt__p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_short,
@@ -32736,7 +33952,6 @@ static swig_cast_info _swigc__p_rlUdpSocket[] = {  {&_swigt__p_rlUdpSocket, 0, 0
 static swig_cast_info _swigc__p_rlWebcam[] = {  {&_swigt__p_rlWebcam, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_sockaddr_in[] = {  {&_swigt__p_sockaddr_in, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t[] = {  {&_swigt__p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
@@ -32808,7 +34023,6 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_rlWebcam,
   _swigc__p_short,
   _swigc__p_sockaddr_in,
-  _swigc__p_std__shared_ptrT_rlSharedMemory__LockUserAddr_t,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_short,

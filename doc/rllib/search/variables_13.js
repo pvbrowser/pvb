@@ -6,7 +6,6 @@ var searchData=
   ['uc',['uc',['../classrlBuffer.html#a02586d90d9cbf8a5c44297aefbbc0da6',1,'rlBuffer']]],
   ['ui',['ui',['../classrlBuffer.html#a9805b23575cf3e10ab07e0031b7438eb',1,'rlBuffer::ui()'],['../unionSWAP.html#ac28f43aee8b8daceca2ec097f2032c1d',1,'SWAP::ui()']]],
   ['ul',['ul',['../classrlBuffer.html#a30a355488ab78dc92d0feb6714062a24',1,'rlBuffer']]],
-  ['unlockwithsync',['unlockWithSync',['../classrlSharedMemory_1_1LockUserAddr.html#aea9dfc74cf08a8e493d63115b01b6d12',1,'rlSharedMemory::LockUserAddr']]],
   ['url',['url',['../classrlWebcam.html#a1ca6331de02471d107e275fe90f21202',1,'rlWebcam']]],
   ['us',['us',['../unionSWAP.html#a0859cba83e4e0bfe2a6c71b6ad389c4e',1,'SWAP']]],
   ['usboardnumber',['usBoardNumber',['../classrlHilscherCIF.html#a315b891dc33df437756651b255b094c2',1,'rlHilscherCIF']]],

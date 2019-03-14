@@ -1,7 +1,6 @@
 var searchData=
 [
   ['_7edf1buffer',['~df1Buffer',['../classdf1Buffer.html#a0bcb59b260cbd23e58e0f2a01ace2146',1,'df1Buffer']]],
-  ['_7elockuseraddr',['~LockUserAddr',['../classrlSharedMemory_1_1LockUserAddr.html#a54bbfafd53f80741d3447abf78daa3c3',1,'rlSharedMemory::LockUserAddr']]],
   ['_7erl3964r',['~rl3964R',['../classrl3964R.html#aed87bbd07817294258e59fe659e5fdc9',1,'rl3964R']]],
   ['_7erlbuffer',['~rlBuffer',['../classrlBuffer.html#a0849e814da01172e7855e081c6482e3c',1,'rlBuffer']]],
   ['_7erlbussignaldatabase',['~rlBussignalDatabase',['../classrlBussignalDatabase.html#ad5f41a15fd4f4ecf21ea1ff0a179cf8b',1,'rlBussignalDatabase']]],
@@ -62,7 +61,6 @@ var searchData=
   ['_7erlsvgvdi',['~rlSvgVdi',['../classrlSvgVdi.html#a614d8afbbfe0ed982f7d4290e4c2c952',1,'rlSvgVdi']]],
   ['_7erlthread',['~rlThread',['../classrlThread.html#a207ef107f2a2c07239329a43f5d58cd8',1,'rlThread']]],
   ['_7erltime',['~rlTime',['../classrlTime.html#a04a079518ff398b3fb55118b79dcc565',1,'rlTime']]],
-  ['_7erltimeex',['~rlTimeEx',['../classrlTimeEx.html#a9140c0b1c3291ce96915025f6219f695',1,'rlTimeEx']]],
   ['_7erludpsocket',['~rlUdpSocket',['../classrlUdpSocket.html#a4e717ecec012a4afc53a3b2e87a1cdc8',1,'rlUdpSocket']]],
   ['_7erlwebcam',['~rlWebcam',['../classrlWebcam.html#a98d82c87e804f6d422058de377505fd1',1,'rlWebcam']]]
 ];
