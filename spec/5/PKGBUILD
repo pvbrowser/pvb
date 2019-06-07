@@ -5,7 +5,7 @@
 # https://www.archlinux.org/packages/?name=ffmpeg
 
 pkgname=pvbrowser
-pkgver=5.1.5
+pkgver=5.1.6
 pkgrel=1
 pkgdesc="pvbrowser Qt5 with QWebEngine"
 arch=('i686' 'x86_64')

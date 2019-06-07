@@ -17,9 +17,9 @@
 #define MAINWINDOW_H
 
 #if QT_VERSION < 0x050000
-  #define VERSION "5.1.5 - qt4"
+  #define VERSION "5.1.6 - qt4"
 #else
-  #define VERSION "5.1.5 - qt5"
+  #define VERSION "5.1.6 - qt5"
 #endif
 
 #if defined USE_GOOGLE_WEBKIT_FORK

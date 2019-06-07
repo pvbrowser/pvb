@@ -200,28 +200,32 @@ static void mytext(PARAM *p, const char *text)
 
 int pvlock(PARAM *p)
 {
-  if(p == NULL) return -1;
+  //if(p == NULL) return -1;
 #ifndef USE_INETD
-  if(p->my_pvlock_count == 0)
-  {
-    p->my_pvlock_count++;
-    pvthread_mutex_lock(&param_mutex);
-  }  
+  //if(p->my_pvlock_count == 0)
+  //{
+  //  p->my_pvlock_count++;
+  //  pvthread_mutex_lock(&param_mutex);
+  //}  
+  pvthread_mutex_lock(&param_mutex);
 #endif
+  if(p == NULL) return 0;
   return 0;
 }
 
 int pvunlock(PARAM *p)
 {
-  if(p == NULL) return -1;
+  //if(p == NULL) return -1;
 #ifndef USE_INETD
-  p->my_pvlock_count--;
-  if(p->my_pvlock_count < 0) p->my_pvlock_count = 0;
-  if(p->my_pvlock_count == 0)
-  {
-    pvthread_mutex_unlock(&param_mutex);
-  }  
+  //p->my_pvlock_count--;
+  //if(p->my_pvlock_count < 0) p->my_pvlock_count = 0;
+  //if(p->my_pvlock_count == 0)
+  //{
+  //  pvthread_mutex_unlock(&param_mutex);
+  //}  
+  pvthread_mutex_unlock(&param_mutex);
 #endif
+  if(p == NULL) return 0;
   return 0;
 }
 

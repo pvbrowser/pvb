@@ -78,6 +78,14 @@ QString l_status_about              = "Shows the aboutbox";
 
 QString l_print_header              = "Printed by pvbrowser at: ";
 
+const char *writeableLocation()
+{
+  static QString text;
+  //text = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+  text = getenv("HOME");
+  return text.toUtf8();
+}
+
 int wsa()
 {
 #ifdef PVWIN32
@@ -171,7 +179,8 @@ const char *inifile()
   }
 #ifdef PVUNIX
 #ifdef USE_ANDROID
-  strcpy(name,"/sdcard/pvbrowser/pvbrowser.ini"); // android
+  strcpy(name,writeableLocation());
+  strcat(name,"/pvbrowser/pvbrowser.ini"); // android
 #elif defined(USE_SYMBIAN)
   //SECUREID (magic number!)  0xE537072d
   //in symbian the normal dir is under \\Private\\<secureid>
@@ -207,7 +216,8 @@ const char *passfile()
   }
 #ifdef PVUNIX
 #ifdef USE_ANDROID
-  strcpy(name,"/sdcard/pvbrowser/pvbrowserpass.ini"); // android
+  strcpy(name,writeableLocation());
+  strcat(name,"/pvbrowser/pvbrowserpass.ini"); // android
 #elif defined(USE_SYMBIAN)
   strcpy(name,"\\pvb\\pvbrowserpass.ini");
 #else
@@ -595,8 +605,9 @@ int i;
     else // write a default initialisation file
     {
 #ifdef USE_ANDROID
-      mkdir("/sdcard/pvbrowser", 0x0fff); // android
-      mkdir("/sdcard/pvbrowser/temp", 0x0fff); // android             
+      chdir(writeableLocation());
+      mkdir("pvbrowser", 0x0fff); // android
+      mkdir("pvbrowser/temp", 0x0fff); // android             
 #endif
 #ifdef USE_SYMBIAN
       mkdir("\\pvb",S_IWUSR);
@@ -640,7 +651,7 @@ int i;
         fprintf(fp,"# temporary directory\n");
 #ifdef PVUNIX
 #ifdef USE_ANDROID
-        fprintf(fp,"temp=/sdcard/pvbrowser/temp\n");
+        fprintf(fp,"temp=%s/pvbrowser/temp\n", writeableLocation());
 #else
 #ifdef USE_SYMBIAN
         if(!mkdir("\\pvb\\temp",S_IWUSR))
@@ -720,7 +731,7 @@ int i;
         fprintf(fp,"pvb_widget_plugindir=\\sys\\bin\n");
 #elif  defined(USE_ANDROID)        
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
-        fprintf(fp,"pvb_widget_plugindir=/sdcard/pvbrowser\n");
+        fprintf(fp,"pvb_widget_plugindir=%s/pvbrowser\n", writeableLocation());
 #else
         fprintf(fp,"#pvb_com_plugin=/path/to/pvb_com_plugin.so\n");
         fprintf(fp,"pvb_widget_plugindir=/opt/pvb/pvbrowser\n");
@@ -833,47 +844,47 @@ int i;
         fprintf(fp,"}\n");
         fprintf(fp,"#---------------------------------------\n");
         fprintf(fp,"spanish {\n");
-        fprintf(fp,"-file               = &Fichero\n");
-        fprintf(fp,"-options            = &Opciones\n");
-        fprintf(fp,"-new_window         = &Nueva Ventana\n");
+        fprintf(fp,"-file               = &Fichero\n");
+        fprintf(fp,"-options            = &Opciones\n");
+        fprintf(fp,"-new_window         = &Nueva Ventana\n");
         fprintf(fp,"-new_tab            = Nueva &Tab\n");
-        fprintf(fp,"-reconnect          = &Reconectar\n");
-        fprintf(fp,"-save_as_bmp        = &Guardar como BMP...\n");
-        fprintf(fp,"-log_as_bmp         = Log Metafiles como &BMP...\n");
-        fprintf(fp,"-log_as_pvm         = Log Metafiles como P&VM...\n");
-        fprintf(fp,"-print              = &Imprimir\n");
-        fprintf(fp,"-exit               = &Salir\n");
-        fprintf(fp,"-edit               = &Editar\n");
-        fprintf(fp,"-copy               = &Copiar\n");
-        fprintf(fp,"-copy_plus_title    = Co&piar + title\n");
-        fprintf(fp,"-view               = &Ver\n");
-        fprintf(fp,"-toolbar            = &Barra Herramientas\n");
-        fprintf(fp,"-statusbar          = &Barra Estado\n");
+        fprintf(fp,"-reconnect          = &Reconectar\n");
+        fprintf(fp,"-save_as_bmp        = &Guardar como BMP...\n");
+        fprintf(fp,"-log_as_bmp         = Log Metafiles como &BMP...\n");
+        fprintf(fp,"-log_as_pvm         = Log Metafiles como P&VM...\n");
+        fprintf(fp,"-print              = &Imprimir\n");
+        fprintf(fp,"-exit               = &Salir\n");
+        fprintf(fp,"-edit               = &Editar\n");
+        fprintf(fp,"-copy               = &Copiar\n");
+        fprintf(fp,"-copy_plus_title    = Co&piar + title\n");
+        fprintf(fp,"-view               = &Ver\n");
+        fprintf(fp,"-toolbar            = &Barra Herramientas\n");
+        fprintf(fp,"-statusbar          = &Barra Estado\n");
         fprintf(fp,"-toggle_full_screen = Pantalla Completa (On/Off)\n");
-        fprintf(fp,"-help               = &Ayuda\n");
-        fprintf(fp,"-booklet            = &Manuales\n");
-        fprintf(fp,"-manual             = &Documentación...\n");
-        fprintf(fp,"-about              = &Acerca de...\n");
-        fprintf(fp,"-recent_urls        = URLs Recientes\n");
-        fprintf(fp,"-status_connection_lost   = Conexión al Servidor perdida, CTRL-R para reconecta\n");
-        fprintf(fp,"-status_connected         = Conectado al Servidor\n");
-        fprintf(fp,"-status_reconnect   = Reconectar al Servidor\n");
+        fprintf(fp,"-help               = &Ayuda\n");
+        fprintf(fp,"-booklet            = &Manuales\n");
+        fprintf(fp,"-manual             = &Documentación...\n");
+        fprintf(fp,"-about              = &Acerca de...\n");
+        fprintf(fp,"-recent_urls        = URLs Recientes\n");
+        fprintf(fp,"-status_connection_lost   = Conexión al Servidor perdida, CTRL-R para reconecta\n");
+        fprintf(fp,"-status_connected         = Conectado al Servidor\n");
+        fprintf(fp,"-status_reconnect   = Reconectar al Servidor\n");
         fprintf(fp,"-status_could_not_connect = No se pudo conectar al Servidor, CTRL-R para reconectar\n");
-        fprintf(fp,"-status_options     = Ver/Cambiar las Opciones ProcessViewBrowser\n");
-        fprintf(fp,"-status_new_window  = Abrir nueva ventana de ProcessViewBrowser\n");
+        fprintf(fp,"-status_options     = Ver/Cambiar las Opciones ProcessViewBrowser\n");
+        fprintf(fp,"-status_new_window  = Abrir nueva ventana de ProcessViewBrowser\n");
         fprintf(fp,"-status_save_as_bmp = Guardar pantalla actual como fichero BMP\n");
-        fprintf(fp,"-status_log_as_bmp  = Logge QDrawWidgets como fichero BMP\n");
-        fprintf(fp,"-status_log_as_pvm  = Logge QDrawWidgets como fichero PVM\n");
-        fprintf(fp,"-status_print       = Imprimir la pantalla actual\n");
-        fprintf(fp,"-status_exit        = Salir de ProcessViewBrowser\n");
-        fprintf(fp,"-status_copy        = Copiar la pantalla al Portapapeles\n");
-        fprintf(fp,"-status_toolbar     = Barra de Herramientas (On/Off)\n");
-        fprintf(fp,"-status_statusbar   = Barra de Estado (On/Off)\n");
+        fprintf(fp,"-status_log_as_bmp  = Logge QDrawWidgets como fichero BMP\n");
+        fprintf(fp,"-status_log_as_pvm  = Logge QDrawWidgets como fichero PVM\n");
+        fprintf(fp,"-status_print       = Imprimir la pantalla actual\n");
+        fprintf(fp,"-status_exit        = Salir de ProcessViewBrowser\n");
+        fprintf(fp,"-status_copy        = Copiar la pantalla al Portapapeles\n");
+        fprintf(fp,"-status_toolbar     = Barra de Herramientas (On/Off)\n");
+        fprintf(fp,"-status_statusbar   = Barra de Estado (On/Off)\n");
         fprintf(fp,"-status_toggle_full_screen = Pantalla Completa (On/Off)\n");
-        fprintf(fp,"-status_booklet     = Mostrar ProcessViewServer Manual\n");
-        fprintf(fp,"-status_manual      = Mostrar ProcessViewServer Documentación\n");
-        fprintf(fp,"-status_about       = Acerca de...\n");
-        fprintf(fp,"-print_header       = Impreso desde ProcessViewBrowser\n");
+        fprintf(fp,"-status_booklet     = Mostrar ProcessViewServer Manual\n");
+        fprintf(fp,"-status_manual      = Mostrar ProcessViewServer Documentación\n");
+        fprintf(fp,"-status_about       = Acerca de...\n");
+        fprintf(fp,"-print_header       = Impreso desde ProcessViewBrowser\n");
         fprintf(fp,"}\n");
         fprintf(fp,"#---------------------------------------\n");
         fprintf(fp,"italian {\n");

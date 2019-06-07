@@ -1,8 +1,10 @@
 #######################################
 # project file for pvbrowser          #
 #######################################
-CONFIG += warn_on release
-QT     += printsupport multimedia uitools widgets xml svg network printsupport
+CONFIG += warn_on release android
+QT     += core gui printsupport multimedia uitools widgets xml svg network printsupport
+
+DEFINES += QT_DEPRECATED_WARNINGS
 
 android {
   DEFINES    += USE_ANDROID
@@ -55,14 +57,25 @@ LIBS           += ../qwt/lib/libqwt.a
 
 RESOURCES       = pvbrowser.qrc
 TARGET          = pvbrowser
+TEMPLATE        = app
 
-# install
-target.path   = /usr/local/bin
-sources.files = $$SOURCES $$HEADERS $$RESOURCES $$FORMS pvbrowser.pro images
-sources.path  = /opt/pvb/pvbrowser
-INSTALLS     += target sources
+
+CONFIG += mobility
+MOBILITY =
+
+# Default rules for deployment
+qnx: target.path = /tmp/$$(TRAGET)/bin
+else: unix:android: target.path = /opt/$${TARGET}/bin
+!isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
+    android/AndroidManifest.xml \
+    android/gradle/wrapper/gradle-wrapper.jar \
+    android/gradlew \
+    android/res/values/libs.xml \
+    android/build.gradle \
+    android/gradle/wrapper/gradle-wrapper.properties \
+    android/gradlew.bat \
     android/AndroidManifest.xml \
     android/gradle/wrapper/gradle-wrapper.jar \
     android/gradlew \
@@ -75,4 +88,3 @@ contains(ANDROID_TARGET_ARCH,armeabi-v7a) {
     ANDROID_PACKAGE_SOURCE_DIR = \
         $$PWD/android
 }
-
