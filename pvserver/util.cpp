@@ -518,7 +518,8 @@ int pvThreadFatal(PARAM *p, const char *text)
 
   pvlock(p);
   fprintf(stderr,"Thread finished: %s s=%d\n",text,p->s);
-  if(num_threads > 0) num_threads--;
+  // if(num_threads > 0) num_threads--;
+  num_threads--; // rl-jul-2019
   if(p->clipboard != NULL) free(p->clipboard);
   if(p->x != NULL) free(p->x);
   if(p->y != NULL) free(p->y);
@@ -1980,7 +1981,7 @@ int pvCreateThread(PARAM *p, int s)
 #ifndef USE_INETD
   printf("pvCreateThread s=%d\n",ptr->s);
   int retval = pvthread_create(&tid, NULL, send_thread, (void *) ptr);
-  if(retval != 0 || tid == 0)
+  if(retval != 0 || tid == 0) // rl-jul-2019
   {
     if     (retval == EAGAIN) fprintf(stderr,"ERROR retval=EAGAIN\n ");
     else if(retval == EINVAL) fprintf(stderr,"ERROR retval=EINVAL\n ");
@@ -2889,7 +2890,7 @@ int pvSaveDrawBuffer(PARAM *p, int id, const char *filename)
 int pvStatusMessage(PARAM *p, int r, int g, int b, const char *format, ...)
 {
 char text[MAX_PRINTF_LENGTH+40],*cptr;
-char buf[MAX_PRINTF_LENGTH+40];
+char bigbuf[MAX_PRINTF_LENGTH+80];
 
   va_list ap;
   va_start(ap,format);
@@ -2911,8 +2912,8 @@ char buf[MAX_PRINTF_LENGTH+40];
     else break;
   }
   text[MAX_PRINTF_LENGTH - 1] = '\0';
-  sprintf(buf,"statusMessage(%d,%d,%d,\"%s\")\n",r,g,b,text);
-  pvtcpsend(p, buf, strlen(buf));
+  sprintf(bigbuf,"statusMessage(%d,%d,%d,\"%s\")\n",r,g,b,text);
+  pvtcpsend(p, bigbuf, strlen(bigbuf));
   return 0;
 }
 
@@ -2989,7 +2990,7 @@ int pvSetStyleSheet(PARAM *p, int id, const char *text)
 
 int pvSetWhatsThis(PARAM *p, int id, const char *_text)
 {
-char buf[MAX_PRINTF_LENGTH+40],text[MAX_PRINTF_LENGTH+40],*cptr;
+char buf[MAX_PRINTF_LENGTH+50],text[MAX_PRINTF_LENGTH+40],*cptr;
 int len;
 
   pv_length_check(p,_text);

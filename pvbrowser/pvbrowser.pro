@@ -36,7 +36,8 @@ HEADERS       = mainwindow.h \
                 interpreter.h \
                 pvserver.h \
                 MyWidgets.h \
-                MyTextBrowser_v5.h \
+                MyTextBrowser_v5pc.h \
+                mywebenginepage.h \
                 qimagewidget.h \
                 qdrawwidget.h \
                 qwtwidgets.h \
@@ -53,7 +54,8 @@ SOURCES       = main.cpp \
                 tcputil.cpp \
                 interpreter.cpp \
                 MyWidgets.cpp \
-                MyTextBrowser_v5.cpp \
+                MyTextBrowser_v5pc.cpp \
+                mywebenginepage.cpp \
                 QDrawWidget.cpp \
                 QImageWidget.cpp \
                 qwtplotwidget.cpp \

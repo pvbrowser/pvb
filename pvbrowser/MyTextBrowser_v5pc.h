@@ -1,5 +1,5 @@
 /***************************************************************************
-                          MyTextBrowser_v5.h  -  description
+                          MyTextBrowser_v5pc.h  -  description
                              -------------------
     begin                : Fri Jan 15 2016
     copyright            : (C) 2000 by R. Lehrig
@@ -15,28 +15,18 @@
  *   (at your option) any later version.                                   *
  *                                                                         *
  ***************************************************************************/
-#ifndef _MY_TEXTBROWSER_V5_H_
-#define _MY_TEXTBROWSER_V5_H_
-
-#ifdef USE_ANDROID
-#define MY_NO_WEBKIT
-#endif
+#ifndef _MY_TEXTBROWSER_V5_PC_H_
+#define _MY_TEXTBROWSER_V5_PC_H_
 
 #include <QMouseEvent>
 #include <QTextBrowser>
 #include <QPrinter>
-#ifndef MY_NO_WEBKIT
 #include <QWebEngineView>
 #include <QWebEnginePage>
 #include <QWebEngineSettings>
 //todo: will come in 5.6  #include <QWebEngineUrlRequestInterceptor>
-#endif
 
-#ifdef MY_NO_WEBKIT
-class MyTextBrowser : public QTextBrowser
-#else
 class MyTextBrowser : public QWebEngineView
-#endif
 {
     Q_OBJECT
 public:
@@ -65,10 +55,7 @@ public slots:
     void slotPRINTER();
 
 protected:
-#ifdef MY_NO_WEBKIT
-#else
     virtual QWebEngineView *createWindow(QWebEnginePage::WebWindowType type);
-#endif    
     virtual void contextMenuEvent(QContextMenuEvent *event);
     virtual void keyPressEvent(QKeyEvent *event);
   

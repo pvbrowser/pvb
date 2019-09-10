@@ -15,6 +15,8 @@
 *.DLL
 *.lib
 *.LIB
+.qmake.stash
+moc_*.h
 
 browserplugin/murx/
 

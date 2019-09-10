@@ -29,11 +29,8 @@
 #include <QPixmap>
 #include <QMouseEvent>
 #include <QPrintDialog>
-#ifndef MY_NO_WEBKIT
 #include <QWebEngineView>
 #include <QWebEngineHistory>
-//v5diff #include <QWebFrame>
-#endif
 #include "tcputil.h"
 #include "MyTextBrowser_v5.h"
 #include "mywebenginepage.h"
@@ -108,43 +105,23 @@ static const char *decode(QString text)
 
 ////////////////////////////////////////////////////////////////////////////////
 MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *name)
-#ifdef MY_NO_WEBKIT
-              :QTextBrowser(parent)
-#else
               :QWebEngineView(parent)
-#endif
 {
   s = sock;
   id = ident;
   
   if(opt.arg_debug) printf("MyTextBrowser()\n");
-#ifdef MY_NO_WEBKIT
-  printf("IS QTextBrowser\n");
-#else
-  printf("IS QWebEngineView\n");
-#endif
-#ifndef USE_ANDROID
+  
   MyWebEnginePage *p;
   p = new MyWebEnginePage(s, id, this);
   setPage(p);
-#endif
   
   homeIsSet = 0;
   factor = 1.0f;
   if(name != NULL) setObjectName(name);
   mHeader = "<html>\n<head><meta charset=\"utf-8\">\n<title>MyTextBrowser</title>\n</head><body>\n";
   xOldScroll = yOldScroll = 0;
-#ifdef MY_NO_WEBKIT
-  setOpenLinks(false);
-  //connect(this, SIGNAL(anchorClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
-  //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
-#else
-  //v5diff  page()->setLinkDelegationPolicy(QWebEnginePage::DelegateAllLinks);
-  //v5diff  connect(this, SIGNAL(linkClicked(const QUrl &)), SLOT(slotLinkClicked(const QUrl &)));
   connect(this, SIGNAL(loadFinished(bool)), SLOT(slotLoadFinished(bool)));
-  //connect(this, SIGNAL(urlChanged(const QUrl &)), SLOT(slotUrlChanged(const QUrl &)));
-  //enabling plugins leads to problems
-  //see: https://bugs.webkit.org/show_bug.cgi?id=56552 that we have reported
   if(opt.enable_webkit_plugins)
   {
     if(opt.arg_debug) printf("enable_webkit_plugins\n");
@@ -157,13 +134,6 @@ MyTextBrowser::MyTextBrowser(int *sock, int ident, QWidget *parent, const char *
     settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);    // reenabled 15 Okt 2017
     settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, false); // reenabled 15 Okt 2017
   }
-#ifdef USE_MAEMO  
-  QString    txt("data:text/css;charset=utf-8;base64,");
-  QByteArray css("body { -webkit-user-select: none; }"); // -webkit-touch-callout: none;
-  txt += css.toBase64();
-  settings()->setUserStyleSheetUrl(QUrl(txt));
-#endif  
-#endif  
 }
 
 MyTextBrowser::~MyTextBrowser()
@@ -173,66 +143,20 @@ MyTextBrowser::~MyTextBrowser()
 
 void MyTextBrowser::tbSetText(QString &text)
 {
-#ifdef MY_NO_WEBKIT            
-  int vPos = verticalScrollBar()->value();   // make cursor not jumping (ernst murnleitner)
-  int hPos = horizontalScrollBar()->value();
-  QTextDocument *doc = document();
-  if(doc != NULL) doc->setHtml(text); // ,url);
-  verticalScrollBar()->setValue(vPos);
-  horizontalScrollBar()->setValue(hPos);
-#else      
-  //v5diff // page()->mainFrame has been removed in qtwebengine
-  //v5diff if(page() != NULL && page()->mainFrame() != NULL)
-  //v5diff {
-  //v5diff   xOldScroll = page()->mainFrame()->scrollBarValue(Qt::Horizontal);
-  //v5diff   yOldScroll = page()->mainFrame()->scrollBarValue(Qt::Vertical);
-  //v5diff }
   setHTML(text);
-#endif          
 }
 
 void MyTextBrowser::tbMoveCursor(int cur)
 {
-#ifdef MY_NO_WEBKIT      
-  moveCursor((QTextCursor::MoveOperation) cur);
-#else
-/*
-  //v5diff removed by qwebengine
-  if     (cur == PV::NoMove)            pageAction(QWebEnginePage::NoWebAction);
-  else if(cur == PV::StartOfLine)       pageAction(QWebEnginePage::MoveToStartOfLine);
-  else if(cur == PV::StartOfBlock)      pageAction(QWebEnginePage::MoveToStartOfBlock);
-  //else if(cur == PV::StartOfWord)       ;
-  else if(cur == PV::PreviousBlock)     pageAction(QWebEnginePage::QWebPage::MoveToPreviousLine);
-  else if(cur == PV::PreviousCharacter) pageAction(QWebEnginePage::MoveToPreviousChar);
-  else if(cur == PV::PreviousWord)      pageAction(QWebEnginePage::MoveToPreviousWord);
-  else if(cur == PV::Up)                pageAction(QWebEnginePage::MoveToStartOfDocument); // ???
-  //else if(cur == PV::Left)              ;
-  //else if(cur == PV::WordLeft)          ;
-  else if(cur == PV::End)               pageAction(QWebEnginePage::MoveToEndOfDocument);
-  else if(cur == PV::EndOfLine)         pageAction(QWebEnginePage::MoveToEndOfLine);
-  //else if(cur == PV::EndOfWord)         ;
-  else if(cur == PV::EndOfBlock)        pageAction(QWebEnginePage::MoveToEndOfBlock);
-  else if(cur == PV::NextBlock)         pageAction(QWebEnginePage::QWebPage::MoveToNextLine);
-  else if(cur == PV::NextCharacter)     pageAction(QWebEnginePage::MoveToNextChar);
-  else if(cur == PV::NextWord)          pageAction(QWebEnginePage::MoveToNextWord);
-  else if(cur == PV::Down)              pageAction(QWebEnginePage::MoveToEndOfDocument); // ???
-  //else if(cur == PV::Right)             ;
-  //else if(cur == PV::WordRight)         ;
-*/
-#endif
 }
 
 void MyTextBrowser::tbScrollToAnchor(QString &text)
 {
-#ifdef MY_NO_WEBKIT
-  scrollToAnchor(text);
-#else
   QWebEnginePage *pageptr = page();
   if(pageptr != NULL)
   {
     //v5diff pageptr->currentFrame()->scrollToAnchor(text);
   }
-#endif
 }
 
 bool MyTextBrowser::event(QEvent *e)
@@ -244,11 +168,7 @@ bool MyTextBrowser::event(QEvent *e)
     if(ge->gesture(Qt::PinchGesture)) return false;
   }
 #endif
-#ifdef MY_NO_WEBKIT
-  return QTextBrowser::event(e);
-#else  
   return QWebEngineView::event(e);
-#endif  
 }
 
 void MyTextBrowser::contextMenuEvent(QContextMenuEvent *event)
@@ -261,22 +181,6 @@ void MyTextBrowser::contextMenuEvent(QContextMenuEvent *event)
 
 void MyTextBrowser::keyPressEvent(QKeyEvent *event)
 {
-#ifdef MY_NO_WEBKIT
-  if(event->matches(QKeySequence::ZoomIn))
-  {
-    factor = factor*1.1f;
-    zoomIn();
-  }
-  else if(event->matches(QKeySequence::ZoomOut))
-  {
-    factor = factor*0.9f;
-    zoomOut();
-  }
-  else
-  {
-    QTextBrowser::keyPressEvent(event);
-  }
-#else
   if(event->matches(QKeySequence::ZoomIn))
   {
     factor = factor*1.1f;
@@ -295,36 +199,13 @@ void MyTextBrowser::keyPressEvent(QKeyEvent *event)
   {
     QWebEngineView::keyPressEvent(event);
   }
-#endif
 }
 
-#ifdef MY_NO_WEBKIT
-#else
 QWebEngineView *MyTextBrowser::createWindow(QWebEnginePage::WebWindowType type)
 {
-/*v5diff
-  QWebHitTestResult r = page()->mainFrame()->hitTestContent(pressPos);
-  if(!r.linkUrl().isEmpty() && type == QWebEnginePage::WebBrowserWindow) 
-  {
-    QString cmd = opt.newwindow;
-    if(cmd.isEmpty()) cmd = "pvbrowser";
-    cmd += " \"";
-    cmd += r.linkUrl().toString();;
-    cmd += "\"";
-#ifdef PVUNIX
-    //cmd += " &";
-    int ret = system(cmd.toUtf8());
-#endif
-#ifdef PVWIN32
-    int ret = mysystem(cmd.toUtf8());
-#endif
-    if(ret < 0) printf("ERROR system(%s)", (const char *) cmd.toUtf8());
-  }
-*/  
   if(type == -1) return NULL;
   return NULL;
 }
-#endif
 
 void MyTextBrowser::moveContent(int pos)
 {
@@ -345,64 +226,9 @@ void MyTextBrowser::moveContent(int pos)
      keyReleaseEvent(&releaseEvent);
      return;
   }
-#ifdef MY_NO_WEBKIT
+  
   char buf[MAX_PRINTF_LENGTH];
   QString myurl;
-
-  if(opt.arg_debug) printf("moveContent(%d)\n", pos);
-  if     (pos == 0 && homeIsSet) 
-  { 
-    myurl = home; 
-    setSource(QUrl(home)); 
-  }
-  else if(pos == 1)              
-  { 
-    forward();
-    myurl = source().path();
-  }  
-  else if(pos == 2) 
-  {
-    backward();
-    myurl = source().path();
-  }  
-  else if(pos == 3) 
-  {
-    reload();
-    myurl = source().path();
-  }  
-#else
-  char buf[MAX_PRINTF_LENGTH];
-  QString myurl;
-/*v5diff
-  QWebHistory *hist;
-
-  if(opt.arg_debug) printf("moveContent(%d)\n", pos);
-  if     (pos == 0 && homeIsSet) 
-  { 
-    myurl = home; 
-    load(home); 
-  }
-  else if(pos == 1)              
-  { 
-    hist = history();
-    if(hist != NULL && hist->canGoForward()) myurl = hist->forwardItem().url().toString(); 
-    forward();
-  }  
-  else if(pos == 2) 
-  {
-    hist = history();
-    if(hist != NULL && hist->canGoBack()) myurl = hist->backItem().url().toString(); 
-    back();
-  }  
-  else if(pos == 3) 
-  {
-    hist = history();
-    if(hist != NULL) myurl = hist->currentItem().url().toString(); 
-    reload();
-  }
-*/  
-#endif
-
   if(myurl.isEmpty()) return;
   if(opt.arg_debug) printf("moveContent(%s)\n", (const char *) myurl.toUtf8());
   if(myurl.length()+40 > MAX_PRINTF_LENGTH) return;
@@ -425,14 +251,7 @@ void MyTextBrowser::setHTML(QString &text)
   if(opt.arg_debug) printf("MyTextBrowser::setHTML:: %s\n", (const char *) text.toUtf8());
   QString base;
   base.sprintf("file://%s", opt.temp);
-#ifndef MY_NO_WEBKIT  
-  //v5diff QWebSettings::clearMemoryCaches();
-#endif  
-#ifdef MY_NO_WEBKIT  
-  setHtml(text);
-#else
   setHtml(text,QUrl(base));
-#endif
 }
 
 static QString myDummyFilename;
@@ -450,21 +269,9 @@ static void    myDummyToHtml(QString html)
 
 void MyTextBrowser::htmlOrSvgDump(const char *filename)
 {
-#ifdef MY_NO_WEBKIT
-  FILE *fout = fopen(filename,"w");
-  if(fout == NULL)
-  {
-    printf("could not write %s\n", filename);
-    return;
-  }
-  QString xml = toHtml();
-  fputs(xml.toUtf8(), fout);
-  fclose(fout);
-#else
   myDummyFilename = filename;
   MyWebEnginePage *p = (MyWebEnginePage *) page();
   if(p != NULL) p->toHtml(myDummyToHtml);
-#endif  
 }
 
 void MyTextBrowser::slotUrlChanged(const QUrl &link)
@@ -483,10 +290,6 @@ void MyTextBrowser::slotLoadFinished(bool ok)
 {
   if(ok)
   {
-#ifndef MY_NO_WEBKIT  
-    //v5diff page()->mainFrame()->setScrollBarValue(Qt::Horizontal,xOldScroll);
-    //v5diff page()->mainFrame()->setScrollBarValue(Qt::Vertical,yOldScroll);
-#endif    
   }  
 }
 
@@ -498,11 +301,7 @@ void MyTextBrowser::mousePressEvent(QMouseEvent *event)
   pressPos = event->pos();
   sprintf(buf,"QPushButtonPressed(%d) -xy=%d,%d\n",id, event->x(), event->y());
   tcp_send(s,buf,strlen(buf));
-#ifdef MY_NO_WEBKIT
-  QTextBrowser::mousePressEvent(event);
-#else
   QWebEngineView::mousePressEvent(event);
-#endif  
 }
 
 void MyTextBrowser::mouseReleaseEvent(QMouseEvent *event)
@@ -512,11 +311,7 @@ void MyTextBrowser::mouseReleaseEvent(QMouseEvent *event)
   if(event == NULL) return;
   sprintf(buf,"QPushButtonReleased(%d) -xy=%d,%d\n",id, event->x(), event->y());
   if(underMouse()) tcp_send(s,buf,strlen(buf));
-#ifdef MY_NO_WEBKIT
-  QTextBrowser::mouseReleaseEvent(event);
-#else
   QWebEngineView::mouseReleaseEvent(event);
-#endif  
 }
 
 void MyTextBrowser::enterEvent(QEvent *event)
@@ -524,11 +319,7 @@ void MyTextBrowser::enterEvent(QEvent *event)
   char buf[100];
   sprintf(buf, "mouseEnterLeave(%d,1)\n",id);
   tcp_send(s,buf,strlen(buf));
-#ifdef MY_NO_WEBKIT
-  QTextBrowser::enterEvent(event);
-#else
   QWebEngineView::enterEvent(event);
-#endif  
 }
 
 void MyTextBrowser::leaveEvent(QEvent *event)
@@ -536,27 +327,13 @@ void MyTextBrowser::leaveEvent(QEvent *event)
   char buf[100];
   sprintf(buf, "mouseEnterLeave(%d,0)\n",id);
   tcp_send(s,buf,strlen(buf));
-#ifdef MY_NO_WEBKIT
-  QTextBrowser::leaveEvent(event);
-#else
   QWebEngineView::leaveEvent(event);
-#endif  
 }
 
 //###################################################################################
 
 void MyTextBrowser::setSOURCE(QString &temp, QString &text)
 {
-#ifdef MY_NO_WEBKIT            
-  setSource(QUrl::fromLocalFile(temp + text));
-  reload();
-#else
-  //xmurx#ifdef USE_ANDROID
-  // android permission problems
-  // google does not allow Qt to access local storage
-  // see: http://www.techjini.com/blog/2009/01/10/android-tip-1-contentprovider-accessing-local-file-system-from-webview-showing-image-in-webview-using-content/
-  //      http://groups.google.com/group/android-developers/msg/45977f54cf4aa592
-  //printf("setSOURCE text=%s\n", (const char *) text.toUtf8());
   if(strstr(text.toUtf8(),"://") == NULL)
   {
     struct stat sb;
@@ -581,12 +358,9 @@ void MyTextBrowser::setSOURCE(QString &temp, QString &text)
   }
   else
   {
-    load(QUrl(text));
+    if(opt.arg_debug) printf("load %s\n", (const char *) text.toUtf8());
+    if(text.startsWith("http://") || text.startsWith("https://")) load(QUrl(text));
   }
-//xmurx#else
-//xmurx              t->load(QUrl(text));
-//xmurx#endif
-#endif
   if(homeIsSet == 0)
   {
     home      = text;
@@ -597,24 +371,13 @@ void MyTextBrowser::setSOURCE(QString &temp, QString &text)
 
 void MyTextBrowser::setZOOM_FACTOR(int factor)
 {
-#ifdef MY_NO_WEBKIT
-  if(factor > 1) zoomIn();
-  else           zoomOut();
-#else
   setZoomFactor(factor);
-#endif
 }
 
 void MyTextBrowser::PRINT(QPrinter *printer)
 {
   if(printer == NULL) return;
   if(opt.arg_debug)printf("in PRINT printer\n");
-#ifdef MY_NO_WEBKIT
-  printer->setOutputFormat(QPrinter::PdfFormat);
-  print(printer);
-  printer->newPage();
-#else
-#endif
 }
 
 void MyTextBrowser::slotPRINTER()
