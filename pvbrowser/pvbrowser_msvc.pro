@@ -19,6 +19,7 @@ HEADERS       = mainwindow.h \
                 pvserver.h \
                 MyWidgets.h \
                 MyTextBrowser_v5.h \
+                mywebenginepage.h \
                 qimagewidget.h \
                 qdrawwidget.h \
                 pvglwidget.h \
@@ -37,6 +38,7 @@ SOURCES       = main.cpp \
                 interpreter.cpp \
                 MyWidgets.cpp \
                 MyTextBrowser_v5.cpp \
+                mywebenginepage.cpp \
                 QDrawWidget.cpp \
                 QImageWidget.cpp \
                 pvglwidget.cpp \

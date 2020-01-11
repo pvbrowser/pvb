@@ -1,6 +1,6 @@
 Format: 1.0
 Source: pvbrowser-devel
-Version: 5.1.5-4.1
+Version: 5.1.6-4.1
 Binary: pvbrowser-devel
 Maintainer: Arian Mares <arian.mares@bluenote.ro>
 Architecture: any

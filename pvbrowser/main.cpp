@@ -198,7 +198,7 @@ int pvbinit()
 {
   char *argv[] = {"pvbrowser", ""};
   wsa(); // init windows sockets
-  init(1,argv);
+  init1(1,argv);
   return 0;
 }
 #else
@@ -235,7 +235,6 @@ int main(int argc, char *argv[])
   mainWin.slotReconnect();
   mainWin.slotTimeOut();
   mainWin.mythread.start(QThread::HighestPriority);
-  //mainWin.hideBusyWidget();
 #if QT_VERSION >= 0x040600
   //grabGesture(Qt::TapGesture,        Qt::DontStartGestureOnChildren);
   //grabGesture(Qt::TapAndHoldGesture, Qt::DontStartGestureOnChildren);
@@ -243,6 +242,7 @@ int main(int argc, char *argv[])
   mainWin.grabGesture(Qt::PinchGesture);
   //grabGesture(Qt::SwipeGesture);
 #endif
+  mainWin.hideBusyWidget();
   return app.exec();
 }
 #endif

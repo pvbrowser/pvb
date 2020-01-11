@@ -1184,11 +1184,16 @@ void MyTable::setTableCheckBox(int row, int col, int state, QString text)
 void MyTable::setTableComboBox(int row, int col, int editable, const char *menu)
 {
   char buf[800];
-  int  i,ifirst;
+  int  i,ifirst,commaCnt,currentIndex;
   QStringList list;
-  ifirst = 0;
+  ifirst = commaCnt = currentIndex = 0;
   for(i=0;; i++)
   {
+    if(menu[i] == ',') 
+    {
+      commaCnt++;
+      if(menu[i+1] == '#') currentIndex = commaCnt;
+    }
     if(menu[i] == ',' || menu[i] == '\0')
     {
       if(i == ifirst && i == 0)
@@ -1200,7 +1205,14 @@ void MyTable::setTableComboBox(int row, int col, int editable, const char *menu)
         {
           strncpy(buf,&menu[ifirst],i-ifirst);
           buf[i-ifirst] = '\0';
-          list.append(buf);
+          if(buf[0] == '#')
+          {
+            list.append(&buf[1]);
+          }
+          else
+          {
+            list.append(buf);
+          }
         }
       }
       else
@@ -1209,7 +1221,14 @@ void MyTable::setTableComboBox(int row, int col, int editable, const char *menu)
         {
           strncpy(buf,&menu[ifirst],i-ifirst);
           buf[i-ifirst] = '\0';
-          list.append(buf);
+          if(buf[0] == '#')
+          {
+            list.append(&buf[1]);
+          }
+          else
+          {
+            list.append(buf);
+          }
         }
       }
       ifirst = i+1;
@@ -1222,7 +1241,12 @@ void MyTable::setTableComboBox(int row, int col, int editable, const char *menu)
   combo->setEditable(editable);
   combo->row = row;
   combo->col = col;
+  if(currentIndex > 0)
+  {
+    combo->setCurrentIndex(currentIndex);
+  }
   setCellWidget(row,col,combo); 
+  if(opt.arg_debug) printf("setCellWidget combo\n");
   //printf("ComboBox(%d,%d,%d,%s)\n",row,col,editable,text);
 }
 

@@ -3066,6 +3066,7 @@ void Interpreter::interprets(const char *command)
         {
           int p, row, column;
           // Semantik: setCellWidget(widget id, parent table id, row, column):
+          if(opt.arg_debug) printf("setCellWidget\n");
           sscanf(command,"setCellWidget(%d,%d,%d,%d",&i,&p,&row,&column);
           if(i < 0) return;
           if(i >= nmax) return;
@@ -4974,20 +4975,24 @@ void Interpreter::interprets(const char *command)
                 }
                 else // cw != NULL
                 {
+                  if(opt.arg_debug) printf("cw != NULL\n");
                   if     (cw->inherits("QLabel"))
                   {
+                    if(opt.arg_debug) printf("cw inherits QLabel\n");
                     QLabel *label = (QLabel *) cw;
                     label->setText(text);
                     mySetBackgroundColor(label,TQLabel,r,g,b);
                   }
                   else if(cw->inherits("QPushButton"))
                   {
+                    if(opt.arg_debug) printf("cw inherits QpushButton\n");
                     QPushButton *button = (QPushButton *) cw;
                     button->setText(text);
                     mySetBackgroundColor(button,TQPushButton,r,g,b);
                   }
-                  else if(cw->inherits("QCheckBox"))
+                  else if(cw->inherits("MyQCheckBox"))
                   {
+                    if(opt.arg_debug) printf("cw inherits QCheckBox\n");
                     QCheckBox *check = (QCheckBox *) cw;
                     check->setText(text);
                     mySetBackgroundColor(check,TQCheck,r,g,b);
