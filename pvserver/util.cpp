@@ -128,6 +128,9 @@ typedef struct
 TDS;
 #endif
 
+// switch on/off program traceing
+static int debug = 0; 
+
 // communication_plugin
 static plugin_pvAccept            plug_pvAccept = NULL;
 static plugin_pvtcpsend_binary    plug_pvtcpsend_binary = NULL;
@@ -1059,7 +1062,16 @@ int pvtcpsend_binary(PARAM *p, const char *buf, int len)
     fputs(buf,p->fp);
     return 0;
   }
-  
+
+  if(debug)
+  {
+    char line[84];
+    snprintf(line,80,"%s",buf);
+    printf("pvtcpsend: ");
+    if(buf[len-1] == '\n') printf("%s",buf);
+    else                   printf("%s\n",buf);
+  }
+
   if(p->use_communication_plugin)
   {
     return plug_pvtcpsend_binary(p, buf, len);
@@ -1133,6 +1145,13 @@ int pvtcpreceive(PARAM *p, char *buf, int maxlen)
   }
   i++;
   buf[i] = '\0';
+  
+  if(debug)
+  {
+    printf("pvtcpreceive: ");
+    printf("%s", buf);
+  }
+
   return i;
 }
 
@@ -1173,6 +1192,7 @@ static int show_usage()
   printf("-cd=/working/directory\n");
   printf("-http run in http server mode\n");
   printf("-gui # will start pvbrowser pv://localhost:port\n");
+  printf("-debug # will trace communication between client and server\n");
   printf("<url_trailer> example1: /?test1=1&test2=2\n");
   printf("<url_trailer> example2: /mask1?test1=1&test2=2\n");
   printf("###################################################################################\n");
@@ -1353,6 +1373,7 @@ int i,ret,cmdline_length;
       rl_ipversion = 6;
     }
     else if(strcmp(av[i],"-gui")                               == 0) start_gui = 1;
+    else if(strcmp(av[i],"-debug")                             == 0) debug = 1;
     else if(strncmp(av[i],"-communication_plugin=",22)         == 0)
     {
       const char *arg = av[i];
@@ -1413,6 +1434,11 @@ int pvClearMessageQueue(PARAM *p)
     timeout.tv_sec  = 0;
     timeout.tv_usec = 0;
 
+    if(debug)
+    {
+      printf("pvClearMessageQueue: select\n");
+    }
+    
     /* call select */
     ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
     if(ret == 0) return 0; /* timeout */
@@ -1437,6 +1463,11 @@ int pvGetInitialMask(PARAM *p)
   timeout.tv_sec  = 1;
   timeout.tv_usec = 0;
 
+  if(debug)
+  {
+    printf("pvGetInitialMask1: select\n");
+  }
+    
   /* call select */
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
   if(ret == 0) return 0; /* timeout */
@@ -1484,6 +1515,11 @@ int pvGetInitialMask(PARAM *p)
   timeout.tv_sec  = 1;
   timeout.tv_usec = 0;
 
+  if(debug)
+  {
+    printf("pvGetInitialMask2: select\n");
+  }
+    
   /* call select */
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);
   if(ret == 0) return 0; /* timeout */
@@ -1595,6 +1631,11 @@ start_poll:  // only necessary for pause
   timeout.tv_sec  =  p->sleep / 1000;
   timeout.tv_usec = (p->sleep % 1000) * 1000;
 
+  if(debug)
+  {
+    printf("pvPollEvent: select\n");
+  }
+    
   /* call select */
   //printf("SELECT\n");
   ret = select(maxfdp1,&rset,&wset,&eset,&timeout);

@@ -760,9 +760,11 @@ double rlTime::secondsSinceEpoche()
   memset(&begin,0,sizeof(tm));
   memset(&test,0,sizeof(tm));
 
+  // If timeptr references a date before midnight, January 1, 1970, 
+  // or if the calendar time cannot be represented ...
   begin.tm_year = 70;
   begin.tm_mon  = 0;
-  begin.tm_mday = 1;
+  begin.tm_mday = 2; // 1; // fix due to error report by George Zempekis
   begin.tm_hour = 0;
   begin.tm_min  = 0;
   begin.tm_sec  = 0;
