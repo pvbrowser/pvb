@@ -24,6 +24,7 @@
 #include "opt.h"
 #include "qdrawwidget.h"
 #include "tcputil.h"
+#include <iostream>
 
 //v5diff
 #ifndef QWEBKITGLOBAL_H
@@ -2035,8 +2036,26 @@ int pvSvgAnimator::read()
       }
       else
       {
-        next_line->line = new char[strlen(line)+1];
-        strcpy(next_line->line,line);
+        int len = strlen(line);
+        if(len < MAXARRAY - 1)
+        {  
+          next_line->line = new char[len+1];
+          strcpy(next_line->line,line);
+        }
+        else // read the big buffer
+        {
+          if(opt.arg_debug) printf("big ...\n");
+          std::basic_string<char> str = line;
+          while(1)
+          {  
+            if(opt.arg_debug) printf("basic ...\n");
+            len = tcp_rec(s,line,sizeof(line));
+            str.append(line);
+            if(len < MAXARRAY - 1) break;
+          }  
+          next_line->line = new char[str.length()+1];
+          strcpy(next_line->line, str.c_str());
+        }  
       }  
       next_line->next = NULL;
       current_line = next_line;
