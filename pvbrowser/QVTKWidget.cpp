@@ -103,7 +103,7 @@ QVTKWidget::QVTKWidget(QWidget* parent, const char* name)
 #if QT_VERSION >= 0x040000
 /*! constructor */
 QVTKWidget::QVTKWidget(QWidget* parent)
-    : QWidget(parent, f | Qt::MSWindowsOwnDC), mRenWin(NULL),
+    : QWidget(parent, Qt::MSWindowsOwnDC), mRenWin(NULL),
           cachedImageCleanFlag(false),
           automaticImageCache(false), maxImageCacheRenderRate(1.0)
 
@@ -389,7 +389,7 @@ bool QVTKWidget::event(QEvent* e)
 #endif
   
   if(QObject::event(e))
-    return TRUE;
+    return true;
 
   if(e->type() == QEvent::KeyPress)
   {
