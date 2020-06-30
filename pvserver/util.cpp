@@ -840,8 +840,16 @@ bind:
         if(pvCmdLine   != NULL) len += strlen(pvCmdLine);
         char *buf = (char *) malloc(len);
         start_gui++;
-        if(url_trailer == NULL) sprintf(buf,"pvbrowser \"pv://localhost:%d\"",   p->port);
-        else                    sprintf(buf,"pvbrowser \"pv://localhost:%d%s\"", p->port, url_trailer);
+        if(pvCmdLine != NULL && strstr(pvCmdLine,"-rlbrowser") != NULL)
+        {
+          if(url_trailer == NULL) sprintf(buf,"rlbrowser \"rl://localhost:%d\"",   p->port);
+          else                    sprintf(buf,"rlbrowser \"rl://localhost:%d%s\"", p->port, url_trailer);
+        }
+        else
+        {
+          if(url_trailer == NULL) sprintf(buf,"pvbrowser \"pv://localhost:%d\"",   p->port);
+          else                    sprintf(buf,"pvbrowser \"pv://localhost:%d%s\"", p->port, url_trailer);
+        }  
         if(pvCmdLine != NULL)
         {
           char *cptr = strstr(pvCmdLine," -gui");
@@ -1192,6 +1200,7 @@ static int show_usage()
   printf("-cd=/working/directory\n");
   printf("-http run in http server mode\n");
   printf("-gui # will start pvbrowser pv://localhost:port\n");
+  printf("-rlbrowser # alternative gui\n");
   printf("-debug # will trace communication between client and server\n");
   printf("<url_trailer> example1: /?test1=1&test2=2\n");
   printf("<url_trailer> example2: /mask1?test1=1&test2=2\n");

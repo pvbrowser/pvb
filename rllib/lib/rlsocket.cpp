@@ -465,6 +465,8 @@ bindv6:
         RemoteIpAddress.s_addr = inet_addr(adr);
         if(RemoteIpAddress.s_addr == INADDR_NONE)
         {
+          // mur was here: without disconnect the sockets will be created over and over
+          disconnect();
           s = -1;
           return INET_ADDR_ERR; // -1
         }
