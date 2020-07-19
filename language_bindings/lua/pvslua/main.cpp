@@ -56,7 +56,8 @@ int pvMain(PARAM *p)
 
   // initialize Lua
   if(trace) printf("lua_open\n");
-  L = lua_open();
+  //L = lua_open();
+  L = luaL_newstate();
   luaL_openlibs(L);
 
   // initialize cleanup

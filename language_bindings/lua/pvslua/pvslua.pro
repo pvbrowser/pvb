@@ -17,7 +17,7 @@ SOURCES      += main.cpp                                   \
                 ../../language_binding_wrap_lua.cxx        \
                 ../../pvmain.cpp
 INCLUDEPATH +=  ../..
-INCLUDEPATH +=  ../lua-5.1/src/
+INCLUDEPATH +=  ../lua-5.4.0/src/
 
 USE_QT_SQL {
 DEFINES += USE_QT_SQL
@@ -26,8 +26,8 @@ HEADERS      += ../../sql/qtdatabase.h
 SOURCES      += ../../sql/qtdatabase.cpp
 }
 
-unix:LIBS               += ../lua-5.1/src/liblua.a
-win32:LIBS              += ../lua-5.1/src/release/liblua.a
+unix:LIBS               += ../lua-5.4.0/src/liblua.a
+win32:LIBS              += ../lua-5.4.0/src/release/liblua.a
 
 !macx {
 unix:LIBS          += ../../../pvserver/libpvsmt.so -lpthread

@@ -40,7 +40,8 @@ int luaMain()
 
   // initialize Lua
   if(trace) printf("lua_open\n");
-  L = lua_open();
+  // L = lua_open();
+  L = luaL_newstate();
   luaL_openlibs(L);
 
   // load our custom libs

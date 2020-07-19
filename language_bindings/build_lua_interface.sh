@@ -5,7 +5,7 @@
 echo "### building lua language bindings ###"
 echo "Info for Linux: libreadline-dev must be installed in order to build the lua interface"
 export PVBLANGUAGEDIR=$PWD
-cd lua/lua-5.1/src/
+cd lua/lua-5.4.0/src/
  ../../../../qmake.sh src.pro
  make
 cd ../../../

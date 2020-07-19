@@ -22,9 +22,9 @@ SOURCES +=../../sql/qtdatabase.cpp                   \
 }
 
 
-INCLUDEPATH += ../lua-5.1/src/
-unix:LIBS          += ../lua-5.1/src/liblua.a
-win32:LIBS         += ../lua-5.1/src/release/liblua.a
+INCLUDEPATH += ../lua-5.4.0/src/
+unix:LIBS          += ../lua-5.4.0/src/liblua.a
+win32:LIBS         += ../lua-5.4.0/src/release/liblua.a
 
 !macx {
 unix:LIBS          += ../../../pvserver/libpvsmt.so -lpthread

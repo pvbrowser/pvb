@@ -7,7 +7,7 @@ copy language_binding_wrap.cxx        language_binding_wrap_lua.cxx
 %swigdir%\swig -c++ -lua -DRLWIN32 -D_WIN32 -DSWIG_SESSIOM language_binding_rllib.i
 copy language_binding_rllib_wrap.cxx  language_binding_rllib_wrap_lua.cxx
 
-cd lua\lua-5.1\src
+cd lua\lua-5.4.0\src
 qmake src.pro
 mingw32-make.exe
 cd ..\..\..
@@ -25,5 +25,5 @@ mingw32-make.exe clean
 cd ..\..
 del *.cxx
 
-copy lua\lua-5.1\src\release\lua.dll ..\win-mingw\bin\
+copy lua\lua-5.4.0\src\release\lua.dll ..\win-mingw\bin\
 
