@@ -885,4 +885,3 @@ void rlPushToFloatBuffer(float val, float *buffer, int size)
   for(int i=size; i>=2; i--) buffer[i-1] = buffer[i-2];
   buffer[0] = val;
 }
-

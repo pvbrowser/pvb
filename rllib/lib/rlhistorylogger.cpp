@@ -41,6 +41,7 @@ rlHistoryLogger::rlHistoryLogger(const char *csvName, int maxHoursPerFile, int m
   csv_file_name = new char[strlen(csvName)+132];
   time.getLocalTime();
   file_start_time.getLocalTime();
+  openFile(); // jun 2021, hint by george zempekis
 }
 
 rlHistoryLogger::~rlHistoryLogger()

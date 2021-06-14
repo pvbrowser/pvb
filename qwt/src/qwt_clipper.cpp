@@ -7,6 +7,7 @@
  * modify it under the terms of the Qwt License, Version 1.0
  *****************************************************************************/
 
+#include <qlist.h> // rljune 2021 see: https://github.com/gbm19/qwt5-qt5/issues/1
 #include <qrect.h>
 #include "qwt_math.h"
 #include "qwt_clipper.h"

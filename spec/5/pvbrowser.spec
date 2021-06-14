@@ -1,6 +1,6 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   5.1.6
+Version:   5.1.7
 Release:   5.1
 Group:     Productivity/Graphics/Visualization/Other
 #Copyright: GPL with the possibility of commercial use
@@ -28,19 +28,19 @@ Provides:  librllib.so.1.0
 
 %if 0%{?suse_version}
 Requires:      libqt5 libpng
-BuildRequires: libQt5Gui-devel libqt5-qtwebengine-devel libQt5OpenGL-devel libQt5Sql-devel libQt5PrintSupport-devel libqt5-qttools-devel libqt5-qtsvg-devel libqt5-qtmultimedia-devel gcc-c++ libreadline6 readline-devel 
+BuildRequires: libQt5Gui-devel libqt5-qtwebengine-devel libQt5OpenGL-devel libQt5Sql-devel libQt5PrintSupport-devel libqt5-qttools-devel libqt5-qtsvg-devel libqt5-qtmultimedia-devel gcc-c++ libreadline6 readline-devel fdupes 
 %endif
 
 %if 0%{?fedora_version}
 # Requires:  ld-linux.so.2
 Requires:  qt5-qtbase
-BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt5-qtwayland-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools-common qt5-qttools-static qt5-qttools qt5-qttools-devel readline-devel
+BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt5-qtwayland-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools-common qt5-qttools-static qt5-qttools qt5-qttools-devel readline-devel fdupes
 %endif
 
 %if 0%{?rhel_version}
 # Requires:  ld-linux.so.2
 Requires:  qt5-qtbase 
-BuildRequires: gcc-c++ libstdc++-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools qt5-qttools-devel readline-devel
+BuildRequires: gcc-c++ libstdc++-devel qt5-qtbase-devel qt5-qtwebengine-devel qt5-qtenginio-devel qt5-qtmultimedia-devel qt5-qtsvg-devel qt5-qttools qt5-qttools-devel readline-devel fdupes
 %endif
 
 %if 0%{?centos_version}
@@ -53,7 +53,7 @@ BuildRequires: gcc-c++ libstdc++-devel qt5-qtbase-devel qt5-qtwebengine-devel qt
 %if 0%{?mageia}
 # Requires:  ld-linux.so.2
 Requires:  qt5-qtbase
-BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt5core-devel libqt5gui-devel libqt5multimedia-devel libqt5widgets-devel qtbase5-common-devel lib64qt5webengine-devel readline-devel
+BuildRequires: gcc-c++ libstdc++-devel lcms-devel qt5core-devel libqt5gui-devel libqt5multimedia-devel libqt5widgets-devel qtbase5-common-devel lib64qt5webengine-devel readline-devel fdupes
 %endif
 
 BuildRoot: %{_tmppath}/build-%{name}-%{version}
@@ -188,6 +188,8 @@ cp pvdevelop/pvdevelop.sh                   %{buildroot}%{_bindir}/pvdevelop
 %__mkdir_p %{buildroot}/srv/automation/shm
 %__mkdir_p %{buildroot}/srv/automation/mbx
 %__mkdir_p %{buildroot}/srv/automation/log
+
+%fdupes -s %{buildroot}/opt/pvb/doc
 
 %clean
 rm -rf /opt/pvb

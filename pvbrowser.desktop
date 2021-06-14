@@ -11,4 +11,4 @@ Path=
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Netork;WebBrowser;SCADA;
+Categories=Network;WebBrowser;SCADA;
