@@ -217,7 +217,7 @@ int main(int argc, char *argv[])
 #endif
   wsa(); // init windows sockets
   QApplication app(argc, argv);
-  QPixmap pm(splash);
+  QPixmap pm(splash_xpm);
   QSplashScreen *splash = new QSplashScreen(pm);
   splash->show();
   init1(argc,argv);
