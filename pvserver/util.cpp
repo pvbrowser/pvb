@@ -131,6 +131,8 @@ TDS;
 // switch on/off program traceing
 static int debug = 0; 
 
+int pv_retval_pthread = 100;
+
 // communication_plugin
 static plugin_pvAccept            plug_pvAccept = NULL;
 static plugin_pvtcpsend_binary    plug_pvtcpsend_binary = NULL;
@@ -578,7 +580,9 @@ int pvThreadFatal(PARAM *p, const char *text)
 #ifdef USE_INETD
   exit(0);
 #else
-  pvthread_exit(NULL);
+  pv_retval_pthread = 100;
+  pvthread_exit(&pv_retval_pthread);
+  //RL 12.02.2022 pvthread_exit(NULL);
 #endif
   return 0;
 }
@@ -1914,7 +1918,8 @@ static void *send_thread(void *ptr)
         numClients++;
         if(adrTable.adr[i].version == 6)
         {
-          if(memcmp(ipadr_ptr,&adrTable.adr[i].adr[0],16) == 0) numThisClient++;
+          //RL fix 12.02.2022 if(memcmp(ipadr_ptr,&adrTable.adr[i].adr[0],16) == 0) numThisClient++;
+          if(memcmp(ipadr_ptr,&adrTable.adr[i].adr[0],sizeof(in_addr)) == 0) numThisClient++;
         }
       }  
     }
@@ -1946,7 +1951,8 @@ static void *send_thread(void *ptr)
       {
         adrTable.adr[i].s = p->s;
         adrTable.adr[i].version = 6;
-        memcpy(&adrTable.adr[i].adr[0],ipadr_ptr,16);
+        //RL fix 12.02.2022 memcpy(&adrTable.adr[i].adr[0],ipadr_ptr,16);
+        memcpy(&adrTable.adr[i].adr[0],ipadr_ptr,sizeof(in_addr));
         break;
       }  
     }
