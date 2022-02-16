@@ -3,29 +3,45 @@
 # make pvbrowser server components only                #
 ########################################################
 export LIBPTHREAD='-pthread'
-cd pvserver
-./makelibs.sh
-# rm util.o glencode.o
-# ../qmake.sh pvsid.pro -o pvsid.mak
-# make -f pvsid.mak
-# rm util.o glencode.o
-# ../qmake.sh pvsmt.pro -o pvsmt.mak
-# make -f pvsmt.mak
+
+cd fake_qmake
+echo Compiling fake_qmake ...
+g++ -c -m64 -pipe -O2 -Wall -W  -I. -I../rllib/lib -o main.o main.cpp
+g++ -c -m64 -pipe -O2 -Wall -W  -I. -I../rllib/lib -o fake_qmake.o fake_qmake.cpp
+g++ -c -m64 -pipe -O2 -Wno-implicit-fallthrough  -W  -I. -I../rllib/lib -o rlstring.o ../rllib/lib/rlstring.cpp
+g++ -c -m64 -pipe -O2 -Wall -W  -I. -I../rllib/lib -o rlspreadsheet.o ../rllib/lib/rlspreadsheet.cpp
+g++ -c -m64 -pipe -O2 -Wall -W  -I. -I../rllib/lib -o rlfileload.o ../rllib/lib/rlfileload.cpp
+g++ -c -m64 -pipe -O2 -Wall -W  -I. -I../rllib/lib -o rlcutil.o ../rllib/lib/rlcutil.cpp
+g++ -m64 -Wl,-O1 -o fake_qmake main.o fake_qmake.o rlstring.o rlspreadsheet.o rlfileload.o rlcutil.o
 cd ..
+
+cd pvserver
+#./makelibs.sh
+../fake_qmake/fake_qmake -fake pvsid.pro -o pvsid.mak
+make -f pvsid.mak clean
+make -f pvsid.mak
+make -f pvsid.mak staticlib
+
+../fake_qmake/fake_qmake -fake pvsmt.pro -o pvsmt.mak
+make -f pvsmt.mak clean
+make -f pvsmt.mak
+make -f pvsmt.mak staticlib
+cd ..
+
 cd rllib/lib
-../../qmake.sh lib.pro
+../../fake_qmake/fake_qmake -fake lib.pro
 make
 cd ../..
 cd rllib/rlsvg
-../../qmake.sh rlsvgcat.pro
+../../fake_qmake/fake_qmake -fake rlsvgcat.pro
 make
 cd ../..
 cd rllib/rlfind
-../../qmake.sh rlfind.pro
+../../fake_qmake/fake_qmake -fake rlfind.pro
 make
 cd ../..
 cd rllib/rlhistory
-../../qmake.sh rlhistory.pro
+../../fake_qmake/fake_qmake -fake rlhistory.pro
 make
 cd ../..
 #echo the following tool needs qt
@@ -33,14 +49,20 @@ cd ../..
 #../../qmake.sh rlhtml2pdf.pro
 #make
 #cd ../..
-cd fake_qmake
-../qmake.sh fake_qmake.pro
-make
-cd ..
 echo '################################################################'
 echo '# finished building server components !!!                      #'
 echo '# now run:                                                     #'
 echo '#   su                                                         #'
 echo '#   ./install.sh                                               #'
 echo '#   exit                                                       #'
+echo '#                                                              #'
+echo '# optional: if you want a LUA language binding                 #'
+echo '# after the above installation run:                            #'
+echo '#   cd language_bindings                                       #'
+echo '#   ./build_lua_interface.sh                                   #'
+echo '#   cd ..                                                      #'
+echo '#   su                                                         #'
+echo '#   ./install.sh                                               #'
+echo '#   exit                                                       #'
+echo '#                                                              #'
 echo '################################################################'
