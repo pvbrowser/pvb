@@ -1,0 +1,105 @@
+.TH "QwtColumnRect" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtColumnRect \- Directed rectangle representing bounding rectangle and orientation of a column\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_column_symbol\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDirection\fP { \fBLeftToRight\fP, \fBRightToLeft\fP, \fBBottomToTop\fP, \fBTopToBottom\fP }"
+.br
+.RI "Direction of the column\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtColumnRect\fP ()"
+.br
+.RI "Build an rectangle with invalid intervals directed BottomToTop\&. "
+.ti -1c
+.RI "QRectF \fBtoRect\fP () const"
+.br
+.ti -1c
+.RI "Qt::Orientation \fBorientation\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtInterval\fP \fBhInterval\fP"
+.br
+.RI "Interval for the horizontal coordinates\&. "
+.ti -1c
+.RI "\fBQwtInterval\fP \fBvInterval\fP"
+.br
+.RI "Interval for the vertical coordinates\&. "
+.ti -1c
+.RI "\fBDirection\fP \fBdirection\fP"
+.br
+.RI "Direction\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Directed rectangle representing bounding rectangle and orientation of a column\&. 
+.PP
+Definition at line 26 of file qwt_column_symbol\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtColumnRect::Direction\fP"
+
+.PP
+Direction of the column\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILeftToRight \fP\fP
+From left to right\&. 
+.TP
+\fB\fIRightToLeft \fP\fP
+From right to left\&. 
+.TP
+\fB\fIBottomToTop \fP\fP
+From bottom to top\&. 
+.TP
+\fB\fITopToBottom \fP\fP
+From top to bottom\&. 
+.PP
+Definition at line 30 of file qwt_column_symbol\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "Qt::Orientation QwtColumnRect::orientation () const\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Orientation 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file qwt_column_symbol\&.h\&.
+.SS "QRectF QwtColumnRect::toRect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+A normalized QRect built from the intervals 
+.RE
+.PP
+
+.PP
+Definition at line 296 of file qwt_column_symbol\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

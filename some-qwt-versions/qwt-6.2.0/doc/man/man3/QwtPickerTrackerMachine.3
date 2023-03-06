@@ -1,0 +1,37 @@
+.TH "QwtPickerTrackerMachine" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPickerTrackerMachine \- A state machine for indicating mouse movements\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_picker_machine\&.h>\fP
+.PP
+Inherits \fBQwtPickerMachine\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPickerTrackerMachine\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fBQList\fP< \fBCommand\fP > \fBtransition\fP (const \fBQwtEventPattern\fP &, const QEvent *) override"
+.br
+.RI "Transition\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A state machine for indicating mouse movements\&. 
+
+\fBQwtPickerTrackerMachine\fP supports displaying information corresponding to mouse movements, but is not intended for selecting anything\&. Begin/End are related to Enter/Leave events\&. 
+.PP
+Definition at line 85 of file qwt_picker_machine\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,397 @@
+.TH "QwtPointMapper" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPointMapper \- A helper class for translating a series of points\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_point_mapper\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBTransformationFlag\fP { \fBRoundPoints\fP = 0x01, \fBWeedOutPoints\fP = 0x02, \fBWeedOutIntermediatePoints\fP = 0x04 }"
+.br
+.RI "Flags affecting the transformation process\&. "
+.ti -1c
+.RI "typedef QFlags< \fBTransformationFlag\fP > \fBTransformationFlags\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPointMapper\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fB~QwtPointMapper\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetFlags\fP (\fBTransformationFlags\fP)"
+.br
+.ti -1c
+.RI "\fBTransformationFlags\fP \fBflags\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetFlag\fP (\fBTransformationFlag\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestFlag\fP (\fBTransformationFlag\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetBoundingRect\fP (const QRectF &)"
+.br
+.ti -1c
+.RI "QRectF \fBboundingRect\fP () const"
+.br
+.ti -1c
+.RI "QPolygonF \fBtoPolygonF\fP (const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const \fBQwtSeriesData\fP< QPointF > *series, int from, int to) const"
+.br
+.RI "Translate a series of points into a QPolygonF\&. "
+.ti -1c
+.RI "QPolygon \fBtoPolygon\fP (const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const \fBQwtSeriesData\fP< QPointF > *series, int from, int to) const"
+.br
+.RI "Translate a series of points into a QPolygon\&. "
+.ti -1c
+.RI "QPolygon \fBtoPoints\fP (const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const \fBQwtSeriesData\fP< QPointF > *series, int from, int to) const"
+.br
+.RI "Translate a series of points into a QPolygon\&. "
+.ti -1c
+.RI "QPolygonF \fBtoPointsF\fP (const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const \fBQwtSeriesData\fP< QPointF > *series, int from, int to) const"
+.br
+.RI "Translate a series into a QPolygonF\&. "
+.ti -1c
+.RI "QImage \fBtoImage\fP (const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const \fBQwtSeriesData\fP< QPointF > *series, int from, int to, const QPen &, bool antialiased, uint numThreads) const"
+.br
+.RI "Translate a series into a QImage\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A helper class for translating a series of points\&. 
+
+\fBQwtPointMapper\fP is a collection of methods and optimizations for translating a series of points into paint device coordinates\&. It is used by \fBQwtPlotCurve\fP but might also be useful for similar plot items displaying a \fBQwtSeriesData<QPointF>\fP\&. 
+.PP
+Definition at line 32 of file qwt_point_mapper\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBTransformationFlag\fP > \fBQwtPointMapper::TransformationFlags\fP"
+An ORed combination of \fBTransformationFlag\fP values\&. 
+.PP
+Definition at line 71 of file qwt_point_mapper\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPointMapper::TransformationFlag\fP"
+
+.PP
+Flags affecting the transformation process\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFlag()\fP, \fBsetFlags()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIRoundPoints \fP\fP
+Round points to integer values\&. 
+.TP
+\fB\fIWeedOutPoints \fP\fP
+Try to remove points, that are translated to the same position\&. 
+.TP
+\fB\fIWeedOutIntermediatePoints \fP\fP
+An even more aggressive weeding algorithm, that can be used in \fBtoPolygon()\fP\&.
+.PP
+A consecutive chunk of points being mapped to the same x coordinate is reduced to 4 points:
+.PP
+.IP "\(bu" 2
+first point
+.IP "\(bu" 2
+point with the minimum y coordinate
+.IP "\(bu" 2
+point with the maximum y coordinate
+.IP "\(bu" 2
+last point
+.PP
+.PP
+In the worst case ( first and last points are never one of the extremes ) the number of points will be 4 times the width\&.
+.PP
+As the algorithm is fast it can be used inside of a polyline render cycle\&. 
+.PP
+Definition at line 39 of file qwt_point_mapper\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRectF QwtPointMapper::boundingRect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rectangle 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBoundingRect()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 621 of file qwt_point_mapper\&.cpp\&.
+.SS "\fBQwtPointMapper::TransformationFlags\fP QwtPointMapper::flags () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Flags affecting the transformation process 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFlags()\fP, \fBsetFlag()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 573 of file qwt_point_mapper\&.cpp\&.
+.SS "void QwtPointMapper::setBoundingRect (const QRectF & rect)"
+Set a bounding rectangle for the point mapping algorithm
+.PP
+A valid bounding rectangle can be used for optimizations
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundingRect()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 612 of file qwt_point_mapper\&.cpp\&.
+.SS "void QwtPointMapper::setFlag (\fBTransformationFlag\fP flag, bool on = \fCtrue\fP)"
+Modify a flag affecting the transformation process
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP Flag type 
+.br
+\fIon\fP Value
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+flag(), \fBsetFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 586 of file qwt_point_mapper\&.cpp\&.
+.SS "void QwtPointMapper::setFlags (\fBTransformationFlags\fP flags)"
+Set the flags affecting the transformation process
+.PP
+\fBParameters\fP
+.RS 4
+\fIflags\fP Flags 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBflags()\fP, \fBsetFlag()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 564 of file qwt_point_mapper\&.cpp\&.
+.SS "bool QwtPointMapper::testFlag (\fBTransformationFlag\fP flag) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, when the flag is set 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP Flag type 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFlag()\fP, \fBsetFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 599 of file qwt_point_mapper\&.cpp\&.
+.SS "QImage QwtPointMapper::toImage (const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const \fBQwtSeriesData\fP< QPointF > * series, int from, int to, const QPen & pen, bool antialiased, uint numThreads) const"
+
+.PP
+Translate a series into a QImage\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIxMap\fP x map 
+.br
+\fIyMap\fP y map 
+.br
+\fIseries\fP Series of points to be mapped 
+.br
+\fIfrom\fP Index of the first point to be painted 
+.br
+\fIto\fP Index of the last point to be painted 
+.br
+\fIpen\fP Pen used for drawing a point of the image, where a point is mapped to 
+.br
+\fIantialiased\fP True, when the dots should be displayed antialiased 
+.br
+\fInumThreads\fP Number of threads to be used for rendering\&. If numThreads is set to 0, the system specific ideal thread count is used\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Image displaying the series 
+.RE
+.PP
+
+.PP
+Definition at line 883 of file qwt_point_mapper\&.cpp\&.
+.SS "QPolygon QwtPointMapper::toPoints (const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const \fBQwtSeriesData\fP< QPointF > * series, int from, int to) const"
+
+.PP
+Translate a series of points into a QPolygon\&. 
+.IP "\(bu" 2
+WeedOutPoints & \fBboundingRect()\fP\&.isValid() All points that are mapped to the same position will be one point\&. Points outside of the bounding rectangle are ignored\&.
+.IP "\(bu" 2
+WeedOutPoints & !boundingRect()\&.isValid() All consecutive points that are mapped to the same position will one point
+.IP "\(bu" 2
+!WeedOutPoints & \fBboundingRect()\fP\&.isValid() Points outside of the bounding rectangle are ignored\&.
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fIxMap\fP x map 
+.br
+\fIyMap\fP y map 
+.br
+\fIseries\fP Series of points to be mapped 
+.br
+\fIfrom\fP Index of the first point to be painted 
+.br
+\fIto\fP Index of the last point to be painted
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Translated polygon 
+.RE
+.PP
+
+.PP
+Definition at line 833 of file qwt_point_mapper\&.cpp\&.
+.SS "QPolygonF QwtPointMapper::toPointsF (const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const \fBQwtSeriesData\fP< QPointF > * series, int from, int to) const"
+
+.PP
+Translate a series into a QPolygonF\&. 
+.IP "\(bu" 2
+WeedOutPoints & RoundPoints & \fBboundingRect()\fP\&.isValid() All points that are mapped to the same position will be one point\&. Points outside of the bounding rectangle are ignored\&.
+.IP "\(bu" 2
+WeedOutPoints & RoundPoints & !boundingRect()\&.isValid() All consecutive points that are mapped to the same position will one point
+.IP "\(bu" 2
+WeedOutPoints & !RoundPoints All consecutive points that are mapped to the same position will one point
+.IP "\(bu" 2
+!WeedOutPoints & \fBboundingRect()\fP\&.isValid() Points outside of the bounding rectangle are ignored\&.
+.PP
+.PP
+When RoundPoints is set all points are rounded to integers but returned as PolygonF - what only makes sense when the further processing of the values need a QPolygonF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIxMap\fP x map 
+.br
+\fIyMap\fP y map 
+.br
+\fIseries\fP Series of points to be mapped 
+.br
+\fIfrom\fP Index of the first point to be painted 
+.br
+\fIto\fP Index of the last point to be painted
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Translated polygon 
+.RE
+.PP
+
+.PP
+Definition at line 759 of file qwt_point_mapper\&.cpp\&.
+.SS "QPolygon QwtPointMapper::toPolygon (const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const \fBQwtSeriesData\fP< QPointF > * series, int from, int to) const"
+
+.PP
+Translate a series of points into a QPolygon\&. When the WeedOutPoints flag is enabled consecutive points, that are mapped to the same position will be one point\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIxMap\fP x map 
+.br
+\fIyMap\fP y map 
+.br
+\fIseries\fP Series of points to be mapped 
+.br
+\fIfrom\fP Index of the first point to be painted 
+.br
+\fIto\fP Index of the last point to be painted
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Translated polygon 
+.RE
+.PP
+
+.PP
+Definition at line 702 of file qwt_point_mapper\&.cpp\&.
+.SS "QPolygonF QwtPointMapper::toPolygonF (const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const \fBQwtSeriesData\fP< QPointF > * series, int from, int to) const"
+
+.PP
+Translate a series of points into a QPolygonF\&. When the WeedOutPoints flag is enabled consecutive points, that are mapped to the same position will be one point\&.
+.PP
+When RoundPoints is set all points are rounded to integers but returned as PolygonF - what only makes sense when the further processing of the values need a QPolygonF\&.
+.PP
+When RoundPoints & WeedOutIntermediatePoints is enabled an even more aggressive weeding algorithm is enabled\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIxMap\fP x map 
+.br
+\fIyMap\fP y map 
+.br
+\fIseries\fP Series of points to be mapped 
+.br
+\fIfrom\fP Index of the first point to be painted 
+.br
+\fIto\fP Index of the last point to be painted
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Translated polygon 
+.RE
+.PP
+
+.PP
+Definition at line 647 of file qwt_point_mapper\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

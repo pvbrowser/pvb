@@ -5,21 +5,22 @@
 # https://www.archlinux.org/packages/?name=ffmpeg
 
 pkgname=pvbrowser
-pkgver=5.1.7
+pkgver=5.15.2
 pkgrel=1
 pkgdesc="pvbrowser Qt5 with QWebEngine"
 arch=('i686' 'x86_64')
-url="https://pvbrowser.org"
+url="https://pvbrowser.de"
 license=('GPL')
 groups=('base-devel')
 depends=('glibc' 'xterm' 'gcc')
+optdepends=('ffplay')
 # makedepends=('qt5-tools')
 makedepends=('qt5-tools' 'qt5-base' 'qt5-svg' 'qt5-multimedia' 'qt5-webengine')
 # optdepends=('ed: for "patch -e" functionality')
 # source=("https://pvbrowser.de/tar/pvb5/pvbrowser-5.tar.gz"{,.sig})
 source=("https://pvbrowser.de/tar/pvb5/pvbrowser-5.tar.gz")
-md5sums=('0f202a23564ef8cf174dc5dace9a3570')
-# md5sums=('0f202a23564ef8cf174dc5dace9a3570'
+md5sums=('edee1ebcbbbc2ec8055f2053c8709bd1')
+# md5sums=('edee1ebcbbbc2ec8055f2053c8709bd1'
 #         'SKIP')
 
 build() {

@@ -1,0 +1,302 @@
+.TH "QwtRasterData" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtRasterData \- \fBQwtRasterData\fP defines an interface to any type of raster data\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_raster_data\&.h>\fP
+.PP
+Inherited by \fBQwtMatrixRasterData\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBAttribute\fP { \fBWithoutGaps\fP = 0x01 }"
+.br
+.RI "Raster data attributes\&. "
+.ti -1c
+.RI "enum \fBConrecFlag\fP { \fBIgnoreAllVerticesOnLevel\fP = 0x01, \fBIgnoreOutOfRange\fP = 0x02 }"
+.br
+.RI "Flags to modify the contour algorithm\&. "
+.ti -1c
+.RI "typedef \fBQMap\fP< double, QPolygonF > \fBContourLines\fP"
+.br
+.RI "Contour lines\&. "
+.ti -1c
+.RI "typedef QFlags< \fBAttribute\fP > \fBAttributes\fP"
+.br
+.ti -1c
+.RI "typedef QFlags< \fBConrecFlag\fP > \fBConrecFlags\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtRasterData\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtRasterData\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetAttribute\fP (\fBAttribute\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestAttribute\fP (\fBAttribute\fP) const"
+.br
+.ti -1c
+.RI "virtual \fBQwtInterval\fP \fBinterval\fP (Qt::Axis) const =0"
+.br
+.ti -1c
+.RI "virtual QRectF \fBpixelHint\fP (const QRectF &) const"
+.br
+.RI "Pixel hint\&. "
+.ti -1c
+.RI "virtual void \fBinitRaster\fP (const QRectF &, const QSize &raster)"
+.br
+.RI "Initialize a raster\&. "
+.ti -1c
+.RI "virtual void \fBdiscardRaster\fP ()"
+.br
+.RI "Discard a raster\&. "
+.ti -1c
+.RI "virtual double \fBvalue\fP (double x, double y) const =0"
+.br
+.ti -1c
+.RI "virtual \fBContourLines\fP \fBcontourLines\fP (const QRectF &rect, const QSize &raster, const \fBQList\fP< double > &levels, \fBConrecFlags\fP) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBQwtRasterData\fP defines an interface to any type of raster data\&. 
+
+\fBQwtRasterData\fP is an abstract interface, that is used by \fBQwtPlotRasterItem\fP to find the values at the pixels of its raster\&.
+.PP
+Gaps inside the bounding rectangle of the data can be indicated by NaN values ( when WithoutGaps is disabled )\&.
+.PP
+Often a raster item is used to display values from a matrix\&. Then the derived raster data class needs to implement some sort of resampling, that maps the raster of the matrix into the requested raster of the raster item ( depending on resolution and scales of the canvas )\&.
+.PP
+\fBQwtMatrixRasterData\fP implements raster data, that returns values from a given 2D matrix\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtMatrixRasterData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 42 of file qwt_raster_data\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBAttribute\fP > \fBQwtRasterData::Attributes\fP"
+An ORed combination of \fBAttribute\fP values\&. 
+.PP
+Definition at line 74 of file qwt_raster_data\&.h\&.
+.SS "typedef QFlags<\fBConrecFlag\fP > \fBQwtRasterData::ConrecFlags\fP"
+An ORed combination of \fBConrecFlag\fP values\&. 
+.PP
+Definition at line 86 of file qwt_raster_data\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtRasterData::Attribute\fP"
+
+.PP
+Raster data attributes\&. Additional information that is used to improve processing of the data\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIWithoutGaps \fP\fP
+The bounding rectangle of the data is spanned by the interval(Qt::XAxis) and interval(Qt::YAxis)\&.
+.PP
+WithoutGaps indicates, that the data has no gaps ( unknown values ) in this area and the result of \fBvalue()\fP does not need to be checked for NaN values\&.
+.PP
+Enabling this flag will have an positive effect on the performance of rendering a \fBQwtPlotSpectrogram\fP\&.
+.PP
+The default setting is false\&.
+.PP
+\fBNote\fP
+.RS 4
+NaN values indicate an undefined value 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file qwt_raster_data\&.h\&.
+.SS "enum \fBQwtRasterData::ConrecFlag\fP"
+
+.PP
+Flags to modify the contour algorithm\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIgnoreAllVerticesOnLevel \fP\fP
+Ignore all vertices on the same level\&. 
+.TP
+\fB\fIIgnoreOutOfRange \fP\fP
+Ignore all values, that are out of range\&. 
+.PP
+Definition at line 77 of file qwt_raster_data\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtRasterData::ContourLines\fP QwtRasterData::contourLines (const QRectF & rect, const QSize & raster, const \fBQList\fP< double > & levels, \fBConrecFlags\fP flags) const\fC [virtual]\fP"
+Calculate contour lines
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle for the contour lines 
+.br
+\fIraster\fP Number of data pixels of the raster data 
+.br
+\fIlevels\fP List of limits, where to insert contour lines 
+.br
+\fIflags\fP Flags to customize the contouring algorithm
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Calculated contour lines
+.RE
+.PP
+An adaption of CONREC, a simple contouring algorithm\&. http://local.wasp.uwa.edu.au/~pbourke/papers/conrec/ 
+.PP
+Definition at line 286 of file qwt_raster_data\&.cpp\&.
+.SS "void QwtRasterData::discardRaster ()\fC [virtual]\fP"
+
+.PP
+Discard a raster\&. After the composition of an image \fBQwtPlotSpectrogram\fP calls \fBdiscardRaster()\fP\&.
+.PP
+The default implementation does nothing, but if data has been loaded in \fBinitRaster()\fP, it could deleted now\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBinitRaster()\fP, \fBvalue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 237 of file qwt_raster_data\&.cpp\&.
+.SS "void QwtRasterData::initRaster (const QRectF & area, const QSize & raster)\fC [virtual]\fP"
+
+.PP
+Initialize a raster\&. Before the composition of an image \fBQwtPlotSpectrogram\fP calls \fBinitRaster()\fP, announcing the area and its resolution that will be requested\&.
+.PP
+The default implementation does nothing, but for data sets that are stored in files, it might be good idea to reimplement \fBinitRaster()\fP, where the data is resampled and loaded into memory\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIarea\fP Area of the raster 
+.br
+\fIraster\fP Number of horizontal and vertical pixels
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinitRaster()\fP, \fBvalue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 221 of file qwt_raster_data\&.cpp\&.
+.SS "virtual \fBQwtInterval\fP QwtRasterData::interval (Qt::Axis) const\fC [pure virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Bounding interval for an axis 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+setInterval 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtMatrixRasterData\fP\&.
+.SS "QRectF QwtRasterData::pixelHint (const QRectF & area) const\fC [virtual]\fP"
+
+.PP
+Pixel hint\&. \fBpixelHint()\fP returns the geometry of a pixel, that can be used to calculate the resolution and alignment of the plot item, that is representing the data\&.
+.PP
+Width and height of the hint need to be the horizontal and vertical distances between 2 neighbored points\&. The center of the hint has to be the position of any point ( it doesn't matter which one )\&.
+.PP
+An empty hint indicates, that there are values for any detail level\&.
+.PP
+Limiting the resolution of the image might significantly improve the performance and heavily reduce the amount of memory when rendering a QImage from the raster data\&.
+.PP
+The default implementation returns an empty rectangle recommending to render in target device ( f\&.e\&. screen ) resolution\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIarea\fP In most implementations the resolution of the data doesn't depend on the requested area\&.
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rectangle of a pixel 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtMatrixRasterData\fP\&.
+.PP
+Definition at line 267 of file qwt_raster_data\&.cpp\&.
+.SS "void QwtRasterData::setAttribute (\fBAttribute\fP attribute, bool on = \fCtrue\fP)"
+Specify an attribute of the data
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Attribute 
+.br
+\fIon\fP On/Off /sa Attribute, \fBtestAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 189 of file qwt_raster_data\&.cpp\&.
+.SS "bool QwtRasterData::testAttribute (\fBAttribute\fP attribute) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, when attribute is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBAttribute\fP, \fBsetAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 201 of file qwt_raster_data\&.cpp\&.
+.SS "virtual double QwtRasterData::value (double x, double y) const\fC [pure virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+the value at a raster position 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP X value in plot coordinates 
+.br
+\fIy\fP Y value in plot coordinates 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtMatrixRasterData\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

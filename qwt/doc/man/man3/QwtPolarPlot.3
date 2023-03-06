@@ -1,0 +1,1198 @@
+.TH "QwtPolarPlot" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarPlot \- A plotting widget, displaying a polar coordinate system\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_plot\&.h>\fP
+.PP
+Inherits QFrame, and \fBQwtPolarItemDict\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBLegendPosition\fP { \fBLeftLegend\fP, \fBRightLegend\fP, \fBBottomLegend\fP, \fBTopLegend\fP, \fBExternalLegend\fP }"
+.br
+.in -1c
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBreplot\fP ()"
+.br
+.RI "Redraw the plot\&. "
+.ti -1c
+.RI "void \fBautoRefresh\fP ()"
+.br
+.RI "Replots the plot if \fBQwtPlot::autoReplot()\fP is \fCtrue\fP\&. "
+.ti -1c
+.RI "void \fBsetAzimuthOrigin\fP (double)"
+.br
+.RI "Change the origin of the azimuth scale\&. "
+.in -1c
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBitemAttached\fP (\fBQwtPolarItem\fP *plotItem, bool on)"
+.br
+.ti -1c
+.RI "void \fBlegendDataChanged\fP (const QVariant &itemInfo, const \fBQList\fP< \fBQwtLegendData\fP > &data)"
+.br
+.ti -1c
+.RI "void \fBlayoutChanged\fP ()"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarPlot\fP (QWidget *parent=NULL)"
+.br
+.ti -1c
+.RI "\fBQwtPolarPlot\fP (const \fBQwtText\fP &\fBtitle\fP, QWidget *parent=NULL)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPolarPlot\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetTitle\fP (const QString &)"
+.br
+.ti -1c
+.RI "void \fBsetTitle\fP (const \fBQwtText\fP &)"
+.br
+.ti -1c
+.RI "\fBQwtText\fP \fBtitle\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtTextLabel\fP * \fBtitleLabel\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtTextLabel\fP * \fBtitleLabel\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetAutoReplot\fP (bool tf=true)"
+.br
+.RI "Set or reset the autoReplot option\&. "
+.ti -1c
+.RI "bool \fBautoReplot\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetAutoScale\fP (int scaleId)"
+.br
+.RI "Enable autoscaling\&. "
+.ti -1c
+.RI "bool \fBhasAutoScale\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBsetScaleMaxMinor\fP (int scaleId, int maxMinor)"
+.br
+.ti -1c
+.RI "int \fBscaleMaxMinor\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "int \fBscaleMaxMajor\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBsetScaleMaxMajor\fP (int scaleId, int maxMajor)"
+.br
+.ti -1c
+.RI "\fBQwtScaleEngine\fP * \fBscaleEngine\fP (int scaleId)"
+.br
+.ti -1c
+.RI "const \fBQwtScaleEngine\fP * \fBscaleEngine\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBsetScaleEngine\fP (int scaleId, \fBQwtScaleEngine\fP *)"
+.br
+.ti -1c
+.RI "void \fBsetScale\fP (int scaleId, double min, double max, double step=0)"
+.br
+.RI "Disable autoscaling and specify a fixed scale for a selected scale\&. "
+.ti -1c
+.RI "void \fBsetScaleDiv\fP (int scaleId, const \fBQwtScaleDiv\fP &)"
+.br
+.RI "Disable autoscaling and specify a fixed scale for a selected scale\&. "
+.ti -1c
+.RI "const \fBQwtScaleDiv\fP * \fBscaleDiv\fP (int scaleId) const"
+.br
+.RI "Return the scale division of a specified scale\&. "
+.ti -1c
+.RI "\fBQwtScaleDiv\fP * \fBscaleDiv\fP (int scaleId)"
+.br
+.RI "Return the scale division of a specified scale\&. "
+.ti -1c
+.RI "\fBQwtScaleMap\fP \fBscaleMap\fP (int scaleId, double radius) const"
+.br
+.ti -1c
+.RI "\fBQwtScaleMap\fP \fBscaleMap\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBupdateScale\fP (int scaleId)"
+.br
+.ti -1c
+.RI "double \fBazimuthOrigin\fP () const"
+.br
+.ti -1c
+.RI "void \fBzoom\fP (const \fBQwtPointPolar\fP &, double factor)"
+.br
+.RI "Translate and in/decrease the zoom factor\&. "
+.ti -1c
+.RI "void \fBunzoom\fP ()"
+.br
+.ti -1c
+.RI "\fBQwtPointPolar\fP \fBzoomPos\fP () const"
+.br
+.ti -1c
+.RI "double \fBzoomFactor\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtPolarCanvas\fP * \fBcanvas\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarCanvas\fP * \fBcanvas\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetPlotBackground\fP (const QBrush &c)"
+.br
+.RI "Set the background of the plot area\&. "
+.ti -1c
+.RI "const QBrush & \fBplotBackground\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBdrawCanvas\fP (QPainter *, const QRectF &) const"
+.br
+.ti -1c
+.RI "void \fBinsertLegend\fP (\fBQwtAbstractLegend\fP *, \fBLegendPosition\fP=\fBRightLegend\fP, double ratio=\-1\&.0)"
+.br
+.RI "Insert a legend\&. "
+.ti -1c
+.RI "\fBQwtAbstractLegend\fP * \fBlegend\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtAbstractLegend\fP * \fBlegend\fP () const"
+.br
+.ti -1c
+.RI "void \fBupdateLegend\fP ()"
+.br
+.ti -1c
+.RI "void \fBupdateLegend\fP (const \fBQwtPolarItem\fP *)"
+.br
+.ti -1c
+.RI "\fBQwtPolarLayout\fP * \fBplotLayout\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarLayout\fP * \fBplotLayout\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtInterval\fP \fBvisibleInterval\fP () const"
+.br
+.ti -1c
+.RI "QRectF \fBplotRect\fP () const"
+.br
+.ti -1c
+.RI "QRectF \fBplotRect\fP (const QRectF &) const"
+.br
+.RI "Calculate the bounding rect of the plot area\&. "
+.ti -1c
+.RI "int \fBplotMarginHint\fP () const"
+.br
+.ti -1c
+.RI "virtual QVariant \fBitemToInfo\fP (\fBQwtPolarItem\fP *) const"
+.br
+.RI "Build an information, that can be used to identify a plot item on the legend\&. "
+.ti -1c
+.RI "virtual \fBQwtPolarItem\fP * \fBinfoToItem\fP (const QVariant &) const"
+.br
+.RI "Identify the plot item according to an item info object, that has bee generated from \fBitemToInfo()\fP\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual bool \fBevent\fP (QEvent *) override"
+.br
+.RI "Qt event handler\&. "
+.ti -1c
+.RI "virtual void \fBresizeEvent\fP (QResizeEvent *) override"
+.br
+.RI "Resize and update internal layout\&. "
+.ti -1c
+.RI "virtual void \fBupdateLayout\fP ()"
+.br
+.RI "Rebuild the layout\&. "
+.ti -1c
+.RI "virtual void \fBdrawItems\fP (QPainter *painter, const \fBQwtScaleMap\fP &radialMap, const \fBQwtScaleMap\fP &azimuthMap, const QPointF &pole, double radius, const QRectF &canvasRect) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A plotting widget, displaying a polar coordinate system\&. 
+
+An unlimited number of plot items can be displayed on its canvas\&. Plot items might be curves (\fBQwtPolarCurve\fP), markers (\fBQwtPolarMarker\fP), the grid (\fBQwtPolarGrid\fP), or anything else derived from \fBQwtPolarItem\fP\&.
+.PP
+The coordinate system is defined by a radial and a azimuth scale\&. The scales at the axes can be explicitly set (\fBQwtScaleDiv\fP), or are calculated from the plot items, using algorithms (\fBQwtScaleEngine\fP) which can be configured separately for each axis\&. Autoscaling is supported for the radial scale\&.
+.PP
+In opposite to \fBQwtPlot\fP the scales might be different from the view, that is displayed on the canvas\&. The view can be changed by zooming - f\&.e\&. by using \fBQwtPolarPanner\fP or QwtPolarMaginfier\&. 
+.PP
+Definition at line 46 of file qwt_polar_plot\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPolarPlot::LegendPosition\fP"
+Position of the legend, relative to the canvas\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBinsertLegend()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILeftLegend \fP\fP
+The legend will be left from the canvas\&. 
+.TP
+\fB\fIRightLegend \fP\fP
+The legend will be right from the canvas\&. 
+.TP
+\fB\fIBottomLegend \fP\fP
+The legend will be below the canvas\&. 
+.TP
+\fB\fITopLegend \fP\fP
+The legend will be between canvas and title\&. 
+.TP
+\fB\fIExternalLegend \fP\fP
+External means that only the content of the legend will be handled by \fBQwtPlot\fP, but not its geometry\&. This might be interesting if an application wants to have a legend in an external window ( or on the canvas )\&.
+.PP
+\fBNote\fP
+.RS 4
+The legend is not painted by \fBQwtPolarRenderer\fP 
+.RE
+.PP
+
+.PP
+Definition at line 59 of file qwt_polar_plot\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarPlot::QwtPolarPlot (QWidget * parent = \fCNULL\fP)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP Parent widget 
+.RE
+.PP
+
+.PP
+Definition at line 88 of file qwt_polar_plot\&.cpp\&.
+.SS "QwtPolarPlot::QwtPolarPlot (const \fBQwtText\fP & title, QWidget * parent = \fCNULL\fP)"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title text 
+.br
+\fIparent\fP Parent widget 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file qwt_polar_plot\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QwtPolarPlot::autoReplot () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true if the autoReplot option is set\&. 
+.RE
+.PP
+
+.PP
+Definition at line 348 of file qwt_polar_plot\&.cpp\&.
+.SS "double QwtPolarPlot::azimuthOrigin () const"
+The azimuth origin is the angle where the azimuth scale shows the value 0\&.0\&.
+.PP
+\fBReturns\fP
+.RS 4
+Origin of the azimuth scale 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAzimuthOrigin()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 632 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtPolarCanvas\fP * QwtPolarPlot::canvas ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's canvas 
+.RE
+.PP
+
+.PP
+Definition at line 914 of file qwt_polar_plot\&.cpp\&.
+.SS "const \fBQwtPolarCanvas\fP * QwtPolarPlot::canvas () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's canvas 
+.RE
+.PP
+
+.PP
+Definition at line 920 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::drawCanvas (QPainter * painter, const QRectF & canvasRect) const\fC [virtual]\fP"
+Redraw the canvas\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter used for drawing 
+.br
+\fIcanvasRect\fP Contents rect of the canvas 
+.RE
+.PP
+
+.PP
+Definition at line 930 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::drawItems (QPainter * painter, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, double radius, const QRectF & canvasRect) const\fC [protected]\fP, \fC [virtual]\fP"
+Redraw the canvas items\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter used for drawing 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIradius\fP Radius of the complete plot area in painter coordinates 
+.br
+\fIcanvasRect\fP Contents rect of the canvas in painter coordinates 
+.RE
+.PP
+
+.PP
+Definition at line 975 of file qwt_polar_plot\&.cpp\&.
+.SS "bool QwtPolarPlot::event (QEvent * e)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Qt event handler\&. Handles QEvent::LayoutRequest and QEvent::PolishRequest
+.PP
+\fBParameters\fP
+.RS 4
+\fIe\fP Qt Event 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True, when the event was processed 
+.RE
+.PP
+
+.PP
+Definition at line 762 of file qwt_polar_plot\&.cpp\&.
+.SS "bool QwtPolarPlot::hasAutoScale (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fCtrue\fP if autoscaling is enabled 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAutoScale()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 386 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtPolarItem\fP * QwtPolarPlot::infoToItem (const QVariant & itemInfo) const\fC [virtual]\fP"
+
+.PP
+Identify the plot item according to an item info object, that has bee generated from \fBitemToInfo()\fP\&. The default implementation simply tries to unwrap a \fBQwtPlotItem\fP pointer:
+.PP
+.PP
+.nf
+if ( itemInfo\&.canConvert<QwtPlotItem *>() )
+    return qvariant_cast<QwtPlotItem *>( itemInfo );
+.fi
+.PP
+ 
+.PP
+\fBParameters\fP
+.RS 4
+\fIitemInfo\fP Plot item 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A plot item, when successful, otherwise a NULL pointer\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBitemToInfo()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1357 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::insertLegend (\fBQwtAbstractLegend\fP * legend, \fBQwtPolarPlot::LegendPosition\fP pos = \fC\fBRightLegend\fP\fP, double ratio = \fC\-1\&.0\fP)"
+
+.PP
+Insert a legend\&. If the position legend is \fC\fBQwtPolarPlot::LeftLegend\fP\fP or \fC\fBQwtPolarPlot::RightLegend\fP\fP the legend will be organized in one column from top to down\&. Otherwise the legend items will be placed in a table with a best fit number of columns from left to right\&.
+.PP
+If pos != \fBQwtPolarPlot::ExternalLegend\fP the plot widget will become parent of the legend\&. It will be deleted when the plot is deleted, or another legend is set with \fBinsertLegend()\fP\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIlegend\fP Legend 
+.br
+\fIpos\fP The legend's position\&. For top/left position the number of columns will be limited to 1, otherwise it will be set to unlimited\&.
+.br
+\fIratio\fP Ratio between legend and the bounding rect of title, canvas and axes\&. The legend will be shrunk if it would need more space than the given ratio\&. The ratio is limited to ]0\&.0 \&.\&. 1\&.0]\&. In case of <= 0\&.0 it will be reset to the default ratio\&. The default vertical/horizontal ratio is 0\&.33/0\&.5\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBlegend()\fP, \fBQwtPolarLayout::legendPosition()\fP, \fBQwtPolarLayout::setLegendPosition()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::itemAttached (\fBQwtPolarItem\fP * plotItem, bool on)\fC [signal]\fP"
+A signal indicating, that an item has been attached/detached
+.PP
+\fBParameters\fP
+.RS 4
+\fIplotItem\fP Plot item 
+.br
+\fIon\fP Attached/Detached 
+.RE
+.PP
+
+.SS "QVariant QwtPolarPlot::itemToInfo (\fBQwtPolarItem\fP * plotItem) const\fC [virtual]\fP"
+
+.PP
+Build an information, that can be used to identify a plot item on the legend\&. The default implementation simply wraps the plot item into a QVariant object\&. When overloading \fBitemToInfo()\fP usually \fBinfoToItem()\fP needs to reimplemeted too\&.
+.PP
+.PP
+.nf
+QVariant itemInfo;
+qVariantSetValue( itemInfo, plotItem );
+.fi
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fIplotItem\fP Plot item 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinfoToItem()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1337 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::layoutChanged ()\fC [signal]\fP"
+A signal that is emitted, whenever the layout of the plot has been recalculated\&. 
+.SS "\fBQwtAbstractLegend\fP * QwtPolarPlot::legend ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's legend 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinsertLegend()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 286 of file qwt_polar_plot\&.cpp\&.
+.SS "const \fBQwtAbstractLegend\fP * QwtPolarPlot::legend () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's legend 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinsertLegend()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 295 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::legendDataChanged (const QVariant & itemInfo, const \fBQList\fP< \fBQwtLegendData\fP > & data)\fC [signal]\fP"
+A signal with the attributes how to update the legend entries for a plot item\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIitemInfo\fP Info about a plot, build from \fBitemToInfo()\fP 
+.br
+\fIdata\fP Attributes of the entries ( usually <= 1 ) for the plot item\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBitemToInfo()\fP, \fBinfoToItem()\fP, \fBQwtAbstractLegend::updateLegend()\fP 
+.RE
+.PP
+
+.SS "const QBrush & QwtPolarPlot::plotBackground () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+plot background brush 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBplotBackground()\fP, plotArea() 
+.RE
+.PP
+
+.PP
+Definition at line 322 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtPolarLayout\fP * QwtPolarPlot::plotLayout ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Layout, responsible for the geometry of the plot components 
+.RE
+.PP
+
+.PP
+Definition at line 1274 of file qwt_polar_plot\&.cpp\&.
+.SS "const \fBQwtPolarLayout\fP * QwtPolarPlot::plotLayout () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Layout, responsible for the geometry of the plot components 
+.RE
+.PP
+
+.PP
+Definition at line 1282 of file qwt_polar_plot\&.cpp\&.
+.SS "int QwtPolarPlot::plotMarginHint () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Maximum of all item margin hints\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarItem::marginHint()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1095 of file qwt_polar_plot\&.cpp\&.
+.SS "QRectF QwtPolarPlot::plotRect () const"
+The plot area depends on the size of the canvas and the zoom parameters\&.
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rect of the plot area 
+.RE
+.PP
+
+.PP
+Definition at line 1120 of file qwt_polar_plot\&.cpp\&.
+.SS "QRectF QwtPolarPlot::plotRect (const QRectF & canvasRect) const"
+
+.PP
+Calculate the bounding rect of the plot area\&. The plot area depends on the zoom parameters\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcanvasRect\fP Rectangle of the canvas 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Rectangle for displaying 100% of the plot 
+.RE
+.PP
+
+.PP
+Definition at line 1133 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::replot ()\fC [virtual]\fP, \fC [slot]\fP"
+
+.PP
+Redraw the plot\&. If the autoReplot option is not set (which is the default) or if any curves are attached to raw data, the plot has to be refreshed explicitly in order to make changes visible\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAutoReplot()\fP 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+Calls \fBcanvas()\fP->repaint, take care of infinite recursions 
+.RE
+.PP
+
+.PP
+Definition at line 899 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtScaleDiv\fP * QwtPolarPlot::scaleDiv (int scaleId)"
+
+.PP
+Return the scale division of a specified scale\&. scaleDiv(scaleId)->lBound(), scaleDiv(scaleId)->hBound() are the current limits of the scale\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Scale division
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtScaleDiv\fP, \fBsetScaleDiv()\fP, \fBsetScale()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 598 of file qwt_polar_plot\&.cpp\&.
+.SS "const \fBQwtScaleDiv\fP * QwtPolarPlot::scaleDiv (int scaleId) const"
+
+.PP
+Return the scale division of a specified scale\&. scaleDiv(scaleId)->lBound(), scaleDiv(scaleId)->hBound() are the current limits of the scale\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Scale division
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtScaleDiv\fP, \fBsetScaleDiv()\fP, \fBsetScale()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 579 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtScaleEngine\fP * QwtPolarPlot::scaleEngine (int scaleId)"
+
+.PP
+\fBReturns\fP
+.RS 4
+Scale engine for a specific scale
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScaleEngine()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 499 of file qwt_polar_plot\&.cpp\&.
+.SS "const \fBQwtScaleEngine\fP * QwtPolarPlot::scaleEngine (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Scale engine for a specific scale
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScaleEngine()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 513 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtScaleMap\fP QwtPolarPlot::scaleMap (int scaleId) const"
+Build a scale map
+.PP
+The azimuth map translates between the scale values and angles from [0\&.0, 2 * PI[\&. The radial map translates scale values into the distance from the pole\&. The radial map is calculated from the current geometry of the canvas\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Map for the scale on the canvas\&. With this map pixel coordinates can translated to plot coordinates and vice versa\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtScaleMap\fP, transform(), invTransform() 
+.RE
+.PP
+
+.PP
+Definition at line 710 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtScaleMap\fP QwtPolarPlot::scaleMap (int scaleId, double radius) const"
+Build a scale map
+.PP
+The azimuth map translates between the scale values and angles from [0\&.0, 2 * PI[\&. The radial map translates scale values into the distance from the pole\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.br
+\fIradius\fP Radius of the plot are in pixels 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Map for the scale on the canvas\&. With this map pixel coordinates can translated to plot coordinates and vice versa\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtScaleMap\fP, transform(), invTransform() 
+.RE
+.PP
+
+.PP
+Definition at line 730 of file qwt_polar_plot\&.cpp\&.
+.SS "int QwtPolarPlot::scaleMaxMajor (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the maximum number of major ticks for a specified axis 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScaleMaxMajor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 460 of file qwt_polar_plot\&.cpp\&.
+.SS "int QwtPolarPlot::scaleMaxMinor (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the maximum number of minor ticks for a specified axis 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScaleMaxMinor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 423 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setAutoReplot (bool enable = \fCtrue\fP)"
+
+.PP
+Set or reset the autoReplot option\&. If the autoReplot option is set, the plot will be updated implicitly by manipulating member functions\&. Since this may be time-consuming, it is recommended to leave this option switched off and call \fBreplot()\fP explicitly if necessary\&.
+.PP
+The autoReplot option is set to false by default, which means that the user has to call \fBreplot()\fP in order to make changes visible\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIenable\fP \fCtrue\fP or \fCfalse\fP\&. Defaults to \fCtrue\fP\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBreplot()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 342 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setAutoScale (int scaleId)"
+
+.PP
+Enable autoscaling\&. This member function is used to switch back to autoscaling mode after a fixed scale has been set\&. Autoscaling calculates a useful scale division from the bounding interval of all plot items with the \fBQwtPolarItem::AutoScale\fP attribute\&.
+.PP
+Autoscaling is only supported for the radial scale and enabled as default\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBhasAutoScale()\fP, \fBsetScale()\fP, \fBsetScaleDiv()\fP, \fBQwtPolarItem::boundingInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 368 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setAzimuthOrigin (double origin)\fC [slot]\fP"
+
+.PP
+Change the origin of the azimuth scale\&. The azimuth origin is the angle where the azimuth scale shows the value 0\&.0\&. The default origin is 0\&.0\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIorigin\fP New origin 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBazimuthOrigin()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 615 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setPlotBackground (const QBrush & brush)"
+
+.PP
+Set the background of the plot area\&. The plot area is the circle around the pole\&. It's radius is defined by the radial scale\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIbrush\fP Background Brush 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBplotBackground()\fP, plotArea() 
+.RE
+.PP
+
+.PP
+Definition at line 309 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setScale (int scaleId, double min, double max, double stepSize = \fC0\fP)"
+
+.PP
+Disable autoscaling and specify a fixed scale for a selected scale\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.br
+\fImin\fP 
+.br
+\fImax\fP minimum and maximum of the scale 
+.br
+\fIstepSize\fP Major step size\&. If \fCstep == 0\fP, the step size is calculated automatically using the maxMajor setting\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScaleMaxMajor()\fP, \fBsetAutoScale()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 530 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setScaleDiv (int scaleId, const \fBQwtScaleDiv\fP & scaleDiv)"
+
+.PP
+Disable autoscaling and specify a fixed scale for a selected scale\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.br
+\fIscaleDiv\fP Scale division 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScale()\fP, \fBsetAutoScale()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 554 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setScaleEngine (int scaleId, \fBQwtScaleEngine\fP * scaleEngine)"
+Change the scale engine for an axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.br
+\fIscaleEngine\fP Scale engine
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+axisScaleEngine() 
+.RE
+.PP
+
+.PP
+Definition at line 476 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setScaleMaxMajor (int scaleId, int maxMajor)"
+Set the maximum number of major scale intervals for a specified scale
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.br
+\fImaxMajor\fP maximum number of major steps 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBscaleMaxMajor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 438 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setScaleMaxMinor (int scaleId, int maxMinor)"
+Set the maximum number of major scale intervals for a specified scale
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.br
+\fImaxMinor\fP maximum number of minor steps 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBscaleMaxMajor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 401 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setTitle (const QString & title)"
+Change the plot's title 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP New title 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::setTitle (const \fBQwtText\fP & title)"
+Change the plot's title 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP New title 
+.RE
+.PP
+
+.PP
+Definition at line 134 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtText\fP QwtPolarPlot::title () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's title 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtTextLabel\fP * QwtPolarPlot::titleLabel ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's title 
+.RE
+.PP
+
+.PP
+Definition at line 153 of file qwt_polar_plot\&.cpp\&.
+.SS "const \fBQwtTextLabel\fP * QwtPolarPlot::titleLabel () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the plot's title label\&. 
+.RE
+.PP
+
+.PP
+Definition at line 159 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::unzoom ()"
+Unzoom the plot 
+.PP
+\fBSee also\fP
+.RS 4
+\fBzoom()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 668 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::updateLegend ()"
+Emit \fBlegendDataChanged()\fP for all plot item
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotItem::legendData()\fP, \fBlegendDataChanged()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 252 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::updateLegend (const \fBQwtPolarItem\fP * plotItem)"
+Emit \fBlegendDataChanged()\fP for a plot item
+.PP
+\fBParameters\fP
+.RS 4
+\fIplotItem\fP Plot item 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotItem::legendData()\fP, \fBlegendDataChanged()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 268 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::updateScale (int scaleId)"
+Rebuild the scale 
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+
+.PP
+Definition at line 1040 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtInterval\fP QwtPolarPlot::visibleInterval () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Bounding interval of the radial scale that is visible on the canvas\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1170 of file qwt_polar_plot\&.cpp\&.
+.SS "void QwtPolarPlot::zoom (const \fBQwtPointPolar\fP & zoomPos, double zoomFactor)"
+
+.PP
+Translate and in/decrease the zoom factor\&. In zoom mode the zoom position is in the center of the canvas\&. The radius of the circle depends on the size of the plot canvas, that is divided by the zoom factor\&. Thus a factor < 1\&.0 zoom in\&.
+.PP
+Setting an invalid zoom position disables zooming\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIzoomPos\fP Center of the translation 
+.br
+\fIzoomFactor\fP Zoom factor
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBunzoom()\fP, \fBzoomPos()\fP, \fBzoomFactor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 651 of file qwt_polar_plot\&.cpp\&.
+.SS "double QwtPolarPlot::zoomFactor () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Zoom factor 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBzoom()\fP, \fBzoomPos()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 691 of file qwt_polar_plot\&.cpp\&.
+.SS "\fBQwtPointPolar\fP QwtPolarPlot::zoomPos () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Zoom position 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBzoom()\fP, \fBzoomFactor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 682 of file qwt_polar_plot\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

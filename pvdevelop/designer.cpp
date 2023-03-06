@@ -55,7 +55,8 @@ Designer::Designer(const char *mask)
   {
     if(opt_develop.script == PV_LUA) 
     {
-      filename.sprintf("mask%d.lua", imask); 
+      //rlmurx-was-here filename.sprintf("mask%d.lua", imask); 
+      filename = QString::asprintf("mask%d.lua", imask); 
       getWidgetsFromMask(filename.toUtf8(), root);
     }
     else
@@ -430,9 +431,11 @@ void MyRootWidget::printStatusMessage(QWidget *child)
   if(child != NULL && statusBar != NULL)
   {
     QString pos;
-    pos.sprintf(" x=%d y=%d",child->x(),child->y());
+    //rlmurx-was-here pos.sprintf(" x=%d y=%d",child->x(),child->y());
+    pos = QString::asprintf(" x=%d y=%d",child->x(),child->y());
     QString dim;
-    dim.sprintf(" width=%d height=%d",child->width(),child->height());
+    //rlmurx-was-here dim.sprintf(" width=%d height=%d",child->width(),child->height());
+    dim = QString::asprintf(" width=%d height=%d",child->width(),child->height());
     QString message = child->statusTip();
     message += " objectName=\"";
     message += child->objectName();

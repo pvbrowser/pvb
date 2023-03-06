@@ -1,0 +1,265 @@
+.TH "QwtPlotAbstractCanvas" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotAbstractCanvas \- Base class for all type of plot canvases\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_abstract_canvas\&.h>\fP
+.PP
+Inherited by \fBQwtPlotAbstractGLCanvas\fP, and \fBQwtPlotCanvas\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBFocusIndicator\fP { \fBNoFocusIndicator\fP, \fBCanvasFocusIndicator\fP, \fBItemFocusIndicator\fP }"
+.br
+.RI "Focus indicator The default setting is NoFocusIndicator\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotAbstractCanvas\fP (QWidget *\fBcanvasWidget\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotAbstractCanvas\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBQwtPlot\fP * \fBplot\fP ()"
+.br
+.RI "Return parent plot widget\&. "
+.ti -1c
+.RI "const \fBQwtPlot\fP * \fBplot\fP () const"
+.br
+.RI "Return parent plot widget\&. "
+.ti -1c
+.RI "void \fBsetFocusIndicator\fP (\fBFocusIndicator\fP)"
+.br
+.ti -1c
+.RI "\fBFocusIndicator\fP \fBfocusIndicator\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBorderRadius\fP (double)"
+.br
+.ti -1c
+.RI "double \fBborderRadius\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "QWidget * \fBcanvasWidget\fP ()"
+.br
+.ti -1c
+.RI "const QWidget * \fBcanvasWidget\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBdrawFocusIndicator\fP (QPainter *)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawBorder\fP (QPainter *)"
+.br
+.ti -1c
+.RI "virtual void \fBdrawBackground\fP (QPainter *)"
+.br
+.RI "Helper function for the derived plot canvas\&. "
+.ti -1c
+.RI "void \fBfillBackground\fP (QPainter *)"
+.br
+.RI "Helper function for the derived plot canvas\&. "
+.ti -1c
+.RI "void \fBdrawCanvas\fP (QPainter *)"
+.br
+.RI "Draw the plot to the canvas\&. "
+.ti -1c
+.RI "void \fBdrawStyled\fP (QPainter *, bool)"
+.br
+.RI "Helper function for the derived plot canvas\&. "
+.ti -1c
+.RI "void \fBdrawUnstyled\fP (QPainter *)"
+.br
+.RI "Helper function for the derived plot canvas\&. "
+.ti -1c
+.RI "QPainterPath \fBcanvasBorderPath\fP (const QRect &rect) const"
+.br
+.ti -1c
+.RI "void \fBupdateStyleSheetInfo\fP ()"
+.br
+.RI "Update the cached information about the current style sheet\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all type of plot canvases\&. 
+.PP
+Definition at line 21 of file qwt_plot_abstract_canvas\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPlotAbstractCanvas::FocusIndicator\fP"
+
+.PP
+Focus indicator The default setting is NoFocusIndicator\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFocusIndicator()\fP, \fBfocusIndicator()\fP, \fBdrawFocusIndicator()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoFocusIndicator \fP\fP
+Don't paint a focus indicator\&. 
+.TP
+\fB\fICanvasFocusIndicator \fP\fP
+The focus is related to the complete canvas\&. Paint the focus indicator using \fBdrawFocusIndicator()\fP 
+.TP
+\fB\fIItemFocusIndicator \fP\fP
+The focus is related to an item (curve, point, \&.\&.\&.) on the canvas\&. It is up to the application to display a focus indication using f\&.e\&. highlighting\&. 
+.PP
+Definition at line 30 of file qwt_plot_abstract_canvas\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotAbstractCanvas::QwtPlotAbstractCanvas (QWidget * canvasWidget)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcanvasWidget\fP plot canvas widget 
+.RE
+.PP
+
+.PP
+Definition at line 534 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtPlotAbstractCanvas::borderRadius () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Radius for the corners of the border frame 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBorderRadius()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 613 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "QPainterPath QwtPlotAbstractCanvas::canvasBorderPath (const QRect & rect) const\fC [protected]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Path for the canvas border 
+.RE
+.PP
+
+.PP
+Definition at line 619 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "QWidget * QwtPlotAbstractCanvas::canvasWidget ()\fC [protected]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+canvas widget 
+.RE
+.PP
+
+.PP
+Definition at line 872 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "const QWidget * QwtPlotAbstractCanvas::canvasWidget () const\fC [protected]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+canvas widget 
+.RE
+.PP
+
+.PP
+Definition at line 878 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractCanvas::drawBorder (QPainter * painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draw the border of the canvas 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtPlotCanvas\fP\&.
+.PP
+Definition at line 628 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractCanvas::drawFocusIndicator (QPainter * painter)\fC [protected]\fP, \fC [virtual]\fP"
+Draw the focus indication 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.RE
+.PP
+
+.PP
+Definition at line 587 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "\fBQwtPlotAbstractCanvas::FocusIndicator\fP QwtPlotAbstractCanvas::focusIndicator () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Focus indicator
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBFocusIndicator\fP, \fBsetFocusIndicator()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 578 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractCanvas::setBorderRadius (double radius)"
+Set the radius for the corners of the border frame
+.PP
+\fBParameters\fP
+.RS 4
+\fIradius\fP Radius of a rounded corner 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBborderRadius()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 604 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractCanvas::setFocusIndicator (\fBFocusIndicator\fP focusIndicator)"
+Set the focus indicator
+.PP
+\fBSee also\fP
+.RS 4
+\fBFocusIndicator\fP, \fBfocusIndicator()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 568 of file qwt_plot_abstract_canvas\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

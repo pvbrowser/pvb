@@ -21,7 +21,7 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
-const char pvserver_version[] = "5.1.7";
+const char pvserver_version[] = "5.15.2";
 
 // define WIN
 #ifdef _WIN32
@@ -437,7 +437,8 @@ Key_F12 = 0x100003b
 enum QpwLegend      { BottomLegend = 0, TopLegend, LeftLegend, RightLegend};
 enum QwtAxis        { yLeft, yRight, xBottom, xTop, axisCnt };
 enum QwtAutoscale   { pvNone = 0, IncludeRef = 1, Symmetric = 2, Floating = 4, Logarithmic = 8, Inverted = 16 };
-enum ScalePosition  { ScaleLeft, ScaleRight, ScaleTop, ScaleBottom };
+//rlmurx-was-here enum ScalePosition  { ScaleLeft, ScaleRight, ScaleTop, ScaleBottom };
+enum ScalePosition  { ScaleNone, ScaleLeft, ScaleRight, ScaleTop, ScaleBottom };
 enum ThermoPosition { ThermoNone, ThermoLeft, ThermoRight, ThermoTop, ThermoBottom};
 enum KnobSymbol     { KnobLine, KnobDot };
 enum CounterButton  { CounterButton1, CounterButton2, CounterButton3, CounterButtonCnt };

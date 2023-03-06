@@ -687,7 +687,7 @@ static int slotMouseReleasedEvent(PARAM *p, int id, DATA *d, float x, float y)
 
   if (id == svgMain && d->popupOn && d->mousePressed)
   {
-    char buff[1024], url[1024], *cptr;
+    char buff[3500], url[1024], *cptr;
 
     d->mouseX1 = x;
     d->mouseY1 = y;

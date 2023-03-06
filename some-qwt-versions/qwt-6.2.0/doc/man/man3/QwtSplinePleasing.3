@@ -1,0 +1,125 @@
+.TH "QwtSplinePleasing" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplinePleasing \- A spline with G1 continuity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_pleasing\&.h>\fP
+.PP
+Inherits \fBQwtSplineG1\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplinePleasing\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplinePleasing\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual uint \fBlocality\fP () const override"
+.br
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< QLineF > \fBbezierControlLines\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A spline with G1 continuity\&. 
+
+\fBQwtSplinePleasing\fP is some sort of cardinal spline, with non C1 continuous extra rules for narrow angles\&. It has a locality of 2\&.
+.PP
+\fBNote\fP
+.RS 4
+The algorithm is the one offered by a popular office package\&. 
+.RE
+.PP
+
+.PP
+Definition at line 23 of file qwt_spline_pleasing\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSplinePleasing::QwtSplinePleasing ()"
+
+.PP
+Constructor\&. The default setting is a non closing spline with uniform parametrization\&. ( \fBQwtSplineParametrization::ParameterUniform\fP )\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline::setParametrization()\fP, \fBQwtSpline::setBoundaryType()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 265 of file qwt_spline_pleasing\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQVector\fP< QLineF > QwtSplinePleasing::bezierControlLines (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns the 2 control points of each curve as QLineF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Control points of the interpolating Bezier curves 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSplineInterpolating\fP\&.
+.PP
+Definition at line 327 of file qwt_spline_pleasing\&.cpp\&.
+.SS "uint QwtSplinePleasing::locality () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+2 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSpline\fP\&.
+.PP
+Definition at line 276 of file qwt_spline_pleasing\&.cpp\&.
+.SS "QPainterPath QwtSplinePleasing::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+QPainterPath Painter path, that can be rendered by QPainter 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineInterpolating\fP\&.
+.PP
+Definition at line 290 of file qwt_spline_pleasing\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

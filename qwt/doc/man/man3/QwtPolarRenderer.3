@@ -1,0 +1,246 @@
+.TH "QwtPolarRenderer" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarRenderer \- Renderer for exporting a polar plot to a document, a printer or anything else, that is supported by QPainter/QPaintDevice\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_renderer\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarRenderer\fP (QObject *parent=NULL)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPolarRenderer\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBrenderDocument\fP (\fBQwtPolarPlot\fP *, const QString &format, const QSizeF &sizeMM, int resolution=85)"
+.br
+.ti -1c
+.RI "void \fBrenderDocument\fP (\fBQwtPolarPlot\fP *, const QString &title, const QString &format, const QSizeF &sizeMM, int resolution=85)"
+.br
+.ti -1c
+.RI "void \fBrenderTo\fP (\fBQwtPolarPlot\fP *, QPrinter &) const"
+.br
+.RI "Render the plot to a QPrinter\&. "
+.ti -1c
+.RI "void \fBrenderTo\fP (\fBQwtPolarPlot\fP *, QPaintDevice &) const"
+.br
+.RI "Render the plot to a \fCQPaintDevice\fP\&. "
+.ti -1c
+.RI "virtual void \fBrender\fP (\fBQwtPolarPlot\fP *, QPainter *, const QRectF &rect) const"
+.br
+.RI "Render the plot to a given rectangle ( f\&.e QPrinter, QSvgRenderer ) "
+.ti -1c
+.RI "bool \fBexportTo\fP (\fBQwtPolarPlot\fP *, const QString &documentName, const QSizeF &sizeMM=QSizeF(200, 200), int resolution=85)"
+.br
+.RI "Execute a file dialog and render the plot to the selected file\&. "
+.ti -1c
+.RI "virtual void \fBrenderTitle\fP (QPainter *, const QRectF &) const"
+.br
+.ti -1c
+.RI "virtual void \fBrenderLegend\fP (const \fBQwtPolarPlot\fP *, QPainter *, const QRectF &) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Renderer for exporting a polar plot to a document, a printer or anything else, that is supported by QPainter/QPaintDevice\&. 
+.PP
+Definition at line 35 of file qwt_polar_renderer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarRenderer::QwtPolarRenderer (QObject * parent = \fCNULL\fP)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP Parent object 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file qwt_polar_renderer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QwtPolarRenderer::exportTo (\fBQwtPolarPlot\fP * plot, const QString & documentName, const QSizeF & sizeMM = \fCQSizeF( 200, 200 )\fP, int resolution = \fC85\fP)"
+
+.PP
+Execute a file dialog and render the plot to the selected file\&. The document will be rendered in 85 dpi for a size 30x30 cm
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIdocumentName\fP Default document name 
+.br
+\fIsizeMM\fP Size for the document in millimeters\&. 
+.br
+\fIresolution\fP Resolution in dots per Inch (dpi)
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 430 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::render (\fBQwtPolarPlot\fP * plot, QPainter * painter, const QRectF & plotRect) const\fC [virtual]\fP"
+
+.PP
+Render the plot to a given rectangle ( f\&.e QPrinter, QSvgRenderer ) 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget to be rendered 
+.br
+\fIpainter\fP Painter 
+.br
+\fIplotRect\fP Bounding rectangle for the plot 
+.RE
+.PP
+
+.PP
+Definition at line 326 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::renderDocument (\fBQwtPolarPlot\fP * plot, const QString & fileName, const QSizeF & sizeMM, int resolution = \fC85\fP)"
+Render a polar plot to a file
+.PP
+The format of the document will be autodetected from the suffix of the filename\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIfileName\fP Path of the file, where the document will be stored 
+.br
+\fIsizeMM\fP Size for the document in millimeters\&. 
+.br
+\fIresolution\fP Resolution in dots per Inch (dpi) 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::renderDocument (\fBQwtPolarPlot\fP * plot, const QString & fileName, const QString & format, const QSizeF & sizeMM, int resolution = \fC85\fP)"
+Render a plot to a file
+.PP
+Supported formats are:
+.PP
+.IP "\(bu" 2
+pdf
+.br
+
+.IP "\(bu" 2
+ps
+.br
+
+.IP "\(bu" 2
+svg
+.br
+
+.IP "\(bu" 2
+all image formats supported by Qt, see QImageWriter::supportedImageFormats()
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIfileName\fP Path of the file, where the document will be stored 
+.br
+\fIformat\fP Format for the document 
+.br
+\fIsizeMM\fP Size for the document in millimeters\&. 
+.br
+\fIresolution\fP Resolution in dots per Inch (dpi)
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderTo()\fP, \fBrender()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::renderLegend (const \fBQwtPolarPlot\fP * plot, QPainter * painter, const QRectF & rect) const\fC [virtual]\fP"
+Render the legend into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIpainter\fP Painter 
+.br
+\fIrect\fP Bounding rectangle 
+.RE
+.PP
+
+.PP
+Definition at line 411 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::renderTitle (QPainter * painter, const QRectF & rect) const\fC [virtual]\fP"
+Render the title into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIrect\fP Bounding rectangle 
+.RE
+.PP
+
+.PP
+Definition at line 391 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::renderTo (\fBQwtPolarPlot\fP * plot, QPaintDevice & paintDevice) const"
+
+.PP
+Render the plot to a \fCQPaintDevice\fP\&. This function renders the contents of a \fBQwtPolarPlot\fP instance to \fCQPaintDevice\fP object\&. The target rectangle is derived from its device metrics\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot to be rendered 
+.br
+\fIpaintDevice\fP device to paint on, f\&.e a QImage
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP, \fBrender()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 247 of file qwt_polar_renderer\&.cpp\&.
+.SS "void QwtPolarRenderer::renderTo (\fBQwtPolarPlot\fP * plot, QPrinter & printer) const"
+
+.PP
+Render the plot to a QPrinter\&. This function renders the contents of a \fBQwtPolarPlot\fP instance to \fCQPaintDevice\fP object\&. The size is derived from the printer metrics\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot to be rendered 
+.br
+\fIprinter\fP Printer to paint on
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP, \fBrender()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 273 of file qwt_polar_renderer\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

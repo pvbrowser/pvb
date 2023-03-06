@@ -1,0 +1,149 @@
+.TH "QwtCompassScaleDraw" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtCompassScaleDraw \- A special scale draw made for \fBQwtCompass\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_compass\&.h>\fP
+.PP
+Inherits \fBQwtRoundScaleDraw\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtCompassScaleDraw\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtCompassScaleDraw\fP (const \fBQMap\fP< double, QString > &map)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtCompassScaleDraw\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetLabelMap\fP (const \fBQMap\fP< double, QString > &map)"
+.br
+.RI "Set a map, mapping values to labels\&. "
+.ti -1c
+.RI "\fBQMap\fP< double, QString > \fBlabelMap\fP () const"
+.br
+.ti -1c
+.RI "virtual \fBQwtText\fP \fBlabel\fP (double value) const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A special scale draw made for \fBQwtCompass\fP\&. 
+
+\fBQwtCompassScaleDraw\fP maps values to strings using a special map, that can be modified by the application
+.PP
+The default map consists of the labels N, NE, E, SE, S, SW, W, NW\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtCompass\fP 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file qwt_compass\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtCompassScaleDraw::QwtCompassScaleDraw ()\fC [explicit]\fP"
+
+.PP
+Constructor\&. Initializes a label map for multiples of 45 degrees 
+.PP
+Definition at line 28 of file qwt_compass\&.cpp\&.
+.SS "QwtCompassScaleDraw::QwtCompassScaleDraw (const \fBQMap\fP< double, QString > & map)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImap\fP Value to label map 
+.RE
+.PP
+
+.PP
+Definition at line 63 of file qwt_compass\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtText\fP QwtCompassScaleDraw::label (double value) const\fC [override]\fP, \fC [virtual]\fP"
+Map a value to a corresponding label
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value that will be mapped
+.RE
+.PP
+\fBlabel()\fP looks in the \fBlabelMap()\fP for a corresponding label for value or returns an null text\&.
+.PP
+\fBReturns\fP
+.RS 4
+Label 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBlabelMap()\fP, \fBsetLabelMap()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtAbstractScaleDraw\fP\&.
+.PP
+Definition at line 116 of file qwt_compass\&.cpp\&.
+.SS "\fBQMap\fP< double, QString > QwtCompassScaleDraw::labelMap () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+map, mapping values to labels 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLabelMap()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file qwt_compass\&.cpp\&.
+.SS "void QwtCompassScaleDraw::setLabelMap (const \fBQMap\fP< double, QString > & map)"
+
+.PP
+Set a map, mapping values to labels\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fImap\fP Value to label map
+.RE
+.PP
+The values of the major ticks are found by looking into this map\&. The default map consists of the labels N, NE, E, SE, S, SW, W, NW\&.
+.PP
+\fBWarning\fP
+.RS 4
+The map will have no effect for values that are no major tick values\&. Major ticks can be changed by QwtScaleDraw::setScale
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBlabelMap()\fP, scaleDraw(), setScale() 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file qwt_compass\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

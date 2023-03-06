@@ -1,0 +1,11 @@
+<area shape="rect" href="$class_qwt_abstract_scale.html" title="An abstract base class for classes containing a scale." alt="" coords="184,55,312,79">
+<area shape="rect" href="$class_qwt_knob.html" title="The Knob Widget." alt="" coords="369,103,447,127">
+<area shape="rect" href="$class_qwt_slider.html" title="The Slider Widget." alt="" coords="368,55,448,79">
+<area shape="rect" href="$class_qwt_thermo.html" title="The Thermometer Widget." alt="" coords="363,7,453,31">
+<area shape="rect" href="$class_qwt_double_range.html" title="A class which controls a value within an interval." alt="" coords="8,127,133,151">
+<area shape="rect" href="$class_qwt_abstract_slider.html" title="An abstract base class for slider widgets." alt="" coords="184,151,312,175">
+<area shape="rect" href="$class_qwt_counter.html" title="The Counter Widget." alt="" coords="201,103,295,127">
+<area shape="rect" href="$class_qwt_dial.html" title="QwtDial class provides a rounded range control." alt="" coords="373,199,443,223">
+<area shape="rect" href="$class_qwt_wheel.html" title="The Wheel Widget." alt="" coords="367,151,449,175">
+<area shape="rect" href="$class_qwt_analog_clock.html" title="An analog clock." alt="" coords="504,175,624,199">
+<area shape="rect" href="$class_qwt_compass.html" title="A Compass Widget." alt="" coords="513,223,615,247">

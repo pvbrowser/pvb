@@ -1,0 +1,412 @@
+.TH "QwtPanner" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPanner \- \fBQwtPanner\fP provides panning of a widget\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_panner\&.h>\fP
+.PP
+Inherits QWidget\&.
+.PP
+Inherited by \fBQwtPlotPanner\fP, and \fBQwtPolarPanner\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBpanned\fP (int dx, int dy)"
+.br
+.ti -1c
+.RI "void \fBmoved\fP (int dx, int dy)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPanner\fP (QWidget *parent)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPanner\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetEnabled\fP (bool)"
+.br
+.RI "En/disable the panner\&. "
+.ti -1c
+.RI "bool \fBisEnabled\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetMouseButton\fP (Qt::MouseButton, Qt::KeyboardModifiers=Qt::NoModifier)"
+.br
+.ti -1c
+.RI "void \fBgetMouseButton\fP (Qt::MouseButton &button, Qt::KeyboardModifiers &) const"
+.br
+.RI "Get mouse button and modifiers used for panning\&. "
+.ti -1c
+.RI "void \fBsetAbortKey\fP (int key, Qt::KeyboardModifiers=Qt::NoModifier)"
+.br
+.ti -1c
+.RI "void \fBgetAbortKey\fP (int &key, Qt::KeyboardModifiers &) const"
+.br
+.RI "Get the abort key and modifiers\&. "
+.ti -1c
+.RI "void \fBsetCursor\fP (const QCursor &)"
+.br
+.ti -1c
+.RI "const QCursor \fBcursor\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetOrientations\fP (Qt::Orientations)"
+.br
+.ti -1c
+.RI "Qt::Orientations \fBorientations\fP () const"
+.br
+.RI "Return the orientation, where panning is enabled\&. "
+.ti -1c
+.RI "bool \fBisOrientationEnabled\fP (Qt::Orientation) const"
+.br
+.ti -1c
+.RI "virtual bool \fBeventFilter\fP (QObject *, QEvent *) override"
+.br
+.RI "Event filter\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBwidgetMousePressEvent\fP (QMouseEvent *)"
+.br
+.ti -1c
+.RI "virtual void \fBwidgetMouseReleaseEvent\fP (QMouseEvent *)"
+.br
+.ti -1c
+.RI "virtual void \fBwidgetMouseMoveEvent\fP (QMouseEvent *)"
+.br
+.ti -1c
+.RI "virtual void \fBwidgetKeyPressEvent\fP (QKeyEvent *)"
+.br
+.ti -1c
+.RI "virtual void \fBwidgetKeyReleaseEvent\fP (QKeyEvent *)"
+.br
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *) override"
+.br
+.RI "Paint event\&. "
+.ti -1c
+.RI "virtual QBitmap \fBcontentsMask\fP () const"
+.br
+.RI "Calculate a mask for the contents of the panned widget\&. "
+.ti -1c
+.RI "virtual QPixmap \fBgrab\fP () const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBQwtPanner\fP provides panning of a widget\&. 
+
+\fBQwtPanner\fP grabs the contents of a widget, that can be dragged in all directions\&. The offset between the start and the end position is emitted by the panned signal\&.
+.PP
+\fBQwtPanner\fP grabs the content of the widget into a pixmap and moves the pixmap around, without initiating any repaint events for the widget\&. Areas, that are not part of content are not painted while panning\&. This makes panning fast enough for widgets, where repaints are too slow for mouse movements\&.
+.PP
+For widgets, where repaints are very fast it might be better to implement panning manually by mapping mouse events into paint events\&. 
+.PP
+Definition at line 35 of file qwt_panner\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPanner::QwtPanner (QWidget * parent)\fC [explicit]\fP"
+Creates an panner that is enabled for the left mouse button\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP Parent widget to be panned 
+.RE
+.PP
+
+.PP
+Definition at line 87 of file qwt_panner\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QBitmap QwtPanner::contentsMask () const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate a mask for the contents of the panned widget\&. Sometimes only parts of the contents of a widget should be panned\&. F\&.e\&. for a widget with a styled background with rounded borders only the area inside of the border should be panned\&.
+.PP
+\fBReturns\fP
+.RS 4
+An empty bitmap, indicating no mask 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtPlotPanner\fP\&.
+.PP
+Definition at line 297 of file qwt_panner\&.cpp\&.
+.SS "const QCursor QwtPanner::cursor () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Cursor that is active while panning 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetCursor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 167 of file qwt_panner\&.cpp\&.
+.SS "bool QwtPanner::eventFilter (QObject * object, QEvent * event)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Event filter\&. When \fBisEnabled()\fP is true mouse events of the observed widget are filtered\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIobject\fP Object to be filtered 
+.br
+\fIevent\fP Event
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Always false, beside for paint events for the parent widget\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBwidgetMousePressEvent()\fP, \fBwidgetMouseReleaseEvent()\fP, \fBwidgetMouseMoveEvent()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 330 of file qwt_panner\&.cpp\&.
+.SS "QPixmap QwtPanner::grab () const\fC [protected]\fP, \fC [virtual]\fP"
+Grab the widget into a pixmap\&. 
+.PP
+\fBReturns\fP
+.RS 4
+Grabbed pixmap 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtPlotPanner\fP\&.
+.PP
+Definition at line 306 of file qwt_panner\&.cpp\&.
+.SS "bool QwtPanner::isEnabled () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true when enabled, false otherwise 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetEnabled\fP, \fBeventFilter()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 240 of file qwt_panner\&.cpp\&.
+.SS "bool QwtPanner::isOrientationEnabled (Qt::Orientation o) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True if an orientation is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBorientations()\fP, \fBsetOrientations()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 231 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::moved (int dx, int dy)\fC [signal]\fP"
+Signal emitted, while the widget moved, but panning is not finished\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP Offset in horizontal direction 
+.br
+\fIdy\fP Offset in vertical direction 
+.RE
+.PP
+
+.SS "void QwtPanner::paintEvent (QPaintEvent * event)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Paint event\&. Repaint the grabbed pixmap on its current position and fill the empty spaces by the background of the parent widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP Paint event 
+.RE
+.PP
+
+.PP
+Definition at line 253 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::panned (int dx, int dy)\fC [signal]\fP"
+Signal emitted, when panning is done
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP Offset in horizontal direction 
+.br
+\fIdy\fP Offset in vertical direction 
+.RE
+.PP
+
+.SS "void QwtPanner::setAbortKey (int key, Qt::KeyboardModifiers modifiers = \fCQt::NoModifier\fP)"
+Change the abort key The defaults are Qt::Key_Escape and Qt::NoModifiers
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP Key ( See Qt::Keycode ) 
+.br
+\fImodifiers\fP Keyboard modifiers 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::setCursor (const QCursor & cursor)"
+Change the cursor, that is active while panning The default is the cursor of the parent widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcursor\fP New cursor
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetCursor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 156 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::setEnabled (bool on)"
+
+.PP
+En/disable the panner\&. When enabled is true an event filter is installed for the observed widget, otherwise the event filter is removed\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIon\fP true or false 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBisEnabled()\fP, \fBeventFilter()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 188 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::setMouseButton (Qt::MouseButton button, Qt::KeyboardModifiers modifiers = \fCQt::NoModifier\fP)"
+Change the mouse button and modifiers used for panning The defaults are Qt::LeftButton and Qt::NoModifier 
+.PP
+Definition at line 110 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::setOrientations (Qt::Orientations o)"
+Set the orientations, where panning is enabled The default value is in both directions: Qt::Horizontal | Qt::Vertical
+.PP
+/param o Orientation 
+.PP
+Definition at line 216 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::widgetKeyPressEvent (QKeyEvent * keyEvent)\fC [protected]\fP, \fC [virtual]\fP"
+Handle a key press event for the observed widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIkeyEvent\fP Key event 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBeventFilter()\fP, \fBwidgetKeyReleaseEvent()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::widgetKeyReleaseEvent (QKeyEvent * keyEvent)\fC [protected]\fP, \fC [virtual]\fP"
+Handle a key release event for the observed widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIkeyEvent\fP Key event 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBeventFilter()\fP, \fBwidgetKeyReleaseEvent()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 502 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::widgetMouseMoveEvent (QMouseEvent * mouseEvent)\fC [protected]\fP, \fC [virtual]\fP"
+Handle a mouse move event for the observed widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fImouseEvent\fP Mouse event 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBeventFilter()\fP, \fBwidgetMousePressEvent()\fP, \fBwidgetMouseReleaseEvent()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 421 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::widgetMousePressEvent (QMouseEvent * mouseEvent)\fC [protected]\fP, \fC [virtual]\fP"
+Handle a mouse press event for the observed widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fImouseEvent\fP Mouse event 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBeventFilter()\fP, \fBwidgetMouseReleaseEvent()\fP, \fBwidgetMouseMoveEvent()\fP, 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtPolarPanner\fP\&.
+.PP
+Definition at line 381 of file qwt_panner\&.cpp\&.
+.SS "void QwtPanner::widgetMouseReleaseEvent (QMouseEvent * mouseEvent)\fC [protected]\fP, \fC [virtual]\fP"
+Handle a mouse release event for the observed widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fImouseEvent\fP Mouse event 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBeventFilter()\fP, \fBwidgetMousePressEvent()\fP, \fBwidgetMouseMoveEvent()\fP, 
+.RE
+.PP
+
+.PP
+Definition at line 449 of file qwt_panner\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

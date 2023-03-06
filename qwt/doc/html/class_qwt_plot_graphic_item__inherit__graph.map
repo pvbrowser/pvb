@@ -1,0 +1,5 @@
+<map id="QwtPlotGraphicItem" name="QwtPlotGraphicItem">
+<area shape="rect" id="node1" title="A plot item, which displays a recorded sequence of QPainter commands." alt="" coords="5,80,145,107"/>
+<area shape="rect" id="node3" href="$class_qwt_plot_svg_item.html" title="A plot item, which displays data in Scalable Vector Graphics (SVG) format." alt="" coords="17,155,134,181"/>
+<area shape="rect" id="node2" href="$class_qwt_plot_item.html" title="Base class for items on the plot canvas." alt="" coords="28,5,123,32"/>
+</map>

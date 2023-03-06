@@ -1,0 +1,64 @@
+.TH "QwtVectorFieldData" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtVectorFieldData \- Interface for iterating over an array of vector field samples\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_series_data\&.h>\fP
+.PP
+Inherits \fBQwtArraySeriesData< QwtVectorFieldSample >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtVectorFieldData\fP (const \fBQVector\fP< \fBQwtVectorFieldSample\fP > &=\fBQVector\fP< \fBQwtVectorFieldSample\fP >())"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.RI "Calculate the bounding rectangle\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Interface for iterating over an array of vector field samples\&. 
+.PP
+Definition at line 249 of file qwt_series_data\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtVectorFieldData::QwtVectorFieldData (const \fBQVector\fP< \fBQwtVectorFieldSample\fP > & samples = \fC\fBQVector\fP< \fBQwtVectorFieldSample\fP >( )\fP)"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsamples\fP Samples 
+.RE
+.PP
+
+.PP
+Definition at line 327 of file qwt_series_data\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRectF QwtVectorFieldData::boundingRect () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate the bounding rectangle\&. The bounding rectangle is calculated once by iterating over all points and is stored for all following requests\&.
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rectangle 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSeriesData< T >\fP\&.
+.PP
+Definition at line 341 of file qwt_series_data\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,198 @@
+.TH "QwtPlotGLCanvas" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotGLCanvas \- An alternative canvas for a \fBQwtPlot\fP derived from QGLWidget\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_glcanvas\&.h>\fP
+.PP
+Inherits QGLWidget, and \fBQwtPlotAbstractGLCanvas\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBreplot\fP ()"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotGLCanvas\fP (\fBQwtPlot\fP *=NULL)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtPlotGLCanvas\fP (const QGLFormat &, \fBQwtPlot\fP *=NULL)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotGLCanvas\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual Q_INVOKABLE void \fBinvalidateBackingStore\fP () override"
+.br
+.RI "Invalidate the internal backing store\&. "
+.ti -1c
+.RI "Q_INVOKABLE QPainterPath \fBborderPath\fP (const QRect &) const"
+.br
+.ti -1c
+.RI "virtual bool \fBevent\fP (QEvent *) override"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *) override"
+.br
+.ti -1c
+.RI "virtual void \fBinitializeGL\fP () override"
+.br
+.RI "No operation - reserved for some potential use in the future\&. "
+.ti -1c
+.RI "virtual void \fBpaintGL\fP () override"
+.br
+.RI "Paint the plot\&. "
+.ti -1c
+.RI "virtual void \fBresizeGL\fP (int width, int height) override"
+.br
+.RI "No operation - reserved for some potential use in the future\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An alternative canvas for a \fBQwtPlot\fP derived from QGLWidget\&. 
+
+\fBQwtPlotGLCanvas\fP implements the very basics to act as canvas inside of a \fBQwtPlot\fP widget\&. It might be extended to a full featured alternative to \fBQwtPlotCanvas\fP in a future version of Qwt\&.
+.PP
+Even if \fBQwtPlotGLCanvas\fP is not derived from QFrame it imitates its API\&. When using style sheets it supports the box model - beside backgrounds with rounded borders\&.
+.PP
+Since Qt 5\&.4 QOpenGLWidget is available, that is used by \fBQwtPlotOpenGLCanvas\fP\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlot::setCanvas()\fP, \fBQwtPlotCanvas\fP, \fBQwtPlotOpenGLCanvas\fP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+With Qt4 you might want to use the QPaintEngine::OpenGL paint engine ( see QGL::setPreferredPaintEngine() )\&. On a Linux test system QPaintEngine::OpenGL2 shows very basic problems like translated geometries\&.
+.PP
+Another way for getting hardware accelerated graphics is using an OpenGL offscreen buffer ( QwtPlotCanvas::OpenGLBuffer ) with \fBQwtPlotCanvas\fP\&. Performance is worse, than rendering straight to a QGLWidget, but is usually better integrated into a desktop application\&. 
+.RE
+.PP
+
+.PP
+Definition at line 45 of file qwt_plot_glcanvas\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotGLCanvas::QwtPlotGLCanvas (\fBQwtPlot\fP * plot = \fCNULL\fP)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Parent plot widget 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlot::setCanvas()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file qwt_plot_glcanvas\&.cpp\&.
+.SS "QwtPlotGLCanvas::QwtPlotGLCanvas (const QGLFormat & format, \fBQwtPlot\fP * plot = \fCNULL\fP)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIformat\fP OpenGL rendering options 
+.br
+\fIplot\fP Parent plot widget 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlot::setCanvas()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 69 of file qwt_plot_glcanvas\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QPainterPath QwtPlotGLCanvas::borderPath (const QRect & rect) const"
+Calculate the painter path for a styled or rounded border
+.PP
+When the canvas has no styled background or rounded borders the painter path is empty\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle of the canvas 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be used for clipping 
+.RE
+.PP
+
+.PP
+Definition at line 157 of file qwt_plot_glcanvas\&.cpp\&.
+.SS "bool QwtPlotGLCanvas::event (QEvent * event)\fC [override]\fP, \fC [virtual]\fP"
+Qt event handler for QEvent::PolishRequest and QEvent::StyleChange 
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP Qt Event 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+See QGLWidget::event() 
+.RE
+.PP
+
+.PP
+Definition at line 110 of file qwt_plot_glcanvas\&.cpp\&.
+.SS "void QwtPlotGLCanvas::paintEvent (QPaintEvent * event)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Paint event
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP Paint event 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlot::drawCanvas()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 100 of file qwt_plot_glcanvas\&.cpp\&.
+.SS "void QwtPlotGLCanvas::replot ()\fC [slot]\fP"
+Invalidate the paint cache and repaint the canvas 
+.PP
+\fBSee also\fP
+.RS 4
+invalidatePaintCache() 
+.RE
+.PP
+
+.PP
+Definition at line 131 of file qwt_plot_glcanvas\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

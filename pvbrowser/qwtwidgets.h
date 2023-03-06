@@ -40,6 +40,7 @@ class MyQwtScale : public QwtScaleWidget
 public:
     MyQwtScale(int *sock, int ident, int position=0, QWidget *parent=0, const char *name=0);
     ~MyQwtScale();
+    void setOrientation(Qt::Orientation o); //rlmurx-was-here
 
 private:
     virtual void mousePressEvent(QMouseEvent *event);
@@ -55,6 +56,12 @@ class MyQwtThermo : public QwtThermo
 public:
     MyQwtThermo(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtThermo();
+    void setOrientation(Qt::Orientation o);         //rlmurx-was-here
+    void setFillColor(QColor rgb);                  //rlmurx-was-here
+    void setAlarmColor(QColor rgb);                 //rlmurx-was-here
+    void setRange(int vmin, int vmax, int step);    //rlmurx-was-here
+    void setMargin(int m);                          //rlmurx-was-here
+    void setScale(double s1, double s2, double s3); //rlmurx-was-here
 
 private:
     virtual void mousePressEvent(QMouseEvent *event);
@@ -70,6 +77,10 @@ class MyQwtKnob : public QwtKnob
 public:
     MyQwtKnob(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtKnob();
+    void setOrientation(Qt::Orientation o);         //rlmurx-was-here
+    void setMass(int w);                            //rlmurx-was-here
+    void setRange(int vmin, int vmax, int step=-1); //rlmurx-was-here
+    void setScale(double s1, double s2, double s3); //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);
@@ -88,6 +99,7 @@ class MyQwtCounter : public QwtCounter
 public:
     MyQwtCounter(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtCounter();
+    void setOrientation(Qt::Orientation o); //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);
@@ -106,6 +118,9 @@ class MyQwtWheel : public QwtWheel
 public:
     MyQwtWheel(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtWheel();
+    void setOrientation(Qt::Orientation o); //rlmurx-was-here
+    void setReadOnly(int w);                //rlmurx-was-here
+    void setInternalBorder(int width);      //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);
@@ -122,8 +137,23 @@ class MyQwtSlider : public QwtSlider
 {
     Q_OBJECT
 public:
+    enum BGSTYLE //rlmurx-was-here (BGSTYLE was removed in qwt6.2x)
+    {
+        BgTrough = 0x1,
+        BgSlot = 0x2,
+        BgBoth = BgTrough | BgSlot
+    };
+
     MyQwtSlider(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtSlider();
+    void setOrientation(Qt::Orientation o); //rlmurx-was-here
+    void setScale(int min, int max, int step, int logarithmic=123); //rlmurx-was-here
+    void setMass(int w);                    //rlmurx-was-here
+    void setScalePosition(int pos);         //rlmurx-was-here
+    void setBgStyle(int st);                //rlmurx-was-here
+    void setThumbLength(int l);             //rlmurx-was-here
+    void setThumbWidth(int w);              //rlmurx-was-here
+    void setMargins(int x, int y);          //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);
@@ -142,6 +172,11 @@ class MyQwtDial : public QwtDial
 public:
     MyQwtDial(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtDial();
+    void setOrientation(Qt::Orientation o);         //rlmurx-was-here
+    void setScale(int min, int max, int step);      //rlmurx-was-here
+    void setRange(int vmin, int vmax, int step=-1); //rlmurx-was-here
+    void setMass(int w);                            //rlmurx-was-here
+    void showBackground(int b);                     //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);
@@ -160,6 +195,7 @@ class MyQwtAnalogClock : public QwtAnalogClock
 public:
     MyQwtAnalogClock(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtAnalogClock();
+    void setOrientation(Qt::Orientation o);         //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);
@@ -178,6 +214,7 @@ class MyQwtCompass : public QwtCompass
 public:
     MyQwtCompass(int *sock, int ident, QWidget *parent=0, const char *name=0);
     ~MyQwtCompass();
+    void setOrientation(Qt::Orientation o); //rlmurx-was-here
 
 public slots:
     void slotValueChanged(double value);

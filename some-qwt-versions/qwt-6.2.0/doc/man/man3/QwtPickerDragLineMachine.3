@@ -1,0 +1,46 @@
+.TH "QwtPickerDragLineMachine" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPickerDragLineMachine \- A state machine for line selections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_picker_machine\&.h>\fP
+.PP
+Inherits \fBQwtPickerMachine\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPickerDragLineMachine\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fBQList\fP< \fBCommand\fP > \fBtransition\fP (const \fBQwtEventPattern\fP &, const QEvent *) override"
+.br
+.RI "Transition\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A state machine for line selections\&. 
+
+Pressing \fBQwtEventPattern::MouseSelect1\fP selects the first point, releasing it the second point\&. Pressing \fBQwtEventPattern::KeySelect1\fP also selects the first point, a second press selects the second point and terminates the selection\&.
+.PP
+A common use case of \fBQwtPickerDragLineMachine\fP are pickers for distance measurements\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtEventPattern::MousePatternCode\fP, \fBQwtEventPattern::KeyPatternCode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file qwt_picker_machine\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

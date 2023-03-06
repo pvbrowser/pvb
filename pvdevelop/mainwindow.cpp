@@ -364,7 +364,8 @@ void MainWindow::slotBackup()
   QString message = "Now running:\n";
   QString localname = name;
   localname.remove(".pro");
-  command.sprintf("tar -zcf %s/%s.tar.gz .",opt_develop.backupLocation,(const char *) localname.toUtf8());
+  //rlmurx-was-here command.sprintf("tar -zcf %s/%s.tar.gz .",opt_develop.backupLocation,(const char *) localname.toUtf8());
+  command = QString::asprintf("tar -zcf %s/%s.tar.gz .",opt_develop.backupLocation,(const char *) localname.toUtf8());
   message.append(command);
   QMessageBox::information(this, tr("pvdevelop"),message);
   int ret = system(command.toUtf8());
@@ -988,7 +989,8 @@ void MainWindow::viewDesigner()
   centralWidget()->show();
   if(opt_develop.arg_debug) printf("viewDesigner after centralWidget->show\n");;
   if (curFile.isEmpty()) shownName = "no project loaded";
-  else                   shownName.sprintf("design mask%d   ClickRightMouse->PopupDialog   Alt+Click->PropertyDialog   Shift+Click->InsertDialog   Ctrl+Click->InsertLastSelectedWidget   Ctrl-Z->UndoLastMove   R->ReleaseMouse",imask);
+  //rlmurx-was-here else                   shownName.sprintf("design mask%d   ClickRightMouse->PopupDialog   Alt+Click->PropertyDialog   Shift+Click->InsertDialog   Ctrl+Click->InsertLastSelectedWidget   Ctrl-Z->UndoLastMove   R->ReleaseMouse",imask);
+  else                   shownName = QString::asprintf("design mask%d   ClickRightMouse->PopupDialog   Alt+Click->PropertyDialog   Shift+Click->InsertDialog   Ctrl+Click->InsertLastSelectedWidget   Ctrl-Z->UndoLastMove   R->ReleaseMouse",imask);
   //setWindowTitle(tr("%1[*] - %2").arg(shownName).arg(tr("pvdevelop")));
   setWindowTitle(tr("%1[*]").arg(shownName));
 
@@ -1291,11 +1293,13 @@ void MainWindow::slotRadioSlots(bool checked)
     QString fname;
     if(opt_develop.script == PV_LUA)
     {
-      fname.sprintf("mask%d_slots.lua",editor->spinBoxMask->value());
+      //rlmurx-was-here fname.sprintf("mask%d_slots.lua",editor->spinBoxMask->value());
+      fname = QString::asprintf("mask%d_slots.lua",editor->spinBoxMask->value());
     }
     else
     {
-      fname.sprintf("mask%d_slots.h",editor->spinBoxMask->value());
+      //rlmurx-was-here fname.sprintf("mask%d_slots.h",editor->spinBoxMask->value());
+      fname = QString::asprintf("mask%d_slots.h",editor->spinBoxMask->value());
     }  
     load(fname.toUtf8());
   }
@@ -1306,7 +1310,8 @@ void MainWindow::slotRadioScript(bool checked)
   if(checked & doChecked)
   {
     QString fname;
-    fname.sprintf("mask%d.py",editor->spinBoxMask->value());
+    //rlmurx-was-here fname.sprintf("mask%d.py",editor->spinBoxMask->value());
+    fname = QString::asprintf("mask%d.py",editor->spinBoxMask->value());
     load(fname.toUtf8());
   }
 }
@@ -1318,11 +1323,13 @@ void MainWindow::slotRadioMask(bool checked)
     QString fname;
     if(opt_develop.script == PV_LUA) 
     {
-      fname.sprintf("mask%d.lua",editor->spinBoxMask->value());
+      //rlmurx-was-here fname.sprintf("mask%d.lua",editor->spinBoxMask->value());
+      fname = QString::asprintf("mask%d.lua",editor->spinBoxMask->value());
     }
     else
     {
-      fname.sprintf("mask%d.cpp",editor->spinBoxMask->value());
+      //rlmurx-was-here fname.sprintf("mask%d.cpp",editor->spinBoxMask->value());
+      fname = QString::asprintf("mask%d.cpp",editor->spinBoxMask->value());
     }
     load(fname.toUtf8());
   }

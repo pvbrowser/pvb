@@ -1,0 +1,4 @@
+<map id="QwtPolarSpectrogram" name="QwtPolarSpectrogram">
+<area shape="rect" id="node1" title="An item, which displays a spectrogram." alt="" coords="5,80,156,107"/>
+<area shape="rect" id="node2" href="$class_qwt_polar_item.html" title="Base class for items on a polar plot." alt="" coords="29,5,132,32"/>
+</map>

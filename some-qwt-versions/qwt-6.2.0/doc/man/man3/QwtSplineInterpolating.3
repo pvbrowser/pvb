@@ -1,0 +1,171 @@
+.TH "QwtSplineInterpolating" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineInterpolating \- Base class for a spline interpolation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline\&.h>\fP
+.PP
+Inherits \fBQwtSpline\fP\&.
+.PP
+Inherited by \fBQwtSplineG1\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineInterpolating\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineInterpolating\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual QPolygonF \fBequidistantPolygon\fP (const QPolygonF &, double distance, bool withNodes) const"
+.br
+.RI "Find an interpolated polygon with 'equidistant' points\&. "
+.ti -1c
+.RI "virtual QPolygonF \fBpolygon\fP (const QPolygonF &, double tolerance) const override"
+.br
+.RI "Interpolate a curve by a polygon\&. "
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< QLineF > \fBbezierControlLines\fP (const QPolygonF &) const =0"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for a spline interpolation\&. 
+
+Spline interpolation is the process of interpolating a set of points piecewise with polynomials\&. The initial set of points is preserved\&. 
+.PP
+Definition at line 193 of file qwt_spline\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQVector\fP< QLineF > QwtSplineInterpolating::bezierControlLines (const QPolygonF & points) const\fC [pure virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns the 2 control points of each curve as QLineF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Control points of the interpolating Bezier curves 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtSplineCubic\fP, \fBQwtSplinePleasing\fP, \fBQwtSplineLocal\fP, \fBQwtSplineC2\fP, and \fBQwtSplineC1\fP\&.
+.SS "QPolygonF QwtSplineInterpolating::equidistantPolygon (const QPolygonF & points, double distance, bool withNodes) const\fC [virtual]\fP"
+
+.PP
+Find an interpolated polygon with 'equidistant' points\&. When withNodes is disabled all points of the resulting polygon will be equidistant according to the parametrization\&.
+.PP
+When withNodes is enabled the resulting polygon will also include the control points and the interpolated points are always aligned to the control point before ( points[i] + i * distance )\&.
+.PP
+The implementation calculates bezier curves first and calculates the interpolated points in a second run\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.br
+\fIdistance\fP Distance between 2 points according to the parametrization 
+.br
+\fIwithNodes\fP When true, also add the control nodes ( even if not being equidistant )
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polygon
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBbezierControlLines()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtSplineC2\fP, and \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 863 of file qwt_spline\&.cpp\&.
+.SS "QPainterPath QwtSplineInterpolating::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+The implementation calculates the Bezier control lines first and converts them into painter path elements in an additional loop\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be rendered by QPainter
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Derived spline classes might overload \fBpainterPath()\fP to avoid the extra loops for converting results into a QPainterPath
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBbezierControlLines()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSpline\fP\&.
+.PP
+Reimplemented in \fBQwtSplinePleasing\fP, \fBQwtSplineLocal\fP, \fBQwtSplineCubic\fP, \fBQwtSplineC2\fP, and \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 748 of file qwt_spline\&.cpp\&.
+.SS "QPolygonF QwtSplineInterpolating::polygon (const QPolygonF & points, double tolerance) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve by a polygon\&. Interpolates a polygon piecewise with Bezier curves approximating them by polygons\&.
+.PP
+The approximation is based on 'Piecewise Linear Approximation of Bézier Curves' by Roger Willcocks ( http://www.rops.org )
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.br
+\fItolerance\fP Maximum for the accepted error of the approximation
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+polygon approximating the interpolating polynomials
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBbezierControlLines()\fP, QwtSplineBezier::toPolygon() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSpline\fP\&.
+.PP
+Definition at line 805 of file qwt_spline\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

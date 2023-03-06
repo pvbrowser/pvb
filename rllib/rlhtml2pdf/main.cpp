@@ -323,31 +323,53 @@ int main(int argc, char **argv)
   //QPrinter *printer = new QPrinter(QPrinterInfo::printerInfo(defaultprinter));
 
   QPrinter printer(QPrinterInfo::defaultPrinter(), QPrinter::HighResolution); //create your QPrinter (don't need to be high resolution, anyway)
-  if     (ax ==  0) printer.setPageSize(QPrinter::A0);
-  else if(ax ==  1) printer.setPageSize(QPrinter::A1);
-  else if(ax ==  2) printer.setPageSize(QPrinter::A2);
-  else if(ax ==  3) printer.setPageSize(QPrinter::A3);
-  else if(ax ==  4) printer.setPageSize(QPrinter::A4);
-  else if(ax ==  5) printer.setPageSize(QPrinter::A5);
-  else if(ax ==  6) printer.setPageSize(QPrinter::A6);
-  else if(ax ==  7) printer.setPageSize(QPrinter::A7);
-  else if(ax ==  8) printer.setPageSize(QPrinter::A8);
-  else if(ax ==  9) printer.setPageSize(QPrinter::A9);
-  else if(ax == 10) printer.setPageSize(QPrinter::B0);
-  else if(ax == 11) printer.setPageSize(QPrinter::B1);
-  else if(ax == 12) printer.setPageSize(QPrinter::B2);
-  else if(ax == 13) printer.setPageSize(QPrinter::B3);
-  else if(ax == 14) printer.setPageSize(QPrinter::B4);
-  else if(ax == 15) printer.setPageSize(QPrinter::B5);
-  else if(ax == 16) printer.setPageSize(QPrinter::B6);
-  else if(ax == 17) printer.setPageSize(QPrinter::B7);
-  else if(ax == 18) printer.setPageSize(QPrinter::B8);
-  else if(ax == 19) printer.setPageSize(QPrinter::B9);
-  else              printer.setPageSize(QPrinter::A4);
-  if(landscape == 0) printer.setOrientation(QPrinter::Portrait);
-  else               printer.setOrientation(QPrinter::Landscape);
+  QPageSize pageSizeA0(QPageSize::PageSizeId::A0);
+  QPageSize pageSizeA1(QPageSize::PageSizeId::A1);
+  QPageSize pageSizeA2(QPageSize::PageSizeId::A2);
+  QPageSize pageSizeA3(QPageSize::PageSizeId::A3);
+  QPageSize pageSizeA4(QPageSize::PageSizeId::A4);
+  QPageSize pageSizeA5(QPageSize::PageSizeId::A5);
+  QPageSize pageSizeA6(QPageSize::PageSizeId::A6);
+  QPageSize pageSizeA7(QPageSize::PageSizeId::A7);
+  QPageSize pageSizeA8(QPageSize::PageSizeId::A8);
+  QPageSize pageSizeA9(QPageSize::PageSizeId::A9);
+  QPageSize pageSizeB0(QPageSize::PageSizeId::B0);
+  QPageSize pageSizeB1(QPageSize::PageSizeId::B1);
+  QPageSize pageSizeB2(QPageSize::PageSizeId::B2);
+  QPageSize pageSizeB3(QPageSize::PageSizeId::B3);
+  QPageSize pageSizeB4(QPageSize::PageSizeId::B4);
+  QPageSize pageSizeB5(QPageSize::PageSizeId::B5);
+  QPageSize pageSizeB6(QPageSize::PageSizeId::B6);
+  QPageSize pageSizeB7(QPageSize::PageSizeId::B7);
+  QPageSize pageSizeB8(QPageSize::PageSizeId::B8);
+  QPageSize pageSizeB9(QPageSize::PageSizeId::B9);
+  if     (ax ==  0) printer.setPageSize(pageSizeA0);
+  else if(ax ==  1) printer.setPageSize(pageSizeA1);
+  else if(ax ==  2) printer.setPageSize(pageSizeA2);
+  else if(ax ==  3) printer.setPageSize(pageSizeA3);
+  else if(ax ==  4) printer.setPageSize(pageSizeA4);
+  else if(ax ==  5) printer.setPageSize(pageSizeA5);
+  else if(ax ==  6) printer.setPageSize(pageSizeA6);
+  else if(ax ==  7) printer.setPageSize(pageSizeA7);
+  else if(ax ==  8) printer.setPageSize(pageSizeA8);
+  else if(ax ==  9) printer.setPageSize(pageSizeA9);
+  else if(ax == 10) printer.setPageSize(pageSizeB0);
+  else if(ax == 11) printer.setPageSize(pageSizeB1);
+  else if(ax == 12) printer.setPageSize(pageSizeB2);
+  else if(ax == 13) printer.setPageSize(pageSizeB3);
+  else if(ax == 14) printer.setPageSize(pageSizeB4);
+  else if(ax == 15) printer.setPageSize(pageSizeB5);
+  else if(ax == 16) printer.setPageSize(pageSizeB6);
+  else if(ax == 17) printer.setPageSize(pageSizeB7);
+  else if(ax == 18) printer.setPageSize(pageSizeB8);
+  else if(ax == 19) printer.setPageSize(pageSizeB9);
+  else              printer.setPageSize(pageSizeA4);
+
+  if(landscape == 0) printer.setPageOrientation(QPageLayout::Portrait);
+  else               printer.setPageOrientation(QPageLayout::Landscape);
+  
   if(debug) printf("margins %f %f %f %f\n",lm,rm,tm,bm);
-  printer.setPageMargins(lm,tm,rm,bm,QPrinter::Millimeter);
+  printer.setPageMargins(QMarginsF(lm,tm,rm,bm),QPageLayout::Millimeter);
   printer.setFullPage(false);
   if(strlen(printername.text()) > 0)
   {

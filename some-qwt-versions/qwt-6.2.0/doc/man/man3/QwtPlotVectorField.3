@@ -1,0 +1,884 @@
+.TH "QwtPlotVectorField" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotVectorField \- A plot item, that represents a vector field\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_vectorfield\&.h>\fP
+.PP
+Inherits \fBQwtPlotSeriesItem\fP, and \fBQwtSeriesStore< QwtVectorFieldSample >\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBIndicatorOrigin\fP { \fBOriginHead\fP, \fBOriginTail\fP, \fBOriginCenter\fP }"
+.br
+.ti -1c
+.RI "enum \fBPaintAttribute\fP { \fBFilterVectors\fP = 0x01 }"
+.br
+.ti -1c
+.RI "enum \fBMagnitudeMode\fP { \fBMagnitudeAsColor\fP = 0x01, \fBMagnitudeAsLength\fP = 0x02 }"
+.br
+.ti -1c
+.RI "typedef QFlags< \fBPaintAttribute\fP > \fBPaintAttributes\fP"
+.br
+.ti -1c
+.RI "typedef QFlags< \fBMagnitudeMode\fP > \fBMagnitudeModes\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotVectorField\fP (const QString &\fBtitle\fP=QString())"
+.br
+.ti -1c
+.RI "\fBQwtPlotVectorField\fP (const \fBQwtText\fP &\fBtitle\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPlotVectorField\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetPaintAttribute\fP (\fBPaintAttribute\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestPaintAttribute\fP (\fBPaintAttribute\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetMagnitudeMode\fP (\fBMagnitudeMode\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestMagnitudeMode\fP (\fBMagnitudeMode\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetSymbol\fP (\fBQwtVectorFieldSymbol\fP *)"
+.br
+.ti -1c
+.RI "const \fBQwtVectorFieldSymbol\fP * \fBsymbol\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &)"
+.br
+.ti -1c
+.RI "QPen \fBpen\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &)"
+.br
+.RI "Assign a brush\&. "
+.ti -1c
+.RI "QBrush \fBbrush\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetRasterSize\fP (const QSizeF &)"
+.br
+.ti -1c
+.RI "QSizeF \fBrasterSize\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetIndicatorOrigin\fP (\fBIndicatorOrigin\fP)"
+.br
+.ti -1c
+.RI "\fBIndicatorOrigin\fP \fBindicatorOrigin\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetSamples\fP (const \fBQVector\fP< \fBQwtVectorFieldSample\fP > &)"
+.br
+.ti -1c
+.RI "void \fBsetSamples\fP (\fBQwtVectorFieldData\fP *)"
+.br
+.ti -1c
+.RI "void \fBsetColorMap\fP (\fBQwtColorMap\fP *)"
+.br
+.ti -1c
+.RI "const \fBQwtColorMap\fP * \fBcolorMap\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetMagnitudeRange\fP (const \fBQwtInterval\fP &)"
+.br
+.ti -1c
+.RI "\fBQwtInterval\fP \fBmagnitudeRange\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetMinArrowLength\fP (double)"
+.br
+.ti -1c
+.RI "double \fBminArrowLength\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetMaxArrowLength\fP (double)"
+.br
+.ti -1c
+.RI "double \fBmaxArrowLength\fP () const"
+.br
+.ti -1c
+.RI "virtual double \fBarrowLength\fP (double magnitude) const"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.ti -1c
+.RI "virtual void \fBdrawSeries\fP (QPainter *, const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const QRectF &canvasRect, int from, int to) const override"
+.br
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtGraphic\fP \fBlegendIcon\fP (int index, const QSizeF &) const override"
+.br
+.ti -1c
+.RI "void \fBsetMagnitudeScaleFactor\fP (double factor)"
+.br
+.RI "Set the magnitudeScaleFactor\&. "
+.ti -1c
+.RI "double \fBmagnitudeScaleFactor\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdrawSymbols\fP (QPainter *, const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const QRectF &canvasRect, int from, int to) const"
+.br
+.ti -1c
+.RI "virtual void \fBdrawSymbol\fP (QPainter *, double x, double y, double vx, double vy) const"
+.br
+.ti -1c
+.RI "virtual void \fBdataChanged\fP () override"
+.br
+.RI "\fBdataChanged()\fP indicates, that the series has been changed\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A plot item, that represents a vector field\&. 
+
+A vector field is a representation of a points with a given magnitude and direction as arrows\&. While the direction affects the direction of the arrow, the magnitude might be represented as a color or by the length of the arrow\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtVectorFieldSymbol\fP, \fBQwtVectorFieldSample\fP 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file qwt_plot_vectorfield\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBMagnitudeMode\fP > \fBQwtPlotVectorField::MagnitudeModes\fP"
+An ORed combination of \fBMagnitudeMode\fP values\&. 
+.PP
+Definition at line 90 of file qwt_plot_vectorfield\&.h\&.
+.SS "typedef QFlags<\fBPaintAttribute\fP > \fBQwtPlotVectorField::PaintAttributes\fP"
+An ORed combination of \fBPaintAttribute\fP values\&. 
+.PP
+Definition at line 67 of file qwt_plot_vectorfield\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPlotVectorField::IndicatorOrigin\fP"
+Depending on the origin the indicator symbol ( usually an arrow ) will be to the position of the corresponding sample\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIOriginHead \fP\fP
+symbol points to the sample position 
+.TP
+\fB\fIOriginTail \fP\fP
+The arrow starts at the sample position\&. 
+.TP
+\fB\fIOriginCenter \fP\fP
+The arrow is centered at the sample position\&. 
+.PP
+Definition at line 39 of file qwt_plot_vectorfield\&.h\&.
+.SS "enum \fBQwtPlotVectorField::MagnitudeMode\fP"
+Depending on the MagnitudeMode the magnitude component will have an impact on the attributes of the symbol/arrow\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMagnitudeMode()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIMagnitudeAsColor \fP\fP
+The magnitude will be mapped to a color using a color map 
+.PP
+\fBSee also\fP
+.RS 4
+\fBmagnitudeRange()\fP, \fBcolorMap()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIMagnitudeAsLength \fP\fP
+The magnitude will have an impact on the length of the arrow/symbol 
+.PP
+\fBSee also\fP
+.RS 4
+\fBarrowLength()\fP, \fBmagnitudeScaleFactor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file qwt_plot_vectorfield\&.h\&.
+.SS "enum \fBQwtPlotVectorField::PaintAttribute\fP"
+Attributes to modify the rendering 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP, \fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file qwt_plot_vectorfield\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotVectorField::QwtPlotVectorField (const QString & title = \fCQString()\fP)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title of the curve 
+.RE
+.PP
+
+.PP
+Definition at line 302 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "QwtPlotVectorField::QwtPlotVectorField (const \fBQwtText\fP & title)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title of the curve 
+.RE
+.PP
+
+.PP
+Definition at line 292 of file qwt_plot_vectorfield\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtPlotVectorField::arrowLength (double magnitude) const\fC [virtual]\fP"
+Computes length of the arrow in screen coordinate units based on its magnitude\&.
+.PP
+Default implementation simply scales the vector using the \fBmagnitudeScaleFactor()\fP If the result is not null, the length is then bounded into the interval [ \fBminArrowLength()\fP, \fBmaxArrowLength()\fP ]\&.
+.PP
+Re-implement this function to provide special handling for zero/non-zero magnitude arrows, or impose minimum/maximum arrow length limits\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fImagnitude\fP Magnitude 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Length of arrow to be drawn in dependence of vector magnitude\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmagnitudeScaleFactor\fP, \fBminArrowLength()\fP, \fBmaxArrowLength()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 726 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "QRectF QwtPlotVectorField::boundingRect () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+An invalid bounding rect: QRectF(1\&.0, 1\&.0, -2\&.0, -2\&.0) 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+A width or height < 0\&.0 is ignored by the autoscaler 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotSeriesItem\fP\&.
+.PP
+Definition at line 749 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "QBrush QwtPlotVectorField::brush () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Brush used to fill the symbol 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBrush()\fP, \fBpen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 379 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "const \fBQwtColorMap\fP * QwtPlotVectorField::colorMap () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Color Map used for mapping the intensity values to colors 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetColorMap()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 590 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::drawSeries (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect, int from, int to) const\fC [override]\fP, \fC [virtual]\fP"
+Draw a subset of the points
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP Maps x-values into pixel coordinates\&. 
+.br
+\fIyMap\fP Maps y-values into pixel coordinates\&. 
+.br
+\fIcanvasRect\fP Contents rectangle of the canvas 
+.br
+\fIfrom\fP Index of the first sample to be painted 
+.br
+\fIto\fP Index of the last sample to be painted\&. If to < 0 the series will be painted to its last sample\&. 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPlotSeriesItem\fP\&.
+.PP
+Definition at line 807 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::drawSymbol (QPainter * painter, double x, double y, double vx, double vy) const\fC [protected]\fP, \fC [virtual]\fP"
+Draw a arrow/symbols at a specific position
+.PP
+x, y, are paint device coordinates, while vx, vy are from the corresponding sample\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSymbol()\fP, \fBdrawSeries()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 975 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::drawSymbols (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect, int from, int to) const\fC [protected]\fP, \fC [virtual]\fP"
+Draw symbols
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP x map 
+.br
+\fIyMap\fP y map 
+.br
+\fIcanvasRect\fP Contents rectangle of the canvas 
+.br
+\fIfrom\fP Index of the first sample to be painted 
+.br
+\fIto\fP Index of the last sample to be painted
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSymbol()\fP, \fBdrawSymbol()\fP, \fBdrawSeries()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 847 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "\fBQwtPlotVectorField::IndicatorOrigin\fP QwtPlotVectorField::indicatorOrigin () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+origin for the symbols/arrows 
+.RE
+.PP
+
+.PP
+Definition at line 401 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "\fBQwtGraphic\fP QwtPlotVectorField::legendIcon (int index, const QSizeF & size) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Icon representing the vector fields on the legend
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index of the legend entry ( ignored as there is only one ) 
+.br
+\fIsize\fP Icon size
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotItem::setLegendIconSize()\fP, \fBQwtPlotItem::legendData()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 770 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "\fBQwtInterval\fP QwtPlotVectorField::magnitudeRange () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+min/max magnitudes to be used for color map lookups 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMagnitudeRange()\fP, \fBcolorMap()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 645 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "double QwtPlotVectorField::magnitudeScaleFactor () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Scale factor used to calculate the arrow length from the magnitude
+.RE
+.PP
+The length of the arrow in screen coordinate units is calculated by scaling the magnitude by the magnitudeScaleFactor\&.
+.PP
+Default implementation simply scales the vector using the magnitudeScaleFactor property\&. Re-implement this function to provide special handling for zero/non-zero magnitude arrows, or impose minimum/maximum arrow length limits\&.
+.PP
+\fBReturns\fP
+.RS 4
+Length of arrow to be drawn in dependence of vector magnitude\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmagnitudeScaleFactor\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 440 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "double QwtPlotVectorField::maxArrowLength () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+maximum for the arrow length
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMinArrowLength()\fP, \fBmaxArrowLength()\fP, \fBarrowLength()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 705 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "double QwtPlotVectorField::minArrowLength () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+minimum for the arrow length of non zero vectors
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMinArrowLength()\fP, \fBmaxArrowLength()\fP, \fBarrowLength()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 675 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "QPen QwtPlotVectorField::pen () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen used to draw the lines 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 351 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "QSizeF QwtPlotVectorField::rasterSize () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+raster size used for filtering samples 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetRasterSize()\fP, QwtPlotVectorField::FilterVectors 
+.RE
+.PP
+
+.PP
+Definition at line 463 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "int QwtPlotVectorField::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+QwtPlotItem::Rtti_PlotField 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 503 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setBrush (const QBrush & brush)"
+
+.PP
+Assign a brush\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIbrush\fP New brush 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBbrush()\fP, \fBpen()\fP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+the brush is ignored in MagnitudeAsColor mode 
+.RE
+.PP
+
+.PP
+Definition at line 364 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setColorMap (\fBQwtColorMap\fP * colorMap)"
+Change the color map
+.PP
+The color map is used to map the magnitude of a sample into a color using a known range for the magnitudes\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolorMap\fP Color Map
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBcolorMap()\fP, \fBmagnitudeRange()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 571 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setIndicatorOrigin (\fBIndicatorOrigin\fP origin)"
+Set the origin for the symbols/arrows
+.PP
+\fBParameters\fP
+.RS 4
+\fIorigin\fP Origin 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBindicatorOrigin()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 390 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setMagnitudeMode (\fBMagnitudeMode\fP mode, bool on = \fCtrue\fP)"
+Specify a mode how to represent the magnitude a n arrow/symbol
+.PP
+\fBParameters\fP
+.RS 4
+\fImode\fP Mode 
+.br
+\fIon\fP On/Off 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtestMagnitudeMode()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 602 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setMagnitudeRange (const \fBQwtInterval\fP & magnitudeRange)"
+Sets the min/max magnitudes to be used for color map lookups\&.
+.PP
+If invalid (min=max=0 or negative values), the range is determined from the current range of magnitudes in the vector samples\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBmagnitudeRange()\fP, \fBcolorMap()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 632 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setMagnitudeScaleFactor (double factor)"
+
+.PP
+Set the magnitudeScaleFactor\&. The length of the arrow in screen coordinate units is calculated by scaling the magnitude by the magnitudeScaleFactor\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIfactor\fP Scale factor
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmagnitudeScaleFactor()\fP, \fBarrowLength()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 417 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setMaxArrowLength (double length)"
+Set a maximum for the arrow length
+.PP
+\fBParameters\fP
+.RS 4
+\fIlength\fP Maximum for the arrow length in pixels
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmaxArrowLength()\fP, \fBsetMinArrowLength()\fP, \fBarrowLength()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 688 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setMinArrowLength (double length)"
+Set a minimum for the arrow length of non zero vectors
+.PP
+\fBParameters\fP
+.RS 4
+\fIlength\fP Minimum for the arrow length in pixels
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBminArrowLength()\fP, \fBsetMaxArrowLength()\fP, \fBarrowLength()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Has no effect when \fBQwtPlotVectorField::MagnitudeAsLength\fP is not enabled 
+.RE
+.PP
+
+.PP
+Definition at line 658 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setPaintAttribute (\fBPaintAttribute\fP attribute, bool on = \fCtrue\fP)"
+Specify an attribute how to draw the curve
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Paint attribute 
+.br
+\fIon\fP On/Off 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 475 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setPen (const QPen & pen)"
+Assign a pen
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP New pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP, \fBbrush()\fP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+the pen is ignored in MagnitudeAsColor mode 
+.RE
+.PP
+
+.PP
+Definition at line 336 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setRasterSize (const QSizeF & size)"
+Set the raster size used for filtering samples
+.PP
+\fBSee also\fP
+.RS 4
+\fBrasterSize()\fP, QwtPlotVectorField::FilterVectors 
+.RE
+.PP
+
+.PP
+Definition at line 450 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setSamples (const \fBQVector\fP< \fBQwtVectorFieldSample\fP > & samples)"
+Initialize data with an array of samples\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsamples\fP Vector of points 
+.RE
+.PP
+
+.PP
+Definition at line 541 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setSamples (\fBQwtVectorFieldData\fP * data)"
+Assign a series of samples
+.PP
+\fBsetSamples()\fP is just a wrapper for \fBsetData()\fP without any additional value - beside that it is easier to find for the developer\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Data 
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+The item takes ownership of the data object, deleting it when its not used anymore\&. 
+.RE
+.PP
+
+.PP
+Definition at line 556 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "void QwtPlotVectorField::setSymbol (\fBQwtVectorFieldSymbol\fP * symbol)"
+Sets a new arrow symbol (implementation of arrow drawing code)\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIsymbol\fP Arrow symbol
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsymbol()\fP, \fBdrawSymbol()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Ownership is transferred to \fBQwtPlotVectorField\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 516 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "const \fBQwtVectorFieldSymbol\fP * QwtPlotVectorField::symbol () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+arrow symbol 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSymbol()\fP, \fBdrawSymbol()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 532 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "bool QwtPlotVectorField::testMagnitudeMode (\fBMagnitudeMode\fP mode) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, when mode is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBMagnitudeMode\fP, \fBsetMagnitudeMode()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 619 of file qwt_plot_vectorfield\&.cpp\&.
+.SS "bool QwtPlotVectorField::testPaintAttribute (\fBPaintAttribute\fP attribute) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, when attribute is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBPaintAttribute\fP, \fBsetPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 496 of file qwt_plot_vectorfield\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

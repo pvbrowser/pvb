@@ -1,0 +1,871 @@
+.TH "QwtPolarGrid" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarGrid \- An item which draws scales and grid lines on a polar plot\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_grid\&.h>\fP
+.PP
+Inherits \fBQwtPolarItem\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDisplayFlag\fP { \fBSmartOriginLabel\fP = 1, \fBHideMaxRadiusLabel\fP = 2, \fBClipAxisBackground\fP = 4, \fBSmartScaleDraw\fP = 8, \fBClipGridLines\fP = 16 }"
+.br
+.ti -1c
+.RI "enum \fBGridAttribute\fP { \fBAutoScaling\fP = 0x01 }"
+.br
+.RI "Grid attributes\&. "
+.ti -1c
+.RI "typedef QFlags< \fBDisplayFlag\fP > \fBDisplayFlags\fP"
+.br
+.ti -1c
+.RI "typedef QFlags< \fBGridAttribute\fP > \fBGridAttributes\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarGrid\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPolarGrid\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.ti -1c
+.RI "void \fBsetDisplayFlag\fP (\fBDisplayFlag\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestDisplayFlag\fP (\fBDisplayFlag\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetGridAttribute\fP (\fBGridAttribute\fP, bool on=true)"
+.br
+.RI "Specify an attribute for the grid\&. "
+.ti -1c
+.RI "bool \fBtestGridAttribute\fP (\fBGridAttribute\fP) const"
+.br
+.ti -1c
+.RI "void \fBshowGrid\fP (int scaleId, bool \fBshow\fP=true)"
+.br
+.ti -1c
+.RI "bool \fBisGridVisible\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBshowMinorGrid\fP (int scaleId, bool \fBshow\fP=true)"
+.br
+.ti -1c
+.RI "bool \fBisMinorGridVisible\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBshowAxis\fP (int axisId, bool \fBshow\fP=true)"
+.br
+.ti -1c
+.RI "bool \fBisAxisVisible\fP (int axisId) const"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &p)"
+.br
+.ti -1c
+.RI "void \fBsetFont\fP (const QFont &)"
+.br
+.ti -1c
+.RI "void \fBsetMajorGridPen\fP (const QPen &p)"
+.br
+.ti -1c
+.RI "void \fBsetMajorGridPen\fP (int scaleId, const QPen &p)"
+.br
+.ti -1c
+.RI "QPen \fBmajorGridPen\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBsetMinorGridPen\fP (const QPen &p)"
+.br
+.ti -1c
+.RI "void \fBsetMinorGridPen\fP (int scaleId, const QPen &p)"
+.br
+.ti -1c
+.RI "QPen \fBminorGridPen\fP (int scaleId) const"
+.br
+.ti -1c
+.RI "void \fBsetAxisPen\fP (int axisId, const QPen &p)"
+.br
+.ti -1c
+.RI "QPen \fBaxisPen\fP (int axisId) const"
+.br
+.ti -1c
+.RI "void \fBsetAxisFont\fP (int axisId, const QFont &p)"
+.br
+.ti -1c
+.RI "QFont \fBaxisFont\fP (int axisId) const"
+.br
+.ti -1c
+.RI "void \fBsetScaleDraw\fP (int axisId, \fBQwtScaleDraw\fP *)"
+.br
+.RI "Set a scale draw\&. "
+.ti -1c
+.RI "const \fBQwtScaleDraw\fP * \fBscaleDraw\fP (int axisId) const"
+.br
+.ti -1c
+.RI "\fBQwtScaleDraw\fP * \fBscaleDraw\fP (int axisId)"
+.br
+.ti -1c
+.RI "void \fBsetAzimuthScaleDraw\fP (\fBQwtRoundScaleDraw\fP *)"
+.br
+.RI "Set a scale draw for the azimuth scale\&. "
+.ti -1c
+.RI "const \fBQwtRoundScaleDraw\fP * \fBazimuthScaleDraw\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtRoundScaleDraw\fP * \fBazimuthScaleDraw\fP ()"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *p, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, double radius, const QRectF &rect) const override"
+.br
+.ti -1c
+.RI "virtual void \fBupdateScaleDiv\fP (const \fBQwtScaleDiv\fP &azimuthMap, const \fBQwtScaleDiv\fP &radialMap, const \fBQwtInterval\fP &) override"
+.br
+.RI "Update the item to changes of the axes scale division\&. "
+.ti -1c
+.RI "virtual int \fBmarginHint\fP () const override"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBdrawRays\fP (QPainter *, const QRectF &, const QPointF &pole, double radius, const \fBQwtScaleMap\fP &azimuthMap, const \fBQList\fP< double > &) const"
+.br
+.ti -1c
+.RI "void \fBdrawCircles\fP (QPainter *, const QRectF &, const QPointF &pole, const \fBQwtScaleMap\fP &radialMap, const \fBQList\fP< double > &) const"
+.br
+.ti -1c
+.RI "void \fBdrawAxis\fP (QPainter *, int axisId) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An item which draws scales and grid lines on a polar plot\&. 
+
+The \fBQwtPolarGrid\fP class can be used to draw a coordinate grid\&. A coordinate grid consists of major and minor gridlines\&. The locations of the gridlines are determined by the azimuth and radial scale divisions\&.
+.PP
+\fBQwtPolarGrid\fP is also responsible for drawing the axis representing the scales\&. It is possible to display 4 radial and one azimuth axis\&.
+.PP
+Whenever the scale divisions of the plot widget changes the grid is synchronized by \fBupdateScaleDiv()\fP\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarPlot\fP, QwtPolar::Axis 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file qwt_polar_grid\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBDisplayFlag\fP > \fBQwtPolarGrid::DisplayFlags\fP"
+An ORed combination of \fBDisplayFlag\fP values\&. 
+.PP
+Definition at line 88 of file qwt_polar_grid\&.h\&.
+.SS "typedef QFlags<\fBGridAttribute\fP > \fBQwtPolarGrid::GridAttributes\fP"
+An ORed combination of \fBGridAttribute\fP values\&. 
+.PP
+Definition at line 103 of file qwt_polar_grid\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPolarGrid::DisplayFlag\fP"
+Mysterious flags trying to avoid conflicts, when painting the scales and grid lines\&.
+.PP
+The default setting enables all flags\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetDisplayFlag()\fP, \fBtestDisplayFlag()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISmartOriginLabel \fP\fP
+Try to avoid situations, where the label of the origin is painted over another axis\&. 
+.TP
+\fB\fIHideMaxRadiusLabel \fP\fP
+Often the outermost tick of the radial scale is close to the canvas border\&. With HideMaxRadiusLabel enabled it is not painted\&. 
+.TP
+\fB\fIClipAxisBackground \fP\fP
+The tick labels of the radial scales might be hard to read, when they are painted on top of the radial grid lines ( or on top of a curve/spectrogram )\&. When ClipAxisBackground the bounding rect of each label is added to the clip region\&. 
+.TP
+\fB\fISmartScaleDraw \fP\fP
+Don't paint the backbone of the radial axes, when they are very close to a line of the azimuth grid\&. 
+.TP
+\fB\fIClipGridLines \fP\fP
+All grid lines are clipped against the plot area before being painted\&. When the plot is zoomed in this will have an significant impact on the performance of the painting code\&. 
+.PP
+Definition at line 52 of file qwt_polar_grid\&.h\&.
+.SS "enum \fBQwtPolarGrid::GridAttribute\fP"
+
+.PP
+Grid attributes\&. 
+.PP
+\fBSee also\fP
+.RS 4
+setGridAttributes(), testGridAttributes() 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAutoScaling \fP\fP
+When AutoScaling is enabled, the radial axes will be adjusted to the interval, that is currently visible on the canvas plot\&. 
+.PP
+Definition at line 94 of file qwt_polar_grid\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarGrid::QwtPolarGrid ()\fC [explicit]\fP"
+
+.PP
+Constructor\&. Enables major and disables minor grid lines\&. The azimuth and right radial axis are visible\&. all other axes are hidden\&. Autoscaling is enabled\&. 
+.PP
+Definition at line 84 of file qwt_polar_grid\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QFont QwtPolarGrid::axisFont (int axisId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Font for the tick labels of a specific axis 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id (QwtPolar::Axis) 
+.RE
+.PP
+
+.PP
+Definition at line 556 of file qwt_polar_grid\&.cpp\&.
+.SS "QPen QwtPolarGrid::axisPen (int axisId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen for painting a specific axis
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id (QwtPolar::Axis) 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAxisPen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 525 of file qwt_polar_grid\&.cpp\&.
+.SS "\fBQwtRoundScaleDraw\fP * QwtPolarGrid::azimuthScaleDraw ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Scale draw for the azimuth scale 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAzimuthScaleDraw()\fP, \fBscaleDraw()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1127 of file qwt_polar_grid\&.cpp\&.
+.SS "const \fBQwtRoundScaleDraw\fP * QwtPolarGrid::azimuthScaleDraw () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Scale draw for the azimuth scale 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAzimuthScaleDraw()\fP, \fBscaleDraw()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1117 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::draw (QPainter * painter, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, double radius, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+Draw the grid and axes
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIradius\fP Radius of the complete plot area in painter coordinates 
+.br
+\fIcanvasRect\fP Contents rect of the canvas in painter coordinates 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 574 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::drawAxis (QPainter * painter, int axisId) const\fC [protected]\fP"
+Paint an axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIaxisId\fP Axis id (QwtPolar::Axis) 
+.RE
+.PP
+
+.PP
+Definition at line 832 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::drawCircles (QPainter * painter, const QRectF & canvasRect, const QPointF & pole, const \fBQwtScaleMap\fP & radialMap, const \fBQList\fP< double > & values) const\fC [protected]\fP"
+Draw circles
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIcanvasRect\fP Contents rect of the canvas in painter coordinates 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIvalues\fP Radial values, indicating the distances from the pole 
+.RE
+.PP
+
+.PP
+Definition at line 751 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::drawRays (QPainter * painter, const QRectF & canvasRect, const QPointF & pole, double radius, const \fBQwtScaleMap\fP & azimuthMap, const \fBQList\fP< double > & values) const\fC [protected]\fP"
+Draw lines from the pole
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIcanvasRect\fP Contents rect of the canvas in painter coordinates 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIradius\fP Length of the lines in painter coordinates 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIvalues\fP Azimuth values, indicating the direction of the lines 
+.RE
+.PP
+
+.PP
+Definition at line 681 of file qwt_polar_grid\&.cpp\&.
+.SS "bool QwtPolarGrid::isAxisVisible (int axisId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true if the axis is visible 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id (QwtPolar::Axis)
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBshowAxis()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 343 of file qwt_polar_grid\&.cpp\&.
+.SS "bool QwtPolarGrid::isGridVisible (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true if grid lines are enabled 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtPolar::Scale, \fBshowGrid()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 272 of file qwt_polar_grid\&.cpp\&.
+.SS "bool QwtPolarGrid::isMinorGridVisible (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true if minor grid lines are enabled 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBshowMinorGrid()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 308 of file qwt_polar_grid\&.cpp\&.
+.SS "QPen QwtPolarGrid::majorGridPen (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen for painting the major grid lines of a specific scale 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMajorGridPen()\fP, \fBminorGridPen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 454 of file qwt_polar_grid\&.cpp\&.
+.SS "int QwtPolarGrid::marginHint () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Number of pixels, that are necessary to paint the azimuth scale 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtRoundScaleDraw::extent()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 1049 of file qwt_polar_grid\&.cpp\&.
+.SS "QPen QwtPolarGrid::minorGridPen (int scaleId) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen for painting the minor grid lines of a specific scale 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.RE
+.PP
+
+.PP
+Definition at line 510 of file qwt_polar_grid\&.cpp\&.
+.SS "int QwtPolarGrid::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+QwtPlotItem::Rtti_PolarGrid 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 163 of file qwt_polar_grid\&.cpp\&.
+.SS "\fBQwtScaleDraw\fP * QwtPolarGrid::scaleDraw (int axisId)"
+Returns the scale draw of a specified axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP axis index ( QwtPolar::AxisLeft <= axisId <= QwtPolar::AxisBottom) 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+specified scaleDraw for axis, or NULL if axis is invalid\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetScaleDraw()\fP, \fBazimuthScaleDraw()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1083 of file qwt_polar_grid\&.cpp\&.
+.SS "const \fBQwtScaleDraw\fP * QwtPolarGrid::scaleDraw (int axisId) const"
+Returns the scale draw of a specified axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP axis index ( QwtPolar::AxisLeft <= axisId <= QwtPolar::AxisBottom) 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+specified scaleDraw for axis, or NULL if axis is invalid\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBazimuthScaleDraw()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1068 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setAxisFont (int axisId, const QFont & font)"
+Assign a font for the tick labels of a specific axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id (QwtPolar::Axis) 
+.br
+\fIfont\fP new Font 
+.RE
+.PP
+
+.PP
+Definition at line 539 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setAxisPen (int axisId, const QPen & pen)"
+Assign a pen for painting an axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id (QwtPolar::Axis) 
+.br
+\fIpen\fP Pen
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBaxisPen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 235 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setAzimuthScaleDraw (\fBQwtRoundScaleDraw\fP * scaleDraw)"
+
+.PP
+Set a scale draw for the azimuth scale\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleDraw\fP object responsible for drawing scales\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBazimuthScaleDraw()\fP, \fBsetScaleDraw()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1139 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setDisplayFlag (\fBDisplayFlag\fP flag, bool on = \fCtrue\fP)"
+Change the display flags
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP See DisplayFlag 
+.br
+\fIon\fP true/false 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setFont (const QFont & font)"
+Assign a font for all scale tick labels
+.PP
+\fBParameters\fP
+.RS 4
+\fIfont\fP Font 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAxisFont()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 390 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setGridAttribute (\fBGridAttribute\fP attribute, bool on = \fCtrue\fP)"
+
+.PP
+Specify an attribute for the grid\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Grid attribute 
+.br
+\fIon\fP On/Off
+.RE
+.PP
+/sa GridAttribute, \fBtestGridAttribute()\fP, \fBupdateScaleDiv()\fP, \fBQwtPolarPlot::zoom()\fP, \fBQwtPolarPlot::scaleDiv()\fP 
+.PP
+Definition at line 205 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setMajorGridPen (const QPen & pen)"
+Assign a pen for the major grid lines
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBsetMinorGridPen()\fP, \fBmajorGridPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 412 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setMajorGridPen (int scaleId, const QPen & pen)"
+Assign a pen for the major grid lines of a specific scale
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.br
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBsetMinorGridPen()\fP, \fBmajorGridPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 436 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setMinorGridPen (const QPen & pen)"
+Assign a pen for the minor grid lines
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBsetMajorGridPen()\fP, \fBminorGridPen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 469 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setMinorGridPen (int scaleId, const QPen & pen)"
+Assign a pen for the minor grid lines of a specific scale
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.br
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBsetMajorGridPen()\fP, \fBminorGridPen\fP 
+.RE
+.PP
+
+.PP
+Definition at line 493 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setPen (const QPen & pen)"
+Assign a pen for all axes and grid lines
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMajorGridPen()\fP, \fBsetMinorGridPen()\fP, \fBsetAxisPen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 357 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::setScaleDraw (int axisId, \fBQwtScaleDraw\fP * scaleDraw)"
+
+.PP
+Set a scale draw\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP axis index ( QwtPolar::AxisLeft <= axisId <= QwtPolar::AxisBottom) 
+.br
+\fIscaleDraw\fP object responsible for drawing scales\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBscaleDraw()\fP, \fBsetAzimuthScaleDraw()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1099 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::showAxis (int axisId, bool show = \fCtrue\fP)"
+Show/Hide an axis
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id (QwtPolar::Axis) 
+.br
+\fIshow\fP true/false
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBisAxisVisible()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 324 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::showGrid (int scaleId, bool show = \fCtrue\fP)"
+Show/Hide grid lines for a scale
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.br
+\fIshow\fP true/false 
+.RE
+.PP
+
+.PP
+Definition at line 254 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::showMinorGrid (int scaleId, bool show = \fCtrue\fP)"
+Show/Hide minor grid lines for a scale
+.PP
+To display minor grid lines\&. \fBshowGrid()\fP needs to be enabled too\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale id ( QwtPolar::Scale ) 
+.br
+\fIshow\fP true/false
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBshowGrid\fP 
+.RE
+.PP
+
+.PP
+Definition at line 290 of file qwt_polar_grid\&.cpp\&.
+.SS "bool QwtPolarGrid::testDisplayFlag (\fBDisplayFlag\fP flag) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, if flag is enabled 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP See DisplayFlag 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file qwt_polar_grid\&.cpp\&.
+.SS "bool QwtPolarGrid::testGridAttribute (\fBGridAttribute\fP attribute) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, if attribute is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBGridAttribute\fP, \fBsetGridAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 222 of file qwt_polar_grid\&.cpp\&.
+.SS "void QwtPolarGrid::updateScaleDiv (const \fBQwtScaleDiv\fP & azimuthScaleDiv, const \fBQwtScaleDiv\fP & radialScaleDiv, const \fBQwtInterval\fP & interval)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Update the item to changes of the axes scale division\&. If AutoScaling is enabled the radial scale is calculated from the interval, otherwise the scales are adopted to the plot scales\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIazimuthScaleDiv\fP Scale division of the azimuth-scale 
+.br
+\fIradialScaleDiv\fP Scale division of the radius-axis 
+.br
+\fIinterval\fP The interval of the radius-axis, that is visible on the canvas
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtPolarPlot::setGridAttributes() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 952 of file qwt_polar_grid\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

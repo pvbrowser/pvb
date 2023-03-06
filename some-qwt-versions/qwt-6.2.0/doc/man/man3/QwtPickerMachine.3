@@ -1,0 +1,102 @@
+.TH "QwtPickerMachine" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPickerMachine \- A state machine for \fBQwtPicker\fP selections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_picker_machine\&.h>\fP
+.PP
+Inherited by \fBQwtPickerClickPointMachine\fP, \fBQwtPickerClickRectMachine\fP, \fBQwtPickerDragLineMachine\fP, \fBQwtPickerDragPointMachine\fP, \fBQwtPickerDragRectMachine\fP, \fBQwtPickerPolygonMachine\fP, and \fBQwtPickerTrackerMachine\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBSelectionType\fP { \fBNoSelection\fP = -1, \fBPointSelection\fP, \fBRectSelection\fP, \fBPolygonSelection\fP }"
+.br
+.ti -1c
+.RI "enum \fBCommand\fP { \fBBegin\fP, \fBAppend\fP, \fBMove\fP, \fBRemove\fP, \fBEnd\fP }"
+.br
+.RI "Commands - the output of a state machine\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPickerMachine\fP (\fBSelectionType\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPickerMachine\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual \fBQList\fP< \fBCommand\fP > \fBtransition\fP (const \fBQwtEventPattern\fP &, const QEvent *)=0"
+.br
+.RI "Transition\&. "
+.ti -1c
+.RI "void \fBreset\fP ()"
+.br
+.RI "Set the current state to 0\&. "
+.ti -1c
+.RI "int \fBstate\fP () const"
+.br
+.RI "Return the current state\&. "
+.ti -1c
+.RI "void \fBsetState\fP (int)"
+.br
+.RI "Change the current state\&. "
+.ti -1c
+.RI "\fBSelectionType\fP \fBselectionType\fP () const"
+.br
+.RI "Return the selection type\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A state machine for \fBQwtPicker\fP selections\&. 
+
+\fBQwtPickerMachine\fP accepts key and mouse events and translates them into selection commands\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtEventPattern::MousePatternCode\fP, \fBQwtEventPattern::KeyPatternCode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 28 of file qwt_picker_machine\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPickerMachine::SelectionType\fP"
+Type of a selection\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBselectionType()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoSelection \fP\fP
+The state machine not usable for any type of selection\&. 
+.TP
+\fB\fIPointSelection \fP\fP
+The state machine is for selecting a single point\&. 
+.TP
+\fB\fIRectSelection \fP\fP
+The state machine is for selecting a rectangle (2 points)\&. 
+.TP
+\fB\fIPolygonSelection \fP\fP
+The state machine is for selecting a polygon (many points)\&. 
+.PP
+Definition at line 35 of file qwt_picker_machine\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

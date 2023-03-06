@@ -1,0 +1,266 @@
+.TH "QwtAnalogClock" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtAnalogClock \- An analog clock\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_analog_clock\&.h>\fP
+.PP
+Inherits \fBQwtDial\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBHand\fP { \fBSecondHand\fP, \fBMinuteHand\fP, \fBHourHand\fP, \fBNHands\fP }"
+.br
+.in -1c
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "void \fBsetCurrentTime\fP ()"
+.br
+.RI "Set the current time\&. "
+.ti -1c
+.RI "void \fBsetTime\fP (const QTime &)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtAnalogClock\fP (QWidget *parent=NULL)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtAnalogClock\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetHand\fP (\fBHand\fP, \fBQwtDialNeedle\fP *)"
+.br
+.ti -1c
+.RI "const \fBQwtDialNeedle\fP * \fBhand\fP (\fBHand\fP) const"
+.br
+.ti -1c
+.RI "\fBQwtDialNeedle\fP * \fBhand\fP (\fBHand\fP)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdrawNeedle\fP (QPainter *, const QPointF &, double radius, double direction, QPalette::ColorGroup) const override"
+.br
+.RI "Draw the needle\&. "
+.ti -1c
+.RI "virtual void \fBdrawHand\fP (QPainter *, \fBHand\fP, const QPointF &, double radius, double direction, QPalette::ColorGroup) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An analog clock\&. 
+
+
+.PP
+\fBExample\fP
+.RS 4
+
+.PP
+.nf
+#include <qwt_analog_clock\&.h>
+
+  QwtAnalogClock *clock = new QwtAnalogClock(\&.\&.\&.);
+  clock->scaleDraw()->setPenWidth(3);
+  clock->setLineWidth(6);
+  clock->setFrameShadow(QwtDial::Sunken);
+  clock->setTime();
+
+  // update the clock every second
+  QTimer *timer = new QTimer(clock);
+  timer->connect(timer, SIGNAL(timeout()), clock, SLOT(setCurrentTime()));
+  timer->start(1000);
+
+.fi
+.PP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The examples/dials example shows how to use \fBQwtAnalogClock\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file qwt_analog_clock\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtAnalogClock::Hand\fP"
+Hand type 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetHand()\fP, \fBhand()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISecondHand \fP\fP
+Needle displaying the seconds\&. 
+.TP
+\fB\fIMinuteHand \fP\fP
+Needle displaying the minutes\&. 
+.TP
+\fB\fIHourHand \fP\fP
+Needle displaying the hours\&. 
+.TP
+\fB\fINHands \fP\fP
+Number of needles\&. 
+.PP
+Definition at line 52 of file qwt_analog_clock\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtAnalogClock::QwtAnalogClock (QWidget * parent = \fCNULL\fP)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP Parent widget 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file qwt_analog_clock\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void QwtAnalogClock::drawHand (QPainter * painter, \fBHand\fP hd, const QPointF & center, double radius, double direction, QPalette::ColorGroup cg) const\fC [protected]\fP, \fC [virtual]\fP"
+Draw a clock hand
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIhd\fP Specify the type of hand 
+.br
+\fIcenter\fP Center of the clock 
+.br
+\fIradius\fP Maximum length for the hands 
+.br
+\fIdirection\fP Direction of the hand in degrees, counter clockwise 
+.br
+\fIcg\fP ColorGroup 
+.RE
+.PP
+
+.PP
+Definition at line 239 of file qwt_analog_clock\&.cpp\&.
+.SS "void QwtAnalogClock::drawNeedle (QPainter * painter, const QPointF & center, double radius, double direction, QPalette::ColorGroup colorGroup) const\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Draw the needle\&. A clock has no single needle but three hands instead\&. \fBdrawNeedle()\fP translates \fBvalue()\fP into directions for the hands and calls \fBdrawHand()\fP\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIcenter\fP Center of the clock 
+.br
+\fIradius\fP Maximum length for the hands 
+.br
+\fIdirection\fP Dummy, not used\&. 
+.br
+\fIcolorGroup\fP ColorGroup
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBdrawHand()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtDial\fP\&.
+.PP
+Definition at line 202 of file qwt_analog_clock\&.cpp\&.
+.SS "\fBQwtDialNeedle\fP * QwtAnalogClock::hand (\fBHand\fP hd)"
+
+.PP
+\fBReturns\fP
+.RS 4
+Clock hand 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIhd\fP Specifies the type of hand 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetHand()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file qwt_analog_clock\&.cpp\&.
+.SS "const \fBQwtDialNeedle\fP * QwtAnalogClock::hand (\fBHand\fP hd) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Clock hand 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIhd\fP Specifies the type of hand 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetHand()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 159 of file qwt_analog_clock\&.cpp\&.
+.SS "void QwtAnalogClock::setHand (\fBHand\fP hand, \fBQwtDialNeedle\fP * needle)"
+Set a clock hand 
+.PP
+\fBParameters\fP
+.RS 4
+\fIhand\fP Specifies the type of hand 
+.br
+\fIneedle\fP Hand 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBhand()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file qwt_analog_clock\&.cpp\&.
+.SS "void QwtAnalogClock::setTime (const QTime & time)\fC [slot]\fP"
+Set a time 
+.PP
+\fBParameters\fP
+.RS 4
+\fItime\fP Time to display 
+.RE
+.PP
+
+.PP
+Definition at line 176 of file qwt_analog_clock\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,98 @@
+.TH "QwtVectorFieldArrow" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtVectorFieldArrow
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_vectorfield_symbol\&.h>\fP
+.PP
+Inherits \fBQwtVectorFieldSymbol\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtVectorFieldArrow\fP (qreal headWidth=6\&.0, qreal tailWidth=1\&.0)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtVectorFieldArrow\fP () override"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBsetLength\fP (qreal \fBlength\fP) override"
+.br
+.ti -1c
+.RI "virtual qreal \fBlength\fP () const override"
+.br
+.ti -1c
+.RI "virtual void \fBpaint\fP (QPainter *) const override"
+.br
+.RI "Draw the symbol/arrow\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Arrow implementation that draws a filled arrow with outline, using a triangular head of constant width\&. 
+.PP
+Definition at line 61 of file qwt_vectorfield_symbol\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtVectorFieldArrow::QwtVectorFieldArrow (qreal headWidth = \fC6\&.0\fP, qreal tailWidth = \fC1\&.0\fP)"
+
+.PP
+Constructor\&. The length is initialized by headWidth + 4
+.PP
+\fBParameters\fP
+.RS 4
+\fIheadWidth\fP Width of the triangular head 
+.br
+\fItailWidth\fP Width of the arrow tail
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLength()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file qwt_vectorfield_symbol\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "qreal QwtVectorFieldArrow::length () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+length of the symbol/arrow 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLength()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtVectorFieldSymbol\fP\&.
+.PP
+Definition at line 90 of file qwt_vectorfield_symbol\&.cpp\&.
+.SS "void QwtVectorFieldArrow::setLength (qreal length)\fC [override]\fP, \fC [virtual]\fP"
+Set the length of the symbol/arrow 
+.PP
+\fBSee also\fP
+.RS 4
+\fBlength()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtVectorFieldSymbol\fP\&.
+.PP
+Definition at line 85 of file qwt_vectorfield_symbol\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

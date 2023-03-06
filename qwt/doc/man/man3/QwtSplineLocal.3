@@ -1,0 +1,233 @@
+.TH "QwtSplineLocal" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineLocal \- A spline with C1 continuity\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_local\&.h>\fP
+.PP
+Inherits \fBQwtSplineC1\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBCardinal\fP, \fBParabolicBlending\fP, \fBAkima\fP, \fBPChip\fP }"
+.br
+.RI "Spline interpolation type\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineLocal\fP (\fBType\fP \fBtype\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineLocal\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBType\fP \fBtype\fP () const"
+.br
+.ti -1c
+.RI "virtual uint \fBlocality\fP () const override"
+.br
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< QLineF > \fBbezierControlLines\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< \fBQwtSplinePolynomial\fP > \fBpolynomials\fP (const QPolygonF &) const override"
+.br
+.RI "Calculate the interpolating polynomials for a non parametric spline\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< double > \fBslopes\fP (const QPolygonF &) const override"
+.br
+.RI "Find the first derivative at the control points\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A spline with C1 continuity\&. 
+
+\fBQwtSplineLocal\fP offers several standard algorithms for interpolating a curve with polynomials having C1 continuity at the control points\&. All algorithms are local in a sense, that changing one control point only few polynomials\&. 
+.PP
+Definition at line 24 of file qwt_spline_local\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtSplineLocal::Type\fP"
+
+.PP
+Spline interpolation type\&. All type of spline interpolations are lightweight algorithms calculating the slopes at a point by looking 1 or 2 points back and ahead\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICardinal \fP\fP
+A cardinal spline
+.PP
+The cardinal spline interpolation is a very cheap calculation with a locality of 1\&. 
+.TP
+\fB\fIParabolicBlending \fP\fP
+Parabolic blending is a cheap calculation with a locality of 1\&. Sometimes it is also called Cubic Bessel interpolation\&. 
+.TP
+\fB\fIAkima \fP\fP
+The algorithm of H\&.Akima is a calculation with a locality of 2\&. 
+.TP
+\fB\fIPChip \fP\fP
+Piecewise Cubic Hermite Interpolating Polynomial (PCHIP) is an algorithm that is popular because of being offered by MATLAB\&.
+.PP
+It preserves the shape of the data and respects monotonicity\&. It has a locality of 1\&. 
+.PP
+Definition at line 34 of file qwt_spline_local\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSplineLocal::QwtSplineLocal (\fBType\fP type)"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP Spline type, specifying the type of interpolation 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtype()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 450 of file qwt_spline_local\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQVector\fP< QLineF > QwtSplineLocal::bezierControlLines (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns the 2 control points of each curve as QLineF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Control points of the interpolating Bezier curves 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 502 of file qwt_spline_local\&.cpp\&.
+.SS "uint QwtSplineLocal::locality () const\fC [override]\fP, \fC [virtual]\fP"
+The locality of an spline interpolation identifies how many adjacent polynomials are affected, when changing the position of one point\&.
+.PP
+The Cardinal, ParabolicBlending and PChip algorithms have a locality of 1, while the Akima interpolation has a locality of 2\&.
+.PP
+\fBReturns\fP
+.RS 4
+1 or 2\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSpline\fP\&.
+.PP
+Definition at line 552 of file qwt_spline_local\&.cpp\&.
+.SS "QPainterPath QwtSplineLocal::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be rendered by QPainter 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 482 of file qwt_spline_local\&.cpp\&.
+.SS "\fBQVector\fP< \fBQwtSplinePolynomial\fP > QwtSplineLocal::polynomials (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate the interpolating polynomials for a non parametric spline\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polynomials
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.PP
+The implementation simply calls \fBQwtSplineC1::polynomials()\fP, but is intended to be replaced by a one pass calculation some day\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 537 of file qwt_spline_local\&.cpp\&.
+.SS "\fBQVector\fP< double > QwtSplineLocal::slopes (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Find the first derivative at the control points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector with the values of the 2nd derivate at the control points
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 521 of file qwt_spline_local\&.cpp\&.
+.SS "\fBQwtSplineLocal::Type\fP QwtSplineLocal::type () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Spline type, specifying the type of interpolation 
+.RE
+.PP
+
+.PP
+Definition at line 468 of file qwt_spline_local\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

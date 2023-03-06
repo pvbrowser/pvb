@@ -1,0 +1,7 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_qwt_polar_item.html" title="Base class for items on a polar plot." alt="" coords="5,81,108,108"/>
+<area shape="rect" id="node2" href="$class_qwt_polar_curve.html" title="An item, that represents a series of points." alt="" coords="176,5,287,32"/>
+<area shape="rect" id="node3" href="$class_qwt_polar_grid.html" title="An item which draws scales and grid lines on a polar plot." alt="" coords="181,56,281,83"/>
+<area shape="rect" id="node4" href="$class_qwt_polar_marker.html" title="A class for drawing markers." alt="" coords="173,107,289,133"/>
+<area shape="rect" id="node5" href="$class_qwt_polar_spectrogram.html" title="An item, which displays a spectrogram." alt="" coords="156,157,307,184"/>
+</map>

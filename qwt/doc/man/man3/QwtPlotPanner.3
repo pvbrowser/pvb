@@ -1,0 +1,203 @@
+.TH "QwtPlotPanner" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotPanner \- \fBQwtPlotPanner\fP provides panning of a plot canvas\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_panner\&.h>\fP
+.PP
+Inherits \fBQwtPanner\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBmoveCanvas\fP (int dx, int dy)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotPanner\fP (QWidget *)"
+.br
+.RI "A panner for the canvas of a \fBQwtPlot\fP\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotPanner\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "QWidget * \fBcanvas\fP ()"
+.br
+.RI "Return observed plot canvas\&. "
+.ti -1c
+.RI "const QWidget * \fBcanvas\fP () const"
+.br
+.RI "Return Observed plot canvas\&. "
+.ti -1c
+.RI "\fBQwtPlot\fP * \fBplot\fP ()"
+.br
+.RI "Return plot widget, containing the observed plot canvas\&. "
+.ti -1c
+.RI "const \fBQwtPlot\fP * \fBplot\fP () const"
+.br
+.RI "Return plot widget, containing the observed plot canvas\&. "
+.ti -1c
+.RI "void \fBsetAxisEnabled\fP (QwtAxisId axisId, bool on)"
+.br
+.RI "En/Disable an axis\&. "
+.ti -1c
+.RI "bool \fBisAxisEnabled\fP (QwtAxisId) const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual QBitmap \fBcontentsMask\fP () const override"
+.br
+.ti -1c
+.RI "virtual QPixmap \fBgrab\fP () const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBQwtPlotPanner\fP provides panning of a plot canvas\&. 
+
+\fBQwtPlotPanner\fP is a panner for a plot canvas, that adjusts the scales of the axes after dropping the canvas on its new position\&.
+.PP
+Together with \fBQwtPlotZoomer\fP and \fBQwtPlotMagnifier\fP powerful ways of navigating on a \fBQwtPlot\fP widget can be implemented easily\&.
+.PP
+\fBNote\fP
+.RS 4
+The axes are not updated, while dragging the canvas 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotZoomer\fP, \fBQwtPlotMagnifier\fP 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file qwt_plot_panner\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotPanner::QwtPlotPanner (QWidget * canvas)\fC [explicit]\fP"
+
+.PP
+A panner for the canvas of a \fBQwtPlot\fP\&. The panner is enabled for all axes
+.PP
+\fBParameters\fP
+.RS 4
+\fIcanvas\fP Plot canvas to pan, also the parent object
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAxisEnabled()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file qwt_plot_panner\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QBitmap QwtPlotPanner::contentsMask () const\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Calculate a mask from the border path of the canvas
+.PP
+\fBReturns\fP
+.RS 4
+Mask as bitmap 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotCanvas::borderPath()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPanner\fP\&.
+.PP
+Definition at line 267 of file qwt_plot_panner\&.cpp\&.
+.SS "QPixmap QwtPlotPanner::grab () const\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pixmap with the content of the canvas 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPanner\fP\&.
+.PP
+Definition at line 278 of file qwt_plot_panner\&.cpp\&.
+.SS "bool QwtPlotPanner::isAxisEnabled (QwtAxisId axisId) const"
+Test if an axis is enabled
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True, if the axis is enabled
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAxisEnabled()\fP, \fBmoveCanvas()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 168 of file qwt_plot_panner\&.cpp\&.
+.SS "void QwtPlotPanner::moveCanvas (int dx, int dy)\fC [virtual]\fP, \fC [slot]\fP"
+Adjust the enabled axes according to dx/dy
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP Pixel offset in x direction 
+.br
+\fIdy\fP Pixel offset in y direction
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPanner::panned()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 216 of file qwt_plot_panner\&.cpp\&.
+.SS "void QwtPlotPanner::setAxisEnabled (QwtAxisId axisId, bool on)"
+
+.PP
+En/Disable an axis\&. Axes that are enabled will be synchronized to the result of panning\&. All other axes will remain unchanged\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIaxisId\fP Axis id 
+.br
+\fIon\fP On/Off
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBisAxisEnabled()\fP, \fBmoveCanvas()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file qwt_plot_panner\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

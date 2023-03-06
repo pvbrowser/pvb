@@ -150,6 +150,8 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
       if(s->read((char *) tel, 2, timeout) <= 0) return MODBUS_ERROR;
       *slave     = tel[0];
       *function  = tel[1];
+      byte_count = tel[5] - 3;
+      if(s->read((char *) tel, 1, timeout) <= 0)            return MODBUS_ERROR;
       switch(*function)
       {
         case ReadCoilStatus:
@@ -161,8 +163,7 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
         case ReadGeneralReference:
         case WriteGeneralReference:
         case ReadWrite4XRegisters:
-          if(s->read((char *) tel, 1, timeout) <= 0)            return MODBUS_ERROR;
-          byte_count = tel[0];
+          //byte_count = tel[0];
           if(s->read((char *) data, byte_count, timeout) <= 0)  return MODBUS_ERROR;
           return byte_count;
         case ForceSingleCoil:
@@ -170,20 +171,20 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
         case FetchCommEventCtr:
         case ForceMultipleCoils:
         case PresetMultipleRegs:
-          byte_count = 4;
+          //byte_count = 4;
           if(s->read((char *) data, byte_count, timeout) <= 0)  return MODBUS_ERROR;
           return byte_count;
         case ReadExceptionStatus:
-          byte_count = 1;
+          //byte_count = 1;
           if(s->read((char *) data, byte_count, timeout) <= 0)  return MODBUS_ERROR;
           return byte_count;
         case MaskWrite4XRegisters:
-          byte_count = 6;
+          //byte_count = 6;
           if(s->read((char *) data, byte_count, timeout) <= 0)  return MODBUS_ERROR;
           return byte_count;
         case ReadFifoQueue:
           if(s->read((char *) tel, 2, timeout) <= 0)            return MODBUS_ERROR;
-          byte_count = tel[0]*256 + tel[1];
+          //byte_count = tel[0]*256 + tel[1];
           if(s->read((char *) data, byte_count, timeout) <= 0)  return MODBUS_ERROR;
           return byte_count;
         default:
@@ -285,6 +286,7 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
       if(tty->readBlock(tel, 2, timeout) <= 0) return MODBUS_ERROR;
       *slave     = tel[len++];
       *function  = tel[len++];
+      byte_count = tel[5] - 3;
       switch(*function)
       {
         case ReadCoilStatus:
@@ -298,7 +300,7 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
         case ReadWrite4XRegisters:
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(&tel[len], 1, timeout) <= 0)       return MODBUS_ERROR;
-          byte_count = tel[len++];
+          //byte_count = tel[len++];
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(data, byte_count+2, timeout) <= 0) return MODBUS_ERROR;
           memcpy(&tel[len],data,byte_count+2); len += byte_count + 2;
@@ -309,21 +311,21 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
         case FetchCommEventCtr:
         case ForceMultipleCoils:
         case PresetMultipleRegs:
-          byte_count = 4;
+          //byte_count = 4;
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(data, byte_count+2, timeout) <= 0) return MODBUS_ERROR;
           memcpy(&tel[len],data,byte_count+2); len += byte_count + 2;
           if(CRCerror(len) == 1)                      return MODBUS_CHECKSUM_ERROR;
           return byte_count;
         case ReadExceptionStatus:
-          byte_count = 1;
+          //byte_count = 1;
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(data, byte_count+2, timeout) <= 0) return MODBUS_ERROR;
           memcpy(&tel[len],data,byte_count+2); len += byte_count + 2;
           if(CRCerror(len) == 1)                      return MODBUS_CHECKSUM_ERROR;
           return byte_count;
         case MaskWrite4XRegisters:
-          byte_count = 6;
+          //byte_count = 6;
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(data, byte_count+2, timeout) <= 0) return MODBUS_ERROR;
           memcpy(&tel[len],data,byte_count+2); len += byte_count + 2;
@@ -332,7 +334,7 @@ int rlModbus::response(int *slave, int *function, unsigned char *data, int timeo
         case ReadFifoQueue:
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(&tel[len], 2, timeout) <= 0)       return MODBUS_ERROR;
-          byte_count = tel[len]*256 + tel[len+1]; len += 2;
+          //byte_count = tel[len]*256 + tel[len+1]; len += 2;
           if(tty->select(timeout) == 0)                        return MODBUS_ERROR;
           if(tty->readBlock(data, byte_count+2, timeout) <= 0) return MODBUS_ERROR;
           memcpy(&tel[len],data,byte_count+2); len += byte_count + 2;

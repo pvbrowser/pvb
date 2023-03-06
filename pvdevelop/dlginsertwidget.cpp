@@ -538,7 +538,8 @@ void dlgInsertWidget::setDefaultObjectName(QWidget *root, QWidget *item)
   findMax(root,&max);
   max++;
   QString name;
-  name.sprintf("obj%d",max);
+  //rlmurx-was-here name.sprintf("obj%d",max);
+  name = QString::asprintf("obj%d",max);
   item->setObjectName(name);
 }
 

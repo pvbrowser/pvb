@@ -1,0 +1,350 @@
+.TH "QwtPolarSpectrogram" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarSpectrogram \- An item, which displays a spectrogram\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_spectrogram\&.h>\fP
+.PP
+Inherits \fBQwtPolarItem\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPaintAttribute\fP { \fBApproximatedAtan\fP = 0x01 }"
+.br
+.ti -1c
+.RI "typedef QFlags< \fBPaintAttribute\fP > \fBPaintAttributes\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarSpectrogram\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPolarSpectrogram\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetData\fP (\fBQwtRasterData\fP *\fBdata\fP)"
+.br
+.ti -1c
+.RI "const \fBQwtRasterData\fP * \fBdata\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetColorMap\fP (\fBQwtColorMap\fP *)"
+.br
+.ti -1c
+.RI "const \fBQwtColorMap\fP * \fBcolorMap\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetPaintAttribute\fP (\fBPaintAttribute\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestPaintAttribute\fP (\fBPaintAttribute\fP) const"
+.br
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *painter, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, double radius, const QRectF &canvasRect) const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtInterval\fP \fBboundingInterval\fP (int scaleId) const override"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual QImage \fBrenderImage\fP (const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, const QRect &rect) const"
+.br
+.RI "Render an image from the data and color map\&. "
+.ti -1c
+.RI "virtual void \fBrenderTile\fP (const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, const QPoint &imagePos, const QRect &tile, QImage *image) const"
+.br
+.RI "Render a sub-rectangle of an image\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+An item, which displays a spectrogram\&. 
+
+A spectrogram displays 3-dimensional data, where the 3rd dimension ( the intensity ) is displayed using colors\&. The colors are calculated from the values using a color map\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtRasterData\fP, \fBQwtColorMap\fP 
+.RE
+.PP
+
+.PP
+Definition at line 28 of file qwt_polar_spectrogram\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBPaintAttribute\fP > \fBQwtPolarSpectrogram::PaintAttributes\fP"
+An ORed combination of \fBPaintAttribute\fP values\&. 
+.PP
+Definition at line 47 of file qwt_polar_spectrogram\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPolarSpectrogram::PaintAttribute\fP"
+Attributes to modify the drawing algorithm\&. The default setting disables ApproximatedAtan
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP, \fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIApproximatedAtan \fP\fP
+Use qwtFastAtan2 instead of atan2 for translating widget into polar coordinates\&. 
+.PP
+Definition at line 37 of file qwt_polar_spectrogram\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtInterval\fP QwtPolarSpectrogram::boundingInterval (int scaleId) const\fC [override]\fP, \fC [virtual]\fP"
+Interval, that is necessary to display the item This interval can be useful for operations like clipping or autoscaling
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bounding interval ( == position )
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+position() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 443 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "const \fBQwtColorMap\fP * QwtPolarSpectrogram::colorMap () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Color Map used for mapping the intensity values to colors 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetColorMap()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 137 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "const \fBQwtRasterData\fP * QwtPolarSpectrogram::data () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Spectrogram data 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetData()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "void QwtPolarSpectrogram::draw (QPainter * painter, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, double radius, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+Draw the spectrogram
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIradius\fP Radius of the complete plot area in painter coordinates 
+.br
+\fIcanvasRect\fP Contents rect of the canvas in painter coordinates 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 177 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "QImage QwtPolarSpectrogram::renderImage (const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, const QRect & rect) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Render an image from the data and color map\&. The area is translated into a rect of the paint device\&. For each pixel of this rect the intensity is mapped into a color\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIrect\fP Target rectangle of the image in painter coordinates
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A QImage::Format_Indexed8 or QImage::Format_ARGB32 depending on the color map\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtRasterData::intensity(), \fBQwtColorMap::rgb()\fP, \fBQwtColorMap::colorIndex()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 235 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "void QwtPolarSpectrogram::renderTile (const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, const QPoint & imagePos, const QRect & tile, QImage * image) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Render a sub-rectangle of an image\&. \fBrenderTile()\fP is called by \fBrenderImage()\fP to render different parts of the image by concurrent threads\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIimagePos\fP Top/left position of the image in painter coordinates 
+.br
+\fItile\fP Sub-rectangle of the tile in painter coordinates 
+.br
+\fIimage\fP Image to be rendered
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetRenderThreadCount()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+renderTile needs to be reentrant 
+.RE
+.PP
+
+.PP
+Definition at line 343 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "int QwtPolarSpectrogram::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBQwtPolarItem::Rtti_PolarSpectrogram\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 76 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "void QwtPolarSpectrogram::setColorMap (\fBQwtColorMap\fP * colorMap)"
+Change the color map
+.PP
+Often it is useful to display the mapping between intensities and colors as an additional plot axis, showing a color bar\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolorMap\fP Color Map
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBcolorMap()\fP, \fBQwtScaleWidget::setColorBarEnabled()\fP, \fBQwtScaleWidget::setColorMap()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 122 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "void QwtPolarSpectrogram::setData (\fBQwtRasterData\fP * data)"
+Set the data to be displayed
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Spectrogram Data 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBdata()\fP
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+\fBQwtRasterData::initRaster()\fP is called each time before the image is rendered, but without any useful parameters\&. Also QwtRasterData::rasterHint() is not used\&. 
+.RE
+.PP
+
+.PP
+Definition at line 91 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "void QwtPolarSpectrogram::setPaintAttribute (\fBPaintAttribute\fP attribute, bool on = \fCtrue\fP)"
+Specify an attribute how to draw the curve
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Paint attribute 
+.br
+\fIon\fP On/Off 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file qwt_polar_spectrogram\&.cpp\&.
+.SS "bool QwtPolarSpectrogram::testPaintAttribute (\fBPaintAttribute\fP attribute) const"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Paint attribute 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True, when attribute has been set 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file qwt_polar_spectrogram\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

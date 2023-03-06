@@ -1,0 +1,182 @@
+.TH "QwtAlphaColorMap" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtAlphaColorMap \- \fBQwtAlphaColorMap\fP varies the alpha value of a color\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_color_map\&.h>\fP
+.PP
+Inherits \fBQwtColorMap\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtAlphaColorMap\fP (\fBconst\fP QColor &=QColor(Qt::gray))"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtAlphaColorMap\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetAlphaInterval\fP (int \fBalpha1\fP, int \fBalpha2\fP)"
+.br
+.ti -1c
+.RI "int \fBalpha1\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "int \fBalpha2\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "void \fBsetColor\fP (\fBconst\fP QColor &)"
+.br
+.ti -1c
+.RI "QColor \fBcolor\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "virtual QRgb \fBrgb\fP (\fBconst\fP \fBQwtInterval\fP &, double value) \fBconst\fP override"
+.br
+.RI "Map a value of a given interval into a alpha value\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBQwtAlphaColorMap\fP varies the alpha value of a color\&. 
+.PP
+Definition at line 147 of file qwt_color_map\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtAlphaColorMap::QwtAlphaColorMap (\fBconst\fP QColor & color = \fCQColor( Qt::gray )\fP)\fC [explicit]\fP"
+
+.PP
+Constructor\&. The alpha interval is initialized by 0 to 255\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolor\fP Color of the map
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetColor()\fP, \fBsetAlphaInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 539 of file qwt_color_map\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int QwtAlphaColorMap::alpha1 () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+First alpha coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAlphaInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 600 of file qwt_color_map\&.cpp\&.
+.SS "int QwtAlphaColorMap::alpha2 () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Second alpha coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAlphaInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 609 of file qwt_color_map\&.cpp\&.
+.SS "QColor QwtAlphaColorMap::color () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+the color 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetColor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 571 of file qwt_color_map\&.cpp\&.
+.SS "QRgb QwtAlphaColorMap::rgb (\fBconst\fP \fBQwtInterval\fP & interval, double value) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Map a value of a given interval into a alpha value\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIinterval\fP Range for all values 
+.br
+\fIvalue\fP Value to map into a RGB value
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+RGB value, with an alpha value 
+.RE
+.PP
+
+.PP
+Implements \fBQwtColorMap\fP\&.
+.PP
+Definition at line 622 of file qwt_color_map\&.cpp\&.
+.SS "void QwtAlphaColorMap::setAlphaInterval (int alpha1, int alpha2)"
+Set the interval for the alpha coordinate
+.PP
+alpha1/alpha2 need to be in the range 0 to 255, where 255 means opaque and 0 means transparent\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIalpha1\fP First alpha coordinate 
+.br
+\fIalpha2\fP Second alpha coordinate
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBalpha1()\fP, \fBalpha2()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 587 of file qwt_color_map\&.cpp\&.
+.SS "void QwtAlphaColorMap::setColor (\fBconst\fP QColor & color)"
+Set the color
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolor\fP Color 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBcolor()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 558 of file qwt_color_map\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

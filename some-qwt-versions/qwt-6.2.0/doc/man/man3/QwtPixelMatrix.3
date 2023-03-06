@@ -1,0 +1,143 @@
+.TH "QwtPixelMatrix" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPixelMatrix \- A bit field corresponding to the pixels of a rectangle\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_pixel_matrix\&.h>\fP
+.PP
+Inherits QBitArray\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPixelMatrix\fP (const QRect &\fBrect\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fB~QwtPixelMatrix\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetRect\fP (const QRect &\fBrect\fP)"
+.br
+.ti -1c
+.RI "QRect \fBrect\fP () const"
+.br
+.ti -1c
+.RI "bool \fBtestPixel\fP (int x, int y) const"
+.br
+.RI "Test if a pixel has been set\&. "
+.ti -1c
+.RI "bool \fBtestAndSetPixel\fP (int x, int y, bool on)"
+.br
+.RI "Set a pixel and test if a pixel has been set before\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBconst\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A bit field corresponding to the pixels of a rectangle\&. 
+
+\fBQwtPixelMatrix\fP is intended to filter out duplicates in an unsorted array of points\&. 
+.PP
+Definition at line 24 of file qwt_pixel_matrix\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPixelMatrix::QwtPixelMatrix (const QRect & rect)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle for the matrix 
+.RE
+.PP
+
+.PP
+Definition at line 17 of file qwt_pixel_matrix\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRect QwtPixelMatrix::rect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rectangle 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file qwt_pixel_matrix\&.cpp\&.
+.SS "void QwtPixelMatrix::setRect (const QRect & rect)"
+Set the bounding rectangle of the matrix
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle
+.RE
+.PP
+\fBNote\fP
+.RS 4
+All bits are cleared 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file qwt_pixel_matrix\&.cpp\&.
+.SS "bool QwtPixelMatrix::testAndSetPixel (int x, int y, bool on)\fC [inline]\fP"
+
+.PP
+Set a pixel and test if a pixel has been set before\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP X-coordinate 
+.br
+\fIy\fP Y-coordinate 
+.br
+\fIon\fP Set/Clear the pixel
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, when pos is outside of \fBrect()\fP, or when the pixel was set before\&. 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file qwt_pixel_matrix\&.h\&.
+.SS "bool QwtPixelMatrix::testPixel (int x, int y) const\fC [inline]\fP"
+
+.PP
+Test if a pixel has been set\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP X-coordinate 
+.br
+\fIy\fP Y-coordinate
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, when pos is outside of \fBrect()\fP, or when the pixel has already been set\&. 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file qwt_pixel_matrix\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

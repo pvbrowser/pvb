@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_qwt_spline.html" title="Base class for all splines." alt="" coords="5,31,88,57"/>
+<area shape="rect" id="node2" href="$class_qwt_spline_basis.html" title="An approximation using a basis spline." alt="" coords="156,5,271,32"/>
+<area shape="rect" id="node3" href="$class_qwt_spline_interpolating.html" title="Base class for a spline interpolation." alt="" coords="136,56,291,83"/>
+<area shape="rect" id="node4" href="$class_qwt_spline_g1.html" title="Base class for spline interpolations providing a first order geometric continuity ( G1 ) between adjo..." alt="" coords="339,56,437,83"/>
+<area shape="rect" id="node5" href="$class_qwt_spline_c1.html" title="Base class for spline interpolations providing a first order parametric continuity ( C1 ) between adj..." alt="" coords="502,31,601,57"/>
+<area shape="rect" id="node9" href="$class_qwt_spline_pleasing.html" title="A spline with G1 continuity." alt="" coords="485,81,617,108"/>
+<area shape="rect" id="node6" href="$class_qwt_spline_c2.html" title="Base class for spline interpolations providing a second order parametric continuity ( C2 ) between ad..." alt="" coords="673,5,771,32"/>
+<area shape="rect" id="node8" href="$class_qwt_spline_local.html" title="A spline with C1 continuity." alt="" coords="665,56,779,83"/>
+<area shape="rect" id="node7" href="$class_qwt_spline_cubic.html" title="A cubic spline." alt="" coords="827,5,943,32"/>
+</map>

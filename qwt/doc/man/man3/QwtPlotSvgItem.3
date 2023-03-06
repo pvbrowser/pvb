@@ -1,0 +1,115 @@
+.TH "QwtPlotSvgItem" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotSvgItem \- A plot item, which displays data in Scalable Vector Graphics (SVG) format\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_svgitem\&.h>\fP
+.PP
+Inherits \fBQwtPlotGraphicItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotSvgItem\fP (const QString &\fBtitle\fP=QString())"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtPlotSvgItem\fP (const \fBQwtText\fP &\fBtitle\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotSvgItem\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "bool \fBloadFile\fP (const QRectF &, const QString &fileName)"
+.br
+.ti -1c
+.RI "bool \fBloadData\fP (const QRectF &, const QByteArray &)"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plot item, which displays data in Scalable Vector Graphics (SVG) format\&. 
+
+SVG images are often used to display maps
+.PP
+\fBQwtPlotSvgItem\fP is only a small convenience wrapper class for \fBQwtPlotGraphicItem\fP, that creates a \fBQwtGraphic\fP from SVG data\&. 
+.PP
+Definition at line 28 of file qwt_plot_svgitem\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotSvgItem::QwtPlotSvgItem (const QString & title = \fCQString()\fP)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title 
+.RE
+.PP
+
+.PP
+Definition at line 20 of file qwt_plot_svgitem\&.cpp\&.
+.SS "QwtPlotSvgItem::QwtPlotSvgItem (const \fBQwtText\fP & title)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file qwt_plot_svgitem\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QwtPlotSvgItem::loadData (const QRectF & rect, const QByteArray & data)"
+Load SVG data
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle 
+.br
+\fIdata\fP in SVG format
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, if the SVG data could be loaded 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file qwt_plot_svgitem\&.cpp\&.
+.SS "bool QwtPlotSvgItem::loadFile (const QRectF & rect, const QString & fileName)"
+Load a SVG file
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Bounding rectangle 
+.br
+\fIfileName\fP SVG file name
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, if the SVG file could be loaded 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file qwt_plot_svgitem\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,4 @@
+<map id="QwtHueColorMap" name="QwtHueColorMap">
+<area shape="rect" id="node1" title="QwtHueColorMap varies the hue value of the HSV color model." alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node2" href="$class_qwt_color_map.html" title="QwtColorMap is used to map values into colors." alt="" coords="17,5,120,32"/>
+</map>

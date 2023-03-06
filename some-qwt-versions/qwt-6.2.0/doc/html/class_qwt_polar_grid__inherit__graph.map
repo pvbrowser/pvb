@@ -1,0 +1,4 @@
+<map id="QwtPolarGrid" name="QwtPolarGrid">
+<area shape="rect" id="node1" title="An item which draws scales and grid lines on a polar plot." alt="" coords="7,80,107,107"/>
+<area shape="rect" id="node2" href="$class_qwt_polar_item.html" title="Base class for items on a polar plot." alt="" coords="5,5,108,32"/>
+</map>

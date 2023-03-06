@@ -1,0 +1,14 @@
+<map id="QwtSeriesData&lt; T &gt;" name="QwtSeriesData&lt; T &gt;">
+<area shape="rect" id="node1" title="Abstract interface for iterating over samples." alt="" coords="5,177,148,203"/>
+<area shape="rect" id="node2" href="$class_qwt_array_series_data.html" title=" " alt="" coords="207,5,364,47"/>
+<area shape="rect" id="node4" href="$class_qwt_array_series_data.html" title=" " alt="" coords="196,71,375,112"/>
+<area shape="rect" id="node6" href="$class_qwt_array_series_data.html" title=" " alt="" coords="210,136,361,177"/>
+<area shape="rect" id="node8" href="$class_qwt_array_series_data.html" title=" " alt="" coords="214,201,357,243"/>
+<area shape="rect" id="node10" href="$class_qwt_array_series_data.html" title=" " alt="" coords="214,267,357,308"/>
+<area shape="rect" id="node12" href="$class_qwt_array_series_data.html" title="Template class for data, that is organized as QVector." alt="" coords="198,333,373,359"/>
+<area shape="rect" id="node3" href="$class_qwt_interval_series_data.html" title="Interface for iterating over an array of intervals." alt="" coords="425,13,579,39"/>
+<area shape="rect" id="node5" href="$class_qwt_vector_field_data.html" title="Interface for iterating over an array of vector field samples." alt="" coords="433,78,571,105"/>
+<area shape="rect" id="node7" href="$class_qwt_trading_chart_data.html" title=" " alt="" coords="427,143,577,170"/>
+<area shape="rect" id="node9" href="$class_qwt_set_series_data.html" title="Interface for iterating over an array of samples." alt="" coords="437,209,567,235"/>
+<area shape="rect" id="node11" href="$class_qwt_point3_d_series_data.html" title="Interface for iterating over an array of 3D points." alt="" coords="423,274,581,301"/>
+</map>

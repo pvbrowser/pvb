@@ -191,7 +191,10 @@ void QImageWidget::setImage(const char *filename, int rotate)
   image.load(filename);
   if(rotate)
   {
-    QMatrix m;
+    //rlmurx-was-here QMatrix m;
+    //                m.rotate(rotate);
+    //                image = image.transformed(m);
+    QTransform m;
     m.rotate(rotate);
     image = image.transformed(m);
   }
@@ -248,7 +251,10 @@ void QImageWidget::setJpegImage(unsigned char *buffer, int buffersize, int rotat
   clearMask();
   if(rotate)
   {
-    QMatrix m;
+    //rlmurx-was-here QMatrix m;
+    //                m.rotate(rotate);
+    //                image = image.transformed(m);
+    QTransform m;
     m.rotate(rotate);
     image = image.transformed(m);
   }
@@ -311,7 +317,10 @@ void QImageWidget::setRGBA(unsigned char *buffer, int width, int height, int rot
   clearMask();
   if(rotate)
   {
-    QMatrix m;
+    //rlmurx-was-here QMatrix m;
+    //                m.rotate(rotate);
+    //                image = image.transformed(m);
+    QTransform m;
     m.rotate(rotate);
     image = image.transformed(m);
   }

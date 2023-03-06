@@ -1,0 +1,303 @@
+.TH "QwtSplineC2" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineC2 \- Base class for spline interpolations providing a second order parametric continuity ( C2 ) between adjoining curves\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline\&.h>\fP
+.PP
+Inherits \fBQwtSplineC1\fP\&.
+.PP
+Inherited by \fBQwtSplineCubic\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBoundaryConditionC2\fP { \fBCubicRunout\fP = LinearRunout + 1, \fBNotAKnot\fP }"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineC2\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineC2\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< QLineF > \fBbezierControlLines\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual QPolygonF \fBequidistantPolygon\fP (const QPolygonF &, double distance, bool withNodes) const override"
+.br
+.RI "Find an interpolated polygon with 'equidistant' points\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< \fBQwtSplinePolynomial\fP > \fBpolynomials\fP (const QPolygonF &) const override"
+.br
+.RI "Calculate the interpolating polynomials for a non parametric spline\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< double > \fBslopes\fP (const QPolygonF &) const override"
+.br
+.RI "Find the first derivative at the control points\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< double > \fBcurvatures\fP (const QPolygonF &) const =0"
+.br
+.RI "Find the second derivative at the control points\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for spline interpolations providing a second order parametric continuity ( C2 ) between adjoining curves\&. 
+
+All interpolations with C2 continuity are based on rules for finding the 2\&. derivate at some control points\&.
+.PP
+In case of non parametric splines those points are the curve points, while for parametric splines the calculation is done twice using a parameter value t\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSplineParametrization\fP 
+.RE
+.PP
+
+.PP
+Definition at line 267 of file qwt_spline\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtSplineC2::BoundaryConditionC2\fP"
+Boundary condition that requires C2 continuity
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline::boundaryCondition\fP, \fBQwtSpline::BoundaryCondition\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fICubicRunout \fP\fP
+The second derivate at the endpoint is related to the second derivatives at the 2 neighbours: cv[0] := 2\&.0 * cv[1] - cv[2]\&.
+.PP
+\fBNote\fP
+.RS 4
+\fBboundaryValue()\fP is ignored 
+.RE
+.PP
+
+.TP
+\fB\fINotAKnot \fP\fP
+The 3rd derivate at the endpoint matches the 3rd derivate at its neighbours\&. Or in other words: the first/last curve segment extents the polynomial of its neighboured polynomial
+.PP
+\fBNote\fP
+.RS 4
+\fBboundaryValue()\fP is ignored 
+.RE
+.PP
+
+.PP
+Definition at line 275 of file qwt_spline\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSplineC2::QwtSplineC2 ()"
+
+.PP
+Constructor\&. The default setting is a non closing spline with no parametrization ( \fBQwtSplineParametrization::ParameterX\fP )\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline::setParametrization()\fP, \fBQwtSpline::setBoundaryType()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1228 of file qwt_spline\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQVector\fP< QLineF > QwtSplineC2::bezierControlLines (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns the 2 control points of each curve as QLineF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Control points of the interpolating Bezier curves
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The implementation simply calls \fBQwtSplineC1::bezierControlLines()\fP, but is intended to be replaced by a more efficient implementation that builds the polynomials by the curvatures some day\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Reimplemented in \fBQwtSplineCubic\fP\&.
+.PP
+Definition at line 1270 of file qwt_spline\&.cpp\&.
+.SS "\fBQVector\fP< double > QwtSplineC2::curvatures (const QPolygonF & points) const\fC [pure virtual]\fP"
+
+.PP
+Find the second derivative at the control points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector with the values of the 2nd derivate at the control points
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBslopes()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtSplineCubic\fP\&.
+.SS "QPolygonF QwtSplineC2::equidistantPolygon (const QPolygonF & points, double distance, bool withNodes) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Find an interpolated polygon with 'equidistant' points\&. The implementation is optimzed for non parametric curves ( \fBQwtSplineParametrization::ParameterX\fP ) and falls back to QwtSpline::equidistantPolygon() otherwise\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.br
+\fIdistance\fP Distance between 2 points according to the parametrization 
+.br
+\fIwithNodes\fP When true, also add the control nodes ( even if not being equidistant )
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polygon
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtSpline::equidistantPolygon() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Definition at line 1295 of file qwt_spline\&.cpp\&.
+.SS "QPainterPath QwtSplineC2::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be rendered by QPainter
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The implementation simply calls \fBQwtSplineC1::painterPath()\fP, but is intended to be replaced by a one pass calculation some day\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Reimplemented in \fBQwtSplineCubic\fP\&.
+.PP
+Definition at line 1249 of file qwt_spline\&.cpp\&.
+.SS "\fBQVector\fP< \fBQwtSplinePolynomial\fP > QwtSplineC2::polynomials (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate the interpolating polynomials for a non parametric spline\&. C2 spline interpolations are based on finding values for the second derivates of f at the control points\&. The interpolating polynomials can be calculated from the the second derivates using \fBQwtSplinePolynomial::fromCurvatures\fP\&.
+.PP
+The default implementation is a 2 pass calculation\&. In derived classes it might be overloaded by a one pass implementation\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polynomials
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC1\fP\&.
+.PP
+Reimplemented in \fBQwtSplineCubic\fP\&.
+.PP
+Definition at line 1381 of file qwt_spline\&.cpp\&.
+.SS "\fBQVector\fP< double > QwtSplineC2::slopes (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Find the first derivative at the control points\&. An implementation calculating the 2nd derivatives and then building the slopes in a 2nd loop\&. \fBQwtSplineCubic\fP overloads it with a more performant implementation doing it in one loop\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector with the values of the 1nd derivate at the control points
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBcurvatures()\fP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSplineC1\fP\&.
+.PP
+Reimplemented in \fBQwtSplineCubic\fP\&.
+.PP
+Definition at line 1339 of file qwt_spline\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,97 @@
+.TH "QwtAxis" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtAxis
+.SH SYNOPSIS
+.br
+.PP
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPosition\fP { \fBYLeft\fP, \fBYRight\fP, \fBXBottom\fP, \fBXTop\fP }"
+.br
+.RI "Axis position\&. "
+.ti -1c
+.RI "enum { \fBAxisPositions\fP = XTop + 1 }"
+.br
+.RI "Number of axis positions\&. "
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBisValid\fP (int axisPos)"
+.br
+.ti -1c
+.RI "bool \fBisYAxis\fP (int axisPos)"
+.br
+.ti -1c
+.RI "bool \fBisXAxis\fP (int axisPos)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Enums and methods for axes 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBQwtAxis::Position\fP"
+
+.PP
+Axis position\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIYLeft \fP\fP
+Y axis left of the canvas\&. 
+.TP
+\fB\fIYRight \fP\fP
+Y axis right of the canvas\&. 
+.TP
+\fB\fIXBottom \fP\fP
+X axis below the canvas\&. 
+.TP
+\fB\fIXTop \fP\fP
+X axis above the canvas\&. 
+.PP
+Definition at line 21 of file qwt_axis\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "bool QwtAxis::isValid (int axisPos)\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, when axisPos is in the valid range [ YLeft, XTop ] 
+.RE
+.PP
+
+.PP
+Definition at line 45 of file qwt_axis\&.h\&.
+.SS "bool QwtAxis::isXAxis (int axisPos)\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, when axisPos is XBottom or XTop 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file qwt_axis\&.h\&.
+.SS "bool QwtAxis::isYAxis (int axisPos)\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, when axisPos is YLeft or YRight 
+.RE
+.PP
+
+.PP
+Definition at line 57 of file qwt_axis\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

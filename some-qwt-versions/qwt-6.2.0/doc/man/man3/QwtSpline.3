@@ -1,0 +1,516 @@
+.TH "QwtSpline" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSpline \- Base class for all splines\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline\&.h>\fP
+.PP
+Inherited by \fBQwtSplineBasis\fP, and \fBQwtSplineInterpolating\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBBoundaryType\fP { \fBConditionalBoundaries\fP, \fBPeriodicPolygon\fP, \fBClosedPolygon\fP }"
+.br
+.ti -1c
+.RI "enum \fBBoundaryPosition\fP { \fBAtBeginning\fP, \fBAtEnd\fP }"
+.br
+.ti -1c
+.RI "enum \fBBoundaryCondition\fP { \fBClamped1\fP, \fBClamped2\fP, \fBClamped3\fP, \fBLinearRunout\fP }"
+.br
+.RI "Boundary condition\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSpline\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSpline\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetParametrization\fP (int type)"
+.br
+.ti -1c
+.RI "void \fBsetParametrization\fP (\fBQwtSplineParametrization\fP *)"
+.br
+.ti -1c
+.RI "const \fBQwtSplineParametrization\fP * \fBparametrization\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBoundaryType\fP (\fBBoundaryType\fP)"
+.br
+.ti -1c
+.RI "\fBBoundaryType\fP \fBboundaryType\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBoundaryValue\fP (\fBBoundaryPosition\fP, double value)"
+.br
+.RI "Define the boundary value\&. "
+.ti -1c
+.RI "double \fBboundaryValue\fP (\fBBoundaryPosition\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetBoundaryCondition\fP (\fBBoundaryPosition\fP, int condition)"
+.br
+.RI "Define the condition for an endpoint of the spline\&. "
+.ti -1c
+.RI "int \fBboundaryCondition\fP (\fBBoundaryPosition\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetBoundaryConditions\fP (int condition, double valueBegin=0\&.0, double valueEnd=0\&.0)"
+.br
+.RI "Define the condition at the endpoints of a spline\&. "
+.ti -1c
+.RI "virtual QPolygonF \fBpolygon\fP (const QPolygonF &, double tolerance) const"
+.br
+.RI "Interpolate a curve by a polygon\&. "
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const =0"
+.br
+.ti -1c
+.RI "virtual uint \fBlocality\fP () const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class for all splines\&. 
+
+A spline is a curve represented by a sequence of polynomials\&. Spline approximation is the process of finding polynomials for a given set of points\&. When the algorithm preserves the initial points it is called interpolating\&.
+.PP
+Splines can be classified according to conditions of the polynomials that are met at the start/endpoints of the pieces:
+.PP
+.IP "\(bu" 2
+Geometric Continuity
+.IP "  \(bu" 4
+G0: polynomials are joined
+.IP "  \(bu" 4
+G1: first derivatives are proportional at the join point The curve tangents thus have the same direction, but not necessarily the same magnitude\&. i\&.e\&., C1'(1) = (a,b,c) and C2'(0) = (k*a, k*b, k*c)\&.
+.IP "  \(bu" 4
+G2: first and second derivatives are proportional at join point
+.PP
+
+.IP "\(bu" 2
+Parametric Continuity
+.IP "  \(bu" 4
+C0: curves are joined
+.IP "  \(bu" 4
+C1: first derivatives equal
+.IP "  \(bu" 4
+C2: first and second derivatives are equal
+.PP
+
+.PP
+.PP
+Geometric continuity requires the geometry to be continuous, while parametric continuity requires that the underlying parameterization be continuous as well\&. Parametric continuity of order n implies geometric continuity of order n, but not vice-versa\&.
+.PP
+\fBQwtSpline\fP is the base class for spline approximations of any continuity\&. 
+.PP
+Definition at line 57 of file qwt_spline\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtSpline::BoundaryCondition\fP"
+
+.PP
+Boundary condition\&. A spline algorithm calculates polynomials by looking a couple of points back/ahead ( \fBlocality()\fP )\&. At the ends additional rules are necessary to compensate the missing points\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryCondition()\fP, \fBboundaryValue()\fP 
+.PP
+\fBQwtSplineC2::BoundaryConditionC2\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIClamped1 \fP\fP
+The first derivative at the end point is given 
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryValue()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIClamped2 \fP\fP
+The second derivative at the end point is given
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryValue()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+a condition having a second derivative of 0 is also called 'natural'\&. 
+.RE
+.PP
+
+.TP
+\fB\fIClamped3 \fP\fP
+The third derivative at the end point is given
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryValue()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+a condition having a third derivative of 0 is also called 'parabolic runout'\&. 
+.RE
+.PP
+
+.TP
+\fB\fILinearRunout \fP\fP
+The first derivate at the endpoint is related to the first derivative at its neighbour by the boundary value\&. F,e when the boundary value at the end is 1\&.0 then the slope at the last 2 points is the same\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryValue()\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file qwt_spline\&.h\&.
+.SS "enum \fBQwtSpline::BoundaryPosition\fP"
+position of a boundary condition 
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryCondition()\fP, \fBboundaryValue()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIAtBeginning \fP\fP
+the condition is at the beginning of the polynomial 
+.TP
+\fB\fIAtEnd \fP\fP
+the condition is at the end of the polynomial 
+.PP
+Definition at line 99 of file qwt_spline\&.h\&.
+.SS "enum \fBQwtSpline::BoundaryType\fP"
+Boundary type specifying the spline at its endpoints
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBoundaryType()\fP, \fBboundaryType()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIConditionalBoundaries \fP\fP
+The polynomials at the start/endpoint depend on specific conditions
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline::BoundaryCondition\fP 
+.RE
+.PP
+
+.TP
+\fB\fIPeriodicPolygon \fP\fP
+The polynomials at the start/endpoint are found by using imaginary additional points\&. Additional points at the end are found by translating points from the beginning or v\&.v\&. 
+.TP
+\fB\fIClosedPolygon \fP\fP
+ClosedPolygon is similar to PeriodicPolygon beside, that the interpolation includes the connection between the last and the first control point\&.
+.PP
+\fBNote\fP
+.RS 4
+Only works for parametrizations, where the parameter increment for the the final closing line is positive\&. This excludes \fBQwtSplineParametrization::ParameterX\fP and \fBQwtSplineParametrization::ParameterY\fP 
+.RE
+.PP
+
+.PP
+Definition at line 65 of file qwt_spline\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSpline::QwtSpline ()"
+
+.PP
+Constructor\&. The default setting is a non closing spline with chordal parametrization
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetParametrization()\fP, \fBsetBoundaryType()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 540 of file qwt_spline\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int QwtSpline::boundaryCondition (\fBBoundaryPosition\fP position) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Condition for an endpoint of the spline 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP At the beginning or the end of the spline
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBoundaryCondition()\fP, \fBboundaryValue()\fP, \fBsetBoundaryConditions()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 651 of file qwt_spline\&.cpp\&.
+.SS "\fBQwtSpline::BoundaryType\fP QwtSpline::boundaryType () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Boundary type 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBoundaryType()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 626 of file qwt_spline\&.cpp\&.
+.SS "double QwtSpline::boundaryValue (\fBBoundaryPosition\fP position) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Boundary value 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP At the beginning or the end of the spline
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBoundaryValue()\fP, \fBboundaryCondition()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 682 of file qwt_spline\&.cpp\&.
+.SS "uint QwtSpline::locality () const\fC [virtual]\fP"
+The locality of an spline interpolation identifies how many adjacent polynomials are affected, when changing the position of one point\&.
+.PP
+A locality of 'n' means, that changing the coordinates of a point has an effect on 'n' leading and 'n' following polynomials\&. Those polynomials can be calculated from a local subpolygon\&.
+.PP
+A value of 0 means, that the interpolation is not local and any modification of the polygon requires to recalculate all polynomials ( f\&.e cubic splines )\&.
+.PP
+\fBReturns\fP
+.RS 4
+Order of locality 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtSplinePleasing\fP, \fBQwtSplineLocal\fP, \fBQwtSplineCubic\fP, and \fBQwtSplineBasis\fP\&.
+.PP
+Definition at line 564 of file qwt_spline\&.cpp\&.
+.SS "QPainterPath QwtSpline::painterPath (const QPolygonF & points) const\fC [pure virtual]\fP"
+Approximates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be rendered by QPainter
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpolygon()\fP, \fBQwtBezier\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtSplinePleasing\fP, \fBQwtSplineLocal\fP, \fBQwtSplineCubic\fP, \fBQwtSplineBasis\fP, \fBQwtSplineC2\fP, \fBQwtSplineC1\fP, and \fBQwtSplineInterpolating\fP\&.
+.SS "const \fBQwtSplineParametrization\fP * QwtSpline::parametrization () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+parametrization 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetParametrization()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 605 of file qwt_spline\&.cpp\&.
+.SS "QPolygonF QwtSpline::polygon (const QPolygonF & points, double tolerance) const\fC [virtual]\fP"
+
+.PP
+Interpolate a curve by a polygon\&. Interpolates a polygon piecewise with Bezier curves interpolating them in a 2nd pass by polygons\&.
+.PP
+The interpolation is based on 'Piecewise Linear Approximation of Bézier Curves' by Roger Willcocks ( http://www.rops.org )
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.br
+\fItolerance\fP Maximum for the accepted error of the approximation
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+polygon approximating the interpolating polynomials
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+bezierControlLines(), \fBQwtBezier\fP 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtSplineInterpolating\fP\&.
+.PP
+Definition at line 496 of file qwt_spline\&.cpp\&.
+.SS "void QwtSpline::setBoundaryCondition (\fBBoundaryPosition\fP position, int condition)"
+
+.PP
+Define the condition for an endpoint of the spline\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP At the beginning or the end of the spline 
+.br
+\fIcondition\fP Condition
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBBoundaryCondition\fP, \fBQwtSplineC2::BoundaryCondition\fP, \fBboundaryCondition()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 639 of file qwt_spline\&.cpp\&.
+.SS "void QwtSpline::setBoundaryConditions (int condition, double valueBegin = \fC0\&.0\fP, double valueEnd = \fC0\&.0\fP)"
+
+.PP
+Define the condition at the endpoints of a spline\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcondition\fP Condition 
+.br
+\fIvalueBegin\fP Used for the condition at the beginning of te spline 
+.br
+\fIvalueEnd\fP Used for the condition at the end of te spline
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBBoundaryCondition\fP, \fBQwtSplineC2::BoundaryCondition\fP, testBoundaryCondition(), \fBsetBoundaryValue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 700 of file qwt_spline\&.cpp\&.
+.SS "void QwtSpline::setBoundaryType (\fBBoundaryType\fP boundaryType)"
+Define the boundary type for the endpoints of the approximating spline\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIboundaryType\fP Boundary type 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryType()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 617 of file qwt_spline\&.cpp\&.
+.SS "void QwtSpline::setBoundaryValue (\fBBoundaryPosition\fP position, double value)"
+
+.PP
+Define the boundary value\&. The boundary value is an parameter used in combination with the boundary condition\&. Its meaning depends on the condition\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIposition\fP At the beginning or the end of the spline 
+.br
+\fIvalue\fP Value used for the condition at the end point
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBboundaryValue()\fP, \fBsetBoundaryCondition()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 670 of file qwt_spline\&.cpp\&.
+.SS "void QwtSpline::setParametrization (int type)"
+Define the parametrization for a parametric spline approximation The default setting is a chordal parametrization\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP Type of parametrization, usually one of \fBQwtSplineParametrization::Type\fP 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBparametrization()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 576 of file qwt_spline\&.cpp\&.
+.SS "void QwtSpline::setParametrization (\fBQwtSplineParametrization\fP * parametrization)"
+Define the parametrization for a parametric spline approximation The default setting is a chordal parametrization\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIparametrization\fP Parametrization 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBparametrization()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 592 of file qwt_spline\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

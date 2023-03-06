@@ -1,0 +1,407 @@
+.TH "QwtPlotAbstractGLCanvas" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotAbstractGLCanvas \- Base class of \fBQwtPlotOpenGLCanvas\fP and \fBQwtPlotGLCanvas\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_abstract_canvas\&.h>\fP
+.PP
+Inherits \fBQwtPlotAbstractCanvas\fP\&.
+.PP
+Inherited by \fBQwtPlotGLCanvas\fP, and \fBQwtPlotOpenGLCanvas\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPaintAttribute\fP { \fBBackingStore\fP = 1, \fBImmediatePaint\fP = 8 }"
+.br
+.RI "Paint attributes\&. "
+.ti -1c
+.RI "typedef QFlags< \fBPaintAttribute\fP > \fBPaintAttributes\fP"
+.br
+.RI "Paint attributes\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotAbstractGLCanvas\fP (QWidget *\fBcanvasWidget\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotAbstractGLCanvas\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetPaintAttribute\fP (\fBPaintAttribute\fP, bool on=true)"
+.br
+.RI "Changing the paint attributes\&. "
+.ti -1c
+.RI "bool \fBtestPaintAttribute\fP (\fBPaintAttribute\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetFrameStyle\fP (int style)"
+.br
+.ti -1c
+.RI "int \fBframeStyle\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetFrameShadow\fP (QFrame::Shadow)"
+.br
+.ti -1c
+.RI "QFrame::Shadow \fBframeShadow\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetFrameShape\fP (QFrame::Shape)"
+.br
+.ti -1c
+.RI "QFrame::Shape \fBframeShape\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetLineWidth\fP (int)"
+.br
+.ti -1c
+.RI "int \fBlineWidth\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetMidLineWidth\fP (int)"
+.br
+.ti -1c
+.RI "int \fBmidLineWidth\fP () const"
+.br
+.ti -1c
+.RI "int \fBframeWidth\fP () const"
+.br
+.ti -1c
+.RI "QRect \fBframeRect\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBinvalidateBackingStore\fP ()=0"
+.br
+.RI "Invalidate the internal backing store\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBreplot\fP ()"
+.br
+.ti -1c
+.RI "void \fBdraw\fP (QPainter *)"
+.br
+.RI "Helper function for the derived plot canvas\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Base class of \fBQwtPlotOpenGLCanvas\fP and \fBQwtPlotGLCanvas\fP\&. 
+.PP
+Definition at line 87 of file qwt_plot_abstract_canvas\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBPaintAttribute\fP > \fBQwtPlotAbstractGLCanvas::PaintAttributes\fP"
+
+.PP
+Paint attributes\&. An ORed combination of \fBPaintAttribute\fP values\&. 
+.PP
+Definition at line 122 of file qwt_plot_abstract_canvas\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPlotAbstractGLCanvas::PaintAttribute\fP"
+
+.PP
+Paint attributes\&. The default setting enables BackingStore and Opaque\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP, \fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIBackingStore \fP\fP
+Paint double buffered reusing the content of the pixmap buffer when possible\&. Using a backing store might improve the performance significantly, when working with widget overlays ( like rubber bands )\&. Disabling the cache might improve the performance for incremental paints (using \fBQwtPlotDirectPainter\fP )\&.
+.PP
+\fBSee also\fP
+.RS 4
+backingStore(), \fBinvalidateBackingStore()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIImmediatePaint \fP\fP
+When ImmediatePaint is set \fBreplot()\fP calls repaint() instead of update()\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBreplot()\fP, QWidget::repaint(), QWidget::update() 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file qwt_plot_abstract_canvas\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotAbstractGLCanvas::QwtPlotAbstractGLCanvas (QWidget * canvasWidget)\fC [explicit]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcanvasWidget\fP plot canvas widget 
+.RE
+.PP
+
+.PP
+Definition at line 904 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRect QwtPlotAbstractGLCanvas::frameRect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+The rectangle where the frame is drawn in\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1105 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "QFrame::Shadow QwtPlotAbstractGLCanvas::frameShadow () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Frame shadow 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFrameShadow()\fP, QFrame::setFrameShadow() 
+.RE
+.PP
+
+.PP
+Definition at line 1000 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "QFrame::Shape QwtPlotAbstractGLCanvas::frameShape () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Frame shape 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFrameShape()\fP, QFrame::frameShape() 
+.RE
+.PP
+
+.PP
+Definition at line 1020 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "int QwtPlotAbstractGLCanvas::frameStyle () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+The bitwise OR between a \fBframeShape()\fP and a \fBframeShadow()\fP 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetFrameStyle()\fP, QFrame::frameStyle() 
+.RE
+.PP
+
+.PP
+Definition at line 980 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "int QwtPlotAbstractGLCanvas::frameWidth () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Frame width depending on the style, line width and midline width\&. 
+.RE
+.PP
+
+.PP
+Definition at line 1084 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "int QwtPlotAbstractGLCanvas::lineWidth () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Line width of the frame 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLineWidth()\fP, \fBmidLineWidth()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1048 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "int QwtPlotAbstractGLCanvas::midLineWidth () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Midline width of the frame 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMidLineWidth()\fP, \fBlineWidth()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1076 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::replot ()\fC [protected]\fP"
+Invalidate the paint cache and repaint the canvas 
+.PP
+\fBSee also\fP
+.RS 4
+invalidatePaintCache() 
+.RE
+.PP
+
+.PP
+Definition at line 1093 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::setFrameShadow (QFrame::Shadow shadow)"
+Set the frame shadow
+.PP
+\fBParameters\fP
+.RS 4
+\fIshadow\fP Frame shadow 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBframeShadow()\fP, \fBsetFrameShape()\fP, QFrame::setFrameShadow() 
+.RE
+.PP
+
+.PP
+Definition at line 991 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::setFrameShape (QFrame::Shape shape)"
+Set the frame shape
+.PP
+\fBParameters\fP
+.RS 4
+\fIshape\fP Frame shape 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBframeShape()\fP, \fBsetFrameShadow()\fP, QFrame::frameShape() 
+.RE
+.PP
+
+.PP
+Definition at line 1011 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::setFrameStyle (int style)"
+Set the frame style
+.PP
+\fBParameters\fP
+.RS 4
+\fIstyle\fP The bitwise OR between a shape and a shadow\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBframeStyle()\fP, QFrame::setFrameStyle(), \fBsetFrameShadow()\fP, \fBsetFrameShape()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 965 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::setLineWidth (int width)"
+Set the frame line width
+.PP
+The default line width is 2 pixels\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP Line width of the frame 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBlineWidth()\fP, \fBsetMidLineWidth()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1033 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::setMidLineWidth (int width)"
+Set the frame mid line width
+.PP
+The default midline width is 0 pixels\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIwidth\fP Midline width of the frame 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmidLineWidth()\fP, \fBsetLineWidth()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1061 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "void QwtPlotAbstractGLCanvas::setPaintAttribute (\fBPaintAttribute\fP attribute, bool on = \fCtrue\fP)"
+
+.PP
+Changing the paint attributes\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Paint attribute 
+.br
+\fIon\fP On/Off
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 927 of file qwt_plot_abstract_canvas\&.cpp\&.
+.SS "bool QwtPlotAbstractGLCanvas::testPaintAttribute (\fBPaintAttribute\fP attribute) const"
+Test whether a paint attribute is enabled
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Paint attribute 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, when attribute is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 952 of file qwt_plot_abstract_canvas\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,44 @@
+.TH "QwtPickerPolygonMachine" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPickerPolygonMachine \- A state machine for polygon selections\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_picker_machine\&.h>\fP
+.PP
+Inherits \fBQwtPickerMachine\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPickerPolygonMachine\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fBQList\fP< \fBCommand\fP > \fBtransition\fP (const \fBQwtEventPattern\fP &, const QEvent *) override"
+.br
+.RI "Transition\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A state machine for polygon selections\&. 
+
+Pressing \fBQwtEventPattern::MouseSelect1\fP or \fBQwtEventPattern::KeySelect1\fP starts the selection and selects the first point, or appends a point\&. Pressing \fBQwtEventPattern::MouseSelect2\fP or \fBQwtEventPattern::KeySelect2\fP appends the last point and terminates the selection\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtEventPattern::MousePatternCode\fP, \fBQwtEventPattern::KeyPatternCode\fP 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file qwt_picker_machine\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

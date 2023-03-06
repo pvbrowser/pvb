@@ -141,7 +141,7 @@ static int generated_defineMask(PARAM *p)
 
   pvQwtCounter(p,wtCounter1,tab2);
   pvSetGeometry(p,wtCounter1,409,50,161,51);
-  qwtCounterSetValue(p,wtCounter1,0);
+  qwtCounterSetValue(p,wtCounter1,2);
 
   pvQwtWheel(p,wtWheel1,tab2);
   pvSetGeometry(p,wtWheel1,589,41,200,60);
@@ -154,15 +154,16 @@ static int generated_defineMask(PARAM *p)
 
   pvQwtScale(p,wtScale1,tab2,0);
   pvSetGeometry(p,wtScale1,9,10,91,151);
-  qwtScaleSetPosition(p,wtScale1,ScaleLeft);
+//qwtScaleSetPosition(p,wtScale1,ScaleLeft);
+  qwtScaleSetPosition(p,wtScale1,ScaleBottom);
 
   pvQwtKnob(p,wtKnob1,tab2);
   pvSetGeometry(p,wtKnob1,239,10,151,161);
 
   pvQwtSlider(p,wtSlider1,tab2);
   pvSetGeometry(p,wtSlider1,0,190,200,50);
-  qwtSliderSetScalePos(p,wtSlider1,SliderBottom);
-  qwtSliderSetValue(p,wtSlider1,0);
+  qwtSliderSetScalePos(p,wtSlider1,SliderLeft);
+  qwtSliderSetValue(p,wtSlider1,3);
 
   pvQWidget(p,tab3,tabWidget2);
   pvAddTab(p,tabWidget2,tab3,"Pixmap");

@@ -1,0 +1,643 @@
+.TH "QwtPolarCurve" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarCurve \- An item, that represents a series of points\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_curve\&.h>\fP
+.PP
+Inherits \fBQwtPolarItem\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBCurveStyle\fP { \fBNoCurve\fP, \fBLines\fP, \fBUserCurve\fP = 100 }"
+.br
+.ti -1c
+.RI "enum \fBLegendAttribute\fP { \fBLegendShowLine\fP = 0x01, \fBLegendShowSymbol\fP = 0x02 }"
+.br
+.RI "Attributes how to represent the curve on the legend\&. "
+.ti -1c
+.RI "typedef QFlags< \fBLegendAttribute\fP > \fBLegendAttributes\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarCurve\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtPolarCurve\fP (const \fBQwtText\fP &\fBtitle\fP)"
+.br
+.ti -1c
+.RI "\fBQwtPolarCurve\fP (const QString &\fBtitle\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPolarCurve\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.ti -1c
+.RI "void \fBsetLegendAttribute\fP (\fBLegendAttribute\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestLegendAttribute\fP (\fBLegendAttribute\fP) const"
+.br
+.RI "Test if a legend attribute is enabled\&. "
+.ti -1c
+.RI "void \fBsetData\fP (\fBQwtSeriesData\fP< \fBQwtPointPolar\fP > *\fBdata\fP)"
+.br
+.ti -1c
+.RI "const \fBQwtSeriesData\fP< \fBQwtPointPolar\fP > * \fBdata\fP () const"
+.br
+.ti -1c
+.RI "size_t \fBdataSize\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtPointPolar\fP \fBsample\fP (int i) const"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &)"
+.br
+.RI "Assign a pen\&. "
+.ti -1c
+.RI "const QPen & \fBpen\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetStyle\fP (\fBCurveStyle\fP \fBstyle\fP)"
+.br
+.ti -1c
+.RI "\fBCurveStyle\fP \fBstyle\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetSymbol\fP (\fBQwtSymbol\fP *)"
+.br
+.RI "Assign a symbol\&. "
+.ti -1c
+.RI "const \fBQwtSymbol\fP * \fBsymbol\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetCurveFitter\fP (\fBQwtCurveFitter\fP *)"
+.br
+.RI "Insert a curve fitter\&. "
+.ti -1c
+.RI "\fBQwtCurveFitter\fP * \fBcurveFitter\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *p, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, double radius, const QRectF &canvasRect) const override"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *p, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, int from, int to) const"
+.br
+.RI "Draw an interval of the curve\&. "
+.ti -1c
+.RI "virtual \fBQwtInterval\fP \fBboundingInterval\fP (int scaleId) const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtGraphic\fP \fBlegendIcon\fP (int index, const QSizeF &) const override"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinit\fP ()"
+.br
+.RI "Initialize data members\&. "
+.ti -1c
+.RI "virtual void \fBdrawCurve\fP (QPainter *, int \fBstyle\fP, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, int from, int to) const"
+.br
+.ti -1c
+.RI "virtual void \fBdrawSymbols\fP (QPainter *, const \fBQwtSymbol\fP &, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, int from, int to) const"
+.br
+.ti -1c
+.RI "void \fBdrawLines\fP (QPainter *, const \fBQwtScaleMap\fP &azimuthMap, const \fBQwtScaleMap\fP &radialMap, const QPointF &pole, int from, int to) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An item, that represents a series of points\&. 
+
+A curve is the representation of a series of points in polar coordinates\&. The points are connected to the curve using the abstract QwtData interface\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarPlot\fP, \fBQwtSymbol\fP, \fBQwtScaleMap\fP 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file qwt_polar_curve\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBLegendAttribute\fP > \fBQwtPolarCurve::LegendAttributes\fP"
+An ORed combination of \fBLegendAttribute\fP values\&. 
+.PP
+Definition at line 75 of file qwt_polar_curve\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPolarCurve::CurveStyle\fP"
+Curve styles\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetStyle()\fP, \fBstyle()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINoCurve \fP\fP
+Don't draw a curve\&. Note: This doesn't affect the symbols\&. 
+.TP
+\fB\fILines \fP\fP
+Connect the points with straight lines\&. The lines might be interpolated depending on the 'Fitted' attribute\&. Curve fitting can be configured using \fBsetCurveFitter()\fP\&. 
+.TP
+\fB\fIUserCurve \fP\fP
+Values > 100 are reserved for user specific curve styles\&. 
+.PP
+Definition at line 37 of file qwt_polar_curve\&.h\&.
+.SS "enum \fBQwtPolarCurve::LegendAttribute\fP"
+
+.PP
+Attributes how to represent the curve on the legend\&. If none of the flags is activated \fBQwtPlotCurve\fP tries to find a color representing the curve and paints a rectangle with it\&. In the default setting all attributes are off\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLegendAttribute()\fP, \fBtestLegendAttribute()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILegendShowLine \fP\fP
+If the curveStyle() is not NoCurve a line is painted with the curvePen()\&. 
+.TP
+\fB\fILegendShowSymbol \fP\fP
+If the curve has a valid symbol it is painted\&. 
+.PP
+Definition at line 63 of file qwt_polar_curve\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarCurve::QwtPolarCurve (const \fBQwtText\fP & title)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP title of the curve 
+.RE
+.PP
+
+.PP
+Definition at line 76 of file qwt_polar_curve\&.cpp\&.
+.SS "QwtPolarCurve::QwtPolarCurve (const QString & title)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP title of the curve 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file qwt_polar_curve\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtInterval\fP QwtPolarCurve::boundingInterval (int scaleId) const\fC [override]\fP, \fC [virtual]\fP"
+Interval, that is necessary to display the item This interval can be useful for operations like clipping or autoscaling
+.PP
+\fBParameters\fP
+.RS 4
+\fIscaleId\fP Scale index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+bounding interval
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtData::boundingRect() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 585 of file qwt_polar_curve\&.cpp\&.
+.SS "\fBQwtCurveFitter\fP * QwtPolarCurve::curveFitter () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+The curve fitter 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetCurveFitter()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file qwt_polar_curve\&.cpp\&.
+.SS "const \fBQwtSeriesData\fP< \fBQwtPointPolar\fP > * QwtPolarCurve::data () const\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+the the curve data 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file qwt_polar_curve\&.h\&.
+.SS "size_t QwtPolarCurve::dataSize () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Number of points 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetData()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 499 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::draw (QPainter * painter, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, double radius, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+Draw the curve
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIradius\fP Radius of the complete plot area in painter coordinates 
+.br
+\fIcanvasRect\fP Contents rect of the canvas in painter coordinates 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 276 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::draw (QPainter * painter, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, int from, int to) const\fC [virtual]\fP"
+
+.PP
+Draw an interval of the curve\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIfrom\fP index of the first point to be painted 
+.br
+\fIto\fP index of the last point to be painted\&. If to < 0 the curve will be painted to its last point\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBdrawCurve()\fP, \fBdrawSymbols()\fP, 
+.RE
+.PP
+
+.PP
+Definition at line 299 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::drawCurve (QPainter * painter, int style, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, int from, int to) const\fC [protected]\fP, \fC [virtual]\fP"
+Draw the line part (without symbols) of a curve interval\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIstyle\fP Curve style, see \fBQwtPolarCurve::CurveStyle\fP 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIfrom\fP index of the first point to be painted 
+.br
+\fIto\fP index of the last point to be painted\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBdraw()\fP, \fBdrawLines()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 341 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::drawLines (QPainter * painter, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, int from, int to) const\fC [protected]\fP"
+Draw lines
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIfrom\fP index of the first point to be painted 
+.br
+\fIto\fP index of the last point to be painted\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBdraw()\fP, \fBdrawLines()\fP, \fBsetCurveFitter()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 367 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::drawSymbols (QPainter * painter, const \fBQwtSymbol\fP & symbol, const \fBQwtScaleMap\fP & azimuthMap, const \fBQwtScaleMap\fP & radialMap, const QPointF & pole, int from, int to) const\fC [protected]\fP, \fC [virtual]\fP"
+Draw symbols
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIsymbol\fP Curve symbol 
+.br
+\fIazimuthMap\fP Maps azimuth values to values related to 0\&.0, M_2PI 
+.br
+\fIradialMap\fP Maps radius values into painter coordinates\&. 
+.br
+\fIpole\fP Position of the pole in painter coordinates 
+.br
+\fIfrom\fP index of the first point to be painted 
+.br
+\fIto\fP index of the last point to be painted\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSymbol()\fP, \fBdraw()\fP, \fBdrawCurve()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 459 of file qwt_polar_curve\&.cpp\&.
+.SS "\fBQwtGraphic\fP QwtPolarCurve::legendIcon (int index, const QSizeF & size) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Icon representing the curve on the legend
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index of the legend entry ( ignored as there is only one ) 
+.br
+\fIsize\fP Icon size
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarItem::setLegendIconSize()\fP, \fBQwtPolarItem::legendData()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 513 of file qwt_polar_curve\&.cpp\&.
+.SS "const QPen & QwtPolarCurve::pen () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen used to draw the lines 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 212 of file qwt_polar_curve\&.cpp\&.
+.SS "int QwtPolarCurve::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBQwtPolarCurve::Rtti_PolarCurve\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPolarItem\fP\&.
+.PP
+Definition at line 113 of file qwt_polar_curve\&.cpp\&.
+.SS "\fBQwtPointPolar\fP QwtPolarCurve::sample (int i) const\fC [inline]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIi\fP index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+point at position i 
+.RE
+.PP
+
+.PP
+Definition at line 153 of file qwt_polar_curve\&.h\&.
+.SS "void QwtPolarCurve::setCurveFitter (\fBQwtCurveFitter\fP * curveFitter)"
+
+.PP
+Insert a curve fitter\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcurveFitter\fP Curve fitter
+.RE
+.PP
+A curve fitter interpolates the curve points\&. F\&.e \fBQwtPolarFitter\fP adds equidistant points so that the connection gets rounded instead of having straight lines\&. If curveFitter is NULL fitting is disabled\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBcurveFitter()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 246 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::setData (\fBQwtSeriesData\fP< \fBQwtPointPolar\fP > * data)"
+Initialize data with a pointer to \fBQwtSeriesData<QwtPointPolar>\fP\&.
+.PP
+The x-values of the data object represent the azimuth, the y-value represents the radius\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIdata\fP Data 
+.RE
+.PP
+
+.PP
+Definition at line 225 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::setLegendAttribute (\fBLegendAttribute\fP attribute, bool on = \fCtrue\fP)"
+Specify an attribute how to draw the legend identifier
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Attribute 
+.br
+\fIon\fP On/Off /sa LegendAttribute, \fBtestLegendAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::setPen (const QPen & pen)"
+
+.PP
+Assign a pen\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP New pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::setStyle (\fBCurveStyle\fP style)"
+Set the curve's drawing style
+.PP
+\fBParameters\fP
+.RS 4
+\fIstyle\fP Curve style 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBCurveStyle\fP, \fBstyle()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 152 of file qwt_polar_curve\&.cpp\&.
+.SS "void QwtPolarCurve::setSymbol (\fBQwtSymbol\fP * symbol)"
+
+.PP
+Assign a symbol\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsymbol\fP Symbol 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsymbol()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 175 of file qwt_polar_curve\&.cpp\&.
+.SS "\fBQwtPolarCurve::CurveStyle\fP QwtPolarCurve::style () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Current style 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBCurveStyle\fP, \fBsetStyle()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file qwt_polar_curve\&.cpp\&.
+.SS "const \fBQwtSymbol\fP * QwtPolarCurve::symbol () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+The current symbol 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSymbol()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 189 of file qwt_polar_curve\&.cpp\&.
+.SS "bool QwtPolarCurve::testLegendAttribute (\fBLegendAttribute\fP attribute) const"
+
+.PP
+Test if a legend attribute is enabled\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Legend attribute
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True if attribute is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBLegendAttribute\fP, \fBsetLegendAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file qwt_polar_curve\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

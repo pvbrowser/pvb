@@ -1,0 +1,5 @@
+<map id="QwtPoint3DSeriesData" name="QwtPoint3DSeriesData">
+<area shape="rect" id="node1" title="Interface for iterating over an array of 3D points." alt="" coords="5,169,164,196"/>
+<area shape="rect" id="node2" href="$class_qwt_array_series_data.html" title=" " alt="" coords="13,80,156,121"/>
+<area shape="rect" id="node3" href="$class_qwt_series_data.html" title="Abstract interface for iterating over samples." alt="" coords="13,5,156,32"/>
+</map>

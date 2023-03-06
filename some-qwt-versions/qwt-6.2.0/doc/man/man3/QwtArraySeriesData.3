@@ -1,0 +1,136 @@
+.TH "QwtArraySeriesData< T >" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtArraySeriesData< T > \- Template class for data, that is organized as \fBQVector\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_series_data\&.h>\fP
+.PP
+Inherits \fBQwtSeriesData< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtArraySeriesData\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtArraySeriesData\fP (const \fBQVector\fP< T > &\fBsamples\fP)"
+.br
+.ti -1c
+.RI "void \fBsetSamples\fP (const \fBQVector\fP< T > &\fBsamples\fP)"
+.br
+.ti -1c
+.RI "const \fBQVector\fP< T > \fBsamples\fP () const"
+.br
+.ti -1c
+.RI "virtual size_t \fBsize\fP () const override"
+.br
+.ti -1c
+.RI "virtual T \fBsample\fP (size_t index) const override"
+.br
+.in -1c
+.SS "Protected Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBQVector\fP< T > \fBm_samples\fP"
+.br
+.RI "Vector of samples\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>
+.br
+class QwtArraySeriesData< T >"
+Template class for data, that is organized as \fBQVector\fP\&. 
+
+\fBQVector\fP uses implicit data sharing and can be passed around as argument efficiently\&. 
+.PP
+Definition at line 135 of file qwt_series_data\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBQwtArraySeriesData\fP< T >::\fBQwtArraySeriesData\fP (const \fBQVector\fP< T > & samples)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsamples\fP Array of samples 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file qwt_series_data\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > T \fBQwtArraySeriesData\fP< T >::sample (size_t index) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Sample at a specific position
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Sample at position index 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSeriesData< T >\fP\&.
+.PP
+Reimplemented in \fBQwtSyntheticPointData\fP, \fBQwtCPointerValueData< T >\fP, \fBQwtValuePointData< T >\fP, \fBQwtCPointerData< T >\fP, and \fBQwtPointArrayData< T >\fP\&.
+.PP
+Definition at line 203 of file qwt_series_data\&.h\&.
+.SS "template<typename T > const \fBQVector\fP< T > \fBQwtArraySeriesData\fP< T >::samples"
+
+.PP
+\fBReturns\fP
+.RS 4
+Array of samples 
+.RE
+.PP
+
+.PP
+Definition at line 191 of file qwt_series_data\&.h\&.
+.SS "template<typename T > void \fBQwtArraySeriesData\fP< T >::setSamples (const \fBQVector\fP< T > & samples)"
+Assign an array of samples 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsamples\fP Array of samples 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file qwt_series_data\&.h\&.
+.SS "template<typename T > size_t \fBQwtArraySeriesData\fP< T >::size\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Number of samples 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSeriesData< T >\fP\&.
+.PP
+Reimplemented in \fBQwtSyntheticPointData\fP, \fBQwtCPointerValueData< T >\fP, \fBQwtValuePointData< T >\fP, \fBQwtCPointerData< T >\fP, and \fBQwtPointArrayData< T >\fP\&.
+.PP
+Definition at line 197 of file qwt_series_data\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

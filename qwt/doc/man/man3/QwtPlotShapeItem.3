@@ -1,0 +1,530 @@
+.TH "QwtPlotShapeItem" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotShapeItem \- A plot item, which displays any graphical shape, that can be defined by a QPainterPath\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_shapeitem\&.h>\fP
+.PP
+Inherits \fBQwtPlotItem\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBPaintAttribute\fP { \fBClipPolygons\fP = 0x01 }"
+.br
+.ti -1c
+.RI "enum \fBLegendMode\fP { \fBLegendShape\fP, \fBLegendColor\fP }"
+.br
+.RI "Mode how to display the item on the legend\&. "
+.ti -1c
+.RI "typedef QFlags< \fBPaintAttribute\fP > \fBPaintAttributes\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotShapeItem\fP (const QString &\fBtitle\fP=QString())"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtPlotShapeItem\fP (const \fBQwtText\fP &\fBtitle\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotShapeItem\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetPaintAttribute\fP (\fBPaintAttribute\fP, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestPaintAttribute\fP (\fBPaintAttribute\fP) const"
+.br
+.ti -1c
+.RI "void \fBsetLegendMode\fP (\fBLegendMode\fP)"
+.br
+.ti -1c
+.RI "\fBLegendMode\fP \fBlegendMode\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetRect\fP (const QRectF &)"
+.br
+.RI "Set a path built from a rectangle\&. "
+.ti -1c
+.RI "void \fBsetPolygon\fP (const QPolygonF &)"
+.br
+.RI "Set a path built from a polygon\&. "
+.ti -1c
+.RI "void \fBsetShape\fP (const QPainterPath &)"
+.br
+.RI "Set the shape to be displayed\&. "
+.ti -1c
+.RI "QPainterPath \fBshape\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QColor &, qreal width=0\&.0, Qt::PenStyle=Qt::SolidLine)"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &)"
+.br
+.RI "Assign a pen\&. "
+.ti -1c
+.RI "QPen \fBpen\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &)"
+.br
+.ti -1c
+.RI "QBrush \fBbrush\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetRenderTolerance\fP (double)"
+.br
+.RI "Set the tolerance for the weeding optimization\&. "
+.ti -1c
+.RI "double \fBrenderTolerance\fP () const"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.RI "Bounding rectangle of the shape\&. "
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *, const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const QRectF &canvasRect) const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtGraphic\fP \fBlegendIcon\fP (int index, const QSizeF &) const override"
+.br
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plot item, which displays any graphical shape, that can be defined by a QPainterPath\&. 
+
+A QPainterPath is a shape composed from intersecting and uniting regions, rectangles, ellipses or irregular areas defined by lines, and curves\&. \fBQwtPlotShapeItem\fP displays a shape with a pen and brush\&.
+.PP
+\fBQwtPlotShapeItem\fP offers a couple of optimizations like clipping or weeding\&. These algorithms need to convert the painter path into polygons that might be less performant for paths built from curves and ellipses\&.
+.PP
+More complex shapes, that can't be expressed by a QPainterPath can be displayed using \fBQwtPlotGraphicItem\fP\&.
+.PP
+\fBSee also\fP
+.RS 4
+QwtPlotZone, \fBQwtPlotGraphicItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 38 of file qwt_plot_shapeitem\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBPaintAttribute\fP > \fBQwtPlotShapeItem::PaintAttributes\fP"
+An ORed combination of \fBPaintAttribute\fP values\&. 
+.PP
+Definition at line 61 of file qwt_plot_shapeitem\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPlotShapeItem::LegendMode\fP"
+
+.PP
+Mode how to display the item on the legend\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fILegendShape \fP\fP
+Display a scaled down version of the shape\&. 
+.TP
+\fB\fILegendColor \fP\fP
+Display a filled rectangle\&. 
+.PP
+Definition at line 64 of file qwt_plot_shapeitem\&.h\&.
+.SS "enum \fBQwtPlotShapeItem::PaintAttribute\fP"
+Attributes to modify the drawing algorithm\&. The default disables all attributes
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP, \fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIClipPolygons \fP\fP
+Clip polygons before painting them\&. In situations, where points are far outside the visible area (f\&.e when zooming deep) this might be a substantial improvement for the painting performance
+.PP
+But polygon clipping will convert the painter path into polygons what might introduce a negative impact on the performance of paths composed from curves or ellipses\&. 
+.PP
+Definition at line 47 of file qwt_plot_shapeitem\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotShapeItem::QwtPlotShapeItem (const QString & title = \fCQString()\fP)\fC [explicit]\fP"
+
+.PP
+Constructor\&. Sets the following item attributes:
+.IP "\(bu" 2
+\fBQwtPlotItem::AutoScale\fP: true
+.IP "\(bu" 2
+\fBQwtPlotItem::Legend\fP: false
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "QwtPlotShapeItem::QwtPlotShapeItem (const \fBQwtText\fP & title)\fC [explicit]\fP"
+
+.PP
+Constructor\&. Sets the following item attributes:
+.IP "\(bu" 2
+\fBQwtPlotItem::AutoScale\fP: true
+.IP "\(bu" 2
+\fBQwtPlotItem::Legend\fP: false
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title 
+.RE
+.PP
+
+.PP
+Definition at line 127 of file qwt_plot_shapeitem\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QBrush QwtPlotShapeItem::brush () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Brush used to fill the shape 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetBrush()\fP, \fBpen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 336 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::draw (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+Draw the shape item
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP X-Scale Map 
+.br
+\fIyMap\fP Y-Scale Map 
+.br
+\fIcanvasRect\fP Contents rect of the plot canvas 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 385 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "\fBQwtGraphic\fP QwtPlotShapeItem::legendIcon (int index, const QSizeF & size) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+A rectangle filled with the color of the brush ( or the pen )
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index of the legend entry ( usually there is only one ) 
+.br
+\fIsize\fP Icon size
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLegendIconSize()\fP, \fBlegendData()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 463 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "\fBQwtPlotShapeItem::LegendMode\fP QwtPlotShapeItem::legendMode () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Mode how to represent the item on the legend 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBlegendMode()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "QPen QwtPlotShapeItem::pen () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen used to draw the outline of the shape 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 310 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "double QwtPlotShapeItem::renderTolerance () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Tolerance for the weeding optimization 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetRenderTolerance()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 372 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "int QwtPlotShapeItem::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBQwtPlotItem::Rtti_PlotShape\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 151 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setBrush (const QBrush & brush)"
+Assign a brush\&.
+.PP
+The brush is used to fill the path
+.PP
+\fBParameters\fP
+.RS 4
+\fIbrush\fP Brush 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBbrush()\fP, \fBpen()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 323 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setLegendMode (\fBLegendMode\fP mode)"
+Set the mode how to represent the item on the legend
+.PP
+\fBParameters\fP
+.RS 4
+\fImode\fP Mode 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBlegendMode()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 186 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setPaintAttribute (\fBPaintAttribute\fP attribute, bool on = \fCtrue\fP)"
+Specify an attribute how to draw the shape
+.PP
+\fBParameters\fP
+.RS 4
+\fIattribute\fP Paint attribute 
+.br
+\fIon\fP On/Off 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtestPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 163 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setPen (const QColor & color, qreal width = \fC0\&.0\fP, Qt::PenStyle style = \fCQt::SolidLine\fP)"
+Build and assign a pen
+.PP
+In Qt5 the default pen width is 1\&.0 ( 0\&.0 in Qt4 ) what makes it non cosmetic ( see QPen::isCosmetic() )\&. This method has been introduced to hide this incompatibility\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolor\fP Pen color 
+.br
+\fIwidth\fP Pen width 
+.br
+\fIstyle\fP Pen style
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 284 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setPen (const QPen & pen)"
+
+.PP
+Assign a pen\&. The pen is used to draw the outline of the shape
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 297 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setPolygon (const QPolygonF & polygon)"
+
+.PP
+Set a path built from a polygon\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpolygon\fP Polygon 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetShape()\fP, \fBsetRect()\fP, \fBshape()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 230 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setRect (const QRectF & rect)"
+
+.PP
+Set a path built from a rectangle\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Rectangle 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetShape()\fP, \fBsetPolygon()\fP, \fBshape()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 216 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setRenderTolerance (double tolerance)"
+
+.PP
+Set the tolerance for the weeding optimization\&. After translating the shape into target device coordinate ( usually widget geometries ) the painter path can be simplified by a point weeding algorithm ( Douglas-Peucker )\&.
+.PP
+For shapes built from curves and ellipses weeding might have the opposite effect because they have to be expanded to polygons\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItolerance\fP Accepted error when reducing the number of points A value <= 0\&.0 disables weeding\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderTolerance()\fP, \fBQwtWeedingCurveFitter\fP 
+.RE
+.PP
+
+.PP
+Definition at line 357 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "void QwtPlotShapeItem::setShape (const QPainterPath & shape)"
+
+.PP
+Set the shape to be displayed\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIshape\fP Shape 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetShape()\fP, \fBshape()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 244 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "QPainterPath QwtPlotShapeItem::shape () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Shape to be displayed 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetShape()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 266 of file qwt_plot_shapeitem\&.cpp\&.
+.SS "bool QwtPlotShapeItem::testPaintAttribute (\fBPaintAttribute\fP attribute) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, when attribute is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPaintAttribute()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 175 of file qwt_plot_shapeitem\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

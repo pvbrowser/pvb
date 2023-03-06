@@ -1,0 +1,128 @@
+.TH "QwtCPointerData< T >" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtCPointerData< T > \- Data class containing two pointers to memory blocks of T\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_point_data\&.h>\fP
+.PP
+Inherits \fBQwtPointSeriesData\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtCPointerData\fP (const T *x, const T *y, size_t \fBsize\fP)"
+.br
+.ti -1c
+.RI "virtual size_t \fBsize\fP () const override"
+.br
+.ti -1c
+.RI "virtual QPointF \fBsample\fP (size_t index) const override"
+.br
+.ti -1c
+.RI "const T * \fBxData\fP () const"
+.br
+.ti -1c
+.RI "const T * \fByData\fP () const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>
+.br
+class QwtCPointerData< T >"
+Data class containing two pointers to memory blocks of T\&. 
+.PP
+Definition at line 43 of file qwt_point_data\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBQwtCPointerData\fP< T >::\fBQwtCPointerData\fP (const T * x, const T * y, size_t size)"
+Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP Array of x values 
+.br
+\fIy\fP Array of y values 
+.br
+\fIsize\fP Size of the x and y arrays
+.RE
+.PP
+\fBWarning\fP
+.RS 4
+The programmer must assure that the memory blocks referenced by the pointers remain valid during the lifetime of the QwtPlotCPointer object\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotCurve::setData()\fP, \fBQwtPlotCurve::setRawSamples()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 326 of file qwt_point_data\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > QPointF \fBQwtCPointerData\fP< T >::sample (size_t index) const\fC [override]\fP, \fC [virtual]\fP"
+Return the sample at position i
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Sample at position i 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtArraySeriesData< QPointF >\fP\&.
+.PP
+Definition at line 347 of file qwt_point_data\&.h\&.
+.SS "template<typename T > size_t \fBQwtCPointerData\fP< T >::size\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Size of the data set 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtArraySeriesData< QPointF >\fP\&.
+.PP
+Definition at line 335 of file qwt_point_data\&.h\&.
+.SS "template<typename T > const T * \fBQwtCPointerData\fP< T >::xData"
+
+.PP
+\fBReturns\fP
+.RS 4
+Array of the x-values 
+.RE
+.PP
+
+.PP
+Definition at line 354 of file qwt_point_data\&.h\&.
+.SS "template<typename T > const T * \fBQwtCPointerData\fP< T >::yData"
+
+.PP
+\fBReturns\fP
+.RS 4
+Array of the y-values 
+.RE
+.PP
+
+.PP
+Definition at line 361 of file qwt_point_data\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

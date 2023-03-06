@@ -1,0 +1,216 @@
+.TH "QwtSplineCubic" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineCubic \- A cubic spline\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_cubic\&.h>\fP
+.PP
+Inherits \fBQwtSplineC2\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineCubic\fP ()"
+.br
+.RI "Constructor The default setting is a non closing natural spline with no parametrization\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineCubic\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual uint \fBlocality\fP () const override"
+.br
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< QLineF > \fBbezierControlLines\fP (const QPolygonF &points) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< \fBQwtSplinePolynomial\fP > \fBpolynomials\fP (const QPolygonF &) const override"
+.br
+.RI "Calculate the interpolating polynomials for a non parametric spline\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< double > \fBslopes\fP (const QPolygonF &) const override"
+.br
+.RI "Find the first derivative at the control points\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< double > \fBcurvatures\fP (const QPolygonF &) const override"
+.br
+.RI "Find the second derivative at the control points\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A cubic spline\&. 
+
+A cubic spline is a spline with C2 continuity at all control points\&. It is a non local spline, what means that all polynomials are changing when one control point has changed\&.
+.PP
+The implementation is based on the fact, that the continuity condition means an equation with 3 unknowns for 3 adjacent points\&. The equation system can be resolved by defining start/end conditions, that allow substituting of one of the unknowns for the start/end equations\&.
+.PP
+Resolving the equation system is a 2 pass algorithm, requiring more CPU costs than all other implemented type of splines\&.
+.PP
+Definition at line 33 of file qwt_spline_cubic\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQVector\fP< QLineF > QwtSplineCubic::bezierControlLines (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns the 2 control points of each curve as QLineF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Control points of the interpolating Bezier curves
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The implementation simply calls \fBQwtSplineC1::bezierControlLines()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1149 of file qwt_spline_cubic\&.cpp\&.
+.SS "\fBQVector\fP< double > QwtSplineCubic::curvatures (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Find the second derivative at the control points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector with the values of the 2nd derivate at the control points
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBslopes()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1078 of file qwt_spline_cubic\&.cpp\&.
+.SS "uint QwtSplineCubic::locality () const\fC [override]\fP, \fC [virtual]\fP"
+A cubic spline is non local, where changing one point has em effect on all polynomials\&.
+.PP
+\fBReturns\fP
+.RS 4
+0 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSpline\fP\&.
+.PP
+Definition at line 989 of file qwt_spline_cubic\&.cpp\&.
+.SS "QPainterPath QwtSplineCubic::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be rendered by QPainter
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The implementation simply calls \fBQwtSplineC1::painterPath()\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1130 of file qwt_spline_cubic\&.cpp\&.
+.SS "\fBQVector\fP< \fBQwtSplinePolynomial\fP > QwtSplineCubic::polynomials (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate the interpolating polynomials for a non parametric spline\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polynomials
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.PP
+The implementation simply calls \fBQwtSplineC2::polynomials()\fP, but is intended to be replaced by a one pass calculation some day\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1167 of file qwt_spline_cubic\&.cpp\&.
+.SS "\fBQVector\fP< double > QwtSplineCubic::slopes (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Find the first derivative at the control points\&. In opposite to the implementation \fBQwtSplineC2::slopes\fP the first derivates are calculated directly, without calculating the second derivates first\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector with the values of the 2nd derivate at the control points
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBcurvatures()\fP, \fBQwtSplinePolynomial::fromCurvatures()\fP 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1006 of file qwt_spline_cubic\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

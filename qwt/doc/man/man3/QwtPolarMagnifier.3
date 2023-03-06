@@ -1,0 +1,204 @@
+.TH "QwtPolarMagnifier" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarMagnifier \- \fBQwtPolarMagnifier\fP provides zooming, by magnifying in steps\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_magnifier\&.h>\fP
+.PP
+Inherits \fBQwtMagnifier\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBrescale\fP (double factor) override"
+.br
+.ti -1c
+.RI "void \fBunzoom\fP ()"
+.br
+.RI "Unzoom the plot widget\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarMagnifier\fP (\fBQwtPolarCanvas\fP *)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPolarMagnifier\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetUnzoomKey\fP (int key, int modifiers)"
+.br
+.ti -1c
+.RI "void \fBgetUnzoomKey\fP (int &key, int &modifiers) const"
+.br
+.ti -1c
+.RI "\fBQwtPolarPlot\fP * \fBplot\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarPlot\fP * \fBplot\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtPolarCanvas\fP * \fBcanvas\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarCanvas\fP * \fBcanvas\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBwidgetKeyPressEvent\fP (QKeyEvent *) override"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBQwtPolarMagnifier\fP provides zooming, by magnifying in steps\&. 
+
+Using \fBQwtPlotMagnifier\fP a plot can be zoomed in/out in steps using keys, the mouse wheel or moving a mouse button in vertical direction\&.
+.PP
+Together with \fBQwtPolarPanner\fP it is possible to implement an individual navigation of the plot canvas\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarPanner\fP, \fBQwtPolarPlot\fP, \fBQwtPolarCanvas\fP 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file qwt_polar_magnifier\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarMagnifier::QwtPolarMagnifier (\fBQwtPolarCanvas\fP * canvas)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcanvas\fP Plot canvas to be magnified 
+.RE
+.PP
+
+.PP
+Definition at line 34 of file qwt_polar_magnifier\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtPolarCanvas\fP * QwtPolarMagnifier::canvas ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 74 of file qwt_polar_magnifier\&.cpp\&.
+.SS "const \fBQwtPolarCanvas\fP * QwtPolarMagnifier::canvas () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 80 of file qwt_polar_magnifier\&.cpp\&.
+.SS "void QwtPolarMagnifier::getUnzoomKey (int & key, int & modifiers) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Key, and modifiers that are used for unzooming
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP Key code 
+.br
+\fImodifiers\fP Modifiers 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetUnzoomKey()\fP, \fBQwtPolarPlot::unzoom()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 67 of file qwt_polar_magnifier\&.cpp\&.
+.SS "\fBQwtPolarPlot\fP * QwtPolarMagnifier::plot ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Observed plot 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file qwt_polar_magnifier\&.cpp\&.
+.SS "const \fBQwtPolarPlot\fP * QwtPolarMagnifier::plot () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+observed plot 
+.RE
+.PP
+
+.PP
+Definition at line 96 of file qwt_polar_magnifier\&.cpp\&.
+.SS "void QwtPolarMagnifier::rescale (double factor)\fC [override]\fP, \fC [virtual]\fP, \fC [slot]\fP"
+Zoom in/out the zoomed area 
+.PP
+\fBParameters\fP
+.RS 4
+\fIfactor\fP A value < 1\&.0 zooms in, a value > 1\&.0 zooms out\&. 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file qwt_polar_magnifier\&.cpp\&.
+.SS "void QwtPolarMagnifier::setUnzoomKey (int key, int modifiers)"
+Assign key and modifiers, that are used for unzooming The default combination is Qt::Key_Home + Qt::NoModifier\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIkey\fP Key code 
+.br
+\fImodifiers\fP Modifiers 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBgetUnzoomKey()\fP, \fBQwtPolarPlot::unzoom()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 54 of file qwt_polar_magnifier\&.cpp\&.
+.SS "void QwtPolarMagnifier::widgetKeyPressEvent (QKeyEvent * event)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Handle a key press event for the observed widget\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP Key event 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtMagnifier\fP\&.
+.PP
+Definition at line 110 of file qwt_polar_magnifier\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

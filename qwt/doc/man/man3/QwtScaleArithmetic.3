@@ -1,0 +1,125 @@
+.TH "QwtScaleArithmetic" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtScaleArithmetic \- Arithmetic including a tolerance\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_scale_engine\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static double \fBceilEps\fP (double value, double intervalSize)"
+.br
+.ti -1c
+.RI "static double \fBfloorEps\fP (double value, double intervalSize)"
+.br
+.ti -1c
+.RI "static double \fBdivideEps\fP (double intervalSize, double numSteps)"
+.br
+.RI "Divide an interval into steps\&. "
+.ti -1c
+.RI "static double \fBdivideInterval\fP (double intervalSize, int numSteps, uint base)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Arithmetic including a tolerance\&. 
+.PP
+Definition at line 22 of file qwt_scale_engine\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtScaleArithmetic::ceilEps (double value, double intervalSize)\fC [static]\fP"
+Ceil a value, relative to an interval
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be ceiled 
+.br
+\fIintervalSize\fP Interval size
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Rounded value
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBfloorEps()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file qwt_scale_engine\&.cpp\&.
+.SS "double QwtScaleArithmetic::divideEps (double intervalSize, double numSteps)\fC [static]\fP"
+
+.PP
+Divide an interval into steps\&. $stepSize = (intervalSize - intervalSize * 10e^{-6}) / numSteps$
+.PP
+\fBParameters\fP
+.RS 4
+\fIintervalSize\fP Interval size 
+.br
+\fInumSteps\fP Number of steps 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Step size 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file qwt_scale_engine\&.cpp\&.
+.SS "double QwtScaleArithmetic::divideInterval (double intervalSize, int numSteps, uint base)\fC [static]\fP"
+Calculate a step size for a given interval
+.PP
+\fBParameters\fP
+.RS 4
+\fIintervalSize\fP Interval size 
+.br
+\fInumSteps\fP Number of steps 
+.br
+\fIbase\fP Base for the division ( usually 10 )
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Calculated step size 
+.RE
+.PP
+
+.PP
+Definition at line 160 of file qwt_scale_engine\&.cpp\&.
+.SS "double QwtScaleArithmetic::floorEps (double value, double intervalSize)\fC [static]\fP"
+Floor a value, relative to an interval
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be floored 
+.br
+\fIintervalSize\fP Interval size
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Rounded value 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBfloorEps()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 126 of file qwt_scale_engine\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

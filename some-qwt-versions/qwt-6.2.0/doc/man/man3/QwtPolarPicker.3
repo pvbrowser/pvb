@@ -1,0 +1,377 @@
+.TH "QwtPolarPicker" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarPicker \- \fBQwtPolarPicker\fP provides selections on a plot canvas\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_picker\&.h>\fP
+.PP
+Inherits \fBQwtPicker\fP\&.
+.SS "Signals"
+
+.in +1c
+.ti -1c
+.RI "void \fBselected\fP (const \fBQwtPointPolar\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBselected\fP (const \fBQVector\fP< \fBQwtPointPolar\fP > &points)"
+.br
+.ti -1c
+.RI "void \fBappended\fP (const \fBQwtPointPolar\fP &pos)"
+.br
+.ti -1c
+.RI "void \fBmoved\fP (const \fBQwtPointPolar\fP &pos)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarPicker\fP (\fBQwtPolarCanvas\fP *)"
+.br
+.RI "Create a polar plot picker\&. "
+.ti -1c
+.RI "virtual \fB~QwtPolarPicker\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBQwtPolarPicker\fP (\fBRubberBand\fP \fBrubberBand\fP, \fBDisplayMode\fP \fBtrackerMode\fP, \fBQwtPolarCanvas\fP *)"
+.br
+.ti -1c
+.RI "\fBQwtPolarPlot\fP * \fBplot\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarPlot\fP * \fBplot\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtPolarCanvas\fP * \fBcanvas\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarCanvas\fP * \fBcanvas\fP () const"
+.br
+.ti -1c
+.RI "virtual QRect \fBpickRect\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPointPolar\fP \fBinvTransform\fP (const QPoint &) const"
+.br
+.ti -1c
+.RI "virtual \fBQwtText\fP \fBtrackerText\fP (const QPoint &) const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtText\fP \fBtrackerTextPolar\fP (const \fBQwtPointPolar\fP &) const"
+.br
+.RI "Translate a position into a position string\&. "
+.ti -1c
+.RI "virtual void \fBmove\fP (const QPoint &) override"
+.br
+.ti -1c
+.RI "virtual void \fBappend\fP (const QPoint &) override"
+.br
+.ti -1c
+.RI "virtual bool \fBend\fP (bool ok=true) override"
+.br
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual QPainterPath \fBpickArea\fP () const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBQwtPolarPicker\fP provides selections on a plot canvas\&. 
+
+\fBQwtPolarPicker\fP is a \fBQwtPicker\fP tailored for selections on a polar plot canvas\&. 
+.PP
+Definition at line 28 of file qwt_polar_picker\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarPicker::QwtPolarPicker (\fBQwtPolarCanvas\fP * canvas)\fC [explicit]\fP"
+
+.PP
+Create a polar plot picker\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIcanvas\fP Plot canvas to observe, also the parent object 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file qwt_polar_picker\&.cpp\&.
+.SS "QwtPolarPicker::QwtPolarPicker (\fBRubberBand\fP rubberBand, \fBDisplayMode\fP trackerMode, \fBQwtPolarCanvas\fP * canvas)\fC [explicit]\fP"
+Create a plot picker
+.PP
+\fBParameters\fP
+.RS 4
+\fIrubberBand\fP Rubberband style 
+.br
+\fItrackerMode\fP Tracker mode 
+.br
+\fIcanvas\fP Plot canvas to observe, also the parent object
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPicker\fP, QwtPicker::setSelectionFlags(), \fBQwtPicker::setRubberBand()\fP, \fBQwtPicker::setTrackerMode\fP
+.PP
+\fBQwtPolarPlot::autoReplot()\fP, \fBQwtPolarPlot::replot()\fP, scaleRect() 
+.RE
+.PP
+
+.PP
+Definition at line 43 of file qwt_polar_picker\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void QwtPolarPicker::append (const QPoint & pos)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Append a point to the selection and update rubberband and tracker\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Additional point 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBisActive\fP, \fBbegin()\fP, \fBend()\fP, \fBmove()\fP, \fBappended()\fP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The \fBappended(const QPoint &)\fP, appended(const QDoublePoint &) signals are emitted\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPicker\fP\&.
+.PP
+Definition at line 128 of file qwt_polar_picker\&.cpp\&.
+.SS "void QwtPolarPicker::appended (const \fBQwtPointPolar\fP & pos)\fC [signal]\fP"
+A signal emitted when a point has been appended to the selection
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Position of the appended point\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBappend()\fP\&. \fBmoved()\fP 
+.RE
+.PP
+
+.SS "\fBQwtPolarCanvas\fP * QwtPolarPicker::canvas ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file qwt_polar_picker\&.cpp\&.
+.SS "const \fBQwtPolarCanvas\fP * QwtPolarPicker::canvas () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file qwt_polar_picker\&.cpp\&.
+.SS "bool QwtPolarPicker::end (bool ok = \fCtrue\fP)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Close a selection setting the state to inactive\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIok\fP If true, complete the selection and emit selected signals otherwise discard the selection\&. 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true if the selection is accepted, false otherwise 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPicker\fP\&.
+.PP
+Definition at line 157 of file qwt_polar_picker\&.cpp\&.
+.SS "\fBQwtPointPolar\fP QwtPolarPicker::invTransform (const QPoint & pos) const\fC [protected]\fP"
+Translate a point from widget into plot coordinates
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Point in widget coordinates of the plot canvas 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Point in plot coordinates 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+transform(), \fBcanvas()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 208 of file qwt_polar_picker\&.cpp\&.
+.SS "void QwtPolarPicker::move (const QPoint & pos)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Move the last point of the selection
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP New position 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBisActive\fP, \fBbegin()\fP, \fBend()\fP, \fBappend()\fP
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The \fBmoved(const QPoint &)\fP, moved(const QDoublePoint &) signals are emitted\&. 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPicker\fP\&.
+.PP
+Definition at line 143 of file qwt_polar_picker\&.cpp\&.
+.SS "void QwtPolarPicker::moved (const \fBQwtPointPolar\fP & pos)\fC [signal]\fP"
+A signal emitted whenever the last appended point of the selection has been moved\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Position of the moved last point of the selection\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmove()\fP, \fBappended()\fP 
+.RE
+.PP
+
+.SS "QPainterPath QwtPolarPicker::pickArea () const\fC [override]\fP, \fC [private]\fP, \fC [virtual]\fP"
+Find the area of the observed widget, where selection might happen\&.
+.PP
+\fBReturns\fP
+.RS 4
+\fBparentWidget()\fP->contentsRect() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPicker\fP\&.
+.PP
+Definition at line 229 of file qwt_polar_picker\&.cpp\&.
+.SS "QRect QwtPolarPicker::pickRect () const\fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rectangle of the region, where picking is supported\&. 
+.RE
+.PP
+
+.PP
+Definition at line 221 of file qwt_polar_picker\&.cpp\&.
+.SS "\fBQwtPolarPlot\fP * QwtPolarPicker::plot ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Plot widget, containing the observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file qwt_polar_picker\&.cpp\&.
+.SS "const \fBQwtPolarPlot\fP * QwtPolarPicker::plot () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Plot widget, containing the observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 78 of file qwt_polar_picker\&.cpp\&.
+.SS "void QwtPolarPicker::selected (const \fBQVector\fP< \fBQwtPointPolar\fP > & points)\fC [signal]\fP"
+A signal emitting the selected points, at the end of a selection\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Selected points 
+.RE
+.PP
+
+.SS "void QwtPolarPicker::selected (const \fBQwtPointPolar\fP & pos)\fC [signal]\fP"
+A signal emitted in case of selectionFlags() & PointSelection\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Selected point 
+.RE
+.PP
+
+.SS "\fBQwtText\fP QwtPolarPicker::trackerText (const QPoint & pos) const\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Translate a pixel position into a position string
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Position in pixel coordinates 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Position string 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPicker\fP\&.
+.PP
+Definition at line 93 of file qwt_polar_picker\&.cpp\&.
+.SS "\fBQwtText\fP QwtPolarPicker::trackerTextPolar (const \fBQwtPointPolar\fP & pos) const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Translate a position into a position string\&. In case of HLineRubberBand the label is the value of the y position, in case of VLineRubberBand the value of the x position\&. Otherwise the label contains x and y position separated by a ',' \&.
+.PP
+The format for the double to string conversion is '%\&.4f'\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Position 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Position string 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file qwt_polar_picker\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

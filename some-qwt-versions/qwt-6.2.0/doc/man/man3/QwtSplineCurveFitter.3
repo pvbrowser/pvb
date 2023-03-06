@@ -1,0 +1,157 @@
+.TH "QwtSplineCurveFitter" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineCurveFitter \- A curve fitter using a spline interpolation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_curve_fitter\&.h>\fP
+.PP
+Inherits \fBQwtCurveFitter\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineCurveFitter\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineCurveFitter\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetSpline\fP (\fBQwtSpline\fP *)"
+.br
+.ti -1c
+.RI "const \fBQwtSpline\fP * \fBspline\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtSpline\fP * \fBspline\fP ()"
+.br
+.ti -1c
+.RI "virtual QPolygonF \fBfitCurve\fP (const QPolygonF &) const override"
+.br
+.ti -1c
+.RI "virtual QPainterPath \fBfitCurvePath\fP (const QPolygonF &) const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A curve fitter using a spline interpolation\&. 
+
+The default setting for the spline is a cardinal spline with uniform parametrization\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline\fP, \fBQwtSplineLocal\fP 
+.RE
+.PP
+
+.PP
+Definition at line 25 of file qwt_spline_curve_fitter\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QPolygonF QwtSplineCurveFitter::fitCurve (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+Find a curve which has the best fit to a series of data points
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Series of data points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Fitted Curve
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBfitCurvePath()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtCurveFitter\fP\&.
+.PP
+Definition at line 75 of file qwt_spline_curve_fitter\&.cpp\&.
+.SS "QPainterPath QwtSplineCurveFitter::fitCurvePath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+Find a curve path which has the best fit to a series of data points
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Series of data points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Fitted Curve
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBfitCurve()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtCurveFitter\fP\&.
+.PP
+Definition at line 94 of file qwt_spline_curve_fitter\&.cpp\&.
+.SS "void QwtSplineCurveFitter::setSpline (\fBQwtSpline\fP * spline)"
+Assign a spline
+.PP
+The spline needs to be allocated by new and will be deleted in the destructor of the fitter\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIspline\fP Spline 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBspline()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file qwt_spline_curve_fitter\&.cpp\&.
+.SS "\fBQwtSpline\fP * QwtSplineCurveFitter::spline ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+Spline 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSpline()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file qwt_spline_curve_fitter\&.cpp\&.
+.SS "const \fBQwtSpline\fP * QwtSplineCurveFitter::spline () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Spline 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSpline()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 53 of file qwt_spline_curve_fitter\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,177 @@
+.TH "QwtArrowButton" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtArrowButton \- Arrow Button\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_arrow_button\&.h>\fP
+.PP
+Inherits QPushButton\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtArrowButton\fP (int \fBnum\fP, Qt::ArrowType, QWidget *parent=NULL)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtArrowButton\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "Qt::ArrowType \fBarrowType\fP () const"
+.br
+.RI "The direction of the arrows\&. "
+.ti -1c
+.RI "int \fBnum\fP () const"
+.br
+.RI "The number of arrows\&. "
+.ti -1c
+.RI "virtual QSize \fBsizeHint\fP () const override"
+.br
+.ti -1c
+.RI "virtual QSize \fBminimumSizeHint\fP () const override"
+.br
+.RI "Return a minimum size hint\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBpaintEvent\fP (QPaintEvent *) override"
+.br
+.ti -1c
+.RI "virtual void \fBkeyPressEvent\fP (QKeyEvent *) override"
+.br
+.RI "autoRepeat for the space keys "
+.ti -1c
+.RI "virtual void \fBdrawButtonLabel\fP (QPainter *)"
+.br
+.RI "Draw the button label\&. "
+.ti -1c
+.RI "virtual void \fBdrawArrow\fP (QPainter *, const QRect &, Qt::ArrowType) const"
+.br
+.ti -1c
+.RI "virtual QRect \fBlabelRect\fP () const"
+.br
+.ti -1c
+.RI "virtual QSize \fBarrowSize\fP (Qt::ArrowType, const QSize &boundingSize) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Arrow Button\&. 
+
+A push button with one or more filled triangles on its front\&. An Arrow button can have 1 to 3 arrows in a row, pointing up, down, left or right\&. 
+.PP
+Definition at line 23 of file qwt_arrow_button\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtArrowButton::QwtArrowButton (int num, Qt::ArrowType arrowType, QWidget * parent = \fCNULL\fP)\fC [explicit]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fInum\fP Number of arrows 
+.br
+\fIarrowType\fP see Qt::ArrowType in the Qt docs\&. 
+.br
+\fIparent\fP Parent widget 
+.RE
+.PP
+
+.PP
+Definition at line 55 of file qwt_arrow_button\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QSize QwtArrowButton::arrowSize (Qt::ArrowType arrowType, const QSize & boundingSize) const\fC [protected]\fP, \fC [virtual]\fP"
+Calculate the size for a arrow that fits into a rectangle of a given size
+.PP
+\fBParameters\fP
+.RS 4
+\fIarrowType\fP Arrow type 
+.br
+\fIboundingSize\fP Bounding size 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Size of the arrow 
+.RE
+.PP
+
+.PP
+Definition at line 296 of file qwt_arrow_button\&.cpp\&.
+.SS "void QwtArrowButton::drawArrow (QPainter * painter, const QRect & r, Qt::ArrowType arrowType) const\fC [protected]\fP, \fC [virtual]\fP"
+Draw an arrow int a bounding rectangle
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIr\fP Rectangle where to paint the arrow 
+.br
+\fIarrowType\fP Arrow type 
+.RE
+.PP
+
+.PP
+Definition at line 215 of file qwt_arrow_button\&.cpp\&.
+.SS "void QwtArrowButton::drawButtonLabel (QPainter * painter)\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+Draw the button label\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+The Qt Manual for QPushButton 
+.RE
+.PP
+
+.PP
+Definition at line 143 of file qwt_arrow_button\&.cpp\&.
+.SS "QRect QwtArrowButton::labelRect () const\fC [protected]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+the bounding rectangle for the label 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file qwt_arrow_button\&.cpp\&.
+.SS "void QwtArrowButton::paintEvent (QPaintEvent * event)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Paint event handler 
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP Paint event 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file qwt_arrow_button\&.cpp\&.
+.SS "QSize QwtArrowButton::sizeHint () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+a size hint 
+.RE
+.PP
+
+.PP
+Definition at line 259 of file qwt_arrow_button\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

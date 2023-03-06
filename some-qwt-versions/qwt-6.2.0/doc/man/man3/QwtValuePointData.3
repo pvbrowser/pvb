@@ -1,0 +1,128 @@
+.TH "QwtValuePointData< T >" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtValuePointData< T > \- Interface for iterating over a QVector<T>\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_point_data\&.h>\fP
+.PP
+Inherits \fBQwtPointSeriesData\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtValuePointData\fP (const \fBQVector\fP< T > &y)"
+.br
+.ti -1c
+.RI "\fBQwtValuePointData\fP (const T *y, size_t \fBsize\fP)"
+.br
+.ti -1c
+.RI "virtual size_t \fBsize\fP () const override"
+.br
+.ti -1c
+.RI "virtual QPointF \fBsample\fP (size_t index) const override"
+.br
+.ti -1c
+.RI "const \fBQVector\fP< T > & \fByData\fP () const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+
+.SS "template<typename T>
+.br
+class QwtValuePointData< T >"
+Interface for iterating over a QVector<T>\&. 
+
+The memory contains the y coordinates, while the index is interpreted as x coordinate\&. 
+.PP
+Definition at line 67 of file qwt_point_data\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "template<typename T > \fBQwtValuePointData\fP< T >::\fBQwtValuePointData\fP (const \fBQVector\fP< T > & y)"
+Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIy\fP Array of y values
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotCurve::setData()\fP, \fBQwtPlotCurve::setSamples()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 266 of file qwt_point_data\&.h\&.
+.SS "template<typename T > \fBQwtValuePointData\fP< T >::\fBQwtValuePointData\fP (const T * y, size_t size)"
+Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIy\fP Array of y values 
+.br
+\fIsize\fP Size of the x and y arrays 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotCurve::setData()\fP, \fBQwtPlotCurve::setSamples()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 279 of file qwt_point_data\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "template<typename T > QPointF \fBQwtValuePointData\fP< T >::sample (size_t index) const\fC [override]\fP, \fC [virtual]\fP"
+Return the sample at position i
+.PP
+\fBParameters\fP
+.RS 4
+\fIindex\fP Index 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Sample at position i 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtArraySeriesData< QPointF >\fP\&.
+.PP
+Definition at line 299 of file qwt_point_data\&.h\&.
+.SS "template<typename T > size_t \fBQwtValuePointData\fP< T >::size\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Size of the data set 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtArraySeriesData< QPointF >\fP\&.
+.PP
+Definition at line 287 of file qwt_point_data\&.h\&.
+.SS "template<typename T > const \fBQVector\fP< T > & \fBQwtValuePointData\fP< T >::yData"
+
+.PP
+\fBReturns\fP
+.RS 4
+Array of the y-values 
+.RE
+.PP
+
+.PP
+Definition at line 306 of file qwt_point_data\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -1,0 +1,186 @@
+.TH "QwtPolarItemDict" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarItemDict \- A dictionary for polar plot items\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_itemdict\&.h>\fP
+.PP
+Inherited by \fBQwtPolarPlot\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarItemDict\fP ()"
+.br
+.ti -1c
+.RI "\fB~QwtPolarItemDict\fP ()"
+.br
+.ti -1c
+.RI "void \fBsetAutoDelete\fP (bool)"
+.br
+.ti -1c
+.RI "bool \fBautoDelete\fP () const"
+.br
+.ti -1c
+.RI "const \fBQwtPolarItemList\fP & \fBitemList\fP () const"
+.br
+.RI "A QwtPolarItemList of all attached plot items\&. "
+.ti -1c
+.RI "void \fBdetachItems\fP (int rtti=\fBQwtPolarItem::Rtti_PolarItem\fP, bool \fBautoDelete\fP=true)"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinsertItem\fP (\fBQwtPolarItem\fP *)"
+.br
+.ti -1c
+.RI "void \fBremoveItem\fP (\fBQwtPolarItem\fP *)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+A dictionary for polar plot items\&. 
+
+\fBQwtPolarItemDict\fP organizes polar plot items in increasing z-order\&. If \fBautoDelete()\fP is enabled, all attached items will be deleted in the destructor of the dictionary\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarItem::attach()\fP, \fBQwtPolarItem::detach()\fP, \fBQwtPolarItem::z()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 28 of file qwt_polar_itemdict\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPolarItemDict::QwtPolarItemDict ()\fC [explicit]\fP"
+Constructor
+.PP
+Auto deletion is enabled\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAutoDelete\fP, attachItem 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file qwt_polar_itemdict\&.cpp\&.
+.SS "QwtPolarItemDict::~QwtPolarItemDict ()"
+Destructor
+.PP
+If autoDelete is on, all attached items will be deleted 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAutoDelete\fP, \fBautoDelete\fP, attachItem 
+.RE
+.PP
+
+.PP
+Definition at line 83 of file qwt_polar_itemdict\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QwtPolarItemDict::autoDelete () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true if auto deletion is enabled 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAutoDelete\fP, attachItem 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file qwt_polar_itemdict\&.cpp\&.
+.SS "void QwtPolarItemDict::detachItems (int rtti = \fC\fBQwtPolarItem::Rtti_PolarItem\fP\fP, bool autoDelete = \fCtrue\fP)"
+Detach items from the dictionary
+.PP
+\fBParameters\fP
+.RS 4
+\fIrtti\fP In case of QwtPolarItem::Rtti_PlotItem detach all items otherwise only those items of the type rtti\&. 
+.br
+\fIautoDelete\fP If true, delete all detached items 
+.RE
+.PP
+
+.PP
+Definition at line 140 of file qwt_polar_itemdict\&.cpp\&.
+.SS "void QwtPolarItemDict::insertItem (\fBQwtPolarItem\fP * item)\fC [protected]\fP"
+Insert a plot item
+.PP
+\fBParameters\fP
+.RS 4
+\fIitem\fP PlotItem 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBremoveItem()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file qwt_polar_itemdict\&.cpp\&.
+.SS "const \fBQwtPolarItemList\fP & QwtPolarItemDict::itemList () const"
+
+.PP
+A QwtPolarItemList of all attached plot items\&. 
+.PP
+\fBReturns\fP
+.RS 4
+List of all attached plot items\&. 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Use caution when iterating these lists, as removing/detaching an item will invalidate the iterator\&. Instead you can place pointers to objects to be removed in a removal list, and traverse that list later\&. 
+.RE
+.PP
+
+.PP
+Definition at line 168 of file qwt_polar_itemdict\&.cpp\&.
+.SS "void QwtPolarItemDict::removeItem (\fBQwtPolarItem\fP * item)\fC [protected]\fP"
+Remove a plot item
+.PP
+\fBParameters\fP
+.RS 4
+\fIitem\fP PlotItem 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinsertItem()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file qwt_polar_itemdict\&.cpp\&.
+.SS "void QwtPolarItemDict::setAutoDelete (bool autoDelete)"
+En/Disable Auto deletion
+.PP
+If Auto deletion is on all attached plot items will be deleted in the destructor of \fBQwtPolarItemDict\fP\&. The default value is on\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBautoDelete\fP, attachItem 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file qwt_polar_itemdict\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

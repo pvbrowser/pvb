@@ -20,10 +20,20 @@
 #include <QLineEdit>
 #include <QSpacerItem>
 #ifdef USE_ANDROID
+#define FOOTPRINT_OHNE
+#include <QTextBrowser>
+#else
+
+#ifdef PVB_FOOTPRINT_BASIC 
+#undef  FOOTPRINT_OHNE
+#define FOOTPRINT_OHNE
 #include <QTextBrowser>
 #else
 #include <QWebEngineView>
 #endif
+
+#endif
+
 #include <QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
@@ -39,7 +49,7 @@ public:
     QPushButton *pushButtonFind;
     QSpacerItem *spacerItem;
     QPushButton *pushButtonClose;
-#ifdef USE_ANDROID
+#ifdef FOOTPRINT_OHNE
     QTextBrowser   *textBrowser;
 #else    
     QWebEngineView *textBrowser;
@@ -92,7 +102,7 @@ public:
 
     vboxLayout->addLayout(hboxLayout);
 
-#ifdef USE_ANDROID
+#ifdef FOOTPRINT_OHNE
     textBrowser = new QTextBrowser(DialogTextBrowser);
 #else    
     textBrowser = new QWebEngineView(DialogTextBrowser);

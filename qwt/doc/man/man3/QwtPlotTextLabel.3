@@ -1,0 +1,255 @@
+.TH "QwtPlotTextLabel" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotTextLabel \- A plot item, which displays a text label\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_textlabel\&.h>\fP
+.PP
+Inherits \fBQwtPlotItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotTextLabel\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotTextLabel\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.ti -1c
+.RI "void \fBsetText\fP (const \fBQwtText\fP &)"
+.br
+.ti -1c
+.RI "\fBQwtText\fP \fBtext\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetMargin\fP (int \fBmargin\fP)"
+.br
+.ti -1c
+.RI "int \fBmargin\fP () const"
+.br
+.ti -1c
+.RI "virtual QRectF \fBtextRect\fP (const QRectF &, const QSizeF &) const"
+.br
+.RI "Align the text label\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *, const \fBQwtScaleMap\fP &, const \fBQwtScaleMap\fP &, const QRectF &) const override"
+.br
+.ti -1c
+.RI "void \fBinvalidateCache\fP ()"
+.br
+.RI "Invalidate all internal cache\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plot item, which displays a text label\&. 
+
+\fBQwtPlotTextLabel\fP displays a text label aligned to the plot canvas\&.
+.PP
+In opposite to \fBQwtPlotMarker\fP the position of the label is unrelated to plot coordinates\&.
+.PP
+As drawing a text is an expensive operation the label is cached in a pixmap to speed up replots\&.
+.PP
+\fBExample\fP
+.RS 4
+The following code shows how to add a title\&. 
+.PP
+.nf
+QwtText title( "Plot Title" );
+title\&.setRenderFlags( Qt::AlignHCenter | Qt::AlignTop );
+
+QFont font;
+font\&.setBold( true );
+title\&.setFont( font );
+
+QwtPlotTextLabel *titleItem = new QwtPlotTextLabel();
+titleItem->setText( title );
+titleItem->attach( plot );
+
+.fi
+.PP
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotMarker\fP 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file qwt_plot_textlabel\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotTextLabel::QwtPlotTextLabel ()"
+
+.PP
+Constructor\&. Initializes an text label with an empty text
+.PP
+Sets the following item attributes:
+.PP
+.IP "\(bu" 2
+\fBQwtPlotItem::AutoScale\fP: true
+.IP "\(bu" 2
+\fBQwtPlotItem::Legend\fP: false
+.PP
+.PP
+The z value is initialized by 150
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotItem::setItemAttribute()\fP, \fBQwtPlotItem::setZ()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file qwt_plot_textlabel\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void QwtPlotTextLabel::draw (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect) const\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Draw the text label
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP x Scale Map 
+.br
+\fIyMap\fP y Scale Map 
+.br
+\fIcanvasRect\fP Contents rectangle of the canvas in painter coordinates
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtextRect()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 176 of file qwt_plot_textlabel\&.cpp\&.
+.SS "int QwtPlotTextLabel::margin () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Margin added to the contentsMargins() of the canvas 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMargin()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 160 of file qwt_plot_textlabel\&.cpp\&.
+.SS "int QwtPlotTextLabel::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBQwtPlotItem::Rtti_PlotTextLabel\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 100 of file qwt_plot_textlabel\&.cpp\&.
+.SS "void QwtPlotTextLabel::setMargin (int margin)"
+Set the margin
+.PP
+The margin is the distance between the contentsRect() of the plot canvas and the rectangle where the label can be displayed\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fImargin\fP Margin
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBmargin()\fP, \fBtextRect()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file qwt_plot_textlabel\&.cpp\&.
+.SS "void QwtPlotTextLabel::setText (const \fBQwtText\fP & text)"
+Set the text
+.PP
+The label will be aligned to the plot canvas according to the alignment flags of text\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItext\fP Text to be displayed
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtext()\fP, \fBQwtText::renderFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 115 of file qwt_plot_textlabel\&.cpp\&.
+.SS "\fBQwtText\fP QwtPlotTextLabel::text () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Text to be displayed 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetText()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file qwt_plot_textlabel\&.cpp\&.
+.SS "QRectF QwtPlotTextLabel::textRect (const QRectF & rect, const QSizeF & textSize) const\fC [virtual]\fP"
+
+.PP
+Align the text label\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Canvas rectangle with margins subtracted 
+.br
+\fItextSize\fP Size required to draw the text
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+A rectangle aligned according the the alignment flags of the text\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetMargin()\fP, \fBQwtText::renderFlags()\fP, \fBQwtText::textSize()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 263 of file qwt_plot_textlabel\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

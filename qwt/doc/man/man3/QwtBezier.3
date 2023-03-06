@@ -1,0 +1,189 @@
+.TH "QwtBezier" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtBezier \- An implementation of the de Casteljau’s Algorithm for interpolating Bézier curves\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_bezier\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtBezier\fP (double \fBtolerance\fP=0\&.5)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fB~QwtBezier\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetTolerance\fP (double \fBtolerance\fP)"
+.br
+.ti -1c
+.RI "double \fBtolerance\fP () const"
+.br
+.ti -1c
+.RI "QPolygonF \fBtoPolygon\fP (const QPointF &p1, const QPointF &cp1, const QPointF &cp2, const QPointF &p2) const"
+.br
+.RI "Interpolate a Bézier curve by a polygon\&. "
+.ti -1c
+.RI "void \fBappendToPolygon\fP (const QPointF &p1, const QPointF &cp1, const QPointF &cp2, const QPointF &p2, QPolygonF &polygon) const"
+.br
+.RI "Interpolate a Bézier curve by a polygon\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static QPointF \fBpointAt\fP (const QPointF &p1, const QPointF &cp1, const QPointF &cp2, const QPointF &p2, double t)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+An implementation of the de Casteljau’s Algorithm for interpolating Bézier curves\&. 
+
+The flatness criterion for terminating the subdivision is based on 'Piecewise Linear Approximation of Bézier Curves' by Roger Willcocks ( http://www.rops.org )
+.PP
+This article explains the maths behind in a very nice way: https://jeremykun.com/2013/05/11/bezier-curves-and-picasso 
+.PP
+Definition at line 29 of file qwt_bezier\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtBezier::QwtBezier (double tolerance = \fC0\&.5\fP)"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fItolerance\fP Termination criterion for the subdivision 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetTolerance()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file qwt_bezier\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void QwtBezier::appendToPolygon (const QPointF & p1, const QPointF & cp1, const QPointF & cp2, const QPointF & p2, QPolygonF & polygon) const"
+
+.PP
+Interpolate a Bézier curve by a polygon\&. \fBappendToPolygon()\fP is tailored for cumulating points from a sequence of bezier curves like being created by a spline interpolation\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIp1\fP Start point 
+.br
+\fIcp1\fP First control point 
+.br
+\fIcp2\fP Second control point 
+.br
+\fIp2\fP End point 
+.br
+\fIpolygon\fP Polygon, where the interpolating points are added
+.RE
+.PP
+\fBNote\fP
+.RS 4
+If the last point of the incoming polygon matches p1 it won't be inserted a second time\&. 
+.RE
+.PP
+
+.PP
+Definition at line 186 of file qwt_bezier\&.cpp\&.
+.SS "QPointF QwtBezier::pointAt (const QPointF & p1, const QPointF & cp1, const QPointF & cp2, const QPointF & p2, double t)\fC [static]\fP"
+Find a point on a Bézier Curve
+.PP
+\fBParameters\fP
+.RS 4
+\fIp1\fP Start point 
+.br
+\fIcp1\fP First control point 
+.br
+\fIcp2\fP Second control point 
+.br
+\fIp2\fP End point 
+.br
+\fIt\fP Parameter value, something between [0,1]
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Point on the curve 
+.RE
+.PP
+
+.PP
+Definition at line 239 of file qwt_bezier\&.cpp\&.
+.SS "void QwtBezier::setTolerance (double tolerance)"
+Set the tolerance
+.PP
+The tolerance is a measurement for the flatness of a curve\&. A curve with a flatness below the tolerance is considered as being flat terminating the subdivision algorithm\&.
+.PP
+When interpolating a Bezier curve to render it as a sequence of lines to some sort of raster ( f\&.e to screen ) a value of 0\&.5 of the pixel size is a good value for the tolerance\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fItolerance\fP Termination criterion for the subdivision 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtolerance()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file qwt_bezier\&.cpp\&.
+.SS "double QwtBezier::tolerance () const\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Tolerance, that is used as criterion for the subdivision 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetTolerance()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 56 of file qwt_bezier\&.h\&.
+.SS "QPolygonF QwtBezier::toPolygon (const QPointF & p1, const QPointF & cp1, const QPointF & cp2, const QPointF & p2) const"
+
+.PP
+Interpolate a Bézier curve by a polygon\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIp1\fP Start point 
+.br
+\fIcp1\fP First control point 
+.br
+\fIcp2\fP Second control point 
+.br
+\fIp2\fP End point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polygon 
+.RE
+.PP
+
+.PP
+Definition at line 157 of file qwt_bezier\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

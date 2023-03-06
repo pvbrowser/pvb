@@ -1,0 +1,296 @@
+.TH "QwtPolarLayout" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarLayout \- Layout class for \fBQwtPolarPlot\fP\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_layout\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBOption\fP { \fBIgnoreScrollbars\fP = 0x01, \fBIgnoreFrames\fP = 0x02, \fBIgnoreTitle\fP = 0x04, \fBIgnoreLegend\fP = 0x08 }"
+.br
+.RI "Options to configure the plot layout engine\&. "
+.ti -1c
+.RI "typedef QFlags< \fBOption\fP > \fBOptions\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarLayout\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPolarLayout\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetLegendPosition\fP (\fBQwtPolarPlot::LegendPosition\fP pos, double ratio)"
+.br
+.RI "Specify the position of the legend\&. "
+.ti -1c
+.RI "void \fBsetLegendPosition\fP (\fBQwtPolarPlot::LegendPosition\fP pos)"
+.br
+.RI "Specify the position of the legend\&. "
+.ti -1c
+.RI "\fBQwtPolarPlot::LegendPosition\fP \fBlegendPosition\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetLegendRatio\fP (double ratio)"
+.br
+.ti -1c
+.RI "double \fBlegendRatio\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBactivate\fP (const \fBQwtPolarPlot\fP *, const QRectF &rect, \fBOptions\fP options=\fBOptions\fP())"
+.br
+.RI "Recalculate the geometry of all components\&. "
+.ti -1c
+.RI "virtual void \fBinvalidate\fP ()"
+.br
+.ti -1c
+.RI "const QRectF & \fBtitleRect\fP () const"
+.br
+.ti -1c
+.RI "const QRectF & \fBlegendRect\fP () const"
+.br
+.ti -1c
+.RI "const QRectF & \fBcanvasRect\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "QRectF \fBlayoutLegend\fP (\fBOptions\fP options, QRectF &) const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Layout class for \fBQwtPolarPlot\fP\&. 
+
+Organizes the geometry for the different \fBQwtPolarPlot\fP components\&. It is used by the QwtPolar widget to organize its internal widgets or by QwtPolarRnderer to render its content to a QPaintDevice like a QPrinter, QPixmap/QImage or QSvgRenderer\&. 
+.PP
+Definition at line 23 of file qwt_polar_layout\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBOption\fP > \fBQwtPolarLayout::Options\fP"
+An ORed combination of \fBOption\fP values\&. 
+.PP
+Definition at line 43 of file qwt_polar_layout\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPolarLayout::Option\fP"
+
+.PP
+Options to configure the plot layout engine\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIIgnoreScrollbars \fP\fP
+Ignore the dimension of the scrollbars\&. 
+.TP
+\fB\fIIgnoreFrames \fP\fP
+Ignore all frames\&. 
+.TP
+\fB\fIIgnoreTitle \fP\fP
+Ignore the title\&. 
+.TP
+\fB\fIIgnoreLegend \fP\fP
+Ignore the legend\&. 
+.PP
+Definition at line 28 of file qwt_polar_layout\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void QwtPolarLayout::activate (const \fBQwtPolarPlot\fP * plot, const QRectF & boundingRect, \fBOptions\fP options = \fC\fBOptions\fP()\fP)\fC [virtual]\fP"
+
+.PP
+Recalculate the geometry of all components\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot to be layout 
+.br
+\fIboundingRect\fP Rect where to place the components 
+.br
+\fIoptions\fP Options
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinvalidate()\fP, \fBtitleRect()\fP, \fBlegendRect()\fP, \fBcanvasRect()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 344 of file qwt_polar_layout\&.cpp\&.
+.SS "const QRectF & QwtPolarLayout::canvasRect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Geometry for the canvas 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBactivate()\fP, \fBinvalidate()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 248 of file qwt_polar_layout\&.cpp\&.
+.SS "void QwtPolarLayout::invalidate ()\fC [virtual]\fP"
+Invalidate the geometry of all components\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBactivate()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 257 of file qwt_polar_layout\&.cpp\&.
+.SS "QRectF QwtPolarLayout::layoutLegend (\fBOptions\fP options, QRectF & rect) const\fC [protected]\fP"
+Find the geometry for the legend 
+.PP
+\fBParameters\fP
+.RS 4
+\fIoptions\fP Options how to layout the legend 
+.br
+\fIrect\fP Rectangle where to place the legend 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Geometry for the legend 
+.RE
+.PP
+
+.PP
+Definition at line 269 of file qwt_polar_layout\&.cpp\&.
+.SS "\fBQwtPolarPlot::LegendPosition\fP QwtPolarLayout::legendPosition () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Position of the legend 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLegendPosition()\fP, QwtPolarPlot::setLegendPosition(), QwtPolarPlot::legendPosition() 
+.RE
+.PP
+
+.PP
+Definition at line 196 of file qwt_polar_layout\&.cpp\&.
+.SS "double QwtPolarLayout::legendRatio () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+The relative size of the legend in the plot\&. 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLegendPosition()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 219 of file qwt_polar_layout\&.cpp\&.
+.SS "const QRectF & QwtPolarLayout::legendRect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Geometry for the legend 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBactivate()\fP, \fBinvalidate()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 239 of file qwt_polar_layout\&.cpp\&.
+.SS "void QwtPolarLayout::setLegendPosition (\fBQwtPolarPlot::LegendPosition\fP pos)"
+
+.PP
+Specify the position of the legend\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP The legend's position\&. Valid values are \fC\fBQwtPolarPlot::LeftLegend\fP\fP, \fC\fBQwtPolarPlot::RightLegend\fP\fP, \fC\fBQwtPolarPlot::TopLegend\fP\fP, \fC\fBQwtPolarPlot::BottomLegend\fP\fP\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtPolarPlot::setLegendPosition() 
+.RE
+.PP
+
+.PP
+Definition at line 186 of file qwt_polar_layout\&.cpp\&.
+.SS "void QwtPolarLayout::setLegendPosition (\fBQwtPolarPlot::LegendPosition\fP pos, double ratio)"
+
+.PP
+Specify the position of the legend\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP The legend's position\&. 
+.br
+\fIratio\fP Ratio between legend and the bounding rect of title, canvas and axes\&. The legend will be shrunk if it would need more space than the given ratio\&. The ratio is limited to ]0\&.0 \&.\&. 1\&.0]\&. In case of <= 0\&.0 it will be reset to the default ratio\&. The default vertical/horizontal ratio is 0\&.33/0\&.5\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtPolarPlot::setLegendPosition() 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file qwt_polar_layout\&.cpp\&.
+.SS "void QwtPolarLayout::setLegendRatio (double ratio)"
+Specify the relative size of the legend in the plot 
+.PP
+\fBParameters\fP
+.RS 4
+\fIratio\fP Ratio between legend and the bounding rect of title, canvas and axes\&. The legend will be shrunk if it would need more space than the given ratio\&. The ratio is limited to ]0\&.0 \&.\&. 1\&.0]\&. In case of <= 0\&.0 it will be reset to the default ratio\&. The default vertical/horizontal ratio is 0\&.33/0\&.5\&. 
+.RE
+.PP
+
+.PP
+Definition at line 210 of file qwt_polar_layout\&.cpp\&.
+.SS "const QRectF & QwtPolarLayout::titleRect () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Geometry for the title 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBactivate()\fP, \fBinvalidate()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 229 of file qwt_polar_layout\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

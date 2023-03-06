@@ -1,0 +1,149 @@
+.TH "QwtPolarPanner" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPolarPanner \- \fBQwtPolarPanner\fP provides panning of a polar plot canvas\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_polar_panner\&.h>\fP
+.PP
+Inherits \fBQwtPanner\fP\&.
+.SS "Public Slots"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBmovePlot\fP (int dx, int dy)"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPolarPanner\fP (\fBQwtPolarCanvas\fP *)"
+.br
+.RI "Create a plot panner for a polar plot canvas\&. "
+.ti -1c
+.RI "virtual \fB~QwtPolarPanner\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBQwtPolarPlot\fP * \fBplot\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarPlot\fP * \fBplot\fP () const"
+.br
+.ti -1c
+.RI "\fBQwtPolarCanvas\fP * \fBcanvas\fP ()"
+.br
+.ti -1c
+.RI "const \fBQwtPolarCanvas\fP * \fBcanvas\fP () const"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBwidgetMousePressEvent\fP (QMouseEvent *) override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBQwtPolarPanner\fP provides panning of a polar plot canvas\&. 
+
+\fBQwtPolarPanner\fP is a panner for a \fBQwtPolarCanvas\fP, that adjusts the visible area after dropping the canvas on its new position\&.
+.PP
+Together with \fBQwtPolarMagnifier\fP individual ways of navigating on a \fBQwtPolarPlot\fP widget can be implemented easily\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPolarMagnifier\fP 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file qwt_polar_panner\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtPolarCanvas\fP * QwtPolarPanner::canvas ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file qwt_polar_panner\&.cpp\&.
+.SS "const \fBQwtPolarCanvas\fP * QwtPolarPanner::canvas () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+observed plot canvas 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file qwt_polar_panner\&.cpp\&.
+.SS "void QwtPolarPanner::movePlot (int dx, int dy)\fC [virtual]\fP, \fC [slot]\fP"
+Adjust the zoomed area according to dx/dy
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP Pixel offset in x direction 
+.br
+\fIdy\fP Pixel offset in y direction
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPanner::panned()\fP, \fBQwtPolarPlot::zoom()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 68 of file qwt_polar_panner\&.cpp\&.
+.SS "\fBQwtPolarPlot\fP * QwtPolarPanner::plot ()"
+
+.PP
+\fBReturns\fP
+.RS 4
+observed plot 
+.RE
+.PP
+
+.PP
+Definition at line 41 of file qwt_polar_panner\&.cpp\&.
+.SS "const \fBQwtPolarPlot\fP * QwtPolarPanner::plot () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+observed plot 
+.RE
+.PP
+
+.PP
+Definition at line 51 of file qwt_polar_panner\&.cpp\&.
+.SS "void QwtPolarPanner::widgetMousePressEvent (QMouseEvent * event)\fC [override]\fP, \fC [protected]\fP, \fC [virtual]\fP"
+Block panning when the plot zoom factor is >= 1\&.0\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIevent\fP Mouse event 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPanner\fP\&.
+.PP
+Definition at line 108 of file qwt_polar_panner\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

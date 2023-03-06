@@ -1,0 +1,352 @@
+.TH "QwtSplineParametrization" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineParametrization \- Curve parametrization used for a spline interpolation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_parametrization\&.h>\fP
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBType\fP { \fBParameterX\fP, \fBParameterY\fP, \fBParameterUniform\fP, \fBParameterChordal\fP, \fBParameterCentripetal\fP, \fBParameterManhattan\fP }"
+.br
+.RI "Parametrization type\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineParametrization\fP (int \fBtype\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtSplineParametrization\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "int \fBtype\fP () const"
+.br
+.ti -1c
+.RI "virtual double \fBvalueIncrement\fP (const QPointF &, const QPointF &) const"
+.br
+.RI "Calculate the parameter value increment for 2 points\&. "
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static double \fBvalueIncrementX\fP (const QPointF &, const QPointF &)"
+.br
+.RI "Calculate the ParameterX value increment for 2 points\&. "
+.ti -1c
+.RI "static double \fBvalueIncrementY\fP (const QPointF &, const QPointF &)"
+.br
+.RI "Calculate the ParameterY value increment for 2 points\&. "
+.ti -1c
+.RI "static double \fBvalueIncrementUniform\fP (const QPointF &, const QPointF &)"
+.br
+.RI "Calculate the ParameterUniform value increment\&. "
+.ti -1c
+.RI "static double \fBvalueIncrementChordal\fP (const QPointF &, const QPointF &)"
+.br
+.RI "Calculate the ParameterChordal value increment for 2 points\&. "
+.ti -1c
+.RI "static double \fBvalueIncrementCentripetal\fP (const QPointF &, const QPointF &)"
+.br
+.RI "Calculate the ParameterCentripetal value increment for 2 points\&. "
+.ti -1c
+.RI "static double \fBvalueIncrementManhattan\fP (const QPointF &, const QPointF &)"
+.br
+.RI "Calculate the ParameterManhattan value increment for 2 points\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Curve parametrization used for a spline interpolation\&. 
+
+Parametrization is the process of finding a parameter value for each curve point - usually related to some physical quantity ( distance, time \&.\&.\&. )\&.
+.PP
+Often accumulating the curve length is the intended way of parametrization, but as the interpolated curve is not known in advance an approximation needs to be used\&.
+.PP
+The values are calculated by cumulating increments, that are provided by \fBQwtSplineParametrization\fP\&. As the curve parameters need to be montonically increasing, each increment need to be positive\&.
+.PP
+.IP "\(bu" 2
+t[0] = 0;
+.IP "\(bu" 2
+t[i] = t[i-1] + valueIncrement( point[i-1], p[i] );
+.PP
+.PP
+\fBQwtSplineParametrization\fP provides the most common used type of parametrizations and offers an interface to inject custom implementations\&.
+.PP
+\fBNote\fP
+.RS 4
+The most relevant types of parametrization are trying to provide an approximation of the curve length\&.
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline::setParametrization()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 44 of file qwt_spline_parametrization\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtSplineParametrization::Type\fP"
+
+.PP
+Parametrization type\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIParameterX \fP\fP
+No parametrization: t[i] = x[i] 
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalueIncrementX()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIParameterY \fP\fP
+No parametrization: t[i] = y[i] 
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalueIncrementY()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIParameterUniform \fP\fP
+Uniform parametrization: t[i] = i;
+.PP
+A very fast parametrization, with good results, when the geometry of the control points is somehow 'equidistant'\&. F\&.e\&. when recording the position of a body, that is moving with constant speed every n seconds\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalueIncrementUniform()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIParameterChordal \fP\fP
+Parametrization using the chordal length between two control points
+.PP
+The chordal length is the most commonly used approximation for the curve length\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalueIncrementChordal()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIParameterCentripetal \fP\fP
+Centripetal parametrization
+.PP
+Based on the square root of the chordal length\&.
+.PP
+Its name stems from the physical observations regarding the centripetal force, of a body moving along the curve\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalueIncrementCentripetal()\fP 
+.RE
+.PP
+
+.TP
+\fB\fIParameterManhattan \fP\fP
+Parametrization using the manhattan length between two control points
+.PP
+Approximating the curve length by the manhattan length is faster than the chordal length, but usually gives worse results\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalueIncrementManhattan()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 48 of file qwt_spline_parametrization\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSplineParametrization::QwtSplineParametrization (int type)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItype\fP Parametrization type 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBtype()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 17 of file qwt_spline_parametrization\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int QwtSplineParametrization::type () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Parametrization type 
+.RE
+.PP
+
+.PP
+Definition at line 72 of file qwt_spline_parametrization\&.cpp\&.
+.SS "double QwtSplineParametrization::valueIncrement (const QPointF & point1, const QPointF & point2) const\fC [virtual]\fP"
+
+.PP
+Calculate the parameter value increment for 2 points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Value increment 
+.RE
+.PP
+
+.PP
+Definition at line 35 of file qwt_spline_parametrization\&.cpp\&.
+.SS "double QwtSplineParametrization::valueIncrementCentripetal (const QPointF & point1, const QPointF & point2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Calculate the ParameterCentripetal value increment for 2 points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+The square root of a chordal increment 
+.RE
+.PP
+
+.PP
+Definition at line 196 of file qwt_spline_parametrization\&.h\&.
+.SS "double QwtSplineParametrization::valueIncrementChordal (const QPointF & point1, const QPointF & point2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Calculate the ParameterChordal value increment for 2 points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+qSqrt( dx * dx + dy * dy ); 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file qwt_spline_parametrization\&.h\&.
+.SS "double QwtSplineParametrization::valueIncrementManhattan (const QPointF & point1, const QPointF & point2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Calculate the ParameterManhattan value increment for 2 points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+| point2\&.x() - point1\&.x() | + | point2\&.y() - point1\&.y() | 
+.RE
+.PP
+
+.PP
+Definition at line 210 of file qwt_spline_parametrization\&.h\&.
+.SS "double QwtSplineParametrization::valueIncrementUniform (const QPointF & point1, const QPointF & point2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Calculate the ParameterUniform value increment\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+
+.PP
+Definition at line 162 of file qwt_spline_parametrization\&.h\&.
+.SS "double QwtSplineParametrization::valueIncrementX (const QPointF & point1, const QPointF & point2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Calculate the ParameterX value increment for 2 points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+point2\&.x() - point1\&.x(); 
+.RE
+.PP
+
+.PP
+Definition at line 134 of file qwt_spline_parametrization\&.h\&.
+.SS "double QwtSplineParametrization::valueIncrementY (const QPointF & point1, const QPointF & point2)\fC [inline]\fP, \fC [static]\fP"
+
+.PP
+Calculate the ParameterY value increment for 2 points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoint1\fP First point 
+.br
+\fIpoint2\fP Second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+point2\&.y() - point1\&.y(); 
+.RE
+.PP
+
+.PP
+Definition at line 148 of file qwt_spline_parametrization\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

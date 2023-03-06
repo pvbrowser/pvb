@@ -1,0 +1,96 @@
+.TH "QwtNullTransform" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtNullTransform \- Null transformation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_transform\&.h>\fP
+.PP
+Inherits \fBQwtTransform\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtNullTransform\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtNullTransform\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual double \fBtransform\fP (double value) const override"
+.br
+.ti -1c
+.RI "virtual double \fBinvTransform\fP (double value) const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtTransform\fP * \fBcopy\fP () const override"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Null transformation\&. 
+
+\fBQwtNullTransform\fP returns the values unmodified\&. 
+.PP
+Definition at line 80 of file qwt_transform\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtTransform\fP * QwtNullTransform::copy () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Clone of the transformation 
+.RE
+.PP
+
+.PP
+Implements \fBQwtTransform\fP\&.
+.PP
+Definition at line 68 of file qwt_transform\&.cpp\&.
+.SS "double QwtNullTransform::invTransform (double value) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be transformed 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+value unmodified 
+.RE
+.PP
+
+.PP
+Implements \fBQwtTransform\fP\&.
+.PP
+Definition at line 62 of file qwt_transform\&.cpp\&.
+.SS "double QwtNullTransform::transform (double value) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be transformed 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+value unmodified 
+.RE
+.PP
+
+.PP
+Implements \fBQwtTransform\fP\&.
+.PP
+Definition at line 53 of file qwt_transform\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

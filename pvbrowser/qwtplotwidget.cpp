@@ -21,7 +21,9 @@
 #include "qwtplotwidget.h"
 #include "qwt_symbol.h"
 #include "qwt_legend.h"
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
 #include "qwt_legend_item.h"
+#endif
 #include "qwt_plot_canvas.h"
 #include "qwt_plot_layout.h"
 #include "qwt_scale_widget.h"
@@ -115,6 +117,7 @@ QwtPlotWidget::QwtPlotWidget(int *sock, int ident, QWidget *parent, int numberCu
 
     // setDamp(0.0);
 **********************************************************************/
+    // return; // rlmurx-was-here clang issue
 }
 
 QwtPlotWidget::~QwtPlotWidget()
@@ -198,7 +201,12 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     int c,count;
     sscanf(command,"setCurveData(%d,%d",&c,&count);
     if(c<0 || c>=nCurves) return -1;
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
     if(curves[c] != NULL) curves[c]->setData(x,y,count);
+#else
+#warning "todo: was done by rlmurx"
+    if(curves[c] != NULL) curves[c]->setSamples(x,y,count);
+#endif    
   }
   else if(isCommand("replot("))
   {
@@ -257,7 +265,9 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     if(opt.arg_debug) printf("SetLegendPos begin\n");;
     if(legend == NULL) legend = new QwtLegend();
     if(opt.arg_debug) printf("SetLegendPos 1\n");;
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
     legend->setItemMode(QwtLegend::ClickableItem);
+#endif    
     if(opt.arg_debug) printf("SetLegendPos 2\n");;
     switch(val)
     {
@@ -291,13 +301,17 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
   {
     int r,g,b,style;
     sscanf(command,"setGridMajPen(%d,%d,%d,%d",&r,&g,&b,&style);
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
     grid.setMajPen(QPen(QColor(r,g,b),0,(Qt::PenStyle) style));
+#endif    
   }
   else if(isCommand("setGridMinPen("))
   {
     int r,g,b,style;
     sscanf(command,"setGridMinPen(%d,%d,%d,%d",&r,&g,&b,&style);
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
     grid.setMinPen(QPen(QColor(r,g,b),0,(Qt::PenStyle) style));
+#endif
   }
   else if(isCommand("enableAxis("))
   {
@@ -346,12 +360,18 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     curves[pos]->attach(this);
     if(legend != NULL)
     {
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
       QWidget *w = legend->find(curves[pos]);
       if(w != NULL) 
       {
         if(opt.arg_debug) printf("setChecked(%d)\n",autolegend);
-        ((QwtLegendItem *)w)->setChecked(autolegend);
+        ((QwtLegendItem *) w)->setChecked(autolegend);
       }
+#else
+#warning "todo: todo was done by rlmurx"
+      if(autolegend == 1) legend->setDefaultItemMode(QwtLegendData::Checkable);
+      else                legend->setDefaultItemMode(QwtLegendData::ReadOnly);
+#endif
     }
     replot();
 
@@ -388,7 +408,11 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
                     &r1,&g1,&b1,&r2,&g2,&b2,&w,&h);
     if(pos<0 || pos>=nCurves) return -1;
     //xx setCurveSymbol(curves[pos], QwtSymbol((QwtSymbol::Style) symbol, QColor(r1,g1,b1), QColor(r2,g2,b2), QSize(w,h)));
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
     if(curves[pos] != NULL) curves[pos]->setSymbol(QwtSymbol((QwtSymbol::Style) symbol, QColor(r1,g1,b1), QColor(r2,g2,b2), QSize(w,h)));
+#else
+    if(curves[pos] != NULL) curves[pos]->setSymbol(new QwtSymbol((QwtSymbol::Style) symbol, QColor(r1,g1,b1), QColor(r2,g2,b2), QSize(w,h)));
+#endif
   }
   else if(isCommand("setCurveYAxis("))
   {
@@ -466,7 +490,9 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
                   &pos,&symbol,&r1,&g1,&b1,&r2,&g2,&b2,&w,&h);
     if(pos<0 || pos>=nMarker) return -1;
     //xx setMarkerSymbol(marker[pos], QwtSymbol((QwtSymbol::Style) symbol, QColor(r1,g1,b1), QColor(r2,g2,b2), QSize(w,h)));
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
     if(marker[pos] != NULL) marker[pos]->setSymbol(QwtSymbol((QwtSymbol::Style) symbol, QColor(r1,g1,b1), QColor(r2,g2,b2), QSize(w,h)));
+#endif
   }
   else if(isCommand("insertLineMarker("))
   {
@@ -512,6 +538,10 @@ int QwtPlotWidget::interpret(const char *command, double *x, double *y)
     return -1;
   }
 
+  //if(1)
+  //{
+  //  printf("done QwtPlotWidget::interpret(const char *command, double *x, double *y):%s\n", command);
+  //}
   return 0;
 }
 
@@ -612,7 +642,9 @@ int QwtPlotWidget::sendJpeg2clipboard()
   QByteArray bytes;
   QBuffer qb_buffer(&bytes);
   qb_buffer.open(QIODevice::WriteOnly);
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62    
   canvas()->paintCache()->save(&qb_buffer, "JPG"); // writes pixmap into bytes in JPG format
+#endif
   sprintf(buf,"@clipboard(%d,%d)\n", id, (int) qb_buffer.size());
   tcp_send(s,buf,strlen(buf));
   return tcp_send(s, qb_buffer.data(), qb_buffer.size());

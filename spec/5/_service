@@ -1,0 +1,28 @@
+<services>
+  <service name="download_url">
+    <param name="host">pvbrowser.de</param>
+    <param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/pvbrowser-5.tar.gz</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/pvbrowser.spec</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/debian.changelog</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/debian.compat</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/debian.control</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/debian.rules</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/pvbrowser-devel.dsc</param>
+  </service>
+  <service name="download_url"><param name="host">pvbrowser.de</param><param name="protocol">https</param>
+    <param name="path">/pvbrowser/tar/pvb5/PKGBUILD</param>
+  </service>
+</services>

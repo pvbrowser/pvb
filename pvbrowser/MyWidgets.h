@@ -579,10 +579,14 @@ private:
     int *s,id,dock_id;
 };
 
+#ifdef PVB_FOOTPRINT_BASIC
+#include "MyTextBrowser_without_www.h"
+#else
 #ifdef USE_GOOGLE_WEBKIT_FORK
-#include "MyTextBrowser_v5.h"
+#include "MyTextBrowser_with_www.h"
 #else
 #include "MyTextBrowser_v4.h"
+#endif
 #endif
 
 #endif

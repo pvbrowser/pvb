@@ -1,0 +1,39 @@
+Auf Notebook:
+Change <version>
+  pvbrowser-devel.dsc:Version: 5.1.1-4.1
+  pvbrowser.spec:Version:   5.1.1
+  vi pvbrowser-devel.dsc
+  vi pvbrowser.spec
+
+pv4
+./clean.sh
+cd ..
+./pvbtar.sh
+scp pvb.tar.gz $htpvb/tar/pvb5/
+
+####################################
+Auf Server:
+tar -zxf pvb.tar.gz
+mv pvb pvbrowser-<version>
+tar -zcf pvbrowser-5.tar.gz pvbrowser-<version>
+
+####################################
+Alte Version 
+Auf Notebook:
+pv4
+cd spec/4
+scp * $htpvb/
+
+Auf Server:
+cd ..
+cp pvb5/pvb.tar.gz .
+tar -zxf pvb.tar.gz
+cd pvb/pvbrowser
+./2v4.sh
+cd ../../
+vi pvb/qwt/src/src.pro             // webkitwidgets anstatt webenginewidgets
+vi pvb/designer/src/pvbplugin.pro  // webkitwidgets anstatt webenginewidgets
+mv pvb pvbrowser-<version>
+tar -zcf pvbrowser-4.tar.gz pvbrowser-<version>
+
+

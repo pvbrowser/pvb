@@ -1,0 +1,96 @@
+.TH "QwtVectorFieldThinArrow" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtVectorFieldThinArrow
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_vectorfield_symbol\&.h>\fP
+.PP
+Inherits \fBQwtVectorFieldSymbol\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtVectorFieldThinArrow\fP (qreal headWidth=6\&.0)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtVectorFieldThinArrow\fP () override"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBsetLength\fP (qreal \fBlength\fP) override"
+.br
+.ti -1c
+.RI "virtual qreal \fBlength\fP () const override"
+.br
+.ti -1c
+.RI "virtual void \fBpaint\fP (QPainter *) const override"
+.br
+.RI "Draw the symbol/arrow\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Arrow implementation that only used lines, with optionally a filled arrow or only lines\&. 
+.PP
+Definition at line 81 of file qwt_vectorfield_symbol\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtVectorFieldThinArrow::QwtVectorFieldThinArrow (qreal headWidth = \fC6\&.0\fP)"
+
+.PP
+Constructor\&. The length is initialized by headWidth + 4
+.PP
+\fBParameters\fP
+.RS 4
+\fIheadWidth\fP Width of the triangular head 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLength()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 128 of file qwt_vectorfield_symbol\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "qreal QwtVectorFieldThinArrow::length () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+length of the symbol/arrow 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLength()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtVectorFieldSymbol\fP\&.
+.PP
+Definition at line 152 of file qwt_vectorfield_symbol\&.cpp\&.
+.SS "void QwtVectorFieldThinArrow::setLength (qreal length)\fC [override]\fP, \fC [virtual]\fP"
+Set the length of the symbol/arrow 
+.PP
+\fBSee also\fP
+.RS 4
+\fBlength()\fP 
+.RE
+.PP
+
+.PP
+Implements \fBQwtVectorFieldSymbol\fP\&.
+.PP
+Definition at line 139 of file qwt_vectorfield_symbol\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

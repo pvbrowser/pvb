@@ -1,0 +1,6 @@
+<map id="QwtPlotGLCanvas" name="QwtPlotGLCanvas">
+<area shape="rect" id="node1" title="An alternative canvas for a QwtPlot derived from QGLWidget." alt="" coords="63,155,194,181"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,95,107"/>
+<area shape="rect" id="node3" href="$class_qwt_plot_abstract_g_l_canvas.html" title="Base class of QwtPlotOpenGLCanvas and QwtPlotGLCanvas." alt="" coords="119,80,298,107"/>
+<area shape="rect" id="node4" href="$class_qwt_plot_abstract_canvas.html" title="Base class for all type of plot canvases." alt="" coords="127,5,290,32"/>
+</map>

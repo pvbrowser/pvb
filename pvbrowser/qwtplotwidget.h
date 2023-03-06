@@ -82,9 +82,11 @@ public:
   }
 
   //virtual QString label(double v) const
+  //rlmurx-was-here virtual QwtText label(double v) const
+  //virtual QwtText QwtAbstractScaleDraw::label(double v) const
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
   virtual QwtText label(double v) const
   {
-    QwtText qwttext;
     time_t curtime;
 //  struct tm *loctime;
 //  char time[1024];
@@ -93,9 +95,11 @@ public:
     qdt.setTime_t( curtime );
 //  loctime = localtime( &curtime );
 //  return qdt.toString( "yyyy-MM-dd \n hh:mm:ss" );
+    QwtText qwttext;
     qwttext.setText(qdt.toString( out ));
     return qwttext;
   }
+#endif
 private:
   char out[1024];
 };

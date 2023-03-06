@@ -1,0 +1,66 @@
+.TH "QwtSplineBasis" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineBasis \- An approximation using a basis spline\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_basis\&.h>\fP
+.PP
+Inherits \fBQwtSpline\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineBasis\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineBasis\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.ti -1c
+.RI "virtual uint \fBlocality\fP () const override"
+.br
+.RI "The locality is always 2\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+An approximation using a basis spline\&. 
+
+\fBQwtSplineBasis\fP approximates a set of points by a polynomials with C2 continuity ( = first and second derivatives are equal ) at the end points\&.
+.PP
+The end points of the spline do not match the original points\&. 
+.PP
+Definition at line 24 of file qwt_spline_basis\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QPainterPath QwtSplineBasis::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+Approximates a polygon piecewise with cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Painter path, that can be rendered by QPainter 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSpline\fP\&.
+.PP
+Definition at line 249 of file qwt_spline_basis\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

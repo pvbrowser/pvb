@@ -1,0 +1,76 @@
+.TH "QwtVectorFieldSymbol" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtVectorFieldSymbol
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_vectorfield_symbol\&.h>\fP
+.PP
+Inherited by \fBQwtVectorFieldArrow\fP, and \fBQwtVectorFieldThinArrow\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtVectorFieldSymbol\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtVectorFieldSymbol\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual void \fBsetLength\fP (qreal \fBlength\fP)=0"
+.br
+.ti -1c
+.RI "virtual qreal \fBlength\fP () const =0"
+.br
+.ti -1c
+.RI "virtual void \fBpaint\fP (QPainter *) const =0"
+.br
+.RI "Draw the symbol/arrow\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Defines abstract interface for arrow drawing routines\&.
+.PP
+Arrow needs to be drawn horizontally with arrow tip at coordinate 0,0\&. arrowLength() shall return the entire length of the arrow (needed to translate the arrow for tail/centered alignment)\&. setArrowLength() defines arror length in pixels (screen coordinates)\&. It can be implemented to adjust other geometric properties such as the head size and width of the arrow\&. It is \fIalways\fP called before \fBpaint()\fP\&.
+.PP
+A new arrow implementation can be set with QwtPlotVectorField::setArrowSymbol(), whereby ownership is transferred to the plot field\&. 
+.PP
+Definition at line 32 of file qwt_vectorfield_symbol\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual qreal QwtVectorFieldSymbol::length () const\fC [pure virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+length of the symbol/arrow 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLength()\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtVectorFieldThinArrow\fP, and \fBQwtVectorFieldArrow\fP\&.
+.SS "virtual void QwtVectorFieldSymbol::setLength (qreal length)\fC [pure virtual]\fP"
+Set the length of the symbol/arrow 
+.PP
+\fBSee also\fP
+.RS 4
+\fBlength()\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtVectorFieldThinArrow\fP, and \fBQwtVectorFieldArrow\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

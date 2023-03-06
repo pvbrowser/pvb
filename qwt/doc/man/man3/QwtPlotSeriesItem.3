@@ -1,0 +1,208 @@
+.TH "QwtPlotSeriesItem" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotSeriesItem \- Base class for plot items representing a series of samples\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_seriesitem\&.h>\fP
+.PP
+Inherits \fBQwtPlotItem\fP, and \fBQwtAbstractSeriesStore\fP\&.
+.PP
+Inherited by \fBQwtPlotAbstractBarChart\fP, \fBQwtPlotCurve\fP, \fBQwtPlotHistogram\fP, \fBQwtPlotIntervalCurve\fP, \fBQwtPlotSpectroCurve\fP, \fBQwtPlotTradingCurve\fP, and \fBQwtPlotVectorField\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotSeriesItem\fP (const QString &\fBtitle\fP=QString())"
+.br
+.ti -1c
+.RI "\fBQwtPlotSeriesItem\fP (const \fBQwtText\fP &\fBtitle\fP)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPlotSeriesItem\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetOrientation\fP (Qt::Orientation)"
+.br
+.ti -1c
+.RI "Qt::Orientation \fBorientation\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *, const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const QRectF &canvasRect) const override"
+.br
+.RI "Draw the complete series\&. "
+.ti -1c
+.RI "virtual void \fBdrawSeries\fP (QPainter *painter, const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const QRectF &canvasRect, int from, int to) const =0"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.ti -1c
+.RI "virtual void \fBupdateScaleDiv\fP (const \fBQwtScaleDiv\fP &, const \fBQwtScaleDiv\fP &) override"
+.br
+.RI "Update the item to changes of the axes scale division\&. "
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual void \fBdataChanged\fP () override"
+.br
+.RI "\fBdataChanged()\fP indicates, that the series has been changed\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for plot items representing a series of samples\&. 
+.PP
+Definition at line 24 of file qwt_plot_seriesitem\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotSeriesItem::QwtPlotSeriesItem (const QString & title = \fCQString()\fP)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title of the curve 
+.RE
+.PP
+
+.PP
+Definition at line 40 of file qwt_plot_seriesitem\&.cpp\&.
+.SS "QwtPlotSeriesItem::QwtPlotSeriesItem (const \fBQwtText\fP & title)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title of the curve 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file qwt_plot_seriesitem\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRectF QwtPlotSeriesItem::boundingRect () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+An invalid bounding rect: QRectF(1\&.0, 1\&.0, -2\&.0, -2\&.0) 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+A width or height < 0\&.0 is ignored by the autoscaler 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Reimplemented in \fBQwtPlotVectorField\fP, \fBQwtPlotTradingCurve\fP, \fBQwtPlotMultiBarChart\fP, \fBQwtPlotIntervalCurve\fP, \fBQwtPlotHistogram\fP, and \fBQwtPlotBarChart\fP\&.
+.PP
+Definition at line 97 of file qwt_plot_seriesitem\&.cpp\&.
+.SS "void QwtPlotSeriesItem::draw (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Draw the complete series\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP Maps x-values into pixel coordinates\&. 
+.br
+\fIyMap\fP Maps y-values into pixel coordinates\&. 
+.br
+\fIcanvasRect\fP Contents rectangle of the canvas 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 90 of file qwt_plot_seriesitem\&.cpp\&.
+.SS "virtual void QwtPlotSeriesItem::drawSeries (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect, int from, int to) const\fC [pure virtual]\fP"
+Draw a subset of the samples
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP Maps x-values into pixel coordinates\&. 
+.br
+\fIyMap\fP Maps y-values into pixel coordinates\&. 
+.br
+\fIcanvasRect\fP Contents rectangle of the canvas 
+.br
+\fIfrom\fP Index of the first point to be painted 
+.br
+\fIto\fP Index of the last point to be painted\&. If to < 0 the curve will be painted to its last point\&. 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtPlotVectorField\fP, \fBQwtPlotTradingCurve\fP, \fBQwtPlotSpectroCurve\fP, \fBQwtPlotMultiBarChart\fP, \fBQwtPlotIntervalCurve\fP, \fBQwtPlotHistogram\fP, \fBQwtPlotCurve\fP, and \fBQwtPlotBarChart\fP\&.
+.SS "Qt::Orientation QwtPlotSeriesItem::orientation () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Orientation of the plot item 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetOrientation()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file qwt_plot_seriesitem\&.cpp\&.
+.SS "void QwtPlotSeriesItem::setOrientation (Qt::Orientation orientation)"
+Set the orientation of the item\&.
+.PP
+The \fBorientation()\fP might be used in specific way by a plot item\&. F\&.e\&. a \fBQwtPlotCurve\fP uses it to identify how to display the curve int \fBQwtPlotCurve::Steps\fP or \fBQwtPlotCurve::Sticks\fP style\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBorientation()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 62 of file qwt_plot_seriesitem\&.cpp\&.
+.SS "void QwtPlotSeriesItem::updateScaleDiv (const \fBQwtScaleDiv\fP & xScaleDiv, const \fBQwtScaleDiv\fP & yScaleDiv)\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Update the item to changes of the axes scale division\&. Update the item, when the axes of plot have changed\&. The default implementation does nothing, but items that depend on the scale division (like \fBQwtPlotGrid()\fP) have to reimplement \fBupdateScaleDiv()\fP
+.PP
+\fBupdateScaleDiv()\fP is only called when the ScaleInterest interest is enabled\&. The default implementation does nothing\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIxScaleDiv\fP Scale division of the x-axis 
+.br
+\fIyScaleDiv\fP Scale division of the y-axis
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlot::updateAxes()\fP, \fBScaleInterest\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 102 of file qwt_plot_seriesitem\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

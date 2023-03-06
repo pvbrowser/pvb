@@ -1,0 +1,76 @@
+.TH "QwtSystemClock" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSystemClock \- \fBQwtSystemClock\fP provides high resolution clock time functions\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_system_clock\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBisNull\fP () const"
+.br
+.ti -1c
+.RI "void \fBstart\fP ()"
+.br
+.RI "Start the elapsed timer\&. "
+.ti -1c
+.RI "double \fBrestart\fP ()"
+.br
+.ti -1c
+.RI "double \fBelapsed\fP () const"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+\fBQwtSystemClock\fP provides high resolution clock time functions\&. 
+
+Precision and time intervals are multiples of milliseconds (ms)\&.
+.PP
+( \fBQwtSystemClock\fP is deprecated as QElapsedTimer offers the same precision ) 
+.PP
+Definition at line 24 of file qwt_system_clock\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtSystemClock::elapsed () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+elapsed time in multiples of milliseconds 
+.RE
+.PP
+
+.PP
+Definition at line 36 of file qwt_system_clock\&.cpp\&.
+.SS "bool QwtSystemClock::isNull () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, if the elapsed timer is valid 
+.RE
+.PP
+
+.PP
+Definition at line 14 of file qwt_system_clock\&.cpp\&.
+.SS "double QwtSystemClock::restart ()"
+Restart the elapsed timer 
+.PP
+\fBReturns\fP
+.RS 4
+elapsed time in multiples of milliseconds 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file qwt_system_clock\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

@@ -23,7 +23,11 @@
 #include "interpreter.h"
 #include "mainwindow.h"
 #include "pvserver.h"
-#include "dlgmybrowser.h"
+#ifdef PVB_FOOTPRINT_BASIC
+#include "dlgmybrowser_without_www.h"
+#else
+#include "dlgmybrowser_with_www.h"
+#endif
 
 #include <qmovie.h>
 #include <qmessagebox.h>
@@ -44,9 +48,6 @@
 #include <QGridLayout>
 #include <QPixmap>
 #include <QDesktopWidget>
-//murxv5 #ifndef NO_WEBKIT
-//murxv5 #include <QWebFrame>
-//murxv5 #endif
 #include <QPrinter>
 #include <QPrintDialog>
 #ifdef PVWIN32
@@ -1247,7 +1248,8 @@ void Interpreter::interprete(const char *command)
     {
       QString capt;
       if(opt.arg_debug) printf("endDefinition allBase != NULL modalDialog\n");
-      capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
+      //rlmurx-was-here capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
+      capt = QString::asprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
       modalDialog->setWindowTitle(capt);
       modalDialog->show();
     }
@@ -1342,10 +1344,14 @@ void Interpreter::interpretf(const char *command)
     QString result;
     int id_return,type;
     sscanf(command,"fileDialog(%d,%d",&id_return,&type);
-    if     (type==0) result = QFileDialog::getOpenFileName(NULL, QString::null, opt.temp);
-    else if(type==1) result = QFileDialog::getSaveFileName(NULL, QString::null, opt.temp);
-    else if(type==2) result = QFileDialog::getExistingDirectory(NULL, QString::null, opt.temp);
-    text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
+    //rlmurx-was-here if     (type==0) result = QFileDialog::getOpenFileName(NULL, QString::null, opt.temp);
+    //rlmurx-was-here else if(type==1) result = QFileDialog::getSaveFileName(NULL, QString::null, opt.temp);
+    //rlmurx-was-here else if(type==2) result = QFileDialog::getExistingDirectory(NULL, QString::null, opt.temp);
+    if     (type==0) result = QFileDialog::getOpenFileName(NULL, QString(), opt.temp);
+    else if(type==1) result = QFileDialog::getSaveFileName(NULL, QString(), opt.temp);
+    else if(type==2) result = QFileDialog::getExistingDirectory(NULL, QString(), opt.temp);
+    //rmmurx-was-here text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
+    text = QString::asprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
     tcp_send(s,text.toUtf8(),strlen(text.toUtf8()));
   }
 }
@@ -2082,12 +2088,14 @@ void Interpreter::interpreti(const char *command)
     if(ok && result.length() > 0)
     {
       result.truncate(MAX_PRINTF_LENGTH-80);
-      text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
+      //rlmurx-was-here text.sprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
+      text = QString::asprintf("text(%d,\"%s\")\n", id_return, (const char *) result.toUtf8());
       tcp_send(s,text.toUtf8(),strlen(text.toUtf8()));
     }
     else
     {
-      text.sprintf("text(%d,\"\")\n", id_return);
+      //rlmurx-was-here text.sprintf("text(%d,\"\")\n", id_return);
+      text = QString::asprintf("text(%d,\"\")\n", id_return);
       tcp_send(s,text.toUtf8(),strlen(text.toUtf8()));
     }
   }
@@ -2322,7 +2330,8 @@ void Interpreter::interpretp(const char *command)
     else
     {
       QPrinter printer;
-      printer.setOrientation(QPrinter::Landscape);
+      //rlmurx-was-here printer.setOrientation(QPrinter::Landscape);
+      printer.setPageOrientation(QPageLayout::Landscape);
       printer.setColorMode(QPrinter::Color);
       QWidget *w = all[i]->w;
       if(w != NULL)
@@ -4966,7 +4975,8 @@ void Interpreter::interprets(const char *command)
                   }
                   if(item != NULL) 
                   {
-                    item->setBackgroundColor(QColor(r,g,b));
+                    //rlmurx-was-here item->setBackgroundColor(QColor(r,g,b));
+                    item->setBackground(QColor(r,g,b));
                   }
                   if(t->autoresize == 1)
                   {
@@ -5781,8 +5791,10 @@ void Interpreter::interprett(const char *command)
         }
         else if(item != 0)
         {
+          QFlags<Qt::ItemFlag> flag;
           if(enabled) item->setFlags(Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemIsSelectable);
-          else        item->setFlags(0);
+          //rlmurx-was-here else        item->setFlags(0);
+          else        item->setFlags(flag);
         }
       }
     }
@@ -6066,7 +6078,8 @@ void Interpreter::interpretv(const char *command)
       cptr = strstr(buf,"\n");
       if(cptr != NULL) *cptr = '\0';
       QString info;
-      info.sprintf("Save %s", buf);
+      //rlmurx-was-here info.sprintf("Save %s", buf);
+      info = QString::asprintf("Save %s", buf);
       QString fname = QFileDialog::getSaveFileName(0,info,buf);
       if(fname.isEmpty() == false)
       {
@@ -6179,6 +6192,7 @@ void Interpreter::interpretq(const char *command)
     if(opt.arg_debug) printf("qwtwidget=%s",qwtcommand);
     if(all[i]->type == TQwtScale)
     {
+      // if(1) printf("debug interpreter.cpp QwtScale:: qwtwidget=%s",qwtcommand);
       // QwtScale
       QwtScaleWidget *wi = (QwtScaleWidget *) all[i]->w;
       if(strncmp(qwtcommand,"setTitle(",9) == 0)
@@ -6263,6 +6277,9 @@ void Interpreter::interpretq(const char *command)
       }
       else if(strncmp(qwtcommand,"setPosition(",12) == 0)
       {
+        // rlmurx-was-here
+        // es gibt bei qwt62: BottomScale TopScale LeftScale RigthScale
+        // es gibt bei processviewserver.h: Horizontal Vertical
         int pos;
         sscanf(qwtcommand,"setPosition(%d",&pos);
         //murx wi->setPosition((QwtScale::Position) pos);
@@ -6275,7 +6292,8 @@ void Interpreter::interpretq(const char *command)
     else if(all[i]->type == TQwtThermo)
     {
       // QwtThermo
-      QwtThermo *wi = (QwtThermo *) all[i]->w;
+      // if(1) printf("debug interpreter.cpp QwtThermo:: qwtwidget=%s",qwtcommand);
+      MyQwtThermo *wi = (MyQwtThermo *) all[i]->w;
       if(strncmp(qwtcommand,"setScale(",9) == 0)
       {
         double min,max,step;
@@ -6291,17 +6309,24 @@ void Interpreter::interpretq(const char *command)
         if(ori == PV::Horizontal) ori = Qt::Horizontal;
         else                      ori = Qt::Vertical;
         //qwtmurx
+        //rlmurx-was-here
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62        
         if     (pos == PV::ThermoNone)  pos = QwtThermo::NoScale;
         else if(pos == PV::ThermoTop)   pos = QwtThermo::TopScale;
         else if(pos == PV::ThermoBottom)pos = QwtThermo::BottomScale;
         else if(pos == PV::ThermoLeft)  pos = QwtThermo::LeftScale;
         else if(pos == PV::ThermoRight) pos = QwtThermo::RightScale;
-        //if     (pos == PV::ThermoNone)  pos = QwtThermo::None;
-        //else if(pos == PV::ThermoTop)   pos = QwtThermo::Top;
-        //else if(pos == PV::ThermoBottom)pos = QwtThermo::Bottom;
-        //else if(pos == PV::ThermoLeft)  pos = QwtThermo::Left;
-        //else if(pos == PV::ThermoRight) pos = QwtThermo::Right;
         if(wi != NULL) wi->setOrientation((Qt::Orientation) ori, (QwtThermo::ScalePos) pos);
+        if(wi != NULL) wi->setScalePosition((QwtThermo::ScalePos) pos);
+#else
+        if     (pos == PV::ThermoNone)  pos = QwtThermo::NoScale;
+        else if(pos == PV::ThermoTop)   pos = QwtThermo::TrailingScale;
+        else if(pos == PV::ThermoBottom)pos = QwtThermo::LeadingScale;
+        else if(pos == PV::ThermoLeft)  pos = QwtThermo::TrailingScale;
+        else if(pos == PV::ThermoRight) pos = QwtThermo::LeadingScale;
+        if(wi != NULL) wi->setOrientation((Qt::Orientation) ori);
+        if(wi != NULL) wi->setScalePosition((QwtThermo::ScalePosition) pos);
+#endif        
       }
       else if(strncmp(qwtcommand,"setBorderWidth(",15) == 0)
       {
@@ -6325,19 +6350,25 @@ void Interpreter::interpretq(const char *command)
       {
         double v;
         sscanf(qwtcommand,"setAlarmLevel(%lf",&v);
-        if(wi != NULL) wi->setAlarmLevel(v);
+        if(wi != NULL) wi->setAlarmLevel(v); // this method is implemented by QwtThermo::setAlarmLevel() directly
+                                             // in most cases it is irrelevant
+                                             // comment by: rlmurx-was-here
       }
       else if(strncmp(qwtcommand,"setAlarmEnabled(",16) == 0)
       {
         int tf;
         sscanf(qwtcommand,"setAlarmEnabled(%d",&tf);
-        if(wi != NULL) wi->setAlarmEnabled(tf);
+        if(wi != NULL) wi->setAlarmEnabled(tf); // this method is implemented by QwtThermo::setAlarmEnabled() directly
+                                                // in most cases it is irrelevant
+                                                // comment by: rlmurx-was-here
       }
       else if(strncmp(qwtcommand,"setPipeWidth(",13) == 0)
       {
         int w;
         sscanf(qwtcommand,"setPipeWidth(%d",&w);
-        if(wi != NULL) wi->setPipeWidth(w);
+        if(wi != NULL) wi->setPipeWidth(w);     // this method is implemented by QwtThermo::setPipeWidth() directly
+                                                // in most cases it is irrelevant
+                                                // comment by: rlmurx-was-here
       }
       else if(strncmp(qwtcommand,"setRange(",9) == 0)
       {
@@ -6349,7 +6380,7 @@ void Interpreter::interpretq(const char *command)
       else if(strncmp(qwtcommand,"setMargin(",10) == 0)
       {
         int m;
-        sscanf(qwtcommand,"setMargin(%d",&m);
+        sscanf(qwtcommand,"setMargin(%d",&m); 
         if(wi != NULL) wi->setMargin(m);
       }
       else if(strncmp(qwtcommand,"setValue(",9) == 0)
@@ -6362,7 +6393,8 @@ void Interpreter::interpretq(const char *command)
     else if(all[i]->type == TQwtKnob)
     {
       // QwtKnob
-      QwtKnob *wi = (QwtKnob *) all[i]->w;
+      // if(1) printf("debug interpreter.cpp QwtKnob:: qwtwidget=%s",qwtcommand);
+      MyQwtKnob *wi = (MyQwtKnob *) all[i]->w;
       if(strncmp(qwtcommand,"setScale(",9) == 0)
       {
         double min,max,step;
@@ -6415,9 +6447,16 @@ void Interpreter::interpretq(const char *command)
       }
       else if(strncmp(qwtcommand,"setSymbol(",10) == 0)
       {
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62        
         int s;
         sscanf(qwtcommand,"setSymbol(%d",&s);
         if(wi != NULL) wi->setSymbol((QwtKnob::Symbol) s);
+#else
+        printf("16Feb2023:rl asks you to verify if this solution is ok.\n");
+        int s;
+        sscanf(qwtcommand,"setSymbol(%d",&s);
+        if(wi != NULL) wi->setMarkerStyle((QwtKnob::MarkerStyle) s);
+#endif
       }
       else if(strncmp(qwtcommand,"setValue(",9) == 0)
       {
@@ -6429,24 +6468,46 @@ void Interpreter::interpretq(const char *command)
     else if(all[i]->type == TQwtCounter)
     {
       // QwtCounter
+      // if(1) printf("debug interpreter.cpp QwtCounter:: qwtwidget=%s",qwtcommand);
       QwtCounter *wi = (QwtCounter *) all[i]->w;
       if(strncmp(qwtcommand,"setStep(",8) == 0)
       {
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62        
         double s;
         sscanf(qwtcommand,"setStep(%lf",&s);
         if(wi != NULL) wi->setStep(s);
+#else
+        printf("16Feb2023:rl asks you to verify if this solution is ok.\n");
+        double s;
+        sscanf(qwtcommand,"setStep(%lf",&s);
+        if(wi != NULL) wi->setSingleStep(s);
+#endif
       }
       else if(strncmp(qwtcommand,"setMinValue(",12) == 0)
       {
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62        
         double m;
         sscanf(qwtcommand,"setMinValue(%lf",&m);
         if(wi != NULL) wi->setMinValue(m);
+#else
+        printf("16Feb2023:rl asks you to verify if this solution is ok.\n");
+        double m;
+        sscanf(qwtcommand,"setMinValue(%lf",&m);
+        if(wi != NULL) wi->setMinimum(m);
+#endif
       }
       else if(strncmp(qwtcommand,"setMaxValue(",12) == 0)
       {
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62        
         double m;
         sscanf(qwtcommand,"setMaxValue(%lf",&m);
         if(wi != NULL) wi->setMaxValue(m);
+#else
+        printf("16Feb2023:rl asks you to verify if this solution is ok.\n");
+        double m;
+        sscanf(qwtcommand,"setMaxValue(%lf",&m);
+        if(wi != NULL) wi->setMaximum(m);
+#endif
       }
       else if(strncmp(qwtcommand,"setStepButton1(",15) == 0)
       {
@@ -6488,7 +6549,8 @@ void Interpreter::interpretq(const char *command)
     else if(all[i]->type == TQwtWheel)
     {
       // QwtWheel
-      QwtWheel *wi = (QwtWheel *) all[i]->w;
+      // if(1) printf("debug interpreter.cpp QwtWheel:: qwtwidget=%s",qwtcommand);
+      MyQwtWheel *wi = (MyQwtWheel *) all[i]->w;
       if(strncmp(qwtcommand,"setMass(",8) == 0)
       {
         float mass;
@@ -6521,7 +6583,11 @@ void Interpreter::interpretq(const char *command)
       {
         int cnt;
         sscanf(qwtcommand,"setTickCnt(%d",&cnt);
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62        
         if(wi != NULL) wi->setTickCnt(cnt);
+#else
+        if(wi != NULL) wi->setTickCount(cnt);
+#endif
       }
       else if(strncmp(qwtcommand,"setViewAngle(",13) == 0)
       {
@@ -6557,14 +6623,14 @@ void Interpreter::interpretq(const char *command)
     else if(all[i]->type == TQwtSlider)
     {
       // QwtSlider
-      QwtSlider *wi = (QwtSlider *) all[i]->w;
+      // if(1) printf("debug interpreter.cpp QwtSlider:: qwtwidget=%s",qwtcommand);
+      MyQwtSlider *wi = (MyQwtSlider *) all[i]->w;
       if(strncmp(qwtcommand,"setScale(",9) == 0)
       {
         double min,max,step;
         int logarithmic;
         sscanf(qwtcommand,"setScale(%lf,%lf,%lf,%d",&min,&max,&step,&logarithmic);
-        //murx wi->setScale(min,max,step,logarithmic);
-        if(wi != NULL) wi->setScale(min,max,step);
+        if(wi != NULL) wi->setScale(min,max,step,logarithmic);
       }
       else if(strncmp(qwtcommand,"setMass(",8) == 0)
       {
@@ -6591,46 +6657,13 @@ void Interpreter::interpretq(const char *command)
       {
         int st;
         sscanf(qwtcommand,"setBgStyle(%d",&st);
-        if(wi != NULL) wi->setBgStyle((QwtSlider::BGSTYLE) st);
+        if(wi != NULL) wi->setBgStyle(st);
       }
       else if(strncmp(qwtcommand,"setScalePos(",12) == 0)
       {
         int st;
         sscanf(qwtcommand,"setScalePos(%d",&st);
-        switch(st)
-        {
-          //qwtmurx
-          case PV::SliderLeft:
-            if(wi != NULL) wi->setScalePosition(QwtSlider::LeftScale);
-            break;
-          case PV::SliderRight:
-            if(wi != NULL) wi->setScalePosition(QwtSlider::RightScale);
-            break;
-          case PV::SliderTop:
-            if(wi != NULL) wi->setScalePosition(QwtSlider::TopScale);
-            break;
-          case PV::SliderBottom:
-            if(wi != NULL) wi->setScalePosition(QwtSlider::BottomScale);
-            break;
-          default:
-            if(wi != NULL) wi->setScalePosition(QwtSlider::NoScale);
-            break;
-          //case PV::SliderLeft:
-          //  if(wi != NULL) wi->setScalePosition(QwtSlider::Left);
-          //  break;
-          //case PV::SliderRight:
-          //  if(wi != NULL) wi->setScalePosition(QwtSlider::Right);
-          //  break;
-          //case PV::SliderTop:
-          //  if(wi != NULL) wi->setScalePosition(QwtSlider::Top);
-          //  break;
-          //case PV::SliderBottom:
-          //  if(wi != NULL) wi->setScalePosition(QwtSlider::Bottom);
-          //  break;
-          //default:
-          //  if(wi != NULL) wi->setScalePosition(QwtSlider::None);
-          //  break;
-        }
+        if(wi != NULL) wi->setScalePosition(st);
       }
       else if(strncmp(qwtcommand,"setThumbLength(",15) == 0)
       {
@@ -6667,9 +6700,10 @@ void Interpreter::interpretq(const char *command)
             all[i]->type == TQwtCompass     || 
             all[i]->type == TQwtAnalogClock )
     {
+      // if(1) printf("debug interpreter.cpp QwtDial or QwtCompass or QwtAnalogClock:: qwtwidget=%s",qwtcommand);
       // QwtCompass
       // QwtCompass *wi = (QwtCompass *) all[i]->w;
-      QwtDial *wi = (QwtDial *) all[i]->w;
+      MyQwtDial *wi = (MyQwtDial *) all[i]->w;
       if(strncmp(qwtcommand,"setRange(",9) == 0)
       {
         double vmin,vmax;
@@ -7795,7 +7829,8 @@ void Interpreter::interpretQ(const char *command)
     get_text(command,lib_widget); // get second string
     tcp_rec(s,arg,sizeof(arg)-1); // get second string
 
-    QStringList param=lib_widget.split('/',QString::SkipEmptyParts);
+    //rlmurx-was-here QStringList param=lib_widget.split('/',QString::SkipEmptyParts);
+    QStringList param=lib_widget.split('/',Qt::SkipEmptyParts);
     if(param.size()>2) return;
 
     libname=param[0];
@@ -7838,14 +7873,23 @@ void Interpreter::interpretQ(const char *command)
         else
         {
           QString msg;
-          msg.sprintf("ERROR2: loading CustomWidget plugindir=%s libname=%s classname=%s library is not loaded errorString=%s", opt.pvb_widget_plugindir, (const char *) libname.toUtf8(), (const char *) classname.toUtf8(), (const char *) ql->errorString().toUtf8());
+          //rlmurx-was-here msg.sprintf("ERROR2: loading CustomWidget plugindir=%s libname=%s classname=%s library is not loaded errorString=%s", opt.pvb_widget_plugindir, (const char *) libname.toUtf8(), (const char *) classname.toUtf8(), (const char *) ql->errorString().toUtf8());
+          msg = QString::asprintf("ERROR2: loading CustomWidget plugindir=%s libname=%s classname=%s library is not loaded errorString=%s", opt.pvb_widget_plugindir, (const char *) libname.toUtf8(), (const char *) classname.toUtf8(), (const char *) ql->errorString().toUtf8());
           printf("%s\n", (const char *) msg.toUtf8());
           qDebug() << mainWindow->libs[libname]->errorString();
           qDebug() << mainWindow->libs[libname]->fileName();
           all[i]->w = new QWidget(all[p]->w);
           all[i]->type = TQWidget;
           QMessageBox::warning(mainWindow,"pvbrowser",msg);
-          msg.sprintf("The problem might be a missing custom widget plugin \"%s\".\n" 
+          //rlmurx-was-here msg.sprintf("The problem might be a missing custom widget plugin \"%s\".\n" 
+          //            "Or pvb_widget_plugindir=%s in pvbrowser options must be adjusted.\n"
+          //            "If the plugin \"%s\" is missing you might download it from\n"
+          //            "http://pvbrowser.org download section.\n"
+          //            "If you can't find the plugin there please ask your system administrator.",
+          //            (const char *) libname.toUtf8(), 
+          //            opt.pvb_widget_plugindir, 
+          //            (const char *) libname.toUtf8());
+          msg = QString::asprintf("The problem might be a missing custom widget plugin \"%s\".\n" 
                       "Or pvb_widget_plugindir=%s in pvbrowser options must be adjusted.\n"
                       "If the plugin \"%s\" is missing you might download it from\n"
                       "http://pvbrowser.org download section.\n"
@@ -7860,7 +7904,8 @@ void Interpreter::interpretQ(const char *command)
       else
       {
         QString msg;
-        msg.sprintf("ERROR3: loading CustomWidget libname=%s classname=%s new QLibrary failed", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        //rlmurx-was-here msg.sprintf("ERROR3: loading CustomWidget libname=%s classname=%s new QLibrary failed", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        msg = QString::asprintf("ERROR3: loading CustomWidget libname=%s classname=%s new QLibrary failed", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
         printf("%s\n",(const char *) msg.toUtf8());
         all[i]->w = new QWidget(all[p]->w);
         all[i]->type = TQWidget;
@@ -7877,7 +7922,8 @@ void Interpreter::interpretQ(const char *command)
       if(all[i]->w == NULL)
       {
         QString msg;
-        msg.sprintf("ERROR5: loading CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        //msg.sprintf("ERROR5: loading CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+        msg = QString::asprintf("ERROR5: loading CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
         printf("%s\n",(const char *) msg.toUtf8());
         all[i]->w = new QWidget(all[p]->w);
         all[i]->type = TQWidget;
@@ -7888,7 +7934,8 @@ void Interpreter::interpretQ(const char *command)
     else
     {
       QString msg;
-      msg.sprintf("ERROR6: CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+      //rlmurx-was-here msg.sprintf("ERROR6: CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
+      msg = QString::asprintf("ERROR6: CustomWidget libname=%s classname=%s classname not found within library", (const char *) libname.toUtf8(), (const char *) classname.toUtf8());
       printf("%s\n",(const char *) msg.toUtf8());
       all[i]->w = new QWidget(all[p]->w);
       all[i]->type = TQWidget;
@@ -7917,6 +7964,8 @@ void Interpreter::interpretQ(const char *command)
     font.setPointSize((font.pointSize()*zoom*opt.fontzoom)/(100*100));
     if(all[i]->w != NULL) all[i]->w->setFont(font);
   }
+
+  return; //rlmurx-was-here clang issue
 }
 
 void Interpreter::showMyBrowser(const char *url)
@@ -8019,7 +8068,8 @@ void Interpreter::showMyBrowser(const char *url)
     {
       QString capt;
       if(opt.arg_debug) printf("endDefinition allBase != NULL modalDialog\n");
-      capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
+      //rlmurx-was-here capt.sprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
+      capt = QString::asprintf("%s - pvbrowser",(const char *) mainWindow->curFile.toUtf8());
       modalDialog->setWindowTitle(capt);
       modalDialog->show();
     }

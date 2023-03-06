@@ -1,0 +1,19 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" title=" " alt="" coords="52,284,121,311"/>
+<area shape="rect" id="node2" href="$class_qwt_abstract_legend.html" title="Abstract base class for legend widgets." alt="" coords="237,360,374,387"/>
+<area shape="rect" id="node4" href="$class_qwt_plot.html" title="A 2&#45;D plotting widget." alt="" coords="271,157,340,184"/>
+<area shape="rect" id="node5" href="$class_qwt_plot_canvas.html" title="Canvas of a QwtPlot." alt="" coords="249,107,362,133"/>
+<area shape="rect" id="node6" href="$class_qwt_polar_canvas.html" title="Canvas of a QwtPolarPlot." alt="" coords="245,309,365,336"/>
+<area shape="rect" id="node7" href="$class_qwt_polar_plot.html" title="A plotting widget, displaying a polar coordinate system." alt="" coords="256,411,355,437"/>
+<area shape="rect" id="node8" href="$class_qwt_text_label.html" title="A Widget which displays a QwtText." alt="" coords="254,259,357,285"/>
+<area shape="rect" id="node3" href="$class_qwt_legend.html" title="The legend widget." alt="" coords="479,360,567,387"/>
+<area shape="rect" id="node9" href="$class_qwt_legend_label.html" title="A widget representing something on a QwtLegend." alt="" coords="464,259,583,285"/>
+<area shape="rect" id="node10" title=" " alt="" coords="261,5,350,32"/>
+<area shape="rect" id="node11" href="$class_qwt_plot_g_l_canvas.html" title="An alternative canvas for a QwtPlot derived from QGLWidget." alt="" coords="458,31,589,57"/>
+<area shape="rect" id="node12" title=" " alt="" coords="245,208,365,235"/>
+<area shape="rect" id="node13" href="$class_qwt_plot_open_g_l_canvas.html" title="An alternative canvas for a QwtPlot derived from QOpenGLWidget." alt="" coords="443,132,604,159"/>
+<area shape="rect" id="node14" href="$class_qwt_plot_abstract_canvas.html" title="Base class for all type of plot canvases." alt="" coords="5,81,168,108"/>
+<area shape="rect" id="node15" href="$class_qwt_plot_abstract_g_l_canvas.html" title="Base class of QwtPlotOpenGLCanvas and QwtPlotGLCanvas." alt="" coords="216,56,395,83"/>
+<area shape="rect" id="node16" href="$class_qwt_plot_dict.html" title="A dictionary for plot items." alt="" coords="40,157,133,184"/>
+<area shape="rect" id="node17" href="$class_qwt_polar_item_dict.html" title="A dictionary for polar plot items." alt="" coords="23,411,150,437"/>
+</map>

@@ -1,0 +1,581 @@
+.TH "QwtPlotRenderer" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotRenderer \- Renderer for exporting a plot to a document, a printer or anything else, that is supported by QPainter/QPaintDevice\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_renderer\&.h>\fP
+.PP
+Inherits QObject\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBDiscardFlag\fP { \fBDiscardNone\fP = 0x00, \fBDiscardBackground\fP = 0x01, \fBDiscardTitle\fP = 0x02, \fBDiscardLegend\fP = 0x04, \fBDiscardCanvasBackground\fP = 0x08, \fBDiscardFooter\fP = 0x10, \fBDiscardCanvasFrame\fP = 0x20 }"
+.br
+.RI "Discard flags\&. "
+.ti -1c
+.RI "enum \fBLayoutFlag\fP { \fBDefaultLayout\fP = 0x00, \fBFrameWithScales\fP = 0x01 }"
+.br
+.RI "Layout flags\&. "
+.ti -1c
+.RI "typedef QFlags< \fBDiscardFlag\fP > \fBDiscardFlags\fP"
+.br
+.ti -1c
+.RI "typedef QFlags< \fBLayoutFlag\fP > \fBLayoutFlags\fP"
+.br
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotRenderer\fP (QObject *=NULL)"
+.br
+.ti -1c
+.RI "virtual \fB~QwtPlotRenderer\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetDiscardFlag\fP (\fBDiscardFlag\fP flag, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestDiscardFlag\fP (\fBDiscardFlag\fP flag) const"
+.br
+.ti -1c
+.RI "void \fBsetDiscardFlags\fP (\fBDiscardFlags\fP flags)"
+.br
+.ti -1c
+.RI "\fBDiscardFlags\fP \fBdiscardFlags\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetLayoutFlag\fP (\fBLayoutFlag\fP flag, bool on=true)"
+.br
+.ti -1c
+.RI "bool \fBtestLayoutFlag\fP (\fBLayoutFlag\fP flag) const"
+.br
+.ti -1c
+.RI "void \fBsetLayoutFlags\fP (\fBLayoutFlags\fP flags)"
+.br
+.ti -1c
+.RI "\fBLayoutFlags\fP \fBlayoutFlags\fP () const"
+.br
+.ti -1c
+.RI "void \fBrenderDocument\fP (\fBQwtPlot\fP *, const QString &fileName, const QSizeF &sizeMM, int resolution=85)"
+.br
+.ti -1c
+.RI "void \fBrenderDocument\fP (\fBQwtPlot\fP *, const QString &fileName, const QString &format, const QSizeF &sizeMM, int resolution=85)"
+.br
+.ti -1c
+.RI "void \fBrenderTo\fP (\fBQwtPlot\fP *, QPrinter &) const"
+.br
+.RI "Render the plot to a QPrinter\&. "
+.ti -1c
+.RI "void \fBrenderTo\fP (\fBQwtPlot\fP *, QPaintDevice &) const"
+.br
+.RI "Render the plot to a \fCQPaintDevice\fP\&. "
+.ti -1c
+.RI "virtual void \fBrender\fP (\fBQwtPlot\fP *, QPainter *, const QRectF &plotRect) const"
+.br
+.ti -1c
+.RI "virtual void \fBrenderTitle\fP (const \fBQwtPlot\fP *, QPainter *, const QRectF &titleRect) const"
+.br
+.ti -1c
+.RI "virtual void \fBrenderFooter\fP (const \fBQwtPlot\fP *, QPainter *, const QRectF &footerRect) const"
+.br
+.ti -1c
+.RI "virtual void \fBrenderScale\fP (const \fBQwtPlot\fP *, QPainter *, QwtAxisId, int startDist, int endDist, int baseDist, const QRectF &scaleRect) const"
+.br
+.RI "Paint a scale into a given rectangle\&. Paint the scale into a given rectangle\&. "
+.ti -1c
+.RI "virtual void \fBrenderCanvas\fP (const \fBQwtPlot\fP *, QPainter *, const QRectF &canvasRect, const \fBQwtScaleMap\fP *maps) const"
+.br
+.ti -1c
+.RI "virtual void \fBrenderLegend\fP (const \fBQwtPlot\fP *, QPainter *, const QRectF &legendRect) const"
+.br
+.ti -1c
+.RI "bool \fBexportTo\fP (\fBQwtPlot\fP *, const QString &documentName, const QSizeF &sizeMM=QSizeF(300, 200), int resolution=85)"
+.br
+.RI "Execute a file dialog and render the plot to the selected file\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Renderer for exporting a plot to a document, a printer or anything else, that is supported by QPainter/QPaintDevice\&. 
+.PP
+Definition at line 39 of file qwt_plot_renderer\&.h\&.
+.SH "Member Typedef Documentation"
+.PP 
+.SS "typedef QFlags<\fBDiscardFlag\fP > \fBQwtPlotRenderer::DiscardFlags\fP"
+An ORed combination of \fBDiscardFlag\fP values\&. 
+.PP
+Definition at line 76 of file qwt_plot_renderer\&.h\&.
+.SS "typedef QFlags<\fBLayoutFlag\fP > \fBQwtPlotRenderer::LayoutFlags\fP"
+An ORed combination of \fBLayoutFlag\fP values\&. 
+.PP
+Definition at line 94 of file qwt_plot_renderer\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtPlotRenderer::DiscardFlag\fP"
+
+.PP
+Discard flags\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDiscardNone \fP\fP
+Render all components of the plot\&. 
+.TP
+\fB\fIDiscardBackground \fP\fP
+Don't render the background of the plot\&. 
+.TP
+\fB\fIDiscardTitle \fP\fP
+Don't render the title of the plot\&. 
+.TP
+\fB\fIDiscardLegend \fP\fP
+Don't render the legend of the plot\&. 
+.TP
+\fB\fIDiscardCanvasBackground \fP\fP
+Don't render the background of the canvas\&. 
+.TP
+\fB\fIDiscardFooter \fP\fP
+Don't render the footer of the plot\&. 
+.TP
+\fB\fIDiscardCanvasFrame \fP\fP
+Don't render the frame of the canvas
+.PP
+\fBNote\fP
+.RS 4
+This flag has no effect when using style sheets, where the frame is part of the background 
+.RE
+.PP
+
+.PP
+Definition at line 45 of file qwt_plot_renderer\&.h\&.
+.SS "enum \fBQwtPlotRenderer::LayoutFlag\fP"
+
+.PP
+Layout flags\&. 
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetLayoutFlag()\fP, \fBtestLayoutFlag()\fP 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDefaultLayout \fP\fP
+Use the default layout as on screen\&. 
+.TP
+\fB\fIFrameWithScales \fP\fP
+Instead of the scales a box is painted around the plot canvas, where the scale ticks are aligned to\&. 
+.PP
+Definition at line 82 of file qwt_plot_renderer\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotRenderer::QwtPlotRenderer (QObject * parent = \fCNULL\fP)\fC [explicit]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIparent\fP Parent object 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file qwt_plot_renderer\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQwtPlotRenderer::DiscardFlags\fP QwtPlotRenderer::discardFlags () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Flags, indicating what to discard from rendering 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBDiscardFlag\fP, \fBsetDiscardFlags()\fP, \fBsetDiscardFlag()\fP, \fBtestDiscardFlag()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file qwt_plot_renderer\&.cpp\&.
+.SS "bool QwtPlotRenderer::exportTo (\fBQwtPlot\fP * plot, const QString & documentName, const QSizeF & sizeMM = \fCQSizeF( 300, 200 )\fP, int resolution = \fC85\fP)"
+
+.PP
+Execute a file dialog and render the plot to the selected file\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIdocumentName\fP Default document name 
+.br
+\fIsizeMM\fP Size for the document in millimeters\&. 
+.br
+\fIresolution\fP Resolution in dots per Inch (dpi)
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+True, when exporting was successful 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1060 of file qwt_plot_renderer\&.cpp\&.
+.SS "\fBQwtPlotRenderer::LayoutFlags\fP QwtPlotRenderer::layoutFlags () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Layout flags 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBLayoutFlag\fP, \fBsetLayoutFlags()\fP, \fBsetLayoutFlag()\fP, \fBtestLayoutFlag()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 245 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::render (\fBQwtPlot\fP * plot, QPainter * painter, const QRectF & plotRect) const\fC [virtual]\fP"
+Paint the contents of a \fBQwtPlot\fP instance into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot to be rendered 
+.br
+\fIpainter\fP Painter 
+.br
+\fIplotRect\fP Bounding rectangle
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP, \fBrenderTo()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 482 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderCanvas (const \fBQwtPlot\fP * plot, QPainter * painter, const QRectF & canvasRect, const \fBQwtScaleMap\fP * maps) const\fC [virtual]\fP"
+Render the canvas into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIpainter\fP Painter 
+.br
+\fImaps\fP Maps mapping between plot and paint device coordinates 
+.br
+\fIcanvasRect\fP Canvas rectangle 
+.RE
+.PP
+
+.PP
+Definition at line 831 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderDocument (\fBQwtPlot\fP * plot, const QString & fileName, const QSizeF & sizeMM, int resolution = \fC85\fP)"
+Render a plot to a file
+.PP
+The format of the document will be auto-detected from the suffix of the file name\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIfileName\fP Path of the file, where the document will be stored 
+.br
+\fIsizeMM\fP Size for the document in millimeters\&. 
+.br
+\fIresolution\fP Resolution in dots per Inch (dpi) 
+.RE
+.PP
+
+.PP
+Definition at line 261 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderDocument (\fBQwtPlot\fP * plot, const QString & fileName, const QString & format, const QSizeF & sizeMM, int resolution = \fC85\fP)"
+Render a plot to a file
+.PP
+Supported formats are:
+.PP
+.IP "\(bu" 2
+pdf
+.br
+ Portable Document Format PDF
+.IP "\(bu" 2
+ps
+.br
+ Postcript
+.IP "\(bu" 2
+svg
+.br
+ Scalable Vector Graphics SVG
+.IP "\(bu" 2
+all image formats supported by Qt
+.br
+ see QImageWriter::supportedImageFormats()
+.PP
+.PP
+Scalable vector graphic formats like PDF or SVG are superior to raster graphics formats\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIfileName\fP Path of the file, where the document will be stored 
+.br
+\fIformat\fP Format for the document 
+.br
+\fIsizeMM\fP Size for the document in millimeters\&. 
+.br
+\fIresolution\fP Resolution in dots per Inch (dpi)
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderTo()\fP, \fBrender()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 293 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderFooter (const \fBQwtPlot\fP * plot, QPainter * painter, const QRectF & footerRect) const\fC [virtual]\fP"
+Render the footer into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIpainter\fP Painter 
+.br
+\fIfooterRect\fP Bounding rectangle for the footer 
+.RE
+.PP
+
+.PP
+Definition at line 692 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderLegend (const \fBQwtPlot\fP * plot, QPainter * painter, const QRectF & legendRect) const\fC [virtual]\fP"
+Render the legend into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIpainter\fP Painter 
+.br
+\fIlegendRect\fP Bounding rectangle for the legend 
+.RE
+.PP
+
+.PP
+Definition at line 711 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderScale (const \fBQwtPlot\fP * plot, QPainter * painter, QwtAxisId axisId, int startDist, int endDist, int baseDist, const QRectF & scaleRect) const\fC [virtual]\fP"
+
+.PP
+Paint a scale into a given rectangle\&. Paint the scale into a given rectangle\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIpainter\fP Painter 
+.br
+\fIaxisId\fP Axis 
+.br
+\fIstartDist\fP Start border distance 
+.br
+\fIendDist\fP End border distance 
+.br
+\fIbaseDist\fP Base distance 
+.br
+\fIscaleRect\fP Bounding rectangle for the scale 
+.RE
+.PP
+
+.PP
+Definition at line 733 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderTitle (const \fBQwtPlot\fP * plot, QPainter * painter, const QRectF & titleRect) const\fC [virtual]\fP"
+Render the title into a given rectangle\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot widget 
+.br
+\fIpainter\fP Painter 
+.br
+\fItitleRect\fP Bounding rectangle for the title 
+.RE
+.PP
+
+.PP
+Definition at line 673 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderTo (\fBQwtPlot\fP * plot, QPaintDevice & paintDevice) const"
+
+.PP
+Render the plot to a \fCQPaintDevice\fP\&. This function renders the contents of a \fBQwtPlot\fP instance to \fCQPaintDevice\fP object\&. The target rectangle is derived from its device metrics\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot to be rendered 
+.br
+\fIpaintDevice\fP device to paint on, f\&.e a QImage
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP, \fBrender()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 402 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::renderTo (\fBQwtPlot\fP * plot, QPrinter & printer) const"
+
+.PP
+Render the plot to a QPrinter\&. This function renders the contents of a \fBQwtPlot\fP instance to \fCQPaintDevice\fP object\&. The size is derived from the printer metrics\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIplot\fP Plot to be rendered 
+.br
+\fIprinter\fP Printer to paint on
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBrenderDocument()\fP, \fBrender()\fP, \fBQwtPainter::setRoundingAlignment()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 427 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::setDiscardFlag (\fBDiscardFlag\fP flag, bool on = \fCtrue\fP)"
+Change a flag, indicating what to discard from rendering
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP Flag to change 
+.br
+\fIon\fP On/Off
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBDiscardFlag\fP, \fBtestDiscardFlag()\fP, \fBsetDiscardFlags()\fP, \fBdiscardFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 166 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::setDiscardFlags (\fBDiscardFlags\fP flags)"
+Set the flags, indicating what to discard from rendering
+.PP
+\fBParameters\fP
+.RS 4
+\fIflags\fP Flags 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBDiscardFlag\fP, \fBsetDiscardFlag()\fP, \fBtestDiscardFlag()\fP, \fBdiscardFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 190 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::setLayoutFlag (\fBLayoutFlag\fP flag, bool on = \fCtrue\fP)"
+Change a layout flag
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP Flag to change 
+.br
+\fIon\fP On/Off
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBLayoutFlag\fP, \fBtestLayoutFlag()\fP, \fBsetLayoutFlags()\fP, \fBlayoutFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 212 of file qwt_plot_renderer\&.cpp\&.
+.SS "void QwtPlotRenderer::setLayoutFlags (\fBLayoutFlags\fP flags)"
+Set the layout flags
+.PP
+\fBParameters\fP
+.RS 4
+\fIflags\fP Flags 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBLayoutFlag\fP, \fBsetLayoutFlag()\fP, \fBtestLayoutFlag()\fP, \fBlayoutFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 236 of file qwt_plot_renderer\&.cpp\&.
+.SS "bool QwtPlotRenderer::testDiscardFlag (\fBDiscardFlag\fP flag) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, if flag is enabled\&. 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP Flag to be tested 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBDiscardFlag\fP, \fBsetDiscardFlag()\fP, \fBsetDiscardFlags()\fP, \fBdiscardFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file qwt_plot_renderer\&.cpp\&.
+.SS "bool QwtPlotRenderer::testLayoutFlag (\fBLayoutFlag\fP flag) const"
+
+.PP
+\fBReturns\fP
+.RS 4
+True, if flag is enabled\&. 
+.RE
+.PP
+\fBParameters\fP
+.RS 4
+\fIflag\fP Flag to be tested 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBLayoutFlag\fP, \fBsetLayoutFlag()\fP, \fBsetLayoutFlags()\fP, \fBlayoutFlags()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 225 of file qwt_plot_renderer\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

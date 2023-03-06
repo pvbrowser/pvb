@@ -1,0 +1,285 @@
+.TH "QwtSplinePolynomial" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplinePolynomial \- A cubic polynomial without constant term\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline_polynomial\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplinePolynomial\fP (double \fBc3\fP=0\&.0, double \fBc2\fP=0\&.0, double \fBc1\fP=0\&.0)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBQwtSplinePolynomial\fP &) const"
+.br
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBQwtSplinePolynomial\fP &) const"
+.br
+.ti -1c
+.RI "double \fBvalueAt\fP (double x) const"
+.br
+.ti -1c
+.RI "double \fBslopeAt\fP (double x) const"
+.br
+.ti -1c
+.RI "double \fBcurvatureAt\fP (double x) const"
+.br
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBQwtSplinePolynomial\fP \fBfromSlopes\fP (const QPointF &p1, double m1, const QPointF &p2, double m2)"
+.br
+.ti -1c
+.RI "static \fBQwtSplinePolynomial\fP \fBfromSlopes\fP (double x, double y, double m1, double m2)"
+.br
+.ti -1c
+.RI "static \fBQwtSplinePolynomial\fP \fBfromCurvatures\fP (const QPointF &p1, double cv1, const QPointF &p2, double cv2)"
+.br
+.ti -1c
+.RI "static \fBQwtSplinePolynomial\fP \fBfromCurvatures\fP (double dx, double dy, double cv1, double cv2)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBc3\fP"
+.br
+.RI "coefficient of the cubic summand "
+.ti -1c
+.RI "double \fBc2\fP"
+.br
+.RI "coefficient of the quadratic summand "
+.ti -1c
+.RI "double \fBc1\fP"
+.br
+.RI "coefficient of the linear summand "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A cubic polynomial without constant term\&. 
+
+\fBQwtSplinePolynomial\fP is a 3rd degree polynomial of the form: y = c3 * x³ + c2 * x² + c1 * x;
+.PP
+\fBQwtSplinePolynomial\fP is usually used in combination with polygon interpolation, where it is not necessary to store a constant term ( c0 ), as the translation is known from the corresponding polygon points\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSplineC1\fP 
+.RE
+.PP
+
+.PP
+Definition at line 30 of file qwt_spline_polynomial\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSplinePolynomial::QwtSplinePolynomial (double a3 = \fC0\&.0\fP, double a2 = \fC0\&.0\fP, double a1 = \fC0\&.0\fP)\fC [inline]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIa3\fP Coefficient of the cubic summand 
+.br
+\fIa2\fP Coefficient of the quadratic summand 
+.br
+\fIa1\fP Coefficient of the linear summand 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file qwt_spline_polynomial\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtSplinePolynomial::curvatureAt (double x) const\fC [inline]\fP"
+Calculate the value of the second derivate of a polynomial for a given x
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP Parameter 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Curvature at x 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file qwt_spline_polynomial\&.h\&.
+.SS "\fBQwtSplinePolynomial\fP QwtSplinePolynomial::fromCurvatures (const QPointF & p1, double cv1, const QPointF & p2, double cv2)\fC [inline]\fP, \fC [static]\fP"
+Find the coefficients for the polynomial including 2 points with specific values for the 2nd derivates at these points\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIp1\fP First point 
+.br
+\fIcv1\fP Value of the second derivate at p1 
+.br
+\fIp2\fP Second point 
+.br
+\fIcv2\fP Value of the second derivate at p2
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Coefficients of the polynomials 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The missing constant term of the polynomial is p1\&.y() 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file qwt_spline_polynomial\&.h\&.
+.SS "\fBQwtSplinePolynomial\fP QwtSplinePolynomial::fromCurvatures (double dx, double dy, double cv1, double cv2)\fC [inline]\fP, \fC [static]\fP"
+Find the coefficients for the polynomial from the offset between 2 points and specific values for the 2nd derivates at these points\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP X-offset 
+.br
+\fIdy\fP Y-offset 
+.br
+\fIcv1\fP Value of the second derivate at p1 
+.br
+\fIcv2\fP Value of the second derivate at p2
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Coefficients of the polynomials 
+.RE
+.PP
+
+.PP
+Definition at line 202 of file qwt_spline_polynomial\&.h\&.
+.SS "\fBQwtSplinePolynomial\fP QwtSplinePolynomial::fromSlopes (const QPointF & p1, double m1, const QPointF & p2, double m2)\fC [inline]\fP, \fC [static]\fP"
+Find the coefficients for the polynomial including 2 points with specific values for the 1st derivates at these points\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIp1\fP First point 
+.br
+\fIm1\fP Value of the first derivate at p1 
+.br
+\fIp2\fP Second point 
+.br
+\fIm2\fP Value of the first derivate at p2
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Coefficients of the polynomials 
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The missing constant term of the polynomial is p1\&.y() 
+.RE
+.PP
+
+.PP
+Definition at line 147 of file qwt_spline_polynomial\&.h\&.
+.SS "\fBQwtSplinePolynomial\fP QwtSplinePolynomial::fromSlopes (double dx, double dy, double m1, double m2)\fC [inline]\fP, \fC [static]\fP"
+Find the coefficients for the polynomial from the offset between 2 points and specific values for the 1st derivates at these points\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIdx\fP X-offset 
+.br
+\fIdy\fP Y-offset 
+.br
+\fIm1\fP Value of the first derivate at p1 
+.br
+\fIm2\fP Value of the first derivate at p2
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Coefficients of the polynomials 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file qwt_spline_polynomial\&.h\&.
+.SS "bool QwtSplinePolynomial::operator!= (const \fBQwtSplinePolynomial\fP & other) const\fC [inline]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP Other polynomial 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, when the polynomials have different coefficients 
+.RE
+.PP
+
+.PP
+Definition at line 97 of file qwt_spline_polynomial\&.h\&.
+.SS "bool QwtSplinePolynomial::operator== (const \fBQwtSplinePolynomial\fP & other) const\fC [inline]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIother\fP Other polynomial 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+true, when both polynomials have the same coefficients 
+.RE
+.PP
+
+.PP
+Definition at line 88 of file qwt_spline_polynomial\&.h\&.
+.SS "double QwtSplinePolynomial::slopeAt (double x) const\fC [inline]\fP"
+Calculate the value of the first derivate of a polynomial for a given x
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP Parameter 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Slope at x 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file qwt_spline_polynomial\&.h\&.
+.SS "double QwtSplinePolynomial::valueAt (double x) const\fC [inline]\fP"
+Calculate the value of a polynomial for a given x
+.PP
+\fBParameters\fP
+.RS 4
+\fIx\fP Parameter 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Value at x 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file qwt_spline_polynomial\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

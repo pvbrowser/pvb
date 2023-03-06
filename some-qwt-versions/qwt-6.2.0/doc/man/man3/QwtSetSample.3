@@ -1,0 +1,85 @@
+.TH "QwtSetSample" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSetSample \- A sample of the types (x1\&.\&.\&.xn, y) or (x, y1\&.\&.yn)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_samples\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSetSample\fP ()"
+.br
+.ti -1c
+.RI "\fBQwtSetSample\fP (double, const \fBQVector\fP< double > &=\fBQVector\fP< double >())"
+.br
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBQwtSetSample\fP &other) const"
+.br
+.RI "Compare operator\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBQwtSetSample\fP &other) const"
+.br
+.RI "Compare operator\&. "
+.ti -1c
+.RI "double \fBadded\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBvalue\fP"
+.br
+.RI "value "
+.ti -1c
+.RI "\fBQVector\fP< double > \fBset\fP"
+.br
+.RI "Vector of values associated to value\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A sample of the types (x1\&.\&.\&.xn, y) or (x, y1\&.\&.yn) 
+.PP
+Definition at line 73 of file qwt_samples\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSetSample::QwtSetSample ()\fC [inline]\fP"
+Constructor The value is set to 0\&.0 
+.PP
+Definition at line 95 of file qwt_samples\&.h\&.
+.SS "QwtSetSample::QwtSetSample (double v, const \fBQVector\fP< double > & s = \fC\fBQVector\fP< double >( )\fP)\fC [inline]\fP, \fC [explicit]\fP"
+Constructor
+.PP
+\fBParameters\fP
+.RS 4
+\fIv\fP Value 
+.br
+\fIs\fP Set of values 
+.RE
+.PP
+
+.PP
+Definition at line 106 of file qwt_samples\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtSetSample::added () const\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+All values of the set added 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file qwt_samples\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

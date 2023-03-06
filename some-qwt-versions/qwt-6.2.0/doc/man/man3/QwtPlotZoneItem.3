@@ -1,0 +1,331 @@
+.TH "QwtPlotZoneItem" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotZoneItem \- A plot item, which displays a zone\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_zoneitem\&.h>\fP
+.PP
+Inherits \fBQwtPlotItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotZoneItem\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotZoneItem\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.ti -1c
+.RI "void \fBsetOrientation\fP (Qt::Orientation)"
+.br
+.RI "Set the orientation of the zone\&. "
+.ti -1c
+.RI "Qt::Orientation \fBorientation\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetInterval\fP (double min, double max)"
+.br
+.ti -1c
+.RI "void \fBsetInterval\fP (const \fBQwtInterval\fP &)"
+.br
+.ti -1c
+.RI "\fBQwtInterval\fP \fBinterval\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QColor &, qreal width=0\&.0, Qt::PenStyle=Qt::SolidLine)"
+.br
+.ti -1c
+.RI "void \fBsetPen\fP (const QPen &)"
+.br
+.RI "Assign a pen\&. "
+.ti -1c
+.RI "const QPen & \fBpen\fP () const"
+.br
+.ti -1c
+.RI "void \fBsetBrush\fP (const QBrush &)"
+.br
+.RI "Assign a brush\&. "
+.ti -1c
+.RI "const QBrush & \fBbrush\fP () const"
+.br
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *, const \fBQwtScaleMap\fP &, const \fBQwtScaleMap\fP &, const QRectF &canvasRect) const override"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plot item, which displays a zone\&. 
+
+A horizontal zone highlights an interval of the y axis - a vertical zone an interval of the x axis - and is unbounded in the opposite direction\&. It is filled with a brush and its border lines are optionally displayed with a pen\&.
+.PP
+\fBNote\fP
+.RS 4
+For displaying an area that is bounded for x and y coordinates use \fBQwtPlotShapeItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 33 of file qwt_plot_zoneitem\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotZoneItem::QwtPlotZoneItem ()\fC [explicit]\fP"
+
+.PP
+Constructor\&. Initializes the zone with no pen and a semi transparent gray brush
+.PP
+Sets the following item attributes:
+.PP
+.IP "\(bu" 2
+\fBQwtPlotItem::AutoScale\fP: false
+.IP "\(bu" 2
+\fBQwtPlotItem::Legend\fP: false
+.PP
+.PP
+The z value is initialized by 5
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotItem::setItemAttribute()\fP, \fBQwtPlotItem::setZ()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 50 of file qwt_plot_zoneitem\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRectF QwtPlotZoneItem::boundingRect () const\fC [override]\fP, \fC [virtual]\fP"
+The bounding rectangle is build from the interval in one direction and something invalid for the opposite direction\&.
+.PP
+\fBReturns\fP
+.RS 4
+An invalid rectangle with valid boundaries in one direction 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 297 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "const QBrush & QwtPlotZoneItem::brush () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Brush used to fill the zone 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 138 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::draw (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+Draw the zone
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP x Scale Map 
+.br
+\fIyMap\fP y Scale Map 
+.br
+\fIcanvasRect\fP Contents rectangle of the canvas in painter coordinates 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 223 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "\fBQwtInterval\fP QwtPlotZoneItem::interval () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Zone interval 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetInterval()\fP, \fBorientation()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 209 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "Qt::Orientation QwtPlotZoneItem::orientation () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Orientation of the zone 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetOrientation()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 165 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "const QPen & QwtPlotZoneItem::pen () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Pen used to draw the border lines 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetPen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "int QwtPlotZoneItem::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBQwtPlotItem::Rtti_PlotZone\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 68 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::setBrush (const QBrush & brush)"
+
+.PP
+Assign a brush\&. The brush is used to fill the zone
+.PP
+\fBParameters\fP
+.RS 4
+\fIbrush\fP Brush 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP, \fBsetBrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::setInterval (const \fBQwtInterval\fP & interval)"
+Set the interval of the zone
+.PP
+For a horizontal zone the interval is related to the y axis, for a vertical zone it is related to the x axis\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIinterval\fP Zone interval
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinterval()\fP, \fBsetOrientation()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 196 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::setInterval (double min, double max)"
+Set the interval of the zone
+.PP
+For a horizontal zone the interval is related to the y axis, for a vertical zone it is related to the x axis\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fImin\fP Minimum of the interval 
+.br
+\fImax\fP Maximum of the interval
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBinterval()\fP, \fBsetOrientation()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 181 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::setOrientation (Qt::Orientation orientation)"
+
+.PP
+Set the orientation of the zone\&. A horizontal zone highlights an interval of the y axis, a vertical zone of the x axis\&. It is unbounded in the opposite direction\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBorientation()\fP, \fBQwtPlotItem::setAxes()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 152 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::setPen (const QColor & color, qreal width = \fC0\&.0\fP, Qt::PenStyle style = \fCQt::SolidLine\fP)"
+Build and assign a pen
+.PP
+In Qt5 the default pen width is 1\&.0 ( 0\&.0 in Qt4 ) what makes it non cosmetic ( see QPen::isCosmetic() )\&. This method has been introduced to hide this incompatibility\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIcolor\fP Pen color 
+.br
+\fIwidth\fP Pen width 
+.br
+\fIstyle\fP Pen style
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP, \fBbrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 86 of file qwt_plot_zoneitem\&.cpp\&.
+.SS "void QwtPlotZoneItem::setPen (const QPen & pen)"
+
+.PP
+Assign a pen\&. The pen is used to draw the border lines of the zone
+.PP
+\fBParameters\fP
+.RS 4
+\fIpen\fP Pen 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBpen()\fP, \fBsetBrush()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file qwt_plot_zoneitem\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

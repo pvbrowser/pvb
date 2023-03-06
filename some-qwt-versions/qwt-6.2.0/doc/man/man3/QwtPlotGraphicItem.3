@@ -1,0 +1,167 @@
+.TH "QwtPlotGraphicItem" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPlotGraphicItem \- A plot item, which displays a recorded sequence of QPainter commands\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_plot_graphicitem\&.h>\fP
+.PP
+Inherits \fBQwtPlotItem\fP\&.
+.PP
+Inherited by \fBQwtPlotSvgItem\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPlotGraphicItem\fP (const QString &\fBtitle\fP=QString())"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtPlotGraphicItem\fP (const \fBQwtText\fP &\fBtitle\fP)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtPlotGraphicItem\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetGraphic\fP (const QRectF &rect, const \fBQwtGraphic\fP &)"
+.br
+.ti -1c
+.RI "\fBQwtGraphic\fP \fBgraphic\fP () const"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.RI "Bounding rectangle of the item\&. "
+.ti -1c
+.RI "virtual void \fBdraw\fP (QPainter *, const \fBQwtScaleMap\fP &xMap, const \fBQwtScaleMap\fP &yMap, const QRectF &canvasRect) const override"
+.br
+.ti -1c
+.RI "virtual int \fBrtti\fP () const override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+A plot item, which displays a recorded sequence of QPainter commands\&. 
+
+\fBQwtPlotGraphicItem\fP renders a sequence of recorded painter commands into a specific plot area\&. Recording of painter commands can be done manually by QPainter or e\&.g\&. QSvgRenderer\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtPlotShapeItem\fP, \fBQwtPlotSvgItem\fP 
+.RE
+.PP
+
+.PP
+Definition at line 29 of file qwt_plot_graphicitem\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPlotGraphicItem::QwtPlotGraphicItem (const QString & title = \fCQString()\fP)\fC [explicit]\fP"
+
+.PP
+Constructor\&. Sets the following item attributes:
+.IP "\(bu" 2
+\fBQwtPlotItem::AutoScale\fP: true
+.IP "\(bu" 2
+\fBQwtPlotItem::Legend\fP: false
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file qwt_plot_graphicitem\&.cpp\&.
+.SS "QwtPlotGraphicItem::QwtPlotGraphicItem (const \fBQwtText\fP & title)\fC [explicit]\fP"
+
+.PP
+Constructor\&. Sets the following item attributes:
+.IP "\(bu" 2
+\fBQwtPlotItem::AutoScale\fP: true
+.IP "\(bu" 2
+\fBQwtPlotItem::Legend\fP: false
+.PP
+.PP
+\fBParameters\fP
+.RS 4
+\fItitle\fP Title 
+.RE
+.PP
+
+.PP
+Definition at line 47 of file qwt_plot_graphicitem\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void QwtPlotGraphicItem::draw (QPainter * painter, const \fBQwtScaleMap\fP & xMap, const \fBQwtScaleMap\fP & yMap, const QRectF & canvasRect) const\fC [override]\fP, \fC [virtual]\fP"
+Draw the item
+.PP
+\fBParameters\fP
+.RS 4
+\fIpainter\fP Painter 
+.br
+\fIxMap\fP X-Scale Map 
+.br
+\fIyMap\fP Y-Scale Map 
+.br
+\fIcanvasRect\fP Contents rect of the plot canvas 
+.RE
+.PP
+
+.PP
+Implements \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 115 of file qwt_plot_graphicitem\&.cpp\&.
+.SS "\fBQwtGraphic\fP QwtPlotGraphicItem::graphic () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Recorded sequence of painter commands 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetGraphic()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 96 of file qwt_plot_graphicitem\&.cpp\&.
+.SS "int QwtPlotGraphicItem::rtti () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+\fBQwtPlotItem::Rtti_PlotGraphic\fP 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtPlotItem\fP\&.
+.PP
+Definition at line 71 of file qwt_plot_graphicitem\&.cpp\&.
+.SS "void QwtPlotGraphicItem::setGraphic (const QRectF & rect, const \fBQwtGraphic\fP & graphic)"
+Set the graphic to be displayed
+.PP
+\fBParameters\fP
+.RS 4
+\fIrect\fP Rectangle in plot coordinates 
+.br
+\fIgraphic\fP Recorded sequence of painter commands 
+.RE
+.PP
+
+.PP
+Definition at line 82 of file qwt_plot_graphicitem\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

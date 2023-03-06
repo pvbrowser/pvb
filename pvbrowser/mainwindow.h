@@ -17,12 +17,14 @@
 #define MAINWINDOW_H
 
 #if QT_VERSION < 0x050000
-  #define VERSION "5.1.7 - qt4"
+  #define VERSION "5.15.2 - qt4"
 #else
-  #define VERSION "5.1.7 - qt5"
+  #define VERSION "5.15.2 - qt5"
 #endif
 
-#if defined USE_GOOGLE_WEBKIT_FORK
+#if defined PVB_FOOTPRINT_BASIC
+#define WEBVERSION " Small Footprint without Webkit or Blink"
+#elif defined USE_GOOGLE_WEBKIT_FORK
 #define WEBVERSION " Google Blink"
 #elif defined NO_WEBKIT
 #define WEBVERSION " no Webkit"
@@ -58,10 +60,14 @@ class QComboBox;
 class QLabel;
 class MainWindow;
 class MyQWidget;
-#ifndef NO_WEBKIT
-#include "dlgtextbrowser.h"
-#include "dlgmybrowser_ui.h"
+#ifdef PVB_FOOTPRINT_BASIC
+#include "dlgmybrowser_without_www.h"
+#include "dlgmybrowser_ui_without_www.h"
+#else
+#include "dlgmybrowser_with_www.h"
+#include "dlgmybrowser_ui_with_www.h"
 #endif
+#include "dlgtextbrowser.h"
 
 class MainWindow;
 
@@ -129,7 +135,8 @@ public:
   QToolBar *fileToolBar;
   QToolBar *tabToolBar;
   QTabBar  *tabBar;
-#ifndef NO_WEBKIT  
+#ifdef NO_WEBKIT  
+#else
   dlgTextBrowser *textbrowser;
 #endif  
   PVBTAB pvbtab[MAX_TABS];

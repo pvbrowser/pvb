@@ -1,0 +1,10 @@
+<map id="QwtSplineG1" name="QwtSplineG1">
+<area shape="rect" id="node1" title="Base class for spline interpolations providing a first order geometric continuity ( G1 ) between adjo..." alt="" coords="149,155,247,181"/>
+<area shape="rect" id="node4" href="$class_qwt_spline_c1.html" title="Base class for spline interpolations providing a first order parametric continuity ( C1 ) between adj..." alt="" coords="79,229,178,256"/>
+<area shape="rect" id="node8" href="$class_qwt_spline_pleasing.html" title="A spline with G1 continuity." alt="" coords="203,229,335,256"/>
+<area shape="rect" id="node2" href="$class_qwt_spline_interpolating.html" title="Base class for a spline interpolation." alt="" coords="121,80,275,107"/>
+<area shape="rect" id="node3" href="$class_qwt_spline.html" title="Base class for all splines." alt="" coords="157,5,239,32"/>
+<area shape="rect" id="node5" href="$class_qwt_spline_c2.html" title="Base class for spline interpolations providing a second order parametric continuity ( C2 ) between ad..." alt="" coords="14,304,113,331"/>
+<area shape="rect" id="node7" href="$class_qwt_spline_local.html" title="A spline with C1 continuity." alt="" coords="137,304,251,331"/>
+<area shape="rect" id="node6" href="$class_qwt_spline_cubic.html" title="A cubic spline." alt="" coords="5,379,121,405"/>
+</map>

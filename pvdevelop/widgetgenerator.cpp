@@ -918,7 +918,12 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     QwtPlotWidget *obj = (QwtPlotWidget *) widget;
     fprintf(fout,"%spvQwtPlotWidget(p,%s,%s,%d,%d)%s\n",prefix,itemname,parentname,obj->nCurves,obj->nMarker,postfix);
     fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+//rlmurx-was-here
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
     QColor c = obj->canvasBackground();
+#else
+    QColor c = obj->canvasBackground().color();
+#endif
     fprintf(fout,"%sqpwSetCanvasBackground(p,%s,%d,%d,%d)%s\n",prefix,itemname,c.red(),c.green(),c.blue(),postfix);
     if(obj->axisEnabled(QwtPlot::yLeft))   fprintf(fout,"%sqpwEnableAxis(p,%s,%syLeft)%s\n",prefix,itemname,midfix,postfix);
     if(obj->axisEnabled(QwtPlot::yRight))  fprintf(fout,"%sqpwEnableAxis(p,%s,%syRight)%s\n",prefix,itemname,midfix,postfix);
@@ -966,10 +971,19 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     fprintf(fout,"%sqwtKnobSetKnobWidth(p,%s,%d)%s\n",prefix,itemname,obj->knobWidth(),postfix);
     fprintf(fout,"%sqwtKnobSetBorderWidth(p,%s,%d)%s\n",prefix,itemname,obj->borderWidth(),postfix);
     fprintf(fout,"%sqwtKnobSetTotalAngle(p,%s,%f)%s\n",prefix,itemname,obj->totalAngle(),postfix);
+//rlmurx-was-here
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
     if(obj->symbol() == QwtKnob::Line)
       fprintf(fout,"%sqwtKnobSetSymbol(p,%s,%sKnobLine)%s\n",prefix,itemname,midfix,postfix);
     else 
       fprintf(fout,"%sqwtKnobSetSymbol(p,%s,%sKnobDot)%s\n",prefix,itemname,midfix,postfix);
+#else
+#warning "rlmurx-was-here KnobLine/KnobDot for QwtKnob"
+    if(obj->markerStyle() == QwtKnob::NoMarker)
+      fprintf(fout,"%sqwtKnobSetSymbol(p,%s,%sKnobLine)%s\n",prefix,itemname,midfix,postfix);
+    else 
+      fprintf(fout,"%sqwtKnobSetSymbol(p,%s,%sKnobDot)%s\n",prefix,itemname,midfix,postfix);
+#endif    
     iitem++;
   }
   else if(type == "TQwtCounter")
@@ -978,9 +992,17 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     fprintf(fout,"%spvQwtCounter(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
     fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
     fprintf(fout,"%sqwtCounterSetNumButtons(p,%s,%d)%s\n",prefix,itemname,obj->numButtons(),postfix);
+//rlmurx-was-here
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
     fprintf(fout,"%sqwtCounterSetStep(p,%s,%f)%s\n",prefix,itemname,obj->step(),postfix);
     fprintf(fout,"%sqwtCounterSetMinValue(p,%s,%f)%s\n",prefix,itemname,obj->minVal(),postfix);
     fprintf(fout,"%sqwtCounterSetMaxValue(p,%s,%f)%s\n",prefix,itemname,obj->maxVal(),postfix);
+#else
+#warning "rlmurx-was-here step/minVal/maxVal for QwtCounter"
+    fprintf(fout,"%sqwtCounterSetStep(p,%s,%f)%s\n",prefix,itemname,1.0f,postfix);
+    fprintf(fout,"%sqwtCounterSetMinValue(p,%s,%f)%s\n",prefix,itemname,obj->minimum(),postfix);
+    fprintf(fout,"%sqwtCounterSetMaxValue(p,%s,%f)%s\n",prefix,itemname,obj->maximum(),postfix);
+#endif    
     fprintf(fout,"%sqwtCounterSetStepButton1(p,%s,%d)%s\n",prefix,itemname,obj->stepButton1(),postfix);
     fprintf(fout,"%sqwtCounterSetStepButton2(p,%s,%d)%s\n",prefix,itemname,obj->stepButton2(),postfix);
     fprintf(fout,"%sqwtCounterSetStepButton3(p,%s,%d)%s\n",prefix,itemname,obj->stepButton3(),postfix);
@@ -995,8 +1017,15 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     fprintf(fout,"%sqwtWheelSetMass(p,%s,%f)%s\n",prefix,itemname,obj->mass(),postfix);
     fprintf(fout,"%sqwtWheelSetTotalAngle(p,%s,%f)%s\n",prefix,itemname,obj->viewAngle(),postfix);
     fprintf(fout,"%sqwtWheelSetViewAngle(p,%s,%f)%s\n",prefix,itemname,obj->viewAngle(),postfix);
+//rlmurx-was-here
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
     fprintf(fout,"%sqwtWheelSetTickCnt(p,%s,%d)%s\n",prefix,itemname,obj->tickCnt(),postfix);
     fprintf(fout,"%sqwtWheelSetInternalBorder(p,%s,%d)%s\n",prefix,itemname,obj->internalBorder(),postfix);
+#else
+#warning "rlmurx-was-here step/minVal/maxVal for QwtWheel"
+    fprintf(fout,"%sqwtWheelSetTickCnt(p,%s,%d)%s\n",prefix,itemname,obj->tickCount(),postfix);
+    fprintf(fout,"%sqwtWheelSetInternalBorder(p,%s,%d)%s\n",prefix,itemname,obj->borderWidth(),postfix);
+#endif
     iitem++;
   }
   else if(type == "TQwtSlider")
@@ -1004,6 +1033,8 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     MyQwtSlider *obj = (MyQwtSlider *) widget;
     fprintf(fout,"%spvQwtSlider(p,%s,%s)%s\n",prefix,itemname,parentname,postfix);
     fprintf(fout,"%spvSetGeometry(p,%s,%d,%d,%d,%d)%s\n",prefix,itemname,x,y,w,h,postfix);
+//rlmurx-was-here
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
     fprintf(fout,"%sqwtSliderSetThumbLength(p,%s,%d)%s\n",prefix,itemname,obj->thumbLength(),postfix);
     fprintf(fout,"%sqwtSliderSetThumbWidth(p,%s,%d)%s\n",prefix,itemname,obj->thumbWidth(),postfix);
     fprintf(fout,"%sqwtSliderSetBorderWidth(p,%s,%d)%s\n",prefix,itemname,obj->borderWidth(),postfix);
@@ -1024,6 +1055,9 @@ static int generateDefineMaskWidget(FILE *fout, QWidget *widget, const char *tab
     if(obj->scalePosition() == QwtSlider::BottomScale)
       fprintf(fout,"%sqwtSliderSetScalePos(p,%s,%sSliderBottom)%s\n",prefix,itemname,midfix,postfix);
     fprintf(fout,"%sqwtSliderSetValue(p,%s,%f)%s\n",prefix,itemname,obj->value(),postfix);
+#else
+#warning "rlmurx-was-here thumbLength/thumbWidth and more are unknown for QwtSliders"
+#endif
     iitem++;
   }
   else if(type == "TQwtCompass")
@@ -3222,7 +3256,14 @@ static int setWidgetTree(QWidget *root, const char *uifile)
 #ifdef PVWIN32
   win32Hack(root, uifile, &widgets);
 #else
+
+//rlmurx-was-here  
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
   widgets = root->findChildren<QObject *>(QRegExp("*", Qt::CaseInsensitive, QRegExp::Wildcard));
+#else
+  widgets = root->findChildren<QObject *>("*", Qt::FindChildrenRecursively);
+#endif  
+
 #endif
   QWidget *widget;
   printf("widgets.size() = %d\n", widgets.size());

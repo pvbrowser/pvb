@@ -1,0 +1,153 @@
+.TH "QwtCurveFitter" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtCurveFitter \- Abstract base class for a curve fitter\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_curve_fitter\&.h>\fP
+.PP
+Inherited by \fBQwtPolarFitter\fP, \fBQwtSplineCurveFitter\fP, and \fBQwtWeedingCurveFitter\fP\&.
+.SS "Public Types"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMode\fP { \fBPolygon\fP, \fBPath\fP }"
+.br
+.RI "Preferred mode of the fitting algorithm\&. "
+.in -1c
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "virtual \fB~QwtCurveFitter\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "\fBMode\fP \fBmode\fP () const"
+.br
+.ti -1c
+.RI "virtual QPolygonF \fBfitCurve\fP (const QPolygonF &polygon) const =0"
+.br
+.ti -1c
+.RI "virtual QPainterPath \fBfitCurvePath\fP (const QPolygonF &polygon) const =0"
+.br
+.in -1c
+.SS "Protected Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtCurveFitter\fP (\fBMode\fP \fBmode\fP)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+Abstract base class for a curve fitter\&. 
+.PP
+Definition at line 21 of file qwt_curve_fitter\&.h\&.
+.SH "Member Enumeration Documentation"
+.PP 
+.SS "enum \fBQwtCurveFitter::Mode\fP"
+
+.PP
+Preferred mode of the fitting algorithm\&. Even if a QPainterPath can always be created from a QPolygonF the overhead of the conversion can be avoided by indicating the preference of the implementation to the application code\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIPolygon \fP\fP
+The fitting algorithm creates a polygon - the implementation of \fBfitCurvePath()\fP simply wraps the polygon into a path\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtWeedingCurveFitter\fP 
+.RE
+.PP
+
+.TP
+\fB\fIPath \fP\fP
+The fitting algorithm creates a painter path - the implementation of \fBfitCurve()\fP extracts a polygon from the path\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSplineCurveFitter\fP 
+.RE
+.PP
+
+.PP
+Definition at line 32 of file qwt_curve_fitter\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtCurveFitter::QwtCurveFitter (\fBMode\fP mode)\fC [explicit]\fP, \fC [protected]\fP"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fImode\fP Preferred fitting mode 
+.RE
+.PP
+
+.PP
+Definition at line 16 of file qwt_curve_fitter\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "virtual QPolygonF QwtCurveFitter::fitCurve (const QPolygonF & polygon) const\fC [pure virtual]\fP"
+Find a curve which has the best fit to a series of data points
+.PP
+\fBParameters\fP
+.RS 4
+\fIpolygon\fP Series of data points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Curve points
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBfitCurvePath()\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtWeedingCurveFitter\fP, \fBQwtSplineCurveFitter\fP, and \fBQwtPolarFitter\fP\&.
+.SS "virtual QPainterPath QwtCurveFitter::fitCurvePath (const QPolygonF & polygon) const\fC [pure virtual]\fP"
+Find a curve path which has the best fit to a series of data points
+.PP
+\fBParameters\fP
+.RS 4
+\fIpolygon\fP Series of data points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Curve path
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBfitCurve()\fP 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtWeedingCurveFitter\fP, \fBQwtSplineCurveFitter\fP, and \fBQwtPolarFitter\fP\&.
+.SS "\fBQwtCurveFitter::Mode\fP QwtCurveFitter::mode () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Preferred fitting mode 
+.RE
+.PP
+
+.PP
+Definition at line 27 of file qwt_curve_fitter\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

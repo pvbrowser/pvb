@@ -1,0 +1,136 @@
+.TH "QwtLogTransform" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtLogTransform \- Logarithmic transformation\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_transform\&.h>\fP
+.PP
+Inherits \fBQwtTransform\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtLogTransform\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtLogTransform\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual double \fBtransform\fP (double value) const override"
+.br
+.ti -1c
+.RI "virtual double \fBinvTransform\fP (double value) const override"
+.br
+.ti -1c
+.RI "virtual double \fBbounded\fP (double value) const override"
+.br
+.ti -1c
+.RI "virtual \fBQwtTransform\fP * \fBcopy\fP () const override"
+.br
+.in -1c
+.SS "Static Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "static const double \fBLogMin\fP = 1\&.0e\-150"
+.br
+.RI "Smallest allowed value for logarithmic scales: 1\&.0e-150\&. "
+.ti -1c
+.RI "static const double \fBLogMax\fP = 1\&.0e150"
+.br
+.RI "Largest allowed value for logarithmic scales: 1\&.0e150\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Logarithmic transformation\&. 
+
+\fBQwtLogTransform\fP modifies the values using log() and exp()\&.
+.PP
+\fBNote\fP
+.RS 4
+In the calculations of \fBQwtScaleMap\fP the base of the log function has no effect on the mapping\&. So \fBQwtLogTransform\fP can be used for log2(), log10() or any other logarithmic scale\&. 
+.RE
+.PP
+
+.PP
+Definition at line 100 of file qwt_transform\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "double QwtLogTransform::bounded (double value) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be bounded 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+qBound( LogMin, value, LogMax ) 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtTransform\fP\&.
+.PP
+Definition at line 106 of file qwt_transform\&.cpp\&.
+.SS "\fBQwtTransform\fP * QwtLogTransform::copy () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+Clone of the transformation 
+.RE
+.PP
+
+.PP
+Implements \fBQwtTransform\fP\&.
+.PP
+Definition at line 112 of file qwt_transform\&.cpp\&.
+.SS "double QwtLogTransform::invTransform (double value) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be transformed 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+exp( value ) 
+.RE
+.PP
+
+.PP
+Implements \fBQwtTransform\fP\&.
+.PP
+Definition at line 97 of file qwt_transform\&.cpp\&.
+.SS "double QwtLogTransform::transform (double value) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue\fP Value to be transformed 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+log( value ) 
+.RE
+.PP
+
+.PP
+Implements \fBQwtTransform\fP\&.
+.PP
+Definition at line 88 of file qwt_transform\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

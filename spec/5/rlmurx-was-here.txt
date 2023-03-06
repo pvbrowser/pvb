@@ -1,0 +1,82 @@
+Hello,
+
+my name is Rainer Lehrig.
+I'm the initiator of pvbrowser
+and now I'm the maintainer again.
+
+Contact:
+Finkenstraße 3
+D-57368 Lennestadt-Saalhausen
+lehrig@t-online.de
+date: 04 Mar 2023
+
+My famous search string is "murx".
+Actually i have used "rlmurx-was-here" to mark modifications.
+
+One goal is small footprint and beeing able to build on robinson island
+Therefore the minimum we need is a C++ compiler and an operating system.
+Currently i use g++ and OpenSUSE Leap 15.4
+Also some Raspians are in use. But only for pvserver tasks, so we may omit Qt and GUI tools.
+Besides this there is an out of date Mac Book Pro (Intel) and some old and newer Windows systems.
+I did not test OpenVMS for a longer period but i see no problems there.
+
+This may come into conflict when building for binary packages for popular runtime environments like:
+- OpenSUSE-Buildservice for Linux distries
+- Homebrew
+- MS Windows based systems
+
+When building we have to choose if we want to use
+- Webkit
+- Blink (the Google fork of Webkit)
+- Qt HTML support
+and VTK is optional
+
+The standard is currently:
+- i build with Blink support on Linux/Windows
+- i build with Webkit support on Mac (using the old now deprecated xcode C++ compiler)
+- i build with Qt HTML support on Android
+- i do not know if i can manage to build the GUI components on Raspbian
+
+
+Thus building from source is essential in my Opinion.
+
+####################################################################################################
+
+Current state: 04 Mar 2023
+
+Nothing new happend here within the last 3 years.
+But the environment changed.
+Because of this building pvbrowser produced more and more WARNINGS and so on.
+
+Currently i work on the OpneSUSE buildservice in order to produce binary packages for the major linux distries.
+Windows/Mac/Android versions can stay as is currently.
+
+Now i introdueced the following new shell scripts:
+lehrig@nb5lehrig:~/cc/priv/cvs/pvb> ls -al rlbuild-*.sh
+-rwxr-xr-x 1 lehrig users 2254  3. Mär 07:10 rlbuild-all.sh
+-rwxr-xr-x 1 lehrig users 1793  3. Mär 07:09 rlbuild-fake-qmake.sh
+-rwxr-xr-x 1 lehrig users  292 11. Feb 09:18 rlbuild-language-lua.sh
+-rwxr-xr-x 1 lehrig users  613 17. Feb 14:40 rlbuild-plugins.sh
+-rwxr-xr-x 1 lehrig users  314 11. Feb 09:39 rlbuild-pvbrowser-basic.sh
+-rwxr-xr-x 1 lehrig users  302 20. Feb 06:48 rlbuild-pvbrowser-with-www.sh
+-rwxr-xr-x 1 lehrig users  353 27. Feb 13:49 rlbuild-pvdevelop.sh
+-rwxr-xr-x 1 lehrig users  758 11. Feb 09:01 rlbuild-pvserver.sh
+-rwxr-xr-x 1 lehrig users  431 16. Feb 08:15 rlbuild-qwt.sh
+-rwxr-xr-x 1 lehrig users 1020 11. Feb 08:55 rlbuild-rllib.sh
+
+You may also use build.sh as before.
+
+Please review the scripts.
+Within we call "source rlsetup.sh" and "../qmake.sh" on the according qt-project-file.pro 
+which is responsible for creating the according Makefile.
+
+On the OpenSUSE Buildservice we currently have g++ and clang based distries.
+With Raspian i currently have some problems building the GUI components.
+
+* experimenting with lcms-devel on pvbrowser.spec
+* experimenting with liblcms2-dev on debian.control
+
+### The following packages were produced on the OpenSUSE Buildservice ###
+
+
+

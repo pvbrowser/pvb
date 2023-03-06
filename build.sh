@@ -1,4 +1,8 @@
 #!/bin/bash
+./rlbuild-all.sh
+exit
+#the old build.sh is following:
+
 ########################################################
 # make pvbrowser                                       #
 # if you want to use VTK uncommet CONFIG += USE_VTK in #

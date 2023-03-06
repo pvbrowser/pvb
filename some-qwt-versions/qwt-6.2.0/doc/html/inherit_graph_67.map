@@ -1,0 +1,10 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$class_qwt_series_data.html" title=" " alt="" coords="5,107,188,133"/>
+<area shape="rect" id="node2" href="$class_qwt_array_series_data.html" title=" " alt="" coords="236,99,379,141"/>
+<area shape="rect" id="node3" href="$class_qwt_point_series_data.html" title="Interface for iterating over an array of points." alt="" coords="427,107,568,133"/>
+<area shape="rect" id="node4" href="$class_qwt_c_pointer_data.html" title="Data class containing two pointers to memory blocks of T." alt="" coords="632,5,789,32"/>
+<area shape="rect" id="node5" href="$class_qwt_c_pointer_value_data.html" title="Data class containing a pointer to memory of y coordinates." alt="" coords="616,56,805,83"/>
+<area shape="rect" id="node6" href="$class_qwt_point_array_data.html" title="Interface for iterating over two QVector&lt;T&gt; objects." alt="" coords="627,107,794,133"/>
+<area shape="rect" id="node7" href="$class_qwt_synthetic_point_data.html" title="Synthetic point data." alt="" coords="631,157,790,184"/>
+<area shape="rect" id="node8" href="$class_qwt_value_point_data.html" title="Interface for iterating over a QVector&lt;T&gt;." alt="" coords="627,208,795,235"/>
+</map>

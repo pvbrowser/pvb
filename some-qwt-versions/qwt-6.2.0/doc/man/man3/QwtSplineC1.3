@@ -1,0 +1,269 @@
+.TH "QwtSplineC1" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSplineC1 \- Base class for spline interpolations providing a first order parametric continuity ( C1 ) between adjoining curves\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_spline\&.h>\fP
+.PP
+Inherits \fBQwtSplineG1\fP\&.
+.PP
+Inherited by \fBQwtSplineC2\fP, and \fBQwtSplineLocal\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSplineC1\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSplineC1\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "virtual QPainterPath \fBpainterPath\fP (const QPolygonF &) const override"
+.br
+.RI "Calculate an interpolated painter path\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< QLineF > \fBbezierControlLines\fP (const QPolygonF &) const override"
+.br
+.RI "Interpolate a curve with Bezier curves\&. "
+.ti -1c
+.RI "virtual QPolygonF \fBequidistantPolygon\fP (const QPolygonF &, double distance, bool withNodes) const override"
+.br
+.RI "Find an interpolated polygon with 'equidistant' points\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< \fBQwtSplinePolynomial\fP > \fBpolynomials\fP (const QPolygonF &) const"
+.br
+.RI "Calculate the interpolating polynomials for a non parametric spline\&. "
+.ti -1c
+.RI "virtual \fBQVector\fP< double > \fBslopes\fP (const QPolygonF &) const =0"
+.br
+.RI "Find the first derivative at the control points\&. "
+.ti -1c
+.RI "virtual double \fBslopeAtBeginning\fP (const QPolygonF &, double slopeNext) const"
+.br
+.ti -1c
+.RI "virtual double \fBslopeAtEnd\fP (const QPolygonF &, double slopeBefore) const"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Base class for spline interpolations providing a first order parametric continuity ( C1 ) between adjoining curves\&. 
+
+All interpolations with C1 continuity are based on rules for finding the 1\&. derivate at some control points\&.
+.PP
+In case of non parametric splines those points are the curve points, while for parametric splines the calculation is done twice using a parameter value t\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSplineParametrization\fP 
+.RE
+.PP
+
+.PP
+Definition at line 235 of file qwt_spline\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSplineC1::QwtSplineC1 ()"
+
+.PP
+Constructor\&. The default setting is a non closing spline with no parametrization ( \fBQwtSplineParametrization::ParameterX\fP )\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtSpline::setParametrization()\fP, \fBQwtSpline::setBoundaryType()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 962 of file qwt_spline\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBQVector\fP< QLineF > QwtSplineC1::bezierControlLines (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Interpolate a curve with Bezier curves\&. Interpolates a polygon piecewise with cubic Bezier curves and returns the 2 control points of each curve as QLineF\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Control points of the interpolating Bezier curves 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSplineInterpolating\fP\&.
+.PP
+Reimplemented in \fBQwtSplineCubic\fP, \fBQwtSplineLocal\fP, and \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1101 of file qwt_spline\&.cpp\&.
+.SS "QPolygonF QwtSplineC1::equidistantPolygon (const QPolygonF & points, double distance, bool withNodes) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Find an interpolated polygon with 'equidistant' points\&. The implementation is optimzed for non parametric curves ( \fBQwtSplineParametrization::ParameterX\fP ) and falls back to QwtSpline::equidistantPolygon() otherwise\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.br
+\fIdistance\fP Distance between 2 points according to the parametrization 
+.br
+\fIwithNodes\fP When true, also add the control nodes ( even if not being equidistant )
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polygon
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+QwtSpline::equidistantPolygon() 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineInterpolating\fP\&.
+.PP
+Reimplemented in \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1167 of file qwt_spline\&.cpp\&.
+.SS "QPainterPath QwtSplineC1::painterPath (const QPolygonF & points) const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate an interpolated painter path\&. Interpolates a polygon piecewise into cubic Bezier curves and returns them as QPainterPath\&.
+.PP
+The implementation calculates the slopes at the control points and converts them into painter path elements in an additional loop\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+QPainterPath Painter path, that can be rendered by QPainter
+.RE
+.PP
+\fBNote\fP
+.RS 4
+Derived spline classes might overload \fBpainterPath()\fP to avoid the extra loops for converting results into a QPainterPath 
+.RE
+.PP
+
+.PP
+Reimplemented from \fBQwtSplineInterpolating\fP\&.
+.PP
+Reimplemented in \fBQwtSplineLocal\fP, \fBQwtSplineCubic\fP, and \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1043 of file qwt_spline\&.cpp\&.
+.SS "\fBQVector\fP< \fBQwtSplinePolynomial\fP > QwtSplineC1::polynomials (const QPolygonF & points) const\fC [virtual]\fP"
+
+.PP
+Calculate the interpolating polynomials for a non parametric spline\&. C1 spline interpolations are based on finding values for the first derivates at the control points\&. The interpolating polynomials can be calculated from the the first derivates using \fBQwtSplinePolynomial::fromSlopes()\fP\&.
+.PP
+The default implementation is a two pass calculation\&. In derived classes it might be overloaded by a one pass implementation\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Interpolating polynomials
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Reimplemented in \fBQwtSplineLocal\fP, \fBQwtSplineCubic\fP, and \fBQwtSplineC2\fP\&.
+.PP
+Definition at line 1201 of file qwt_spline\&.cpp\&.
+.SS "double QwtSplineC1::slopeAtBeginning (const QPolygonF & points, double slopeNext) const\fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.br
+\fIslopeNext\fP Value of the first derivative at the second point
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+value of the first derivative at the first point 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBslopeAtEnd()\fP, \fBQwtSpline::boundaryCondition()\fP, \fBQwtSpline::boundaryValue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 979 of file qwt_spline\&.cpp\&.
+.SS "double QwtSplineC1::slopeAtEnd (const QPolygonF & points, double slopeBefore) const\fC [virtual]\fP"
+
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control points 
+.br
+\fIslopeBefore\fP Value of the first derivative at the point before the last one
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+value of the first derivative at the last point 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBslopeAtBeginning()\fP, \fBQwtSpline::boundaryCondition()\fP, \fBQwtSpline::boundaryValue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 997 of file qwt_spline\&.cpp\&.
+.SS "\fBQVector\fP< double > QwtSplineC1::slopes (const QPolygonF & points) const\fC [pure virtual]\fP"
+
+.PP
+Find the first derivative at the control points\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpoints\fP Control nodes of the spline 
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+Vector with the values of the 2nd derivate at the control points
+.RE
+.PP
+\fBNote\fP
+.RS 4
+The x coordinates need to be increasing or decreasing 
+.RE
+.PP
+
+.PP
+Implemented in \fBQwtSplineLocal\fP, \fBQwtSplineCubic\fP, and \fBQwtSplineC2\fP\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

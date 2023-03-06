@@ -1,0 +1,296 @@
+.TH "QwtSaturationValueColorMap" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtSaturationValueColorMap \- \fBQwtSaturationValueColorMap\fP varies the saturation and/or value for a given hue in the HSV color model\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_color_map\&.h>\fP
+.PP
+Inherits \fBQwtColorMap\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtSaturationValueColorMap\fP ()"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "virtual \fB~QwtSaturationValueColorMap\fP ()"
+.br
+.RI "Destructor\&. "
+.ti -1c
+.RI "void \fBsetHue\fP (int \fBhue\fP)"
+.br
+.RI "Set the the hue coordinate\&. "
+.ti -1c
+.RI "void \fBsetSaturationInterval\fP (int sat1, int sat2)"
+.br
+.RI "Set the interval for the saturation coordinate\&. "
+.ti -1c
+.RI "void \fBsetValueInterval\fP (int \fBvalue1\fP, int \fBvalue2\fP)"
+.br
+.RI "Set the interval for the value coordinate\&. "
+.ti -1c
+.RI "void \fBsetAlpha\fP (int \fBalpha\fP)"
+.br
+.RI "Set the the alpha coordinate\&. "
+.ti -1c
+.RI "int \fBhue\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "int \fBsaturation1\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "int \fBsaturation2\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "int \fBvalue1\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "int \fBvalue2\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "int \fBalpha\fP () \fBconst\fP"
+.br
+.ti -1c
+.RI "virtual QRgb \fBrgb\fP (\fBconst\fP \fBQwtInterval\fP &, double value) \fBconst\fP override"
+.br
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+\fBQwtSaturationValueColorMap\fP varies the saturation and/or value for a given hue in the HSV color model\&. 
+
+Value and saturation are in the range of 0 to 255 while hue is in the range of 0 to 259\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtHueColorMap\fP 
+.RE
+.PP
+
+.PP
+Definition at line 214 of file qwt_color_map\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtSaturationValueColorMap::QwtSaturationValueColorMap ()"
+
+.PP
+Constructor\&. The value interval is initialized by 0 to 255, saturation by 255 to 255\&. Hue to 0 and alpha to 255\&.
+.PP
+So the default setting interpolates the value coordinate only\&.
+.PP
+\fBSee also\fP
+.RS 4
+setHueInterval(), setSaturation(), setValue(), setValue() 
+.RE
+.PP
+
+.PP
+Definition at line 972 of file qwt_color_map\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int QwtSaturationValueColorMap::alpha () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Alpha coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetAlpha()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1127 of file qwt_color_map\&.cpp\&.
+.SS "int QwtSaturationValueColorMap::hue () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Hue coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetHue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1082 of file qwt_color_map\&.cpp\&.
+.SS "QRgb QwtSaturationValueColorMap::rgb (\fBconst\fP \fBQwtInterval\fP & interval, double value) const\fC [override]\fP, \fC [virtual]\fP"
+Map a value of a given interval into a RGB value
+.PP
+\fBParameters\fP
+.RS 4
+\fIinterval\fP Range for all values 
+.br
+\fIvalue\fP Value to map into a RGB value
+.RE
+.PP
+\fBReturns\fP
+.RS 4
+RGB value for value 
+.RE
+.PP
+
+.PP
+Implements \fBQwtColorMap\fP\&.
+.PP
+Definition at line 1140 of file qwt_color_map\&.cpp\&.
+.SS "int QwtSaturationValueColorMap::saturation1 () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+First saturation coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSaturationInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1091 of file qwt_color_map\&.cpp\&.
+.SS "int QwtSaturationValueColorMap::saturation2 () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Second saturation coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetSaturationInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1100 of file qwt_color_map\&.cpp\&.
+.SS "void QwtSaturationValueColorMap::setAlpha (int alpha)"
+
+.PP
+Set the the alpha coordinate\&. alpha needs to be in the range 0 to 255, where 255 means opaque and 0 means transparent\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIalpha\fP Alpha coordinate
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBalpha()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1067 of file qwt_color_map\&.cpp\&.
+.SS "void QwtSaturationValueColorMap::setHue (int hue)"
+
+.PP
+Set the the hue coordinate\&. Hue coordinates outside 0 to 359 will be interpreted as hue % 360\&.\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIhue\fP Hue coordinate
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBhue()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 992 of file qwt_color_map\&.cpp\&.
+.SS "void QwtSaturationValueColorMap::setSaturationInterval (int saturation1, int saturation2)"
+
+.PP
+Set the interval for the saturation coordinate\&. When saturation1 == saturation2 the map interpolates between the value coordinates only
+.PP
+saturation1/saturation2 need to be in the range 0 to 255\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIsaturation1\fP First saturation 
+.br
+\fIsaturation2\fP Second saturation
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsaturation1()\fP, \fBsaturation2()\fP, \fBsetValueInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1016 of file qwt_color_map\&.cpp\&.
+.SS "void QwtSaturationValueColorMap::setValueInterval (int value1, int value2)"
+
+.PP
+Set the interval for the value coordinate\&. When value1 == value2 the map interpolates between the saturation coordinates only\&.
+.PP
+value1/value2 need to be in the range 0 to 255\&.
+.PP
+\fBParameters\fP
+.RS 4
+\fIvalue1\fP First value 
+.br
+\fIvalue2\fP Second value
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBvalue1()\fP, \fBvalue2()\fP, \fBsetSaturationInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1043 of file qwt_color_map\&.cpp\&.
+.SS "int QwtSaturationValueColorMap::value1 () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+First value coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetValueInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1109 of file qwt_color_map\&.cpp\&.
+.SS "int QwtSaturationValueColorMap::value2 () const"
+
+.PP
+\fBReturns\fP
+.RS 4
+Second value coordinate 
+.RE
+.PP
+\fBSee also\fP
+.RS 4
+\fBsetValueInterval()\fP 
+.RE
+.PP
+
+.PP
+Definition at line 1118 of file qwt_color_map\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

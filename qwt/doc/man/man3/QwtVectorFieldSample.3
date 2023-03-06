@@ -1,0 +1,129 @@
+.TH "QwtVectorFieldSample" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtVectorFieldSample \- Sample used in vector fields\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_samples\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtVectorFieldSample\fP (double \fBx\fP=0\&.0, double \fBy\fP=0\&.0, double \fBvx\fP=0\&.0, double \fBvy\fP=0\&.0)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtVectorFieldSample\fP (const QPointF &\fBpos\fP, double \fBvx\fP=0\&.0, double \fBvy\fP=0\&.0)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "QPointF \fBpos\fP () const"
+.br
+.ti -1c
+.RI "bool \fBisNull\fP () const"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBx\fP"
+.br
+.RI "x coordinate of the position "
+.ti -1c
+.RI "double \fBy\fP"
+.br
+.RI "y coordinate of the position "
+.ti -1c
+.RI "double \fBvx\fP"
+.br
+.RI "x coordinate of the vector "
+.ti -1c
+.RI "double \fBvy\fP"
+.br
+.RI "y coordinate of the vector "
+.in -1c
+.SH "Detailed Description"
+.PP 
+Sample used in vector fields\&. 
+
+A vector field sample is a position and a vector - usually representing some direction and magnitude - attached to this position\&.
+.PP
+\fBSee also\fP
+.RS 4
+\fBQwtVectorFieldData\fP 
+.RE
+.PP
+
+.PP
+Definition at line 243 of file qwt_samples\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtVectorFieldSample::QwtVectorFieldSample (double posX = \fC0\&.0\fP, double posY = \fC0\&.0\fP, double vectorX = \fC0\&.0\fP, double vectorY = \fC0\&.0\fP)\fC [inline]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIposX\fP x coordinate of the position 
+.br
+\fIposY\fP y coordinate of the position 
+.br
+\fIvectorX\fP x coordinate of the vector 
+.br
+\fIvectorY\fP y coordinate of the vector 
+.RE
+.PP
+
+.PP
+Definition at line 277 of file qwt_samples\&.h\&.
+.SS "QwtVectorFieldSample::QwtVectorFieldSample (const QPointF & pos, double vectorX = \fC0\&.0\fP, double vectorY = \fC0\&.0\fP)\fC [inline]\fP"
+
+.PP
+Constructor\&. 
+.PP
+\fBParameters\fP
+.RS 4
+\fIpos\fP Position 
+.br
+\fIvectorX\fP x coordinate of the vector 
+.br
+\fIvectorY\fP y coordinate of the vector 
+.RE
+.PP
+
+.PP
+Definition at line 293 of file qwt_samples\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool QwtVectorFieldSample::isNull () const\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+true, if vx and vy are 0 
+.RE
+.PP
+
+.PP
+Definition at line 309 of file qwt_samples\&.h\&.
+.SS "QPointF QwtVectorFieldSample::pos () const\fC [inline]\fP"
+
+.PP
+\fBReturns\fP
+.RS 4
+x/y coordinates as QPointF 
+.RE
+.PP
+
+.PP
+Definition at line 303 of file qwt_samples\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

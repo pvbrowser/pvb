@@ -1,0 +1,68 @@
+.TH "QwtPointSeriesData" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtPointSeriesData \- Interface for iterating over an array of points\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_series_data\&.h>\fP
+.PP
+Inherits \fBQwtArraySeriesData< QPointF >\fP\&.
+.PP
+Inherited by \fBQwtCPointerData< T >\fP, \fBQwtCPointerValueData< T >\fP, \fBQwtPointArrayData< T >\fP, \fBQwtSyntheticPointData\fP, and \fBQwtValuePointData< T >\fP\&.
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtPointSeriesData\fP (const \fBQVector\fP< QPointF > &=\fBQVector\fP< QPointF >())"
+.br
+.ti -1c
+.RI "virtual QRectF \fBboundingRect\fP () const override"
+.br
+.RI "Calculate the bounding rectangle\&. "
+.in -1c
+.SS "Additional Inherited Members"
+.SH "Detailed Description"
+.PP 
+Interface for iterating over an array of points\&. 
+.PP
+Definition at line 209 of file qwt_series_data\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtPointSeriesData::QwtPointSeriesData (const \fBQVector\fP< QPointF > & samples = \fC\fBQVector\fP< QPointF >( )\fP)"
+Constructor 
+.PP
+\fBParameters\fP
+.RS 4
+\fIsamples\fP Samples 
+.RE
+.PP
+
+.PP
+Definition at line 250 of file qwt_series_data\&.cpp\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "QRectF QwtPointSeriesData::boundingRect () const\fC [override]\fP, \fC [virtual]\fP"
+
+.PP
+Calculate the bounding rectangle\&. The bounding rectangle is calculated once by iterating over all points and is stored for all following requests\&.
+.PP
+\fBReturns\fP
+.RS 4
+Bounding rectangle 
+.RE
+.PP
+
+.PP
+Implements \fBQwtSeriesData< QPointF >\fP\&.
+.PP
+Reimplemented in \fBQwtSyntheticPointData\fP\&.
+.PP
+Definition at line 263 of file qwt_series_data\&.cpp\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

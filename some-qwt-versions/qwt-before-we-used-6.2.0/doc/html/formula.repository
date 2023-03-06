@@ -1,0 +1,4 @@
+\form#0:$\cdot value2 - value1 <= abs(intervalSize * 10e^{-6})$
+\form#1:$stepSize = (intervalSize - intervalSize * 10e^{-6}) / numSteps$
+\form#2:$\left\{ 1,2,5\right\} \cdot 10^{n}$
+\form#3:$\left\{ 1,2,3,5\right\} \cdot 10^{n}$

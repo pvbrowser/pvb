@@ -33,6 +33,18 @@
 //v5diff #endif
 #include "tcputil.h"
 
+#ifdef PVB_FOOTPRINT_BASIC
+#warning "We use: PVB_FOOTPRINT_BASIC (in fact this is an INFO and not a WARNING)"
+#else
+#warning "We use: PVB_FOOTPRINT with WWW (in fact this is an INFO and not a WARNING)"
+#endif
+
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+#warning "We use: PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62 (in fact this is an INFO and not a WARNING)"
+#else
+#warning "We use: QWT62 (in fact this is an INFO and not a WARNING)"
+#endif
+
 extern OPT opt;
 
 extern QString l_file;
@@ -368,7 +380,8 @@ void MyComboBox::slotActivated(const QString &txt)
   
   if(txt2.isEmpty())
   {
-    txt2.sprintf("index%d", currentIndex());
+    //rlmurx-was-here txt2.sprintf("index%d", currentIndex());
+    txt2 = QString::asprintf("index%d", currentIndex());
   }
 
   if(row != -1 || col != -1)
@@ -1047,7 +1060,8 @@ int i,cnt;
   for(i=0; i<cnt; i++)
   {
     QListWidgetItem *item = QListWidget::item(i);
-    if(isItemSelected(item))
+    //rlmurx-was-here if(isItemSelected(item))
+    if(item->isSelected())
     {
       sprintf(buf,"selected(%d,%d,\"%s\")\n",id,i,decode(item->text()));
       tcp_send(s,buf,strlen(buf));
@@ -1316,7 +1330,8 @@ void MyTable::mousePressEvent(QMouseEvent *event)
     popupMenu.addAction("Save table as CSV file");
     if(opt.view_csv[0] != '\0')
     {
-      buf.sprintf("Open table with %s", opt.view_csv);
+      //rlmurx-was-here buf.sprintf("Open table with %s", opt.view_csv);
+      buf = QString::asprintf("Open table with %s", opt.view_csv);
       popupMenu.addAction(buf);
     }  
     ret = popupMenu.exec(QCursor::pos());
@@ -1454,7 +1469,8 @@ void MyTable::saveTextfile(const char *filename)
 
   if(filename == NULL)
   {
-    name = dlg.getSaveFileName(NULL,QString::null,opt.temp,"*.csv");
+    //rlmurx-was-here name = dlg.getSaveFileName(NULL,QString::null,opt.temp,"*.csv");
+    name = dlg.getSaveFileName(NULL,QString(),opt.temp,"*.csv");
   }
   else
   {
@@ -2198,7 +2214,8 @@ int MyListView::setItemOpen(const char *path, int open, MyListViewItem *item)
   {
     if(strcmp(item->path.toUtf8(),path) == 0)
     {
-      setItemExpanded(item, (bool) open);
+      //rlmurx-was-here setItemExpanded(item, (bool) open);
+      item->setExpanded((bool) open);
       return 1;
     }
     recursion++;
@@ -2223,8 +2240,10 @@ void MyListView::closeTree(MyListViewItem *lvi, int mode)
   recursion++;
   if(lvi)
   {
-    if(mode==2)  setItemExpanded(lvi, false);
-    setItemSelected(lvi,false);
+    //rlmurx-was-here if(mode==2)  setItemExpanded(lvi, false);
+    if(mode==2)  lvi->setExpanded(false);
+    //rlmurx-was-here setItemSelected(lvi,false);
+    lvi->setSelected(false);
     //rlehrig not necessary ? lvi->repaint();
     closeTree(firstChild(lvi), mode);
     closeTree(nextSibling(lvi,lvi->parent()), mode);
@@ -2251,7 +2270,8 @@ void MyListView::setSelected(int mode, const char *path)
       if((!strncmp((const char *) plvi->path.toUtf8(), path, ptr-(const char *)path)) &&
           (strlen((const char *) plvi->path.toUtf8())==(unsigned)(ptr-(const char *)path)))
       {
-        setItemExpanded(plvi, (bool) mode);
+        //rlmurx-was-here setItemExpanded(plvi, (bool) mode);
+        plvi->setExpanded((bool) mode);
         break;
       }
       plvi = nextSibling(plvi,plvi->parent());
@@ -2266,8 +2286,10 @@ void MyListView::setSelected(int mode, const char *path)
   {
     if(!strcmp((const char *) plvi->path.toUtf8(), path))
     {
-      setItemExpanded(plvi, (bool) mode); //plvi->setOpen(mode);
-      setItemSelected(plvi, (bool) mode);
+      //rlmurx-was-here setItemExpanded(plvi, (bool) mode); //plvi->setOpen(mode);
+      plvi->setExpanded((bool) mode); //plvi->setOpen(mode);
+      //rlmurx-was-here setItemSelected(plvi, (bool) mode);
+      plvi->setSelected((bool) mode);
       doSendSelected(plvi);
       break;
     }
@@ -2363,7 +2385,8 @@ int column;
 
   while(item != NULL)
   {
-    if(isItemSelected(item))
+    //rlmurx-was-here if(isItemSelected(item))
+    if(item->isSelected())
     {
       column = icol; //columnCount();
       while(column > 0)
@@ -2576,6 +2599,73 @@ MyQwtThermo::~MyQwtThermo()
 {
 }
 
+void MyQwtThermo::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+  if(o) return;
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  //not implementes
+#else
+  //not implemented
+#endif
+}
+
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+void MyQwtThermo::setOrientation(Qt::Orientation o, QwtThermo::ScalePos pos) //rlmurx-was-here
+{
+  if(o) return;
+  if(pos) return;
+  //not implementes
+}
+#endif
+
+void MyQwtThermo::setFillColor(QColor rgb) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtThermo::setFillColor(rgb);
+#else
+  QwtThermo::setFillBrush(rgb);
+#endif
+}
+
+void MyQwtThermo::setAlarmColor(QColor rgb) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtThermo::setAlarmColor(rgb);
+#else
+  QwtThermo::setAlarmBrush(rgb);
+#endif
+}
+
+void MyQwtThermo::setMargin(int m) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtThermo::setMargin(m);
+#else
+  setBorderWidth(m);
+#endif
+}
+
+void MyQwtThermo::setRange(int min, int max, int step) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtThermo::setRange(min,max,step);
+#else
+//#warning "not implemented QwtThermo::setRange(min,max,step); (rlmurx)"
+  if(min == max) return;
+  if(step) return;
+#endif
+}
+
+void MyQwtThermo::setScale(double vmin, double vmax, double step) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtThermo::setScale(vmin,vmax,step);
+#else
+  QwtAbstractScale::setScale(vmin,vmax);
+  if(step) return;
+#endif
+}
+
 void MyQwtThermo::mousePressEvent(QMouseEvent *event)
 {
   char buf[80];
@@ -2623,6 +2713,50 @@ MyQwtKnob::MyQwtKnob(int *sock, int ident, QWidget *parent, const char *name)
 
 MyQwtKnob::~MyQwtKnob()
 {
+}
+
+void MyQwtKnob::setScale(double vmin, double vmax, double step) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtKnob::setScale(vmin,vmax,step);
+#else
+  if(step) return;
+  QwtAbstractScale *as = (QwtAbstractScale *) abstractScaleDraw();
+  as->setScale(vmin,vmax);
+#endif
+}
+
+void MyQwtKnob::setRange(int vmin, int vmax, int step) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtKnob::setRange(vmin,vmax,step);
+#else
+  double dmin = vmin;
+  double dmax = vmax;
+  setRange(dmin,dmax,false);
+  if(step) return;
+#endif
+}
+
+void MyQwtKnob::setMass(int w) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtKnob::setMass(w);
+#else
+  if(w) return;
+//only relevant for QwtWheel
+//#warning "not implemented: QwtKnob::setMass : Set the slider's mass for flywheel effect. (rlmurx)"
+#endif
+}
+
+void MyQwtKnob::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtKnob::setOrientation(o);
+#else
+  QwtAbstractSlider *objptr = (QwtAbstractSlider *) QwtKnob::QwtAbstractSlider::qt_metacast("orientation");
+  objptr->setProperty("orientation",o);
+#endif
 }
 
 void MyQwtKnob::slotValueChanged(double value)
@@ -2736,12 +2870,45 @@ MyQwtWheel::MyQwtWheel(int *sock, int ident, QWidget *parent, const char *name)
   setValue(0.0);
   setMass(0.2);
   setTotalAngle(360.0);
-  connect(this, SIGNAL(valueChanged(double)), SLOT(slotValueChanged(double)));
   if(name != NULL) setObjectName(name);
+  connect(this, SIGNAL(valueChanged(double)), SLOT(slotValueChanged(double)));
+  // return; //rlmurx-was-here clang issue
 }
 
 MyQwtWheel::~MyQwtWheel()
 {
+}
+
+void MyQwtWheel::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+  if(o) return;
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  //not implementes
+#else
+  //not implemented
+#endif
+}
+
+void MyQwtWheel::setReadOnly(int b) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtWheel::setReadOnly(b);
+#else
+  if(b) return;
+//is virtual in qwt
+//#warning "not implemented QwtWheel::setReadOnly(b); (rlmurx)"
+#endif
+}
+
+void MyQwtWheel::setInternalBorder(int width) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtWheel::setInternalBorder(width);
+#else
+  if(width) return;
+//
+//#warning "not implemented QwtWheel::setInternalBorder(width); (rlmurx)"
+#endif
 }
 
 void MyQwtWheel::slotValueChanged(double value)
@@ -2799,6 +2966,127 @@ MyQwtSlider::MyQwtSlider(int *sock, int ident, QWidget *parent, const char *name
 
 MyQwtSlider::~MyQwtSlider()
 {
+}
+
+void MyQwtSlider::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtSlider::setOrientation(o);
+#else
+  QwtAbstractSlider *objptr = (QwtAbstractSlider *) QwtDial::QwtAbstractSlider::qt_metacast("orientation");
+  objptr->setProperty("orientation",o);
+#endif
+}
+
+void MyQwtSlider::setMass(int w) //rlmurx-was-here
+{
+  if(w) return;
+//only relevant for QwtWheel
+//#warning "not implemented: QwtSlider::setMass : Set the slider's mass for flywheel effect. (rlmurx)"
+}
+
+void MyQwtSlider::setScale(int min, int max, int step, int logarithmic) //rlmurx-was-here
+{
+  if(min == max) return;
+  if(step == 1) return;
+  if(logarithmic) return;
+//#warning "not implemented: QwtSlider::setScale : because it is not necessary (rlmurx)"
+}
+
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+void MyQwtSlider::setScale(double d1, double d2, double d3, QwtThermo::ScalePos pos)
+{
+  if(d1 < d2) return;
+  if(d1 < d3) return;
+  if(pos)    return;
+//#warning "not implemented: QwtSlider::setScale : because it is not necessary (rlmurx)"
+}
+#endif
+
+void MyQwtSlider::setBgStyle(int s) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtSlider::BGSTYLE sty = (QwtSlider::BGSTYLE) s;
+  QwtSlider::setBgStyle(sty);
+#else
+  setBgStyle(s);
+#endif
+}
+
+void MyQwtSlider::setScalePosition(int pos)
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtSlider::setScalePosition((QwtSlider::ScalePos) pos);
+  switch(pos)
+  {
+    case PV::SliderLeft:
+      QwtSlider::setScalePosition(QwtSlider::LeftScale);
+      break;
+    case PV::SliderRight:
+      QwtSlider::setScalePosition(QwtSlider::RightScale);
+      break;
+    case PV::SliderTop:
+      QwtSlider::setScalePosition(QwtSlider::TopScale);
+      break;
+    case PV::SliderBottom:
+      QwtSlider::setScalePosition(QwtSlider::BottomScale);
+      break;
+    default:
+      QwtSlider::setScalePosition(QwtSlider::NoScale);
+      break;
+  }
+#else
+#warning "//rlmurx-was-here : for me this is big murx"
+  switch(pos)
+  {
+    case PV::SliderLeft:
+      QwtSlider::setScalePosition(QwtSlider::ScalePosition::TrailingScale);
+      break;
+    case PV::SliderRight:
+      QwtSlider::setScalePosition(QwtSlider::ScalePosition::LeadingScale);
+      break;
+    case PV::SliderTop:
+      QwtSlider::setScalePosition(QwtSlider::ScalePosition::TrailingScale);
+      break;
+    case PV::SliderBottom:
+      QwtSlider::setScalePosition(QwtSlider::ScalePosition::LeadingScale);
+      break;
+    default:
+      //QwtSlider::setScalePosition(QwtSlider::ScalePosition::TrailingScale);
+      break;
+  }    
+#endif
+}
+
+void MyQwtSlider::setThumbWidth(int width) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtSlider::setThumbWidth(width);
+#else
+  if(width) return;
+//#warning "not implemented QwtSlider::setThumbWidth(width); (rlmurx)"
+#endif
+}
+
+void MyQwtSlider::setThumbLength(int length) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtSlider::setThumbLength(length);
+#else
+  if(length) return;
+//#warning "not implemented QwtSlider::setThumbLength(width); (rlmurx)"
+#endif
+}
+
+void MyQwtSlider::setMargins(int m1, int m2) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtSlider::setMargins(m1, m2);
+#else
+  if(m1 == m2) return;
+  QwtSlider::scaleEngine()->setMargins(m1,m2);
+//#warning "not implemented QwtSlider::setMargins(m1, m2); (rlmurx)"
+#endif
 }
 
 void MyQwtSlider::slotValueChanged(double value)
@@ -2866,6 +3154,69 @@ MyQwtDial::~MyQwtDial()
 {
 }
 
+void MyQwtDial::setMass(int m) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtDial::setMass(m);
+#else
+  if(m) return;
+//only relevant for QwtWheel
+//#warning "not impemented: QwtDial::setMass : Set the slider's mass for flywheel effect. (rlmurx)"
+#endif
+}
+
+void MyQwtDial::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtDial::setOrientation(o);
+#else
+  QwtAbstractSlider *objptr = (QwtAbstractSlider *) QwtDial::QwtAbstractSlider::qt_metacast("orientation");
+  objptr->setProperty("orientation",o);
+#endif
+}
+
+void MyQwtDial::showBackground(int b) //rlmurx-was-here
+{
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  QwtDial::showBackground(b);
+#else
+  if(b) return;
+//
+//#warning "not implemented QwtDial::showBackground(b); (rlmurx)"
+#endif
+}
+
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+void MyQwtDial::setScale(int min, int max, int step) //rlmurx-was-here
+{
+  if(min == max) return;
+  if(step == 1) return;
+  //rlmurx-was-here we do not need this in the old version
+}
+#else
+void MyQwtDial::setScale(int min, int max, int step) //rlmurx-was-here
+{
+  if(min == max) return;
+  if(step == 1) return;
+  //rlmurx-was-here we do not need this in the old version
+}
+#endif
+
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+void MyQwtDial::setRange(int min, int max, int rlmurx) //rlmurx-was-here
+{
+  if(min == max) return;
+  if(rlmurx) return;
+  //rlmurx-was-here we do not ne4ed this in the old version
+}
+#else
+void MyQwtDial::setRange(int min, int max, int rlmurx) //rlmurx-was-here
+{
+  if(min == max) return;
+  if(rlmurx) return;
+}
+#endif
+
 void MyQwtDial::slotValueChanged(double value)
 {
   char buf[80];
@@ -2927,6 +3278,16 @@ MyQwtCompass::~MyQwtCompass()
 {
 }
 
+void MyQwtCompass::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+  if(o) return;
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  //not implementes
+#else
+  //not implemented
+#endif
+}
+
 void MyQwtCompass::slotValueChanged(double value)
 {
   char buf[80];
@@ -2982,6 +3343,16 @@ MyQwtAnalogClock::MyQwtAnalogClock(int *sock, int ident, QWidget *parent, const 
 
 MyQwtAnalogClock::~MyQwtAnalogClock()
 {
+}
+
+void MyQwtAnalogClock::setOrientation(Qt::Orientation o) //rlmurx-was-here
+{
+  if(o) return;
+#ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
+  //not implementes
+#else
+  //not implemented
+#endif
 }
 
 void MyQwtAnalogClock::slotValueChanged(double value)

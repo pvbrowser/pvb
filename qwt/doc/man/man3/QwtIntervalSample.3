@@ -1,0 +1,61 @@
+.TH "QwtIntervalSample" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+QwtIntervalSample \- A sample of the types (x1-x2, y) or (x, y1-y2)  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <qwt_samples\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQwtIntervalSample\fP ()"
+.br
+.ti -1c
+.RI "\fBQwtIntervalSample\fP (double, const \fBQwtInterval\fP &)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "\fBQwtIntervalSample\fP (double \fBvalue\fP, double min, double max)"
+.br
+.RI "Constructor\&. "
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBQwtIntervalSample\fP &) const"
+.br
+.RI "Compare operator\&. "
+.ti -1c
+.RI "bool \fBoperator!=\fP (const \fBQwtIntervalSample\fP &) const"
+.br
+.RI "Compare operator\&. "
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "double \fBvalue\fP"
+.br
+.RI "Value\&. "
+.ti -1c
+.RI "\fBQwtInterval\fP \fBinterval\fP"
+.br
+.RI "Interval\&. "
+.in -1c
+.SH "Detailed Description"
+.PP 
+A sample of the types (x1-x2, y) or (x, y1-y2) 
+.PP
+Definition at line 20 of file qwt_samples\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "QwtIntervalSample::QwtIntervalSample ()\fC [inline]\fP"
+Constructor The value is set to 0\&.0, the interval is invalid 
+.PP
+Definition at line 41 of file qwt_samples\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for Qwt User's Guide from the source code\&.

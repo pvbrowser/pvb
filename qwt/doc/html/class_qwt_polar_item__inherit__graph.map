@@ -1,0 +1,7 @@
+<map id="QwtPolarItem" name="QwtPolarItem">
+<area shape="rect" id="node1" title="Base class for items on a polar plot." alt="" coords="204,5,307,32"/>
+<area shape="rect" id="node2" href="$class_qwt_polar_curve.html" title="An item, that represents a series of points." alt="" coords="5,80,116,107"/>
+<area shape="rect" id="node3" href="$class_qwt_polar_grid.html" title="An item which draws scales and grid lines on a polar plot." alt="" coords="140,80,240,107"/>
+<area shape="rect" id="node4" href="$class_qwt_polar_marker.html" title="A class for drawing markers." alt="" coords="264,80,380,107"/>
+<area shape="rect" id="node5" href="$class_qwt_polar_spectrogram.html" title="An item, which displays a spectrogram." alt="" coords="404,80,555,107"/>
+</map>

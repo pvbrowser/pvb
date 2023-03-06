@@ -1,0 +1,118 @@
+.TH "qwtchangelog" 3 "Sun Jul 18 2021" "Version 6.2.0" "Qwt User's Guide" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+qwtchangelog \- What's new in Qwt 6\&.2 
+
+.SH "Qt >= 4\&.8"
+.PP
+Support for Qt < Qt 4\&.8 has been dropped, support for Qt6 has been added\&.
+.SH "Includes"
+.PP
+Include files, that match the class names are available now\&. So it is possible to write '#include <QwtPlot>' now instead of 'include qwt_plot\&.h'
+.SH "QwtPolar has become part of Qwt"
+.PP
+The QwtPolar project ( https://qwtpolar.sourceforge.io ) has been integrated into Qwt\&.
+.SH "MathML Text Renderer has become its own project"
+.PP
+The code can be found at https://github.com/uwerat/qwt-mml-dev now and is intended to become a standalone lib\&.
+.SH "Spline"
+.PP
+The broken implementation of \fBQwtSpline\fP has been replaced by a bunch of classes offering all sort of functionalities around splines\&.
+.PP
+The most popular spline approximation/interpolation algos have been implemented: 
+.PP
+.nf
+- Basis
+- Cardinal
+- ParabolicBlending
+- Akima
+- The one used in a proprietory office package
+- Cubic
+
+.fi
+.PP
+ 
+.SH "Better OpenGL support"
+.PP
+\fBQwtPlotOpenGLCanvas\fP added to support rendering to a QOpenGLWidget
+.SH "New plot items"
+.PP
+.PP
+.nf
+- QwtPlotVectorField
+  A new type of plot item for vector fields
+
+- QwtPlotGraphicItem
+  An item displaying a QwtGraphic image ( f.e used by QwtPlotSvgItem )
+.fi
+.PP
+ 
+.SH "QwtPlotCurve"
+.PP
+.PP
+.nf
+- QwtPlotCurve::FilterPointsAggressive
+  A fast weeding algo for huge datasets with increasing x or y values
+
+- QwtPlotCurve::closestPoint
+  Is virtual now
+
+- Line Clipping
+  Includes the painter clip now
+
+- QwtValuePointData
+  A new type of data added, where the x values are the index
+
+- QwtPlotCurve::setSamples
+  more type of setters
+.fi
+.PP
+ 
+.SH "QwtPlotSpectrogram"
+.PP
+.PP
+.nf
+- QwtPlotSpectrogram::setColorTableSize
+  Using individual RGB tables
+
+- QwtRasterData::setInterval/interval
+  API cleanup
+
+- QwtHueColorMap, QwtSaturationValueColorMap
+  New type of color maps
+
+- QwtMatrixRasterData::BicubicInterpolation
+  Implementation of bicubic interpolation added
+
+- Handling of NaN values
+  NaN values are interpreted as gaps, when QwtRasterData::WithoutGaps
+  is not set
+.fi
+.PP
+ 
+.SH "Other changes"
+.PP
+.PP
+.nf
+- QwtPlotRenderer
+  Using QPdfWriter instead of QPrinter, where possible
+
+- Handling of Unknown Paint Engines
+  Not aligning unknown paint engines ( f.e EMF ), QwtNullPaintDevice is not using
+  QPaintEngine::User anymore
+
+- QwtTransform::LogMin/LogMax
+  LOG_MIN/LOG_MAX have been reomed ( values differ ! 
+
+- qwt_compat.h
+  Removed
+
+- qwtFuzzyGreaterOrEqual/qwtFuzzyLessOrEqual
+  Removed
+
+- qwtGetMin/qwtGetMax
+  Removed
+.fi
+.PP
+ 
