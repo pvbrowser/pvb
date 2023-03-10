@@ -1,3 +1,0 @@
-<area shape="rect" href="$class_qwt_scale_engine.html" title="Base class for scale engines." alt="" coords="8,31,128,55">
-<area shape="rect" href="$class_qwt_linear_scale_engine.html" title="A scale engine for linear scales." alt="" coords="179,7,336,31">
-<area shape="rect" href="$class_qwt_log10_scale_engine.html" title="A scale engine for logarithmic (base 10) scales." alt="" coords="179,55,336,79">

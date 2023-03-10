@@ -1,6 +1,0 @@
-<area shape="rect" href="$class_qwt_picker_machine.html" title="A state machine for QwtPicker selections." alt="" coords="7,103,140,127">
-<area shape="rect" href="$class_qwt_picker_click_point_machine.html" title="A state machine for point selections." alt="" coords="188,7,383,31">
-<area shape="rect" href="$class_qwt_picker_click_rect_machine.html" title="A state machine for rectangle selections." alt="" coords="191,55,380,79">
-<area shape="rect" href="$class_qwt_picker_drag_point_machine.html" title="A state machine for point selections." alt="" coords="189,103,381,127">
-<area shape="rect" href="$class_qwt_picker_drag_rect_machine.html" title="A state machine for rectangle selections." alt="" coords="191,151,380,175">
-<area shape="rect" href="$class_qwt_picker_polygon_machine.html" title="A state machine for polygon selections." alt="" coords="195,199,376,223">

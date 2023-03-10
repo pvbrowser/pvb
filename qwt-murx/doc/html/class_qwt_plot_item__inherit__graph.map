@@ -1,8 +1,0 @@
-<area shape="rect" href="$class_qwt_plot_curve.html" title="A plot item, that represents a series of points." alt="" coords="386,7,490,31">
-<area shape="rect" href="$class_qwt_plot_grid.html" title="A class which draws a coordinate grid." alt="" coords="391,55,484,79">
-<area shape="rect" href="$class_qwt_plot_marker.html" title="A class for drawing markers." alt="" coords="383,103,492,127">
-<area shape="rect" href="$class_qwt_plot_raster_item.html" title="A class, which displays raster data." alt="" coords="371,151,504,175">
-<area shape="rect" href="$class_qwt_plot_scale_item.html" title="A class which draws a scale inside the plot canvas." alt="" coords="374,199,502,223">
-<area shape="rect" href="$class_qwt_plot_svg_item.html" title="A plot item, which displays data in Scalable Vector Graphics (SVG) format." alt="" coords="378,247,498,271">
-<area shape="rect" href="$class_qwt_legend_item_manager.html" title="Abstract API to bind plot items to the legend." alt="" coords="8,127,176,151">
-<area shape="rect" href="$class_qwt_plot_spectrogram.html" title="A plot item, which displays a spectrogram." alt="" coords="554,151,700,175">
