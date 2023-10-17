@@ -25,6 +25,7 @@ var searchData=
   ['temp1',['temp1',['../classrlWebcam.html#af2566050e3dcab8f2507e9cf93e46269',1,'rlWebcam']]],
   ['temp2',['temp2',['../classrlWebcam.html#a97e793135cb8305a765c2897b843ea4d',1,'rlWebcam']]],
   ['temp3',['temp3',['../classrlWebcam.html#a1cc7920d1baea32033b2913544ff549e',1,'rlWebcam']]],
+  ['text',['text',['../structrlJSONrecord.html#aeefed7585b31d3a6d609d0fc54d999b8',1,'rlJSONrecord']]],
   ['texthome',['textHome',['../classrlHtmlDir.html#a697a1503afe92123c12f11e1fb9910ab',1,'rlHtmlDir']]],
   ['textoptions',['textoptions',['../classrlSvgVdi.html#a84e7dee6fb6f1cbaac5fb501be23e2f2',1,'rlSvgVdi']]],
   ['textpath',['textPath',['../classrlHtmlDir.html#aadcd72e669d24a46c4cc3d0b42986514',1,'rlHtmlDir']]],

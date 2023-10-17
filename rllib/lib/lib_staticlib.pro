@@ -52,7 +52,8 @@ HEADERS  = rllib.h                   \
            rlbuffer.h                  \
            rlhtmldir.h                 \
            rlhtml.h                    \
-           rlsvgvdi.h
+           rlsvgvdi.h                  \
+           rljson.h
 
 SOURCES  = rlspawn.cpp                 \
            rlwthread.cpp               \
@@ -100,7 +101,8 @@ SOURCES  = rlspawn.cpp                 \
            rlbuffer.cpp                  \
            rlhtmldir.cpp                 \
            rlhtml.cpp                    \
-           rlsvgvdi.cpp
+           rlsvgvdi.cpp                  \
+           rljson.cpp
 Hilscher {
   HEADERS += rlcannode.h           \
              rlcanopendaemon.h     \    

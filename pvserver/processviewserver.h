@@ -21,7 +21,7 @@
 #ifndef PROCESSVIEWSERVER_H
 #define PROCESSVIEWSERVER_H
 
-const char pvserver_version[] = "5.15.2";
+const char pvserver_version[] = "5.15.3";
 
 // define WIN
 #ifdef _WIN32
@@ -296,6 +296,8 @@ enum ORIENTATION
 {
   HORIZONTAL = 0,
   VERTICAL   = 1
+  //jose HORIZONTAL = 1,
+  //jose VERTICAL   = 2
 };
 
 enum Orientation
@@ -3920,9 +3922,11 @@ int qwtCompassSetValue(PARAM *p, int id, float value);
  *  QwtDial Widget
  *  @{ */
 /*! <pre>
+obsolete, no longer used
 </pre> */
 int qwtDialSetRange(PARAM *p, int id, float vmin, float vmax, float step=0.0f);
 /*! <pre>
+obsolte, no longer used
 </pre> */
 int qwtDialSetMass(PARAM *p, int id, float mass);
 /*! <pre>
@@ -3947,6 +3951,7 @@ int qwtDialSetMode(PARAM *p, int id, int mode);
 </pre> */
 int qwtDialSetWrapping(PARAM *p, int id, int wrap);
 /*! <pre>
+parameter step is no longer used
 </pre> */
 int qwtDialSetScale(PARAM *p, int id, int maxMajIntv, int maxMinIntv, float step);
 /*! <pre>

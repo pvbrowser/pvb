@@ -61,7 +61,8 @@ HEADERS  = rllib.h                     \
            rlbuffer.h                  \
            rlhtmldir.h                 \
            rlhtml.h                    \
-           rlsvgvdi.h
+           rlsvgvdi.h                  \
+           rljson.h
 
 SOURCES  = rlspawn.cpp                   \
            rlwthread.cpp                 \
@@ -110,6 +111,7 @@ SOURCES  = rlspawn.cpp                   \
            rlhtmldir.cpp                 \
            rlhtml.cpp                    \
            rlsvgvdi.cpp                  \ 
+           rljson.cpp                    \
            nodave.c                      \
            setport.c
 

@@ -2,6 +2,7 @@ var searchData=
 [
   ['scalebottom',['ScaleBottom',['../group__DefinesAndEnums.html#gga0ce2c64cfd247716fa581d00f90898bea32af467cdcd29ab969a72a9d7e390cf6',1,'processviewserver.h']]],
   ['scaleleft',['ScaleLeft',['../group__DefinesAndEnums.html#gga0ce2c64cfd247716fa581d00f90898beafb3516ca4523dbcb2e2d35f98ec80a8b',1,'processviewserver.h']]],
+  ['scalenone',['ScaleNone',['../group__DefinesAndEnums.html#gga0ce2c64cfd247716fa581d00f90898beacf5313091113d75407f9a5e6912ba383',1,'processviewserver.h']]],
   ['scaleright',['ScaleRight',['../group__DefinesAndEnums.html#gga0ce2c64cfd247716fa581d00f90898bead1d548238f14e1cba9bc7f77e45cac3d',1,'processviewserver.h']]],
   ['scaletop',['ScaleTop',['../group__DefinesAndEnums.html#gga0ce2c64cfd247716fa581d00f90898bea404e6a352aafdb468a160a0e3d5cda66',1,'processviewserver.h']]],
   ['selection_5fevent',['SELECTION_EVENT',['../group__DefinesAndEnums.html#gga312edd1912b98b17988e584ecc4263b4a56c8885608944604893ca5d347b22c91',1,'processviewserver.h']]],

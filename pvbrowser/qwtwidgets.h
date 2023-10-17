@@ -59,7 +59,7 @@ public:
     void setOrientation(Qt::Orientation o);         //rlmurx-was-here
     void setFillColor(QColor rgb);                  //rlmurx-was-here
     void setAlarmColor(QColor rgb);                 //rlmurx-was-here
-    void setRange(int vmin, int vmax, int step);    //rlmurx-was-here
+    void setRange(double vmin, double vmax, double step);    //rlmurx-was-here jjmg was here
     void setMargin(int m);                          //rlmurx-was-here
     void setScale(double s1, double s2, double s3); //rlmurx-was-here
 
@@ -174,7 +174,7 @@ public:
     ~MyQwtDial();
     void setOrientation(Qt::Orientation o);         //rlmurx-was-here
     void setScale(int min, int max, int step);      //rlmurx-was-here
-    void setRange(int vmin, int vmax, int step=-1); //rlmurx-was-here
+    void setRange(double vmin, double vmax, double step=-1); //rlmurx-was-here jjmg was here
     void setMass(int w);                            //rlmurx-was-here
     void showBackground(int b);                     //rlmurx-was-here
 

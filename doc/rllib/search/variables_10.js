@@ -11,7 +11,7 @@ var searchData=
   ['remoteadress',['remoteadress',['../classrlCanOpenClient.html#a1cd0fd938534e07795a39f5e9c73f277',1,'rlCanOpenClient']]],
   ['reserved',['reserved',['../structrlSiemensTCP_1_1IH.html#ac3ee6cf3a2b1fac94ce779f733fad1bd',1,'rlSiemensTCP::IH']]],
   ['rl_5fipversion',['rl_ipversion',['../classrlSocket.html#aabfbfa722c5c9813c8f204626d71aa8c',1,'rlSocket']]],
-  ['rlcrlf',['rlCRLF',['../rlstring_8cpp.html#ab62ea69a73193eb80768648c83353ffb',1,'rlCRLF():&#160;rlstring.cpp'],['../rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580',1,'rlCRLF():&#160;rlstring.cpp']]],
+  ['rlcrlf',['rlCRLF',['../rljson_8h.html#a3d029be32550aee0cfcf06c1e7156580',1,'rlCRLF():&#160;rlstring.cpp'],['../rlstring_8cpp.html#ab62ea69a73193eb80768648c83353ffb',1,'rlCRLF():&#160;rlstring.cpp'],['../rlstring_8h.html#a3d029be32550aee0cfcf06c1e7156580',1,'rlCRLF():&#160;rlstring.cpp']]],
   ['rldebugprintfstate',['rlDebugPrintfState',['../rlcutil_8cpp.html#a73703e6f6e03079d517b69762d7424da',1,'rlDebugPrintfState():&#160;rlcutil.cpp'],['../rlsiemenstcp_8cpp.html#a73703e6f6e03079d517b69762d7424da',1,'rlDebugPrintfState():&#160;rlcutil.cpp']]],
   ['rlevent_5fname',['rlevent_name',['../rlevent_8h.html#ab343ef64ed57de354c2899776ee063be',1,'rlevent.h']]],
   ['rlfinal',['rlfinal',['../rlevent_8cpp.html#aa4c9b96dd56f60d8f405db1e867ce8ce',1,'rlevent.cpp']]],

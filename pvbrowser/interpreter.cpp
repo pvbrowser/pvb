@@ -6326,6 +6326,7 @@ void Interpreter::interpretq(const char *command)
         else if(pos == PV::ThermoRight) pos = QwtThermo::LeadingScale;
         if(wi != NULL) wi->setOrientation((Qt::Orientation) ori);
         if(wi != NULL) wi->setScalePosition((QwtThermo::ScalePosition) pos);
+        // issue-reported-by-jose
 #endif        
       }
       else if(strncmp(qwtcommand,"setBorderWidth(",15) == 0)
@@ -6400,12 +6401,9 @@ void Interpreter::interpretq(const char *command)
         double min,max,step;
         int logarithmic;
         sscanf(qwtcommand,"setScale(%lf,%lf,%lf,%d",&min,&max,&step,&logarithmic);
+        // issue-reported-by-jose
+        wi->setScale(min,max,step);
         //murx wi->setScale(min,max,step,logarithmic);
-        if(wi != NULL) 
-        {
-          wi->setScale(min,max,step);
-          wi->setRange(min,max);
-        }  
       }
       else if(strncmp(qwtcommand,"setMass(",8) == 0)
       {

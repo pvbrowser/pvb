@@ -34,6 +34,8 @@ var searchData=
   ['rlinifile',['rlIniFile',['../classrlIniFile.html',1,'']]],
   ['rlinterpreter',['rlInterpreter',['../classrlInterpreter.html',1,'']]],
   ['rlipadr',['rlIpAdr',['../classrlIpAdr.html',1,'']]],
+  ['rljson',['rlJSON',['../classrlJSON.html',1,'']]],
+  ['rljsonrecord',['rlJSONrecord',['../structrlJSONrecord.html',1,'']]],
   ['rlmailbox',['rlMailbox',['../classrlMailbox.html',1,'']]],
   ['rlmodbus',['rlModbus',['../classrlModbus.html',1,'']]],
   ['rlmodbusclient',['rlModbusClient',['../classrlModbusClient.html',1,'']]],

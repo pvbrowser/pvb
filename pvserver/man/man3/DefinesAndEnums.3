@@ -1,4 +1,4 @@
-.TH "DefinesAndEnums" 3 "Mon Jan 6 2020" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "DefinesAndEnums" 3 "Thu Sep 28 2023" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -250,7 +250,7 @@ DefinesAndEnums
 .RI "enum \fBQwtAutoscale\fP { \fBpvNone\fP = 0, \fBIncludeRef\fP = 1, \fBSymmetric\fP = 2, \fBFloating\fP = 4, \fBLogarithmic\fP = 8, \fBInverted\fP = 16 }"
 .br
 .ti -1c
-.RI "enum \fBScalePosition\fP { \fBScaleLeft\fP, \fBScaleRight\fP, \fBScaleTop\fP, \fBScaleBottom\fP }"
+.RI "enum \fBScalePosition\fP { \fBScaleNone\fP, \fBScaleLeft\fP, \fBScaleRight\fP, \fBScaleTop\fP, \fBScaleBottom\fP }"
 .br
 .ti -1c
 .RI "enum \fBThermoPosition\fP { \fBThermoNone\fP, \fBThermoLeft\fP, \fBThermoRight\fP, \fBThermoTop\fP, \fBThermoBottom\fP }"
@@ -1083,6 +1083,8 @@ These are the Defines and Enums
 .PP
 \fBEnumerator\fP
 .in +1c
+.TP
+\fB\fIScaleNone \fP\fP
 .TP
 \fB\fIScaleLeft \fP\fP
 .TP

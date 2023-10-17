@@ -31,6 +31,7 @@ enum {
   wtCounter1,
   wtWheel1,
   wtCompass1,
+  wtDial1,
   wtThermo1,
   wtScale1,
   wtKnob1,
@@ -149,6 +150,9 @@ static int generated_defineMask(PARAM *p)
   pvQwtCompass(p,wtCompass1,tab2);
   pvSetGeometry(p,wtCompass1,229,190,161,161);
 
+  pvQwtDial(p,wtDial1,tab2);
+  pvSetGeometry(p,wtDial1,429,190,161,161);
+
   pvQwtThermo(p,wtThermo1,tab2);
   pvSetGeometry(p,wtThermo1,150,10,60,160);
 
@@ -159,6 +163,7 @@ static int generated_defineMask(PARAM *p)
 
   pvQwtKnob(p,wtKnob1,tab2);
   pvSetGeometry(p,wtKnob1,239,10,151,161);
+  //qwtKnobSetScale(p,wtKnob1,0,15,2,0);
 
   pvQwtSlider(p,wtSlider1,tab2);
   pvSetGeometry(p,wtSlider1,0,190,200,50);
@@ -285,11 +290,16 @@ static int defineMask(PARAM *p)
   qwtThermoSetRange(p, wtThermo1, 0.0f, 50.0f);
   qwtThermoSetValue(p, wtThermo1, 45.0f);
 
+  qwtThermoSetOrientation(p, wtThermo1, HORIZONTAL, ThermoTop);
+
   // Compass wtCompass1
 #ifdef unix
   qwtCompassSetSimpleCompassRose(p, wtCompass1, 4, 2);
   qwtCompassSetNeedle(p, wtCompass1, QwtCompassNeedle4, RED, BLUE, YELLOW);
 #endif
+
+  qwtDialSetScale(p, wtDial1, 0, 60, 2);
+
   pvSetDateOrder(p, dateEdit1, MDY);
   pvSetMinDate(p, dateEdit1, 2011, 1,  1);
   pvSetMaxDate(p, dateEdit1, 2011, 12, 31);

@@ -207,9 +207,9 @@ int rlSocket::read(void *buf, int len, int timeout)
       return -1;
     }
   
-    ::printf("debug: read len=%d buf=", len);
-    for(int j=0; j<len; j++) ::printf(" %d", cbuf[j]);
-    ::printf("\n");
+    //::printf("debug: read len=%d buf=", len);
+    //for(int j=0; j<len; j++) ::printf(" %d", cbuf[j]);
+    //::printf("\n");
 
     i += ret;
     if(i < len)
@@ -228,7 +228,7 @@ int rlSocket::readStr(char *buf, int len, int timeout)
   if(s == -1) return -1;
   if(select(timeout) == 0) return 0; // timeout
 
-  ::printf("debug: readStr len=%d", len);
+  // ::printf("debug: readStr len=%d", len);
   
   i = 0;
   while(1)
@@ -247,7 +247,7 @@ tryagain:
       return -1;
     }
     
-    ::printf(" %d\n", buf[i]);
+    //::printf(" %d\n", buf[i]);
     
     if(buf[i] == '\n')
     {

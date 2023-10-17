@@ -37,6 +37,7 @@ var searchData=
   ['floatformat',['floatFormat',['../classrlSvgVdi.html#a051de220ad008b3b71fceadfd6c084b9',1,'rlSvgVdi']]],
   ['floathasdecreased',['floatHasDecreased',['../classrlPlcState.html#a1f96b40a8fc221cc499a05e371f511d3',1,'rlPlcState::floatHasDecreased()'],['../classrlPlcMem.html#a0f717698b215280af8317878a5ff6259',1,'rlPlcMem::floatHasDecreased()']]],
   ['floathasincreased',['floatHasIncreased',['../classrlPlcState.html#af595716f4db8e05b36d8b52cdd74110c',1,'rlPlcState::floatHasIncreased()'],['../classrlPlcMem.html#a49c32c9b9ad3ea2f24b7ad2d71b1408d',1,'rlPlcMem::floatHasIncreased()']]],
+  ['floatparam',['floatParam',['../structrlJSONrecord.html#ae79343b556c7c70da1e172db105570ef',1,'rlJSONrecord']]],
   ['floats',['floats',['../classrlDataProvider.html#af45fcbd8cd78957de4af52ef1bb81921',1,'rlDataProvider']]],
   ['floatvalue',['floatValue',['../classrlDataAcquisition.html#a722b4d84bd630435dc91793a95951034',1,'rlDataAcquisition::floatValue()'],['../classrlDataAcquisitionProvider.html#aa2443db95d21a87fb095f0871569a634',1,'rlDataAcquisitionProvider::floatValue()'],['../classrlOpcXmlDa.html#a7a5ab13dea12a93bb8a68c5421602e3a',1,'rlOpcXmlDa::floatValue()']]],
   ['fname',['fname',['../classrlIniFile.html#a2347d7b297e781b7f60a5c3b4d26addf',1,'rlIniFile']]],

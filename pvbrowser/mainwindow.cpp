@@ -104,6 +104,7 @@ bool MyScrollArea::event(QEvent *event)
   static int ignore_gesture = 0;
   if(event->type() == QEvent::Gesture && ignore_gesture == 0 && mw->pvbtab[mw->currentTab].s != -1)
   {
+    //::printf("gesture\n");
     QGestureEvent *ge = static_cast<QGestureEvent*>(event);
     if(QGesture *ge_pinch = ge->gesture(Qt::PinchGesture))
     {
@@ -147,6 +148,89 @@ bool MyScrollArea::event(QEvent *event)
       ge->accept();
       return true;
     }
+  }
+  else if(event->type() == QEvent::KeyPress && ignore_gesture == 0 && mw->pvbtab[mw->currentTab].s != -1)
+  // else if added by rl 21.05.2023
+  {
+    //::printf("key_press\n");
+    QKeyEvent* ke = static_cast<QKeyEvent*>(event);
+    if     (ke->key() == 'J' && ke->modifiers() == Qt::ControlModifier) 
+    {
+      //::printf("key=J\n");
+      int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
+      int old_percent = percent;
+      percent -= 5;
+      if(percent<10)       percent=10;
+      else if(percent>250) percent=250;
+      //char buf[1024];
+      //sprintf(buf,"percent=%d old_percent=%d scaleFactor=%f", percent, old_percent, pinch->scaleFactor());
+      //mw->statusBar()->showMessage(buf);
+      if(percent != old_percent  && ignore_gesture == 0)
+      {
+        ignore_gesture = 1;
+        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
+        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
+        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;    // should
+        if(mw->pvbtab[mw->currentTab].rootWidget != NULL)               //
+          mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
+        QEvent resize_event(QEvent::Resize);                            // scrollbars
+        QApplication::sendEvent(mw, &resize_event);                     // correctly
+        qApp->processEvents();
+        ignore_gesture = 0;
+      }
+      return ke->isAccepted();
+    }  
+    else if(ke->key() == 'K' && ke->modifiers() == Qt::ControlModifier) 
+    {
+      //::printf("key=K\n");
+      int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
+      int old_percent = percent;
+      percent += 5;
+      if(percent<10)       percent=10;
+      else if(percent>250) percent=250;
+      //char buf[1024];
+      //sprintf(buf,"percent=%d old_percent=%d scaleFactor=%f", percent, old_percent, pinch->scaleFactor());
+      //mw->statusBar()->showMessage(buf);
+      if(percent != old_percent && ignore_gesture == 0)
+      {
+        ignore_gesture = 1;
+        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
+        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
+        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;    // should
+        if(mw->pvbtab[mw->currentTab].rootWidget != NULL)               //
+          mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
+        QEvent resize_event(QEvent::Resize);                            // scrollbars
+        QApplication::sendEvent(mw, &resize_event);                     // correctly
+        qApp->processEvents();
+        ignore_gesture = 0;
+      }
+      return ke->isAccepted();
+    }
+    else if(ke->key() == '1' && ke->modifiers() == Qt::ControlModifier) 
+    {
+      //::printf("key=1\n");
+      int percent = mw->pvbtab[mw->currentTab].interpreter.percentZoomMask;
+      int old_percent = percent;
+      percent = 100;
+      //char buf[1024];
+      //sprintf(buf,"percent=%d old_percent=%d scaleFactor=%f", percent, old_percent, pinch->scaleFactor());
+      //mw->statusBar()->showMessage(buf);
+      if(percent != old_percent && ignore_gesture == 0)
+      {
+        ignore_gesture = 1;
+        mw->pvbtab[mw->currentTab].interpreter.zoomMask(percent);       // will set ...interpreter.percentZoomMask
+        int width  = (mw->pvbtab[mw->currentTab].w * percent) / 100;    // these lines
+        int height = (mw->pvbtab[mw->currentTab].h * percent) / 100;    // should
+        if(mw->pvbtab[mw->currentTab].rootWidget != NULL)               //
+          mw->pvbtab[mw->currentTab].rootWidget->resize(width, height); // resize
+        QEvent resize_event(QEvent::Resize);                            // scrollbars
+        QApplication::sendEvent(mw, &resize_event);                     // correctly
+        qApp->processEvents();
+        ignore_gesture = 0;
+      }
+      return ke->isAccepted();
+    }
+    return false;
   }
 #endif  
   return QScrollArea::event(event);
@@ -797,9 +881,11 @@ void MainWindow::createToolBars()
   urlComboBox->setToolTip(tr("Connect to host:\n"
                              "pv://host<:port></mask>\n"
                              "pvssh://user@host<<:remote_host>:port></mask>\n"
+                             "pv://[ipv6-address-form]\n"
                              "example: pv://localhost\n"
                              "example: pv://localhost:5050\n"
                              "example: pv://localhost:5050/maskname\n"
+                             "example: pv://[::FFFF:192.168.1.15]\n"
                              "http://host"
                              ));
 #ifdef USE_ANDROID

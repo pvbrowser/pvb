@@ -32,6 +32,7 @@ var searchData=
   ['_7erlinifile',['~rlIniFile',['../classrlIniFile.html#acb14dd6ebb7222f5866559441b1042de',1,'rlIniFile']]],
   ['_7erlinterpreter',['~rlInterpreter',['../classrlInterpreter.html#a135d21cde3fb0c651de4d54751c07fad',1,'rlInterpreter']]],
   ['_7erlipadr',['~rlIpAdr',['../classrlIpAdr.html#a36b7bf5b5cbef0627c65b99a85ccf0de',1,'rlIpAdr']]],
+  ['_7erljson',['~rlJSON',['../classrlJSON.html#a7e85296e97368ee230897f738421357e',1,'rlJSON']]],
   ['_7erlmailbox',['~rlMailbox',['../classrlMailbox.html#a9756230ee1f87f8f862a6f4f1ccb54cc',1,'rlMailbox']]],
   ['_7erlmodbus',['~rlModbus',['../classrlModbus.html#a4ac68440a43fa4eae5ec87bd0b9ed20c',1,'rlModbus']]],
   ['_7erlmodbusclient',['~rlModbusClient',['../classrlModbusClient.html#ae1f2fa869aadd8321cb5f300b75999ce',1,'rlModbusClient']]],

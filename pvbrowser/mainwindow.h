@@ -17,9 +17,9 @@
 #define MAINWINDOW_H
 
 #if QT_VERSION < 0x050000
-  #define VERSION "5.15.2 - qt4"
+  #define VERSION "5.15.3 - qt4"
 #else
-  #define VERSION "5.15.2 - qt5"
+  #define VERSION "5.15.3 - qt5"
 #endif
 
 #if defined PVB_FOOTPRINT_BASIC

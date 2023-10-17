@@ -2601,17 +2601,18 @@ MyQwtThermo::~MyQwtThermo()
 
 void MyQwtThermo::setOrientation(Qt::Orientation o) //rlmurx-was-here
 {
-  if(o) return;
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
-  //not implementes
 #else
-  //not implemented
+  // issue-reported-by-jose
+  QwtThermo::setOrientation(o);
 #endif
+  if(o) return;
 }
 
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
 void MyQwtThermo::setOrientation(Qt::Orientation o, QwtThermo::ScalePos pos) //rlmurx-was-here
 {
+  printf("in MyQwtThermo::setOrientation(Qt::Orientation o, QwtThermo::ScalePos pos)\n");
   if(o) return;
   if(pos) return;
   //not implementes
@@ -2645,12 +2646,14 @@ void MyQwtThermo::setMargin(int m) //rlmurx-was-here
 #endif
 }
 
-void MyQwtThermo::setRange(int min, int max, int step) //rlmurx-was-here
+void MyQwtThermo::setRange(double min, double max, double step) //rlmurx-was-here jjmg was here
 {
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
   QwtThermo::setRange(min,max,step);
 #else
 //#warning "not implemented QwtThermo::setRange(min,max,step); (rlmurx)"
+    QwtAbstractScale::setScaleStepSize(step); //jjmg was here
+    QwtAbstractScale::setScale(min,max); //jjmg was here
   if(min == max) return;
   if(step) return;
 #endif
@@ -2661,7 +2664,9 @@ void MyQwtThermo::setScale(double vmin, double vmax, double step) //rlmurx-was-h
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
   QwtThermo::setScale(vmin,vmax,step);
 #else
-  QwtAbstractScale::setScale(vmin,vmax);
+  QwtAbstractScale::setScaleStepSize(step); //jjmg was here
+  QwtAbstractScale::setScale(vmin,vmax); //jjmg was here
+  //QwtThermo::setScale(vmin,vmax,step);
   if(step) return;
 #endif
 }
@@ -2720,9 +2725,9 @@ void MyQwtKnob::setScale(double vmin, double vmax, double step) //rlmurx-was-her
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
   QwtKnob::setScale(vmin,vmax,step);
 #else
+  // issue-reported-by-jose
+  QwtKnob::setScale(vmin,vmax);
   if(step) return;
-  QwtAbstractScale *as = (QwtAbstractScale *) abstractScaleDraw();
-  as->setScale(vmin,vmax);
 #endif
 }
 
@@ -3167,11 +3172,11 @@ void MyQwtDial::setMass(int m) //rlmurx-was-here
 
 void MyQwtDial::setOrientation(Qt::Orientation o) //rlmurx-was-here
 {
+  // issue-reported-by-jose
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
   QwtDial::setOrientation(o);
 #else
-  QwtAbstractSlider *objptr = (QwtAbstractSlider *) QwtDial::QwtAbstractSlider::qt_metacast("orientation");
-  objptr->setProperty("orientation",o);
+  if(o) return;
 #endif
 }
 
@@ -3189,6 +3194,8 @@ void MyQwtDial::showBackground(int b) //rlmurx-was-here
 #ifdef PVB_FOOTPRINT_OLD_VERSION_BEFORE_QWT62
 void MyQwtDial::setScale(int min, int max, int step) //rlmurx-was-here
 {
+  // issue-reported-by-jose
+  QwtDial::setScale((double) min, (double) max);
   if(min == max) return;
   if(step == 1) return;
   //rlmurx-was-here we do not need this in the old version
@@ -3196,6 +3203,8 @@ void MyQwtDial::setScale(int min, int max, int step) //rlmurx-was-here
 #else
 void MyQwtDial::setScale(int min, int max, int step) //rlmurx-was-here
 {
+  // issue-reported-by-jose
+  QwtDial::setScale((double) min, (double) max);
   if(min == max) return;
   if(step == 1) return;
   //rlmurx-was-here we do not need this in the old version
@@ -3210,8 +3219,10 @@ void MyQwtDial::setRange(int min, int max, int rlmurx) //rlmurx-was-here
   //rlmurx-was-here we do not ne4ed this in the old version
 }
 #else
-void MyQwtDial::setRange(int min, int max, int rlmurx) //rlmurx-was-here
+void MyQwtDial::setRange(double min, double max, double rlmurx) //rlmurx-was-here
 {
+  //  QwtAbstractScale::setScaleStepSize(rlmurx); //jjmg was here
+    QwtAbstractScale::setScale(min,max); //jjmg was here
   if(min == max) return;
   if(rlmurx) return;
 }

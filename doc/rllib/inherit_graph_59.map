@@ -1,3 +1,7 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$structrlSiemensTCP_1_1FH.html" title="rlSiemensTCP::FH" alt="" coords="5,5,141,32"/>
+<area shape="rect" id="node1" href="$classrlMailbox.html" title="rlMailbox" alt="" coords="27,31,102,57"/>
+<area shape="rect" id="node2" href="$classrlModbusClient.html" title="rlModbusClient" alt="" coords="188,5,297,32"/>
+<area shape="rect" id="node3" href="$classrlPPIClient.html" title="rlPPIClient" alt="" coords="200,56,285,83"/>
+<area shape="rect" id="node4" href="$classrlSiemensTCPClient.html" title="rlSiemensTCPClient" alt="" coords="172,107,313,133"/>
+<area shape="rect" id="node5" href="$classrlSharedMemory.html" title="rlSharedMemory" alt="" coords="5,81,124,108"/>
 </map>

@@ -1009,6 +1009,28 @@
               <section title="setAdr" ref="classrlIpAdr.html#ade6021e6e2897c5ecbe1abb9e10c77a9" />
               <section title="address" ref="classrlIpAdr.html#a73c95244de3109f59499ed468e7f4a4f" />
             </section>
+            <section title="rlJSON" ref="classrlJSON.html">
+              <section title="rlJSON" ref="classrlJSON.html#a1bd986eb698f2ae37875a048441c67b0" />
+              <section title="~rlJSON" ref="classrlJSON.html#a7e85296e97368ee230897f738421357e" />
+              <section title="initRecord" ref="classrlJSON.html#af278386dbbebc692cc96f5c08ba6d123" />
+              <section title="interpret" ref="classrlJSON.html#a6c1e23df65cf645d1e5145432ae24e4a" />
+              <section title="print" ref="classrlJSON.html#a0d679ae294343db2780b58e07663a332" />
+            </section>
+            <section title="rlJSONrecord" ref="structrlJSONrecord.html">
+              <section title="floatParam" ref="structrlJSONrecord.html#ae79343b556c7c70da1e172db105570ef" />
+              <section title="intParam" ref="structrlJSONrecord.html#a8c3da0f6fc99224e02ed8e0e7429cf31" />
+              <section title="optBeginArray" ref="structrlJSONrecord.html#a059a66bdc54a18dffeaf9a82aef59429" />
+              <section title="optColon" ref="structrlJSONrecord.html#ae65a9c763c4e601e70c73ebe7e92343c" />
+              <section title="optComma" ref="structrlJSONrecord.html#a3e4600c03e8238c4d918893b493fc6c6" />
+              <section title="optOpenBracket" ref="structrlJSONrecord.html#ad53cf1355bfaf5096d53465f6f0ffaee" />
+              <section title="optParamType" ref="structrlJSONrecord.html#ac59eb3e38024683e1172e79b13b35f48" />
+              <section title="param" ref="structrlJSONrecord.html#ae42fbe0372a984bb4b62d25571a78920" />
+              <section title="startsWithCloseBracket" ref="structrlJSONrecord.html#ab37b33667adead6e2e4372ef2633b31a" />
+              <section title="startsWithEndArray" ref="structrlJSONrecord.html#ae7cb5cbc98c8157109d7aa058b08bcc6" />
+              <section title="startsWithOpenBracket" ref="structrlJSONrecord.html#ae6a3eb8613e61d7542526b04f0aa2747" />
+              <section title="startsWithText" ref="structrlJSONrecord.html#affecc274d85bd02f829539e6579c2d50" />
+              <section title="text" ref="structrlJSONrecord.html#aeefed7585b31d3a6d609d0fc54d999b8" />
+            </section>
             <section title="rlMailbox" ref="classrlMailbox.html">
               <section title="MailboxEnum" ref="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4a">
                 <section title="MAILBOX_ERROR" ref="classrlMailbox.html#a42dd3ce705f80d0bbfd068222dff6a4aa56566ca8baa25529589e069064d96761" />
@@ -2066,6 +2088,8 @@
             <section title="rlIniFile" ref="classrlIniFile.html" />
             <section title="rlInterpreter" ref="classrlInterpreter.html" />
             <section title="rlIpAdr" ref="classrlIpAdr.html" />
+            <section title="rlJSON" ref="classrlJSON.html" />
+            <section title="rlJSONrecord" ref="structrlJSONrecord.html" />
             <section title="rlMailbox" ref="classrlMailbox.html">
               <section title="rlModbusClient" ref="classrlModbusClient.html" />
               <section title="rlPPIClient" ref="classrlPPIClient.html" />
@@ -3662,6 +3686,35 @@
                 <section title="line" ref="classrlInterpreter.html#aefeeb45a9fa31628d87896bef00a02b6" />
                 <section title="maxline" ref="classrlInterpreter.html#a5623325f01071b61759d5481a92d00a3" />
               </section>
+            </section>
+            <section title="rljson.cpp" ref="rljson_8cpp.html">
+              <section title="TESTING" ref="rljson_8cpp.html#a68df6a1c0e7634ba32a66f9f01d4cb6f" />
+              <section title="main" ref="rljson_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" />
+            </section>
+            <section title="rljson.h" ref="rljson_8h.html">
+              <section title="rlJSONrecord" ref="structrlJSONrecord.html">
+                <section title="floatParam" ref="structrlJSONrecord.html#ae79343b556c7c70da1e172db105570ef" />
+                <section title="intParam" ref="structrlJSONrecord.html#a8c3da0f6fc99224e02ed8e0e7429cf31" />
+                <section title="optBeginArray" ref="structrlJSONrecord.html#a059a66bdc54a18dffeaf9a82aef59429" />
+                <section title="optColon" ref="structrlJSONrecord.html#ae65a9c763c4e601e70c73ebe7e92343c" />
+                <section title="optComma" ref="structrlJSONrecord.html#a3e4600c03e8238c4d918893b493fc6c6" />
+                <section title="optOpenBracket" ref="structrlJSONrecord.html#ad53cf1355bfaf5096d53465f6f0ffaee" />
+                <section title="optParamType" ref="structrlJSONrecord.html#ac59eb3e38024683e1172e79b13b35f48" />
+                <section title="param" ref="structrlJSONrecord.html#ae42fbe0372a984bb4b62d25571a78920" />
+                <section title="startsWithCloseBracket" ref="structrlJSONrecord.html#ab37b33667adead6e2e4372ef2633b31a" />
+                <section title="startsWithEndArray" ref="structrlJSONrecord.html#ae7cb5cbc98c8157109d7aa058b08bcc6" />
+                <section title="startsWithOpenBracket" ref="structrlJSONrecord.html#ae6a3eb8613e61d7542526b04f0aa2747" />
+                <section title="startsWithText" ref="structrlJSONrecord.html#affecc274d85bd02f829539e6579c2d50" />
+                <section title="text" ref="structrlJSONrecord.html#aeefed7585b31d3a6d609d0fc54d999b8" />
+              </section>
+              <section title="rlJSON" ref="classrlJSON.html">
+                <section title="rlJSON" ref="classrlJSON.html#a1bd986eb698f2ae37875a048441c67b0" />
+                <section title="~rlJSON" ref="classrlJSON.html#a7e85296e97368ee230897f738421357e" />
+                <section title="initRecord" ref="classrlJSON.html#af278386dbbebc692cc96f5c08ba6d123" />
+                <section title="interpret" ref="classrlJSON.html#a6c1e23df65cf645d1e5145432ae24e4a" />
+                <section title="print" ref="classrlJSON.html#a0d679ae294343db2780b58e07663a332" />
+              </section>
+              <section title="rlCRLF" ref="rljson_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
             </section>
             <section title="rllib.cpp" ref="rllib_8cpp.html">
               <section title="main" ref="rllib_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" />
@@ -5346,6 +5399,9 @@
       <keyword name="rlSetTranslator" id="rlinifile.h::rlSetTranslator" ref="rlinifile_8h.html#afa64593c1bb1029802d5caa5fd0acdd2" />
       <keyword name="rltranslate" id="rlinifile.h::rltranslate" ref="rlinifile_8h.html#ae1bb5c44c6aae2e63f64adeb86e02f47" />
       <keyword name="rltranslate2" id="rlinifile.h::rltranslate2" ref="rlinifile_8h.html#abaf1fefb3674d2f1c8126911f6567445" />
+      <keyword name="TESTING" id="rljson.cpp::TESTING" ref="rljson_8cpp.html#a68df6a1c0e7634ba32a66f9f01d4cb6f" />
+      <keyword name="main" id="rljson.cpp::main" ref="rljson_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" />
+      <keyword name="rlCRLF" id="rljson.h::rlCRLF" ref="rljson_8h.html#a3d029be32550aee0cfcf06c1e7156580" />
       <keyword name="main" id="rllib.cpp::main" ref="rllib_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4" />
       <keyword name="array_crc_low" id="rlmodbus.cpp::array_crc_low" ref="rlmodbus_8cpp.html#ade00722f9e0faaec45529dcf5e795fdc" />
       <keyword name="array_crc_high" id="rlmodbus.cpp::array_crc_high" ref="rlmodbus_8cpp.html#af590facd18479d1f5bc83501861e84ba" />
@@ -6472,6 +6528,26 @@
       <keyword name="setAdr" id="rlIpAdr::setAdr" ref="classrlIpAdr.html#ade6021e6e2897c5ecbe1abb9e10c77a9" />
       <keyword name="operator==" id="rlIpAdr::operator==" ref="classrlIpAdr.html#a4174b40376a4af1752a75bb7cec8c823" />
       <keyword name="address" id="rlIpAdr::address" ref="classrlIpAdr.html#a73c95244de3109f59499ed468e7f4a4f" />
+      <keyword name="rlJSON" id="rlJSON" ref="classrlJSON.html" />
+      <keyword name="rlJSON" id="rlJSON::rlJSON" ref="classrlJSON.html#a1bd986eb698f2ae37875a048441c67b0" />
+      <keyword name="~rlJSON" id="rlJSON::~rlJSON" ref="classrlJSON.html#a7e85296e97368ee230897f738421357e" />
+      <keyword name="initRecord" id="rlJSON::initRecord" ref="classrlJSON.html#af278386dbbebc692cc96f5c08ba6d123" />
+      <keyword name="interpret" id="rlJSON::interpret" ref="classrlJSON.html#a6c1e23df65cf645d1e5145432ae24e4a" />
+      <keyword name="print" id="rlJSON::print" ref="classrlJSON.html#a0d679ae294343db2780b58e07663a332" />
+      <keyword name="rlJSONrecord" id="rlJSONrecord" ref="structrlJSONrecord.html" />
+      <keyword name="startsWithText" id="rlJSONrecord::startsWithText" ref="structrlJSONrecord.html#affecc274d85bd02f829539e6579c2d50" />
+      <keyword name="startsWithOpenBracket" id="rlJSONrecord::startsWithOpenBracket" ref="structrlJSONrecord.html#ae6a3eb8613e61d7542526b04f0aa2747" />
+      <keyword name="startsWithCloseBracket" id="rlJSONrecord::startsWithCloseBracket" ref="structrlJSONrecord.html#ab37b33667adead6e2e4372ef2633b31a" />
+      <keyword name="startsWithEndArray" id="rlJSONrecord::startsWithEndArray" ref="structrlJSONrecord.html#ae7cb5cbc98c8157109d7aa058b08bcc6" />
+      <keyword name="text" id="rlJSONrecord::text" ref="structrlJSONrecord.html#aeefed7585b31d3a6d609d0fc54d999b8" />
+      <keyword name="optColon" id="rlJSONrecord::optColon" ref="structrlJSONrecord.html#ae65a9c763c4e601e70c73ebe7e92343c" />
+      <keyword name="optOpenBracket" id="rlJSONrecord::optOpenBracket" ref="structrlJSONrecord.html#ad53cf1355bfaf5096d53465f6f0ffaee" />
+      <keyword name="optBeginArray" id="rlJSONrecord::optBeginArray" ref="structrlJSONrecord.html#a059a66bdc54a18dffeaf9a82aef59429" />
+      <keyword name="optParamType" id="rlJSONrecord::optParamType" ref="structrlJSONrecord.html#ac59eb3e38024683e1172e79b13b35f48" />
+      <keyword name="param" id="rlJSONrecord::param" ref="structrlJSONrecord.html#ae42fbe0372a984bb4b62d25571a78920" />
+      <keyword name="intParam" id="rlJSONrecord::intParam" ref="structrlJSONrecord.html#a8c3da0f6fc99224e02ed8e0e7429cf31" />
+      <keyword name="floatParam" id="rlJSONrecord::floatParam" ref="structrlJSONrecord.html#ae79343b556c7c70da1e172db105570ef" />
+      <keyword name="optComma" id="rlJSONrecord::optComma" ref="structrlJSONrecord.html#a3e4600c03e8238c4d918893b493fc6c6" />
       <keyword name="rlMailbox" id="rlMailbox" ref="classrlMailbox.html" />
       <keyword name="rlMailbox" id="rlMailbox::rlMailbox" ref="classrlMailbox.html#a3901db614a18089808dec98973f1a090" />
       <keyword name="~rlMailbox" id="rlMailbox::~rlMailbox" ref="classrlMailbox.html#a9756230ee1f87f8f862a6f4f1ccb54cc" />
@@ -7605,6 +7681,8 @@
       <file>rlinifile_8h_source.html</file>
       <file>rlinterpreter_8cpp_source.html</file>
       <file>rlinterpreter_8h_source.html</file>
+      <file>rljson_8cpp_source.html</file>
+      <file>rljson_8h_source.html</file>
       <file>rllib_8cpp_source.html</file>
       <file>rllib_8h_source.html</file>
       <file>rlmailbox_8cpp_source.html</file>
@@ -7806,6 +7884,11 @@
       <file>rlinterpreter_8h.html</file>
       <file>rlinterpreter_8h__incl.png</file>
       <file>rlinterpreter_8h__dep__incl.png</file>
+      <file>rljson_8cpp.html</file>
+      <file>rljson_8cpp__incl.png</file>
+      <file>rljson_8h.html</file>
+      <file>rljson_8h__incl.png</file>
+      <file>rljson_8h__dep__incl.png</file>
       <file>rllib_8cpp.html</file>
       <file>rllib_8h.html</file>
       <file>rllib_8h__incl.png</file>
@@ -8074,6 +8157,11 @@
       <file>classrlInterpreter-members.html</file>
       <file>classrlIpAdr.html</file>
       <file>classrlIpAdr-members.html</file>
+      <file>classrlJSON.html</file>
+      <file>classrlJSON-members.html</file>
+      <file>structrlJSONrecord.html</file>
+      <file>structrlJSONrecord__coll__graph.png</file>
+      <file>structrlJSONrecord-members.html</file>
       <file>classrlMailbox.html</file>
       <file>classrlMailbox__inherit__graph.png</file>
       <file>classrlMailbox-members.html</file>
@@ -8296,6 +8384,8 @@
       <file>inherit_graph_85.png</file>
       <file>inherit_graph_86.png</file>
       <file>inherit_graph_87.png</file>
+      <file>inherit_graph_88.png</file>
+      <file>inherit_graph_89.png</file>
       <file>functions.html</file>
       <file>functions_a.html</file>
       <file>functions_b.html</file>

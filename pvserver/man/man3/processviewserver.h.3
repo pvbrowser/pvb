@@ -1,4 +1,4 @@
-.TH "processviewserver.h" 3 "Mon Jan 6 2020" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
+.TH "processviewserver.h" 3 "Thu Sep 28 2023" "ProcessViewBrowser-ServerProgramming" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -283,7 +283,7 @@ processviewserver.h
 .RI "enum \fBQwtAutoscale\fP { \fBpvNone\fP = 0, \fBIncludeRef\fP = 1, \fBSymmetric\fP = 2, \fBFloating\fP = 4, \fBLogarithmic\fP = 8, \fBInverted\fP = 16 }"
 .br
 .ti -1c
-.RI "enum \fBScalePosition\fP { \fBScaleLeft\fP, \fBScaleRight\fP, \fBScaleTop\fP, \fBScaleBottom\fP }"
+.RI "enum \fBScalePosition\fP { \fBScaleNone\fP, \fBScaleLeft\fP, \fBScaleRight\fP, \fBScaleTop\fP, \fBScaleBottom\fP }"
 .br
 .ti -1c
 .RI "enum \fBThermoPosition\fP { \fBThermoNone\fP, \fBThermoLeft\fP, \fBThermoRight\fP, \fBThermoTop\fP, \fBThermoBottom\fP }"
@@ -1659,7 +1659,7 @@ processviewserver.h
 
 .in +1c
 .ti -1c
-.RI "const char \fBpvserver_version\fP [] = '5\&.1\&.6'"
+.RI "const char \fBpvserver_version\fP [] = '5\&.15\&.2'"
 .br
 .ti -1c
 .RI "static const char \fBnull_string\fP [] = ''"
@@ -1667,7 +1667,7 @@ processviewserver.h
 .in -1c
 .SH "Variable Documentation"
 .PP 
-.SS "const char pvserver_version[] = '5\&.1\&.6'"
+.SS "const char pvserver_version[] = '5\&.15\&.2'"
 
 .SH "Author"
 .PP 

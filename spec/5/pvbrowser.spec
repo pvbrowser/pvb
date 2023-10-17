@@ -1,6 +1,6 @@
 Summary:   Package pvbrowser + pvdevelop + rlsvgcat + libraries
 Name:      pvbrowser
-Version:   5.15.2
+Version:   5.15.3
 Release:   5.1
 Group:     Productivity/Graphics/Visualization/Other
 #Copyright: GPL with the possibility of commercial use
@@ -360,6 +360,7 @@ chmod ugoa+rw /srv/automation/log
 /opt/pvb/rllib/lib/rlhilschercif.h
 /opt/pvb/rllib/lib/rlstring.h
 /opt/pvb/rllib/lib/rlplc.h
+/opt/pvb/rllib/lib/rljson.h
 /opt/pvb/rllib/lib/rlsubset.h
 /opt/pvb/rllib/lib/asc_user.h
 /opt/pvb/rllib/lib/cif_dev.h
